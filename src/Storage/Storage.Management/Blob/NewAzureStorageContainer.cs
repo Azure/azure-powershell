@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Default the container to use specified encryption scope for all writes.",
             Mandatory = true,
             ParameterSetName = AccountObjectEncryptionScopeParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string DefaultEncryptionScope { get; set; }
 
         [Parameter(HelpMessage = "Block override of encryption scope from the container default.",

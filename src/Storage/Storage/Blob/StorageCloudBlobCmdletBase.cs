@@ -31,6 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using global::Azure.Storage;
     using global::Azure;
     using global::Azure.Storage.Files.DataLake.Models;
+    using Track2blobModel = global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs.Specialized;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
@@ -660,6 +662,256 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                     blob.Metadata.Add(key, value);
                 }
             }
+        }
+
+        /// <summary>
+        /// CreateBlobPropertiesObject, which will be set to server
+        /// </summary>
+        /// <param name="BlobProperties">properties to set</param>
+        protected static Track2blobModel.BlobHttpHeaders CreateBlobHttpHeaders(Hashtable BlobProperties)
+        {
+            if (BlobProperties != null)
+            {
+                // Valid Blob Dir properties
+                foreach (DictionaryEntry entry in BlobProperties)
+                {
+                    if (!validDatalakeGen2FileProperties.ContainsKey(entry.Key.ToString()))
+                    {
+                        throw new ArgumentException(String.Format("InvalidDataLakeFileProperties", entry.Key.ToString(), entry.Value.ToString()));
+                    }
+                }
+
+                Track2blobModel.BlobHttpHeaders headers = new Track2blobModel.BlobHttpHeaders();
+                foreach (DictionaryEntry entry in BlobProperties)
+                {
+                    string key = entry.Key.ToString();
+                    string value = entry.Value.ToString();
+                    Action<Track2blobModel.BlobHttpHeaders, string> action = validBlobProperties_Track2[key];
+
+                    if (action != null)
+                    {
+                        action(headers, value);
+                    }
+                }
+                return headers;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        //only support the common properties for Blob
+        protected static Dictionary<string, Action<Track2blobModel.BlobHttpHeaders, string>> validBlobProperties_Track2 =
+            new Dictionary<string, Action<Track2blobModel.BlobHttpHeaders, string>>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"CacheControl", (p, v) => p.CacheControl = v},
+                {"ContentDisposition", (p, v) => p.ContentDisposition = v},
+                {"ContentEncoding", (p, v) => p.ContentEncoding = v},
+                {"ContentLanguage", (p, v) => p.ContentLanguage = v},
+                {"ContentMD5", (p, v) => p.ContentHash = Convert.FromBase64String(v)},
+                {"ContentType", (p, v) => p.ContentType = v},
+            };
+
+        //Update Blob Metadata
+        protected static IDictionary<string, string> SetBlobMeta_Track2(IDictionary<string, string> originalMetaData, Hashtable meta)
+        {
+            if (meta == null)
+            {
+                return originalMetaData;
+            }
+
+            foreach (DictionaryEntry entry in meta)
+            {
+                string key = entry.Key.ToString();
+                string value = entry.Value.ToString();
+
+                if (originalMetaData.ContainsKey(key))
+                {
+                    originalMetaData[key] = value;
+                }
+                else
+                {
+                    originalMetaData.Add(key, value);
+                }
+            }
+            return originalMetaData;
+        }
+
+        protected static Track2blobModel.AccessTier? GetAccessTier_Track2(StandardBlobTier? standardBlobTier, PremiumPageBlobTier? pageBlobTier)
+        {
+            if(standardBlobTier == null && pageBlobTier == null)
+            {
+                return null;
+            }
+            if (standardBlobTier != null)
+            {
+                switch (standardBlobTier.Value)
+                {
+                    case StandardBlobTier.Archive:
+                        return Track2blobModel.AccessTier.Archive;
+                    case StandardBlobTier.Cool:
+                        return Track2blobModel.AccessTier.Cool;
+                    case StandardBlobTier.Hot:
+                        return Track2blobModel.AccessTier.Hot;
+                    default:
+                        return null;
+                }
+            }
+            else //pageBlobTier != null
+            {
+                switch (pageBlobTier.Value)
+                {
+                    case PremiumPageBlobTier.P4:
+                        return Track2blobModel.AccessTier.P4;
+                    case PremiumPageBlobTier.P6:
+                        return Track2blobModel.AccessTier.P6;
+                    case PremiumPageBlobTier.P10:
+                        return Track2blobModel.AccessTier.P10;
+                    case PremiumPageBlobTier.P20:
+                        return Track2blobModel.AccessTier.P20;
+                    case PremiumPageBlobTier.P30:
+                        return Track2blobModel.AccessTier.P30;
+                    case PremiumPageBlobTier.P40:
+                        return Track2blobModel.AccessTier.P40;
+                    case PremiumPageBlobTier.P50:
+                        return Track2blobModel.AccessTier.P50;
+                    case PremiumPageBlobTier.P60:
+                        return Track2blobModel.AccessTier.P60;
+                    case PremiumPageBlobTier.P70:
+                        return Track2blobModel.AccessTier.P70;
+                    case PremiumPageBlobTier.P80:
+                        return Track2blobModel.AccessTier.P80;
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        // Convert Track1 Blob object to Track 2 blob Client
+        public static BlobClient GetTrack2BlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
+        {
+            BlobClient blobClient;
+            if (cloubBlob.ServiceClient.Credentials.IsToken) //Oauth
+            {
+                if (context == null)
+                {
+                    //TODO : Get Oauth context from current login user.
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                }
+                blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
+
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
+                if (cloubBlob.IsSnapshot)
+                {
+                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                }
+                else
+                {
+                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                }
+                blobClient = new BlobClient(new Uri(fullUri), options);
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
+            {
+                blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri,
+                    new StorageSharedKeyCredential(context.StorageAccountName, cloubBlob.ServiceClient.Credentials.ExportBase64EncodedKey()),
+                    options);
+            }
+            else //Anonymous
+            {
+                blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, options);
+            }
+
+            return blobClient;
+        }
+
+        // Convert Track1 Blob object to Track 2 page blob Client
+        public static PageBlobClient GetTrack2PageBlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
+        {
+            PageBlobClient blobClient;
+            if (cloubBlob.ServiceClient.Credentials.IsToken) //Oauth
+            {
+                if (context == null)
+                {
+                    //TODO : Get Oauth context from current login user.
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                }
+                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
+
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
+                if (cloubBlob.IsSnapshot)
+                {
+                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                }
+                else
+                {
+                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                }
+                blobClient = new PageBlobClient(new Uri(fullUri), options);
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
+            {
+                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri,
+                    new StorageSharedKeyCredential(context.StorageAccountName, cloubBlob.ServiceClient.Credentials.ExportBase64EncodedKey()),
+                    options);
+            }
+            else //Anonymous
+            {
+                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri, options);
+            }
+
+            return blobClient;
+        }
+
+        // Convert Track1 Blob object to Track 2 append blob Client
+        public static AppendBlobClient GetTrack2AppendBlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
+        {
+            AppendBlobClient blobClient;
+            if (cloubBlob.ServiceClient.Credentials.IsToken) //Oauth
+            {
+                if (context == null)
+                {
+                    //TODO : Get Oauth context from current login user.
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                }
+                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
+
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
+                if (cloubBlob.IsSnapshot)
+                {
+                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                }
+                else
+                {
+                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                }
+                blobClient = new AppendBlobClient(new Uri(fullUri), options);
+            }
+            else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
+            {
+                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri,
+                    new StorageSharedKeyCredential(context.StorageAccountName, cloubBlob.ServiceClient.Credentials.ExportBase64EncodedKey()),
+                    options);
+            }
+            else //Anonymous
+            {
+                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri, options);
+            }
+
+            return blobClient;
         }
     }
 }

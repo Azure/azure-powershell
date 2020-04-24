@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track1 Container object to Track 2 Container Client
-        protected static BlobContainerClient GetTrack2BlobContainerClient(CloudBlobContainer cloubContainer, AzureStorageContext context)
+        public static BlobContainerClient GetTrack2BlobContainerClient(CloudBlobContainer cloubContainer, AzureStorageContext context)
         {
             BlobContainerClient blobContainerClient;
             if (cloubContainer.ServiceClient.Credentials.IsToken) //Oauth

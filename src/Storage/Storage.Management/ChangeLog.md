@@ -18,12 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
 * Add RestorePolicy.LastEnabledTime to cmdlet output
     - `Get-AzStorageBlobServiceProperty`
     - `Enable-AzStorageBlobRestorePolicy`
 * Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
-	- Update-AzStorageAccountNetworkRuleSet
-	- Get-AzStorageAccountNetworkRuleSet
+    - `Update-AzStorageAccountNetworkRuleSet`
+    - `Get-AzStorageAccountNetworkRuleSet`
 * Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
 
