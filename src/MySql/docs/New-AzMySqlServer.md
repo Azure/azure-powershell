@@ -28,7 +28,6 @@ Creates a new server.
 
 ### Example 1: Create a new MySql server
 ```powershell
-PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement

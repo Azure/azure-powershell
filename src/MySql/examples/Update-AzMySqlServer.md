@@ -11,7 +11,7 @@ This cmdlet updates MySql server by resource group and server name.
 
 ### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageInMb 10240
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
