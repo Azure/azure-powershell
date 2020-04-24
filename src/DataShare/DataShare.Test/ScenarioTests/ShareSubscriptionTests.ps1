@@ -15,12 +15,14 @@ function Test-ShareSubscriptionCrud
 		$AccountName = getAssetName
 		$ShareSubscriptionName = getAssetName
 		$InvitationId = "80f618dc-2ca8-4f99-83ee-9d2889066c6d"
-		$createdShareSubscription = New-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName -InvitationId $InvitationId
+		$SourceShareLocation = "eastus2"
+		$createdShareSubscription = New-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName -InvitationId $InvitationId -SourceShareLocation $SourceShareLocation
 
 		Assert-NotNull $createdShareSubscription
 		Assert-AreEqual $ShareSubscriptionName $createdShareSubscription.Name
 		Assert-AreEqual "Active" $createdShareSubscription.ShareSubscriptionStatus
 		Assert-AreEqual $InvitationId $createdShareSubscription.InvitationId
+		Assert-AreEqual $SourceShareLocation $createdShareSubscription.SourceShareLocation
 		Assert-AreEqual "Succeeded" $createdShareSubscription.ProvisioningState
 
 		$retrievedShareSubscription = Get-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName
