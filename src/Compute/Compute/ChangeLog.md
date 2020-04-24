@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Description for Get-AzVM cmdlet has been updated to better describe it. 
 
 ## Version 3.7.0
 * Added `Set-AzVmssOrchestrationServiceState` cmdlet.
