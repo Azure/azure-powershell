@@ -57,6 +57,8 @@ title: ImageBuilder
 module-version: 0.1.0
 subject-prefix: ''
 
+identity-correction-for-post: true
+
 directive:
   - where:
       verb: Set
@@ -87,38 +89,8 @@ directive:
     remove: true
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateInternal/, 'public partial interface IImageTemplateInternal');
+    transform: $ = $.replace(/internal partial interface/, 'public partial interface');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace(/internal partial interface IResourceInternal/, 'public partial interface IResourceInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateSharedImageDistributorInternal/, 'public partial interface IImageTemplateSharedImageDistributorInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateManagedImageDistributorInternal/, 'public partial interface IImageTemplateManagedImageDistributorInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateDistributorInternal/, 'public partial interface IImageTemplateDistributorInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateVhdDistributorInternal/, 'public partial interface IImageTemplateVhdDistributorInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateCustomizerInternal/, 'public partial interface IImageTemplateCustomizerInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplatePowerShellCustomizerInternal/, 'public partial interface IImageTemplatePowerShellCustomizerInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateRestartCustomizerInternal/, 'public partial interface IImageTemplateRestartCustomizerInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateWindowsUpdateCustomizerInternal/, 'public partial interface IImageTemplateWindowsUpdateCustomizerInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateShellCustomizerInternal/, 'public partial interface IImageTemplateShellCustomizerInternal');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface IImageTemplateFileCustomizerInternal/, 'public partial interface IImageTemplateFileCustomizerInternal');
+    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
 ```
