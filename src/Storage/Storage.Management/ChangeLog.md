@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add RestorePolicy.LastEnabledTime to cmdlet output
+    - `Get-AzStorageBlobServiceProperty`
+    - `Enable-AzStorageBlobRestorePolicy`
 
 ## Version 1.13.4
 * Support create/update/get/list EncryptionScope of a Storage account
