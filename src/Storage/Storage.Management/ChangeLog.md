@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.14.1
 * Supported create container and upload blob with Encryption Scope setting
     - `New-AzStorageContainer`
     - `Set-AzStorageBlobContent`
