@@ -68,6 +68,15 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         [ValidateNotNullOrEmpty]
         public string InvitationId { get; set; }
 
+        /// <summary>
+        /// Location of the source share.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSetNames.FieldsParameterSet,
+            HelpMessage = "Azure data share location")]
+        [ValidateNotNullOrEmpty]
+        public string SourceShareLocation { get; set; }
+
         private const string ResourceType = "ShareSubscription";
 
         public override void ExecuteCmdlet()
@@ -80,7 +89,8 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
                     this.Name,
                     new ShareSubscription()
                     {
-                        InvitationId = this.InvitationId
+                        InvitationId = this.InvitationId,
+                        SourceShareLocation = this.SourceShareLocation
                     });
 
                 this.WriteObject(shareSubscription.ToPsObject());

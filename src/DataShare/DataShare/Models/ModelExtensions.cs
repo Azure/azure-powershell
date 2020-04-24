@@ -133,7 +133,8 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
                 ShareSender = shareSubscription.ProviderEmail ?? shareSubscription.ProviderName,
                 ShareSenderCompanyName = shareSubscription.ProviderTenantName,
                 ShareTerms = shareSubscription.ShareTerms,
-                ShareSubscriptionStatus = shareSubscription.ShareSubscriptionStatus
+                ShareSubscriptionStatus = shareSubscription.ShareSubscriptionStatus,
+                SourceShareLocation = shareSubscription.SourceShareLocation,
             };
         }
 

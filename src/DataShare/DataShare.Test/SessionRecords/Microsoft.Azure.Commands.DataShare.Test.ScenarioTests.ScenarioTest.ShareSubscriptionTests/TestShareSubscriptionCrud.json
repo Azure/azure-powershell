@@ -4,7 +4,7 @@
       "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingsharesub1?api-version=2018-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZXN1YjE/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n \"InvitatioId\":\"80f618dc-2ca8-4f99-83ee-9d2889066c6d\" \r\n }",
+      "RequestBody": "{\r\n \"InvitationId\":\"80f618dc-2ca8-4f99-83ee-9d2889066c6d\", \r\n \"sourceShareLocation\":\"eastus2\" }",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -22,7 +22,7 @@
           "FxVersion/4.6.26201.01"
         ]
       },
-      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingsharesub1\", \r\n \"name\": \"sdktestingsharesub1\", \r\n \"properties\": {\r\n \"createdAt\": \"2019-06-11T18:30:38.4357641Z\", \r\n \"shareSubscriptionStatus\": \"Active\", \r\n \"provisioningState\": \"Succeeded\",\r\n \"shareName\": \"sdktestingshare1\", \r\n \"invitationId\": \"80f618dc-2ca8-4f99-83ee-9d2889066c6d\"}\r\n}",
+      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingsharesub1\", \r\n \"name\": \"sdktestingsharesub1\", \r\n \"properties\": {\r\n \"createdAt\": \"2019-06-11T18:30:38.4357641Z\", \r\n \"shareSubscriptionStatus\": \"Active\", \r\n \"provisioningState\": \"Succeeded\",\r\n \"shareName\": \"sdktestingshare1\", \r\n \"invitationId\": \"80f618dc-2ca8-4f99-83ee-9d2889066c6d\", \r\n \"sourceShareLocation\":\"eastus2\"}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -90,7 +90,7 @@
           "FxVersion/4.6.26201.01"
         ]
       },
-      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingsharesub1\", \r\n \"name\": \"sdktestingsharesub1\", \r\n \"properties\": {\r\n \"createdAt\": \"2019-06-11T18:30:38.4357641Z\", \r\n \"shareSubscriptionStatus\": \"Active\", \r\n \"provisioningState\": \"Succeeded\",\r\n \"shareName\": \"sdktestingshare1\", \r\n \"invitationId\": \"80f618dc-2ca8-4f99-83ee-9d2889066c6d\"}\r\n}",
+      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingsharesub1\", \r\n \"name\": \"sdktestingsharesub1\", \r\n \"properties\": {\r\n \"createdAt\": \"2019-06-11T18:30:38.4357641Z\", \r\n \"shareSubscriptionStatus\": \"Active\", \r\n \"provisioningState\": \"Succeeded\",\r\n \"shareName\": \"sdktestingshare1\", \r\n \"invitationId\": \"80f618dc-2ca8-4f99-83ee-9d2889066c6d\", \r\n \"sourceShareLocation\":\"eastus2\"}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
