@@ -50,7 +50,7 @@ function Get-RequiredModulesPath
         [System.Management.Automation.PSModuleInfo]
         $ModuleInfo
     )
-    
+
     $ModulePaths = @()
     $ModulePaths += $ModuleInfo.RequiredModules | ForEach-Object { Get-RequiredModulesPath -ModuleInfo $_}
 
@@ -107,7 +107,7 @@ function Start-PSSwaggerJobHelper
     {
         $AsJob = $true
     }
-    
+
     $null = $CallerPSBoundParameters.Remove('WarningVariable')
     $null = $CallerPSBoundParameters.Remove('ErrorVariable')
     $null = $CallerPSBoundParameters.Remove('OutVariable')
@@ -120,9 +120,9 @@ function Start-PSSwaggerJobHelper
     $PSSwaggerJobParameters = @{}
     $PSSwaggerJobParameters['ScriptBlock'] = $ScriptBlock
 
-    # Required modules list    
+    # Required modules list
     if ($CallerModule)
-    {        
+    {
         $PSSwaggerJobParameters['RequiredModules'] = Get-RequiredModulesPath -ModuleInfo $CallerModule
     }
 
@@ -468,7 +468,7 @@ function Add-PSSwaggerClientType {
     $preprocessorDirectives = @()
     if ((Get-OperatingSystemInfo).IsCore) {
         # Base framework references
-        $preprocessorDirectives = @('#define DNXCORE50','#define PORTABLE')        
+        $preprocessorDirectives = @('#define DNXCORE50','#define PORTABLE')
         $systemRefs = @('System.dll',
                         'System.Core.dll',
                         'System.Net.Http.dll',
@@ -509,7 +509,7 @@ function Add-PSSwaggerClientType {
         $AddClientTypeHelperParams['OutputAssemblyName'] = $OutputAssemblyName
         $AddClientTypeHelperParams['TestBuild']          = $TestBuild
         $AddClientTypeHelperParams['SymbolPath']         = $SymbolPath
-    }    
+    }
     $HelperResult = Add-PSSwaggerClientTypeHelper @AddClientTypeHelperParams
 
     $CompilerHelperParams = @{
@@ -617,7 +617,7 @@ function Add-PSSwaggerClientTypeHelper {
         [Parameter(Mandatory = $false)]
         [string]
         $SymbolPath,
-		
+
         [Parameter(Mandatory = $false)]
         [hashtable]
         $PackageDependencies,
@@ -626,17 +626,17 @@ function Add-PSSwaggerClientTypeHelper {
         [string[]]
         $PreprocessorDirectives
     )
-	
+
     $resultObj = @{
         # Full path to resolved package reference assemblies
         ResolvedPackageReferences = @()
 
         # The expected output assembly full path
         OutputAssembly            = $null
-        
+
         # The actual source to be emitted
         SourceCode                = $null
-        
+
         # The file name the returned params expect to exist, if required
         SourceCodeFilePath        = $null
     }
@@ -645,7 +645,7 @@ function Add-PSSwaggerClientTypeHelper {
         $TempOutputPath = Join-Path -Path (Get-XDGDirectory -DirectoryType Cache) -ChildPath ([Guid]::NewGuid().Guid)
         $null = New-Item -Path $TempOutputPath -ItemType Directory -Force
     }
-    
+
     if (-not $SymbolPath) {
         $SymbolPath = $TempOutputPath
     }
@@ -698,7 +698,7 @@ function Add-PSSwaggerClientTypeHelper {
     Out-File -InputObject $oneSrc -FilePath $SourceCodeFilePath
 
     $resultObj['OutputAssembly'] = Join-Path -Path $OutputDirectory -ChildPath $OutputAssemblyName
-    
+
     return $resultObj
 }
 
@@ -717,7 +717,7 @@ function Get-AddTypeParameters {
         [ValidateSet("ConsoleApplication", "Library")]
         [string]
         $OutputType = 'Library',
-        
+
         [Parameter(Mandatory = $false)]
         [switch]
         $TestBuild,
@@ -726,7 +726,7 @@ function Get-AddTypeParameters {
         [string]
         $OutputAssembly
     )
-	
+
     $AddTypeParams = @{
         WarningAction = 'Ignore'
     }
@@ -746,7 +746,7 @@ function Get-AddTypeParameters {
         if ($OutputType -eq 'ConsoleApplication') {
             $compilerParameters.GenerateExecutable = $true
         }
-    
+
         $ReferencedAssemblies | ForEach-Object {
             $null = $compilerParameters.ReferencedAssemblies.Add($_)
         }
@@ -756,7 +756,7 @@ function Get-AddTypeParameters {
         $AddTypeParams['TypeDefinition'] = Get-Content -Path $SourceCodeFilePath -Raw
         $AddTypeParams['ReferencedAssemblies'] = $ReferencedAssemblies
         $AddTypeParams['OutputType'] = $OutputType
-        $AddTypeParams['Language'] = 'CSharp'        
+        $AddTypeParams['Language'] = 'CSharp'
     }
 
     if ($OutputAssembly) {
@@ -772,7 +772,7 @@ function Get-AddTypeParameters {
             $AddTypeParams['CompilerParameters'].GenerateInMemory = $true
         }
     }
-    
+
     return $AddTypeParams
 }
 function Get-CscParameters {
@@ -786,7 +786,7 @@ function Get-CscParameters {
         [ValidateSet('Exe', 'Library')]
         [string]
         $TargetType = 'Library',
-        
+
         [Parameter(Mandatory = $false)]
         [string[]]
         $ReferencedAssemblies,
@@ -803,7 +803,7 @@ function Get-CscParameters {
         [string]
         $OutputAssembly
     )
-	
+
     $CscParameter = @(
         $SourceCodeFilePath
         '/nologo',
@@ -868,141 +868,7 @@ function Initialize-PSSwaggerDependencies {
         $clr = 'coreclr'
     }
 
-    # Assume if any ref folder is non-empty, we don't need to init local tools - weird workaround for offline scenario
-    if ((-not (Get-ChildItem -Path (Join-Path -Path "$PSScriptRoot" -ChildPath 'ref' | Join-Path -ChildPath $clr) -ErrorAction Ignore)) -and
-         -not (Get-ChildItem -Path (Join-Path -Path "$PSScriptRoot" -ChildPath .. | Join-Path -ChildPath 'ref' | Join-Path -ChildPath $clr) -ErrorAction Ignore)) {
-        $null = Initialize-PSSwaggerLocalTool -AllUsers:$AllUsers -Azure:$Azure -Framework $framework -AcceptBootstrap:$AcceptBootstrap
-    }
-    
     $null = Initialize-PSSwaggerUtilities
-}
-
-<#
-.DESCRIPTION
-  Initialize local tools for specific framework, prompting for download and downloading if not present.
-
-.PARAMETER  AllUsers
-  User wants to install local tools for all users.
-
-.PARAMETER  Precompiling
-  Initialize local tools required for compilation.
-#>
-function Initialize-PSSwaggerLocalTool {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory=$false)]
-        [hashtable]
-        $RequiredVersionMap,
-
-        [Parameter(Mandatory=$false)]
-        [switch]
-        $AllUsers,
-
-        [Parameter(Mandatory=$false)]
-        [switch]
-        $Azure,
-
-        [Parameter(Mandatory=$false)]
-        [string[]]
-        $Framework = @('net4'),
-
-        [Parameter(Mandatory=$false)]
-        [switch]
-        $AcceptBootstrap,
-
-        [Parameter(Mandatory=$false)]
-        [switch]
-        $SkipDefaultDependencies,
-		
-        [Parameter(Mandatory=$false)]
-        [hashtable]
-        $AdditionalDependencies
-    )
-
-    $bootstrapActions = @()
-    $bootstrapPrompts = @()
-
-    $nugetExeChecked = $false
-    $dependenciesToDownload = @()
-    $packageActionAdded = $false
-    foreach ($f in $Framework) {
-        $dependencies = @()
-        if ($AdditionalDependencies) {
-            foreach ($entry in $AdditionalDependencies.GetEnumerator()) {
-                $dependencies += $entry
-            }
-        }
-        if (-not $SkipDefaultDependencies) {
-            foreach ($entry in (Get-PSSwaggerExternalDependencies -Framework $f -Azure:$Azure -RequiredVersionMap $RequiredVersionMap).GetEnumerator()) {
-                $dependencies += $entry
-            }
-        }
-        foreach ($entry in $dependencies) {
-            $dependency = $entry.Value
-            
-            $assemblyPaths = Get-PSSwaggerDependency -PackageName $dependency.PackageName -References $dependency.References -Framework $dependency.Framework -RequiredVersion $dependency.RequiredVersion -AllUsers:$AllUsers
-            if (-not $assemblyPaths) {
-                if ((-not $nugetExeChecked)) {
-                    # Only download NuGet.exe to the exact path the user specified.
-                    $nugetExePath = Get-NugetExePath
-                    if (-not (Get-Command $nugetExePath -ErrorAction Ignore)) {
-                        $nugetExePath = Get-NugetExePath -GlobalCache:$AllUsers -SpecificPath
-                        $bootstrapPrompts += ($LocalizedData.NugetBootstrapPrompt -f ($script:NuGetClientSourceURL))
-                        $bootstrapActions += { 
-                            param()
-                                Write-Verbose -Message ($LocalizedData.NugetBootstrapDownload -f ($script:NuGetClientSourceURL, $nugetExePath))
-                                $null = Invoke-WebRequest -Uri $script:NuGetClientSourceURL `
-                                                        -OutFile $nugetExePath
-                                if (-not (Test-Path -Path $nugetExePath)) {
-                                    throw ($LocalizedData.NuGetFailedToInstall -f ($nugetExePath))
-                                }
-                        }
-                    }
-
-                    $nugetExeChecked = $true
-                }
-
-                if ($dependenciesToDownload.Count -eq 0) {
-                    # Note that in this case, the prompt will always be added below.
-                    $bootstrapActions += { 
-                        param()
-                        foreach ($dep in $dependenciesToDownload) {
-                            Write-Verbose -Message ($LocalizedData.DownloadingNuGetPackage -f ($dep.PackageName))
-                            $assemblyPaths = Get-PSSwaggerDependency -PackageName $dep.PackageName -References $dep.References -Framework $dep.Framework `
-                                                            -RequiredVersion $dep.RequiredVersion -Install -BootstrapConsent -AllUsers:$AllUsers
-                            if (-not $assemblyPaths) {
-                                throw ($LocalizedData.FailedToInstallNuGetPackage -f ($dep.PackageName))
-                            }
-                        }
-                    }
-                }
-
-                if (-not ($dependenciesToDownload | Where-Object { ($_.PackageName -eq $dependency.PackageName) -and ($_.RequiredVersion -eq $dependency.RequiredVersion) })) {
-                    if ($dependency.RequiredVersion) {
-                        $bootstrapPrompts += ($LocalizedData.NuGetPackageSpecificVersionRequired -f ($dependency.PackageName, $dependency.RequiredVersion))
-                    } else {
-                        $bootstrapPrompts += ($LocalizedData.NuGetPackageRequired -f ($dependency.PackageName))
-                    }
-
-                    $dependenciesToDownload += $dependency
-                }
-            }
-        }
-    }
-    
-    $consent = $false
-    if ($bootstrapPrompts.Length -gt 0) {
-        $prompt = $bootstrapPrompts -join [Environment]::NewLine
-
-        $consent = $AcceptBootstrap -or ($PSCmdlet.ShouldContinue($LocalizedData.BootstrapConfirmTitle, $prompt))
-        if ($consent) {
-            for ($i = 0; $i -lt $bootstrapActions.Length; $i++) {
-                $null = $bootstrapActions[$i].Invoke()
-            }
-        }
-    }
-
-    return $consent
 }
 
 <#
@@ -1261,42 +1127,6 @@ function Get-PSSwaggerDependencyPackageWithNuGetCli {
     $path = Get-LocalNugetPackagePath -PackageName $PackageName -RequiredVersion $RequiredVersion
     if (-not $path) {
         $path = Get-LocalNugetPackagePath -PackageName $PackageName -RequiredVersion $RequiredVersion -GlobalCache
-    }
-
-    if ((-not $path) -and $Install) {
-        # When finding NuGet.exe, use any path.
-        $nugetExePath = Get-NugetExePath
-        if (-not (Get-Command $nugetExePath -ErrorAction Ignore)) {
-            # Should be downloaded by now, let's not copy the code - just throw an error
-            # This also happens when the user didn't want to bootstrap nuget.exe
-            throw $LocalizedData.NuGetMissing
-        }
-
-        if ($BootstrapConsent) {
-            $cachePath = Get-PackageCache -GlobalCache:$AllUsers
-            $nugetArgs = "install $PackageName -noninteractive -outputdirectory `"$cachePath`" -source https://nuget.org/api/v2 -verbosity detailed"
-            if ($RequiredVersion) {
-                $nugetArgs += " -version $RequiredVersion"
-            }
-
-            $stdout = Invoke-Expression "& `"$nugetExePath`" $nugetArgs"
-            Write-Verbose -Message ($LocalizedData.NuGetStandardOut -f ($stdout))
-            if ($LastExitCode) {
-                # Throw the output into the error stream in case of a bad execution.
-                Write-Error -Message ($LocalizedData.NuGetStandardOut -f ($stdout))
-                return
-            }
-
-            $path = Get-LocalNugetPackagePath -PackageName $PackageName -RequiredVersion $RequiredVersion -GlobalCache:$AllUsers
-        } else {
-            $localCache = Get-PackageCache
-            $globalCache = Get-PackageCache -GlobalCache
-            if ($RequiredVersion) {
-                throw ($LocalizedData.MissingNuGetPackageSpecificVersion -f ($PackageName, $localCache, $globalCache, $RequiredVersion))
-            } else {
-                throw ($LocalizedData.MissingNuGetPackageSpecificVersion -f ($PackageName, $localCache, $globalCache))
-            }
-        }
     }
 
     if ($path) {
@@ -1570,7 +1400,7 @@ function Get-PSCommonParameter
         Debug = $DebugPresent
         WarningAction = $warningAction
         ErrorAction = $errorAction
-    }    
+    }
 }
 
 <#
@@ -1712,7 +1542,7 @@ function Initialize-PSSwaggerUtilities {
         $externalReferencesFramework = 'net4'
         $clr = 'fullclr'
     }
-    
+
     if(("$($LocalizedData.CSharpNamespace).PSSwaggerJob" -as [Type]) -and
     (Test-Path -Path ("$($LocalizedData.CSharpNamespace).PSSwaggerJob" -as [Type]).Assembly.Location -PathType Leaf))
     {
@@ -1771,45 +1601,9 @@ function Initialize-PSSwaggerUtilities {
                 $RequiredAssemblies += 'System.Threading'
             }
 
-            if ($useExternalDependencies) {
-                $externalReferences = Get-PSSwaggerExternalDependencies -Framework $externalReferencesFramework
-                foreach ($entry in ($externalReferences.GetEnumerator() | Sort-Object { $_.Value.LoadOrder })) {
-                    $reference = $entry.Value
-                    $getDependency = $false
-                    foreach ($ref in $reference.References) {
-                        $path = (Join-Path -Path "$PSScriptRoot" -ChildPath "ref" | Join-Path -ChildPath $clr | Join-Path -ChildPath $ref)
-                        $parentPath = (Join-Path -Path "$PSScriptRoot" -ChildPath .. | Join-Path -ChildPath "ref" | Join-Path -ChildPath $clr | Join-Path -ChildPath $ref)
-                        if (Test-Path -Path $path) {
-                            Add-Type -Path $path
-                            $RequiredAssemblies += $path
-                        } elseif (Test-Path -Path $parentPath) {
-                            Add-Type -Path $parentPath
-                            $RequiredAssemblies += $parentPath
-                        } else {
-                            $getDependency = $true
-                            break
-                        }
-                    }
-
-                    if ($getDependency) {
-                        $userConsent = Initialize-PSSwaggerLocalTool -Framework @($externalReferencesFramework)
-                        $extraRefs = Get-PSSwaggerDependency -PackageName $reference.PackageName `
-                                                            -References $reference.References `
-                                                            -Framework $reference.Framework `
-                                                            -RequiredVersion $reference.RequiredVersion `
-                                                            -Install -BootstrapConsent:$userConsent
-                        if ($extraRefs) {
-                            foreach ($ref in $extraRefs) {
-                                $RequiredAssemblies += $ref
-                            }
-                        }
-                    }
-                }
-            }
-            
             $TempPath = Join-Path -Path (Get-XDGDirectory -DirectoryType Data) -ChildPath ([System.IO.Path]::GetRandomFileName())
             $null = New-Item -Path $TempPath -ItemType Directory -Force
-			
+
 			# Compile the main utility assembly
             $PSSwaggerJobAssemblyPath = Join-Path -Path $TempPath -ChildPath "$($LocalizedData.CSharpNamespace).Utility.dll"
 
@@ -1856,48 +1650,13 @@ function Initialize-PSSwaggerUtilities {
             $externalReferencesFramework = 'net4'
             $clr = 'fullclr'
 
-            $externalReferences = Get-PSSwaggerExternalDependencies -Framework $externalReferencesFramework
-            foreach ($entry in ($externalReferences.GetEnumerator() | Sort-Object { $_.Value.LoadOrder })) {
-                $reference = $entry.Value
-                $getDependency = $false
-                foreach ($ref in $reference.References) {
-                    $path = (Join-Path -Path "$PSScriptRoot" -ChildPath "ref" | Join-Path -ChildPath $clr | Join-Path -ChildPath $ref)
-                    $parentPath = (Join-Path -Path "$PSScriptRoot" -ChildPath .. | Join-Path -ChildPath "ref" | Join-Path -ChildPath $clr | Join-Path -ChildPath $ref)
-                    if (Test-Path -Path $path) {
-                        Add-Type -Path $path
-                        $compilerParameters.ReferencedAssemblies.Add($path)
-                    } elseif (Test-Path -Path $parentPath) {
-                        Add-Type -Path $parentPath
-                        $compilerParameters.ReferencedAssemblies.Add($parentPath)
-                    } else {
-                        $getDependency = $true
-                        break
-                    }
-                }
-
-                if ($getDependency) {
-                    $userConsent = Initialize-PSSwaggerLocalTool -Framework @($externalReferencesFramework)
-                    $extraRefs = Get-PSSwaggerDependency -PackageName $reference.PackageName `
-                                                            -References $reference.References `
-                                                            -Framework $reference.Framework `
-                                                            -RequiredVersion $reference.RequiredVersion `
-                                                            -Install -BootstrapConsent:$userConsent
-                    if ($extraRefs) {
-                        foreach ($ref in $extraRefs) {
-                            Add-Type -Path $ref
-                            $compilerParameters.ReferencedAssemblies.Add($ref)
-                        }
-                    }
-                }
-            }
-                
             $TempPath = Join-Path -Path (Get-XDGDirectory -DirectoryType Data) -ChildPath ([System.IO.Path]::GetRandomFileName())
             $null = New-Item -Path $TempPath -ItemType Directory -Force
-                
+
             # Compile the main utility assembly
-            $PSSwaggerJobAssemblyUnsafePath = Join-Path -Path $TempPath -ChildPath "$($LocalizedData.CSharpNamespace).Utility.Unsafe.dll"
+            $PSSwaggerJobAssemblyUnsafePath = Join-Path -Path $TempPath -ChildPath 'Microsoft.PowerShell.PSSwagger.Utility.Unsafe.dll'
             $compilerParameters.OutputAssembly = $PSSwaggerJobAssemblyUnsafePath
-            
+
             Add-Type -TypeDefinition $PSSwaggerJobSourceString `
                      -WarningAction Ignore `
                      -CompilerParameters $compilerParameters
@@ -1921,8 +1680,8 @@ function Initialize-PSSwaggerUtilities {
                 }
             }
         }
-        
-        # It is required to import the generated assembly into the module scope 
+
+        # It is required to import the generated assembly into the module scope
         # to register the PSSwaggerJobSourceAdapter with the PowerShell Job infrastructure.
         Import-Module -Name $PSSwaggerJobAssemblyPath -Verbose:$false
     }
@@ -1965,7 +1724,7 @@ function Initialize-PSSwaggerUtilities {
 function New-PSSwaggerClientTracing {
 	[CmdletBinding()]
 	param()
-	
+
     Initialize-PSSwaggerDependencies
 	return New-PSSwaggerClientTracingInternal
 }
@@ -1975,7 +1734,7 @@ function Register-PSSwaggerClientTracing {
 	param(
 		[object]$TracerObject
 	)
-	
+
     Initialize-PSSwaggerDependencies
 	Register-PSSwaggerClientTracingInternal -TracerObject $TracerObject
 }
@@ -1985,7 +1744,7 @@ function Unregister-PSSwaggerClientTracing {
 	param(
 		[object]$TracerObject
 	)
-	
+
 	Initialize-PSSwaggerDependencies
     Unregister-PSSwaggerClientTracingInternal -TracerObject $TracerObject
 }
@@ -1996,7 +1755,7 @@ function Get-AutoRestCredential {
         [Parameter(Mandatory=$true, ParameterSetName='BasicAuth')]
         [PSCredential]
         $Credential,
-        
+
         [Parameter(Mandatory=$true, ParameterSetName='ApiKeyAuth')]
         [string]
         $APIKey,

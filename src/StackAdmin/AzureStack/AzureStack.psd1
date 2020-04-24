@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '1.8.1'
+    ModuleVersion          = '1.8.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -63,7 +63,7 @@
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.2'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.3.0'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.3.1'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.3'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.3'; })
@@ -122,12 +122,8 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' - Version 1.8.1
-            * Only Azs.Storage.Admin is updated in this version to support admin api-version 2019-08-08-preview. 
-                 - Removes the following commands: Get-AzsBlob*, Get-AzsQueue*, Get-AzsTable*, Get-AzsStorageShare* and *StorageContainerMigration. 
-                 - Adds new commands like *AzsStorageSettings to do operation on storage settings, e.g. retention days. 
-                 - *FARM* concept is removed. The usage of powershell commands are almost the same except you do not need to specify *FarmName*. 
-                 - For detailed description for the breaking changes, please refer to https://aka.ms/azs.storage.admin.0.3.0.
+            ReleaseNotes = ' - Version 1.8.2
+            * Disable the prompt to download nuget packages for PSSwagger in Azs.Storage.Admin
             '
 
             # External dependent modules of this module
