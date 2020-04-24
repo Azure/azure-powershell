@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/datasets/psdataset?api-version=2019-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3Bzc2hhcmVhY2NvdW50OTc3Ni9zaGFyZXMvcHNzaGFyZTEvZGF0YXNldHMvcHNkYXRhc2V0P2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset1?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3Bzc2hhcmVhY2NvdW50OTc3Ni9zaGFyZXMvcHNzaGFyZTEvZGF0YVNldHMvcHNkYXRhc2V0MT9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n \"folderPath\":\"providerFolder\",\r\n \"resourceGroup\":\"psstorageRG\",\r\n \"accountName\":\"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\" \r\n}",
       "RequestHeaders": {
@@ -22,7 +22,7 @@
           "FxVersion/4.6.26201.01"
         ]
       },
-      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset\", \r\n \"name\": \"psdataset\", \r\n \"kind\": \"ADLSGen1Folder\", \r\n \"properties\": {\r\n \"folderPath\": \"providerFolder,\", \r\n \"dataSetId\": \"162b705c-c13c-460f-815e-d0fdb9e56fb1\", \r\n \"resourceGroup\": \"psstorageRG\",\r\n \"accountName\": \"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\"}\r\n}",
+      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset1\", \r\n \"name\": \"psdataset1\", \r\n \"kind\": \"ADLSGen1Folder\", \r\n \"properties\": {\r\n \"folderPath\": \"providerFolder,\", \r\n \"dataSetId\": \"162b705c-c13c-460f-815e-d0fdb9e56fb1\", \r\n \"resourceGroup\": \"psstorageRG\",\r\n \"accountName\": \"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\"}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -70,8 +70,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/datasets/psdataset?api-version=2019-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3Bzc2hhcmVhY2NvdW50OTc3Ni9zaGFyZXMvcHNzaGFyZTEvZGF0YXNldHMvcHNkYXRhc2V0P2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset1?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3Bzc2hhcmVhY2NvdW50OTc3Ni9zaGFyZXMvcHNzaGFyZTEvZGF0YVNldHMvcHNkYXRhc2V0MT9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n \"FolderPath\":\"providerFolder\",\r\n \"FileName\": \"psFilePath\", \r\n \"resourceGroup\":\"psstorageRG\",\r\n \"accountName\":\"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\" \r\n}",
       "RequestHeaders": {
@@ -91,7 +91,7 @@
           "FxVersion/4.6.26201.01"
         ]
       },
-      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset\", \r\n \"name\": \"psdataset\", \r\n \"kind\": \"ADLSGen1File\", \r\n \"properties\": {\r\n \"folderPath\": \"providerFolder\", \r\n \"fileName\": \"psFilePath\",\r\n \"dataSetId\": \"162b705c-c13c-460f-815e-d0fdb9e56fb1\", \r\n \"resourceGroup\": \"psstorageRG\",\r\n \"storageAccountName\": \"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\"}\r\n}",
+      "ResponseBody": "{\r\n \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset1\", \r\n \"name\": \"psdataset1\", \r\n \"kind\": \"ADLSGen1File\", \r\n \"properties\": {\r\n \"folderPath\": \"providerFolder\", \r\n \"fileName\": \"psFilePath\",\r\n \"dataSetId\": \"162b705c-c13c-460f-815e-d0fdb9e56fb1\", \r\n \"resourceGroup\": \"psstorageRG\",\r\n \"storageAccountName\": \"psstorage\", \r\n \"subscriptionId\": \"e3c4699f-415a-4437-901e-3be6271b5113\"}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -144,11 +144,7 @@
       "psrg4712",
       "psshareaccount9776",
       "psshare1",
-      "psdataset",
-      "/subscriptions/e3c4699f-415a-4437-901e-3be6271b5113/resourceGroups/dsktestingstorageRG/providers/Microsoft.DataLakeStore/accounts/psstorage",
-      "providerFolder",
-      "psFilePath",
-      "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shares/psshare1/dataSets/psdataset"
+      "psdataset1"
     ]
   },
   "Variables": {

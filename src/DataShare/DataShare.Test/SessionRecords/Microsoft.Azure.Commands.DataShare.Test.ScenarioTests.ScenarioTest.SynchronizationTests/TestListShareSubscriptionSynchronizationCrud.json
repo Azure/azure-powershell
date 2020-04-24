@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/ListSynchronizations?api-version=2019-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZTEvbGlzdFN5bmNocm9uaXphdGlvbnM/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psaccount9776/shareSubscriptions/psshare1/listSynchronizations?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3BzYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Bzc2hhcmUxL2xpc3RTeW5jaHJvbml6YXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -72,9 +72,9 @@
   ], 
   "Names": {
     "Test-ListShareSubscriptionSynchronizationCrud": [
-      "sdktestingadsrg4712",
-      "sdktestingshareaccount9776",
-      "sdktestingshare1"
+      "psrg4712",
+      "psaccount9776",
+      "psshare1"
     ]
   },
   "Variables": {

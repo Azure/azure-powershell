@@ -35,7 +35,7 @@ function Test-ShareSubscriptionCrud
 		$removed = Remove-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName -PassThru
 
 		Assert-True { $removed }
-		Assert-ThrowsContains { Get-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName } "Resource 'sdktestingsharesub1' does not exist"
+		Assert-ThrowsContains { Get-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName } "Resource 'pssharesub1' does not exist"
 	}
     finally
 	{
