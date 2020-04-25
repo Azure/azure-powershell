@@ -34,7 +34,7 @@ machine.
 The following example shows how to disable data collection for the current user.
 
 ```powershell
-PS C:\> Disable-AzDataCollection
+Disable-AzDataCollection
 ```
 
 ## PARAMETERS
