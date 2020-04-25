@@ -17,8 +17,8 @@ Creates a function app.
 New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
  [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
- [-RuntimeVersion <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RuntimeVersion <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Consumption
@@ -26,8 +26,8 @@ New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> 
 New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
  [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
- [-RuntimeVersion <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RuntimeVersion <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CustomDockerImage
@@ -35,36 +35,50 @@ New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> 
 New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
  [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>] [-PassThru]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
-
 ## DESCRIPTION
 Creates a function app.
 
 ## EXAMPLES
 
-### Example 1: Create a PowerShell function app.
+### Example 1: Create a PowerShell function app which will be hosted in a service plan.
+
+Note that the service plan and storage account must exist before this operation. By default, for a PowerShell function app, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+
 ```powershell
 PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
                           -Runtime PowerShell
-
 ```
-Note that the service plan and storage account must exist before this operation. By default, -RuntimeVersion is set to '6', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
 
-### Example 2: Create a function app using a custom container image
+### Example 2: Create a Consumption PowerShell function app in Central US.
+
+Note that the storage account must exist before this operation. By default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+
+```powershell
+PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+                          -ResourceGroupName MyResourceGroupName `
+                          -Location centralUS `
+                          -StorageAccount MyStorageAccountName `
+                          -Runtime PowerShell
+```
+
+### Example 3: Create a function app using a using a private ACR image.
+
+Note that the service plan and storage account must exist before this operation.
+
 ```powershell
 PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
-                          -DockerImageName userName/test:customcontainer
+                          -DockerImageName myacr.azurecr.io/myimage:tag
 
 ```
-Note that the service plan and storage account must exist before this operation.
 
 ## PARAMETERS
 
@@ -151,7 +165,7 @@ Dynamic: False
 
 ### -DockerImageName
 Linux only.
-Container image name from Docker Hub, e.g.
+Container image name from Docker Registry, e.g.
 publisher/image-name:tag.
 
 ```yaml
@@ -377,6 +391,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -417,7 +447,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 
 ## ALIASES
 

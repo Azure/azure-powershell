@@ -2,7 +2,6 @@ function Stop-AzFunctionApp {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='StopByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Stops a function app.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='StopByName', Mandatory=$true, HelpMessage='The name of function app.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
@@ -24,7 +23,7 @@ function Stop-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
         [ValidateNotNullOrEmpty()]
         ${InputObject},
 

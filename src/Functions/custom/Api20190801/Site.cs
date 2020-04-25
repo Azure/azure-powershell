@@ -1,8 +1,8 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201
+namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     public partial class Site :
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite,
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISiteInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite,
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInternal,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IValidates
     {
         	    

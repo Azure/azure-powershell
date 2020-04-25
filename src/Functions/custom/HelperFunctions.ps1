@@ -25,13 +25,13 @@ $constants["RuntimeToDefaultVersion"] = @{
         '2'= @{
             'Node' = '10'
             'DotNet'= '2'
-            'PowerShell' = '6'
+            'PowerShell' = '6.2'
             'Java' = '8'
         }
         '3' =  @{
             'Node' = '10'
             'DotNet' = '3'
-            'PowerShell' = '6'
+            'PowerShell' = '6.2'
             'Java' = '8'
         }
     }
@@ -56,7 +56,7 @@ $constants["RuntimeVersions"] = @{
     'DotNet'= @(2, 3)
     'Node' = @(8, 10, 12)
     'Java' = @(8)
-    'PowerShell' = @(6)
+    'PowerShell' = @(6.2)
     'Python' = @(3.6, 3.7)
 }
 
@@ -222,7 +222,7 @@ function NewAppSetting
         $Value
     )
 
-    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150801.NameValuePair
+    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePair
     $setting.Name = $Name
     $setting.Value = $Value
 
@@ -865,19 +865,44 @@ function GetWorkerVersion
     return $workerRuntimeVersion
 }
 
-function ValidateConsumptionPlanLocation
+function ValidatePlanLocation
 {
     param
     (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $Location
+        $Location,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        [ValidateSet("Dynamic","ElasticPremium")]
+        $PlanType,
+
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.SwitchParameter]
+        $IsLinux
     )
 
     $Location = $Location.Trim()
+    $locationContainsSpace = $Location.Contains(" ")
 
-    $availableLocations = @(Az.Functions.internal\Get-AzFunctionAppAvailableLocation -LinuxWorkersEnabled | ForEach-Object { $_.Name })
+    $availableLocations = @()
+
+    if ($IsLinux)
+    {
+        $availableLocations = @(Az.Functions.internal\Get-AzFunctionAppAvailableLocation -Sku $PlanType -LinuxWorkersEnabled | ForEach-Object { $_.Name })
+    }
+    else
+    {
+        $availableLocations = @(Az.Functions.internal\Get-AzFunctionAppAvailableLocation -Sku $PlanType | ForEach-Object { $_.Name })
+    }
+
+    if (-not $locationContainsSpace)
+    {
+        $availableLocations = @($availableLocations | ForEach-Object { $_.Replace(" ", "") })
+    }
 
     if (-not ($availableLocations -contains $Location))
     {
@@ -889,6 +914,40 @@ function ValidateConsumptionPlanLocation
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
     }
+}
+
+function ValidatePremiumPlanLocation
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location,
+
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.SwitchParameter]
+        $IsLinux
+    )
+
+    ValidatePlanLocation -Location $Location -PlanType ElasticPremium -IsLinux:$IsLinux
+}
+
+function ValidateConsumptionPlanLocation
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location,
+
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.SwitchParameter]
+        $IsLinux
+    )
+
+    ValidatePlanLocation -Location $Location -PlanType Dynamic -IsLinux:$IsLinux
 }
 
 function ParseDockerImage

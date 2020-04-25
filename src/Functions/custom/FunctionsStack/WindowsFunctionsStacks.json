@@ -164,7 +164,7 @@
                 "dependency": null,
                 "majorVersions": [
                     {
-                        "displayVersion": "6",
+                        "displayVersion": "6.2",
                         "runtimeVersion": "~6",
                         "supportedFunctionsExtensionVersions": [
                             "2",
@@ -182,26 +182,11 @@
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
-                    }
-                ],
-                "frameworks": [],
-                "isDeprecated": null
-            }
-        },
-        {
-            "id": null,
-            "name": "powershell",
-            "type": "Microsoft.Web/availableStacks?osTypeSelected=WindowsFunctions",
-            "properties": {
-                "name": "powershell",
-                "display": "Powershell Core",
-                "dependency": null,
-                "majorVersions": [
+                    },
                     {
-                        "displayVersion": "7",
+                    "displayVersion": "7.0",
                         "runtimeVersion": "~7",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
                             "3"
                         ],
                         "isDefault": true,

@@ -1,7 +1,7 @@
 @{
   GUID = 'eafced71-8742-4a2c-5afd-13117428dd90'
   RootModule = './Az.Functions.psm1'
-  ModuleVersion = '0.0.3'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -22,7 +22,6 @@ For information on Azure Functions, please visit the following: https://docs.mic
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
 }

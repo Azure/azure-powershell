@@ -30,15 +30,17 @@ Deletes a function app plan.
 ## EXAMPLES
 
 ### Example 1: Get a function app plan by name and delete it.
+
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
-
 ```
-### Example 2: Delete the function app plan by given name.
+
+### Example 2: Delete a function app plan by name.
+
 ```powershell
 PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
-
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -77,7 +79,7 @@ Dynamic: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -191,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 
 ## OUTPUTS
 
