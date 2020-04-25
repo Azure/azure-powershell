@@ -16,12 +16,11 @@ Create or update a host pool.
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-HostPoolType <HostPoolType>]
  [-LoadBalancerType <LoadBalancerType>] [-Location <String>] [-SubscriptionId <String>]
- [-XmsClientTenantId <String>] [-CustomRdpProperty <String>] [-Description <String>]
- [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-MaxSessionLimit <Int32>]
- [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-RegistrationInfoToken <String>]
- [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SsoContext <String>]
- [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>]
+ [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
+ [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
+ [-SsoContext <String>] [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
@@ -431,22 +430,6 @@ Workspace Name
 ```yaml
 Type: System.String
 Parameter Sets: FullSenerioCreate
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -XmsClientTenantId
-Aad tenant Id
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
