@@ -27,7 +27,13 @@
     -Updated Cmdlet
         - Add-AzExpressRouteCircuitConnectionConfig 
             - Added another optional parameter AddressPrefixType to specify the address family of address prefix
-
+			
+* Add support for top level resource SecurityPartnerProvider
+    - New cmdlets added:
+        - New-AzSecurityPartnerProvider
+        - Remove-AzSecurityPartnerProvider
+        - Get-AzSecurityPartnerProvider
+        - Set-AzSecurityPartnerProvider
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
     - `New-AzVirtualHubVnetConnection`
