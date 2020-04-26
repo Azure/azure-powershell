@@ -1,0 +1,36 @@
+{
+  "New-AzImportExport+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/new-job?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/new-job?api-version=2016-11-01",
+      "Content": "{\n  \"properties\": {\n    \"returnAddress\": {\n      \"city\": \"Redmond\",\n      \"countryOrRegion\": \"USA\",\n      \"email\": \"test@contoso.com\",\n      \"phone\": \"4250000000\",\n      \"postalCode\": \"98008\",\n      \"recipientName\": \"Some name\",\n      \"stateOrProvince\": \"WA\",\n      \"streetAddress1\": \"Street1\"\n    },\n    \"backupDriveManifest\": true,\n    \"diagnosticsPath\": \"waimportexport\",\n    \"driveList\": [\n      {\n        \"bitLockerKey\": \"238810-662376-448998-450120-652806-203390-606320-483076\",\n        \"driveHeaderHash\": \"\",\n        \"driveId\": \"9CA995BA\",\n        \"manifestFile\": \"\\\\\\\\DriveManifest.xml\",\n        \"manifestHash\": \"109B21108597EF36D5785F08303F3638\"\n      },\n      {\n        \"bitLockerKey\": \"238810-662376-448998-450120-652806-203390-606320-483079\",\n        \"driveId\": \"9CA995BX\",\n        \"manifestFile\": \"\\\\\\\\DriveManifest2.xml\",\n        \"manifestHash\": \"109B21108597EF36D5785F08303F3639\"\n      }\n    ],\n    \"jobType\": \"Import\",\n    \"storageAccountId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\"\n  },\n  \"location\": \"eastus\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1139" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "c73e4d74-6aa0-4c55-95af-ef1bb6e3951a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "096b2b5a-cfc8-4b47-a6d2-ed1981f1df4e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200426T160350Z:096b2b5a-cfc8-4b47-a6d2-ed1981f1df4e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 26 Apr 2020 16:03:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1407" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BA\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"},{\"driveId\":\"9CA995BX\",\"manifestFile\":\"\\\\\\\\DriveManifest2.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3639\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/new-job\",\"name\":\"new-job\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"eastus\"}"
+    }
+  }
+}
