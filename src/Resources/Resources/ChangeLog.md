@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change policy cmdlets to output strongly-typed objects
 * Fiexed `Remove-AzResourceGroup -Id ResourceId`[#9882]
 
 ## Version 1.13.0
