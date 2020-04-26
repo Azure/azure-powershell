@@ -319,6 +319,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-s13wly?api-version=2018-08-15-preview",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "Content": "{\n  \"location\": \"eastus2\",\n  \"sku\": {\n    \"name\": \"L1\",\n    \"capacity\": 1\n  },\n  \"kind\": \"LongTerm\",\n  \"properties\": {\n    \"storageConfiguration\": {\n      \"accountName\": \"staaccountmtudlr\",\n      \"managementKey\": \"M8HfaiUFYeKeVNrsDAJGz9SzYDNSmXG9jNETt/oLcxRrW5Bsz2tVPSYePMVh7qn22yyRSNu3/pMgy0QYnKQ92Q==\"\n    },\n    \"timeSeriesIdProperties\": [\n      {\n        \"name\": \"cdc\",\n        \"type\": \"string\"\n      }\n    ]\n  }\n}",
       "Headers": {
         "x-ms-unique-id": [ "30" ],
