@@ -16,6 +16,7 @@ function setupEnv() {
     $env.Location = 'eastus'
     $env.RepLocation = 'eastus2'
     $env.AdminLogin = 'adminuser'
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $env.AdminLoginPassword = 'Passw0rd01!!'
     #Generate some strings for use in the test.
     $rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
