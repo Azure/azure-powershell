@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Rest.Azure;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -81,8 +80,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                         case "dismissed":
                             actionType = "Dismiss";
                             break;
-                        case "reactivate":
-                            actionType = "Reactivate";
+                        case "active":
+                            actionType = "Activate";
                             break;
                         default:
                             break;
