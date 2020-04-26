@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRegulatoryComplianceStandard
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+{{ Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription }}
 
 ## SYNTAX
 
@@ -30,16 +30,90 @@ Get-AzRegulatoryComplianceStandard -ResourceId <String> [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+{{ Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Get-AzRegulatoryComplianceStandard
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/Azure-CIS-1.1.0
+Name                : Azure-CIS-1.1.0
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 20
+FailedControls      : 4
+SkippedControls     : 0
+UnsupportedControls : 87
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/ISO-27001
+Name                : ISO-27001
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 9
+FailedControls      : 10
+SkippedControls     : 2
+UnsupportedControls : 93
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/PCI-DSS-3.2.1
+Name                : PCI-DSS-3.2.1
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 13
+FailedControls      : 32
+SkippedControls     : 0
+UnsupportedControls : 187
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/SOC-TSP
+Name                : SOC-TSP
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 2
+FailedControls      : 11
+SkippedControls     : 0
+UnsupportedControls : 24
 ```
 
-{{ Add example description here }}
+Get all regulatory compliance standards under a subscription
+
+### Example 2
+```powershell
+PS C:\>Get-AzRegulatoryComplianceStandard -Name "SOC-TSP"
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/SOC-TSP
+Name                : SOC-TSP
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 2
+FailedControls      : 11
+SkippedControls     : 0
+UnsupportedControls : 24
+```
+
+Get details of specific regulatory compliance standard according standard name
+
+### Example 3
+```powershell
+PS C:\>Get-AzRegulatoryComplianceStandard -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP"
+
+Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
+                      anceStandards/SOC-TSP
+Name                : SOC-TSP
+Type                : Microsoft.Security/regulatoryComplianceStandards
+State               : Failed
+PassedControls      : 2
+FailedControls      : 11
+SkippedControls     : 0
+UnsupportedControls : 24
+```
+
+Get details of specific regulatory compliance standard according resource id
 
 ## PARAMETERS
 
@@ -59,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource name.
+Standard name.
 
 ```yaml
 Type: System.String

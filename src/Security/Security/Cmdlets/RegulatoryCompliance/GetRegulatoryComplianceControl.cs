@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.RegulatoryCompliance
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.StandardName)]
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = true, HelpMessage = ParameterHelpMessages.StandardName)]
         [ValidateNotNullOrEmpty]
         public string StandardName { get; set; }
 
