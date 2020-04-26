@@ -55,7 +55,7 @@ function New-AzImageBuilderDistributor {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Switch]
         ${SharedImageDistributor},
-        [Parameter(ParameterSetName='SharedImageDistributor')]
+        [Parameter(ParameterSetName='SharedImageDistributor', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Boolean]
         ${ExcludeFromLatest},
@@ -78,7 +78,7 @@ function New-AzImageBuilderDistributor {
     process {
         if ($PSBoundParameters.ContainsKey('VhdDistributor')) {
             $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateVhdDistributor]::New()
-            $Distributor.Type = "Vhd"
+            $Distributor.Type = "VHD"
         } elseif ($PSBoundParameters.ContainsKey('ManagedImageDistributor')) {
             $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateManagedImageDistributor]::New()
             $Distributor.Type = "ManagedImage"
