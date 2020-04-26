@@ -316,16 +316,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 throw new System.ArgumentException($"Linked Storage Accounts type {dataSourceType} for workspace {workspaceName} is not existed in Resource Group {resourceGroupName}");
             }
-            
-            storageAccountIds.ForEach(Id =>
-            {
-                if (!existingResource.StorageAccountIds.Contains(Id))
-                {
-                    existingResource.StorageAccountIds.Add(Id);
-                }
-            });
 
-            LinkedStorageAccountsResource resource = CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, existingResource.StorageAccountIds);
+            LinkedStorageAccountsResource resource = CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, storageAccountIds);
             return new PSLinkedStorageAccountsResource(resource);
         }
 

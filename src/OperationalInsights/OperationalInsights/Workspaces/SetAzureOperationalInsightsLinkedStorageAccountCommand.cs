@@ -20,8 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
-    public class UpdateAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    public class SetAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0,
                    Mandatory = true,
