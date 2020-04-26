@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             source.SyncActivity,
             null /*TotalPersistentFilesNotSyncingCount currently not supported in PS*/,
             source.LastUpdatedTimestamp,
-            new SyncSessionStatusConvertor().Convert(source.UploadStatus),
-            new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-            new SyncActivityStatusConverter().Convert(source.UploadActivity),
-            new SyncActivityStatusConverter().Convert(source.DownloadActivity),
+            new ServerEndpointSyncSessionStatusConvertor().Convert(source.UploadStatus),
+            new ServerEndpointSyncSessionStatusConvertor().Convert(source.DownloadStatus),
+            new ServerEndpointSyncActivityStatusConverter().Convert(source.UploadActivity),
+            new ServerEndpointSyncActivityStatusConverter().Convert(source.DownloadActivity),
             source.OfflineDataTransferStatus);
 
         /// <summary>
@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 CombinedHealth = source.CombinedHealth,
                 SyncActivity = source.SyncActivity,
                 LastUpdatedTimestamp = source.LastUpdatedTimestamp,
-                UploadStatus = new SyncSessionStatusConvertor().Convert(source.UploadStatus),
-                DownloadStatus = new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-                UploadActivity = new SyncActivityStatusConverter().Convert(source.UploadActivity),
-                DownloadActivity = new SyncActivityStatusConverter().Convert(source.DownloadActivity),
+                UploadStatus = new ServerEndpointSyncSessionStatusConvertor().Convert(source.UploadStatus),
+                DownloadStatus = new ServerEndpointSyncSessionStatusConvertor().Convert(source.DownloadStatus),
+                UploadActivity = new ServerEndpointSyncActivityStatusConverter().Convert(source.UploadActivity),
+                DownloadActivity = new ServerEndpointSyncActivityStatusConverter().Convert(source.DownloadActivity),
                 OfflineDataTransferStatus = source.OfflineDataTransferStatus
             };
         }

@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class SyncProgressStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
-    public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.SyncActivityStatus>
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    public class ServerEndpointSyncActivityStatusConverter : ConverterBase<PSServerEndpointSyncActivityStatus, StorageSyncModels.ServerEndpointSyncActivityStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
-        protected override StorageSyncModels.SyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.SyncActivityStatus(
+        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSServerEndpointSyncActivityStatus source) => new StorageSyncModels.ServerEndpointSyncActivityStatus(
             source.Timestamp,
             source.PerItemErrorCount,
             source.AppliedItemCount,
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSSyncProgressStatus.</returns>
-        protected override PSSyncActivityStatus Transform(StorageSyncModels.SyncActivityStatus source)
+        protected override PSServerEndpointSyncActivityStatus Transform(StorageSyncModels.ServerEndpointSyncActivityStatus source)
         {
-            return new PSSyncActivityStatus()
+            return new PSServerEndpointSyncActivityStatus()
             {
                 Timestamp = source.Timestamp,
                 AppliedBytes = source.AppliedBytes,

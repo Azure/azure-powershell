@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     /// <summary>
     /// Class PSSyncProgressStatus.
     /// </summary>
-    public class PSSyncActivityStatus
+    public class PSServerEndpointSyncActivityStatus
     {
         /// <summary>
         /// Gets or sets the timestamp.

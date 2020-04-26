@@ -50,22 +50,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the upload status.
         /// </summary>
         /// <value>The upload status.</value>
-        public PSSyncSessionStatus UploadStatus { get; set; }
+        public PSServerEndpointSyncSessionStatus UploadStatus { get; set; }
         /// <summary>
         /// Gets or sets the download status.
         /// </summary>
         /// <value>The download status.</value>
-        public PSSyncSessionStatus DownloadStatus { get; set; }
+        public PSServerEndpointSyncSessionStatus DownloadStatus { get; set; }
         /// <summary>
         /// Gets or sets the upload activity.
         /// </summary>
         /// <value>The current progress.</value>
-        public PSSyncActivityStatus UploadActivity { get; set; }
+        public PSServerEndpointSyncActivityStatus UploadActivity { get; set; }
         /// <summary>
         /// Gets or sets the download activity.
         /// </summary>
         /// <value>The current progress.</value>
-        public PSSyncActivityStatus DownloadActivity { get; set; }
+        public PSServerEndpointSyncActivityStatus DownloadActivity { get; set; }
         /// <summary>
         /// Gets or sets the offline data transfer status.
         /// </summary>

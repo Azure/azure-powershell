@@ -17,9 +17,9 @@ using System;
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
-    /// Class PSSyncSessionStatus.
+    /// Class PSServerEndpointSyncSessionStatus.
     /// </summary>
-    public class PSSyncSessionStatus
+    public class PSServerEndpointSyncSessionStatus
     {
         /// <summary>
         /// Gets or sets the last sync result.
