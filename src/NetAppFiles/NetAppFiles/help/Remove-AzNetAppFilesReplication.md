@@ -1,58 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilessnapshot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilesreplication
 schema: 2.0.0
 ---
 
-# Remove-AzNetAppFilesSnapshot
+# Remove-AzNetAppFilesReplication
 
 ## SYNOPSIS
-Deletes an Azure NetApp Files (ANF) snapshot.
+Remove/Delete the replication connection on the destination volume, and send release to the source replication
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesSnapshot -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -VolumeName <String> -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Remove-AzNetAppFilesSnapshot -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Remove-AzNetAppFilesSnapshot -VolumeObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesSnapshot -InputObject <PSNetAppFilesSnapshot> [-PassThru]
+Remove-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetAppFilesSnapshot** cmdlet deletes an ANF snapshot.
+Remove/Delete the replication connection on the destination volume, and send release to the source replication
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSnapshot"
+```powershell
+PS C:\> Remove-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
 ```
 
-This command deletes the ANF snapshot "MyAnfSnapshot".
+This command removes the ANF Replication connection on volume "MyDestinationAnfVolume".
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account
+The name of the ANF account of the replication volume
 
 ```yaml
 Type: System.String
@@ -82,10 +76,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The snapshot object to remove
+The ANF destination volume with the replication to remove
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -97,12 +91,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF snapshot
+The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: SnapshotName
+Aliases: VolumeName
 
 Required: True
 Position: Named
@@ -112,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified volume was successfully removed
+Return whether the specified ANF replication was successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -127,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of the ANF pool
+The name of the ANF pool of the replication volume
 
 ```yaml
 Type: System.String
@@ -142,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF snapshot
+The resource group of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -157,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF snapshot
+The resource id of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -168,36 +162,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VolumeName
-The name of the ANF volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume object containing the snapshot to remove
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -240,8 +204,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot
 
 ## OUTPUTS
 

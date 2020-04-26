@@ -14,9 +14,14 @@
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-
-    public class PSNetAppFilesVolumeExportPolicy
+    public class PSNetAppFilesVolumeDataProtection
     {
-        public PSNetAppFilesExportPolicyRule[] Rules { get; set; }
+        /// <summary>
+        /// Gets or sets replication
+        /// </summary>
+        /// <remark>
+        /// Replication properties
+        /// </remark>
+        public PSNetAppFilesReplicationObject Replication { get; set; }
     }
 }
