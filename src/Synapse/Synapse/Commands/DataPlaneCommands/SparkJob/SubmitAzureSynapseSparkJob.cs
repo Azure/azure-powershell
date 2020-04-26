@@ -173,6 +173,21 @@ namespace Microsoft.Azure.Commands.Synapse
                 NumExecutors = this.ExecutorCount
             };
 
+            // Ensure the relative path of UDFs is add to "--conf".
+            if (isSparkDotNet)
+            {
+                batchRequest.Conf = batchRequest.Conf ?? new Dictionary<string, string>();
+                string udfsRelativePath = "./" + SynapseConstants.SparkDotNetUdfsFolderName;
+                batchRequest.Conf.TryGetValue(SynapseConstants.SparkDotNetAssemblySearchPathsKey, out string pathValue);
+                var paths = pathValue?.Split(',').Select(path => path.Trim()).Where(path => !string.IsNullOrEmpty(path)).ToList() ?? new List<string>();
+                if (!paths.Contains(udfsRelativePath))
+                {
+                    paths.Add(udfsRelativePath);
+                }
+
+                batchRequest.Conf[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
+            }
+
             var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(this.WorkspaceName, this.SparkPoolName, batchRequest, waitForCompletion:false);
             WriteObject(new PSSynapseSparkJob(jobInformation));
         }
