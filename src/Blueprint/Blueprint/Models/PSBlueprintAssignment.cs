@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
@@ -59,7 +60,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 BlueprintId = assignment.BlueprintId,
                 ProvisioningState = PSAssignmentProvisioningState.Unknown,
                 Status = new PSAssignmentStatus(),
-                Locks = new PSAssignmentLockSettings {Mode = PSLockMode.None},
+                Locks = new PSAssignmentLockSettings
+                {
+                    Mode = PSLockMode.None,
+                    ExcludedActions = new List<string>(),
+                    ExcludedPrincipals = new List<string>()
+                },
                 Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
@@ -84,6 +90,22 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             else
             {
                 psAssignment.Locks.Mode = PSLockMode.None;
+            }
+
+            if (assignment.Locks.ExcludedActions != null)
+            {
+                foreach (var item in assignment.Locks.ExcludedActions)
+                {
+                    psAssignment.Locks.ExcludedActions.Add(item);
+                }
+            }
+
+            if (assignment.Locks.ExcludedPrincipals != null)
+            {
+                foreach (var item in assignment.Locks.ExcludedPrincipals)
+                {
+                    psAssignment.Locks.ExcludedPrincipals.Add(item);
+                }
             }
 
             foreach (var item in assignment.Parameters)

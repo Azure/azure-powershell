@@ -37,6 +37,25 @@
 * Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
     - New-AzVirtualNetworkGatewayConnection
     - Set-AzVirtualNetworkGatewayConnection
+* Added resource type IpAllocation 
+* Added properties to Subnet
+    - Added property 'IpAllocations' as type of PSResourceId to PSIpAllocation
+* Added properties to Virtual Network
+    - Added property 'IpAllocations' as type of PSResourceId to PSIpAllocation
+* Added support for IpAllocation resource
+    - New cmdlet added:
+        - Get-AzIpAllocation
+        - New-AzIpAllocation
+        - Remove-AzIpAllocation
+        - Get-AzIpAllocation
+    - Updated `New-AzVirtualNetwork`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `New-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `Set-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `Add-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
 
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections

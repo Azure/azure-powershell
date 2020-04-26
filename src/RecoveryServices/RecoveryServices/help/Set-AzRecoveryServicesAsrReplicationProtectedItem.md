@@ -17,8 +17,8 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
  [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-EnableAcceleratedNetworkingOnRecovery]
- [-RecoveryBootDiagStorageAccountId <String>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryProximityPlacementGroupId <String>]
+ [-EnableAcceleratedNetworkingOnRecovery] [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
@@ -79,6 +79,14 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -In
 ```
 
 Start the update operation for the specified encrypted replication protected item to use supplied encryption details for failover VM.
+
+### Example 7
+```
+PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject $ rpi -RecoveryProximityPlacementGroupId $ppg
+```
+
+Start the update operation for the specified replication protected item to use the supplied proximity placement group for failover VM.
+
 
 ## PARAMETERS
 
@@ -404,6 +412,21 @@ Accept wildcard characters: False
 
 ### -RecoveryNicSubnetName
 Specifies the name of the subnet on the recovery Azure virtual network to which this NIC of the protected item should be connected to on failover.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryProximityPlacementGroupId
+Specifies the Resource Id of the recovery proximity placement group to failover teh virtual machine to.
 
 ```yaml
 Type: System.String
