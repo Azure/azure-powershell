@@ -78,6 +78,22 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public string Location { get; set; }
 
         /// <summary>
+        /// Gets or sets the IncomingTrafficPolicy.
+        /// </summary>
+        /// <value>The IncomingTrafficPolicy.</value>
+        [Parameter(
+           Position = 3,
+           ParameterSetName = StorageSyncParameterSets.StringParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = HelpMessages.StorageSyncServiceIncomingTrafficPolicyParameter)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("AllowVirtualNetworksOnly",
+            "AllowAllTraffic",
+            IgnoreCase = true)]
+        public string IncomingTrafficPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets the tag.
         /// </summary>
         /// <value>The tag.</value>
@@ -119,10 +135,25 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     throw new PSArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
                 }
 
+                string incomingTrafficPolicy;
+                if (this.IsParameterBound(c => c.IncomingTrafficPolicy))
+                {
+                    if(string.IsNullOrEmpty(this.IncomingTrafficPolicy))
+                    {
+                        throw new PSArgumentException(nameof(IncomingTrafficPolicy));
+                    }
+                    incomingTrafficPolicy = this.IncomingTrafficPolicy;
+                }
+                else
+                {
+                    incomingTrafficPolicy = "AllowAllTraffic";
+                }
+
                 var createParameters = new StorageSyncServiceCreateParameters()
                 {
                     Location = Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
+                    IncomingTrafficPolicy = incomingTrafficPolicy
                 };
 
                 Target = string.Join("/", ResourceGroupName, Name);

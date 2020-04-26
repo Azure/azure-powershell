@@ -39,7 +39,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.StorageSyncService.</returns>
-        protected override StorageSyncModels.StorageSyncService Transform(PSStorageSyncService source) => new StorageSyncModels.StorageSyncService(source.Location, source.ResourceId, source.StorageSyncServiceName, StorageSyncConstants.StorageSyncServiceType, source.Tags);
+        protected override StorageSyncModels.StorageSyncService Transform(PSStorageSyncService source) => new StorageSyncModels.StorageSyncService(
+            location: source.Location,
+            id:source.ResourceId,
+            name:source.StorageSyncServiceName,
+            type:StorageSyncConstants.StorageSyncServiceType, 
+            incomingTrafficPolicy:source.IncomingTrafficPolicy,
+            tags:source.Tags);
 
         /// <summary>
         /// Transforms the specified source.
@@ -55,6 +61,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 StorageSyncServiceName = source.Name,
                 ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 Location = source.Location,
+                IncomingTrafficPolicy = source.IncomingTrafficPolicy,
                 Tags = source.Tags,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.StorageSyncServiceType
             };

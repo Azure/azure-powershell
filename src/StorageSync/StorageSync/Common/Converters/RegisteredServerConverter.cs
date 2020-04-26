@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ServiceLocation,
                 source.FriendlyName,
                 source.ManagementEndpointUri,
+                source.MonitoringEndpointUri,
                 source.MonitoringConfiguration);
         }
 
@@ -99,6 +100,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
                 StorageSyncServiceUid = source.StorageSyncServiceUid?.Trim('"'),
+                MonitoringEndpointUri = source.MonitoringEndpointUri,
                 MonitoringConfiguration = source.MonitoringConfiguration
             };
         }
