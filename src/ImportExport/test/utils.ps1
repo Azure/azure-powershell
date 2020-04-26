@@ -35,7 +35,6 @@ function setupEnv() {
     write-host "New a test import job"
     New-AzImportExport -Name $jobName -ResourceGroupName $resourceGroup -Location $location -StorageAccountId "/subscriptions/$($env.SubscriptionId)/resourcegroups/$resourceGroup/providers/Microsoft.Storage/storageAccounts/teststorageforimport" -JobType Import -ReturnAddressRecipientName "Some name" -ReturnAddressStreetAddress1 "Street1" -ReturnAddressCity "Redmond" -ReturnAddressStateOrProvince "WA" -ReturnAddressPostalCode "98008" -ReturnAddressCountryOrRegion "USA" -ReturnAddressPhone "4250000000" -ReturnAddressEmail test@contoso.com -DiagnosticsPath "waimportexport" -BackupDriveManifest -DriveList $driveList
 
-
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
