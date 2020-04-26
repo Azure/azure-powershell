@@ -17,7 +17,7 @@ using System;
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
-    /// Class PSSyncProgressStatus.
+    /// Class PSServerEndpointSyncActivityStatus.
     /// </summary>
     public class PSServerEndpointSyncActivityStatus
     {
