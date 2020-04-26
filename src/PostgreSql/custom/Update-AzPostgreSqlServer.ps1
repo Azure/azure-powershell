@@ -65,11 +65,6 @@ function Update-AzPostgreSqlServer {
         [System.String]
         ${Sku},
 
-        [Parameter(HelpMessage='The size code, to be interpreted by resource as appropriate.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [System.String]
-        ${SkuSize},
-
         [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier])]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
