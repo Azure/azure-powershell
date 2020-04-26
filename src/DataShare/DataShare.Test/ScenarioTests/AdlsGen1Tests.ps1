@@ -16,9 +16,9 @@ function Test-AdlsGen1Crud
 		$AccountName = getAssetName
 		$ShareName = getAssetName
 		$DataSetName = getAssetName
-		$StorageAccountId = getAssetName
-		$FolderPath = getAssetName
-		$FileName = getAssetName
+		$StorageAccountId = "/subscriptions/e3c4699f-415a-4437-901e-3be6271b5113/resourceGroups/dsktestingstorageRG/providers/Microsoft.DataLakeStore/accounts/psstorage"
+		$FolderPath = "providerFolder"
+		$FileName = "psFilePath"
 		$createdFolderDataset = New-AzDataShareDataSet -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareName $ShareName -Name $DataSetName -StorageAccountResourceId $StorageAccountId -AdlsGen1FolderPath $FolderPath
 	
 		Assert-NotNull $createdFolderDataset
