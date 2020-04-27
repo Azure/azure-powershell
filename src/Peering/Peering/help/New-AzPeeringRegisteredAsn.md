@@ -20,20 +20,14 @@ New-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String>
 
 ### InputObject
 ```
-New-AzPeeringRegisteredAsn -InputObject <PSPeering> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredAsn -InputObject <PSPeering> [-Name] <String> -Asn <Int32> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 New-AzPeeringRegisteredAsn [-ResourceId] <String> [-Name] <String> -Asn <Int32> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Default
-```
-New-AzPeeringRegisteredAsn [-Name] <String> -Asn <Int32> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +70,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -121,7 +115,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     [Cmdlet(
         VerbsCommon.Set,
         Constants.AzPeerAsn,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault,
+        DefaultParameterSetName = Constants.ParameterSetNameInputObject,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         public PSPeerAsn InputObject { get; set; }
 
         /// <summary>

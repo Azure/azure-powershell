@@ -30,35 +30,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Constants.AzPeerAsn, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Constants.AzPeerAsn, SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameByName)]
     [OutputType(typeof(PSPeerAsn))]
     public class NewAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.PeeringNameHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.PeeringNameHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string PeerName { get; set; }
 
         /// <summary>
         ///     Gets or sets Peer ASN
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.PeeringAsnHelp)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.PeeringAsnHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public int PeerAsn { get; set; }
 
         /// <summary>
         ///     Gets or sets the contact details
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public PSContactDetail[] ContactDetail { get; set; }
 

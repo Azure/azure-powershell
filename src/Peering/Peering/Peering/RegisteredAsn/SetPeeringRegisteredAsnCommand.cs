@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.AsnHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.AsnHelp,
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameInputObject, StringComparison.OrdinalIgnoreCase))
                 {
                     this.WriteObject(this.CreateParameterSetNameDefault());
                 }

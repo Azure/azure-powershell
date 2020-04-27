@@ -18,7 +18,7 @@ Get-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Default
+### InputObject
 ```
 Get-AzPeeringRegisteredAsn [-InputObject] <PSPeering> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -71,7 +71,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -86,7 +86,7 @@ The name of the registered ASN
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, Default
+Parameter Sets: ByResourceGroupAndName, InputObject
 Aliases:
 
 Required: False

@@ -20,7 +20,7 @@ Set-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <Stri
 
 ### InputObject
 ```
-Set-AzPeeringRegisteredPrefix -InputObject <PSPeeringRegisteredPrefix> [-AsJob]
+Set-AzPeeringRegisteredPrefix -InputObject <PSPeeringRegisteredPrefix> -Prefix <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,12 +28,6 @@ Set-AzPeeringRegisteredPrefix -InputObject <PSPeeringRegisteredPrefix> [-AsJob]
 ```
 Set-AzPeeringRegisteredPrefix [-ResourceId] <String> [-Name] <String> -Prefix <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Default
-```
-Set-AzPeeringRegisteredPrefix -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +124,7 @@ The session IPv4 prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True

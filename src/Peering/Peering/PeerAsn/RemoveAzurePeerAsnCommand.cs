@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 string name = null;
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameInputObject, StringComparison.OrdinalIgnoreCase))
                 {
                     name = this.InputObject.Name;
                 }

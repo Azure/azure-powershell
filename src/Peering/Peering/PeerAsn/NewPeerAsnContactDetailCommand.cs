@@ -21,14 +21,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Constants.AzPeerAsnContactDetail)]
+    [Cmdlet(VerbsCommon.New, Constants.AzPeerAsnContactDetail, DefaultParameterSetName = Constants.ParameterSetNameDefault)]
     [OutputType(typeof(PSContactDetail))]
     public class NewPeerAsnContactDetailCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the phone.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = Constants.RoleHelp)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.RoleHelp, ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Models.Role.Noc, Models.Role.Service, Models.Role.Technical, Models.Role.Policy, Models.Role.Other)]
         public string Role { get; set; }
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// <summary>
         ///     Gets or sets the Email
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp, ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets the phone.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.PhoneHelp)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.PhoneHelp, ParameterSetName = Constants.ParameterSetNameDefault)]
         public string Phone { get; set; }
 
         /// <summary>

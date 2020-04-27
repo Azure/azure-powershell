@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PrefixInputObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [ValidateNotNullOrEmpty]
         public PSPeeringService PeeringServiceObject { get; set; }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         public string Name { get; set; }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false, 
             HelpMessage = Constants.PeeringServicePrefixEventHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringServicePrefixEventHelp,
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 else if (string.Equals(
                   this.ParameterSetName,
-                  Constants.ParameterSetNameDefault,
+                  Constants.ParameterSetNameInputObject,
                   StringComparison.OrdinalIgnoreCase))
                 {
                     var resourceId = new ResourceIdentifier(this.PeeringServiceObject.Id);

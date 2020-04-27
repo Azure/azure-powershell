@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PrefixNameHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         public string Name { get; set; }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 else if (string.Equals(
                   this.ParameterSetName,
-                  Constants.ParameterSetNameDefault,
+                  Constants.ParameterSetNameInputObject,
                   StringComparison.OrdinalIgnoreCase))
                 {
                     var resourceId = new ResourceIdentifier(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.InputObject).Id);

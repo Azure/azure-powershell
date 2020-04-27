@@ -20,13 +20,8 @@ Get-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <Stri
 
 ### InputObject
 ```
-Get-AzPeeringRegisteredPrefix [-InputObject] <PSPeering> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### Default
-```
-Get-AzPeeringRegisteredPrefix [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringRegisteredPrefix [-InputObject] <PSPeering> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -93,7 +88,7 @@ The name of prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, Default
+Parameter Sets: ByResourceGroupAndName, InputObject
 Aliases:
 
 Required: False

@@ -119,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 ResourceIdentifier resourceId = null;
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameInputObject, StringComparison.OrdinalIgnoreCase))
                 {
                     resourceId = new ResourceIdentifier(this.InputObject.Id);
                 }

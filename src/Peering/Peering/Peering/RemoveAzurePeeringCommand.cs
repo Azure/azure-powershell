@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 ResourceIdentifier resourceId = null;
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameInputObject, StringComparison.OrdinalIgnoreCase))
                 {
                     resourceId = new ResourceIdentifier(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.InputObject).Id);
                     this.ResourceGroupName = resourceId.ResourceGroupName;

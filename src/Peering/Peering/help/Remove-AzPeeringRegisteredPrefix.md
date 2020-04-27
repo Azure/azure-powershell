@@ -19,7 +19,7 @@ Remove-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <S
  [<CommonParameters>]
 ```
 
-### Default
+### InputObject
 ```
 Remove-AzPeeringRegisteredPrefix -InputObject <PSPeeringServicePrefix> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -95,7 +95,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringServicePrefix
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
