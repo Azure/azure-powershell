@@ -37,7 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void SecurityPartnerProviderWithHubCRUD()
+        public void TestSecurityPartnerProviderWithHubCRUD()
         {
             TestRunner.RunTestScript("Test-SecurityPartnerProviderWithHubCRUD");
         }
