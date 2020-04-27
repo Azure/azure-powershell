@@ -52,6 +52,7 @@ require:
 input-file:
   # - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
   - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/preview/2019-05-01-preview/imagebuilder.json
+  # - $(this-folder)/resources/imagebuilder.json
 
 title: ImageBuilder
 module-version: 0.1.0
@@ -93,4 +94,27 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Azure-AsyncOperation/g, 'azure-asyncoperation');
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run"].post.responses
+    transform: >-
+        return {
+          "200": {
+            "description": "The operation was successful."
+          },
+          "204": {
+            "description": "The operation was successful."
+          },
+          "202": {
+            "description": "The operation will be completed asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        }
 ```
