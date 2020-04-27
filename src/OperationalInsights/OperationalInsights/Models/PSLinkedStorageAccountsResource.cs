@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSLinkedStorageAccountsResource
     {
-        public PSLinkedStorageAccountsResource(string id, string name, string type = default(string), PSDataSourceType? dataSourceType = default(PSDataSourceType?), IList<string> storageAccountIds = default(IList<string>))
+        public PSLinkedStorageAccountsResource(string id, string name, string type = default(string), string dataSourceType = default(string), IList<string> storageAccountIds = default(IList<string>))
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.DataSourceType = dataSourceType;
+            this.DataSourceType = getPSDataSourceType(dataSourceType);
             this.StorageAccountIds = storageAccountIds;
         }
 
@@ -34,22 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Id = resource.Id;
             this.Name = resource.Name;
             this.Type = resource.Type;
-
-            if (resource.DataSourceType == null)
-            {
-                string sourceType = Id.Split('/').Last();
-                this.DataSourceType = "CustomLogs".Equals(sourceType)
-                    ? PSDataSourceType.CustomLogs
-                    : PSDataSourceType.AzureWatson;
-            }
-            else
-            {
-                this.DataSourceType = "CustomLogs".Equals(resource.DataSourceType.Value.ToString())
-                    ? PSDataSourceType.CustomLogs
-                    : PSDataSourceType.AzureWatson;
-            }
-            
-
+            this.DataSourceType = getPSDataSourceType(resource.DataSourceType.ToString());
             this.StorageAccountIds = resource.StorageAccountIds;
         }
 
@@ -62,5 +47,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public PSDataSourceType? DataSourceType { get; private set; }
 
         public IList<string> StorageAccountIds { get; set; }
+
+        public static DataSourceType getDataSourceType(string type)
+        {
+            return "CustomLogs".Equals(type)
+                ? Microsoft.Azure.Management.OperationalInsights.Models.DataSourceType.CustomLogs
+                : Microsoft.Azure.Management.OperationalInsights.Models.DataSourceType.AzureWatson;
+        }
+
+        private PSDataSourceType getPSDataSourceType(string type)
+        {
+            return "CustomLogs".Equals(type)
+                ? PSDataSourceType.CustomLogs
+                : PSDataSourceType.AzureWatson;
+        }
     }
 }

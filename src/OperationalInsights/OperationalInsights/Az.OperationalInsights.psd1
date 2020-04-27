@@ -115,7 +115,15 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsLinkedStorageAccount', 
                'Get-AzOperationalInsightsLinkedStorageAccount', 
                'Set-AzOperationalInsightsLinkedStorageAccount', 
-               'Remove-AzOperationalInsightsLinkedStorageAccount'
+               'Remove-AzOperationalInsightsLinkedStorageAccount', 
+               'New-AzOperationalInsightsCluster', 
+               'Get-AzOperationalInsightsCluster', 
+               'Update-AzOperationalInsightsCluster', 
+               'Remove-AzOperationalInsightsCluster', 
+               'New-AzOperationalInsightsLinkedService', 
+               'Get-AzOperationalInsightsLinkedService', 
+               'Set-AzOperationalInsightsLinkedService', 
+               'Remove-AzOperationalInsightsLinkedService'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
-using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights

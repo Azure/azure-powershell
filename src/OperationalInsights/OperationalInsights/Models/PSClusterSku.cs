@@ -12,27 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public enum PSDataSourceType
+    public class PSClusterSku
     {
-        CustomLogs,
-        AzureWatson
-    }
-    internal static class PSDataSourceTypeEnumExtension
-    {
-        internal static string toString(this PSDataSourceType value)
+        public PSClusterSku(long? capacity = default(long?), string name = default(string))
         {
-            switch (value)
-            {
-                case PSDataSourceType.CustomLogs:
-                    return "CustomLogs";
-                case PSDataSourceType.AzureWatson:
-                    return "AzureWatson";
-            }
-            return null;
+            Capacity = capacity;
+            Name = name;
+        }
+
+        public PSClusterSku(ClusterSku sku)
+        {
+            this.Capacity = sku.Capacity;
+            this.Name = sku.Name;
+        }
+
+        public long? Capacity { get; set; }
+
+        public string Name { get; set; }
+
+        public ClusterSku geteClusterSku()
+        {
+            return new ClusterSku(this.Capacity, this.Name);
         }
     }
 }
