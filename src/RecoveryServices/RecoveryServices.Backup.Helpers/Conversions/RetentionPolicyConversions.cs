@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps long term retention policy from service response.
         /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
-            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy, string timeZone)
+            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy, string timeZone, string backupManagementType="")
         {
             if (serviceClientRetPolicy == null)
             {
@@ -47,26 +47,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ltrPolicy.IsDailyScheduleEnabled = true;
                 ltrPolicy.DailySchedule = GetPSLTRDailySchedule(serviceClientRetPolicy.DailySchedule, timeZone);
+                ltrPolicy.DailySchedule.BackupManagementType = backupManagementType;
             }
 
             if (serviceClientRetPolicy.WeeklySchedule != null)
             {
                 ltrPolicy.IsWeeklyScheduleEnabled = true;
                 ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(serviceClientRetPolicy.WeeklySchedule, timeZone);
+                ltrPolicy.WeeklySchedule.BackupManagementType = backupManagementType;
             }
 
             if (serviceClientRetPolicy.MonthlySchedule != null)
             {
                 ltrPolicy.IsMonthlyScheduleEnabled = true;
                 ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(serviceClientRetPolicy.MonthlySchedule, timeZone);
+                ltrPolicy.MonthlySchedule.BackupManagementType = backupManagementType;
             }
 
             if (serviceClientRetPolicy.YearlySchedule != null)
             {
                 ltrPolicy.IsYearlyScheduleEnabled = true;
                 ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule, timeZone);
+                ltrPolicy.YearlySchedule.BackupManagementType = backupManagementType;
             }
 
+            ltrPolicy.BackupManagementType = backupManagementType;
             return ltrPolicy;
         }
 
