@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeerasncontactdetail
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeerasncontactdetail
 schema: 2.0.0
 ---
 
@@ -27,7 +27,6 @@ Create an in memory PeerAsn contact detail.
 PS C:\> $nocContact = New-AzPeerAsnContactDetail -Role Noc -Email "noc@contoso.com" -Phone "+1 (887) 888-8088"
 PS C:\> $customerContact = New-AzPeerAsnContactDetail -Role Noc -Email "noc@contoso.com" -Phone "+1 (887) 888-8088"
 PS C:\> New-AzPeerAsn -Name $name -PeerName "Contoso Networks Limited" -PeerAsn 65000 -ContactDetail $nocContact,$customerContact
-
 ```
 
 Role and email are required. Phone is optional. Phone supports +-() or spaces. A PeerAsn must include at least one contact detail of type "Noc"

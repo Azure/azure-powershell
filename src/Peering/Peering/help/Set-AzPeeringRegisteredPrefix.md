@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringregisteredprefix
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringregisteredprefix
 schema: 2.0.0
 ---
 
@@ -12,9 +12,15 @@ Sets or updates a registered prefix from the parent peering resource.
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-Set-AzPeeringRegisteredPrefix -InputObject <PSPeeringRegisteredPrefix> -Prefix <String> [-AsJob]
+Set-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String>
+ -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Set-AzPeeringRegisteredPrefix -InputObject <PSPeeringRegisteredPrefix> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,10 +30,10 @@ Set-AzPeeringRegisteredPrefix [-ResourceId] <String> [-Name] <String> -Prefix <S
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceGroupAndName
+### Default
 ```
-Set-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String>
- -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringRegisteredPrefix -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +85,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringRegisteredPrefix
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -94,7 +100,7 @@ The name of prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId, ByResourceGroupAndName
+Parameter Sets: ByResourceGroupAndName, ByResourceId
 Aliases:
 
 Required: True
@@ -124,7 +130,7 @@ The session IPv4 prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True

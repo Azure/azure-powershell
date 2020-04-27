@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringregisteredasn
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringregisteredasn
 schema: 2.0.0
 ---
 
@@ -12,10 +12,16 @@ Create registered ASN for peering
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-New-AzPeeringRegisteredAsn -InputObject <PSPeering> [-Name] <String> -Asn <Int32> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> -Asn <Int32>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+New-AzPeeringRegisteredAsn -InputObject <PSPeering> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -24,10 +30,10 @@ New-AzPeeringRegisteredAsn [-ResourceId] <String> [-Name] <String> -Asn <Int32> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceGroupAndName
+### Default
 ```
-New-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> -Asn <Int32>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredAsn [-Name] <String> -Asn <Int32> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +45,6 @@ Create registered ASNs for peering objects.
 ```powershell
 PS C:\>$peering = Get-AzPeering -ResourceGroupName $resourceGroupName -Name $name
 PS C:\>$peering | New-AzPeeringRegisteredAsn -Name $asnName -Asn $asn
-
 ```
 
 Get the peering you want to add a registered ASN. Then pass that to the commandlet.
@@ -47,7 +52,6 @@ Get the peering you want to add a registered ASN. Then pass that to the commandl
 ### Use peering resourceId to create a registered asn
 ```powershell
 PS C:\>New-AzPeeringRegisteredAsn -ResourceId $resourceId -Name $asnName -Asn $asn
-
 ```
 
 ## PARAMETERS
@@ -72,7 +76,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True
@@ -102,7 +106,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -117,7 +121,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True

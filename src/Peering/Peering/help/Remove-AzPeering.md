@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/remove-azpeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/remove-azpeering
 schema: 2.0.0
 ---
 
@@ -12,15 +12,15 @@ Delete or remove a peering. This will delete all child resources or alerting on 
 
 ## SYNTAX
 
-### Default (Default)
+### ByName (Default)
 ```
-Remove-AzPeering [-InputObject] <PSPeering> [-Force] [-PassThru] [-AsJob]
+Remove-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByName
+### InputObject
 ```
-Remove-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzPeering [-InputObject] <PSPeering> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Use Get-AzPeering to retrieve this object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True

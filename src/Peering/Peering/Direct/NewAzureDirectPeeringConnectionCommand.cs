@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     public class NewAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the InputObject Facility DB.
+        /// Gets or sets the Facility DB.
         /// </summary>
         [Parameter(
             Position = 0,

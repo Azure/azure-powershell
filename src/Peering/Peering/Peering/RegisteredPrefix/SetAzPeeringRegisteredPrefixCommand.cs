@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     [Cmdlet(
         VerbsCommon.Set,
         Constants.AzPeeringRegisteredPrefix,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault,
+        DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeeringRegisteredPrefix))]
     public class SetAzPeeringRegisteredPrefixCommand : PeeringBaseCmdlet
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault,
+            ParameterSetName = Constants.ParameterSetNameInputObject,
             HelpMessage = Constants.InputObjectHelp)]
         [ValidateNotNullOrEmpty]
         public PSPeeringRegisteredPrefix InputObject { get; set; }

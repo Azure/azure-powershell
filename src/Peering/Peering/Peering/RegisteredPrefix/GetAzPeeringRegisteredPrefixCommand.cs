@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     ///     The Get Az InputObject cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Constants.AzPeeringRegisteredPrefix,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+        DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
     [OutputType(typeof(PSPeeringRegisteredPrefix))]
     public class GetAzPeeringRegisteredPrefixCommand : PeeringBaseCmdlet
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.InputObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [ValidateNotNullOrEmpty]
         public PSPeering InputObject { get; set; }
 

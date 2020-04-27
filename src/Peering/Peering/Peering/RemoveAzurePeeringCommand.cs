@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         VerbsCommon.Remove,
         Constants.AzPeering,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+        DefaultParameterSetName = Constants.ParameterSetNameByName)]
     [OutputType(typeof(bool))]
     public class RemoveAzurePeeringCommand : PeeringBaseCmdlet
     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringObjectHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [ValidateNotNullOrEmpty]
         public PSPeering InputObject { get; set; }
 

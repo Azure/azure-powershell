@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringregisteredprefix
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringregisteredprefix
 schema: 2.0.0
 ---
 
@@ -12,10 +12,16 @@ Create registered prefixes for peering objects.
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-New-AzPeeringRegisteredPrefix -InputObject <PSPeering> [-Name] <String> -Prefix <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String>
+ -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+New-AzPeeringRegisteredPrefix -InputObject <PSPeering> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -24,10 +30,10 @@ New-AzPeeringRegisteredPrefix [-ResourceId] <String> [-Name] <String> -Prefix <S
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceGroupAndName
+### Default
 ```
-New-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String>
- -Prefix <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredPrefix [-Name] <String> -Prefix <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +45,6 @@ Create registered prefixes for peering objects.
 ```powershell
 PS C:\>$peering = Get-AzPeering -ResourceGroupName $resourceGroupName -Name $name
 PS C:\>$peering | New-AzPeeringRegisteredPrefix -Name $asnName -Asn $asn
-
 ```
 
 Get the peering you want to add a registered prefix. Then pass that to the commandlet.
@@ -47,7 +52,6 @@ Get the peering you want to add a registered prefix. Then pass that to the comma
 ### Use peering resourceId to create a registered asn
 ```powershell
 PS C:\>New-AzPeeringRegisteredPrefix -ResourceId $resourceId -Name $asnName -Asn $asn
-
 ```
 
 ## PARAMETERS
@@ -87,7 +91,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -102,7 +106,7 @@ The name of prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True
@@ -132,7 +136,7 @@ The session IPv4 prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True

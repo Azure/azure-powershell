@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringregisteredasn
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringregisteredasn
 schema: 2.0.0
 ---
 
@@ -12,9 +12,15 @@ Sets or updates a registered ASN from the parent peering resource.
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-Set-AzPeeringRegisteredAsn -InputObject <PSPeeringRegisteredAsn> -Asn <Int32> [-AsJob]
+Set-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> -Asn <Int32>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Set-AzPeeringRegisteredAsn -InputObject <PSPeeringRegisteredAsn> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,10 +30,10 @@ Set-AzPeeringRegisteredAsn [-ResourceId] <String> [-Name] <String> -Asn <Int32> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceGroupAndName
+### Default
 ```
-Set-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> -Asn <Int32>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringRegisteredAsn -Asn <Int32> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +70,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroupAndName, ByResourceId, Default
 Aliases:
 
 Required: True
@@ -94,7 +100,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringRegisteredAsn
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -109,7 +115,7 @@ The ASN to be registered
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId, ByResourceGroupAndName
+Parameter Sets: ByResourceGroupAndName, ByResourceId
 Aliases:
 
 Required: True

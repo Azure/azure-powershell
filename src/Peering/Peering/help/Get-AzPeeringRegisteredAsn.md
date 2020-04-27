@@ -12,15 +12,15 @@ Gets the registered ASN for internet exchange route server type peerings.
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-Get-AzPeeringRegisteredAsn [-InputObject] <PSPeering> [-Name <String>]
+Get-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceGroupAndName
+### Default
 ```
-Get-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name <String>]
+Get-AzPeeringRegisteredAsn [-InputObject] <PSPeering> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,6 @@ PS C:\> Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroupName -Peerin
 ```
 
 Lists registered asn.
-
 
 ### Gets registered ASN for peering by name
 ```powershell
@@ -87,7 +86,7 @@ The name of the registered ASN
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ByResourceGroupAndName
+Parameter Sets: ByResourceGroupAndName, Default
 Aliases:
 
 Required: False

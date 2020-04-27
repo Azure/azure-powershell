@@ -140,6 +140,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameDefault = "Default";
 
         /// <summary>
+        /// The parameter set name input object
+        /// </summary>
+        public const string ParameterSetNameInputObject = "InputObject";
+
+        /// <summary>
         /// The parameter set name location by city.
         /// </summary>
         public const string ParameterSetNameLocationByDirectType = "LocationByDirectType";

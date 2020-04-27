@@ -24,16 +24,16 @@ Gets the Peering Resources for a subscription
 Gets the Peering locations offered by Microsoft
 
 ### [Get-AzPeeringRegisteredAsn](Get-AzPeeringRegisteredAsn.md)
-{{ Fill in the Synopsis }}
+Gets the registered ASN for internet exchange route server type peerings.
 
 ### [Get-AzPeeringRegisteredPrefix](Get-AzPeeringRegisteredPrefix.md)
-{{ Fill in the Synopsis }}
+Gets or lists the registered prefix for peerings.
 
 ### [Get-AzPeeringService](Get-AzPeeringService.md)
 Get a list of peering service objects of a single object.
 
 ### [Get-AzPeeringServiceCountry](Get-AzPeeringServiceCountry.md)
-{{ Fill in the Synopsis }}
+Lists the countries available for peering service.
 
 ### [Get-AzPeeringServiceLocation](Get-AzPeeringServiceLocation.md)
 Gets a list of peering service locations offered by Microsoft.
@@ -48,7 +48,7 @@ Gets a list of peering service providers partnered with Microsoft.
 Creates a new Peer ASN 
 
 ### [New-AzPeerAsnContactDetail](New-AzPeerAsnContactDetail.md)
-{{ Fill in the Synopsis }}
+Creates an in memory contact detail for PeerAsn. 
 
 ### [New-AzPeering](New-AzPeering.md)
 Creates a new Peering ARM Resource
@@ -60,10 +60,10 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ### [New-AzPeeringRegisteredAsn](New-AzPeeringRegisteredAsn.md)
-{{ Fill in the Synopsis }}
+Create registered ASN for peering
 
 ### [New-AzPeeringRegisteredPrefix](New-AzPeeringRegisteredPrefix.md)
-{{ Fill in the Synopsis }}
+Create registered prefixes for peering objects.
 
 ### [New-AzPeeringService](New-AzPeeringService.md)
 Creates a new peering service.
@@ -75,13 +75,13 @@ Creates a new peering service prefix
 Remove Peer Asn
 
 ### [Remove-AzPeering](Remove-AzPeering.md)
-{{ Fill in the Synopsis }}
+Delete or remove a peering. This will delete all child resources or alerting on the resource.
 
 ### [Remove-AzPeeringRegisteredAsn](Remove-AzPeeringRegisteredAsn.md)
-{{ Fill in the Synopsis }}
+Delete or remove a registered ASN from the parent peering resource.
 
 ### [Remove-AzPeeringRegisteredPrefix](Remove-AzPeeringRegisteredPrefix.md)
-{{ Fill in the Synopsis }}
+Delete or remove a registered prefix from the parent peering resource.
 
 ### [Remove-AzPeeringServicePrefix](Remove-AzPeeringServicePrefix.md)
 Removes a new peering service prefix
@@ -96,10 +96,10 @@ Sets or updates the Direct Connection information.
 Sets or updates the Exchange Connection information. 
 
 ### [Set-AzPeeringRegisteredAsn](Set-AzPeeringRegisteredAsn.md)
-{{ Fill in the Synopsis }}
+Sets or updates a registered ASN from the parent peering resource.
 
 ### [Set-AzPeeringRegisteredPrefix](Set-AzPeeringRegisteredPrefix.md)
-{{ Fill in the Synopsis }}
+Sets or updates a registered prefix from the parent peering resource.
 
 ### [Update-AzPeering](Update-AzPeering.md)
 Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.

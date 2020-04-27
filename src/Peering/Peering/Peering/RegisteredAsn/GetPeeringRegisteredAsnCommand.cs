@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     ///     The Get Az InputObject cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Constants.AzPeeringRegisteredAsn,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+        DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
     [OutputType(typeof(PSPeeringRegisteredAsn))]
     public class GetAzPeeringRegisteredAsnCommand : PeeringBaseCmdlet
     {

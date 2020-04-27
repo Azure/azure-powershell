@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringregisteredprefix
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringregisteredprefix
 schema: 2.0.0
 ---
 
@@ -12,16 +12,21 @@ Gets or lists the registered prefix for peerings.
 
 ## SYNTAX
 
-### Default (Default)
-```
-Get-AzPeeringRegisteredPrefix [-InputObject] <PSPeering> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceGroupAndName
+### ByResourceGroupAndName (Default)
 ```
 Get-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### InputObject
+```
+Get-AzPeeringRegisteredPrefix [-InputObject] <PSPeering> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### Default
+```
+Get-AzPeeringRegisteredPrefix [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -41,7 +46,6 @@ PS C:\> Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -Pee
 ```
 
 Lists registered asn.
-
 
 ### Gets registered ASN for peering by name
 ```powershell
@@ -74,7 +78,7 @@ Use a Get-AzPeering
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -89,7 +93,7 @@ The name of prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ByResourceGroupAndName
+Parameter Sets: ByResourceGroupAndName, Default
 Aliases:
 
 Required: False
