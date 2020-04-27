@@ -103,10 +103,9 @@ function Test-SecurityPartnerProviderWithHubCRUD {
 
         #verification
         Assert-NotNull $getSecurityPartnerProvider.VirtualHub
-
         
-        # Delete SecurityPartnerProvider created with VirtualHub Object
-        $delete = Remove-AzSecurityPartnerProvider -ResourceGroupName $rgname -name $securityProviderName -PassThru -Force
+        # Delete SecurityPartnerProvider with SecurityPartnerProvider object
+        $delete = Remove-AzSecurityPartnerProvider -SecurityPartnerProvider $getSecurityPartnerProvider -PassThru -Force
         Assert-AreEqual true $delete
 
         # Create SecurityPartnerProvider with Virtual Hub Id
@@ -118,12 +117,11 @@ function Test-SecurityPartnerProviderWithHubCRUD {
         #verification
         Assert-NotNull $getSecurityPartnerProvider.VirtualHub
 
-        
-        # Delete SecurityPartnerProvider created with VirtualHub Name
-        $delete = Remove-AzSecurityPartnerProvider -ResourceGroupName $rgname -name $securityProviderName -PassThru -Force
+        # Delete SecurityPartnerProvider with SecurityPartnerProvider Id
+        $delete = Remove-AzSecurityPartnerProvider -ResourceId $getSecurityPartnerProvider.Id -PassThru -Force
         Assert-AreEqual true $delete
 
-         Create SecurityPartnerProvider with Virtual Hub Id
+        # Create SecurityPartnerProvider with Virtual Hub name
         New-AzSecurityPartnerProvider –Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHubName $virtualHubName
 
         # Get SecurityPartnerProvider
@@ -132,8 +130,7 @@ function Test-SecurityPartnerProviderWithHubCRUD {
         #verification
         Assert-NotNull $getSecurityPartnerProvider.VirtualHub
 
-        
-        # Delete SecurityPartnerProvider created with VirtualHub Id
+        # Delete SecurityPartnerProvider with SecurityPartnerProvider name
         $delete = Remove-AzSecurityPartnerProvider -ResourceGroupName $rgname -name $securityProviderName -PassThru -Force
         Assert-AreEqual true $delete
     }
