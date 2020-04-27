@@ -14,10 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System;
-    using System.Text.RegularExpressions;
 
-    public class PsApiManagementSubscriptionKey //: PsApiManagementArmResource
+    public class PsApiManagementSubscriptionKey
     {
         public string PrimaryKey { get; set; }
 
