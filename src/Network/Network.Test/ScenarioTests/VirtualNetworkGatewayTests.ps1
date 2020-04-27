@@ -668,6 +668,7 @@ function Test-VirtualNetworkGatewayRadius
 	try 
 	{
         # Create the multiple radius servers settings
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
         $radiuspd = ConvertTo-SecureString -String "radiuspd" -AsPlainText -Force
         $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.1 -RadiusServerSecret $radiuspd -RadiusServerScore 30
         $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.2 -RadiusServerSecret $radiuspd -RadiusServerScore 1
