@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             List<string> objectIds = new List<string>();
-            objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()/*.Substring(1)*/));
+            objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()));
             objectIds = objectIds.Distinct().ToList();
             List<PSADObject> adObjects = null;
             try
@@ -310,17 +310,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectType = assignment.Type
-                        /*
-                         * RoleAssignmentId = assignment.Id,
-                           DisplayName = adObject.DisplayName,
-                           RoleDefinitionId = roleDefinition.Id,
-                           RoleDefinitionName = roleDefinition.Name,
-                           Scope = assignment.Scope,
-                           SignInName = ((PSADUser)adObject).UserPrincipalName,
-                           ObjectId = adObject.Id,
-                           ObjectType = adObject.Type,
-                           CanDelegate = delegationFlag
-                         */
                     });
                 }
                 else if (!excludeAssignmentsForDeletedPrincipals)
