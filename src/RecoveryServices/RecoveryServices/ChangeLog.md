@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.
 * Added private endpoint for Vault credential file for site recovery service.
 
 ## Version 2.8.0
