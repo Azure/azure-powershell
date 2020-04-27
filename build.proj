@@ -70,6 +70,11 @@
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
   </PropertyGroup>
 
+  <!-- Following is generated modules -->
+  <ItemGroup>
+    <GeneratedModules Include="Databricks"/>
+  </ItemGroup>
+
   <!-- Tasks -->
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll" >
     <ParameterGroup>
@@ -263,7 +268,11 @@
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
     <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" />
-
+    <!-- Run test for the generated modules -->
+    <!-- Run the test in PowerShell core -->
+    <Exec Command="pwsh $(RepoArtifacts)/$(Configuration)/Az.%(GeneratedModules.Identity)/test-module.ps1"  Condition="'$(TestFramework)'=='netcoreapp2.2' And Exists('$(RepoArtifacts)/$(Configuration)/Az.%(GeneratedModules.Identity)')"/>
+    <!-- Run the test in Windows PowerShell-->
+    <Exec Command="powershell Install-Module -Name Pester -Force -SkipPublisherCheck;powershell $(RepoArtifacts)/$(Configuration)/Az.%(GeneratedModules.Identity)/test-module.ps1" Condition="'$(TestFramework)'!='netcoreapp2.2' And Exists('$(RepoArtifacts)/$(Configuration)/Az.%(GeneratedModules.Identity)')" />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
 
