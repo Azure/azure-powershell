@@ -346,7 +346,7 @@ namespace StaticAnalysis.HelpAnalyzer
         {
             foreach(var helpMarkdown in helpRecords)
             {
-                var file = Directory.GetFiles(helpFolder, helpMarkdown + ".md").FirstOrDefault();
+                var file = Path.Combine(helpFolder, helpMarkdown + ".md");
                 var content = File.ReadAllText(file);
                 try
                 {
