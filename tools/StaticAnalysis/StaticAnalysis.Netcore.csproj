@@ -55,7 +55,7 @@
 
   <ItemGroup>
     <Reference Include="Markdown.MAML">
-      <HintPath>HelpAnalyzer\Markdown.MAML.dll</HintPath>
+      <HintPath>lib\Markdown.MAML.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
