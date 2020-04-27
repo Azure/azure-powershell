@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
@@ -23,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = SecurityPartnerProviderParameterSetName.ByName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
@@ -31,11 +35,29 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = SecurityPartnerProviderParameterSetName.ByName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = SecurityPartnerProviderParameterSetName.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The securityPartnerProvider input object.")]
+        [ValidateNotNullOrEmpty]
+        public PSSecurityPartnerProvider SecurityPartnerProvider { get; set; }
+
+        [Parameter(
+            ParameterSetName = SecurityPartnerProviderParameterSetName.ByResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The securityPartnerProvider resource Id.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/securityPartnerProviders")]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -50,6 +72,18 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (ParameterSetName.Equals(SecurityPartnerProviderParameterSetName.ByObject, StringComparison.OrdinalIgnoreCase))
+            {
+                Name = SecurityPartnerProvider.Name;
+                ResourceGroupName = SecurityPartnerProvider.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(SecurityPartnerProviderParameterSetName.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                Name = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,

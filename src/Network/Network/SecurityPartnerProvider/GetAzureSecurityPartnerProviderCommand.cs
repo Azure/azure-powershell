@@ -25,18 +25,15 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPartnerProvider", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSSecurityPartnerProvider))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPartnerProvider", DefaultParameterSetName = SecurityPartnerProviderParameterSetName.ByName), OutputType(typeof(PSSecurityPartnerProvider))]
     public class GetAzureSecurityPartnerProviderCommand : SecurityPartnerProviderBaseCmdlet
     {
-
-        private const string GetByNameParameterSet = "GetByNameParameterSet";
-        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.", ParameterSetName = GetByNameParameterSet)]
+            HelpMessage = "The resource name.", ParameterSetName = SecurityPartnerProviderParameterSetName.ByName)]
         [ResourceNameCompleter("Microsoft.Network/securityPartnerProviders", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -45,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.", ParameterSetName = GetByNameParameterSet)]
+            HelpMessage = "The resource group name.", ParameterSetName = SecurityPartnerProviderParameterSetName.ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -53,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource Id.", ParameterSetName = GetByResourceIdParameterSet)]
+            HelpMessage = "The resource Id.", ParameterSetName = SecurityPartnerProviderParameterSetName.ByResourceId)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
