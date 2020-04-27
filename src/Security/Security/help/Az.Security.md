@@ -1,142 +1,142 @@
 ---
 Module Name: Az.Security
-Module Guid: 2b6bac56-a03a-4606-8b05-c1a1f36248db
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.security
+Help Version: 0.1.0
 Locale: en-US
 ---
 
 # Az.Security Module
 ## Description
-{{ Fill in the Description }}
+Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
 
 ## Az.Security Cmdlets
 ### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
-{{ Fill in the Description }}
+Dismiss Iot aggregated alert
 
+## Az.Security Cmdlets
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
-{{ Fill in the Description }}
+Disables the advanced threat protection policy for a storage account.
 
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
-{{ Fill in the Description }}
+Enables the advanced threat protection policy for a storage account.
 
 ### [Get-AzDeviceSecurityGroup](Get-AzDeviceSecurityGroup.md)
-{{ Fill in the Description }}
+Get device security group - IoT Hub security
 
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
-{{ Fill in the Description }}
+Gets security solutions that were discovered by Azure Security Center
 
 ### [Get-AzExternalSecuritySolution](Get-AzExternalSecuritySolution.md)
-{{ Fill in the Description }}
+Get external security solution 
 
 ### [Get-AzIotSecurityAnalytics](Get-AzIotSecurityAnalytics.md)
-{{ Fill in the Description }}
+Get IoT security analytics
 
 ### [Get-AzIotSecurityAnalyticsAggregatedAlert](Get-AzIotSecurityAnalyticsAggregatedAlert.md)
-{{ Fill in the Description }}
+Get IoT security aggregated alert
 
 ### [Get-AzIotSecurityAnalyticsAggregatedRecommendation](Get-AzIotSecurityAnalyticsAggregatedRecommendation.md)
-{{ Fill in the Description }}
+Get IoT security aggregated recommendation
 
 ### [Get-AzIotSecuritySolution](Get-AzIotSecuritySolution.md)
-{{ Fill in the Description }}
+Get IoT security solution of IoT Hub
 
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
-{{ Fill in the Description }}
+Gets the JIT network access policies
 
 ### [Get-AzSecurityAdvancedThreatProtection](Get-AzSecurityAdvancedThreatProtection.md)
-{{ Fill in the Description }}
+Gets the advanced threat protection policy for a storage account.
 
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
-{{ Fill in the Description }}
+Gets security alerts that were detected by Azure Security Center
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
-{{ Fill in the Description }}
+Gets the security automatic provisioning settings
 
 ### [Get-AzSecurityCompliance](Get-AzSecurityCompliance.md)
-{{ Fill in the Description }}
+Get the security compliance of a subscription over time
 
 ### [Get-AzSecurityContact](Get-AzSecurityContact.md)
-{{ Fill in the Description }}
+Gets security contacts that were configured on this subscription
 
 ### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
-{{ Fill in the Description }}
+Gets the location where Azure Security Center will automatically save data for the specific subscription
 
 ### [Get-AzSecurityPricing](Get-AzSecurityPricing.md)
-{{ Fill in the Description }}
+Gets the pricing tier data for Azure Security Center for a scope.
 
 ### [Get-AzSecurityTask](Get-AzSecurityTask.md)
-{{ Fill in the Description }}
+Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
 
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
-{{ Fill in the Description }}
+Gets the configured security workspace settings on a subscription.
 
 ### [New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject](New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject.md)
-{{ Fill in the Description }}
+Create new allow list custom alert rule for device security group - IoT Security
 
 ### [New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject](New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject.md)
-{{ Fill in the Description }}
+Create new deny list custom alert rule for device security group - IoT Security
 
 ### [New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject](New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject.md)
-{{ Fill in the Description }}
+Create new threshold custom alert rule for device security group - IoT Security
 
 ### [New-AzDeviceSecurityGroupTimeWindowRuleObject](New-AzDeviceSecurityGroupTimeWindowRuleObject.md)
-{{ Fill in the Description }}
+Create new time window rule for device security group - IoT Security
 
 ### [New-AzIotSecuritySolutionRecommendationConfigurationObject](New-AzIotSecuritySolutionRecommendationConfigurationObject.md)
-{{ Fill in the Description }}
+Create new recommendation configuration for iot security solution
 
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
-{{ Fill in the Description }}
+Create new user defined resources for iot security solution
 
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
-{{ Fill in the Description }}
+Delete device security group
 
 ### [Remove-AzIotSecuritySolution](Remove-AzIotSecuritySolution.md)
-{{ Fill in the Description }}
+Delete IoT security solution
 
 ### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
 Gets the SQL information protection policy.
 
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
-{{ Fill in the Description }}
+Deletes a JIT network access policy.
 
 ### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
-{{ Fill in the Description }}
+Deletes a security contact.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
-{{ Fill in the Description }}
+Deletes the security workspace setting for this subscription.
 
 ### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
-{{ Fill in the Description }}
+Create or update device security group
 
 ### [Set-AzIotSecuritySolution](Set-AzIotSecuritySolution.md)
-{{ Fill in the Description }}
+Create or update IoT security solution
 
 ### [Set-AzJitNetworkAccessPolicy](Set-AzJitNetworkAccessPolicy.md)
-{{ Fill in the Description }}
+Updates JIT network access policy.
 
 ### [Set-AzSecurityAlert](Set-AzSecurityAlert.md)
-{{ Fill in the Description }}
+Updates a security alert state.
 
 ### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
-{{ Fill in the Description }}
+Updates automatic provisioning setting
 
 ### [Set-AzSecurityContact](Set-AzSecurityContact.md)
-{{ Fill in the Description }}
+Updates a security contact for a subscription.
 
 ### [Set-AzSecurityPricing](Set-AzSecurityPricing.md)
-{{ Fill in the Description }}
+Sets the pricing of Azure Security Center tier for a scope.
 
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
-{{ Fill in the Description }}
+Updates the workspace settings for the subscription.
 
 ### [Set-AzSqlInformationProtectionPolicy](Set-AzSqlInformationProtectionPolicy.md)
 Sets the SQL information protection policy.
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
-{{ Fill in the Description }}
+Invokes a temporary network access request.
 
 ### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
-{{ Fill in the Description }}
-
+Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
