@@ -1,81 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAlert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
-# Set-AzSecurityAlert
+# Remove-AzIotSecuritySolution
 
 ## SYNOPSIS
-Updates a security alert state.
+Delete IoT security solution
 
 ## SYNTAX
 
-### SubscriptionLevelResource (Default)
+### ResourceGroupLevelResource (Default)
 ```
-Set-AzSecurityAlert -Location <String> -Name <String> -ActionType <String> [-PassThru]
+Remove-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Set-AzSecurityAlert -ResourceGroupName <String> -Location <String> -Name <String> -ActionType <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzIotSecuritySolution -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
+Remove-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sets a security alert state.
+The Remove-AzIotSecuritySolution cmdlet deletes a specific iot security solution. 
+The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
+PS C:\> Remove-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
 ```
 
-Dismisses a security alert that was raised.
+Delete IoT security solution "MySample" with resource group "MyResourceGroup"
 
 ## PARAMETERS
-
-### -ActionType
-Action Type.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource, ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,7 +64,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSIotSecuritySolution
 Parameter Sets: InputObject
 Aliases:
 
@@ -107,27 +75,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
+Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
 Required: True
@@ -163,12 +116,12 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+ID of the security resource that you want to invoke the command on.
 
 ```yaml
 Type: System.String
@@ -198,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -219,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSIotSecuritySolution
 
 ## OUTPUTS
 

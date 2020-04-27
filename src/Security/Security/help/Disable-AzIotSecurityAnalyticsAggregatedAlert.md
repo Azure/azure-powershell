@@ -1,81 +1,56 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAlert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Disable-AzIotSecurityAnalyticsAggregatedAlert
 schema: 2.0.0
 ---
 
-# Set-AzSecurityAlert
+# Disable-AzIotSecurityAnalyticsAggregatedAlert
 
 ## SYNOPSIS
-Updates a security alert state.
+Dismiss Iot aggregated alert
 
 ## SYNTAX
 
-### SubscriptionLevelResource (Default)
+### SolutionLevelResource (Default)
 ```
-Set-AzSecurityAlert -Location <String> -Name <String> -ActionType <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Set-AzSecurityAlert -ResourceGroupName <String> -Location <String> -Name <String> -ActionType <String>
+Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName <String> -SolutionName <String> -Name <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
+Disable-AzIotSecurityAnalyticsAggregatedAlert -InputObject <PSIoTSecurityAggregatedAlert> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sets a security alert state.
+The Disable-AzIotSecurityAnalyticsAggregatedAlert cmdlet dismisses a specific aggragated alert on devices of iot hub. 
+The name of the aggregated alerts is a combination of the alert type and the alert aggragted date, separated by '/'.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
+PS C:\> Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolutionName" -Name "IoT_SucessfulLocalLogin/2020-03-15"
 ```
 
-Dismisses a security alert that was raised.
+Dismiss aggregated alert "IoT_SucessfulLocalLogin/2020-03-15" (name combined from alert type and its aggregated date) from the IoT security solution "MySolutionName" in resource group "MyResourceGroup"
+
+### Example 2
+```powershell
+PS C:\> Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceId "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolutionName/analyticsModels/default/aggregatedAlerts/IoT_SucessfulLocalLogin/2020-03-15"
+```
+
+Dismiss aggregated alert with resource Id "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolutionName/analyticsModels/default/aggregatedAlerts/IoT_SucessfulLocalLogin/2020-03-15"
 
 ## PARAMETERS
-
-### -ActionType
-Action Type.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource, ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,7 +71,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics.PSIoTSecurityAggregatedAlert
 Parameter Sets: InputObject
 Aliases:
 
@@ -107,27 +82,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
+Parameter Sets: SolutionLevelResource
 Aliases:
 
 Required: True
@@ -157,18 +117,18 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupLevelResource
+Parameter Sets: SolutionLevelResource
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+ID of the security resource that you want to invoke the command on.
 
 ```yaml
 Type: System.String
@@ -179,6 +139,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SolutionName
+Solution name
+
+```yaml
+Type: System.String
+Parameter Sets: SolutionLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,7 +173,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,9 +193,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics.PSIoTSecurityAggregatedAlert
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### System.String
 
 ## OUTPUTS
 

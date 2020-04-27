@@ -1,81 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAlert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzDeviceSecurityGroup
 schema: 2.0.0
 ---
 
-# Set-AzSecurityAlert
+# Remove-AzDeviceSecurityGroup
 
 ## SYNOPSIS
-Updates a security alert state.
+Delete device security group
 
 ## SYNTAX
 
-### SubscriptionLevelResource (Default)
+### ResourceIdLevelResource (Default)
 ```
-Set-AzSecurityAlert -Location <String> -Name <String> -ActionType <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Set-AzSecurityAlert -ResourceGroupName <String> -Location <String> -Name <String> -ActionType <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
+Remove-AzDeviceSecurityGroup -Name <String> -HubResourceId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
+Remove-AzDeviceSecurityGroup -InputObject <PSDeviceSecurityGroup> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceId
+```
+Remove-AzDeviceSecurityGroup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Sets a security alert state.
+The Remove-AzDeviceSecurityGroup cmdlet deletes a device security group defined in iot security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
+PS C:\> Remove-AzDeviceSecurityGroup -Name "MySecurityGroup" -HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
 ```
 
-Dismisses a security alert that was raised.
+Delete the device security group "MySecurityGroup" of iot hub with resource id "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
 
 ## PARAMETERS
-
-### -ActionType
-Action Type.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource, ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -92,11 +59,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubResourceId
+ID of the security resource that you want to invoke the command on.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+Type: Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups.PSDeviceSecurityGroup
 Parameter Sets: InputObject
 Aliases:
 
@@ -107,27 +89,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
+Parameter Sets: ResourceIdLevelResource
 Aliases:
 
 Required: True
@@ -152,23 +119,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceId
-Resource ID.
+ID of the security resource that you want to invoke the command on.
 
 ```yaml
 Type: System.String
@@ -198,7 +150,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,9 +170,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups.PSDeviceSecurityGroup
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### System.String
 
 ## OUTPUTS
 
