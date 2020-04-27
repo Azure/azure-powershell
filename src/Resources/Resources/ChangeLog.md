@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed issue with SPs where `New-AzRoleAssignment` would create a role assignment succesfully but would still display an error
+* Change policy cmdlets to output strongly-typed objects
+* Fiexed `Remove-AzResourceGroup -Id ResourceId`[#9882]
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
