@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSecurityPartnerProvider
 
 ## SYNOPSIS
-Saves a modified SecurityPartnerProvider.
+Saves a modified Azure SecurityPartnerProvider.
 
 ## SYNTAX
 

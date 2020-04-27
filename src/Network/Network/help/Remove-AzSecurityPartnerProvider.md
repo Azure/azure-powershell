@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-securitypartnerprovider
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azsecuritypartnerprovider
 schema: 2.0.0
 ---
 
@@ -12,11 +12,23 @@ Deletes an Azure SecurityPartnerProvider.
 
 ## SYNTAX
 
+### SecurityPartnerProviderNameParameterSet
 ```
 Remove-AzSecurityPartnerProvider -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SecurityPartnerProviderInputObjectParameterSet
+```
+Remove-AzSecurityPartnerProvider -SecurityPartnerProvider <PSSecurityPartnerProvider> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SecurityPartnerProviderResourceIdParameterSet
+```
+Remove-AzSecurityPartnerProvider -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Remove-AzSecurityPartnerProvider** cmdlet deletes an Azure SecurityPartnerProvider
@@ -80,7 +92,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -109,14 +121,44 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The securityPartnerProvider resource Id.
+
+```yaml
+Type: String
+Parameter Sets: SecurityPartnerProviderResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityPartnerProvider
+The securityPartnerProvider input object.
+
+```yaml
+Type: PSSecurityPartnerProvider
+Parameter Sets: SecurityPartnerProviderInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,6 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSSecurityPartnerProvider
 
 ## OUTPUTS
 

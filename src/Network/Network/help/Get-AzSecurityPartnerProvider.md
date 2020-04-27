@@ -12,13 +12,13 @@ Get an Azure SecurityPartnerProvider
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### SecurityPartnerProviderNameParameterSet (Default)
 ```
 Get-AzSecurityPartnerProvider -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### SecurityPartnerProviderResourceIdParameterSet
 ```
 Get-AzSecurityPartnerProvider -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -63,7 +63,7 @@ The resource name.
 
 ```yaml
 Type: String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -78,7 +78,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases:
 
 Required: True
@@ -92,8 +92,8 @@ Accept wildcard characters: False
 The resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Type: String
+Parameter Sets: SecurityPartnerProviderResourceIdParameterSet
 Aliases:
 
 Required: True
