@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SparkDotNetClassName = "org.apache.spark.deploy.dotnet.DotnetRunner";
 
+        public const string SparkDotNetAssemblySearchPathsKey = "spark.yarn.appMasterEnv.DOTNET_ASSEMBLY_SEARCH_PATHS";
+
         public const string SparkDotNetUdfsFolderName = "udfs";
 
         public const string JarExtention = ".jar";
