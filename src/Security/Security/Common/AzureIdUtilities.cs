@@ -32,9 +32,38 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
         private static Regex regulatoryStandardAssessmentRegex = new Regex("regulatoryComplianceAssessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static Regex iotHubNameRegex = new Regex("/iotHubs/(?<iotHubName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex iotSolutionNameRegex = new Regex("/iotSecuritySolutions/(?<iotSolutionName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        
+
         public static string GetResourceName(string id)
         {
             return id.Split('/').Last();
+        }
+
+        public static string GetIotHubResourceName(string id)
+        {
+            var match = iotHubNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["iotHubName"].Value;
+        }
+
+        public static string GetIotSolutionResourceName(string id)
+        {
+            var match = iotSolutionNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["iotSolutionName"].Value;
         }
 
         public static string GetResourceLocation(string id)

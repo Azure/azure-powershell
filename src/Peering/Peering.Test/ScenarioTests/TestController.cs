@@ -21,20 +21,25 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     using System.Linq;
 
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Azure.Management.Peering;
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using Moq;
 
     public class TestController : RMTestBase
     {
+        private const string localEndPoint = "https://secrets.wanrr-test.radar.core.azure-test.net";
+
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public PeeringManagementClient PeeringManagementClient { get; private set; }
+
+        public SubscriptionClient SubscriptionClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -45,12 +50,14 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient(context);
+            this.ResourceManagementClient = GetResourceManagementClient(context);
             this.PeeringManagementClient = GetEdgeManagementClient(context);
+            this.SubscriptionClient = GetSubscriptionManagementClient(context);
 
             this._helper.SetupManagementClients(
                 this.ResourceManagementClient,
-                this.PeeringManagementClient);
+                this.PeeringManagementClient,
+                this.SubscriptionClient);
         }
 
         public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -100,7 +107,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
                 this._helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    "ScenarioTests\\PeeringCommon.ps1",
+                    $"ScenarioTests\\PeeringCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     this._helper.RMProfileModule,
                     this._helper.RMResourceModule,
@@ -120,7 +127,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
             }
         }
 
-        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
@@ -128,6 +135,12 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         private static PeeringManagementClient GetEdgeManagementClient(MockContext context)
         {
             return context.GetServiceClient<PeeringManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static SubscriptionClient GetSubscriptionManagementClient(MockContext context)
+        {
+            var subContext = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return subContext;
         }
     }
 }
