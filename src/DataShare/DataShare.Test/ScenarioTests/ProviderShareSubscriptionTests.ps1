@@ -51,5 +51,4 @@ function Test-ProviderShareSubscriptionGet
     Assert-AreEqual $shareSubscriptionName $retrievedProviderShareSubscription.Name
     Assert-AreEqual $ShareSubscriptionId $retrievedProviderShareSubscription.ShareSubscriptionObjectId
     Assert-AreEqual "Active" $retrievedProviderShareSubscription.ShareSubscriptionStatus
-    Assert-AreEqual "Microsoft" $retrievedProviderShareSubscription.Company
 }

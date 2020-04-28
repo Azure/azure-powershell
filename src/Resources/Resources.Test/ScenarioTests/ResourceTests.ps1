@@ -857,3 +857,76 @@ function Test-RemoveASetOfResources
     $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
     Assert-Null $expected
 }
+
+<#
+.SYNOPSIS
+Tests setting resource tags.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-SetAResourceTagCase
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+ 
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+ 
+        # Verify tags and their casing
+        # resource.Tags key is exactly "testtag" with case sensitive match
+        Assert-True { $resource.Tags.ContainsKey("testtag") }
+        Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
+
+        Assert-True { $resource.Tags.testtag -ceq "testval" }
+        Assert-True { $resource.Tags.testtag -cne "testVAL" }
+ 
+        # Set resource (add a new tag with key testTag2 = "TestVal2")
+        Set-AzResource -Tags @{testtag = "testval"; testTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        Start-Sleep -s 30
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        
+        # Verify tag keys
+        Assert-True { $resource.Tags.ContainsKey("testtag") }
+        Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
+
+        Assert-True { $resource.Tags.ContainsKey("testTag2") }
+        Assert-True { !$resource.Tags.ContainsKey("TestTag2") }
+        
+        # Verify tag values
+        Assert-True { $resource.Tags.testtag -ceq "testval" }
+        Assert-True { $resource.Tags.testtag -cne "testVAL" }
+        
+        Assert-True { $resource.Tags.testTag2 -ceq "TestVal2" }
+        Assert-True { $resource.Tags.testTag2 -cne "testval2" }
+ 
+        # Set resource (replace tags with keys of different cases)
+        Set-AzResource -Tags @{testTag = "testVAL"; testtag2 = "Testval2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        Start-Sleep -s 30
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+       
+        # Verify tag keys
+        Assert-True { $resource.Tags.ContainsKey("testTag") }
+        Assert-True { !$resource.Tags.ContainsKey("testtag") }
+
+        Assert-True { $resource.Tags.ContainsKey("testtag2") }
+        Assert-True { !$resource.Tags.ContainsKey("testTag2") }
+
+        # Verify tag values
+        Assert-True { $resource.Tags.testTag -ceq "testVAL" }
+        Assert-True { $resource.Tags.testTag -cne "testval" }
+        
+        Assert-True { $resource.Tags.testtag2 -ceq "Testval2" }
+        Assert-True { $resource.Tags.testtag2 -cne "TestVal2" }
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}

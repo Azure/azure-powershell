@@ -30,44 +30,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzPeerAsn", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Constants.AzPeerAsn, SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameByName)]
     [OutputType(typeof(PSPeerAsn))]
     public class NewAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.PeeringNameHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.PeeringNameHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string PeerName { get; set; }
 
         /// <summary>
         ///     Gets or sets Peer ASN
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.PeeringAsnHelp)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.PeeringAsnHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public int PeerAsn { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Email
+        ///     Gets or sets the contact details
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp, ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public string[] Email { get; set; }
-
-        /// <summary>
-        /// Gets or sets the phone.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = Constants.PhoneHelp)]
-        [ValidateNotNullOrEmpty]
-        public string[] Phone { get; set; }
+        public PSContactDetail[] ContactDetail { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -91,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (ErrorResponseException ex)
             {
-                var error = ex.Response.Content.Contains("\"error\":\"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
@@ -114,15 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </exception>
         private PSPeerAsn CreatePeerInfo()
         {
-            foreach (var s in Email)
-            {
-                HelperExtensionMethods.IsValidEmail(s);
-            }
-
-            var contactInfo = new PSContactInfo(emails: this.Email, phone: this.Phone);
             var peerInfo = new PSPeerAsn(
                 peerAsnProperty: this.PeerAsn,
-                peerContactInfo: contactInfo,
+                peerContactDetail: this.ContactDetail,
                 peerName: this.PeerName,
                 name: this.Name);
             return this.PutPeerInfo(peerInfo);
@@ -139,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private PSPeerAsn PutPeerInfo(PSPeerAsn psPeerInfo)
         {
-            var peerInfo = this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
+            var peerInfo = this.PeerAsnClient.CreateOrUpdate(
                 this.Name,
                 PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(psPeerInfo));
             return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peerInfo);

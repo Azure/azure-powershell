@@ -2,6 +2,10 @@
   "tool": "Credential Scanner",
   "suppressions": [
     {
+      "file": "src\\KeyVault\\KeyVault.Test\\SessionRecords\\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\\TestCreateNewVault.json",
+      "_justification": "The 'ocp-aad-diagnostics-server-name' header in response is falsely recognized as a password."
+    },
+    {
       "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
       "_justification": "Documentation with non-live passwords in sample connection strings"
     },
@@ -547,6 +551,10 @@
 	},
 	{
 	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubDPTracingTests\\TestAzureIotHubTracing.json",
+	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+	},
+	{
+	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubDPConfigurationTests\\TestAzureIotHubConfigurationLifecycle.json",
 	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
 	},
     {

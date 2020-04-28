@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.12
+* Added support for management group level Blueprint assignment
+
 ## Version 0.2.11
 * Showed DependsOn property value in the table view
 * Added support to accept PolicyDefinitionParameter empty 

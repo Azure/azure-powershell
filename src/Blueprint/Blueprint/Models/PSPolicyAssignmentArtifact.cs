@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string Description { get; set; }
         public List<string> DependsOn { get; set; }
         public string PolicyDefinitionId { get; set; }
-        public IDictionary<string, PSParameterValueBase> Parameters { get; set; }
+        public IDictionary<string, PSParameterValue> Parameters { get; set; }
         public string ResourceGroup { get; set; }
 
         internal static PSPolicyAssignmentArtifact FromArtifactModel(PolicyAssignmentArtifact artifact, string scope)
@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Description = artifact.Description,
                 PolicyDefinitionId = artifact.PolicyDefinitionId,
                 DependsOn = new List<string>(),
-                Parameters = new Dictionary<string, PSParameterValueBase>(),
+                Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroup = artifact.ResourceGroup
             };
 
             foreach (var item in artifact.Parameters)
             {
-                PSParameterValueBase parameter = GetArtifactParameters(item);
+                PSParameterValue parameter = GetArtifactParameters(item);
                 psArtifact.Parameters.Add(item.Key, parameter);
             }
 
@@ -52,21 +52,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             return psArtifact;
         }
-        private static PSParameterValueBase GetArtifactParameters(KeyValuePair<string, ParameterValueBase> parameterKvp)
+        private static PSParameterValue GetArtifactParameters(KeyValuePair<string, ParameterValue> parameterKvp)
         {
-            PSParameterValueBase parameter = null;
+            PSParameterValue parameter = null;
 
-            if (parameterKvp.Value != null && parameterKvp.Value is ParameterValue)
+            if (parameterKvp.Value?.Value != null)
             {
-                // Need to cast as ParameterValue since assignment.Parameters value type is ParameterValueBase. 
-                var parameterValue = (ParameterValue)parameterKvp.Value;
-
-                parameter = new PSParameterValue { Description = parameterValue.Description, Value = parameterValue.Value };
+                var parameterValue = parameterKvp.Value;
+                parameter = new PSParameterValue { Value = parameterValue.Value };
             }
-            else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
+            else if (parameterKvp.Value?.Reference != null)
             {
-                var parameterValue = (SecretReferenceParameterValue)parameterKvp.Value;
-
+                var parameterValue = parameterKvp.Value;
                 var secretReference = new PSSecretValueReference
                 {
                     KeyVault = new PSKeyVaultReference { Id = parameterValue.Reference.KeyVault.Id },
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                     SecretVersion = parameterValue.Reference.SecretVersion
                 };
 
-                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };
+                parameter = new PSParameterValue { Reference = secretReference };
             }
 
             return parameter;

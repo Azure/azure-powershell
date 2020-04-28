@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public PSUniqueKeyPolicy(UniqueKeyPolicy uniqueKey)
         {
             UniqueKeys = new List<PSUniqueKey>();
-            if (uniqueKey.UniqueKeys != null)
+            if (uniqueKey?.UniqueKeys != null)
             {
                 foreach (UniqueKey key in uniqueKey.UniqueKeys)
                 {
@@ -41,5 +41,23 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     in the collection in the Azure Cosmos DB service.
         public IList<PSUniqueKey> UniqueKeys { get; set; }
 
+        public static UniqueKeyPolicy ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(PSUniqueKeyPolicy pSUniqueKeyPolicy)
+        {
+            UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy
+            {
+                UniqueKeys = new List<UniqueKey>()
+            };
+
+            foreach (PSUniqueKey uniqueKey in pSUniqueKeyPolicy?.UniqueKeys)
+            {
+                UniqueKey key = new UniqueKey
+                {
+                    Paths = new List<string>(uniqueKey.Paths)
+                };
+                uniqueKeyPolicy.UniqueKeys.Add(key);
+            }
+
+            return uniqueKeyPolicy;
+        }
     }
 }
