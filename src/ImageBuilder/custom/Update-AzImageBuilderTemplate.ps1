@@ -322,7 +322,7 @@ function Update-AzImageBuilderTemplate {
                 $Null = $PSBoundParameters.Remove('VnetConfigSubnetId')
             }
             $PSBoundParameters.Add("Parameter", $Parameter)
-            Az.ImageBuilder.internal\Update-AzImageBuilder @PSBoundParameters
+            Az.ImageBuilder.internal\Update-AzImageBuilderTemplate @PSBoundParameters
         } catch {
             throw
         }

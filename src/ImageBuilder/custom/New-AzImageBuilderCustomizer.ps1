@@ -159,7 +159,7 @@ function New-AzImageBuilderCustomizer {
             $Customizer.Sha256Checksum = $Sha256Checksum
             $Customizer.SourceUri = $SourceUri
         }
-        # $Customizer.Name = $CustomizerName
+        $Customizer.Name = $CustomizerName
 
         return $Customizer
     }
