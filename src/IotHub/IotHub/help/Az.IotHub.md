@@ -17,6 +17,9 @@ Create/update an Azure IoT Hub certificate.
 ### [Add-AzIotHubConfiguration](Add-AzIotHubConfiguration.md)
 Add an IoT automatic device management configuration in a target IoT Hub.
 
+### [Add-AzIotHubDeployment](Add-AzIotHubDeployment.md)
+Add an IoT Edge deployment in a target IoT Hub.
+
 ### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
 Create a device in an IoT Hub.
 
@@ -55,6 +58,9 @@ Lists all or a particular IoT automatic device management configuration.
 
 ### [Get-AzIotHubConnectionString](Get-AzIotHubConnectionString.md)
 Gets the IotHub connectionstrings.
+
+### [Get-AzIotHubDeployment](Get-AzIotHubDeployment.md)
+Lists all or a particular IoT Edge deployment.
 
 ### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
 Lists all devices or a particular device contained within an Azure IoT Hub. 
@@ -149,6 +155,9 @@ Deletes an Azure IoT Hub certificate.
 ### [Remove-AzIotHubConfiguration](Remove-AzIotHubConfiguration.md)
 Delete an IoT device configuration.
 
+### [Remove-AzIotHubDeployment](Remove-AzIotHubDeployment.md)
+Delete an IoT Edge deployment.
+
 ### [Remove-AzIotHubDevice](Remove-AzIotHubDevice.md)
 Delete an IoT Hub device.
 
@@ -178,6 +187,9 @@ Updates the properties of an IotHub.
 
 ### [Set-AzIotHubConfiguration](Set-AzIotHubConfiguration.md)
 Update the mutable fields of the configuration registration.
+
+### [Set-AzIotHubDeployment](Set-AzIotHubDeployment.md)
+Update the mutable fields of IoT Edge deployment.
 
 ### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
 Update an IoT Hub device.

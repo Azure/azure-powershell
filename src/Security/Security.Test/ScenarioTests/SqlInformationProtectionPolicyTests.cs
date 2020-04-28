@@ -52,9 +52,23 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestErrorWhenInformationTypesShareSameId()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypesShareSameId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenSensitivityLabelsShareSameDisplayName()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSensitivityLabelsShareSameDisplayName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestErrorWhenSensitivityLabelsShareSameId()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSensitivityLabelsShareSameId");
         }
 
         [Fact]

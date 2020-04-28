@@ -15,20 +15,20 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Newtonsoft.Json;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubConfiguration", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
-    public class RemoveAzIotHubConfiguration : IotHubBaseCmdlet
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeployment", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSDeployment))]
+    public class SetAzIotHubDeployment : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -52,16 +52,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string IotHubName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Identifier for the configuration.")]
+        [Parameter(Mandatory = true, HelpMessage = "Identifier for the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Allows to return the boolean object. By default, this cmdlet does not generate any output.")]
-        public SwitchParameter PassThru { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Weight of deployment in case of competing rules (highest wins).")]
+        [ValidateNotNullOrEmpty]
+        public int Priority { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Target condition in which an Edge deployment applies to.")]
+        [ValidateNotNullOrEmpty]
+        public string TargetCondition { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Queries collection for IoT Edge deployment metrics definition.")]
+        public Hashtable Metric { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Map of labels to be applied to target deployment.")]
+        public Hashtable Label { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Allows deployment object to be replaced even if it was updated since it was retrieved last time.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.IotHubName, Properties.Resources.RemoveIotHubConfiguration))
+            if (ShouldProcess(this.IotHubName, Properties.Resources.SetIotHubConfiguration))
             {
                 IotHubDescription iotHubDescription;
                 if (ParameterSetName.Equals(InputObjectParameterSet))
@@ -86,43 +100,36 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-                try
+                Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                if (config != null && config.Content.ModulesContent != null)
                 {
-                    if (this.Name != null)
+                    PSDeployment psDeployment = IotHubDataPlaneUtils.ToPSDeployment(config);
+
+                    if (this.IsParameterBound(c => c.Priority))
                     {
-                        Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
-                        if (config != null && config.Content.ModulesContent == null)
-                        {
-                            registryManager.RemoveConfigurationAsync(this.Name).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            throw new ArgumentException("The configuration doesn't exist.");
-                        }
-                    }
-                    else
-                    {
-                        IEnumerable<Configuration> configs = registryManager.GetConfigurationsAsync(Int32.MaxValue).GetAwaiter().GetResult();
-                        foreach (Configuration config in configs)
-                        {
-                            if (config.Content.ModulesContent == null)
-                            {
-                                registryManager.RemoveConfigurationAsync(config).GetAwaiter().GetResult();
-                            }
-                        }
+                        psDeployment.Priority = this.Priority;
                     }
 
-                    if (PassThru.IsPresent)
+                    if (this.IsParameterBound(c => c.TargetCondition))
                     {
-                        this.WriteObject(true);
+                        psDeployment.TargetCondition = this.TargetCondition;
                     }
+
+                    if (this.IsParameterBound(c => c.Label))
+                    {
+                        psDeployment.Labels = this.Label;
+                    }
+
+                    if (this.IsParameterBound(c => c.Metric))
+                    {
+                        psDeployment.Metrics.Queries = this.Metric;
+                    }
+
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSDeployment(registryManager.UpdateConfigurationAsync(IotHubDataPlaneUtils.ToConfiguration(psDeployment), this.Force.IsPresent).GetAwaiter().GetResult()));
                 }
-                catch
+                else
                 {
-                    if (PassThru.IsPresent)
-                    {
-                        this.WriteObject(false);
-                    }
+                    throw new ArgumentException("The deployment doesn't exist.");
                 }
             }
         }

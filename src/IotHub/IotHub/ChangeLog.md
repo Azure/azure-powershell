@@ -37,7 +37,12 @@
 * Fix #11597: Add-AzIotHubDevice fails to create Edge Enabled Device without child devices.
 * Added cmdlet to generate SAS token for Iot Hub, device or module.
 * Added cmdlet to invoke configuration metrics query.
-* Added cmdlet to invoke edge deployment metrics query.
+* Manage IoT Edge automatic deployment at scale. New cmdlets are:
+    - `Add-AzIotHubDeployment`
+    - `Get-AzIotHubDeployment`
+    - `Remove-AzIotHubDeployment`
+    - `Set-AzIotHubDeployment`
+* Added cmdlet to invoke an IoT Edge deployment metrics query.
 
 ## Version 2.3.0
 * Added support to manage distributed settings per-device. New Cmdlets are:

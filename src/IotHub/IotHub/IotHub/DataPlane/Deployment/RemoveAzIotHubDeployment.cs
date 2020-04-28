@@ -16,19 +16,17 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Newtonsoft.Json;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubConfiguration", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeployment", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzIotHubConfiguration : IotHubBaseCmdlet
+    public class RemoveAzIotHubDeployment : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string IotHubName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Identifier for the configuration.")]
+        [Parameter(Mandatory = false, HelpMessage = "Identifier for the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -91,13 +89,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     if (this.Name != null)
                     {
                         Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
-                        if (config != null && config.Content.ModulesContent == null)
+                        if (config != null && config.Content.ModulesContent != null)
                         {
                             registryManager.RemoveConfigurationAsync(this.Name).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            throw new ArgumentException("The configuration doesn't exist.");
+                            throw new ArgumentException("The deployment doesn't exist.");
                         }
                     }
                     else
@@ -105,7 +103,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         IEnumerable<Configuration> configs = registryManager.GetConfigurationsAsync(Int32.MaxValue).GetAwaiter().GetResult();
                         foreach (Configuration config in configs)
                         {
-                            if (config.Content.ModulesContent == null)
+                            if (config.Content.ModulesContent != null)
                             {
                                 registryManager.RemoveConfigurationAsync(config).GetAwaiter().GetResult();
                             }
