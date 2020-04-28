@@ -23,7 +23,7 @@ Update a virtual machine image template
 https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/update-AzImageBuilderTemplate
 #>
 function Update-AzImageBuilderTemplate {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplate])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]
     [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Name', Mandatory, HelpMessage="The name of the image Template.")]
@@ -69,21 +69,21 @@ function Update-AzImageBuilderTemplate {
     
         [Parameter(HelpMessage="Specifies the properties used to describe the customization steps of the image, like Image source etc.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateCustomizer[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]]
         # Specifies the properties used to describe the customization steps of the image, like Image source etc
         # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
         ${Customize},
     
         [Parameter(HelpMessage="The distribution targets where the image output needs to go to.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateDistributor[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]]
         # The distribution targets where the image output needs to go to.
         # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
         ${Distribute},
 
         [Parameter(Mandatory, HelpMessage="Describes a virtual machine image source for building, customizing and distributing.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateSource]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource]
         ${Source},
     
         [Parameter(HelpMessage="The type of identity used for the image template.")]
@@ -96,7 +96,7 @@ function Update-AzImageBuilderTemplate {
     
         [Parameter(HelpMessage="The list of user identities associated with the image template.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateIdentityUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateIdentityUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The list of user identities associated with the image template.
         # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -155,7 +155,7 @@ function Update-AzImageBuilderTemplate {
     
         [Parameter(HelpMessage="Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
@@ -244,7 +244,7 @@ function Update-AzImageBuilderTemplate {
     
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplate]::New()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplate]::New()
 
             $Parameter.Source = $Source
             $Null = $PSBoundParameters.Remove('Source')

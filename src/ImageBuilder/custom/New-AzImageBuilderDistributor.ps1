@@ -22,7 +22,7 @@ Generic distribution object
 https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderDistributor
 #>
 function New-AzImageBuilderDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateDistributor')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     Param(
         #region DistributorCommon
@@ -76,25 +76,25 @@ function New-AzImageBuilderDistributor {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${GalleryImageId}
-        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
-        # [Parameter(ParameterSetName='SharedImageDistributor', HelpMessage="Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
-        # ${StorageAccountType}
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
+        [Parameter(ParameterSetName='SharedImageDistributor', HelpMessage="Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
+        ${StorageAccountType}
         #endregion SharedImageDistributor
     )
     
     process {
         if ($PSBoundParameters.ContainsKey('VhdDistributor')) {
-            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateVhdDistributor]::New()
+            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateVhdDistributor]::New()
             $Distributor.Type = "VHD"
         } elseif ($PSBoundParameters.ContainsKey('ManagedImageDistributor')) {
-            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateManagedImageDistributor]::New()
+            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateManagedImageDistributor]::New()
             $Distributor.Type = "ManagedImage"
             $Distributor.ImageId = $ImageId
             $Distributor.Location = $Location
         } elseif ($PSBoundParameters.ContainsKey('SharedImageDistributor')) {
-            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateSharedImageDistributor]::New()
+            $Distributor = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateSharedImageDistributor]::New()
             $Distributor.Type = "SharedImage"
             $Distributor.ExcludeFromLatest = $ExcludeFromLatest
             $Distributor.GalleryImageId = $GalleryImageId

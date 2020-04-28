@@ -22,7 +22,7 @@ Describes a virtual machine image source for building, customizing and distribut
 https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderSource
 #>
 function New-AzImageBuilderSource {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     Param(
         #region SourceType-PlatformImage
@@ -34,18 +34,18 @@ function New-AzImageBuilderSource {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Offer},
-        # [Parameter(ParameterSetName='PlatformImage', HelpMessage="Name of the purchase plan.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        # [string]
-        # ${PlanName},
-        # [Parameter(ParameterSetName='PlatformImage', HelpMessage="Product of the purchase plan.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        # [string]
-        # ${PlanProduct},
-        # [Parameter(ParameterSetName='PlatformImage', HelpMessage="Publisher of the purchase plan.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        # [string]
-        # ${PlanPublisher},
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Name of the purchase plan.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        [string]
+        ${PlanName},
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Product of the purchase plan.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        [string]
+        ${PlanProduct},
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Publisher of the purchase plan.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        [string]
+        ${PlanPublisher},
         [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
@@ -86,7 +86,7 @@ function New-AzImageBuilderSource {
     
     process {
         if ($PSBoundParameters.ContainsKey('SourceTypePlatformImage')) {
-            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplatePlatformImageSource]::New()
+            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplatePlatformImageSource]::New()
             $Source.Type = "PlatformImage"
             $Source.Offer = $Offer
             $Source.PlanInfoPlanName = $PlanName
@@ -96,11 +96,11 @@ function New-AzImageBuilderSource {
             $Source.Sku = $Sku
             $Source.Version = $Version
         } elseif ($PSBoundParameters.ContainsKey('SourceTypeManagedImage')) {
-            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateManagedImageSource]::New()
+            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateManagedImageSource]::New()
             $Source.Type = "ManagedImage"
             $Source.ImageId = $ImageId
         } elseif ($PSBoundParameters.ContainsKey('SourceTypeSharedImageVersion')) {
-            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateSharedImageVersionSource]::New()
+            $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateSharedImageVersionSource]::New()
             $Source.Type = "SharedImageVersion"
             $Source.ImageVersionId = $ImageVersionId
         }
