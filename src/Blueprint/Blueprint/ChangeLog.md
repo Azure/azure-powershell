@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.12
 * Added support for management group level Blueprint assignment
 
 ## Version 0.2.11
