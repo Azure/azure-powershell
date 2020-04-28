@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string SecretIdentifier { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
-                   HelpMessage = "The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.")]
+                   HelpMessage = "The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.")]
         [ValidateNotNullOrEmpty]
         public string Thumbprint { get; set; }
 
