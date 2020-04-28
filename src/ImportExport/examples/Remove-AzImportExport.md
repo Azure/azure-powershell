@@ -1,7 +1,6 @@
 ### Example 1: Remove ImportExport job by resourceGroup and server name
 ```powershell
 PS C:\> Remove-AzImportExport -Name test-job -ResourceGroupName ImportTestRG
-
 ```
 
 This cmdlet removes ImportExport job by resourceGroup and server name.

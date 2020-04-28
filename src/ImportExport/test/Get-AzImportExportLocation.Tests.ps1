@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzLocation.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzImportExportLocation.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,20 +11,20 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzLocation' {
+Describe 'Get-AzImportExportLocation' {
     It 'List' {
-        $location = Get-AzLocation 
+        $location = Get-AzImportExportLocation 
         $location.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $location = Get-AzLocation -Name $env.location
+        $location = Get-AzImportExportLocation -Name $env.location
         $location.Count | Should -Be 1
     }
 
     It 'GetViaIdentity' {
         $Id = "/providers/Microsoft.ImportExport/locations/$($env.location)"
-        $location = Get-AzLocation -InputObject $Id
+        $location = Get-AzImportExportLocation -InputObject $Id
         $location.Count | Should -Be 1
     }
 }

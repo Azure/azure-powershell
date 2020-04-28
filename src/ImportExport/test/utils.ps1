@@ -24,7 +24,7 @@ function setupEnv() {
     # Create the test storageaccount
     write-host "Deploy StorageAccount template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name sa -ResourceGroupName $resourceGroup
-    
+
     $jobName = "test-job"
     $driveList = @( @{ DriveId = "9CA995BB"; BitLockerKey = "238810-662376-448998-450120-652806-203390-606320-483076"; ManifestFile = "\\DriveManifest.xml"; ManifestHash = "109B21108597EF36D5785F08303F3638"; DriveHeaderHash = "" })
     $env.Add("jobName", $jobName)
