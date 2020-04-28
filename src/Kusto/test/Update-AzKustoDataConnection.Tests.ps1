@@ -7,7 +7,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzKustoDataConnection.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -21,8 +21,8 @@ Describe 'Update-AzKustoDataConnection' {
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS= $env.eventhubNSName
-        $eventhub= $env.eventhubName
+        $eventhubNS = $env.eventhubNSName
+        $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $tableName = $env.tableName
         $tableMappingName = $env.tableMappingNameForUpdate
@@ -41,8 +41,8 @@ Describe 'Update-AzKustoDataConnection' {
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
         $dataConnectionName = $env.dataConnectionName + "g"
-        $eventhubNS= $env.eventhubNSNameForEventGrid
-        $eventhub= $env.eventhubNameForEventGrid
+        $eventhubNS = $env.eventhubNSNameForEventGrid
+        $eventhub = $env.eventhubNameForEventGrid
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $storageAccountName = $env.storageName
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
@@ -83,8 +83,8 @@ Describe 'Update-AzKustoDataConnection' {
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS= $env.eventhubNSName
-        $eventhub= $env.eventhubName
+        $eventhubNS = $env.eventhubNSName
+        $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $tableName = $env.tableName
         $tableMappingName = $env.tableMappingNameForUpdate
@@ -104,8 +104,8 @@ Describe 'Update-AzKustoDataConnection' {
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
         $dataConnectionName = $env.dataConnectionName + "g"
-        $eventhubNS= $env.eventhubNSNameForEventGrid
-        $eventhub= $env.eventhubNameForEventGrid
+        $eventhubNS = $env.eventhubNSNameForEventGrid
+        $eventhub = $env.eventhubNameForEventGrid
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $storageAccountName = $env.storageName
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
