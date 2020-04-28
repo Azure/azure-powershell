@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Removed alias of `Resolve-AzError`
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureSynapseAnalyticsEndpointResourceId and AzureSynapseAnalyticsEndpointSuffix
 
 ## Version 1.7.5
 * Updated Azure PowerShell survey URL in `Resolve-AzError` [#11507]

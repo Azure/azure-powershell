@@ -18,9 +18,9 @@ Get-AzCosmosDBTable -ResourceGroupName <String> -AccountName <String> [-Name <St
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBTable [-Name <String>] -InputObject <PSDatabaseAccount> [-Detailed]
+Get-AzCosmosDBTable [-Name <String>] -ParentObject <PSDatabaseAccount> [-Detailed]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -86,21 +86,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-CosmosDB Account object
-
-```yaml
-Type: PSDatabaseAccount
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the Table.
 
@@ -110,6 +95,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+CosmosDB Account object
+
+```yaml
+Type: PSDatabaseAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

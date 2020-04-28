@@ -39,5 +39,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets sort order for composite paths. Possible values include: 'Ascending',
         //     'Descending'
         public string Order { get; set; }
+
+        public static CompositePath ConvertPSCompositePathToCompositePath(PSCompositePath pSCompositePath)
+        {
+            return new CompositePath
+            {
+                Order = pSCompositePath.Order,
+                Path = pSCompositePath.Path
+            };
+        }
     }
 }

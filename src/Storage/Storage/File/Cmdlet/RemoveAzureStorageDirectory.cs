@@ -61,7 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Path to the directory to be removed.")]
         [Parameter(
             Position = 1,
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "Path to the directory to be removed.")]

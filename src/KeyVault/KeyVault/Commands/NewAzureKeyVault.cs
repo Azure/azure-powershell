@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -107,6 +108,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
+        public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -175,7 +179,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
                 },
-                    ActiveDirectoryClient);
+                    ActiveDirectoryClient,
+                    NetworkRuleSet);
 
                 this.WriteObject(newVault);
 
@@ -185,7 +190,5 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
-
-
     }
 }

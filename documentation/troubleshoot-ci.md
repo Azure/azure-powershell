@@ -23,6 +23,23 @@ This means there are issues with your help files.
 
 Regenerate MD help files [this way](development-docs/help-generation.md) and update "{{\*}}" placeholders
 
+## Help generation failure (online version url)
+
+### Message
+
+> Online version in the header of the file is incorrect.
+
+### Reasons
+
+This means the online version url in the header of the help document is either incorrect or missing.
+
+### Solution
+
+The url should exactly match the schema `https://docs.microsoft.com/en-us/powershell/module/az.{modulename}/{cmdlet-name}`, all in lower case.
+
+### Example
+> https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+
 ## Code analysis failures
 
 ### Message
@@ -66,3 +83,19 @@ One or more tests failed
 See test reports in artifacts/Test and fix failures related to your changes.
 
 In case you see more failures, please contact test owning team. Common way is to find a person who edited the cmdlet or test last. Networking tests are also marked with header like this to simplify team search: `[Trait(Category.Owner, Category.TeamAlias)]`
+
+## Test failures (.psd1 of other modules not found)
+
+### Message
+
+> Exception:System.IO.FileNotFoundException: The specified module 'D:\a\1\s\artifacts\Debug\Az.Network\Az.Network.psd1' was not loaded because no valid module file was found in any module directory.
+
+### Reasons
+
+This is because your test cases are using cmdlets from other module, but it was not built by CI.
+
+### Solution
+
+Add the missing module's csproj to your module's .sln file. For example this is how `Compute.sln` references `Network.csproj`:
+https://github.com/Azure/azure-powershell/blob/58ded2ba3e0a5f7da0d1ffed9e0adb986986ab6f/src/Compute/Compute.sln#L11
+

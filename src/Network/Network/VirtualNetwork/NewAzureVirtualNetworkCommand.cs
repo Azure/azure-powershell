@@ -97,6 +97,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpAllocation")]
+        public PSIpAllocation[] IpAllocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -149,8 +155,17 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-                var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
+            var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+            if (this.IpAllocation != null)
+            {
+                foreach (var ipAllocation in this.IpAllocation)
+                {
+                    var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
+                    vnetModel.IpAllocations.Add(ipAllocationReference);
+                }
+            }
 
             // Execute the Create VirtualNetwork call
             VirtualNetworkClient.CreateOrUpdate(ResourceGroupName, Name, vnetModel);

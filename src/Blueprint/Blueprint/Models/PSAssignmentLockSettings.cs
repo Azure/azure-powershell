@@ -12,10 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSAssignmentLockSettings
     {
         public PSLockMode Mode { get; set; }
+        public List<string> ExcludedPrincipals;
+        public List<string> ExcludedActions;
     }
 }

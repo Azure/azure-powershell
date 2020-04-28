@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId DdosProtectionPlan { get; set; }
 
+        public List<PSResourceId> IpAllocations { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
@@ -80,6 +82,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DdosProtectionPlanText
         {
             get { return JsonConvert.SerializeObject(DdosProtectionPlan, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string IpAllocationsText
+        {
+            get { return JsonConvert.SerializeObject(IpAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

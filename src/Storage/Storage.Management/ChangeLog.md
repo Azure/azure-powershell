@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add -Adjob to get/list account cmdlet
+    - `Get-AzStorageAccount`
+* Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
+    - `Set-AzStorageAccount`
+* Fix remove Azure File Directory fail with pipeline
+    - `Remove-AzStorageDirectory`
+* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
+	- Update-AzStorageAccountNetworkRuleSet
+	- Get-AzStorageAccountNetworkRuleSet
+* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
+    - `Add-AzStorageAccountNetworkRule`
+* Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release

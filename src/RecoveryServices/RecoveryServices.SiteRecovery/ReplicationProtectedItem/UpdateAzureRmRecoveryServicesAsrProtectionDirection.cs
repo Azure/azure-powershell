@@ -254,6 +254,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySetId { get; set; }
 
         /// <summary>
+        /// Gets or sets recovery proximity placement group Id for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
@@ -581,7 +589,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                     RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
-                    RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
+                    RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
+                    RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId
                 };
 
                 // Fetch the latest Protected item objects

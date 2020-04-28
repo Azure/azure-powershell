@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     using Newtonsoft.Json.Linq;
     using Policy;
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy definition.
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyDefinition")]
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyDefinition))]
     public class GetAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -100,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 getFirstPage: () => this.GetResources(listFilter),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputObjects("PolicyDefinitionId", listFilter, resources), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputPolicyDefinitions(listFilter, resources), enumerateCollection: true));
         }
 
         /// <summary>
