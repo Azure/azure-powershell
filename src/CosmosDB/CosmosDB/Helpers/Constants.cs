@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra. Default value: Sql ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
+        public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GremlinGraphDetailedParamHelpMessage = "If provided then, the cmdlet returns the Gremlin Graph with the corresponding throughput value.";
         public const string GremlinDatabaseThroughputHelpMessage = "The throughput of Gremlin Database (RU/s). Default value is 400.";
         public const string GremlinGraphThroughputHelpMessage = "The throughput of Gremlin Graph (RU/s). Default value is 400.";
-        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
+        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom";
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";

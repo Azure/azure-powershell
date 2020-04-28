@@ -84,6 +84,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -122,6 +126,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (DisableKeyBasedMetadataWriteAccess != null)
             {
                 databaseAccountUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            }
+            if (PublicNetworkAccess != null)
+            {
+                databaseAccountUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))

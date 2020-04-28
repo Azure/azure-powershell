@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using System;
 using System.Management.Automation;
@@ -103,6 +104,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+        public Guid RoleAssignmentId { get; set; } = default(Guid);
+
         protected override ServerAuditModel ApplyUserInputToModel(ServerAuditModel model)
         {
             base.ApplyUserInputToModel(model);
@@ -173,5 +176,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.PersistAuditChanges(entity);
             return null;
         }
+
+        protected override SqlAuditAdapter InitModelAdapter()
+        {
+            return new SqlAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+        }
+
+        protected override bool WriteResult() => PassThru;
     }
 }

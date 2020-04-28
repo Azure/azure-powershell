@@ -23,14 +23,14 @@ Enables AzureRm prefix aliases for Az modules. If -Module is specified, only mod
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Enable-AzureRmAlias
 ```
 
 Enables all AzureRm prefixes for the current PowerShell session.
 
-### Example 1
-```
+### Example 2
+```powershell
 PS C:\> Enable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
 ```
 

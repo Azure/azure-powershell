@@ -11,17 +11,36 @@ Locale: en-US
 Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
 
 ## Az.Security Cmdlets
+### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
+Dismiss Iot aggregated alert
+
+## Az.Security Cmdlets
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
 Disables the advanced threat protection policy for a storage account.
 
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
 Enables the advanced threat protection policy for a storage account.
 
+### [Get-AzDeviceSecurityGroup](Get-AzDeviceSecurityGroup.md)
+Get device security group - IoT Hub security
+
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
 Gets security solutions that were discovered by Azure Security Center
 
 ### [Get-AzExternalSecuritySolution](Get-AzExternalSecuritySolution.md)
 Get external security solution 
+
+### [Get-AzIotSecurityAnalytics](Get-AzIotSecurityAnalytics.md)
+Get IoT security analytics
+
+### [Get-AzIotSecurityAnalyticsAggregatedAlert](Get-AzIotSecurityAnalyticsAggregatedAlert.md)
+Get IoT security aggregated alert
+
+### [Get-AzIotSecurityAnalyticsAggregatedRecommendation](Get-AzIotSecurityAnalyticsAggregatedRecommendation.md)
+Get IoT security aggregated recommendation
+
+### [Get-AzIotSecuritySolution](Get-AzIotSecuritySolution.md)
+Get IoT security solution of IoT Hub
 
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
@@ -53,6 +72,33 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
 
+### [New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject](New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject.md)
+Create new allow list custom alert rule for device security group - IoT Security
+
+### [New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject](New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject.md)
+Create new deny list custom alert rule for device security group - IoT Security
+
+### [New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject](New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject.md)
+Create new threshold custom alert rule for device security group - IoT Security
+
+### [New-AzDeviceSecurityGroupTimeWindowRuleObject](New-AzDeviceSecurityGroupTimeWindowRuleObject.md)
+Create new time window rule for device security group - IoT Security
+
+### [New-AzIotSecuritySolutionRecommendationConfigurationObject](New-AzIotSecuritySolutionRecommendationConfigurationObject.md)
+Create new recommendation configuration for iot security solution
+
+### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
+Create new user defined resources for iot security solution
+
+### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
+Delete device security group
+
+### [Remove-AzIotSecuritySolution](Remove-AzIotSecuritySolution.md)
+Delete IoT security solution
+
+### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
+Gets the SQL information protection policy.
+
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 Deletes a JIT network access policy.
 
@@ -61,6 +107,12 @@ Deletes a security contact.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
+
+### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
+Create or update device security group
+
+### [Set-AzIotSecuritySolution](Set-AzIotSecuritySolution.md)
+Create or update IoT security solution
 
 ### [Set-AzJitNetworkAccessPolicy](Set-AzJitNetworkAccessPolicy.md)
 Updates JIT network access policy.
@@ -80,6 +132,11 @@ Sets the pricing of Azure Security Center tier for a scope.
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
 Updates the workspace settings for the subscription.
 
+### [Set-AzSqlInformationProtectionPolicy](Set-AzSqlInformationProtectionPolicy.md)
+Sets the SQL information protection policy.
+
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 Invokes a temporary network access request.
 
+### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
+Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources

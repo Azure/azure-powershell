@@ -23,5 +23,8 @@ namespace Microsoft.Azure.Commands.Aks.Models
 
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
+
+        [JsonIgnore]
+        public string ObjectId { get; set; }
     }
 }

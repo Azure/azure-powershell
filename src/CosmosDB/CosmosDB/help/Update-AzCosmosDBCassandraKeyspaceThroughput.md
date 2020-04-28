@@ -32,6 +32,9 @@ Update-AzCosmosDBCassandraKeyspaceThroughput [-Name <String>] -Throughput <Int32
  [<CommonParameters>]
 ```
 
+## DESCRIPTION
+Updates the throughput value of a CosmosDB Cassandra Keyspace.
+
 ## EXAMPLES
 
 ### Example 1

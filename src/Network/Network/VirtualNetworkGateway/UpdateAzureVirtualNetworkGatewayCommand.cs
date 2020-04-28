@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public bool? EnablePrivateIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to disable Active Active feature on virtual network gateway")]
         public SwitchParameter DisableActiveActiveFeature { get; set; }
 
@@ -231,6 +236,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.ActiveActive = false;
             }
 
+            if (this.EnablePrivateIpAddress.HasValue)
+            {
+                this.VirtualNetworkGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.Value;
+            }
 
             if (!string.IsNullOrEmpty(GatewaySku))
             {

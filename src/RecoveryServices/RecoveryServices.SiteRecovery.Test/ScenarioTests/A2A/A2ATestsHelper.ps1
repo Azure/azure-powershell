@@ -107,6 +107,10 @@ function getCacheStorageAccountName{
      return "cache"+ $seed;
 }
 
+function getRecoveryCacheStorageAccountName{
+     return "rlog"+ $seed;
+}
+
 function getRecoveryResourceGroupName{
        return "recRG"+ $seed;
 }
@@ -151,6 +155,23 @@ function createAzureVm{
 		return $vm.Id
 }
 
+function createAzureVmInProximityPlacementgroup{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+		$ppg =  New-AzProximityPlacementGroup -ResourceGroupName $vmName -Name $VMName -Location $VMLocation
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
+		return $vm.Id
+}
+
 function createRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
@@ -172,6 +193,21 @@ function createCacheStorageAccount{
 	$StorageAccountName = getCacheStorageAccountName
 	$cacheLocation = getPrimaryLocation
 	$storageRes = getAzureVmName
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $storageRes `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+
+function createRecoveryCacheStorageAccount{
+    param([string] $location , [string] $resourceGroup)
+
+	$StorageAccountName = getRecoveryCacheStorageAccountName
+	$cacheLocation = getRecoveryLocation
+	$storageRes = getRecoveryResourceGroupName
     $storageAccount = New-AzStorageAccount `
           -ResourceGroupName $storageRes `
           -Location $cacheLocation `

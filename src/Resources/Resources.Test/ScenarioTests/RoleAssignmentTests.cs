@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Test fails during parallelization. Test uses RoleDefinitionNames statically.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaPropertiesValidation() {
+        public void RaPropertiesValidation()
+        {
             TestRunner.RunTestScript("Test-RaPropertiesValidation");
         }
 
@@ -173,6 +174,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaCreatedBySP()
+        {
+            TestRunner.RunTestScript("Test-RaCreatedBySP");
+        }
+
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
@@ -221,8 +229,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                             .List()
                                             .First();
 
-                    // Wait to allow newly created object changes to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow newly created object changes to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
@@ -246,8 +254,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     // scriptBuilder
                     () =>
                     {
-                    // Wait to allow for the role assignment to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow for the role assignment to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
