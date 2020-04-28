@@ -19,13 +19,14 @@ Creates a new server.
 .Description
 Creates a new server.
 .Example
-PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
 mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserver
 #>

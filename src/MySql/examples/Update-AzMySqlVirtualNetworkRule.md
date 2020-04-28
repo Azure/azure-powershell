@@ -1,7 +1,7 @@
 ### Example 1: Update MySql Virtual Network Rule by name
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet2"
-PS C:\> Update-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -VirtualNetworkSubnetId $ID
+PS C:\> Update-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $ID
 
 Name Type
 ---- ----
@@ -14,7 +14,7 @@ This cmdlet updates MySql Virtual Network Rule by name.
 ```powershell
 PS C:\> $SubnetID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
 PS C:\> $VNetID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/virtualNetworkRules/vnet"
-PS C:\> Update-AzMySqlVirtualNetworkRule -InputObject $VNetID -VirtualNetworkSubnetId $SubnetID
+PS C:\> Update-AzMySqlVirtualNetworkRule -InputObject $VNetID -SubnetId $SubnetID
 
 Name Type
 ---- ----

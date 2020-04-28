@@ -25,6 +25,8 @@ Name               Location AdministratorLogin Version StorageProfileStorageMb S
 ----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
 mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlreplica
 #>

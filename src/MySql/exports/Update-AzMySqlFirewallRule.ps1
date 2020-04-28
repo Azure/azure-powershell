@@ -21,17 +21,36 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Example
 PS C:\> Update-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
 PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlfirewallrule
 #>

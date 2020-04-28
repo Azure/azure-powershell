@@ -25,6 +25,8 @@ Name Type
 ---- ----
 rule Microsoft.DBforMySQL/servers/firewallRules
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlfirewallrule
 #>

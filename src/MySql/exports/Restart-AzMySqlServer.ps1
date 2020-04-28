@@ -26,6 +26,25 @@ PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTes
 PS C:\> Restart-AzMySqlServer -InputObject $ID
  
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/restart-azmysqlserver
 #>
