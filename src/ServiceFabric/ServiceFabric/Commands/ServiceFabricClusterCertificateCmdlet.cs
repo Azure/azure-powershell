@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string SecretIdentifier { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
+                   HelpMessage = "The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.")]
+        [ValidateNotNullOrEmpty]
+        public string Thumbprint { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                    HelpMessage = "The path to the existing certificate")]
         [ValidateNotNullOrEmpty]
@@ -639,19 +644,43 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string certVersion;
             ExtractSecretNameFromSecretIdentifier(this.SecretIdentifier, out certName, out certVersion);
             CertificateBundle certBundle = this.KeyVaultClient.GetCertificateAsync(vault.Properties.VaultUri, certName, certVersion).GetAwaiter().GetResult();
-
+            string thumbprint;
+            string commonName;
             if (certBundle.Cer == null)
             {
-                throw new PSInvalidOperationException(string.Format(
-                    "Certificate in keyvault {0}, name {0} and version {1} doesn't have a Cer value. Please verify the certificate correclty added o the key vault.",
-                    vault.Properties.VaultUri,
-                    certName,
-                    certVersion));
+                if (string.IsNullOrWhiteSpace(this.Thumbprint))
+                {
+                    throw new PSInvalidOperationException(string.Format(
+                        ServiceFabricProperties.Resources.CerObjectNotInBundle,
+                        vault.Properties.VaultUri,
+                        certName,
+                        certVersion));
+                }
+                else
+                {
+                    thumbprint = this.Thumbprint;
+                    commonName = this.CertificateCommonName;
+                }
+            }
+            else
+            {
+                var certificate = new X509Certificate2(certBundle.Cer);
+                thumbprint = certificate.Thumbprint;
+                commonName = certificate.GetNameInfo(X509NameType.SimpleName, false);
+
+                if (!string.IsNullOrWhiteSpace(this.Thumbprint) && !string.Equals(this.Thumbprint, thumbprint, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException(string.Format(
+                        ServiceFabricProperties.Resources.CertificateThumbprintMismatch,
+                        this.Thumbprint,
+                        thumbprint,
+                        certName,
+                        certVersion,
+                        vault.Properties.VaultUri));
+                }
             }
 
-            var certificate = new X509Certificate2(certBundle.Cer);
-            var thumbprint = certificate.Thumbprint;
-            var commonName = certificate.GetNameInfo(X509NameType.SimpleName, false);
+
 
             WriteVerboseWithTimestamp("Certificate fround for identifier {0} with thumbprint {1} and common name {2}.", secretIdentifier, thumbprint, commonName);
 
