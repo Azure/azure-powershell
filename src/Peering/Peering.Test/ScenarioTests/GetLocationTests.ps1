@@ -17,7 +17,7 @@ GetLocationKindDirect
 #>
 function Test-GetLocationKindDirect {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Direct 
         Assert-NotNull $location
@@ -33,7 +33,7 @@ GetLocationKindDirect
 #>
 function Test-GetLocationKindExchange {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Exchange 
         Assert-NotNull $location
@@ -49,7 +49,7 @@ GetLocationKindExchangeSeattle
 #>
 function Test-GetLocationKindExchangeSeattle {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Exchange -PeeringLocation seattle
         Assert-NotNull $location
@@ -65,7 +65,7 @@ GetLocationKindDirectSeattle
 #>
 function Test-GetLocationKindDirectSeattle {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringLocation sea
         Assert-NotNull $location
@@ -82,7 +82,7 @@ GetLocationKindDirectSeattle
 #>
 function Test-GetLocationKindDirectSeattle99999WithLocation {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringLocation sea -PeeringDbFacilityId  99999
         Assert-NotNull $location
@@ -99,7 +99,7 @@ GetLocationKindDirectSeattle
 #>
 function Test-GetLocationKindDirectSeattle99999 {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringDbFacilityId  99999
         Assert-NotNull $location
@@ -116,7 +116,7 @@ GetLocationKindDirectSeattle
 #>
 function Test-GetLocationKindDirectAmsterdam {
     try {
-        $asn = 65000
+        $asn = (getRandomNumber)
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Cdn -PeeringLocation Amsterdam
         Assert-NotNull $location

@@ -38,26 +38,6 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
-        /// The test get legacy peering.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyPeering()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyPeering Ashburn");
-        }
-
-        /// <summary>
-        /// The test convert legacy to exchange.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestConvertLegacyToExchange()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyToExchange");
-        }
-
-        /// <summary>
         /// The test update exchange md 5 on name and resource group.
         /// </summary>
         [Fact]
@@ -65,6 +45,26 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         public void TestUpdateExchangeMd5OnNameAndResourceGroup()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
+        }   
+        
+        /// <summary>
+        /// The test update exchange md 5 on name and resource group.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeIPv4OnInputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnInputObject");
+        }      
+        
+        /// <summary>
+        /// The test update exchange md 5 on name and resource group.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeIPv6OnResourceId()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv6OnResourceId");
         }
     }
 }

@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The get InputObject locations.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringLocation", DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringLocation,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
     [OutputType(typeof(PSPeeringLocation))]
     public class GetAzurePeeringLocationCommand : PeeringBaseCmdlet
     {
