@@ -84,33 +84,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseAllParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseSingleParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
         [ValidateNotNull]
+        [Alias ("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectoryCloseAllParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder which contains the files/directories to closed handle.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileCloseAllParameterSetName,
             HelpMessage = "CloudFile object indicated the file to close handle.")]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
         [Parameter(
