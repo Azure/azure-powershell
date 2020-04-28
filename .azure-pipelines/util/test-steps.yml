@@ -16,6 +16,22 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
 
+- powershell: |
+   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
+   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
+  workingDirectory: 'artifacts/Debug'
+  displayName: Test for AutoGen Modules With PowerShell
+  condition: and(succeeded(), ne('${{ parameters.testFramework }}', 'netcoreapp2.2'))
+
+- pwsh: |
+   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
+  workingDirectory: 'artifacts/Debug'
+  displayName: 'Test for AutoGen Modules With PowerShell Core'
+  condition: and(succeeded(), eq('${{ parameters.testFramework }}', 'netcoreapp2.2'))
+
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
