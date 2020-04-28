@@ -376,17 +376,31 @@ namespace Microsoft.Azure.Commands.Network
             // VpnAuthenticationType = Radius related validations.
             else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
-                if (this.RadiusServerAddress != null)
+                if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
+                    throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
                 }
 
-                if (this.RadiusServerSecret != null)
+                if (RadiusServerList != null && this.RadiusServerList.Count() > 0)
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                    vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList.ToList();
+                    vpnServerConfigurationToUpdate.RadiusServerAddress = null;
+                    vpnServerConfigurationToUpdate.RadiusServerSecret = null;
                 }
+                else
+                {
+                    if (this.RadiusServerAddress != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
+                    }
 
-                vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList?.ToList();
+                    if (this.RadiusServerSecret != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                    }
+
+                    vpnServerConfigurationToUpdate.RadiusServers = null;
+                }
 
                 // Read the RadiusServerRootCertificates if present
                 if (this.RadiusServerRootCertificateFilesList != null)
