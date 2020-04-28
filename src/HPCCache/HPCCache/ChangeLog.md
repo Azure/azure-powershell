@@ -19,8 +19,5 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.1
+## Version 0.1.0
 * Preview of `Az.HPCCache` module
-
-## Version
-
