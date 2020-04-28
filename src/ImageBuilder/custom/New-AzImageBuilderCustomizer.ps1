@@ -140,12 +140,12 @@ function New-AzImageBuilderCustomizer {
             $Customizer.RestartCheckCommand = $RestartCheckCommand
             $Customizer.RestartCommand = $RestartCommand
             $Customizer.RestartTimeout = $RestartTimeout
-        # } elseif ($PSBoundParameters.ContainsKey('WindowsUpdateCustomizer')) {
-        #     $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateWindowsUpdateCustomizer]::New()
-        #     $Customizer.Type = "WindowsUpdate"
-        #     $Customizer.Filter = $Filter
-        #     $Customizer.SearchCriterion = $SearchCriterion
-        #     $Customizer.UpdateLimit = $UpdateLimit
+        } elseif ($PSBoundParameters.ContainsKey('WindowsUpdateCustomizer')) {
+            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateWindowsUpdateCustomizer]::New()
+            $Customizer.Type = "WindowsUpdate"
+            $Customizer.Filter = $Filter
+            $Customizer.SearchCriterion = $SearchCriterion
+            $Customizer.UpdateLimit = $UpdateLimit
         } elseif ($PSBoundParameters.ContainsKey('ShellCustomizer')) {
             $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateShellCustomizer]::New()
             $Customizer.Type = "Shell"
