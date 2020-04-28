@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// The get azure peering service provider command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceProvider")]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringServiceProvider)]
     [OutputType(typeof(PSPeeringServiceProvider))]
     public class GetAzurePeeringServiceProviderCommand : PeeringBaseCmdlet
     {

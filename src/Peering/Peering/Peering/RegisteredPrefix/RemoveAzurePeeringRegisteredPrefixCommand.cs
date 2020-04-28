@@ -29,11 +29,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        "AzPeeringServicePrefix",
+        Constants.AzPeeringRegisteredPrefix,
         DefaultParameterSetName = Constants.ParameterSetNameByName,
         SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class DeleteAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
+    public class RemoveAzurePeeringRegisteredPrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the input object.
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault,
-            HelpMessage = Constants.PrefixInputObjectHelp + "Prefix")]
+            ParameterSetName = Constants.ParameterSetNameInputObject,
+            HelpMessage = Constants.InputObjectHelp)]
         [ValidateNotNullOrEmpty]
         public PSPeeringServicePrefix InputObject { get; set; }
 
@@ -59,17 +59,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameByName)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets the peering service name.
         /// </summary>
         [Parameter(
@@ -78,7 +67,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public string PeeringServiceName { get; set; }
+        public string PeeringName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = Constants.PrefixNameHelp,
+            ParameterSetName = Constants.ParameterSetNameByName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id.
@@ -130,15 +130,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                                 var resourceId = new ResourceIdentifier(this.ResourceId);
                                 this.ResourceGroupName = resourceId.ResourceGroupName;
                                 this.Name = resourceId.ResourceName;
-                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
+                                this.PeeringName = resourceId?.ParentResource?.Split('/')?[1];
                             }
 
                             if (this.InputObject != null)
                             {
-                                var resourceId = new ResourceIdentifier(this.InputObject.Id);
+                                var resourceId = new ResourceIdentifier(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.InputObject).Id);
                                 this.ResourceGroupName = resourceId.ResourceGroupName;
                                 this.Name = resourceId.ResourceName;
-                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
+                                this.PeeringName = resourceId?.ParentResource?.Split('/')?[1];
                             }
 
                             try
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                                         Resources.ShouldProcessMessage,
                                         "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
                                 {
-                                    this.PeeringServicePrefixesClient.Delete(
+                                    this.RegisteredPrefixesClient.Delete(
                                         this.ResourceGroupName,
-                                        this.PeeringServiceName,
+                                        this.PeeringName,
                                         this.Name);
                                     if (this.PassThru.IsPresent)
                                     {
