@@ -277,7 +277,7 @@ function New-AzFunctionApp {
             
             if ($consumptionPlan)
             {
-                ValidateConsumptionPlanLocation -Location $Location -IsLinux:$OSIsLinux
+                ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
                 $functionAppDef.Location = $Location
             }
             else 

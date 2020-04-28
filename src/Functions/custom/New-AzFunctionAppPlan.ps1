@@ -174,7 +174,7 @@ function New-AzFunctionAppPlan {
 
             # Validate location for a Premium plan
             $OSIsLinux = $WorkerType -eq "Linux"
-            ValidatePremiumPlanLocation -Location $Location -IsLinux:$OSIsLinux
+            ValidatePremiumPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
 
             $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan
 

@@ -877,12 +877,12 @@ function ValidatePlanLocation
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        [ValidateSet("Dynamic","ElasticPremium")]
+        [ValidateSet("Dynamic", "ElasticPremium")]
         $PlanType,
 
         [Parameter(Mandatory=$false)]
         [System.Management.Automation.SwitchParameter]
-        $IsLinux
+        $OSIsLinux
     )
 
     $Location = $Location.Trim()
@@ -890,7 +890,7 @@ function ValidatePlanLocation
 
     $availableLocations = @()
 
-    if ($IsLinux)
+    if ($OSIsLinux)
     {
         $availableLocations = @(Az.Functions.internal\Get-AzFunctionAppAvailableLocation -Sku $PlanType -LinuxWorkersEnabled | ForEach-Object { $_.Name })
     }
@@ -927,10 +927,10 @@ function ValidatePremiumPlanLocation
 
         [Parameter(Mandatory=$false)]
         [System.Management.Automation.SwitchParameter]
-        $IsLinux
+        $OSIsLinux
     )
 
-    ValidatePlanLocation -Location $Location -PlanType ElasticPremium -IsLinux:$IsLinux
+    ValidatePlanLocation -Location $Location -PlanType ElasticPremium -OSIsLinux:$OSIsLinux
 }
 
 function ValidateConsumptionPlanLocation
@@ -944,10 +944,10 @@ function ValidateConsumptionPlanLocation
 
         [Parameter(Mandatory=$false)]
         [System.Management.Automation.SwitchParameter]
-        $IsLinux
+        $OSIsLinux
     )
 
-    ValidatePlanLocation -Location $Location -PlanType Dynamic -IsLinux:$IsLinux
+    ValidatePlanLocation -Location $Location -PlanType Dynamic -OSIsLinux:$OSIsLinux
 }
 
 function ParseDockerImage

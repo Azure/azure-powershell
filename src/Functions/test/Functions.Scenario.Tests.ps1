@@ -1,4 +1,4 @@
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzFunctionApp.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Functions.Tests.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -7,7 +7,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 # Test variables
-$testSubscriptionId = ""
+$testSubscriptionId = "52d8cf1b-bcac-493a-bbae-f234b5ff38b0"
 
 $resourceGroupNameWindowsPremium = "Func99-West-Europe-Win-Premium"
 $resourceGroupNameLinuxPremium = "Func99-West-Europe-Linux-Premium"
@@ -19,13 +19,13 @@ $linuxConsumptionLocation = "Southeast Asia"
 $windowsConsumptionLocation = "Central US"
 $planNameWorkerTypeLinux = "Func99-West-Europe-Linux-Premium"
 $planNameWorkerTypeWindows = "Func99-West-Europe-Windows-Premium"
-$storageAccountWindows = "functionswinstorage999"
-$storageAccountLinux = "functionslinuxstorage999"
+$storageAccountWindows = "functionswinstorage888"
+$storageAccountLinux = "functionslinuxstorage888"
 
 function CreateFunctionApps
 {
-    <#
     # Create resource groups
+    <#
     Write-Host "Creating resource groups" -ForegroundColor Green
     New-AzResourceGroup -Name $resourceGroupNameWindowsPremium -Location $premiumPlanLocation -Force
     New-AzResourceGroup -Name $resourceGroupNameLinuxPremium -Location $premiumPlanLocation -Force
@@ -36,9 +36,7 @@ function CreateFunctionApps
     Write-Host "Creating storage accounts" -ForegroundColor Green
     New-AzStorageAccount -ResourceGroupName $resourceGroupNameWindowsPremium -AccountName $storageAccountWindows -Location $premiumPlanLocation -SkuName Standard_GRS
     New-AzStorageAccount -ResourceGroupName $resourceGroupNameLinuxPremium -AccountName $storageAccountLinux -Location $premiumPlanLocation -SkuName Standard_GRS
-
     #>
-
     # Create service plans
     $servicePlansToCreate = @(
         @{
@@ -123,7 +121,7 @@ function RemoveFunctionApps
     foreach ($resourceGroupName in @($resourceGroupNameWindowsPremium, $resourceGroupNameLinuxPremium, $resourceGroupNameLinuxConsumption, $resourceGroupNameWindowsConsumption))
     {
         # Get all the functions apps in the test resource groups. This operation automatically deletes the service plans assigned to the function app.
-        Get-AzFunctionApp -ResourceGroupName $resourceGroupName | Remove-AzFunctionApp -Force
+        Get-AzFunctionApp -ResourceGroupName $resourceGroupName | Remove-AzFunctionApp -Force -PassThru
         
         # Delete the storage account 
         #Get-AzStorageAccount -ResourceGroupName $resourceGroupName | Remove-AzStorageAccount -Force
@@ -173,11 +171,13 @@ function WaitForJobToComplete
 Describe 'Functions End to End Tests' {
 
     BeforeAll {
-        #CreateFunctionApps
+        # Set the test subscription
+        Get-AzSubscription -SubscriptionId $testSubscriptionId | Set-AzContext
+        CreateFunctionApps
     }
 
     AfterAll {
-        #RemoveFunctionApps
+        RemoveFunctionApps
     }
 
     function ValidateAvailableLocation
