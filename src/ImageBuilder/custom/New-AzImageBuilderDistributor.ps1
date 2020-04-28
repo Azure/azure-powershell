@@ -75,7 +75,7 @@ function New-AzImageBuilderDistributor {
         [Parameter(ParameterSetName='SharedImageDistributor', Mandatory, HelpMessage="Resource Id of the Shared Image Gallery image.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
-        ${GalleryImageId}
+        ${GalleryImageId},
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
         [Parameter(ParameterSetName='SharedImageDistributor', HelpMessage="Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
