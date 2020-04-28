@@ -15,75 +15,75 @@ Updates a Synapse Analytics SQL pool.
 ### UpdateByNameParameterSet
 ```
 Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
- [-PerformanceLevel <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PerformanceLevel <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PauseByNameParameterSet
 ```
 Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Suspend]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResumeByNameParameterSet
 ```
-Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Resume] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Resume]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByParentObjectParameterSet
 ```
 Update-AzSynapseSqlPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
- [-PerformanceLevel <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PerformanceLevel <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PauseByParentObjectParameterSet
 ```
-Update-AzSynapseSqlPool -Name <String> [-Suspend] -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
+Update-AzSynapseSqlPool -Name <String> [-Suspend] -WorkspaceObject <PSSynapseWorkspace> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResumeByParentObjectParameterSet
 ```
-Update-AzSynapseSqlPool -Name <String> [-Resume] -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
+Update-AzSynapseSqlPool -Name <String> [-Resume] -WorkspaceObject <PSSynapseWorkspace> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PauseByInputObjectParameterSet
 ```
-Update-AzSynapseSqlPool [-Suspend] -InputObject <PSSynapseSqlPool> [-AsJob]
+Update-AzSynapseSqlPool [-Suspend] -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PauseByResourceIdParameterSet
 ```
-Update-AzSynapseSqlPool [-Suspend] -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlPool [-Suspend] -ResourceId <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResumeByInputObjectParameterSet
 ```
-Update-AzSynapseSqlPool [-Resume] -InputObject <PSSynapseSqlPool> [-AsJob]
+Update-AzSynapseSqlPool [-Resume] -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResumeByResourceIdParameterSet
 ```
-Update-AzSynapseSqlPool [-Resume] -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlPool [-Resume] -ResourceId <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzSynapseSqlPool -InputObject <PSSynapseSqlPool> [-Tag <Hashtable>] [-PerformanceLevel <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzSynapseSqlPool -ResourceId <String> [-Tag <Hashtable>] [-PerformanceLevel <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlPool -ResourceId <String> [-Tag <Hashtable>] [-PerformanceLevel <String>] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +177,21 @@ Parameter Sets: UpdateByNameParameterSet, PauseByNameParameterSet, ResumeByNameP
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
