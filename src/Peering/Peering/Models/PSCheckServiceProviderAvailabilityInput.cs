@@ -31,10 +31,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// Initializes a new instance of the
         /// PSCheckServiceProviderAvailabilityInput class.
         /// </summary>
-        /// <param name="peeringServiceLocation">Gets or sets the
-        /// PeeringServiceLocation</param>
-        /// <param name="peeringServiceProvider">Gets or sets the
-        /// PeeringServiceProvider</param>
+        /// <param name="peeringServiceLocation">Gets or sets the peering
+        /// service location.</param>
+        /// <param name="peeringServiceProvider">Gets or sets the peering
+        /// service provider.</param>
         public PSCheckServiceProviderAvailabilityInput(string peeringServiceLocation = default(string), string peeringServiceProvider = default(string))
         {
             PeeringServiceLocation = peeringServiceLocation;
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the PeeringServiceLocation
+        /// Gets or sets the peering service location.
         /// </summary>
         [JsonProperty(PropertyName = "peeringServiceLocation")]
         public string PeeringServiceLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the PeeringServiceProvider
+        /// Gets or sets the peering service provider.
         /// </summary>
         [JsonProperty(PropertyName = "peeringServiceProvider")]
         public string PeeringServiceProvider { get; set; }

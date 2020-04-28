@@ -107,4 +107,4 @@ function It {
 }
 
 # set the HttpPipelineAppend for all the cmdlets
-$PSDefaultParameterValues["*:HttpPipelineAppend"] = $Mock
+$PSDefaultParameterValues["*:HttpPipelinePrepend"] = $Mock

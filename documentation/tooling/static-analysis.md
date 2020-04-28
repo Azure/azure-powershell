@@ -91,7 +91,7 @@ The dependency analyzer can be found in the [`DependencyAnalyzer`](https://githu
 The help analyzer can be found in the [`HelpAnalyzer`](https://github.com/Azure/azure-powershell/tree/01a81fbb7ea6c086fff2bc137053168c0fc7728a/tools/StaticAnalysis/HelpAnalyzer) folder. In this folder, you will find the following classes:
 
 - `HelpAnalyzer`
-    - The implementation of the `IStaticAnalyzer` interface; determines which modules to analyze and checks to see which cmdlets within those modules don't have a corresponding markdown help file
+    - The implementation of the `IStaticAnalyzer` interface; determines which modules to analyze and checks to see which cmdlets within those modules don't have a corresponding markdown help file. It also checks the content structure of markdown help conforms to [PlatyPS Schema](https://github.com/PowerShell/platyPS/blob/master/platyPS.schema.md)
 - `HelpIssues`
     - The implementation of the `IReportRecord` interface; defines what a help exception looks like when it's reported in the `HelpIssues.csv` file that is found in the build artifacts of a CI run, as well as how to compare a new record to a record found in the existing `HelpIssues.csv` file used for exception suppressions
 

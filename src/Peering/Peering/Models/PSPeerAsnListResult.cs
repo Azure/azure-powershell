@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// The paginated list of peer ASNs.
+    /// The paginated list of [T].
     /// </summary>
     public partial class PSPeerAsnListResult
     {
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Initializes a new instance of the PSPeerAsnListResult class.
         /// </summary>
-        /// <param name="value">The list of peer ASNs.</param>
-        /// <param name="nextLink">The link to fetch the next page of peer
-        /// ASNs.</param>
+        /// <param name="value">The list of [T].</param>
+        /// <param name="nextLink">The link to fetch the next page of
+        /// [T].</param>
         public PSPeerAsnListResult(IList<PSPeerAsn> value = default(IList<PSPeerAsn>), string nextLink = default(string))
         {
             Value = value;
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of peer ASNs.
+        /// Gets or sets the list of [T].
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<PSPeerAsn> Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the link to fetch the next page of peer ASNs.
+        /// Gets or sets the link to fetch the next page of [T].
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
         public string NextLink { get; set; }
