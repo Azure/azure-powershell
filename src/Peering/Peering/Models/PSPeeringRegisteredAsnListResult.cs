@@ -16,27 +16,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// The contact information of the peer.
+    /// The paginated list of [T].
     /// </summary>
-    public partial class PSContactInfo
+    public partial class PSPeeringRegisteredAsnListResult
     {
         /// <summary>
-        /// Initializes a new instance of the PSContactInfo class.
+        /// Initializes a new instance of the PSPeeringRegisteredAsnListResult
+        /// class.
         /// </summary>
-        public PSContactInfo()
+        public PSPeeringRegisteredAsnListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSContactInfo class.
+        /// Initializes a new instance of the PSPeeringRegisteredAsnListResult
+        /// class.
         /// </summary>
-        /// <param name="emails">The list of email addresses.</param>
-        /// <param name="phone">The list of contact numbers.</param>
-        public PSContactInfo(IList<string> emails = default(IList<string>), IList<string> phone = default(IList<string>))
+        /// <param name="value">The list of [T].</param>
+        /// <param name="nextLink">The link to fetch the next page of
+        /// [T].</param>
+        public PSPeeringRegisteredAsnListResult(IList<PSPeeringRegisteredAsn> value = default(IList<PSPeeringRegisteredAsn>), string nextLink = default(string))
         {
-            Emails = emails;
-            Phone = phone;
+            Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -46,16 +49,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of email addresses.
+        /// Gets or sets the list of [T].
         /// </summary>
-        [JsonProperty(PropertyName = "emails")]
-        public IList<string> Emails { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<PSPeeringRegisteredAsn> Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of contact numbers.
+        /// Gets or sets the link to fetch the next page of [T].
         /// </summary>
-        [JsonProperty(PropertyName = "phone")]
-        public IList<string> Phone { get; set; }
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; set; }
 
     }
 }

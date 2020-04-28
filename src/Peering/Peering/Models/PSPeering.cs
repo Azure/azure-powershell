@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     /// Microsoft Cloud Edge at a location.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PSPeering : PSResource
+    public partial class PSPeering
     {
         /// <summary>
         /// Initializes a new instance of the PSPeering class.
@@ -40,9 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <param name="kind">The kind of the peering. Possible values
         /// include: 'Direct', 'Exchange'</param>
         /// <param name="location">The location of the resource.</param>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="id">The ID of the resource.</param>
-        /// <param name="type">The type of the resource.</param>
         /// <param name="direct">The properties that define a direct
         /// peering.</param>
         /// <param name="exchange">The properties that define an exchange
@@ -52,8 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
         /// <param name="tags">The resource tags.</param>
-        public PSPeering(PSPeeringSku sku, string kind, string location, string name = default(string), string id = default(string), string type = default(string), PSPeeringPropertiesDirect direct = default(PSPeeringPropertiesDirect), PSPeeringPropertiesExchange exchange = default(PSPeeringPropertiesExchange), string peeringLocation = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(name, id, type)
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="id">The ID of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        public PSPeering(PSPeeringSku sku, string kind, string location, PSPeeringPropertiesDirect direct = default(PSPeeringPropertiesDirect), PSPeeringPropertiesExchange exchange = default(PSPeeringPropertiesExchange), string peeringLocation = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string name = default(string), string id = default(string), string type = default(string))
         {
             Sku = sku;
             Kind = kind;
@@ -63,6 +62,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             ProvisioningState = provisioningState;
             Location = location;
             Tags = tags;
+            Name = name;
+            Id = id;
+            Type = type;
             CustomInit();
         }
 
@@ -120,6 +122,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets the type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Validate the object.
