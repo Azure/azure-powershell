@@ -4,7 +4,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneConfig"), OutputType(typeof(PSPrivateDnsZoneConfig))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneConfig"), OutputType(typeof(PSPrivateDnsZoneConfig))]
     public class NewAzurePrivateDnsZoneConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of the resource that is unique within a resource group. This name can be used to access the resource.")]

@@ -56,17 +56,17 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSPrivateDnsZoneGroup ToPsPrivateDnsZoneGroup(PrivateDnsZoneGroup privateDnsZoneGroup)
         {
-            var psPrivateEndpoint = NetworkResourceManagerProfile.Mapper.Map<PSPrivateDnsZoneGroup>(privateDnsZoneGroup);
-            psPrivateEndpoint.ProvisioningState = privateDnsZoneGroup.ProvisioningState;
+            var psPrivateDnsZoneGroup = NetworkResourceManagerProfile.Mapper.Map<PSPrivateDnsZoneGroup>(privateDnsZoneGroup);
+            psPrivateDnsZoneGroup.ProvisioningState = privateDnsZoneGroup.ProvisioningState;
             if(privateDnsZoneGroup.PrivateDnsZoneConfigs != null)
             {
-                psPrivateEndpoint.PrivateDnsZoneConfigs = new List<PSPrivateDnsZoneConfig>();
+                psPrivateDnsZoneGroup.PrivateDnsZoneConfigs = new List<PSPrivateDnsZoneConfig>();
                 foreach(var config in privateDnsZoneGroup.PrivateDnsZoneConfigs)
                 {
-                    psPrivateEndpoint.PrivateDnsZoneConfigs.Add(ToPsPrivateDnsZoneConfig(config));
+                    psPrivateDnsZoneGroup.PrivateDnsZoneConfigs.Add(ToPsPrivateDnsZoneConfig(config));
                 }
             }
-            return psPrivateEndpoint;
+            return psPrivateDnsZoneGroup;
         }
 
         public PSPrivateDnsZoneConfig ToPsPrivateDnsZoneConfig(PrivateDnsZoneConfig privateDnsZoneConfig)

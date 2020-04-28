@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneGroup", SupportsShouldProcess = true), OutputType(typeof(PSPrivateDnsZoneGroup))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneGroup", SupportsShouldProcess = true), OutputType(typeof(PSPrivateDnsZoneGroup))]
     public class NewAzurePrivateDnsZoneGroupCommand : PrivateDnsZoneGroupBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]

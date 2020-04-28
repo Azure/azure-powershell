@@ -4910,7 +4910,11 @@
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
-                <PropertyName>PovisioningState</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneConfigs</Label>
+                <PropertyName>PrivateDnsZoneConfigsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4936,7 +4940,15 @@
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
-                <PropertyName>PovisioningState</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneId</Label>
+                <PropertyName>PrivateDnsZoneId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RecordSets</Label>
+                <PropertyName>RecordSetsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneConfig", DefaultParameterSetName = "List"), OutputType(typeof(PSPrivateDnsZoneConfig))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneConfig", DefaultParameterSetName = "List"), OutputType(typeof(PSPrivateDnsZoneConfig))]
     public class GetAzurePrivateDnsZoneConfigCommand : PrivateDnsZoneGroupBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.", ParameterSetName = "List")]

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -11,5 +10,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateDnsZoneId { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        public IList<PSPrivateDnsZoneConfigRecordSet> RecordSets { get; set; }
+
+        [JsonIgnore]
+        public string RecordSetsText
+        {
+            get { return JsonConvert.SerializeObject(RecordSets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
     }
 }

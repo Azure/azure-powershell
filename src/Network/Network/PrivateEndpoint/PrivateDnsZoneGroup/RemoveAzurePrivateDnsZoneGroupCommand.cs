@@ -22,17 +22,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneGroup", DefaultParameterSetName = "List"), OutputType(typeof(PSPrivateDnsZoneGroup))]
-    public class GetAzurePrivateDnsZoneGroupCommand : PrivateDnsZoneGroupBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzurePrivateDnsZoneGroupCommand : PrivateDnsZoneGroupBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.", ParameterSetName = "List")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.", ParameterSetName = "GetByName")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the private endpoint.", ParameterSetName = "List")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the private endpoint.", ParameterSetName = "GetByName")]
         [ValidateNotNullOrEmpty]
         public string PrivateEndpointName { get; set; }
@@ -42,29 +39,32 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to delete resource")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
-            {
-                var obj = this.GetPrivateDnsZoneGroup(this.ResourceGroupName, this.PrivateEndpointName, this.Name);
-                WriteObject(obj);
-            } else
-            {
-                IPage<PrivateDnsZoneGroup> page = this.PrivateDnsZoneGroupClient.List(this.PrivateEndpointName, this.ResourceGroupName);
-
-                var groups = ListNextLink<PrivateDnsZoneGroup>.GetAllResourcesByPollingNextLink(page, this.PrivateDnsZoneGroupClient.ListNext);
-                var ret = new List<PSPrivateDnsZoneGroup>();
-                foreach (var group in groups)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.RemovingResource, Name),
+                Properties.Resources.RemoveResourceMessage,
+                Name,
+                () =>
                 {
-                    var psGroup = ToPsPrivateDnsZoneGroup(group);
-                    ret.Add(psGroup);
-                }
-
-                WriteObject(ret);
-            }
+                    this.PrivateDnsZoneGroupClient.Delete(ResourceGroupName, PrivateEndpointName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
-
     }
 }
