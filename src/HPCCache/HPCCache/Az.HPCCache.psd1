@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,28 +57,27 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.0'; })
 RequiredAssemblies = 'Microsoft.Azure.Management.StorageCache.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
- #ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-#FormatsToProcess = @()
+# FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-#FunctionsToExport = @()
+FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzHpcCacheSku' , 'Get-AzHpcCacheUsageModel',
-                  'Get-AzHpcCache', 'New-AzHpcCache',
-                  'Remove-AzHpcCache', 'Set-AzHpcCache',
-                  'Start-AzHpcCache', 'Flush-AzHpcCache',
-                  'Stop-AzHpcCache', 'Upgrade-AzHpcCache',
-                  'Remove-AzHpcCacheStorageTarget', 'New-AzHpcCacheStorageTarget',
-                  'Get-AzHpcCacheStorageTarget', 'Set-AzHpcCacheStorageTarget'
+CmdletsToExport = 'Get-AzHpcCacheSku', 'Get-AzHpcCacheUsageModel', 'Get-AzHpcCache',
+               'New-AzHpcCache', 'Remove-AzHpcCache', 'Set-AzHpcCache',
+               'Start-AzHpcCache', 'Flush-AzHpcCache', 'Stop-AzHpcCache',
+               'Update-AzHpcCache', 'Remove-AzHpcCacheStorageTarget',
+               'New-AzHpcCacheStorageTarget', 'Get-AzHpcCacheStorageTarget',
+               'Set-AzHpcCacheStorageTarget'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -101,7 +100,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','HPC','HPCCache', 'StorageCache'
+        Tags = 'Azure','ResourceManager','ARM','HPC','HPCCache','StorageCache'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -113,7 +112,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update references in .psd1 to use relative path'
+        ReleaseNotes = '* Preview of ''Az.HPCCache'' module'
 
         # Prerelease string of this module
         Prerelease = 'preview'

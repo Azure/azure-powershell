@@ -1,43 +1,43 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hpccache/upgrade-azhpccache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hpccache/update-azhpccache
 schema: 2.0.0
 ---
 
-# Upgrade-AzHpcCache
+# Update-AzHpcCache
 
 ## SYNOPSIS
-Upgrades a HPC Cache.
+Updates a HPC Cache.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Upgrade-AzHpcCache -ResourceGroupName <String> -Name <String> [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Upgrade] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Upgrade-AzHpcCache -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceId <String> [-Upgrade] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Upgrade-AzHpcCache -InputObject <PSHPCCache> [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache [-Upgrade] -InputObject <PSHPCCache> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Upgrade-AzHpcCache** cmdlet upgrades a Azure HPC Cache.
+The **Update-AzHpcCache** cmdlet updates a Azure HPC Cache.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Upgrade-AzHpcCache -ResourceGroupName testRG -CacheName testCache
+PS C:\> Update-AzHpcCache -ResourceGroupName testRG -CacheName testCache
 ```
 
 ## PARAMETERS
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to upgrade the cache.
+Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to update the cache.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The cache object to upgrade.
+The cache object to update.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of resource group under which you want to upgrade cache.
+Name of resource group under which you want to update cache.
 
 ```yaml
 Type: System.String
@@ -160,6 +160,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Upgrade
+Upgrade HpcCache.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

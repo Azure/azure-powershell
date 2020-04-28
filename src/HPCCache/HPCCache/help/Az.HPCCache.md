@@ -50,6 +50,6 @@ Starts HPC cache.
 ### [Stop-AzHpcCache](Stop-AzHpcCache.md)
 Stops HPC cache.
 
-### [Upgrade-AzHpcCache](Upgrade-AzHpcCache.md)
-Upgrades a HPC Cache.
+### [Update-AzHpcCache](Update-AzHpcCache.md)
+Updates a HPC Cache.
 
