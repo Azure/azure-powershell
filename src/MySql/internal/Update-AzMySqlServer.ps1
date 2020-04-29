@@ -27,12 +27,53 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
 mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Disabled
 .Example
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageInMb 10240
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
 mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
+  [AdministratorLoginPassword <String>]: The password of the administrator login.
+  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
+  [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  [ReplicationRole <String>]: The replication role of the server.
+  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
+  [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
+  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
+  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
+  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
+  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [Tag <IServerUpdateParametersTags>]: Application-specific metadata in the form of key-value pairs.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Version <ServerVersion?>]: The version of a server.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlserver
 #>

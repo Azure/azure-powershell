@@ -27,6 +27,25 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqldatabase
 #>
@@ -188,6 +207,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
 #>
@@ -323,6 +344,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFile
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqllogfile
 #>
@@ -465,6 +488,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqloperation
 #>
@@ -584,6 +609,25 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlserveradministrator
 #>
@@ -738,6 +782,25 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlserversecurityalertpolicy
 #>
@@ -894,6 +957,31 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check resource name availability.
+  Name <String>: Resource name to verify.
+  [Type <String>]: Resource type used for verification.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/invoke-azmysqlexecutechecknameavailability
 #>
@@ -1057,6 +1145,31 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IConfiguration>: Represents a Configuration.
+  [Source <String>]: Source of the configuration.
+  [Value <String>]: Value of the configuration.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlconfiguration
 #>
@@ -1255,6 +1368,31 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IDatabase>: Represents a Database.
+  [Charset <String>]: The charset of the database.
+  [Collation <String>]: The collation of the database.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqldatabase
 #>
@@ -1451,6 +1589,31 @@ Name Type
 ---- ----
 rule Microsoft.DBforMySQL/servers/firewallRules
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IFirewallRule>: Represents a server firewall rule.
+  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
+  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlfirewallrule
 #>
@@ -1646,6 +1809,32 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
+  Login <String>: The server administrator login account name.
+  Sid <String>: The server administrator Sid (Secure ID).
+  TenantId <String>: The server Active Directory Administrator tenant id.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserveradministrator
 #>
@@ -1843,6 +2032,36 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
+  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
+  [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
+  [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
+  [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
+  [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
+  [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
+  [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserversecurityalertpolicy
 #>
@@ -2072,13 +2291,54 @@ The update action will overwrite the existing server.
 Creates a new server or updates an existing server.
 The update action will overwrite the existing server.
 .Example
-PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
 mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreate
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IServerForCreate>: Represents a server to be created.
+  CreateMode <CreateMode>: The mode to create a new server.
+  Location <String>: The location the resource resides in.
+  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [InfrastructureEncryption <InfrastructureEncryption?>]: Status showing whether the server enabled infrastructure encryption.
+  [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
+  [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
+  [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
+  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
+  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
+  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
+  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [Tag <IServerForCreateTags>]: Application-specific metadata in the form of key-value pairs.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Version <ServerVersion?>]: Server version.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserver
 #>
@@ -2391,12 +2651,37 @@ Creates or updates an existing virtual network rule.
 Creates or updates an existing virtual network rule.
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
-PS C:\> New-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -VirtualNetworkSubnetId $ID
+PS C:\> New-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SubnetId $ID
 
 Name Type
 ---- ----
 vnet Microsoft.DBforMySQL/servers/virtualNetworkRules
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IVirtualNetworkRule>: A virtual network rule.
+  VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
+  [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 #>
@@ -2594,6 +2879,25 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqldatabase
 #>
@@ -2769,6 +3073,25 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlserveradministrator
 #>
@@ -2937,6 +3260,17 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PARAMETER <IDatabase>: Represents a Database.
+  [Charset <String>]: The charset of the database.
+  [Collation <String>]: The collation of the database.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqldatabase
 #>
@@ -3120,6 +3454,18 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
+  Login <String>: The server administrator login account name.
+  Sid <String>: The server administrator Sid (Secure ID).
+  TenantId <String>: The server Active Directory Administrator tenant id.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlserveradministrator
 #>
@@ -3300,6 +3646,22 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
+  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
+  [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
+  [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
+  [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
+  [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
+  [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
+  [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlserversecurityalertpolicy
 #>
@@ -3508,17 +3870,42 @@ Updates a configuration of a server.
 .Example
 PS C:\> Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
-Name            Type
-----            ----
-net_retry_count Microsoft.DBforMySQL/servers/configurations
+Name            Value
+----            -----
+net_retry_count 15
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
 PS C:\> Update-AzMySqlConfiguration -InputObject $ID -Value 150
 
-Name         Type
-----         ----
-wait_timeout Microsoft.DBforMySQL/servers/configurations
+Name         Value
+----         -----
+wait_timeout 150
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IConfiguration>: Represents a Configuration.
+  [Source <String>]: Source of the configuration.
+  [Value <String>]: Value of the configuration.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlconfiguration
 #>
@@ -3689,17 +4076,42 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Example
 PS C:\> Update-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
 PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IFirewallRule>: Represents a server firewall rule.
+  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
+  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlfirewallrule
 #>
@@ -3876,12 +4288,53 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
 mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Disabled
 .Example
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageInMb 10240
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
 mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
+  [AdministratorLoginPassword <String>]: The password of the administrator login.
+  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
+  [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  [ReplicationRole <String>]: The replication role of the server.
+  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
+  [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
+  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
+  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
+  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
+  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [Tag <IServerUpdateParametersTags>]: Application-specific metadata in the form of key-value pairs.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Version <ServerVersion?>]: The version of a server.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlserver
 #>
@@ -4185,7 +4638,7 @@ Creates or updates an existing virtual network rule.
 Creates or updates an existing virtual network rule.
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet2"
-PS C:\> Update-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -VirtualNetworkSubnetId $ID
+PS C:\> Update-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $ID
 
 Name Type
 ---- ----
@@ -4193,12 +4646,37 @@ vnet Microsoft.DBforMySQL/servers/virtualNetworkRules
 .Example
 PS C:\> $SubnetID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
 PS C:\> $VNetID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/virtualNetworkRules/vnet"
-PS C:\> Update-AzMySqlVirtualNetworkRule -InputObject $VNetID -VirtualNetworkSubnetId $SubnetID
+PS C:\> Update-AzMySqlVirtualNetworkRule -InputObject $VNetID -SubnetId $SubnetID
 
 Name Type
 ---- ----
 vnet Microsoft.DBforMySQL/servers/virtualNetworkRules
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IVirtualNetworkRule>: A virtual network rule.
+  VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
+  [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
 #>

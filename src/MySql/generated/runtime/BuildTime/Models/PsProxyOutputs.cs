@@ -271,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PowerShell
 {CommentInfo.Synopsis.ToDescriptionFormat(false)}
 .Description
 {CommentInfo.Description.ToDescriptionFormat(false)}
-{examples}
+{examples}{inputsText}{outputsText}{notesText}
 .Link
 {CommentInfo.OnlineVersion}{relatedLinksText}
 #>

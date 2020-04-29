@@ -27,6 +27,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqloperation
 #>

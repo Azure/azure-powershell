@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: a7ae4dab-1307-495d-ae64-cdbeb26bb2c0
+Module Guid: 43b3698e-9955-4090-9969-7b5a71479c75
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
