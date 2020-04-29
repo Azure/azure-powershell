@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbServer
 
 ## SYNOPSIS
-
+Creates a new MariaDb.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzMariaDbServer -Name <String> -ResourceGroupName <String> -AdministratorLog
 ```
 
 ## DESCRIPTION
-
+Creates a new MariaDb.
 
 ## EXAMPLES
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -104,7 +104,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -164,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

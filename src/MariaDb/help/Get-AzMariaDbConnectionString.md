@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzMariaDbConnectionString
 
 ## SYNOPSIS
-
+Get connection string of a MariaDb under a given framework.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzMariaDbConnectionString -Client <String> -InputObject <IServer> [-DefaultP
 ```
 
 ## DESCRIPTION
-
+Get connection string of a MariaDb under a given framework.
 
 ## EXAMPLES
 
@@ -65,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
