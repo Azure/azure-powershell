@@ -643,6 +643,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string certName;
             string certVersion;
             ExtractSecretNameFromSecretIdentifier(this.SecretIdentifier, out certName, out certVersion);
+            
+            // Test is unable to get the certificate gets unauthorized as the authentication procedure is mocked
+            if (RunningTest)
+            {
+                return new CertificateInformation()
+                {
+                    KeyVault = vault,
+                    SecretUrl = this.SecretIdentifier,
+                    CertificateThumbprint = TestThumbprint,
+                    CertificateCommonName = TestCommonNameCACert,
+                    SecretName = certName,
+                    Version = certVersion
+                };
+            }
+
             CertificateBundle certBundle = this.KeyVaultClient.GetCertificateAsync(vault.Properties.VaultUri, certName, certVersion).GetAwaiter().GetResult();
             string thumbprint;
             string commonName;
