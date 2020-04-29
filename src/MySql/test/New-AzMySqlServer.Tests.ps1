@@ -14,6 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzMySqlServer' {
     It 'CreateExpanded' {
         {
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             $server = New-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
             Remove-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup
