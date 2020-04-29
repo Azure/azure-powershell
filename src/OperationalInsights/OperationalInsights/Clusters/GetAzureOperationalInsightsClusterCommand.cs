@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster"), OutputType(typeof(PSCluster))]
-    class GetAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
+    public class GetAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false,
             HelpMessage = "The resource group name.")]

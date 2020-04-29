@@ -91,25 +91,31 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 ? existingCluster.Tags 
                 : parameters.Tags;
 
-            parameters.KeyVaultProperties.KeyName = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyName)
-                ? existingCluster.KeyVaultProperties.KeyName
-                : parameters.KeyVaultProperties.KeyName;
+            if (parameters.KeyVaultProperties != null)
+            {
+                parameters.KeyVaultProperties.KeyName = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyName)
+                    ? existingCluster.KeyVaultProperties?.KeyName
+                    : parameters.KeyVaultProperties.KeyName;
 
-            parameters.KeyVaultProperties.KeyVaultUri = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVaultUri)
-                ? existingCluster.KeyVaultProperties.KeyVaultUri
-                : parameters.KeyVaultProperties.KeyVaultUri;
+                parameters.KeyVaultProperties.KeyVaultUri = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVaultUri)
+                    ? existingCluster.KeyVaultProperties?.KeyVaultUri
+                    : parameters.KeyVaultProperties.KeyVaultUri;
 
-            parameters.KeyVaultProperties.KeyVersion = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVersion)
-                ? existingCluster.KeyVaultProperties.KeyVersion
-                : parameters.KeyVaultProperties.KeyVersion;
+                parameters.KeyVaultProperties.KeyVersion = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVersion)
+                    ? existingCluster.KeyVaultProperties?.KeyVersion
+                    : parameters.KeyVaultProperties.KeyVersion;
+            }
 
-            parameters.Sku.Name = string.IsNullOrEmpty(parameters.Sku.Name)
-                ? existingCluster.Sku.Name
-                : parameters.Sku.Name;
+            if (parameters.Sku != null)
+            {
+                parameters.Sku.Name = string.IsNullOrEmpty(parameters.Sku?.Name)
+                    ? existingCluster.Sku?.Name
+                    : parameters.Sku.Name;
 
-            parameters.Sku.Capacity = parameters.Sku.Capacity == 0
-                ? existingCluster.Sku.Capacity
-                : parameters.Sku.Capacity;
+                parameters.Sku.Capacity = parameters.Sku?.Capacity == 0
+                    ? existingCluster.Sku?.Capacity
+                    : parameters.Sku.Capacity;
+            }
 
             return new PSCluster(this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch()));
         }

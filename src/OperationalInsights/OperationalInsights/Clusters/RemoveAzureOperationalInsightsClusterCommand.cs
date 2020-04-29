@@ -19,7 +19,7 @@ using System.Net;
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    class RemoveAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
+    public class RemoveAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The resource group name.")]

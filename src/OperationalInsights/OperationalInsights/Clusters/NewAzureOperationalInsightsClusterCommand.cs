@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -20,7 +21,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    class NewAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
+    public class NewAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The resource group name.")]
@@ -39,21 +40,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
         [ValidateSet("SystemAssigned", "None")]
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Principal Id of the Identity")]
-        [ValidateNotNullOrEmpty]
-        public string PrincipalId { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Tenant Id of the Identity")]
-        [ValidateNotNullOrEmpty]
-        public string TenantId { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Sku Name, now can be 'CapacityReservation' only")]
@@ -61,39 +52,24 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Sku Capacity")]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.")]
         [ValidateNotNullOrEmpty]
         public long SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Key Vault Uri")]
-        [ValidateNotNullOrEmpty]
-        public string KeyVaultUri { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Key Name")]
-        [ValidateNotNullOrEmpty]
-        public string KeyName { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Key Version")]
-        [ValidateNotNullOrEmpty]
-        public string KeyVersion { get; set; }
-
-        [Parameter(Mandatory = false,
             HelpMessage = "Tags of the cluster")]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSCluster parameters = new PSCluster()
             {
+                Name = this.ClusterName,
                 Location = this.Location,
-                Identity = new PSIdentity(this.IdentityType, this.PrincipalId, this.TenantId),
-                KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
-                Sku = new PSClusterSku(this.SkuCapacity, this.SkuName),
+                Identity = new PSIdentity(this.IdentityType),
+                Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
                 Tags = this.Tags
             };
 

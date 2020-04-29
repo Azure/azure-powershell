@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             PrincipalId = principalId;
             TenantId = tenantId;
-            Type = type;
+            Type = string.IsNullOrEmpty(type) ? "SystemAssigned" : type;
         }
 
         public PSIdentity(Identity identity)

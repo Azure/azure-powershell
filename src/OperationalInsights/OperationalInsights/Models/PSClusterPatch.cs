@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Newtonsoft.Json;
 
@@ -20,7 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterPatch
     {
-        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable))
         {
             KeyVaultProperties = keyVaultProperties;
             Sku = sku;
@@ -29,20 +31,37 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public PSClusterPatch(ClusterPatch patch)
         {
-            this.KeyVaultProperties = new PSKeyVaultProperties(patch.KeyVaultProperties);
-            this.Sku = new PSClusterSku(patch.Sku);
-            this.Tags = patch.Tags;
+            if (patch.KeyVaultProperties != null)
+            {
+                this.KeyVaultProperties = new PSKeyVaultProperties(patch.KeyVaultProperties);
+            }
+
+            if (patch.Sku != null)
+            {
+                this.Sku = new PSClusterSku(patch.Sku);
+            }
+
+            if (patch.Tags != null)
+            {
+                this.Tags = new Hashtable((IDictionary)patch.Tags);
+            }
+            
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
 
         public PSClusterSku Sku { get; set; }
 
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
+
+        private IDictionary<string, string> getTags()
+        {
+            return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
+        }
 
         public ClusterPatch GetClusterPatch()
         {
-            return new ClusterPatch(this.KeyVaultProperties.GetKeyVaultProperties(), this.Sku.geteClusterSku(), this.Tags);
+            return new ClusterPatch(this.KeyVaultProperties?.GetKeyVaultProperties(), this.Sku?.geteClusterSku(), this.getTags());
         }
     }
 }

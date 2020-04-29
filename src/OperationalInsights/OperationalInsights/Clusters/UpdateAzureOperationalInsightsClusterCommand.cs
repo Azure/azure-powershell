@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -19,8 +20,8 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedService", SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
-    class UpdateAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
+    public class UpdateAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The resource group name.")]
@@ -62,14 +63,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false,
             HelpMessage = "Tags of the cluster")]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSClusterPatch parameters = new PSClusterPatch()
             {
                 KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
-                Sku = new PSClusterSku(this.SkuCapacity, this.SkuName),
+                Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
                 Tags = this.Tags
             };
 

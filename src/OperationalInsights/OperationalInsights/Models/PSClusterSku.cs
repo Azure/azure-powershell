@@ -13,22 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterSku
     {
-        public PSClusterSku(long? capacity = default(long?), string name = default(string))
+        public PSClusterSku(string name, long? capacity = default(long?))
         {
             Capacity = capacity;
-            Name = name;
+            Name = string.IsNullOrEmpty(name) ? "CapacityReservation" : name;
+            validateCapacity();
         }
 
         public PSClusterSku(ClusterSku sku)
         {
             this.Capacity = sku.Capacity;
             this.Name = sku.Name;
+            validateCapacity();
         }
 
         public long? Capacity { get; set; }
@@ -38,6 +41,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public ClusterSku geteClusterSku()
         {
             return new ClusterSku(this.Capacity, this.Name);
+        }
+
+        private void validateCapacity()
+        {
+            if (this.Capacity < 1000 || this.Capacity > 2000)
+            {
+                throw new PSArgumentException("SkuCapacity need to be in range '1000 - 2000' ");
+            }
+
+            if (this.Capacity%100 != 0)
+            {
+                throw new PSArgumentException("SkuCapacity need to be multiple of 100 ");
+            }
         }
     }
 }

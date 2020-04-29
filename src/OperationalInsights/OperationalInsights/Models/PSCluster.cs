@@ -12,8 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using System.Linq;
+using System.Management.Automation;
+using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -21,7 +26,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
     {
         public PSCluster() {}
 
-        public PSCluster(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PSIdentity identity = default(PSIdentity), PSClusterSku sku = default(PSClusterSku), string nextLink = default(string), string clusterId = default(string), string provisioningState = default(string), PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties))
+        public PSCluster(string location, string id = default(string), string name = default(string), string type = default(string), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity), PSClusterSku sku = default(PSClusterSku), string nextLink = default(string), string clusterId = default(string), string provisioningState = default(string), PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties))
         {
             Id = id;
             Location = location;
@@ -34,6 +39,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             ClusterId = clusterId;
             ProvisioningState = provisioningState;
             KeyVaultProperties = keyVaultProperties;
+            validateClusterName();
         }
 
         public PSCluster(Cluster cluster)
@@ -42,13 +48,25 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = cluster.Location;
             this.Name = cluster.Name;
             this.Type = cluster.Type;
-            this.Tags = cluster.Tags;
-            this.Identity = new PSIdentity(cluster.Identity);
-            this.Sku = new PSClusterSku(cluster.Sku);
+            this.Tags = new Hashtable((IDictionary)cluster.Tags);
+            if (cluster.Identity != null)
+            {
+                this.Identity = new PSIdentity(cluster.Identity);
+            }
+
+            if (cluster.Sku != null)
+            {
+                this.Sku = new PSClusterSku(cluster.Sku);
+            }
             this.NextLink = cluster.NextLink;
             this.ClusterId = cluster.ClusterId;
             this.ProvisioningState = cluster.ProvisioningState;
-            this.KeyVaultProperties = new PSKeyVaultProperties(cluster.KeyVaultProperties);
+            if (cluster.KeyVaultProperties != null)
+            {
+                this.KeyVaultProperties = new PSKeyVaultProperties(cluster.KeyVaultProperties);
+            }
+
+            validateClusterName();
         }
 
         public PSIdentity Identity { get; set; }
@@ -71,11 +89,32 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string Type { get; set; }
 
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
+
+        private IDictionary<string, string> getTags()
+        {
+            return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
+        }
 
         public Cluster getCluster()
         {
-            return new Cluster(this.Location, this.Id, this.Name, this.Type, this.Tags, this.Identity.getIdentity(), this.Sku.geteClusterSku(), this.NextLink, this.ClusterId, this.ProvisioningState, this.KeyVaultProperties.GetKeyVaultProperties());
+            return new Cluster(location:this.Location, tags:this.getTags(), identity:this.Identity?.getIdentity(), sku:this.Sku?.geteClusterSku(), clusterId:this.ClusterId);
+        }
+
+        private const string Pattern = "^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$";
+
+        private void validateClusterName()
+        {
+            Regex regex = new Regex(Pattern);
+            if (!regex.Match(this.Name).Success)
+            {
+                throw new PSArgumentException("ClusterName can have numerical and alphabetical characters only");
+            }
+
+            if (this.Name.Length < 4 || this.Name.Length >63)
+            {
+                throw new PSArgumentException("length of ClusterName need to be in range ''");
+            }
         }
     }
 
