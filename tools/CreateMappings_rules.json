@@ -47,6 +47,7 @@
 
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
+    { "regex": "Synapse", "alias": "Synapse" },
 	
     { "regex": "Relay", "alias": "Relay" },
 
