@@ -28,6 +28,7 @@
     - `Remove-AzIotHubDeployment`
     - `Set-AzIotHubDeployment`
 * Added cmdlet to invoke an IoT Edge deployment metrics query.
+* Added cmdlet to apply the configuration content to the specified edge device.
 
 ## Version 2.4.0
 * Manage IoT device twin configuration, New cmdlets are:
