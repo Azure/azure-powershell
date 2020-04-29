@@ -1148,5 +1148,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
                 return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+        ///You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues..
+        /// </summary>
+        internal static string WhatIfPreviewNotice {
+            get {
+                return ResourceManager.GetString("WhatIfPreviewNotice", resourceCulture);
+            }
+        }
     }
 }
