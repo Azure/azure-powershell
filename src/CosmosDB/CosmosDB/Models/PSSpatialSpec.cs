@@ -39,5 +39,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of path's spatial type
         public IList<string> Types { get; set; }
+
+        public static SpatialSpec ConvertPSSpatialSpecToSpatialSpec(PSSpatialSpec pSSpatialSpec)
+        {
+            return new SpatialSpec
+            {
+                Path = pSSpatialSpec.Path,
+                Types = pSSpatialSpec.Types
+            };
+        }
     }
 }

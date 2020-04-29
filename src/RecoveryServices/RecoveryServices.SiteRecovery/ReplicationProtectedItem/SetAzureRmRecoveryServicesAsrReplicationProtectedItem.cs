@@ -131,6 +131,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySet { get; set; }
 
         /// <summary>
+        ///     Gets or sets the proximity placement group Id for replication protected item after failover.
+        /// </summary>
+        [Parameter]
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
         ///     Gets or sets the availability set for replication protected item after failover.
         /// </summary>
         [Parameter]
@@ -271,6 +277,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     this.UseManagedDisk == null &&
                     this.IsParameterBound(c => c.RecoveryAvailabilitySet) &&
+                    this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -324,6 +331,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var recoveryCloudServiceId = this.RecoveryCloudServiceId;
                 var useManagedDisk = this.UseManagedDisk;
                 var availabilitySetId = this.RecoveryAvailabilitySet;
+                var proximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
                 var primaryNic = this.PrimaryNic;
                 var diskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap;
                 var tfoNetworkId = string.Empty;
@@ -502,6 +510,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
                     }
 
+                    proximityPlacementGroupId = this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId)
+                       ? this.RecoveryProximityPlacementGroupId
+                       : providerSpecificDetails.RecoveryProximityPlacementGroupId;
+
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
                     {
@@ -568,6 +580,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                         RecoveryResourceGroupId = this.RecoveryResourceGroupId,
+                        RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                         RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                         ManagedDiskUpdateDetails = managedDiskUpdateDetails,
                         TfoAzureVMName = this.TfoAzureVMName,

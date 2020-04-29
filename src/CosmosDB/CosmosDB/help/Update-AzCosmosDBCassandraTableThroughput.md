@@ -33,6 +33,9 @@ Update-AzCosmosDBCassandraTableThroughput [-Name <String>] -Throughput <Int32>
  [<CommonParameters>]
 ```
 
+## DESCRIPTION
+Updates the throughput value of a CosmosDB Cassandra Table.
+
 ## EXAMPLES
 
 ### Example 1

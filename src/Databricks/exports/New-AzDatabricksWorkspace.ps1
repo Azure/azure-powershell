@@ -37,6 +37,8 @@ Location Name                           Type
 -------- ----                           ----
 eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
@@ -74,7 +76,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The managed resource group Id.
+    # The managed resource group name.
     ${ManagedResourceGroupName},
 
     [Parameter()]

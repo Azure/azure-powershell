@@ -45,19 +45,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// state</param>
         /// <param name="events">The list of events for peering service
         /// prefix</param>
+        /// <param name="peeringServicePrefixKey">The peering service prefix
+        /// key</param>
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource.</param>
         /// <param name="id">The ID of the resource.</param>
         /// <param name="type">The type of the resource.</param>
-        public PSPeeringServicePrefix(string prefix = default(string), string prefixValidationState = default(string), string learnedType = default(string), string errorMessage = default(string), IList<PSPeeringServicePrefixEvent> events = default(IList<PSPeeringServicePrefixEvent>), string provisioningState = default(string), string name = default(string), string id = default(string), string type = default(string))
+        public PSPeeringServicePrefix(string prefix = default(string), string prefixValidationState = default(string), string learnedType = default(string), string errorMessage = default(string), IList<PSPeeringServicePrefixEvent> events = default(IList<PSPeeringServicePrefixEvent>), string peeringServicePrefixKey = default(string), string provisioningState = default(string), string name = default(string), string id = default(string), string type = default(string))
         {
             Prefix = prefix;
             PrefixValidationState = prefixValidationState;
             LearnedType = learnedType;
             ErrorMessage = errorMessage;
             Events = events;
+            PeeringServicePrefixKey = peeringServicePrefixKey;
             ProvisioningState = provisioningState;
             Name = name;
             Id = id;
@@ -101,6 +104,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.events")]
         public IList<PSPeeringServicePrefixEvent> Events { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the peering service prefix key
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.peeringServicePrefixKey")]
+        public string PeeringServicePrefixKey { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values

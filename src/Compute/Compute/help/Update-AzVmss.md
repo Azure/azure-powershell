@@ -17,9 +17,9 @@ Updates the state of a VMSS.
 ```
 Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-AutomaticOSUpgrade <Boolean>]
- [-AutomaticRepairGracePeriod <String>] [-AutomaticRepairMaxInstanceRepairsPercent <Int32>]
- [-BootDiagnosticsEnabled <Boolean>] [-BootDiagnosticsStorageUri <String>] [-CustomData <String>]
- [-DisableAutoRollback <Boolean>] [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
+ [-AutomaticRepairGracePeriod <String>] [-BootDiagnosticsEnabled <Boolean>]
+ [-BootDiagnosticsStorageUri <String>] [-CustomData <String>] [-DisableAutoRollback <Boolean>]
+ [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
  [-EnableAutomaticUpdate <Boolean>] [-ImageReferenceId <String>] [-ImageReferenceOffer <String>]
  [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>]
  [-ImageUri <String>] [-LicenseType <String>] [-ManagedDiskStorageAccountType <String>]
@@ -40,9 +40,9 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 ```
 Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-AutomaticOSUpgrade <Boolean>]
- [-AutomaticRepairGracePeriod <String>] [-AutomaticRepairMaxInstanceRepairsPercent <Int32>]
- [-BootDiagnosticsEnabled <Boolean>] [-BootDiagnosticsStorageUri <String>] [-CustomData <String>]
- [-DisableAutoRollback <Boolean>] [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
+ [-AutomaticRepairGracePeriod <String>] [-BootDiagnosticsEnabled <Boolean>]
+ [-BootDiagnosticsStorageUri <String>] [-CustomData <String>] [-DisableAutoRollback <Boolean>]
+ [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
  [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>] -IdentityType <ResourceIdentityType>
  [-ImageReferenceId <String>] [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>]
  [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>] [-ImageUri <String>] [-LicenseType <String>]
@@ -108,21 +108,6 @@ The amount of time for which automatic repairs are suspended due to a state chan
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutomaticRepairMaxInstanceRepairsPercent
-The percentage (capacity of scaleset) of virtual machines that will be simultaneously repaired. The default value is 20%.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

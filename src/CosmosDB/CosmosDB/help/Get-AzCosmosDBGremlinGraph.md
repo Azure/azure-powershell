@@ -20,7 +20,7 @@ Get-AzCosmosDBGremlinGraph -ResourceGroupName <String> [-Name <String>] [-Detail
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBGremlinGraph [-Name <String>] -InputObject <PSGremlinDatabaseGetResults> [-Detailed]
+Get-AzCosmosDBGremlinGraph [-Name <String>] -ParentObject <PSGremlinDatabaseGetResults> [-Detailed]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -101,21 +101,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Gremlin Database object.
-
-```yaml
-Type: PSGremlinDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Gremlin Graph Name.
 
@@ -128,6 +113,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Gremlin Database object.
+
+```yaml
+Type: PSGremlinDatabaseGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

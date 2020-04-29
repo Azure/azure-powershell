@@ -88,7 +88,18 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Remove-AzSecurityWorkspaceSetting', 
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
-               'Disable-AzSecurityAdvancedThreatProtection'
+               'Disable-AzSecurityAdvancedThreatProtection',
+			   'Get-AzIotSecuritySolution', 'Set-AzIotSecuritySolution', 'Remove-AzIotSecuritySolution', 'Update-AzIotSecuritySolution',
+			   'New-AzIotSecuritySolutionRecommendationConfigurationObject', 'New-AzIotSecuritySolutionUserDefinedResourcesObject',
+			   'Get-AzDeviceSecurityGroup', 'Set-AzDeviceSecurityGroup', 'Remove-AzDeviceSecurityGroup',
+			   'New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject', 'New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject', 
+			   'New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject', 'New-AzDeviceSecurityGroupTimeWindowRuleObject',
+			   'Get-AzIotSecurityAnalyticsAggregatedAlert',
+			   'Get-AzIotSecurityAnalyticsAggregatedRecommendation',
+			   'Get-AzIotSecurityAnalytics', 
+			   'Disable-AzIotSecurityAnalyticsAggregatedAlert',
+               'Set-AzSqlInformationProtectionPolicy',
+               'Get-AzSqlInformationProtectionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

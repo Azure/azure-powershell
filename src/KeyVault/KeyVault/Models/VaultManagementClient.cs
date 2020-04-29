@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns></returns>
-        public PSKeyVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
+        public PSKeyVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -90,7 +90,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
                 properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
+
                 properties.NetworkAcls = parameters.NetworkAcls;
+                if (networkRuleSet != null)
+                {
+                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
+                }
             }
             else
             {

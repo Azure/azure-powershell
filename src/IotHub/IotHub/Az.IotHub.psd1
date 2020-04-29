@@ -105,7 +105,11 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Get-AzIotHubModuleTwin', 'Update-AzIotHubModuleTwin',
                'Add-AzIotHubConfiguration', 'Get-AzIotHubConfiguration',
                'Remove-AzIotHubConfiguration', 'Set-AzIotHubConfiguration',
-               'Invoke-AzIotHubModuleMethod', 'Invoke-AzIotHubQuery', 'New-AzIotHubSasToken'
+               'Invoke-AzIotHubModuleMethod', 'Invoke-AzIotHubQuery', 'New-AzIotHubSasToken',
+               'Invoke-AzIotHubConfigurationMetricsQuery',
+               'Add-AzIotHubDeployment', 'Get-AzIotHubDeployment',
+               'Remove-AzIotHubDeployment', 'Set-AzIotHubDeployment',
+               'Invoke-AzIotHubDeploymentMetricsQuery'
 # Variables to export from this module
 # VariablesToExport = @()
 
@@ -115,7 +119,8 @@ AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG',
                'Get-AzIotHubMsgEnrich', 'Remove-AzIotHubMsgEnrich', 
                'Set-AzIotHubMsgEnrich', 'Get-AzIotHubDCS', 'Get-AzIotHubMCS', 
                'Add-AzIotHubDCL', 'Remove-AzIotHubDCL', 'Get-AzIotHubDCL', 
-               'Get-AzIotHubTracing', 'Set-AzIotHubTracing'
+               'Get-AzIotHubTracing', 'Set-AzIotHubTracing','Invoke-AzIotHubConfigMetric',
+               'Invoke-AzIotHubDeployMetric'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

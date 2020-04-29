@@ -158,6 +158,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execute Metrics Query.
+        /// </summary>
+        internal static string InvokeIotHubConfigurationMetricsQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubConfigurationMetricsQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoke Direct Method on a device.
         /// </summary>
         internal static string InvokeIotHubDeviceMethod {

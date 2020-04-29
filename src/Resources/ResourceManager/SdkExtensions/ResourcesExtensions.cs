@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 {
@@ -76,14 +77,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = result.Properties.StatusMessage,
+                    StatusMessage = DeploymentOperationErrorInfo.GetErrorMessageWithDetails(DeploymentOperationErrorInfo.DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())) 
+                                    ?? ProjectResources.GenericDeploymentFailedWithErrors,
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
 
             return null;
         }
-
 
         public static PSResourceManagerError ToPSResourceManagerError(this ErrorResponse error)
         {

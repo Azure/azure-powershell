@@ -45,11 +45,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets resource tags
-        /// </summary>
-        public object Tags { get; set; }
-
-        /// <summary>
         /// Gets fileSystem ID
         /// </summary>
         /// <remarks>
