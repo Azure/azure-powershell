@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [ValidateNotNullOrEmpty]
+        public int Tail { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "Forces the overwrite of the existing file.")]
         public SwitchParameter Force { get; set; }
@@ -83,17 +89,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case SaveDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
-                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId));
+                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
+                            Tail);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             DeploymentScriptInputObject.Name,
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id));
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
+                            Tail);
                         break;
                     default:
                         throw new PSInvalidOperationException();

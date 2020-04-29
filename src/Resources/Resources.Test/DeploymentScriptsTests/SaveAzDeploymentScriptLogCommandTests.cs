@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var expectedOutputPath = Path.Combine(TestLogPath, $"{deploymentScriptName}.txt");
 
             deploymentScriptsMockClient
-                .Setup(f => f.GetDeploymentScriptLog(deploymentScriptName, resourceGroupName))
+                .Setup(f => f.GetDeploymentScriptLog(deploymentScriptName, resourceGroupName, null)) //TODO
                 .Returns(expected);
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             
