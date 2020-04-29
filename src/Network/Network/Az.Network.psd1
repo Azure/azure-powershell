@@ -470,7 +470,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzIpAllocation',
                'Get-AzIpAllocation',
                'Remove-AzIpAllocation',
-               'Set-AzIpAllocation'
+               'Set-AzIpAllocation',
+               'New-AzSecurityPartnerProvider', 'Remove-AzSecurityPartnerProvider', 
+               'Get-AzSecurityPartnerProvider', 'Set-AzSecurityPartnerProvider'
 
 # Variables to export from this module
 # VariablesToExport = @()

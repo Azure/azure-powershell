@@ -263,7 +263,17 @@
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
     <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" />
-
+    <!-- Run test for the generated modules -->
+    <!-- Following is generated modules -->
+    <ItemGroup>
+      <ModuleFolders Include="$([System.IO.Directory]::GetDirectories('$(RepoArtifacts)$(Configuration)'))"/>
+    </ItemGroup>
+    <!-- Run the test in PowerShell core -->
+    <Exec Command="pwsh -c Install-Module -Name Az.Accounts -Scope CurrentUser -Force" Condition="'$(TestFramework)'=='netcoreapp2.2'"/>
+    <Exec Command="pwsh %(ModuleFolders.Identity)/test-module.ps1"  Condition="'$(TestFramework)'=='netcoreapp2.2' And Exists('%(ModuleFolders.Identity)/test-module.ps1')"/>
+    <!-- Run the test in Windows PowerShell-->
+    <Exec Command="powershell -c Install-Module -Name Az.Accounts -Scope CurrentUser -Force" Condition="'$(TestFramework)'!='netcoreapp2.2'"/>
+    <Exec Command="powershell -c Install-Module -Name Pester -Scope CurrentUser -Force -SkipPublisherCheck;powershell %(ModuleFolders.Identity)/test-module.ps1" Condition="'$(TestFramework)'!='netcoreapp2.2' And Exists('%(ModuleFolders.Identity)/test-module.ps1')" />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
 

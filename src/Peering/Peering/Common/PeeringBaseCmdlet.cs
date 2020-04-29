@@ -29,6 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     using Newtonsoft.Json;
+    using DirectPeeringType = Models.DirectPeeringType;
 
     /// <summary>
     ///     The InputObject base cmdlet
@@ -42,11 +43,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public IPeeringManagementClient PeeringManagementClient
         {
-            get =>
-                this.peeringClient ?? (this.peeringClient =
+            get
+            {
+                if(this.peeringClient == null)
+                {
+                    this.peeringClient =
                                            AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
                                                this.DefaultProfile.DefaultContext,
-                                               AzureEnvironment.Endpoint.ResourceManager));
+                                               AzureEnvironment.Endpoint.ResourceManager);
+                }
+                // for testing.
+                // this.peeringClient.BaseUri = new Uri("https://secrets.wanrr-test.radar.core.azure-test.net");
+                return this.peeringClient;
+            }
 
             set => this.peeringClient = value;
         }
@@ -55,6 +64,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         ///     The InputObject client.
         /// </summary>
         public IPeeringsOperations PeeringClient => this.PeeringManagementClient.Peerings;
+
+        /// <summary>
+        /// The peer asn operations client
+        /// </summary>
+        public IPeerAsnsOperations PeerAsnClient => this.PeeringManagementClient.PeerAsns;
 
         /// <summary>
         ///     The PSPeering location client.
@@ -75,6 +89,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The Peering Service locations client.
         /// </summary>
         public IPeeringServiceLocationsOperations PeeringServiceLocationsClient => this.PeeringManagementClient.PeeringServiceLocations;
+
+        /// <summary>
+        /// The peering service country client.
+        /// </summary>
+        public IPeeringServiceCountriesOperations PeeringServiceCountryClient => this.PeeringManagementClient.PeeringServiceCountries;
+
+        /// <summary>
+        /// The peering registered asn client.
+        /// </summary>
+        public IRegisteredAsnsOperations RegisteredAsnClient => this.PeeringManagementClient.RegisteredAsns;
+
+        /// <summary>
+        /// The peering registered asn client
+        /// </summary>
+        public IRegisteredPrefixesOperations RegisteredPrefixesClient => this.PeeringManagementClient.RegisteredPrefixes;
 
         /// <summary>
         /// The peering service prefix client
@@ -586,6 +615,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 }
             }
             return error;
+        }
+
+        public string ConvertToDirectPeeringType(string peeringType)
+        {
+            if(peeringType == Constants.Ix)
+            {
+                return DirectPeeringType.Ix;
+            }
+            if (peeringType == Constants.IxRs)
+            {
+                return DirectPeeringType.IxRs;
+            }
+            if (peeringType == Constants.CDN8069)
+            {
+                return DirectPeeringType.Cdn;
+            }
+            return DirectPeeringType.Edge;
         }
     }
 }

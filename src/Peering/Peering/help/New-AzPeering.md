@@ -30,8 +30,9 @@ New-AzPeering -InputObject <PSPeering> [-ResourceGroupName] <String> [-Name] <St
 ### Direct
 ```
 New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
- [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> -Sku <String> [-Tag <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -MicrosoftNetwork <String> [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]>
+ -Sku <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,6 +207,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MicrosoftNetwork
+Select the Microsoft network you want to peer with.
+
+```yaml
+Type: System.String
+Parameter Sets: Direct
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
