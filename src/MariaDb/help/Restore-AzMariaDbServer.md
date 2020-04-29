@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzMariaDbServer
 
 ## SYNOPSIS
-Restore a MariaDb from a existing MariaDb.
+
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObj
 ```
 
 ## DESCRIPTION
-Restore a MariaDb from a existing MariaDb.
+
 
 ## EXAMPLES
 
@@ -49,7 +49,7 @@ This command restore a PointInTime MariaDB by server object.
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -61,12 +61,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
-region DefaultParameters
- The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -78,11 +76,9 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
-The source server object to restore from.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -95,7 +91,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -111,11 +106,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-The dest server name to restore from.
+
 
 ```yaml
 Type: System.String
@@ -127,11 +121,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -143,12 +136,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+
 
 ```yaml
 Type: System.String
@@ -160,12 +151,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -RestorePointInTime
-region PointInTimeRestore
- The location the resource resides in.
+
 
 ```yaml
 Type: System.DateTime
@@ -177,11 +166,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ServerName
-The source server name to restore from.
+
 
 ```yaml
 Type: System.String
@@ -193,12 +181,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
-Gets the subscription Id which uniquely identifies the Microsoft Azure subscription.
-The subscription ID is part of the URI for every service call.
+
 
 ```yaml
 Type: System.String
@@ -210,11 +196,10 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
-Application-specific metadata in the form of key-value pairs.
+
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -226,7 +211,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -242,7 +226,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -259,7 +242,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -273,14 +255,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 
-## ALIASES
-
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IServer>: The source server object to restore from.
+
+INPUTOBJECT <IServer>: 
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

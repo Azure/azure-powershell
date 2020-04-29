@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzMariaDbServer
 
 ## SYNOPSIS
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
+
 
 ## SYNTAX
 
@@ -32,8 +31,7 @@ Update-AzMariaDbServer -InputObject <IMariaDbIdentity> [-AdministratorLoginPassw
 ```
 
 ## DESCRIPTION
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
+
 
 ## EXAMPLES
 
@@ -74,11 +72,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -AsJob
-Run the command as a job
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -90,7 +87,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -BackupRetentionDay
@@ -106,12 +102,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
-region DefaultParameters
- The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -123,7 +117,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -GeoRedundantBackup
@@ -139,7 +132,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
@@ -156,7 +148,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -172,11 +163,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -188,7 +178,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ReplicationRole
@@ -204,7 +193,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -220,7 +208,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Sku
@@ -237,7 +224,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SslEnforcement
@@ -253,7 +239,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -StorageAutogrow
@@ -269,7 +254,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -StorageInMb
@@ -285,7 +269,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -301,7 +284,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -317,7 +299,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -333,7 +314,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -350,7 +330,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -364,14 +343,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 
-## ALIASES
-
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+
+INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
