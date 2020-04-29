@@ -62,7 +62,7 @@ directive:
   - where:
       verb: Set
       subject: VirtualMachineImageTemplate
-    remove: true
+    hide: true
   - where:
       subject: VirtualMachineImageTemplateRunOutput
     set:
@@ -80,6 +80,11 @@ directive:
       parameter-name: ImageTemplateName
     set:
       alias: Name
+  - where:
+      verb: Set
+      subject: ImageBuilderTemplate
+    set:
+      verb: Update
   # - where:
   #     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
   #   remove: true

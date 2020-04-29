@@ -134,7 +134,7 @@ function New-AzImageBuilderCustomizer {
             $Customizer.ScriptUri = $ScriptUri
             $Customizer.Sha256Checksum = $Sha256Checksum
             $Customizer.ValidExitCode = $ValidExitCode
-        } elseif ($PSBoundParameters.ContainsKey('WindowsRestartCustomizer')) {
+        } elseif ($PSBoundParameters.ContainsKey('RestartCustomizer')) {
             $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateRestartCustomizer]::New()
             $Customizer.Type = "WindowsRestart"
             $Customizer.RestartCheckCommand = $RestartCheckCommand
