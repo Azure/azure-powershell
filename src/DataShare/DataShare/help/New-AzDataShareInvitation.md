@@ -50,7 +50,7 @@ Name             : AdsInvitation
 Type             : Microsoft.DataShare/Invitations
 ```
 
-This command creates an invitation AdsInvitation for share AdsShare and sends it to target email adstest@micosoft.com.
+This command creates an invitation AdsInvitation for share AdsShare and sends it to target email adstest@microsoft.com.
 
 ## PARAMETERS
 
