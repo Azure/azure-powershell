@@ -21,8 +21,8 @@ steps:
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
-  displayName: Test for AutoGen Modules With PowerShell
-  condition: and(succeeded(), ne('${{ parameters.testFramework }}', 'netcoreapp2.2'))
+  displayName: Test for AutoGen Modules With Windows PowerShell
+  condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
@@ -30,7 +30,7 @@ steps:
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
-  condition: and(succeeded(), eq('${{ parameters.testFramework }}', 'netcoreapp2.2'))
+  condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
 - task: PublishTestResults@2
   inputs:
