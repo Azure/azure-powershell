@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEdgeDeploymentMetricsQuery", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeploymentMetric")]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeploymentMetricsQuery", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeployMetric")]
     [OutputType(typeof(PSConfigurationMetricsResult))]
-    public class InvokeAzIotHubEdgeDeploymentMetricsQuery : IotHubBaseCmdlet
+    public class InvokeAzIotHubDeploymentMetricsQuery : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -92,9 +92,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-                PSConfiguration config = IotHubDataPlaneUtils.ToPSConfiguration(registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult());
-                if (config != null)
+                Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                if (config != null && config.Content.ModulesContent != null)
                 {
+                    PSDeployment psDeployment = IotHubDataPlaneUtils.ToPSDeployment(config);
                     Hashtable queries;
                     string metricKey = this.MetricName;
                     if (this.MetricType.Equals(PSConfigurationMetricType.System))
@@ -119,11 +120,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                             metricKey = "reportedFailedCount";
                         }
 
-                        queries = config.SystemMetrics.Queries;
+                        queries = psDeployment.SystemMetrics.Queries;
                     }
                     else
                     {
-                        queries = config.Metrics.Queries;
+                        queries = psDeployment.Metrics.Queries;
                     }
 
                     if (queries.ContainsKey(metricKey))
@@ -137,12 +138,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     }
                     else
                     {
-                        throw new ArgumentException(string.Format("The metric '{0}' is not defined in the edge deployment '{1}'", this.MetricName, this.Name));
+                        throw new ArgumentException(string.Format("The metric '{0}' is not defined in the deployment '{1}'", this.MetricName, this.Name));
                     }
                 }
                 else
                 {
-                    throw new ArgumentException("The edge deployment doesn't exist.");
+                    throw new ArgumentException("The deployment doesn't exist.");
                 }
             }
         }
