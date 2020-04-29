@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-04-29" time="10:03:54">
+  <environment os-version="4.19.76-linuxkit" cwd="/src/ImageBuilder" user="root" nunit-version="2.5.8.0" platform="Linux" machine-name="7caf11335ad5" clr-version="Unknown" user-domain="" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="6.7638" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="6.7638" asserts="0" description="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="6.4095" asserts="0" description="Stop-AzImageBuilderTemplate">
+            <results>
+              <test-case description="Cancel" name="Stop-AzImageBuilderTemplate.Cancel" time="4.7065" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Operation 'Microsoft.VirtualMachineImages/imageTemplates/cancel/action' is not allowed in provisioningState: 'provisioned', runState: 'canceling'</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1: line 18
+18:         Stop-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CancelViaIdentity" name="Stop-AzImageBuilderTemplate.CancelViaIdentity" time="1.4033" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
