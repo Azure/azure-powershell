@@ -85,6 +85,8 @@
 
     { "regex": "HDInsight", "alias": "HDInsight" },
 
+    { "regex": "HPCCache", "alias": "HPCCache" },
+
     { "regex": "LogicApp", "alias": "Logic Apps" },
 
     { "regex": "NotificationHubs", "alias": "Notification Hubs" },
