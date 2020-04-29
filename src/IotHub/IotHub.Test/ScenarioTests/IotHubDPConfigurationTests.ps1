@@ -123,6 +123,23 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	$errorMessage = "The metric 'InvalidMetricName' is not defined in the configuration '$config1'"
 	Assert-ThrowsContains { Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $config1 -MetricName "InvalidMetricName" } $errorMessage
 	
+	# Invoke deployment metric query
+	$customMetricResult = Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $deploy1 -MetricName "query1"
+	Assert-True { $customMetricResult.Name -eq "query1"}
+	Assert-True { $customMetricResult.Criteria -eq "select deviceId from devices where tags.location='US'"}
+
+	$systemMetricResult = Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $deploy1 -MetricName "targeted" -MetricType "System"
+	Assert-True { $systemMetricResult.Name -eq "targeted"}
+	Assert-True { $systemMetricResult.Criteria -eq "select deviceId from devices where capabilities.iotEdge = true and tags.location='US'"}
+
+	# Expected error while executing deployment metric query
+	$errorMessage = "The deployment doesn't exist."
+	Assert-ThrowsContains { Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name "InvalidConfig" -MetricName "InvalidMetricName" } $errorMessage
+	
+	# Expected error while executing deployment metric query
+	$errorMessage = "The metric 'InvalidMetricName' is not defined in the deployment '$deploy1'"
+	Assert-ThrowsContains { Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $deploy1 -MetricName "InvalidMetricName" } $errorMessage
+	
 	# Delete all deployment
 	$result = Remove-AzIotHubDeployment -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Passthru
 	Assert-True { $result }
