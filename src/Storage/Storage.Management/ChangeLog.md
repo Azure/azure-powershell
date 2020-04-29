@@ -30,6 +30,8 @@
 * Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
 * Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
+* When only part items are returned in list DataLake Gen2 Items, add a warning message to remind user to list again with ContinuationToken
+    - `Get-AzDataLakeGen2ChildItem`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
