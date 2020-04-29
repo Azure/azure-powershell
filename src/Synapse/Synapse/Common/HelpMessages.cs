@@ -155,5 +155,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string FromRestorePoint = "Indicates to leverage a restore point from any SQL pool in this subscription to recover or copy from a previous state.";
 
         public const string RestorePoint = "Snapshot time to restore.";
+
+        public const string SqlAdministratorLoginPassword = "The new SQL administrator password for the workspace.";
     }
 }

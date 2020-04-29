@@ -65,6 +65,17 @@ function Test-SynapseWorkspace
         Assert-NotNull $workspaceUpdated.Tags "Tags do not exists"
         Assert-NotNull $workspaceUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
+        # Reset SQL administrator password
+        $newPassword = "Syn" + (getAssetName) + "!"
+        $newPassword = ConvertTo-SecureString $password -AsPlainText -Force
+        $workspaceUpdated = Update-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -SqlAdministratorLoginPassword $newPassword
+
+        Assert-AreEqual $workspaceName $workspaceUpdated.Name
+        Assert-AreEqual $location $workspaceUpdated.Location
+        Assert-AreEqual "Microsoft.Synapse/workspaces" $workspaceUpdated.Type
+        Assert-True {$workspaceUpdated.Id -like "*$resourceGroupName*"}
+        Assert-AreEqual "Succeeded" $workspaceUpdated.ProvisioningState
+
         # List all workspaces in resource group
         [array]$workspacesInResourceGroup = Get-AzSynapseWorkspace -ResourceGroupName $resourceGroupName
         Assert-True {$workspacesInResourceGroup.Count -ge 1}
