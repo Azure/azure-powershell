@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig",DefaultParameterSetName = "DefaultParameterSet"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig", DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("ResourceName", "Name")]
@@ -69,13 +69,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "AssignIdentityParameterSet",
-            ValueFromPipelineByPropertyName = false)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -140,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Id = this.AvailabilitySetId
                 },
                 LicenseType = this.LicenseType,
-                Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
+                Identity = null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
                 EvictionPolicy = this.EvictionPolicy,
