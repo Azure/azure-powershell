@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public SwitchParameter EnableAutoPause { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.AutoPauseDelayInMinutes)]
+            HelpMessage = HelpMessages.AutoPauseDelayInMinute)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
         public int AutoPauseDelayInMinute { get; set; }

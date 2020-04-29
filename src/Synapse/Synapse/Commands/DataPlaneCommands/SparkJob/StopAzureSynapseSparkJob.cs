@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = StopSparkJobByIdParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class StopAzureSynapseSparkJob : SynapseCmdletBase
     {
