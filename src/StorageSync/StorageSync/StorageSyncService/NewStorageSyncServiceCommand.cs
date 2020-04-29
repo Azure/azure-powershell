@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.StorageSyncServiceIncomingTrafficPolicyParameter)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("AllowVirtualNetworksOnly",
-            "AllowAllTraffic",
+        [ValidateSet(StorageSyncModels.IncomingTrafficPolicy.AllowVirtualNetworksOnly,
+            StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic,
             IgnoreCase = true)]
         public string IncomingTrafficPolicy { get; set; }
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 }
                 else
                 {
-                    incomingTrafficPolicy = "AllowAllTraffic";
+                    incomingTrafficPolicy = StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic;
                 }
 
                 var createParameters = new StorageSyncServiceCreateParameters()
