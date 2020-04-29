@@ -239,7 +239,7 @@ Accept wildcard characters: False
 
 ### -Metadata
 Specifies an array of metadata to associate with the RecordSet.
-Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).
+Metadata is specified using name-value pairs that are represented as hash tables, for example @{"dept"="shopping";"env"="production"}.
 
 ```yaml
 Type: System.Collections.Hashtable

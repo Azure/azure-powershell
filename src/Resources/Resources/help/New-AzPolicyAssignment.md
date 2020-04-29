@@ -16,7 +16,8 @@ Creates a policy assignment.
 ### DefaultParameterSet (Default)
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Metadata <String>]
+ [-Description <String>] [-PolicyDefinition <PsPolicyDefinition>]
+ [-PolicySetDefinition <PsPolicySetDefinition>] [-Metadata <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-AssignIdentity] [-Location <String>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +25,7 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicyParameterObjectParameterSet
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ [-Description <String>] -PolicyDefinition <PsPolicyDefinition> [-PolicySetDefinition <PsPolicySetDefinition>]
  -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -33,7 +34,7 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicyParameterStringParameterSet
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ [-Description <String>] -PolicyDefinition <PsPolicyDefinition> [-PolicySetDefinition <PsPolicySetDefinition>]
  -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -42,7 +43,7 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicySetParameterObjectParameterSet
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ [-Description <String>] [-PolicyDefinition <PsPolicyDefinition>] -PolicySetDefinition <PsPolicySetDefinition>
  -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -51,7 +52,7 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicySetParameterStringParameterSet
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ [-Description <String>] [-PolicyDefinition <PsPolicyDefinition>] -PolicySetDefinition <PsPolicySetDefinition>
  -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -309,7 +310,7 @@ Accept wildcard characters: False
 Specifies a policy, as a **PsPolicyDefinition** object that contains the policy rule.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -321,7 +322,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
 Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
 Aliases:
 
@@ -333,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
 Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
@@ -378,7 +379,7 @@ Accept wildcard characters: False
 The policy set definition object.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -390,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
 Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
 Aliases:
 
@@ -402,7 +403,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
 Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 

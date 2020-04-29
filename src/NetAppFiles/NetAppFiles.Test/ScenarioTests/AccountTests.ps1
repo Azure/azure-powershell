@@ -122,7 +122,7 @@ function Test-AccountCrud
     $accName2 = Get-ResourceName
     $accName3 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
-    
+
     try
     {
         # create the resource group

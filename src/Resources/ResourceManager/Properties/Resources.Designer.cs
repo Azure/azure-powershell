@@ -223,6 +223,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error: Code={0}; Message={1}; Details={2}.
+        /// </summary>
+        internal static string DeploymentOperationErrorMessage {
+            get {
+                return ResourceManager.GetString("DeploymentOperationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: Code={0}; Message={1}.
+        /// </summary>
+        internal static string DeploymentOperationErrorMessageNoDetails {
+            get {
+                return ResourceManager.GetString("DeploymentOperationErrorMessageNoDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OperationId: {0}.
+        /// </summary>
+        internal static string DeploymentOperationId {
+            get {
+                return ResourceManager.GetString("DeploymentOperationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; failed with error(s). Showing {1} out of {2} error(s)..
+        /// </summary>
+        internal static string DeploymentOperationOuterError {
+            get {
+                return ResourceManager.GetString("DeploymentOperationOuterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target: ResourceType={0}; ResourceName={1}.
+        /// </summary>
+        internal static string DeploymentOperationTargetInfoInErrror {
+            get {
+                return ResourceManager.GetString("DeploymentOperationTargetInfoInErrror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deployment script &apos;{0}&apos; doesn&apos;t exist in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string DeploymentScriptDoesntExist {
@@ -336,6 +381,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string FileAlreadyExists1 {
             get {
                 return ResourceManager.GetString("FileAlreadyExists1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment failed with errors..
+        /// </summary>
+        internal static string GenericDeploymentFailedWithErrors {
+            get {
+                return ResourceManager.GetString("GenericDeploymentFailedWithErrors", resourceCulture);
             }
         }
         
