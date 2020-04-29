@@ -12,7 +12,7 @@ Gets a Synapse Analytics Spark job.
 
 ## SYNTAX
 
-### GetSparkJobsByIdParameterSet
+### GetSparkJobsByIdParameterSet (Default)
 ```
 Get-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>] [-Name <String>]
  [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
