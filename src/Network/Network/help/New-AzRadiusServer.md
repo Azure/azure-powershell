@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.network/new-azradiusserver
 schema: 2.0.0
 ---
 
 # New-AzRadiusServer
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an external radius server configuration
 
 ## SYNTAX
 
@@ -18,16 +18,18 @@ New-AzRadiusServer -RadiusServerAddress <String> -RadiusServerSecret <SecureStri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzRadiusServer cmdlet creates an external radius server configuration to be used in virtual network gateway and VPN server configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.1 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+PS C:\> $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.2 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+PS C:\> New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
 ```
 
-{{ Add example description here }}
+Creating multiple external radius server configurations to be used for configuring P2S on a new virtual network gateway.
 
 ## PARAMETERS
 
