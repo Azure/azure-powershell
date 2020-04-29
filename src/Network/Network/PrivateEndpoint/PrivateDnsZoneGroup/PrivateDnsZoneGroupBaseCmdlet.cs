@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             try
             {
-                GetPrivateDnsZoneGroup(resourceGroupName, privateEndpointName, privateDnsZoneGroupName);
+                var group = GetPrivateDnsZoneGroup(resourceGroupName, privateEndpointName, privateDnsZoneGroupName);
+                return (group != null);
             }
             catch (ErrorException exception)
             {
@@ -44,12 +45,15 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 throw;
             }
-            return true;
         }
 
         public PSPrivateDnsZoneGroup GetPrivateDnsZoneGroup(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
         {
             var privateDnsZoneGroup = this.PrivateDnsZoneGroupClient.Get(resourceGroupName, privateEndpointName, privateDnsZoneGroupName);
+            if(privateDnsZoneGroup == null)
+            {
+                return null;
+            }
             var psPrivateDnsZoneGroup = ToPsPrivateDnsZoneGroup(privateDnsZoneGroup);
             return psPrivateDnsZoneGroup;
         }
