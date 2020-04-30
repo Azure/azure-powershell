@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -1329,6 +1330,54 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deployment = this.ExecuteDeploymentInternal(parameters);
 
             return deployment.ToPSDeployment(managementGroupId: parameters.ManagementGroupId, resourceGroupName: parameters.ResourceGroupName);
+        }
+
+        /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+
+            try
+            {
+                return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
+                    ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
+            }
+            catch (CloudException ce)
+            {
+                HttpStatusCode? statusCode = ce.Response?.StatusCode;
+                string errorCode = ce.Body?.Code;
+                string errorMessage = ce.Body?.Message ?? ce.Message;
+                string errorDetails = JsonConvert.SerializeObject(ce.Body?.Details, Formatting.Indented);
+                string requestId = ce.GetRequestId();
+                DateTime utcNow = DateTime.UtcNow;
+
+                string formattedErrorMessage = statusCode == HttpStatusCode.OK
+                    ? string.Format(
+                        CultureInfo.InvariantCulture,
+                        ProjectResources.SucceededWhatIfOperationErrorMessage,
+                        errorCode,
+                        errorMessage,
+                        errorDetails,
+                        requestId,
+                        utcNow)
+                    : string.Format(
+                        CultureInfo.InvariantCulture,
+                        ProjectResources.FailedWhatIfOperationErrorMessage,
+                        statusCode,
+                        errorCode,
+                        errorMessage,
+                        errorDetails,
+                        requestId,
+                        utcNow);
+
+                throw new CloudException(formattedErrorMessage);
+            }
         }
 
         /// <summary>

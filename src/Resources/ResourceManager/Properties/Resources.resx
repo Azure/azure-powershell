@@ -485,4 +485,24 @@
     <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
 You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
   </data>
+  <data name="FailedWhatIfOperationErrorMessage" xml:space="preserve">
+    <value>
+HTTPStatus Code: {0}
+ErrorCode: {1}
+ErrorMessage: {2}
+ErrorDetails: {3}
+RequestId: {4}
+Timestamp (UTC): {5}</value>
+  </data>
+  <data name="SucceededWhatIfOperationErrorMessage" xml:space="preserve">
+    <value>
+ErrorCode: {0}
+ErrorMessage: {1}
+ErrorDetails: {2}
+RequestId: {3}
+Timestamp (UTC): {4}</value>
+  </data>
+  <data name="ConfirmDeploymentMessage" xml:space="preserve">
+    <value>Are you sure you want to execute the deployment?</value>
+  </data>
 </root>

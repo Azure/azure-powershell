@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to execute the deployment?.
+        /// </summary>
+        internal static string ConfirmDeploymentMessage {
+            get {
+                return ResourceManager.GetString("ConfirmDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to invoke the &apos;{0}&apos; action on the following resource: {1}.
         /// </summary>
         internal static string ConfirmInvokeAction {
@@ -336,6 +345,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string FailedToParseProperty {
             get {
                 return ResourceManager.GetString("FailedToParseProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///HTTPStatus Code: {0}
+        ///ErrorCode: {1}
+        ///ErrorMessage: {2}
+        ///ErrorDetails: {3}
+        ///RequestId: {4}
+        ///Timestamp (UTC): {5}.
+        /// </summary>
+        internal static string FailedWhatIfOperationErrorMessage {
+            get {
+                return ResourceManager.GetString("FailedWhatIfOperationErrorMessage", resourceCulture);
             }
         }
         
@@ -1092,6 +1116,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string SubscriptionWithTheSpecifiedNameNotFount {
             get {
                 return ResourceManager.GetString("SubscriptionWithTheSpecifiedNameNotFount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///ErrorCode: {0}
+        ///ErrorMessage: {1}
+        ///ErrorDetails: {2}
+        ///RequestId: {3}
+        ///Timestamp (UTC): {4}.
+        /// </summary>
+        internal static string SucceededWhatIfOperationErrorMessage {
+            get {
+                return ResourceManager.GetString("SucceededWhatIfOperationErrorMessage", resourceCulture);
             }
         }
         
