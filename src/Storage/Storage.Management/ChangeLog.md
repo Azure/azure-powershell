@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable/disable versioning on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
+* Support Set/Get/Remove Object Replication Policy on Storage accounts
+    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
+    - `Get-AzStorageObjectReplicationPolicy`
+    - `Remove-AzStorageObjectReplicationPolicy`
 
 ## Version 1.14.1
 * Supported create container and upload blob with Encryption Scope setting
@@ -31,6 +38,9 @@
     - `Get-AzStorageAccountNetworkRuleSet`
 * Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release

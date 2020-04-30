@@ -169,7 +169,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Disable-AzStorageBlobRestorePolicy', 
                'New-AzStorageBlobRangeToRestore', 'Restore-AzStorageBlobRange', 
                'New-AzStorageEncryptionScope', 'Update-AzStorageEncryptionScope', 
-               'Get-AzStorageEncryptionScope'
+               'Get-AzStorageEncryptionScope',
+               'New-AzStorageObjectReplicationPolicyRule', 'Set-AzStorageObjectReplicationPolicy',
+               'Get-AzStorageObjectReplicationPolicy', 'Remove-AzStorageObjectReplicationPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
