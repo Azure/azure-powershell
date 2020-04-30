@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ManagedVirtualNetwork = "Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.";
 
-        public const string DisallowAllConnections = "Azure Synapse Studio and other client tools will only be able to connect to the workspace endpoints if this parameter is not present. Connections from specific IP addresses or all Azure services can be allowed/disallowed after the workspace is provisioned.";
+        public const string DisallowAllConnection = "Azure Synapse Studio and other client tools will only be able to connect to the workspace endpoints if this parameter is not present. Connections from specific IP addresses or all Azure services can be allowed/disallowed after the workspace is provisioned.";
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string DisableAutoPause = "Indicates whether Auto-pause should be disabled.";
 
-        public const string AutoPauseDelayInMinutes = "Number of minutes idle. This parameter must be specified when Auto-pause is enabled.";
+        public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter must be specified when Auto-pause is enabled.";
 
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.4";
 
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string MainClassName = @"The fully-qualified identifier or the main class that is in the main definition file. Required for Spark and .NET Spark job. e.g. ""org.apache.spark.examples.SparkPi""";
 
-        public const string CommandLineArguments = @"Optional arguments to the job. e.g. ""--iteration 10000 --timeout 20s""";
+        public const string CommandLineArgument = @"Optional arguments to the job. e.g. ""--iteration 10000 --timeout 20s""";
 
-        public const string ReferenceFiles = @"Additional files used for reference in the main definition file. Comma-separated storage URI list. e.g. ""abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/""";
+        public const string ReferenceFile = @"Additional files used for reference in the main definition file. Comma-separated storage URI list. e.g. ""abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/""";
 
         public const string ExecutorCount = "Number of executors to be allocated in the specified Spark pool for the job.";
 
@@ -155,5 +155,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string FromRestorePoint = "Indicates to leverage a restore point from any SQL pool in this subscription to recover or copy from a previous state.";
 
         public const string RestorePoint = "Snapshot time to restore.";
+
+        public const string SqlAdministratorLoginPassword = "The new SQL administrator password for the workspace.";
     }
 }

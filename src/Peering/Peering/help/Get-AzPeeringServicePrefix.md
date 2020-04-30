@@ -18,7 +18,7 @@ Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <
  [-Expand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Default
+### InputObject
 ```
 Get-AzPeeringServicePrefix [-PeeringServiceObject] <PSPeeringService> [-Name <String>] [-Expand]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -147,7 +147,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, Default
+Parameter Sets: ByResourceGroupAndName, InputObject
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ Use a Get-AzPeeringService
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
-Parameter Sets: Default
+Parameter Sets: InputObject
 Aliases:
 
 Required: True

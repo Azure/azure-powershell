@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Markdown.MAML.Parser;
+using Markdown.MAML.Transformer;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Tools.Common.Helpers;
 using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
@@ -33,6 +34,8 @@ namespace StaticAnalysis.HelpAnalyzer
     {
         private const int MissingHelp = 6050;
         private const int MissingHelpFile = 6000;
+        private const int MissingCmdlet = 7000;
+        private const int PlatyPSSchemaViolation = 8000;
         public HelpAnalyzer()
         {
             Name = "Help Analyzer";
@@ -104,6 +107,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     var dirs = Directory.EnumerateDirectories(directory);
                     if (dirs != null && dirs.Any(d => string.Equals(Path.GetFileName(d), "help", StringComparison.OrdinalIgnoreCase)))
                     {
+                        Console.WriteLine($"Analyzing module under {directory} ...");
                         AnalyzeMarkdownHelp(scopes, directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
                 }
@@ -201,6 +205,8 @@ namespace StaticAnalysis.HelpAnalyzer
             }
 
             var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(Path.GetFileNameWithoutExtension).ToList();
+            // Assume all cmdlets markdown file following format of VERB-AzResource. Dash is required.
+            helpFiles = helpFiles.Where(c => c.Contains("-")).ToList();
             if (!helpFiles.Any()) return;
 
             Directory.SetCurrentDirectory(directory);
@@ -219,12 +225,27 @@ namespace StaticAnalysis.HelpAnalyzer
             var parentDirectory = Directory.GetParent(psd1).FullName;
             var psd1FileName = Path.GetFileName(psd1);
             var powershell = PowerShell.Create();
-            var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
-                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };";
+            var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules";
             powershell.AddScript(script);
             var cmdletResult = powershell.Invoke();
-            var nestedModules = cmdletResult.Where(c => c!= null && c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+            var nestedModules = new List<string>();
+            foreach(var module in cmdletResult)
+            {
+                if(module != null && module.ToString().StartsWith("."))
+                {
+                    nestedModules.Add(module.ToString().Substring(2));
+                } 
+                else if(module != null)
+                {
+                    nestedModules.Add(module.ToString());
+                }
+            }
+
+            script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
+                          " -BindingVariable ModuleMetadata; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };";
+            cmdletResult = PowerShell.Create().AddScript(script).Invoke();
             var requiredModules = cmdletResult.Where(c => c != null && !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+            var allCmdlets = new List<CmdletMetadata>();
             if (nestedModules.Any())
             {
                 Directory.SetCurrentDirectory(directory);
@@ -237,7 +258,6 @@ namespace StaticAnalysis.HelpAnalyzer
                     .ToList();
 
                 requiredModules.Add(directory);
-                var allCmdlets = new List<CmdletMetadata>();
                 foreach (var nestedModule in nestedModules)
                 {
                     var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
@@ -265,9 +285,21 @@ namespace StaticAnalysis.HelpAnalyzer
                     AppDomain.Unload(_appDomain);
 #endif
                 }
-
-                ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
             }
+
+            script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata; $ModuleMetadata.FunctionsToExport;";
+            cmdletResult = PowerShell.Create().AddScript(script).Invoke();
+            var functionCmdlets = cmdletResult.Select(c => c.ToString()).ToList();
+            foreach(var cmdlet in functionCmdlets)
+            {
+                var metadata = new CmdletMetadata();
+                metadata.VerbName = cmdlet.Split("-")[0];
+                metadata.NounName = cmdlet.Split("-")[1];
+                allCmdlets.Add(metadata);
+            }
+
+            ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
+            ValidateHelpMarkdown(helpFolder, helpFiles, helpLogger);
 
             Directory.SetCurrentDirectory(savedDirectory);
             
@@ -276,19 +308,65 @@ namespace StaticAnalysis.HelpAnalyzer
         private void ValidateHelpRecords(IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
             ReportLogger<HelpIssue> helpLogger)
         {
+            var cmdletDict = new Dictionary<string, CmdletMetadata>();
             foreach (var cmdlet in cmdlets)
             {
+                cmdletDict.Add(cmdlet.Name, cmdlet);
                 if (!helpRecords.Contains(cmdlet.Name, StringComparer.OrdinalIgnoreCase))
                 {
-                    helpLogger.LogRecord(new HelpIssue
+                    HelpIssue issue = new HelpIssue
                     {
                         Target = cmdlet.ClassName,
                         Severity = 1,
                         ProblemId = MissingHelp,
-                        Description = string.Format("Help missing for cmdlet {0} implemented by class {1}",
-                        cmdlet.Name, cmdlet.ClassName),
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.Name)
-                    });
+                    };
+                    if(cmdlet.ClassName != null)
+                    {
+                        issue.Description = $"Help missing for cmdlet {cmdlet.Name} implemented by class {cmdlet.ClassName}";
+                    }
+                    else
+                    {
+                        issue.Description = $"Help missing for cmdlet {cmdlet.Name} implemented by functions";
+                    }
+                    helpLogger.LogRecord(issue);
+                }
+            }
+
+            foreach (var helpRecord in helpRecords)
+            {
+                if(!cmdletDict.ContainsKey(helpRecord))
+                {
+                    Console.Error.WriteLine($"Help record {helpRecord} has no cmdlet.");
+                } 
+            }
+        }
+
+        private void ValidateHelpMarkdown(string helpFolder, IList<string> helpRecords, ReportLogger<HelpIssue> helpLogger)
+        {
+            foreach(var helpMarkdown in helpRecords)
+            {
+                var file = Path.Combine(helpFolder, helpMarkdown + ".md");
+                var content = File.ReadAllText(file);
+                try
+                {
+                    var parser = new MarkdownParser();
+                    var transformer = new ModelTransformerVersion2();
+                    var markdownModel = parser.ParseString(new[] { content });
+                    var model = transformer.NodeModelToMamlModel(markdownModel).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    HelpIssue issue = new HelpIssue
+                    {
+                        Target = helpMarkdown,
+                        Severity = 1,
+                        ProblemId = PlatyPSSchemaViolation,
+                        Description = "Help content doesn't conform to PlatyPS Schema definition",
+                        Remediation = string.Format("No.")
+                    };
+                    helpLogger.LogRecord(issue);
+                    Console.Error.WriteLine($"Failed to parse {file} by PlatyPS, {ex.Message}");
                 }
             }
         }

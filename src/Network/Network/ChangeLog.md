@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Added breaking change attribute to notify that Zone default behaviour will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancerFrontendIpConfig`
+* Added support for a new top level resource SecurityPartnerProvider
+    - New cmdlets added:
+        - New-AzSecurityPartnerProvider
+        - Remove-AzSecurityPartnerProvider
+        - Get-AzSecurityPartnerProvider
+        - Set-AzSecurityPartnerProvider
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
