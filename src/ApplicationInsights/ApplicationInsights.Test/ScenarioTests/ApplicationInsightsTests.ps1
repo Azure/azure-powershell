@@ -57,6 +57,7 @@ function Test-ApplicationInsightsCRUD
         Assert-AreEqual $val $app.Tags[$key]
 
         Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
+
         Remove-AzResourceGroup -Name $rgname
     }
     finally

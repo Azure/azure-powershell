@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAppInsightsCRUD()
+        public void TestAppInsightsLinkedStorageAccountCRUD()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-ApplicationInsightsLinkedStorageAccountCRUD");
         }

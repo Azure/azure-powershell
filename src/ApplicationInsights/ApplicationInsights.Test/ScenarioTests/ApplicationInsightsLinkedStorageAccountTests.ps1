@@ -36,20 +36,20 @@ function Test-ApplicationInsightsLinkedStorageAccountCRUD
         $account1 = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountName1 -SkuName "Standard_LRS" -Location $loc
         $account2 = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountName2 -SkuName "Standard_LRS" -Location $loc
 
-        New-ApplicationInsightsLinkedStorageAccount -RecourceGroupName $rgname -ComponentName $appName -LinkedStorageAccountResourceId $account1.Id
-        $linkedAccount = Get-ApplicationInsightsLinkedStorageAccount -RecourceGroupName $rgname -ComponentName $appName
+        New-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName -LinkedStorageAccountResourceId $account1.Id
+        $linkedAccount = Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName
 
         Assert-NotNull $linkedAccount
         Assert-AreEqual $account1.Id $linkedAccount.linkedStorageAccount
-        Assert-AreEqual "serviceprofile" $linkedAccount.Name
+        Assert-AreEqual "serviceprofiler" $linkedAccount.Name
 
-        Update-ApplicationInsightsLinkedStorageAccount -RecourceGroupName $rgname -ComponentName $appName -LinkedStorageAccountResourceId $account2.Id
-        $linkedAccount = Get-ApplicationInsightsLinkedStorageAccount -RecourceGroupName $rgname -Name $appName
+        Update-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName -LinkedStorageAccountResourceId $account2.Id
+        $linkedAccount = Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName
 
         Assert-NotNull $linkedAccount
         Assert-AreEqual $account2.Id $linkedAccount.linkedStorageAccount
 
-        Remove-ApplicationInsightsLinkedStorageAccount -RecourceGroupName $rgname -ComponentName $appName
+        Remove-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName
 
         Remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountName1 -force
         Remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountName2 -force
