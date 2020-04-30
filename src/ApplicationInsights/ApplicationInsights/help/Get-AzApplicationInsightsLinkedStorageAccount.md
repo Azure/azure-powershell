@@ -12,7 +12,7 @@ Get application insights linked storage account
 
 ## SYNTAX
 
-### ByResourceNameParameterSet
+### ByResourceNameParameterSet (Default)
 ```
 Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

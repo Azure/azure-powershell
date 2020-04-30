@@ -12,7 +12,7 @@ Create an application insights linked storage account
 
 ## SYNTAX
 
-### ByResourceNameParameterSet
+### ByResourceNameParameterSet (Default)
 ```
 New-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  -LinkedStorageAccountResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

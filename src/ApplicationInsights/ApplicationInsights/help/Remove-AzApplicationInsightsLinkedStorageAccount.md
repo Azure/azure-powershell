@@ -12,7 +12,7 @@ Delete application insights linked storage account
 
 ## SYNTAX
 
-### ByResourceNameParameterSet
+### ByResourceNameParameterSet (Default)
 ```
 Remove-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

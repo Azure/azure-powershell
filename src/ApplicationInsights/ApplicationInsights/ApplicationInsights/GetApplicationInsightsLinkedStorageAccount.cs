@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsLinkedStorageAccount"), OutputType(typeof(PSComponentLinkedStorageAccounts))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsLinkedStorageAccount", DefaultParameterSetName = ByResourceNameParameterSet), OutputType(typeof(PSComponentLinkedStorageAccounts))]
     public class GetApplicationInsightsLinkedStorageAccount : ApplicationInsightsBaseCmdlet
     {
         internal const string ByResourceNameParameterSet = "ByResourceNameParameterSet";

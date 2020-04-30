@@ -12,7 +12,7 @@ Update application insights linked storage account
 
 ## SYNTAX
 
-### ByResourceNameParameterSet
+### ByResourceNameParameterSet (Default)
 ```
 Update-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  -LinkedStorageAccountResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
