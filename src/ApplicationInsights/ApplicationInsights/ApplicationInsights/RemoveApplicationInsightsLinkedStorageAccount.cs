@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             HelpMessage = "Component Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ComponentName { get; set; }
 
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = identifier.ResourceGroupName;
-                this.Name = identifier.ResourceName;
+                this.ComponentName = identifier.ResourceName;
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Remove Linked Storage Account for Application Insights Component {this.Name}"))
+            if (this.ShouldProcess(this.ResourceGroupName, $"Remove Linked Storage Account for Application Insights Component {this.ComponentName}"))
             {
                 var response = this.AppInsightsManagementClient
                                                              .ComponentLinkedStorageAccounts
-                                                             .DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
+                                                             .DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.ComponentName)
                                                              .GetAwaiter()
                                                              .GetResult();
                                                              

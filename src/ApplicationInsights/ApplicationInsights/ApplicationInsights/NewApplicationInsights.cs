@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 
         [Parameter(
             Position = 3,
-            Mandatory = true,
-            HelpMessage = "ResourceId of the log analytics workspace which the data will be ingested to.")]
+            Mandatory = false,
+            HelpMessage = "Retention In Days, 90 by default.")]
         [ValidateNotNull]
-        public string WorkspaceResourceId;
+        public int? RetentionInDays;
 
         [Parameter(
             Position = 4,
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 ApplicationType = Kind,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                 RequestSource = "AzurePowerShell",
-                WorkspaceResourceId = this.WorkspaceResourceId,
+                RetentionInDays = this.RetentionInDays == null ? null : this.RetentionInDays,
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery
             };

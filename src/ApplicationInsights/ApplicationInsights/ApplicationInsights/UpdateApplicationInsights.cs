@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             [Parameter(
                 Position = 2,
                 Mandatory = false,
-                HelpMessage = "ResourceId of the log analytics workspace which the data will be ingested to.")]
+                HelpMessage = "Retention In Days, 90 by default.")]
             [ValidateNotNull]
-            public string WorkspaceResourceId;
+            public int? RetentionInDays;
 
             [Parameter(
                 Position = 3,
@@ -93,43 +93,29 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
                     throw new System.ArgumentException($"component {Name} is not existed in Resource Group {ResourceGroupName}");
                 }
 
-                if(!this.IsParameterBound(c => c.WorkspaceResourceId) && !this.IsParameterBound(c => c.PublicNetworkAccessForIngestion) && !this.IsParameterBound(c => c.PublicNetworkAccessForQuery))
+                ApplicationInsightsComponent newComponentProperties = new ApplicationInsightsComponent()
                 {
-                    if(this.ShouldProcess(this.ResourceGroupName, $"Update Application Insights Component {this.Name}"))
-                    {
-                        var updatedComponentResponse = this.AppInsightsManagementClient
-                                                       .Components
-                                                       .UpdateTagsWithHttpMessagesAsync(this.ResourceGroupName, this.Name, TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true))
-                                                       .Result;
-                        this.WriteComponent(updatedComponentResponse.Body);
-                    }
-                }
-                else
+                    Location = existingComponent.Location,
+                    Kind = existingComponent.Kind,
+                    ApplicationType = existingComponent.Kind,
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                    RequestSource = "AzurePowerShell",
+                    RetentionInDays = this.IsParameterBound(c => c.RetentionInDays) ? this.RetentionInDays : existingComponent.RetentionInDays,
+                    PublicNetworkAccessForIngestion = this.IsParameterBound(c => c.PublicNetworkAccessForIngestion) ? this.PublicNetworkAccessForIngestion : existingComponent.PublicNetworkAccessForIngestion,
+                    PublicNetworkAccessForQuery = this.IsParameterBound(c => c.PublicNetworkAccessForQuery) ? this.PublicNetworkAccessForQuery : existingComponent.PublicNetworkAccessForQuery
+                };
+
+                if (this.ShouldProcess(this.ResourceGroupName, $"Update Application Insights Component {this.Name}"))
                 {
-                    ApplicationInsightsComponent newComponentProperties = new ApplicationInsightsComponent()
-                    {
-                        Location = existingComponent.Location,
-                        Kind = existingComponent.Kind,
-                        ApplicationType = existingComponent.Kind,
-                        Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                        RequestSource = "AzurePowerShell",
-                        WorkspaceResourceId = this.IsParameterBound(c => c.WorkspaceResourceId)?this.WorkspaceResourceId: existingComponent.WorkspaceResourceId,
-                        PublicNetworkAccessForIngestion = this.IsParameterBound(c => c.PublicNetworkAccessForIngestion) ? this.PublicNetworkAccessForIngestion: existingComponent.PublicNetworkAccessForIngestion,
-                        PublicNetworkAccessForQuery = this.IsParameterBound(c => c.PublicNetworkAccessForQuery) ? this.PublicNetworkAccessForQuery : existingComponent.PublicNetworkAccessForQuery
-                    };
+                    var newComponentResponse = this.AppInsightsManagementClient
+                        .Components
+                        .CreateOrUpdateWithHttpMessagesAsync(
+                            ResourceGroupName,
+                            Name,
+                            newComponentProperties)
+                        .Result;
 
-                    if (this.ShouldProcess(this.ResourceGroupName, $"Update Application Insights Component {this.Name}"))
-                    {
-                        var newComponentResponse = this.AppInsightsManagementClient
-                                                            .Components
-                                                            .CreateOrUpdateWithHttpMessagesAsync(
-                                                                ResourceGroupName,
-                                                                Name,
-                                                                newComponentProperties)
-                                                            .Result;
-
-                        this.WriteComponent(newComponentResponse.Body);
-                    }
+                    this.WriteComponent(newComponentResponse.Body);
                 }
             }
         }

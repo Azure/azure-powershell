@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.ApplicationInsights.Management;
-using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         public ApplicationInsightsManagementClient ApplicationInsightsClient { get; private set; }
 
-        public OperationalInsightsManagementClient OperationalInsightsClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"),
-                    _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -118,12 +115,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             ApplicationInsightsClient = GetApplicationInsightsManagementClient(context);
-            OperationalInsightsClient = GetOperationalInsightsManagementClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
-                ApplicationInsightsClient,
-                OperationalInsightsClient);
+                ApplicationInsightsClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -134,11 +129,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         private static ApplicationInsightsManagementClient GetApplicationInsightsManagementClient(MockContext context)
         {
             return context.GetServiceClient<ApplicationInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

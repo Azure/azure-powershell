@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             HelpMessage = "Component Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ComponentName { get; set; }
 
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
@@ -76,12 +76,12 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = identifier.ResourceGroupName;
-                this.Name = identifier.ResourceName;
+                this.ComponentName = identifier.ResourceName;
             }
 
             ComponentLinkedStorageAccounts response = this.AppInsightsManagementClient
                                                              .ComponentLinkedStorageAccounts
-                                                             .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
+                                                             .GetWithHttpMessagesAsync(this.ResourceGroupName, this.ComponentName)
                                                              .GetAwaiter()
                                                              .GetResult()
                                                              .Body;

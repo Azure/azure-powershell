@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             HelpMessage = "Component Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ComponentName { get; set; }
 
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = identifier.ResourceGroupName;
-                this.Name = identifier.ResourceName;
+                this.ComponentName = identifier.ResourceName;
             }
 
             ComponentLinkedStorageAccounts existingLinkedStorageAccount = null;
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             {
                 existingLinkedStorageAccount = this.AppInsightsManagementClient
                                                    .ComponentLinkedStorageAccounts
-                                                   .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
+                                                   .GetWithHttpMessagesAsync(this.ResourceGroupName, this.ComponentName)
                                                    .GetAwaiter()
                                                    .GetResult()
                                                    .Body;
@@ -106,14 +106,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 
             if (existingLinkedStorageAccount != null)
             {
-                throw new System.ArgumentException($"Storage Account: {StorageAccount} is already linked to component: {this.Name}");
+                throw new System.ArgumentException($"Storage Account: {StorageAccount} is already linked to component: {this.ComponentName}");
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Link Storage Account: {StorageAccount} to Application Insights Component {this.Name}"))
+            if (this.ShouldProcess(this.ResourceGroupName, $"Link Storage Account: {StorageAccount} to Application Insights Component {this.ComponentName}"))
             {
                 ComponentLinkedStorageAccounts response = this.AppInsightsManagementClient
                                                               .ComponentLinkedStorageAccounts
-                                                              .CreateAndUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.LinkedStorageAccountResourceId)
+                                                              .CreateAndUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ComponentName, this.LinkedStorageAccountResourceId)
                                                               .GetAwaiter()
                                                               .GetResult()
                                                               .Body;
