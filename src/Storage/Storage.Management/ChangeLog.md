@@ -32,6 +32,12 @@
 * Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
 * When only part items are returned in list DataLake Gen2 Items, add a warning message to remind user to list again with ContinuationToken
     - `Get-AzDataLakeGen2ChildItem`
+* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support New or List Kerberos keys of Storage account
+    -  New-AzStorageAccountKey
+    -  Get-AzStorageAccountKey
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
