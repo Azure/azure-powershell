@@ -14,7 +14,7 @@ Get application insights linked storage account
 
 ### ByResourceNameParameterSet
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -Name <String>
+Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -44,6 +44,21 @@ Get linked storage account associated with component "componentName"
 
 ## PARAMETERS
 
+### -ComponentName
+Component Name
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -71,21 +86,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Component Name
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

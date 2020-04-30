@@ -14,7 +14,7 @@ Update application insights linked storage account
 
 ### ByResourceNameParameterSet
 ```
-Update-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -Name <String>
+Update-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  -LinkedStorageAccountResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -47,6 +47,21 @@ Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Up
 Update linked storage account under component "componentName" to associate with $account
 
 ## PARAMETERS
+
+### -ComponentName
+Component Name
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -84,21 +99,6 @@ Storage Account ResourceId
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Component Name
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceNameParameterSet
 Aliases:
 
 Required: True

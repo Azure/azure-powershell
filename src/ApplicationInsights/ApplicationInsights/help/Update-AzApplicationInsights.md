@@ -14,7 +14,7 @@ update an existing application insights resource
 
 ```
 Update-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [[-WorkspaceResourceId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [[-RetentionInDays] <Int32>]
  [[-PublicNetworkAccessForIngestion] <String>] [[-PublicNetworkAccessForQuery] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -112,6 +112,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RetentionInDays
+Retention In Days, 90 by default.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Component Tags.
 
@@ -122,21 +137,6 @@ Aliases: Tags
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceResourceId
-ResourceId of the log analytics workspace which the data will be ingested to.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
