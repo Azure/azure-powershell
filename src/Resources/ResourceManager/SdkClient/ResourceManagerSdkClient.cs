@@ -1350,34 +1350,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             catch (CloudException ce)
             {
-                HttpStatusCode? statusCode = ce.Response?.StatusCode;
-                string errorCode = ce.Body?.Code;
-                string errorMessage = ce.Body?.Message ?? ce.Message;
-                string errorDetails = JsonConvert.SerializeObject(ce.Body?.Details, Formatting.Indented);
-                string requestId = ce.GetRequestId();
-                DateTime utcNow = DateTime.UtcNow;
-
-                string formattedErrorMessage = statusCode == HttpStatusCode.OK
-                    ? string.Format(
-                        CultureInfo.InvariantCulture,
-                        ProjectResources.SucceededWhatIfOperationErrorMessage,
-                        errorCode,
-                        errorMessage,
-                        errorDetails,
-                        requestId,
-                        utcNow)
-                    : string.Format(
-                        CultureInfo.InvariantCulture,
-                        ProjectResources.FailedWhatIfOperationErrorMessage,
-                        statusCode,
-                        errorCode,
-                        errorMessage,
-                        errorDetails,
-                        requestId,
-                        utcNow);
-
-                throw new CloudException(formattedErrorMessage);
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
             }
+        }
+
+        private string BuildCloudErrorMessage(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return string.Empty;
+            }
+
+            IList<string> messages = new List<string>
+            {
+                $"{cloudError.Code} - {cloudError.Message}"
+            };
+
+            foreach (CloudError innerError in cloudError.Details)
+            {
+                messages.Add(BuildCloudErrorMessage(innerError));
+            }
+
+            return string.Join(Environment.NewLine, messages);
         }
 
         /// <summary>

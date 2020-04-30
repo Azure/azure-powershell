@@ -349,21 +349,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///HTTPStatus Code: {0}
-        ///ErrorCode: {1}
-        ///ErrorMessage: {2}
-        ///ErrorDetails: {3}
-        ///RequestId: {4}
-        ///Timestamp (UTC): {5}.
-        /// </summary>
-        internal static string FailedWhatIfOperationErrorMessage {
-            get {
-                return ResourceManager.GetString("FailedWhatIfOperationErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot set parameter &apos;{0}&apos; from TemplateParameterFile. Incompatible value &apos;{1}&apos;..
         /// </summary>
         internal static string FailureParsingTemplateParameterFile {
@@ -1116,20 +1101,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string SubscriptionWithTheSpecifiedNameNotFount {
             get {
                 return ResourceManager.GetString("SubscriptionWithTheSpecifiedNameNotFount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///ErrorCode: {0}
-        ///ErrorMessage: {1}
-        ///ErrorDetails: {2}
-        ///RequestId: {3}
-        ///Timestamp (UTC): {4}.
-        /// </summary>
-        internal static string SucceededWhatIfOperationErrorMessage {
-            get {
-                return ResourceManager.GetString("SucceededWhatIfOperationErrorMessage", resourceCulture);
             }
         }
         
