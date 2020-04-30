@@ -13,23 +13,25 @@ Rotate the disk encryption key of the specified HDInsight cluster.
 
 ## SYNTAX
 
-### SetByNameParameterSet
+### SetByNameParameterSet (Default)
 ```
-Set-AzHDInsightClusterDiskEncryptionKey [-EncryptionKeyName] <String> [-EncryptionKeyVersion] <String>
- [-EncryptionVaultUri] <String> [-Name] <String> [-ResourceGroupName] <String>
+Set-AzHDInsightClusterDiskEncryptionKey [-ResourceGroupName] <String> [-Name] <String>
+ -EncryptionKeyName <String> -EncryptionKeyVersion <String> -EncryptionVaultUri <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzHDInsightClusterDiskEncryptionKey [-EncryptionKeyVersion] <String> [-EncryptionVaultUri] <String>
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzHDInsightClusterDiskEncryptionKey [-ResourceId] <String> -EncryptionKeyName <String>
+ -EncryptionKeyVersion <String> -EncryptionVaultUri <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzHDInsightClusterDiskEncryptionKey [-EncryptionKeyVersion] <String> [-EncryptionVaultUri] <String>
- -InputObject <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzHDInsightClusterDiskEncryptionKey [-InputObject] <AzureHDInsightCluster> -EncryptionKeyName <String>
+ -EncryptionKeyVersion <String> -EncryptionVaultUri <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,11 +87,11 @@ Gets or sets the encryption key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,7 +106,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -119,7 +121,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -134,7 +136,7 @@ Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -149,7 +151,7 @@ Parameter Sets: SetByNameParameterSet
 Aliases: ClusterName
 
 Required: True
-Position: 3
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -164,7 +166,7 @@ Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
-Position: 4
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -179,7 +181,7 @@ Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -384,9 +384,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the encryption vault uri.")]
         public string EncryptionVaultUri { get; set; }
 
-
         #endregion
-
 
         public NewAzureHDInsightClusterCommand()
         {
