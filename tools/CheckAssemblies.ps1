@@ -25,9 +25,9 @@ function Get-PreloadAssemblies{
 
     $preloadAssemblies = @()
     if($PSEdition -eq 'Core') {
-        $preloadFolderName =   "NetCoreAssemblies"
+        $preloadFolderName = "NetCoreAssemblies"
     } else {
-        $preloadFolderName =   "PreloadAssemblies"
+        $preloadFolderName = "PreloadAssemblies"
     }
     $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
     if(Test-Path $preloadFolder){

@@ -12,7 +12,7 @@ Gets a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
-### GetSparkStatementsByIdParameterSet
+### GetSparkStatementsByIdParameterSet (Default)
 ```
 Get-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>]
  -SessionId <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

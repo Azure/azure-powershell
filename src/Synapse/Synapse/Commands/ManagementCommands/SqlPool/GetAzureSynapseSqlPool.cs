@@ -8,7 +8,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
+        DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseSqlPool))]
     public class GetAzureSynapseSqlPool : SynapseCmdletBase
     {

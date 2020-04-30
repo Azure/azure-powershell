@@ -12,7 +12,7 @@ Checks for the existence of a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
-### TestByNameParameterSet
+### TestByNameParameterSet (Default)
 ```
 Test-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

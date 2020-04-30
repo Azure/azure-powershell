@@ -12,7 +12,7 @@ Gets a Synapse Analytics Spark session.
 
 ## SYNTAX
 
-### GetByNameParameterSet
+### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>] [-Name <String>]
  [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

@@ -12,7 +12,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession)]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = CreateByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkSession))]
     public class StartAzureSynapseSparkSession : SynapseCmdletBase
     {
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.ReferenceFiles)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.ReferenceFile)]
         [ValidateNotNullOrEmpty]
-        public string[] ReferenceFiles { get; set; }
+        public string[] ReferenceFile { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
         [ValidateNotNullOrEmpty]
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SparkPoolName = resourceIdentifier.ResourceName;
             }
 
-            if (this.ReferenceFiles != null)
+            if (this.ReferenceFile != null)
             {
-                for (int i = 0; i < this.ReferenceFiles.Length; i++)
+                for (int i = 0; i < this.ReferenceFile.Length; i++)
                 {
-                    this.ReferenceFiles[i] = Utils.NormalizeUrl(this.ReferenceFiles[i]);
+                    this.ReferenceFile[i] = Utils.NormalizeUrl(this.ReferenceFile[i]);
                 }
             }
 
-            Utils.CategorizedFiles(this.ReferenceFiles, out IList<string> jars, out IList<string> files);
+            Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
             var livyRequest = new ExtendedLivySessionRequest
             {
                 Name = this.Name,
