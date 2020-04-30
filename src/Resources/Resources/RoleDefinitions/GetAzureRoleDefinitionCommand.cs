@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 WriteWarning("No role definitions where found with those conditions.");
                 WriteWarning("If the role was created recently keep in mind there's a slight delay between creation and public view.");
-                WriteWarning("Please try again later");
+                WriteWarning("Please try again later.");
             }
             else
             {
