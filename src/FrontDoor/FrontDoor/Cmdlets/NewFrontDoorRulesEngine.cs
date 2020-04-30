@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true), OutputType(typeof(PSRulesEngine))]
     public class NewFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The resource group name that the Front Door will be created in.")]

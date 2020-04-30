@@ -22,7 +22,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class RemoveFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
         /// <summary>
