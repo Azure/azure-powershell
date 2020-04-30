@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Test ApplicationInsightsCRUD
+Test LinkedStorageAccountCRUD
 #>
-function Test-ApplicationInsightsLinkedStorageAccountCRUD
+function Test-LinkedStorageAccountCRUD
 {
 	# setup
     $rgname = "azps-test-group-mock"
