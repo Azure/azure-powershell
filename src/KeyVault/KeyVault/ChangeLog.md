@@ -21,6 +21,7 @@
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
 * When creating a key vault, soft delete is now enabled by default
 * When creating a key vault, network rules can be set to govern the accessibility from specific network locations
+* `Get-AzKeyVaultKey` supports downloading a public key in PEM format
 
 ## Version 1.6.0
 * Added a new cmdlet `Update-AzKeyVault` that can enable soft delete and purge protection on a vault
