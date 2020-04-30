@@ -16,7 +16,7 @@ Gets all the versions of a VMImage.
 ### ListVMImage
 ```
 Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
- [-FilterExpression <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
@@ -98,21 +98,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterExpression
-Specifies a filter expression.
-
-```yaml
-Type: System.String
-Parameter Sets: ListVMImage
-Aliases:
 
 Required: False
 Position: Named

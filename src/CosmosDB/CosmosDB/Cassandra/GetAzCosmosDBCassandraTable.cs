@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSCassandraKeyspaceGetResults InputObject { get; set; }
+        public PSCassandraKeyspaceGetResults ParentObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableDetailedParamHelpMessage)]
         public SwitchParameter Detailed { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 KeyspaceName = resourceIdentifier.ResourceName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);

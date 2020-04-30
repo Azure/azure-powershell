@@ -100,6 +100,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The type of the ANF volume")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("DataProtection")]
+        public string VolumeType { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [Parameter(
@@ -115,6 +123,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "A hashtable array which represents the export policy")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the replication object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesReplicationObject ReplicationObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -161,6 +175,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
+            var dataProtection = new PSNetAppFilesVolumeDataProtection
+            {
+                Replication = ReplicationObject
+            };
+
             var volumeBody = new Management.NetApp.Models.Volume()
             {
                 ServiceLevel = ServiceLevel,
@@ -169,6 +188,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
+                DataProtection = (dataProtection.Replication != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
+                VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
                 Tags = tagPairs
             };

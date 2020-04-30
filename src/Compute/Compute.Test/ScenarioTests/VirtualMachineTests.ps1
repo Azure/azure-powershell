@@ -708,20 +708,13 @@ function Test-VirtualMachineImageList
 
         $skusName = Get-ComputeTestResourceName;
         Assert-ThrowsContains { $s4 = Get-AzVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "was not found";
-
-        $filter = "name eq 'latest'";
-        Assert-ThrowsContains { $s5 = Get-AzVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
-
         $version = '1.0.0';
         Assert-ThrowsContains { $s6 = Get-AzVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
 
         # Extension Images
         $type = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s7 = Get-AzVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
 
         Assert-ThrowsContains { $s8 = Get-AzVMExtensionImageType -Location $locStr -PublisherName $publisherName; } "was not found";
-
-        Assert-ThrowsContains { $s9 = Get-AzVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter; } "was not found";
 
         $passed = $true;
     }
@@ -3261,7 +3254,7 @@ function Test-VirtualMachineIdentity
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -AssignIdentity `
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -IdentityType "SystemAssigned" `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
@@ -3359,7 +3352,7 @@ function Test-VirtualMachineIdentityUpdate
         $vms_output = $vms | Out-String;
         Write-Verbose($vms_output);
 
-        $st = $vm1 | Update-AzVM -AssignIdentity;
+        $st = $vm1 | Update-AzVM -IdentityType "SystemAssigned";
 
         # Get VM
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint "Expand";

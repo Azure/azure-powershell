@@ -47,6 +47,7 @@
 
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
+    { "regex": "Synapse", "alias": "Synapse" },
 	
     { "regex": "Relay", "alias": "Relay" },
 
@@ -163,5 +164,8 @@
     { "regex": "Maintenance", "alias": "Maintenance" },
     { "regex": "CosmosDB", "alias": "Cosmos DB" },
     { "regex": "Support", "alias": "Support" },
+    { "regex": "Databricks", "alias": "Databricks" },
+    { "regex": "MariaDb", "alias": "MariaDb" },
+    { "regex": "MySql", "alias": "MySql" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]

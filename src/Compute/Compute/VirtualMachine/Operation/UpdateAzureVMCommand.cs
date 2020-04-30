@@ -24,25 +24,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
         private const string IdParameterSet = "IdParameterSetName";
-        private const string AssignIdentityParameterSet = "AssignIdentityParameterSet";
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
 
         [Parameter(
            Mandatory = true,
            Position = 0,
            ParameterSetName = ResourceGroupNameParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ParameterSetName = AssignIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [Parameter(
@@ -84,13 +77,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         public string[] IdentityId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = AssignIdentityParameterSet,
-            ValueFromPipelineByPropertyName = false)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -144,9 +130,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = this.AssignIdentity.IsPresent 
-                                   ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
-                                   : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
+                        Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
                         ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId)
                                                 ? new SubResource(this.ProximityPlacementGroupId)

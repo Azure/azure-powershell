@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Configuration.
+        /// </summary>
+        internal static string AddIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("AddIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Device.
         /// </summary>
         internal static string AddIotHubDevice {
@@ -149,11 +158,29 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execute Metrics Query.
+        /// </summary>
+        internal static string InvokeIotHubConfigurationMetricsQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubConfigurationMetricsQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoke Direct Method on a device.
         /// </summary>
         internal static string InvokeIotHubDeviceMethod {
             get {
                 return ResourceManager.GetString("InvokeIotHubDeviceMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query an Iot Hub.
+        /// </summary>
+        internal static string InvokeIotHubQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubQuery", resourceCulture);
             }
         }
         
@@ -212,6 +239,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate Sas Token.
+        /// </summary>
+        internal static string NewIotHubSasToken {
+            get {
+                return ResourceManager.GetString("NewIotHubSasToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
         internal static string RemoveEventHubConsumerGroup {
@@ -235,6 +271,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubCertificate {
             get {
                 return ResourceManager.GetString("RemoveIotHubCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Configuration.
+        /// </summary>
+        internal static string RemoveIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveIotHubConfiguration", resourceCulture);
             }
         }
         
@@ -298,6 +343,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Configuration.
+        /// </summary>
+        internal static string SetIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("SetIotHubConfiguration", resourceCulture);
             }
         }
         

@@ -15,10 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Globalization;
     using System.Management.Automation;
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to AzureStorageFile, and AzureStorageFile will have CloudFile as a child property.")]
     public class RemoveAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(

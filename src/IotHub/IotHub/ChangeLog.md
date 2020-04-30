@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlet to invoke a query in an IoT hub to retrieve information using a SQL-like language.
+* Fix #11597: Add-AzIotHubDevice fails to create Edge Enabled Device without child devices.
+* Added cmdlet to generate SAS token for Iot Hub, device or module.
+* Added cmdlet to invoke configuration metrics query.
+* Manage IoT Edge automatic deployment at scale. New cmdlets are:
+    - `Add-AzIotHubDeployment`
+    - `Get-AzIotHubDeployment`
+    - `Remove-AzIotHubDeployment`
+    - `Set-AzIotHubDeployment`
+* Added cmdlet to invoke an IoT Edge deployment metrics query.
+
+## Version 2.4.0
 * Manage IoT device twin configuration, New cmdlets are:
     - `Get-AzIotHubDeviceTwin`
     - `Update-AzIotHubDeviceTwin`
@@ -25,6 +37,12 @@
 * Manage IoT device module twin configuration, New cmdlets are:
     - `Get-AzIotHubModuleTwin`
     - `Update-AzIotHubModuleTwin`
+* Manage IoT automatic device management configuration at scale. New cmdlets are:
+    - `Add-AzIotHubConfiguration`
+    - `Get-AzIotHubConfiguration`
+    - `Remove-AzIotHubConfiguration`
+    - `Set-AzIotHubConfiguration`
+* Added cmdlet to invoke an edge module method in an Iot Hub.
 
 ## Version 2.3.0
 * Added support to manage distributed settings per-device. New Cmdlets are:

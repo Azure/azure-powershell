@@ -30,14 +30,6 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### AssignIdentityParameterSet
-```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-AssignIdentity] [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-VmssId <String>] [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>]
- [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **New-AzVMConfig** cmdlet creates a configurable local virtual machine object for Azure.
 Other cmdlets can be used to configure a virtual machine object, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
@@ -56,21 +48,6 @@ The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
 
 ## PARAMETERS
-
-### -AssignIdentity
-Specify the system assigned identity for the virtual machine.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AssignIdentityParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AvailabilitySetId
 Specifies the ID of an availability set.

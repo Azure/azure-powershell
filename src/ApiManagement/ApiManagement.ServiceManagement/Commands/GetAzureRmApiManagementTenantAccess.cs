@@ -15,8 +15,10 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Management.Automation;
 
+    [GenericBreakingChange("Output changed: Keys will not be returned anymore. Additional cmdlet will be added to retrieve the keys.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementTenantAccess")]
     [OutputType(typeof(PsApiManagementAccessInformation))]
     public class GetAzureRmApiManagementTenantAccess : AzureApiManagementCmdletBase

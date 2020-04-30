@@ -1180,6 +1180,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAadAuthenticationParameters, MNM.AadAuthenticationParameters>();
                 cfg.CreateMap<CNM.PSP2SVpnConnectionHealthRequest, MNM.P2SVpnConnectionHealthRequest>();
 
+                // SecurityPartnerProviders
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSSecurityPartnerProvider, MNM.SecurityPartnerProvider>();
+                cfg.CreateMap<MNM.SecurityPartnerProvider, CNM.PSSecurityPartnerProvider>();
+
                 // Azure Firewalls
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>().AfterMap((src, dest) =>
@@ -1323,6 +1328,10 @@ namespace Microsoft.Azure.Commands.Network
                 // IpGroup
                 cfg.CreateMap<CNM.PSIpGroup, MNM.IpGroup>();
                 cfg.CreateMap<MNM.IpGroup, CNM.PSIpGroup>();
+
+                // IpAllocation
+                cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
+                cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
             });
 
             _mapper = config.CreateMapper();

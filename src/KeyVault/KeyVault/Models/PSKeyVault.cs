@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
+            SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
@@ -72,6 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public bool? EnablePurgeProtection { get; private set; }
 
+        public int? SoftDeleteRetentionInDays { get; private set; }
+
         public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
 
         public string AccessPoliciesText { get { return ModelExtensions.ConstructAccessPoliciesList(AccessPolicies); } }
@@ -80,7 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string NetworkAclsText { get { return ModelExtensions.ConstructNetworkRuleSet(NetworkAcls); } }
 
-        //If we got this vault from the server, save the over-the-wire version, to 
+        //If we got this vault from the server, save the over-the-wire version, to
         //allow easy updates
         public Vault OriginalVault { get; private set; }
 
@@ -107,7 +110,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 bypass = PSKeyVaultNetworkRuleBypassEnum.AzureServices;
             }
 
-            IList <string> allowedIpAddresses = null;
+            IList<string> allowedIpAddresses = null;
             if (networkAcls.IpRules != null && networkAcls.IpRules.Count > 0)
             {
                 allowedIpAddresses = networkAcls.IpRules.Select(item => item.Value).ToList();

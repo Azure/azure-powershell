@@ -601,4 +601,10 @@
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
   </data>
+  <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
+    <value>Failed to retrieve properties of storage account '{0}'.</value>
+  </data>
+  <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
+    <value>Failed to add Role Assignment for Storage Account '{0}'</value>
+  </data>
 </root>

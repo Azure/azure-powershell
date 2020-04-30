@@ -27,6 +27,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public const string DeviceScopePrefix = "ms-azure-iot-edge://";
         public const string TracingAllowedForSku = "standard";
         public const string TracingProperty = "azureiot*com^dtracing^1";
+        public const string EdgeConfiguration = "{\"$edgeAgent\":{\"properties.desired\":{\"modules\":{},\"runtime\":{\"settings\":" +
+                                                "{\"minDockerVersion\": \"v1.25\"},\"type\":\"docker\"},\"schemaVersion\":\"1.0\",\"" +
+                                                "systemModules\":{\"edgeAgent\":{\"settings\":{\"image\":\"mcr.microsoft.com/azureiotedge-agent:1.0\"" +
+                                                ",\"createOptions\":\"\"},\"type\":\"docker\"},\"edgeHub\":{\"settings\":{\"image\":\"" +
+                                                "mcr.microsoft.com/azureiotedge-hub:1.0\",\"createOptions\":\"{\\\"HostConfig\\\":{\\\"PortBindings" +
+                                                "\\\":{\\\"8883/tcp\\\":[{\\\"HostPort\\\":\\\"8883\\\"}],\\\"5671/tcp\\\":[{\\\"HostPort\\\"" +
+                                                ":\\\"5671\\\"}],\\\"443/tcp\\\":[{\\\"HostPort\\\":\\\"443\\\"}]}}}\"},\"type\":\"docker\"" +
+                                                ",\"status\":\"running\",\"restartPolicy\":\"always\"}}}},\"$edgeHub\":{\"properties.desired\"" +
+                                                ":{\"routes\":{},\"schemaVersion\":\"1.0\",\"storeAndForwardConfiguration\":{\"timeToLiveSecs\":7200}}}}";
 
         public static readonly string[] TracingAllowedForLocation = { "northeurope", "westus2", "west us 2", "southeastasia" };
 
@@ -68,6 +77,31 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static IEnumerable<PSModules> ToPSModules(IEnumerable<Module> modules)
         {
             return IotHubUtils.ConvertObject<IEnumerable<Module>, IEnumerable<PSModules>>(modules.ToList());
+        }
+
+        public static PSConfiguration ToPSConfiguration(Configuration config)
+        {
+            return (config != null && config.Content.ModulesContent == null) ? IotHubUtils.ConvertObject<Configuration, PSConfiguration>(config) : null;
+        }
+
+        public static PSDeployment ToPSDeployment(Configuration config)
+        {
+            return (config != null && config.Content.ModulesContent != null) ? IotHubUtils.ConvertObject<Configuration, PSDeployment>(config) : null;
+        }
+
+        public static Configuration ToConfiguration(PSConfiguration psConfig)
+        {
+            return IotHubUtils.ConvertObject<PSConfiguration, Configuration>(psConfig);
+        }
+
+        public static IEnumerable<PSConfigurations> ToPSConfigurations(IEnumerable<Configuration> configs)
+        {
+            return IotHubUtils.ConvertObject<IEnumerable<Configuration>, IEnumerable<PSConfigurations>>(configs.Where(c => c.Content.ModulesContent == null).ToList());
+        }
+
+        public static IEnumerable<PSDeployments> ToPSDeployments(IEnumerable<Configuration> configs)
+        {
+            return IotHubUtils.ConvertObject<IEnumerable<Configuration>, IEnumerable<PSDeployments>>(configs.Where(c => c.Content.ModulesContent != null).ToList());
         }
 
         public static PSDeviceTwin ToPSDeviceTwin(Twin deviceTwin)

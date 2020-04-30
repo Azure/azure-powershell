@@ -135,30 +135,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// get the CloudBlobContainer object by name if container exists
-        /// </summary>
-        /// <param name="containerName">container name</param>
-        /// <returns>return CloudBlobContianer object if specified container exists, otherwise throw an exception</returns>
-        internal async Task<CloudBlobContainer> GetCloudBlobContainerByName(IStorageBlobManagement localChannel, string containerName, bool skipCheckExists = false)
-        {
-            if (!NameUtil.IsValidContainerName(containerName))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, containerName));
-            }
-
-            BlobRequestOptions requestOptions = RequestOptions;
-            CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-
-            if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey
-                && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
-            {
-                throw new ArgumentException(String.Format(Resources.ContainerNotFound, containerName));
-            }
-
-            return container;
-        }
-
-        /// <summary>
         /// list blobs by blob name and container name
         /// </summary>
         /// <param name="containerName">container name</param>

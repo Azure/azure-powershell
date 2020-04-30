@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage )]
         [ValidateNotNull]
-        public PSSqlDatabaseGetResults InputObject{ get; set; }
+        public PSSqlDatabaseGetResults ParentObject{ get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerDetailedParamHelpMessage)]
         public SwitchParameter Detailed { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 DatabaseName = resourceIdentifier.ResourceName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 if (Detailed)
                 {
                     ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.GetSqlContainerThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
+                    WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
                 }
             }
             else

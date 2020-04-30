@@ -21,8 +21,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-DisableActiveActiveFeature] [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RemoveAadAuthentication]
+ [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RadiusServerConfiguration
@@ -33,9 +34,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-DisableActiveActiveFeature] -RadiusServerAddress <String> -RadiusServerSecret <SecureString>
- [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -RadiusServerAddress <String>
+ -RadiusServerSecret <SecureString> [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RadiusServerConfigurationUpdateResourceWithTags
@@ -46,9 +47,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-DisableActiveActiveFeature] -RadiusServerAddress <String> -RadiusServerSecret <SecureString>
- [-RemoveAadAuthentication] [-CustomRoute <String[]>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -RadiusServerAddress <String>
+ -RadiusServerSecret <SecureString> [-RemoveAadAuthentication] [-CustomRoute <String[]>] -Tag <Hashtable>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AadAuthenticationConfiguration
@@ -59,9 +60,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-DisableActiveActiveFeature] -AadTenantUri <String> -AadAudienceId <String> -AadIssuerUri <String>
- [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -AadTenantUri <String>
+ -AadAudienceId <String> -AadIssuerUri <String> [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -72,8 +73,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-DisableActiveActiveFeature] [-RemoveAadAuthentication] [-CustomRoute <String[]>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RemoveAadAuthentication]
+ [-CustomRoute <String[]>] -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -304,7 +306,7 @@ The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpC
 P2S AAD authentication option:AadAudienceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -319,7 +321,7 @@ Accept wildcard characters: False
 P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -334,7 +336,7 @@ Accept wildcard characters: False
 P2S AAD authentication option:AadTenantUri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -349,7 +351,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -364,7 +366,7 @@ Accept wildcard characters: False
 The virtual network gateway's ASN, used to set up BGP sessions inside IPsec tunnels
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -375,26 +377,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomRoute
 Custom routes AddressPool specified by customer
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -409,7 +396,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -424,7 +411,7 @@ Accept wildcard characters: False
 Flag to disable Active Active feature on virtual network gateway
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -439,7 +426,22 @@ Accept wildcard characters: False
 Flag to enable Active Active feature on virtual network gateway
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePrivateIpAddress
+Flag to enable Active Active feature on virtual network gateway
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -455,7 +457,7 @@ The default site to use for force tunneling.
 If a default site is specified, all internet traffic from the gateway's vnet is routed to that site.
 
 ```yaml
-Type: PSLocalNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -470,7 +472,7 @@ Accept wildcard characters: False
 The virtual network gateway's SKU
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
@@ -486,7 +488,7 @@ Accept wildcard characters: False
 The BgpPeeringAddresses for Virtual network gateway bgpsettings.
 
 ```yaml
-Type: PSIpConfigurationBgpPeeringAddress[]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpConfigurationBgpPeeringAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +503,7 @@ Accept wildcard characters: False
 The weight added to routes learned over BGP from this virtual network gateway
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -516,7 +518,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
 Aliases:
 
@@ -531,7 +533,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
 Aliases:
 
@@ -546,7 +548,7 @@ Accept wildcard characters: False
 Flag to remove AAD authentication for P2S client from virtual network gateway.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -561,7 +563,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: RadiusServerConfigurationUpdateResourceWithTags, UpdateResourceWithTags
 Aliases:
 
@@ -577,7 +579,7 @@ The virtual network gateway object to base modifications off of.
 This can be retrieved using Get-AzVirtualNetworkGateway
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -593,7 +595,7 @@ The address space to allocate VPN client IP addresses from.
 This should not overlap with virtual network or on-premise ranges.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -608,7 +610,7 @@ Accept wildcard characters: False
 A list of IPSec policies for P2S VPN client tunneling protocols.
 
 ```yaml
-Type: PSIpsecPolicy[]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -623,7 +625,7 @@ Accept wildcard characters: False
 A list of P2S VPN client tunneling protocols
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: SSTP, IkeV2, OpenVPN
@@ -640,7 +642,7 @@ A list of revoked VPN client certificates.
 A VPN client presenting a certificate that matches one of these will be told to go away.
 
 ```yaml
-Type: PSVpnClientRevokedCertificate[]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -656,7 +658,7 @@ A list of VPN client root certificates to use for VPN client authentication.
 Connecting VPN clients must present certificates generated from one of these root certificates.
 
 ```yaml
-Type: PSVpnClientRootCertificate[]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -667,12 +669,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

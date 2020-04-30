@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
@@ -29,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        "AzPeerAsn",
+        Constants.AzPeerAsn,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+        DefaultParameterSetName = Constants.ParameterSetNameByName)]
     [OutputType(typeof(bool))]
-    public class RemoveAzurePeerAsn : PeeringBaseCmdlet
+    public class RemoveAzurePeerAsnCommand : PeeringBaseCmdlet
     {
         /// <summary>
         ///     Gets or sets The InputObject name
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [ValidateNotNullOrEmpty]
         public PSPeerAsn InputObject { get; set; }
 
@@ -51,12 +52,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         ///  Gets or sets the Force the execution of the command.
@@ -84,24 +95,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             base.Execute();
             try
             {
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                string name = null;
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameInputObject, StringComparison.OrdinalIgnoreCase))
                 {
-                    this.ConfirmAction(
-                        this.Force,
-                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
-                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
-                        this.InputObject.Name,
-                        this.RemovePeerAsn);
+                    name = this.InputObject.Name;
+                }
+                else if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = this.Name;
+                }
+                else if (this.ParameterSetName.Equals(Constants.ParameterSetNameByResourceId, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = this.ResourceId.Split('/').Last();
                 }
 
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(name))
                 {
                     this.ConfirmAction(
                         this.Force,
-                        string.Format(Resources.ContinueMessage, this.Name),
-                        string.Format(Resources.ProcessMessage, this.Name),
-                        this.Name,
-                        this.RemovePeerAsn);
+                        string.Format(Resources.ContinueMessage, name),
+                        string.Format(Resources.ProcessMessage, name),
+                        name,
+                        () => this.RemovePeerAsn(name));
                 }
             }
             catch (InvalidOperationException mapException)
@@ -122,34 +137,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             "StyleCop.CSharp.DocumentationRules",
             "SA1650:ElementDocumentationMustBeSpelledCorrectly",
             Justification = "Reviewed. Suppression is OK here.")]
-        private void RemovePeerAsn()
+        private void RemovePeerAsn(string name)
         {
-            if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+            try
             {
-                try
-                {
-                    this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
-                    if (this.PassThru) this.WriteObject(true);
-                }
-                catch
-                {
-                    if (this.PassThru) { this.WriteObject(false); }
-                    else { throw new ItemNotFoundException(); };
-                }
+                this.PeerAsnClient.Delete(name);
+                if (this.PassThru) this.WriteObject(true);
             }
-
-            if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
+            catch
             {
-                try
-                {
-                    this.PeeringManagementClient.PeerAsns.Delete(this.Name);
-                    if (this.PassThru) this.WriteObject(true);
-                }
-                catch
-                {
-                    if (this.PassThru) { this.WriteObject(false); }
-                    else { throw new ItemNotFoundException(); };
-                }
+                if (this.PassThru) { this.WriteObject(false); }
+                else { throw new ItemNotFoundException(); };
             }
         }
     }
