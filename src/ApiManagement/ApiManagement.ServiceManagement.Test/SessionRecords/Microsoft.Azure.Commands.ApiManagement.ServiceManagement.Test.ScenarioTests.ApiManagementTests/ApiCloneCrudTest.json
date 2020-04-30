@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5fb58f6e-1d9a-49c2-b7bd-fa903f461469"
+          "2c6fa840-b918-467e-8371-8f7cde176ddd"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,7 +30,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "dfb9639b-dc8b-4a46-9e28-6a257c89cc05"
+          "6af6a104-15dd-4d08-bc34-241afa760e7b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -39,16 +39,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "27e8f6f5-e638-4a57-bd80-32fc127af559"
+          "38bf3960-326c-4c89-8332-a0a099a2c873"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165607Z:27e8f6f5-e638-4a57-bd80-32fc127af559"
+          "WESTUS:20200430T193711Z:38bf3960-326c-4c89-8332-a0a099a2c873"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:07 GMT"
+          "Thu, 30 Apr 2020 19:37:11 GMT"
         ],
         "Content-Length": [
           "729"
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b108aab9-bdcc-4494-b9c4-0e6cdda90c50"
+          "bdb64acd-1039-4bcc-8214-bcaf01c3e9b6"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,13 +90,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOA0=\""
+          "\"AAAAAAAACm8=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b4f63487-45d3-4fa9-b10c-82ee9d598531"
+          "537dcea7-3aa1-468a-9210-4b9328f1222c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,16 +105,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "301ebf96-1220-43dc-90da-590eae4ef2d8"
+          "2fbc4cda-c0a3-45b0-b542-ac530e93edec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165608Z:301ebf96-1220-43dc-90da-590eae4ef2d8"
+          "WESTUS:20200430T193711Z:2fbc4cda-c0a3-45b0-b542-ac530e93edec"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:07 GMT"
+          "Thu, 30 Apr 2020 19:37:11 GMT"
         ],
         "Content-Length": [
           "747"
@@ -136,7 +136,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cedaf272-4d35-4713-bcce-21b79aa854b1"
+          "9b2fe8e6-e8a4-40d1-8244-df238fde32e7"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,7 +159,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "01e2de27-cab7-4a16-9a0f-f418138610c8"
+          "d8c13f1e-ea5b-4cda-9b23-cff164ae1101"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -168,16 +168,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "d84e7b0f-3a91-4a4b-8741-d3b30884c16a"
+          "45ae0f5c-c660-4552-af33-17cf4f21c715"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165608Z:d84e7b0f-3a91-4a4b-8741-d3b30884c16a"
+          "WESTUS:20200430T193712Z:45ae0f5c-c660-4552-af33-17cf4f21c715"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:07 GMT"
+          "Thu, 30 Apr 2020 19:37:11 GMT"
         ],
         "Content-Length": [
           "7423"
@@ -193,13 +193,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaVZlcnNpb25TZXRzL3BzNjA4Mz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaVZlcnNpb25TZXRzL3BzNjg4Mz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps8102\",\r\n    \"versionQueryName\": \"ps676\",\r\n    \"displayName\": \"ps5735\",\r\n    \"versioningScheme\": \"Query\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps9008\",\r\n    \"versionQueryName\": \"ps1548\",\r\n    \"displayName\": \"ps46\",\r\n    \"versioningScheme\": \"Query\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "34e8ffdf-f004-478c-9735-5ca9d49ef960"
+          "c5ffa5de-6a4b-4bdd-ba4e-c1f3ef597c0d"
         ],
         "Accept-Language": [
           "en-US"
@@ -214,7 +214,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "155"
+          "154"
         ]
       },
       "ResponseHeaders": {
@@ -225,13 +225,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOTY=\""
+          "\"AAAAAAAAC4g=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "297a5940-af7b-43aa-8daa-807d7c74d1c8"
+          "69faf8a1-8f83-46cf-863f-40bdbd7d694d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -240,19 +240,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "561a0429-1bff-4142-95f2-49d5e9d81d2a"
+          "63af5e42-58fc-4f40-bdff-862e7f0af28c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165609Z:561a0429-1bff-4142-95f2-49d5e9d81d2a"
+          "WESTUS:20200430T193712Z:63af5e42-58fc-4f40-bdff-862e7f0af28c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:08 GMT"
+          "Thu, 30 Apr 2020 19:37:12 GMT"
         ],
         "Content-Length": [
-          "448"
+          "447"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -261,17 +261,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apiVersionSets\",\r\n  \"name\": \"ps6083\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5735\",\r\n    \"description\": \"ps8102\",\r\n    \"versioningScheme\": \"Query\",\r\n    \"versionQueryName\": \"ps676\",\r\n    \"versionHeaderName\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apiVersionSets\",\r\n  \"name\": \"ps6883\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps46\",\r\n    \"description\": \"ps9008\",\r\n    \"versioningScheme\": \"Query\",\r\n    \"versionQueryName\": \"ps1548\",\r\n    \"versionHeaderName\": null\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps7142\",\r\n    \"sourceApiId\": \"/apis/echo-api\",\r\n    \"displayName\": \"ps9015\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4973\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps6225\",\r\n    \"sourceApiId\": \"/apis/echo-api\",\r\n    \"displayName\": \"ps5700\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps3384\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "518de283-a589-4cfc-8b0a-33e258d76b0e"
+          "7702ae8d-c3da-470e-a102-a82df6b2faa0"
         ],
         "Accept-Language": [
           "en-US"
@@ -297,13 +297,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOTk=\""
+          "\"AAAAAAAAC4s=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "92141746-83b3-454b-8d61-51fe08b7a91d"
+          "3deacc60-8b19-4919-98ce-ada39ce2b291"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -312,16 +312,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "5e511104-b16f-4f1b-9f24-26e776ac95c7"
+          "505af6be-3584-4230-8d46-a40d82c890ad"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165613Z:5e511104-b16f-4f1b-9f24-26e776ac95c7"
+          "WESTUS:20200430T193713Z:505af6be-3584-4230-8d46-a40d82c890ad"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:12 GMT"
+          "Thu, 30 Apr 2020 19:37:13 GMT"
         ],
         "Content-Length": [
           "768"
@@ -333,12 +333,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2187\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9015\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps7142\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4973\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps4910\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5700\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps6225\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps3384\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -357,13 +357,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOTk=\""
+          "\"AAAAAAAAC4s=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e0ff006e-b31b-4da4-a065-f7f704b8e5a1"
+          "827af160-b6ed-4484-8d2f-a49808518278"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -372,16 +372,16 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "084a553b-f766-4ce9-93c8-e50484baca69"
+          "8fcfa32e-502f-49df-b21a-798db4d8a8ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165643Z:084a553b-f766-4ce9-93c8-e50484baca69"
+          "WESTUS:20200430T193743Z:8fcfa32e-502f-49df-b21a-798db4d8a8ac"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:43 GMT"
+          "Thu, 30 Apr 2020 19:37:43 GMT"
         ],
         "Content-Length": [
           "768"
@@ -393,17 +393,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2187\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9015\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps7142\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4973\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps4910\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5700\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps6225\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps3384\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d7dd412d-ffc4-45f9-8b0d-e8ade3615b69"
+          "a19f28a4-0c40-4dc9-84b2-6f3826db6bf8"
         ],
         "Accept-Language": [
           "en-US"
@@ -426,7 +426,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bbf2c515-0377-4018-954d-3d0c94d604d0"
+          "9030e58c-19ab-44b2-ad52-1daad9f0c294"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -435,16 +435,16 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "a11e10df-e033-4c51-a80b-0f24f89ace9f"
+          "d569983d-1122-445e-9384-9249fbe6250a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165643Z:a11e10df-e033-4c51-a80b-0f24f89ace9f"
+          "WESTUS:20200430T193744Z:d569983d-1122-445e-9384-9249fbe6250a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:43 GMT"
+          "Thu, 30 Apr 2020 19:37:43 GMT"
         ],
         "Content-Length": [
           "7411"
@@ -456,17 +456,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/create-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"create-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Create resource\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/modify-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"modify-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Modify Resource\",\r\n        \"method\": \"PUT\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/remove-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"remove-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Remove resource\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-header-only\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-header-only\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve header only\",\r\n        \"method\": \"HEAD\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"number\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"Returned in all cases.\",\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource-cached\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource-cached\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource (cached)\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource-cached\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 6\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/create-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"create-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Create resource\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/modify-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"modify-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Modify Resource\",\r\n        \"method\": \"PUT\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/remove-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"remove-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Remove resource\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-header-only\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-header-only\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve header only\",\r\n        \"method\": \"HEAD\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"number\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"Returned in all cases.\",\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource-cached\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource-cached\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource (cached)\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource-cached\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 6\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/create-resource?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvY3JlYXRlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/create-resource?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvY3JlYXRlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "05d39186-49e8-436e-b428-bcc2711c86da"
+          "2a318ad0-4ee5-45dc-b8de-86a86f6ea42e"
         ],
         "Accept-Language": [
           "en-US"
@@ -486,13 +486,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUk=\""
+          "\"AAAAAAAAC5s=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fb3457fa-24f9-4511-a727-1382e2749b35"
+          "0c75417f-19ed-4ac6-8b3e-09e216f6342a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -501,16 +501,16 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "ae92b9c9-2299-40f9-9ebd-47153232727e"
+          "a7ba6a54-d228-4abd-89fd-670c1bc0e616"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165643Z:ae92b9c9-2299-40f9-9ebd-47153232727e"
+          "WESTUS:20200430T193744Z:a7ba6a54-d228-4abd-89fd-670c1bc0e616"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:43 GMT"
+          "Thu, 30 Apr 2020 19:37:43 GMT"
         ],
         "Content-Length": [
           "1267"
@@ -522,17 +522,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/create-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"create-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Create resource\",\r\n    \"method\": \"POST\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/create-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"create-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Create resource\",\r\n    \"method\": \"POST\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/modify-resource?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvbW9kaWZ5LXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/modify-resource?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvbW9kaWZ5LXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f4fa6934-db8b-4e94-a7c8-dda87359fefb"
+          "4546e0f4-7a2d-4882-a2d7-9c4f8e75d0bd"
         ],
         "Accept-Language": [
           "en-US"
@@ -552,13 +552,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUg=\""
+          "\"AAAAAAAAC5o=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d363128b-0ad0-4a40-b485-6b5c2692a01d"
+          "85398736-a0e5-42f6-8d6a-9f18d9871358"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -567,16 +567,16 @@
           "11993"
         ],
         "x-ms-correlation-request-id": [
-          "9fefe5c4-4a22-49b2-a633-75cb4a4b86f8"
+          "e6be34fa-e08b-429e-ae10-9fb6ebfedba2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165643Z:9fefe5c4-4a22-49b2-a633-75cb4a4b86f8"
+          "WESTUS:20200430T193744Z:e6be34fa-e08b-429e-ae10-9fb6ebfedba2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:43 GMT"
+          "Thu, 30 Apr 2020 19:37:44 GMT"
         ],
         "Content-Length": [
           "890"
@@ -588,17 +588,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/modify-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"modify-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Modify Resource\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/modify-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"modify-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Modify Resource\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/remove-resource?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvcmVtb3ZlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/remove-resource?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvcmVtb3ZlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e9baf218-1e99-477a-9ab8-0aac2b9a8a0d"
+          "e673e838-debe-4686-8ead-450888fdee21"
         ],
         "Accept-Language": [
           "en-US"
@@ -618,13 +618,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUo=\""
+          "\"AAAAAAAAC5w=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "841c3c34-6d73-40b0-9ce7-f42225defb36"
+          "45161ba1-348e-4a74-8ca9-abbd6a2c5ed7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -633,16 +633,16 @@
           "11992"
         ],
         "x-ms-correlation-request-id": [
-          "aca625f5-ffd0-43d3-998e-8623167ed719"
+          "2d73cd0e-a171-43f8-92a3-2ee167a27eb8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165644Z:aca625f5-ffd0-43d3-998e-8623167ed719"
+          "WESTUS:20200430T193744Z:2d73cd0e-a171-43f8-92a3-2ee167a27eb8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:44 GMT"
+          "Thu, 30 Apr 2020 19:37:44 GMT"
         ],
         "Content-Length": [
           "900"
@@ -654,17 +654,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/remove-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"remove-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Remove resource\",\r\n    \"method\": \"DELETE\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/remove-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"remove-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Remove resource\",\r\n    \"method\": \"DELETE\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-header-only?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvcmV0cmlldmUtaGVhZGVyLW9ubHk/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-header-only?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvcmV0cmlldmUtaGVhZGVyLW9ubHk/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d9c67f77-d0cb-4af2-a54a-bcae4c0548bd"
+          "2d544cad-648f-41d7-814c-ac1be768cec5"
         ],
         "Accept-Language": [
           "en-US"
@@ -684,13 +684,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUs=\""
+          "\"AAAAAAAAC50=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f2b1ece5-8046-4e64-befe-de4f1bf596d0"
+          "d3877889-1b3a-4930-9c2a-0172081e54a4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -699,16 +699,16 @@
           "11991"
         ],
         "x-ms-correlation-request-id": [
-          "e921cc7c-3763-4188-aa33-e13fb60d8316"
+          "9cf9211b-9070-498f-8c09-c3f99cbd6942"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165644Z:e921cc7c-3763-4188-aa33-e13fb60d8316"
+          "WESTUS:20200430T193744Z:9cf9211b-9070-498f-8c09-c3f99cbd6942"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:44 GMT"
+          "Thu, 30 Apr 2020 19:37:44 GMT"
         ],
         "Content-Length": [
           "895"
@@ -720,17 +720,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-header-only\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-header-only\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve header only\",\r\n    \"method\": \"HEAD\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-header-only\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-header-only\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve header only\",\r\n    \"method\": \"HEAD\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2U/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2U/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "603ff6cf-09e3-4e22-8f77-2817c0cf08c3"
+          "05b94571-abd9-4009-a8b4-c26f660f6042"
         ],
         "Accept-Language": [
           "en-US"
@@ -750,13 +750,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUY=\""
+          "\"AAAAAAAAC5g=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9f439c36-7698-424f-92fb-91e6d12916ed"
+          "b4716568-65b6-438c-8545-d8dad83ae0e2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -765,16 +765,16 @@
           "11990"
         ],
         "x-ms-correlation-request-id": [
-          "06c50124-b67f-4aff-8c39-b4a44605cbdf"
+          "f9178809-8b9f-4ca0-aabd-0fbc1b48f26a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165644Z:06c50124-b67f-4aff-8c39-b4a44605cbdf"
+          "WESTUS:20200430T193744Z:f9178809-8b9f-4ca0-aabd-0fbc1b48f26a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:44 GMT"
+          "Thu, 30 Apr 2020 19:37:44 GMT"
         ],
         "Content-Length": [
           "1474"
@@ -786,17 +786,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"number\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"description\": \"Returned in all cases.\",\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"number\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"description\": \"Returned in all cases.\",\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource-cached?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3L29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2UtY2FjaGVkP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource-cached?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwL29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2UtY2FjaGVkP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0c4beb72-dd74-4e29-844b-53e70249c2df"
+          "a2f5cd5e-27d2-4761-9264-57c2cc9fa1ff"
         ],
         "Accept-Language": [
           "en-US"
@@ -816,13 +816,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOUc=\""
+          "\"AAAAAAAAC5k=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8216a571-96fe-4912-8d64-78adfe7ba88c"
+          "9b4bde3e-2980-44f2-98bc-6612aef9805d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -831,16 +831,16 @@
           "11989"
         ],
         "x-ms-correlation-request-id": [
-          "e16dd503-54e7-492d-ac52-50547403df7d"
+          "de922c61-808a-469a-aeca-1b38fabacb54"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165644Z:e16dd503-54e7-492d-ac52-50547403df7d"
+          "WESTUS:20200430T193744Z:de922c61-808a-469a-aeca-1b38fabacb54"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:44 GMT"
+          "Thu, 30 Apr 2020 19:37:44 GMT"
         ],
         "Content-Length": [
           "1551"
@@ -852,17 +852,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187/operations/retrieve-resource-cached\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource-cached\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource (cached)\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource-cached\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"string\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910/operations/retrieve-resource-cached\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource-cached\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource (cached)\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource-cached\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"string\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4004?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0MDA0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2754?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNzU0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps3060\",\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/apiVersionSets/ps6083\",\r\n    \"subscriptionRequired\": true,\r\n    \"sourceApiId\": \"/apis/echo-api\",\r\n    \"displayName\": \"ps8297\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps4072\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps1370\",\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/apiVersionSets/ps6883\",\r\n    \"subscriptionRequired\": true,\r\n    \"sourceApiId\": \"/apis/echo-api\",\r\n    \"displayName\": \"ps3460\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps7933\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df1591fd-4e1b-498b-a9e9-3428abfb7e8d"
+          "142f3433-2b0a-47bd-b36d-43a32a230e3d"
         ],
         "Accept-Language": [
           "en-US"
@@ -888,13 +888,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOVU=\""
+          "\"AAAAAAAAC6c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e3a34918-2c00-4241-9e68-7882c2f1c075"
+          "28b31063-b4c1-439a-83e8-bd225678f462"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -903,19 +903,19 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "eb3ab766-51c1-43bd-b833-8447a73b8fe5"
+          "03cb02d0-37c3-4f79-9f37-11019b8cb6d6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165645Z:eb3ab766-51c1-43bd-b833-8447a73b8fe5"
+          "WESTUS:20200430T193746Z:03cb02d0-37c3-4f79-9f37-11019b8cb6d6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:56:45 GMT"
+          "Thu, 30 Apr 2020 19:37:45 GMT"
         ],
         "Content-Length": [
-          "1365"
+          "1364"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -924,12 +924,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4004\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps4004\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps8297\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps3060\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps4072\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083\",\r\n    \"apiVersionSet\": {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083\",\r\n      \"name\": \"ps5735\",\r\n      \"description\": \"ps8102\",\r\n      \"versioningScheme\": \"Query\",\r\n      \"versionQueryName\": \"ps676\",\r\n      \"versionHeaderName\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2754\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2754\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3460\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps1370\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps7933\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883\",\r\n    \"apiVersionSet\": {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883\",\r\n      \"name\": \"ps46\",\r\n      \"description\": \"ps9008\",\r\n      \"versioningScheme\": \"Query\",\r\n      \"versionQueryName\": \"ps1548\",\r\n      \"versionHeaderName\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4004?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0MDA0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2754?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNzU0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -948,13 +948,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAOVU=\""
+          "\"AAAAAAAAC6c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d4a141e6-6e0e-4ee7-bb1d-ae44e1472c7e"
+          "a3d4bca8-bf8f-4736-86c1-4f497c1643ff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11988"
@@ -963,16 +963,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "0a2025d0-38e1-4c3d-82d7-26f206572cd4"
+          "be8d8da3-bdc0-4851-baef-5870b4f05729"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165715Z:0a2025d0-38e1-4c3d-82d7-26f206572cd4"
+          "WESTUS:20200430T193816Z:be8d8da3-bdc0-4851-baef-5870b4f05729"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:57:15 GMT"
+          "Thu, 30 Apr 2020 19:38:15 GMT"
         ],
         "Content-Length": [
           "988"
@@ -984,17 +984,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4004\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps4004\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps8297\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps3060\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps4072\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2754\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2754\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3460\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps1370\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapiv2\",\r\n    \"path\": \"ps7933\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"2\",\r\n    \"apiVersionSetId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2187?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMTg3P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4910?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0OTEwP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8c5ebc9b-e08c-4512-83f4-2800386c1ab2"
+          "75c8c86f-3979-4ae8-9f6d-18d189941527"
         ],
         "If-Match": [
           "*"
@@ -1020,7 +1020,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "06b77a30-74ec-4023-9955-246f7e9a437d"
+          "f81551d5-6235-40b6-9540-5a44851f2e62"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1029,16 +1029,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f79735ab-e259-424f-b12a-29d75dbd02fe"
+          "b187bae5-966b-442f-9503-c4742d1942e5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165717Z:f79735ab-e259-424f-b12a-29d75dbd02fe"
+          "WESTUS:20200430T193816Z:b187bae5-966b-442f-9503-c4742d1942e5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:57:16 GMT"
+          "Thu, 30 Apr 2020 19:38:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -1051,13 +1051,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps4004?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM0MDA0P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2754?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNzU0P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "edb408f3-2eee-4749-8d96-671083262796"
+          "262f8393-49ac-47b7-aed5-e6667b169716"
         ],
         "If-Match": [
           "*"
@@ -1083,7 +1083,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8f4db5bb-ccd8-4846-a129-2047d7fc701d"
+          "985adfa5-9f78-44ad-8692-6388d599fa2e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1092,16 +1092,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "7b28b5b4-56ae-4ca7-b325-29b0fb0bcf7e"
+          "cabc3ee1-8fe3-471a-b87e-e0dc9261aa77"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165717Z:7b28b5b4-56ae-4ca7-b325-29b0fb0bcf7e"
+          "WESTUS:20200430T193817Z:cabc3ee1-8fe3-471a-b87e-e0dc9261aa77"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:57:17 GMT"
+          "Thu, 30 Apr 2020 19:38:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -1114,13 +1114,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6083?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaVZlcnNpb25TZXRzL3BzNjA4Mz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apiVersionSets/ps6883?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaVZlcnNpb25TZXRzL3BzNjg4Mz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "01e9e712-8758-41b5-9db2-ea9658ffbef8"
+          "485842b2-703d-4344-8a57-4d13db3d9231"
         ],
         "If-Match": [
           "*"
@@ -1146,7 +1146,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7c65d18e-78a6-45e6-9ccc-f6e106be6903"
+          "3d21d4c6-43ae-4160-8999-3a2e7a2addd2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1155,16 +1155,16 @@
           "14997"
         ],
         "x-ms-correlation-request-id": [
-          "1176c0ed-7e8c-48e9-8df2-18a6f815a01c"
+          "9652d794-5b21-4d71-a66b-92582ffe500a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T165717Z:1176c0ed-7e8c-48e9-8df2-18a6f815a01c"
+          "WESTUS:20200430T193817Z:9652d794-5b21-4d71-a66b-92582ffe500a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:57:17 GMT"
+          "Thu, 30 Apr 2020 19:38:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -1176,18 +1176,18 @@
   ],
   "Names": {
     "": [
-      "ps2187",
-      "ps6083",
-      "ps4004",
-      "ps5735",
-      "ps676",
-      "ps8102",
-      "ps9015",
-      "ps7142",
-      "ps4973",
-      "ps8297",
-      "ps3060",
-      "ps4072"
+      "ps4910",
+      "ps6883",
+      "ps2754",
+      "ps46",
+      "ps1548",
+      "ps9008",
+      "ps5700",
+      "ps6225",
+      "ps3384",
+      "ps3460",
+      "ps1370",
+      "ps7933"
     ]
   },
   "Variables": {

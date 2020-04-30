@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"value\": \"{\\r\\n    \\\"x-comment\\\": \\\"This file was extended from /github.com/swagger-api/swagger-spec/blob/master/examples/v2.0/json/petstore-with-external-docs.json\\\",\\r\\n    \\\"swagger\\\": \\\"2.0\\\",\\r\\n    \\\"info\\\": {\\r\\n        \\\"version\\\": \\\"1.0.0\\\",\\r\\n        \\\"title\\\": \\\"Swagger Petstore Extensive\\\",\\r\\n        \\\"description\\\": \\\"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\\\",\\r\\n        \\\"termsOfService\\\": \\\"http://helloreverb.com/terms/\\\",\\r\\n        \\\"contact\\\": {\\r\\n            \\\"name\\\": \\\"Wordnik API Team\\\",\\r\\n            \\\"email\\\": \\\"foo@example.com\\\",\\r\\n            \\\"url\\\": \\\"http://madskristensen.net\\\"\\r\\n        },\\r\\n        \\\"license\\\": {\\r\\n            \\\"name\\\": \\\"MIT\\\",\\r\\n            \\\"url\\\": \\\"http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT\\\"\\r\\n        }\\r\\n    },\\r\\n    \\\"externalDocs\\\": {\\r\\n        \\\"description\\\": \\\"find more info here\\\",\\r\\n        \\\"url\\\": \\\"https://helloreverb.com/about\\\"\\r\\n    },\\r\\n    \\\"host\\\": \\\"petstore.swagger.wordnik.com\\\",\\r\\n    \\\"basePath\\\": \\\"/api\\\",\\r\\n    \\\"schemes\\\": [\\r\\n        \\\"http\\\"\\r\\n    ],\\r\\n    \\\"consumes\\\": [\\r\\n        \\\"application/json\\\"\\r\\n    ],\\r\\n    \\\"produces\\\": [\\r\\n        \\\"application/json\\\"\\r\\n    ],\\r\\n    \\\"paths\\\": {\\r\\n        \\\"/mySamplePath?willbeignored={willbeignored}\\\": {\\r\\n            \\\"post\\\": {\\r\\n                \\\"description\\\": \\\"Dummy desc\\\",\\r\\n                \\\"operationId\\\": \\\"dummyid1\\\",\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyDateHeaderParam\\\",\\r\\n                        \\\"in\\\": \\\"header\\\",\\r\\n                        \\\"description\\\": \\\"dummyDateHeaderParam description\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"string\\\",\\r\\n                        \\\"format\\\": \\\"date\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyReqQueryParam\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"dummyReqQueryParam description\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyNotReqQueryParam\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"dummyNotReqQueryParam description\\\",\\r\\n                        \\\"required\\\": false,\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyBodyParam\\\",\\r\\n                        \\\"in\\\": \\\"body\\\",\\r\\n                        \\\"description\\\": \\\"dummyBodyParam description\\\",\\r\\n                        \\\"required\\\": false,\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/pet\\\",\\r\\n                            \\\"example\\\": {\\r\\n                                \\\"id\\\": 2,\\r\\n                                \\\"name\\\": \\\"myreqpet\\\"\\r\\n                            }\\r\\n                        }\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"pet response\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"type\\\": \\\"array\\\",\\r\\n                            \\\"items\\\": {\\r\\n                                \\\"$ref\\\": \\\"#/definitions/pet\\\"\\r\\n                            }\\r\\n                        },\\r\\n                        \\\"headers\\\": {\\r\\n                            \\\"header1\\\": {\\r\\n                                \\\"description\\\": \\\"sampleheader\\\",\\r\\n                                \\\"type\\\": \\\"integer\\\",\\r\\n                                \\\"format\\\": \\\"int64\\\"\\r\\n                            }\\r\\n                        },\\r\\n                        \\\"examples\\\": {\\r\\n                            \\\"application/json\\\": {\\r\\n                                \\\"id\\\": 3,\\r\\n                                \\\"name\\\": \\\"myresppet\\\" \\r\\n                            }\\r\\n                        }\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"/resourceWithFormData\\\": {\\r\\n            \\\"post\\\": {\\r\\n                \\\"description\\\": \\\"resourceWithFormData desc\\\",\\r\\n                \\\"operationId\\\": \\\"resourceWithFormDataPOST\\\",\\r\\n                \\\"consumes\\\": [ \\\"multipart/form-data\\\" ],\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyFormDataParam\\\",\\r\\n                        \\\"in\\\": \\\"formData\\\",\\r\\n                        \\\"description\\\": \\\"dummyFormDataParam description\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyReqQueryParam\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"dummyReqQueryParam description\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"sample response\\\"\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"/mySamplePath2?definedQueryParam={definedQueryParam}\\\": {\\r\\n            \\\"post\\\": {\\r\\n                \\\"produces\\\": [\\r\\n                    \\\"contenttype1\\\",\\r\\n                    \\\"application/xml\\\"\\r\\n                ],\\r\\n                \\\"description\\\": \\\"Dummy desc\\\",\\r\\n                \\\"operationId\\\": \\\"dummyid2\\\",\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"$ref\\\": \\\"#/parameters/dummyQueryParameterDef\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"$ref\\\": \\\"#/parameters/dummyBodyParameterDef\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"204\\\": {\\r\\n                        \\\"$ref\\\": \\\"#/responses/dummyResponseDef\\\"\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"/pets2?dummyParam={dummyParam}\\\": {\\r\\n            \\\"get\\\": {\\r\\n                \\\"description\\\": \\\"Dummy description\\\",\\r\\n                \\\"operationId\\\": \\\"dummyOperationId\\\",\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"dummyParam\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"dummyParam desc\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"string\\\",\\r\\n                        \\\"collectionFormat\\\": \\\"csv\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"limit\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"maximum number of results to return\\\",\\r\\n                        \\\"required\\\": false,\\r\\n                        \\\"type\\\": \\\"integer\\\",\\r\\n                        \\\"format\\\": \\\"int32\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"pet response\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"type\\\": \\\"array\\\",\\r\\n                            \\\"items\\\": {\\r\\n                                \\\"type\\\": \\\"string\\\"\\r\\n                            }\\r\\n                        }\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"/pets\\\": {\\r\\n            \\\"get\\\": {\\r\\n                \\\"description\\\": \\\"Returns all pets from the system that the user has access to\\\",\\r\\n                \\\"operationId\\\": \\\"findPets\\\",\\r\\n                \\\"externalDocs\\\": {\\r\\n                    \\\"description\\\": \\\"find more info here\\\",\\r\\n                    \\\"url\\\": \\\"https://helloreverb.com/about\\\"\\r\\n                },\\r\\n                \\\"produces\\\": [\\r\\n                    \\\"application/json\\\",\\r\\n                    \\\"application/xml\\\"\\r\\n                ],\\r\\n                \\\"consumes\\\": [\\r\\n                    \\\"text/xml\\\",\\r\\n                    \\\"text/html\\\"\\r\\n                ],\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"tags\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"tags to filter by\\\",\\r\\n                        \\\"required\\\": false,\\r\\n                        \\\"type\\\": \\\"string\\\",\\r\\n                        \\\"collectionFormat\\\": \\\"csv\\\"\\r\\n                    },\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"limit\\\",\\r\\n                        \\\"in\\\": \\\"query\\\",\\r\\n                        \\\"description\\\": \\\"maximum number of results to return\\\",\\r\\n                        \\\"required\\\": false,\\r\\n                        \\\"type\\\": \\\"integer\\\",\\r\\n                        \\\"format\\\": \\\"int32\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"pet response\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"type\\\": \\\"array\\\",\\r\\n                            \\\"items\\\": {\\r\\n                                \\\"$ref\\\": \\\"#/definitions/pet\\\"\\r\\n                            }\\r\\n                        }\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            },\\r\\n            \\\"post\\\": {\\r\\n                \\\"description\\\": \\\"Creates a new pet in the store.  Duplicates are allowed\\\",\\r\\n                \\\"operationId\\\": \\\"addPet\\\",\\r\\n                \\\"produces\\\": [\\r\\n                    \\\"application/json\\\"\\r\\n                ],\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"pet\\\",\\r\\n                        \\\"in\\\": \\\"body\\\",\\r\\n                        \\\"description\\\": \\\"Pet to add to the store\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/newPet\\\"\\r\\n                        }\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"pet response\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/pet\\\"\\r\\n                        }\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"/pets/{id}\\\": {\\r\\n            \\\"get\\\": {\\r\\n                \\\"description\\\": \\\"Returns a user based on a single ID, if the user does not have access to the pet\\\",\\r\\n                \\\"operationId\\\": \\\"findPetById\\\",\\r\\n                \\\"produces\\\": [\\r\\n                    \\\"application/json\\\",\\r\\n                    \\\"application/xml\\\",\\r\\n                    \\\"text/xml\\\",\\r\\n                    \\\"text/html\\\"\\r\\n                ],\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"id\\\",\\r\\n                        \\\"in\\\": \\\"path\\\",\\r\\n                        \\\"description\\\": \\\"ID of pet to fetch\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"integer\\\",\\r\\n                        \\\"format\\\": \\\"int64\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"200\\\": {\\r\\n                        \\\"description\\\": \\\"pet response\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/pet\\\"\\r\\n                        }\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            },\\r\\n            \\\"delete\\\": {\\r\\n                \\\"description\\\": \\\"deletes a single pet based on the ID supplied\\\",\\r\\n                \\\"operationId\\\": \\\"deletePet\\\",\\r\\n                \\\"parameters\\\": [\\r\\n                    {\\r\\n                        \\\"name\\\": \\\"id\\\",\\r\\n                        \\\"in\\\": \\\"path\\\",\\r\\n                        \\\"description\\\": \\\"ID of pet to delete\\\",\\r\\n                        \\\"required\\\": true,\\r\\n                        \\\"type\\\": \\\"integer\\\",\\r\\n                        \\\"format\\\": \\\"int64\\\"\\r\\n                    }\\r\\n                ],\\r\\n                \\\"responses\\\": {\\r\\n                    \\\"204\\\": {\\r\\n                        \\\"description\\\": \\\"pet deleted\\\"\\r\\n                    },\\r\\n                    \\\"default\\\": {\\r\\n                        \\\"description\\\": \\\"unexpected error\\\",\\r\\n                        \\\"schema\\\": {\\r\\n                            \\\"$ref\\\": \\\"#/definitions/errorModel\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n    },\\r\\n    \\\"definitions\\\": {\\r\\n        \\\"pet\\\": {\\r\\n            \\\"required\\\": [\\r\\n                \\\"id\\\",\\r\\n                \\\"name\\\"\\r\\n            ],\\r\\n            \\\"externalDocs\\\": {\\r\\n                \\\"description\\\": \\\"find more info here\\\",\\r\\n                \\\"url\\\": \\\"https://helloreverb.com/about\\\"\\r\\n            },\\r\\n            \\\"properties\\\": {\\r\\n                \\\"id\\\": {\\r\\n                    \\\"type\\\": \\\"integer\\\",\\r\\n                    \\\"format\\\": \\\"int64\\\"\\r\\n                },\\r\\n                \\\"name\\\": {\\r\\n                    \\\"type\\\": \\\"string\\\"\\r\\n                },\\r\\n                \\\"tag\\\": {\\r\\n                    \\\"type\\\": \\\"string\\\"\\r\\n                }\\r\\n            }\\r\\n        },\\r\\n        \\\"newPet\\\": {\\r\\n            \\\"allOf\\\": [\\r\\n                {\\r\\n                    \\\"$ref\\\": \\\"#/definitions/pet\\\"\\r\\n                },\\r\\n                {\\r\\n                    \\\"required\\\": [\\r\\n                        \\\"name\\\"\\r\\n                    ],\\r\\n                    \\\"properties\\\": {\\r\\n                        \\\"id\\\": {\\r\\n                            \\\"type\\\": \\\"integer\\\",\\r\\n                            \\\"format\\\": \\\"int64\\\"\\r\\n                        }\\r\\n                    }\\r\\n                }\\r\\n            ]\\r\\n        },\\r\\n        \\\"errorModel\\\": {\\r\\n            \\\"required\\\": [\\r\\n                \\\"code\\\",\\r\\n                \\\"message\\\"\\r\\n            ],\\r\\n            \\\"properties\\\": {\\r\\n                \\\"code\\\": {\\r\\n                    \\\"type\\\": \\\"integer\\\",\\r\\n                    \\\"format\\\": \\\"int32\\\"\\r\\n                },\\r\\n                \\\"message\\\": {\\r\\n                    \\\"type\\\": \\\"string\\\"\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n    },\\r\\n    \\\"parameters\\\": {\\r\\n        \\\"dummyBodyParameterDef\\\": {\\r\\n            \\\"name\\\": \\\"definedBodyParam\\\",\\r\\n            \\\"in\\\": \\\"body\\\",\\r\\n            \\\"description\\\": \\\"definedBodyParam description\\\",\\r\\n            \\\"required\\\": true,\\r\\n            \\\"schema\\\": {\\r\\n                \\\"title\\\": \\\"Example Schema\\\",\\r\\n                \\\"type\\\": \\\"object\\\",\\r\\n                \\\"properties\\\": {\\r\\n                    \\\"firstName\\\": {\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    },\\r\\n                    \\\"lastName\\\": {\\r\\n                        \\\"type\\\": \\\"string\\\"\\r\\n                    },\\r\\n                    \\\"age\\\": {\\r\\n                        \\\"description\\\": \\\"Age in years\\\",\\r\\n                        \\\"type\\\": \\\"integer\\\",\\r\\n                        \\\"minimum\\\": 0\\r\\n                    }\\r\\n                },\\r\\n                \\\"required\\\": [ \\\"firstName\\\", \\\"lastName\\\" ]\\r\\n            }\\r\\n        },\\r\\n        \\\"dummyQueryParameterDef\\\": {\\r\\n            \\\"name\\\": \\\"definedQueryParam\\\",\\r\\n            \\\"in\\\": \\\"query\\\",\\r\\n            \\\"description\\\": \\\"definedQueryParam description\\\",\\r\\n            \\\"required\\\": true,\\r\\n            \\\"type\\\": \\\"string\\\",\\r\\n            \\\"format\\\": \\\"whateverformat\\\"\\r\\n        }\\r\\n    },\\r\\n    \\\"responses\\\": {\\r\\n        \\\"dummyResponseDef\\\": {\\r\\n            \\\"description\\\": \\\"dummyResponseDef description\\\",\\r\\n            \\\"schema\\\": {\\r\\n                \\\"$ref\\\":  \\\"#/definitions/pet\\\"\\r\\n            },\\r\\n            \\\"headers\\\": {\\r\\n                \\\"header1\\\": {\\r\\n                    \\\"type\\\": \\\"integer\\\"\\r\\n                },\\r\\n                \\\"header2\\\": {\\r\\n                    \\\"type\\\": \\\"integer\\\"\\r\\n                }\\r\\n            },\\r\\n            \\\"examples\\\": {\\r\\n                \\\"contenttype1\\\": \\\"contenttype1 example\\\",\\r\\n                \\\"contenttype2\\\": \\\"contenttype2 example\\\"\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\\r\\n\",\r\n    \"format\": \"swagger-json\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a12923c2-6b0c-493f-a530-cdcb995b66c9"
+          "e18e8792-0536-45cc-9716-f0a1cfa6bc1d"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,13 +33,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?api-version=2019-12-01&asyncId=5e9dd1b26f564710e092ef1a&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?api-version=2019-12-01&asyncId=5eab2674a2ca60123002311d&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "472294e0-ae0f-467a-998d-9322a2222f52"
+          "74915dcf-e4c0-4463-915f-ef63ebe39e2d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -48,16 +48,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9c53b7be-dd40-4d17-9563-0ed2e486f8d2"
+          "e5b8acb5-8193-424f-94b0-45ca2861eaaa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164538Z:9c53b7be-dd40-4d17-9563-0ed2e486f8d2"
+          "WESTUS:20200430T192644Z:e5b8acb5-8193-424f-94b0-45ca2861eaaa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:45:37 GMT"
+          "Thu, 30 Apr 2020 19:26:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -70,8 +70,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?api-version=2019-12-01&asyncId=5e9dd1b26f564710e092ef1a&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzP2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZTlkZDFiMjZmNTY0NzEwZTA5MmVmMWEmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?api-version=2019-12-01&asyncId=5eab2674a2ca60123002311d&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczP2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZWFiMjY3NGEyY2E2MDEyMzAwMjMxMWQmYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -90,13 +90,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAANyg=\""
+          "\"AAAAAAAACXs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "edd742d5-d73b-43cc-8baf-36fa4e9c06d8"
+          "4fd29160-1b9b-49e1-a12d-218fa6600a72"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,16 +105,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "98bdd762-48f2-4065-b74f-1a1ce2bca8db"
+          "1b3a4fc9-c7c7-44fa-93f7-ce4fd13feb88"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164608Z:98bdd762-48f2-4065-b74f-1a1ce2bca8db"
+          "WESTUS:20200430T192714Z:1b3a4fc9-c7c7-44fa-93f7-ce4fd13feb88"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:07 GMT"
+          "Thu, 30 Apr 2020 19:27:14 GMT"
         ],
         "Content-Length": [
           "884"
@@ -126,17 +126,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c3bc311-39a1-4404-bbfb-2b95f63b14ab"
+          "70ee13b8-e19e-4e15-be96-0d160f4fb440"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,13 +156,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAANyg=\""
+          "\"AAAAAAAACXs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d5220a7a-acb6-42eb-b14a-250e6ae27737"
+          "e589fddc-0304-4c92-af2c-e8f25f842626"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -171,16 +171,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "fa685d04-7685-4ee9-beb0-e8f1bd210c63"
+          "88d61415-974d-48e6-8ec1-746680ad0730"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164608Z:fa685d04-7685-4ee9-beb0-e8f1bd210c63"
+          "WESTUS:20200430T192714Z:88d61415-974d-48e6-8ec1-746680ad0730"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:07 GMT"
+          "Thu, 30 Apr 2020 19:27:14 GMT"
         ],
         "Content-Length": [
           "884"
@@ -192,17 +192,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7d12054c-c956-4f06-af2c-741d78b83e1a"
+          "e535b2db-2cdb-474d-8cb6-b5eb3310322d"
         ],
         "Accept-Language": [
           "en-US"
@@ -222,13 +222,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAANyg=\""
+          "\"AAAAAAAACXs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "35cef87b-1ca7-4177-b36f-4b79cdc35fba"
+          "5cfcab9e-441b-4ca0-9de8-86ac22f9712d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -237,16 +237,16 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "9df69cb1-5317-46cc-9b76-7da70304d079"
+          "2c0b1915-0dec-4a3d-9912-1d47e2f97910"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164611Z:9df69cb1-5317-46cc-9b76-7da70304d079"
+          "WESTUS:20200430T192717Z:2c0b1915-0dec-4a3d-9912-1d47e2f97910"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:11 GMT"
+          "Thu, 30 Apr 2020 19:27:17 GMT"
         ],
         "Content-Length": [
           "884"
@@ -258,7 +258,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -268,7 +268,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c70516c3-6cbb-469d-9e87-3c49f993d1b7"
+          "fc64386c-e81e-4c39-99c1-beaf2d594a54"
         ],
         "Accept-Language": [
           "en-US"
@@ -291,7 +291,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "acf9758e-5e5b-401a-bbca-36b2517d7d6f"
+          "4e0b3ad3-70e4-4b31-9e0f-8849597a4b08"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,19 +300,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "2ffd1ee4-6e57-4146-87e3-e31efe38a9d0"
+          "31fa6a2b-2c52-4ee1-a0e7-e1d62994efcc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164608Z:2ffd1ee4-6e57-4146-87e3-e31efe38a9d0"
+          "WESTUS:20200430T192714Z:31fa6a2b-2c52-4ee1-a0e7-e1d62994efcc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:07 GMT"
+          "Thu, 30 Apr 2020 19:27:14 GMT"
         ],
         "Content-Length": [
-          "1287"
+          "1285"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -321,17 +321,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"starter\",\r\n      \"properties\": {\r\n        \"displayName\": \"Starter\",\r\n        \"description\": \"Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.\",\r\n        \"terms\": \"\",\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": false,\r\n        \"subscriptionsLimit\": 100,\r\n        \"state\": \"published\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/unlimited\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"unlimited\",\r\n      \"properties\": {\r\n        \"displayName\": \"Unlimited\",\r\n        \"description\": \"Subscribers have completely unlimited access to the API. Administrator approval is required.\",\r\n        \"terms\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": true,\r\n        \"subscriptionsLimit\": 1,\r\n        \"state\": \"published\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 2\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"starter\",\r\n      \"properties\": {\r\n        \"displayName\": \"Starter\",\r\n        \"description\": \"Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.\",\r\n        \"terms\": \"\",\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": false,\r\n        \"subscriptionsLimit\": 1,\r\n        \"state\": \"published\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/unlimited\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"unlimited\",\r\n      \"properties\": {\r\n        \"displayName\": \"Unlimited\",\r\n        \"description\": \"Subscribers have completely unlimited access to the API. Administrator approval is required.\",\r\n        \"terms\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": true,\r\n        \"subscriptionsLimit\": 1,\r\n        \"state\": \"published\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 2\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps8223?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczgyMjM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps3473?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczM0NzM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "154f19cd-cbb0-4750-8cb5-0c859b17394b"
+          "fd85e0c0-6607-4228-bb8a-7d059d1160f3"
         ],
         "Accept-Language": [
           "en-US"
@@ -351,13 +351,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAANyg=\""
+          "\"AAAAAAAACXs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1306b238-1236-4e83-9124-01de5c5cc2f8"
+          "bf6a56a7-fe8a-4161-8c59-eae1d12b5297"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -366,16 +366,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "5c674aba-7d79-40af-8171-7aa8e91cf01e"
+          "08e06c9e-bc85-4f7d-b85b-62744e745bd0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164609Z:5c674aba-7d79-40af-8171-7aa8e91cf01e"
+          "WESTUS:20200430T192715Z:08e06c9e-bc85-4f7d-b85b-62744e745bd0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:08 GMT"
+          "Thu, 30 Apr 2020 19:27:15 GMT"
         ],
         "Content-Length": [
           "758"
@@ -387,7 +387,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps8223\",\r\n  \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n  \"name\": \"ps8223\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": null,\r\n    \"authenticationSettings\": null,\r\n    \"subscriptionKeyParameterNames\": null,\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps3473\",\r\n  \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n  \"name\": \"ps3473\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": null,\r\n    \"authenticationSettings\": null,\r\n    \"subscriptionKeyParameterNames\": null,\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -397,7 +397,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "622218be-da22-44fd-82da-fd652a24142f"
+          "e01a305d-47c2-4a09-89aa-714e62583049"
         ],
         "Accept-Language": [
           "en-US"
@@ -420,7 +420,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3934dbb9-f406-4929-97e9-519d7b8e5702"
+          "f654bc12-80e2-4b49-9273-24c90fb72f27"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -429,16 +429,16 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "bb2ce46a-00f9-4389-ae7c-2f30955d0c8b"
+          "c233b991-aae6-49d6-8747-59e1a89777c7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164610Z:bb2ce46a-00f9-4389-ae7c-2f30955d0c8b"
+          "WESTUS:20200430T192716Z:c233b991-aae6-49d6-8747-59e1a89777c7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:10 GMT"
+          "Thu, 30 Apr 2020 19:27:16 GMT"
         ],
         "Content-Length": [
           "1610"
@@ -450,17 +450,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps8223\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"ps8223\",\r\n      \"properties\": {\r\n        \"displayName\": \"Swagger Petstore Extensive\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n        \"subscriptionRequired\": true,\r\n        \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n        \"path\": \"swaggerapifromFile\",\r\n        \"protocols\": [\r\n          \"http\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 2\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps3473\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"ps3473\",\r\n      \"properties\": {\r\n        \"displayName\": \"Swagger Petstore Extensive\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n        \"subscriptionRequired\": true,\r\n        \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n        \"path\": \"swaggerapifromFile\",\r\n        \"protocols\": [\r\n          \"http\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 2\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5daba260-b40b-4981-936d-c32d7a2e436d"
+          "aa1d6359-5d1c-4de1-a9c9-f7c276830e78"
         ],
         "Accept-Language": [
           "en-US"
@@ -483,7 +483,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c95dd56d-bb7a-44b3-ad48-49e96b467b31"
+          "11d558b3-b69c-42c3-870b-fa4e88906fa7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -492,16 +492,16 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "1372f2eb-a079-4e4b-b976-e1b378cc5c5a"
+          "da245bf0-b42f-4cd0-8c14-4ea9edb0c009"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164611Z:1372f2eb-a079-4e4b-b976-e1b378cc5c5a"
+          "WESTUS:20200430T192717Z:da245bf0-b42f-4cd0-8c14-4ea9edb0c009"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:11 GMT"
+          "Thu, 30 Apr 2020 19:27:17 GMT"
         ],
         "Content-Length": [
           "18942"
@@ -513,17 +513,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/addPet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"addPet\",\r\n      \"properties\": {\r\n        \"displayName\": \"addPet\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"request\": {\r\n          \"description\": \"Pet to add to the store\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"newPet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"id\\\": 0,\\r\\n  \\\"name\\\": \\\"string\\\",\\r\\n  \\\"tag\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/deletePet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"deletePet\",\r\n      \"properties\": {\r\n        \"displayName\": \"deletePet\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"pet deleted\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/dummyid1\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid1\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid1\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"dummyBodyParam description\",\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"dummyNotReqQueryParam\",\r\n              \"description\": \"dummyNotReqQueryParam description\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [\r\n            {\r\n              \"name\": \"dummyDateHeaderParam\",\r\n              \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n              \"type\": \"string\",\r\n              \"required\": true,\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n  \\\"id\\\": 2,\\r\\n  \\\"name\\\": \\\"myreqpet\\\"\\r\\n}\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"pet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"sample\": \"{\\r\\n  \\\"id\\\": 3,\\r\\n  \\\"name\\\": \\\"myresppet\\\"\\r\\n}\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"description\": \"sampleheader\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/dummyid2\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid2\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid2\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath2?definedQueryParam={definedQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"definedBodyParam description\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"DefinedBodyParam\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"contenttype1\",\r\n                \"sample\": \"contenttype1 example\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"contenttype2\",\r\n                \"sample\": \"contenttype2 example\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              },\r\n              {\r\n                \"name\": \"header2\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/dummyOperationId\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyOperationId\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyOperationId\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets2?dummyParam={dummyParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy description\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"Pets2Get200ApplicationJsonResponse\",\r\n                \"generatedSample\": \"[\\r\\n  \\\"string\\\"\\r\\n]\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/findPetById\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPetById\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPetById\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"id\\\": 0,\\r\\n  \\\"name\\\": \\\"string\\\",\\r\\n  \\\"tag\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/findPets\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPets\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPets\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"tags\",\r\n              \"description\": \"tags to filter by\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            },\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\",\r\n                \"generatedSample\": \"[\\r\\n  {\\r\\n    \\\"id\\\": 0,\\r\\n    \\\"name\\\": \\\"string\\\",\\r\\n    \\\"tag\\\": \\\"string\\\"\\r\\n  }\\r\\n]\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\",\r\n                \"generatedSample\": \"<petArray>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</petArray>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/operations/resourceWithFormDataPOST\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"resourceWithFormDataPOST\",\r\n      \"properties\": {\r\n        \"displayName\": \"resourceWithFormDataPOST\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resourceWithFormData?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"multipart/form-data\",\r\n              \"formParameters\": [\r\n                {\r\n                  \"name\": \"dummyFormDataParam\",\r\n                  \"description\": \"dummyFormDataParam description\",\r\n                  \"type\": \"string\",\r\n                  \"required\": true,\r\n                  \"values\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"sample response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 8\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/addPet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"addPet\",\r\n      \"properties\": {\r\n        \"displayName\": \"addPet\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"request\": {\r\n          \"description\": \"Pet to add to the store\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"newPet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"id\\\": 0,\\r\\n  \\\"name\\\": \\\"string\\\",\\r\\n  \\\"tag\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/deletePet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"deletePet\",\r\n      \"properties\": {\r\n        \"displayName\": \"deletePet\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"pet deleted\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/dummyid1\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid1\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid1\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"dummyBodyParam description\",\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"dummyNotReqQueryParam\",\r\n              \"description\": \"dummyNotReqQueryParam description\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [\r\n            {\r\n              \"name\": \"dummyDateHeaderParam\",\r\n              \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n              \"type\": \"string\",\r\n              \"required\": true,\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n  \\\"id\\\": 2,\\r\\n  \\\"name\\\": \\\"myreqpet\\\"\\r\\n}\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"pet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"sample\": \"{\\r\\n  \\\"id\\\": 3,\\r\\n  \\\"name\\\": \\\"myresppet\\\"\\r\\n}\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"description\": \"sampleheader\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/dummyid2\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid2\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid2\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath2?definedQueryParam={definedQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"definedBodyParam description\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"DefinedBodyParam\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"contenttype1\",\r\n                \"sample\": \"contenttype1 example\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"contenttype2\",\r\n                \"sample\": \"contenttype2 example\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              },\r\n              {\r\n                \"name\": \"header2\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/dummyOperationId\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyOperationId\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyOperationId\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets2?dummyParam={dummyParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy description\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"Pets2Get200ApplicationJsonResponse\",\r\n                \"generatedSample\": \"[\\r\\n  \\\"string\\\"\\r\\n]\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/findPetById\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPetById\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPetById\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"id\\\": 0,\\r\\n  \\\"name\\\": \\\"string\\\",\\r\\n  \\\"tag\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\",\r\n                \"generatedSample\": \"<pet>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</pet>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/findPets\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPets\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPets\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"tags\",\r\n              \"description\": \"tags to filter by\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            },\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\",\r\n                \"generatedSample\": \"[\\r\\n  {\\r\\n    \\\"id\\\": 0,\\r\\n    \\\"name\\\": \\\"string\\\",\\r\\n    \\\"tag\\\": \\\"string\\\"\\r\\n  }\\r\\n]\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\",\r\n                \"generatedSample\": \"<petArray>\\r\\n  <id>0</id>\\r\\n  <name>string</name>\\r\\n  <tag>string</tag>\\r\\n</petArray>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"{\\r\\n  \\\"code\\\": 0,\\r\\n  \\\"message\\\": \\\"string\\\"\\r\\n}\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\",\r\n                \"generatedSample\": \"<errorModel>\\r\\n  <code>0</code>\\r\\n  <message>string</message>\\r\\n</errorModel>\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/operations/resourceWithFormDataPOST\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"resourceWithFormDataPOST\",\r\n      \"properties\": {\r\n        \"displayName\": \"resourceWithFormDataPOST\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resourceWithFormData?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"multipart/form-data\",\r\n              \"formParameters\": [\r\n                {\r\n                  \"name\": \"dummyFormDataParam\",\r\n                  \"description\": \"dummyFormDataParam description\",\r\n                  \"type\": \"string\",\r\n                  \"required\": true,\r\n                  \"values\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"sample response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 8\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223%3Brev%3D2?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473%3Brev%3D2?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiRevisionDescription\": \"ps8513\",\r\n    \"sourceApiId\": \"/apis/ps8223;rev=1\",\r\n    \"path\": \"swaggerapifromFile\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiRevisionDescription\": \"ps6116\",\r\n    \"sourceApiId\": \"/apis/ps3473;rev=1\",\r\n    \"path\": \"swaggerapifromFile\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "25f5e632-5222-4ee1-9947-f9b9dde41cab"
+          "6b0b168a-e5a3-4346-95ab-821a06559d62"
         ],
         "Accept-Language": [
           "en-US"
@@ -549,13 +549,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN0o=\""
+          "\"AAAAAAAACZ0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d5af12d3-e3e3-41e7-86eb-312e11a5c32a"
+          "770b73f6-3fc2-409f-90b2-863ee1d99ad1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -564,16 +564,16 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "e23e9a94-2034-4bd9-bca9-9c59d9188e07"
+          "d63eea0d-4919-46e3-8947-3db2095b6a2d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164614Z:e23e9a94-2034-4bd9-bca9-9c59d9188e07"
+          "WESTUS:20200430T192720Z:d63eea0d-4919-46e3-8947-3db2095b6a2d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:14 GMT"
+          "Thu, 30 Apr 2020 19:27:20 GMT"
         ],
         "Content-Length": [
           "913"
@@ -585,12 +585,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps8513\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps6116\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223%3Brev%3D2?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473%3Brev%3D2?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -609,13 +609,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN0o=\""
+          "\"AAAAAAAACZ0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4d18dc81-3ec9-4be7-b987-cd13cb3f0c2b"
+          "2bfb8e93-7880-4fd5-8e0f-7865d3546ae1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11993"
@@ -624,16 +624,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "1d196792-450a-4d01-8c47-8f2e756b67c4"
+          "4f2c0e6e-715b-473e-a398-b632e6455ff9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164644Z:1d196792-450a-4d01-8c47-8f2e756b67c4"
+          "WESTUS:20200430T192751Z:4f2c0e6e-715b-473e-a398-b632e6455ff9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:44 GMT"
+          "Thu, 30 Apr 2020 19:27:50 GMT"
         ],
         "Content-Length": [
           "913"
@@ -645,17 +645,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps8513\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps6116\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223%3Brev%3D2?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473%3Brev%3D2?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczJTNCcmV2JTNEMj9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "256f1c5d-48c4-4942-8365-6873b518be22"
+          "de96455e-2933-47e3-8934-d89c4d728152"
         ],
         "Accept-Language": [
           "en-US"
@@ -675,13 +675,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN0o=\""
+          "\"AAAAAAAACZ0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7816deeb-747c-45d3-a6a3-310b8a91bdc7"
+          "d13b3cc5-a214-4248-ac3e-c3339d18cb60"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -690,16 +690,16 @@
           "11991"
         ],
         "x-ms-correlation-request-id": [
-          "cc649227-8852-4505-8f89-6d9aeeee1d13"
+          "14a875ec-e76f-4e7e-9d5e-4a5d373ba7db"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164645Z:cc649227-8852-4505-8f89-6d9aeeee1d13"
+          "WESTUS:20200430T192751Z:14a875ec-e76f-4e7e-9d5e-4a5d373ba7db"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:45 GMT"
+          "Thu, 30 Apr 2020 19:27:51 GMT"
         ],
         "Content-Length": [
           "913"
@@ -711,17 +711,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8223;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps8513\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps3473;rev=2\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore Extensive\",\r\n    \"apiRevision\": \"2\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n    \"path\": \"swaggerapifromFile\",\r\n    \"protocols\": [\r\n      \"http\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"apiRevisionDescription\": \"ps6116\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223%3Brev%3D2/operations?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzJTNCcmV2JTNEMi9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473%3Brev%3D2/operations?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczJTNCcmV2JTNEMi9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ce601b8-137d-4eeb-9148-2284557a66ac"
+          "f63fba3a-8976-4cec-afad-6dc1f868129e"
         ],
         "Accept-Language": [
           "en-US"
@@ -744,25 +744,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "10f2336b-1097-4063-8210-fd701e9f48a9"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "54b0ccf2-da3a-4bbb-b8e2-d59fc7c9b339"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
         "x-ms-correlation-request-id": [
-          "7a2649ab-b41d-47a8-bf60-e08502442679"
+          "f7519cec-29ba-4744-b8ed-453b41a6cbba"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164645Z:7a2649ab-b41d-47a8-bf60-e08502442679"
+          "WESTUS:20200430T192751Z:f7519cec-29ba-4744-b8ed-453b41a6cbba"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:44 GMT"
+          "Thu, 30 Apr 2020 19:27:50 GMT"
         ],
         "Content-Length": [
           "16923"
@@ -774,17 +774,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/addPet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"addPet\",\r\n      \"properties\": {\r\n        \"displayName\": \"addPet\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"request\": {\r\n          \"description\": \"Pet to add to the store\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"newPet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/deletePet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"deletePet\",\r\n      \"properties\": {\r\n        \"displayName\": \"deletePet\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"pet deleted\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/dummyid1\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid1\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid1\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"dummyBodyParam description\",\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"dummyNotReqQueryParam\",\r\n              \"description\": \"dummyNotReqQueryParam description\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [\r\n            {\r\n              \"name\": \"dummyDateHeaderParam\",\r\n              \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n              \"type\": \"string\",\r\n              \"required\": true,\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n  \\\"id\\\": 2,\\r\\n  \\\"name\\\": \\\"myreqpet\\\"\\r\\n}\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"pet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"sample\": \"{\\r\\n  \\\"id\\\": 3,\\r\\n  \\\"name\\\": \\\"myresppet\\\"\\r\\n}\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"description\": \"sampleheader\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/dummyid2\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid2\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid2\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath2?definedQueryParam={definedQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"definedBodyParam description\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n              \"typeName\": \"DefinedBodyParam\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"contenttype1\",\r\n                \"sample\": \"contenttype1 example\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"contenttype2\",\r\n                \"sample\": \"contenttype2 example\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              },\r\n              {\r\n                \"name\": \"header2\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/dummyOperationId\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyOperationId\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyOperationId\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets2?dummyParam={dummyParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy description\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"Pets2Get200ApplicationJsonResponse\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/findPetById\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPetById\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPetById\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/findPets\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPets\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPets\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"tags\",\r\n              \"description\": \"tags to filter by\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            },\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5e9dd1b26f564710e092ef19\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223;rev=2/operations/resourceWithFormDataPOST\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"resourceWithFormDataPOST\",\r\n      \"properties\": {\r\n        \"displayName\": \"resourceWithFormDataPOST\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resourceWithFormData?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"multipart/form-data\",\r\n              \"formParameters\": [\r\n                {\r\n                  \"name\": \"dummyFormDataParam\",\r\n                  \"description\": \"dummyFormDataParam description\",\r\n                  \"type\": \"string\",\r\n                  \"required\": true,\r\n                  \"values\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"sample response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 8\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/addPet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"addPet\",\r\n      \"properties\": {\r\n        \"displayName\": \"addPet\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"request\": {\r\n          \"description\": \"Pet to add to the store\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"newPet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/deletePet\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"deletePet\",\r\n      \"properties\": {\r\n        \"displayName\": \"deletePet\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"pet deleted\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/dummyid1\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid1\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid1\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"dummyBodyParam description\",\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"dummyNotReqQueryParam\",\r\n              \"description\": \"dummyNotReqQueryParam description\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [\r\n            {\r\n              \"name\": \"dummyDateHeaderParam\",\r\n              \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n              \"type\": \"string\",\r\n              \"required\": true,\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"sample\": \"{\\r\\n  \\\"id\\\": 2,\\r\\n  \\\"name\\\": \\\"myreqpet\\\"\\r\\n}\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"pet\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"sample\": \"{\\r\\n  \\\"id\\\": 3,\\r\\n  \\\"name\\\": \\\"myresppet\\\"\\r\\n}\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"description\": \"sampleheader\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/dummyid2\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyid2\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyid2\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/mySamplePath2?definedQueryParam={definedQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"request\": {\r\n          \"description\": \"definedBodyParam description\",\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n              \"typeName\": \"DefinedBodyParam\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 204,\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"contenttype1\",\r\n                \"sample\": \"contenttype1 example\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"contenttype2\",\r\n                \"sample\": \"contenttype2 example\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": [\r\n              {\r\n                \"name\": \"header1\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              },\r\n              {\r\n                \"name\": \"header2\",\r\n                \"type\": \"integer\",\r\n                \"values\": []\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/dummyOperationId\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"dummyOperationId\",\r\n      \"properties\": {\r\n        \"displayName\": \"dummyOperationId\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets2?dummyParam={dummyParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Dummy description\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"Pets2Get200ApplicationJsonResponse\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/findPetById\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPetById\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPetById\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets/{id}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"type\": \"integer\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"pet\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"text/html\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/findPets\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"findPets\",\r\n      \"properties\": {\r\n        \"displayName\": \"findPets\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/pets\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"tags\",\r\n              \"description\": \"tags to filter by\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            },\r\n            {\r\n              \"name\": \"limit\",\r\n              \"description\": \"Format - int32. maximum number of results to return\",\r\n              \"type\": \"integer\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"pet response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"petArray\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          },\r\n          {\r\n            \"statusCode\": 500,\r\n            \"description\": \"unexpected error\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              },\r\n              {\r\n                \"contentType\": \"application/xml\",\r\n                \"schemaId\": \"5eab2674a2ca60123002311c\",\r\n                \"typeName\": \"errorModel\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473;rev=2/operations/resourceWithFormDataPOST\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"resourceWithFormDataPOST\",\r\n      \"properties\": {\r\n        \"displayName\": \"resourceWithFormDataPOST\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resourceWithFormData?dummyReqQueryParam={dummyReqQueryParam}\",\r\n        \"templateParameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"type\": \"string\",\r\n            \"required\": true,\r\n            \"values\": []\r\n          }\r\n        ],\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"multipart/form-data\",\r\n              \"formParameters\": [\r\n                {\r\n                  \"name\": \"dummyFormDataParam\",\r\n                  \"description\": \"dummyFormDataParam description\",\r\n                  \"type\": \"string\",\r\n                  \"required\": true,\r\n                  \"values\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"sample response\",\r\n            \"representations\": [\r\n              {\r\n                \"contentType\": \"application/json\"\r\n              }\r\n            ],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 8\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/revisions?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JldmlzaW9ucz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/revisions?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JldmlzaW9ucz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2531a4e4-7fd2-482c-a4e9-4c95e73447ae"
+          "12c2ed88-6177-4e9d-b1b4-f764474287b1"
         ],
         "Accept-Language": [
           "en-US"
@@ -807,7 +807,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cbc1fc5b-89df-4187-8aa5-f4c3786a0165"
+          "399b9b12-476f-46c9-9f3a-f90a88aa4b1a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -816,19 +816,19 @@
           "11990"
         ],
         "x-ms-correlation-request-id": [
-          "a86c0d29-57ac-4a0d-9846-a84e7660e56c"
+          "60779cde-c85a-4ed6-9751-c20da4425f91"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164646Z:a86c0d29-57ac-4a0d-9846-a84e7660e56c"
+          "WESTUS:20200430T192752Z:60779cde-c85a-4ed6-9751-c20da4425f91"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:45 GMT"
+          "Thu, 30 Apr 2020 19:27:51 GMT"
         ],
         "Content-Length": [
-          "596"
+          "597"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -837,17 +837,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/apis/ps8223;rev=2/revisions/ps8223;rev=2\",\r\n      \"apiId\": \"/apis/ps8223;rev=2\",\r\n      \"apiRevision\": \"2\",\r\n      \"createdDateTime\": \"2020-04-20T16:46:13.197Z\",\r\n      \"updatedDateTime\": \"2020-04-20T16:46:14.04Z\",\r\n      \"description\": \"ps8513\",\r\n      \"privateUrl\": \"/swaggerapifromFile;rev=2\",\r\n      \"isOnline\": true,\r\n      \"isCurrent\": false\r\n    },\r\n    {\r\n      \"id\": \"/apis/ps8223;rev=1/revisions/ps8223;rev=1\",\r\n      \"apiId\": \"/apis/ps8223;rev=1\",\r\n      \"apiRevision\": \"1\",\r\n      \"createdDateTime\": \"2020-04-20T16:45:38.287Z\",\r\n      \"updatedDateTime\": \"2020-04-20T16:45:38.32Z\",\r\n      \"description\": null,\r\n      \"privateUrl\": \"/swaggerapifromFile\",\r\n      \"isOnline\": true,\r\n      \"isCurrent\": true\r\n    }\r\n  ],\r\n  \"count\": 2,\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/apis/ps3473;rev=2/revisions/ps3473;rev=2\",\r\n      \"apiId\": \"/apis/ps3473;rev=2\",\r\n      \"apiRevision\": \"2\",\r\n      \"createdDateTime\": \"2020-04-30T19:27:19.303Z\",\r\n      \"updatedDateTime\": \"2020-04-30T19:27:20.49Z\",\r\n      \"description\": \"ps6116\",\r\n      \"privateUrl\": \"/swaggerapifromFile;rev=2\",\r\n      \"isOnline\": true,\r\n      \"isCurrent\": false\r\n    },\r\n    {\r\n      \"id\": \"/apis/ps3473;rev=1/revisions/ps3473;rev=1\",\r\n      \"apiId\": \"/apis/ps3473;rev=1\",\r\n      \"apiRevision\": \"1\",\r\n      \"createdDateTime\": \"2020-04-30T19:26:44.103Z\",\r\n      \"updatedDateTime\": \"2020-04-30T19:26:44.137Z\",\r\n      \"description\": null,\r\n      \"privateUrl\": \"/swaggerapifromFile\",\r\n      \"isOnline\": true,\r\n      \"isCurrent\": true\r\n    }\r\n  ],\r\n  \"count\": 2,\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JlbGVhc2VzL3BzNTc3NT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JlbGVhc2VzL3BzMTcyOT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiId\": \"/apis/ps8223;rev=2\",\r\n    \"notes\": \"ps1757\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiId\": \"/apis/ps3473;rev=2\",\r\n    \"notes\": \"ps8337\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "61f691c9-f9be-4963-9ff2-9a792cfaf926"
+          "003834ac-4473-4307-b42c-f34c0a6c3e61"
         ],
         "Accept-Language": [
           "en-US"
@@ -873,13 +873,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN2s=\""
+          "\"AAAAAAAACb8=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c3a4f3dc-bc18-4b90-a29a-367f985406d0"
+          "c09e5970-e164-4d21-bc8f-843bac48fec0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -888,16 +888,16 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "1538b1d9-712a-4b19-9824-c132fce70eff"
+          "c4c638e6-6b8b-4c35-9175-0d72636c3a3a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164647Z:1538b1d9-712a-4b19-9824-c132fce70eff"
+          "WESTUS:20200430T192752Z:c4c638e6-6b8b-4c35-9175-0d72636c3a3a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:46 GMT"
+          "Thu, 30 Apr 2020 19:27:52 GMT"
         ],
         "Content-Length": [
           "603"
@@ -909,17 +909,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps5775\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n    \"createdDateTime\": \"2020-04-20T16:46:46.6298316Z\",\r\n    \"updatedDateTime\": \"2020-04-20T16:46:46.6298316Z\",\r\n    \"notes\": \"ps1757\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps1729\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n    \"createdDateTime\": \"2020-04-30T19:27:52.4489034Z\",\r\n    \"updatedDateTime\": \"2020-04-30T19:27:52.4489034Z\",\r\n    \"notes\": \"ps8337\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JlbGVhc2VzL3BzNTc3NT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JlbGVhc2VzL3BzMTcyOT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c05d420d-da48-441f-9936-60233d697e9b"
+          "842f0547-25f3-4a6f-a336-65ee5f0edd4c"
         ],
         "Accept-Language": [
           "en-US"
@@ -939,13 +939,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN2s=\""
+          "\"AAAAAAAACb8=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "611303d1-5461-4a6f-88a0-41bb4cffa84c"
+          "87a12a52-9221-42f7-89e8-55f181329097"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -954,16 +954,16 @@
           "11989"
         ],
         "x-ms-correlation-request-id": [
-          "a1b9c0c1-0f3a-4b09-b5bf-420df2ef5493"
+          "57aa0262-6f0e-410d-b665-05308ad26abd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164647Z:a1b9c0c1-0f3a-4b09-b5bf-420df2ef5493"
+          "WESTUS:20200430T192752Z:57aa0262-6f0e-410d-b665-05308ad26abd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:46 GMT"
+          "Thu, 30 Apr 2020 19:27:52 GMT"
         ],
         "Content-Length": [
           "593"
@@ -975,17 +975,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps5775\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n    \"createdDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n    \"updatedDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n    \"notes\": \"ps1757\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps1729\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n    \"createdDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n    \"updatedDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n    \"notes\": \"ps8337\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JlbGVhc2VzL3BzNTc3NT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JlbGVhc2VzL3BzMTcyOT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "39b9cda4-0976-48e2-874a-d680d15f506a"
+          "00eb53ba-5cbf-47d6-8d20-35049909d486"
         ],
         "Accept-Language": [
           "en-US"
@@ -1005,13 +1005,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAN24=\""
+          "\"AAAAAAAACcI=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e1ae5033-978e-4e9b-979b-b46f05e37627"
+          "9b1061dd-a3d8-4add-a4fd-aa71db9bdea5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1020,16 +1020,16 @@
           "11988"
         ],
         "x-ms-correlation-request-id": [
-          "a4729c73-14a9-48cc-a225-180caeb6f30e"
+          "8d761492-9894-404a-b593-a09078e16661"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164647Z:a4729c73-14a9-48cc-a225-180caeb6f30e"
+          "WESTUS:20200430T192753Z:8d761492-9894-404a-b593-a09078e16661"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:47 GMT"
+          "Thu, 30 Apr 2020 19:27:52 GMT"
         ],
         "Content-Length": [
           "593"
@@ -1041,17 +1041,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps5775\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n    \"createdDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n    \"updatedDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n    \"notes\": \"ps4498\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n  \"name\": \"ps1729\",\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n    \"createdDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n    \"updatedDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n    \"notes\": \"ps2660\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JlbGVhc2VzL3BzNTc3NT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JlbGVhc2VzL3BzMTcyOT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223\",\r\n    \"notes\": \"ps4498\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"apiId\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473\",\r\n    \"notes\": \"ps2660\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc01e591-37cc-485d-a255-ecba1ff748e7"
+          "8dfdf071-ffaf-4fff-911e-d24e8193d68a"
         ],
         "If-Match": [
           "*"
@@ -1083,7 +1083,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "67c4f84a-3475-46d1-b7a3-66122542887e"
+          "819d2bc8-749a-4084-97b4-d636c90ba9c8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1092,16 +1092,16 @@
           "1195"
         ],
         "x-ms-correlation-request-id": [
-          "46cb377b-555c-45ac-bcd9-244964ac2061"
+          "38de18cb-f109-424a-931c-7d32a1292c91"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164647Z:46cb377b-555c-45ac-bcd9-244964ac2061"
+          "WESTUS:20200430T192753Z:38de18cb-f109-424a-931c-7d32a1292c91"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:47 GMT"
+          "Thu, 30 Apr 2020 19:27:52 GMT"
         ],
         "Expires": [
           "-1"
@@ -1111,13 +1111,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzL3JlbGVhc2VzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczL3JlbGVhc2VzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fabab977-d90a-44a3-a26a-be45cdd386e3"
+          "56dde405-1bc2-4784-ae94-33de7963f1d5"
         ],
         "Accept-Language": [
           "en-US"
@@ -1140,7 +1140,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "aecef0e6-97e3-482c-8b67-c11a8c46904e"
+          "d6f39995-6693-41dc-b989-75998e8dddca"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1149,16 +1149,16 @@
           "11987"
         ],
         "x-ms-correlation-request-id": [
-          "af0fb217-560c-4fcb-a092-59d691e14c22"
+          "97aa8c7e-3e82-499f-ad54-f7dd8ccd2d2e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164648Z:af0fb217-560c-4fcb-a092-59d691e14c22"
+          "WESTUS:20200430T192753Z:97aa8c7e-3e82-499f-ad54-f7dd8ccd2d2e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:48 GMT"
+          "Thu, 30 Apr 2020 19:27:53 GMT"
         ],
         "Content-Length": [
           "499"
@@ -1170,17 +1170,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223/releases/ps5775\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n      \"name\": \"ps5775\",\r\n      \"properties\": {\r\n        \"createdDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n        \"updatedDateTime\": \"2020-04-20T16:46:46.63Z\",\r\n        \"notes\": \"ps4498\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473/releases/ps1729\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/releases\",\r\n      \"name\": \"ps1729\",\r\n      \"properties\": {\r\n        \"createdDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n        \"updatedDateTime\": \"2020-04-30T19:27:52.45Z\",\r\n        \"notes\": \"ps2660\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223%3Brev%3D1?deleteRevisions=false&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzJTNCcmV2JTNEMT9kZWxldGVSZXZpc2lvbnM9ZmFsc2UmYXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473%3Brev%3D1?deleteRevisions=false&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczJTNCcmV2JTNEMT9kZWxldGVSZXZpc2lvbnM9ZmFsc2UmYXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "30aeb027-a1c6-44ff-bbda-ee7bbbff6ba2"
+          "b006f78b-8717-484c-9d98-95dea05bf95b"
         ],
         "If-Match": [
           "*"
@@ -1206,7 +1206,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fb76836b-17c0-4214-9c68-07f6d1b7b9be"
+          "598a57a8-2cd4-45e6-b12a-2681891f1365"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1215,16 +1215,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "0d435f6f-6e34-43cf-81d9-d5e1f86b100d"
+          "37ab941f-107f-494a-ba3e-f9bdfb49030d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164649Z:0d435f6f-6e34-43cf-81d9-d5e1f86b100d"
+          "WESTUS:20200430T192754Z:37ab941f-107f-494a-ba3e-f9bdfb49030d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:48 GMT"
+          "Thu, 30 Apr 2020 19:27:53 GMT"
         ],
         "Expires": [
           "-1"
@@ -1237,13 +1237,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8223?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4MjIzP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps3473?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMzNDczP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64b4c4a0-a390-411a-8293-c605ce426ba6"
+          "1684dcc2-6c07-44aa-8a82-6b3d44414914"
         ],
         "If-Match": [
           "*"
@@ -1269,7 +1269,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8cd2710a-e05a-4049-a303-ddd1e3b20559"
+          "95868ebf-f1b3-45a6-b48b-57004e9f3cc6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1278,16 +1278,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "b52a602d-ae08-43ee-8800-fcef39367fbd"
+          "7786e476-646e-43e3-957a-422419038c4c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200420T164649Z:b52a602d-ae08-43ee-8800-fcef39367fbd"
+          "WESTUS:20200430T192754Z:7786e476-646e-43e3-957a-422419038c4c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 20 Apr 2020 16:46:49 GMT"
+          "Thu, 30 Apr 2020 19:27:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -1302,11 +1302,11 @@
   ],
   "Names": {
     "": [
-      "ps8223",
-      "ps5775",
-      "ps8513",
-      "ps1757",
-      "ps4498"
+      "ps3473",
+      "ps1729",
+      "ps6116",
+      "ps8337",
+      "ps2660"
     ]
   },
   "Variables": {

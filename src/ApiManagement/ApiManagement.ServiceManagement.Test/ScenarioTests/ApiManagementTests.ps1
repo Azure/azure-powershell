@@ -491,7 +491,7 @@ function Api-ImportExportOpenApiTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-    $openApiUrl = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/OpenAPI.next/examples/v3.0/petstore.yaml"   
+    $openApiUrl = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml"   
     $yamlPath1 = Join-Path (Join-Path "$TestOutputRoot" "Resources") "uspto.yml"
     $path1 = "openapifromFile"
     $path2 = "openapifromUrl"
