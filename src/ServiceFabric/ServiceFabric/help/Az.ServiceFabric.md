@@ -11,7 +11,6 @@ Locale: en-US
 Azure Service Fabric Module that you can use to automate the end-2-end operations like creating a secure cluster, rolling over cluster certificates, adding or removed nodes from the cluster, etc. The complete list of all operations are listed below.
 
 ## Az.ServiceFabric Cmdlets
-
 ### [Add-AzServiceFabricClientCertificate](Add-AzServiceFabricClientCertificate.md)
 Add common name or thumbprint to the cluster for client authentication purposes.
 
@@ -49,7 +48,7 @@ Create new service fabric application type under the specified resource group an
 Create new application type version under the specified resource group and cluster.
 
 ### [New-AzServiceFabricCluster](New-AzServiceFabricCluster.md)
-This command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates to or fetching them later from the key vault. 
+This command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates to or fetching them later from the key vault.
 
 ### [New-AzServiceFabricService](New-AzServiceFabricService.md)
 Create new service fabric service under the specified application and cluster.

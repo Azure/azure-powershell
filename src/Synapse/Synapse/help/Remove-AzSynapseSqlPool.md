@@ -12,7 +12,7 @@ Deletes a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
