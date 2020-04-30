@@ -1,22 +1,169 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-04-29" time="10:03:54">
-  <environment os-version="4.19.76-linuxkit" cwd="/src/ImageBuilder" user="root" nunit-version="2.5.8.0" platform="Linux" machine-name="7caf11335ad5" clr-version="Unknown" user-domain="" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="34" errors="0" failures="6" not-run="0" inconclusive="0" ignored="5" skipped="0" invalid="0" date="2020-04-30" time="10:00:48">
+  <environment os-version="4.19.76-linuxkit" nunit-version="2.5.8.0" machine-name="5fe7e6d5ceff" cwd="/src/ImageBuilder" user="root" platform="Linux" user-domain="" clr-version="Unknown" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="6.7638" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="10.0126" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="6.7638" asserts="0" description="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1">
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Get-AzImageBuilderRunOutput.Tests.ps1" executed="True" result="Success" success="True" time="4.3839" asserts="0" description="/src/ImageBuilder/test/Get-AzImageBuilderRunOutput.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Stop-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="6.4095" asserts="0" description="Stop-AzImageBuilderTemplate">
+          <test-suite type="TestFixture" name="Get-AzImageBuilderRunOutput" executed="True" result="Success" success="True" time="0.697" asserts="0" description="Get-AzImageBuilderRunOutput">
             <results>
-              <test-case description="Cancel" name="Stop-AzImageBuilderTemplate.Cancel" time="4.7065" asserts="0" success="False" result="Failure" executed="True">
+              <test-case description="List" name="Get-AzImageBuilderRunOutput.List" time="0.293" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzImageBuilderRunOutput.Get" time="0.0877" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzImageBuilderRunOutput.GetViaIdentity" time="0.0784" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Get-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="0.4446" asserts="0" description="/src/ImageBuilder/test/Get-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="0.3336" asserts="0" description="Get-AzImageBuilderTemplate">
+            <results>
+              <test-case description="List" name="Get-AzImageBuilderTemplate.List" time="0.0856" asserts="0" success="False" result="Failure" executed="True">
                 <failure>
-                  <message>Operation 'Microsoft.VirtualMachineImages/imageTemplates/cancel/action' is not allowed in provisioningState: 'provisioned', runState: 'canceling'</message>
-                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1: line 18
-18:         Stop-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup
+                  <message>Missing Request 'Get-AzImageBuilderTemplate+[NoContext]+List+$GET+http://tm.aibrp.eastus.trafficmanager.net/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/imageTemplates?api-version=2020-02-14&amp;skipToken=10+2' in recording file
+Parameter name: rqKey</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Get-AzImageBuilderTemplate.Tests.ps1: line 16
+16:         $templateList = Get-AzImageBuilderTemplate
 </stack-trace>
                 </failure>
               </test-case>
-              <test-case description="CancelViaIdentity" name="Stop-AzImageBuilderTemplate.CancelViaIdentity" time="1.4033" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzImageBuilderTemplate.List1" time="0.0408" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing Request 'Get-AzImageBuilderTemplate+[NoContext]+List1+$GET+http://tm.aibrp.eastus.trafficmanager.net/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates?api-version=2020-02-14&amp;skipToken=10+2' in recording file
+Parameter name: rqKey</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Get-AzImageBuilderTemplate.Tests.ps1: line 20
+20:         $templateList = Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="Get" name="Get-AzImageBuilderTemplate.Get" time="0.0371" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzImageBuilderTemplate.GetViaIdentity" time="0.0522" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/New-AzImageBuilderCustomizer.Tests.ps1" executed="True" result="Success" success="True" time="0.2869" asserts="0" description="/src/ImageBuilder/test/New-AzImageBuilderCustomizer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzImageBuilderCustomizer" executed="True" result="Success" success="True" time="0.1494" asserts="0" description="New-AzImageBuilderCustomizer">
+            <results>
+              <test-case description="WindowsUpdateCustomizer" name="New-AzImageBuilderCustomizer.WindowsUpdateCustomizer" time="0.0366" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="FileCustomizer" name="New-AzImageBuilderCustomizer.FileCustomizer" time="0.0135" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ShellCustomizer" name="New-AzImageBuilderCustomizer.ShellCustomizer" time="0.014" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="PowerShellCustomizer" name="New-AzImageBuilderCustomizer.PowerShellCustomizer" time="0.0164" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartCustomizer" name="New-AzImageBuilderCustomizer.RestartCustomizer" time="0.0134" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/New-AzImageBuilderDistributor.Tests.ps1" executed="True" result="Success" success="True" time="0.2339" asserts="0" description="/src/ImageBuilder/test/New-AzImageBuilderDistributor.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzImageBuilderDistributor" executed="True" result="Success" success="True" time="0.1188" asserts="0" description="New-AzImageBuilderDistributor">
+            <results>
+              <test-case description="VhdDistributor" name="New-AzImageBuilderDistributor.VhdDistributor" time="0.0468" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ManagedImageDistributor" name="New-AzImageBuilderDistributor.ManagedImageDistributor" time="0.0154" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="SharedImageDistributor" name="New-AzImageBuilderDistributor.SharedImageDistributor" time="0.0182" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/New-AzImageBuilderSource.Tests.ps1" executed="True" result="Success" success="True" time="0.226" asserts="0" description="/src/ImageBuilder/test/New-AzImageBuilderSource.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzImageBuilderSource" executed="True" result="Success" success="True" time="0.1067" asserts="0" description="New-AzImageBuilderSource">
+            <results>
+              <test-case description="PlatformImage" name="New-AzImageBuilderSource.PlatformImage" time="0.0396" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ManagedImage" name="New-AzImageBuilderSource.ManagedImage" time="0.0107" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="SharedImageVersion" name="New-AzImageBuilderSource.SharedImageVersion" time="0.011" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/New-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Success" success="True" time="0.8657" asserts="0" description="/src/ImageBuilder/test/New-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzImageBuilderTemplate" executed="True" result="Success" success="True" time="0.753" asserts="0" description="New-AzImageBuilderTemplate">
+            <results>
+              <test-case description="platformimg-managedimg" name="New-AzImageBuilderTemplate.platformimg-managedimg" time="0.1457" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="platformimg-vhd" name="New-AzImageBuilderTemplate.platformimg-vhd" time="0.0652" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="platformimg-sharedimg" name="New-AzImageBuilderTemplate.platformimg-sharedimg" time="0.0679" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="managedimg-managedimg" name="New-AzImageBuilderTemplate.managedimg-managedimg" time="0.0643" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="managedimg-vhd" name="New-AzImageBuilderTemplate.managedimg-vhd" time="0.0609" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="managedimg-sharedimg" name="New-AzImageBuilderTemplate.managedimg-sharedimg" time="0.0787" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="sharedimg-managedimg" name="New-AzImageBuilderTemplate.sharedimg-managedimg" time="0.0634" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="sharedimg-vhd" name="New-AzImageBuilderTemplate.sharedimg-vhd" time="0.061" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="sharedImage-sharedimg" name="New-AzImageBuilderTemplate.sharedImage-sharedimg" time="0.0585" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Remove-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="0.2792" asserts="0" description="/src/ImageBuilder/test/Remove-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="0.1686" asserts="0" description="Remove-AzImageBuilderTemplate">
+            <results>
+              <test-case description="Delete" name="Remove-AzImageBuilderTemplate.Delete" time="0.0648" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The Resource 'Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey' under resource group 'wyunchi-imagebuilder' was not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Remove-AzImageBuilderTemplate.Tests.ps1: line 17
+17:         (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup) | Should -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DeleteViaIdentity" name="Remove-AzImageBuilderTemplate.DeleteViaIdentity" time="0.0553" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The Resource 'Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j' under resource group 'wyunchi-imagebuilder' was not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Remove-AzImageBuilderTemplate.Tests.ps1: line 23
+23:         (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup) | Should -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Start-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Success" success="True" time="2.6874" asserts="0" description="/src/ImageBuilder/test/Start-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzImageBuilderTemplate" executed="True" result="Success" success="True" time="2.5822" asserts="0" description="Start-AzImageBuilderTemplate">
+            <results>
+              <test-case description="Run" name="Start-AzImageBuilderTemplate.Run" time="1.2458" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RunViaIdentity" name="Start-AzImageBuilderTemplate.RunViaIdentity" time="1.2979" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="0.2826" asserts="0" description="/src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="0.1734" asserts="0" description="Stop-AzImageBuilderTemplate">
+            <results>
+              <test-case description="Cancel" name="Stop-AzImageBuilderTemplate.Cancel" time="0.0257" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing Request 'Stop-AzImageBuilderTemplate+[NoContext]+Cancel+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9?api-version=2020-02-14+3' in recording file
+Parameter name: rqKey</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Stop-AzImageBuilderTemplate.Tests.ps1: line 17
+17:         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CancelViaIdentity" name="Stop-AzImageBuilderTemplate.CancelViaIdentity" time="0.1008" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ImageBuilder/test/Update-AzImageBuilderTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="0.3224" asserts="0" description="/src/ImageBuilder/test/Update-AzImageBuilderTemplate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzImageBuilderTemplate" executed="True" result="Failure" success="False" time="0.2126" asserts="0" description="Update-AzImageBuilderTemplate">
+            <results>
+              <test-case description="Name" name="Update-AzImageBuilderTemplate.Name" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateExpanded" name="Update-AzImageBuilderTemplate.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzImageBuilderTemplate.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="InputObject" name="Update-AzImageBuilderTemplate.InputObject" time="0.1419" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Operation 'Microsoft.VirtualMachineImages/imageTemplates/write' is not allowed in provisioningState: 'provisioned', runState: 'canceling'</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ImageBuilder/test/Update-AzImageBuilderTemplate.Tests.ps1: line 30
+30:         Update-AzImageBuilderTemplate -InputObject $template -Tag $tag 
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzImageBuilderTemplate.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentity" name="Update-AzImageBuilderTemplate.UpdateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
             </results>
           </test-suite>
         </results>

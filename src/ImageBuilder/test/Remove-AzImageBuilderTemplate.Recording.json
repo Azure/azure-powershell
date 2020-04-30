@@ -1,12 +1,12 @@
 {
-  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-6e20bn?api-version=2020-02-14+1": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey?api-version=2020-02-14+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-6e20bn?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "8782e850-27a4-4a43-b0cd-7b52993ac92f" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,16 +21,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14" ],
-        "x-ms-correlation-request-id": [ "a9718d27-0dd9-4a0f-b589-df2b3ecdb0ff" ],
-        "x-ms-request-id": [ "c9be1e40-846f-45ae-89ec-cefd356928f0" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14" ],
+        "x-ms-correlation-request-id": [ "866e792b-79e8-4748-9167-f92f2cf4f3fd" ],
+        "x-ms-request-id": [ "3db845ed-36fa-4091-8b51-2258ae3c558f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095423Z:a9718d27-0dd9-4a0f-b589-df2b3ecdb0ff" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071816Z:866e792b-79e8-4748-9167-f92f2cf4f3fd" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:54:22 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:18:15 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -39,14 +39,14 @@
       "Content": null
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14+2": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1", "2" ],
-        "x-ms-client-request-id": [ "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f" ],
+        "x-ms-unique-id": [ "65", "66" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -61,31 +61,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "c9b265d6-f1d9-4897-98e7-9323636d99f9" ],
-        "x-ms-request-id": [ "70659e26-9970-44eb-aef0-449508a24fea" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
+        "x-ms-correlation-request-id": [ "8d9f340a-e8fe-4809-8451-84a2f7af5c0e" ],
+        "x-ms-request-id": [ "58fe9149-5075-4ee2-84eb-9f6ec0b73b47" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095453Z:c9b265d6-f1d9-4897-98e7-9323636d99f9" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071847Z:8d9f340a-e8fe-4809-8451-84a2f7af5c0e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:54:53 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:18:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "122" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"C9BE1E40-846F-45AE-89EC-CEFD356928F0\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-29T09:54:23.2218495Z\"\n}"
+      "Content": "{\n \"name\": \"3DB845ED-36FA-4091-8B51-2258AE3C558F\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-30T07:18:16.2435417Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14+3": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1", "2", "3" ],
-        "x-ms-client-request-id": [ "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f" ],
+        "x-ms-unique-id": [ "65", "66", "67" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -100,31 +100,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "b8a915a5-ced0-4683-816e-a56a1454f081" ],
-        "x-ms-request-id": [ "f8fd2d54-8657-469d-a40d-55f6f6ffa0a9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
+        "x-ms-correlation-request-id": [ "52f95a2d-f88e-4073-a94d-0db5f6ffe51e" ],
+        "x-ms-request-id": [ "dbdc2a71-270a-4b59-a480-f7daca714eec" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095524Z:b8a915a5-ced0-4683-816e-a56a1454f081" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071917Z:52f95a2d-f88e-4073-a94d-0db5f6ffe51e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:23 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:19:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "165" ],
+        "Content-Length": [ "122" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"C9BE1E40-846F-45AE-89EC-CEFD356928F0\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-29T09:54:23.2218495Z\",\n \"endTime\": \"2020-04-29T09:55:13.1038245Z\"\n}"
+      "Content": "{\n \"name\": \"3DB845ED-36FA-4091-8B51-2258AE3C558F\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-30T07:18:16.2435417Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14+4": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c9be1e40-846f-45ae-89ec-cefd356928f0?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1", "2", "3", "4" ],
-        "x-ms-client-request-id": [ "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f", "8782e850-27a4-4a43-b0cd-7b52993ac92f" ],
+        "x-ms-unique-id": [ "65", "66", "67", "68" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -139,31 +139,109 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "960cd92e-662d-4176-bd6a-57e764dae1af" ],
-        "x-ms-request-id": [ "77af3861-979c-46b7-9b87-36463ce45fda" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
+        "x-ms-correlation-request-id": [ "e134d3dd-7841-412c-b7c4-44fda18d177c" ],
+        "x-ms-request-id": [ "c5a2d693-56e3-4c97-801f-42dc342f5f4e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095524Z:960cd92e-662d-4176-bd6a-57e764dae1af" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071949Z:e134d3dd-7841-412c-b7c4-44fda18d177c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:24 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:19:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "122" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"name\": \"3DB845ED-36FA-4091-8B51-2258AE3C558F\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-30T07:18:16.2435417Z\"\n}"
+    }
+  },
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "65", "66", "67", "68", "69" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
+        "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
+        "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "9ba75462-c946-4477-a859-8a9e041a65dc" ],
+        "x-ms-request-id": [ "8b3030a9-9fa0-4e63-ae4b-4c1e31a60394" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072019Z:9ba75462-c946-4477-a859-8a9e041a65dc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 30 Apr 2020 07:20:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "165" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"C9BE1E40-846F-45AE-89EC-CEFD356928F0\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-29T09:54:23.2218495Z\",\n \"endTime\": \"2020-04-29T09:55:13.1038245Z\"\n}"
+      "Content": "{\n \"name\": \"3DB845ED-36FA-4091-8B51-2258AE3C558F\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-30T07:18:16.2435417Z\",\n \"endTime\": \"2020-04-30T07:19:48.8301678Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-6e20bn?api-version=2020-02-14+5": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-6e20bn?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/3db845ed-36fa-4091-8b51-2258ae3c558f?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "beb47644-4e41-4e00-a1db-9f0d528a3053" ],
+        "x-ms-unique-id": [ "65", "66", "67", "68", "69", "70" ],
+        "x-ms-client-request-id": [ "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875", "0ccf0320-ec8c-4dde-bcc3-23900ca17875" ],
+        "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
+        "FullCommandName": [ "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete", "Remove-AzImageBuilderTemplate_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-correlation-request-id": [ "d2527476-8ee6-41a9-875f-33e5e1a75ca0" ],
+        "x-ms-request-id": [ "f0ec2768-31c6-448a-9c66-d19edafaf6ed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072020Z:d2527476-8ee6-41a9-875f-33e5e1a75ca0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 30 Apr 2020 07:20:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "165" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"name\": \"3DB845ED-36FA-4091-8B51-2258AE3C558F\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-30T07:18:16.2435417Z\",\n \"endTime\": \"2020-04-30T07:19:48.8301678Z\"\n}"
+    }
+  },
+  "Remove-AzImageBuilderTemplate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey?api-version=2020-02-14+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey?api-version=2020-02-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "f2dfb605-2a0e-4e82-94ef-bdcb95db9a25" ],
         "CommandName": [ "Get-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -179,29 +257,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "88bd5082-9b10-4a44-977d-a9a2e270b80b" ],
-        "x-ms-correlation-request-id": [ "88bd5082-9b10-4a44-977d-a9a2e270b80b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095526Z:88bd5082-9b10-4a44-977d-a9a2e270b80b" ],
+        "x-ms-request-id": [ "29e0b2fb-e8e3-4d9b-94a5-004498d2625e" ],
+        "x-ms-correlation-request-id": [ "29e0b2fb-e8e3-4d9b-94a5-004498d2625e" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072020Z:29e0b2fb-e8e3-4d9b-94a5-004498d2625e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:26 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:20:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
         "Content-Length": [ "190" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.VirtualMachineImages/imageTemplates/template-name-6e20bn\u0027 under resource group \u0027wyunchi-imagebuilder\u0027 was not found.\"}}"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.VirtualMachineImages/imageTemplates/template-name-bvf4ey\u0027 under resource group \u0027wyunchi-imagebuilder\u0027 was not found.\"}}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14+1": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "a9cbce29-5bd5-4953-bb0a-baa50cb8b50d" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "8a173660-f379-4dfe-8d5d-6c244d413314" ],
         "CommandName": [ "Get-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -216,31 +294,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "cdac1614-be04-4b80-872a-d0f99b8073cd" ],
-        "x-ms-request-id": [ "e2a590e1-1c4e-42f1-aa07-d52c6463a1a2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
+        "x-ms-correlation-request-id": [ "666af8aa-1f3f-44b7-aa43-ae63115ad102" ],
+        "x-ms-request-id": [ "ec842766-3b1a-4e15-9f3b-a83a44f0f705" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095527Z:cdac1614-be04-4b80-872a-d0f99b8073cd" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072021Z:666af8aa-1f3f-44b7-aa43-ae63115ad102" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:26 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:20:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1053" ],
+        "Content-Length": [ "708" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"imageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/test-linux-image\",\n   \"type\": \"ManagedImage\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"downloadBuildArtifacts\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"VHD\"\n    },\n    \"runOutputName\": \"runout-template-name-n68u4z\",\n    \"type\": \"VHD\"\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z\",\n \"name\": \"template-name-n68u4z\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\",\n \"location\": \"eastus\",\n \"tags\": {}\n}"
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest (18.04.202004290)\"\n  },\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"VHD\"\n    },\n    \"runOutputName\": \"runout-template-name-r2x05j\",\n    \"type\": \"VHD\"\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j\",\n \"name\": \"template-name-r2x05j\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\",\n \"location\": \"eastus\",\n \"tags\": {}\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14+2": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "2754fe91-255d-46c3-9085-5f5c307362fc" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -255,16 +333,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14" ],
-        "x-ms-correlation-request-id": [ "bd7e5e7e-0291-4812-80a0-d9a73d489f9a" ],
-        "x-ms-request-id": [ "7d19fdd8-cc11-4b9c-ad4e-becacfd205ef" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14" ],
+        "x-ms-correlation-request-id": [ "5c61a739-9f29-4654-84a8-7d0e3fcccf03" ],
+        "x-ms-request-id": [ "a70eeb17-4008-4311-b9b8-1aab4db11421" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095528Z:bd7e5e7e-0291-4812-80a0-d9a73d489f9a" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072022Z:5c61a739-9f29-4654-84a8-7d0e3fcccf03" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:27 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:20:21 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -273,14 +351,14 @@
       "Content": null
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14+3": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7", "8" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
+        "x-ms-unique-id": [ "73", "74" ],
+        "x-ms-client-request-id": [ "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -295,31 +373,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
-        "x-ms-correlation-request-id": [ "bb00a8c2-2617-4cf9-add0-13608b80d68b" ],
-        "x-ms-request-id": [ "4d5c5256-3f4b-4704-a99d-fd5f0ffca909" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "x-ms-correlation-request-id": [ "d2fd99a0-a6dc-44de-add8-49263cb26627" ],
+        "x-ms-request-id": [ "f5e0f0c4-45eb-48f2-b8fc-62367c228814" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095559Z:bb00a8c2-2617-4cf9-add0-13608b80d68b" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072053Z:d2fd99a0-a6dc-44de-add8-49263cb26627" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:55:58 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:20:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "121" ],
+        "Content-Length": [ "122" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"7D19FDD8-CC11-4B9C-AD4E-BECACFD205EF\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-29T09:55:28.160047Z\"\n}"
+      "Content": "{\n \"name\": \"A70EEB17-4008-4311-B9B8-1AAB4DB11421\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-30T07:20:22.2133839Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14+4": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7", "8", "9" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
+        "x-ms-unique-id": [ "73", "74", "75" ],
+        "x-ms-client-request-id": [ "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -334,31 +412,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-correlation-request-id": [ "e610a225-1b15-4e37-95e7-37921be7e477" ],
-        "x-ms-request-id": [ "79a3193e-008f-43b7-a670-2a7bbef427c1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "x-ms-correlation-request-id": [ "ea21140d-7af4-44a4-bb2f-fac14eb686d4" ],
+        "x-ms-request-id": [ "f3ee0fd4-eb0b-4a2e-bcb6-babcdd116ede" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095629Z:e610a225-1b15-4e37-95e7-37921be7e477" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072124Z:ea21140d-7af4-44a4-bb2f-fac14eb686d4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:56:29 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:21:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "121" ],
+        "Content-Length": [ "165" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"7D19FDD8-CC11-4B9C-AD4E-BECACFD205EF\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-29T09:55:28.160047Z\"\n}"
+      "Content": "{\n \"name\": \"A70EEB17-4008-4311-B9B8-1AAB4DB11421\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-30T07:20:22.2133839Z\",\n \"endTime\": \"2020-04-30T07:21:09.8513661Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14+5": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/a70eeb17-4008-4311-b9b8-1aab4db11421?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7", "8", "9", "10" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
+        "x-ms-unique-id": [ "73", "74", "75", "76" ],
+        "x-ms-client-request-id": [ "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc", "2754fe91-255d-46c3-9085-5f5c307362fc" ],
         "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -373,109 +451,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-correlation-request-id": [ "779d54dd-06cb-434a-93dc-b2f19e7a276c" ],
-        "x-ms-request-id": [ "7161c0a1-2198-4ebd-b1c4-5ec0ac59f16d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11939" ],
+        "x-ms-correlation-request-id": [ "17be4a1b-197a-4f72-ae5a-20dc65196dcf" ],
+        "x-ms-request-id": [ "d296cbc7-b62e-490a-ba55-e8e41c3ea022" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095700Z:779d54dd-06cb-434a-93dc-b2f19e7a276c" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072124Z:17be4a1b-197a-4f72-ae5a-20dc65196dcf" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:56:59 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:21:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "121" ],
+        "Content-Length": [ "165" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"7D19FDD8-CC11-4B9C-AD4E-BECACFD205EF\",\n \"status\": \"InProgress\",\n \"startTime\": \"2020-04-29T09:55:28.160047Z\"\n}"
+      "Content": "{\n \"name\": \"A70EEB17-4008-4311-B9B8-1AAB4DB11421\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-30T07:20:22.2133839Z\",\n \"endTime\": \"2020-04-30T07:21:09.8513661Z\"\n}"
     }
   },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14+6": {
+  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7", "8", "9", "10", "11" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
-        "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
-        "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
-        "x-ms-correlation-request-id": [ "f36709ff-a064-4f14-a795-dbb06b9d4662" ],
-        "x-ms-request-id": [ "8d313782-e182-49c1-94c0-2b2a80833fd7" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095730Z:f36709ff-a064-4f14-a795-dbb06b9d4662" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:57:29 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "163" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"name\": \"7D19FDD8-CC11-4B9C-AD4E-BECACFD205EF\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-29T09:55:28.160047Z\",\n \"endTime\": \"2020-04-29T09:57:18.411012Z\"\n}"
-    }
-  },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/7d19fdd8-cc11-4b9c-ad4e-becacfd205ef?api-version=2020-02-14",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "7", "8", "9", "10", "11", "12" ],
-        "x-ms-client-request-id": [ "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7", "2e4f87cb-fe97-4fc2-9ddd-4a1f7614c7b7" ],
-        "CommandName": [ "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate", "Remove-AzImageBuilderTemplate" ],
-        "FullCommandName": [ "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity", "Remove-AzImageBuilderTemplate_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
-        "x-ms-correlation-request-id": [ "8c066c51-cb94-42e9-8991-1495b9506223" ],
-        "x-ms-request-id": [ "f9934eaf-51e2-433f-8b6a-b8f3c24d2b5a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095731Z:8c066c51-cb94-42e9-8991-1495b9506223" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:57:30 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "163" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"name\": \"7D19FDD8-CC11-4B9C-AD4E-BECACFD205EF\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2020-04-29T09:55:28.160047Z\",\n \"endTime\": \"2020-04-29T09:57:18.411012Z\"\n}"
-    }
-  },
-  "Remove-AzImageBuilderTemplate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-n68u4z?api-version=2020-02-14",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "e6027b2a-035f-4564-a616-0b8123c6c7be" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "7699b35c-636f-4ee0-8e04-7f7f9b908309" ],
         "CommandName": [ "Get-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -490,21 +490,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
-        "x-ms-correlation-request-id": [ "ca8ce69b-ccea-4c17-81c7-0c8ae9ad9745" ],
-        "x-ms-request-id": [ "0580bc2a-110d-484c-95bb-456703c1f16e" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "0c9aa639-eba1-4be9-8134-b2fc90b1a18a" ],
+        "x-ms-correlation-request-id": [ "0c9aa639-eba1-4be9-8134-b2fc90b1a18a" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T072125Z:0c9aa639-eba1-4be9-8134-b2fc90b1a18a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200429T095732Z:ca8ce69b-ccea-4c17-81c7-0c8ae9ad9745" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 29 Apr 2020 09:57:31 GMT" ]
+        "Date": [ "Thu, 30 Apr 2020 07:21:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "75" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "190" ]
       },
-      "Content": "{\n  \"code\": \"NotFound\",\n  \"message\": \"Image template resource not found\"\n }"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.VirtualMachineImages/imageTemplates/template-name-r2x05j\u0027 under resource group \u0027wyunchi-imagebuilder\u0027 was not found.\"}}"
     }
   }
 }

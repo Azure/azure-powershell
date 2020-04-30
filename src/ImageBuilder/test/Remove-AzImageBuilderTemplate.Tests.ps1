@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzImageBuilderTemplate' {
     It 'Delete' {
-        Remove-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
-        (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup) | Should -Throw
+        Remove-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup) | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
-        $template =  Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup
+        $template =  Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
         Remove-AzImageBuilderTemplate -InputObject $template
-        (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup) | Should -Throw
+        (Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup) | Should -Throw
     }
 }

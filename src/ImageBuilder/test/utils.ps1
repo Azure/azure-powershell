@@ -139,7 +139,7 @@ function setupEnv() {
     $tmplPlatformManaged = New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -Source $srcPlatform -Distribute $distributor -Customize $customizer -ResourceGroupName $env.ResourceGroup -Location $env.Location
     Write-Host -ForegroundColor Green "Successfully created templeate image."
     Write-Host -ForegroundColor Green "Start $($env.Resources.Template.templateName10) template image for test."
-    #Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
+    Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
     Write-Host -ForegroundColor Green "Successfully started templeate image."
     
     $envFile = 'env.json'

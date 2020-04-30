@@ -13,15 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Start-AzImageBuilderTemplate' {
     It 'Run' {
-        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
         $template.LastRunStatus.RunState | Should -Be 'Succeeded'
     }
 
     It 'RunViaIdentity' {
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
         $template.LastRunStatus.RunState | Should -Be 'Succeeded'
     }
 }

@@ -12,27 +12,31 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzImageBuilderTemplate' {
-    It 'Name' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw   
+    It 'Name'-skip {
+         $tag = @{key = 'Name'}
     }
 
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $tag = @{key = 'UpdateExpanded'}
     }
 
     It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $tag = @{key = 'Update'}
     }
 
-    It 'InputObject' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'InputObject'  {
+        $tag = @{key = 'InputObject'}
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        Update-AzImageBuilderTemplate -InputObject $template -Tag $tag 
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template.Tag.Item("info") | Should -Be $tag.key
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $tag = @{key = 'UpdateViaIdentityExpanded'}
     }
 
     It 'UpdateViaIdentity' -skip {
-        Update-AzImageBuilderTemplate -InputObject $tmpl
+        $tag = @{key = 'UpdateViaIdentity'}
     }
 }
