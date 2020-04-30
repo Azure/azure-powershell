@@ -1,28 +1,31 @@
 function New-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app service plan.')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory=$true, HelpMessage='Name of the App Service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${Name},
 
         [Parameter(Mandatory=$true, HelpMessage='Name of the resource group to which the resource belongs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${ResourceGroupName},
 
         [Parameter(HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${SubscriptionId},
 
         [Parameter(Mandatory=$true, HelpMessage='The plan sku. Valid inputs are: EP1, P2, EP3')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuType])]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         # Sku (EP1, EP2 or EP3)
         ${Sku},
@@ -30,6 +33,7 @@ function New-AzFunctionAppPlan {
         [Parameter(Mandatory=$true, HelpMessage='The worker type for the plan. Valid inputs are: Windows or Linux.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         # Worker type (Linux or Windows)
         ${WorkerType},
@@ -56,8 +60,9 @@ function New-AzFunctionAppPlan {
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150801Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
         [System.Collections.Hashtable]
+        [ValidateNotNull()]
         ${Tag},
 
         [Parameter(HelpMessage='Run the command asynchronously.')]
@@ -168,20 +173,10 @@ function New-AzFunctionAppPlan {
             }
 
             # Validate location for a Premium plan
-            $Location = $Location.Trim()
-            $availableLocations = @(Get-AzFunctionAppAvailableLocation -OSType $WorkerType -PlanType Premium | ForEach-Object { $_.Name })
-            if (-not ($availableLocations -contains $Location))
-            {
-                $locationOptions = $availableLocations -join ", "
-                $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
-                $exception = [System.InvalidOperationException]::New($errorMessage)
-                ThrowTerminatingError -ErrorId "LocationIsInvalid" `
-                                      -ErrorMessage $errorMessage `
-                                      -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                      -Exception $exception
-            }
+            $OSIsLinux = $WorkerType -eq "Linux"
+            ValidatePremiumPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
 
-            $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.AppServicePlan
+            $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan
 
             # Plan settings
             $servicePlan.SkuTier = $tier

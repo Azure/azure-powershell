@@ -1,4 +1,4 @@
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzFunctionApp.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Functions.Tests.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -6,9 +6,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-
 # Test variables
-$testSubscriptionId = ""
+$testSubscriptionId = "52d8cf1b-bcac-493a-bbae-f234b5ff38b0"
 
 $resourceGroupNameWindowsPremium = "Func99-West-Europe-Win-Premium"
 $resourceGroupNameLinuxPremium = "Func99-West-Europe-Linux-Premium"
@@ -20,12 +19,13 @@ $linuxConsumptionLocation = "Southeast Asia"
 $windowsConsumptionLocation = "Central US"
 $planNameWorkerTypeLinux = "Func99-West-Europe-Linux-Premium"
 $planNameWorkerTypeWindows = "Func99-West-Europe-Windows-Premium"
-$storageAccountWindows = "functionswinstorage999"
-$storageAccountLinux = "functionslinuxstorage999"
+$storageAccountWindows = "functionswinstorage888"
+$storageAccountLinux = "functionslinuxstorage888"
 
 function CreateFunctionApps
 {
     # Create resource groups
+    <#
     Write-Host "Creating resource groups" -ForegroundColor Green
     New-AzResourceGroup -Name $resourceGroupNameWindowsPremium -Location $premiumPlanLocation -Force
     New-AzResourceGroup -Name $resourceGroupNameLinuxPremium -Location $premiumPlanLocation -Force
@@ -36,7 +36,7 @@ function CreateFunctionApps
     Write-Host "Creating storage accounts" -ForegroundColor Green
     New-AzStorageAccount -ResourceGroupName $resourceGroupNameWindowsPremium -AccountName $storageAccountWindows -Location $premiumPlanLocation -SkuName Standard_GRS
     New-AzStorageAccount -ResourceGroupName $resourceGroupNameLinuxPremium -AccountName $storageAccountLinux -Location $premiumPlanLocation -SkuName Standard_GRS
-
+    #>
     # Create service plans
     $servicePlansToCreate = @(
         @{
@@ -73,8 +73,8 @@ function CreateFunctionApps
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "PowerShell"
-            RuntimeVersion = 6
-            Name = "Func99-Windows-Premium-PowerShell-6"
+            RuntimeVersion = 6.2
+            Name = "Func99-Windows-Premium-PowerShell-6-2"
             FunctionsVersion = 3
         },
         @{
@@ -121,13 +121,13 @@ function RemoveFunctionApps
     foreach ($resourceGroupName in @($resourceGroupNameWindowsPremium, $resourceGroupNameLinuxPremium, $resourceGroupNameLinuxConsumption, $resourceGroupNameWindowsConsumption))
     {
         # Get all the functions apps in the test resource groups. This operation automatically deletes the service plans assigned to the function app.
-        Get-AzFunctionApp -ResourceGroupName $resourceGroupName | Remove-AzFunctionApp -PassThru
+        Get-AzFunctionApp -ResourceGroupName $resourceGroupName | Remove-AzFunctionApp -Force -PassThru
         
         # Delete the storage account 
-        Get-AzStorageAccount -ResourceGroupName $resourceGroupName | Remove-AzStorageAccount -Force
+        #Get-AzStorageAccount -ResourceGroupName $resourceGroupName | Remove-AzStorageAccount -Force
 
         # Delete the resouce group name
-        Remove-AzResourceGroup -ResourceGroupName $resourceGroupName -Force
+        #Remove-AzResourceGroup -ResourceGroupName $resourceGroupName -Force
     }
 }
 
@@ -171,33 +171,88 @@ function WaitForJobToComplete
 Describe 'Functions End to End Tests' {
 
     BeforeAll {
-        #CreateFunctionApps
+        # Set the test subscription
+        Get-AzSubscription -SubscriptionId $testSubscriptionId | Set-AzContext
+        CreateFunctionApps
     }
 
     AfterAll {
-        #RemoveFunctionApps
+        RemoveFunctionApps
+    }
+
+    function ValidateAvailableLocation
+    {
+        Param
+        (
+            [Parameter(Mandatory=$true)]
+            [String[]]
+            $ActualRegions,
+
+            [Parameter(Mandatory=$true)]
+            [String[]]
+            $ExpectedRegions
+        )
+
+        foreach ($region in $ExpectedRegions)
+        {
+            $ActualRegions | Should -Contain $region
+        }
+
+    }
+
+    It 'Get-AzFunctionAppAvailableLocation set default paramers for -PlanType and -OSType' {
+
+        try
+        {
+            $filePath = Join-Path $PSScriptRoot "verboseOutput.log"
+
+            &{ Get-AzFunctionAppAvailableLocation } 4>&1 2>&1 > $filePath
+
+            $logFileContent = Get-Content -Path $filePath -Raw
+            $logFileContent | Should Match "PlanType not specified. Setting default PlanType to 'Premium'."
+            $logFileContent | Should Match "OSType not specified. Setting default OSType to 'Windows'."
+        }
+        finally
+        {
+            if (Test-Path $filePath)
+            {
+                Remove-Item $filePath -Force -ErrorAction SilentlyContinue
+            }
+        }
     }
 
     It 'Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux' {
 
         $expectedRegions = @(
+            'Central US'
             'North Europe'
             'West Europe'
             'Southeast Asia'
+            'East Asia'
             'West US'
             'East US'
+            'Japan West'
             'Japan East'
+            'East US 2'
+            'North Central US'
             'South Central US'
+            'Brazil South'
+            'Australia East'
             'Australia Southeast'
+            'West India'
+            'Canada Central'
+            'West Central US'
+            'West US 2'
+            'UK West'
+            'UK South'
             'Central US EUAP'
+            'Korea Central'
+            'France Central'
+            'Norway East'
         )
 
         $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux | ForEach-Object{$_.Name})
-        
-        foreach ($region in $expectedRegions)
-        {
-            $actualRegions | Should -Contain $region
-        }
+        ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
     }
 
     It 'Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows' {
@@ -232,14 +287,98 @@ Describe 'Functions End to End Tests' {
             'Australia Central 2'
             'Australia Central'
             'Germany West Central'
+            'Norway East'
         )
 
         $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows | ForEach-Object{$_.Name})
-        
-        foreach ($region in $expectedRegions)
-        {
-            $actualRegions | Should -Contain $region
-        }
+        ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
+    }
+
+    It 'Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Linux' {
+
+        $expectedRegions = @(
+            'Central US'
+            'North Europe'
+            'West Europe'
+            'Southeast Asia'
+            'East Asia'
+            'West US'
+            'East US'
+            'Japan West'
+            'Japan East'
+            'East US 2'
+            'North Central US'
+            'South Central US'
+            'Brazil South'
+            'Australia East'
+            'Australia Southeast'
+            'Central India'
+            'West India'
+            'South India'
+            'Canada Central'
+            'Canada East'
+            'West Central US'
+            'West US 2'
+            'UK West'
+            'UK South'
+            'East US 2 EUAP'
+            'Central US EUAP'
+            'Korea South'
+            'Korea Central'
+            'France Central'
+            'Australia Central 2'
+            'Australia Central'
+            'South Africa North'
+            'South Africa West'
+            'Switzerland North'
+            'Germany West Central'
+            'Norway East'
+        )
+
+        $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Linux | ForEach-Object{$_.Name})
+        ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
+    }
+
+    It 'Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows' {
+
+        $expectedRegions = @(
+            'Central US'
+            'North Europe'
+            'West Europe'
+            'Southeast Asia'
+            'East Asia'
+            'West US'
+            'East US'
+            'Japan West'
+            'Japan East'
+            'East US 2'
+            'North Central US'
+            'South Central US'
+            'Brazil South'
+            'Australia East'
+            'Australia Southeast'
+            'Central India'
+            'West India'
+            'South India'
+            'Canada Central'
+            'Canada East'
+            'West Central US'
+            'West US 2'
+            'UK West'
+            'UK South'
+            'East US 2 EUAP'
+            'Central US EUAP'
+            'Korea Central'
+            'France Central'
+            'Australia Central 2'
+            'Australia Central'
+            'South Africa North'
+            'Switzerland North'
+            'Germany West Central'
+        )
+
+        $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows | ForEach-Object{$_.Name})
+        ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
     }
 
     It 'Get-AzFunctionApp (GetAll)' {
@@ -302,15 +441,15 @@ Describe 'Functions End to End Tests' {
 
     It "Validate Stop-AzFunctionApp and Start-AzFunctionApp" {
 
-        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6" -ResourceGroupName $resourceGroupNameWindowsPremium
+        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6-2" -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp.Status | Should -Be "Running"
 
         $functionApp | Stop-AzFunctionApp -Force
-        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6" -ResourceGroupName $resourceGroupNameWindowsPremium
+        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6-2" -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp.Status | Should -Be "Stopped"
 
         $functionApp | Start-AzFunctionApp
-        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6" -ResourceGroupName $resourceGroupNameWindowsPremium
+        $functionApp = Get-AzfunctionApp -Name "Func99-Windows-Premium-PowerShell-6-2" -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp.Status | Should -Be "Running"
     }
 
@@ -407,13 +546,13 @@ Describe 'Functions End to End Tests' {
             "2"= @{
                 "Node" = "10"
                 "DotNet"= "2"
-                "PowerShell" = "6"
+                "PowerShell" = "6.2"
                 "Java" = "8"
             }
             "3" =  @{
                 "Node" = "10"
                 "DotNet" = "3"
-                "PowerShell" = "6"
+                "PowerShell" = "6.2"
                 "Java" = "8"
             }
         }
@@ -449,8 +588,8 @@ Describe 'Functions End to End Tests' {
         }
     }
 
-    $filePath = Join-Path $PSScriptRoot "warningOutput.log"
-    $null = New-Item -Path $filePath -ItemType File -Force
+    $filePath = Join-Path $PSScriptRoot "verboseOutput.log"
+    #$null = New-Item -Path $filePath -ItemType File -Force
 
     foreach ($OSType in @("Linux", "Windows"))
     {
@@ -513,7 +652,7 @@ Describe 'Functions End to End Tests' {
     $testCases = @(
         @{
             "Runtime" = "PowerShell"
-            "RuntimeVersion" = "6"
+            "RuntimeVersion" = "6.2"
             "StorageAccountName" = $storageAccountWindows
             "ResourceGroupName" = $resourceGroupNameWindowsPremium
             "Location" = $windowsConsumptionLocation
@@ -606,7 +745,7 @@ Describe 'Functions End to End Tests' {
     $runtimeVersionNotSupported = @{
         "Linux" = @{
             "2"= @{
-                "PowerShell" = "6"
+                "PowerShell" = "6.2"
                 "Java" = "8"
             }
             "3" =  @{
@@ -674,7 +813,7 @@ Describe 'Functions End to End Tests' {
     It "Validate New-AzFunctionAppPlan -AsJob, New-AzFunctionApp -AsJob and Remove-AzFunctionApp -Force" {
 
         $planName = "Func99-Windows-Premium-205029017"
-        $functionName = "Func99-Windows-PowerShell-6-1685589760"
+        $functionName = "Func99-Windows-PowerShell-6-2-1685589760"
 
         try
         {
@@ -706,7 +845,7 @@ Describe 'Functions End to End Tests' {
                                                  -StorageAccount $storageAccountWindows `
                                                  -OSType "Windows" `
                                                  -Runtime "PowerShell" `
-                                                 -RuntimeVersion 6 `
+                                                 -RuntimeVersion 6.2 `
                                                  -FunctionsVersion 3 `
                                                  -AsJob
 
@@ -723,6 +862,64 @@ Describe 'Functions End to End Tests' {
         {
             Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
                 Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+        }
+    }
+
+    It "New-AzFunctionApp -Location supports locations with no spaces, e.g., 'centralus'" {
+
+        $functionName = "Func99-Windows-PowerShell-6-2-1685589799"
+        $resourceGroupNameWindowsConsumption = "Func99-Central-US-Windows-Consumption"
+        $location = 'centralus'
+
+        try
+        {
+            New-AzFunctionApp -Name $functionName `
+                              -ResourceGroupName $resourceGroupNameWindowsConsumption `
+                              -Location $location `
+                              -StorageAccount $storageAccountWindows `
+                              -OSType "Windows" `
+                              -Runtime "PowerShell" `
+                              -RuntimeVersion 6.2 `
+                              -FunctionsVersion 3
+
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsConsumption
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.Location | Should -Be "Central US"
+        }
+        finally
+        {
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsConsumption -ErrorAction SilentlyContinue |
+                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+        }
+    }
+
+    It "New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., 'westeurope'" {
+
+        $planName = "Func99-Windows-Premium-2130268871"
+        $resourceGroupNameWindowsPremium = "Func99-West-Europe-Win-Premium"
+        $location = 'westeurope'
+
+        try
+        {
+            New-AzFunctionAppPlan -Name $planName `
+                                  -ResourceGroupName $resourceGroupNameWindowsPremium `
+                                  -WorkerType "Windows" `
+                                  -MinimumWorkerCount 1 `
+                                  -MaximumWorkerCount 10 `
+                                  -Location $location `
+                                  -Sku EP1
+
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
+            $plan.WorkerType | Should -Be "Windows"
+            $plan.SkuTier | Should -Be "ElasticPremium"
+            $plan.SkuName | Should -Be "EP1"
+            $plan.Location | Should -Be "West Europe"
+        }
+        finally
+        {
+            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
+                Remove-AzFunctionAppPlan -Force -ErrorAction SilentlyContinue
         }
     }
 }

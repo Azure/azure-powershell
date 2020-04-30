@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFunctionAppPlan
 
 ## SYNOPSIS
-Creates a function app service plan.
+Creates a function app plan.
 
 ## SYNTAX
 
@@ -19,15 +19,16 @@ New-AzFunctionAppPlan -Location <String> -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-Creates a function app service plan.
+Creates a function app plan.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Premium service plan in West Europe.
+### Example 1: Create a Windows premium app plan in West Europe with burst out capability up to 10 instances.
+
 ```powershell
 PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                               -Name MyPremiumPlan `
-                              -Location "West Europe" `
+                              -Location WestEurope `
                               -MinimumWorkerCount 1 `
                               -MaximumWorkerCount 10 `
                               -Sku EP1 `
@@ -271,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 
 ## ALIASES
 

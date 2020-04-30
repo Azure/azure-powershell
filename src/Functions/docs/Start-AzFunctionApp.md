@@ -1,44 +1,42 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/restart-azfunctionapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/start-azfunctionapp
 schema: 2.0.0
 ---
 
-# Restart-AzFunctionApp
+# Start-AzFunctionApp
 
 ## SYNOPSIS
-Restarts a function app.
+Starts a function app.
 
 ## SYNTAX
 
-### RestartByName (Default)
+### StartByName (Default)
 ```
-Restart-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Restart-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts a function app.
+Starts a function app.
 
 ## EXAMPLES
 
-### Example 1: Get a function app by name and restart it.
+### Example 1: Get a function app by name and start it.
 ```powershell
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
-
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 ```
 
-### Example 2: Restart the function app by given name.
+### Example 2: Start a function app by name.
 ```powershell
-PS C:\> Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
-
+PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 ```
 
 ## PARAMETERS
@@ -59,27 +57,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Force
-Forces the cmdlet to restart the function app without prompting for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -96,7 +78,7 @@ The name of function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: StartByName
 Aliases:
 
 Required: True
@@ -128,7 +110,7 @@ Dynamic: False
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: StartByName
 Aliases:
 
 Required: True
@@ -144,7 +126,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: StartByName
 Aliases:
 
 Required: False
@@ -193,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 
 ## OUTPUTS
 
@@ -227,19 +209,18 @@ To create the parameters described below, construct a hash table containing the 
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.
-    - `ActionType <AutoHealActionType>`: ActionType - predefined action to be taken
     - `IsPushEnabled <Boolean>`: Gets or sets a flag indicating whether the Push endpoint is enabled.
-    - `[ActionMinProcessExecutionTime <String>]`: MinProcessExecutionTime - minimum time the process must execute                     before taking the action
+    - `[ActionMinProcessExecutionTime <String>]`: Minimum time the process must execute         before taking the action
+    - `[ActionType <AutoHealActionType?>]`: Predefined action to be taken.
     - `[AlwaysOn <Boolean?>]`: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
     - `[ApiDefinitionUrl <String>]`: The URL of the API definition.
+    - `[ApiManagementConfigId <String>]`: APIM-Api Identifier.
     - `[AppCommandLine <String>]`: App command line to launch.
     - `[AppSetting <INameValuePair[]>]`: Application settings.
       - `[Name <String>]`: Pair name.
       - `[Value <String>]`: Pair value.
     - `[AutoHealEnabled <Boolean?>]`: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
     - `[AutoSwapSlotName <String>]`: Auto-swap slot name.
-    - `[AzureStorageAccount <ISiteConfigAzureStorageAccounts>]`: User-provided Azure storage accounts.
-      - `[(Any) <IAzureStorageInfoValue>]`: This indicates any property can be added to this object.
     - `[ConnectionString <IConnStringInfo[]>]`: Connection strings.
       - `[ConnectionString <String>]`: Connection string value.
       - `[Name <String>]`: Name of connection string.
@@ -256,7 +237,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[ActionHostName <String>]`: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
       - `[ChangeDecisionCallbackUrl <String>]`: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
       - `[ChangeIntervalInMinute <Int32?>]`: Specifies interval in minutes to reevaluate ReroutePercentage.
-      - `[ChangeStep <Double?>]`: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches         <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.         Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
+      - `[ChangeStep <Double?>]`: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       - `[MaxReroutePercentage <Double?>]`: Specifies upper boundary below which ReroutePercentage will stay.
       - `[MinReroutePercentage <Double?>]`: Specifies lower boundary above which ReroutePercentage will stay.
       - `[Name <String>]`: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
@@ -266,15 +247,16 @@ To create the parameters described below, construct a hash table containing the 
       - `[Argument <String>]`: Command-line arguments to be passed to the script processor.
       - `[Extension <String>]`: Requests with this extension will be handled using the specified FastCGI application.
       - `[ScriptProcessor <String>]`: The absolute path to the FastCGI application.
+    - `[HealthCheckPath <String>]`: Health check path
     - `[Http20Enabled <Boolean?>]`: Http20Enabled: configures a web site to allow clients to connect over http2.0
     - `[HttpLoggingEnabled <Boolean?>]`: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
     - `[IPSecurityRestriction <IIPSecurityRestriction[]>]`: IP security restrictions for main.
-      - `IPAddress <String>`: IP address the security restriction is valid for.
-      - `[SubnetMask <String>]`: Subnet mask for the range of IP addresses the restriction is valid for.
       - `[Action <String>]`: Allow or Deny access for this IP range.
       - `[Description <String>]`: IP restriction rule description.
+      - `[IPAddress <String>]`: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
       - `[Name <String>]`: IP restriction rule name.
       - `[Priority <Int32?>]`: Priority of IP restriction rule.
+      - `[SubnetMask <String>]`: Subnet mask for the range of IP addresses the restriction is valid for.
       - `[SubnetTrafficTag <Int32?>]`: (internal) Subnet traffic tag
       - `[Tag <IPFilterTag?>]`: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       - `[VnetSubnetResourceId <String>]`: Virtual network resource id
@@ -300,6 +282,8 @@ To create the parameters described below, construct a hash table containing the 
     - `[NodeVersion <String>]`: Version of Node.js.
     - `[NumberOfWorker <Int32?>]`: Number of workers.
     - `[PhpVersion <String>]`: Version of PHP.
+    - `[PowerShellVersion <String>]`: Version of PowerShell.
+    - `[PreWarmedInstanceCount <Int32?>]`: Number of preWarmed instances.         This setting only applies to the Consumption and Elastic Plans
     - `[PublishingUsername <String>]`: Publishing user name.
     - `[PushKind <String>]`: Kind of resource.
     - `[PythonVersion <String>]`: Version of Python.
@@ -309,7 +293,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[RequestTimeInterval <String>]`: Time interval.
     - `[RequestTracingEnabled <Boolean?>]`: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
     - `[RequestTracingExpirationTime <DateTime?>]`: Request tracing expiration time.
-    - `[ReservedInstanceCount <Int32?>]`: Number of reserved instances.         This setting only applies to the Consumption Plan
     - `[ScmIPSecurityRestriction <IIPSecurityRestriction[]>]`: IP security restrictions for scm.
     - `[ScmIPSecurityRestrictionsUseMain <Boolean?>]`: IP security restrictions for scm to use main.
     - `[ScmType <ScmType?>]`: SCM type.
@@ -341,9 +324,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ContainerSize <Int32?>]`: Size of the function container.
   - `[DailyMemoryTimeQuota <Int32?>]`: Maximum allowed daily memory-time quota (applicable on dynamic apps only).
   - `[Enabled <Boolean?>]`: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
-  - `[GeoDistribution <IGeoDistribution[]>]`: GeoDistributions for this site
-    - `[Location <String>]`: Location.
-    - `[NumberOfWorker <Int32?>]`: NumberOfWorkers.
   - `[HostNameSslState <IHostNameSslState[]>]`: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     - `[HostType <HostType?>]`: Indicates whether the hostname is a standard or repository hostname.
     - `[Name <String>]`: Hostname.
