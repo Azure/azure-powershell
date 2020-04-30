@@ -577,7 +577,7 @@ function Test-StorageBlobORS
 		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 | New-AzRmStorageContainer -name dest1
 
 		# create rules
-		$minCreationTime = "2019-01-02T00:00:00"
+		$minCreationTime = "2019-01-01T16:00:00Z"
 		$rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
 
@@ -593,7 +593,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
 		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
 		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime $destPolicy.Rules[1].Filters.MinCreationTime.ToString("s")
+		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
 		Assert-AreEqual $policyID $destPolicy.PolicyId
 		Assert-AreEqual $stoname1 $destPolicy.SourceAccount
@@ -605,7 +605,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
 		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
 		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime $destPolicy.Rules[1].Filters.MinCreationTime.ToString("s")
+		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 
 		#Set policy to source account
 		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -InputObject $destPolicy
@@ -620,7 +620,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual src $srcPolicy.Rules[1].SourceContainer
 		Assert-AreEqual dest $srcPolicy.Rules[1].DestinationContainer
 		Assert-AreEqual 3 $srcPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime $srcPolicy.Rules[1].Filters.MinCreationTime.ToString("s")
+		Assert-AreEqual $minCreationTime ($srcPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 
 		#remove policies		
 		Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
