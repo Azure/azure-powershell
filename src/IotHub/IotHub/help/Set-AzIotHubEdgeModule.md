@@ -1,11 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubedgemodules
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubedgemodule
 schema: 2.0.0
 ---
 
-# Set-AzIotHubEdgeModules
+# Set-AzIotHubEdgeModule
 
 ## SYNOPSIS
 Set edge modules on a single edge device.
@@ -14,20 +14,20 @@ Set edge modules on a single edge device.
 
 ### ResourceSet (Default)
 ```
-Set-AzIotHubEdgeModules [-ResourceGroupName] <String> [-IotHubName] <String> -DeviceId <String>
+Set-AzIotHubEdgeModule [-ResourceGroupName] <String> [-IotHubName] <String> -DeviceId <String>
  -ModulesContent <Hashtable> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Set-AzIotHubEdgeModules [-InputObject] <PSIotHub> -DeviceId <String> -ModulesContent <Hashtable>
+Set-AzIotHubEdgeModule [-InputObject] <PSIotHub> -DeviceId <String> -ModulesContent <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Set-AzIotHubEdgeModules [-ResourceId] <String> -DeviceId <String> -ModulesContent <Hashtable>
+Set-AzIotHubEdgeModule [-ResourceId] <String> -DeviceId <String> -ModulesContent <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Note: Upon execution the command will output the collection of modules applied t
 ### Example 1
 ```powershell
 PS C:\> $content = Get-Content "C:/Edge/modules.json" | ConvertFrom-Json -AsHashtable
-PS C:\> Set-AzIotHubEdgeModules -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myEdgeDevice1" -ModulesContent $content
+PS C:\> Set-AzIotHubEdgeModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myEdgeDevice1" -ModulesContent $content
 ```
 
 Test edge modules while in development by setting modules on a target device.

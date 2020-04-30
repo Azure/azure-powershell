@@ -203,7 +203,7 @@ Set the parent device of the specified device.
 ### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
 Update the distributed tracing options for a device.
 
-### [Set-AzIotHubEdgeModules](Set-AzIotHubEdgeModules.md)
+### [Set-AzIotHubEdgeModule](Set-AzIotHubEdgeModule.md)
 Set edge modules on a single edge device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
