@@ -189,3 +189,48 @@ function Test-AddRegionOperation
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
 }
+
+function Test-PrivateEndpoint
+{
+  # Setup
+  $location = "East US"
+  $peName = "mype";
+  $storageAccount = "xdmsa2";
+	
+  #use an existing account with the following properties
+  $cosmosDBExistingAccountName = "db9934121" 
+  $rgname = "CosmosDBResourceGroup9507"
+
+  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBExistingAccountName
+  $resourceId = $cosmosDBAccount.Id
+
+  $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
+  $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+        
+  $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $resourceId -GroupId 'Sql'
+  $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
+
+  $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+  Assert-NotNull $pecGet;
+  Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
+
+  # Approve Private Endpoint Connection
+  $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+  Assert-NotNull $pecApprove;
+
+  $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+  do 
+  {
+    $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+  } while ($pecGet2.PrivateLinkServiceConnectionState.Status -ne "Approved")
+
+  # Remove Private Endpoint Connection
+  $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
+  Assert-AreEqual true $pecRemove
+
+  $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+  do 
+  {
+    $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+  } while (($pecGet3) -ne $null)
+}

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string Description { get; set; }
         public List<string> DependsOn { get; set; }
         public object Template { get; set; }
-        public IDictionary<string, PSParameterValueBase> Parameters { get; set; }
+        public IDictionary<string, PSParameterValue> Parameters { get; set; }
         public string ResourceGroup { get; set; }
 
         internal static PSTemplateArtifact FromArtifactModel(TemplateArtifact artifact, string scope)
@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Description = artifact.Description,
                 DependsOn = new List<string>(),
                 Template = artifact.Template,
-                Parameters = new Dictionary<string, PSParameterValueBase>(),
+                Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroup = artifact.ResourceGroup
             };
 
             foreach (var item in artifact.Parameters)
             {
-                PSParameterValueBase parameter = GetArtifactParameters(item);
+                PSParameterValue parameter = GetArtifactParameters(item);
                 psArtifact.Parameters.Add(item.Key, parameter);
             }
 
@@ -52,16 +52,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             return psArtifact;
         }
-        private static PSParameterValueBase GetArtifactParameters(KeyValuePair<string, ParameterValueBase> parameterKvp)
+
+        private static PSParameterValue GetArtifactParameters(KeyValuePair<string, ParameterValue> parameterKvp)
         {
-            PSParameterValueBase parameter = null;
+            PSParameterValue parameter = null;
 
-            if (parameterKvp.Value != null && parameterKvp.Value is ParameterValue)
+            if (parameterKvp.Value != null)
             {
-                // Need to cast as ParameterValue since assignment.Parameters value type is ParameterValueBase. 
-                var parameterValue = (ParameterValue)parameterKvp.Value;
+                var parameterValue = parameterKvp.Value;
 
-                parameter = new PSParameterValue { Description = parameterValue.Description, Value = parameterValue.Value };
+                parameter = new PSParameterValue { Value = parameterValue.Value };
             }
           
             return parameter;

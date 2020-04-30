@@ -37,27 +37,27 @@ PS C:\>Get-AzBatchPool -Id "MyPool" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
-AutoScaleFormula                     : 
-AutoScaleRun                         : 
-CertificateReferences                : 
+AutoScaleFormula                     :
+AutoScaleRun                         :
+CertificateReferences                :
 CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *
-DisplayName                          : 
+DisplayName                          :
 ETag                                 : 0x8D29538429CF04C
 Id                                   : MyPool
 InterComputeNodeCommunicationEnabled : False
 LastModified                         : 7/25/2015 9:30:28 PM
 MaxTasksPerComputeNode               : 1
-Metadata                             : 
+Metadata                             :
 OSFamily                             : 4
-ResizeError                          : 
+ResizeError                          :
 ResizeTimeout                        : 00:05:00
 TaskSchedulingPolicy                 : Microsoft.Azure.Commands.Batch.Models.PSTaskSchedulingPolicy
-StartTask                            : 
+StartTask                            :
 State                                : Active
 StateTransitionTime                  : 7/25/2015 9:30:28 PM
-Statistics                           : 
+Statistics                           :
 TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
@@ -72,27 +72,27 @@ PS C:\>Get-AzBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
-AutoScaleFormula                     : 
-AutoScaleRun                         : 
-CertificateReferences                : 
+AutoScaleFormula                     :
+AutoScaleRun                         :
+CertificateReferences                :
 CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *
-DisplayName                          : 
+DisplayName                          :
 ETag                                 : 0x8D29538429CF04C
 Id                                   : MyPool
 InterComputeNodeCommunicationEnabled : False
 LastModified                         : 7/25/2015 9:30:28 PM
 MaxTasksPerComputeNode               : 1
-Metadata                             : 
+Metadata                             :
 OSFamily                             : 4
-ResizeError                          : 
+ResizeError                          :
 ResizeTimeout                        : 00:05:00
 TaskSchedulingPolicy                 : Microsoft.Azure.Commands.Batch.Models.PSTaskSchedulingPolicy
-StartTask                            : 
+StartTask                            :
 State                                : Active
 StateTransitionTime                  : 7/25/2015 9:30:28 PM
-Statistics                           : 
+Statistics                           :
 TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
@@ -238,6 +238,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzBatchPool](./Remove-AzBatchPool.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

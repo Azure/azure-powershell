@@ -138,6 +138,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
 
+        public const string HelpIntegrationRuntimeDataFlowCoreCount = "Core count of the data flow cluster which will execute data flow job.";
+
+        public const string HelpIntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
+
+        public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
+
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
