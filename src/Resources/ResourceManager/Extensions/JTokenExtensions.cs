@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             if (jtoken.Type != JTokenType.Object)
             {
-                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken));
+                return new PSObject(JTokenExtensions.DeepConvertPropertyValueForPsObject(propertyValue: jtoken));
             }
 
             var jobject = (JObject)jtoken;
