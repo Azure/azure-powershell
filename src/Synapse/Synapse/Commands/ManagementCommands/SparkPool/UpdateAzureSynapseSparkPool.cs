@@ -13,7 +13,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkPool))]
     public class UpdateAzureSynapseSparkPool : SynapseCmdletBase
     {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public bool? EnableAutoPause { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.AutoPauseDelayInMinutes)]
+            HelpMessage = HelpMessages.AutoPauseDelayInMinute)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
         public int AutoPauseDelayInMinute { get; set; }

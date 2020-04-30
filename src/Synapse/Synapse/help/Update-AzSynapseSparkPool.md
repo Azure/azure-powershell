@@ -12,7 +12,7 @@ Updates a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
-### SetByNameParameterSet
+### SetByNameParameterSet (Default)
 ```
 Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
