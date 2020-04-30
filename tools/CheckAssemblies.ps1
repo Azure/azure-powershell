@@ -11,6 +11,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+param(
+    [ValidateNotNullOrEmpty()]
+    [ValidateSet('Debug', 'Release')]
+    [System.String]$BuildConfig
+)
 
 function Get-PreloadAssemblies{
     param(
@@ -19,19 +24,17 @@ function Get-PreloadAssemblies{
     )
 
     $preloadAssemblies = @()
-    $preloadFolderName =  $PSEdition -eq 'Core' ? "NetCoreAssemblies" : "PreloadAssemblies"
+    if($PSEdition -eq 'Core') {
+        $preloadFolderName =   "NetCoreAssemblies"
+    } else {
+        $preloadFolderName =   "PreloadAssemblies"
+    }
     $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
     if(Test-Path $preloadFolder){
         $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
     }
     $preloadAssemblies
 }
-
-param(
-    [ValidateNotNullOrEmpty()]
-    [ValidateSet('Debug', 'Release')]
-    [System.String]$BuildConfig
-)
 
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
 $DependencyMapPath = "$PSScriptRoot\..\artifacts\StaticAnalysisResults\DependencyMap.csv"
