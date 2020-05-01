@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
+            KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
         }
 
         //
@@ -155,5 +156,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets Whether or not public endpoint access is allowed for this server.
         //     Possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the URI of the key vault
+        public string KeyVaultKeyUri { get; set; }
     }
 }

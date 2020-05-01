@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
+        public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
