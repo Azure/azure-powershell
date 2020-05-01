@@ -3254,7 +3254,7 @@ function Test-VirtualMachineIdentity
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -AssignIdentity `
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -IdentityType "SystemAssigned" `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
@@ -3352,7 +3352,7 @@ function Test-VirtualMachineIdentityUpdate
         $vms_output = $vms | Out-String;
         Write-Verbose($vms_output);
 
-        $st = $vm1 | Update-AzVM -AssignIdentity;
+        $st = $vm1 | Update-AzVM -IdentityType "SystemAssigned";
 
         # Get VM
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint "Expand";

@@ -318,4 +318,10 @@
   <data name="SFExtensionNotFoundInVMSS" xml:space="preserve">
     <value>Service Fabric Extension no found in vmss name: {0} id: {1}.</value>
   </data>
+  <data name="CerObjectNotInBundle" xml:space="preserve">
+    <value>Unable to retrieve the certificate object form keyvault {0}, with name {1} and version {2}. This might mean the certificate is not managed, please use -Thumbprint parameter to specify the thumbprint corresponding to the secret identifier.</value>
+  </data>
+  <data name="CertificateThumbprintMismatch" xml:space="preserve">
+    <value>The thumprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
+  </data>
 </root>

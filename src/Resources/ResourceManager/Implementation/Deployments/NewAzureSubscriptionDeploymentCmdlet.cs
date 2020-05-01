@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
@@ -48,6 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [PSArgumentCompleter("RequestContent", "ResponseContent", "All", "None")]
         public string DeploymentDebugLogLevel { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+        
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
@@ -73,7 +79,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     TemplateObject = TemplateObject,
                     TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                     ParameterUri = TemplateParameterUri,
-                    DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                    DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                    Tags = TagsHelper.ConvertToTagsDictionary(Tag)
                 };
 
                 if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))

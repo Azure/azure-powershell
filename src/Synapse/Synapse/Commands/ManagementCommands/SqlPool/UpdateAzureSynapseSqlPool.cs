@@ -12,7 +12,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
+        DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
     public class UpdateAzureSynapseSqlPool : SynapseCmdletBase
     {

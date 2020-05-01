@@ -14,7 +14,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob)]
+    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName)]
     [OutputType(typeof(PSSynapseSparkJob))]
     public class SubmitAzureSynapseSparkJob : SynapseCmdletBase
     {
@@ -72,18 +72,18 @@ namespace Microsoft.Azure.Commands.Synapse
         public string MainClassName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,
-            Mandatory = false, HelpMessage = HelpMessages.CommandLineArguments)]
+            Mandatory = false, HelpMessage = HelpMessages.CommandLineArgument)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobByParentObjectParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.CommandLineArguments)]
+            Mandatory = false, HelpMessage = HelpMessages.CommandLineArgument)]
         [ValidateNotNullOrEmpty]
-        public string[] CommandLineArguments { get; set; }
+        public string[] CommandLineArgument { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,
-            Mandatory = false, HelpMessage = HelpMessages.ReferenceFiles)]
+            Mandatory = false, HelpMessage = HelpMessages.ReferenceFile)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobByParentObjectParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.ReferenceFiles)]
+            Mandatory = false, HelpMessage = HelpMessages.ReferenceFile)]
         [ValidateNotNullOrEmpty]
-        public string[] ReferenceFiles { get; set; }
+        public string[] ReferenceFile { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
@@ -129,23 +129,23 @@ namespace Microsoft.Azure.Commands.Synapse
             }
 
             this.MainDefinitionFile = Utils.NormalizeUrl(this.MainDefinitionFile);
-            if (this.CommandLineArguments != null)
+            if (this.CommandLineArgument != null)
             {
-                for (int i = 0; i < this.CommandLineArguments.Length; i++)
+                for (int i = 0; i < this.CommandLineArgument.Length; i++)
                 {
-                    this.CommandLineArguments[i] = Utils.NormalizeUrl(this.CommandLineArguments[i]);
+                    this.CommandLineArgument[i] = Utils.NormalizeUrl(this.CommandLineArgument[i]);
                 }
             }
 
-            if (this.ReferenceFiles != null)
+            if (this.ReferenceFile != null)
             {
-                for (int i = 0; i < this.ReferenceFiles.Length; i++)
+                for (int i = 0; i < this.ReferenceFile.Length; i++)
                 {
-                    this.ReferenceFiles[i] = Utils.NormalizeUrl(this.ReferenceFiles[i]);
+                    this.ReferenceFile[i] = Utils.NormalizeUrl(this.ReferenceFile[i]);
                 }
             }
 
-            Utils.CategorizedFiles(this.ReferenceFiles, out IList<string> jars, out IList<string> files);
+            Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
             bool isSparkDotNet = this.Language == LanguageType.SparkDotNet;
             var batchRequest = new ExtendedLivyBatchRequest
             {
@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.Synapse
                     : (this.Language == LanguageType.PySpark ? null : this.MainClassName),
                 Args = isSparkDotNet
                     ? new List<string> { this.MainDefinitionFile, this.MainClassName }
-                        .Concat(this.CommandLineArguments ?? new string[0]).ToArray()
-                    : this.CommandLineArguments,
+                        .Concat(this.CommandLineArgument ?? new string[0]).ToArray()
+                    : this.CommandLineArgument,
                 Jars = jars,
                 Files = files,
                 Archives = isSparkDotNet

@@ -98,4 +98,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
 
     public class PSConfigurations : PSConfiguration
     { }
+
+    public class PSDeployment: PSConfiguration
+    { }
+
+    public class PSDeployments: PSConfiguration
+    { }
 }

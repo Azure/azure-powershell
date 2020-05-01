@@ -88,6 +88,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
+        public string KeyVaultKeyUri { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -130,6 +133,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (PublicNetworkAccess != null)
             {
                 databaseAccountUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+            }
+            if (KeyVaultKeyUri != null)
+            {
+                databaseAccountUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))

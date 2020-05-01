@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
+using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -54,6 +56,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.")]
         public string RollBackDeploymentName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+        
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
@@ -159,6 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                Tags = TagsHelper.ConvertToTagsDictionary(Tag),
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
                     ? new OnErrorDeployment
                     {

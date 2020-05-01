@@ -7,7 +7,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool)]
+    [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = TestByNameParameterSet)]
+    [OutputType(typeof(bool))]
     public class TestAzureSynapseSparkPool : SynapseCmdletBase
     {
         private const string TestByNameParameterSet = "TestByNameParameterSet";
