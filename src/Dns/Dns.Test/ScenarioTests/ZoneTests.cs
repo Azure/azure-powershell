@@ -42,35 +42,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneWithDelegation");
         }
 
-        [Fact]
+        [Fact(Skip = "Creation of private DNS zones using this API is no longer allowed. Please use privatednszones resource instead of dnszones resource. Refer to https://aka.ms/privatednsmigration for details.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrud()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrud");
         }
 
-        [Fact]
+        [Fact(Skip = "Creation of private DNS zones using this API is no longer allowed. Please use privatednszones resource instead of dnszones resource. Refer to https://aka.ms/privatednsmigration for details.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudRegistrationVirtualNetwork()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudRegistrationVnet");
         }
 
-        [Fact]
+        [Fact(Skip = "Creation of private DNS zones using this API is no longer allowed. Please use privatednszones resource instead of dnszones resource. Refer to https://aka.ms/privatednsmigration for details.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudResolutionVirtualNetwork()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudResolutionVnet");
         }
 
-        [Fact]
+        [Fact(Skip = "Creation of private DNS zones using this API is no longer allowed. Please use privatednszones resource instead of dnszones resource. Refer to https://aka.ms/privatednsmigration for details.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudByVirtualNetworkIds()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudByVirtualNetworkIds");
         }
 
-        [Fact]
+        [Fact(Skip = "Creation of private DNS zones using this API is no longer allowed. Please use privatednszones resource instead of dnszones resource. Refer to https://aka.ms/privatednsmigration for details.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudByVirtualNetworkObjects()
         {
