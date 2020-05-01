@@ -259,6 +259,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sku should be of type {0}.
+        /// </summary>
+        internal static string Error_Sku {
+            get {
+                return ResourceManager.GetString("Error_Sku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to convert legacy peering because {0} was null or empty..
         /// </summary>
         internal static string Error_UnableToConvertLegacy {

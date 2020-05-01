@@ -12,19 +12,19 @@ Submits a Synapse Analytics Spark job.
 
 ## SYNTAX
 
-### RunSparkJobParameterSetName
+### RunSparkJobParameterSetName (Default)
 ```
 Submit-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -Language <String> -Name <String>
- -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArguments <String[]>]
- [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
+ -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArgument <String[]>]
+ [-ReferenceFile <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RunSparkJobByParentObjectParameterSet
 ```
 Submit-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> -Language <String> -Name <String>
- -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArguments <String[]>]
- [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
+ -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArgument <String[]>]
+ [-ReferenceFile <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -56,10 +56,8 @@ This command submits a Synapse Analytics PySpark job.
 
 ## PARAMETERS
 
-### -CommandLineArguments
-Optional arguments to the job.
-e.g.
-"--iteration 10000 --timeout 20s"
+### -CommandLineArgument
+Optional arguments to the job. e.g. "--iteration 10000 --timeout 20s"
 
 ```yaml
 Type: System.String[]
@@ -200,11 +198,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReferenceFiles
-Additional files used for reference in the main definition file.
-Comma-separated storage URI list.
-e.g.
-"abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/"
+### -ReferenceFile
+Additional files used for reference in the main definition file. Comma-separated storage URI list. e.g. "abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/"
 
 ```yaml
 Type: System.String[]

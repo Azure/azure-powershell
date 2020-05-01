@@ -12,7 +12,7 @@ Deletes a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

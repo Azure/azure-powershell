@@ -90,14 +90,25 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 {
                     if (this.Name != null)
                     {
-                        registryManager.RemoveConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                        Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                        if (config != null && config.Content.ModulesContent == null)
+                        {
+                            registryManager.RemoveConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            throw new ArgumentException("The configuration doesn't exist.");
+                        }
                     }
                     else
                     {
                         IEnumerable<Configuration> configs = registryManager.GetConfigurationsAsync(Int32.MaxValue).GetAwaiter().GetResult();
                         foreach (Configuration config in configs)
                         {
-                            registryManager.RemoveConfigurationAsync(config).GetAwaiter().GetResult();
+                            if (config.Content.ModulesContent == null)
+                            {
+                                registryManager.RemoveConfigurationAsync(config).GetAwaiter().GetResult();
+                            }
                         }
                     }
 

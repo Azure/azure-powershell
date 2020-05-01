@@ -12,17 +12,17 @@ Invokes a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
+### RunSparkStatementByCodePathParameterSet (Default)
+```
+Invoke-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> -Language <String>
+ -SessionId <Int32> -FilePath <String> [-Response] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### RunSparkStatementByCodeParameterSet
 ```
 Invoke-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> -Language <String>
  -SessionId <Int32> -Code <String> [-Response] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### RunSparkStatementByCodePathParameterSet
-```
-Invoke-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> -Language <String>
- -SessionId <Int32> -FilePath <String> [-Response] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Language of the execution code.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunSparkStatementByCodeParameterSet, RunSparkStatementByCodePathParameterSet
+Parameter Sets: RunSparkStatementByCodePathParameterSet, RunSparkStatementByCodeParameterSet
 Aliases:
 Accepted values: Spark, Scala, PySpark, Python, SparkDotNet, CSharp, SQL
 
@@ -183,7 +183,7 @@ Identifier of Spark session.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: RunSparkStatementByCodeParameterSet, RunSparkStatementByCodePathParameterSet
+Parameter Sets: RunSparkStatementByCodePathParameterSet, RunSparkStatementByCodeParameterSet
 Aliases:
 
 Required: True
@@ -225,7 +225,7 @@ Name of Synapse Spark pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunSparkStatementByCodeParameterSet, RunSparkStatementByCodePathParameterSet
+Parameter Sets: RunSparkStatementByCodePathParameterSet, RunSparkStatementByCodeParameterSet
 Aliases:
 
 Required: True
@@ -240,7 +240,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunSparkStatementByCodeParameterSet, RunSparkStatementByCodePathParameterSet
+Parameter Sets: RunSparkStatementByCodePathParameterSet, RunSparkStatementByCodeParameterSet
 Aliases:
 
 Required: True

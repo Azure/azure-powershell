@@ -12,7 +12,7 @@ Cancels a Synapse Analytics Spark job.
 
 ## SYNTAX
 
-### StopSparkJobByIdParameterSet
+### StopSparkJobByIdParameterSet (Default)
 ```
 Stop-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -LivyId <Int32> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

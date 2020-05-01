@@ -45,7 +45,7 @@ Adds a diagnostics extension to the VMSS.
 Adds an extension to the VMSS.
 
 ### [Add-AzVMSshPublicKey](Add-AzVMSshPublicKey.md)
-Adds the public keys for SSH for a virtual machine.
+Adds the public keys for SSH for a virtual machine, when only creating the VM.
 
 ### [Add-AzVmssNetworkInterfaceConfiguration](Add-AzVmssNetworkInterfaceConfiguration.md)
 Adds a network interface configuration to the VMSS.

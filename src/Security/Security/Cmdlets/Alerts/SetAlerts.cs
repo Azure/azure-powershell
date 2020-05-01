@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Rest.Azure;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts

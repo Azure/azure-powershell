@@ -1,0 +1,137 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/%2Fsubscriptions%2F075423e9-7d33-4166-8bdf-3920b04e3735%2FresourceGroups%2FMichalResourceGroup%2Fproviders%2FMicrosoft.Devices%2FIotHubs%2FMichalDemoHub/providers/Microsoft.Security/deviceSecurityGroups/samplesecuritygroup?api-version=2019-08-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkYwNzU0MjNlOS03ZDMzLTQxNjYtOGJkZi0zOTIwYjA0ZTM3MzUlMkZyZXNvdXJjZUdyb3VwcyUyRk1pY2hhbFJlc291cmNlR3JvdXAlMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuRGV2aWNlcyUyRklvdEh1YnMlMkZNaWNoYWxEZW1vSHViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvZGV2aWNlU2VjdXJpdHlHcm91cHMvc2FtcGxlc2VjdXJpdHlncm91cD9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"timeWindowRules\": [\r\n      {\r\n        \"timeWindowSize\": \"PT5M\",\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 30,\r\n        \"isEnabled\": true,\r\n        \"ruleType\": \"ActiveConnectionsNotInAllowedRange\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c8f6ee4f-136f-4512-a9c8-8f357a4ebbe3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "257"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-request-id": [
+          "24c2e09c-ded2-452f-be5f-92e79ff2decb"
+        ],
+        "x-ms-correlation-request-id": [
+          "24c2e09c-ded2-452f-be5f-92e79ff2decb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20200416T094241Z:24c2e09c-ded2-452f-be5f-92e79ff2decb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 16 Apr 2020 09:42:40 GMT"
+        ],
+        "Content-Length": [
+          "6809"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub/providers/Microsoft.Security/deviceSecurityGroups/samplesecuritygroup\",\r\n  \"name\": \"samplesecuritygroup\",\r\n  \"type\": \"Microsoft.Security/DeviceSecurityGroups\",\r\n  \"properties\": {\r\n    \"thresholdRules\": [],\r\n    \"timeWindowRules\": [\r\n      {\r\n        \"ruleType\": \"ActiveConnectionsNotInAllowedRange\",\r\n        \"displayName\": \"Number of active connections is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of active connections of a device in the time window is not in the allowed range\",\r\n        \"isEnabled\": true,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 30,\r\n        \"timeWindowSize\": \"PT5M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"AmqpC2DMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of cloud to device messages (AMQP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (AMQP protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"MqttC2DMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of cloud to device messages (MQTT protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (MQTT protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"HttpC2DMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of cloud to device messages (HTTP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (HTTP protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"AmqpC2DRejectedMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of rejected cloud to device messages (AMQP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (AMQP protocol) that were rejected by the device in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"MqttC2DRejectedMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of rejected cloud to device messages (MQTT protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (MQTT protocol) that were rejected by the device in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"HttpC2DRejectedMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of rejected cloud to device messages (HTTP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of cloud to device messages (HTTP protocol) that were rejected by the device in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"AmqpD2CMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of device to cloud messages (AMQP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of device to cloud messages (AMQP protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"MqttD2CMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of device to cloud messages (MQTT protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of device to cloud messages (MQTT protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"HttpD2CMessagesNotInAllowedRange\",\r\n        \"displayName\": \"Number of device to cloud messages (HTTP protocol) is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of device to cloud messages (HTTP protocol) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"DirectMethodInvokesNotInAllowedRange\",\r\n        \"displayName\": \"Number of direct method invokes is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of direct method invokes in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"FailedLocalLoginsNotInAllowedRange\",\r\n        \"displayName\": \"Number of failed local logins is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of failed local logins on the device in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"FileUploadsNotInAllowedRange\",\r\n        \"displayName\": \"Number of file uploads is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of file uploads from the device to the cloud in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"QueuePurgesNotInAllowedRange\",\r\n        \"displayName\": \"Number of device queue purges is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of device queue purges in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"TwinUpdatesNotInAllowedRange\",\r\n        \"displayName\": \"Number of twin updates is not in allowed range\",\r\n        \"description\": \"Get an alert when the number of twin updates (by the device or the service) in the time window is not in the allowed range\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      },\r\n      {\r\n        \"ruleType\": \"UnauthorizedOperationsNotInAllowedRange\",\r\n        \"displayName\": \"Number of unauthorized operations is not in allowed range\",\r\n        \"description\": \"Get an alert when the number unauthorized operations in the time window is not in the allowed range. Unauthorized operations are operations that affect the device (or done by it) that fail because of an unauthorized error\",\r\n        \"isEnabled\": false,\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 0,\r\n        \"timeWindowSize\": \"PT15M\"\r\n      }\r\n    ],\r\n    \"allowlistRules\": [\r\n      {\r\n        \"ruleType\": \"ConnectionToIpNotAllowed\",\r\n        \"displayName\": \"Outbound connection to an ip that isn't allowed\",\r\n        \"description\": \"Get an alert when an outbound connection is created between your device and an ip that isn't allowed\",\r\n        \"isEnabled\": false,\r\n        \"allowlistValues\": [],\r\n        \"valueType\": \"IpCidr\"\r\n      },\r\n      {\r\n        \"ruleType\": \"LocalUserNotAllowed\",\r\n        \"displayName\": \"Login by a local user that isn't allowed\",\r\n        \"description\": \"Get an alert when a local user that isn't allowed logins to the device\",\r\n        \"isEnabled\": false,\r\n        \"allowlistValues\": [],\r\n        \"valueType\": \"String\"\r\n      },\r\n      {\r\n        \"ruleType\": \"ProcessNotAllowed\",\r\n        \"displayName\": \"Execution of a process that isn't allowed\",\r\n        \"description\": \"Get an alert when a process that isn't allowed is executed\",\r\n        \"isEnabled\": false,\r\n        \"allowlistValues\": [],\r\n        \"valueType\": \"String\"\r\n      }\r\n    ],\r\n    \"denylistRules\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2F075423e9-7d33-4166-8bdf-3920b04e3735%2FresourceGroups%2FMichalResourceGroup%2Fproviders%2FMicrosoft.Devices%2FIotHubs%2FMichalDemoHub/providers/Microsoft.Security/deviceSecurityGroups/samplesecuritygroup?api-version=2019-08-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkYwNzU0MjNlOS03ZDMzLTQxNjYtOGJkZi0zOTIwYjA0ZTM3MzUlMkZyZXNvdXJjZUdyb3VwcyUyRk1pY2hhbFJlc291cmNlR3JvdXAlMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuRGV2aWNlcyUyRklvdEh1YnMlMkZNaWNoYWxEZW1vSHViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvZGV2aWNlU2VjdXJpdHlHcm91cHMvc2FtcGxlc2VjdXJpdHlncm91cD9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e94b1a0-db81-465a-89aa-7213e417062e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "dafa0226-79fd-4d7d-9d45-bd137dababcc"
+        ],
+        "x-ms-correlation-request-id": [
+          "dafa0226-79fd-4d7d-9d45-bd137dababcc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20200416T094241Z:dafa0226-79fd-4d7d-9d45-bd137dababcc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 16 Apr 2020 09:42:41 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "075423e9-7d33-4166-8bdf-3920b04e3735"
+  }
+}

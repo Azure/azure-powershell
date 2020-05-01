@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string SecretIdentifier { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
+                   HelpMessage = "The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.")]
+        [ValidateNotNullOrEmpty]
+        public string Thumbprint { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                    HelpMessage = "The path to the existing certificate")]
         [ValidateNotNullOrEmpty]
@@ -183,13 +188,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected virtual List<string> GetPfxSrcFiles()
         {
-            return new List<string>() {this.CertificateFile};
+            return new List<string>() { this.CertificateFile };
         }
 
         protected virtual SecureString GetPfxPassword(string pfxFilePath)
         {
             return this.CertificatePassword;
-        }                                   
+        }
 
         protected virtual void Validate()
         {
@@ -299,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 var secretBundle = this.KeyVaultClient.GetSecretAsync(keyVaultUrl, this.keyVaultCertificateName).Result;
                 var kvSecretBytes = Convert.FromBase64String(secretBundle.Value);
                 var certCollection = new X509Certificate2Collection();
-                certCollection.Import(kvSecretBytes,null,X509KeyStorageFlags.Exportable);
+                certCollection.Import(kvSecretBytes, null, X509KeyStorageFlags.Exportable);
                 var protectedCertificateBytes = certCollection.Export(X509ContentType.Pkcs12, this.CertificatePassword?.ConvertToString());
                 File.WriteAllBytes(outputFilePath, protectedCertificateBytes);
             }
@@ -409,27 +414,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 CertificateCommonName = commonName,
                                 SecretName = certificateBundle.SecretIdentifier.Name,
                                 Version = certificateBundle.SecretIdentifier.Version
-                        });
+                            });
                         }
 
                         return certificateInformations;
                     }
                 case ByExistingKeyVault:
                     {
-                        var vault = TryGetKeyVault(this.SecretIdentifier);
-
-                        string vaultSecretName;
-                        string version;
-                        ExtractSecretNameFromSecretIdentifier(this.SecretIdentifier, out vaultSecretName, out version);
-                        certificateInformations.Add(new CertificateInformation()
-                        {
-                            KeyVault = vault,
-                            SecretUrl = this.SecretIdentifier,
-                            CertificateThumbprint = GetThumbprintFromSecret(this.SecretIdentifier),
-                            CertificateCommonName = GetCommonNameFromSecret(this.SecretIdentifier),
-                            SecretName = vaultSecretName,
-                            Version = version
-                        });
+                        CertificateInformation certInfor = GetCertificateInforamtionFromSecret(this.SecretIdentifier);
+                        certificateInformations.Add(certInfor);
 
                         return certificateInformations;
                     }
@@ -544,7 +537,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
 
         protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, out string pfxOutputPath, out string commonName, string srcPfxPath = null)
-        { 
+        {
             vault = TryGetKeyVault(this.KeyVaultResourceGroupName, this.KeyVaultName);
             pfxOutputPath = null;
             if (vault == null)
@@ -614,7 +607,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     targetCopy = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
                 }
             }
-            
+
             if (sb.Length > 24)
             {
                 return sb.ToString().Substring(0, 24);
@@ -643,161 +636,78 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return false;
         }
 
-        private string GetThumbprintFromSecret(string secretUrl)
+        private CertificateInformation GetCertificateInforamtionFromSecret(string secretIdentifier)
         {
+            var vault = TryGetKeyVault(this.SecretIdentifier);
+
+            string certName;
+            string certVersion;
+            ExtractSecretNameFromSecretIdentifier(this.SecretIdentifier, out certName, out certVersion);
+            
+            // Test is unable to get the certificate gets unauthorized as the authentication procedure is mocked
             if (RunningTest)
             {
-                if (TestAppCert)
+                return new CertificateInformation()
                 {
-                    if (!string.IsNullOrWhiteSpace(TestThumbprintAppCert))
-                    {
-                        return TestThumbprintAppCert;
-                    }
+                    KeyVault = vault,
+                    SecretUrl = this.SecretIdentifier,
+                    CertificateThumbprint = TestThumbprint,
+                    CertificateCommonName = TestCommonNameCACert,
+                    SecretName = certName,
+                    Version = certVersion
+                };
+            }
+
+            CertificateBundle certBundle = this.KeyVaultClient.GetCertificateAsync(vault.Properties.VaultUri, certName, certVersion).GetAwaiter().GetResult();
+            string thumbprint;
+            string commonName;
+            if (certBundle.Cer == null)
+            {
+                if (string.IsNullOrWhiteSpace(this.Thumbprint))
+                {
+                    throw new PSInvalidOperationException(string.Format(
+                        ServiceFabricProperties.Resources.CerObjectNotInBundle,
+                        vault.Properties.VaultUri,
+                        certName,
+                        certVersion));
                 }
                 else
                 {
-                    if (!string.IsNullOrWhiteSpace(TestThumbprint))
-                    {
-                        return TestThumbprint;
-                    }
+                    thumbprint = this.Thumbprint;
+                    commonName = this.CertificateCommonName;
                 }
-            }
-
-            X509Certificate2 cert = GetCertFromSecret(secretUrl);
-            if (cert.Thumbprint == null)
-            {
-                throw new PSInvalidOperationException(string.Format("Thumbprint from secretUrl: {0} is null.", secretUrl));
-            }
-
-            WriteVerboseWithTimestamp("Certificate found from secret with thumbprint: {0}", cert.Thumbprint);
-            return cert.Thumbprint;
-        }
-
-        private string GetCommonNameFromSecret(string secretUrl)
-        {
-            if (RunningTest)
-            {
-                if (TestAppCert)
-                {
-                    if (!string.IsNullOrWhiteSpace(TestCommonNameAppCert))
-                    {
-                        return TestCommonNameAppCert;
-                    }
-                }
-                else
-                {
-                    if (!string.IsNullOrWhiteSpace(TestCommonNameCACert))
-                    {
-                        return TestCommonNameCACert;
-                    }
-                }
-            }
-
-            var cert = GetCertFromSecret(secretUrl);
-            string commonName = cert.GetNameInfo(X509NameType.SimpleName, false);
-            WriteVerboseWithTimestamp("Certificate found from secret with common name: {0}", commonName);
-            return commonName;
-        }
-
-        private X509Certificate2 GetCertFromSecret(string secretUrl)
-        {
-            X509Certificate2Collection certCollection = GetCertCollectionFromSecret(secretUrl);
-
-            if (certCollection.Count == 0)
-            {
-                throw new PSInvalidOperationException(string.Format("Failed to get certificate from secretUrl: {0}. Certcollection is empty", secretUrl));
-            }
-
-            var firstCert = certCollection[0];
-            var lastCert = certCollection[certCollection.Count - 1];
-
-            if (!IsCertCA(firstCert))
-            {
-                return firstCert;
-            }
-            else if (!IsCertCA(lastCert))
-            {
-                return lastCert;
             }
             else
             {
-                throw new PSInvalidOperationException(string.Format("Failed to get certificate from secretUrl: {0}. All certs in the chain are Certificate Authority", secretUrl));
-            }
-        }
+                var certificate = new X509Certificate2(certBundle.Cer);
+                thumbprint = certificate.Thumbprint;
+                commonName = certificate.GetNameInfo(X509NameType.SimpleName, false);
 
-        private bool IsCertCA(X509Certificate2 cert)
-        {
-            foreach (var currExt in cert.Extensions)
-            {
-                if (currExt.Oid.FriendlyName == BasicConstraintsExtensionName)
+                if (!string.IsNullOrWhiteSpace(this.Thumbprint) && !string.Equals(this.Thumbprint, thumbprint, StringComparison.OrdinalIgnoreCase))
                 {
-                    X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)currExt;
-                    return ext.CertificateAuthority;
+                    throw new PSArgumentException(string.Format(
+                        ServiceFabricProperties.Resources.CertificateThumbprintMismatch,
+                        this.Thumbprint,
+                        thumbprint,
+                        certName,
+                        certVersion,
+                        vault.Properties.VaultUri));
                 }
             }
 
-            return false;
-        }
 
-        private X509Certificate2Collection GetCertCollectionFromSecret(string secretUrl)
-        {
-            if (string.IsNullOrWhiteSpace(secretUrl))
+
+            WriteVerboseWithTimestamp("Certificate fround for identifier {0} with thumbprint {1} and common name {2}.", secretIdentifier, thumbprint, commonName);
+
+            return new CertificateInformation()
             {
-                throw new PSArgumentException("secretUrl");
-            }
-
-            SecretBundle secretBundle;
-            try
-            {
-                secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
-            }
-            catch (Exception ex)
-            {
-                PrintSdkExceptionDetail(ex);
-                throw GetInnerException(ex);
-            }
-
-            var secretValue = secretBundle.Value;
-            try
-            {
-                if (secretValue != null)
-                {
-                    var secretBytes = Convert.FromBase64String(secretValue);
-                    try
-                    {
-                        var certCollection = new X509Certificate2Collection();
-                        certCollection.Import(secretBytes, null, X509KeyStorageFlags.Exportable);
-                        return certCollection;
-                    }
-                    catch (CryptographicException)
-                    {
-                        var content = Encoding.UTF8.GetString(secretBytes);
-                        var jsonBlob = JsonConvert.DeserializeObject<JsonBlob>(content);
-                        var certCollection = new X509Certificate2Collection();
-                        if (jsonBlob.DataType.Equals("pfx", StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            certCollection.Import(
-                                Convert.FromBase64String(jsonBlob.Data),
-                                jsonBlob.Password,
-                                X509KeyStorageFlags.Exportable);
-
-                            return certCollection;
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                WriteError(new ErrorRecord(
-                    e,
-                    string.Empty,
-                    ErrorCategory.NotSpecified,
-                    null));
-
-                throw;
-            }
-
-            throw new PSInvalidOperationException(string.Format("Failed to get certificate from {0}", secretUrl));
+                KeyVault = vault,
+                SecretUrl = this.SecretIdentifier,
+                CertificateThumbprint = thumbprint,
+                CertificateCommonName = commonName,
+                SecretName = certName,
+                Version = certVersion
+            };
         }
 
         private void ExtractSecretNameFromSecretIdentifier(string secretIdentifier, out string vaultSecretName, out string version)

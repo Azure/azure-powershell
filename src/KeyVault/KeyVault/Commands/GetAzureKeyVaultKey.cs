@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultKeyIdentityItem), typeof(PSKeyVaultKey), typeof(PSDeletedKeyVaultKeyIdentityItem), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -39,6 +42,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ResourceIdByVaultNameParameterSet = "ByResourceIdVaultName";
         private const string ResourceIdByKeyNameParameterSet = "ByResourceIdKeyName";
         private const string ResourceIdByKeyVersionsParameterSet = "ByResourceIdKeyVersions";
+
+        private readonly string[] _supportedTypesForDownload = new string[] { Constants.RSA, Constants.RSAHSM };
 
         #endregion
 
@@ -189,11 +194,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the output file for which this cmdlet saves the key. The public key is saved in PEM format by default.")]
+        [ValidateNotNullOrEmpty]
+        public string OutFile { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            PSKeyVaultKey keyBundle;
+            PSKeyVaultKey keyBundle = null;
 
             if (InputObject != null)
             {
@@ -243,31 +252,56 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(keyBundle);
                 }
             }
+
+            if (!string.IsNullOrEmpty(OutFile) && keyBundle != null)
+            {
+                DownloadKey(keyBundle.Key, OutFile);
+            }
         }
 
         private void GetAndWriteKeys(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
+            {
+                VaultName = vaultName,
+                NextLink = null
+            },
                 (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetKeys(options)));
 
         private void GetAndWriteDeletedKeys(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
+            {
+                VaultName = vaultName,
+                NextLink = null
+            },
                 (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedKeys(options)));
 
         private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null,
-                    Name = name
-                }, 
+            {
+                VaultName = vaultName,
+                NextLink = null,
+                Name = name
+            },
                 (options) => DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
+
+        private void DownloadKey(JsonWebKey jwk, string path)
+        {
+            if (CanDownloadKey(jwk, out string reason))
+            {
+                var pem = JwkHelper.ExportPublicKeyToPem(jwk);
+                AzureSession.Instance.DataStore.WriteFile(path, pem);
+                WriteDebug(string.Format(Resources.PublicKeySavedAt, path));
+            }
+            else
+            {
+                WriteWarning(reason);
+            }
+        }
+
+        private bool CanDownloadKey(JsonWebKey jwk, out string reason)
+        {
+            reason = string.Format(Resources.DownloadNotSupported, jwk.Kty);
+            return _supportedTypesForDownload.Contains(jwk.Kty);
+        }
     }
 }
