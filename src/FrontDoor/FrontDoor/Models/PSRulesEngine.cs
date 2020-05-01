@@ -12,30 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    /// <summary>
-    /// Represents the properties of an Azure Front Door object.
-    /// </summary>
-    public class PSRoutingRule : PSResource
+    public class PSRulesEngine : PSTrackedResource
     {
-        public List<string> FrontendEndpointIds { get; set; }
-
-        public List<PSProtocol> AcceptedProtocols { get; set; }
-
-        public List<String> PatternsToMatch { get; set; }
-
-        public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
-
-        public PSRouteConfiguration RouteConfiguration { get; set; }
-
-        public PSEnabledState? EnabledState { get; set; }
-
-        public string ResourceState { get; set; }
-
-        public string RulesEngineId { get; set; }
+        public List<PSRulesEngineRule> RulesEngineRules { get; set; }
     }
 }
