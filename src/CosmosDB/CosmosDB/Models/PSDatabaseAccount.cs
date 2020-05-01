@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSDatabaseAccount()
         {
-        }        
-        
+        }
+
         public PSDatabaseAccount(DatabaseAccountGetResults databaseAccountGetResults)
         {
             Id = databaseAccountGetResults.Id;
@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
+            PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
         }
 
         //
@@ -155,5 +156,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets Whether or not public endpoint access is allowed for this server.
         //     Possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
     }
 }
