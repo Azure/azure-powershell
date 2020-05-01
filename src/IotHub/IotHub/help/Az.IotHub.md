@@ -119,6 +119,9 @@ Gets all valid skus that this IotHub can transition to.
 ### [Invoke-AzIotHubConfigurationMetricsQuery](Invoke-AzIotHubConfigurationMetricsQuery.md)
 Invoke an IoT device configuration metric query.
 
+### [Invoke-AzIotHubDeploymentMetricsQuery](Invoke-AzIotHubDeploymentMetricsQuery.md)
+Invoke an IoT Edge deployment metric query.
+
 ### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
 Invoke a direct method on a device.
 
@@ -199,6 +202,9 @@ Set the parent device of the specified device.
 
 ### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
 Update the distributed tracing options for a device.
+
+### [Set-AzIotHubEdgeModule](Set-AzIotHubEdgeModule.md)
+Set edge modules on a single edge device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.

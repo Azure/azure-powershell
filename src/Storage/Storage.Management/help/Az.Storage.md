@@ -137,6 +137,9 @@ Gets the stored access policy or policies for an Azure storage table.
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
 
+### [Invoke-AzureRmStorageAccountFailover](Invoke-AzureRmStorageAccountFailover.md)
+Invokes failover of a Storage account.
+
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
 

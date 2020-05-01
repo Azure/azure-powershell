@@ -12,7 +12,7 @@ Resets timeout of a Synapse Analytics Spark session.
 
 ## SYNTAX
 
-### ResetByNameParameterSet
+### ResetByNameParameterSet (Default)
 ```
 Reset-AzSynapseSparkSessionTimeout -WorkspaceName <String> -SparkPoolName <String> -LivyId <Int32> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
