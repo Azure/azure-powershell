@@ -12,7 +12,7 @@ Updates a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### UpdateByNameParameterSet
+### UpdateByNameParameterSet (Default)
 ```
 Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  [-PerformanceLevel <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]

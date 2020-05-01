@@ -246,4 +246,7 @@
   <data name="InvokeIotHubConfigurationMetricsQuery" xml:space="preserve">
     <value>Execute Metrics Query</value>
   </data>
+  <data name="SetIotHubEdgeModules" xml:space="preserve">
+    <value>Apply Configuration on Edge Devices</value>
+  </data>
 </root>

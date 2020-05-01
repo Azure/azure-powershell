@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSDatabaseAccount()
         {
-        }        
-        
+        }
+
         public PSDatabaseAccount(DatabaseAccountGetResults databaseAccountGetResults)
         {
             Id = databaseAccountGetResults.Id;
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
+            PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
         }
 
         //
@@ -160,5 +161,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the URI of the key vault
         public string KeyVaultKeyUri { get; set; }
+        //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
     }
 }

@@ -42,12 +42,13 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// the private endpoint connection.</param>
         /// <param name="provisioningState">State of the private endpoint
         /// connection.</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointProperty privateEndpoint = default(PrivateEndpointProperty), PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionStateProperty), string provisioningState = default(string))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointProperty privateEndpoint = default(PrivateEndpointProperty), PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionStateProperty), string provisioningState = default(string), string groupId = default(string))
             : base(id, name, type)
         {
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
+            GroupId = groupId;
             CustomInit();
         }
 
@@ -73,6 +74,12 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets group id of the private endpoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.groupId")]
+        public string GroupId { get; private set; }
 
         /// <summary>
         /// Validate the object.
