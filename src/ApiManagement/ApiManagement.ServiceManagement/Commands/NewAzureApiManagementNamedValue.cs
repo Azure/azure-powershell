@@ -15,10 +15,11 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementNamedValue))]
     public class NewAzureApiManagementNamedValue : AzureApiManagementCmdletBase
     {
@@ -71,7 +72,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             string propertyId = NamedValueId ?? Guid.NewGuid().ToString("N");
 
-            var logger = Client.NamedValueCreate(
+            if (ShouldProcess(propertyId, Resources.CreateNamedValue))
+            {
+                var prop = Client.NamedValueCreate(
                 Context,
                 propertyId,
                 Name,
@@ -79,7 +82,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Secret,
                 Tag);
 
-            WriteObject(logger);
+                WriteObject(prop);
+            }
         }
     }
 }

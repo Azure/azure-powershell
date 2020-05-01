@@ -322,6 +322,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Named Value.
+        /// </summary>
+        internal static string CreateNamedValue {
+            get {
+                return ResourceManager.GetString("CreateNamedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Diagnostic &quot;{0}&quot;..
         /// </summary>
         internal static string DiagnosticRemoveDescription {

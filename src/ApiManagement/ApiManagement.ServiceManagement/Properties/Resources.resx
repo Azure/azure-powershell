@@ -232,6 +232,10 @@
     <value>Creating Diagnostic</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="CreateNamedValue" xml:space="preserve">
+    <value>Creating Named Value</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="DiagnosticRemoveDescription" xml:space="preserve">
     <value>Removing Diagnostic "{0}".</value>
     <comment>Process workflow</comment>
