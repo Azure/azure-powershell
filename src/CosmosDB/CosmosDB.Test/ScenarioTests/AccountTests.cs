@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddRegionOperation");
         }
 
-        [Fact]
+        [Fact(Skip = "Requires pre-provisioned resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateEndpoint()
         {

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "The resource type could not be found in the namespace 'microsoft.insights' for api version '2019-10-17-preview'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateLinkScopeCRUD()
         {
