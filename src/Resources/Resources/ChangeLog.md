@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add message warning about view delay when creating a new Role Definition
 * Change policy cmdlets to output strongly-typed objects
-* Fiexed `Remove-AzResourceGroup -Id ResourceId`[#9882]
+* Fixed `Remove-AzResourceGroup -Id ResourceId`[#9882]
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
