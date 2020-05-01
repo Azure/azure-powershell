@@ -29,10 +29,12 @@ function Test-AzureRmIotHubModuleLifecycle
 	$Sku = "S1"
 	$SasTokenPrefix = 'SharedAccessSignature'
 	$device1 = getAssetName
+	$device2 = getAssetName
 	$module1 = getAssetName
 	$module2 = getAssetName
 	$primaryThumbprint = '38303FC7371EC78DDE3E18D732C8414EE50969C7'
 	$secondaryThumbprint = 'F54465586FBAF4AC269851424A592254C8861BE7'
+	$modulesContent = '{"$edgeAgent":{"properties.desired":{"modules":{},"runtime":{"settings":{"minDockerVersion":"v1.25"},"type":"docker"},"schemaVersion":"1.0","systemModules":{"edgeAgent":{"settings":{"image":"mcr.microsoft.com/azureiotedge-agent:1.0","createOptions":""},"type":"docker"},"edgeHub":{"settings":{"image":"mcr.microsoft.com/azureiotedge-hub:1.0","createOptions":"{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"},"type":"docker","status":"running","restartPolicy":"always"}}}},"$edgeHub":{"properties.desired":{"routes":{},"schemaVersion":"1.0","storeAndForwardConfiguration":{"timeToLiveSecs":7200}}},"filtermodule":{"properties.desired":{"schemaVersion":"1.0","TemperatureThreshold":21}}}'
 
 	# Create Resource Group
 	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
@@ -146,6 +148,20 @@ function Test-AzureRmIotHubModuleLifecycle
 	# Get all modules
 	$modules = Get-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $modules.Count -eq 1}
+
+	# Add iot edge device 
+	$newDevice2 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2 -AuthMethod 'shared_private_key' -EdgeEnabled
+	Assert-True { $newDevice2.Id -eq $device2 }
+	Assert-True { $newDevice2.Capabilities.IotEdge }
+
+	# Get all edge's modules
+	$edgeModules1 = Get-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2
+	Assert-True { $edgeModules1.Count -eq 2}
+
+	# Apply configuration content to edge device
+	$content = $modulesContent | ConvertFrom-Json -AsHashtable
+	$edgeModules2 = Set-AzIotHubEdgeModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2 -ModulesContent $content
+	Assert-True { $edgeModules2.Count -eq 3}
 
 	# Delete all modules
 	$result = Remove-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Passthru
