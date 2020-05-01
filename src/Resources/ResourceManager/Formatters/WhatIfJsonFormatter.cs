@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var builder = new ColoredStringBuilder();
             var formatter = new WhatIfJsonFormatter(builder);
 
-            formatter.FormatJson(value);
+            formatter.FormatJson(value, "");
 
             return builder.ToString();
         }
