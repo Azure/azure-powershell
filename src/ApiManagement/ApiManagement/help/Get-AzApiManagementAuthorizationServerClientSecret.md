@@ -1,61 +1,51 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementauthorizationserverclientsecret
 schema: 2.0.0
 ---
 
-# Get-AzApiManagementProperty
+# Get-AzApiManagementAuthorizationServerClientSecret
 
 ## SYNOPSIS
-Gets a list or a particular Property (Named-Value).
+Gets an API Management authorization server client secret.
 
 ## SYNTAX
 
-### GetAllProperties (Default)
+### ContextParameterSet (Default)
 ```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByPropertyId
-```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
+Get-AzApiManagementAuthorizationServerClientSecret -Context <PsApiManagementContext> [-ServerId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByName
+### ResourceIdParameterSet
 ```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByTag
-```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
+Get-AzApiManagementAuthorizationServerClientSecret [-ServerId <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApiManagementProperty** cmdlet gets a list or a particular property.
+The **Get-AzApiManagementAuthorizationServerClientSecret** cmdlet gets the client secret of the Azure API Management authorization server.
 
 ## EXAMPLES
 
-### Example 1: Get Property by name
+### Example 1: Get a specified authorization server client secret by id
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementAuthorizationServerClientSecret -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
-This command gets the property details given the property name.
+This command gets the specified authorization server cient secret.
 
 ## PARAMETERS
 
 ### -Context
+Instance of PsApiManagementContext.
+This parameter is required.
+
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSet
 Aliases:
 
 Required: True
@@ -66,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -80,39 +70,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -ResourceId
+Arm Resource Identifier of the authorization server.
+If specified will try to find authorization server by the identifier.
+This parameter is required.
+
 ```yaml
 Type: System.String
-Parameter Sets: GetByName
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PropertyId
-```yaml
-Type: System.String
-Parameter Sets: GetByPropertyId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+### -ServerId
+Identifier of the authorization server.
+If specified will find authorization server by the identifier.
+This parameter is optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByTag
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -133,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientSecret
 
 ## NOTES
 

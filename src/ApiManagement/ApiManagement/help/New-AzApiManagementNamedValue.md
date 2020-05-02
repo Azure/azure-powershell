@@ -1,50 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-ms.assetid: A91F93D3-B8C7-4328-A049-AB9877C1166C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementnamedvalue
 schema: 2.0.0
 ---
 
-# New-AzApiManagementProperty
+# New-AzApiManagementNamedValue
 
 ## SYNOPSIS
-Creates a new Property.
+Creates new Named Value.
 
 ## SYNTAX
 
 ```
-New-AzApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>] -Name <String>
+New-AzApiManagementNamedValue -Context <PsApiManagementContext> [-NamedValueId <String>] -Name <String>
  -Value <String> [-Secret] [-Tag <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApiManagementProperty** cmdlet creates an Azure API Management **Property**.
+The **New-AzApiManagementNamedValue** cmdlet creates an Azure API Management **Named Value**.
 
 ## EXAMPLES
 
-### Example 1: Create a property that includes tags
+### Example 1: Create a named value that includes tags
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> New-AzApiManagementProperty -Context $apimContext -PropertyId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
+PS C:\> New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
 ```
 
 The first command assigns two values to the $Tags variable.
-The second command creates a property and assigns the strings in $Tags as tags on the property.
+The second command creates a named value and assigns the strings in $Tags as tags on the property.
 
-### Example 2: Create a property that has a secret value
+### Example 2: Create a named value that has a secret value
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementProperty -Context $apimContext -PropertyId "Property12" -Name "Secret Property" -Value "Secret Property Value" -Secret
+PS C:\>New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Name "Secret Property" -Value "Secret Property Value" -Secret
 ```
 
-This command creates a **Property** that has a value that is encrypted.
+This command creates a **Named Value** that has a value that is encrypted.
 
 ## PARAMETERS
 
 ### -Context
-Specifies a **PsApiManagementContext** object.
+Instance of PsApiManagementContext.
+This parameter is required.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -74,9 +74,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the property that this cmdlet creates.
+Name of the named value.
 Maximum length is 100 characters.
-Names contain only letters, digits, period, dash, and underscore characters.
+It may contain only letters, digits, period, dash, and underscore characters.
+This parameter is required.
 
 ```yaml
 Type: System.String
@@ -90,10 +91,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PropertyId
-Specifies an ID for the property.
-Maximum length is 256 characters.
-If you do not specify an ID, this cmdlet generates one.
+### -NamedValueId
+Identifier of new named value.
+This parameter is optional.
+If not specified will be generated.
 
 ```yaml
 Type: System.String
@@ -108,7 +109,9 @@ Accept wildcard characters: False
 ```
 
 ### -Secret
-Indicates that the property value is a secret and should be encrypted.
+Determines whether the value is a secret and should be encrypted or not.
+This parameter is optional.
+Default Value is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -123,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Tags to be associated with Property. This parameter is optional.
+Tags to be associated with named value.
+This parameter is optional.
 
 ```yaml
 Type: System.String[]
@@ -138,10 +142,11 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Specifies a value for the property.
-This value can contain policy expressions.
+Value of the named value.
+Can contain policy expressions.
 Maximum length is 1000 characters.
-The value may not be empty or consist only of whitespace.
+It may not be empty or consist only of whitespace.
+This parameter is required.
 
 ```yaml
 Type: System.String
@@ -170,14 +175,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementNamedValue
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Remove-AzApiManagementProperty](./Remove-AzApiManagementProperty.md)
-
-[Set-AzApiManagementProperty](./Set-AzApiManagementProperty.md)
-
-

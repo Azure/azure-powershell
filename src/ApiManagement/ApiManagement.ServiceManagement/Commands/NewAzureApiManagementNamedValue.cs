@@ -15,14 +15,13 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzureApiManagementNamedValue")]
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty")]
-    [OutputType(typeof(PsApiManagementProperty))]
-    public class NewAzureApiManagementProperty : AzureApiManagementCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", SupportsShouldProcess = true)]
+    [OutputType(typeof(PsApiManagementNamedValue))]
+    public class NewAzureApiManagementNamedValue : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -35,14 +34,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of new property. This parameter is optional." +
+            HelpMessage = "Identifier of new named value. This parameter is optional." +
                           " If not specified will be generated.")]
-        public String PropertyId { get; set; }
+        public String NamedValueId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of the property. Maximum length is 100 characters." +
+            HelpMessage = "Name of the named value. Maximum length is 100 characters." +
                           " It may contain only letters, digits, period, dash, and underscore characters." +
                           " This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters." +
+            HelpMessage = "Value of the named value. Can contain policy expressions. Maximum length is 1000 characters." +
                           " It may not be empty or consist only of whitespace. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Value { get; set; }
@@ -66,14 +65,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Tags to be associated with Property. This parameter is optional.")]
+            HelpMessage = "Tags to be associated with named value. This parameter is optional.")]
         public string[] Tag { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            string propertyId = PropertyId ?? Guid.NewGuid().ToString("N");
+            string propertyId = NamedValueId ?? Guid.NewGuid().ToString("N");
 
-            var logger = Client.PropertyCreate(
+            if (ShouldProcess(propertyId, Resources.CreateNamedValue))
+            {
+                var prop = Client.NamedValueCreate(
                 Context,
                 propertyId,
                 Name,
@@ -81,7 +82,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Secret,
                 Tag);
 
-            WriteObject(logger);
+                WriteObject(prop);
+            }
         }
     }
 }
