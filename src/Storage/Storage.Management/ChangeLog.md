@@ -25,6 +25,9 @@
     - `Set-AzStorageObjectReplicationPolicy`
     - `Get-AzStorageObjectReplicationPolicy`
     - `Remove-AzStorageObjectReplicationPolicy`
+* Supported RoutingPreference settings in create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 1.14.1
 * Supported create container and upload blob with Encryption Scope setting
