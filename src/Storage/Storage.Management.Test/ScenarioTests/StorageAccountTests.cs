@@ -204,5 +204,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAStorageAccount_RoutingPreference()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
+        }        
     }
 }

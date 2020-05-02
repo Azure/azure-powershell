@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
+            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
         }
 
@@ -119,6 +120,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? FailoverInProgress { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSRoutingPreference RoutingPreference { get; set; }
 
         public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
 
