@@ -12,16 +12,16 @@ Gets or lists Storage file shares.
 
 ## SYNTAX
 
-### AccountNameSingle (Default)
-```
-Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
- [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### AccountName
+### AccountName (Default)
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-IncludeDeleted]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### AccountNameSingle
+```
+Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
+ [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObjectSingle
@@ -96,7 +96,7 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version          ShareUsageBytes
 ----     -------- --------------- ----------           ------- -------          ---------------
 test     100                      TransactionOptimized                                         
-share1   100                      TransactionOptimized True    01D61FD1FC5498B6           
+share1   100                      TransactionOptimized True    01D61FD1FC5498B6
 ```
 
 This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
@@ -109,7 +109,7 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
 Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
 ----     -------- --------------- ---------- ------- ------- ---------------
-myshare  5120                                                2097152 
+myshare  5120                                                2097152
 ```
 
 This command gets a Storage file share with Storage account name and share name, and include the share usage in bytes.
@@ -193,7 +193,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameSingle, AccountName
+Parameter Sets: AccountName, AccountNameSingle
 Aliases:
 
 Required: True
@@ -209,7 +209,7 @@ Input a File Share Resource Id.
 ```yaml
 Type: System.String
 Parameter Sets: ShareResourceId
-Aliases: Id
+Aliases:
 
 Required: True
 Position: 0
@@ -238,7 +238,7 @@ Storage Account Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameSingle, AccountName
+Parameter Sets: AccountName, AccountNameSingle
 Aliases: AccountName
 
 Required: True
