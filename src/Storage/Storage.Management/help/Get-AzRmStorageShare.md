@@ -21,12 +21,12 @@ Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String
 ### AccountNameSingle
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
- [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObjectSingle
 ```
-Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-GetShareUsage]
+Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,8 +38,7 @@ Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted]
 
 ### ShareResourceId
 ```
-Get-AzRmStorageShare [-ResourceId] <String> [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRmStorageShare [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,19 +100,6 @@ share1   100                      TransactionOptimized True    01D61FD1FC5498B6
 
 This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
 
-### Example 5: Get a Storage file share with the share usage in bytes
-```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
-myshare  5120                                                2097152
-```
-
-This command gets a Storage file share with Storage account name and share name, and include the share usage in bytes.
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -123,21 +109,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GetShareUsage
-Specify this parameter to get the Share Usage in Bytes.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AccountNameSingle, AccountObjectSingle, ShareResourceId
-Aliases:
 
 Required: False
 Position: Named

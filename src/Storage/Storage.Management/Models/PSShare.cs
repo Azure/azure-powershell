@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public DateTime? AccessTierChangeTime { get; }
         public string AccessTierStatus { get; }
 
-        public int? ShareUsageBytes { get; }
+        public long? ShareUsageBytes { get; }
 
 
         public static string ParseResourceGroupFromId(string idFromServer)

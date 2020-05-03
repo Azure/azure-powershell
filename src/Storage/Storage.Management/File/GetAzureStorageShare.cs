@@ -113,18 +113,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
             ParameterSetName = AccountObjectParameterSet)]
         public SwitchParameter IncludeDeleted { get; set; }
-
-        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
-            Mandatory = false,
-            ParameterSetName = AccountObjectSingleParameterSet)]
-        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
-            Mandatory = false,
-            ParameterSetName = AccountNameSingleParameterSet)]
-        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
-            Mandatory = false,
-            ParameterSetName = ShareResourceIdParameterSet)]
-        public SwitchParameter GetShareUsage { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -149,16 +138,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                GetShareExpand? expend = null;
-                if(this.GetShareUsage)
-                {
-                    expend = GetShareExpand.Stats;
-                }
                 var Share = this.StorageClient.FileShares.Get(
                            this.ResourceGroupName,
                            this.StorageAccountName,
-                           this.Name,
-                           expend);
+                           this.Name);
                 WriteObject(new PSShare(Share));
             }
             else
