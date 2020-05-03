@@ -16,24 +16,36 @@ while (-not $mockingPath) {
 Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
     It 'DetachExpanded' {
         $subscriptionId = $env.SubscriptionId
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
-        
+        $databaseName = "testdatabase" + $env.rstr3
+        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+
+        New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
+        Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 
     It 'DetachViaIdentityExpanded' {
         $subscriptionId = $env.SubscriptionId
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
-        
+        $databaseName = "testdatabase" + $env.rstr4
+        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+
+        New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         { Invoke-AzKustoDetachClusterFollowerDatabase -InputObject $cluster -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
+        Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 }

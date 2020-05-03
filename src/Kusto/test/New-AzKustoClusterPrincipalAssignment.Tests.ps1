@@ -17,13 +17,14 @@ Describe 'New-AzKustoClusterPrincipalAssignment' {
     It 'CreateExpanded' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $principalAssignmentName = $env.principalAssignmentName
-        $principalId = $env.principalId
+        $principalAssignmentName = $env.principalAssignmentName1
+        $principalId = $env.principalId1
         $role = $env.principalRole
         $principalType = $env.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
+        { Remove-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName } | Should -Not -Throw
     }
 }

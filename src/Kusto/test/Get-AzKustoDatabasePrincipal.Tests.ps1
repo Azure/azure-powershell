@@ -18,6 +18,6 @@ Describe 'Get-AzKustoDatabasePrincipal' {
         $databaseName = $env.databaseName
 
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
-        $databasePrincipals.Count | Should -Be 3
+        $databasePrincipals.Count | Should -Be 2
     }
 }

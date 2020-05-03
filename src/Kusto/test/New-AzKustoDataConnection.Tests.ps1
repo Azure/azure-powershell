@@ -20,9 +20,9 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName
-        $eventhubNS= $env.eventhubNSName
-        $eventhub= $env.eventhubName
+        $dataConnectionName = $env.dataConnectionName + $env.rstr3
+        $eventhubNS = $env.eventhubNSName
+        $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $tableName = $env.tableName
         $tableMappingName = $env.tableMappingName
@@ -32,6 +32,7 @@ Describe 'New-AzKustoDataConnection' {
 
         $dataConnectionCreated = New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
         Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        { Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName } | Should -Not -Throw
     }
 
     It 'CreateExpandedEventGrid' {
@@ -40,9 +41,9 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName + "g"
-        $eventhubNS= $env.eventhubNSNameForEventGrid
-        $eventhub= $env.eventhubNameForEventGrid
+        $dataConnectionName = $env.dataConnectionName + $env.rstr4
+        $eventhubNS = $env.eventhubNSNameForEventGrid
+        $eventhub = $env.eventhubNameForEventGrid
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $storageAccountName = $env.storageName
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
@@ -54,6 +55,7 @@ Describe 'New-AzKustoDataConnection' {
 
         $dataConnectionCreated = New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
         Validate_EventGridDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $storageAccountResourceId $tableName $tableMappingName $dataFormat $kind
+        { Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName } | Should -Not -Throw
     }
 
     It 'CreateExpandedIotHub' {
@@ -62,7 +64,7 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName + "h"
+        $dataConnectionName = $env.dataConnectionName + $env.rstr5
         $iothubName = $env.iothubName
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
@@ -74,5 +76,6 @@ Describe 'New-AzKustoDataConnection' {
 
         $dataConnectionCreated = New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
         Validate_IotHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $iotHubResourceId $sharedAccessPolicyName $tableName $tableMappingName $dataFormat $kind
+        { Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName } | Should -Not -Throw
     }
 }

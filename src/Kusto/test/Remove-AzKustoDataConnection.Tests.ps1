@@ -15,11 +15,21 @@ while (-not $mockingPath) {
 
 Describe 'Remove-AzKustoDataConnection' {
     It 'Delete' {
+        $subscriptionId = $env.SubscriptionId
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName
+        $dataConnectionName = $env.dataConnectionName + $env.rstr3
+        $eventhubNS = $env.eventhubNSName
+        $eventhub = $env.eventhubName
+        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $tableName = $env.tableName
+        $tableMappingName = $env.tableMappingName
+        $dataFormat = $env.dataFormat
+        $kind = "EventHub"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
         { Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName } | Should -Not -Throw
     }
 }

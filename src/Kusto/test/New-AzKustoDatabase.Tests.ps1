@@ -15,18 +15,21 @@ while (-not $mockingPath) {
 
 Describe 'New-AzKustoDatabase' {
     It 'CreateExpanded' {
-        $databaseFullName = $env.clusterName + "/" + $env.databaseName
+        $name = "testdatabase" + $env.rstr3
+        $databaseFullName = $env.clusterName + "/" + $name
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Kind ReadWrite -Location $env.location
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Kind ReadWrite -Location $env.location
         Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $null
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Create' {
-        $softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
-        $hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
-        $databaseFullName = $env.clusterName + "/" + $env.databaseName
+        $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
+        $name = "testdatabase" + $env.rstr4
+        $databaseFullName = $env.clusterName + "/" + $name
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Location $env.location -Kind "ReadOnly" -SoftDeletePeriod $softDeletePeriodInDays -HotCachePeriod $hotCachePeriodInDays
-		Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadOnly -HotCachePeriod $hotCachePeriodInDays
+        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $hotCachePeriodInDays
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }
 }

@@ -16,6 +16,7 @@ Describe 'Start-AzKustoCluster' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
 
+        Stop-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         { Start-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName } | Should -Not -Throw
     }
 
@@ -25,6 +26,7 @@ Describe 'Start-AzKustoCluster' {
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
+        Stop-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         { Start-AzKustoCluster -InputObject $clusterGetItem } | Should -Not -Throw
     }
 }

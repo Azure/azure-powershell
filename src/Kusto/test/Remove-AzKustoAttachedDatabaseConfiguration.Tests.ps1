@@ -18,7 +18,7 @@ Describe 'Remove-AzKustoAttachedDatabaseConfiguration' {
         $resourceGroupName = $env.resourceGroupName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
-        
+
         { Remove-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName } | Should -Not -Throw
     }
 }

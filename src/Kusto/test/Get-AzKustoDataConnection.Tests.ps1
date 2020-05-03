@@ -30,8 +30,13 @@ Describe 'Get-AzKustoDataConnection' {
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
-        [array]$dataConnectionGet = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
-        $dataConnectionCreated = $dataConnectionGet[0]
+        [array]$dataConnectionGet = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
+        $dataConnectionGet.Count | Should -Be 3
+        foreach ($dataConnection in $dataConnectionGet) {
+            if ($dataConnection.Name -eq $dataConnectionFullName) {
+                $dataConnectionCreated = $dataConnection
+            }
+        }
         Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
     }
 

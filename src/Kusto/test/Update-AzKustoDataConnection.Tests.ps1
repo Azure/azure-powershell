@@ -25,7 +25,7 @@ Describe 'Update-AzKustoDataConnection' {
         $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName + "1"
         $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -47,7 +47,7 @@ Describe 'Update-AzKustoDataConnection' {
         $storageAccountName = $env.storageName
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName + "1"
         $dataFormat = $env.dataFormat
         $kind = "EventGrid"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -67,7 +67,7 @@ Describe 'Update-AzKustoDataConnection' {
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName + "1"
         $dataFormat = $env.dataFormat
         $kind = "IotHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -87,7 +87,7 @@ Describe 'Update-AzKustoDataConnection' {
         $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName
         $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -110,7 +110,7 @@ Describe 'Update-AzKustoDataConnection' {
         $storageAccountName = $env.storageName
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName
         $dataFormat = $env.dataFormat
         $kind = "EventGrid"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -131,7 +131,7 @@ Describe 'Update-AzKustoDataConnection' {
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
         $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingNameForUpdate
+        $tableMappingName = $env.tableMappingName
         $dataFormat = $env.dataFormat
         $kind = "IotHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
