@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRegulatoryComplianceControl
 
 ## SYNOPSIS
-{{ Get a spcific control details or list all the controls under specific regulatory compliance standard }}
+Gets regulatory compliance controls
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzRegulatoryComplianceControl -ResourceId <String> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-{{ Get a spcific control details or list all the controls under specific regulatory compliance standard }}
+Get a spcific control details or list all the controls under specific regulatory compliance standard.
 
 ## EXAMPLES
 
@@ -81,7 +81,7 @@ FailedAssessments  : 0
 SkippedAssessments : 0
 ```
 
-Get all controls under specific regulatory standard
+Get all controls under specific regulatory standard.
 
 ### Example 2
 ```powershell
@@ -100,7 +100,7 @@ FailedAssessments  : 22
 SkippedAssessments : 0
 ```
 
-Get specific control details according to control id
+Get specific control details according to control id.
 
 ### Example 3
 ```powershell
@@ -120,7 +120,7 @@ FailedAssessments  : 22
 SkippedAssessments : 0
 ```
 
-Get specific control details according to resource id
+Get specific control details according to resource id.
 
 ## PARAMETERS
 
@@ -174,7 +174,7 @@ Standard Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, SubscriptionScope
+Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True

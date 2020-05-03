@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRegulatoryComplianceStandard
 
 ## SYNOPSIS
-{{ Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription }}
+Gets regulatoey compliance standards
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzRegulatoryComplianceStandard -ResourceId <String> [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-{{ Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription }}
+Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription.
 
 ## EXAMPLES
 
@@ -79,7 +79,7 @@ SkippedControls     : 0
 UnsupportedControls : 24
 ```
 
-Get all regulatory compliance standards under a subscription
+Get all regulatory compliance standards under a subscription.
 
 ### Example 2
 ```powershell
@@ -96,7 +96,7 @@ SkippedControls     : 0
 UnsupportedControls : 24
 ```
 
-Get details of specific regulatory compliance standard according standard name
+Get details of specific regulatory compliance standard according standard name.
 
 ### Example 3
 ```powershell
@@ -113,7 +113,7 @@ SkippedControls     : 0
 UnsupportedControls : 24
 ```
 
-Get details of specific regulatory compliance standard according resource id
+Get details of specific regulatory compliance standard according resource id.
 
 ## PARAMETERS
 

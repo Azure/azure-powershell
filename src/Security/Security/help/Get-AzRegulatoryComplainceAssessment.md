@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRegulatoryComplainceAssessment
 
 ## SYNOPSIS
-{{ Get a spcific assessment details or list all the assessments under specific control and regulatory compliance standard }}
+Gets regulatory compliance assessments
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzRegulatoryComplainceAssessment -ResourceId <String> [-DefaultProfile <IAzu
 ```
 
 ## DESCRIPTION
-{{ Get a spcific assessment details or list all the assessments under specific control and regulatory compliance standard }}
+Get a spcific assessment details or list all the assessments under specific control and regulatory compliance standard.
 
 ## EXAMPLES
 
@@ -133,7 +133,8 @@ PassedResources       : 2
 FailedResources       : 0
 SkippedResources      : 0
 ```
-Get all assessments under specific control and standard
+
+Get all assessments under specific control and standard.
 
 ### Example 2
 ```powershell
@@ -153,7 +154,8 @@ PassedResources       : 2
 FailedResources       : 0
 SkippedResources      : 0
 ```
-Get a specific assessment under specific control and standard according to assessment id
+
+Get a specific assessment under specific control and standard according to assessment id.
 
 ### Example 3
 ```powershell
@@ -174,7 +176,8 @@ PassedResources       : 2
 FailedResources       : 0
 SkippedResources      : 0
 ```
-Get a specific assessment under specific control and standard according to resource id
+
+Get a specific assessment under specific control and standard according to resource id.
 
 ## PARAMETERS
 
