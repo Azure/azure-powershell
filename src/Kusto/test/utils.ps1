@@ -57,6 +57,12 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\event-grid\parameters.json -Value (ConvertTo-Json $eventhubNSGParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\event-grid\template.json -TemplateParameterFile .\test\deployment-templates\event-grid\parameters.json -Name eventgrid -ResourceGroupName $resourceGroupName
 
+    # Create IoT Hub
+    $iothubName = "iothub" + $rstr1
+    Write-Host "Start to create IoT Hub" $iothubName
+    $null = $env.Add("iothubName", $iothubName)
+    # New-AzIotHub -ResourceGroupName $resourceGroupName -Name $iothubName -SkuName S1 -Units 1 -Location $env.location
+
     # Create Storage Account
     $storageName = "storage" + $rstr1
     Write-Host "Start to create Storage Account" $storageName
