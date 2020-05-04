@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -44,15 +42,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string LoadBalancerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer.",
+            Mandatory = false,
+            HelpMessage = "The name of the backend address pool.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string BackendAddressPoolName { get; set; }
 
         public override void Execute()
@@ -60,22 +56,31 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             BackendAddressPool loadBalancerBackendAddressPool = null;
 
-            try
+            if (ShouldGetByName(this.ResourceGroupName, this.BackendAddressPoolName))
             {
                 loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.BackendAddressPoolName);
-            }
-            catch (Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    throw new ArgumentException(Properties.Resources.ResourceNotFound);
-                }
-                throw;
-            }
 
-            var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
-            loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses = loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses.ToList();
-            WriteObject(loadBalancerBackendAddressPoolModel);
+                var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
+                loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses = loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses.ToList();
+                WriteObject(loadBalancerBackendAddressPoolModel);
+            }
+            else
+            {
+                IPage<BackendAddressPool> backendAddressPoolPage = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.List(this.ResourceGroupName, this.LoadBalancerName);
+
+                var backendAddressPoolList = ListNextLink<BackendAddressPool>.GetAllResourcesByPollingNextLink(backendAddressPoolPage,
+                            this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.ListNext);
+               
+                List<PSBackendAddressPool> psBackendAddressPoolList = new List<PSBackendAddressPool>();
+               
+                foreach (var backendAddressPool in backendAddressPoolList)
+                {
+                    var backendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(backendAddressPool);
+                    psBackendAddressPoolList.Add(backendAddressPoolModel);
+                }
+
+                WriteObject(psBackendAddressPoolList, true);
+            }
         }
     }
 }

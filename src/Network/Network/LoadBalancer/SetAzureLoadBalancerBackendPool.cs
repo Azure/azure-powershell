@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string LoadBalancerName { get; set; }
 
         [Parameter(

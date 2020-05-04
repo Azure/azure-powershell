@@ -34,36 +34,21 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The IPAddress to add to the backend pool",
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string IpAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the Backend Address config",
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The network interface IP config",
-            ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public PSNetworkInterfaceIPConfiguration NetworkInterfaceIPConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The virtual network associated with Backend Address config",
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
 
@@ -77,7 +62,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress();
-            loadBalancerBackendAddress.BackendIpConfigurations = this.NetworkInterfaceIPConfiguration;
             loadBalancerBackendAddress.VirtualNetwork = this.VirtualNetwork;
             loadBalancerBackendAddress.IpAddress = this.IpAddress;
             loadBalancerBackendAddress.Name = this.Name;
