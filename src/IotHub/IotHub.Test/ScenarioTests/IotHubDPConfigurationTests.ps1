@@ -30,7 +30,7 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	$device1 = getAssetName
 	$device2 = getAssetName
 	$config1 = getAssetName
-	$deploy1 = getAssetName
+	$deploy1 = getAssetName	
 	
 	# Create Resource Group
 	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 

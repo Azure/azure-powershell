@@ -10,7 +10,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Wait, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob)]
+    [Cmdlet(VerbsLifecycle.Wait, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = WaitSparkJobByIdParameterSetName)]
     [OutputType(typeof(bool))]
     public class WaitAzureSynapseSparkJob : SynapseCmdletBase
     {

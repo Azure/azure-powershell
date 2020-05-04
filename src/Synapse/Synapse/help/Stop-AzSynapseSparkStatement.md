@@ -12,7 +12,7 @@ Cancels a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
-### StopSparkStatementByIdParameterSet
+### StopSparkStatementByIdParameterSet (Default)
 ```
 Stop-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> -LivyId <Int32> -SessionId <Int32>
  [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

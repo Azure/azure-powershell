@@ -9,7 +9,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob,
+        DefaultParameterSetName = GetSparkJobsByIdParameterSetName)]
     [OutputType(typeof(PSSynapseSparkJob))]
     public class GetAzureSynapseSparkJob : SynapseCmdletBase
     {

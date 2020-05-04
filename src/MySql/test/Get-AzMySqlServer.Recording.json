@@ -1,0 +1,158 @@
+{
+  "Get-AzMySqlServer+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "18b48157-45a8-4f60-9495-d79119893435" ],
+        "CommandName": [ "Get-AzMySqlServer" ],
+        "FullCommandName": [ "Get-AzMySqlServer_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "776b5aff-3f22-4616-9e42-5ef0e4b920f4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "2952cbcb-d366-45de-a269-c3b6570e03f6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200409T080320Z:2952cbcb-d366-45de-a269-c3b6570e03f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Apr 2020 08:03:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3558" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysqltest\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysqltestericli.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-02T08:03:20.4351186+00:00\",\"replicationRole\":\"\",\"masterServerId\":\"\",\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Ericli/providers/Microsoft.DBforMySQL/servers/mysqltestericli\",\"name\":\"mysqltestericli\",\"type\":\"Microsoft.DBforMySQL/servers\"},{\"sku\":{\"name\":\"B_Gen5_2\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":2},\"properties\":{\"administratorLogin\":\"adminuser\",\"storageProfile\":{\"storageMB\":51200,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"lucas-test-mysql.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-07T09:25:48.977+00:00\",\"replicationRole\":\"\",\"masterServerId\":\"\",\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"tags\":{},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.DBforMySQL/servers/lucas-test-mysql\",\"name\":\"lucas-test-mysql\",\"type\":\"Microsoft.DBforMySQL/servers\"},{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysqltest-1012.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-08T10:10:11.027+00:00\",\"replicationRole\":\"\",\"masterServerId\":\"\",\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTestRG/providers/Microsoft.DBforMySQL/servers/mysqltest-1012\",\"name\":\"mysqltest-1012\",\"type\":\"Microsoft.DBforMySQL/servers\"},{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-09T08:01:09.513+00:00\",\"replicationRole\":\"\",\"masterServerId\":\"\",\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}]}"
+    }
+  },
+  "Get-AzMySqlServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "1399518e-2a29-4b8e-a05b-1cfee74b95b7" ],
+        "CommandName": [ "Get-AzMySqlServer" ],
+        "FullCommandName": [ "Get-AzMySqlServer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d765d37b-f699-4f1b-9fdb-4d9917777fdd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-correlation-request-id": [ "037266ec-4ad0-4a69-978a-97633679ccf3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200409T080320Z:037266ec-4ad0-4a69-978a-97633679ccf3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Apr 2020 08:03:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "905" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-09T08:01:09.513+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+    }
+  },
+  "Get-AzMySqlServer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "0419ae78-bf1c-44fe-8c9b-1baa160c27b1" ],
+        "CommandName": [ "Get-AzMySqlServer" ],
+        "FullCommandName": [ "Get-AzMySqlServer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8dc3dcb8-e856-4c1b-97de-e0b5c0a9e539" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-correlation-request-id": [ "94e0e9f9-a75a-4046-b9d3-29195b7f86d4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200409T080321Z:94e0e9f9-a75a-4046-b9d3-29195b7f86d4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Apr 2020 08:03:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-09T08:01:09.513+00:00\",\"replicationRole\":\"\",\"masterServerId\":\"\",\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}]}"
+    }
+  },
+  "Get-AzMySqlServer+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "f8182949-eb59-4141-9d4d-d2473f121817" ],
+        "CommandName": [ "Get-AzMySqlServer" ],
+        "FullCommandName": [ "Get-AzMySqlServer_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a8ce6714-7ce3-4869-9e7c-a55ddf7203af" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "6ae3b51c-2e85-4eb9-a179-3ce7d43af89b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200409T080321Z:6ae3b51c-2e85-4eb9-a179-3ce7d43af89b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Apr 2020 08:03:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "905" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-09T08:01:09.513+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+    }
+  }
+}
