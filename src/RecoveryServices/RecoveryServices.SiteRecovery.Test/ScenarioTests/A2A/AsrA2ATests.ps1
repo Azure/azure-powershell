@@ -675,7 +675,7 @@ function Test-ZoneToZoneRecoveryPlanReplication{
 #>
 
 function Test-RecoveryPlanReplication{
-   param([string] $seed ='916')
+   param([string] $seed ='918')
         $primaryPolicyName = getPrimaryPolicy
         $recoveryPolicyName = getRecoveryPolicy
         
@@ -794,14 +794,4 @@ function Test-RecoveryPlanReplication{
 		#Failover
 		$failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RecoveryPlan -Direction PrimaryToRecovery -PerformSourceSideAction
 		 WaitForJobCompletion -JobId $failoverjob.Name
-		 #Get recovery vm and verify
-		$recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
-		Assert-NotNull($recvm.ProximityPlacementGroup.Id);
-
-		$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $rc -Name  $vmName
-		Assert-NotNull($pe.providerSpecificDetails.RecoveryProximityPlacementGroupId)
-
-		 #Get Recovery Plan
-        $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-		Assert-NotNull($RecoveryPlan)
 }
