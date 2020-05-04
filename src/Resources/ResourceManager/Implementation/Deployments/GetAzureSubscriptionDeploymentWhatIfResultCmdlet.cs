@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System;
-    using System.Management.Automation;
     using Common;
     using Common.ArgumentCompleters;
     using Management.ResourceManager.Models;
-    using Microsoft.Rest.Azure;
     using SdkModels.Deployments;
+    using System;
+    using System.Management.Automation;
     using WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat ResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
-        public object ProjectResources { get; private set; }
 
         protected override void OnProcessRecord()
         {
