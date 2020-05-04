@@ -92,6 +92,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
+        public string KeyVaultKeyUri { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -210,6 +213,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
             databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+            
+            if (KeyVaultKeyUri != null)
+            {
+                databaseAccountCreateUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
+            }
 
             if (!string.IsNullOrEmpty(ApiKind))
             {

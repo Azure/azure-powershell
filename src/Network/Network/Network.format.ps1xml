@@ -5143,6 +5143,14 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>GroupId</Label>
+                <PropertyName>GroupId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PrivateEndpoint</Label>
                 <PropertyName>PrivateEndpointText</PropertyName>
               </ListItem>
@@ -5370,6 +5378,10 @@
               <ListItem>
                 <Label>RequiredMembers</Label>
                 <PropertyName>RequiredMembersText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RequiredZoneNames</Label>
+                <PropertyName>RequiredZoneNamesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

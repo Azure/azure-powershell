@@ -210,5 +210,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             return HdInsightManagementClient.Extensions.GetMonitoringStatus(resourceGroupName, clusterName);
         }
+
+        public virtual void RotateDiskEncryptionKey(string resourceGroupName, string clusterName, ClusterDiskEncryptionParameters parameters)
+        {
+            HdInsightManagementClient.Clusters.RotateDiskEncryptionKey(resourceGroupName, clusterName, parameters);
+        }
     }
 }

@@ -365,6 +365,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply Configuration on Edge Devices.
+        /// </summary>
+        internal static string SetIotHubEdgeModules {
+            get {
+                return ResourceManager.GetString("SetIotHubEdgeModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Parent Device.
         /// </summary>
         internal static string SetParentDevice {

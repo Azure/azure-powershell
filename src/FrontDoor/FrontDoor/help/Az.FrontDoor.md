@@ -23,6 +23,9 @@ Get Front Door load balancer
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Get a front door frontend endpoint.
 
+### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
+Get Rules Engine configurations.
+
 ### [Get-AzFrontDoorWafManagedRuleSetDefinition](Get-AzFrontDoorWafManagedRuleSetDefinition.md)
 Get WAF managed rule set definitions
 
@@ -39,10 +42,13 @@ Create a PSBackend object
 Create a PSBackendPool object for Front Door creation
 
 ### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
-Create a PSBackendPoolsSettings object for Front Door creation
+Create a PSBackendPoolsSetting object for Front Door creation.
 
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create a PSFrontendEndpoint Object for Front Door creation
+
+### [New-AzFrontDoorHeaderActionObject](New-AzFrontDoorHeaderActionObject.md)
+Create PSHeaderAction object.
 
 ### [New-AzFrontDoorHealthProbeSettingObject](New-AzFrontDoorHealthProbeSettingObject.md)
 Create a PSHealthProbeSetting object for Front Door creation
@@ -53,11 +59,23 @@ Create a PSLoadBalancingSetting object for Front Door creation
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create a PSRoutingRuleObject for Front Door creation
 
+### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
+Create a new rules engine configuration for a specified front door. 
+
+### [New-AzFrontDoorRulesEngineActionObject](New-AzFrontDoorRulesEngineActionObject.md)
+Create a PSRulesEngineAction object for creating a rules engine rule.
+
+### [New-AzFrontDoorRulesEngineMatchConditionObject](New-AzFrontDoorRulesEngineMatchConditionObject.md)
+Create a PSRulesEngineMatchCondition object for creating a rules engine rule.
+
+### [New-AzFrontDoorRulesEngineRuleObject](New-AzFrontDoorRulesEngineRuleObject.md)
+Create a PSRulesEngineRule object for Rules Engine creation.
+
 ### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
 
 ### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules
+Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
 
 ### [New-AzFrontDoorWafManagedRuleObject](New-AzFrontDoorWafManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
@@ -80,11 +98,17 @@ Remove Front Door load balancer
 ### [Remove-AzFrontDoorContent](Remove-AzFrontDoorContent.md)
 Remove contents in Front Door
 
+### [Remove-AzFrontDoorRulesEngine](Remove-AzFrontDoorRulesEngine.md)
+Remove Rules Engine from Front Door
+
 ### [Remove-AzFrontDoorWafPolicy](Remove-AzFrontDoorWafPolicy.md)
 Remove WAF policy
 
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 Update a Front Door load balancer
+
+### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
+Update a Rules Engine.
 
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
 Update WAF policy
