@@ -173,12 +173,12 @@ namespace Microsoft.Azure.Commands.Network
             // VpnAuthenticationType = Radius related validations.
             else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
             {
-                if (vpnServerConfiguration.RadiusServerAddress != null)
+                if (radiusServerAddress != null)
                 {
                     vpnServerConfiguration.RadiusServerAddress = radiusServerAddress;
                 }
 
-                if (vpnServerConfiguration.RadiusServerSecret != null)
+                if (radiusServerSecret != null)
                 {
                     vpnServerConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(radiusServerSecret);
                 }
