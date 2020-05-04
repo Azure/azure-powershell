@@ -12,7 +12,7 @@ Gets a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
-### GetByNameParameterSet
+### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

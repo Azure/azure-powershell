@@ -291,48 +291,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestTemplateShowsErrorMessage()
-        {
-            Uri templateUri = new Uri("http://templateuri.microsoft.com");
-            Deployment deploymentFromValidate = new Deployment();
-            PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
-            {
-                ScopeType = DeploymentScopeType.ResourceGroup,
-                ResourceGroupName = resourceGroupName,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = templateFile,
-            };
-            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(true)));
-
-            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() =>
-                {
-                    var result = CreateAzureOperationResponse(new DeploymentValidateResult
-                    (
-                        new ErrorResponse(
-                            code: "404",
-                            message: "Awesome error message",
-                            details: new List<ErrorResponse>{
-                                new ErrorResponse(
-                                    code: "SubError",
-                                    message: "Sub error message")
-                            })
-                    ));
-                    result.Response = new System.Net.Http.HttpResponseMessage();
-                    result.Response.StatusCode = HttpStatusCode.NotFound;
-
-                    return result;
-                }))
-                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
-
-            IEnumerable<PSResourceManagerError> error = resourcesClient.ValidateDeployment(parameters);
-            Assert.Single(error);
-            Assert.Single(error.ElementAtOrDefault(0).Details);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTemplateShowsSuccessMessage()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
@@ -350,7 +308,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 {
-                    var result = CreateAzureOperationResponse(new DeploymentValidateResult(null));
+
+                    var result = CreateAzureOperationResponse(new DeploymentValidateResult{});
 
                     result.Response = new System.Net.Http.HttpResponseMessage();
                     result.Response.StatusCode = HttpStatusCode.OK;
@@ -874,7 +833,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         mode: DeploymentMode.Incremental,
                         provisioningState: "Succeeded")))));
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult(new ErrorResponse()))))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult{})))
                 .Callback((string resourceGroup, string deployment, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(resourceGroupparameters.ResourceGroupName, new List<GenericResourceExpanded>() {
                 CreateGenericResource(null, null, "website") });
@@ -992,7 +951,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<DeploymentValidateResult>()
                 {
-                    Body = new DeploymentValidateResult(new ErrorResponse())
+                    Body = new DeploymentValidateResult {}
                 }
             ))
             .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders,

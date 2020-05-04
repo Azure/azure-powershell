@@ -12,7 +12,7 @@ Waits for a Synapse Analytics Spark job to complete.
 
 ## SYNTAX
 
-### WaitSparkJobByIdParameterSet
+### WaitSparkJobByIdParameterSet (Default)
 ```
 Wait-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -LivyId <Int32>
  [-WaitIntervalInSeconds <Int32>] [-TimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>]

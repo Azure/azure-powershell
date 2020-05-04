@@ -137,7 +137,12 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificatePassword = CertificatePassword,
                     SecurityProfile = SecurityProfile,
                     DisksPerWorkerNode = DisksPerWorkerNode,
-                    MinSupportedTlsVersion = MinSupportedTlsVersion
+                    MinSupportedTlsVersion = MinSupportedTlsVersion,
+                    AssignedIdentity = AssignedIdentity,
+                    EncryptionAlgorithm = EncryptionAlgorithm,
+                    EncryptionKeyName = EncryptionKeyName,
+                    EncryptionKeyVersion = EncryptionKeyVersion,
+                    EncryptionVaultUri = EncryptionVaultUri
                 };
                 foreach (
                     var storageAccount in
@@ -192,6 +197,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 SecurityProfile = value.SecurityProfile;
                 DisksPerWorkerNode = value.DisksPerWorkerNode;
                 MinSupportedTlsVersion = value.MinSupportedTlsVersion;
+                AssignedIdentity = value.AssignedIdentity;
+                EncryptionAlgorithm = value.EncryptionAlgorithm;
+                EncryptionKeyName = value.EncryptionKeyName;
+                EncryptionKeyVersion = value.EncryptionKeyVersion;
+                EncryptionVaultUri = value.EncryptionVaultUri;
 
                 foreach (
                     var storageAccount in
@@ -358,8 +368,23 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the minimal supported TLS version.")]
         public string MinSupportedTlsVersion { get; set; }
 
-        #endregion
+        [Parameter(HelpMessage = "Gets or sets the assigned identity.")]
+        public string  AssignedIdentity { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
+        [ValidateSet(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        public string EncryptionAlgorithm { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
+        public string EncryptionKeyName { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption key version.")]
+        public string EncryptionKeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption vault uri.")]
+        public string EncryptionVaultUri { get; set; }
+
+        #endregion
 
         public NewAzureHDInsightClusterCommand()
         {
@@ -475,6 +500,26 @@ namespace Microsoft.Azure.Commands.HDInsight
                     {
                         DisksPerNode = DisksPerWorkerNode
                     }
+                };
+            }
+
+            if (EncryptionKeyName != null && EncryptionKeyVersion != null && EncryptionVaultUri !=null && AssignedIdentity != null)
+            {
+                parameters.ClusterIdentity = new ClusterIdentity
+                {
+                    Type = ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>
+                    {
+                        { AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+                parameters.DiskEncryptionProperties = new DiskEncryptionProperties()
+                {
+                    KeyName = EncryptionKeyName,
+                    KeyVersion = EncryptionKeyVersion,
+                    VaultUri = EncryptionVaultUri,
+                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOAEP,
+                    MsiResourceId = AssignedIdentity
                 };
             }
 

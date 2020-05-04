@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.1.1 
 * Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
 The following cmdlets are added: 
     New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 

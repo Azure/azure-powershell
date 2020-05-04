@@ -26,7 +26,8 @@ Get-AzApiManagementAuthorizationServer [-ServerId <String>] -ResourceId <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzApiManagementAuthorizationServer** cmdlet gets all Azure API Management authorization servers or specified authorization servers.
+The **Get-AzApiManagementAuthorizationServer** cmdlet gets all Azure API Management authorization servers or specified authorization server.
+ClientSecret will not be included into result details. To get client secret, use **Get-AzApiManagementAuthorizationServerClientSecret**.
 
 ## EXAMPLES
 
@@ -41,7 +42,7 @@ This command gets all API Management authorization servers.
 ### Example 2: Get a specified authorization server
 ```
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext -ServerId "0123456789"
+PS C:\>Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
 This command gets the specified authorization server.

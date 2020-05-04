@@ -12,17 +12,17 @@ Starts a Synapse Analytics Spark session.
 
 ## SYNTAX
 
-### CreateByParentObjectParameterSet
+### CreateByNameParameterSet (Default)
 ```
-Start-AzSynapseSparkSession -SparkPoolObject <PSSynapseSparkPool> [-Language <String>] -Name <String>
- [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
+Start-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-Language <String>] -Name <String>
+ [-ReferenceFile <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### CreateByNameParameterSet
+### CreateByParentObjectParameterSet
 ```
-Start-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-Language <String>] -Name <String>
- [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
+Start-AzSynapseSparkSession -SparkPoolObject <PSSynapseSparkPool> [-Language <String>] -Name <String>
+ [-ReferenceFile <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -155,11 +155,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReferenceFiles
-Additional files used for reference in the main definition file.
-Comma-separated storage URI list.
-e.g.
-"abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/"
+### -ReferenceFile
+Additional files used for reference in the main definition file. Comma-separated storage URI list. e.g. "abfss://filesystem@account.dfs.core.windows.net/file1.txt,abfss://filesystem@account.dfs.core.windows.net/result/"
 
 ```yaml
 Type: System.String[]

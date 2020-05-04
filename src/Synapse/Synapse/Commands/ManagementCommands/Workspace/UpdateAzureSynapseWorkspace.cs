@@ -6,9 +6,11 @@ using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Management.Automation;
+using SecureString = System.Security.SecureString;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -46,6 +48,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.Tag)]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = HelpMessages.SqlAdministratorLoginPassword)]
+        [ValidateNotNull]
+        public SecureString SqlAdministratorLoginPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -87,6 +94,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
 
             existingWorkspace.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingWorkspace.Tags;
+            existingWorkspace.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : existingWorkspace.SqlAdministratorLoginPassword;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {

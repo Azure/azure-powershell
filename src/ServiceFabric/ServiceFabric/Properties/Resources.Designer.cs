@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to retrieve the certificate object form keyvault {0}, with name {1} and version {2}. This might mean the certificate is not managed, please use -Thumbprint parameter to specify the thumbprint corresponding to the secret identifier..
+        /// </summary>
+        internal static string CerObjectNotInBundle {
+            get {
+                return ResourceManager.GetString("CerObjectNotInBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Certificate common name mistmatch the name provided is: &apos;{0}&apos; and the common name found in the certificate is: &apos;{1}&apos;. Please make sure you&apos;re using the correct certificate and common name..
         /// </summary>
         internal static string CertificateCommonNameMismatch {
@@ -219,6 +228,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string CertificateMixTPAndCN {
             get {
                 return ResourceManager.GetString("CertificateMixTPAndCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The thumprint provided &apos;{0}&apos; is different from the thumbprint &apos;{1}&apos; for certificate {2} version {3} in keyvault {4}..
+        /// </summary>
+        internal static string CertificateThumbprintMismatch {
+            get {
+                return ResourceManager.GetString("CertificateThumbprintMismatch", resourceCulture);
             }
         }
         

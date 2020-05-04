@@ -30,6 +30,29 @@ function Generate-StorageAccountName([string] $prefix="psstorage"){
 
 <#
 .SYNOPSIS
+Get service principal id
+#>
+function Get-PrincipalObjectId{
+	return [Commands.HDInsight.Test.ScenarioTests.TestHelper]::GetServicePrincipalObjectId()
+}
+
+<#
+.SYNOPSIS
+Add key to vault.
+#>
+function Create-KeyIdentity{
+	param(
+		[string] $resourceGroupName="group-ps-cmktest",
+		[string] $vaultName="vault-ps-cmktest",
+		[string] $keyName="key-ps-cmktest"
+		)
+	$vault = [Commands.HDInsight.Test.ScenarioTests.TestHelper]::GetVault($resourceGroupName,$vaultName)
+	$keyIdentity = [Commands.HDInsight.Test.ScenarioTests.TestHelper]::GenerateVaultKey($vault,$keyName)
+	return $keyIdentity
+}
+
+<#
+.SYNOPSIS
 Create cluster
 #>
 function Create-Cluster{
@@ -39,7 +62,11 @@ function Create-Cluster{
       [string] $resourceGroupName="group-ps-test",
       [string] $clusterType="Spark",
       [string] $storageAccountName="storagepstest",
-      [string] $minSupportedTlsVersion="1.2"
+      [string] $minSupportedTlsVersion="1.2",
+      [bool] $enableCMK=$false,
+      [string] $assignedIdentityName="ami-ps-cmktest",
+	  [string] $vaultName="vault-ps-cmktest",
+	  [string] $keyName="key-ps-cmktest"
     )
 
     $clusterName=Generate-Name($clusterName)
@@ -64,9 +91,35 @@ function Create-Cluster{
     
     $clusterSizeInNodes=2
 
-    $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
-             -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
-             -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential -MinSupportedTlsVersion $minSupportedTlsVersion
+    if($enableCMK)
+    {
+        # new user-assigned identity
+        $assignedIdentity= New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $assignedIdentityName
+        $assignedIdentityId=$assignedIdentity.Id
+        # new key-vault 
+        $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
+        $principalId = Get-PrincipalObjectId
+        # add access police for key-vault
+        $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $principalId -PermissionsToKeys create,import,delete,list -PermissionsToSecrets Get,Set -PermissionsToCertificates Get,List
+        $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys Get,UnwrapKey,WrapKey -PermissionsToSecrets Get,Set,Delete
+        # new key identity
+        $encryptionKey=Create-KeyIdentity -resourceGroupName $resourceGroupName -vaultName  $vaultName -keyName $keyName
+        $encryptionVaultUri=$encryptionKey.Vault
+        $encryptionKeyVersion=$encryptionKey.Version
+        $encryptionKeyName=$encryptionKey.Name
+        # new hdi cluster with cmk
+        $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
+        -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
+        -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential  `
+        -AssignedIdentity $assignedIdentityId -EncryptionKeyName $encryptionKeyName -EncryptionKeyVersion $encryptionKeyVersion `
+        -EncryptionVaultUri $encryptionVaultUri
+    }
+    else
+    {
+        $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
+        -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
+        -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential -MinSupportedTlsVersion $minSupportedTlsVersion
+    }
 
     return $cluster
 }
