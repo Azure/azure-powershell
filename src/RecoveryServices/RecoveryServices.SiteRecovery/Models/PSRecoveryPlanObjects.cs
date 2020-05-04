@@ -298,6 +298,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public IList<ASRRecoveryPlanAction> StartGroupActions { get; set; }
     }
 
+    //
+    // Summary:
+    //     Recovery plan A2A specific details.
+    public class ASRRecoveryPlanA2ADetails
+    {      
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanA2ADetails class.
+        //
+        // Parameters:
+        //   primaryZone:
+        //     The primary zone.
+        //
+        //   recoveryZone:
+        //     The recovery zone.
+        public ASRRecoveryPlanA2ADetails(string primaryZone, string recoveryZone)
+        {
+            this.PrimaryZone = primaryZone;
+            this.RecoveryZone = recoveryZone;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the primary zone.
+        public string PrimaryZone { get; set; }
+        
+        //
+        // Summary:
+        //     Gets or sets the recovery zone.
+        public string RecoveryZone { get; set; }
+    }
+
     /// <summary>
     ///     Azure Site Recovery Recovery Plan.
     /// </summary>
@@ -354,6 +386,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         groupName,
                         recoveryPlanGroup,
                         replicationProtectedItems));
+            }
+
+            if (recoveryPlan.Properties.ProviderSpecificDetails != null &&
+                recoveryPlan.Properties.ProviderSpecificDetails.Count > 0)
+            {
+                this.ProviderSpecificDetails = new List<ASRRecoveryPlanA2ADetails>();
+                foreach (var providerSpecificDetails in recoveryPlan.Properties.ProviderSpecificDetails)
+                {
+                    if (providerSpecificDetails is RecoveryPlanA2ADetails)
+                    {
+                        var a2aProviderDetails = (RecoveryPlanA2ADetails)providerSpecificDetails;
+                        var psd = new ASRRecoveryPlanA2ADetails(
+                            a2aProviderDetails.PrimaryZone,
+                            a2aProviderDetails.RecoveryZone);
+
+                        this.ProviderSpecificDetails.Add(psd);
+                    }
+                }
             }
 
             this.ReplicationProvider = recoveryPlan.Properties.ReplicationProviders;
@@ -431,6 +481,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets ID.
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Provider Specific Details
+        /// </summary>
+        public List<ASRRecoveryPlanA2ADetails> ProviderSpecificDetails { get; set; }
 
         #endregion
     }
