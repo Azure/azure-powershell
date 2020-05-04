@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSResourceManagerError
     {
+        private const char Whitespace = ' ';
+
         public string Code { get; set; }
 
         public string Message { get; set; }
@@ -25,5 +29,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string Target { get; set; }
 
         public List<PSResourceManagerError> Details { get; set; }
+
+        public string ToFormattedString(int level = 0)
+        {
+            if (this.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, this.Message, this.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (PSResourceManagerError detail in this.Details)
+            {
+                errorDetail += GetIndentation(level) + detail.ToFormattedString(level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, this.Message, this.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(Whitespace, l * 2).Append(" - ").ToString();
+        }
     }
 }

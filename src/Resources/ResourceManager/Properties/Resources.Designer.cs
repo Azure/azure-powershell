@@ -232,8 +232,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} (Code: {1});
-        ///{2};.
+        ///   Looks up a localized string similar to {0} (Code: {1})
+        ///{2}.
         /// </summary>
         internal static string DeploymentOperationErrorMessage {
             get {
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed. Showing {1} out of {2} error(s)..
+        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed with error(s). Showing {1} out of {2} error(s)..
         /// </summary>
         internal static string DeploymentOperationOuterError {
             get {
@@ -262,18 +262,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Status Message: {0}.
         /// </summary>
-        internal static string DeploymentOperationStatusMessage {
+        internal static string DeploymentOperationResultError {
             get {
-                return ResourceManager.GetString("DeploymentOperationStatusMessage", resourceCulture);
+                return ResourceManager.GetString("DeploymentOperationResultError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Target: {0}; {1}.
+        ///   Looks up a localized string similar to Target: {0}.
         /// </summary>
-        internal static string DeploymentOperationTargetInfoInErrror {
+        internal static string DeploymentOperationTargetInfo {
             get {
-                return ResourceManager.GetString("DeploymentOperationTargetInfoInErrror", resourceCulture);
+                return ResourceManager.GetString("DeploymentOperationTargetInfo", resourceCulture);
             }
         }
         

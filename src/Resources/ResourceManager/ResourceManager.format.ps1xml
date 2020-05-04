@@ -265,6 +265,15 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Error</Label>
+                <ScriptBlock>
+                  if ($_.Status.Error -ne $null)
+                  {
+                    $_.Status.Error.ToFormattedString() 
+                  } 
+              </ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Identity</Label>
                 <ScriptBlock>$_.Identity.UserAssignedIdentities.Keys</ScriptBlock>
               </ListItem>
