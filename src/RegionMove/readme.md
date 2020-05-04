@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the RegionMove service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -70,9 +70,9 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
+aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate
 input-file:
-	- $(aks)/regionmovecollection.json
+	- $(this-folder)/regionmovecollection.json
 module-version: 1.0.0
 title: Rms-client
 directive:
@@ -98,6 +98,10 @@ directive:
       alias: ValidateAzResourceMoveDependencies
   - where:
       model-name: MoveResource
+    set:
+       suppress-format: true
+  - where:
+      model-name: OperationStatus
     set:
        suppress-format: true
 ```
