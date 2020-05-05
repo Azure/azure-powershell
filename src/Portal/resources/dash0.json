@@ -1,0 +1,2687 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "colSpan": 2,
+              "rowSpan": 1,
+              "x": 0,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "id",
+                  "value": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AspNetOverviewPinnedPart",
+              "asset": {
+                "idInputName": "id",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "overview"
+            }
+          },
+          "1": {
+            "position": {
+              "colSpan": 2,
+              "rowSpan": 1,
+              "x": 2,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "queryInputs",
+                  "value": {
+                    "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "targetResourceIds",
+                  "isOptional": true
+                },
+                {
+                  "name": "options",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_Azure_Monitoring/PartType/AlertsSummaryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 4,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/ProactiveDetectionAsyncPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "ProactiveDetection"
+            }
+          },
+          "3": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 5,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "ResourceId",
+                  "value": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/QuickPulseButtonSmallPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 6,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 86400000,
+                    "createdTime": "2018-05-04T01:20:33.345Z",
+                    "isInitialTime": true,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "componentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "id",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/WebTestsPinnedPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 7,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 86400000,
+                    "createdTime": "2018-05-08T18:47:35.237Z",
+                    "isInitialTime": true,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  }
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "78ce933e-e864-4b05-a27b-71fd55a6afad"
+                },
+                {
+                  "name": "MainResourceId",
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "isOptional": true
+                },
+                {
+                  "name": "DataModel",
+                  "isOptional": true
+                },
+                {
+                  "name": "UseCallerTimeContext",
+                  "isOptional": true
+                },
+                {
+                  "name": "OverrideSettings",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/ApplicationMapPart",
+              "settings": {
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 8,
+              "y": 0
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod",
+                    "Name": "azure powershell prod",
+                    "LinkedApplicationType": 0,
+                    "ResourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                    "ResourceType": "microsoft.insights/components"
+                  }
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [ "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod" ],
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 86400000,
+                    "createdTime": "2019-01-28T22:14:36.402Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "b93d855f-6e2b-4055-b658-9a6397acfbd4",
+                  "isOptional": true
+                },
+                {
+                  "name": "ViewerMode",
+                  "value": false,
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "microsoft.insights/components",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/NotebookPinnedPart",
+              "viewState": {
+                "content": {
+                  "configurationId": "b93d855f-6e2b-4055-b658-9a6397acfbd4"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "colSpan": 3,
+              "rowSpan": 1,
+              "x": 0,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [ ],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Usage",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 3,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 86400000,
+                    "createdTime": "2018-05-04T01:22:35.782Z",
+                    "isInitialTime": true,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  }
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/UsageUsersOverviewPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "colSpan": 3,
+              "rowSpan": 1,
+              "x": 4,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [ ],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Reliability",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 7,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ResourceId",
+                  "value": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                },
+                {
+                  "name": "DataModel",
+                  "value": {
+                    "version": "1.0.0",
+                    "timeContext": {
+                      "durationMs": 86400000,
+                      "createdTime": "2018-05-04T23:42:40.072Z",
+                      "isInitialTime": false,
+                      "grain": 1,
+                      "useDashboardTimeRange": false
+                    }
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "8a02f7bf-ac0f-40e1-afe9-f0e72cfee77f",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/CuratedBladeFailuresPinnedPart",
+              "isAdapter": true,
+              "asset": {
+                "idInputName": "ResourceId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "failures"
+            }
+          },
+          "11": {
+            "position": {
+              "colSpan": 3,
+              "rowSpan": 1,
+              "x": 8,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [ ],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Responsiveness\r\n",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 11,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ResourceId",
+                  "value": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                },
+                {
+                  "name": "DataModel",
+                  "value": {
+                    "version": "1.0.0",
+                    "timeContext": {
+                      "durationMs": 86400000,
+                      "createdTime": "2018-05-04T23:43:37.804Z",
+                      "isInitialTime": false,
+                      "grain": 1,
+                      "useDashboardTimeRange": false
+                    }
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "2a8ede4f-2bee-4b9c-aed9-2db0e8a01865",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/CuratedBladePerformancePinnedPart",
+              "isAdapter": true,
+              "asset": {
+                "idInputName": "ResourceId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "performance"
+            }
+          },
+          "13": {
+            "position": {
+              "colSpan": 3,
+              "rowSpan": 1,
+              "x": 12,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [ ],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Browser",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "14": {
+            "position": {
+              "colSpan": 1,
+              "rowSpan": 1,
+              "x": 15,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "MetricsExplorerJsonDefinitionId",
+                  "value": "BrowserPerformanceTimelineMetrics"
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 86400000,
+                    "createdTime": "2018-05-08T12:16:27.534Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  }
+                },
+                {
+                  "name": "CurrentFilter",
+                  "value": {
+                    "eventTypes": [ 4, 1, 3, 5, 2, 6, 13 ],
+                    "typeFacets": {
+                    },
+                    "isPermissive": false
+                  }
+                },
+                {
+                  "name": "id",
+                  "value": {
+                    "Name": "azure powershell prod",
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/MetricsExplorerBladePinnedPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "browser"
+            }
+          },
+          "15": {
+            "position": {
+              "colSpan": 2,
+              "rowSpan": 2,
+              "x": 17,
+              "y": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "6b085460-5f21-477e-ba44-1035046e9101",
+                    "ResourceGroup": "azure-ps-prod",
+                    "Name": "azure powershell prod",
+                    "ResourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourcegroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "union pageViews,customEvents\n| where timestamp between(datetime(\"2019-02-01T03:51:36.396Z\")..datetime(\"2019-02-02T03:51:36.396Z\"))\n| where (customDimensions[\"UserAgent\"] == \"AzurePowershell/Az1.0.0\") and (customDimensions[\"ModuleName\"] contains \"Accounts\") \n| summarize Ocurrences=count() by tostring(customDimensions[\"Command\"]) , tostring(customDimensions[\"IsSuccess\"])\n| order by Ocurrences desc\n| render barchart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "customDimensions_Command",
+                      "type": "String"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Ocurrences",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "customDimensions_IsSuccess",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/Microsoft.Portal/dashboards/e31e957a-527c-41ca-ad2f-6927e5d1a70a-dashboard"
+                },
+                {
+                  "name": "PartId",
+                  "value": "19aaf676-d117-40a9-a60d-5d3e74885f36"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "azure powershell prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "16": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 0,
+              "y": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "sessions/count",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 5
+                          },
+                          {
+                            "name": "users/count",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 5
+                          }
+                        ],
+                        "title": "Unique sessions and users",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "F63E510B-6179-4D37-A9FA-C878488E5E7F",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "sessions/count",
+                                  "displayName": "Sessions"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 5,
+                              "color": "#47BDF5"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "users/count",
+                                  "displayName": "Users"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 5,
+                              "color": "#7E58FF"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "72C21308-13A2-4A0B-ABE1-5CCE338AF020",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "191BA50E-4C1F-42E5-91F5-539985E61679",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Unique sessions and users",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        },
+                        "resolvedBladeToOpenOnClick": {
+                          "openBlade": true,
+                          "resolvedBlade": {
+                            "extension": "HubsExtension",
+                            "detailBlade": "ResourceMenuBlade",
+                            "detailBladeInputs": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "segmentationUsers"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "sessions/count",
+                          "aggregationType": 5,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Sessions",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "users/count",
+                          "aggregationType": 5,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Users",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Unique sessions and users",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "parameters": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "menuid": "segmentationUsers"
+                          },
+                          "bladeName": "ResourceMenuBlade",
+                          "extensionName": "HubsExtension",
+                          "options": {
+                            "parameters": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "segmentationUsers"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "17": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 4,
+              "y": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "title": "Failed requests",
+                        "visualization": {
+                          "chartType": 3
+                        },
+                        "metrics": [
+                          {
+                            "resourceMetadata": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "name": "requests/failed",
+                            "metricVisualization": {
+                              "color": "#EC008C"
+                            },
+                            "aggregationType": 1,
+                            "thresholds": [ ]
+                          }
+                        ],
+                        "timespan": {
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "defaultAiChartDivf8db73d5-9917-45a8-a3fb-6fe7518ca8f6",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                                  "type": "microsoft.insights/components",
+                                  "Name": "azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "requests/failed",
+                                  "displayName": "Failed requests"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 1,
+                              "color": "#EC008C"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "",
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Failed requests",
+                          "titleKind": "Auto",
+                          "visualization": {
+                            "chartType": 3
+                          },
+                          "appliedISOGrain": "PT10M"
+                        },
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "resolvedBladeToOpenOnClick": {
+                          "openBlade": true,
+                          "resolvedBlade": {
+                            "extension": "HubsExtension",
+                            "detailBlade": "ResourceMenuBlade",
+                            "detailBladeInputs": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "failures"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "kind": "microsoft.insights/components"
+                          },
+                          "name": "requests/failed",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Failed requests",
+                            "color": "#EC008C"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "chartType": 3,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Failed requests",
+                      "titleKind": 1,
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "parameters": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "menuid": "failures"
+                          },
+                          "bladeName": "ResourceMenuBlade",
+                          "extensionName": "HubsExtension",
+                          "options": {
+                            "parameters": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "failures"
+                            }
+                          }
+                        }
+                      },
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 8,
+              "y": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "title": "Server response time",
+                        "visualization": {
+                          "chartType": 2
+                        },
+                        "metrics": [
+                          {
+                            "resourceMetadata": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "name": "requests/duration",
+                            "metricVisualization": {
+                              "color": "#00BCF2"
+                            },
+                            "aggregationType": 4,
+                            "thresholds": [ ]
+                          }
+                        ],
+                        "timespan": {
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "defaultAiChartDive880de8b-f61a-4ec4-85b6-4b3dbc55a304",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                                  "type": "microsoft.insights/components",
+                                  "Name": "azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "requests/duration",
+                                  "displayName": "Server response time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#00BCF2"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "",
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Server response time",
+                          "titleKind": "Auto",
+                          "visualization": {
+                            "chartType": 2
+                          },
+                          "appliedISOGrain": "PT10M"
+                        },
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "resolvedBladeToOpenOnClick": {
+                          "openBlade": true,
+                          "resolvedBlade": {
+                            "extension": "HubsExtension",
+                            "detailBlade": "ResourceMenuBlade",
+                            "detailBladeInputs": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "performance"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "kind": "microsoft.insights/components"
+                          },
+                          "name": "requests/duration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Server response time",
+                            "color": "#00BCF2"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "chartType": 2,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Server response time",
+                      "titleKind": 1,
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "parameters": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "menuid": "performance"
+                          },
+                          "bladeName": "ResourceMenuBlade",
+                          "extensionName": "HubsExtension",
+                          "options": {
+                            "parameters": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "performance"
+                            }
+                          }
+                        }
+                      },
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "19": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 12,
+              "y": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "browserTimings/networkDuration",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          },
+                          {
+                            "name": "browserTimings/processingDuration",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          },
+                          {
+                            "name": "browserTimings/sendDuration",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          },
+                          {
+                            "name": "browserTimings/receiveDuration",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          }
+                        ],
+                        "title": "Average page load time breakdown",
+                        "visualization": {
+                          "chartType": 3,
+                          "legend": {
+                            "isVisible": true,
+                            "position": 2,
+                            "hideSubtitle": false
+                          },
+                          "axis": {
+                            "x": {
+                              "isVisible": true,
+                              "min": 1525718410877,
+                              "max": 1525804810877,
+                              "axisType": 2
+                            },
+                            "y": {
+                              "isVisible": true,
+                              "axisType": 1
+                            }
+                          },
+                          "timeBrushEnable": false
+                        },
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "showUTCTime": false,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "95612F1C-3DCC-4999-AFEE-DF3F69376260",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "browserTimings/networkDuration",
+                                  "displayName": "Page load network connect time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#7E58FF"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "browserTimings/processingDuration",
+                                  "displayName": "Client processing time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#44F1C8"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "browserTimings/sendDuration",
+                                  "displayName": "Send request time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#EB9371"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "browserTimings/receiveDuration",
+                                  "displayName": "Receiving response time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#0672F1"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "D1ECC366-4E1A-442B-A161-EB4CF09D0365",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "517BF85D-D67F-488B-91E7-8EA0D74CC493",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Average page load time breakdown",
+                          "titleKind": "Custom",
+                          "visualization": {
+                            "chartType": 3,
+                            "legend": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axis": {
+                              "x": {
+                                "isVisible": true,
+                                "min": 1525718410877,
+                                "max": 1525804810877,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "timeBrushEnable": false
+                          },
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "browserTimings/networkDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Page load network connect time",
+                            "color": "#7E58FF"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "browserTimings/processingDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Client processing time",
+                            "color": "#44F1C8"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "browserTimings/sendDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Send request time",
+                            "color": "#EB9371"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "browserTimings/receiveDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Receiving response time",
+                            "color": "#0672F1"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "chartType": 3,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "min": 1525718410877,
+                            "max": 1525804810877,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "title": "Average page load time breakdown",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 0,
+              "y": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "availabilityResults/availabilityPercentage",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          }
+                        ],
+                        "title": "Average availability",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "7DEEAEB2-BCFF-485F-AEF4-C3CC4F214011",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "availabilityResults/availabilityPercentage",
+                                  "displayName": "Availability"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#47BDF5"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "7342AAC7-E3F3-4F4E-AD90-3D68B069C364",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "8DDBAA5B-3420-4C8C-AB37-2886F04EA4E6",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Average availability",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        },
+                        "resolvedBladeToOpenOnClick": {
+                          "openBlade": true,
+                          "resolvedBlade": {
+                            "extension": "HubsExtension",
+                            "detailBlade": "ResourceMenuBlade",
+                            "detailBladeInputs": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "availability"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "availabilityResults/availabilityPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Availability",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Average availability",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "parameters": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                            "menuid": "availability"
+                          },
+                          "bladeName": "ResourceMenuBlade",
+                          "extensionName": "HubsExtension",
+                          "options": {
+                            "parameters": {
+                              "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod",
+                              "menuid": "availability"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "21": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 4,
+              "y": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "exceptions/server",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 4
+                          },
+                          {
+                            "name": "dependencies/failed",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 4
+                          }
+                        ],
+                        "title": "Server exceptions and Dependency failures",
+                        "visualization": {
+                          "chartType": 2,
+                          "legend": {
+                            "isVisible": true,
+                            "position": 2,
+                            "hideSubtitle": false
+                          },
+                          "axis": {
+                            "x": {
+                              "isVisible": true,
+                              "min": 1525718630151,
+                              "max": 1525805030151,
+                              "axisType": 2
+                            },
+                            "y": {
+                              "isVisible": true,
+                              "axisType": 1
+                            }
+                          },
+                          "timeBrushEnable": false
+                        },
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "6B50DB1D-F1FC-4DB1-9187-992C0675A9D3",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "exceptions/server",
+                                  "displayName": "Server exceptions"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 1,
+                              "color": "#47BDF5"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "dependencies/failed",
+                                  "displayName": "Dependency failures"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 1,
+                              "color": "#7E58FF"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "920358FC-7233-4A12-98B5-F7A03B97790B",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "593B996E-ECE7-49C0-BFD8-064992A98E38",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Server exceptions and Dependency failures",
+                          "titleKind": "Custom",
+                          "visualization": {
+                            "chartType": 2,
+                            "legend": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axis": {
+                              "x": {
+                                "isVisible": true,
+                                "min": 1525718630151,
+                                "max": 1525805030151,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "timeBrushEnable": false
+                          },
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "exceptions/server",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Server exceptions",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "dependencies/failed",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Dependency failures",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "min": 1525718630151,
+                            "max": 1525805030151,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "title": "Server exceptions and Dependency failures",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "22": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 8,
+              "y": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "performanceCounters/processorCpuPercentage",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          },
+                          {
+                            "name": "performanceCounters/processCpuPercentage",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          }
+                        ],
+                        "title": "Average processor and process CPU utilization",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "18A8F0B9-C18C-461A-AB7C-DFB7CC92DCE8",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "performanceCounters/processorCpuPercentage",
+                                  "displayName": "Processor time"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#47BDF5"
+                            },
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "performanceCounters/processCpuPercentage",
+                                  "displayName": "Process CPU"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#7E58FF"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "BBA3CCB9-FCE1-4153-9E1C-A919FF875A6A",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "99369564-95A4-404B-922F-A4FD36533C0E",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Average processor and process CPU utilization",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "performanceCounters/processorCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Processor time",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "performanceCounters/processCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Process CPU",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Average processor and process CPU utilization",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "23": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 12,
+              "y": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "exceptions/browser",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 4
+                          }
+                        ],
+                        "title": "Browser exceptions",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "B182E74B-0020-409C-98AA-CD9749A66AD9",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "exceptions/browser",
+                                  "displayName": "Browser exceptions"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 1,
+                              "color": "#47BDF5"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "24FF345D-6D4C-4C59-A33A-92D7D30E2F20",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "78A3AE2F-527E-4AA6-8C6F-90AF9B74BD8C",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Browser exceptions",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "exceptions/browser",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Browser exceptions",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Browser exceptions",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "24": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 0,
+              "y": 8
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "availabilityResults/count",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 4
+                          }
+                        ],
+                        "title": "Availability test results count",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "DDFC8BE0-40EA-4258-9D13-54DAFDF13BC1",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "availabilityResults/count",
+                                  "displayName": "Availability test results count"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 1,
+                              "color": "#47BDF5"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "1C7DD9E8-7EC1-45C8-89AD-96AF452BE631",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "EEDB7723-1BEA-4BCE-BAF0-9F2B380B241A",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Availability test results count",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "availabilityResults/count",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Availability test results count",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Availability test results count",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "25": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 4,
+              "y": 8
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "performanceCounters/processIOBytesPerSecond",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          }
+                        ],
+                        "title": "Average process I/O rate",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "DF2F2F9E-CCF9-4C5C-ACD2-3ED15E996C2C",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "performanceCounters/processIOBytesPerSecond",
+                                  "displayName": "Process IO rate"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#47BDF5"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "A099331A-F236-4F7A-93EE-3ACE8E840D28",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "8B4373CD-62E0-4398-9C88-4C214D41430F",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Average process I/O rate",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "performanceCounters/processIOBytesPerSecond",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Process IO rate",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Average process I/O rate",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "26": {
+            "position": {
+              "colSpan": 4,
+              "rowSpan": 3,
+              "x": 8,
+              "y": 8
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "charts": [
+                      {
+                        "metrics": [
+                          {
+                            "name": "performanceCounters/memoryAvailableBytes",
+                            "resourceMetadata": {
+                              "resourceId": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                            },
+                            "aggregationType": 1
+                          }
+                        ],
+                        "title": "Average available memory",
+                        "timeContext": {
+                          "options": {
+                            "useDashboardTimeRange": false,
+                            "grain": 1,
+                            "appliedISOGrain": "PT10M"
+                          },
+                          "relative": {
+                            "duration": 86400000
+                          }
+                        },
+                        "itemDataModel": {
+                          "id": "0A30746D-3E3A-4303-B18A-85AA1221A6C6",
+                          "chartHeight": 1,
+                          "metrics": [
+                            {
+                              "id": {
+                                "resourceDefinition": {
+                                  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                                },
+                                "name": {
+                                  "id": "performanceCounters/memoryAvailableBytes",
+                                  "displayName": "Available memory"
+                                },
+                                "namespace": {
+                                  "name": "microsoft.insights/components/kusto"
+                                }
+                              },
+                              "metricAggregation": 4,
+                              "color": "#47BDF5"
+                            }
+                          ],
+                          "priorPeriod": false,
+                          "horizontalBars": true,
+                          "showOther": false,
+                          "aggregation": 1,
+                          "percentage": false,
+                          "palette": "multiColor",
+                          "jsonDefinitionId": "3665459C-EB96-46AA-A6AB-25E0746AD158",
+                          "filters": {
+                            "filterType": 0,
+                            "id": "BB46DEA1-1DDE-4CC9-9B99-045CD9468E39",
+                            "OperandFilters": [ ],
+                            "LogicalOperator": 0
+                          },
+                          "yAxisOptions": {
+                            "options": 1
+                          },
+                          "title": "Average available memory",
+                          "titleKind": "Custom",
+                          "appliedISOGrain": "PT10M"
+                        }
+                      }
+                    ],
+                    "v2charts": true
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "binding": "timeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/microsoft.insights/components/azure powershell prod"
+                          },
+                          "name": "performanceCounters/memoryAvailableBytes",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components/kusto",
+                          "metricVisualization": {
+                            "displayName": "Available memory",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "visualization": {
+                        "disablePinning": true,
+                        "axisVisualization": {
+                          "y": {
+                            "isVisible": true
+                          }
+                        }
+                      },
+                      "title": "Average available memory",
+                      "titleKind": 2,
+                      "filterCollection": {
+                        "filters": [ ]
+                      }
+                    }
+                  },
+                  "sharedTimeRange": {
+                    "relative": {
+                      "duration": 24,
+                      "timeUnit": 1
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "48h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 48 hours"
+              },
+              "filteredPartIds": [ "StartboardPart-ApplicationMapPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0d2", "StartboardPart-AnalyticsPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0d6", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0e8", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0ea", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0ec", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0ee", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0f0", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0f2", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0f4", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0f6", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0f8", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0fa", "StartboardPart-MonitorChartPart-7f17bf6d-c6bc-4ad8-b117-85d7f5c5a0fc" ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "e31e957a-527c-41ca-ad2f-6927e5d1a70a-dashboard",
+  "type": "Microsoft.Portal/dashboards",
+  "id": "/subscriptions/6b085460-5f21-477e-ba44-1035046e9101/resourceGroups/azure-ps-prod/providers/Microsoft.Portal/dashboards/e31e957a-527c-41ca-ad2f-6927e5d1a70a-dashboard",
+  "location": "South Central US",
+  "tags": {
+    "hidden-title": "azure powershell prod Dashboard"
+  }
+}
