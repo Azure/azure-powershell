@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedService", SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
-    class SetAzureOperationalInsightsLinkedServiceCommand : OperationalInsightsBaseCmdlet
+    public class SetAzureOperationalInsightsLinkedServiceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The resource group name.")]

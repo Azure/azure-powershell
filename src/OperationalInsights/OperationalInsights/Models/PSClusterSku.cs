@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterSku
     {
-        public PSClusterSku(string name, long? capacity = default(long?))
+        public PSClusterSku(string name, long? capacity = 1000)
         {
             Capacity = capacity;
             Name = string.IsNullOrEmpty(name) ? "CapacityReservation" : name;
