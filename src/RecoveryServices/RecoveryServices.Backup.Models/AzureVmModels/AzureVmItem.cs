@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
