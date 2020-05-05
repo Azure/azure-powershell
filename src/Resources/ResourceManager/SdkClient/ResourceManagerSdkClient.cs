@@ -1678,7 +1678,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 .ForEach(m => sb
                     .AppendLine()
                     .AppendFormat(ProjectResources.DeploymentOperationResultError, m
-                            .ToPSResourceManagerError()
                             .ToFormattedString())
                     .AppendLine());
 
