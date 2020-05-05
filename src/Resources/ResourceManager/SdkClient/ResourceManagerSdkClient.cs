@@ -252,20 +252,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             operations = new List<DeploymentOperation>();
 
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
-            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment);
 
-            return this.WaitDeploymentStatus(
+            var deploymentOperationError = new DeploymentOperationErrorInfo();
+
+            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
+
+            var deploymentExtended =  this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
+                deploymentOperationError,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
+
+            if (deploymentOperationError.ErrorMessages.Count > 0)
+            {
+                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId(parameters.DeploymentName));
+            }
+
+            return deploymentExtended;
         }
 
-        private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment, DeploymentOperationErrorInfo deploymentOperationError)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
-            const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
             var result = this.ListDeploymentOperations(parameters);
@@ -298,61 +308,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    string errorMessage = operation.Properties.StatusMessage.ToString();
-
-                    if (operation.Properties.TargetResource != null)
-                    {
-                        statusMessage = string.Format(failureStatusFormat,
-                            operation.Properties.TargetResource.ResourceType,
-                            operation.Properties.TargetResource.ResourceName,
-                            errorMessage);
-
-                        WriteError(statusMessage);
-                    }
-                    else
-                    {
-                        WriteError(errorMessage);
-                    }
-
-                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
-
-                    if (detailedMessage != null && detailedMessage.Count > 0)
-                    {
-                        detailedMessage.ForEach(s => WriteError(s));
-                    }
+                    deploymentOperationError.ProcessError(operation);                   
                 }
             }
         }
-
-        public static List<string> ParseDetailErrorMessage(string statusMessage)
-        {
-            if (!string.IsNullOrEmpty(statusMessage))
-            {
-                List<string> detailedMessage = new List<string>();
-                try
-                {
-                    dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
-                    if (errorMessage.error != null && errorMessage.error.details != null)
-                    {
-                        foreach (var detail in errorMessage.error.details)
-                        {
-                            detailedMessage.Add(detail.message.ToString());
-                        }
-                    }
-                }
-                catch
-                {
-                    //statusMessage is not always a valid JSON. It can sometimes be a string, which can result is DeserializeObject exception above in try
-                    detailedMessage.Add(statusMessage);
-                }
-                return detailedMessage;
-            }
-            return null;
-        }
-
+        
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,
+            DeploymentOperationErrorInfo deploymentOperationError,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -383,6 +347,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
+                    deploymentOperationError.SetRequestIdFromResponseHeaders(getResult.Response);
+
                     deployment = getResult.Body;
                     var response = getResult.Response;
                     if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
@@ -538,6 +504,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             deployment.Location = parameters.Location;
+            deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>(parameters.Tags);
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
             return deployment;
@@ -689,7 +656,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private void BeginDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
-            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+            var scopedDeployment = new ScopedDeployment
+            {
+                Properties = deployment.Properties,
+                Location = deployment.Location,
+                Tags = deployment?.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
+            };
 
             switch (parameters.ScopeType)
             {
@@ -1390,6 +1362,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             this.BeginDeployment(parameters, deployment);
 
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
+
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
@@ -1611,7 +1584,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public virtual IEnumerable<PSResource> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
         {
-            return new GenericPageEnumerable<GenericResource>(
+            return new GenericPageEnumerable<GenericResourceExpanded>(
                 delegate ()
                 {
                     return ResourceManagementClient.Resources.List(filter);
@@ -1624,7 +1597,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             ulong first = ulong.MaxValue,
             ulong skip = ulong.MinValue)
         {
-            return new GenericPageEnumerable<GenericResource>(
+            return new GenericPageEnumerable<GenericResourceExpanded>(
                 delegate ()
                 {
                     return ResourceManagementClient.Resources.ListByResourceGroup(resourceGroupName, filter);

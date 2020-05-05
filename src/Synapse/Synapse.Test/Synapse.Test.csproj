@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Synapse</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Synapse" Version="0.1.0-preview.2" />
+    <PackageReference Include="Microsoft.Azure.Synapse" Version="0.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="14.5.0" />
+  </ItemGroup>
+
+</Project>

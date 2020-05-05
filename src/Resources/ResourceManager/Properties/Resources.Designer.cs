@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CorrelationId: {0}.
+        /// </summary>
+        internal static string DeploymentCorrelationId {
+            get {
+                return ResourceManager.GetString("DeploymentCorrelationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist at management group &apos;{1}&apos;..
         /// </summary>
         internal static string DeploymentDoesntExistAtManagementGroupScope {
@@ -219,6 +228,52 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string DeploymentDoesntExistInResourceGroup {
             get {
                 return ResourceManager.GetString("DeploymentDoesntExistInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (Code: {1});
+        ///{2};.
+        /// </summary>
+        internal static string DeploymentOperationErrorMessage {
+            get {
+                return ResourceManager.GetString("DeploymentOperationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (Code:{1}).
+        /// </summary>
+        internal static string DeploymentOperationErrorMessageNoDetails {
+            get {
+                return ResourceManager.GetString("DeploymentOperationErrorMessageNoDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed. Showing {1} out of {2} error(s)..
+        /// </summary>
+        internal static string DeploymentOperationOuterError {
+            get {
+                return ResourceManager.GetString("DeploymentOperationOuterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status Message: {0}.
+        /// </summary>
+        internal static string DeploymentOperationStatusMessage {
+            get {
+                return ResourceManager.GetString("DeploymentOperationStatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target: {0}; {1}.
+        /// </summary>
+        internal static string DeploymentOperationTargetInfoInErrror {
+            get {
+                return ResourceManager.GetString("DeploymentOperationTargetInfoInErrror", resourceCulture);
             }
         }
         
@@ -336,6 +391,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string FileAlreadyExists1 {
             get {
                 return ResourceManager.GetString("FileAlreadyExists1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment failed with errors..
+        /// </summary>
+        internal static string GenericDeploymentFailedWithErrors {
+            get {
+                return ResourceManager.GetString("GenericDeploymentFailedWithErrors", resourceCulture);
             }
         }
         

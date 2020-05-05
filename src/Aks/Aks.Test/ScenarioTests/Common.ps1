@@ -14,11 +14,20 @@
 
 <#
 .SYNOPSIS
-Gets container registry name
+Gets container service name
 #>
 function Get-RandomClusterName
 {
     return 'kube' + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Gets container registry name
+#>
+function Get-RandomRegistryName
+{
+    return 'acr' + (getAssetName)
 }
 
 <#
@@ -30,7 +39,7 @@ function Get-RandomResourceGroupName
     return 'rg' + (getAssetName)
 }
 
-function isLive
+function IsLive
 {
 	return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
 }

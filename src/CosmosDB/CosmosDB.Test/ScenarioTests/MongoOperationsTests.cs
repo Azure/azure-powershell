@@ -40,5 +40,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoOperationsCmdletsUsingInputObject");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoThroughputCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoThroughputCmdlets");
+        }
     }
 }

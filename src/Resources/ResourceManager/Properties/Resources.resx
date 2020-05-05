@@ -462,4 +462,26 @@
   <data name="DeploymentScriptShouldProcessString" xml:space="preserve">
     <value>Save script execution log to disk.</value>
   </data>
+  <data name="DeploymentOperationErrorMessage" xml:space="preserve">
+    <value>{0} (Code: {1});
+{2};</value>
+  </data>
+  <data name="DeploymentOperationOuterError" xml:space="preserve">
+    <value>The deployment '{0}' failed. Showing {1} out of {2} error(s).</value>
+  </data>
+  <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
+    <value>{0} (Code:{1})</value>
+  </data>
+  <data name="DeploymentCorrelationId" xml:space="preserve">
+    <value>CorrelationId: {0}</value>
+  </data>
+  <data name="DeploymentOperationTargetInfoInErrror" xml:space="preserve">
+    <value>Target: {0}; {1}</value>
+  </data>
+  <data name="GenericDeploymentFailedWithErrors" xml:space="preserve">
+    <value>Deployment failed with errors.</value>
+  </data>
+  <data name="DeploymentOperationStatusMessage" xml:space="preserve">
+    <value>Status Message: {0}</value>
+  </data>
 </root>

@@ -19,8 +19,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFileShare to AzureStorageFileShare, and AzureStorageFileShare will have CloudFileShare as a child property.")]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(

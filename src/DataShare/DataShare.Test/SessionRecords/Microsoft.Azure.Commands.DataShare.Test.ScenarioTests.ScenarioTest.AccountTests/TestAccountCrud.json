@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -19,7 +19,7 @@
       "ResponseBody": "",
       "ResponseHeaders": {
         "Location": [
-          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-11-01-preview"
+          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2019-11-01"
         ],
         "Content-Length": [
           "0"
@@ -64,8 +64,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvb3BlcmF0aW9ucmVzdWx0cy9leUpxYjJKSlpDSTZJbEpGVTA5VlVrTkZSMUpQVlZCRVJVeEZWRWxQVGtwUFFpMVRSRXRVUlZOVVNVNUhRVVJHVWtjME56RXlMVmRGVTFSVlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTgtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvb3BlcmF0aW9ucmVzdWx0cy9leUpxYjJKSlpDSTZJbEpGVTA5VlVrTkZSMUpQVlZCRVJVeEZWRWxQVGtwUFFpMVRSRXRVUlZOVVNVNUhRVVJHVWtjME56RXlMVmRGVTFSVlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -91,7 +91,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-11-01-preview"
+          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2019-11-01"
         ],
         "Retry-After": [
           "15"
@@ -118,8 +118,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvb3BlcmF0aW9ucmVzdWx0cy9leUpxYjJKSlpDSTZJbEpGVTA5VlVrTkZSMUpQVlZCRVJVeEZWRWxQVGtwUFFpMVRSRXRVUlZOVVNVNUhRVVJHVWtjME56RXlMVmRGVTFSVlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTgtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TREtURVNUSU5HQURGUkc0NzEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvb3BlcmF0aW9ucmVzdWx0cy9leUpxYjJKSlpDSTZJbEpGVTA5VlVrTkZSMUpQVlZCRVJVeEZWRWxQVGtwUFFpMVRSRXRVUlZOVVNVNUhRVVJHVWtjME56RXlMVmRGVTFSVlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -167,8 +167,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Content-Type": [
@@ -229,8 +229,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Content-Type": [
@@ -291,8 +291,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzY/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"identity\": {\"type\":\"SystemAssigned\"}, \"location\": \"WestUS2\"\r\n, \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\"\r\n      }}",
       "RequestHeaders": {

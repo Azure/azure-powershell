@@ -18,6 +18,43 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add -Adjob to get/list account cmdlet
+    - `Get-AzStorageAccount`
+* Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
+    - `Set-AzStorageAccount`
+* Fix remove Azure File Directory fail with pipeline
+    - `Remove-AzStorageDirectory`
+* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
+	- `Update-AzStorageAccountNetworkRuleSet`
+	- `Get-AzStorageAccountNetworkRuleSet`
+* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
+    - `Add-AzStorageAccountNetworkRule`
+* Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
+* When only part items are returned in list DataLake Gen2 Items, add a warning message to remind user to list again with ContinuationToken
+    - `Get-AzDataLakeGen2ChildItem`
+* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Support New or List Kerberos keys of Storage account
+    -  `New-AzStorageAccountKey`
+    -  `Get-AzStorageAccountKey`
+* Support failover Storage account
+    - `Invoke-AzStorageAccountFailover`
+
+## Version 1.14.0
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported DataLake Gen2 
+    - `New-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ChildItem`
+    - `Move-AzDataLakeGen2Item`
+    - `Set-AzDataLakeGen2ItemAclObject`
+    - `Update-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ItemContent`
+    - `Remove-AzDataLakeGen2Item`
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
