@@ -15,10 +15,19 @@ while (-not $mockingPath) {
 
 Describe 'Remove-AzKustoAttachedDatabaseConfiguration' {
     It 'Delete' {
+        $subscriptionId = $env.SubscriptionId
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
+        $clusterName = $env.clusterName
+        $databaseName = "testdatabase" + $env.rstr4
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.followerClusterName
+        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
 
+        New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         { Remove-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName } | Should -Not -Throw
+        Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 }
