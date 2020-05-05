@@ -20,6 +20,7 @@ Describe 'Remove-AzKustoDatabasePrincipal' {
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
         $databasePrincipal = $databasePrincipals[0]
 
-        { Remove-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name = $databasePrincipal.Name; Role = $databasePrincipal.Role; Type = $databasePrincipal.Type; Email = $databasePrincipal.Email }) } | Should -Not -Throw
+        { Remove-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name = $databasePrincipal.Name; Role = $databasePrincipal.Role; Type = $databasePrincipal.Type; Email = $databasePrincipal.Email; AppId = $databasePrincipal.AppId }) } | Should -Not -Throw
+        { Add-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name = $databasePrincipal.Name; Role = $databasePrincipal.Role; Type = $databasePrincipal.Type; Email = $databasePrincipal.Email; AppId = $databasePrincipal.AppId }) } | Should -Not -Throw
     }
 }

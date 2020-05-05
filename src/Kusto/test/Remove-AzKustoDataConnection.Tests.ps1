@@ -20,7 +20,7 @@ Describe 'Remove-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr3
+        $dataConnectionName = $env.dataConnectionName
         $eventhubNS = $env.eventhubNSName
         $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
@@ -29,7 +29,7 @@ Describe 'Remove-AzKustoDataConnection' {
         $dataFormat = $env.dataFormat
         $kind = "EventHub"
 
-        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
-        { Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName } | Should -Not -Throw
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
+        { New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName } | Should -Not -Throw
     }
 }

@@ -28,7 +28,7 @@ Describe 'New-AzKustoDatabase' {
         $name = "testdatabase" + $env.rstr4
         $databaseFullName = $env.clusterName + "/" + $name
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadOnly -HotCachePeriod $hotCachePeriodInDays
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
         Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $hotCachePeriodInDays
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }

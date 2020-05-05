@@ -19,15 +19,16 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr3
         $followerClusterName = $env.followerClusterName
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
+        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
         $databaseName = "testdatabase" + $env.rstr3
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
-        { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
+        { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
         Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 
@@ -36,16 +37,17 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.followerClusterName
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
+        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
         $databaseName = "testdatabase" + $env.rstr4
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-        { Invoke-AzKustoDetachClusterFollowerDatabase -InputObject $cluster -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
+        { Invoke-AzKustoDetachClusterFollowerDatabase -InputObject $cluster -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
         Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 }

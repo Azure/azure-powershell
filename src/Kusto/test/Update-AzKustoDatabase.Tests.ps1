@@ -16,46 +16,58 @@ while (-not $mockingPath) {
 Describe 'Update-AzKustoDatabase' {
     It 'UpdateExpandedReadWrite' {
         $clusterName = $env.clusterName
-        $databaseFullName = $clusterName + "/" + $env.databaseName
+        $databaseName = $env.databaseName
+        $resourceGroupName = $env.resourceGroupName
+        $databaseFullName = $clusterName + "/" + $databaseName
 
-        $softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
-        $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod.Add((New-TimeSpan -Days 1))
+        $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days 1))
 
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $env.databaseName -Location $env.location -Kind "ReadWrite" -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Location $env.location -Kind "ReadWrite" -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location $env.databaseType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 
     It 'UpdateExpandedReadOnlyFollowing' {
         $clusterName = $env.followerClusterName
-        $databaseFullName = $clusterName + "/" + $env.databaseName
+        $resourceGroupName = $env.resourceGroupName
+        $databaseName = $env.databaseName
+        $databaseFullName = $clusterName + "/" + $databaseName
 
-        $softDeletePeriodInDaysUpdated = Get-Soft-Delete-Period-In-Days
-        $hotCachePeriodInDaysUpdated = Get-Hot-Cache-Period-In-Days
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod
+        $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days 1))
 
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $env.databaseName -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location $env.databaseType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 
     It 'UpdateViaIdentityExpandedReadWrite' {
         $clusterName = $env.clusterName
-        $databaseFullName = $clusterName + "/" + $env.databaseName
+        $resourceGroupName = $env.resourceGroupName
+        $databaseName = $env.databaseName
+        $databaseFullName = $clusterName + "/" + $databaseName
 
-        $softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
-        $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod.Add((New-TimeSpan -Days -1))
+        $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days -1))
 
-        $database = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $env.databaseName
+        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
         $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadWrite" -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location $env.databaseType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 
     It 'UpdateViaIdentityExpandedReadOnlyFollowing' {
         $clusterName = $env.followerClusterName
-        $databaseFullName = $clusterName + "/" + $env.databaseName
+        $resourceGroupName = $env.resourceGroupName
+        $databaseName = $env.databaseName
+        $databaseFullName = $clusterName + "/" + $databaseName
 
-        $softDeletePeriodInDaysUpdated = Get-Soft-Delete-Period-In-Days
-        $hotCachePeriodInDaysUpdated = Get-Hot-Cache-Period-In-Days
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod
+        $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days -1))
 
-        $database = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $env.databaseName
+        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
         $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location $env.databaseType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
