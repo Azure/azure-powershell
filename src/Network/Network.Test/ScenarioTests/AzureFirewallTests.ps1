@@ -1360,3 +1360,113 @@ function Test-AzureFirewallPrivateRangeCRUD {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall DNS Proxy
+#>
+function Test-AzureFirewallWithDNSProxy {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $dnsServers = @("10.10.10.1", "20.20.20.2")
+
+    # AzureFirewallNetworkRuleCollection
+    $networkRcName = "networkRc"
+    $networkRcPriority = 200
+    $networkRcActionType = "Deny"
+
+    # AzureFirewallNetworkRule 1
+    $networkRule1Name = "networkRule"
+    $networkRule1Desc = "desc1"
+    $networkRule1SourceAddress1 = "10.0.0.0"
+    $networkRule1SourceAddress2 = "111.1.0.0/24"
+    $networkRule1DestinationAddress1 = "*"
+    $networkRule1Protocol1 = "UDP"
+    $networkRule1Protocol2 = "TCP"
+    $networkRule1Protocol3 = "ICMP"
+    $networkRule1DestinationPort1 = "90"
+
+    # AzureFirewallNetworkRule 2
+    $networkRule2Name = "networkRule2"
+    $networkRule2Desc = "desc2"
+    $networkRule2SourceAddress1 = "10.0.0.0"
+    $networkRule2SourceAddress2 = "111.1.0.0/24"
+    $networkRule2DestinationFqdn1 = "www.bing.com"
+    $networkRule2Protocol1 = "UDP"
+    $networkRule2Protocol2 = "TCP"
+    $networkRule2Protocol3 = "ICMP"
+    $networkRule2DestinationPort1 = "80"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+         # Create Network Rule
+        $networkRule = New-AzFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule.AddProtocol($networkRule1Protocol3)
+
+        # Test handling of incorrect values
+        Assert-ThrowsContains { $networkRule.AddProtocol() } "Cannot find an overload"
+        Assert-ThrowsContains { $networkRule.AddProtocol($null) } "A protocol must be provided"
+        Assert-ThrowsContains { $networkRule.AddProtocol("ABCD") } "Invalid protocol"
+
+        # Create Network Rule Collection
+        $netRc = New-AzFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
+
+        # Create Second Network Rule
+        $networkRule2 = New-AzFirewallNetworkRule -Name $networkRule2Name -Description $networkRule2Desc -Protocol $networkRule2Protocol1, $networkRule2Protocol2 -SourceAddress $networkRule2SourceAddress1, $networkRule2SourceAddress2 -DestinationFqdn $networkRule2DestinationFqdn1 -DestinationPort $networkRule2DestinationPort1
+        $networkRule2.AddProtocol($networkRule2Protocol3)
+
+        # Add this second Network Rule to the rule collection
+        $netRc.AddRule($networkRule2)
+
+        # Create AzureFirewall with DNSProxy enabled and DNS Servers provided
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -DNSEnableProxy true -DNSServers $dnsServers
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+
+        # Check rule collections
+        Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections).Count
+        Assert-AreEqual 2 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count
+
+        # Check DNS Proxy
+        Assert-AreEqual true $getAzureFirewall.DNSEnableProxy
+        Assert-AreEqualArray $dnsServers $getAzureFirewall.DNSServers
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
