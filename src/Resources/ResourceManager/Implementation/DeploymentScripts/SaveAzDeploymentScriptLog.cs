@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -64,10 +65,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
-        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
-        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 3, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         public int Tail { get; set; }
 
         [Parameter(Mandatory = false,
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case SaveDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, this.IsParameterBound(c => c.Tail) ? Tail : 0);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(

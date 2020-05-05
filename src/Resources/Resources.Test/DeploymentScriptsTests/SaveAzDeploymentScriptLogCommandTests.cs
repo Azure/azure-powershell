@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string deploymentScriptName = "myDeploymentScript";
 
+
         public SaveAzDeploymentScriptLogCommandTests(ITestOutputHelper output)
         {
             deploymentScriptsMockClient = new Mock<DeploymentScriptsSdkClient>();
@@ -73,10 +74,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var expectedOutputPath = Path.Combine(TestLogPath, $"{deploymentScriptName}.txt");
 
             deploymentScriptsMockClient
-                .Setup(f => f.GetDeploymentScriptLog(deploymentScriptName, resourceGroupName, null)) //TODO
+                .Setup(f => f.GetDeploymentScriptLog(deploymentScriptName, resourceGroupName, 0))
                 .Returns(expected);
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            
+
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
 

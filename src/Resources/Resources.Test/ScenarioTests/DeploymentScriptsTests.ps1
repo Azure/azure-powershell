@@ -224,9 +224,19 @@ function Test-GetDeploymentScriptLog-PowerShell
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeployment.json -TemplateParameterFile TemplateScriptDeploymentParameters.json
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
+		$TailInteger = 3
 
 		# Test - GetLogByNameAndResourceGroup
 		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName 
+
+		# Assert
+		Assert-NotNull $getLogByNameAndResourceGroup
+		Assert-NotNull $deploymentScriptName $getLogByNameAndResourceGroup.Log
+		Assert-AreEqual $deploymentScriptName $getLogByNameAndResourceGroup.DeploymentScriptName
+
+
+		# Test - GetLogByNameAndResourceGroup - WithTailParameter
+		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName -Tail $TailInteger
 
 		# Assert
 		Assert-NotNull $getLogByNameAndResourceGroup
@@ -241,11 +251,28 @@ function Test-GetDeploymentScriptLog-PowerShell
 		Assert-NotNull $getLogByResourceId
 		Assert-NotNull $deploymentScriptName $getLogByResourceId.Log
 		Assert-AreEqual $deploymentScriptName $getLogByResourceId.DeploymentScriptName
+
+		# Test - GetLogByDeploymentScriptResourceId - WithTailParameter
+		$getLogByResourceId = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId -Tail $TailInteger
+
+		#Assert
+		Assert-NotNull $getLogByResourceId
+		Assert-NotNull $deploymentScriptName $getLogByResourceId.Log
+		Assert-AreEqual $deploymentScriptName $getLogByResourceId.DeploymentScriptName
 	
 
 		#Test - GetLogByInputObject
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
 		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript
+
+		# Assert
+		Assert-NotNull $getLogByInputObject
+		Assert-NotNull $deploymentScriptName $getLogByInputObject.Log
+		Assert-AreEqual $deploymentScriptName $getLogByInputObject.DeploymentScriptName
+
+		#Test - GetLogByInputObject - WithTailParameter
+		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
+		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $TailInteger
 
 		# Assert
 		Assert-NotNull $getLogByInputObject
@@ -279,6 +306,7 @@ function Test-GetDeploymentScriptLog-Cli
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeploymentCli.json -TemplateParameterFile TemplateScriptDeploymentParametersCli.json
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
+		$TailInteger = 3
 
 		# Test - GetLogByNameAndResourceGroup
 		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName 
@@ -287,6 +315,16 @@ function Test-GetDeploymentScriptLog-Cli
 		Assert-NotNull $getLogByNameAndResourceGroup
 		Assert-NotNull $deploymentScriptName $getLogByNameAndResourceGroup.Log
 		Assert-AreEqual $deploymentScriptName $getLogByNameAndResourceGroup.DeploymentScriptName
+
+
+		# Test - GetLogByNameAndResourceGroup - WithTailParameter
+		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName  -Tail $TailInteger
+
+		# Assert
+		Assert-NotNull $getLogByNameAndResourceGroup
+		Assert-NotNull $deploymentScriptName $getLogByNameAndResourceGroup.Log
+		Assert-AreEqual $deploymentScriptName $getLogByNameAndResourceGroup.DeploymentScriptName
+
 
 		# Test - GetLogByDeploymentScriptResourceId
 		$getLogByResourceId = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId
@@ -297,9 +335,27 @@ function Test-GetDeploymentScriptLog-Cli
 		Assert-AreEqual $deploymentScriptName $getLogByResourceId.DeploymentScriptName
 
 
+		# Test - GetLogByDeploymentScriptResourceId - WithTailParameter
+		$getLogByResourceId = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId -Tail $TailInteger
+
+		#Assert
+		Assert-NotNull $getLogByResourceId
+		Assert-NotNull $deploymentScriptName $getLogByResourceId.Log
+		Assert-AreEqual $deploymentScriptName $getLogByResourceId.DeploymentScriptName
+
+
 		#Test - GetLogByInputObject
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
 		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript
+
+		# Assert
+		Assert-NotNull $getLogByInputObject
+		Assert-NotNull $deploymentScriptName $getLogByInputObject.Log
+		Assert-AreEqual $deploymentScriptName $getLogByInputObject.DeploymentScriptName
+
+		#Test - GetLogByInputObject - WithTailParameter
+		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
+		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $TailInteger
 
 		# Assert
 		Assert-NotNull $getLogByInputObject
@@ -322,6 +378,7 @@ function Test-PipeDeploymentScriptObjectToGetLogs
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
+	$TailInteger = 3
 
 	try
 	{
@@ -334,6 +391,15 @@ function Test-PipeDeploymentScriptObjectToGetLogs
 
 		#Test - GetLogsByInputObjectPiped 
 		$getLogByInputObject = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName | Get-AzDeploymentScriptLog 
+
+		# Assert
+		Assert-NotNull $getLogByInputObject
+		Assert-NotNull $deploymentScriptName $getLogByInputObject.Log
+		Assert-AreEqual $deploymentScriptName $getLogByInputObject.DeploymentScriptName
+
+
+		#Test - GetLogsByInputObjectPiped - WithTailParameter
+		$getLogByInputObject = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName | Get-AzDeploymentScriptLog -Tail $TailInteger
 
 		# Assert
 		Assert-NotNull $getLogByInputObject
@@ -358,6 +424,7 @@ function Test-TrySaveNonExistingFilePathForLogFile
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"	
 	$badPath = "bad-path"
+	$TailInteger = 3
 
 	try 
 	{
@@ -378,7 +445,8 @@ function Test-TrySaveNonExistingFilePathForLogFile
 		$path = (Get-Item ".\").FullName
         $fullPath = Join-Path $path $badPath
         $exceptionMessage = "Cannot find path '$fullPath'"
-        Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath } $exceptionMessage	
+        Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath } $exceptionMessage
+		Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath -Tail $TailInteger} $exceptionMessage	
 	}
 	finally
     {

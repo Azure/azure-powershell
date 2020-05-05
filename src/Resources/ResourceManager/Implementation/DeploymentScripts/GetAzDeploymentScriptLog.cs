@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
@@ -52,7 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 2, ParameterSetName = GetDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
-        [ValidateNotNullOrEmpty]
         public int Tail { get; set; }
 
         #endregion
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case GetDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, this.IsParameterBound(c => c.Tail) ? Tail : 0);
                         break;
                     case GetDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
