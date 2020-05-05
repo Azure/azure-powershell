@@ -25,7 +25,11 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
         [array]$principalAssignmentGet = Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
-        $principalAssignment = $principalAssignmentGet[0]
+        foreach ($principalAssignmentItem in $principalAssignmentGet) {
+            if ($principalAssignmentItem.Name -eq $principalAssignmentFullName) {
+                $principalAssignment = $principalAssignmentItem
+            }
+        }
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
     }
 
