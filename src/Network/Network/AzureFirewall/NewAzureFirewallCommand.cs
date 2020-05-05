@@ -156,6 +156,26 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to indicate DNS Proxy is enabled or disabled"
+        )]
+        [ValidateSet("true", "false", IgnoreCase = false)]
+        public string DNSEnableProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to indicate if DNS Proxy is required for Network Rules"
+        )]
+        [ValidateSet("true", "false", IgnoreCase = true)]
+        public string DNSRequireProxyForNetworkRules { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of DNS Servers"
+        )]
+        public string[] DNSServers { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -278,6 +298,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
+                    DNSEnableProxy = (string.Equals(this.DNSEnableProxy, "false", StringComparison.OrdinalIgnoreCase) ? "false" : "true"),
+                    DNSServers = this.DNSServers,
                     Sku = sku
                 };
 
@@ -290,6 +312,17 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
                 }
+
+                if (this.DNSRequireProxyForNetworkRules != null) {
+                    firewall.DNSRequireProxyForNetworkRules = (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase) ? "false" : "true");
+                }
+                else
+                {
+                    // Default value should be true
+                    firewall.DNSRequireProxyForNetworkRules = "true";
+                }
+
+                firewall.ValidateDNSProxyRequirements();
             }
 
             // Map to the sdk object

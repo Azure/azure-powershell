@@ -30,6 +30,9 @@
 	- Set-AzVirtualNetworkGateway
 	- New-AzVirtualNetworkGatewayConnection
 	- Set-AzVirtualNetworkGatewayConnection
+* Add `DNSEnableProxy`, 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to `AzureFirewall`
+    - Updated cmdlet:
+        - New-AzFirewall
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
