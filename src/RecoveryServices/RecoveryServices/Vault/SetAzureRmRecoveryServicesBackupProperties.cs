@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     if (this.BackupStorageRedundancy.HasValue)
                     {
                         BackupResourceConfigResource vaultStorageRequest = new BackupResourceConfigResource();
+                        BackupResourceConfig properties = new BackupResourceConfig();
+                        vaultStorageRequest.Properties = properties;
                         vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
                         RecoveryServicesClient.UpdateVaultStorageType(
                             this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);

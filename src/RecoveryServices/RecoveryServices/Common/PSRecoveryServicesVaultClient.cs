@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             BackupResourceConfigResource backupStorageConfig)
         {
             GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.UpdateWithHttpMessagesAsync(
-                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
+                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>  
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
-                resouceGroupName, vaultName, GetRequestHeaders()).Result.Body;
+                vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
         }
     }
 }
