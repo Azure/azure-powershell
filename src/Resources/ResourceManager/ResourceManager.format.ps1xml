@@ -266,12 +266,14 @@
               </ListItem>
               <ListItem>
                 <Label>Error</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                   $_.Status.Error -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
                 <ScriptBlock>
-                  if ($_.Status.Error -ne $null)
-                  {
-                    $_.Status.Error.ToFormattedString() 
-                  } 
-              </ScriptBlock>
+                    $_.Status.GetFormattedErrorString()
+                </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Identity</Label>

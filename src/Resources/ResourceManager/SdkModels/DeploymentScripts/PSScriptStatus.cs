@@ -12,32 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using System;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class PsScriptStatus
+    public class PsScriptStatus : ScriptStatus
     {
-        public string ContainerInstanceId { get; set; }
-        public string StorageAccountId { get; set; }
-        public DateTime? StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
-        public DateTime? ExpirationTime { get; set; }
-        public PSResourceManagerError Error { get; set; }
+        private const char Whitespace = ' ';
 
-        internal static PsScriptStatus ToPsScriptStatus(ScriptStatus status)
+        public string GetFormattedErrorString()
         {
-            return new PsScriptStatus
+            return this.Error == null
+                ? string.Empty
+                : GetFormattedErrorString(this.Error);
+        }
+
+        private static string GetFormattedErrorString(ErrorResponse error, int level = 0)
+        {
+            if (error.Details == null)
             {
-                ContainerInstanceId = status?.ContainerInstanceId,
-                StorageAccountId = status?.StorageAccountId,
-                StartTime = status?.StartTime,
-                EndTime = status?.EndTime,
-                ExpirationTime = status?.ExpirationTime,
-                Error = status?.Error?.ToPSResourceManagerError()
-            };
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetIndentation(level) + GetFormattedErrorString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Message, error.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(Whitespace, l * 2).Append(" - ").ToString();
         }
     }
 }
