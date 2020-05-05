@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.HPCCache
     using Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models;
     using Microsoft.Rest.Azure;
     /// <summary>
-    /// Upgrade HPC Cache.
+    /// Flush or Upgrade HPC Cache.
     /// </summary>
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCache", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
@@ -31,10 +31,11 @@ namespace Microsoft.Azure.Commands.HPCCache
         /// <summary>
         /// Gets or sets ResourceGroupName.
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to upgrade cache.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to flush/upgrade cache.", ParameterSetName = FieldsParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
@@ -43,39 +44,53 @@ namespace Microsoft.Azure.Commands.HPCCache
         [ResourceNameCompleter("Microsoft.StorageCache/caches", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets resource id of the cache.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id of the Cache", ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
         /// <summary>
         /// Gets or sets Upgrade Flag.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Upgrade HpcCache.")]
+        [Parameter(Mandatory = false, HelpMessage = "Upgrades HPC Cache.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Upgrade { get; set; }
+
+        /// <summary>
+        /// Gets or sets Flush Flag.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Flushes HPC Cache.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Flush { get; set; }
+
         /// <summary>
         /// Gets or sets cache object.
         /// </summary>
-        [Parameter(ParameterSetName = ObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The cache object to upgrade.")]
+        [Parameter(ParameterSetName = ObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The cache object to flush/upgrade.")]
         [ValidateNotNullOrEmpty]
         public PSHPCCache InputObject { get; set; }
+
         /// <summary>
         /// Gets or sets switch parameter force.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to upgrade the cache.")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to flush/upgrade the cache.")]
         public SwitchParameter Force { get; set; }
+
         /// <summary>
         /// Gets or sets switch parameter passthru.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
+
         /// <summary>
         /// Gets or sets Job to run job in background.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Execution Cmdlet.
         /// </summary>
@@ -92,15 +107,30 @@ namespace Microsoft.Azure.Commands.HPCCache
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
                 this.Name = this.InputObject.CacheName;
             }
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Resources.ConfirmUpgradeHpcCache, this.Name),
-                string.Format(Resources.UpgradeHpcCache, this.Name),
-                this.Name,
-                () =>
-                {
-                    this.UpgradeHpcCache();
-                });
+
+            if (this.Flush.IsPresent)
+            {
+                this.ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Resources.ConfirmFlushHpcCache, this.Name),
+                    string.Format(Resources.FlushHpcCache, this.Name),
+                    this.Name,
+                    () =>
+                    {
+                        this.FlushHpcCache();
+                    });
+            }
+            else if (this.Upgrade.IsPresent){
+                this.ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Resources.ConfirmUpgradeHpcCache, this.Name),
+                    string.Format(Resources.UpgradeHpcCache, this.Name),
+                    this.Name,
+                    () =>
+                    {
+                        this.UpgradeHpcCache();
+                    });
+            }
         }
         /// <summary>
         /// Updates HPC Cache by doing upgrade.
@@ -129,6 +159,35 @@ namespace Microsoft.Azure.Commands.HPCCache
                 {
                     throw new CloudException(string.Format("Exception: {0}", ex.Body.Error.Message));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Flush HPC Cache.
+        /// </summary>
+        public void FlushHpcCache()
+        {
+            if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+            {
+                throw new PSArgumentNullException("ResourceGroupName");
+            }
+
+            if (string.IsNullOrWhiteSpace(this.Name))
+            {
+                throw new PSArgumentNullException("CacheName");
+            }
+
+            try
+            {
+                this.HpcCacheClient.Caches.Flush(this.ResourceGroupName, this.Name);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
+            }
+            catch (CloudErrorException ex)
+            {
+                throw new CloudException(string.Format("Exception: {0}", ex.Body.Error.Message));
             }
         }
     }

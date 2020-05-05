@@ -14,19 +14,19 @@ Updates a HPC Cache.
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Upgrade] [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Upgrade] [-Flush] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzHpcCache -ResourceId <String> [-Upgrade] [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceId <String> [-Upgrade] [-Flush] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzHpcCache [-Upgrade] -InputObject <PSHPCCache> [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache [-Upgrade] [-Flush] -InputObject <PSHPCCache> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,6 +64,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Flush
+Flushes HPC Cache.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

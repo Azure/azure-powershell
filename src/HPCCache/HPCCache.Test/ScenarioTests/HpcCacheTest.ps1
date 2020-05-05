@@ -9,7 +9,7 @@ function Test-GetAzHPCCacheByNameAndResourceGroup
 function Test-FlushCache
 {
 	Param($ResourceGroupName, $CacheName)
-	$bool = Flush-AzHpcCache -ResourceGroupName $ResourceGroupName -Name $CacheName -PassThru -Force
+	$bool = Update-AzHpcCache -ResourceGroupName $ResourceGroupName -Name $CacheName -Flush -PassThru -Force
 	Assert-AreEqual $bool True
 	$cacheObj = Get-AzHPCCache -ResourceGroupName $ResourceGroupName -CacheName $CacheName
 	Assert-AreEqual $CacheName $cacheObj.CacheName

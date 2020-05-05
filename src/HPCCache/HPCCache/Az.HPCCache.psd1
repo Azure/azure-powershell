@@ -72,12 +72,11 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzHpcCacheSku', 'Get-AzHpcCacheUsageModel', 'Get-AzHpcCache', 
-               'New-AzHpcCache', 'Remove-AzHpcCache', 'Set-AzHpcCache', 
-               'Start-AzHpcCache', 'Flush-AzHpcCache', 'Stop-AzHpcCache', 
-               'Update-AzHpcCache', 'Remove-AzHpcCacheStorageTarget', 
-               'New-AzHpcCacheStorageTarget', 'Get-AzHpcCacheStorageTarget', 
-               'Set-AzHpcCacheStorageTarget'
+CmdletsToExport = 'Get-AzHpcCacheSku', 'Get-AzHpcCacheUsageModel', 'Get-AzHpcCache',
+               'New-AzHpcCache', 'Remove-AzHpcCache', 'Set-AzHpcCache',
+               'Start-AzHpcCache', 'Stop-AzHpcCache', 'Update-AzHpcCache',
+               'Remove-AzHpcCacheStorageTarget', 'New-AzHpcCacheStorageTarget',
+               'Get-AzHpcCacheStorageTarget', 'Set-AzHpcCacheStorageTarget'
 
 # Variables to export from this module
 # VariablesToExport = @()
