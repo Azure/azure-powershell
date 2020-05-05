@@ -21,22 +21,25 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RadiusServer"), OutputType(typeof(PSRadiusServer))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RadiusServer", DefaultParameterSetName = "RadiusServer"), OutputType(typeof(PSRadiusServer))]
     public class NewAzRadiusServerCommand : NetworkBaseCmdlet
     {
         [Parameter(
+            ParameterSetName = "RadiusServer",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "External radius server address")]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
+            ParameterSetName = "RadiusServer",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "External radius server secret")]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
+            ParameterSetName = "RadiusServer",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "External radius server score")]
