@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string HealthStatus { get; set; }
 
-        public bool IsInclusionList { get; set; }
+        public bool? IsInclusionList { get; set; }
 
         public IList<int?> DiskLunList { get; set; }
 
@@ -64,10 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 protectedItem.ExtendedProperties.DiskExclusionProperties != null)
             {
                 DiskExclusionProperties diskExclusionProperties = protectedItem.ExtendedProperties.DiskExclusionProperties;
-                if(diskExclusionProperties.IsInclusionList.HasValue)
-                {
-                    IsInclusionList = diskExclusionProperties.IsInclusionList.Value;
-                }
+                IsInclusionList = diskExclusionProperties.IsInclusionList;
                 DiskLunList = diskExclusionProperties.DiskLunList;
             }
         }
