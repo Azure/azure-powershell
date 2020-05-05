@@ -12,7 +12,7 @@ Updates a Storage Target.
 
 ## SYNTAX
 
-### ClfsParameterSet
+### ClfsParameterSet (Default)
 ```
 Set-AzHpcCacheStorageTarget -ResourceGroupName <String> -CacheName <String> -Name <String> [-CLFS]
  [-Junction <Hashtable[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

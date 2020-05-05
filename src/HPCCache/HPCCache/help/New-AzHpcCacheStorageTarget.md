@@ -12,7 +12,7 @@ Creates a Storage Target.
 
 ## SYNTAX
 
-### ClfsParameterSet
+### ClfsParameterSet (Default)
 ```
 New-AzHpcCacheStorageTarget -ResourceGroupName <String> -CacheName <String> -Name <String> [-CLFS]
  [-StorageContainerID <String>] [-Junction <Hashtable[]>] [-AsJob] [-Force]

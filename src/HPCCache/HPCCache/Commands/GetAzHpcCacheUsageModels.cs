@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.HPCCache
     /// Get usage models related to HPC Cache NFS Storage Target.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCacheUsageModel")]
+    [OutputType(typeof(PSHpcCacheUsageModels))]
     public class GetAzHpcCacheUsageModels : HpcCacheBaseCmdlet
     {
         /// <summary>

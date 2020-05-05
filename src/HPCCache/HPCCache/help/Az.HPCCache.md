@@ -11,9 +11,6 @@ Locale: en-US
 HPC Cache
 
 ## Az.HPCCache Cmdlets
-### [Flush-AzHpcCache](Flush-AzHpcCache.md)
-Flush a cache.
-
 ### [Get-AzHpcCache](Get-AzHpcCache.md)
 Gets a cache(s).
 

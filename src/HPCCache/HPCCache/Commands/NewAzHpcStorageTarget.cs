@@ -30,7 +30,10 @@ namespace Microsoft.Azure.Commands.HPCCache
     /// <summary>
     /// NewAzHpcStorageTarget.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCacheStorageTarget", SupportsShouldProcess = true)]
+    [Cmdlet("New",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCacheStorageTarget",
+        DefaultParameterSetName = ClfsStorageTargetParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSHpcStorageTarget))]
     public class NewAzHpcStorageTarget : HpcCacheBaseCmdlet
     {
