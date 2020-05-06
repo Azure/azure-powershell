@@ -4,7 +4,8 @@ function Get-AzFunctionAppPlan {
     [CmdletBinding(DefaultParameterSetName='GetAll')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory = $true, HelpMessage='The Azure subscription ID.')]
-        [Parameter(ParameterSetName="BySubscriptionId")]
+        [Parameter(ParameterSetName="GetAll")]
+        [Parameter(ParameterSetName="ByResourceGroupName")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
