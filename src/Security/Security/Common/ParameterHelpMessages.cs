@@ -93,6 +93,14 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+
+        #region RegulatoryCompliance
+
+        public const string StandardName = "Standard Name.";
+        public const string ControlName = "Control Name.";
+      
+        #endregion
+
         #region Device Security Groups
 
         public const string ThresholdRules = "Threshold rules.";
