@@ -12,22 +12,28 @@ Updates a HPC Cache.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### FlushParameterSet (Default)
 ```
-Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Upgrade] [-Flush] [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Flush] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzHpcCache -ResourceId <String> [-Upgrade] [-Flush] [-Force] [-PassThru] [-AsJob]
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeParameterSet
+```
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> [-Upgrade] [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzHpcCache [-Upgrade] [-Flush] -InputObject <PSHPCCache> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzHpcCache -ResourceGroupName <String> -Name <String> -InputObject <PSHPCCache> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +83,7 @@ Flushes HPC Cache.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: FlushParameterSet
 Aliases:
 
 Required: False
@@ -122,7 +128,7 @@ Name of cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases: CacheName
 
 Required: True
@@ -153,7 +159,7 @@ Name of resource group under which you want to update cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -183,7 +189,7 @@ Upgrade HpcCache.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpgradeParameterSet
 Aliases:
 
 Required: False

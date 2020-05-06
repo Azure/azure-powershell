@@ -24,14 +24,17 @@ namespace Microsoft.Azure.Commands.HPCCache
     /// <summary>
     /// Flush or Upgrade HPC Cache.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCache", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCache", DefaultParameterSetName = FlushCacheParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class UpdateAzHpcCache : HpcCacheBaseCmdlet
     {
+        private const string UpgradeCacheParameterSet = "UpgradeParameterSet";
+        private const string FlushCacheParameterSet = "FlushParameterSet";
+
         /// <summary>
         /// Gets or sets ResourceGroupName.
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to flush/upgrade cache.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to flush/upgrade cache.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -39,7 +42,7 @@ namespace Microsoft.Azure.Commands.HPCCache
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of cache.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of cache.")]
         [Alias(CacheNameAlias)]
         [ResourceNameCompleter("Microsoft.StorageCache/caches", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -55,14 +58,14 @@ namespace Microsoft.Azure.Commands.HPCCache
         /// <summary>
         /// Gets or sets Upgrade Flag.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Upgrades HPC Cache.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpgradeCacheParameterSet, HelpMessage = "Upgrades HPC Cache.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Upgrade { get; set; }
 
         /// <summary>
         /// Gets or sets Flush Flag.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Flushes HPC Cache.")]
+        [Parameter(Mandatory = false, ParameterSetName = FlushCacheParameterSet, HelpMessage = "Flushes HPC Cache.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Flush { get; set; }
 
