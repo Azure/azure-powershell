@@ -16,7 +16,7 @@
 
 function Set-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
-[CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(SupportsShouldProcess, PositionalBinding=$false, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('DashboardName')]
@@ -47,7 +47,6 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${DashboardPath},
-
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

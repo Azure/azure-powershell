@@ -31,19 +31,6 @@ New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath 
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
-```
-New-AzPortalDashboard -InputObject <IPortalIdentity> -Dashboard <IDashboard> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzPortalDashboard -InputObject <IPortalIdentity> -Location <String> [-Lens <Hashtable>]
- [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a Dashboard.
 
@@ -75,7 +62,7 @@ To construct, see NOTES section for DASHBOARD properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -115,28 +102,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Lens
 The dashboard lenses.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -151,7 +122,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -166,7 +137,7 @@ The dashboard metadata.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +152,7 @@ The name of the dashboard.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByFile, CreateExpanded
+Parameter Sets: (All)
 Aliases: DashboardName
 
 Required: True
@@ -196,7 +167,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByFile, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -213,7 +184,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByFile, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -228,7 +199,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -276,8 +247,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
@@ -298,12 +267,6 @@ DASHBOARD <IDashboard>: The shared dashboard resource definition.
     - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Tag <IDashboardTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-INPUTOBJECT <IPortalIdentity>: Identity Parameter
-  - `[DashboardName <String>]`: The name of the dashboard.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

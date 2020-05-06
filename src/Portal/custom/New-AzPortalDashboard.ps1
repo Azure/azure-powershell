@@ -41,7 +41,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateByFile', Mandatory)]
-    
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
     [ValidateNotNullOrEmpty()]
     [System.String]
@@ -50,7 +49,7 @@ param(
     ${DashboardPath},
 
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateByFile')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Azure')]
@@ -58,40 +57,40 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateByFile', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy

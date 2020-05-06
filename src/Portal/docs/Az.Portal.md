@@ -21,7 +21,7 @@ Creates or updates a Dashboard.
 Deletes the Dashboard.
 
 ### [Set-AzPortalDashboard](Set-AzPortalDashboard.md)
-Creates or updates a Dashboard.
+
 
 ### [Update-AzPortalDashboard](Update-AzPortalDashboard.md)
 Updates an existing Dashboard.

@@ -19,18 +19,6 @@ Update-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-Subscripti
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Dashboard <IPatchableDashboard>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzPortalDashboard -InputObject <IPortalIdentity> -Dashboard <IPatchableDashboard>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPortalDashboard -InputObject <IPortalIdentity> [-Lens <Hashtable>] [-Metadata <Hashtable>]
@@ -62,22 +50,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Dashboard
-The shared dashboard resource definition.
-To construct, see NOTES section for DASHBOARD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -99,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -114,7 +86,7 @@ The dashboard lenses.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -129,7 +101,7 @@ The dashboard metadata.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,7 +116,7 @@ The name of the dashboard.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: DashboardName
 
 Required: True
@@ -159,7 +131,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -176,7 +148,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -191,7 +163,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -237,8 +209,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
 
 ## OUTPUTS
@@ -252,14 +222,6 @@ ALIASES
 COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-DASHBOARD <IPatchableDashboard>: The shared dashboard resource definition.
-  - `[Lens <IDashboardPropertiesLenses>]`: The dashboard lenses.
-    - `[(Any) <IDashboardLens>]`: This indicates any property can be added to this object.
-  - `[Metadata <IDashboardPropertiesMetadata>]`: The dashboard metadata.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Tag <IPatchableDashboardTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 INPUTOBJECT <IPortalIdentity>: Identity Parameter
   - `[DashboardName <String>]`: The name of the dashboard.

@@ -44,21 +44,20 @@ module-version: 0.0.1
 title: Portal
 subject-prefix: $(service-name)
 
-inlining-threshold: 40
 directive:
   - where: 
       verb: Set
-      subject: PortalDashboard
+      subject: Dashboard
     hide: true
   - where:
       verb: New
-      subject: PortalDashboard
-      variant: CreateViaIdentity | CreateViaIdentityExpanded
+      subject: Dashboard
+      variant: CreateViaIdentity|CreateViaIdentityExpanded
     remove: true
   - where:
       verb: Update
-      subject: PortalDashboard
-      variant: Update | UpdateViaIdentity
+      subject: Dashboard
+      variant: ^Update$|^UpdateViaIdentity$
     remove: true
       
 

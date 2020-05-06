@@ -8,31 +8,17 @@ schema: 2.0.0
 # Set-AzPortalDashboard
 
 ## SYNOPSIS
-Creates or updates a Dashboard.
+
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-Lens <Hashtable>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### __AllParameterSets
-```
-Set-AzPortalDashboard [-Name] <String> [-ResourceGroupName] <String> [-DashboardPath] <String>
- [[-SubscriptionId] <String>] [[-DefaultProfile] <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Dashboard <IDashboard>
+Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Dashboard.
+
 
 ## EXAMPLES
 
@@ -56,22 +42,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Dashboard
-The shared dashboard resource definition.
-To construct, see NOTES section for DASHBOARD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DashboardPath
 
 
@@ -81,64 +51,19 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Lens
-The dashboard lenses.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Metadata
-The dashboard metadata.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the dashboard.
+
 
 ```yaml
 Type: System.String
@@ -156,14 +81,14 @@ Parameter Sets: (All)
 Aliases: DashboardName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+
 
 ```yaml
 Type: System.String
@@ -171,16 +96,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+
 
 ```yaml
 Type: System.String
@@ -188,23 +111,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -245,8 +153,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
@@ -254,19 +160,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-DASHBOARD <IDashboard>: The shared dashboard resource definition.
-  - `Location <String>`: Resource location
-  - `[Lens <IDashboardPropertiesLenses>]`: The dashboard lenses.
-    - `[(Any) <IDashboardLens>]`: This indicates any property can be added to this object.
-  - `[Metadata <IDashboardPropertiesMetadata>]`: The dashboard metadata.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Tag <IDashboardTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
