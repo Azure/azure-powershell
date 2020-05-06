@@ -18,6 +18,46 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable/disable versioning on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
+* Support Set/Get/Remove Object Replication Policy on Storage accounts
+    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
+    - `Get-AzStorageObjectReplicationPolicy`
+    - `Remove-AzStorageObjectReplicationPolicy`
+* Supported RoutingPreference settings in create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 1.14.1
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
+* Add RestorePolicy.LastEnabledTime to cmdlet output
+    - `Get-AzStorageBlobServiceProperty`
+    - `Enable-AzStorageBlobRestorePolicy`
+* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
+    - `Update-AzStorageAccountNetworkRuleSet`
+    - `Get-AzStorageAccountNetworkRuleSet`
+* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
+    - `Add-AzStorageAccountNetworkRule`
+
+## Version 1.14.0
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported DataLake Gen2 
+    - `New-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ChildItem`
+    - `Move-AzDataLakeGen2Item`
+    - `Set-AzDataLakeGen2ItemAclObject`
+    - `Update-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ItemContent`
+    - `Remove-AzDataLakeGen2Item`
+
+## Version 1.13.4
 * Support create/update/get/list EncryptionScope of a Storage account
     -  New-AzStorageEncryptionScope
     -  Update-AzStorageEncryptionScope

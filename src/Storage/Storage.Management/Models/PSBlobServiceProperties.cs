@@ -41,8 +41,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
         [Ps1Xml(Label = "RestorePolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Enabled", Position = 5)]
         [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
+        [Ps1Xml(Label = "RestorePolicy.LastEnabledTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.LastEnabledTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
         public PSCorsRules Cors { get; set; }
+        public bool? IsVersioningEnabled { get; set; }
 
         public PSBlobServiceProperties()
         { }
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DeleteRetentionPolicy = policy.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.DeleteRetentionPolicy);
             this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
+            this.IsVersioningEnabled = policy.IsVersioningEnabled;
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -68,7 +71,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 DefaultServiceVersion = this.DefaultServiceVersion,
                 DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
-                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed()
+                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
+                IsVersioningEnabled = this.IsVersioningEnabled                
             };
         }
 
@@ -157,6 +161,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
+        public DateTime? LastEnabledTime { get; set; }
 
         public PSRestorePolicy()
         {
@@ -166,6 +171,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
+            this.LastEnabledTime = policy.LastEnabledTime;
+
         }
         public RestorePolicyProperties ParseRestorePolicy()
         {
