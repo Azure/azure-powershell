@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     endpoint enabled.
         public bool? IgnoreMissingVNetServiceEndpoint { get; set; }
 
-        static public VirtualNetworkRule ConvertPSVirtualNetworkRuleToVirtualNetworkRule(PSVirtualNetworkRule psVirtualNetworkRule)
+        static public VirtualNetworkRule ToSDKModel(PSVirtualNetworkRule psVirtualNetworkRule)
         {
             return new VirtualNetworkRule
             {

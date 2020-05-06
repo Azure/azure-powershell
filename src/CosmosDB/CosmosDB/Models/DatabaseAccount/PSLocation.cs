@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     region
         public bool? IsZoneRedundant { get; set; }
 
-        static public Location ConvertPSLocationToLocation(PSLocation location)
+        static public Location ToSDKModel(PSLocation location)
         {
             return new Location
             {

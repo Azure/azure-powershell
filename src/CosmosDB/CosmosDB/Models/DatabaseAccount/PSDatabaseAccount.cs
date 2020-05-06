@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSDatabaseAccount
+    public class PSDatabaseAccountGetResults
     {
-        public PSDatabaseAccount()
+        public PSDatabaseAccountGetResults()
         {
         }
 
-        public PSDatabaseAccount(DatabaseAccountGetResults databaseAccountGetResults)
+        public PSDatabaseAccountGetResults(DatabaseAccountGetResults databaseAccountGetResults)
         {
             Id = databaseAccountGetResults.Id;
             Name = databaseAccountGetResults.Name;
