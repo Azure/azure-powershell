@@ -1,52 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-ms.assetid: 5C0C437D-7237-4B40-A254-1B55916F1C71
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementnamedvalue
 schema: 2.0.0
 ---
 
-# Set-AzApiManagementProperty
+# Set-AzApiManagementNamedValue
 
 ## SYNOPSIS
-Modifies an API Management Property.
+Modifies an API Management Named Value.
 
 ## SYNTAX
 
 ```
-Set-AzApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-Name <String>]
+Set-AzApiManagementNamedValue -Context <PsApiManagementContext> -NamedValueId <String> [-Name <String>]
  [-Value <String>] [-Secret <Boolean>] [-Tag <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzApiManagementProperty** cmdlet modifies an Azure API Management Property.
+The **Set-AzApiManagementNamedValue** cmdlet modifies an Azure API Management Named Value.
 
 ## EXAMPLES
 
-### Example 1: Change the tags on a property
+### Example 1: Change the tags on the named value
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> Set-AzApiManagementProperty -Context $apimContext -PropertyId "Property11" -Tags $Tags -PassThru
+PS C:\> Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Tags $Tags -PassThru
 ```
 
 The first command assigns two values to the $Tags variable.
-The second command modifies the property that has the ID Property11.
-The command assigns the strings in $Tags as tags on the property.
+The second command modifies the named value that has the ID Property11.
+The command assigns the strings in $Tags as tags on the named value.
 
-### Example 2: Modify a property to have a secret value
+### Example 2: Modify the named value to have a secret value
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementProperty -Context $apimContext -PropertyId "Property12" -Secret $True -PassThru
+PS C:\>Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Secret $True -PassThru
 ```
 
-This command changes the property to be Encrypted.
+This command changes the named value to be Encrypted.
 
 ## PARAMETERS
 
 ### -Context
-Specifies a **PsApiManagementContext** object.
+Instance of PsApiManagementContext.
+This parameter is required.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -76,9 +76,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the property.
+Name of the named value.
 Maximum length is 100 characters.
-Names contain only letters, digits, period, dash, and underscore characters.
+It may contain only letters, digits, period, dash, and underscore characters.
+This parameter is optional.
 
 ```yaml
 Type: System.String
@@ -92,23 +93,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Indicates that this cmdlet returns the **PsApiManagementProperty** that this cmdlet modifies.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PropertyId
-Specifies an ID of the property that this cmdlet modifies.
+### -NamedValueId
+Identifier of named value to update.
+This parameter is mandatory.
 
 ```yaml
 Type: System.String
@@ -122,8 +109,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty type representing the modified property will be written to output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Secret
-Indicates that the property value is a secret and should be encrypted.
+Whether the named value is a secret and its value should be encrypted.
+This parameter is optional.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -138,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Tags associated with a property. This parameter is optional.
+Tags associated with the named value.
+This parameter is optional.
 
 ```yaml
 Type: System.String[]
@@ -153,10 +157,11 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Specifies a value for the property.
-This value can contain policy expressions.
+Value of the named value.
+Can contain policy expressions.
 Maximum length is 1000 characters.
-The value may not be empty or consist only of whitespace.
+It may not be empty or consist only of whitespace.
+This parameter is optional.
 
 ```yaml
 Type: System.String
@@ -186,7 +191,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,16 +223,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementNamedValue
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzApiManagementProperty](./Get-AzApiManagementProperty.md)
-
-[New-AzApiManagementProperty](./New-AzApiManagementProperty.md)
-
-[Remove-AzApiManagementProperty](./Remove-AzApiManagementProperty.md)
-
-

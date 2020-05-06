@@ -16,14 +16,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
-    [CmdletDeprecation(ReplacementCmdletName = "Set-AzureApiManagementNamedValue")]
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", SupportsShouldProcess = true)]
-    [OutputType(typeof(PsApiManagementProperty))]
-    public class SetAzureApiManagementProperty : AzureApiManagementCmdletBase
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", SupportsShouldProcess = true)]
+    [OutputType(typeof(PsApiManagementNamedValue))]
+    public class SetAzureApiManagementNamedValue : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -36,14 +34,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of property to update. This parameter is mandatory.")]
+            HelpMessage = "Identifier of named value to update. This parameter is mandatory.")]
         [ValidateNotNullOrEmpty]
-        public String PropertyId { get; set; }
+        public String NamedValueId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Name of the property. Maximum length is 100 characters. " +
+            HelpMessage = "Name of the named value. Maximum length is 100 characters. " +
                           "It may contain only letters, digits, period, dash, and underscore characters. " +
                           "This parameter is optional.")]
         public String Name { get; set; }
@@ -51,7 +49,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters. " +
+            HelpMessage = "Value of the named value. Can contain policy expressions. Maximum length is 1000 characters. " +
                           "It may not be empty or consist only of whitespace." +
                           " This parameter is optional.")]
         public String Value { get; set; }
@@ -59,13 +57,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Whether the property is a secret and its value should be encrypted. This parameter is optional.")]
+            HelpMessage = "Whether the named value is a secret and its value should be encrypted. This parameter is optional.")]
         public bool? Secret { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Tags associated with a property. This parameter is optional.")]
+            HelpMessage = "Tags associated with the named value. This parameter is optional.")]
         public string[] Tag { get; set; }
 
         [Parameter(
@@ -78,11 +76,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ShouldProcess(PropertyId, Resources.SetProperty))
+            if (ShouldProcess(NamedValueId, Resources.SetNamedValue))
             {
-                Client.PropertySet(
+                Client.NamedValueSet(
                     Context,
-                    PropertyId,
+                    NamedValueId,
                     Name,
                     Value,
                     Secret,
@@ -90,7 +88,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
                 if (PassThru)
                 {
-                    var @property = Client.PropertyById(Context, PropertyId);
+                    var @property = Client.NamedValueById(Context, NamedValueId);
                     WriteObject(@property);
                 }
             }

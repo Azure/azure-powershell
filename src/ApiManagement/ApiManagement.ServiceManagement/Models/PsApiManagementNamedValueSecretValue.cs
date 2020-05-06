@@ -14,16 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementProperty : PsApiManagementArmResource
+    public class PsApiManagementNamedValueSecretValue
     {
-        public string PropertyId { get; set; }
-
-        public string Name { get; set; }
-
         public string Value { get; set; }
-
-        public string[] Tags { get; set; }
-
-        public bool Secret { get; set; }
     }
 }

@@ -12,6 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
@@ -1336,6 +1345,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deployment = this.ExecuteDeploymentInternal(parameters);
 
             return deployment.ToPSDeployment(managementGroupId: parameters.ManagementGroupId, resourceGroupName: parameters.ResourceGroupName);
+        }
+
+        /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+
+            try
+            {
+                return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
+                    ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
+            }
+            catch (CloudException ce)
+            {
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
+            }
+        }
+
+        private string BuildCloudErrorMessage(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return string.Empty;
+            }
+
+            IList<string> messages = new List<string>
+            {
+                $"{cloudError.Code} - {cloudError.Message}"
+            };
+
+            foreach (CloudError innerError in cloudError.Details)
+            {
+                messages.Add(BuildCloudErrorMessage(innerError));
+            }
+
+            return string.Join(Environment.NewLine, messages);
         }
 
         /// <summary>
