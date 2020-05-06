@@ -77,7 +77,6 @@ function setupEnv() {
     $SubscriptionId = $env.SubscriptionId
     $clusterName = "testcluster" + $rstr1
     $databaseName = "testdatabase" + $rstr1
-    $databaseName1 = $databaseName + "1"
     $dataConnectionName = "testdataconnection" + $rstr1
     Write-Host "Start to create a cluster" $clusterName
     $null = $env.Add("clusterName", $clusterName)
@@ -89,7 +88,6 @@ function setupEnv() {
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
     New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
-    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName1 -Kind ReadWrite -Location $env.location
 
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
     New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
