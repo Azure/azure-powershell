@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the rule AvailabilityCriteria
         /// </summary>
-        [Parameter(ParameterSetName = AvailabilityParameterSet, Mandatory = true, HelpMessage = "Switch parameter for using availability criteria Type")]
+        [Parameter(ParameterSetName = AvailabilityParameterSet, Mandatory = false, HelpMessage = "Switch parameter for using availability criteria Type")]
         public SwitchParameter WebTest { get; set; }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
 
             IPSMultiMetricCriteria result;
-            if (this.WebTest.IsPresent)
+            if (this.WebTest.IsPresent || !string.IsNullOrWhiteSpace(this.WebTestId))
             {
                 WebtestLocationAvailabilityCriteria webtestMetricCriteria = new WebtestLocationAvailabilityCriteria(this.WebTestId, this.ApplicationInsightsId, this.FailedLocationCount);
                 result = new PSWebtestLocationAvailabilityCriteria(webtestMetricCriteria);
