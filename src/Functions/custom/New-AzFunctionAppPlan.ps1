@@ -47,7 +47,7 @@ function New-AzFunctionAppPlan {
         [Parameter(HelpMessage='The maximum number of workers for the app service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,100)]
         [Alias("MaxBurst")]
         ${MaximumWorkerCount},
 
@@ -55,7 +55,7 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
         [Alias("MinInstances")]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,20)]
         ${MinimumWorkerCount},
 
         [Parameter(HelpMessage='Resource tags.')]
@@ -141,7 +141,7 @@ function New-AzFunctionAppPlan {
         else
         {
             # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
-            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location"))
+            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location", "Tag"))
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
@@ -182,8 +182,13 @@ function New-AzFunctionAppPlan {
             $servicePlan.SkuTier = $tier
             $servicePlan.SkuName = $Sku
             $servicePlan.Location = $Location
-            $servicePlan.Tag = $Tag
             $servicePlan.Reserved = ($WorkerType -eq "Linux")
+
+            if ($Tag.Count -gt 0)
+            {
+                $resourceTag = NewResourceTag -Tag $Tag
+                $servicePlan.Tag = $resourceTag
+            }
 
             if ($MinimumWorkerCount -gt 0)
             {
