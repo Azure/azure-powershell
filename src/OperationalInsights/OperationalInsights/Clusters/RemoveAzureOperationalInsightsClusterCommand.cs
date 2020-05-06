@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.ClusterName,

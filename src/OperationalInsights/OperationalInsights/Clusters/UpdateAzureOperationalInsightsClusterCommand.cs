@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSClusterPatch parameters = new PSClusterPatch()

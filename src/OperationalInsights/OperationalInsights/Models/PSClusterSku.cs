@@ -24,14 +24,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             Capacity = capacity;
             Name = string.IsNullOrEmpty(name) ? "CapacityReservation" : name;
-            validateCapacity();
         }
 
         public PSClusterSku(ClusterSku sku)
         {
             this.Capacity = sku.Capacity;
             this.Name = sku.Name;
-            validateCapacity();
         }
 
         public long? Capacity { get; set; }

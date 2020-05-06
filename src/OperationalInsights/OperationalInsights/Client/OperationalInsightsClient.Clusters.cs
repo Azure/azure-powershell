@@ -117,7 +117,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     : parameters.Sku.Capacity;
             }
 
-            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch()));
+            Cluster cluster = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
+            return new PSCluster(cluster);
         }
 
         public virtual HttpStatusCode DeletePSCluster(string resourceGroupName, string clusterName)

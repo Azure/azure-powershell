@@ -376,26 +376,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return list;
         }
 
-        public virtual PSLinkedService CreatePSLinkedService(string resourceGroupName, string workspaceName, string linkedServiceName, PSLinkedService parameters)
-        {
-            PSLinkedService existingLinkedService;
-            try
-            {
-                existingLinkedService = GetPSLinkedService(resourceGroupName, workspaceName, linkedServiceName);
-            }
-            catch (RestException)
-            {
-                existingLinkedService = null;
-            }
-
-            if (existingLinkedService != null)
-            {
-                throw new PSInvalidOperationException(string.Format("linked service: '{0}' already exists in '{1}'. Please use Set-AzOperationalInsightsLinkedService for updating.", linkedServiceName, workspaceName));
-            }
-
-            return new PSLinkedService(this.OperationalInsightsManagementClient.LinkedServices.CreateOrUpdate(resourceGroupName, workspaceName, linkedServiceName, parameters.getLinkedService()));
-        }
-
         public virtual PSLinkedService SetPSLinkedService(string resourceGroupName, string workspaceName, string linkedServiceName, PSLinkedService parameters)
         {
             PSLinkedService existingLinkedService;

@@ -48,7 +48,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = cluster.Location;
             this.Name = cluster.Name;
             this.Type = cluster.Type;
-            this.Tags = new Hashtable((IDictionary)cluster.Tags);
+            if (cluster.Tags != null)
+            {
+                this.Tags = new Hashtable((IDictionary)cluster.Tags);
+            }           
+
             if (cluster.Identity != null)
             {
                 this.Identity = new PSIdentity(cluster.Identity);
@@ -108,7 +112,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             Regex regex = new Regex(Pattern);
             if (!regex.Match(this.Name).Success)
             {
-                throw new PSArgumentException("ClusterName can have numerical and alphabetical characters only");
+                throw new PSArgumentException("ClusterName should starts/ends with numerical or alphabetical characters only");
             }
 
             if (this.Name.Length < 4 || this.Name.Length >63)

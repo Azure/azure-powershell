@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string LinkedServiceName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.LinkedServiceName,

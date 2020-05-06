@@ -34,13 +34,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public PSLinkedService(LinkedService service)
         {
-            this.Id = service.Id;
-            this.Name = service.Name;
-            this.Type = service.Type;
-            this.ResourceId = service.ResourceId;
-            this.WriteAccessResourceId = service.WriteAccessResourceId;
-            this.ProvisioningState = service.ProvisioningState;
-            this.Tags = service.Tags;
+            if (service != null)
+            {
+                this.Id = service.Id;
+                this.Name = service.Name;
+                this.Type = service.Type;
+                this.ResourceId = service.ResourceId;
+                this.WriteAccessResourceId = service.WriteAccessResourceId;
+                this.ProvisioningState = service.ProvisioningState;
+                this.Tags = service.Tags;
+            }
         }
 
         public string Id { get; set; }

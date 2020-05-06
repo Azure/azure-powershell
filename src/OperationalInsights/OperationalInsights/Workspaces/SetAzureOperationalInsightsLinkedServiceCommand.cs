@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             };
 
             if (ShouldProcess(this.LinkedServiceName,
-                string.Format("update linked service: {0} for workspace: {1}", this.LinkedServiceName, this.WorkspaceName)))
+                string.Format("Set linked service: {0} for workspace: {1}", this.LinkedServiceName, this.WorkspaceName)))
             {
                 WriteObject(this.OperationalInsightsClient.SetPSLinkedService(this.ResourceGroupName, this.WorkspaceName, this.LinkedServiceName, parameters));
             }

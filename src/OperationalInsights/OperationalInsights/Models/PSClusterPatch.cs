@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             if (patch.Tags != null)
             {
                 this.Tags = new Hashtable((IDictionary)patch.Tags);
-            }
-            
+            }        
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
