@@ -167,5 +167,6 @@
     { "regex": "Databricks", "alias": "Databricks" },
     { "regex": "MariaDb", "alias": "MariaDb" },
     { "regex": "MySql", "alias": "MySql" },
+    { "regex": "AppConfiguration", "alias": "App Configuration" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]
