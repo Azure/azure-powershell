@@ -29,12 +29,18 @@ The **Reset-AzWebAppPublishingProfile** cmdlet resets the publishing profile for
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
 PS C:\> Reset-AzWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command resets the publishing profile for the Web App ContosoWebApp associated with the resource group Default-Web-WestUS.
+
+### Example 2
+
+```powershell <!-- Aladdin Generated Example --> 
+Reset-AzWebAppPublishingProfile -Name IpRule -ResourceGroupName MyResourceGroup
+```
 
 ## PARAMETERS
 
