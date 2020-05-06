@@ -41,9 +41,6 @@
     - `Get-AzStorageAccountNetworkRuleSet`
 * Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
-* Supported create container and upload blob with Encryption Scope setting
-    - `New-AzStorageContainer`
-    - `Set-AzStorageBlobContent`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
