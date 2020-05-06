@@ -174,7 +174,7 @@ AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob',
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
                'Disable-AzStorageSoftDelete', 'New-AzDatalakeGen2FileSystem', 
                'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem', 
-               'New-AzDataLakeGen2ItemAclObject', 'Invoke-AzureRmStorageAccountFailover'
+               'New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
