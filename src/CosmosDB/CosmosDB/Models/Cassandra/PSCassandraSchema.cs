@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 return;
             }
 
-            if (IsListNullOrEmpty(cassandraSchema.Columns))
+            if (ModelHelper.IsNotNullOrEmpty(cassandraSchema.Columns))
             {
                 Columns = new List<PSColumn>();
                 foreach (Column column in cassandraSchema.Columns)
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (IsListNullOrEmpty(cassandraSchema.PartitionKeys))
+            if (ModelHelper.IsNotNullOrEmpty(cassandraSchema.PartitionKeys))
             {
                 PartitionKeys = new List<PSCassandraPartitionKey>();
                 foreach (CassandraPartitionKey cassandraPartitionKey in cassandraSchema.PartitionKeys)
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (IsListNullOrEmpty(cassandraSchema.ClusterKeys))
+            if (ModelHelper.IsNotNullOrEmpty(cassandraSchema.ClusterKeys))
             {
                 ClusterKeys = new List<PSClusterKey>();
                 foreach (ClusterKey clusterKey in cassandraSchema.ClusterKeys)
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             CassandraSchema schema = new CassandraSchema();
 
-            if (IsListNullOrEmpty(pSCassandraSchema.Columns))
+            if (ModelHelper.IsNotNullOrEmpty(pSCassandraSchema.Columns))
             {
                 List<Column> column = new List<Column>();
                 foreach (PSColumn pSColumn in pSCassandraSchema.Columns)
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 schema.Columns = column;
             }
 
-            if (IsListNullOrEmpty(pSCassandraSchema.PartitionKeys))
+            if (ModelHelper.IsNotNullOrEmpty(pSCassandraSchema.PartitionKeys))
             {
                 List<CassandraPartitionKey> partitionKeys = new List<CassandraPartitionKey>();
                 foreach (PSCassandraPartitionKey pSCassandraPartitionKey in pSCassandraSchema.PartitionKeys)
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 schema.PartitionKeys = partitionKeys;
             }
 
-            if (IsListNullOrEmpty(pSCassandraSchema.ClusterKeys))
+            if (ModelHelper.IsNotNullOrEmpty(pSCassandraSchema.ClusterKeys))
             {
                 List<ClusterKey> clusterKeys = new List<ClusterKey>();
                 foreach (PSClusterKey pSClusterKey in pSCassandraSchema.ClusterKeys)
@@ -111,11 +112,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             return schema;
-        }
-
-        static private bool IsListNullOrEmpty<T>(IList<T> list)
-        {
-            return (list != null && list.Count > 0);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models
     {
         static public bool IsNotNullOrEmpty<T>(IList<T> list)
         {
-            return list != null && (list.Count > 0);
+            return list != null && list.Count > 0;
         }
     }
 }
