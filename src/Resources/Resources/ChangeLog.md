@@ -25,6 +25,7 @@
 * Added new cmdlet for getting ARM template What-If results at subscription scope: `Get-AzDeploymentWhatIfResult`
    - Alias: `Get-AzSubscriptionDeploymentWhatIf`
 * Overrode `-WhatIf` and `-Confirm` parameters for `New-AzDeployment` and `New-AzResourceGroupDeployment` to use ARM template What-If results
+* Add deprecation message for `ApiVersion` parameter in deployment cmdlets
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
