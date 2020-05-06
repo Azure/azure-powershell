@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string DNSRequireProxyForNetworkRules { get; set; }
 
-        public string[] DNSServers { get; set; }
+        public string[] DNSServer { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string DNSServersText
         {
-            get { return JsonConvert.SerializeObject(DNSServers, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DNSServer, Formatting.Indented); }
         }
 
         #region Ip Configuration Operations

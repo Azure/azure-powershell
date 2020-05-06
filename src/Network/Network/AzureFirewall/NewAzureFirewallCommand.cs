@@ -158,21 +158,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to indicate DNS Proxy is enabled or disabled"
         )]
-        [ValidateSet("true", "false", IgnoreCase = false)]
-        public string DNSEnableProxy { get; set; }
+        public SwitchParameter EnableDnsProxy { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to indicate if DNS Proxy is required for Network Rules"
         )]
-        [ValidateSet("true", "false", IgnoreCase = true)]
-        public string DNSRequireProxyForNetworkRules { get; set; }
+        public SwitchParameter DisableDnsProxyForNetworkRule { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of DNS Servers"
         )]
-        public string[] DNSServers { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -298,8 +296,9 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (string.Equals(this.DNSEnableProxy, "false", StringComparison.OrdinalIgnoreCase) ? "false" : "true"),
-                    DNSServers = this.DNSServers,
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : "false"),
+                    DNSRequireProxyForNetworkRules = (this.DisableDnsProxyForNetworkRule.IsPresent ? "false" : "true"),
+                    DNSServer = this.DnsServer,
                     Sku = sku
                 };
 
@@ -311,15 +310,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.virtualNetwork != null)
                 {
                     firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
-                }
-
-                if (this.DNSRequireProxyForNetworkRules != null) {
-                    firewall.DNSRequireProxyForNetworkRules = (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase) ? "false" : "true");
-                }
-                else
-                {
-                    // Default value should be true
-                    firewall.DNSRequireProxyForNetworkRules = "true";
                 }
 
                 firewall.ValidateDNSProxyRequirements();

@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Commands.Network
                         { "Network.SNAT.PrivateRanges", src.PrivateRange?.Aggregate((result, item) => result + "," + item) },
                         { "Network.DNS.EnableProxy", src.DNSEnableProxy },
                         { "Network.DNS.RequireProxyForNetworkRules", src.DNSRequireProxyForNetworkRules },
-                        { "Network.DNS.Servers", src.DNSServers?.Aggregate((result, item) => result + "," + item) }
+                        { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) }
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
@@ -1248,11 +1248,11 @@ namespace Microsoft.Azure.Commands.Network
                     dest.DNSRequireProxyForNetworkRules = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.RequireProxyForNetworkRules", StringComparison.OrdinalIgnoreCase)).Value;
                     try
                     {
-                        dest.DNSServers = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.Servers", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
+                        dest.DNSServer = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.Servers", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
                     }
                     catch (PSArgumentException)
                     {
-                        dest.DNSServers = null;
+                        dest.DNSServer = null;
                     }
                 });
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();

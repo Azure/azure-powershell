@@ -20,7 +20,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>]
- [-DNSEnableProxy <String>] [-DNSRequireProxyForNetworkRules <String>] [-DNSServers <String[]>]
+ [-EnableDnsProxy] [-DNSRequireProxyForNetworkRules <String>] [-DnsServer <String[]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -33,7 +33,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>]
- [-DNSEnableProxy <String>] [-DNSRequireProxyForNetworkRules <String>] [-DNSServers <String[]>]
+ [-EnableDnsProxy] [-DNSRequireProxyForNetworkRules <String>] [-DnsServer <String[]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -47,7 +47,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>]
- [-DNSEnableProxy <String>] [-DNSRequireProxyForNetworkRules <String>] [-DNSServers <String[]>]
+ [-EnableDnsProxy] [-DNSRequireProxyForNetworkRules <String>] [-DnsServer <String[]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -222,7 +222,7 @@ The rules and threat intelligence that will be applied to the firewall will be t
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -DNSEnableProxy true -DNSServers @("10.10.10.1", "20.20.20.2")
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -DnsServer @("10.10.10.1", "20.20.20.2")
 ```
 
 This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
@@ -276,14 +276,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DNSEnableProxy
+### -EnableDnsProxy
 Enables DNS Proxy functionality.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: true, false
 
 Required: False
 Position: Named
@@ -308,7 +307,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DNSServers
+### -DnsServer
 The list of DNS Servers to be used for DNS resolution,
 
 ```yaml

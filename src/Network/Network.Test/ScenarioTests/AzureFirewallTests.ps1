@@ -1437,7 +1437,7 @@ function Test-AzureFirewallWithDNSProxy {
         $netRc.AddRule($networkRule2)
 
         # Create AzureFirewall with DNSProxy enabled and DNS Servers provided
-        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -DNSEnableProxy true -DNSServers $dnsServers
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -DnsServer $dnsServers
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1451,8 +1451,8 @@ function Test-AzureFirewallWithDNSProxy {
         Assert-AreEqual 2 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count
 
         # Check DNS Proxy
-        Assert-AreEqual true $getAzureFirewall.DNSEnableProxy
-        Assert-AreEqualArray $dnsServers $getAzureFirewall.DNSServers
+        Assert-AreEqual true $getAzureFirewall.EnableDnsProxy
+        Assert-AreEqualArray $dnsServers $getAzureFirewall.DnsServer
 
         # Delete AzureFirewall
         $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
