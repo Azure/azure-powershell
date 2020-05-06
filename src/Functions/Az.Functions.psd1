@@ -15,7 +15,7 @@ For information on Azure Functions, please visit the following: https://docs.mic
   FormatsToProcess = './Az.Functions.format.ps1xml', './custom/Functions.format.ps1xml'
   TypesToProcess = './custom/Functions.types.ps1xml' 
   ScriptsToProcess = './custom/HelperFunctions.ps1'
-  FunctionsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp'
+  FunctionsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Functions'
