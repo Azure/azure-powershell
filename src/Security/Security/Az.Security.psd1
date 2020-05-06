@@ -99,7 +99,8 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
 			   'Get-AzIotSecurityAnalytics', 
 			   'Disable-AzIotSecurityAnalyticsAggregatedAlert',
                'Set-AzSqlInformationProtectionPolicy',
-               'Get-AzSqlInformationProtectionPolicy'
+               'Get-AzSqlInformationProtectionPolicy',
+			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting'
 
 # Variables to export from this module
 # VariablesToExport = @()

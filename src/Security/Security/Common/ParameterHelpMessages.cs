@@ -80,6 +80,13 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+        #region Settings
+
+        public const string SettingName = "Setting name.";
+        public const string Setting = "Setting.";
+
+        #endregion
+
         #region JIT Network Access Policies
 
         public const string VirutalMachines = "Virtual Machines.";
