@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
 * Detailed parameter is deprecated in the following cmdlets:
     Get-AzCosmosDBSqlContainer,
     Get-AzCosmosDBSqlDatabase, Get-AzCosmosDBGremlinDatabase,
@@ -26,7 +27,7 @@
     Get-AzCosmosDBCassandraKeyspace, Get-AzCosmosDBCassandraTable,
     Get-AzCosmosDBMongoDBCollection, Get-AzCosmosDBMongoDBDatabase
 * Introduces KeyVaultKeyUri as a paramter in PSCosmosDBAccount, enabling BYOK feature
-* Updated the Azure.Management.CosmosDB Sdk Version to 1.1.1 
+* Updates the Azure.Management.CosmosDB Sdk Version to 1.1.1 
 * Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
 The following cmdlets are added: 
     New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
