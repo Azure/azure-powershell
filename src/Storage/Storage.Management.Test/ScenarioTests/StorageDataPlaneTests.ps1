@@ -121,7 +121,7 @@ function Test-File
         Assert-AreEqual $file[0].GetType().Name "CloudFile"
         Assert-AreEqual $file[1].Name $dirName
         Assert-AreEqual $file[1].GetType().Name "CloudFileDirectory"
-        Remove-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext  
+        Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2

@@ -27,8 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
-        "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameIPv6Address, SupportsShouldProcess = false)]
+        Constants.AzPeeringExchangeConnectionObject,
+        DefaultParameterSetName = Constants.ParameterSetNameIPv4Address, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {

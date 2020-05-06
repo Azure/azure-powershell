@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
@@ -26,10 +27,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// <summary>
     ///     The get InputObject locations.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeerAsn")]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeerAsn, DefaultParameterSetName = Constants.ParameterSetNameByName)]
     [OutputType(typeof(PSPeerAsn))]
     public class GetAzurePeerAsn : PeeringBaseCmdlet
     {
+        /// <summary>
+        /// Gets or sets the resource id.
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
@@ -49,7 +62,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 base.Execute();
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName))
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameByResourceId))
+                {
+                    var psPeerAsnInfo = this.GetPeerAsn(this.ResourceId.Split('/').Last());
+                    this.WriteObject(psPeerAsnInfo, true);
+                }
+                else if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName) && !string.IsNullOrEmpty(this.Name))
                 {
                     var psPeerAsnInfo = this.GetPeerAsn(this.Name);
                     this.WriteObject(psPeerAsnInfo, true);
@@ -78,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private object GetPeerAsn(string peerName)
         {
-            return this.ToPeeringAsnPs(this.PeeringManagementClient.PeerAsns.Get(peerName));
+            return this.ToPeeringAsnPs(this.PeerAsnClient.Get(peerName));
         }
 
         /// <summary>
@@ -89,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private List<object> ListPeerAsn()
         {
-            var peerInfoList = this.PeeringManagementClient.PeerAsns.ListBySubscription();
+            var peerInfoList = this.PeerAsnClient.ListBySubscription();
             return peerInfoList.Select(peerAsn => this.ToPeeringAsnPs(peerAsn)).ToList();
         }
     }

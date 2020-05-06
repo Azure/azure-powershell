@@ -254,7 +254,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
+                    if (Channel.StorageContext.StorageAccount.Credentials.IsSAS)
+                    {
+                        // For SAS, the Uri already contains the sas token, so can't repeatedly inout the credential
+                        blob = new CloudBlockBlob(InputObject.File.Uri);
+                    }
+                    else
+                    {
+                        blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
+                    }
                     fileClient = InputObject.File;
                 }
                 else

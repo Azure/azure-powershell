@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll', 
@@ -143,7 +143,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Remove-AzTenantDeployment', 'Get-AzPolicyAlias', 'Remove-AzTag', 
                'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment', 'Update-AzTag', 
                'Get-AzDeploymentScript', 'Get-AzDeploymentScriptLog', 
-               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript'
+               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript',
+               'Get-AzDeploymentWhatIfResult', 'Get-AzResourceGroupDeploymentWhatIfResult'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -158,7 +159,8 @@ AliasesToExport = 'Get-AzResourceProviderAction',
                'Test-AzSubscriptionDeployment', 'Remove-AzSubscriptionDeployment', 
                'Stop-AzSubscriptionDeployment', 
                'Save-AzSubscriptionDeploymentTemplate', 
-               'Get-AzSubscriptionDeploymentOperation'
+               'Get-AzSubscriptionDeploymentOperation',
+               'Get-AzSubscriptionDeploymentWhatIfResult'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

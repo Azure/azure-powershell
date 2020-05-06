@@ -584,7 +584,6 @@ Routing Choice defines the kind of network routing opted by the user. Possible v
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: MicrosoftRouting, InternetRouting
 
 Required: False
 Position: Named

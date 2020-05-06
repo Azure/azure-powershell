@@ -129,6 +129,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
+        public SwitchParameter EnablePrivateIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Gateway Sku Tier")]
         [ValidateSet(
@@ -363,6 +368,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
+            vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {

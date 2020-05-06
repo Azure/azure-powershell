@@ -90,6 +90,22 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionCRUD");
         }
 
+        [Fact(Skip = "Requires whitelisted feature")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6CRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6CRUD");
+        }
+
+        [Fact(Skip = "Requires pre-created environment")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6PrecreatedCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6PrecreatedCRUD");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]

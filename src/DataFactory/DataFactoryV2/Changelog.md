@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support CRUD of data flow runtime properties in Managed IR.
 
 ## Version 1.7.0
 * Updated ADF .Net SDK version to 4.8.0

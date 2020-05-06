@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (foundAFolder)
             {
-                if (ShouldProcess(dirClient.Uri.ToString(), "Update Directory: "))
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(dirClient), "Update Directory: "))
                 {
                     //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             else
             {
-                if (ShouldProcess(fileClient.Uri.ToString(), "Update File: "))
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(fileClient), "Update File: "))
                 {
                     //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)

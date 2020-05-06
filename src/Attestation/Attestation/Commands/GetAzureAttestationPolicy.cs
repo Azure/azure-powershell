@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Attestation
     /// Get AttestationPolicy.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AttestationPolicy", SupportsShouldProcess = true)]
-    [OutputType(typeof(String))]
+    [OutputType(typeof(PSPolicy))]
     public class GetAzureAttestationPolicy : AttestationDataServiceCmdletBase
     {
         #region Input Parameter Definitions
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Attestation
         public override void ExecuteCmdlet()
         {
             String policy = AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, Tee);
-            WriteObject(policy);
+            WriteObject(new PSPolicy(policy));
         }
     }
 }

@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? ForceFirewallPolicyAssociation { get; set; }
+        
         public List<string> Zones { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

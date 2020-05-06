@@ -61,6 +61,14 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Set-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-AssignIdentity] [-Location <String>]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] -InputObject <PsPolicyAssignment> [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzPolicyAssignment** cmdlet modifies a policy assignment.
 Specify an assignment by ID or by name and scope.
@@ -245,6 +253,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy assignment object to update that was output from another cmdlet.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

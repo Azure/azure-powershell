@@ -28,7 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// list azure tables
     /// </summary>
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
-    [CmdletOutputBreakingChange(typeof(AzureStorageTable), ChangeDescription = "AzureStorageTable.CloudTable.ServiceClient will have 2 properties removed in a future release: ConnectionPolicy, ConsistencyLevel.")]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         /// <summary>

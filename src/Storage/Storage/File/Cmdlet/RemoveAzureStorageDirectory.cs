@@ -15,10 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Globalization;
     using System.Management.Automation;
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFileDirectory to AzureStorageFileDirectory, and AzureStorageFileDirectory will have CloudFileDirectory as a child property.")]
     public class RemoveAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -59,7 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Path to the directory to be removed.")]
         [Parameter(
             Position = 1,
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "Path to the directory to be removed.")]

@@ -14,13 +14,13 @@ Gets the CosmosDB MongoDB Database
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBMongoDBDatabase -ResourceGroupName <String> -AccountName <String> [-Name <String>] [-Detailed]
+Get-AzCosmosDBMongoDBDatabase -ResourceGroupName <String> -AccountName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzCosmosDBMongoDBDatabase [-Name <String>] -InputObject <PSDatabaseAccount> [-Detailed]
+Get-AzCosmosDBMongoDBDatabase [-Name <String>] -ParentObject <PSDatabaseAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -71,36 +71,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Detailed
-If provided then, the cmdlet returns the database with the corresponding throughput value.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-CosmosDB Account object
-
-```yaml
-Type: PSDatabaseAccount
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Database name.
 
@@ -113,6 +83,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+CosmosDB Account object
+
+```yaml
+Type: PSDatabaseAccount
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

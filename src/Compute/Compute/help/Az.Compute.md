@@ -45,7 +45,7 @@ Adds a diagnostics extension to the VMSS.
 Adds an extension to the VMSS.
 
 ### [Add-AzVMSshPublicKey](Add-AzVMSshPublicKey.md)
-Adds the public keys for SSH for a virtual machine.
+Adds the public keys for SSH for a virtual machine, when only creating the VM.
 
 ### [Add-AzVmssNetworkInterfaceConfiguration](Add-AzVmssNetworkInterfaceConfiguration.md)
 Adds a network interface configuration to the VMSS.
@@ -532,6 +532,9 @@ Sets the virtual machine scale set boot diagnostics profile.
 
 ### [Set-AzVmssDiskEncryptionExtension](Set-AzVmssDiskEncryptionExtension.md)
 Enables disk encryption on a VM scale set.
+
+### [Set-AzVmssOrchestrationServiceState](Set-AzVmssOrchestrationServiceState.md)
+Sets the orchestration service state for the VMSS.
 
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.

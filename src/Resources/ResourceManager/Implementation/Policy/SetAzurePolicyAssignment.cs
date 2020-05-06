@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     using Newtonsoft.Json.Linq;
     using Policy;      
@@ -31,8 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyAssignment")]
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -127,6 +125,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentInputObjectHelp)]
+        public PsPolicyAssignment InputObject { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -154,7 +158,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects("PolicyAssignmentId", JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputPolicyAssignments(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -198,7 +202,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
         }
     }
 }

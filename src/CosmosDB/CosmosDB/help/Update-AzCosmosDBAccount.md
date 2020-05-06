@@ -18,7 +18,8 @@ Update-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultCon
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +29,8 @@ Update-AzCosmosDBAccount -ResourceId <String> [-DefaultConsistencyLevel <String>
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +40,8 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccount> [-DefaultConsistencyLe
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -137,6 +140,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableKeyBasedMetadataWriteAccess
+Disable write operations on metadata resources (databases, containers, throughput) via account keys
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutomaticFailover
 Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
 Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
@@ -217,6 +235,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVaultKeyUri
+URI of the KeyVault
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxStalenessIntervalInSeconds
 When used with Bounded Staleness consistency, this value represents the time amount of staleness (in timespan) tolerated.
 Accepted range for this value is 5-86400.
@@ -258,6 +291,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

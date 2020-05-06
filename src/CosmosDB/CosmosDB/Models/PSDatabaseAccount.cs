@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSDatabaseAccount()
         {
-        }        
-        
+        }
+
         public PSDatabaseAccount(DatabaseAccountGetResults databaseAccountGetResults)
         {
             Id = databaseAccountGetResults.Id;
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Location = databaseAccountGetResults.Location;
             EnableCassandraConnector = databaseAccountGetResults.EnableCassandraConnector;
             FailoverPolicies = databaseAccountGetResults.FailoverPolicies;
+            Locations = databaseAccountGetResults.Locations;
             ReadLocations = databaseAccountGetResults.ReadLocations;
             WriteLocations = databaseAccountGetResults.WriteLocations;
             Capabilities = databaseAccountGetResults.Capabilities;
@@ -46,6 +47,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMultipleWriteLocations = databaseAccountGetResults.EnableMultipleWriteLocations;
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
+            PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
+            KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
+            PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
         }
 
         //
@@ -148,5 +152,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets disable write operations on metadata resources (databases, containers,
         //     throughput) via account keys
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets Whether or not public endpoint access is allowed for this server.
+        //     Possible values include: 'Enabled', 'Disabled'
+        public string PublicNetworkAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the URI of the key vault
+        public string KeyVaultKeyUri { get; set; }
+        //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
     }
 }
