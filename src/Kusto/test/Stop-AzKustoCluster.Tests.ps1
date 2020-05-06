@@ -14,7 +14,7 @@ while (-not $mockingPath) {
 Describe 'Stop-AzKustoCluster' {
     It 'Stop' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.PlainClusterName
 
         { Stop-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName } | Should -Not -Throw
         Start-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
@@ -22,7 +22,7 @@ Describe 'Stop-AzKustoCluster' {
 
     It 'StopViaIdentity' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.PlainClusterName
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 

@@ -15,7 +15,7 @@ while (-not $mockingPath) {
 
 Describe 'Remove-AzKustoDatabase' {
     It 'Delete' {
-        $name = "testdatabase" + $env.rstr3
+        $name = "testdatabase" + $env.rstr4
         New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Kind ReadWrite -Location $env.location
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }

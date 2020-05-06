@@ -19,8 +19,8 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $databaseName = "testdatabase" + $env.rstr3
-        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr3
+        $databaseName = "testdatabase" + $env.rstr4
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"

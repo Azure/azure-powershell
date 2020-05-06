@@ -15,7 +15,7 @@ while (-not $mockingPath) {
 
 Describe 'New-AzKustoDatabase' {
     It 'CreateExpanded' {
-        $name = "testdatabase" + $env.rstr3
+        $name = "testdatabase" + $env.rstr4
         $databaseFullName = $env.clusterName + "/" + $name
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Kind ReadWrite -Location $env.location
@@ -25,7 +25,7 @@ Describe 'New-AzKustoDatabase' {
 
     It 'Create' {
         $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
-        $name = "testdatabase" + $env.rstr4
+        $name = "testdatabase" + $env.rstr5
         $databaseFullName = $env.clusterName + "/" + $name
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays

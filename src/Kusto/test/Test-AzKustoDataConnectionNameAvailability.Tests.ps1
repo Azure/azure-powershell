@@ -27,7 +27,7 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr3
+        $dataConnectionName = $env.dataConnectionName + $env.rstr4
         $dataConnectionResourceType = $env.dataConnectionResourceType
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

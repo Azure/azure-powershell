@@ -19,8 +19,8 @@ Describe 'Remove-AzKustoAttachedDatabaseConfiguration' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $databaseName = "testdatabase" + $env.rstr4
-        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
+        $databaseName = "testdatabase" + $env.rstr5
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"

@@ -19,11 +19,11 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr3
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.followerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
-        $databaseName = "testdatabase" + $env.rstr3
+        $databaseName = "testdatabase" + $env.rstr4
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
@@ -37,11 +37,11 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
         $followerClusterName = $env.followerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
-        $databaseName = "testdatabase" + $env.rstr4
+        $databaseName = "testdatabase" + $env.rstr5
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location

@@ -15,13 +15,14 @@ function setupEnv() {
     # Generate some random strings for use in the test.
     $rstr1 = RandomString -allChars $false -len 6
     $rstr2 = RandomString -allChars $false -len 6
-    # Follow random strings will be used in the test directly, so add it to $env
     $rstr3 = RandomString -allChars $false -len 6
+    # Follow random strings will be used in the test directly, so add it to $env
     $rstr4 = RandomString -allChars $false -len 6
     $rstr5 = RandomString -allChars $false -len 6
-    $null = $env.Add("rstr3", $rstr3)
+    $rstr6 = RandomString -allChars $false -len 6
     $null = $env.Add("rstr4", $rstr4)
     $null = $env.Add("rstr5", $rstr5)
+    $null = $env.Add("rstr6", $rstr6)
 
     # Some constants
     $constants = Get-Content .\test\constants.json | ConvertFrom-Json
@@ -102,6 +103,12 @@ function setupEnv() {
     New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $followerClusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
     $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
     New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $env.location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $env.defaultPrincipalsModificationKind
+
+    # Deploy 2nd cluster for test
+    $clusterName = "testcluster" + $rstr3
+    Write-Host "Start to create 2nd cluster" $clusterName
+    $null = $env.Add("PlainClusterName", $clusterName)
+    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
