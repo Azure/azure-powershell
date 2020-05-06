@@ -1,17 +1,16 @@
 function Get-AzFunctionAppAvailableLocation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20160301.IGeoRegion])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the location where a function app for the given os and plan type is available.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     [CmdletBinding()]
     param(    
-        [Parameter(Mandatory=$true, HelpMessage="The plan type. Valid inputs: 'Premium'")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PlanType])]    
+        [Parameter(HelpMessage="The plan type. Valid inputs: Consumption or Premium")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AvailablePlanType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # Plan type (Premium)
+        # Plan type (Consumption or Premium)
         ${PlanType},
 
-        [Parameter(Mandatory=$true, HelpMessage='The OS type for the service plan.')]
+        [Parameter(HelpMessage='The OS type for the service plan.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -67,24 +66,50 @@ function Get-AzFunctionAppAvailableLocation {
     
     process {
 
-        if ($PSBoundParameters.ContainsKey("OSType"))
+        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+        $paramsToRemove = @(
+            "OSType",
+            "PlanType"
+        )
+        foreach ($paramName in $paramsToRemove)
         {
-            $null = $PSBoundParameters.Remove("OSType")
-
-            if ($OSType -eq "Linux")
+            if ($PSBoundParameters.ContainsKey($paramName))
             {
-                $null = $PSBoundParameters.Add("LinuxWorkersEnabled", $true)
+                $null = $PSBoundParameters.Remove($paramName)
             }
         }
 
-        if ($PSBoundParameters.ContainsKey("PlanType"))
+        # Set default values for PlanType and OSType
+        if (-not $PlanType)
         {
-            $null = $PSBoundParameters.Remove("PlanType")
+            $PlanType = "Premium"
+            Write-Verbose "PlanType not specified. Setting default PlanType to '$PlanType'." -Verbose
+        }
 
-            if ($PlanType -eq "Premium")
-            {
-                $PSBoundParameters.Add("Sku", 'ElasticPremium')
-            }
+        if (-not $OSType)
+        {
+            $OSType = "Windows"
+            Write-Verbose "OSType not specified. Setting default OSType to '$OSType'." -Verbose
+        }
+
+        # Set Linux flag
+        if ($OSType -eq "Linux")
+        {
+            $null = $PSBoundParameters.Add("LinuxWorkersEnabled", $true)
+        }
+
+        # Set plan sku
+        if ($PlanType -eq "Premium")
+        {
+            $PSBoundParameters.Add("Sku", 'ElasticPremium')
+        }
+        elseif ($PlanType -eq "Consumption")
+        {
+            $PSBoundParameters.Add("Sku", 'Dynamic')
+        }
+        else
+        {
+            throw "Unknown PlanType '$PlanType'"
         }
 
         Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters

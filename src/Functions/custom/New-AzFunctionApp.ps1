@@ -1,6 +1,6 @@
 
 function New-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="ByAppServicePlan")]
     param(
@@ -125,6 +125,15 @@ function New-AzFunctionApp {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
+
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Resource tags.')]
+        [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="CustomDockerImage")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+        [System.Collections.Hashtable]
+        [ValidateNotNull()]
+        ${Tag},
         
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -217,8 +226,8 @@ function New-AzFunctionApp {
             $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
 
             $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-            $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.SiteConfig
-            $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.Site
+            $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
+            $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
 
             ValidateFunctionName -Name $Name
 
@@ -268,7 +277,7 @@ function New-AzFunctionApp {
             
             if ($consumptionPlan)
             {
-                ValidateConsumptionPlanLocation -Location $Location
+                ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
                 $functionAppDef.Location = $Location
             }
             else 
@@ -362,7 +371,7 @@ function New-AzFunctionApp {
 
             # If plan is not consumption or elastic premium, set always on
             $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
-            if ((-not $consumptionPlan) -and $planIsElasticPremium)
+            if ((-not $consumptionPlan) -and (-not $planIsElasticPremium))
             {
                 $siteCofig.AlwaysOn = $true
             }

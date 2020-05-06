@@ -2,7 +2,6 @@ function Remove-AzFunctionAppPlan {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Deletes a function app plan.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory=$true, HelpMessage='The name of function app.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
@@ -24,7 +23,7 @@ function Remove-AzFunctionAppPlan {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -50,6 +49,7 @@ function Remove-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
+        <#
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -63,6 +63,7 @@ function Remove-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
+        #>
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
