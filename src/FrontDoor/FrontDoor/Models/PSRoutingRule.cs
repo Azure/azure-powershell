@@ -14,45 +14,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSRouteConfiguration
-    {
-
-    }
-
-    public class PSForwardingConfiguration : PSRouteConfiguration
-    {
-        public string CustomForwardingPath { get; set; }
-
-        public string ForwardingProtocol { get; set; }
-
-        public string BackendPoolId { get; set; }
-
-        public string QueryParameterStripDirective { get; set; }
-
-        public PSEnabledState? DynamicCompression { get; set; }
-
-        public bool EnableCaching { get; set; }
-    }
-
-    public class PSRedirectConfiguration : PSRouteConfiguration
-    {
-        public string RedirectType { get; set; }
-
-        public string RedirectProtocol { get; set; }
-
-        public string CustomHost { get; set; }
-
-        public string CustomPath { get; set; }
-
-        public string CustomFragment { get; set; }
-
-        public string CustomQueryString { get; set; }
-    }
-
     /// <summary>
     /// Represents the properties of an Azure Front Door object.
     /// </summary>
@@ -71,5 +35,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public PSEnabledState? EnabledState { get; set; }
 
         public string ResourceState { get; set; }
+
+        public string RulesEngineId { get; set; }
     }
 }

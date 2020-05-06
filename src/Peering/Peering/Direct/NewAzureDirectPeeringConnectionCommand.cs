@@ -27,13 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        "AzPeeringDirectConnectionObject",
+        Constants.AzPeeringDirectConnectionObject,
         DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix, SupportsShouldProcess = false)]
     [OutputType(typeof(PSDirectConnection))]
     public class NewAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the InputObject Facility DB.
+        /// Gets or sets the Facility DB.
         /// </summary>
         [Parameter(
             Position = 0,

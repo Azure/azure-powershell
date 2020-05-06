@@ -1,20 +1,38 @@
-﻿
+﻿using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using Microsoft.Azure.Management.Peering;
+using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
+using Microsoft.Rest;
+using System.Linq;
+using System.Net.Http;
+using System.IO;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Security.Cryptography;
-    using System.Text;
-
-    using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     public class IPGenerator
     {
         public Random random = new Random();
         public MD5 md5Hash = MD5.Create();
 
-        public IPGenerator() { }
+        public IPGenerator()
+        {
+        }
 
+        public string CreateIpv4AddressCIDR(int offset = 0, int maxPrefix = 24)
+        {
+            var bytes = new byte[4];
+            new Random(offset).NextBytes(bytes);
+            bytes[3] = new byte();
+            var ipv4Address = new IPAddress(bytes);
+            var addressString = ipv4Address.ToString();
+            return $"{addressString}/{maxPrefix}";
+        }
         public string CreateIpv4Address(int offset = 0, bool maxPrefix = false)
         {
             var bytes = new byte[4];

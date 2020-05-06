@@ -68,6 +68,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             } : null;
 
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
+            DiskEncryption = cluster.Properties.DiskEncryptionProperties;
+            AssignedIdentity = cluster.Identity;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -208,5 +210,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the minimal supported TLS version.
         /// </summary>
         public string MinSupportedTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disk encryption properties.
+        /// </summary>
+        public DiskEncryptionProperties DiskEncryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the assigned identity.
+        /// </summary>
+        public ClusterIdentity AssignedIdentity { get; set; }
     }
 }

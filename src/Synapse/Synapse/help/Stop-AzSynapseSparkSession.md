@@ -12,7 +12,7 @@ Stops a Synapse Analytics Spark session.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet
+### DeleteByNameParameterSet (Default)
 ```
 Stop-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> -LivyId <Int32> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

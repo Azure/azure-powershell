@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession + SynapseConstants.Timeout, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession + SynapseConstants.Timeout, DefaultParameterSetName = ResetByIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class ResetAzureSynapseSparkSessionTimeout : SynapseCmdletBase
     {

@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Commands.Synaspe
         [ValidateSet("default")]
         public string ManagedVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.DisallowAllConnections)]
-        public SwitchParameter DisallowAllConnections { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.DisallowAllConnection)]
+        public SwitchParameter DisallowAllConnection { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Synaspe
                     this.Name,
                     createParams));
 
-                if (!this.DisallowAllConnections.IsPresent)
+                if (!this.DisallowAllConnection.IsPresent)
                 {
                     SynapseAnalyticsClient.CreateOrUpdateWorkspaceFirewallRule(
                         this.ResourceGroupName,

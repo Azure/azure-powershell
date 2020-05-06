@@ -31,7 +31,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzPeering", DefaultParameterSetName = Constants.Exchange, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Constants.AzPeering,
+        DefaultParameterSetName = Constants.Exchange,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class NewAzurePeeringCommand : PeeringBaseCmdlet
     {
@@ -106,6 +108,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string PeeringLocation { get; set; }
 
         /// <summary>
+        /// Gets or sets the Sku type
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.MicrosoftNetworkHelp,
+            ParameterSetName = Constants.Direct)]
+        [PSArgumentCompleter(Constants.Edge8075, Constants.CDN8069, Constants.Ix, Constants.IxRs)]
+        [PSDefaultValue(Value = Constants.Edge8075)]
+        public string MicrosoftNetwork { get; set; }
+
+        /// <summary>
         /// Gets or sets The PeerAsn.
         /// </summary>
         [Parameter(
@@ -155,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public PSDirectConnection[] DirectConnection { get; set; }
 
         /// <summary>
-        /// Gets or sets the Microsoft Network
+        /// Gets or sets the Sku type
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -242,9 +255,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     PeeringLocation = this.PeeringLocation,
                     Direct = new PSPeeringPropertiesDirect
                     {
-                        DirectPeeringType = Constants.Edge,
+                        DirectPeeringType = this.ConvertToDirectPeeringType(this.MicrosoftNetwork),
                         Connections = new List<PSDirectConnection>(),
-                        PeerAsn = new PSSubResource(this.PeerAsnResourceId)
+                        PeerAsn = new PSSubResource(this.PeerAsnResourceId),
                     },
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true),
                 };
@@ -259,13 +272,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     peeringRequest.Direct.Connections.Add(psDirectConnection);
             }
 
-            if (this.Sku.Equals(Constants.PremiumDirectMetered, StringComparison.InvariantCultureIgnoreCase) || this.Sku.Equals(Constants.PremiumDirectUnlimited, StringComparison.InvariantCultureIgnoreCase))
+
+            if (this.DirectConnection.Any((c) => c.UseForPeeringService == true))
             {
-                peeringRequest.Direct.DirectPeeringType = Constants.CDN;
-            }
-            else
-            {
-                peeringRequest.Sku = this.DirectConnection.Any((c) => c.UseForPeeringService == true) ? new PSPeeringSku { Name = Constants.PremiumDirectFree } : new PSPeeringSku { Name = Constants.BasicDirectFree };
+                if(this.Sku != Constants.PremiumDirectFree && this.Sku != Constants.PremiumDirectMetered && this.Sku != Constants.PremiumDirectUnlimited)
+                {
+                    throw new PSArgumentException(string.Format(Resources.Error_Sku, $"{Constants.PremiumDirectFree},{Constants.PremiumDirectMetered},{Constants.PremiumDirectUnlimited}"));
+                }
             }
 
             if (this.ParameterSetName.Equals(Constants.Direct))

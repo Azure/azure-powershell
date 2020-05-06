@@ -163,7 +163,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item', 
                'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item', 
                'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item', 
-               'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent'
+               'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent',
+               'Invoke-AzStorageAccountFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()

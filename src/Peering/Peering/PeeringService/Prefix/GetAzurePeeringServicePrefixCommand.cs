@@ -29,7 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// The get azure peering service prefix command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringServicePrefix,
+        DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
     [OutputType(typeof(PSPeeringServicePrefix))]
     public class GetAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PrefixInputObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [ValidateNotNullOrEmpty]
         public PSPeeringService PeeringServiceObject { get; set; }
 
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         public string Name { get; set; }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false, 
             HelpMessage = Constants.PeeringServicePrefixEventHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringServicePrefixEventHelp,
@@ -141,13 +142,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
                     this.Name = resourceId.ResourceName;
-                    this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
+                    this.PeeringServiceName = resourceId?.ParentResource?.Split('/')?[1];
                     var item = this.GetPeeringServicePrefixByResourceAndName();
                     this.WriteObject(item);
                 }
                 else if (string.Equals(
                   this.ParameterSetName,
-                  Constants.ParameterSetNameDefault,
+                  Constants.ParameterSetNameInputObject,
                   StringComparison.OrdinalIgnoreCase))
                 {
                     var resourceId = new ResourceIdentifier(this.PeeringServiceObject.Id);

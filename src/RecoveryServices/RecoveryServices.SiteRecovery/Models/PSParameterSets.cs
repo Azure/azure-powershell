@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string AzureToAzureWithMultipleStorageAccount = "AzureToAzureWithMultipleStorageAccount";
 
         /// </summary>
+        /// Handle ASR Vault - A2A Zone to zone replication.
+        /// </summary>
+        internal const string AzureZoneToZone = "AzureZoneToZone";
+        
+        /// </summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string AzureToVMware = "AzureToVMware";

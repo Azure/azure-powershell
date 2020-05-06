@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzLegacyPeering")]
+    [Cmdlet(VerbsCommon.Get, Constants.AzLegacyPeering)]
     [OutputType(typeof(PSPeering))]
     public class GetAzureLegacyPeeringCommand : PeeringBaseCmdlet
     {

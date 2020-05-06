@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     {
         Sas = 0,
         SelfSigned = 1,
-        CertificateAuthority = 2
+        CertificateAuthority = 2,
+        None = 3
     }
 }

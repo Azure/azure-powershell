@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSSqlContainerGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSSqlContainerGetResults))]
     public class GetAzCosmosDBSqlDatabase : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -44,9 +44,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSDatabaseAccount ParentObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.SqlDatabaseDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -60,12 +57,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 SqlDatabaseGetResults sqlDatabaseGetResults = CosmosDBManagementClient.SqlResources.GetSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlDatabaseGetResults(sqlDatabaseGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.GetSqlDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {
