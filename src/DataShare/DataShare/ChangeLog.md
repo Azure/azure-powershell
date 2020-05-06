@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Update module to GA version
 
 ## Version 0.1.2
 * Update references to use latest Nuget package version
