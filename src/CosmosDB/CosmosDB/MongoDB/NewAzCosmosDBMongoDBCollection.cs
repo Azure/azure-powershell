@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 List<MongoIndex> Indexes = new List<MongoIndex>();                
                 foreach(PSMongoIndex psMongoIndex in Index)
                 {
-                    Indexes.Add(PSMongoIndex.ConvertPSMongoIndexToMongoIndex(psMongoIndex));
+                    Indexes.Add(PSMongoIndex.ToSDKModel(psMongoIndex));
                 }
 
                 mongoDBCollectionResource.Indexes = Indexes;

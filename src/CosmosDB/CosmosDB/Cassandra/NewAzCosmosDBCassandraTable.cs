@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Id = Name,
                 DefaultTtl = TtlInSeconds
             };
-            cassandraTableResource.Schema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
+
+            cassandraTableResource.Schema = PSCassandraSchema.ToSDKModel(Schema);
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
             {
