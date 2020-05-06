@@ -12,9 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzPortalDashboard' {
-    It 'Lists all dashboards in a subscription' {
-        $dash = Get-AzPortalDashboard
-        $dash.Count | Should -BeGreaterOrEqual 1
+    It 'List1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'Get' -skip {

@@ -16,6 +16,10 @@ Describe 'New-AzPortalDashboard' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'CreateByFile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
