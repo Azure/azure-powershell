@@ -31,21 +31,17 @@ Deletes the Dashboard.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\td\> Remove-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02
 ```
 
-{{ Add description here }}
+Remove a Dashbaord using resource group name and dashboard name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Dashboard using the pipeline
 ```powershell
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Remove the dashboard returned from a Get-AzDashboard call.
 
 ## PARAMETERS
 

@@ -44,19 +44,23 @@ Gets the Dashboard.
 PS C:> Get-AzPortalDashboard                                                                                                                     
 Location Name                                           Type
 -------- ----                                           ----
-eastasia db15feab-d48d-4142-aafe-b1f1fcde5248-dashboard Microsoft.Portal/dashboards
+eastasia my-custom-dashboard1                           Microsoft.Portal/dashboards
+westus   my-second-custom-dashboard1                    Microsoft.Portal/dashboards
+
 ```
 
-{{ Add description here }}
+List all dashboards in a subscription
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -Name mydashboard
 
-{{ Add output here }}
+Location Name        Type
+-------- ----        ----
+eastus   mydashboard Microsoft.Portal/dashboards
 ```
 
-{{ Add description here }}
+Get details for a single dashboard
 
 ## PARAMETERS
 

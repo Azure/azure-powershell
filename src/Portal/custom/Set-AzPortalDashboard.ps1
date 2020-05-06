@@ -17,6 +17,7 @@
 function Set-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
 [CmdletBinding(SupportsShouldProcess, PositionalBinding=$false, ConfirmImpact='Medium')]
+[Microsoft.Azure.PowerShell.Cmdlets.Portal.Description("Creates or updates a Dashboard.")]
 param(
     [Parameter(Mandatory)]
     [Alias('DashboardName')]
@@ -44,8 +45,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
     [ValidateNotNullOrEmpty()]
     [System.String]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # The Path to an existing dashboard template.
+    # Dashboard templates may be downloaded from the portal.
     ${DashboardPath},
 
     [Parameter()]
@@ -112,8 +113,8 @@ begin {
         {
             $content = (Get-content -Path $dashboardPath)
             $deserializedContent = [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.Dashboard]::FromJsonString($content)
-            $PSBoundParameters.Remove('DashboardPath')
-            $PSBoundParameters.Add('Dashboard', $deserializedContent)
+            $PSBoundParameters.Remove('DashboardPath') | Out-Null
+            $PSBoundParameters.Add('Dashboard', $deserializedContent) | Out-Null
             $scriptCmd = {& $wrappedCmd @PSBoundParameters}
             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
             $steppablePipeline.Begin($PSCmdlet)

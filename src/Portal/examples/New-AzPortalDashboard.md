@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a dashboard using a dashboard template file
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
 
-{{ Add output here }}
-```
+Location Name           Type
+-------- ----           ----
+eastasia my-dashboard03 Microsoft.Portal/dashboards
+`````
 
-{{ Add description here }}
+Create a new dashboard using the provided dashboard template file.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
