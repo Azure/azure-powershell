@@ -4,7 +4,8 @@ function Get-AzFunctionApp {
     [CmdletBinding(DefaultParametersetname="GetAll")]
     param(
         [Parameter(Mandatory=$true, ParameterSetName="ByName", HelpMessage='The Azure subscription ID.')]
-        [Parameter(ParameterSetName="BySubscriptionId")]
+        [Parameter(ParameterSetName="GetAll")]
+        [Parameter(ParameterSetName="List1")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
@@ -12,7 +13,7 @@ function Get-AzFunctionApp {
         ${SubscriptionId},
         
         [Parameter(Mandatory=$true, ParameterSetName="ByName", HelpMessage='The name of the resource group.')]
-        [Parameter(ParameterSetName="ByResourceGroupName")]
+        [Parameter(ParameterSetName="List1")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -30,7 +31,7 @@ function Get-AzFunctionApp {
         [System.String]
         ${Location},
         
-        [Parameter(Mandatory=$false, ParameterSetName="ByName", HelpMessage='Use to specify whether to include deployment slots in results.')]
+        [Parameter(Mandatory=$false, ParameterSetName="List1", HelpMessage='Use to specify whether to include deployment slots in results.')]
         [System.Management.Automation.SwitchParameter]
         ${IncludeSlot},
 
