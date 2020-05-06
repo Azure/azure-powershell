@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
+					`Get-AzRegulatoryComplianceControl`, 
+					`Get-AzRegulatoryComplainceAssessment`
 * Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
 * Support management of SQL Information Protection Policy.
 
