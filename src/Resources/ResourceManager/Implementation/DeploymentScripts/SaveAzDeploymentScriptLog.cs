@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 3, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [ValidateNotNullOrEmpty]
         public int Tail { get; set; }
 
         [Parameter(Mandatory = false,
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
 
             PsDeploymentScriptLog deploymentScriptLog;
+            Tail = this.IsParameterBound(c => c.Tail) ? Tail : 0;
 
             try
             {
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case SaveDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, this.IsParameterBound(c => c.Tail) ? Tail : 0);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(

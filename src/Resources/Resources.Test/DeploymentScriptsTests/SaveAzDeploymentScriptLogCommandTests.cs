@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string deploymentScriptName = "myDeploymentScript";
 
-
         public SaveAzDeploymentScriptLogCommandTests(ITestOutputHelper output)
         {
             deploymentScriptsMockClient = new Mock<DeploymentScriptsSdkClient>();
@@ -88,6 +87,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentScriptName;
             cmdlet.OutputPath = TestLogPath;
+            cmdlet.Tail = 0;
             cmdlet.SetParameterSet("SaveDeploymentScriptLogByName");
 
             // Test

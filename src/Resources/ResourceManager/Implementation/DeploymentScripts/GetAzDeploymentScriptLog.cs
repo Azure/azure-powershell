@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 2, ParameterSetName = GetDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [ValidateNotNullOrEmpty]
         public int Tail { get; set; }
 
         #endregion
@@ -62,13 +63,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             PsDeploymentScriptLog deploymentScriptLog;
+            Tail = this.IsParameterBound(c => c.Tail) ? Tail : 0;
             try
             {
                 switch (ParameterSetName)
                 {
                     case GetDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, this.IsParameterBound(c => c.Tail) ? Tail : 0);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
                         break;
                     case GetDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
