@@ -1,67 +1,65 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azrmstorageshare
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/restore-azrmstorageshare
 schema: 2.0.0
 ---
 
-# Remove-AzRmStorageShare
+# Restore-AzRmStorageShare
 
 ## SYNOPSIS
-Removes a Storage file share.
+Restores a deleted file share.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-Remove-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
+ -DeletedShareVersion <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-Force] [-PassThru]
+Restore-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> -DeletedShareVersion <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ShareResourceId
-```
-Remove-AzRmStorageShare [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
-Remove-AzRmStorageShare -InputObject <PSShare> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzRmStorageShare -InputObject <PSShare> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzRmStorageShare** cmdlet removes a Storage file share.
+The **Restore-AzRmStorageShare** cmdlet restores a deleted file share within a valid retention days if share soft delete is enabled.
 
 ## EXAMPLES
 
-### Example 1: Remove a Storage file share with Storage account name and share name
-```
-PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare"
+### Example 1: Remove and restore a share
+```powershell
+PS C:\> Remove-AzRmStorageShare -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Name $shareName -Force
+
+PS C:\> Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IncludeDeleted 
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version          ShareUsageBytes
+----     -------- --------------- ----------           ------- -------          ---------------
+test     100                      TransactionOptimized                                         
+share1   100                      TransactionOptimized True    01D61FD1FC5498B6                
+
+PS C:\> Restore-AzRmStorageShare -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Name $shareName -DeletedShareVersion 01D61FD1FC5498B6
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
+----     -------- --------------- ---------- ------- ------- ---------------
+share1   100
 ```
 
-This command removes a Storage file share with Storage account name and share name.
-
-### Example 2: Remove a Storage file share with Storage account object and share name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
-PS C:\>Remove-AzRmStorageShare -StorageAccount $accountObject -Name "myshare"
-```
-
-This command removes a Storage file share with Storage account object and share name.
-
-### Example 3: Remove all Storage file shares in a Storage account with pipeline
-```
-PS C:\>Get-AzStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | Remove-AzRmStorageShare -Force
-```
-
-This command removes all Storage file shares in a Storage account with pipeline.
+This command first delete a file share, and then list shares and see the deleted share version, finally restore it back to a normal share. 
+Need enabled share soft delete with Update-AzStorageFileServiceProperty, before delete the share.
 
 ## PARAMETERS
 
@@ -80,15 +78,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force to remove the Share and all content in it
+### -DeletedShareVersion
+Deleted Share Version, which will be restored from.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: AccountName, AccountObject
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Storage Share object
+Deleted Share object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSShare
@@ -111,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Share Name
+Deleted Share Name, which will be restored.
 
 ```yaml
 Type: System.String
@@ -119,22 +117,6 @@ Parameter Sets: AccountName, AccountObject
 Aliases: N, ShareName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,21 +135,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Input a File Share Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: ShareResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -237,15 +204,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSShare
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Management.Storage.Models.PSShare
 
 ## NOTES
 

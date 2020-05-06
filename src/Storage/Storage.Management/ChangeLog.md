@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable/disable/get share soft delete properties on file Service of a Storage account
+    - `Update-AzStorageFileServiceProperty`
+    - `Get-AzStorageFileServiceProperty`
+* Support list file shares include the deleted ones of a Storage account, and Get single file share usage
+    - `Get-AzRmStorageShare`
+* Support restore a deleted file share
+    - `Restore-AzRmStorageShare`
 * Support enable/disable versioning on Blob Service of a Storage account
     - `Update-AzStorageBlobServiceProperty`
 * Support Set/Get/Remove Object Replication Policy on Storage accounts

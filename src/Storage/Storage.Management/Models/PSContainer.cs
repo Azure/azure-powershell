@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSImmutabilityPolicy(StorageModels.ImmutabilityPolicy policy)
         {
-            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.Name = policy.Name;
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSImmutabilityPolicyProperties(StorageModels.ImmutabilityPolicyProperties policy)
         {
-            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
