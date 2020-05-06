@@ -120,7 +120,6 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Get-AzOperationalInsightsCluster', 
                'Update-AzOperationalInsightsCluster', 
                'Remove-AzOperationalInsightsCluster', 
-               'New-AzOperationalInsightsLinkedService', 
                'Get-AzOperationalInsightsLinkedService', 
                'Set-AzOperationalInsightsLinkedService', 
                'Remove-AzOperationalInsightsLinkedService'
