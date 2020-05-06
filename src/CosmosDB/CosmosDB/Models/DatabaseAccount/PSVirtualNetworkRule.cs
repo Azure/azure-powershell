@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSVirtualNetworkRule(VirtualNetworkRule virtualNetworkRule)
         {
+            if (virtualNetworkRule == null)
+            {
+                return;
+            }
+
             Id = virtualNetworkRule.Id;
             IgnoreMissingVNetServiceEndpoint = virtualNetworkRule.IgnoreMissingVNetServiceEndpoint;
         }
@@ -40,6 +45,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         static public VirtualNetworkRule ToSDKModel(PSVirtualNetworkRule psVirtualNetworkRule)
         {
+            if(psVirtualNetworkRule == null)
+            {
+                return null;
+            }
+
             return new VirtualNetworkRule
             {
                 Id = psVirtualNetworkRule.Id,

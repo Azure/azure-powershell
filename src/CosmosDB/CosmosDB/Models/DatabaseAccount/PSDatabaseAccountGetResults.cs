@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSDatabaseAccountGetResults(DatabaseAccountGetResults databaseAccountGetResults)
         {
+            if (databaseAccountGetResults == null)
+            {
+                return;
+            }
+
             Id = databaseAccountGetResults.Id;
             Name = databaseAccountGetResults.Name;
             Tags = databaseAccountGetResults.Tags;

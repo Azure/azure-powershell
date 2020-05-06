@@ -21,16 +21,26 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSDatabaseAccountListKeys()
         {
-        }        
-        
+        }
+
         public PSDatabaseAccountListKeys(DatabaseAccountListReadOnlyKeysResult databaseAccountListReadOnlyKeysResult)
         {
+            if (databaseAccountListReadOnlyKeysResult == null)
+            {
+                return;
+            }
+
             Keys.Add("PrimaryReadonlyMasterKey", databaseAccountListReadOnlyKeysResult.PrimaryReadonlyMasterKey);
             Keys.Add("SecondaryReadonlyMasterKey", databaseAccountListReadOnlyKeysResult.SecondaryReadonlyMasterKey);
         }
 
         public PSDatabaseAccountListKeys(DatabaseAccountListConnectionStringsResult databaseAccountConnectionString)
         {
+            if (databaseAccountConnectionString == null)
+            {
+                return;
+            }
+
             foreach (DatabaseAccountConnectionString connectionString in databaseAccountConnectionString.ConnectionStrings)
             {
                 Keys.Add(connectionString.Description, connectionString.ConnectionString);
@@ -39,6 +49,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSDatabaseAccountListKeys(DatabaseAccountListKeysResult databaseAccountListKeysResult)
         {
+            if (databaseAccountListKeysResult == null)
+            {
+                return;
+            }
+
             Keys.Add("PrimaryMasterKey", databaseAccountListKeysResult.PrimaryMasterKey);
             Keys.Add("SecondaryMasterKey", databaseAccountListKeysResult.SecondaryMasterKey);
             Keys.Add("PrimaryReadonlyMasterKey", databaseAccountListKeysResult.PrimaryReadonlyMasterKey);

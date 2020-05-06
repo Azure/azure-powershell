@@ -31,6 +31,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSLocation(Location location)
         {
+            if (location == null)
+            {
+                return;
+            }
+
             LocationName = location.LocationName;
             FailoverPriority = location.FailoverPriority;
             IsZoneRedundant = location.IsZoneRedundant;
@@ -54,6 +59,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         static public Location ToSDKModel(PSLocation location)
         {
+            if (location == null)
+            {
+                return null;
+            }
+
             return new Location
             {
                 LocationName = location.LocationName,
