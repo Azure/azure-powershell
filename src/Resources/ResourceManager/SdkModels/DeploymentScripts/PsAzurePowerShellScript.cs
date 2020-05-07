@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 Tags = script.Tags,
                 CleanupPreference = script.CleanupPreference,
                 ProvisioningState = script.ProvisioningState,
-                Status = script.Status,
+                Status = DeploymentScriptsAutoMapperProfile.Mapper.Map<PsScriptStatus>(script.Status),
                 Outputs = script.Outputs,
                 PrimaryScriptUri = script.PrimaryScriptUri,
                 SupportingScriptUris = script.SupportingScriptUris,
