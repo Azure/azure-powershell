@@ -24,9 +24,8 @@ update an existing application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Update application insights component
 ```powershell
-
 Update-AzApplicationInsights -ResourceGroupName "rgName" -Name "aiName" -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
 ```
 
