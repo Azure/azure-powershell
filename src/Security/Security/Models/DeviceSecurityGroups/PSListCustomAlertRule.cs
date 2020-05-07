@@ -11,25 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-<<<<<<< HEAD:src/Security/Security/Models/DeviceSecurityGroups/PSListCustomAlertRule.cs
 namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
 {
     public class PSListCustomAlertRule : PSCustomAlertRule
     {
         public string ValueType { get; set; }
-=======
-
-using System.Runtime.Serialization;
-
-namespace Microsoft.Azure.Commands.Aks.Models
-{
-    public enum PSResourceIdentityType
-    {
-        [EnumMember(Value = "SystemAssigned")]
-        SystemAssigned,
-
-        [EnumMember(Value = "None")]
-        None
->>>>>>> d970c735cf... Sync Network dev branch with master (#11638):src/Aks/Aks/Models/PSResourceIdentityType.cs
     }
 }

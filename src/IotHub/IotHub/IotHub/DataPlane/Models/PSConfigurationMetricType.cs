@@ -12,19 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-<<<<<<< HEAD:src/IotHub/IotHub/IotHub/DataPlane/Models/PSConfigurationMetricType.cs
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     public enum PSConfigurationMetricType
     {
         Custom,
         System
-=======
-namespace Microsoft.Azure.Commands.Aks.Models
-{
-    public class PSResourceReference
-    {
-        public string Id { get; set; }
->>>>>>> d970c735cf... Sync Network dev branch with master (#11638):src/Aks/Aks/Models/PSResourceReference.cs
     }
 }
