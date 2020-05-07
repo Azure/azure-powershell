@@ -27,7 +27,7 @@ New-AzDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <S
 ```
 
 ## DESCRIPTION
-The New-AzDataFactoryV2LinkedServiceEncryptCredential cmdlet encrypt credential in linked service with specified integration runtime.
+The New-AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet encrypt credential in linked service with specified integration runtime.
 
 ## EXAMPLES
 
