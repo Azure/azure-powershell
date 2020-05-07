@@ -39,7 +39,7 @@ This command updates a Web App named ContosoSite that belongs to the resource gr
 ### Example 2
 
 ```powershell <!-- Aladdin Generated Example --> 
-Update-AzWebAppAccessRestrictionConfig -Name IpRule -ResourceGroupName MyResourceGroup -ScmSiteUseMainSiteRestrictionConfig 
+Update-AzWebAppAccessRestrictionConfig -Name IpRule -ResourceGroupName MyResourceGroup -ScmSiteUseMainSiteRestrictionConfig
 ```
 
 ## PARAMETERS
