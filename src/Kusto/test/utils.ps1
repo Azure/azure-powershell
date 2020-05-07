@@ -32,7 +32,7 @@ function setupEnv() {
     $resourceGroupName = "testgroup" + $rstr1
     Write-Host "Start to create test resource group" $resourceGroupName
     $null = $env.Add("resourceGroupName", $resourceGroupName)
-    New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
     # Create Event Hub
     $eventhubNSName = "eventhubns" + $rstr1
@@ -58,6 +58,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\event-grid\parameters.json -Value (ConvertTo-Json $eventhubNSGParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\event-grid\template.json -TemplateParameterFile .\test\deployment-templates\event-grid\parameters.json -Name eventgrid -ResourceGroupName $resourceGroupName
 
+    # IoT Hub must be created manually, the name is saved in env.json under iothubName
     # Create IoT Hub
     $iothubName = "iothub" + $rstr1
     Write-Host "Start to create IoT Hub" $iothubName
@@ -89,8 +90,30 @@ function setupEnv() {
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
     New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
 
+    # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
     New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
+
+    # Note: for DataConnection tests, 3 data connections must be created,
+    # For data connections to work you need to create a tabel <$env.tableName>, MappingRuleName <$env.tableMappingName> and MappingRuleName for update cmdlet <$env.tableMappingName1>,
+    # Example of setting:
+    # .create table Events (TimeStamp: datetime, Name: string, Metric: int, Source: string)
+    # .create table Events ingestion json mapping "EventsMapping" '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"","transform":null},{"column":"Name","path":"$.name","datatype":"","transform":null},{"column":"Metric","path":"$.metric","datatype":"","transform":null},{"column":"Source","path":"$.source","datatype":"","transform":null}]'
+    # .create table Events ingestion json mapping "EventsMapping1" '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"","transform":null},{"column":"Name","path":"$.name","datatype":"","transform":null},{"column":"Metric","path":"$.metric","datatype":"","transform":null},{"column":"Source","path":"$.source","datatype":"","transform":null}]'
+    #
+    # Example for data connections:
+    # $dataConnectionName = $env.dataConnectionName
+    # $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
+    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -DataFormat $env.dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $env.tableName -MappingRuleName $env.tableMappingName
+    #
+    # $dataConnectionName = $env.dataConnectionName + "g"
+    # $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
+    # $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
+    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -DataFormat $env.dataFormat -ConsumerGroup '$Default' -TableName $env.tableName -MappingRuleName $env.tableMappingName
+    #
+    # $dataConnectionName = $env.dataConnectionName + "h"
+    # $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
+    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -DataFormat $env.dataFormat -ConsumerGroup '$Default' -TableName $env.tableName -MappingRuleName $env.tableMappingName
 
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2
@@ -118,8 +141,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    # Remove-AzResourceGroup -Name $env.resourceGroupName -Force
-
-    # # Remove application
-    # Remove-AzADApplication -ApplicationId $env.principalId -Force
+    Remove-AzResourceGroup -Name $env.resourceGroupName -Force
 }
