@@ -77,8 +77,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = DeploymentOperationErrorInfo.GetErrorMessageWithDetails(DeploymentOperationErrorInfo.DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())) 
-                                    ?? ProjectResources.GenericDeploymentFailedWithErrors,
+                    StatusMessage = DeploymentOperationErrorInfo
+                                    .DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())?
+                                    .ToFormattedString()?
+                                    .TrimEnd(System.Environment.NewLine.ToCharArray())
+                                        ?? result.Properties.StatusMessage, // To-Do: With the new API version this work will move to error model extensions.
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
@@ -103,6 +106,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             }
 
             return rmError;
+        }
+
+        public static string ToFormattedString(this ErrorResponse error, int level = 0)
+        {
+            if (error.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Message, error.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(' ', l * 2).Append(" - ").ToString();
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)

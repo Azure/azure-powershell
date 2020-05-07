@@ -19,20 +19,7 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinUniqueKey"), OutputType(typeof(PSUniqueKey))]
-    public class NewAzCosmosDBGremlinUniqueKey : AzureCosmosDBCmdletBase
-    {
-        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeyPathHelpMessage)]
-        public string[] Path { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            PSUniqueKey uniqueKey = new PSUniqueKey
-            {
-                Paths = Path
-            };
-
-            WriteObject(uniqueKey);
-            return;
-        }
+    public class NewAzCosmosDBGremlinUniqueKey : NewAzCosmosDBSqlUniqueKey 
+    { 
     }
 }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount ParentObject { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Setting CosmosDB Gremlin Database"))
+            if (ShouldProcess(Name, "Updating CosmosDB Gremlin Database"))
             {
                 GremlinDatabaseGetResults gremlinDatabaseGetResults = CosmosDBManagementClient.GremlinResources.CreateUpdateGremlinDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, gremlinDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinDatabaseGetResults(gremlinDatabaseGetResults));

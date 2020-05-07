@@ -140,3 +140,12 @@ Invokes a temporary network access request.
 
 ### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
 Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
+
+### [Get-AzRegulatoryComplainceAssessment](Get-AzRegulatoryComplainceAssessment.md)
+Gets regulatory compliance assessments
+
+### [Get-AzRegulatoryComplianceControl](Get-AzRegulatoryComplianceControl.md)
+Gets regulatory compliance controls
+
+### [Get-AzRegulatoryComplianceStandard](Get-AzRegulatoryComplianceStandard.md)
+Gets regulatoey compliance standards

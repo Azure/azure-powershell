@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSCompositePath(CompositePath compositePath)
         {
+            if (compositePath == null)
+            {
+                return;
+            }
+
             Path = compositePath.Path;
             Order = compositePath.Order;
         }
@@ -40,8 +45,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     'Descending'
         public string Order { get; set; }
 
-        public static CompositePath ConvertPSCompositePathToCompositePath(PSCompositePath pSCompositePath)
+        public static CompositePath ToSDKModel(PSCompositePath pSCompositePath)
         {
+            if (pSCompositePath == null)
+            {
+                return null;
+            }
+
             return new CompositePath
             {
                 Order = pSCompositePath.Order,

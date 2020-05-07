@@ -48,13 +48,6 @@ New-AzResourceLock -LockName <String> -LockLevel <LockLevel> [-LockNotes <String
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByTenantLevel
-```
-New-AzResourceLock -LockName <String> -LockLevel <LockLevel> [-LockNotes <String>] [-Force]
- -ResourceName <String> -ResourceType <String> [-TenantLevel] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByLockId
 ```
 New-AzResourceLock -LockLevel <LockLevel> [-LockNotes <String>] [-Force] -LockId <String>
@@ -159,7 +152,7 @@ Specifies the name of the lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: BySpecifiedScope, ByResourceGroup, ByResourceGroupLevel, BySubscription, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: BySpecifiedScope, ByResourceGroup, ByResourceGroupLevel, BySubscription, BySubscriptionLevel
 Aliases: ExtensionResourceName, Name
 
 Required: True
@@ -221,7 +214,7 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -236,7 +229,7 @@ Specifies the resource type of the resource for which the lock applies.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -262,21 +255,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TenantLevel
-Indicates that this cmdlet operates at the tenant level.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByTenantLevel
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
