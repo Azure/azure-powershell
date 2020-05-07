@@ -14,7 +14,7 @@ Gets function apps in a subscription.
 
 ### GetAll (Default)
 ```
-Get-AzFunctionApp [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByLocation
@@ -24,24 +24,18 @@ Get-AzFunctionApp -Location <String> [-DefaultProfile <PSObject>] [<CommonParame
 
 ### ByName
 ```
-Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-IncludeSlot]
+Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceGroupName
+### List1
 ```
-Get-AzFunctionApp [-ResourceGroupName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### BySubscriptionId
-```
-Get-AzFunctionApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionApp [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-IncludeSlot]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Gets function apps in a subscription.
-
-## EXAMPLES
 
 ### Example 1: Get all function apps.
 
@@ -99,7 +93,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -IncludeSlot
@@ -107,7 +100,7 @@ Use to specify whether to include deployment slots in results.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByName
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -115,7 +108,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -131,7 +123,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -147,7 +138,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -155,7 +145,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName, ByResourceGroupName
+Parameter Sets: ByName, List1
 Aliases:
 
 Required: True
@@ -163,7 +153,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -171,7 +160,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName, BySubscriptionId
+Parameter Sets: ByName, GetAll, List1
 Aliases:
 
 Required: False
@@ -179,7 +168,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -191,9 +179,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

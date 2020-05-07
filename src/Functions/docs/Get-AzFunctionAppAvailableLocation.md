@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFunctionAppAvailableLocation
 
 ## SYNOPSIS
-Gets the locations where a function app for the given os and plan type is available.
+Gets the location where a function app for the given os and plan type is available.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzFunctionAppAvailableLocation [[-PlanType] <String>] [[-OSType] <String>] [
 ```
 
 ## DESCRIPTION
-Gets the locations where a function app for the given os and plan type is available.
+Gets the location where a function app for the given os and plan type is available.
 
 ## EXAMPLES
 
@@ -155,7 +155,6 @@ Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OSType
@@ -171,7 +170,6 @@ Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanType
@@ -188,7 +186,6 @@ Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -200,9 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

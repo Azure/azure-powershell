@@ -1,85 +1,49 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappsetting
 schema: 2.0.0
 ---
 
-# Remove-AzFunctionApp
+# Get-AzFunctionAppSetting
 
 ## SYNOPSIS
-Deletes a function app.
+Gets app settings for a function app.
 
 ## SYNTAX
 
 ### ByName (Default)
 ```
-Remove-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFunctionAppSetting -InputObject <ISite> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a function app.
+Gets app settings for a function app.
 
 ## EXAMPLES
 
-### Example 1: Example 1: Get a function app by name and delete it.
+### Example 1: Get the app settings of a function app.
 
 ```powershell
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
-```
-
-### Example 2: Delete a function app by name.
-
-```powershell
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+PS C:\> Get-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName
 ```
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Forces the cmdlet to remove the function app without prompting for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of function app.
+Name of the function app.
 
 ```yaml
 Type: System.String
@@ -118,23 +82,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-
+Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
@@ -152,7 +101,7 @@ Accept wildcard characters: False
 The Azure subscription ID.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: ByName
 Aliases:
 
@@ -203,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 
 ## NOTES
 
