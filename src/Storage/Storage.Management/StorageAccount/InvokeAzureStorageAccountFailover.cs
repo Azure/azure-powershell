@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// Lists all storage services underneath the subscription.
     /// </summary>
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountFailoverNounStr, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSStorageAccount))]    
-#if NETSTANDARD
-    [Alias("Invoke-" + "AzureRm" + StorageAccountFailoverNounStr)]
-#endif
     public class InvokeAzureStorageAccountFailoverCommand : StorageAccountBaseCmdlet
     {  
         /// <summary>

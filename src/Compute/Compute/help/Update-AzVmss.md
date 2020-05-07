@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutomaticRepairGracePeriod
-The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The default value is 5 minutes (PT5M).
+The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 30 minutes (PT30M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
 
 ```yaml
 Type: System.String
@@ -151,7 +151,8 @@ Accept wildcard characters: False
 ### -CustomData
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
-The maximum length of the binary array is 65535 bytes.
+The maximum length of the binary array is 65535 bytes. <br>
+For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```yaml
 Type: System.String
@@ -789,7 +790,8 @@ Accept wildcard characters: False
 ```
 
 ### -TimeZone
-Specifies the time zone for Windows OS.
+Specifies the time zone for Windows OS. e.g. \"Pacific Standard Time\". <br>
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String

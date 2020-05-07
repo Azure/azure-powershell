@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzManagementGroupDeployment
 
 ## SYNOPSIS
-Get deployment at a mangement group
+Get deployment at a management group
 
 ## SYNTAX
 

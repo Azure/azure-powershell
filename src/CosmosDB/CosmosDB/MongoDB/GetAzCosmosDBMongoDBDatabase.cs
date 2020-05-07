@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMongoDBDatabaseGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMongoDBDatabaseGetResults))]
     public class GetAzCosmosDBMongoDBDatabase : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -44,9 +44,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSDatabaseAccount ParentObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.MongoDatabaseDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
@@ -60,12 +57,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {
