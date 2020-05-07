@@ -50,6 +50,7 @@ metadata:
   requireLicenseAcceptance: true
   licenseUri: https://aka.ms/azps-license
   projectUri: https://github.com/Azure/azure-powershell
+  releaseNotes: Initial release of Portal Dashboard cmdlets.
 
 module-version: 0.0.1
 title: Portal

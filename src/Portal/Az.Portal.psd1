@@ -6,7 +6,7 @@
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
   Copyright = 'Microsoft Corporation. All rights reserved.'
-  Description = 'Microsoft Azure PowerShell: Portal cmdlets'
+  Description = 'Microsoft Azure PowerShell: Portal Dashboard cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Portal.private.dll'
@@ -15,10 +15,10 @@
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Portal'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Portal', 'Dashboard'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
-      ReleaseNotes = ''
+      ReleaseNotes = 'Initial release of Az.Portal cmdlets'
     }
   }
 }

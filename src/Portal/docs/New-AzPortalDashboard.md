@@ -66,7 +66,8 @@ Accept wildcard characters: False
 ```
 
 ### -DashboardPath
-
+The Path to an existing dashboard template.
+Dashboard templates may be downloaded from the portal.
 
 ```yaml
 Type: System.String

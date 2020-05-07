@@ -40,7 +40,7 @@ param(
     # 00000000-0000-0000-0000-000000000000)
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateByFile', Mandatory)]
+    [Parameter(ParameterSetName='CreateByFile', HelpMessage='The Path to an existing dashboard template. Dashboard templates may be downloaded from the portal.', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
     [ValidateNotNullOrEmpty()]
     [System.String]
