@@ -381,8 +381,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     RequestUri = new Uri(uri),
                     Content = new StringContent(content, Encoding.UTF8, "application/json")
                 };
-                client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-                response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
+                client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
                 if (response.IsSuccessStatusCode)
                 {
                     return;
