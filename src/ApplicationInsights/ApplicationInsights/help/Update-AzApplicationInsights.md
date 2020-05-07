@@ -26,12 +26,11 @@ update an existing application insights resource
 
 ### Example 1
 ```powershell
-$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "rgName" -Name "laName"
 
-Update-AzApplicationInsights -ResourceGroupName "rgName" -Name "aiName" -WorkspaceResourceId $workspace.ResourceId -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
+Update-AzApplicationInsights -ResourceGroupName "rgName" -Name "aiName" -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
 ```
 
-update application insights component "aiName" to associate with workspace $workspace, and PublicNetworkAccessForIngestion/PublicNetworkAccessForQuery both to "Disabled"
+update application insights component "aiName" PublicNetworkAccessForIngestion/PublicNetworkAccessForQuery both to "Disabled"
 
 ## PARAMETERS
 

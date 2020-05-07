@@ -26,7 +26,7 @@ Create a new application insights resource
 
 ### Example 1 Create a new application insights resource
 ```
-PS C:\>  New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus -WorkspaceResourceId {workspaceId}
+PS C:\>  New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
 ResourceGroupName  : testgroup
 Name               : test1027
@@ -45,13 +45,12 @@ ProvisioningState  : Succeeded
 RequestSource      : AzurePowerShell
 SamplingPercentage :
 TenantId           : {subid}
-WorkspaceResourceId             : {workspaceId}
 PublicNetworkAccessForIngestion : Enabled
 PublicNetworkAccessForQuery     : Enabled
 PrivateLinkScopedResources      :
 ```
 
-Add a new application insights resource named as "test" in resource group "testgroup" with kind "java", associate with {workspaceId}
+Add a new application insights resource named as "test" in resource group "testgroup" with kind "java"
 
 ## PARAMETERS
 
