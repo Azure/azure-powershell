@@ -20,28 +20,52 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
 {
     public static class PSSecuritySettingConverters
     {
-        public static PSSecuritySetting ConvertToPSType(this Setting value)
+        public static PSSecuritySetting ConvertToPSType1(this Setting value)
         {
             return new PSSecuritySetting()
             {
                 Id = value.Id,
                 Name = value.Name,
-                Type = value.Type,
+                Kind = "BaseSetting",
+            };
+        }
+
+        public static PSSecuritySetting ConvertToPSType(this Setting value)
+        {
+            if (value.GetType().Name == nameof(DataExportSettings))
+            {
+                return new PSSecurityDataExportSetting()
+                {
+                    Id = ((DataExportSettings)value).Id,
+                    Name = ((DataExportSettings)value).Name,
+                    Kind = nameof(DataExportSettings),
+                    Type = ((DataExportSettings)value).Type,
+                    Enabled = ((DataExportSettings)value).Enabled
+                };
+            }
+
+            return new PSSecuritySetting()
+            {
+                Id = value.Id,
+                Name = value.Name,
+                Kind = nameof(Setting),
+                Type = value.Type
             };
         }
 
         public static List<PSSecuritySetting> ConvertToPSType(this IEnumerable<Setting> value)
         {
+            var x = value.First().GetType();
             return value.Select(setting => setting.ConvertToPSType()).ToList();
         }
 
-        public static PSSecurityDataExportSetting ConvertToPSType(this DataExportSettings value)
+        public static PSSecurityDataExportSetting ConvertToPSType2(this DataExportSettings value)
         {
             return new PSSecurityDataExportSetting()
             {
                 Id = value.Id,
                 Name = value.Name,
-                Kind = nameof(DataExportSettings),
+                Kind = "DataExportSettings",
                 Type = value.Type,
                 Enabled = value.Enabled
             };

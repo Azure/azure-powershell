@@ -44,7 +44,7 @@ function Set-AzureRmSecuritySetting-SubscriptionLevelResource
 
 	Validate-Setting $setting1
 
-    $setting2 = Set-AzSecuritySetting -SettingName "MCAS" -Setting $setting1
+    $setting2 = Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting1
 
 	Validate-Setting $setting2
 }

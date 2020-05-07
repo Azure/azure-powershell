@@ -30,25 +30,16 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Setting)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.Setting)]
         [ValidateNotNullOrEmpty]
-        public PSSecuritySetting InputObject { get; set; }
+        public PSSecuritySetting SettingInput { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var settingName = SettingName;
-            var setting = InputObject.ConvertToCSType();
-
-            switch (ParameterSetName)
-            {
-                case ParameterSetNames.SubscriptionLevelResource:
-                    break;
-                case ParameterSetNames.InputObject:
-                    break;
-                default:
-                    throw new PSInvalidOperationException();
-            }
-
+            SettingInput.Name = SettingName;
+            var setting = SettingInput.ConvertToCSType();
+      
             if (ShouldProcess(settingName, VerbsCommon.Set))
             {
                 var setting2 = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(settingName, setting).GetAwaiter().GetResult().Body;
