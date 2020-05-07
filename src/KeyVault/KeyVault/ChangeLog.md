@@ -24,6 +24,7 @@
 * Added support to bring your own key (BYOK)
     - `Add-AzKeyVaultKey` supports generating a key exchange key
     - `Get-AzKeyVaultKey` supports downloading a public key in PEM format
+* Updated the "KeyOps" part of the help document of `Add-AzKeyVaultKey`
 
 ## Version 1.6.0
 * Added a new cmdlet `Update-AzKeyVault` that can enable soft delete and purge protection on a vault
