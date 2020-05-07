@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             var virtualWan = this.VirtualWanClient.Get(resourceGroupName, name);
             var psVirtualWan = ToPsVirtualWan(virtualWan);
             psVirtualWan.ResourceGroupName = resourceGroupName;
+            psVirtualWan.AllowVnetToVnetTraffic = true;
 
             return psVirtualWan;
         }
