@@ -30,17 +30,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            IList<string> Types = new List<string>();
-            foreach (string type in Type)
+            PSSpatialSpec pSSpatialSpec = new PSSpatialSpec();
+
+            if (Type != null && Type.Length > 0)
             {
-                Types.Add(type);
+                IList<string> Types = new List<string>();
+                foreach (string type in Type)
+                {
+                    Types.Add(type);
+                }
+                pSSpatialSpec.Types = Types;
             }
 
-            PSSpatialSpec pSSpatialSpec = new PSSpatialSpec
-            {
-                Path = Path,
-                Types = Types
-            };
+            if (Path != null)
+            {     
+                pSSpatialSpec.Path = Path;
+            }
 
             WriteObject(pSSpatialSpec);
             return;

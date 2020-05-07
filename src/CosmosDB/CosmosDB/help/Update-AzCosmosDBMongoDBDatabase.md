@@ -20,8 +20,9 @@ Update-AzCosmosDBMongoDBDatabase -ResourceGroupName <String> -AccountName <Strin
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBMongoDBDatabase [-Name <String>] [-Throughput <Int32>] -ParentObject <PSDatabaseAccount>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCosmosDBMongoDBDatabase [-Name <String>] [-Throughput <Int32>]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Vault.ResourceGroupName,
                     Vault.Name,
                     friendlyName,
-                    certificateArgs,
+                    certificateArgs.Properties,
                     RecoveryServicesClient.GetRequestHeaders()).Result.Body;
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
             }
@@ -316,7 +316,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Properties = new RawCertificateData {Certificate = bytes, AuthType = AuthType.AAD}
                 };
 
-
                 var dateString = DateTime.Now.ToString("M-d-yyyy");
 
                 var friendlyName = string.Format("{0}{1}-{2}-vaultcredentials", Vault.Name, subscriptionId, dateString);
@@ -324,7 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Vault.ResourceGroupName,
                     Vault.Name,
                     friendlyName,
-                    certificateArgs,
+                    certificateArgs.Properties,
                     RecoveryServicesClient.GetRequestHeaders()).Result.Body;
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
 
@@ -667,7 +666,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         },
                         ChannelIntegrityKey = RecoveryServicesClient.GetCurrentVaultChannelIntegrityKey(),
                         SiteId = asrSite.ID ?? String.Empty,
-                        SiteName = asrSite.Name ?? String.Empty
+                        SiteName = asrSite.Name ?? String.Empty,
+                        PrivateEndpointStateForSiteRecovery = Vault.Properties.PrivateEndpointStateForSiteRecovery
                     };
 
                     var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));
