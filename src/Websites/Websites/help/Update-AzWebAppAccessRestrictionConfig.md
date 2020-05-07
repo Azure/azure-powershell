@@ -30,13 +30,8 @@ The **Update-AzWebAppAccessRestrictionConfig** cmdlet updates Access Restriction
 ## EXAMPLES
 
 ### Example 1: Update a Web App SCM Site to use Access Restrictions from Main Site
-```powershell
-PS C:\>Update-AzWebAppAccessRestrictionConfig -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -ScmSiteUseMainSiteRestrictionConfig
-```
 
-This command updates a Web App named ContosoSite that belongs to the resource group Default-Web-WestUS to use access restriction config of main site on the scm site.
-
-### Example 2
+The following example updates a Web App named IpRule that belongs to the resource group MyResourceGroup to use access restriction config of main site on the scm site.
 
 ```powershell <!-- Aladdin Generated Example --> 
 Update-AzWebAppAccessRestrictionConfig -Name IpRule -ResourceGroupName MyResourceGroup -ScmSiteUseMainSiteRestrictionConfig
