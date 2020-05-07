@@ -18,7 +18,7 @@ Get-AzSqlSyncAgentLinkedDatabase [-ServerName] <String> [-SyncAgentName] <String
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlSyncAgentLinkedDatabases** cmdlet returns information about SQL Server databases linked by a sync agent.
+The **Get-AzSqlSyncAgentLinkedDatabase** cmdlet returns information about SQL Server databases linked by a sync agent.
 
 ## EXAMPLES
 
