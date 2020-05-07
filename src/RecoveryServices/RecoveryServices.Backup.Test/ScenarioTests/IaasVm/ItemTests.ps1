@@ -572,6 +572,11 @@ function Test-AzureVMDiskExclusion
 			-BackupManagementType "AzureVM" `
 			-WorkloadType "AzureVM";
 
+		Assert-True { $item.DiskLunList.Count -eq 2}
+		Assert-True { $item.DiskLunList[0] -eq 1}
+		Assert-True { $item.DiskLunList[1] -eq 2}
+		Assert-True { $item.IsInclusionList -eq $false}
+
 		$backupJob = Backup-Item $vault $item
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 		$backupEndTime = $backupJob.EndTime.AddMinutes(1);

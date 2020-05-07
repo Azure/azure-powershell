@@ -6,7 +6,7 @@
       "value": "'foo','bar'"
     },
     "scriptContent": {
-      "value": "result=$(bad content); echo \"arg1 is: $1\"; echo \"arg2 is: $2\"; echo $result | jq -c '{Result: map({id: .id})}' > $AZ_SCRIPTS_OUTPUT_PATH"
+      "value": "result=$(bad content)"
     },
     "scriptKind": {
       "value": "AzureCLI"
