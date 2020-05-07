@@ -20,7 +20,7 @@ Update-AzCosmosDBSqlDatabase -ResourceGroupName <String> -AccountName <String> [
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBSqlDatabase [-Name <String>] [-Throughput <Int32>] -ParentObject <PSDatabaseAccount>
+Update-AzCosmosDBSqlDatabase [-Name <String>] [-Throughput <Int32>] -ParentObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,6 +45,7 @@ Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetPropertiesResource
 ```
+
 ## PARAMETERS
 
 ### -AccountName
@@ -126,7 +127,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

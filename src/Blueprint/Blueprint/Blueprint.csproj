@@ -8,7 +8,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.20.6-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.20.7-preview" />
   </ItemGroup>
 
   <ItemGroup>

@@ -40,6 +40,7 @@
     -  `Get-AzStorageAccountKey`
 * Support failover Storage account
     - `Invoke-AzStorageAccountFailover`
+* Update help of 'Get-AzStorageBlobCopyState'
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
