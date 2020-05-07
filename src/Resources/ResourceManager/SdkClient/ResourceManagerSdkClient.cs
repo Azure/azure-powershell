@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -268,7 +269,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId(parameters.DeploymentName));
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError, parameters.DeploymentName));
             }
 
             return deploymentExtended;
@@ -348,7 +349,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
-                    deploymentOperationError.SetRequestIdFromResponseHeaders(getResult.Response);
+                    deploymentOperationError.SetCorrelationIdFromResponseHeaders(getResult?.Response);
 
                     deployment = getResult.Body;
                     var response = getResult.Response;
@@ -1699,6 +1700,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return null;
+        }
+
+        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null)
+        {
+            if (errorInfo.ErrorMessages.Count == 0)
+                return String.Empty;
+
+            var sb = new StringBuilder();
+
+            int maxErrors = errorInfo.ErrorMessages.Count > DeploymentOperationErrorInfo.MaxErrorsToShow
+               ? DeploymentOperationErrorInfo.MaxErrorsToShow
+               : errorInfo.ErrorMessages.Count;
+
+            // Add outer message showing the total number of errors.
+            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
+
+            // Add each error message
+            errorInfo.ErrorMessages
+                .Take(maxErrors).ToList()
+                .ForEach(m => sb
+                    .AppendLine()
+                    .AppendFormat(ProjectResources.DeploymentOperationResultError, m
+                            .ToFormattedString())
+                    .AppendLine());
+
+            // Add correlationId
+             sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, errorInfo.CorrelationId);
+
+            return sb.ToString();
         }
     }
 }
