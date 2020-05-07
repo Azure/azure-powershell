@@ -41,6 +41,7 @@
 * Support failover Storage account
     - `Invoke-AzStorageAccountFailover`
 * Update help of 'Get-AzStorageBlobCopyState'
+* Update help of 'Get-AzStorageFileCopyState' and "Start-AzStorageBlobCopy"
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
