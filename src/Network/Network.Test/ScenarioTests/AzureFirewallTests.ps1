@@ -132,7 +132,7 @@ function Test-AzureFirewallCRUD {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -DnsProxyNotRequiredForNetworkRule
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1437,7 +1437,7 @@ function Test-AzureFirewallWithDNSProxy {
         $netRc.AddRule($networkRule2)
 
         # Create AzureFirewall with DNSProxy enabled and DNS Servers provided
-        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -DnsServer $dnsServers
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -EnableDnsProxy -DnsServer $dnsServers
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1451,7 +1451,7 @@ function Test-AzureFirewallWithDNSProxy {
         Assert-AreEqual 2 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count
 
         # Check DNS Proxy
-        Assert-AreEqual true $getAzureFirewall.EnableDnsProxy
+        Assert-AreEqual true $getAzureFirewall.DNSEnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewall.DnsServer
 
         # Delete AzureFirewall

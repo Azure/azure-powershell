@@ -277,7 +277,21 @@ Accept wildcard characters: False
 ```
 
 ### -EnableDnsProxy
-Enables DNS Proxy functionality.
+Enable DNS Proxy. By default it is disabled.
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsProxyNotRequiredForNetworkRule
+Requires DNS Proxy functionality for FQDNs within Network Rules.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -286,23 +300,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DNSRequireProxyForNetworkRules
-Requires DNS Proxy functionality for FQDNs within Network Rules.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: true, false
-
-Required: False
-Position: Named
-Default value: true
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

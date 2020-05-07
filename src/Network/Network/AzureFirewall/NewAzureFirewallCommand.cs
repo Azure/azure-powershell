@@ -156,15 +156,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to indicate DNS Proxy is enabled or disabled"
+            HelpMessage = "Enable DNS Proxy. By default it is disabled."
         )]
         public SwitchParameter EnableDnsProxy { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to indicate if DNS Proxy is required for Network Rules"
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
         )]
-        public SwitchParameter DisableDnsProxyForNetworkRule { get; set; }
+        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : "false"),
-                    DNSRequireProxyForNetworkRules = (this.DisableDnsProxyForNetworkRule.IsPresent ? "false" : "true"),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : "true"),
                     DNSServer = this.DnsServer,
                     Sku = sku
                 };

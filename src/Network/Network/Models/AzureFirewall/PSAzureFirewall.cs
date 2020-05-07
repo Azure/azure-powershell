@@ -426,6 +426,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             // Need to check if any Network Rules have FQDNs
             var netRuleCollections = this.NetworkRuleCollections?.Where(rc => rc?.Rules != null && rc.Rules.Any()).ToList();
+            if (netRuleCollections == null)
+            {
+                // No network rules so nothing to do
+                return;
+            }
+
             foreach (var netRuleCollection in netRuleCollections)
             {
                 foreach (var rule in netRuleCollection.Rules)

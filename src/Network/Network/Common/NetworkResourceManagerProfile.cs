@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     catch (PSArgumentException)
                     {
-                        dest.ThreatIntelWhitelist.IpAddresses = null;
+                        dest.PrivateRange = null;
                     }
                     dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSRequireProxyForNetworkRules = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.RequireProxyForNetworkRules", StringComparison.OrdinalIgnoreCase)).Value;
