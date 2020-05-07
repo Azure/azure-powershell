@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (Schema != null)
             {
-                cassandraTableResource.Schema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
+                cassandraTableResource.Schema = PSCassandraSchema.ToSDKModel(Schema);
             }          
 
             CreateUpdateOptions options = new CreateUpdateOptions();

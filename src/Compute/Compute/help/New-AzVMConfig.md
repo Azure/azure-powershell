@@ -52,7 +52,12 @@ The virtual machine belongs to the availability set stored in $AvailabilitySet.
 ### -AvailabilitySetId
 Specifies the ID of an availability set.
 To obtain an availability set object, use the Get-AzAvailabilitySet cmdlet.
-The availability set object contains an ID property.
+The availability set object contains an ID property. <br>
+Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. <br>
+For more information about availability sets, see [Manage the availability of virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br>
+For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br>
+Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. <br>
+This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
 
 ```yaml
 Type: System.String

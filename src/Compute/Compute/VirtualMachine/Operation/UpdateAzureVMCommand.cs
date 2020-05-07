@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.Compute
         [AllowEmptyString]
         public string ProximityPlacementGroupId { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of Host")]
+        public string HostId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -135,7 +140,9 @@ namespace Microsoft.Azure.Commands.Compute
                         ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId)
                                                 ? new SubResource(this.ProximityPlacementGroupId)
                                                 : this.VM.ProximityPlacementGroup,
-                        Host = this.VM.Host,
+                        Host = this.IsParameterBound(c => c.HostId)
+                             ? new SubResource(this.HostId)
+                             : this.VM.Host,
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,

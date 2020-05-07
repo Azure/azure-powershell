@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ApiCloneCrudTest()
+         public void ApiCloneCrudTest()
         {
             RunPowerShellTest("ApiClone-Test");
         }        

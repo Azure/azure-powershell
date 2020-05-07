@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSGremlinDatabaseGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSGremlinDatabaseGetResults))]
     public class GetAzCosmosDBGremlinDatabase : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -41,10 +41,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount ParentObject { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.GremlinDatabaseDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,12 +56,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 GremlinDatabaseGetResults gremlinDatabaseGetResults = CosmosDBManagementClient.GremlinResources.GetGremlinDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinDatabaseGetResults(gremlinDatabaseGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.GremlinResources.GetGremlinDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {

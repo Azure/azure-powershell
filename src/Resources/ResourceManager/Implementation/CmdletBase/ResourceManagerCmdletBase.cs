@@ -13,19 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
     using Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -69,9 +69,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
+        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
-        public string ApiVersion { get; set; }
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the switch that indicates if pre-release API version should be considered.

@@ -389,23 +389,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public static string GetSchemaDocumentValue(SchemaContract schemaContract)
         {
-            switch (schemaContract.ContentType.ToLower())
+            if (!string.IsNullOrEmpty(schemaContract.Value))
             {
-                case ApiSchemaContentType.SwaggerDefinition:
-                    return schemaContract.Document.ToString();
-                case ApiSchemaContentType.OpenApiComponents:
-                    return schemaContract.Document.ToString();
-                default:
-                    try
-                    {
-                        var documentJObject = JObject.Parse(schemaContract.Document.ToString());
-                        var documentValue = documentJObject["value"].ToString();
-                        return documentValue;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception($"Unable for parse Schema Document for ContentType {schemaContract.ContentType}.", ex);
-                    }
+                return schemaContract.Value;
+            }
+            else
+            {
+                try
+                {
+                    return (schemaContract.Definitions as JObject)?.ToString();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Unable for parse Schema Document for ContentType {schemaContract.ContentType}.", ex);
+                }
             }
         }
 

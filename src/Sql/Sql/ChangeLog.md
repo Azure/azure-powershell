@@ -27,6 +27,7 @@
     - Enable-AzSqlInstanceDatabaseSensitivityRecommendation.
     - Disable-AzSqlDatabaseSensitivityRecommendation.
     - Disable-AzSqlInstanceDatabaseSensitivityRecommendation.
+* Remove client-side validation of 'RetentionDays' parameter from cmdlet SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy
 
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
