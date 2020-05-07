@@ -21,7 +21,7 @@ function Test-LinkedStorageAccountCRUD
 	# setup
 	$rgname = Get-ResourceGroupName
 	$workspaceName = Get-ResourceName
-	$loc = = Get-ProviderLocation
+	$loc = Get-ProviderLocation
 
 	$accountName1 = Get-ResourceName
     $accountName2 = Get-ResourceName
