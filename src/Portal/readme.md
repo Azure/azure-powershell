@@ -52,7 +52,7 @@ metadata:
   projectUri: https://github.com/Azure/azure-powershell
   releaseNotes: Initial release of Portal Dashboard cmdlets.
 
-module-version: 0.0.1
+module-version: 0.1.0
 title: Portal
 subject-prefix: $(service-name)
 

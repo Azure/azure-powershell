@@ -10,7 +10,7 @@ westus   my-second-custom-dashboard1                    Microsoft.Portal/dashboa
 
 List all dashboards in a subscription
 
-### Example 2: {{ Add title here }}
+### Example 2: Get details for a single Portal Dashboard
 ```powershell
 PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -Name mydashboard
 
