@@ -605,7 +605,7 @@
     <value>Failed to retrieve properties of storage account '{0}'.</value>
   </data>
   <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
-    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}</value>
+    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
   </data>
   <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
     <value>Failed to get Role Assignments for Storage Account '{0}'.</value>

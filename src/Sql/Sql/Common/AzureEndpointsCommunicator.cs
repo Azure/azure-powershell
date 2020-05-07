@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             HttpResponseMessage response = null;
             bool isARetry = false;
             System.Net.HttpStatusCode responseStatusCode;
-
+            string responseContent = null;
             do
             {
                 if (isARetry)
@@ -393,11 +393,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 }
 
                 responseStatusCode = response.StatusCode;
+                responseContent = response.Content.ReadAsStringAsync().Result;
                 numberOfTries--;
                 isARetry = true;
             } while (numberOfTries > 0);
 
-            throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId, responseStatusCode.ToString()));
+            throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId, responseStatusCode.ToString(), responseContent));
         }
 
         private bool IsRoleAssignedForServerIdentitiyOnStorage(string storageAccountResourceId, Guid principalId)
