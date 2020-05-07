@@ -38,7 +38,7 @@ function Update-AzFunctionAppPlan {
         [Parameter(HelpMessage='The maximum number of workers for the app service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,100)]
         [Alias("MaxBurst")]
         ${MaximumWorkerCount},
 
@@ -46,7 +46,7 @@ function Update-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
         [Alias("MinInstances")]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,20)]
         ${MinimumWorkerCount},
 
         [Parameter(HelpMessage='Resource tags.')]
