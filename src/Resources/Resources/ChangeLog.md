@@ -25,6 +25,7 @@
 * Added new cmdlet for getting ARM template What-If results at subscription scope: `Get-AzDeploymentWhatIfResult`
    - Alias: `Get-AzSubscriptionDeploymentWhatIf`
 * Overrode `-WhatIf` and `-Confirm` parameters for `New-AzDeployment` and `New-AzResourceGroupDeployment` to use ARM template What-If results
+* Add deprecation message for `ApiVersion` parameter in deployment cmdlets
 * Added capability to show improved error messages for deployment failures
 * Added correlationId logging for deployment failures
 * Added `error` property to the deployment script output
