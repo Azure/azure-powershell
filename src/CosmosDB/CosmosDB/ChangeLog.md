@@ -19,7 +19,48 @@
 -->
 
 ## Upcoming Release
+* Detailed parameter is deprecated in the following cmdlets:
+    Get-AzCosmosDBSqlContainer,
+    Get-AzCosmosDBSqlDatabase, Get-AzCosmosDBGremlinDatabase,
+    Get-AzCosmosDBGremlinGraph, Get-AzCosmosDBTable,
+    Get-AzCosmosDBCassandraKeyspace, Get-AzCosmosDBCassandraTable,
+    Get-AzCosmosDBMongoDBCollection, Get-AzCosmosDBMongoDBDatabase
+* Introduces KeyVaultKeyUri as a paramter in PSCosmosDBAccount, enabling BYOK feature
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.1.1 
+* Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
+The following cmdlets are added: 
+    New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
+    New-AzCosmosDBSqlUserDefinedFunction, 
+    Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger, 
+    Update-AzCosmosDBSqlUserDefinedFunction, New-AzCosmosDBSqlContainer,
+    New-AzCosmosDBSqlDatabase, Update-AzCosmosDBSqlContainer,
+    Update-AzCosmosDBSqlDatabase,
+    New-AzCosmosDBGremlinDatabase, New-AzCosmosDBGremlinGraph,
+    Update-AzCosmosDBGremlinDatabase, Update-AzCosmosDBGremlinGraph,
+    New-AzCosmosDBTable, Update-AzCosmosDBTable,
+    Update-AzCosmosDBCassandraKeyspace, Update-AzCosmosDBCassandraTable,
+    New-AzCosmosDBCassandraKeyspace, New-AzCosmosDBCassandraTable,
+    Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase, 
+    New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase  
+The following cmdlets are deprecated and would no longer be maintained: 
+    Set-AzCosmosDBSqlStoredProcedure, Set-AzCosmosDBSqlTrigger,
+    Set-AzCosmosDBSqlUserDefinedFunction, Set-AzCosmosDBSqlContainer,
+    Set-AzCosmosDBSqlDatabase, Set-AzCosmosDBGremlinDatabase,
+    Set-AzCosmosDBGremlinGraph, Set-AzCosmosDBTable,
+    Set-AzCosmosDBCassandraKeyspace, Set-AzCosmosDBCassandraTable,
+    Set-AzCosmosDBMongoDBCollection, Set-AzCosmosDBMongoDBDatabase
 
+## Version 0.1.4
+* Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount
+    - Allows empty string as a value for IpRangeFilter
+    - Renamed ApiKind value GlobalDocumentDB to Sql.
+    - Added parameter DisableKeyBasedMetadataWriteAccess, PublicNetworkAccess
+* Introduces cmdlets to update throughput for Sql Database and Container, Cassandra Keyspace and Table, MongoDB Database and Collection, Gremlin Database and Graph and Table.
+    - Update-AzCosmosDBSqlContainerThroughput, Update-AzCosmosDBSqlDatabaseThroughput,
+        Update-AzCosmosDBMongoDBCollectionThroughput, Update-AzCosmosDBMongoDBDatabaseThroughput,
+        Update-AzCosmosDBGremlinGraphThroughput, Update-AzCosmosDBGremlinDatabaseThroughput,
+        Update-AzCosmosDBCassandraTableThroughput, Update-AzCosmosDBCassandraKeyspaceThroughput,
+        Update-AzCosmosDBTableThroughput
 ## Version 0.1.3
 * Allowing Account Creation for API Types: Gremlin, Cassandra and Table.
 * Bug Fixes

@@ -52,9 +52,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageUsageNounStr = "AzureRmStorageUsage";
 
-            internal const string StandardGZRS = "Standard_GZRS";
-            internal const string StandardRAGZRS = "Standard_RAGZRS";
-            internal const string FileStorage = "FileStorage";
+        internal const string StandardGZRS = "Standard_GZRS";
+        internal const string StandardRAGZRS = "Standard_RAGZRS";
+
+        internal const string FileStorage = "FileStorage";
         protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";

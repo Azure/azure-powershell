@@ -145,6 +145,31 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public string MinSupportedTlsVersion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the assigned identity.
+        /// </summary>
+        public string AssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption algorithm.
+        /// </summary>
+        public string EncryptionAlgorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption key name.
+        /// </summary>
+        public string EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption key version.
+        /// </summary>
+        public string EncryptionKeyVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption vault uri.
+        /// </summary>
+        public string EncryptionVaultUri { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;

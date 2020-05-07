@@ -18,7 +18,8 @@ New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <Str
  -FrontendEndpointName <String[]> -BackendPoolName <String> [-AcceptedProtocol <PSProtocol[]>]
  [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
  [-EnableCaching <Boolean>] [-QueryParameterStripDirective <String>] [-DynamicCompression <PSEnabledState>]
- [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnabledState <PSEnabledState>] [-RulesEngineName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
@@ -27,7 +28,7 @@ New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <Str
  -FrontendEndpointName <String[]> [-AcceptedProtocol <PSProtocol[]>] [-PatternToMatch <String[]>]
  [-RedirectType <String>] [-RedirectProtocol <String>] [-CustomHost <String>] [-CustomPath <String>]
  [-CustomFragment <String>] [-CustomQueryString <String>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RulesEngineName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -382,6 +383,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RulesEngineName
+A reference to a specific Rules Engine Configuration to apply to this route.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

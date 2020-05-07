@@ -43,3 +43,48 @@ function Test-ClusterRelatedCommands{
 	}
 
 }
+
+
+<#
+.SYNOPSIS
+Test Create and Rotate Azure HDInsight Cluster with CMK
+#>
+function Test-CmkClusterRelatedCommands{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		$location="East US"
+		$clusterName="hdi-ps-cmktest"
+		$clusterName=Generate-Name($clusterName)
+		$vaultName="vault-ps-cmktest"
+		$vaultName=Generate-Name($vaultName)
+		$keyName="key-ps-cmktest"
+		$keyName=Generate-Name($keyName)
+		$assignedIdentityName="ami-ps-cmktest"
+		$assignedIdentityName=Generate-Name($assignedIdentityName)
+		$newKeyName="newkey-ps-cmktest"
+		$newKeyName=Generate-Name($newKeyName)
+
+		# test create cluster
+		$cluster = Create-Cluster -clusterName $clusterName -location $location -enableCMK $true -vaultName $vaultName -KeyName $keyName -assignedIdentityName $assignedIdentityName
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.DiskEncryption.KeyName $keyName
+
+		#test Set-AzHDInsightClusterDiskEncryptionKey
+		$encryptionKey=Create-KeyIdentity -resourceGroupName $cluster.ResourceGroup -vaultName $vaultName -keyName $newKeyName
+		$rotateKeyCluster = Set-AzHDInsightClusterDiskEncryptionKey -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
+		-EncryptionKeyName $encryptionKey.Name -EncryptionKeyVersion $encryptionKey.Version -EncryptionVaultUri $encryptionKey.Vault
+		Assert-AreEqual $rotateKeyCluster.DiskEncryption.KeyVersion $encryptionKey.Version
+		Assert-AreEqual $rotateKeyCluster.DiskEncryption.KeyName $encryptionKey.Name
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+
+}
+
+

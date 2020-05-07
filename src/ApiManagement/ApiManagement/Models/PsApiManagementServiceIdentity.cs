@@ -15,13 +15,24 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Serialization;
 
-    public enum PsApiManagementServiceIdentityType
-    { 
-        SystemAssigned = 0
+    public class PsApiManagementServiceIdentityTypes
+    {
+        public const string None = "none";
+
+        public const string SystemAssigned = "SystemAssigned";
+
+        public const string UserAssigned = "UserAssigned";
+
+        public const string SystemAndUserAssigned = "SystemAssigned, UserAssigned";
     }
-
+   
     public class PsApiManagementServiceIdentity
     {
         public PsApiManagementServiceIdentity()
@@ -36,15 +47,44 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("serviceIdentity");
             }
 
-            Type = PsApiManagementServiceIdentityType.SystemAssigned;
+            Type = serviceIdentity.Type;
             PrincipalId = serviceIdentity.PrincipalId.HasValue ? serviceIdentity.PrincipalId.Value.ToString() : null;
             TenantId = serviceIdentity.TenantId.HasValue ? serviceIdentity.TenantId.Value.ToString() : null;
+
+            if(serviceIdentity.UserAssignedIdentities != null)
+            {
+                UserAssignedIdentity = serviceIdentity.UserAssignedIdentities.ToDictionary(i => i.Key, i => new PsApiManagementUserAssignedInformation(i.Value));
+            }
         }
 
         public string PrincipalId { get; set; }
 
         public string TenantId { get; set; }
 
-        public PsApiManagementServiceIdentityType Type { get; set; }
+        public string Type { get; set; }
+
+        public IDictionary<string, PsApiManagementUserAssignedInformation> UserAssignedIdentity { get; set; }
+    }
+
+    public class PsApiManagementUserAssignedInformation
+    {
+        public string PrincipalId;
+
+        public string ClientId;
+
+        public PsApiManagementUserAssignedInformation()
+        {
+        }
+
+        internal PsApiManagementUserAssignedInformation(UserIdentityProperties props) : this()
+        {
+            if (props == null)
+            {
+                throw new ArgumentNullException("UserIdentityProperties");
+            }
+
+            PrincipalId = props.PrincipalId;
+            ClientId = props.ClientId;
+        }
     }
 }

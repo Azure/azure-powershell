@@ -31,5 +31,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
         public string ShareTerms { get; set; }
         public string ShareSubscriptionStatus { get; set; }
         public string ShareKind { get; set; }
+        public string SourceShareLocation { get; set; }
     }
 }

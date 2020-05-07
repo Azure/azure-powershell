@@ -39,6 +39,21 @@ function getPrimaryLocation
     return "westus"
 }
 
+function getPrimaryZoneLocation
+{
+    return "southeastasia"
+}
+
+function getPrimaryZone
+{
+    return "1"
+}
+
+function getRecoveryZone
+{
+    return "2"
+}
+
 function getRecoveryLocation{
   return getVaultLocation
 }
@@ -83,6 +98,9 @@ function getPrimaryContainerMapping{
     return "A2APCM"+ $seed;
 }
 
+function getRecoveryPlanName{
+    return "A2ARP"+ $seed;
+}
 
 function getRecoveryContainerMapping{
     return "A2ARCM"+ $seed;
@@ -105,6 +123,10 @@ function getRecoveryNetworkName{
 
 function getCacheStorageAccountName{
      return "cache"+ $seed;
+}
+
+function getRecoveryCacheStorageAccountName{
+     return "rlog"+ $seed;
 }
 
 function getRecoveryResourceGroupName{
@@ -151,11 +173,60 @@ function createAzureVm{
 		return $vm.Id
 }
 
+function createAzureVmInProximityPlacementgroup{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+		$ppg =  New-AzProximityPlacementGroup -ResourceGroupName $vmName -Name $VMName -Location $VMLocation
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
+		return $vm.Id
+}
+
+function createAzureVmInAvailabilityZone{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryZoneLocation
+		$VMZone = getPrimaryZone
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
+		return $vm.Id
+}
+
 function createRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
 	$NetworkName = getRecoveryNetworkName
 	$NetworkLocation = getRecoveryLocation
+	$ResourceGroupName = getRecoveryResourceGroupName
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    $virtualNetwork = New-AzVirtualNetwork `
+          -ResourceGroupName $ResourceGroupName `
+          -Location $NetworkLocation `
+          -Name $NetworkName `
+          -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet
+    return $virtualNetwork.Id
+}
+
+function createRecoveryNetworkIdForZone{
+    param([string] $location , [string] $resourceGroup)
+
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = getPrimaryZoneLocation
 	$ResourceGroupName = getRecoveryResourceGroupName
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
@@ -172,6 +243,36 @@ function createCacheStorageAccount{
 	$StorageAccountName = getCacheStorageAccountName
 	$cacheLocation = getPrimaryLocation
 	$storageRes = getAzureVmName
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $storageRes `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+function createCacheStorageAccountForZone{
+    param([string] $location , [string] $resourceGroup)
+
+	$StorageAccountName = getCacheStorageAccountName
+	$cacheLocation = getPrimaryZoneLocation
+	$storageRes = getAzureVmName
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $storageRes `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+
+
+function createRecoveryCacheStorageAccount{
+    param([string] $location , [string] $resourceGroup)
+
+	$StorageAccountName = getRecoveryCacheStorageAccountName
+	$cacheLocation = getRecoveryLocation
+	$storageRes = getRecoveryResourceGroupName
     $storageAccount = New-AzStorageAccount `
           -ResourceGroupName $storageRes `
           -Location $cacheLocation `

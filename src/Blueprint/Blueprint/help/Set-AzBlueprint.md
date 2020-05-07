@@ -52,8 +52,8 @@ Update a blueprint definition with new parameters.
 Path to a Blueprint JSON file on disk.
 
 ```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,23 +82,11 @@ Accept wildcard characters: False
 Management Group Id where the blueprint definition is or will be saved.
 
 ```yaml
-Type: String
-Parameter Sets: CreateBlueprintByManagementGroup, ManagementGroupScope, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
+Type: System.String
+Parameter Sets: UpdateBlueprintByManagementGroup
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ImportBlueprint
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -109,8 +97,8 @@ Accept wildcard characters: False
 Blueprint definition name.
 
 ```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup, ImportBlueprint
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -124,8 +112,8 @@ Accept wildcard characters: False
 Subscription Id where the blueprint definition is or will be saved.
 
 ```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, ImportBlueprint, SubscriptionScope, BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished
+Type: System.String
+Parameter Sets: UpdateBlueprintBySubscription
 Aliases:
 
 Required: False
@@ -139,7 +127,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -155,7 +143,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -167,8 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

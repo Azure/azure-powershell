@@ -232,6 +232,10 @@
     <value>Creating Diagnostic</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="CreateNamedValue" xml:space="preserve">
+    <value>Creating Named Value</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="DiagnosticRemoveDescription" xml:space="preserve">
     <value>Removing Diagnostic "{0}".</value>
     <comment>Process workflow</comment>
@@ -296,12 +300,12 @@
     <value>Are you sure you want to remove Product "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
-  <data name="PropertyRemoveDescription" xml:space="preserve">
-    <value>Removing Property "{0}"</value>
+  <data name="NamedValueRemoveDescription" xml:space="preserve">
+    <value>Removing Named Value "{0}"</value>
     <comment>Process workflow</comment>
   </data>
-  <data name="PropertyRemoveWarning" xml:space="preserve">
-    <value>Are you sure you want to remove Property "{0}"?</value>
+  <data name="NamedValueRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Named Value "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
   <data name="PublishTenantConfigurationDescription" xml:space="preserve">
@@ -370,8 +374,8 @@
     <value>Set Product</value>
     <comment>Process workflow</comment>
   </data>
-  <data name="SetProperty" xml:space="preserve">
-    <value>Set Property</value>
+  <data name="SetNamedValue" xml:space="preserve">
+    <value>Set Named Value</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SetSubscription" xml:space="preserve">

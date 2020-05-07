@@ -965,5 +965,326 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceMethodResult
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceMethodResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Payload</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSModuleTwin
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSModuleTwin</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ModuleId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DeviceId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ScriptBlock>$_.Tags</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Desired</Label>
+                <ScriptBlock>$_.Properties.Desired</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Reported</Label>
+                <ScriptBlock>$_.Properties.Reported</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ETag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSConfiguration
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Configuration Id</Label>
+                <ScriptBlock>$_.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Schema Version</Label>
+                <ScriptBlock>$_.SchemaVersion</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Content Type</Label>
+                <ScriptBlock>$_.ContentType</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Target Condition</Label>
+                <ScriptBlock>$_.TargetCondition</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Labels</Label>
+                <ScriptBlock>$_.Labels</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>System Metrics</Label>
+                <ScriptBlock>$_.SystemMetrics</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Custom Metrics</Label>
+                <ScriptBlock>$_.Metrics</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Device Content</Label>
+                <ScriptBlock>$_.Content.DeviceContent</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Created Time</Label>
+                <ScriptBlock>$_.CreatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Last Activity Time</Label>
+                <ScriptBlock>$_.LastUpdatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurations
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurations</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Configuration Id</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Configuration Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>System Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Last Activity Time</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Id</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>if($_.Content.DeviceContent) { "Device Twin Configuration" } else { "None" }</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Priority</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.SystemMetrics.Results["targetedCount"].ToString() + " Targeted"
+                  $_.SystemMetrics.Results["appliedCount"].ToString() + " Applied"
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LastUpdatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurationMetricsResult
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurationMetricsResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Metric</Label>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Criteria</Label>
+                <ScriptBlock>$_.Criteria</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Result</Label>
+                <ScriptBlock>$_.Result</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSDeployment
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSDeployment</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Deployment Id</Label>
+                <ScriptBlock>$_.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Schema Version</Label>
+                <ScriptBlock>$_.SchemaVersion</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Content Type</Label>
+                <ScriptBlock>$_.ContentType</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Target Condition</Label>
+                <ScriptBlock>$_.TargetCondition</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Labels</Label>
+                <ScriptBlock>$_.Labels</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>System Metrics</Label>
+                <ScriptBlock>$_.SystemMetrics</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Custom Metrics</Label>
+                <ScriptBlock>$_.Metrics</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Content</Label>
+                <ScriptBlock>$_.Content.ModulesContent</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Created Time</Label>
+                <ScriptBlock>$_.CreatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Last Activity Time</Label>
+                <ScriptBlock>$_.LastUpdatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSDeployments
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSDeployments</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Id</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>System Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Device Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Last Activity Time</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Id</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>if($_.Content.ModulesContent) { "Deployment" } else { "None" }</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Priority</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.SystemMetrics.Results["targetedCount"].ToString() + " Targeted" 
+                  $_.SystemMetrics.Results["appliedCount"].ToString() + " Applied"
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.SystemMetrics.Results["reportedSuccessfulCount"].ToString() + " Reporting Success"
+                  $_.SystemMetrics.Results["reportedFailedCount"].ToString() + " Reporting Failure"
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LastUpdatedTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

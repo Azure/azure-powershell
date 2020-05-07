@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -343,13 +343,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update the vault
                 var updatedVault = KeyVaultManagementClient.UpdateVault(
-                    existingVault, 
+                    existingVault,
                     updatedPolicies,
                     EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
                     EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
                     existingVault.EnableSoftDelete,
                     existingVault.EnablePurgeProtection,
+                    existingVault.SoftDeleteRetentionInDays,
                     existingVault.NetworkAcls,
                     ActiveDirectoryClient);
 

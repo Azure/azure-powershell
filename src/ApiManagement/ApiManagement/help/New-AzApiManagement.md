@@ -21,8 +21,8 @@ New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String
  [-AdditionalRegions <PsApiManagementRegion[]>]
  [-CustomHostnameConfiguration <PsApiManagementCustomHostNameConfiguration[]>]
  [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>]
- [-SslSetting <PsApiManagementSslSetting>] [-AssignIdentity] [-EnableClientCertificate]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SslSetting <PsApiManagementSslSetting>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-EnableClientCertificate] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +83,7 @@ This command creates a Standard tier API Management service that has three units
 
 ### Example 3: Create a Consumption tier service
 ```powershell
-PS D:\github\azure-powershell> New-AzApiManagement -ResourceGroupName Api-Default-North-Europe -Name consumptionskuservice -Location 'West Europe' -Sku Consumption -Organization microsoft -AdminEmail contoso@contoso.com -AssignIdentity -EnableClientCertificate
+PS D:\github\azure-powershell> New-AzApiManagement -ResourceGroupName Api-Default-North-Europe -Name consumptionskuservice -Location 'West Europe' -Sku Consumption -Organization microsoft -AdminEmail contoso@contoso.com -SystemAssignedIdentity -EnableClientCertificate
 
 PublicIPAddresses                     :
 PrivateIPAddresses                    :
@@ -195,21 +195,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -373,6 +358,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SystemAssignedIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SystemCertificateConfiguration
 Certificates issued by Internal CA to be installed on the service. Default value is $null.
 
@@ -393,6 +393,21 @@ Tags dictionary.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+Assign User Identities to this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

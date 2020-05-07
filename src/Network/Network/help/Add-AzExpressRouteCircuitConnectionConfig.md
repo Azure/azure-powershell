@@ -16,21 +16,21 @@ Adds a circuit connection configuration to Private Peering of an Express Route C
 ### SetByResource (Default)
 ```
 Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
- [-AddressPrefix] <String> [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-AddressPrefix] <String> [-AddressPrefixType <String>] [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
- [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> [-AuthorizationKey <String>]
+ [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> -[AddressPrefixType <String>] [-AuthorizationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzExpressRouteCircuitConnectionConfig** cmdlet adds a circuit connection configuration to
 private peering for an ExpressRoute circuit. This allows peering two Express Route Circuits 
-across regions or subscriptions.Note that, after running **Add-AzExpressRouteCircuitPeeringConfig**, 
+across regions or subscriptions.Note that, after running **Add-AzExpressRouteCircuitConnectionConfig**, 
 you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration.
 
 ## EXAMPLES
@@ -40,7 +40,8 @@ you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
-Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
+$addressPrefixType = 'IPv4'
+Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AddressPrefixType $addressPrefixType -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
@@ -54,7 +55,8 @@ Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Ad
 ## PARAMETERS
 
 ### -AddressPrefix
-A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits
+A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits for IPv4 tunnels.
+or a minimum of /125 customer address space to create VxLan tunnels between Express Route Circuits for IPv6 tunnels.
 
 ```yaml
 Type: System.String
@@ -64,6 +66,21 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -AddressPrefixType
+This specifies the Address Family that address prefix belongs to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, IPv6
+
+Required: False
+Position: Named
+Default value: IPv4
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -191,15 +208,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)
-
 [Get-AzExpressRouteCircuitConnectionConfig](Get-AzExpressRouteCircuitConnectionConfig.md)
 
 [Remove-AzExpressRouteCircuitConnectionConfig](Remove-AzExpressRouteCircuitConnectionConfig.md)
 
 [Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
-
-[New-AzExpressRouteCircuitConnectionConfig](New-AzExpressRouteCircuitConnectionConfig.md)
 
 [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 

@@ -14,13 +14,13 @@ Gets the CosmosDB Sql Container.
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlContainer -ResourceGroupName <String> [-Name <String>] [-Detailed]
+Get-AzCosmosDBSqlContainer -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlContainer [-Name <String>] -InputObject <PSSqlDatabaseGetResults> [-Detailed]
+Get-AzCosmosDBSqlContainer [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -85,36 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Detailed
-If provided then, the cmdlet returns the container with the throughput value.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Sql Database object.
-
-```yaml
-Type: PSSqlDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Container name.
 
@@ -127,6 +97,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Sql Database object.
+
+```yaml
+Type: PSSqlDatabaseGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

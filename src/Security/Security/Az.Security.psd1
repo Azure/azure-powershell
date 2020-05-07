@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -88,7 +88,22 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Remove-AzSecurityWorkspaceSetting', 
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
-               'Disable-AzSecurityAdvancedThreatProtection'
+               'Disable-AzSecurityAdvancedThreatProtection',
+			   'Get-AzIotSecuritySolution', 'Set-AzIotSecuritySolution', 'Remove-AzIotSecuritySolution', 'Update-AzIotSecuritySolution',
+			   'New-AzIotSecuritySolutionRecommendationConfigurationObject', 'New-AzIotSecuritySolutionUserDefinedResourcesObject',
+			   'Get-AzDeviceSecurityGroup', 'Set-AzDeviceSecurityGroup', 'Remove-AzDeviceSecurityGroup',
+			   'New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject', 'New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject', 
+			   'New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject', 'New-AzDeviceSecurityGroupTimeWindowRuleObject',
+			   'Get-AzIotSecurityAnalyticsAggregatedAlert',
+			   'Get-AzIotSecurityAnalyticsAggregatedRecommendation',
+			   'Get-AzIotSecurityAnalytics', 
+			   'Disable-AzIotSecurityAnalyticsAggregatedAlert',
+               'Set-AzSqlInformationProtectionPolicy',
+               'Get-AzSqlInformationProtectionPolicy',
+               'Get-AzRegulatoryComplianceStandard',
+               'Get-AzRegulatoryComplianceControl',
+               'Get-AzRegulatoryComplainceAssessment'
+
 
 # Variables to export from this module
 # VariablesToExport = @()

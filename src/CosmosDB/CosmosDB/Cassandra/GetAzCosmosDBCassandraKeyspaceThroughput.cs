@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-           if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+           if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 AccountName = resourceIdentifier.ResourceName;

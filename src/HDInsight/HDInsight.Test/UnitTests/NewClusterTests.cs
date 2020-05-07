@@ -463,6 +463,136 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateNewHDInsightCluster_Disk_Encryption()
+        {
+            string AssignedIdentity = "/subscriptions/00000000-aaaa-bbbb-cccc-dddddddddddd/resourcegroups/group-unittest/providers/microsoft.managedidentity/userassignedidentities/ami-unittest";
+            string EncryptionVaultUri = "https://vault-unittest.vault.azure.net:443";
+            string EncryptionKeyVersion = "00000000000000000000000000000000";
+            string EncryptionKeyName = "key-unittest";
+            string EncryptionAlgorithm = "RSA-OAEP";
+            string sparkClusterType = "Spark";
+
+            cmdlet.ClusterName = ClusterName;
+            cmdlet.ResourceGroupName = ResourceGroupName;
+            cmdlet.ClusterSizeInNodes = ClusterSize;
+            cmdlet.Location = Location;
+            cmdlet.HttpCredential = _httpCred;
+            cmdlet.DefaultStorageAccountName = StorageName;
+            cmdlet.DefaultStorageAccountKey = StorageKey;
+            cmdlet.ClusterType = "Spark";
+            cmdlet.SshCredential = _sshCred;
+            cmdlet.EncryptionAlgorithm = EncryptionAlgorithm;
+            cmdlet.EncryptionKeyName = EncryptionKeyName;
+            cmdlet.EncryptionKeyVersion = EncryptionKeyVersion;
+            cmdlet.EncryptionVaultUri = EncryptionVaultUri;
+            cmdlet.AssignedIdentity = AssignedIdentity;
+
+            var ClusterIdentity = new ClusterIdentity
+            {
+                Type = ResourceIdentityType.UserAssigned,
+                UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>
+                    {
+                        {
+                            AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue(principalId:"PrincipalId",clientId:"ClientId")
+                        }
+                    }
+            };
+
+            var cluster = new Cluster(id: "id", name: ClusterName, identity:ClusterIdentity)
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = sparkClusterType
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OsType = OSType.Linux,
+                    DiskEncryptionProperties = new DiskEncryptionProperties()
+                    {
+                        KeyName = EncryptionKeyName,
+                        KeyVersion = EncryptionKeyVersion,
+                        VaultUri = EncryptionVaultUri,
+                        EncryptionAlgorithm = EncryptionAlgorithm,
+                        MsiResourceId = AssignedIdentity
+                    },
+                },
+            };
+
+            var coreConfigs = new Dictionary<string, string>
+            {
+                {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
+                {
+                    "fs.azure.account.key." + StorageName,
+                    StorageKey
+                }
+            };
+            var gatewayConfigs = new Dictionary<string, string>
+            {
+                {"restAuthCredential.isEnabled", "true"},
+                {"restAuthCredential.username", _httpCred.UserName},
+                {"restAuthCredential.password", _httpCred.Password.ConvertToString()}
+            };
+
+            var configurations = new Dictionary<string, Dictionary<string, string>>
+            {
+                {"core-site", coreConfigs},
+                {"gateway", gatewayConfigs}
+            };
+            var serializedConfig = JsonConvert.SerializeObject(configurations);
+            cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
+
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
+                parameters =>
+                    parameters.ClusterSizeInNodes == ClusterSize &&
+                    parameters.DefaultStorageInfo as AzureStorageInfo != null &&
+                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountName == StorageName &&
+                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountKey == StorageKey &&
+                    parameters.Location == Location &&
+                    parameters.UserName == _httpCred.UserName &&
+                    parameters.Password == _httpCred.Password.ConvertToString() &&
+                    parameters.ClusterType == sparkClusterType &&
+                    parameters.SshUserName == _sshCred.UserName &&
+                    parameters.SshPassword == _sshCred.Password.ConvertToString() &&
+                    parameters.DiskEncryptionProperties.VaultUri == EncryptionVaultUri &&
+                    parameters.DiskEncryptionProperties.KeyName == EncryptionKeyName &&
+                    parameters.DiskEncryptionProperties.KeyVersion == EncryptionKeyVersion &&
+                    parameters.DiskEncryptionProperties.EncryptionAlgorithm == EncryptionAlgorithm &&
+                    parameters.DiskEncryptionProperties.MsiResourceId == AssignedIdentity), It.IsAny<string>()))
+            .Returns(cluster)
+            .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
+                clusterout =>
+                    clusterout.ClusterState == "Running" &&
+                    clusterout.ClusterType == sparkClusterType &&
+                    clusterout.ClusterVersion == "3.6" &&
+                    clusterout.CoresUsed == 24 &&
+                    clusterout.Location == Location &&
+                    clusterout.Name == ClusterName &&
+                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.DiskEncryption.KeyName == EncryptionKeyName &&
+                    clusterout.DiskEncryption.KeyVersion == EncryptionKeyVersion &&
+                    clusterout.DiskEncryption.VaultUri == EncryptionVaultUri &&
+                    clusterout.DiskEncryption.EncryptionAlgorithm == EncryptionAlgorithm &&
+                    clusterout.DiskEncryption.MsiResourceId == AssignedIdentity &&
+                    clusterout.AssignedIdentity.Type == ResourceIdentityType.UserAssigned &&
+                    clusterout.AssignedIdentity.UserAssignedIdentities[AssignedIdentity].ClientId == "ClientId" &&
+                    clusterout.AssignedIdentity.UserAssignedIdentities[AssignedIdentity].PrincipalId == "PrincipalId"
+                    )),Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccountTypeDefaultsToAzureStorage()
         {
             cmdlet.ClusterName = ClusterName;

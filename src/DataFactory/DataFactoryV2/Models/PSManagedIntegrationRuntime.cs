@@ -62,6 +62,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
 
+        public int? DataFlowCoreCount => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.CoreCount;
+
+        public string DataFlowComputeType => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.ComputeType;
+
+        public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
+
         public string State => ManagedIntegrationRuntime.State;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;

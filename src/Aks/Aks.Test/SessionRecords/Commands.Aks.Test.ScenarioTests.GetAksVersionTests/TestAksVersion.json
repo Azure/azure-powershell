@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.ContainerService/locations/westus/orchestrators?api-version=2019-08-01&resource-type=managedClusters",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyU2VydmljZS9sb2NhdGlvbnMvd2VzdHVzL29yY2hlc3RyYXRvcnM/YXBpLXZlcnNpb249MjAxOS0wOC0wMSZyZXNvdXJjZS10eXBlPW1hbmFnZWRDbHVzdGVycw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5d0e140a-7c99-4c43-9fd2-f5026ab1b111"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ContainerService.ContainerServiceClient/1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20200323T150409Z:40fbb74c-652a-4dee-8144-59e9e5f65adf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "40fbb74c-652a-4dee-8144-59e9e5f65adf"
+        ],
+        "x-ms-request-id": [
+          "5efcec5c-7db3-44b5-83a7-370d7ebc6ee5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Date": [
+          "Mon, 23 Mar 2020 15:04:09 GMT"
+        ],
+        "Content-Length": [
+          "2599"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.ContainerService/locations/westus/orchestrators\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\r\n  \"properties\": {\r\n    \"orchestrators\": [\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.13.11\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.13.12\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.14.7\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.14.8\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.13.12\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.14.7\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.14.8\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.14.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.14.8\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.15.7\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.15.10\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.14.8\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.15.7\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.15.10\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.15.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.15.10\"\r\n          },\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.16.7\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.15.10\",\r\n        \"default\": true,\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.16.7\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.16.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorType\": \"Kubernetes\",\r\n            \"orchestratorVersion\": \"1.17.3\",\r\n            \"isPreview\": true\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.17.3\",\r\n        \"isPreview\": true\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+  }
+}

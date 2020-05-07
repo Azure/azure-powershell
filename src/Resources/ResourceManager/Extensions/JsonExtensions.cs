@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Management.Automation;
 
     /// <summary>
     /// <c>JSON</c> extensions
@@ -132,6 +133,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             if (obj == null)
             {
                 return null;
+            }
+
+            if (obj is PSObject psObject)
+            {
+                var jObject = new JObject();
+                if (psObject.BaseObject is object[] psArray)
+                {
+                    var jArray = new JArray();
+                    foreach (var item in psArray)
+                    {
+                        jArray.Add(item.ToJToken());
+                    }
+
+                    return jArray;
+                }
+
+                foreach (var property in psObject.Properties)
+                {
+                    jObject.Add(new JProperty(property.Name, property.Value.ToJToken()));
+                }
+
+                return jObject;
+            }
+
+            if (obj is PSMemberInfoCollection<PSPropertyInfo> psCollection)
+            {
+                var jObject = new JObject();
+                foreach (var member in psCollection)
+                {
+                    jObject.Add(new JProperty(member.Name, member.Value.ToJToken()));
+                }
+
+                return jObject;
+            }
+
+            if (obj is object[] objArray)
+            {
+                var jArray = new JArray();
+                foreach (var item in objArray)
+                {
+                    jArray.Add(item.ToJToken());
+                }
+
+                return jArray;
             }
 
             return JToken.FromObject(obj, JsonExtensions.JsonObjectTypeSerializer);

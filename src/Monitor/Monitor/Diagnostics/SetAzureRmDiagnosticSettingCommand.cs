@@ -22,6 +22,7 @@ using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -373,22 +374,30 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 Days = this.RetentionInDays.Value
             };
 
-            if (properties.Logs != null)
+            if (properties.Logs != null && this.IsParameterBound(c => c.Category))
             {
                 WriteDebugWithTimestamp("Setting retention policy for logs");
-                foreach (LogSettings logSettings in properties.Logs)
+                properties.Logs = properties.Logs.Select(setting => 
                 {
-                    logSettings.RetentionPolicy = retentionPolicy;
-                }
+                    if (setting != null)
+                    {
+                        setting.RetentionPolicy = this.Category.Contains(setting.Category) ? retentionPolicy : (setting.RetentionPolicy == null ? null : setting.RetentionPolicy);
+                    }
+                    return setting; 
+                }).ToList();
             }
 
-            if (properties.Metrics != null)
+            if (properties.Metrics != null && this.IsParameterBound(c => c.MetricCategory))
             {
                 WriteDebugWithTimestamp("Setting retention policy for metrics");
-                foreach (MetricSettings metricSettings in properties.Metrics)
+                properties.Metrics = properties.Metrics.Select(setting =>
                 {
-                    metricSettings.RetentionPolicy = retentionPolicy;
-                }
+                    if (setting != null)
+                    {
+                        setting.RetentionPolicy = this.MetricCategory.Contains(setting.Category) ? retentionPolicy : (setting.RetentionPolicy == null ? null : setting.RetentionPolicy);
+                    }
+                    return setting;
+                }).ToList();
             }
         }
 

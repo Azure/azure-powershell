@@ -14,13 +14,13 @@ Gets the CosmosDB MongoDB Collection.
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBMongoDBCollection -ResourceGroupName <String> [-Name <String>] [-Detailed]
+Get-AzCosmosDBMongoDBCollection -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBMongoDBCollection [-Name <String>] -InputObject <PSMongoDBDatabaseGetResults> [-Detailed]
+Get-AzCosmosDBMongoDBCollection [-Name <String>] -ParentObject <PSMongoDBDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -86,36 +86,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Detailed
-If provided then, the cmdlet returns the collection with the corresponding throughput value.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Mongo Database object.
-
-```yaml
-Type: PSMongoDBDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Collection name.
 
@@ -128,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Mongo Database object.
+
+```yaml
+Type: PSMongoDBDatabaseGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -22,20 +22,24 @@ using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintCon
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName), OutputType(typeof(PSBlueprintAssignment))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.BySubscriptionAndName), OutputType(typeof(PSBlueprintAssignment))]
     public class RemoveAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 0, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Position = 0, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentManagementGroupId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentObject)]
         public PSBlueprintAssignment InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -49,7 +53,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 switch (ParameterSetName)
                 {
-                    case ParameterSetNames.DeleteBlueprintAssignmentByName:
+                    case ParameterSetNames.ByManagementGroupAndName:
+                        if (ShouldProcess(ManagementGroupId, string.Format(Resources.DeleteAssignmentShouldProcessString, Name)))
+                        {
+                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Utils.GetScopeForManagementGroup(ManagementGroupId), Name);
+
+                            if (deletedAssignment != null && PassThru.IsPresent)
+                            {
+                                WriteObject(deletedAssignment);
+                            }
+                        }
+                        break;
+                    case ParameterSetNames.BySubscriptionAndName:
 
                         var subscription = SubscriptionId ?? DefaultContext.Subscription.Id;
 
