@@ -106,6 +106,47 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 It.IsAny<CancellationToken>()), Times.Once);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithWebtestConditionProcessing()
+        {
+            var webtestCriteria = new WebtestLocationAvailabilityCriteria("webTestId", "componentId", 4);
+            _cmdlet.TargetResourceId = "webTestId";
+            _cmdlet.Condition = new List<IPSMultiMetricCriteria>()
+            {
+                new PSWebtestLocationAvailabilityCriteria(webtestCriteria)
+            };
+
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Contains(_cmdlet.TargetResourceId, metricAlert.Scopes);
+                Assert.Contains(webtestCriteria.ComponentId, metricAlert.Scopes);
+
+                Assert.Contains($"hidden-link:{webtestCriteria.WebTestId}", metricAlert.Tags.Keys);
+                Assert.Contains($"hidden-link:{webtestCriteria.ComponentId}", metricAlert.Tags.Keys);
+
+                Assert.NotStrictEqual(webtestCriteria, metricAlert.Criteria);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithTwoWebtestConditionsShouldThrow()
+        {
+            var webtestCriteria = new WebtestLocationAvailabilityCriteria("webTestId", "componentId", 4);
+            _cmdlet.TargetResourceId = "webTestId";
+            _cmdlet.Condition.Add(new PSWebtestLocationAvailabilityCriteria(webtestCriteria));
+
+            Assert.Throws<PSInvalidOperationException>(() => _cmdlet.ExecuteCmdlet());
+        }
+
         private void PopulateCmdletDefaultParameters()
         {
             // Setting required parameter
