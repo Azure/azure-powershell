@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Add message warning about view delay when creating a new Role Definition
 * Change policy cmdlets to output strongly-typed objects
+* Removed `-TenantLevel` parameter used for on the `Get-AzResourceLock` cmdlet [#11335]
 * Fixed `Remove-AzResourceGroup -Id ResourceId`[#9882]
 * Added new cmdlet for getting ARM template What-If results at resource group scope: `Get-AzDeploymentResourceGroupWhatIfResult`
 * Added new cmdlet for getting ARM template What-If results at subscription scope: `Get-AzDeploymentWhatIfResult`
