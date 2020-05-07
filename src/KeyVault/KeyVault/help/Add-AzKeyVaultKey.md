@@ -216,7 +216,7 @@ Version        : 929bfc14db84439b823ffd1bedadaf5f
 Id             : https://contoso.vault.azure.net:443/keys/ITPfxToHSM/929bfc14db84439b823ffd1bedadaf5f
 Enabled        : True
 Expires        : 5/21/2020 11:12:43 PM
-Not Before     : 
+Not Before     :
 Created        : 5/21/2018 11:13:17 PM
 Updated        : 5/21/2018 11:13:17 PM
 Purge Disabled : False
@@ -233,6 +233,15 @@ The third command creates the $tags variable to set tags for high severity and I
 The final command imports a key as an HSM key from the specified location. The command specifies
 the expiration time stored in $Expires and password stored in $Password, and applies the tags
 stored in $tags.
+
+### Example 7: Generate a Key Exchange Key (KEK) for "bring your own key" (BYOK) feature
+
+```powershell
+PS C:\> $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -Size 2048 -KeyOps "import"
+```
+
+Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
+For more details please refer to https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 
@@ -384,12 +393,13 @@ Specifies an array of operations that can be performed by using the key that thi
 If you do not specify this parameter, all operations can be performed.
 The acceptable values for this parameter are a comma-separated list of key operations as defined by
 the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=613300):
-- Encrypt
-- Decrypt
-- Wrap
-- Unwrap
-- Sign
-- Verify
+- encrypt
+- decrypt
+- wrapKey
+- unwrapKey
+- sign
+- verify
+- import (for KEK only, see example 7)
 
 ```yaml
 Type: System.String[]

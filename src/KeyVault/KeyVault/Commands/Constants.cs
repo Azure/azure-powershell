@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const int MaxSoftDeleteRetentionDays = 90;
         public const int DefaultSoftDeleteRetentionDays = 90;
         public const string DefaultSoftDeleteRetentionDaysString = "90";
+
+        public const string KeyOpsImport = "import";
     }
 
     public static class CmdletNoun

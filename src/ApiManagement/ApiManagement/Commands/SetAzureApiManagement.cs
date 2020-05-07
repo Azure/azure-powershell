@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Properties;
     using System.Management.Automation;
 
@@ -31,8 +30,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
-        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "The AssignIdentity parameter will be renamed as SystemAssignedIdentity. Also new parameter will be added: UserAssignedIdentity.")]
-        public SwitchParameter AssignIdentity { get; set; }
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Assign User Identities to this server for use with key management services like Azure KeyVault.")]
+        public string[] UserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -47,7 +51,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             {
                 var apiManagementResource = Client.SetApiManagementService(
                     InputObject, 
-                    AssignIdentity.IsPresent);
+                    SystemAssignedIdentity.IsPresent,
+                    UserAssignedIdentity);
 
                 if (PassThru.IsPresent)
                 {

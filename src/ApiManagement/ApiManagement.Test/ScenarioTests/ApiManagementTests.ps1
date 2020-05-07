@@ -445,6 +445,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
     $capacity = 1
     $firstAdditionalRegionLocation = "East US"
     $secondAdditionalRegionLocation = "South Central US"
+    $userIdentity = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
 		
     try {
         # Create Resource Group
@@ -454,8 +455,10 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $secondAdditionalRegion = New-AzApiManagementRegion -Location $secondAdditionalRegionLocation
         $regions = @($firstAdditionalRegion, $secondAdditionalRegion)
         
+        $userIdentities = @($userIdentity)
+
         # Create API Management service
-        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions -UserAssignedIdentity $userIdentities 
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -481,6 +484,17 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
             }
         }
 
+        # validate ApiManagement Identity
+        Assert-AreEqual "UserAssigned" $result.Identity.Type;
+ #       Assert-Null $result.Identity.PrincipalId;
+ #       Assert-Null $result.Identity.TenantId;
+        Assert-NotNull $result.Identity.UserAssignedIdentity;
+        foreach ($key in $result.Identity.UserAssignedIdentity.Keys) { 
+            Assert-AreEqual $userIdentity $key;
+            Assert-NotNull $result.Identity.UserAssignedIdentity[$key].PrincipalId
+            Assert-NotNull $result.Identity.UserAssignedIdentity[$key].ClientId
+        } 
+
         #remove the first additional region and scale up second additional region
         $newAdditionalRegionCapacity = 2
         $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
@@ -488,7 +502,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation -Capacity $newAdditionalRegionCapacity -Sku $sku
 
         # Set the ApiManagement service and Enable Msi idenity on the service
-        $updatedService = Set-AzApiManagement -InputObject $apimService -AssignIdentity -PassThru
+        $updatedService = Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity -PassThru
         Assert-AreEqual $resourceGroupName $updatedService.ResourceGroupName
         Assert-AreEqual $apiManagementName $updatedService.Name
         Assert-AreEqual $location $updatedService.Location
@@ -509,9 +523,17 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         }
 
         # validate ApiManagement Identity
-        Assert-AreEqual "SystemAssigned" $updatedService.Identity.Type;
+        Assert-AreEqual "SystemAssigned, UserAssigned" $updatedService.Identity.Type;
         Assert-NotNull $updatedService.Identity.PrincipalId;
         Assert-NotNull $updatedService.Identity.TenantId;
+        Assert-NotNull $updatedService.Identity.UserAssignedIdentity;
+        foreach ($key in $updatedService.Identity.UserAssignedIdentity.Keys) 
+        { 
+            Assert-AreEqual $userIdentity $key;
+            Assert-NotNull $updatedService.Identity.UserAssignedIdentity[$key].PrincipalId
+            Assert-NotNull $updatedService.Identity.UserAssignedIdentity[$key].ClientId
+        }
+
     }
     finally {
         # Cleanup

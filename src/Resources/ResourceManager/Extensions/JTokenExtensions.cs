@@ -125,89 +125,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         }
 
         /// <summary>
-        /// Deep converts a <see cref="JObject"/> to <see cref="PSObject"/>
+        /// Checks if a <see cref="JToken"/> is a leaf node.
         /// </summary>
-        /// <param name="jtoken">The <see cref="JObject"/></param>
-        /// <param name="objectType">The type of the object.</param>
-        internal static PSObject ToPsObjectByDeepConvert(this JToken jtoken, string objectType = null)
+        /// <param name="value">The <see cref="JToken"/> value to check.</param>
+        internal static bool IsLeaf(this JToken value)
         {
-            if (jtoken == null)
-            {
-                return null;
-            }
-
-            if (jtoken.Type != JTokenType.Object)
-            {
-                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken));
-            }
-
-            var jobject = (JObject)jtoken;
-            var psObject = new PSObject();
-
-            if (!string.IsNullOrWhiteSpace(objectType))
-            {
-                psObject.TypeNames.Add(objectType);
-            }
-
-            foreach (var property in jobject.Properties())
-            {
-                dynamic propertyObj = null;
-
-                propertyObj = propertyObj + JTokenExtensions.DeepConvertPropertyValueForPsObject(propertyValue: property.Value);
-
-                psObject.Properties.Add(new PSNoteProperty(
-                    name: property.Name,
-                    value: propertyObj));
-            }
-
-            return psObject;
+            return value == null ||
+                   value is JValue ||
+                   value is JArray arrayValue && arrayValue.Count == 0 ||
+                   value is JObject objectValue && objectValue.Count == 0;
         }
 
         /// <summary>
-        /// Deep converts a property value for a <see cref="JObject"/> into an <see cref="object"/> that can be 
-        /// used as the value of a <see cref="PSNoteProperty"/>.
+        /// Checks if a <see cref="JToken"/> is a non empty <see cref="JArray"/>.
         /// </summary>
-        /// <param name="propertyValue">The <see cref="JToken"/> value.</param>
-        internal static object DeepConvertPropertyValueForPsObject(JToken propertyValue)
+        /// <param name="value">The <see cref="JToken"/> value to check.</param>
+        internal static bool IsNonEmptyArray(this JToken value)
         {
-            if (propertyValue.Type == JTokenType.Object)
-            {
-                return propertyValue.ToPsObjectByDeepConvert();
-            }
+            return value is JArray arrayValue && arrayValue.Count > 0;
+        }
 
-            if (propertyValue.Type == JTokenType.Array)
-            {
-                var jArray = (JArray)propertyValue;
-
-                var array = new object[jArray.Count];
-
-                for (int i = 0; i < array.Length; ++i)
-                {
-                    array[i] = JTokenExtensions.DeepConvertPropertyValueForPsObject(jArray[i]);
-                }
-
-                return array;
-            }
-
-            Type primitiveType;
-            if (JTokenExtensions.PrimitiveTypeMap.TryGetValue(propertyValue.Type, out primitiveType))
-            {
-                try
-                {
-                    return propertyValue.ToObject(primitiveType, JsonExtensions.JsonObjectTypeSerializer);
-                }
-                catch (FormatException)
-                {
-                }
-                catch (ArgumentException)
-                {
-                }
-                catch (JsonException)
-                {
-                }
-            }
-
-            return propertyValue.ToString();
+        /// <summary>
+        /// Checks if a <see cref="JToken"/> is a non empty <see cref="JObject"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="JToken"/> value to check.</param>
+        internal static bool IsNonEmptyObject(this JToken value)
+        {
+            return value is JObject objectValue && objectValue.Count > 0;
         }
     }
 }
+

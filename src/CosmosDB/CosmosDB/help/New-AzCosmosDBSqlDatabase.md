@@ -20,7 +20,7 @@ New-AzCosmosDBSqlDatabase -ResourceGroupName <String> -AccountName <String> -Nam
 
 ### ByParentObjectParameterSet
 ```
-New-AzCosmosDBSqlDatabase -Name <String> [-Throughput <Int32>] -ParentObject <PSDatabaseAccount>
+New-AzCosmosDBSqlDatabase -Name <String> [-Throughput <Int32>] -ParentObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

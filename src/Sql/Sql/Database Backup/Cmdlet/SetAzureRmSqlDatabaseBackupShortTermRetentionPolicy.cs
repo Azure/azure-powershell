@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             Position = 3,
             HelpMessage = "The backup retention setting, in days.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRetentionDays]
         public int RetentionDays{ get; set; }
 
         /// <summary>
@@ -81,22 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>() {
                 ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
             };
-        }
-
-        /// <summary>
-        /// Custom validator for retention days.
-        /// TODO: Remove when server-side enforcement has been deployed.
-        /// </summary>
-        class ValidateRetentionDaysAttribute : ValidateArgumentsAttribute
-        {
-            protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
-            {
-                // Retention is only accepted in week intervals.
-                if ((int)arguments % 7 != 0)
-                {
-                    throw new PSArgumentException("Backup retention must be in 7-day intervals (7, 14, 21, etc.)");
-                }
-            }
         }
     }
 }

@@ -144,6 +144,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverAzureStorageAccount()
+        {
+            TestRunner.RunTestScript("Test-FailoverAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountGeoReplicationStats()
         {
             TestRunner.RunTestScript("Test-GetAzureStorageAccountGeoReplicationStats");

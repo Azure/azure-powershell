@@ -46,7 +46,6 @@ Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.Do
 Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
-
 ```
 
 ## PARAMETERS

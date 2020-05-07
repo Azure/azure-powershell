@@ -21,7 +21,7 @@ Update-AzCosmosDBCassandraKeyspaceThroughput -ResourceGroupName <String> -Accoun
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDBCassandraKeyspaceThroughput [-Name <String>] -Throughput <Int32>
- -ParentObject <PSDatabaseAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

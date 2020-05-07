@@ -26,6 +26,13 @@ New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureZoneToZone
+```
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryZone <String>
+ -RecoveryZone <String> [-AzureZoneToZone] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByRPFile
 ```
 New-AzRecoveryServicesAsrRecoveryPlan -Path <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -46,6 +53,13 @@ PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -Prima
 
 Starts the recovery plan creation operation with the specified parameters and returns the ASR job used to track the operation.
 
+### Example 2
+```
+PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryZone $pZone-RecoveryZone $rZone -ReplicationProtectedItem $RPI
+```
+
+Starts the recovery plan creation operation for Azure zone to zone replicated items and returns the ASR job used to track the operation.
+
 ## PARAMETERS
 
 ### -Azure
@@ -54,6 +68,21 @@ Switch parameter specifies the scenario for azure to azure disaster recovery, re
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EnterpriseToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureZoneToZone
+Switch parameter specifies creating the replicated item in azure zone to zone scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureZoneToZone
 Aliases:
 
 Required: True
@@ -100,7 +129,7 @@ Name of the recovery plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone
 Aliases:
 
 Required: True
@@ -130,7 +159,22 @@ Specifies the ASR fabric object for the primary ASR fabric of the replication pr
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryZone
+Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
 Aliases:
 
 Required: True
@@ -155,12 +199,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryZone
+Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationProtectedItem
 The list of replication protected items to add to the first group of the recovery plan.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
+Parameter Sets: AzureZoneToZone
 Aliases:
 
 Required: True

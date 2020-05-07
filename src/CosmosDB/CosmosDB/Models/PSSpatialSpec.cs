@@ -17,7 +17,6 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-
     public class PSSpatialSpec
     {
         public PSSpatialSpec()
@@ -26,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSSpatialSpec(SpatialSpec indexes )
         {
+            if (indexes == null)
+            {
+                return;
+            }
+
             Path = indexes.Path;
             Types = indexes.Types;
         }
@@ -40,8 +44,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets list of path's spatial type
         public IList<string> Types { get; set; }
 
-        public static SpatialSpec ConvertPSSpatialSpecToSpatialSpec(PSSpatialSpec pSSpatialSpec)
+        public static SpatialSpec ToSDKModel(PSSpatialSpec pSSpatialSpec)
         {
+            if(pSSpatialSpec == null)
+            {
+                return null;
+            }
+
             return new SpatialSpec
             {
                 Path = pSSpatialSpec.Path,
