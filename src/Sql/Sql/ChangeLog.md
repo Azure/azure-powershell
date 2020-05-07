@@ -27,6 +27,7 @@
     - Enable-AzSqlInstanceDatabaseSensitivityRecommendation.
     - Disable-AzSqlDatabaseSensitivityRecommendation.
     - Disable-AzSqlInstanceDatabaseSensitivityRecommendation.
+* Auditing to a storage account in Vnet, fixing a bug when creating a Storage Blob Data Contributor role.
 
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
