@@ -20,6 +20,8 @@ New-AzOperationalInsightsCluster [-ResourceGroupName] <String> [-ClusterName] <S
 
 ## DESCRIPTION
 
+Create cluster
+
 ## EXAMPLES
 
 ### Example 1
