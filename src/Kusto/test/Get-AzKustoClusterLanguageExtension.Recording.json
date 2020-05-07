@@ -1,0 +1,43 @@
+{
+  "Get-AzKustoClusterLanguageExtension+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/listLanguageExtensions?api-version=2020-02-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/listLanguageExtensions?api-version=2020-02-15",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "0180171f-0350-4cc2-9ebe-ad054af67942" ],
+        "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
+        "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "c40485c8-3cc0-4269-8715-c8f121b2e3e2" ],
+        "x-ms-correlation-request-id": [ "a346146c-c927-4bc9-8de1-2f1450439791" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20200407T221052Z:a346146c-c927-4bc9-8de1-2f1450439791" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 07 Apr 2020 22:10:51 GMT" ],
+        "Set-Cookie": [ "ARRAffinity=5d8f46e797674adfa6f345dd92c7bb8ccffb7a39a253ecaf84bf8923217e3248;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
+        "X-Powered-By": [ "ASP.NET" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "76" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"languageExtensionName\":\"R\"},{\"languageExtensionName\":\"PYTHON\"}]}"
+    }
+  }
+}
