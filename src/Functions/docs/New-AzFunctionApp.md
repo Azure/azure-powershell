@@ -51,7 +51,7 @@ Creates a function app.
 Note that the service plan and storage account must exist before this operation. By default, for a PowerShell function app, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
@@ -63,7 +63,7 @@ PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
 Note that the storage account must exist before this operation. By default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -Location centralUS `
                           -StorageAccount MyStorageAccountName `
@@ -75,7 +75,7 @@ PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
 Note that the service plan and storage account must exist before this operation.
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
