@@ -35,15 +35,15 @@ $null = ./build-module.ps1
 Write-Host -ForegroundColor Green "Code generation is completed"
 
 Write-Host -ForegroundColor Green "Start post-generation $moduleName"
-if (Test-Path -Path ../artifacts/Databricks)
+if (Test-Path -Path ../artifacts/$moduleName)
 {
-    rm -r ../artifacts/Databricks
-} else {
-    mkdir ../artifacts/Databricks
+    rm -r ../artifacts/$moduleName
 }
-$null = cp .\examples,.\custom,.\exports,.\generated,.\internal,.\test,Az.Databricks.format.ps1xml,Az.Databricks.psd1,Az.Databricks.psm1,build-module.ps1,check-dependencies.ps1,export-surface.ps1,generate-help.ps1,how-to.md,MSSharedLibKey.snk,pack-module.ps1,readme.md,run-module.ps1,test-module.ps1 -Recurse  -Destination ../artifacts/$moduleName
-$null = cp -r docs -Exclude docs/readme.md ../artifacts/Databricks/help  
-#$null = rm ../artifacts/Databricks/help/readme.md
+mkdir ../artifacts/$moduleName
+$null = cp .\examples,.\custom,.\exports,.\generated,.\internal,.\test,Az.$moduleName.format.ps1xml,Az.$moduleName.psd1,Az.$moduleName.psm1,build-module.ps1,check-dependencies.ps1,export-surface.ps1,generate-help.ps1,how-to.md,MSSharedLibKey.snk,pack-module.ps1,readme.md,run-module.ps1,test-module.ps1 -Recurse  -Destination ../artifacts/$moduleName
+$null = cp -r docs -Exclude docs/readme.md ../artifacts/$moduleName/help
+$null = rm ../artifacts/$moduleName/help/readme.md
+$null = rm -r ../artifacts/$moduleName/generated/modules
 #$null = git stash
 #$null = git checkout master
 Write-Host -ForegroundColor Green "Post-generation is completed"
