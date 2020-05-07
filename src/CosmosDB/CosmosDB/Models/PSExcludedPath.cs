@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSExcludedPath(ExcludedPath excludedPath )
         {
+            if (excludedPath == null)
+            {
+                return;
+            }
+
             Path = excludedPath.Path;
         }
         //
@@ -33,8 +38,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     typically start with root and end with wildcard (/path/*)
         public string Path { get; set; }
 
-        public static ExcludedPath ConvertPSExcludedPathToExcludedPath(PSExcludedPath pSExcludedPath)
+        public static ExcludedPath ToSDKModel(PSExcludedPath pSExcludedPath)
         {
+            if (pSExcludedPath == null)
+            {
+                return null;
+            }
+
             return new ExcludedPath
             {
                 Path = pSExcludedPath.Path
