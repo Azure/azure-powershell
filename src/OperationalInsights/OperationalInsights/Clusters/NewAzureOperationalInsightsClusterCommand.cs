@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false,
             HelpMessage = "Tags of the cluster")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 Location = this.Location,
                 Identity = new PSIdentity(this.IdentityType),
                 Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
-                Tags = this.Tags
+                Tags = this.Tag
             };
 
             if (ShouldProcess(this.ClusterName,

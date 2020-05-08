@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false,
             HelpMessage = "Tags of the cluster")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             {
                 KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
                 Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
-                Tags = this.Tags
+                Tags = this.Tag
             };
 
             if (ShouldProcess(this.ClusterName,

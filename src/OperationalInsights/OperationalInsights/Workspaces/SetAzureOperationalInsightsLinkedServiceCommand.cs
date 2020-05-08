@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false,
             HelpMessage = "Tags.")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, string> Tags { get; set; }
+        public IDictionary<string, string> Tag { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access.")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         {
             PSLinkedService parameters = new PSLinkedService()
             {
-                Tags = this.Tags,
+                Tags = this.Tag,
                 WriteAccessResourceId = this.WriteAccessResourceId,
                 ResourceId = this.ResourceId
             };

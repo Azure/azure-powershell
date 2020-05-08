@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(this.OperationalInsightsClient.FilterPSLinkedStorageAccounts(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType));
+            WriteObject(this.OperationalInsightsClient.FilterPSLinkedStorageAccounts(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType), true);
         }
     }
 }
