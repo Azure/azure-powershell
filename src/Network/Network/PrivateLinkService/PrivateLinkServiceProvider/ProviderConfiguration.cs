@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2019-09-01", false);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview");
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18");
+            RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)

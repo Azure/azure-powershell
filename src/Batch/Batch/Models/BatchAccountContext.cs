@@ -152,6 +152,11 @@ namespace Microsoft.Azure.Commands.Batch
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
+        /// The public network access type
+        /// </summary>
+        public PublicNetworkAccessType? PublicNetworkAccess { get; private set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
         public AccountKeyType KeyInUse
@@ -229,7 +234,8 @@ namespace Microsoft.Azure.Commands.Batch
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
-            
+            this.PublicNetworkAccess = resource.PublicNetworkAccess;
+
             if (resource.AutoStorage != null)
             {
                 this.AutoStorageProperties = new AutoStorageProperties()
