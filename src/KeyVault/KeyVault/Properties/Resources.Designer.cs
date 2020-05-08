@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -316,6 +316,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for downloading. (Supported types: RSA, RSA-HSM).
+        /// </summary>
+        internal static string DownloadNotSupported {
+            get {
+                return ResourceManager.GetString("DownloadNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite File ?.
         /// </summary>
         internal static string FileOverwriteCaption {
@@ -595,11 +604,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When KeyOps is &apos;import&apos;, Destination must be HSM..
+        /// </summary>
+        internal static string KEKMustBeHSM {
+            get {
+                return ResourceManager.GetString("KEKMustBeHSM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can not find key file &apos;{0}&apos;..
         /// </summary>
         internal static string KeyFileNotFound {
             get {
                 return ResourceManager.GetString("KeyFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &quot;import&quot; operation is exclusive, it cannot be combined with any other value(s)..
+        /// </summary>
+        internal static string KeyOpsImportIsExclusive {
+            get {
+                return ResourceManager.GetString("KeyOpsImportIsExclusive", resourceCulture);
             }
         }
         
@@ -636,6 +663,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string PermissionsNotSpecified {
             get {
                 return ResourceManager.GetString("PermissionsNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public key saved at &apos;{0}&apos;..
+        /// </summary>
+        internal static string PublicKeySavedAt {
+            get {
+                return ResourceManager.GetString("PublicKeySavedAt", resourceCulture);
             }
         }
         

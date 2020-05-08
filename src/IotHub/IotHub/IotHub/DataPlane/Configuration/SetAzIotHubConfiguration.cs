@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -101,29 +102,37 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-                PSConfiguration psConfiguration = IotHubDataPlaneUtils.ToPSConfiguration(registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult());
-
-                if (this.IsParameterBound(c => c.Priority))
+                Configuration config = registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult();
+                if (config != null && config.Content.ModulesContent == null)
                 {
-                    psConfiguration.Priority = this.Priority;
-                }
+                    PSConfiguration psConfiguration = IotHubDataPlaneUtils.ToPSConfiguration(config);
 
-                if (this.IsParameterBound(c => c.TargetCondition))
+                    if (this.IsParameterBound(c => c.Priority))
+                    {
+                        psConfiguration.Priority = this.Priority;
+                    }
+
+                    if (this.IsParameterBound(c => c.TargetCondition))
+                    {
+                        psConfiguration.TargetCondition = this.TargetCondition;
+                    }
+
+                    if (this.IsParameterBound(c => c.Label))
+                    {
+                        psConfiguration.Labels = this.Label;
+                    }
+
+                    if (this.IsParameterBound(c => c.Metric))
+                    {
+                        psConfiguration.Metrics.Queries = this.Metric;
+                    }
+
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSConfiguration(registryManager.UpdateConfigurationAsync(IotHubDataPlaneUtils.ToConfiguration(psConfiguration), this.Force.IsPresent).GetAwaiter().GetResult()));
+                }
+                else
                 {
-                    psConfiguration.TargetCondition = this.TargetCondition;
+                    throw new ArgumentException("The configuration doesn't exist.");
                 }
-
-                if (this.IsParameterBound(c => c.Label))
-                {
-                    psConfiguration.Labels = this.Label;
-                }
-
-                if (this.IsParameterBound(c => c.Metric))
-                {
-                    psConfiguration.Metrics.Queries = this.Metric;
-                }
-
-                this.WriteObject(IotHubDataPlaneUtils.ToPSConfiguration(registryManager.UpdateConfigurationAsync(IotHubDataPlaneUtils.ToConfiguration(psConfiguration), this.Force.IsPresent).GetAwaiter().GetResult()));
             }
         }
     }

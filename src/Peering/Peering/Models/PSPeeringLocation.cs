@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     /// Microsoft Cloud Edge.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PSPeeringLocation : PSResource
+    public partial class PSPeeringLocation
     {
         /// <summary>
         /// Initializes a new instance of the PSPeeringLocation class.
@@ -33,9 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Initializes a new instance of the PSPeeringLocation class.
         /// </summary>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="id">The ID of the resource.</param>
-        /// <param name="type">The type of the resource.</param>
         /// <param name="kind">The kind of peering that the peering location
         /// supports. Possible values include: 'Direct', 'Exchange'</param>
         /// <param name="direct">The properties that define a direct peering
@@ -48,8 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// exists.</param>
         /// <param name="azureRegion">The Azure region associated with the
         /// peering location.</param>
-        public PSPeeringLocation(string name = default(string), string id = default(string), string type = default(string), string kind = default(string), PSPeeringLocationPropertiesDirect direct = default(PSPeeringLocationPropertiesDirect), PSPeeringLocationPropertiesExchange exchange = default(PSPeeringLocationPropertiesExchange), string peeringLocation = default(string), string country = default(string), string azureRegion = default(string))
-            : base(name, id, type)
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="id">The ID of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        public PSPeeringLocation(string kind = default(string), PSPeeringLocationPropertiesDirect direct = default(PSPeeringLocationPropertiesDirect), PSPeeringLocationPropertiesExchange exchange = default(PSPeeringLocationPropertiesExchange), string peeringLocation = default(string), string country = default(string), string azureRegion = default(string), string name = default(string), string id = default(string), string type = default(string))
         {
             Kind = kind;
             Direct = direct;
@@ -57,6 +56,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             PeeringLocation = peeringLocation;
             Country = country;
             AzureRegion = azureRegion;
+            Name = name;
+            Id = id;
+            Type = type;
             CustomInit();
         }
 
@@ -102,6 +104,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.azureRegion")]
         public string AzureRegion { get; set; }
+
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets the type of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

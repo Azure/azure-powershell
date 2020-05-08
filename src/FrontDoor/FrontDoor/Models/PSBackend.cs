@@ -13,10 +13,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
+{
     public class PSBackend
     {
         public string Address { get; set; }
@@ -32,5 +30,20 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string BackendHostHeader { get; set; }
 
         public PSEnabledState? EnabledState { get; set; }
+
+        public string PrivateLinkAlias { get; set; }
+
+        public PSPrivateEndpointStatus? PrivateEndpointStatus { get; set; }
+
+        public string PrivateLinkApprovalMessage { get; set; }
+    }
+
+    public enum PSPrivateEndpointStatus
+    {
+        Pending,
+        Approved,
+        Rejected,
+        Disconnected,
+        Timeout
     }
 }

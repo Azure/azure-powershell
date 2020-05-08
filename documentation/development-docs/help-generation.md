@@ -68,7 +68,7 @@ Whenever the public interface for a cmdlet has changed, the corresponding markdo
 To update all of the markdown files for a single module, use the [`Update-MarkdownHelpModule`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelpModule.md) cmdlet:
 
 ```powershell
-$PathToModuleManifest = "../../<module.psd1" # Full path to the module manifest that you have updated
+$PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest that you have updated
 Import-Module -Name $PathToModuleManifest
 
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be updated

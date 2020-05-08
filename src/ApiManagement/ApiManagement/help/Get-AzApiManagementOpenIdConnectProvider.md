@@ -33,6 +33,7 @@ Get-AzApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Nam
 
 ## DESCRIPTION
 The **Get-AzApiManagementOpenIdConnectProvider** cmdlet gets OpenID Connect providers in Azure API Management.
+ClientSecret will not be included into result details. To get client secret, use **Get-AzApiManagementOpenIdConnectProviderClientSecret**.
 
 ## EXAMPLES
 

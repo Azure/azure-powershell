@@ -873,7 +873,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
                 cfg.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
                 cfg.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
-                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>();
+                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>()
+                    .AfterMap((src, dest) =>
+                    {
+                        dest.BgpPeeringAddresses = dest.BgpPeeringAddresses.Count == 0? null : dest.BgpPeeringAddresses;
+                    });
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
@@ -1180,6 +1184,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAadAuthenticationParameters, MNM.AadAuthenticationParameters>();
                 cfg.CreateMap<CNM.PSP2SVpnConnectionHealthRequest, MNM.P2SVpnConnectionHealthRequest>();
 
+                // SecurityPartnerProviders
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSSecurityPartnerProvider, MNM.SecurityPartnerProvider>();
+                cfg.CreateMap<MNM.SecurityPartnerProvider, CNM.PSSecurityPartnerProvider>();
+
                 // Azure Firewalls
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>().AfterMap((src, dest) =>
@@ -1323,6 +1332,10 @@ namespace Microsoft.Azure.Commands.Network
                 // IpGroup
                 cfg.CreateMap<CNM.PSIpGroup, MNM.IpGroup>();
                 cfg.CreateMap<MNM.IpGroup, CNM.PSIpGroup>();
+
+                // IpAllocation
+                cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
+                cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
             });
 
             _mapper = config.CreateMapper();

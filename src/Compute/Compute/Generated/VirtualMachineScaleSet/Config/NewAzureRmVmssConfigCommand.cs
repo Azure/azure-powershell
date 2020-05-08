@@ -164,13 +164,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string AutomaticRepairGracePeriod { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [CmdletParameterBreakingChange("AutomaticRepairMaxInstanceRepairsPercent",
-            ChangeDescription = "AutomaticRepairMaxInstanceRepairsPercent is not supported until future.")]
-        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
-
-        [Parameter(
             Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
@@ -268,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             UpgradePolicy vUpgradePolicy = null;
 
             // AutomaticRepairsPolicy
-            PSAutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
+            AutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
 
             // VirtualMachineProfile
             PSVirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
@@ -380,7 +373,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vAutomaticRepairsPolicy == null)
                 {
-                    vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
                 vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
             }
@@ -389,7 +382,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vAutomaticRepairsPolicy == null)
                 {
-                    vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
                 vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
             }
@@ -579,15 +572,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vScaleInPolicy = new ScaleInPolicy();
                 }
                 vScaleInPolicy.Rules = this.ScaleInPolicy;
-            }
-
-            if (this.AssignIdentity.IsPresent)
-            {
-                if (vIdentity == null)
-                {
-                    vIdentity = new VirtualMachineScaleSetIdentity();
-                }
-                vIdentity.Type = ResourceIdentityType.SystemAssigned;
             }
 
             if (this.IsParameterBound(c => c.IdentityType))

@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4d4de90c-b3ab-4d41-bad7-10621f8441de"
+          "4d20e7d9-a9db-4223-90a7-3fb76768133a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28516.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/423.1707.49677.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "201af413-fd27-40ac-9ee7-5f8ac9205404"
+          "6e8785dc-b3cc-4846-b5a1-5d6822d691f2"
         ],
         "x-ms-correlation-request-id": [
-          "04e5f79f-9468-4c0b-acd6-c720f54a1e23"
+          "e386aae5-5b47-4b72-9062-cb1c43be789f"
         ],
         "x-ms-arm-service-request-id": [
-          "b0b0263b-fd32-4cae-a40d-44e0ceff2551"
+          "fd242972-55c2-4e69-aa4e-8ae9da62fa47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11991"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200404T084041Z:04e5f79f-9468-4c0b-acd6-c720f54a1e23"
+          "WESTUS2:20200423T174120Z:e386aae5-5b47-4b72-9062-cb1c43be789f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sat, 04 Apr 2020 08:40:40 GMT"
+          "Thu, 23 Apr 2020 17:41:19 GMT"
         ],
         "Content-Length": [
           "1988"
@@ -70,6 +70,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
+    "SubscriptionId": "d2ad5196-2292-4080-b209-ce4399b0a807"
   }
 }

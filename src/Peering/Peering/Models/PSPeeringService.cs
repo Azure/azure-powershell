@@ -35,6 +35,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// Initializes a new instance of the PSPeeringService class.
         /// </summary>
         /// <param name="location">The location of the resource.</param>
+        /// <param name="sku">The SKU that defines the type of the peering
+        /// service.</param>
         /// <param name="peeringServiceLocation">The PeeringServiceLocation of
         /// the Customer.</param>
         /// <param name="peeringServiceProvider">The MAPS Provider
@@ -46,8 +48,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <param name="name">The name of the resource.</param>
         /// <param name="id">The ID of the resource.</param>
         /// <param name="type">The type of the resource.</param>
-        public PSPeeringService(string location, string peeringServiceLocation = default(string), string peeringServiceProvider = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string name = default(string), string id = default(string), string type = default(string))
+        public PSPeeringService(string location, PSPeeringServiceSku sku = default(PSPeeringServiceSku), string peeringServiceLocation = default(string), string peeringServiceProvider = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string name = default(string), string id = default(string), string type = default(string))
         {
+            Sku = sku;
             PeeringServiceLocation = peeringServiceLocation;
             PeeringServiceProvider = peeringServiceProvider;
             ProvisioningState = provisioningState;
@@ -63,6 +66,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the SKU that defines the type of the peering service.
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public PSPeeringServiceSku Sku { get; set; }
 
         /// <summary>
         /// Gets or sets the PeeringServiceLocation of the Customer.

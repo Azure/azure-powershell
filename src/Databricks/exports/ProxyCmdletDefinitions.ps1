@@ -39,6 +39,19 @@ Location Name                           Type
 eastus   databricks-test                Microsoft.Databricks/workspaces
 eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksworkspace
 #>
@@ -196,6 +209,19 @@ Deletes the workspace.
 .Example
 PS C:\> Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabricksworkspace
 #>
@@ -363,6 +389,19 @@ Location Name            Type
 -------- ----            ----
 eastus   databricks-test Microsoft.Databricks/workspaces
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
@@ -543,6 +582,8 @@ Location Name                           Type
 -------- ----                           ----
 eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
@@ -580,7 +621,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The managed resource group Id.
+    # The managed resource group name.
     ${ManagedResourceGroupName},
 
     [Parameter()]

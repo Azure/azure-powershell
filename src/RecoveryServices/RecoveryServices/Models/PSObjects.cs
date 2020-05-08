@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
+            this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
+            this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
         }
 
         #endregion
@@ -134,6 +136,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Provisioning State.
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets PrivateEndpointStateForBackup.
+        /// </summary>
+        public string PrivateEndpointStateForBackup { get; set; }
+
+        /// <summary>
+        /// Gets or sets PrivateEndpointStateForSiteRecovery.
+        /// </summary>
+        public string PrivateEndpointStateForSiteRecovery { get; set; }
 
         #endregion
     }

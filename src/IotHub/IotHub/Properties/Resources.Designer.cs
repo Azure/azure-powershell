@@ -158,6 +158,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execute Metrics Query.
+        /// </summary>
+        internal static string InvokeIotHubConfigurationMetricsQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubConfigurationMetricsQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoke Direct Method on a device.
         /// </summary>
         internal static string InvokeIotHubDeviceMethod {
@@ -226,6 +235,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string NewIotHubKey {
             get {
                 return ResourceManager.GetString("NewIotHubKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate Sas Token.
+        /// </summary>
+        internal static string NewIotHubSasToken {
+            get {
+                return ResourceManager.GetString("NewIotHubSasToken", resourceCulture);
             }
         }
         
@@ -343,6 +361,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string SetIotHubDistributedTracing {
             get {
                 return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply Configuration on Edge Devices.
+        /// </summary>
+        internal static string SetIotHubEdgeModules {
+            get {
+                return ResourceManager.GetString("SetIotHubEdgeModules", resourceCulture);
             }
         }
         

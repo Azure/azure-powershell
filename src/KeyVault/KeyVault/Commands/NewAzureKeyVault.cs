@@ -17,8 +17,10 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -26,7 +28,6 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
-    [GenericBreakingChange("Soft delete and purge protection will be enabled by default.", "2.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
@@ -83,16 +84,18 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
-        [CmdletParameterBreakingChange(nameof(EnableSoftDelete), ChangeDescription = "Soft delete will be enabled by default. We will add an option `-DisableSoftDelete` to disable it.")]
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
-        public SwitchParameter EnableSoftDelete { get; set; }
+            HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
+        public SwitchParameter DisableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
+            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
+        [ValidateNotNullOrEmpty]
+        public int SoftDeleteRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -104,6 +107,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "A hash table which represents resource tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
+        public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
 
         #endregion
 
@@ -154,8 +160,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = EnableSoftDelete.IsPresent,
-                    EnablePurgeProtection = EnablePurgeProtection.IsPresent,
+                    EnableSoftDelete = !DisableSoftDelete.IsPresent,
+                    EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
+                    /*
+                     * If soft delete is enabled, but retention days is not specified, use the default value,
+                     * else use the vault user provides,
+                     * else use null
+                     */
+                    SoftDeleteRetentionInDays = DisableSoftDelete.IsPresent
+                        ? null as int?
+                        : (this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                            ? SoftDeleteRetentionInDays
+                            : Constants.DefaultSoftDeleteRetentionDays),
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),
@@ -163,7 +179,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
                 },
-                    ActiveDirectoryClient);
+                    ActiveDirectoryClient,
+                    NetworkRuleSet);
 
                 this.WriteObject(newVault);
 
@@ -173,7 +190,5 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
-
-
     }
 }

@@ -29,6 +29,7 @@ Get-AzStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTimeou
 
 ## DESCRIPTION
 The **Get-AzStorageFileCopyState** cmdlet gets the state of an Azure Storage file copy operation.
+It should run on the copy destination file.
 
 ## EXAMPLES
 
@@ -38,6 +39,16 @@ PS C:\>Get-AzStorageFileCopyState -ShareName "ContosoShare" -FilePath "ContosoFi
 ```
 
 This command gets the state of the copy operation for a file that has the specified name.
+
+### Example 2: Start Copy and pipeline to get the copy status
+```
+C:\PS> $destfile = Start-AzStorageFileCopy -SrcShareName "contososhare" -SrcFilePath "contosofile" -DestShareName "contososhare2" -destfilepath "contosofile_copy"  
+
+C:\PS> $destfile | Get-AzStorageFileCopyState
+```
+
+The first command starts copy file "contosofile" to "contosofile_copy", and output the destiantion file object. 
+The second command pipeline the destiantion file object to Get-AzStorageFileCopyState, to get file copy state.
 
 ## PARAMETERS
 

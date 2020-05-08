@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
+using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -35,11 +35,10 @@ namespace Microsoft.Azure.Commands.Aks
     [OutputType(typeof(KubeTunnelJob))]
     public class StartAzureRmAksDashboard : KubeCmdletBase
     {
-
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
-        private const string ProxyUrl = "http://127.0.0.1:8001";
+        private const string ListenAddress = "127.0.0.1";
 
 
         [Parameter(Mandatory = true,
@@ -89,6 +88,10 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "Do not pop open a browser after establishing the kubectl port-forward.")]
         public SwitchParameter DisableBrowser { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The listening port for the dashboard. Default value is 8003.")]
+        public int ListenPort { get; set; } = 8003;
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -120,11 +123,11 @@ namespace Microsoft.Azure.Commands.Aks
                     throw new CmdletInvocationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
 
                 var tmpFileName = Path.GetTempFileName();
-                var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
+                var encoded = Client.ManagedClusters.GetAccessProfile(ResourceGroupName, Name, "clusterUser")
                     .KubeConfig;
                 AzureSession.Instance.DataStore.WriteFile(
                     tmpFileName,
-                    Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
+                    Encoding.UTF8.GetString(encoded));
 
                 WriteVerbose(string.Format(
                     Resources.RunningKubectlGetPodsKubeconfigNamespaceSelector,
@@ -144,8 +147,32 @@ namespace Microsoft.Azure.Commands.Aks
                 var dashPodName = proc.StandardOutput.ReadToEnd();
                 proc.WaitForExit();
 
-                // remove "pods/"
-                dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
+                // remove "pods/" or "pod/"
+                dashPodName = dashPodName.Substring(dashPodName.IndexOf('/') + 1).TrimEnd('\r', '\n');
+
+                var procDashboardPort = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "kubectl",
+                        Arguments =
+                            $"get pods --kubeconfig {tmpFileName} --namespace kube-system --selector k8s-app=kubernetes-dashboard --output jsonpath='{{.items[0].spec.containers[0].ports[0].containerPort}}'",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+                procDashboardPort.Start();
+                var dashboardPortOutput = procDashboardPort.StandardOutput.ReadToEnd();
+                procDashboardPort.WaitForExit();
+
+                dashboardPortOutput = dashboardPortOutput.Replace("'", "");
+                int dashboardPort = int.Parse(dashboardPortOutput);
+                string protocol = dashboardPort == 8443 ? "https" : "http";
+
+                string dashboardUrl = $"{protocol}://{ListenAddress}:{ListenPort}";
+                //TODO: check in cloudshell
+                //TODO: support for --address {ListenAddress}
 
                 WriteVerbose(string.Format(
                     Resources.RunningInBackgroundJobKubectlTunnel,
@@ -159,14 +186,14 @@ namespace Microsoft.Azure.Commands.Aks
                     JobRepository.Remove(exitingJob);
                 }
 
-                var job = new KubeTunnelJob(tmpFileName, dashPodName);
+                var job = new KubeTunnelJob(tmpFileName, dashPodName, ListenPort, dashboardPort);
                 if (!DisableBrowser)
                 {
                     WriteVerbose(Resources.SettingUpBrowserPop);
                     job.StartJobCompleted += (sender, evt) =>
                     {
-                        WriteVerbose(string.Format(Resources.StartingBrowser, ProxyUrl));
-                        PopBrowser(ProxyUrl);
+                        WriteVerbose(string.Format(Resources.StartingBrowser, dashboardUrl));
+                        PopBrowser(dashboardUrl);
                     };
                 }
 
@@ -195,6 +222,12 @@ namespace Microsoft.Azure.Commands.Aks
                 verboseMessage = "Starting on Unix with xdg-open";
                 browserProcess.StartInfo.FileName = "xdg-open";
             }
+            else
+            {
+                browserProcess.StartInfo.FileName = "cmd";
+                browserProcess.StartInfo.Arguments = $"/c start {uri}";
+                browserProcess.StartInfo.CreateNoWindow = true;
+            }
 #endif
 
             WriteVerbose(verboseMessage);
@@ -202,125 +235,4 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 
-    public class KubeTunnelJob : Job2
-    {
-        private readonly string _credFilePath;
-        private int _pid;
-        private readonly string _dashPod;
-        private string _statusMsg = "Initializing";
-
-        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzKubernetesDashboard",
-            "Kubectl-Tunnel")
-        {
-            _credFilePath = credFilePath;
-            _dashPod = dashPod;
-        }
-
-        public override string StatusMessage => _statusMsg;
-        public override bool HasMoreData { get; }
-        public override string Location { get; }
-
-        public int Pid => _pid;
-
-        public override void StopJob()
-        {
-            _statusMsg = string.Format(Resources.StoppingProcessWithId, _pid);
-            SetJobState(JobState.Stopping);
-            try
-            {
-                Process.GetProcessById(_pid).Kill();
-            }
-            catch (Exception)
-            {
-                _statusMsg = Resources.PidDoesntExistOrJobIsAlreadyDead;
-            }
-            SetJobState(JobState.Stopped);
-            _statusMsg = string.Format(Resources.StoppedProcesWithId, _pid);
-            OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, _statusMsg));
-        }
-
-        public override void StartJob()
-        {
-            var kubectlCmd = $"--kubeconfig {_credFilePath} --namespace kube-system port-forward {_dashPod} 8001:9090";
-            _statusMsg = string.Format(Resources.StartingKubectl, kubectlCmd);
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "kubectl",
-                    Arguments = kubectlCmd,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                }
-            };
-            process.Start();
-            TestMockSupport.Delay(1500);
-            _pid = process.Id;
-            SetJobState(JobState.Running);
-            _statusMsg = string.Format(Resources.StartedKubectl, kubectlCmd);
-            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false, string.Format(Resources.ProcessStartedWithId, _pid)));
-        }
-
-        public override void StartJobAsync()
-        {
-            StartJob();
-        }
-
-        public override void StopJobAsync()
-        {
-            StopJob();
-        }
-
-        public override void SuspendJob()
-        {
-            StopJob();
-        }
-
-        public override void SuspendJobAsync()
-        {
-            StopJob();
-        }
-
-        public override void ResumeJob()
-        {
-            StartJob();
-        }
-
-        public override void ResumeJobAsync()
-        {
-            StartJob();
-        }
-
-        public override void UnblockJob()
-        {
-            // noop
-        }
-
-        public override void UnblockJobAsync()
-        {
-            UnblockJob();
-        }
-
-        public override void StopJob(bool force, string reason)
-        {
-            StopJob();
-        }
-
-        public override void StopJobAsync(bool force, string reason)
-        {
-            StopJob();
-        }
-
-        public override void SuspendJob(bool force, string reason)
-        {
-            StopJob();
-        }
-
-        public override void SuspendJobAsync(bool force, string reason)
-        {
-            StopJob();
-        }
-    }
 }

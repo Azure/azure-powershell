@@ -294,4 +294,79 @@
   <data name="UsingDefaultLocation" xml:space="preserve">
     <value>Resource group location is invalid, using default location {0}.</value>
   </data>
+  <data name="AgentPoolAlreadyExistsConfirmAction" xml:space="preserve">
+    <value>Node pool already exists, confirm action.</value>
+  </data>
+  <data name="AgentPoolDoesNotExist" xml:space="preserve">
+    <value>Node pool doesn't exist.</value>
+  </data>
+  <data name="AgentPoolExists" xml:space="preserve">
+    <value>Node pool exists: {0}.</value>
+  </data>
+  <data name="AgentPoolIsNew" xml:space="preserve">
+    <value>Node pool is new.</value>
+  </data>
+  <data name="CreatingClusterAgentPool" xml:space="preserve">
+    <value>Creating a new cluster Node pool.</value>
+  </data>
+  <data name="DoYouWantToCreateClusterAgentPool" xml:space="preserve">
+    <value>Do you want to craete a new Node pool?</value>
+  </data>
+  <data name="DoYouWantToDeleteTheAgentPool" xml:space="preserve">
+    <value>Do you want to delete the Node pool?</value>
+  </data>
+  <data name="RemovingTheAgentPool" xml:space="preserve">
+    <value>Removing the Node pool.</value>
+  </data>
+  <data name="UpdateAgentPool" xml:space="preserve">
+    <value>Update the Node pool.</value>
+  </data>
+  <data name="SpecifiedAgentPoolDoesNotExist" xml:space="preserve">
+    <value>You must specify one existing Node pool name to 'NodeName' for updating Node pool properties.</value>
+  </data>
+  <data name="UsingAgentPoolFromPipeline" xml:space="preserve">
+    <value>Using Node pool from pipeline.</value>
+  </data>
+  <data name="AddDirectoryToPath" xml:space="preserve">
+    <value>Please add {0} to your search PATH so the {1} can be found.</value>
+  </data>
+  <data name="DownloadingKubectlFromWeb" xml:space="preserve">
+    <value>Downloading kubectl from internet</value>
+  </data>
+  <data name="DoYouWantToOverwriteExistingFile" xml:space="preserve">
+    <value>Do you want to overwrite the existing {0}?</value>
+  </data>
+  <data name="NoKubectlForOsxOnMirror" xml:space="preserve">
+    <value>There's no kubectl available in the mirror site for OSX.</value>
+  </data>
+  <data name="NotSupportOnThisOs" xml:space="preserve">
+    <value>Sorry, this cmdlet is not supported in current OS.</value>
+  </data>
+  <data name="CouldNotAddAcrRoleAssignment" xml:space="preserve">
+    <value>Could not add 'acrpull' role assignment, please make sure you have right permission.</value>
+  </data>
+  <data name="CouldNotFindObjectIdForServicePrincipal" xml:space="preserve">
+    <value>Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission.</value>
+  </data>
+  <data name="CouldNotFindSpecifiedAcr" xml:space="preserve">
+    <value>Could not find specified Acr '{0}' to attach.</value>
+  </data>
+  <data name="AgentPoolAlreadyExistsError" xml:space="preserve">
+    <value>The node pool already exists. Please use Update-AzAksNodePool for update.</value>
+  </data>
+  <data name="AksNodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
+    <value>The following three paramters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling.</value>
+  </data>
+  <data name="K8sVersionNotSupported" xml:space="preserve">
+    <value>The specified KubernetesVersion is not supported in this region. Please run 'Get-AzAksVersion' to get supported version.</value>
+  </data>
+  <data name="NodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
+    <value>The following three paramters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling.</value>
+  </data>
+  <data name="VmSetTypeIsIncorrectForWindowsPool" xml:space="preserve">
+    <value>You must set VmSetType as 'VirtualMachineScaleSets' for Windows node pool.</value>
+  </data>
+  <data name="WindowsNodePoolNameLengthLimitation" xml:space="preserve">
+    <value>Windows agent pool name can not be longer than 6 characters.</value>
+  </data>
 </root>

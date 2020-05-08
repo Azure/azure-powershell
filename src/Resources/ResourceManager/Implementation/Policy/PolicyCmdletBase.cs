@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Base class for policy cmdlets.
     /// </summary>
-    public abstract class PolicyCmdletBase : ResourceManagerCmdletBase
+    public abstract class PolicyCmdletBase : ResourceManagerCmdletBaseWithAPiVersion
     {
         public enum ListFilter
         {
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string IdParameterSet = "IdParameterSet";
         protected const string NameParameterSet = "NameParameterSet";
         protected const string SubscriptionIdParameterSet = "SubscriptionIdParameterSet";
+        protected const string InputObjectParameterSet = "InputObjectParameterSet";
         protected const string ManagementGroupNameParameterSet = "ManagementGroupNameParameterSet";
         protected const string IncludeDescendentParameterSet = "IncludeDescendentParameterSet";
         protected const string BuiltinFilterParameterSet = "BuiltinFilterParameterSet";
@@ -66,51 +68,89 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string PolicyTypeFilterFormat = "$filter=PolicyType eq '{0}'";
 
         /// <summary>
-        /// Converts the resource object to specified resource type object.
+        /// Converts the resource object collection to a PsPolicyAssignment collection.
         /// </summary>
         /// <param name="resourceType">The resource type of the objects to create</param>
         /// <param name="resources">The policy definition resource object.</param>
-        protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
+        protected PsPolicyAssignment[] GetOutputPolicyAssignments(params JToken[] resources)
         {
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
-                .SelectArray(resource =>
-                {
-                    var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty(resourceType, psobject.Properties["ResourceId"].Value));
-                    return psobject;
-                });
+                .SelectArray(resource => new PsPolicyAssignment(resource));
         }
 
         /// <summary>
-        /// Converts the resource object collection to a filtered PSObject array.
+        /// Converts the resource object collection to a PsPolicyDefinition collection.
         /// </summary>
-        /// <param name="resourceType">The resource type of the input objects</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicyDefinition[] GetOutputPolicyDefinitions(params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicyDefinition(resource));
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a PsPolicySetDefinition collection.
+        /// </summary>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicySetDefinition[] GetOutputPolicySetDefinitions(params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicySetDefinition(resource));
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a filtered PsPolicyDefinition array.
+        /// </summary>
         /// <param name="filter">the filter</param>
         /// <param name="resources">The policy definition resource object.</param>
-        protected PSObject[] GetFilteredOutputObjects(string resourceType, ListFilter filter, params JObject[] resources)
+        protected PsPolicyDefinition[] GetFilteredOutputPolicyDefinitions(ListFilter filter, params JToken[] resources)
         {
-            Func<PSObject, bool> filterLambda = (result) =>
+            Func<PsPolicyDefinition, bool> filterLambda = (result) =>
             {
                 if (filter == ListFilter.None)
                 {
                     return true;
                 }
 
-                var policyType = ((PSObject)result.Properties["Properties"].Value).Properties["policyType"].Value;
-                return policyType == null || string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+                var policyType = result.Properties.PolicyType;
+                return string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
             };
 
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
-                .SelectArray(resource =>
+                .SelectArray(resource => new PsPolicyDefinition(resource))
+                .Where(filterLambda).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a filtered PsPolicySetDefinition array.
+        /// </summary>
+        /// <param name="filter">the filter</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicySetDefinition[] GetFilteredOutputPolicySetDefinitions(ListFilter filter, params JObject[] resources)
+        {
+            Func<PsPolicySetDefinition, bool> filterLambda = (result) =>
+            {
+                if (filter == ListFilter.None)
                 {
-                    var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty(resourceType, psobject.Properties["ResourceId"].Value));
-                    return psobject;
-                })
+                    return true;
+                }
+
+                var policyType = result.Properties.PolicyType;
+                return string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+            };
+
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicySetDefinition(resource))
                 .Where(filterLambda).ToArray();
         }
 

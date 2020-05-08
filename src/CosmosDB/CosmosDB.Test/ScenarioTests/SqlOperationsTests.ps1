@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
-Gets and removes custom domain with running endpoint.
+Test SQL CRUD operations using Name parameter set
 #>
-
 function Test-SqlOperationsCmdlets
 {
   $AccountName = "cosmosdb9921232812"
@@ -26,6 +26,12 @@ function Test-SqlOperationsCmdlets
   $UDFName = "udf"
   $TriggerName = "trigger"
 
+  $DatabaseName2 = "dbName2"
+  $ContainerName2 = "container2"
+  $StoredProcedureName2 = "storedProcedure2"
+  $UDFName2 = "udf2"
+  $TriggerName2 = "trigger2"
+
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
 
@@ -33,223 +39,454 @@ function Test-SqlOperationsCmdlets
                         "var response = context.getResponse();" +
                         "response.setBody('Hello, World');" +
                         "}"
+  $Body2 = "function () { var x = 10;" +
+                        "}"
+
   $TriggerOperation = "All"
   $TriggerType = "Pre"
 
-  $NewDatabase =  Set-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  Assert-AreEqual $NewDatabase.Name $DatabaseName
+  Try{
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
 
-  #Indexing Policy Creation
-  $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-  $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-  $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
-  $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
-  $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
-  $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
-  $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+      # create an existing keyspace
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
 
-  $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+      # Indexing Policy Creation
+      $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
+      $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+      $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+      $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
+      $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+
+      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+     
+      # UniqueKey Creation
+      $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
+      $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
+      $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
+      $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
+
+      $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+      # create a new container
+      $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1
+      Assert-AreEqual $NewContainer.Name $ContainerName
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
+
+      # create an existing container
+      Try {
+            $NewDuplicateContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName + " already exists.")
+      }
+
+      # create a new stored procedure
+      $NewStoredProcedure = New-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName -Body $Body
+      Assert-AreEqual $NewStoredProcedure.Name $StoredProcedureName
+      Assert-AreEqual $NewStoredProcedure.Resource.Body $Body
+
+      # create an existing stored procedure
+      Try {
+            $NewDuplicateStoredProcedure = New-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName -Body $Body
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $StoredProcedureName + " already exists.")
+      }
+
+      # create a new UDF
+      $NewUDF = New-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName -Body $Body
+      Assert-AreEqual $NewUDF.Name $UDFName
+      Assert-AreEqual $NewUDF.Resource.Body $Body
+
+      # create an existing UDF
+      Try {
+            $NewDuplicateUDF = New-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName -Body $Body
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $UDFName + " already exists.")
+      }
+
+      # create a new Trigger
+      $NewTrigger = New-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body -TriggerOperation $TriggerOperation -TriggerType $TriggerType
+      Assert-AreEqual $NewTrigger.Name $TriggerName
+      Assert-AreEqual $NewTrigger.Resource.Body $Body
+      Assert-AreEqual $NewTrigger.Resource.TriggerOperation $TriggerOperation
+      Assert-AreEqual $NewTrigger.Resource.TriggerType $TriggerType
+
+      # create an existing Trigger
+      Try {
+          $NewDuplicateTrigger = New-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body -TriggerOperation $TriggerOperation -TriggerType $TriggerType
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TriggerName + " already exists.")
+      }
+
+      # update non existing database, container, UDF, stored procedure, trigger
+      Try {
+          $UpdatedDatabse = Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName2 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName2 + " does not exist.")
+      }
+
+      Try {
+          $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName2 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName2 + " does not exist.")
+      }
+
+      Try {
+          $UpdatedStoredProcedure  = Update-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName2 -Body $Body 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $StoredProcedureName2 + " does not exist.")
+      }
+
+      Try {
+          $UpdatedTrigger  = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName2 -Body $Body 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TriggerName2 + " does not exist.")
+      }
+
+      Try {
+          $UpdatedUDF  = Update-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName2 -Body $Body 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $UDFName2 + " does not exist.")
+      }
+
+      # get a database
+      $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # get a container
+      $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Assert-AreEqual $NewContainer.Id $Container.Id
+      Assert-AreEqual $NewContainer.Name $Container.Name
+
+      # get a stored procedure
+      $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName
+      Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
+      Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
+      Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
   
-  #UniqueKey Creation
-  $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
-  $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
-  $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
-  $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
+      # get a UDF
+      $UDF = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName
+      Assert-AreEqual $NewUDF.Id $UDF.Id
+      Assert-AreEqual $NewUDF.Name $UDF.Name
+      Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
 
-  $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+      # get a trigger
+      $Trigger = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName
+      Assert-AreEqual $NewTrigger.Id $Trigger.Id
+      Assert-AreEqual $NewTrigger.Name $Trigger.Name
+      Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
+      Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
+      Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
 
-  $NewContainer = Set-AzCosmosDBSqlContainer  -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy  -UniqueKeyPolicy $uk1
-  Assert-AreEqual $NewContainer.Name $ContainerName
-  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
-  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
-  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
-  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
-  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
-  Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
+      # updating database, container, udf, trigger
+      $UpdatedDatabase =  Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $UpdatedDatabase.Name $DatabaseName
 
-  $NewStoredProcedure = Set-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName -Body $Body
-  Assert-AreEqual $NewStoredProcedure.Name $StoredProcedureName
+      # update container
+      $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $UpdatedContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
 
-  $NewUDF = Set-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName -Body $Body
-  Assert-AreEqual $NewUDF.Name $UDFName
+      # update storedprocedure
+      $UpdatedStoredProcedure = Update-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName -Body $Body2
+      Assert-AreEqual $UpdatedStoredProcedure.Name $StoredProcedureName
+      Assert-AreEqual $UpdatedStoredProcedure.Resource.Body $Body2
 
-  $NewTrigger = Set-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body -TriggerOperation $TriggerOperation -TriggerType $TriggerType
-  Assert-AreEqual $NewTrigger.Name $TriggerName
+      # update trigger
+      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body2 
+      Assert-AreEqual $UpdatedTrigger.Name $TriggerName
+      Assert-AreEqual $UpdatedTrigger.Resource.Body $Body2
+      Assert-AreEqual $UpdatedTrigger.Resource.TriggerOperation $TriggerOperation
+      Assert-AreEqual $UpdatedTrigger.Resource.TriggerType $TriggerType
 
-  $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  Assert-AreEqual $NewDatabase.Id $Database.Id
-  Assert-AreEqual $NewDatabase.Name $Database.Name
-  Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
-  Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
-  Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
-  Assert-AreEqual $NewDatabase.Resource._colls $Database.Resource._colls
-  Assert-AreEqual $NewDatabase.Resource._users $Database.Resource._users
+      # update udf
+      $UpdatedUDF = Update-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName -Body $Body2
+      Assert-AreEqual $UpdatedUDF.Name $UDFName
+      Assert-AreEqual $UpdatedUDF.Resource.Body $Body2
 
-  $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-  Assert-AreEqual $NewContainer.Id $Container.Id
-  Assert-AreEqual $NewContainer.Name $Container.Name
-  Assert-AreEqual $NewContainer.Resource._rid $Container.Resource._rid
-  Assert-AreEqual $NewContainer.Resource._ts $Container.Resource._ts
-  Assert-AreEqual $NewContainer.Resource._etag $Container.Resource._etag
+      # list containers
+      $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListContainers)
 
-  $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName
-  Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
-  Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
-  Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
-  Assert-AreEqual $NewStoredProcedure.Resource._rid $StoredProcedure.Resource._rid
-  Assert-AreEqual $NewStoredProcedure.Resource._ts $StoredProcedure.Resource._ts
-  Assert-AreEqual $NewStoredProcedure.Resource._etag $StoredProcedure.Resource._etag
-  
-  $UDF = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName
-  Assert-AreEqual $NewUDF.Id $UDF.Id
-  Assert-AreEqual $NewUDF.Name $UDF.Name
-  Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
-  Assert-AreEqual $NewUDF.Resource._rid $UDF.Resource._rid
-  Assert-AreEqual $NewUDF.Resource._ts $UDF.Resource._ts
-  Assert-AreEqual $NewUDF.Resource._etag $UDF.Resource._etag
+      # list databases
+      $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
 
-  $Trigger = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName
-  Assert-AreEqual $NewTrigger.Id $Trigger.Id
-  Assert-AreEqual $NewTrigger.Name $Trigger.Name
-  Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
-  Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
-  Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
-  Assert-AreEqual $NewTrigger.Resource._rid $Trigger.Resource._rid
-  Assert-AreEqual $NewTrigger.Resource._ts $Trigger.Resource._ts
-  Assert-AreEqual $NewTrigger.Resource._etag $Trigger.Resource._etag
+      # list stored procedures
+      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
+      Assert-NotNull($ListStoredProcedures)
 
-  $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
-  Assert-NotNull($ListContainers)
+      # list udfs
+      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
+      Assert-NotNull($ListUDFs)
 
-  $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
-  Assert-NotNull($ListDatabases)
+      # list triggers
+      $ListTriggers = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
+      Assert-NotNull($ListTriggers)
 
-  $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
-  Assert-NotNull($ListStoredProcedures)
+      Remove-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName 
 
-  $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
-  Assert-NotNull($ListUDFs)
+      Remove-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName 
 
-  $ListTriggers = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
-  Assert-NotNull($ListTriggers)
+      Remove-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName  -Name $UDFName 
 
-  Remove-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName 
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
 
-  Remove-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName 
-
-  Remove-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName  -Name $UDFName 
-
-  Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
-
-  Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+  }
+  Finally {
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+  }
 }
 
+<#
+.SYNOPSIS
+Test SQL CRUD operations using input object and parent object set
+#>
 function Test-SqlOperationsCmdletsUsingInputObject
 {
   $AccountName = "cosmosdb9921232812"
   $rgName = "rgtest9921232812"
-  $DatabaseName = "dbName2"
+  $DatabaseName = "dbName"
   $ContainerName = "container1"
-
-  $PartitionKeyPathValue = "/foo/bar"
-  $PartitionKeyKindValue = "Hash"
-
   $StoredProcedureName = "storedProcedure"
   $UDFName = "udf"
   $TriggerName = "trigger"
+
+  $DatabaseName2 = "dbName2"
+  $ContainerName2 = "container2"
+  $StoredProcedureName2 = "storedProcedure2"
+  $UDFName2 = "udf2"
+  $TriggerName2 = "trigger2"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
 
   $Body = "function () { var context = getContext(); " +
                         "var response = context.getResponse();" +
                         "response.setBody('Hello, World');" +
                         "}"
+  $Body2 = "function () { var x = 10;" +
+                        "}"
+
   $TriggerOperation = "All"
   $TriggerType = "Pre"
 
-  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  Try{
+      
+      # get the database account object
+      $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
-  $NewDatabase =  Set-AzCosmosDBSqlDatabase -InputObject $cosmosDBAccount -Name $DatabaseName
-  Assert-AreEqual $NewDatabase.Name $DatabaseName
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
 
-  $NewContainer = Set-AzCosmosDBSqlContainer -InputObject $NewDatabase -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
-  Assert-AreEqual $NewContainer.Name $ContainerName
+      # Indexing Policy Creation
+      $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
+      $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+      $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+      $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
+      $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
 
-  $NewStoredProcedure = Set-AzCosmosDBSqlStoredProcedure -InputObject $NewContainer -Name $StoredProcedureName -Body $Body
-  Assert-AreEqual $NewStoredProcedure.Name $StoredProcedureName
+      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+     
+      # create a new  uniquekeypolicy
+      $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
+      $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
+      $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
+      $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
 
-  $NewUDF = Set-AzCosmosDBSqlUserDefinedFunction -InputObject $NewContainer -Name $UDFName -Body $Body
-  Assert-AreEqual $NewUDF.Name $UDFName
+      $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+      # create a new container
+      $NewContainer = New-AzCosmosDBSqlContainer -ParentObject $NewDatabase -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1
+      Assert-AreEqual $NewContainer.Name $ContainerName
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
 
-  $NewTrigger = Set-AzCosmosDBSqlTrigger -InputObject $NewContainer -Name $TriggerName -Body $Body -TriggerOperation $TriggerOperation -TriggerType $TriggerType
-  Assert-AreEqual $NewTrigger.Name $TriggerName
+      # create a new stored procedure
+      $NewStoredProcedure = New-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer -Name $StoredProcedureName -Body $Body
+      Assert-AreEqual $NewStoredProcedure.Name $StoredProcedureName
+      Assert-AreEqual $NewStoredProcedure.Resource.Body $Body
 
-  $Database = Get-AzCosmosDBSqlDatabase -InputObject $cosmosDBAccount -Name $DatabaseName
-  Assert-AreEqual $NewDatabase.Id $Database.Id
-  Assert-AreEqual $NewDatabase.Name $Database.Name
-  Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
-  Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
-  Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
-  Assert-AreEqual $NewDatabase.Resource._colls $Database.Resource._colls
-  Assert-AreEqual $NewDatabase.Resource._users $Database.Resource._users
+      # create a new UDF
+      $NewUDF = New-AzCosmosDBSqlUserDefinedFunction -ParentObject $NewContainer -Name $UDFName -Body $Body
+      Assert-AreEqual $NewUDF.Name $UDFName
+      Assert-AreEqual $NewUDF.Resource.Body $Body
 
-  $Container = Get-AzCosmosDBSqlContainer -InputObject $NewDatabase -Name $ContainerName
-  Assert-AreEqual $NewContainer.Id $Container.Id
-  Assert-AreEqual $NewContainer.Name $Container.Name
-  Assert-AreEqual $NewContainer.Resource._rid $Container.Resource._rid
-  Assert-AreEqual $NewContainer.Resource._ts $Container.Resource._ts
-  Assert-AreEqual $NewContainer.Resource._etag $Container.Resource._etag
+      # create a new Trigger
+      $NewTrigger = New-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName -Body $Body -TriggerOperation $TriggerOperation -TriggerType $TriggerType
+      Assert-AreEqual $NewTrigger.Name $TriggerName
+      Assert-AreEqual $NewTrigger.Resource.Body $Body
+      Assert-AreEqual $NewTrigger.Resource.TriggerOperation $TriggerOperation
+      Assert-AreEqual $NewTrigger.Resource.TriggerType $TriggerType
 
-  $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -InputObject $NewContainer -Name $StoredProcedureName
-  Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
-  Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
-  Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
-  Assert-AreEqual $NewStoredProcedure.Resource._rid $StoredProcedure.Resource._rid
-  Assert-AreEqual $NewStoredProcedure.Resource._ts $StoredProcedure.Resource._ts
-  Assert-AreEqual $NewStoredProcedure.Resource._etag $StoredProcedure.Resource._etag
+      # get a database
+      $Database = Get-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # get a container
+      $Container = Get-AzCosmosDBSqlContainer -ParentObject $NewDatabase -Name $ContainerName
+      Assert-AreEqual $NewContainer.Id $Container.Id
+      Assert-AreEqual $NewContainer.Name $Container.Name
+
+      # get a stored procedure
+      $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer -Name $StoredProcedureName
+      Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
+      Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
+      Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
   
-  $UDF = Get-AzCosmosDBSqlUserDefinedFunction -InputObject $NewContainer -Name $UDFName
-  Assert-AreEqual $NewUDF.Id $UDF.Id
-  Assert-AreEqual $NewUDF.Name $UDF.Name
-  Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
-  Assert-AreEqual $NewUDF.Resource._rid $UDF.Resource._rid
-  Assert-AreEqual $NewUDF.Resource._ts $UDF.Resource._ts
-  Assert-AreEqual $NewUDF.Resource._etag $UDF.Resource._etag
+      # get a UDF
+      $UDF = Get-AzCosmosDBSqlUserDefinedFunction -ParentObject $NewContainer -Name $UDFName
+      Assert-AreEqual $NewUDF.Id $UDF.Id
+      Assert-AreEqual $NewUDF.Name $UDF.Name
+      Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
 
-  $Trigger = Get-AzCosmosDBSqlTrigger -InputObject $NewContainer -Name $TriggerName
-  Assert-AreEqual $NewTrigger.Id $Trigger.Id
-  Assert-AreEqual $NewTrigger.Name $Trigger.Name
-  Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
-  Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
-  Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
-  Assert-AreEqual $NewTrigger.Resource._rid $Trigger.Resource._rid
-  Assert-AreEqual $NewTrigger.Resource._ts $Trigger.Resource._ts
-  Assert-AreEqual $NewTrigger.Resource._etag $Trigger.Resource._etag
+      # get a trigger
+      $Trigger = Get-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName
+      Assert-AreEqual $NewTrigger.Id $Trigger.Id
+      Assert-AreEqual $NewTrigger.Name $Trigger.Name
+      Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
+      Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
+      Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
 
-  $ListContainers = Get-AzCosmosDBSqlContainer -InputObject $NewDatabase
-  Assert-NotNull($ListContainers)
+      # updating database using parent object
+      $UpdatedDatabase =  Update-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount -Name $DatabaseName
+      Assert-AreEqual $UpdatedDatabase.Name $DatabaseName
 
-  $ListDatabases = Get-AzCosmosDBSqlDatabase -InputObject $cosmosDBAccount
-  Assert-NotNull($ListDatabases) 
+      # update container using parent object
+      $UpdatedContainer = Update-AzCosmosDBSqlContainer -ParentObject $NewDatabase -Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $UpdatedContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
 
-  $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -InputObject $NewContainer
-  Assert-NotNull($ListStoredProcedures)
+      # update storedprocedure using parent object
+      $UpdatedStoredProcedure = Update-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer -Name $StoredProcedureName -Body $Body2
+      Assert-AreEqual $UpdatedStoredProcedure.Name $StoredProcedureName
+      Assert-AreEqual $UpdatedStoredProcedure.Resource.Body $Body2
 
-  $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction -InputObject $NewContainer
-  Assert-NotNull($ListUDFs)
+      # update trigger using parent object
+      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName -Body $Body2 
+      Assert-AreEqual $UpdatedTrigger.Name $TriggerName
+      Assert-AreEqual $UpdatedTrigger.Resource.Body $Body2
+      Assert-AreEqual $UpdatedTrigger.Resource.TriggerOperation $TriggerOperation
+      Assert-AreEqual $UpdatedTrigger.Resource.TriggerType $TriggerType
 
-  $ListTriggers = Get-AzCosmosDBSqlTrigger -InputObject $NewContainer
-  Assert-NotNull($ListTriggers)
+      # update udf using parent object
+      $UpdatedUDF = Update-AzCosmosDBSqlUserDefinedFunction -ParentObject $NewContainer -Name $UDFName -Body $Body2
+      Assert-AreEqual $UpdatedUDF.Name $UDFName
+      Assert-AreEqual $UpdatedUDF.Resource.Body $Body2
 
-  Remove-AzCosmosDBSqlStoredProcedure -InputObject $StoredProcedure
+      # updating database using input object
+      $UpdatedDatabase2 =  Update-AzCosmosDBSqlDatabase -InputObject $UpdatedDatabase
+      Assert-AreEqual $UpdatedDatabase2.Name $DatabaseName
 
-  Remove-AzCosmosDBSqlTrigger -InputObject $Trigger
+      # update container using inpu object
+      $UpdatedContainer2 = Update-AzCosmosDBSqlContainer -InputObject $UpdatedContainer
+      Assert-AreEqual $UpdatedContainer2.Name $ContainerName
+      Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $UpdatedContainer2.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
 
-  Remove-AzCosmosDBSqlUserDefinedFunction -InputObject $UDF
+      # update storedprocedure using parent object
+      $UpdatedStoredProcedure2 = Update-AzCosmosDBSqlStoredProcedure -InputObject $UpdatedStoredProcedure -Body $Body
+      Assert-AreEqual $UpdatedStoredProcedure2.Name $StoredProcedureName
+      Assert-AreEqual $UpdatedStoredProcedure2.Resource.Body $Body
 
-  Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
+      # update trigger using parent object
+      $UpdatedTrigger2 = Update-AzCosmosDBSqlTrigger -InputObject $UpdatedTrigger -Body $Body
+      Assert-AreEqual $UpdatedTrigger2.Name $TriggerName
+      Assert-AreEqual $UpdatedTrigger2.Resource.Body $Body
+      Assert-AreEqual $UpdatedTrigger2.Resource.TriggerOperation $TriggerOperation
+      Assert-AreEqual $UpdatedTrigger2.Resource.TriggerType $TriggerType
 
-  Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase 
+      # update udf using parent object
+      $UpdatedUDF2 = Update-AzCosmosDBSqlUserDefinedFunction -InputObject $UpdatedUDF -Body $Body
+      Assert-AreEqual $UpdatedUDF2.Name $UDFName
+      Assert-AreEqual $UpdatedUDF2.Resource.Body $Body
+
+      # list containers
+      $ListContainers = Get-AzCosmosDBSqlContainer -ParentObject $NewDatabase
+      Assert-NotNull($ListContainers)
+
+      # list databases
+      $ListDatabases = Get-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount
+      Assert-NotNull($ListDatabases)
+
+      # list stored procedures
+      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer 
+      Assert-NotNull($ListStoredProcedures)
+
+      # list udfs
+      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction  -ParentObject $NewContainer 
+      Assert-NotNull($ListUDFs)
+
+      # list triggers
+      $ListTriggers = Get-AzCosmosDBSqlTrigger  -ParentObject $NewContainer
+      Assert-NotNull($ListTriggers)
+
+      Remove-AzCosmosDBSqlStoredProcedure -InputObject $NewStoredProcedure
+
+      Remove-AzCosmosDBSqlTrigger -InputObject $NewTrigger
+
+      Remove-AzCosmosDBSqlUserDefinedFunction -InputObject $NewUDF
+
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
+
+      Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
+  }
+  Finally {
+
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+  }
 }
 
+<#
+.SYNOPSIS
+Test SQL throughput cmdlets using all parameter sets
+#>
 function Test-SqlThroughputCmdlets
 {
   $AccountName = "cosmosdb9921232812"
@@ -270,33 +507,39 @@ function Test-SqlThroughputCmdlets
   $UpdatedContainerThroughputValue2 = 600
   $UpdatedContainerThroughputValue3 = 500
 
-  $NewDatabase =  Set-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
-  $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+  Try{
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
-  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+      $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
 
-  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+      $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
 
-  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
-  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+      $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
 
-  $NewContainer =  Set-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
-  $ContainerThroughput = Get-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-  Assert-AreEqual $ContainerThroughput.Throughput $ContainerThroughputValue
+      $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      $ContainerThroughput = Get-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Assert-AreEqual $ContainerThroughput.Throughput $ContainerThroughputValue
 
-  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
-  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
+      $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
 
-  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput  -InputObject $NewContainer -Throughput $UpdatedContainerThroughputValue2
-  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue2
+      $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput  -InputObject $NewContainer -Throughput $UpdatedContainerThroughputValue2
+      Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue2
 
-  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -ParentObject $NewDatabase -Name $ContainerName -Throughput $UpdatedContainerThroughputValue3
-  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue3
+      $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -ParentObject $NewDatabase -Name $ContainerName -Throughput $UpdatedContainerThroughputValue3
+      Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue3
 
-  Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
-  Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase 
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
+      Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase 
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+  }
 }
