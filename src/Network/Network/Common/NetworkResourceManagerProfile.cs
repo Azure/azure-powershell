@@ -873,7 +873,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
                 cfg.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
                 cfg.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
-                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>();
+                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>()
+                    .AfterMap((src, dest) =>
+                    {
+                        dest.BgpPeeringAddresses = dest.BgpPeeringAddresses.Count == 0? null : dest.BgpPeeringAddresses;
+                    });
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
