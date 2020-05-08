@@ -33,6 +33,7 @@ function setupEnv() {
     write-host "Deploy Vnet template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "postgresql-test-100"
     $env.Add("serverName", $serverName)

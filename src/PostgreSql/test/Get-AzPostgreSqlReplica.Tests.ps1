@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzPostgreSqlReplica' {
     It 'List' {
-        Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlServerReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
+        Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
         $replica = Get-AzPostgreSqlReplica -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
         $replica.Count | Should -Be 1
         Remove-AzPostgreSqlServer -InputObject $replica

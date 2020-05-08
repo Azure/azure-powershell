@@ -1,6 +1,6 @@
 ### Example 1: Create a new PostgreSql server replica
 ```powershell
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqlServerReplica -Name PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
+PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqReplica -Name PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 
 Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
