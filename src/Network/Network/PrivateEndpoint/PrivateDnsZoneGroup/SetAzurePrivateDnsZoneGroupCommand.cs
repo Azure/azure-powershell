@@ -43,27 +43,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A collection of private dns zone configurations of the private dns zone group.")]
         public virtual List<PSPrivateDnsZoneConfig> PrivateDnsZoneConfig { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            base.Execute();
-            var present = IsPrivateDnsZoneGroupPresent(ResourceGroupName, PrivateEndpointName, Name);
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
-                Name,
-                () =>
-                {
-                    var group = CreatePSPrivateDnsZoneGroup();
-                    WriteObject(group);
-                },
-                () => present);
+            var group = CreatePSPrivateDnsZoneGroup();
+            WriteObject(group);
         }
 
         private PSPrivateDnsZoneGroup CreatePSPrivateDnsZoneGroup()
