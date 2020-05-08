@@ -225,12 +225,9 @@ function Test-PrivateDnsZoneGroupCRUD
         
         $vPrivateEndpoint = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
         
-        # New private dns zone created by Az.PrivateDns. Create it in advance to avoid dependency issue
-        # New-AzPrivateDnsZone -ResourceGroupName "dixue" -Name "xdm.vault.azure.com"
-        # $zone1 = Get-AzPrivateDnsZone -ResourceGroupName dixue -Name "xdm.vault.azure.com"
-        # $resourceId = $zone1.ResourceId
-        $resourceId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dixue/providers/Microsoft.Network/privateDnsZones/xdm.vault.azure.com"
-        $config = New-AzPrivateDnsZoneConfig -Name xdm-vault-azure-com -PrivateDnsZoneId $resourceId
+        # New private dns zone created by Az.PrivateDns.
+        $zone1 = New-AzPrivateDnsZone -ResourceGroupName $rgname -Name "xdm.vault.azure.com"
+        $config = New-AzPrivateDnsZoneConfig -Name xdm-vault-azure-com -PrivateDnsZoneId $zone1.ResourceId
         $job = New-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PrivateDnsZoneConfig $config -AsJob
         $job | Wait-Job
         $dnsZoneGroup = $job | Receive-Job
@@ -238,11 +235,11 @@ function Test-PrivateDnsZoneGroupCRUD
         # Assert
         Assert-AreEqual $dnsZoneGroup.Name dnsgroup1
         Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].Name xdm-vault-azure-com
-        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $resourceId
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $zone1.ResourceId
 
-        # $zone1 = Get-AzPrivateDnsZone -ResourceGroupName dixue -Name "xdm1.vault.azure.com"
-        $resourceId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dixue/providers/Microsoft.Network/privateDnsZones/xdm1.vault.azure.com"
-        $config1 = New-AzPrivateDnsZoneConfig -Name xdm1-vault-azure-com -PrivateDnsZoneId $resourceId
+        # Update dns zone
+        $zone2 = New-AzPrivateDnsZone -ResourceGroupName $rgname -Name "xdm1.vault.azure.com"
+        $config1 = New-AzPrivateDnsZoneConfig -Name xdm1-vault-azure-com -PrivateDnsZoneId $zone2.ResourceId
         $job = Set-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PrivateDnsZoneConfig $config1 -AsJob
         $job | Wait-Job
         $dnsZoneGroup = $job | Receive-Job
@@ -250,16 +247,16 @@ function Test-PrivateDnsZoneGroupCRUD
         # Assert
         Assert-AreEqual $dnsZoneGroup.Name dnsgroup1
         Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].Name xdm1-vault-azure-com
-        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $resourceId
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $zone2.ResourceId
 
         # Remove zone group
-        $job = Remove-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $vPrivateEndpoint.name -name dnsgroup1 -PassThru -Force -AsJob
+        $job = Remove-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PassThru -Force -AsJob
         $job | Wait-Job
         $jobResult = $job | Receive-Job;
         Assert-AreEqual true $jobResult;
         
         # Check deleted objects
-        $list = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $vPrivateEndpoint.name
+        $list = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname
         Assert-AreEqual 0 @($list).Count
 
     }
