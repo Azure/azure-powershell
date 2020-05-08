@@ -32,11 +32,11 @@ Gets a virtual network rule.
 ### [New-AzPostgreSqlFirewallRule](New-AzPostgreSqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
+### [New-AzPostgreSqlReplica](New-AzPostgreSqlReplica.md)
+Creates a new replica from an existing database.
+
 ### [New-AzPostgreSqlServer](New-AzPostgreSqlServer.md)
 Creates a new server.
-
-### [New-AzPostgreSqlServerReplica](New-AzPostgreSqlServerReplica.md)
-Creates a new replica from an existing database.
 
 ### [New-AzPostgreSqlVirtualNetworkRule](New-AzPostgreSqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.

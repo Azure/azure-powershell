@@ -14,6 +14,7 @@ while(-not $mockingPath) {
 Describe 'Remove-AzPostgreSqlServer' {
     It 'Delete' {
         { 
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             New-AzPostgreSqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
             Remove-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2 
@@ -21,7 +22,8 @@ Describe 'Remove-AzPostgreSqlServer' {
     }
 
     It 'DeleteViaIdentity' {
-        {   
+        {
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             New-AzPostgreSqlServer -Name postgresqldelete -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/postgresqldelete"

@@ -13,7 +13,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function New-AzPostgreSqlServerReplica {
+function New-AzPostgreSqlReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Creates a new replica from an existing database.')]

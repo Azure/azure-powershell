@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Restore-AzPostgreSqlServer' {
     It 'GeoRestore' {
-        $replica = Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlServerReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
+        $replica = Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
         $restoreServer = Restore-AzPostgreSqlServer -Name $env.serverName -ResourceGroupName $env.resourceGroup -InputObject $replica -UseGeoRestore 
         $restoreServer.Name | Should -Be $env.serverName
         $restoreServer.SkuName | Should -Be $env.Sku
