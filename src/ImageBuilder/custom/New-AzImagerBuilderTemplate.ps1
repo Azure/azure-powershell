@@ -79,21 +79,21 @@ function New-AzImageBuilderTemplate {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource]
         ${Source},
     
-        [Parameter(HelpMessage="The type of identity used for the image template.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
-        # The type of identity used for the image template.
-        # The type 'None' will remove any identities from the image template.
-        ${IdentityType},
+        # [Parameter(HelpMessage="The type of identity used for the image template.")]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
+        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
+        # # The type of identity used for the image template.
+        # # The type 'None' will remove any identities from the image template.
+        # ${IdentityType},
     
-        [Parameter(HelpMessage="The list of user identities associated with the image template.")]
+        [Parameter(Mandatory, HelpMessage="The id of user assigned identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateIdentityUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The list of user identities associated with the image template.
+        [System.String]
+        # The id of user assigned identity.
         # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        ${UserAssignedIdentity},
+        ${UserAssignedIdentityId},
     
         [Parameter(HelpMessage="End time of the last run (UTC).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -256,14 +256,17 @@ function New-AzImageBuilderTemplate {
                 $Parameter.Distribute = $Distribute
                 $Null = $PSBoundParameters.Remove('Distribute')
             }
-            if ($PSBoundParameters.ContainsKey('IdentityType')) {
-                $Parameter.IdentityType = $IdentityType
-                $Null = $PSBoundParameters.Remove('IdentityType')
-            }
-            if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-                $Parameter.IdentityUserAssignedIdentity = $UserAssignedIdentity
-                $Null = $PSBoundParameters.Remove('UserAssignedIdentity')
-            }
+            # if ($PSBoundParameters.ContainsKey('IdentityType')) {
+            #     $Parameter.IdentityType = $IdentityType
+            #     $Null = $PSBoundParameters.Remove('IdentityType')
+            # }
+            $Parameter.IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]::UserAssigned
+            $UserAssignedIdentities = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateIdentityUserAssignedIdentities]::new()
+            $UserassignedidentitiesAdditionalproperties = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties](@{})
+            $UserAssignedIdentities.Add($UserAssignedIdentityId, $UserassignedidentitiesAdditionalproperties)
+            $Parameter.IdentityUserAssignedIdentity = $UserAssignedIdentities
+            $Null = $PSBoundParameters.Remove('UserAssignedIdentityId')
+            
             if ($PSBoundParameters.ContainsKey('LastRunStatus')) {
                 $Parameter.LastRunStatus = $LastRunStatus
                 $Null = $PSBoundParameters.Remove('LastRunStatus')
