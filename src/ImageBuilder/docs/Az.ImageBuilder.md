@@ -38,6 +38,3 @@ Create artifacts from a existing image template
 ### [Stop-AzImageBuilderTemplate](Stop-AzImageBuilderTemplate.md)
 Cancel the long running image build based on the image template
 
-### [Update-AzImageBuilderTemplate](Update-AzImageBuilderTemplate.md)
-Update the tags for this Virtual Machine Image Template
-

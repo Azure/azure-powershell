@@ -256,10 +256,6 @@ function New-AzImageBuilderTemplate {
                 $Parameter.Distribute = $Distribute
                 $Null = $PSBoundParameters.Remove('Distribute')
             }
-            # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-            #     $Parameter.IdentityType = $IdentityType
-            #     $Null = $PSBoundParameters.Remove('IdentityType')
-            # }
             $Parameter.IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]::UserAssigned
             $UserAssignedIdentities = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateIdentityUserAssignedIdentities]::new()
             $UserassignedidentitiesAdditionalproperties = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties](@{})
