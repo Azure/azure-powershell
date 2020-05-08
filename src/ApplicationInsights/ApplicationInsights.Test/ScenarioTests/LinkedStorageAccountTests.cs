@@ -21,11 +21,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 {
-    public class ApplicationInsightsTests : RMTestBase
+    public class LinkedStorageAccountTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public ApplicationInsightsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public LinkedStorageAccountTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAppInsightsCRUD()
+        public void TestLinkedStorageAccountCRUD()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ApplicationInsightsCRUD");
+            TestController.NewInstance.RunPsTest(_logger, "Test-LinkedStorageAccountCRUD");
         }
     }
 }

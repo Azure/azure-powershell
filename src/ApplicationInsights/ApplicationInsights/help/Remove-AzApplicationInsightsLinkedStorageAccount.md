@@ -1,67 +1,66 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/remove-azapplicationinsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
-# Remove-AzApplicationInsights
+# Remove-AzApplicationInsightsLinkedStorageAccount
 
 ## SYNOPSIS
-Remove an application insights resource
+Delete application insights linked storage account
 
 ## SYNTAX
 
-### ComponentNameParameterSet (Default)
+### ByResourceNameParameterSet (Default)
 ```
-Remove-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ComponentObjectParameterSet
+### ByInputObjectParameterSet
 ```
-Remove-AzApplicationInsights [-ApplicationInsightsComponent] <PSApplicationInsightsComponent> [-PassThru]
+Remove-AzApplicationInsightsLinkedStorageAccount -InputObject <PSApplicationInsightsComponent>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
-Remove-AzApplicationInsights [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove an application insights resource
+Delete application insights linked storage account
 
 ## EXAMPLES
 
-### Example 1 Remove an application insights resource
-```
-PS C:\> Remove-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test" -PassThru
-True
+### Example 1
+```powershell
+Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Remove-AzApplicationInsightsLinkedStorageAccount
 ```
 
-Remove an application insights resource named "test" in resource group "testgroup"
+Delete linked storage account associated with application insights component "componentName"
 
 ## PARAMETERS
 
-### -ApplicationInsightsComponent
-Application Insights Component Object.
+### -ComponentName
+Component Name
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-Parameter Sets: ComponentObjectParameterSet
+Type: System.String
+Parameter Sets: ByResourceNameParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -75,63 +74,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Application Insights Component Name.
+### -InputObject
+PSApplicationInsightsComponent
 
 ```yaml
-Type: System.String
-Parameter Sets: ComponentNameParameterSet
-Aliases: ApplicationInsightsComponentName, ComponentName
+Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+Parameter Sets: ByInputObjectParameterSet
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-If specified will write true in case operation succeeds. This parameter is optional. Default value is false.
+### -ResourceGroupName
+Resource Group Name
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByResourceNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name.
+### -ResourceId
+Component ResourceId
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Application Insights Component Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -171,9 +155,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-
 ### System.String
+
+### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
 
 ## OUTPUTS
 
