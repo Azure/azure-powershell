@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The kind of certificate to create. If this is not specified, it is assumed that all certificates without a password are CER and all certificates with password are PFX.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.Batch.Models.PSCertificateKind]
+Type: Microsoft.Azure.Commands.Batch.Models.PSCertificateKind
 Parameter Sets: (All)
 Aliases:
 Accepted values: Cer, Pfx

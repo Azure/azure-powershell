@@ -150,10 +150,7 @@ CmdletsToExport =
     'Get-AzBatchTaskCount',
     'Get-AzBatchPoolNodeCount',
     'Start-AzBatchComputeNodeServiceLogUpload',
-    'New-AzBatchResourceFile',
-    'Get-AzBatchPrivateEndpointConnection',
-    'Get-AzBatchPrivateLinkResource',
-    'Set-AzBatchPrivateEndpointConnection'
+    'New-AzBatchResourceFile'
 
 # Variables to export from this module
 # VariablesToExport = @()

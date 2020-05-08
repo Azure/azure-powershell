@@ -89,12 +89,6 @@ Gets pool summary statistics for a Batch account.
 ### [Get-AzBatchPoolUsageMetric](Get-AzBatchPoolUsageMetric.md)
 Gets pool usage metrics for a Batch account.
 
-### [Get-AzBatchPrivateEndpointConnection](Get-AzBatchPrivateEndpointConnection.md)
-Gets the private endpoint connections for a Batch account.
-
-### [Get-AzBatchPrivateLinkResource](Get-AzBatchPrivateLinkResource.md)
-Gets the private link resources for a Batch account.
-
 ### [Get-AzBatchRemoteDesktopProtocolFile](Get-AzBatchRemoteDesktopProtocolFile.md)
 Gets an RDP file from a compute node.
 
@@ -202,9 +196,6 @@ Sets a job schedule.
 
 ### [Set-AzBatchPool](Set-AzBatchPool.md)
 Updates the properties of a pool.
-
-### [Set-AzBatchPrivateEndpointConnection](Set-AzBatchPrivateEndpointConnection.md)
-Updates settings for the specified private endpoint connection.
 
 ### [Set-AzBatchTask](Set-AzBatchTask.md)
 Updates the properties of a task.
