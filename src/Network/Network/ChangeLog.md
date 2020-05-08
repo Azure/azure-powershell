@@ -30,6 +30,10 @@
         - Get-AzSecurityPartnerProvider
         - Set-AzSecurityPartnerProvider
 * Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
+* Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
+* Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
+    - `New-AzVirtualWan`
+    - `Update-AzVirtualWan`
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

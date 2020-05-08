@@ -41,7 +41,6 @@ Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.Do
 Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlTriggerGetPropertiesResource
-
 ```
 
 ## PARAMETERS

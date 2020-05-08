@@ -48,6 +48,7 @@ Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
+
 ## PARAMETERS
 
 ### -AccountName
