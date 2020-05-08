@@ -20,16 +20,6 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
 {
     public static class PSSecuritySettingConverters
     {
-        public static PSSecuritySetting ConvertToPSType1(this Setting value)
-        {
-            return new PSSecuritySetting()
-            {
-                Id = value.Id,
-                Name = value.Name,
-                Kind = "BaseSetting",
-            };
-        }
-
         public static PSSecuritySetting ConvertToPSType(this Setting value)
         {
             if (value.GetType().Name == nameof(DataExportSettings))
@@ -55,37 +45,17 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
 
         public static List<PSSecuritySetting> ConvertToPSType(this IEnumerable<Setting> value)
         {
-            var x = value.First().GetType();
             return value.Select(setting => setting.ConvertToPSType()).ToList();
         }
-
-        public static PSSecurityDataExportSetting ConvertToPSType2(this DataExportSettings value)
-        {
-            return new PSSecurityDataExportSetting()
-            {
-                Id = value.Id,
-                Name = value.Name,
-                Kind = "DataExportSettings",
-                Type = value.Type,
-                Enabled = value.Enabled
-            };
-        }
-
-        /*
-        public static List<PSSecurityDataExportSetting> ConvertToPSType(this IEnumerable<DataExportSettings> value)
-        {
-            return value.Select(setting => setting.ConvertToPSType()).ToList();
-        }
-        */
 
         public static Setting ConvertToCSType(this PSSecuritySetting value)
         {
-            return new Setting(value.Id, value.Name, value.Type);
-        }
+            if (value.GetType().Name == nameof(PSSecurityDataExportSetting))
+            {
+                return new DataExportSettings(((PSSecurityDataExportSetting)value).Enabled, value.Id, value.Name, value.Type);
+            }
 
-        public static DataExportSettings ConvertToCSType(this PSSecurityDataExportSetting value)
-        {
-            return new DataExportSettings(value.Enabled, value.Id, value.Name, value.Type);
+            return new Setting(value.Id, value.Name, value.Type);
         }
     }
 }

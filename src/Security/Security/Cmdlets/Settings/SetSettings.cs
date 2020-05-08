@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
             var settingName = SettingName;
             SettingInput.Name = SettingName;
             var setting = SettingInput.ConvertToCSType();
-      
+
             if (ShouldProcess(settingName, VerbsCommon.Set))
             {
-                var setting2 = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(settingName, setting).GetAwaiter().GetResult().Body;
+                var updatedSetting = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(settingName, setting).GetAwaiter().GetResult().Body;
 
-                WriteObject(setting2.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(updatedSetting.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }
