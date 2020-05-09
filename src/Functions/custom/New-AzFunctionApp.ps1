@@ -2,7 +2,7 @@
 function New-AzFunctionApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
-    [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="ByAppServicePlan")]
+    [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
         [Parameter(ParameterSetName="Consumption", HelpMessage='The Azure subscription ID.')]
         [Parameter(ParameterSetName="ByAppServicePlan")]
@@ -143,14 +143,13 @@ function New-AzFunctionApp {
         ${AppSetting},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the type of identity used for the function app.
-            The type 'None' will remove any identities from the function app. The acceptable values for this parameter are:
+            The acceptable values for this parameter are:
             - SystemAssigned
             - UserAssigned
-            - None
             ")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityType])]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
         ${IdentityType},
@@ -160,8 +159,8 @@ function New-AzFunctionApp {
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
+        [ValidateNotNull()]
+        [System.String[]]
         ${IdentityID},
         
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,22 +174,6 @@ function New-AzFunctionApp {
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -216,7 +199,7 @@ function New-AzFunctionApp {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -252,7 +235,7 @@ function New-AzFunctionApp {
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -475,7 +458,7 @@ function New-AzFunctionApp {
 
                     if (-not $appInsightsEnabled)
                     {
-                        $warningMessage = 'Unable to create the Application Insights for the Function App. Please use the Azure Portal to manually create and configure the Application Insights, if needed.'
+                        $warningMessage = "Unable to create the Application Insights for the function app. Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for the function app."
                         Write-Warning $warningMessage
                     }
                 }
@@ -511,7 +494,7 @@ function New-AzFunctionApp {
                         ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
                                               -ErrorMessage $errorMessage `
                                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                              -Exception $exceptions
+                                              -Exception $exception
 
                     }
 
@@ -523,7 +506,7 @@ function New-AzFunctionApp {
             # Set app settings and site configuration
             $siteCofig.AppSetting = $appSettings
             $functionAppDef.Config = $siteCofig
-            $null = $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)
+            $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Creating function app"))
             {

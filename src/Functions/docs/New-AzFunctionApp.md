@@ -12,21 +12,21 @@ Creates a function app.
 
 ## SYNTAX
 
-### ByAppServicePlan (Default)
+### Consumption (Default)
 ```
-New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
+New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
  [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Consumption
+### ByAppServicePlan
 ```
-New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
+New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
  [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -37,7 +37,7 @@ New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> 
 New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
  [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>]
- [-IdentityID <String>] [-IdentityType <ManagedServiceIdentityType>] [-PassThru] [-SubscriptionId <String>]
+ [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>] [-PassThru] [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -46,7 +46,22 @@ Creates a function app.
 
 ## EXAMPLES
 
-### Example 1: Create a PowerShell function app which will be hosted in a service plan.
+### Example 1: Create a consumption PowerShell function app in Central US.
+
+To create a consumption app, use 'Get-AzFunctionAppAvailableLocation -PlanType Consumption' to see available consumption locations.
+
+Note that the storage account must exist before this operation. For a PowerShell function app, by default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+
+
+```powershell
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                          -ResourceGroupName MyResourceGroupName `
+                          -Location centralUS `
+                          -StorageAccount MyStorageAccountName `
+                          -Runtime PowerShell
+```
+
+### Example 2: Create a PowerShell function app which will be hosted in a service plan.
 
 Note that the service plan and storage account must exist before this operation. By default, for a PowerShell function app, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
 
@@ -54,18 +69,6 @@ Note that the service plan and storage account must exist before this operation.
 PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
-```
-
-### Example 2: Create a Consumption PowerShell function app in Central US.
-
-Note that the storage account must exist before this operation. By default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
-
-```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
                           -StorageAccount MyStorageAccountName `
                           -Runtime PowerShell
 ```
@@ -82,6 +85,7 @@ PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -DockerImageName myacr.azurecr.io/myimage:tag
 
 ```
+
 ## PARAMETERS
 
 ### -ApplicationInsightsKey
@@ -229,7 +233,7 @@ Specifies the list of user identities associated with the function app.
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -242,11 +246,9 @@ Accept wildcard characters: False
 
 ### -IdentityType
 Specifies the type of identity used for the function app.
-            The type 'None' will remove any identities from the function app.
-The acceptable values for this parameter are:
+            The acceptable values for this parameter are:
             - SystemAssigned
             - UserAssigned
-            - None
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType

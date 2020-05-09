@@ -81,14 +81,14 @@ function Get-AzFunctionAppSetting {
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
             }
 
             $Name = $InputObject.Name
             
-            $null = $PSBoundParameters.Add("Name", $Name)
-            $null = $PSBoundParameters.Add("ResourceGroupName", $InputObject.ResourceGroupName)
-            $null = $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)
+            $PSBoundParameters.Add("Name", $Name)  | Out-Null
+            $PSBoundParameters.Add("ResourceGroupName", $InputObject.ResourceGroupName)  | Out-Null
+            $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
         }
 
         if ($PsCmdlet.ShouldProcess($Name, "Get function app settings"))

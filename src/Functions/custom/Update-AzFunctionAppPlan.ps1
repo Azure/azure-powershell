@@ -79,22 +79,6 @@ function Update-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
@@ -118,7 +102,7 @@ function Update-AzFunctionAppPlan {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -136,7 +120,7 @@ function Update-AzFunctionAppPlan {
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -146,15 +130,15 @@ function Update-AzFunctionAppPlan {
             {
                 if ($PSBoundParameters.ContainsKey("InputObject"))
                 {
-                    $null = $PSBoundParameters.Remove("InputObject")
+                    $PSBoundParameters.Remove("InputObject")  | Out-Null
                 }
 
                 $Name = $InputObject.Name
                 $ResourceGroupName = $InputObject.ResourceGroupName
                 
-                $null = $PSBoundParameters.Add("Name", $Name)
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)
+                $PSBoundParameters.Add("Name", $Name)  | Out-Null
+                $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)  | Out-Null
+                $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
 
                 $existingPlan = $InputObject
             }
@@ -223,7 +207,8 @@ function Update-AzFunctionAppPlan {
 
             if ($Tag -and ($Tag.Count -gt 0))
             {
-                $servicePlan.Tag = $Tag
+                $resourceTag = NewResourceTag -Tag $Tag
+                $servicePlan.Tag = $resourceTag
                 $shouldUpdateFunctionAppPlan = $true
             }
 
@@ -237,10 +222,10 @@ function Update-AzFunctionAppPlan {
             {
                 $servicePlan.MaximumElasticWorkerCount = $MaximumWorkerCount
                 $shouldUpdateFunctionAppPlan = $true
-            }            
+            }
 
             # Add the service plan definition
-            $null = $PSBoundParameters.Add("AppServicePlan", $servicePlan)
+            $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Updating function app plan"))
             {

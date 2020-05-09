@@ -86,11 +86,11 @@ function Start-AzFunctionApp {
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
             }
 
             $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
-            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+            $PSBoundParameters.Add("InputObject", $functionsIdentity)  | Out-Null
 
             # Set the name of the function app for the ShouldProcess call.
             $Name = $InputObject.Name

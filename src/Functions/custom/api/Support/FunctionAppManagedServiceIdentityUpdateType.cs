@@ -1,8 +1,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
     /// <summary>Argument completer implementation for PlanTypeOptions.</summary>
-    [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityType))]
-    public partial struct FunctionAppManagedServiceIdentityType :
+    [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityUpdateType))]
+    public partial struct FunctionAppManagedServiceIdentityUpdateType :
         System.Management.Automation.IArgumentCompleter
     {
 

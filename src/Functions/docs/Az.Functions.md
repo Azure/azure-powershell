@@ -48,6 +48,9 @@ Starts a function app.
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
 
+### [Update-AzFunctionApp](Update-AzFunctionApp.md)
+Updates a function app.
+
 ### [Update-AzFunctionAppPlan](Update-AzFunctionAppPlan.md)
 Updates a function app service plan.
 

@@ -981,8 +981,7 @@ function ValidatePlanLocation
 
     if (-not ($availableLocations -contains $Location))
     {
-        $locationOptions = $availableLocations -join ", "
-        $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
+        $errorMessage = "Location is invalid. Please run 'Get-AzFunctionAppAvailableLocation' to see available locations for running function apps."
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "LocationIsInvalid" `
                               -ErrorMessage $errorMessage `
@@ -1078,29 +1077,31 @@ function GetFunctionAppServicePlanInfo
         $ServerFarmId
     )
 
+    $planInfo = $null
+
     if ($ServerFarmId.Contains("/"))
     {
         $parts = $ServerFarmId -split "/"
 
-        $planInfo = @{
-            "Name" = $parts[-1]
-            "ResourceGroupName"  = $parts[-5]
-        }
+        $planName = $parts[-1]
+        $resourceGroupName = $parts[-5]
+        $subscriptionId = $parts[-7]
 
-        $functionAppPlan = Az.Functions.internal\Get-AzFunctionAppPlan -Name $planInfo.Name -ResourceGroupName $planInfo.ResourceGroupName -ErrorAction SilentlyContinue
-
-        if ($functionAppPlan)
-        {
-            return $functionAppPlan
-        }
+        $planInfo = Az.Functions\Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId
     }
 
-    $errorMessage = "Could not determine the current plan of the functionapp"
-    $exception = [System.InvalidOperationException]::New($errorMessage)
-    ThrowTerminatingError -ErrorId "CouldNotDetermineFunctionAppPlan" `
-                          -ErrorMessage $errorMessage `
-                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                          -Exception $exception
+    if (-not $planInfo)
+    {
+        $errorMessage = "Could not determine the current plan of the functionapp."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "CouldNotDetermineFunctionAppPlan" `
+                            -ErrorMessage $errorMessage `
+                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                            -Exception $exception
+
+    }
+
+    return $planInfo
 }
 
 function ValidatePlanSwitchCompatibility
@@ -1264,15 +1265,18 @@ function NewIdentityUserAssignedIdentity
     (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [System.String[]]
         $IdentityID
     )
 
     # If creating user assigned identities, only alphanumeric characters (0-9, a-z, A-Z), the underscore (_) and the hyphen (-) are supported.
     $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentities
-    $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
 
-    $msiUserAssignedIdentities.Add($IdentityID, $functionAppUserAssignedIdentitiesValue)
+    foreach ($id in $IdentityID)
+    {
+        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
+        $msiUserAssignedIdentities.Add($IdentityID, $functionAppUserAssignedIdentitiesValue)
+    }
 
     return $msiUserAssignedIdentities
 }

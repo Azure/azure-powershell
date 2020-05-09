@@ -89,7 +89,7 @@ function Get-AzFunctionAppPlan {
             if ($PSBoundParameters.ContainsKey("Location"))
             {
                 $locationToUse = $Location
-                $null = $PSBoundParameters.Remove("Location")
+                $PSBoundParameters.Remove("Location")  | Out-Null
             }
 
             $plans = @(Az.Functions.internal\Get-AzFunctionAppPlan)

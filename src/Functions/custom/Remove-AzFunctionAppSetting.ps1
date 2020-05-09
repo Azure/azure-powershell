@@ -95,7 +95,7 @@ function Remove-AzFunctionAppSetting {
         {
             if ($PSBoundParameters.ContainsKey($paramName))
             {
-                $null = $PSBoundParameters.Remove($paramName)
+                $PSBoundParameters.Remove($paramName)  | Out-Null
             }
         }
 
@@ -103,15 +103,15 @@ function Remove-AzFunctionAppSetting {
         {
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
             }
 
             $Name = $InputObject.Name
             $ResourceGroupName = $InputObject.ResourceGroupName
             
-            $null = $PSBoundParameters.Add("Name", $Name)
-            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-            $null = $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)
+            $PSBoundParameters.Add("Name", $Name)  | Out-Null
+            $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)  | Out-Null
+            $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
         }
 
         if ($AppSettingName.Count -eq 0)
@@ -137,7 +137,7 @@ function Remove-AzFunctionAppSetting {
         $newAppSettings = NewAppSettingObject -CurrentAppSetting $currentAppSettings
         $shouldPromptForConfirmation = ContainsReservedFunctionAppSettingName -AppSettingName $AppSettingName
 
-        $null = $PSBoundParameters.Add("AppSetting", $newAppSettings)
+        $PSBoundParameters.Add("AppSetting", $newAppSettings)  | Out-Null
 
         if ($PsCmdlet.ShouldProcess($Name, "Deleting function app setting"))
         {
@@ -148,12 +148,12 @@ function Remove-AzFunctionAppSetting {
 
                 if ($Force.IsPresent -or $PsCmdlet.ShouldContinue($message, "Removing function app configuration settings"))
                 {
-                    $null = Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters
+                    Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters  | Out-Null
                 }
             }
             else 
             {
-                $null = Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters
+                Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters  | Out-Null
             }        
         }        
     }

@@ -90,11 +90,11 @@ function Stop-AzFunctionApp {
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
             }
 
             $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
-            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+            $PSBoundParameters.Add("InputObject", $functionsIdentity)  | Out-Null
 
             # Set the name of the function app for the ShouldProcess and ShouldContinue calls.
             $Name = $InputObject.Name
@@ -107,7 +107,7 @@ function Stop-AzFunctionApp {
                 # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
                 if ($PSBoundParameters.ContainsKey("Force"))
                 {
-                    $null = $PSBoundParameters.Remove("Force")
+                    $PSBoundParameters.Remove("Force")  | Out-Null
                 }
 
                 Az.Functions.internal\Stop-AzFunctionApp @PSBoundParameters

@@ -75,7 +75,7 @@ function Get-AzFunctionAppAvailableLocation {
         {
             if ($PSBoundParameters.ContainsKey($paramName))
             {
-                $null = $PSBoundParameters.Remove($paramName)
+                $PSBoundParameters.Remove($paramName)  | Out-Null
             }
         }
 
@@ -95,17 +95,17 @@ function Get-AzFunctionAppAvailableLocation {
         # Set Linux flag
         if ($OSType -eq "Linux")
         {
-            $null = $PSBoundParameters.Add("LinuxWorkersEnabled", $true)
+            $PSBoundParameters.Add("LinuxWorkersEnabled", $true)  | Out-Null
         }
 
         # Set plan sku
         if ($PlanType -eq "Premium")
         {
-            $PSBoundParameters.Add("Sku", 'ElasticPremium')
+            $PSBoundParameters.Add("Sku", 'ElasticPremium')  | Out-Null
         }
         elseif ($PlanType -eq "Consumption")
         {
-            $PSBoundParameters.Add("Sku", 'Dynamic')
+            $PSBoundParameters.Add("Sku", 'Dynamic')  | Out-Null
         }
         else
         {

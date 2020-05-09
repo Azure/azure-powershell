@@ -94,7 +94,7 @@ function Update-AzFunctionAppSetting {
         {
             if ($PSBoundParameters.ContainsKey($paramName))
             {
-                $null = $PSBoundParameters.Remove($paramName)
+                $PSBoundParameters.Remove($paramName)  | Out-Null
             }
         }
 
@@ -102,14 +102,14 @@ function Update-AzFunctionAppSetting {
         {
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
 
                 $Name = $InputObject.Name
                 $ResourceGroupName = $InputObject.ResourceGroupName
                 
-                $null = $PSBoundParameters.Add("Name", $Name)
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)
+                $PSBoundParameters.Add("Name", $Name)  | Out-Null
+                $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)  | Out-Null
+                $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
             }
         }
 
@@ -130,7 +130,7 @@ function Update-AzFunctionAppSetting {
         $newAppSettings = NewAppSettingObject -CurrentAppSetting $currentAppSettings
         $shouldPromptForConfirmation = ContainsReservedFunctionAppSettingName -AppSettingName $AppSetting.Keys
 
-        $null = $PSBoundParameters.Add("AppSetting", $newAppSettings)
+        $PSBoundParameters.Add("AppSetting", $newAppSettings)  | Out-Null
 
         if ($PsCmdlet.ShouldProcess($Name, "Updating function app setting"))
         {

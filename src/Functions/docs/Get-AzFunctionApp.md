@@ -14,21 +14,22 @@ Gets function apps in a subscription.
 
 ### GetAll (Default)
 ```
-Get-AzFunctionApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionApp [-SubscriptionId <String[]>] [-IncludeSlot] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByLocation
 ```
-Get-AzFunctionApp -Location <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionApp -Location <String> [-IncludeSlot] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-IncludeSlot]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### ByResourceGroupName
 ```
 Get-AzFunctionApp [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-IncludeSlot]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -36,6 +37,8 @@ Get-AzFunctionApp [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-I
 
 ## DESCRIPTION
 Gets function apps in a subscription.
+
+## EXAMPLES
 
 ### Example 1: Get all function apps.
 
@@ -48,7 +51,17 @@ Functions1-Windows-DoNet Running Windows DotNet  Central US  CentralUSPlan  Func
 Functions1-Windows-Java  Running Windows Java    West Europe Premium1-WE    Functions-West-Europe1    fe16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
 
-### Example 2: Get function apps by resource group name.
+### Example 2: Get function apps by name.
+
+```powershell
+PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
+
+Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
+----                     ------  ------  ------- --------   -------------- -----------------         --------------
+Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+```
+
+### Example 3: Get function apps by resource group name.
 
 ```powershell
 PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
@@ -58,17 +71,17 @@ Name                     Status  OSType  Runtime Location   AppServicePlan Resou
 Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
 
-### Example 3: Get function apps for the given subscriptions.
+### Example 4: Get function apps for the given subscriptions.
 
 ```powershell
-PS C:\> Get-AzFunctionApp -SubscriptionId 52d8cf1b-bcac-493a-bbae-f234b5ff3889, 07308f04-ea00-494b-b320-690df74b1c07
+PS C:\> Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
 
 Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
 ----                     ------  ------  ------- --------   -------------- -----------------         --------------
 Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
 
-### Example 4: Get function apps by location.
+### Example 5: Get function apps by location.
 
 ```powershell
 PS C:\> Get-AzFunctionApp -Location "Central US"
@@ -100,7 +113,7 @@ Use to specify whether to include deployment slots in results.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -145,7 +158,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName, List1
+Parameter Sets: ByName, ByResourceGroupName
 Aliases:
 
 Required: True
@@ -160,7 +173,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName, GetAll, List1
+Parameter Sets: ByName, ByResourceGroupName, GetAll
 Aliases:
 
 Required: False

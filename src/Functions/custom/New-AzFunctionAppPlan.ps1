@@ -88,22 +88,6 @@ function New-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
@@ -127,7 +111,7 @@ function New-AzFunctionAppPlan {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -145,7 +129,7 @@ function New-AzFunctionAppPlan {
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -201,7 +185,7 @@ function New-AzFunctionAppPlan {
             }
 
             # Add the service plan definition
-            $null = $PSBoundParameters.Add("AppServicePlan", $servicePlan)
+            $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Creating function app plan"))
             {

@@ -54,22 +54,6 @@ function Remove-AzFunctionApp {
         # Wait for .NET debugger to attach
         ${Break},
 
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
@@ -93,7 +77,7 @@ function Remove-AzFunctionApp {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -110,11 +94,11 @@ function Remove-AzFunctionApp {
             {
                 if ($PSBoundParameters.ContainsKey("InputObject"))
                 {
-                    $null = $PSBoundParameters.Remove("InputObject")
+                    $PSBoundParameters.Remove("InputObject")  | Out-Null
                 }
 
                 $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
-                $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+                $PSBoundParameters.Add("InputObject", $functionsIdentity)  | Out-Null
 
                 # Set the name variable for the ShouldProcess and ShouldContinue calls
                 $Name = $InputObject.Name
@@ -127,7 +111,7 @@ function Remove-AzFunctionApp {
                 # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
                     if ($PSBoundParameters.ContainsKey("Force"))
                     {
-                        $null = $PSBoundParameters.Remove("Force")
+                        $PSBoundParameters.Remove("Force")  | Out-Null
                     }
 
                     Az.Functions.internal\Remove-AzFunctionApp @PSBoundParameters

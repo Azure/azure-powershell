@@ -38,7 +38,6 @@ PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                                  -Name MyPremiumPlan `
                                  -MaximumWorkerCount 20 `
                                  -Sku EP2
-
 ```
 
 ## PARAMETERS
@@ -254,43 +253,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IAppServicePlan>: 
-  - `Location <String>`: Resource Location.
-  - `[Kind <String>]`: Kind of resource.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Capacity <Int32?>]`: Current number of instances assigned to the resource.
-  - `[FreeOfferExpirationTime <DateTime?>]`: The time when the server farm free offer expires.
-  - `[HostingEnvironmentProfileId <String>]`: Resource ID of the App Service Environment.
-  - `[HyperV <Boolean?>]`: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-  - `[IsSpot <Boolean?>]`: If <code>true</code>, this App Service Plan owns spot instances.
-  - `[IsXenon <Boolean?>]`: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-  - `[MaximumElasticWorkerCount <Int32?>]`: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
-  - `[PerSiteScaling <Boolean?>]`: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  - `[Reserved <Boolean?>]`: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-  - `[SkuCapability <ICapability[]>]`: Capabilities of the SKU, e.g., is traffic manager enabled?
-    - `[Name <String>]`: Name of the SKU capability.
-    - `[Reason <String>]`: Reason of the SKU capability.
-    - `[Value <String>]`: Value of the SKU capability.
-  - `[SkuCapacityDefault <Int32?>]`: Default number of workers for this App Service plan SKU.
-  - `[SkuCapacityMaximum <Int32?>]`: Maximum number of workers for this App Service plan SKU.
-  - `[SkuCapacityMinimum <Int32?>]`: Minimum number of workers for this App Service plan SKU.
-  - `[SkuCapacityScaleType <String>]`: Available scale configurations for an App Service plan.
-  - `[SkuFamily <String>]`: Family code of the resource SKU.
-  - `[SkuLocation <String[]>]`: Locations of the SKU.
-  - `[SkuName <String>]`: Name of the resource SKU.
-  - `[SkuSize <String>]`: Size specifier of the resource SKU.
-  - `[SkuTier <String>]`: Service tier of the resource SKU.
-  - `[SpotExpirationTime <DateTime?>]`: The time when the server farm expires. Valid only if it is a spot server farm.
-  - `[TargetWorkerCount <Int32?>]`: Scaling worker count.
-  - `[TargetWorkerSizeId <Int32?>]`: Scaling worker size ID.
-  - `[WorkerTierName <String>]`: Target worker tier assigned to the App Service plan.
 
 ## RELATED LINKS
 
