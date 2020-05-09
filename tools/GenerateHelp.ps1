@@ -83,7 +83,8 @@ $NewModules = @("Az.AppConfiguration",
                 "Az.Databricks",
                 "Az.Kusto",
                 "Az.MySql",
-                "Az.MariaDb"
+                "Az.MariaDb",
+                "Az.TimeSeriesInsights"
                 )
 if ($GenerateMamlHelp)
 {
