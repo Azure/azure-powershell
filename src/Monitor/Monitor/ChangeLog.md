@@ -19,10 +19,10 @@
 -->
 
 ## Upcoming Release
-* Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories; issue: https://github.com/Azure/azure-powershell/issues/11589
-* Support WebTest availability criteria for metric alert V2
-	- New-AzMetricAlertRuleV2Criteria: an option to create webtest availability criteria was added
-	- Add-AzMetricAlertRuleV2: supports the new webtest availability criteria
+* Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories [#11589]
+* Supported WebTest availability criteria for metric alert V2
+	- `New-AzMetricAlertRuleV2Criteria`: an option to create webtest availability criteria was added
+	- `Add-AzMetricAlertRuleV2`: supports the new webtest availability criteria
 
 ## Version 1.7.0
 * Added cmdlets for private link scope

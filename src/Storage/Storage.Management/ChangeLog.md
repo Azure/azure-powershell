@@ -18,30 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add -Adjob to get/list account cmdlet
-    - `Get-AzStorageAccount`
+* Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
 * Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
     - `Set-AzStorageAccount`
-* Fix remove Azure File Directory fail with pipeline
+* Fixed remove Azure File Directory fail with pipeline
     - `Remove-AzStorageDirectory`
-* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
+* Fixed [#9880]: Change NetWorkRule DefaultAction value defination to align with swagger.
 	- `Update-AzStorageAccountNetworkRuleSet`
 	- `Get-AzStorageAccountNetworkRuleSet`
-* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
+* Fixed [#11624]: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
-* Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
-* When only part items are returned in list DataLake Gen2 Items, add a warning message to remind user to list again with ContinuationToken
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.7
+* Added a warning message to remind user to list again with ContinuationToken when only part items are returned in list DataLake Gen2 Items,
     - `Get-AzDataLakeGen2ChildItem`
-* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Authentication
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
-* Support New or List Kerberos keys of Storage account
+* Supported to new or list Kerberos keys of Storage account
     -  `New-AzStorageAccountKey`
     -  `Get-AzStorageAccountKey`
-* Support failover Storage account
+* Supported failover Storage account
     - `Invoke-AzStorageAccountFailover`
-* Update help of 'Get-AzStorageBlobCopyState'
-* Update help of 'Get-AzStorageFileCopyState' and "Start-AzStorageBlobCopy"
+* Updated help of `Get-AzStorageBlobCopyState`
+* Updated help of `Get-AzStorageFileCopyState` and `Start-AzStorageBlobCopy`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release

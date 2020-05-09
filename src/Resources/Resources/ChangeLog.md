@@ -18,15 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add message warning about view delay when creating a new Role Definition
-* Change policy cmdlets to output strongly-typed objects
+* Added message warning about view delay when creating a new Role Definition
+* Changed policy cmdlets to output strongly-typed objects
 * Removed `-TenantLevel` parameter used for on the `Get-AzResourceLock` cmdlet [#11335]
 * Fixed `Remove-AzResourceGroup -Id ResourceId`[#9882]
 * Added new cmdlet for getting ARM template What-If results at resource group scope: `Get-AzDeploymentResourceGroupWhatIfResult`
 * Added new cmdlet for getting ARM template What-If results at subscription scope: `Get-AzDeploymentWhatIfResult`
    - Alias: `Get-AzSubscriptionDeploymentWhatIf`
 * Overrode `-WhatIf` and `-Confirm` parameters for `New-AzDeployment` and `New-AzResourceGroupDeployment` to use ARM template What-If results
-* Add deprecation message for `ApiVersion` parameter in deployment cmdlets
+* Added deprecation message for `ApiVersion` parameter in deployment cmdlets
 * Added capability to show improved error messages for deployment failures
 * Added correlationId logging for deployment failures
 * Added `error` property to the deployment script output
@@ -34,10 +34,10 @@
 * Removed specific test cases as Error property in DeploymentValidateResult has changed to readonly from nuget 3.7.1-preview
 * Brought GenericResourceExpanded from SDK ResourceManager 3.7.1-preview
 * Added tag support for all Get cmdlets for deployment, as well as
-    - NewAzureManagementGroupDeploymentCmdlet
-    - NewAzureSubscriptionDeploymentCmdlet
-    - NewAzureResourceGroupDeploymentCmdlet
-    - NewAzureTenantDeploymentCmdlet
+    - `New-AzDeployment`
+    - `New-AzManagementGroupDeployment`
+    - `New-AzResourceGroupDeployment`
+    - `New-AzTenantDeployment`
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
