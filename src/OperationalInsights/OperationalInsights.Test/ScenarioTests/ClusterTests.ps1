@@ -63,9 +63,7 @@ function Test-ClusterCRUD
 
 		Assert-NotNull $cluster
 		Assert-AreEqual 1500 $cluster.Sku.Capacity
-		Assert-AreEqual $keyNameExisting $cluster.KeyVaultProperties.KeyName
-		Assert-AreEqual $version $cluster.KeyVaultProperties.KeyVersion
-		Assert-AreEqual $kvUri $cluster.KeyVaultProperties.KeyVaultUri
+		Assert-AreEqual "Updating" $cluster.ProvisioningState
 	}
 	finally
 	{

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterCRUD()
         {
             RunPowerShellTest(_logger, "Test-ClusterCRUD");
