@@ -170,6 +170,8 @@
     { "regex": "MariaDb", "alias": "MariaDb" },
     { "regex": "TimeSeriesInsights", "alias": "Time Series Insights" },
     { "regex": "MySql", "alias": "MySql" },
+    { "regex": "Portal", "alias": "Portal" },
+    { "regex": "PostgreSql", "alias": "PostgreSQL" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]
