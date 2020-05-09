@@ -27,43 +27,27 @@ function Test-ClusterCRUD
 	$clusterNameExisting = "yabocluster7"
 	$kvNameExisting = "azps-test-kv8"
 	$keyNameExisting = "azps-test-key3"
+	$kvUri = "https://azps-test-kv8.vault.azure.net"
+	$version = "9ac53081c8fe45f0b26d9d476b29c017"
 
 	try
 	{
-		# create cluster
-
-		$job = New-AzOperationalInsightsCluster -ResourceGroupName $rgName -ClusterName $clusterName -Location $loc -IdentityType "SystemAssigned" -SkuName "CapacityReservation" -SkuCapacity 1000 -AsJob
-		$job | Wait-Job
-		$cluster = $job | Receive-Job
-
-		Assert-NotNull $cluster
-		Assert-AreEqual $clusterName $cluster.Name
-		Assert-AreEqual "ProvisioningAccount" $cluster.ProvisioningState
-
 		# get cluster
-
-		$cluster = Get-AzOperationalInsightsCluster -ResourceGroupName $rgName -ClusterName $clusterName
+		$cluster = Get-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting
 
 		Assert-NotNull $cluster
-		Assert-AreEqual $clusterName $cluster.Name
-		Assert-AreEqual "ProvisioningAccount" $cluster.ProvisioningState
+		Assert-AreEqual $clusterNameExisting $cluster.Name
 
 		# update cluster, clusters to be update require provisioning state to be "Succeeded", existing clusters were used in this Test
-		# kv used in this test case need to enable both softdelete and purge protection
+		# kv used in this test case need to enable both softdelete and purge protection	
 
-		$kv = Get-AzKeyVault -VaultName $kvNameExisting -ResourceGroupName $rgNameExisting
-		$kvUri = $kv.VaultUri
-
-		$key =  Get-AzKeyVaultKey -VaultName $kvNameExisting -Name $keyNameExisting
-		$version = $key.Version
-
-		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting SkuCapacity 1500 -KeyVaultUri $kvUri -KeyName $keyNameExisting -KeyVersion $version -AsJob
+		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting -SkuCapacity 1500 -KeyVaultUri $kvUri -KeyName $keyNameExisting -KeyVersion $version -AsJob
 		$job | Wait-Job
 		$cluster = $job | Receive-Job
 
 		Assert-NotNull $cluster
 		Assert-AreEqual 1500 $cluster.Sku.Capacity
-		Assert-AreEqual "Updating" $cluster.ProvisioningState
+		Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	}
 	finally
 	{
