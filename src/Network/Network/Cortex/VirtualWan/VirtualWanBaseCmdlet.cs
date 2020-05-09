@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             var psVirtualWan = NetworkResourceManagerProfile.Mapper.Map<PSVirtualWan>(virtualWan);
 
             psVirtualWan.Tag = TagsConversionHelper.CreateTagHashtable(virtualWan.Tags);
-
+            psVirtualWan.AllowVnetToVnetTraffic = true;
             return psVirtualWan;
         }
 
@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.Network
             var virtualWan = this.VirtualWanClient.Get(resourceGroupName, name);
             var psVirtualWan = ToPsVirtualWan(virtualWan);
             psVirtualWan.ResourceGroupName = resourceGroupName;
-            psVirtualWan.AllowVnetToVnetTraffic = true;
 
             return psVirtualWan;
         }
