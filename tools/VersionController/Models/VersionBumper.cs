@@ -48,8 +48,11 @@ namespace VersionController.Models
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
 
-                // Generate the serialized module metadata file
-                _metadataHelper.SerializeModule();
+                if (!_newVersion.StartsWith("0"))
+                {
+                    // Generate the serialized module metadata file
+                    _metadataHelper.SerializeModule();
+                }
             }
             else
             {
