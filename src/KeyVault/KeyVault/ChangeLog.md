@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
-* When creating a key vault, soft delete is now enabled by default
-* When creating a key vault, network rules can be set to govern the accessibility from specific network locations
+* Enabled soft delete by default when creating a key vault
+* Network rules can be set to govern the accessibility from specific network locations when creating a key vault
 * Added support to bring your own key (BYOK)
     - `Add-AzKeyVaultKey` supports generating a key exchange key
     - `Get-AzKeyVaultKey` supports downloading a public key in PEM format
