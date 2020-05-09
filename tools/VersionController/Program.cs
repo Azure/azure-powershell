@@ -55,10 +55,45 @@ namespace VersionController
             }
 
             ConsolidateExceptionFiles(exceptionsDirectory);
+            ValidateManifest();
             BumpVersions();
             ValidateVersionBump();
         }
 
+        private static void ValidateManifest()
+        {
+            foreach (var directory in _projectDirectories)
+            {
+                var children = Directory.GetDirectories(directory);
+                foreach (var childDir in children)
+                {
+                    if(GetModuleReadMe(childDir))
+                    {
+                        ValidateManifestPerModule(childDir);
+                    }
+                }
+            }
+        }
+
+        private static void ValidateManifestPerModule(string directory)
+        {
+            var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories);
+            if(changeLogs.Length != 1)
+            {
+                Console.Error.WriteLine($"no ChangeLog.md under {directory}");
+            } else
+            {
+                //Check psd1 file
+                GetModuleManifestPath(Directory.GetParent(changeLogs.FirstOrDefault()).FullName);
+            }
+        }
+
+        // For long term, all modules should contain readme.md to describe module
+        // It returns true/false for short term.
+        private static bool GetModuleReadMe(string directory)
+        {
+            return File.Exists(Path.Combine(directory, "readme.md"));
+        }
         /// <summary>
         /// Bump the version of changed modules or a specified module.
         /// </summary>
