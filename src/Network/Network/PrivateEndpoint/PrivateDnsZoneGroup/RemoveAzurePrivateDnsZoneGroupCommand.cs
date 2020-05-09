@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,51 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpoint", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzurePrivateEndpoint : PrivateEndpointBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZoneGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzurePrivateDnsZoneGroupCommand : PrivateDnsZoneGroupBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name of the private endpoint.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.", ParameterSetName = "GetByName")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the private endpoint.",
-            ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Network/privateEndpoints", nameof(ResourceGroupName))]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the private endpoint.", ParameterSetName = "GetByName")]
+        [ValidateNotNullOrEmpty]
+        public string PrivateEndpointName { get; set; }
+
+        [Alias("PrivateDnsZoneGroupName")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the private dns zone group.", ParameterSetName = "GetByName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-
 
         public override void Execute()
         {
             base.Execute();
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemovingResource, Name),
@@ -64,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.PrivateEndpointClient.Delete(ResourceGroupName, Name);
+                    this.PrivateDnsZoneGroupClient.Delete(ResourceGroupName, PrivateEndpointName, Name);
                     if (PassThru)
                     {
                         WriteObject(true);
