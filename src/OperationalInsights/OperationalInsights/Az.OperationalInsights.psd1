@@ -90,7 +90,6 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsWindowsEventDataSource', 
                'Get-AzOperationalInsightsSavedSearch', 
                'Get-AzOperationalInsightsSchema', 
-               'Get-AzOperationalInsightsSearchResult', 
                'New-AzOperationalInsightsComputerGroup', 
                'New-AzOperationalInsightsSavedSearch', 
                'Set-AzOperationalInsightsSavedSearch', 
@@ -130,9 +129,6 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'New-AzOperationalInsightsAzureAuditDataSource', 
                'Get-AzOperationalInsightsIntelligencePacks', 
-               'Get-AzOperationalInsightsLinkTargets', 
-               'Get-AzOperationalInsightsSavedSearchResults', 
-               'Get-AzOperationalInsightsSearchResults', 
                'Get-AzOperationalInsightsWorkspaceManagementGroups', 
                'Get-AzOperationalInsightsWorkspaceSharedKeys'
 

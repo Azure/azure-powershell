@@ -35,7 +35,7 @@ function Test-LinkedStorageAccountCRUD
 		$account1 = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountName1 -SkuName "Standard_LRS" -Location $loc
         $account2 = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountName2 -SkuName "Standard_LRS" -Location $loc
 
-		New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName $rgname -WorkspaceName $workspaceName -DataSourceType "CustomLogs" -StorageAccountIds $account1.Id
+		New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName $rgname -WorkspaceName $workspaceName -DataSourceType "CustomLogs" -StorageAccountId $account1.Id
 
 		$linkedAccount = Get-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName $rgname -WorkspaceName $workspaceName -DataSourceType "CustomLogs"
 
@@ -43,7 +43,7 @@ function Test-LinkedStorageAccountCRUD
 		Assert-AreEqual "CustomLogs" $linkedAccount.DataSourceType
 		Assert-AreEqual $account1.Id $linkedAccount.StorageAccountIds[0]
 
-		$linkedAccount = Set-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName $rgname -WorkspaceName $workspaceName -DataSourceType "CustomLogs" -StorageAccountIds $account2.Id
+		$linkedAccount = Set-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName $rgname -WorkspaceName $workspaceName -DataSourceType "CustomLogs" -StorageAccountId $account2.Id
 
 		Assert-NotNull $linkedAccount
 		Assert-AreEqual "CustomLogs" $linkedAccount.DataSourceType

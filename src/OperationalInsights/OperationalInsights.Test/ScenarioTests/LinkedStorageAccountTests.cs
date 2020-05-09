@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Test
+namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 {
     public class LinkedStorageAccountTests : OperationalInsightsScenarioTestBase
     {
