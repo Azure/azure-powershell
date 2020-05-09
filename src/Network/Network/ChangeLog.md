@@ -34,6 +34,12 @@
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
     - `New-AzVirtualWan`
     - `Update-AzVirtualWan`
+* Added new cmdlets to support DNS zone group for private endpoint
+    - `New-AzPrivateDnsZoneConfig`
+    - `Get-AzPrivateDnsZoneGroup`
+    - `New-AzPrivateDnsZoneGroup`
+    - `Set-AzPrivateDnsZoneGroup`
+    - `Remove-AzPrivateDnsZoneGroup`
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

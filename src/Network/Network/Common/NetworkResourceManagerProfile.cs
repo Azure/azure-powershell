@@ -1279,6 +1279,10 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
                 cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+                cfg.CreateMap<CNM.PSPrivateDnsZoneGroup, MNM.PrivateDnsZoneGroup>();
+                cfg.CreateMap<MNM.PrivateDnsZoneGroup, CNM.PSPrivateDnsZoneGroup>();
+                cfg.CreateMap<CNM.PSPrivateDnsZoneConfig, MNM.PrivateDnsZoneConfig>();
+                cfg.CreateMap<MNM.PrivateDnsZoneConfig, CNM.PSPrivateDnsZoneConfig>();
 
                 cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
                 cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();

@@ -82,8 +82,11 @@ if ($ValidateMarkdownHelp)
 $NewModules = @("Az.AppConfiguration",
                 "Az.Databricks",
                 "Az.Kusto",
+                "Az.MariaDb",
                 "Az.MySql",
-                "Az.MariaDb"
+                "Az.Portal",
+                "Az.PostgreSql",
+                "Az.TimeSeriesInsights"
                 )
 if ($GenerateMamlHelp)
 {

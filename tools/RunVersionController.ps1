@@ -176,6 +176,7 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
     }
 
@@ -222,6 +223,7 @@ switch ($PSCmdlet.ParameterSetName)
             throw "Please rerun in Administrator mode."
         }
 
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Write-Host "Getting local Az information..." -ForegroundColor Yellow
