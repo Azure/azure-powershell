@@ -42,6 +42,22 @@
     - `Invoke-AzStorageAccountFailover`
 * Update help of 'Get-AzStorageBlobCopyState'
 * Update help of 'Get-AzStorageFileCopyState' and "Start-AzStorageBlobCopy"
+* Integrate Storage client library v12 to Queue and File cmdlets
+* Change output type from CloudFile to AzureStorageFile, the original output will become a child property of the new output
+    - `Get-AzStorageFile`
+    - `Remove-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+* Change output type from CloudFileDirectory to AzureStorageFileDirectory, the original output will become a child property of the new output
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+* Change output type from CloudFileShare to AzureStorageFileShare, the original output will become a child property of the new output
+    - `Get-AzStorageShare`
+    - `New-AzStorageShare`
+    - `Remove-AzStorageShare`
+* Change output type from FileShareProperties to AzureStorageFileShare, the original output will become a sub child property of the new output
+    - `Set-AzStorageShareQuota`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
