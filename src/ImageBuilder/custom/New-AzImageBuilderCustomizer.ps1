@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBu
 #>
 function New-AzImageBuilderCustomizer {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium', DefaultParameterSetName="ShellCustomizer")]
     Param(
         #region CustomizerCommon
         [Parameter(Mandatory, HelpMessage="Friendly Name to provide context on what this customization step does.")]

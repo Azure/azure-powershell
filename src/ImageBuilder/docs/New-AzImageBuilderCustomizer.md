@@ -12,10 +12,10 @@ Describes a unit of image customization
 
 ## SYNTAX
 
-### WindowsUpdateCustomizer (Default)
+### ShellCustomizer (Default)
 ```
-New-AzImageBuilderCustomizer -CustomizerName <String> -WindowsUpdateCustomizer [-Filter <String[]>]
- [-SearchCriterion <String>] [-UpdateLimit <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzImageBuilderCustomizer -CustomizerName <String> -Sha256Checksum <String> -ShellCustomizer
+ [-Inline <String[]>] [-ScriptUri <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FileCustomizer
@@ -37,10 +37,10 @@ New-AzImageBuilderCustomizer -CustomizerName <String> -RestartCustomizer [-Resta
  [-RestartCommand <String>] [-RestartTimeout <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ShellCustomizer
+### WindowsUpdateCustomizer
 ```
-New-AzImageBuilderCustomizer -CustomizerName <String> -Sha256Checksum <String> -ShellCustomizer
- [-Inline <String[]>] [-ScriptUri <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzImageBuilderCustomizer -CustomizerName <String> -WindowsUpdateCustomizer [-Filter <String[]>]
+ [-SearchCriterion <String>] [-UpdateLimit <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

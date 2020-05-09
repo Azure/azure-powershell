@@ -12,13 +12,7 @@ Generic distribution object
 
 ## SYNTAX
 
-### VhdDistributor (Default)
-```
-New-AzImageBuilderDistributor -ArtifactTag <Hashtable> -RunOutputName <String> -VhdDistributor [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ManagedImageDistributor
+### ManagedImageDistributor (Default)
 ```
 New-AzImageBuilderDistributor -ArtifactTag <Hashtable> -ImageId <String> -Location <String>
  -ManagedImageDistributor -RunOutputName <String> [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,6 +23,12 @@ New-AzImageBuilderDistributor -ArtifactTag <Hashtable> -ImageId <String> -Locati
 New-AzImageBuilderDistributor -ArtifactTag <Hashtable> -ExcludeFromLatest <Boolean> -GalleryImageId <String>
  -ReplicationRegion <String[]> -RunOutputName <String> -SharedImageDistributor
  [-StorageAccountType <SharedImageStorageAccountType>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### VhdDistributor
+```
+New-AzImageBuilderDistributor -ArtifactTag <Hashtable> -RunOutputName <String> -VhdDistributor [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

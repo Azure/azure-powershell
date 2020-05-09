@@ -24,7 +24,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBu
 #>
 function New-AzImageBuilderTemplate {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium', DefaultParameterSetName="Name")]
     param(
         [Parameter(ParameterSetName='Name', Mandatory, HelpMessage="The name of the image Template.")]
         [Alias('Name')]
