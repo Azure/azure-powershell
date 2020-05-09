@@ -207,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CopyState
 
 ## NOTES
 
