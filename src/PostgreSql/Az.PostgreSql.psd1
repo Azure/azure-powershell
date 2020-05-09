@@ -10,8 +10,9 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.PostgreSql.private.dll'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
   FormatsToProcess = './Az.PostgreSql.format.ps1xml'
-  FunctionsToExport = 'Get-AzPostgreSqlConfiguration', 'Get-AzPostgreSqlConnectionString', 'Get-AzPostgreSqlFirewallRule', 'Get-AzPostgreSqlReplica', 'Get-AzPostgreSqlServer', 'Get-AzPostgreSqlVirtualNetworkRule', 'New-AzPostgreSqlFirewallRule', 'New-AzPostgreSqlReplica', 'New-AzPostgreSqlServer', 'New-AzPostgreSqlVirtualNetworkRule', 'Remove-AzPostgreSqlFirewallRule', 'Remove-AzPostgreSqlServer', 'Remove-AzPostgreSqlVirtualNetworkRule', 'Restart-AzPostgreSqlServer', 'Restore-AzPostgreSqlServer', 'Update-AzPostgreSqlConfiguration', 'Update-AzPostgreSqlFirewallRule', 'Update-AzPostgreSqlServer', 'Update-AzPostgreSqlVirtualNetworkRule', '*'
+  FunctionsToExport = 'Get-AzPostgreSqlConfiguration', 'Get-AzPostgreSqlConnectionString', 'Get-AzPostgreSqlFirewallRule', 'Get-AzPostgreSqlReplica', 'Get-AzPostgreSqlServer', 'Get-AzPostgreSqlVirtualNetworkRule', 'New-AzPostgreSqlFirewallRule', 'New-AzPostgreSqlReplica', 'New-AzPostgreSqlServer', 'New-AzPostgreSqlVirtualNetworkRule', 'Remove-AzPostgreSqlFirewallRule', 'Remove-AzPostgreSqlServer', 'Remove-AzPostgreSqlVirtualNetworkRule', 'Restart-AzPostgreSqlServer', 'Restore-AzPostgreSqlServer', 'Update-AzPostgreSqlConfiguration', 'Update-AzPostgreSqlFirewallRule', 'Update-AzPostgreSqlServer', 'Update-AzPostgreSqlVirtualNetworkRule'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
