@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using Tools.Common.Models;
 using VersionController.Models;
 
 namespace VersionController
@@ -14,6 +15,7 @@ namespace VersionController
         private static VersionBumper _versionBumper;
         private static VersionValidator _versionValidator;
 
+        private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
         private static string _rootDirectory, _moduleNameFilter;
 
@@ -110,6 +112,24 @@ namespace VersionController
                 changedModules.AddRange(changeLogs);
             }
 
+            var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
+            var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
+            var miniVersionFile = Path.Combine(versionControllerDirectory, "MinimalVersion.csv");
+            if (File.Exists(miniVersionFile))
+            {
+                var lines = File.ReadAllLines(miniVersionFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                foreach (var line in lines)
+                {
+                    var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
+                                              .Select(c => c.EndsWith("\"") ? c.Substring(0, c.Length - 1) : c)
+                                              .Select(c => c.Trim()).ToArray();
+                    if (cols.Length >= 2)
+                    {
+                        _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
+                    }
+                }
+            }
+
             foreach (var projectModuleManifestPath in changedModules)
             {
                 var moduleFileName = Path.GetFileName(projectModuleManifestPath);
@@ -131,6 +151,11 @@ namespace VersionController
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
 
                 _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath));
+
+                if(_minimalVersion.ContainsKey(moduleName))
+                {
+                    _versionBumper.MinimalVersion = _minimalVersion[moduleName];
+                }
 
                 _versionBumper.BumpAllVersions();
             }

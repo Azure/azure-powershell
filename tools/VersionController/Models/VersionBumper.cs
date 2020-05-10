@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Tools.Common.Models;
 
 namespace VersionController.Models
 {
@@ -15,6 +16,8 @@ namespace VersionController.Models
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
+
+        public AzurePSVersion MinimalVersion { get; set; }
 
         public VersionBumper(VersionFileHelper fileHelper)
         {
@@ -44,6 +47,11 @@ namespace VersionController.Models
             }
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+            if(MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
+            {
+                Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
+                _newVersion = MinimalVersion.ToString();
+            }
             if (_oldVersion == _newVersion)
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
