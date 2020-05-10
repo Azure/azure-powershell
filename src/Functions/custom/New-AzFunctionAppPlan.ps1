@@ -47,7 +47,7 @@ function New-AzFunctionAppPlan {
         [Parameter(HelpMessage='The maximum number of workers for the app service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,100)]
         [Alias("MaxBurst")]
         ${MaximumWorkerCount},
 
@@ -55,7 +55,7 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
         [Alias("MinInstances")]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,20)]
         ${MinimumWorkerCount},
 
         [Parameter(HelpMessage='Resource tags.')]
@@ -88,22 +88,6 @@ function New-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
@@ -127,7 +111,7 @@ function New-AzFunctionAppPlan {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -141,11 +125,11 @@ function New-AzFunctionAppPlan {
         else
         {
             # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
-            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location"))
+            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location", "Tag"))
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -182,8 +166,13 @@ function New-AzFunctionAppPlan {
             $servicePlan.SkuTier = $tier
             $servicePlan.SkuName = $Sku
             $servicePlan.Location = $Location
-            $servicePlan.Tag = $Tag
             $servicePlan.Reserved = ($WorkerType -eq "Linux")
+
+            if ($Tag.Count -gt 0)
+            {
+                $resourceTag = NewResourceTag -Tag $Tag
+                $servicePlan.Tag = $resourceTag
+            }
 
             if ($MinimumWorkerCount -gt 0)
             {
@@ -196,7 +185,7 @@ function New-AzFunctionAppPlan {
             }
 
             # Add the service plan definition
-            $null = $PSBoundParameters.Add("AppServicePlan", $servicePlan)
+            $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Creating function app plan"))
             {

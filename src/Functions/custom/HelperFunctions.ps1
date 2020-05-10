@@ -60,6 +60,29 @@ $constants["RuntimeVersions"] = @{
     'Python' = @(3.6, 3.7)
 }
 
+$constants["ReservedFunctionAppSettingNames"] = @(
+    'FUNCTIONS_WORKER_RUNTIME'
+    'DOCKER_CUSTOM_IMAGE_NAME'
+    'FUNCTION_APP_EDIT_MODE'
+    'WEBSITES_ENABLE_APP_SERVICE_STORAGE'
+    'DOCKER_REGISTRY_SERVER_URL'
+    'DOCKER_REGISTRY_SERVER_USERNAME'
+    'DOCKER_REGISTRY_SERVER_PASSWORD'
+    'WEBSITES_ENABLE_APP_SERVICE_STORAGE'
+    'WEBSITE_NODE_DEFAULT_VERSION'
+    'AzureWebJobsStorage'
+    'AzureWebJobsDashboard'
+    'FUNCTIONS_EXTENSION_VERSION'
+    'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
+    'WEBSITE_CONTENTSHARE'
+    'APPINSIGHTS_INSTRUMENTATIONKEY'
+)
+
+$constants["DotNetRuntimeVersionToDotNetLinuxFxVersion"] = @{
+    '2' = '2.2'
+    '3' = '3.1'
+}
+
 foreach ($variableName in $constants.Keys)
 {
     if (-not (Get-Variable $variableName -ErrorAction SilentlyContinue))
@@ -240,6 +263,7 @@ function GetServicePlan
     )
 
     $plans = @(Az.Functions\Get-AzFunctionAppPlan)
+
     foreach ($plan in $plans)
     {
         if ($plan.Name -eq $Name)
@@ -247,6 +271,14 @@ function GetServicePlan
             return $plan
         }
     }
+
+    # The plan name was not found, error out
+    $errorMessage = "Service plan '$Name' does not exist."
+    $exception = [System.InvalidOperationException]::New($errorMessage)
+    ThrowTerminatingError -ErrorId "ServicePlanDoesNotExist" `
+                          -ErrorMessage $errorMessage `
+                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                          -Exception $exception
 }
 
 function GetStorageAccount
@@ -290,6 +322,25 @@ function GetApplicationInsightsProject
     }
 }
 
+function ConvertWebAppApplicationSettingToHashtable
+{
+    param(
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [Object]
+        $ApplicationSetting
+    )
+
+    # Create a key value pair to hold the function app settings
+    $applicationSettings = @{}
+    foreach ($keyName in $ApplicationSetting.Property.Keys)
+    {
+        $applicationSettings[$keyName] = $ApplicationSetting.Property[$keyName]
+    }
+
+    return $applicationSettings
+}
+
 function AddFunctionAppSettings
 {
     param(
@@ -330,26 +381,35 @@ function AddFunctionAppSettings
         }
     }
 
-    # Create a key value pair to hold the function app settings
-    $applicationSettings = @{}
-    foreach ($keyName in $settings.Property.Keys)
-    {
-        $applicationSettings[$keyName] = $settings.Property[$keyName]
-    }
-
     # Add application settings
-    $App.ApplicationSettings = $applicationSettings
+    $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings
 
-    $runtimeName = $settings.Property["FUNCTIONS_WORKER_RUNTIME"]
+    $runtimeName = $App.ApplicationSettings["FUNCTIONS_WORKER_RUNTIME"]
     $App.Runtime = if (($null -ne $runtimeName) -and ($RuntimeToFormattedName.ContainsKey($runtimeName)))
                    {
                        $RuntimeToFormattedName[$runtimeName]
                    }
-                   elseif ($applicationSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
+                   elseif ($App.ApplicationSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
                    {
                        "Custom Image"
                    }
                    else {""}
+
+    # Get the app site config
+    $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup
+
+    # Add all site config properties as a hash table
+    $SiteConfig = @{}
+    foreach ($property in $config.PSObject.Properties)
+    {
+        if ($property.Name)
+        {
+            $SiteConfig.Add($property.Name, $property.Value)
+        }
+    }
+
+    $App.SiteConfig = $SiteConfig
+
     return $App
 }
 
@@ -692,7 +752,17 @@ function GetLinuxFxVersion
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
+        $FunctionsVersion,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
         $Runtime,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $OSType,
 
         [System.String]
         $RuntimeVersion
@@ -700,7 +770,12 @@ function GetLinuxFxVersion
     
     if (-not $RuntimeVersion)
     {
-        $RuntimeVersion = $RuntimeToDefaultVersion[$Runtime]
+        $RuntimeVersion = $RuntimeToDefaultVersion[$OSType][$FunctionsVersion][$Runtime]
+    }
+
+    if ($Runtime -eq "DotNet")
+    {
+        $RuntimeVersion = $DotNetRuntimeVersionToDotNetLinuxFxVersion[$FunctionsVersion]
     }
 
     $runtimeName = $Runtime.ToUpper()
@@ -906,8 +981,7 @@ function ValidatePlanLocation
 
     if (-not ($availableLocations -contains $Location))
     {
-        $locationOptions = $availableLocations -join ", "
-        $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
+        $errorMessage = "Location is invalid. Please run 'Get-AzFunctionAppAvailableLocation' to see available locations for running function apps."
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "LocationIsInvalid" `
                               -ErrorMessage $errorMessage `
@@ -950,6 +1024,25 @@ function ValidateConsumptionPlanLocation
     ValidatePlanLocation -Location $Location -PlanType Dynamic -OSIsLinux:$OSIsLinux
 }
 
+function NewResourceTag
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [hashtable]
+        $Tag
+    )
+
+    $resourceTag = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceTags]::new()
+
+    foreach ($tagName in $Tag.Keys)
+    {
+        $resourceTag.Add($tagName, $Tag[$tagName])
+    }
+    return $resourceTag
+}
+
 function ParseDockerImage
 {
     param
@@ -972,6 +1065,220 @@ function ParseDockerImage
             return $value
         }
     }
+}
+
+function GetFunctionAppServicePlanInfo
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ServerFarmId
+    )
+
+    $planInfo = $null
+
+    if ($ServerFarmId.Contains("/"))
+    {
+        $parts = $ServerFarmId -split "/"
+
+        $planName = $parts[-1]
+        $resourceGroupName = $parts[-5]
+        $subscriptionId = $parts[-7]
+
+        $planInfo = Az.Functions\Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId
+    }
+
+    if (-not $planInfo)
+    {
+        $errorMessage = "Could not determine the current plan of the functionapp."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "CouldNotDetermineFunctionAppPlan" `
+                            -ErrorMessage $errorMessage `
+                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                            -Exception $exception
+
+    }
+
+    return $planInfo
+}
+
+function ValidatePlanSwitchCompatibility
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        $CurrentServicePlan,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        $NewServicePlan
+    )
+
+    if (-not (($CurrentServicePlan.SkuTier -eq "ElasticPremium") -or ($CurrentServicePlan.SkuTier -eq "Dynamic") -or
+              ($NewServicePlan.SkuTier -eq "ElasticPremium") -or ($NewServicePlan.SkuTier -eq "Dynamic")))
+    {
+        $errorMessage = "Currently the switch is only allowed between a Consumption or an Elastic Premium plan."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "InvalidFunctionAppPlanSwitch" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function NewAppSettingObject
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [Hashtable]
+        $CurrentAppSetting
+    )
+
+    # Create StringDictionaryProperties (hash table) with the app settings
+    $properties = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StringDictionaryProperties
+
+    foreach ($keyName in $currentAppSettings.Keys)
+    {
+        $properties.Add($keyName, $currentAppSettings[$keyName])
+    }
+
+    $appSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StringDictionary
+    $appSettings.Property = $properties
+
+    return $appSettings
+}
+
+function ContainsReservedFunctionAppSettingName
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String[]]
+        $AppSettingName
+    )
+
+    foreach ($name in $AppSettingName)
+    {
+        if ($ReservedFunctionAppSettingNames.Contains($name))
+        {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+function GetFunctionAppByName
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Name,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $ResourceGroupName
+    )
+
+    $existingFunctionApp = Az.Functions\Get-AzFunctionApp -ResourceGroupName $ResourceGroupName -Name $Name -ErrorAction SilentlyContinue
+
+    if (-not $existingFunctionApp)
+    {
+        $errorMessage = "Function app name '$Name' in resource group name '$ResourceGroupName' does not exist."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionAppDoesNotExist" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $existingFunctionApp
+}
+
+function GetAzWebAppConfig
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Name,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $ResourceGroupName,
+
+        [Switch]
+        $ErrorIfResultIsNull
+    )
+
+    $resetDefaultSubscription = $false
+    $webAppConfig = $null
+    try
+    {
+        $webAppConfig = Az.Functions.internal\Get-AzWebAppConfiguration -ResourceGroupName $ResourceGroupName -Name $Name -ErrorAction SilentlyContinue
+
+        if ($null -eq $webAppConfig)
+        {
+            $resetDefaultSubscription = $true
+
+            $currentSubscription = (Get-AzContext).Subscription.Id
+            $null = Select-AzSubscription $App.SubscriptionId
+
+            $webAppConfig = Az.Functions.internal\Get-AzWebAppConfiguration -ResourceGroupName $ResourceGroupName -Name $Name -ErrorAction SilentlyContinue
+        }
+    }
+    finally
+    {
+        if ($resetDefaultSubscription)
+        {
+            $null = Select-AzSubscription $currentSubscription
+        }
+    }
+
+    if ((-not $webAppConfig) -and $ErrorIfResultIsNull)
+    {
+        $errorMessage = "Falied to get config for function app name '$Name' in resource group name '$ResourceGroupName'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FaliedToGetFunctionAppConfig" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $webAppConfig
+}
+
+function NewIdentityUserAssignedIdentity
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String[]]
+        $IdentityID
+    )
+
+    # If creating user assigned identities, only alphanumeric characters (0-9, a-z, A-Z), the underscore (_) and the hyphen (-) are supported.
+    $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentities
+
+    foreach ($id in $IdentityID)
+    {
+        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
+        $msiUserAssignedIdentities.Add($IdentityID, $functionAppUserAssignedIdentitiesValue)
+    }
+
+    return $msiUserAssignedIdentities
 }
 
 # Set Linux and Windows supported runtimes

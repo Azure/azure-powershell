@@ -21,6 +21,9 @@ Gets the location where a function app for the given os and plan type is availab
 ### [Get-AzFunctionAppPlan](Get-AzFunctionAppPlan.md)
 Get function apps plans in a subscription.
 
+### [Get-AzFunctionAppSetting](Get-AzFunctionAppSetting.md)
+Gets app settings for a function app.
+
 ### [New-AzFunctionApp](New-AzFunctionApp.md)
 Creates a function app.
 
@@ -33,6 +36,9 @@ Deletes a function app.
 ### [Remove-AzFunctionAppPlan](Remove-AzFunctionAppPlan.md)
 Deletes a function app plan.
 
+### [Remove-AzFunctionAppSetting](Remove-AzFunctionAppSetting.md)
+Removes app settings from a function app.
+
 ### [Restart-AzFunctionApp](Restart-AzFunctionApp.md)
 Restarts a function app.
 
@@ -41,3 +47,12 @@ Starts a function app.
 
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
+
+### [Update-AzFunctionApp](Update-AzFunctionApp.md)
+Updates a function app.
+
+### [Update-AzFunctionAppPlan](Update-AzFunctionAppPlan.md)
+Updates a function app service plan.
+
+### [Update-AzFunctionAppSetting](Update-AzFunctionAppSetting.md)
+Adds or updates app settings in a function app.

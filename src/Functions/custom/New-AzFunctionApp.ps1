@@ -2,7 +2,7 @@
 function New-AzFunctionApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
-    [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="ByAppServicePlan")]
+    [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
         [Parameter(ParameterSetName="Consumption", HelpMessage='The Azure subscription ID.')]
         [Parameter(ParameterSetName="ByAppServicePlan")]
@@ -134,6 +134,34 @@ function New-AzFunctionApp {
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
+
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Function app settings.')]
+        [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="CustomDockerImage")]
+        [ValidateNotNullOrEmpty()]
+        [Hashtable]
+        ${AppSetting},
+
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the type of identity used for the function app.
+            The acceptable values for this parameter are:
+            - SystemAssigned
+            - UserAssigned
+            ")]
+        [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="CustomDockerImage")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        ${IdentityType},
+
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the list of user identities associated with the function app.
+            The user identity references will be ARM resource ids in the form:
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
+        [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="CustomDockerImage")]
+        [ValidateNotNull()]
+        [System.String[]]
+        ${IdentityID},
         
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -146,22 +174,6 @@ function New-AzFunctionApp {
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -187,7 +199,7 @@ function New-AzFunctionApp {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -213,13 +225,17 @@ function New-AzFunctionApp {
                 "DockerImageName",
                 "DockerRegistryCredential",
                 "FunctionsVersion",
-                "RuntimeVersion"
+                "RuntimeVersion",
+                "AppSetting",
+                "IdentityType",
+                "IdentityID",
+                "Tag"
             )
             foreach ($paramName in $paramsToRemove)
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -284,15 +300,6 @@ function New-AzFunctionApp {
             {
                 # Host function app in Elastic Premium or app service plan
                 $servicePlan = GetServicePlan $PlanName
-                if (-not $servicePlan)
-                {
-                    $errorMessage = "Service plan '$PlanName' does not exist."
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "ServicePlanDoesNotExist" `
-                                          -ErrorMessage $errorMessage `
-                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                          -Exception $exception
-                }
 
                 if ($null -ne $servicePlan.Location)
                 {
@@ -346,7 +353,7 @@ function New-AzFunctionApp {
                 else
                 {
                     $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
-                    $siteCofig.LinuxFxVersion = GetLinuxFxVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
+                    $siteCofig.LinuxFxVersion = GetLinuxFxVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType -RuntimeVersion $RuntimeVersion
                 }
             }
             else 
@@ -409,31 +416,97 @@ function New-AzFunctionApp {
                 else
                 {
                     # Create a new ApplicationInsights
-                    try 
+                    $maxNumberOfTries = 3
+                    $tries = 1
+
+                    $appInsightsEnabled = $false
+
+                    while ($true)
                     {
-                        $newAppInsightsProject = Az.Functions.internal\New-AzAppInsights -ResourceGroupName $resourceGroupName `
-                                                                                        -ResourceName $Name  `
-                                                                                        -Location $functionAppDef.Location `
-                                                                                        -Kind web `
-                                                                                        -RequestSource "AzurePowerShell" `
-                                                                                        -ErrorAction Stop
-                        if ($newAppInsightsProject)
+                        try
                         {
-                            $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
-                        }                    
+                            $newAppInsightsProject = Az.Functions.internal\New-AzAppInsights -ResourceGroupName $resourceGroupName `
+                                                                                             -ResourceName $Name  `
+                                                                                             -Location $functionAppDef.Location `
+                                                                                             -Kind web `
+                                                                                             -RequestSource "AzurePowerShell" `
+                                                                                             -ErrorAction Stop
+                            if ($newAppInsightsProject)
+                            {
+                                $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
+                                $appInsightsEnabled = $true
+
+                                break
+                            }
+                        }
+                        catch
+                        {
+                            # Ignore the failure and continue
+                        }
+
+                        if ($tries -ge $maxNumberOfTries)
+                        {
+                            break
+                        }
+
+                        # Wait for 2^(tries-1) seconds between retries. In this case, it would be 1, 2, and 4 seconds, respectively.
+                        $waitInSeconds = [Math]::Pow(2, $tries - 1)
+                        Start-Sleep -Seconds $waitInSeconds
+
+                        $tries++
                     }
-                    catch
+
+                    if (-not $appInsightsEnabled)
                     {
-                        $warningMessage = 'Unable to create the Application Insights for the Function App. Please use the Azure Portal to manually create and configure the Application Insights, if needed.'
+                        $warningMessage = "Unable to create the Application Insights for the function app. Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for the function app."
                         Write-Warning $warningMessage
                     }
+                }
+            }
+
+            if ($Tag.Count -gt 0)
+            {
+                $resourceTag = NewResourceTag -Tag $Tag
+                $functionAppDef.Tag = $resourceTag
+            }
+
+            # Add user app settings
+            if ($appSetting.Count -gt 0)
+            {
+                foreach ($keyName in $appSetting.Keys)
+                {
+                    $appSettings.Add((NewAppSetting -Name $keyName -Value $appSetting[$keyName]))
+                }
+            }
+
+            # Set function app managed identity
+            if ($IdentityType)
+            {
+                $functionAppDef.IdentityType = $IdentityType
+
+                if ($IdentityType -eq "UserAssigned")
+                {
+                    # Set UserAssigned managed identiy
+                    if (-not $IdentityID)
+                    {
+                        $errorMessage = "IdentityID is required for UserAssigned identity"
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                              -ErrorMessage $errorMessage `
+                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                              -Exception $exception
+
+                    }
+
+                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                 }
             }
 
             # Set app settings and site configuration
             $siteCofig.AppSetting = $appSettings
             $functionAppDef.Config = $siteCofig
-            $null = $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)
+            $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Creating function app"))
             {
@@ -441,18 +514,16 @@ function New-AzFunctionApp {
                 $currentErrorActionPreference = $ErrorActionPreference
                 $ErrorActionPreference = 'Stop'
 
+                $exceptionThrown = $false
+
                 try
                 {
                     Az.Functions.internal\New-AzFunctionApp @PSBoundParameters
-
-                    if ($consumptionPlan -and $OSIsLinux)
-                    {
-                        $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
-                        Write-Verbose $message -Verbose
-                    }
                 }
                 catch
                 {
+                    $exceptionThrown = $true
+
                     $errorMessage = GetErrorMessage -Response $_
 
                     if ($errorMessage)
@@ -470,6 +541,15 @@ function New-AzFunctionApp {
                 {
                     # Reset the ErrorActionPreference
                     $ErrorActionPreference = $currentErrorActionPreference
+                }
+
+                if (-not $exceptionThrown)
+                {
+                    if ($consumptionPlan -and $OSIsLinux)
+                    {
+                        $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
+                        Write-Verbose $message -Verbose
+                    }
                 }
             }
         }

@@ -110,6 +110,9 @@ directive:
   - from: WebApps.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.204
     transform: delete $.schema
+  - from: Diagnostics.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute"].post
+    transform: delete $."x-ms-examples"
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
@@ -183,6 +186,9 @@ directive:
     hide: true
   - where:
       subject: (.*)NameAvailability(.*)
+    hide: true
+  - where:
+      subject: (.*)WebAppConfiguration(.*)
     hide: true
 # Cmdlets to remove
   - where:
@@ -333,13 +339,7 @@ directive:
       subject: (.*)SubscriptionDeployment(.*)
     remove: true
   - where:
-      subject: (.*)WebAppAuthSetting(.*)
-    remove: true
-  - where:
       subject: (.*)WebAppAzureStorage(.*)
-    remove: true
-  - where:
-      subject: (.*)WebAppConfiguration(.*)
     remove: true
   - where:
       subject: (.*)WebAppConnection(.*)
@@ -393,12 +393,6 @@ directive:
       subject: (.*)AzWebAppWeb(.*)
     remove: true
   - where:
-      subject: (.*)WebAppSite(.*)
-    remove: true
-  - where:
-      subject: (.*)WebAppSite(.*)
-    remove: true
-  - where:
       subject: (.*)Execute(.*)
     remove: true
   - where:
@@ -418,9 +412,6 @@ directive:
     remove: true
   - where:
       subject: (.*)ManagedHosting(.*)
-    remove: true
-  - where:
-      subject: (.*)SiteInstance(.*)
     remove: true
   - where:
       subject: (.*)WebAppFrom(.*)
@@ -487,6 +478,9 @@ directive:
     remove: true
   - where:
       subject: (.*)ContainerSetting(.*)
+    remove: true
+  - where:
+      subject: (.*)StaticSite(.*)
     remove: true
 ```
 

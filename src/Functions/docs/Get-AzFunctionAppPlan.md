@@ -14,7 +14,7 @@ Get function apps plans in a subscription.
 
 ### GetAll (Default)
 ```
-Get-AzFunctionAppPlan [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByLocation
@@ -30,12 +30,8 @@ Get-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> [-SubscriptionI
 
 ### ByResourceGroupName
 ```
-Get-AzFunctionAppPlan [-ResourceGroupName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### BySubscriptionId
-```
-Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionAppPlan [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +99,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -119,7 +114,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -135,7 +129,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -151,7 +144,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -159,7 +151,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName, BySubscriptionId
+Parameter Sets: ByName, ByResourceGroupName, GetAll
 Aliases:
 
 Required: False
@@ -167,7 +159,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -179,9 +170,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

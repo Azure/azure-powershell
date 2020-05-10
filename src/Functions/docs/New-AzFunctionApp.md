@@ -12,57 +12,63 @@ Creates a function app.
 
 ## SYNTAX
 
-### ByAppServicePlan (Default)
-```
-New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
- [-RuntimeVersion <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Consumption
+### Consumption (Default)
 ```
 New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
- [-RuntimeVersion <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ByAppServicePlan
+```
+New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
+ -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CustomDockerImage
 ```
 New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>] [-PassThru]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>]
+ [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>] [-PassThru] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 Creates a function app.
 
 ## EXAMPLES
 
-### Example 1: Create a PowerShell function app which will be hosted in a service plan.
+### Example 1: Create a consumption PowerShell function app in Central US.
 
-Note that the service plan and storage account must exist before this operation. By default, for a PowerShell function app, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+To create a consumption app, use 'Get-AzFunctionAppAvailableLocation -PlanType Consumption' to see available consumption locations.
+
+Note that the storage account must exist before this operation. For a PowerShell function app, by default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
+                          -Location centralUS `
                           -StorageAccount MyStorageAccountName `
                           -Runtime PowerShell
 ```
 
-### Example 2: Create a Consumption PowerShell function app in Central US.
+### Example 2: Create a PowerShell function app which will be hosted in a service plan.
 
-Note that the storage account must exist before this operation. By default, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
+Note that the service plan and storage account must exist before this operation. By default, for a PowerShell function app, -RuntimeVersion is set to '6.2', -FunctionsVersion is set '3', and -OSType is set to 'Windows'. There are different defaults for each Runtime. For more information, please see 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
+                          -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
                           -Runtime PowerShell
 ```
@@ -72,7 +78,7 @@ PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
 Note that the service plan and storage account must exist before this operation.
 
 ```powershell
-PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
                           -ResourceGroupName MyResourceGroupName `
                           -PlanName MyPlanName `
                           -StorageAccount MyStorageAccountName `
@@ -95,7 +101,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ApplicationInsightsName
@@ -111,7 +116,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -AppSetting
+Function app settings.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -AsJob
@@ -127,7 +146,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -143,7 +161,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DisableApplicationInsights
@@ -160,7 +177,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DockerImageName
@@ -178,7 +194,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DockerRegistryCredential
@@ -195,7 +210,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -FunctionsVersion
@@ -211,7 +225,41 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -IdentityID
+Specifies the list of user identities associated with the function app.
+            The user identity references will be ARM resource ids in the form:
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Specifies the type of identity used for the function app.
+            The acceptable values for this parameter are:
+            - SystemAssigned
+            - UserAssigned
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Location
@@ -227,7 +275,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -243,7 +290,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -260,7 +306,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OSType
@@ -276,7 +321,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PassThru
@@ -292,7 +336,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanName
@@ -308,7 +351,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -324,7 +366,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Runtime
@@ -340,7 +381,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -RuntimeVersion
@@ -356,7 +396,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -StorageAccountName
@@ -372,7 +411,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -388,7 +426,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -404,7 +441,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -420,7 +456,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -437,7 +472,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -449,9 +483,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

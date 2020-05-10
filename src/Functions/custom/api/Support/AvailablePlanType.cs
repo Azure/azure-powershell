@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Consumption".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Consumption", "Consumption", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium");
+                yield return new global::System.Management.Automation.CompletionResult("Consumption", "Consumption", global::System.Management.Automation.CompletionResultType.ParameterValue, "Consumption");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Premium".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

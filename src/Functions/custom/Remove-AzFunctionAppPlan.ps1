@@ -36,6 +36,11 @@ function Remove-AzFunctionAppPlan {
         [System.Management.Automation.SwitchParameter]
         ${Force},
 
+        [Parameter(HelpMessage='Run the command as a job.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AsJob},
+
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -48,22 +53,6 @@ function Remove-AzFunctionAppPlan {
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -87,29 +76,46 @@ function Remove-AzFunctionAppPlan {
     
     process {
 
-        if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
-        {            
-            if ($PSBoundParameters.ContainsKey("InputObject"))
-            {
-                if ($InputObject.Name)
-                {
-                    # Set the name variable for the ShouldProcess and ShouldContinue calls
-                    $Name = $InputObject.Name
-                }
-            }
-        }
-
-        if ($PsCmdlet.ShouldProcess($Name, "Deleting function app plan"))
+        if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            if ($Force.IsPresent  -or $PsCmdlet.ShouldContinue("Delete function app plan '$Name'? This operation cannot be undone. Are you sure?", "Deleting function app plan"))
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
+
+            $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
+
+            Start-Job -ScriptBlock {
+                param($arg, $modulePath)
+                Import-Module $modulePath -Force
+                Az.Functions\Remove-AzFunctionAppPlan @arg
+            } -ArgumentList $PSBoundParameters, $modulePath
+        }
+        else
+        {
+            if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
             {
-                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
-                if ($PSBoundParameters.ContainsKey("Force"))
+                if ($PSBoundParameters.ContainsKey("InputObject"))
                 {
-                    $null = $PSBoundParameters.Remove("Force")
+                    $PSBoundParameters.Remove("InputObject")  | Out-Null
                 }
 
-                Az.Functions.internal\Remove-AzFunctionAppPlan @PSBoundParameters
+                $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
+                $PSBoundParameters.Add("InputObject", $functionsIdentity)  | Out-Null
+
+                # Set the name variable for the ShouldProcess and ShouldContinue calls
+                $Name = $InputObject.Name
+            }
+
+            if ($PsCmdlet.ShouldProcess($Name, "Deleting function app plan"))
+            {
+                if ($Force.IsPresent  -or $PsCmdlet.ShouldContinue("Delete function app plan '$Name'? This operation cannot be undone. Are you sure?", "Deleting function app plan"))
+                {
+                    # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                    if ($PSBoundParameters.ContainsKey("Force"))
+                    {
+                        $PSBoundParameters.Remove("Force")  | Out-Null
+                    }
+
+                    Az.Functions.internal\Remove-AzFunctionAppPlan @PSBoundParameters
+                }
             }
         }
     }
