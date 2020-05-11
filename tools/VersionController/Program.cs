@@ -105,7 +105,7 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => !f.Contains("Stack") && IsChangeLogUpdated(f))
+                                            .Where(f => (!f.Contains("Stack") || f.Contains("StackEdge")) && IsChangeLogUpdated(f))
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => m.Contains(_moduleNameFilter))
                                             .ToList();
