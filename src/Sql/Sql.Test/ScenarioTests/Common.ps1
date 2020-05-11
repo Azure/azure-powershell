@@ -1024,7 +1024,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 	$defaultSubnetAddressPrefix = "10.0.0.0/24"
 
 	try {
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
 		return $getVnet
 	} catch {
 		$virtualNetwork = New-AzVirtualNetwork `
@@ -1056,7 +1056,27 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+		$getVnet =  DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
 		return $getVnet
 	}
+}
+
+<#
+	.SYNOPSIS
+	Delegate subnet to SQL MI service if not already delegated.
+#>
+function DelegateSubnetToSQLMIAndGetVnet ($vnetName, $subnetName, $resourceGroupName)
+{
+	$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+	$subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+	$delegations = Get-AzDelegation -Subnet $subnet | ? {$_.ServiceName -eq "Microsoft.Sql/managedInstances"}
+
+	if ($delegations -eq $null){
+		$subnet = Add-AzDelegation -Name "test-delegation-sqlmi" -ServiceName "Microsoft.Sql/managedInstances" -Subnet $subnet
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+	}
+
+	return $vnet
 }
