@@ -12,23 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Management.Batch.Models;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class PSApplication
+    public class PSPrivateEndpoint
     {
-        public bool AllowUpdates { get; set; }
+        /// <summary>
+        /// Gets the ARM resource identifier of the private endpoint. This is
+        /// of the form
+        /// /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+        /// </summary>
+        public string Id { get; }
 
-        public string Id { get; set; }
+        public PSPrivateEndpoint(string id)
+        {
+            Id = id;
+        }
 
-        public string Name { get; set; }
+        internal static PSPrivateEndpoint CreateFromPrivateEndpoint(PrivateEndpoint privateEndpoint)
+        {
+            if (privateEndpoint == null)
+            {
+                return null;
+            }
 
-        public string DefaultVersion { get; set; }
-
-        public string DisplayName { get; set; }
+            return new PSPrivateEndpoint(privateEndpoint.Id);
+        }
     }
 }

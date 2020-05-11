@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Tags = tagDictionary,
                 AutoStorage = autoStorage,
                 PoolAllocationMode = parameters.PoolAllocationMode,
-                KeyVaultReference = keyVaultRef
+                KeyVaultReference = keyVaultRef,
+                PublicNetworkAccess = parameters.PublicNetworkAccess
             });
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
