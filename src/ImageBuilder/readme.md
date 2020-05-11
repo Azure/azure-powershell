@@ -62,7 +62,7 @@ directive:
   - where:
       verb: Set
       subject: VirtualMachineImageTemplate
-    hide: true
+    remove: true
   - where:
       subject: VirtualMachineImageTemplateRunOutput
     set:
