@@ -40,6 +40,10 @@
     - `New-AzPrivateDnsZoneGroup`
     - `Set-AzPrivateDnsZoneGroup`
     - `Remove-AzPrivateDnsZoneGroup`
+* Add `DNSEnableProxy`, 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to `AzureFirewall`
+* Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
+    - Updated cmdlet:
+        - New-AzFirewall
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

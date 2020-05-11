@@ -156,6 +156,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable DNS Proxy. By default it is disabled."
+        )]
+        public SwitchParameter EnableDnsProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
+        )]
+        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of DNS Servers"
+        )]
+        public string[] DnsServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -278,6 +296,9 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : "false"),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : "true"),
+                    DNSServer = this.DnsServer,
                     Sku = sku
                 };
 
@@ -290,6 +311,8 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
                 }
+
+                firewall.ValidateDNSProxyRequirements();
             }
 
             // Map to the sdk object
