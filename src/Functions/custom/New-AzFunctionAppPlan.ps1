@@ -1,28 +1,31 @@
 function New-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app service plan.')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory=$true, HelpMessage='Name of the App Service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${Name},
 
         [Parameter(Mandatory=$true, HelpMessage='Name of the resource group to which the resource belongs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${ResourceGroupName},
 
         [Parameter(HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${SubscriptionId},
 
         [Parameter(Mandatory=$true, HelpMessage='The plan sku. Valid inputs are: EP1, P2, EP3')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuType])]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         # Sku (EP1, EP2 or EP3)
         ${Sku},
@@ -30,6 +33,7 @@ function New-AzFunctionAppPlan {
         [Parameter(Mandatory=$true, HelpMessage='The worker type for the plan. Valid inputs are: Windows or Linux.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         # Worker type (Linux or Windows)
         ${WorkerType},
@@ -43,7 +47,7 @@ function New-AzFunctionAppPlan {
         [Parameter(HelpMessage='The maximum number of workers for the app service plan.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,100)]
         [Alias("MaxBurst")]
         ${MaximumWorkerCount},
 
@@ -51,13 +55,14 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Int32]
         [Alias("MinInstances")]
-        [ValidateRange(0,20)]
+        [ValidateRange(1,20)]
         ${MinimumWorkerCount},
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150801Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
         [System.Collections.Hashtable]
+        [ValidateNotNull()]
         ${Tag},
 
         [Parameter(HelpMessage='Run the command asynchronously.')]
@@ -83,22 +88,6 @@ function New-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
-        <#
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-        #>
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
@@ -122,7 +111,7 @@ function New-AzFunctionAppPlan {
 
         if ($PSBoundParameters.ContainsKey("AsJob"))
         {
-            $null = $PSBoundParameters.Remove("AsJob")
+            $PSBoundParameters.Remove("AsJob")  | Out-Null
 
             $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
 
@@ -136,11 +125,11 @@ function New-AzFunctionAppPlan {
         else
         {
             # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
-            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location"))
+            foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location", "Tag"))
             {
                 if ($PSBoundParameters.ContainsKey($paramName))
                 {
-                    $null = $PSBoundParameters.Remove($paramName)
+                    $PSBoundParameters.Remove($paramName)  | Out-Null
                 }
             }
 
@@ -168,27 +157,22 @@ function New-AzFunctionAppPlan {
             }
 
             # Validate location for a Premium plan
-            $Location = $Location.Trim()
-            $availableLocations = @(Get-AzFunctionAppAvailableLocation -OSType $WorkerType -PlanType Premium | ForEach-Object { $_.Name })
-            if (-not ($availableLocations -contains $Location))
-            {
-                $locationOptions = $availableLocations -join ", "
-                $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
-                $exception = [System.InvalidOperationException]::New($errorMessage)
-                ThrowTerminatingError -ErrorId "LocationIsInvalid" `
-                                      -ErrorMessage $errorMessage `
-                                      -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                      -Exception $exception
-            }
+            $OSIsLinux = $WorkerType -eq "Linux"
+            ValidatePremiumPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
 
-            $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.AppServicePlan
+            $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan
 
             # Plan settings
             $servicePlan.SkuTier = $tier
             $servicePlan.SkuName = $Sku
             $servicePlan.Location = $Location
-            $servicePlan.Tag = $Tag
             $servicePlan.Reserved = ($WorkerType -eq "Linux")
+
+            if ($Tag.Count -gt 0)
+            {
+                $resourceTag = NewResourceTag -Tag $Tag
+                $servicePlan.Tag = $resourceTag
+            }
 
             if ($MinimumWorkerCount -gt 0)
             {
@@ -201,7 +185,7 @@ function New-AzFunctionAppPlan {
             }
 
             # Add the service plan definition
-            $null = $PSBoundParameters.Add("AppServicePlan", $servicePlan)
+            $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
 
             if ($PsCmdlet.ShouldProcess($Name, "Creating function app plan"))
             {
