@@ -1,12 +1,12 @@
 {
-  "Get-AzImageBuilderRunOutput+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs?api-version=2020-02-14+1": {
+  "Get-AzImageBuilderRunOutput+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs?api-version=2020-02-14+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "91f9b802-84af-4f38-a52b-eec2463c2c96" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "585d5163-0ff5-418d-b40e-0e30a02f63ee" ],
         "CommandName": [ "Get-AzImageBuilderRunOutput" ],
         "FullCommandName": [ "Get-AzImageBuilderRunOutput_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,31 +21,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-correlation-request-id": [ "6c9d7fa4-7c54-46b4-be80-f61139f6244f" ],
-        "x-ms-request-id": [ "1928652e-f05c-4162-b399-98b05c64b4e4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "dece4f2d-eb3d-4d86-8a70-db3f7c51eeee" ],
+        "x-ms-request-id": [ "9e09c444-7433-42e1-ac7b-e89dcdea5504" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071236Z:6c9d7fa4-7c54-46b4-be80-f61139f6244f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200511T055558Z:dece4f2d-eb3d-4d86-8a70-db3f7c51eeee" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Apr 2020 07:12:35 GMT" ]
+        "Date": [ "Mon, 11 May 2020 05:55:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "575" ],
+        "Content-Length": [ "413" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"value\": [\n  {\n   \"properties\": {\n    \"artifactId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/dis-img-fbkopw\",\n    \"provisioningState\": \"Succeeded\"\n   },\n   \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9\",\n   \"name\": \"runout-template-name-cpl8s9\",\n   \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n  }\n ]\n}"
+      "Content": "{\n \"value\": [\n  {\n   \"properties\": {\n    \"provisioningState\": \"Failed\"\n   },\n   \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul\",\n   \"name\": \"runout-template-name-kmprul\",\n   \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n  }\n ]\n}"
     }
   },
-  "Get-AzImageBuilderRunOutput+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14+1": {
+  "Get-AzImageBuilderRunOutput+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "f0e73b29-4599-450f-bdba-b2e4b2177fcc" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "1532b1a8-5ddd-4c3f-a55f-f541147e42da" ],
         "CommandName": [ "Get-AzImageBuilderRunOutput" ],
         "FullCommandName": [ "Get-AzImageBuilderRunOutput_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,31 +60,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
-        "x-ms-correlation-request-id": [ "f4edda50-9b3e-4cca-aec1-0f1a84be9f7a" ],
-        "x-ms-request-id": [ "d7ba74ee-3f13-445e-b222-7723b8c178f2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "02fb79ac-5340-4918-9f93-8cb4754c6e04" ],
+        "x-ms-request-id": [ "d88c28bc-cc99-4598-be72-730c2ce4b382" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071236Z:f4edda50-9b3e-4cca-aec1-0f1a84be9f7a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200511T055559Z:02fb79ac-5340-4918-9f93-8cb4754c6e04" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Apr 2020 07:12:36 GMT" ]
+        "Date": [ "Mon, 11 May 2020 05:55:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "538" ],
+        "Content-Length": [ "378" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/dis-img-fbkopw\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9\",\n \"name\": \"runout-template-name-cpl8s9\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
+      "Content": "{\n \"properties\": {\n  \"provisioningState\": \"Failed\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul\",\n \"name\": \"runout-template-name-kmprul\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
     }
   },
-  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14+1": {
+  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "ec73af67-6d09-4a45-864e-6888dd6d2f25" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "24da27fb-eeb6-4c00-92d9-2b5a195ffcab" ],
         "CommandName": [ "Get-AzImageBuilderRunOutput" ],
         "FullCommandName": [ "Get-AzImageBuilderRunOutput_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -99,31 +99,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
-        "x-ms-correlation-request-id": [ "3531436c-94d5-433b-a3dd-0ce66386510d" ],
-        "x-ms-request-id": [ "27b7ce5d-5219-4687-9c37-ddc316ab29bb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "a8038045-de64-4483-bc13-d52414aa18c0" ],
+        "x-ms-request-id": [ "a899da64-cb28-4340-888b-2967fa0234da" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071237Z:3531436c-94d5-433b-a3dd-0ce66386510d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200511T055559Z:a8038045-de64-4483-bc13-d52414aa18c0" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Apr 2020 07:12:37 GMT" ]
+        "Date": [ "Mon, 11 May 2020 05:55:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "538" ],
+        "Content-Length": [ "378" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/dis-img-fbkopw\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9\",\n \"name\": \"runout-template-name-cpl8s9\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
+      "Content": "{\n \"properties\": {\n  \"provisioningState\": \"Failed\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul\",\n \"name\": \"runout-template-name-kmprul\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
     }
   },
-  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14+2": {
+  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9?api-version=2020-02-14",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul?api-version=2020-02-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "b7fbf41d-c472-47f5-9480-d354e0541060" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "828bf114-53a5-4d7a-bd7c-ba0604d50827" ],
         "CommandName": [ "Get-AzImageBuilderRunOutput" ],
         "FullCommandName": [ "Get-AzImageBuilderRunOutput_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -138,21 +138,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
-        "x-ms-correlation-request-id": [ "ca036a68-865f-40e9-9c15-3cf6b9a13fce" ],
-        "x-ms-request-id": [ "a2dae932-f23a-43b1-ba7a-ed2e7136e709" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "f25cfdae-a37c-4ca9-bdd4-caf8e644c361" ],
+        "x-ms-request-id": [ "72113cdb-fd3b-4bc9-9d85-2a875b3839ed" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20200430T071238Z:ca036a68-865f-40e9-9c15-3cf6b9a13fce" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200511T055600Z:f25cfdae-a37c-4ca9-bdd4-caf8e644c361" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Apr 2020 07:12:37 GMT" ]
+        "Date": [ "Mon, 11 May 2020 05:55:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "538" ],
+        "Content-Length": [ "378" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/dis-img-fbkopw\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-cpl8s9/runOutputs/runout-template-name-cpl8s9\",\n \"name\": \"runout-template-name-cpl8s9\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
+      "Content": "{\n \"properties\": {\n  \"provisioningState\": \"Failed\"\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.VirtualMachineImages/imageTemplates/template-name-kmprul/runOutputs/runout-template-name-kmprul\",\n \"name\": \"runout-template-name-kmprul\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}"
     }
   }
 }

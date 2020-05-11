@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "images_test_linux_image_name": {
-            "value": "image_managed_linux"
+            "value": "managed-image-linux"
         }
     }
 }

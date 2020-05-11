@@ -1,18 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a image template
 ```powershell
-PS C:\> Remove-AzImageBuilderTemplate -ImageTemplateName lucas-linux-tmpshare -ResourceGroupName wyunchi-imagebuilder
+PS C:\> Remove-AzImageBuilderTemplate -ImageTemplateName template-name-dmt6ze -ResourceGroupName wyunchi-imagebuilder
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a image template.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a image template
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $template = Get-AzImageBuilderTemplate -ImageTemplateName template-name-3uo8p6 -ResourceGroupName wyunchi-imagebuilder
+PS C:\> Remove-AzImageBuilderTemplate -InputObject $template
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a image template.
 

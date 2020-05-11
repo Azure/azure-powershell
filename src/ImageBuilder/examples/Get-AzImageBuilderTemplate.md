@@ -9,7 +9,7 @@ eastus   lucas-imagetemplate       Microsoft.VirtualMachineImages/imageTemplates
 eastus   test-imagebuilder         Microsoft.VirtualMachineImages/imageTemplates
 ```
 
-This command lists all template under a subscription
+This command lists all template under a subscription.
 
 ### Example 2: List all template under a resource group
 ```powershell
@@ -28,7 +28,7 @@ eastus   tmpl-platform-managed      Microsoft.VirtualMachineImages/imageTemplate
 eastus   tmpl-shareimg-managedimg   Microsoft.VirtualMachineImages/imageTemplates
 ```
 
-This command lists all template under a resource group
+This command lists all template under a resource group.
 
 ### Example 3: Get a template under a resource group
 ```powershell

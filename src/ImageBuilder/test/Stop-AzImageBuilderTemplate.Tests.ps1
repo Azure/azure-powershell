@@ -21,10 +21,10 @@ Describe 'Stop-AzImageBuilderTemplate' {
     }
 
     It 'CancelViaIdentity' {
-        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup -AsJob
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -AsJob
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
         Stop-AzImageBuilderTemplate -InputObject $template
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
         $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 }

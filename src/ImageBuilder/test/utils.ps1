@@ -28,11 +28,11 @@ function setupEnv() {
     $distributorName07 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName08 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName09 = 'dis-img-' + (RandomString -allChars $false -len 6)
+    $distributorName000 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName001 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName002 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName003 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $distributorName004 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName005 = 'dis-img-' + (RandomString -allChars $false -len 6)
     $env.Resources.Distributor.Add('distributorName00', $distributorName00);
     $env.Resources.Distributor.Add('distributorName01', $distributorName01);
     $env.Resources.Distributor.Add('distributorName02', $distributorName02);
@@ -43,10 +43,10 @@ function setupEnv() {
     $env.Resources.Distributor.Add('distributorName07', $distributorName07);
     $env.Resources.Distributor.Add('distributorName08', $distributorName08);
     $env.Resources.Distributor.Add('distributorName09', $distributorName09);
+    $env.Resources.Distributor.Add('distributorName000', $distributorName000);
     $env.Resources.Distributor.Add('distributorName001', $distributorName001);
     $env.Resources.Distributor.Add('distributorName002', $distributorName002);
     $env.Resources.Distributor.Add('distributorName003', $distributorName003);
-    $env.Resources.Distributor.Add('distributorName004', $distributorName004);
 
     $templateName10 = 'template-name-' + (RandomString -allChars $false -len 6)
     $templateName11 = 'template-name-' + (RandomString -allChars $false -len 6)
@@ -107,6 +107,17 @@ function setupEnv() {
     $env.Resources.RunOutputName.Add('runOutputName203', $runOutputName203);
     
 
+    # Deploy resource for test.
+    # Deploy image
+    <#
+    Write-Host -ForegroundColor Green "Start deploying resource for test..."
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-image\template.json -TemplateParameterFile .\test\deployment-templates\managed-image\parameters.json -ResourceGroupName $env.ResourceGroup
+    # Failed: The source blob https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/ffee76c3-a79b-43ae-a207-4fa9ee5e221a.vhd was not found.
+    Write-Host -ForegroundColor Green "Successfully deployed resources."
+    #>
+    #$UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroup -Name image-builder-user-assign-identity
+    
+    $env.userAssignedIdentity = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/image-builder-user-assign-identity"
 
     $customizerName30 = 'customizer-name-' + (RandomString -allChars $false -len 6)
     $env.Resources.Customizer.Add('customizerName30', $customizerName30);
@@ -122,12 +133,6 @@ function setupEnv() {
     $env.Distributor.ManagedImageLinux = @{imageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/images/$($env.Resources.Distributor.distributorName00)"}
     $env.Distributor.SharedImageLinux = @{galleryImageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share"}
 
-    # Deploy resource for test.
-    # Deploy image
-    #Write-Host -ForegroundColor Green "Start deploying resource for test..."
-    # New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-image\template.json -TemplateParameterFile .\test\deployment-templates\managed-image\parameters.json -ResourceGroupName $env.ResourceGroup
-    # Failed: The source blob https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/ffee76c3-a79b-43ae-a207-4fa9ee5e221a.vhd was not found.
-    #Write-Host -ForegroundColor Green "Successfully deployed resources."
     Write-Host -ForegroundColor Green "Start creating template image for test..."
     $srcPlatform = New-AzImageBuilderSource -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version  #-PlanName $null -PlanProduct $null -PlanPublisher $null
     $distributor = New-AzImageBuilderDistributor -ManagedImageDistributor -ArtifactTag @{source='platforimage';baseofimg='UbuntuServer'} -ImageId $env.Distributor.ManagedImageLinux.imageId -Location $env.Location -RunOutputName $env.Resources.RunOutputName.runOutputName20
@@ -136,8 +141,9 @@ function setupEnv() {
     $sourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh'
     $customizer = New-AzImageBuilderCustomizer -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
     
-    $tmplPlatformManaged = New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -Source $srcPlatform -Distribute $distributor -Customize $customizer -ResourceGroupName $env.ResourceGroup -Location $env.Location
+    $tmplPlatformManaged = New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -Source $srcPlatform -Distribute $distributor -Customize $customizer -ResourceGroupName $env.ResourceGroup -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
     Write-Host -ForegroundColor Green "Successfully created templeate image."
+    
     Write-Host -ForegroundColor Green "Start $($env.Resources.Template.templateName10) template image for test."
     Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
     Write-Host -ForegroundColor Green "Successfully started templeate image."
@@ -147,13 +153,9 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
-
-
-
-
-
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
 }
 

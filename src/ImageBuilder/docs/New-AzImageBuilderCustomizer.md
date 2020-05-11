@@ -1,0 +1,417 @@
+---
+external help file:
+Module Name: Az.ImageBuilder
+online version: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizer
+schema: 2.0.0
+---
+
+# New-AzImageBuilderCustomizer
+
+## SYNOPSIS
+Describes a unit of image customization
+
+## SYNTAX
+
+### WindowsUpdateCustomizer (Default)
+```
+New-AzImageBuilderCustomizer -CustomizerName <String> -WindowsUpdateCustomizer [-Filter <String[]>]
+ [-SearchCriterion <String>] [-UpdateLimit <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FileCustomizer
+```
+New-AzImageBuilderCustomizer -CustomizerName <String> -FileCustomizer -Sha256Checksum <String>
+ [-Destination <String>] [-SourceUri <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PowerShellCustomizer
+```
+New-AzImageBuilderCustomizer -CustomizerName <String> -PowerShellCustomizer -Sha256Checksum <String>
+ [-Inline <String[]>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-ValidExitCode <Int32[]>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RestartCustomizer
+```
+New-AzImageBuilderCustomizer -CustomizerName <String> -RestartCustomizer [-RestartCheckCommand <String>]
+ [-RestartCommand <String>] [-RestartTimeout <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ShellCustomizer
+```
+New-AzImageBuilderCustomizer -CustomizerName <String> -Sha256Checksum <String> -ShellCustomizer
+ [-Inline <String[]>] [-ScriptUri <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Describes a unit of image customization
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -CustomizerName
+Friendly Name to provide context on what this customization step does.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Destination
+The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM.
+
+```yaml
+Type: System.String
+Parameter Sets: FileCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileCustomizer
+Uploads files to VMs (Linux, Windows).
+Corresponds to Packer file provisioner.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FileCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Array of filters to select updates to apply.
+Omit or specify empty array to use the default (no filter).
+Refer to above link for examples and detailed description of this field.
+
+```yaml
+Type: System.String[]
+Parameter Sets: WindowsUpdateCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Inline
+Array of shell commands to execute.
+
+```yaml
+Type: System.String[]
+Parameter Sets: PowerShellCustomizer, ShellCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PowerShellCustomizer
+Runs the specified PowerShell on the VM (Windows).
+Corresponds to Packer powershell provisioner.
+Exactly one of 'scriptUri' or 'inline' can be specified.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: PowerShellCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartCheckCommand
+Command to check if restart succeeded [Default: ''].
+
+```yaml
+Type: System.String
+Parameter Sets: RestartCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartCommand
+Command to execute the restart [Default: 'shutdown /r /f /t 0 /c packer restart']
+
+```yaml
+Type: System.String
+Parameter Sets: RestartCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartCustomizer
+Reboots a VM and waits for it to come back online (Windows).
+Corresponds to Packer windows-restart provisioner.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RestartCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartTimeout
+Restart timeout specified as a string of magnitude and unit, e.g.
+'5m' (5 minutes) or '2h' (2 hours) [Default: '5m'].
+
+```yaml
+Type: System.String
+Parameter Sets: RestartCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunElevated
+If specified, the PowerShell script will be run with elevated privileges.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: PowerShellCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptUri
+URI of the shell script to be run for customizing.
+It can be a github link, SAS URI for Azure Storage, etc.
+
+```yaml
+Type: System.String
+Parameter Sets: PowerShellCustomizer, ShellCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchCriterion
+Criteria to search updates.
+Omit or specify empty string to use the default (search all).
+Refer to above link for examples and detailed description of this field.
+
+```yaml
+Type: System.String
+Parameter Sets: WindowsUpdateCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sha256Checksum
+SHA256 checksum of the shell script provided in the scriptUri field.
+
+```yaml
+Type: System.String
+Parameter Sets: FileCustomizer, PowerShellCustomizer, ShellCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShellCustomizer
+Runs a shell script during the customization phase (Linux).
+Corresponds to Packer shell provisioner.
+Exactly one of 'scriptUri' or 'inline' can be specified.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShellCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceUri
+The URI of the file to be uploaded for customizing the VM.
+It can be a github link, SAS URI for Azure Storage, etc.
+
+```yaml
+Type: System.String
+Parameter Sets: FileCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateLimit
+Maximum number of updates to apply at a time.
+Omit or specify 0 to use the default (1000).
+
+```yaml
+Type: System.Int32
+Parameter Sets: WindowsUpdateCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidExitCode
+Valid exit codes for the PowerShell script.
+[Default: 0].
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: PowerShellCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowsUpdateCustomizer
+Installs Windows Updates.
+Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: WindowsUpdateCustomizer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+

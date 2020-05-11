@@ -24,7 +24,7 @@
                         "osType": "Linux",
                         "osState": "Generalized",
                         "diskSizeGB": 30,
-                        "blobUri": "https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/ffee76c3-a79b-43ae-a207-4fa9ee5e221a.vhd",
+                        "blobUri": "https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/c1199f18-3121-4541-964c-80cee24a45c8.vhd",
                         "caching": "None",
                         "storageAccountType": "Standard_LRS"
                     },
