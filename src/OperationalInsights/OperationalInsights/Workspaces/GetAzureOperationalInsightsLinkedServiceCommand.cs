@@ -12,39 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.OperationalInsights.Workspaces
 {
-    [GenericBreakingChange("Get-AzOperationalInsightsSavedSearchResults alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearchResult"), OutputType(typeof(PSSearchGetSearchResultsResponse))]
-    [Alias("Get-AzOperationalInsightsSavedSearchResults")]
-    public class GetAzureOperationalInsightsSavedSearchResultsCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedService"), OutputType(typeof(PSLinkedService))]
+    public class GetAzureOperationalInsightsLinkedServiceCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("Name")]
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The saved search id.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The linked service name.")]
         [ValidateNotNullOrEmpty]
-        public string SavedSearchId { get; set; }
+        public string LinkedServiceName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            WriteObject(OperationalInsightsClient.GetSavedSearchResults(ResourceGroupName, WorkspaceName, SavedSearchId), true);
+            WriteObject(this.OperationalInsightsClient.FilterLinkedServices( this.ResourceGroupName, this.WorkspaceName, this.LinkedServiceName), true);
         }
-
     }
 }

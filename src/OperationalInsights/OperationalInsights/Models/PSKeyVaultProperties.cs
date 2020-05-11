@@ -16,21 +16,31 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSearchError
+    public class PSKeyVaultProperties
     {
-        public PSSearchError()
+        public PSKeyVaultProperties(string keyVaultUri = default(string), string keyName = default(string), string keyVersion = default(string))
         {
+            KeyVaultUri = keyVaultUri;
+            KeyName = keyName;
+            KeyVersion = keyVersion;
         }
 
-        public PSSearchError(SearchError error)
+        public PSKeyVaultProperties(KeyVaultProperties kv)
         {
-            if (error != null)
-            {
-                this.Type = error.Type;
-                this.Message = error.Message;
-            }
+            this.KeyVaultUri = kv.KeyVaultUri;
+            this.KeyName = kv.KeyName;
+            this.KeyVersion = kv.KeyVersion;
         }
-        public string Type { get; set; }
-        public string Message { get; set; }
+
+        public string KeyVaultUri { get; set; }
+
+        public string KeyName { get; set; }
+
+        public string KeyVersion { get; set; }
+
+        public KeyVaultProperties GetKeyVaultProperties()
+        {
+            return new KeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
+        }
     }
 }

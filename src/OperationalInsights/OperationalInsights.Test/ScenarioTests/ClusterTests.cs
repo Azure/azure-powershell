@@ -12,21 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using Xunit;
+using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 {
-    [GenericBreakingChange("Get-AzOperationalInsightsLinkTargets alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkTarget"), OutputType(typeof(PSAccount))]
-    [Alias("Get-AzOperationalInsightsLinkTargets")]
-    public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
+    public class ClusterTests : OperationalInsightsScenarioTestBase
     {
-        public override void ExecuteCmdlet()
+        public XunitTracingInterceptor _logger;
+
+        public ClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            WriteObject(OperationalInsightsClient.GetLinkTargets(), true);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClusterCRUD()
+        {
+            RunPowerShellTest(_logger, "Test-ClusterCRUD");
         }
     }
 }
