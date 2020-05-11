@@ -12,36 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.OperationalInsights.Models;
-using System;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSAccount
+    public enum PSDataSourceType
     {
-        public PSAccount()
+        CustomLogs,
+        AzureWatson
+    }
+    internal static class PSDataSourceTypeEnumExtension
+    {
+        internal static string toString(this PSDataSourceType value)
         {
-        }
-
-        public PSAccount(LinkTarget account)
-        {
-            if (account == null)
+            switch (value)
             {
-                throw new ArgumentNullException("account");
+                case PSDataSourceType.CustomLogs:
+                    return "CustomLogs";
+                case PSDataSourceType.AzureWatson:
+                    return "AzureWatson";
             }
-
-            this.AccountName = account.DisplayName;
-            this.Name = account.WorkspaceName;
-            this.CustomerId = new Guid(account.CustomerId);
-            this.Location = account.Location;
+            return null;
         }
-
-        public string AccountName { get; set; }
-
-        public string Name { get; set; }
-
-        public Guid? CustomerId { get; set; }
-
-        public string Location { get; set; }
     }
 }
