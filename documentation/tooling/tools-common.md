@@ -212,7 +212,7 @@ Version bumping bases on installed version and changes of APIs. But it cannot ha
 * Module will be GAed from `0.n.n` --> `1.0.0`. The tool cannot detect this change because preview release module doesn't has `.json` file, or there is no breaking changes in current release.
 * Module has a preview release but new bumped version has the same semantic version just without `preview` label. This new version cannot be published to PSGallery. The tool needs a patch version increase.  
 
-Above scenarios can be supported by configurations `MnimalVersion.csv`. Each line contains module name and expected minimal version. If bumped version is lower than expected minital version, the tool will use minimal version for new release.
+Above scenarios can be supported by configurations `MinimalVersion.csv`. Each line contains module name and expected minimal version. If bumped version is lower than expected minital version, the tool will use minimal version for new release.
 
 ### `Issues`
 
