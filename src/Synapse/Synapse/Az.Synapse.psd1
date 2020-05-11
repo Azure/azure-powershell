@@ -116,10 +116,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update references in .psd1 to use relative path'
+        ReleaseNotes = ''
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
