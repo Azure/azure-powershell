@@ -1,0 +1,113 @@
+{
+  "functionNamePowerShell": "Functions-PowerShell-v95nldsgy1",
+  "resourceGroupNameWindowsPremium": "Functions-Test-Windows-Premium-7zhtnj",
+  "functionNameDotNet": "Functions-DotNet-7ot0vuzlia",
+  "planNameWorkerTypeLinux": "Functions-Linux-Premium-ojn5ix",
+  "planNameWorkerTypeWindows": "Functions-Windows-Premium-8mr6n5",
+  "servicePlansToCreate": [
+    {
+      "Sku": "EP1",
+      "WorkerType": "Windows",
+      "MinimumWorkerCount": 1,
+      "MaximumWorkerCount": 10,
+      "Location": "central us",
+      "Name": "Functions-Windows-Premium-8mr6n5",
+      "ResourceGroupName": "Functions-Test-Windows-Premium-7zhtnj"
+    },
+    {
+      "Sku": "EP1",
+      "WorkerType": "Linux",
+      "MinimumWorkerCount": 1,
+      "MaximumWorkerCount": 10,
+      "Location": "central us",
+      "Name": "Functions-Linux-Premium-ojn5ix",
+      "ResourceGroupName": "Functions-Test-Linux-Premium-8ves29"
+    }
+  ],
+  "functionAppsToCreate": [
+    {
+      "RuntimeVersion": 6.2,
+      "Runtime": "PowerShell",
+      "ResourceGroupName": "Functions-Test-Windows-Premium-7zhtnj",
+      "PlanName": "Functions-Windows-Premium-8mr6n5",
+      "FunctionsVersion": 3,
+      "StorageAccountName": "functionswinstorageq13",
+      "Name": "Functions-PowerShell-6-tky70i",
+      "OSType": "Windows"
+    },
+    {
+      "RuntimeVersion": 10,
+      "Runtime": "Node",
+      "ResourceGroupName": "Functions-Test-Linux-Premium-8ves29",
+      "PlanName": "Functions-Linux-Premium-ojn5ix",
+      "FunctionsVersion": 3,
+      "StorageAccountName": "functionslinuxstorage1lf",
+      "Name": "Functions-Node-10-ikc4o0",
+      "OSType": "Linux"
+    },
+    {
+      "Runtime": "DotNet",
+      "Location": "central us",
+      "ResourceGroupName": "Functions-Test-Windows-Consumption-hsplre",
+      "FunctionsVersion": 3,
+      "RuntimeVersion": 3,
+      "Name": "Functions-DoNet-3-p9fbe7",
+      "OSType": "Windows",
+      "StorageAccountName": "functionswinstorageq13"
+    },
+    {
+      "RuntimeVersion": 3.8,
+      "Runtime": "Python",
+      "Location": "central us",
+      "ResourceGroupName": "Functions-Test-Linux-Consumption-bhqun8",
+      "FunctionsVersion": 3,
+      "StorageAccountName": "functionslinuxstorage1lf",
+      "Name": "Functions-Python-3-8-iq7d59",
+      "OSType": "Linux"
+    }
+  ],
+  "storageAccountWindows": "functionswinstorageq13",
+  "functionNamePython": "Functions-Python-bprnztfk04",
+  "location": "central us",
+  "newApplInsights": {
+    "Id": "/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-7zhtnj/providers/microsoft.insights/components/Functions-PowerShell-v95nldsgy1-new",
+    "ResourceGroupName": "Functions-Test-Windows-Premium-7zhtnj",
+    "Name": "Functions-PowerShell-v95nldsgy1-new",
+    "Kind": "web",
+    "Location": "centralus",
+    "Type": "microsoft.insights/components",
+    "AppId": "48901009-e9ca-4d90-8188-9638d52df357",
+    "ApplicationType": "web",
+    "Tags": {},
+    "CreationDate": "2020-05-11T04:16:11.118077Z",
+    "FlowType": null,
+    "HockeyAppId": null,
+    "HockeyAppToken": null,
+    "InstrumentationKey": "a4676725-7f3b-4c9d-bf47-9edfe2ab9968",
+    "ProvisioningState": "Succeeded",
+    "RequestSource": "AzurePowerShell",
+    "SamplingPercentage": null,
+    "TenantId": "07308f04-ea00-494b-b320-690df74b1ce6"
+  },
+  "functionAppPlanName": "Functions-MyPlan-7sjmr5t06i",
+  "storageAccountLinux": "functionslinuxstorage1lf",
+  "resourceGroupNameLinuxPremium": "Functions-Test-Linux-Premium-8ves29",
+  "identityInfo": {
+    "Id": "/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourcegroups/Functions-Test-Windows-Premium-7zhtnj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1",
+    "ResourceGroupName": "Functions-Test-Windows-Premium-7zhtnj",
+    "Name": "ID1",
+    "Location": "centralus",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "PrincipalId": "1a6d65ef-1381-471c-81d3-bf2a1826f60d",
+    "ClientId": "8e2b2287-7687-4dca-bda9-c831d45c63f2",
+    "ClientSecretUrl": "https://control-centralus.identity.azure.net/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourcegroups/Functions-Test-Windows-Premium-7zhtnj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=72f988bf-86f1-41af-91ab-2d7cd011db47&oid=1a6d65ef-1381-471c-81d3-bf2a1826f60d&aid=8e2b2287-7687-4dca-bda9-c831d45c63f2",
+    "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  "resourceGroupNameLinuxConsumption": "Functions-Test-Linux-Consumption-bhqun8",
+  "functionNameTestApp": "Functions-TestAppName-kq7r1ybepg",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "resourceGroupNameWindowsConsumption": "Functions-Test-Windows-Consumption-hsplre",
+  "SubscriptionId": "07308f04-ea00-494b-b320-690df74b1ce6",
+  "functionNameContainer": "Functions-CustomImage-w02ov8l5qe",
+  "testSubscriptionId": "07308f04-ea00-494b-b320-690df74b1ce6"
+}

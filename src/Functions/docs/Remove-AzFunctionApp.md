@@ -15,13 +15,13 @@ Deletes a function app.
 ### ByName (Default)
 ```
 Remove-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,21 +42,6 @@ PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupN
 ```
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

@@ -13,14 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Restart-AzFunctionApp, Stop-AzFunctionApp and Start-AzFunctionApp' {
 
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
-
     # ByName
     foreach ($functionDefinition in $env.functionAppsToCreate)
     {
@@ -44,17 +36,17 @@ Describe 'Restart-AzFunctionApp, Stop-AzFunctionApp and Start-AzFunctionApp' {
     {
         It "ByObjectInput '$($functionDefinition.Name)'" {
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
-            $functionApp | Restart-AzFunctionApp -Force
+            Restart-AzFunctionApp -InputObject $functionApp -Force
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
             $functionApp.Status | Should -Be "Running"
 
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
-            $functionApp | Stop-AzFunctionApp -Force
+            Stop-AzFunctionApp -InputObject $functionApp -Force
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
             $functionApp.Status | Should -Be "Stopped"
 
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
-            $functionApp | Start-AzFunctionApp
+            Start-AzFunctionApp -InputObject $functionApp
             $functionApp = Get-AzfunctionApp -Name $functionDefinition.Name -ResourceGroupName $functionDefinition.ResourceGroupName
             $functionApp.Status | Should -Be "Running"
         }

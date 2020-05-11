@@ -27,13 +27,13 @@ Describe 'Get-AzFunctionApp' {
         }
     }
 
-    It "-SubscriptionId $($env.testSubscriptionId)" {
+    It "-SubscriptionId $($env.SubscriptionId)" {
 
-        $functionApps = @(Get-AzFunctionApp -SubscriptionId $env.testSubscriptionId)
+        $functionApps = @(Get-AzFunctionApp -SubscriptionId $env.SubscriptionId)
         $functionApps.Count | Should -BeGreaterThan 0
 
         $functionApps | ForEach-Object {
-            $_.SubscriptionId | Should Be $env.testSubscriptionId
+            $_.SubscriptionId | Should Be $env.SubscriptionId
         }
     }
 

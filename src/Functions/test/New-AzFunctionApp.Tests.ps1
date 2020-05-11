@@ -13,14 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionApp' {
 
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
-
     It 'CustomDockerImage' {
 
         $functionName = $env.functionNameContainer
@@ -43,8 +35,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
@@ -349,8 +344,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
@@ -390,8 +388,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
@@ -422,8 +423,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
@@ -456,8 +460,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
@@ -500,8 +507,11 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxConsumption -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxConsumption -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }

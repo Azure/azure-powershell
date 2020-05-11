@@ -1274,7 +1274,7 @@ function NewIdentityUserAssignedIdentity
 
     foreach ($id in $IdentityID)
     {
-        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
+        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
         $msiUserAssignedIdentities.Add($IdentityID, $functionAppUserAssignedIdentitiesValue)
     }
 

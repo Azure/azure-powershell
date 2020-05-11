@@ -1,0 +1,560 @@
+{
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": "{\r\n  \"kind\": \"functionapp\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\r\n    \"siteConfig\": {\r\n      \"appSettings\": [\r\n        {\r\n          \"name\": \"FUNCTIONS_WORKER_RUNTIME\",\r\n          \"value\": \"powershell\"\r\n        },\r\n        {\r\n          \"name\": \"WEBSITE_NODE_DEFAULT_VERSION\",\r\n          \"value\": \"~12\"\r\n        },\r\n        {\r\n          \"name\": \"AzureWebJobsStorage\",\r\n          \"value\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"\r\n        },\r\n        {\r\n          \"name\": \"AzureWebJobsDashboard\",\r\n          \"value\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"\r\n        },\r\n        {\r\n          \"name\": \"FUNCTIONS_EXTENSION_VERSION\",\r\n          \"value\": \"~3\"\r\n        },\r\n        {\r\n          \"name\": \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\",\r\n          \"value\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"\r\n        },\r\n        {\r\n          \"name\": \"WEBSITE_CONTENTSHARE\",\r\n          \"value\": \"functions-powershell-g7pz5tefr0\"\r\n        },\r\n        {\r\n          \"name\": \"APPINSIGHTS_INSTRUMENTATIONKEY\",\r\n          \"value\": \"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1679" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F1B5C0480\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d4350756-95e4-45ed-8745-d63150ea8ad9" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "495" ],
+        "x-ms-correlation-request-id": [ "53e8e365-c343-427d-87f7-06a016d02a9c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064124Z:53e8e365-c343-427d-87f7-06a016d02a9c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3712" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0\",\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"type\":\"Microsoft.Web/sites\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"state\":\"Running\",\"hostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\"],\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"selfLink\":\"https://waws-prod-dm1-097.api.azurewebsites.windows.net:454/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/webspaces/Functions-Test-Windows-Premium-12thli-CentralUSwebspace/sites/Functions-PowerShell-g7pz5tefr0\",\"repositorySiteName\":\"Functions-PowerShell-g7pz5tefr0\",\"owner\":null,\"usageState\":\"Normal\",\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[{\"name\":\"LinuxFxVersion\",\"value\":\"\"},{\"name\":\"WindowsFxVersion\",\"value\":null}],\"appSettings\":null},\"availabilityState\":\"Normal\",\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Standard\"},{\"name\":\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Repository\"}],\"computeMode\":null,\"serverFarm\":null,\"serverFarmId\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"lastModifiedTimeUtc\":\"2020-05-11T06:40:48.1133333\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":\"Normal\",\"runtimeAvailabilityState\":\"Normal\",\"siteConfig\":null,\"deploymentId\":\"Functions-PowerShell-g7pz5tefr0\",\"trafficManagerHostNames\":null,\"sku\":\"ElasticPremium\",\"scmSiteAlsoStopped\":false,\"targetSwapSlot\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"clientAffinityEnabled\":false,\"clientCertEnabled\":false,\"clientCertMode\":\"Required\",\"clientCertExclusionPaths\":null,\"hostNamesDisabled\":false,\"domainVerificationIdentifiers\":null,\"customDomainVerificationId\":\"3A60014F75AE3C2D120BAD27B23583AF45148A24ADDB09602E322BD2777C248F\",\"kind\":\"functionapp\",\"inboundIpAddress\":\"23.100.82.11\",\"possibleInboundIpAddresses\":\"23.100.82.11\",\"ftpUsername\":\"Functions-PowerShell-g7pz5tefr0\\\\$Functions-PowerShell-g7pz5tefr0\",\"ftpsHostName\":\"ftps://waws-prod-dm1-097.ftp.azurewebsites.windows.net/site/wwwroot\",\"outboundIpAddresses\":\"23.101.113.59,23.101.120.15,23.101.125.15\",\"possibleOutboundIpAddresses\":\"23.100.82.11,23.101.121.37,23.101.123.100,23.101.122.96,23.101.122.233,23.101.113.59,23.101.120.15,23.101.125.15\",\"containerSize\":1536,\"dailyMemoryTimeQuota\":0,\"suspendedTill\":null,\"siteDisabledReason\":0,\"functionExecutionUnitsCache\":null,\"maxNumberOfWorkers\":null,\"homeStamp\":\"waws-prod-dm1-097\",\"cloningInfo\":null,\"hostingEnvironmentId\":null,\"tags\":null,\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"defaultHostName\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"slotSwapStatus\":null,\"httpsOnly\":false,\"redundancyMode\":\"None\",\"inProgressOperationId\":null,\"geoDistributions\":null,\"privateEndpointConnections\":null,\"buildVersion\":null,\"targetBuildVersion\":null}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "238" ],
+        "x-ms-client-request-id": [ "4456ed18-55e9-457a-91df-1c165105810e" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionApp" ],
+        "FullCommandName": [ "Get-AzFunctionApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F1B5C0480\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2f22b153-0c41-4da5-8cb1-74082c7a8d9b" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11829" ],
+        "x-ms-correlation-request-id": [ "5bea0ca7-7b75-4d1c-a8e2-6877bd18fb86" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064124Z:5bea0ca7-7b75-4d1c-a8e2-6877bd18fb86" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3705" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0\",\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"type\":\"Microsoft.Web/sites\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"state\":\"Running\",\"hostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\"],\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"selfLink\":\"https://waws-prod-dm1-097.api.azurewebsites.windows.net:454/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/webspaces/Functions-Test-Windows-Premium-12thli-CentralUSwebspace/sites/Functions-PowerShell-g7pz5tefr0\",\"repositorySiteName\":\"Functions-PowerShell-g7pz5tefr0\",\"owner\":null,\"usageState\":\"Normal\",\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[{\"name\":\"LinuxFxVersion\",\"value\":\"\"},{\"name\":\"WindowsFxVersion\",\"value\":null}],\"appSettings\":null},\"availabilityState\":\"Normal\",\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Standard\"},{\"name\":\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Repository\"}],\"computeMode\":null,\"serverFarm\":null,\"serverFarmId\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"lastModifiedTimeUtc\":\"2020-05-11T06:40:48.84\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":\"Normal\",\"runtimeAvailabilityState\":\"Normal\",\"siteConfig\":null,\"deploymentId\":\"Functions-PowerShell-g7pz5tefr0\",\"trafficManagerHostNames\":null,\"sku\":\"ElasticPremium\",\"scmSiteAlsoStopped\":false,\"targetSwapSlot\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"clientAffinityEnabled\":false,\"clientCertEnabled\":false,\"clientCertMode\":\"Required\",\"clientCertExclusionPaths\":null,\"hostNamesDisabled\":false,\"domainVerificationIdentifiers\":null,\"customDomainVerificationId\":\"3A60014F75AE3C2D120BAD27B23583AF45148A24ADDB09602E322BD2777C248F\",\"kind\":\"functionapp\",\"inboundIpAddress\":\"23.100.82.11\",\"possibleInboundIpAddresses\":\"23.100.82.11\",\"ftpUsername\":\"Functions-PowerShell-g7pz5tefr0\\\\$Functions-PowerShell-g7pz5tefr0\",\"ftpsHostName\":\"ftps://waws-prod-dm1-097.ftp.azurewebsites.windows.net/site/wwwroot\",\"outboundIpAddresses\":\"23.101.113.59,23.101.120.15,23.101.125.15\",\"possibleOutboundIpAddresses\":\"23.100.82.11,23.101.121.37,23.101.123.100,23.101.122.96,23.101.122.233,23.101.113.59,23.101.120.15,23.101.125.15\",\"containerSize\":1536,\"dailyMemoryTimeQuota\":0,\"suspendedTill\":null,\"siteDisabledReason\":0,\"functionExecutionUnitsCache\":null,\"maxNumberOfWorkers\":null,\"homeStamp\":\"waws-prod-dm1-097\",\"cloningInfo\":null,\"hostingEnvironmentId\":null,\"tags\":null,\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"defaultHostName\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"slotSwapStatus\":null,\"httpsOnly\":false,\"redundancyMode\":\"None\",\"inProgressOperationId\":null,\"geoDistributions\":null,\"privateEndpointConnections\":[],\"buildVersion\":null,\"targetBuildVersion\":null}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$POST+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "241" ],
+        "x-ms-client-request-id": [ "6cfd49bc-0aaf-4692-8205-3912ced48c33" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzWebAppApplicationSetting" ],
+        "FullCommandName": [ "Get-AzWebAppApplicationSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "47445c7a-d264-478a-9cb1-af3a1d21c280" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11952" ],
+        "x-ms-correlation-request-id": [ "bccb5af2-573a-4197-8838-5946eb71da94" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064124Z:bccb5af2-573a-4197-8838-5946eb71da94" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1124" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$POST+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "242" ],
+        "x-ms-client-request-id": [ "5fce544e-4483-46d4-97d2-658e995f9f1e" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzWebAppApplicationSetting" ],
+        "FullCommandName": [ "Get-AzWebAppApplicationSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "36906901-b362-4352-8061-ee6897cb760c" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11951" ],
+        "x-ms-correlation-request-id": [ "b70a2df5-0568-4f99-8cde-0f5a1d4f67e7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064125Z:b70a2df5-0568-4f99-8cde-0f5a1d4f67e7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1124" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"MyAppSetting1\": \"456789\",\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"MyAppSetting2\": \"PowerShellRocks\",\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"~12\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"FUNCTIONS_WORKER_RUNTIME\": \"powershell\",\r\n    \"WEBSITE_CONTENTSHARE\": \"functions-powershell-g7pz5tefr0\",\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~3\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "990" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F31798975\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8c175d32-6921-46e1-9e17-45d593478248" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "d28e9523-cddf-42cf-aebe-4b28eaf6bfb7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064127Z:d28e9523-cddf-42cf-aebe-4b28eaf6bfb7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1183" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"MyAppSetting1\":\"456789\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"MyAppSetting2\":\"PowerShellRocks\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "247" ],
+        "x-ms-client-request-id": [ "08fc3279-ce52-42e1-98fa-b401bb96c3fc" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionApp" ],
+        "FullCommandName": [ "Get-AzFunctionApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F31798975\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "432574a5-215f-4df0-bf1b-1b849bb0ec7f" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11825" ],
+        "x-ms-correlation-request-id": [ "f8af3cdb-e971-4865-a5dc-ca6cca59e4ee" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064128Z:f8af3cdb-e971-4865-a5dc-ca6cca59e4ee" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3710" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0\",\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"type\":\"Microsoft.Web/sites\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"state\":\"Running\",\"hostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\"],\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"selfLink\":\"https://waws-prod-dm1-097.api.azurewebsites.windows.net:454/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/webspaces/Functions-Test-Windows-Premium-12thli-CentralUSwebspace/sites/Functions-PowerShell-g7pz5tefr0\",\"repositorySiteName\":\"Functions-PowerShell-g7pz5tefr0\",\"owner\":null,\"usageState\":\"Normal\",\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[{\"name\":\"LinuxFxVersion\",\"value\":\"\"},{\"name\":\"WindowsFxVersion\",\"value\":null}],\"appSettings\":null},\"availabilityState\":\"Normal\",\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Standard\"},{\"name\":\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Repository\"}],\"computeMode\":null,\"serverFarm\":null,\"serverFarmId\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"lastModifiedTimeUtc\":\"2020-05-11T06:41:25.9433333\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":\"Normal\",\"runtimeAvailabilityState\":\"Normal\",\"siteConfig\":null,\"deploymentId\":\"Functions-PowerShell-g7pz5tefr0\",\"trafficManagerHostNames\":null,\"sku\":\"ElasticPremium\",\"scmSiteAlsoStopped\":false,\"targetSwapSlot\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"clientAffinityEnabled\":false,\"clientCertEnabled\":false,\"clientCertMode\":\"Required\",\"clientCertExclusionPaths\":null,\"hostNamesDisabled\":false,\"domainVerificationIdentifiers\":null,\"customDomainVerificationId\":\"3A60014F75AE3C2D120BAD27B23583AF45148A24ADDB09602E322BD2777C248F\",\"kind\":\"functionapp\",\"inboundIpAddress\":\"23.100.82.11\",\"possibleInboundIpAddresses\":\"23.100.82.11\",\"ftpUsername\":\"Functions-PowerShell-g7pz5tefr0\\\\$Functions-PowerShell-g7pz5tefr0\",\"ftpsHostName\":\"ftps://waws-prod-dm1-097.ftp.azurewebsites.windows.net/site/wwwroot\",\"outboundIpAddresses\":\"23.101.113.59,23.101.120.15,23.101.125.15\",\"possibleOutboundIpAddresses\":\"23.100.82.11,23.101.121.37,23.101.123.100,23.101.122.96,23.101.122.233,23.101.113.59,23.101.120.15,23.101.125.15\",\"containerSize\":1536,\"dailyMemoryTimeQuota\":0,\"suspendedTill\":null,\"siteDisabledReason\":0,\"functionExecutionUnitsCache\":null,\"maxNumberOfWorkers\":null,\"homeStamp\":\"waws-prod-dm1-097\",\"cloningInfo\":null,\"hostingEnvironmentId\":null,\"tags\":null,\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"defaultHostName\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"slotSwapStatus\":null,\"httpsOnly\":false,\"redundancyMode\":\"None\",\"inProgressOperationId\":null,\"geoDistributions\":null,\"privateEndpointConnections\":[],\"buildVersion\":null,\"targetBuildVersion\":null}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01+7": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"MyAppSetting1\": \"456789\",\r\n    \"MyAppSetting4\": \"PowerShellIsAwesome\",\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"MyAppSetting3\": \"123456\",\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"~12\",\r\n    \"WEBSITE_CONTENTSHARE\": \"functions-powershell-g7pz5tefr0\",\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~3\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"FUNCTIONS_WORKER_RUNTIME\": \"powershell\",\r\n    \"MyAppSetting2\": \"PowerShellRocks\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1067" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F3388FB80\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0ed9affe-950d-4e18-bf24-929ed6591637" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-correlation-request-id": [ "85f6297a-08fe-4a41-a150-1eb9e6ed2c0b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064130Z:85f6297a-08fe-4a41-a150-1eb9e6ed2c0b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1246" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"MyAppSetting1\":\"456789\",\"MyAppSetting4\":\"PowerShellIsAwesome\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"MyAppSetting3\":\"123456\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"MyAppSetting2\":\"PowerShellRocks\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01+8": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"MyAppSetting3\": \"123456\",\r\n    \"FUNCTIONS_WORKER_RUNTIME\": \"powershell\",\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"~12\",\r\n    \"WEBSITE_CONTENTSHARE\": \"functions-powershell-g7pz5tefr0\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"MyAppSetting4\": \"PowerShellIsAwesome\",\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~3\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "994" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F34F7B3B5\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9826a6e5-e56b-47f3-9b7e-62ed1360f4c5" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-correlation-request-id": [ "89127fb5-9b8c-4622-b26c-60aa1c5ff794" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064133Z:89127fb5-9b8c-4622-b26c-60aa1c5ff794" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1187" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"MyAppSetting3\":\"123456\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"MyAppSetting4\":\"PowerShellIsAwesome\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$POST+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01+9": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "258" ],
+        "x-ms-client-request-id": [ "e90f6808-62e9-416b-ac4b-bf5bb47e27a2" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzWebAppApplicationSetting" ],
+        "FullCommandName": [ "Get-AzWebAppApplicationSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b4e52dc3-0b44-4e14-a225-91c3f7364a03" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11946" ],
+        "x-ms-correlation-request-id": [ "01e36564-7551-4f45-863e-0cf0b33e83a8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064133Z:01e36564-7551-4f45-863e-0cf0b33e83a8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1187" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"MyAppSetting3\":\"123456\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"MyAppSetting4\":\"PowerShellIsAwesome\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "259" ],
+        "x-ms-client-request-id": [ "fa9853c1-2075-426b-aee2-9c5a8c00023e" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionApp" ],
+        "FullCommandName": [ "Get-AzFunctionApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F34F7B3B5\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1d4bdca4-16c7-41cf-ab88-9bbf6a1b735e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11819" ],
+        "x-ms-correlation-request-id": [ "f5ab3bd8-de99-4d88-a5d5-2a6646951e9a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064133Z:f5ab3bd8-de99-4d88-a5d5-2a6646951e9a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3710" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0\",\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"type\":\"Microsoft.Web/sites\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"state\":\"Running\",\"hostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\"],\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"selfLink\":\"https://waws-prod-dm1-097.api.azurewebsites.windows.net:454/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/webspaces/Functions-Test-Windows-Premium-12thli-CentralUSwebspace/sites/Functions-PowerShell-g7pz5tefr0\",\"repositorySiteName\":\"Functions-PowerShell-g7pz5tefr0\",\"owner\":null,\"usageState\":\"Normal\",\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[{\"name\":\"LinuxFxVersion\",\"value\":\"\"},{\"name\":\"WindowsFxVersion\",\"value\":null}],\"appSettings\":null},\"availabilityState\":\"Normal\",\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Standard\"},{\"name\":\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Repository\"}],\"computeMode\":null,\"serverFarm\":null,\"serverFarmId\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"lastModifiedTimeUtc\":\"2020-05-11T06:41:31.8033333\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":\"Normal\",\"runtimeAvailabilityState\":\"Normal\",\"siteConfig\":null,\"deploymentId\":\"Functions-PowerShell-g7pz5tefr0\",\"trafficManagerHostNames\":null,\"sku\":\"ElasticPremium\",\"scmSiteAlsoStopped\":false,\"targetSwapSlot\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"clientAffinityEnabled\":false,\"clientCertEnabled\":false,\"clientCertMode\":\"Required\",\"clientCertExclusionPaths\":null,\"hostNamesDisabled\":false,\"domainVerificationIdentifiers\":null,\"customDomainVerificationId\":\"3A60014F75AE3C2D120BAD27B23583AF45148A24ADDB09602E322BD2777C248F\",\"kind\":\"functionapp\",\"inboundIpAddress\":\"23.100.82.11\",\"possibleInboundIpAddresses\":\"23.100.82.11\",\"ftpUsername\":\"Functions-PowerShell-g7pz5tefr0\\\\$Functions-PowerShell-g7pz5tefr0\",\"ftpsHostName\":\"ftps://waws-prod-dm1-097.ftp.azurewebsites.windows.net/site/wwwroot\",\"outboundIpAddresses\":\"23.101.113.59,23.101.120.15,23.101.125.15\",\"possibleOutboundIpAddresses\":\"23.100.82.11,23.101.121.37,23.101.123.100,23.101.122.96,23.101.122.233,23.101.113.59,23.101.120.15,23.101.125.15\",\"containerSize\":1536,\"dailyMemoryTimeQuota\":0,\"suspendedTill\":null,\"siteDisabledReason\":0,\"functionExecutionUnitsCache\":null,\"maxNumberOfWorkers\":null,\"homeStamp\":\"waws-prod-dm1-097\",\"cloningInfo\":null,\"hostingEnvironmentId\":null,\"tags\":null,\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"defaultHostName\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"slotSwapStatus\":null,\"httpsOnly\":false,\"redundancyMode\":\"None\",\"inProgressOperationId\":null,\"geoDistributions\":null,\"privateEndpointConnections\":[],\"buildVersion\":null,\"targetBuildVersion\":null}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01+11": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings?api-version=2019-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\r\n    \"AzureWebJobsDashboard\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"~12\",\r\n    \"WEBSITE_CONTENTSHARE\": \"functions-powershell-g7pz5tefr0\",\r\n    \"FUNCTIONS_EXTENSION_VERSION\": \"~3\",\r\n    \"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\r\n    \"FUNCTIONS_WORKER_RUNTIME\": \"powershell\",\r\n    \"AzureWebJobsStorage\": \"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "917" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F36B33960\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5655e326-0029-4741-ba1d-20edaf54dd49" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-correlation-request-id": [ "8286cb65-3eb9-415f-bda0-753ea8d82737" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064136Z:8286cb65-3eb9-415f-bda0-753ea8d82737" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1124" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$POST+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01+12": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings/list?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "266" ],
+        "x-ms-client-request-id": [ "9986a159-b485-401d-9d60-eb1fec9eaafc" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzWebAppApplicationSetting" ],
+        "FullCommandName": [ "Get-AzWebAppApplicationSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "58e64026-ca23-4276-90d2-3c865eb2a7da" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11943" ],
+        "x-ms-correlation-request-id": [ "3acc80a5-ded4-4376-9631-389772eec405" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064136Z:3acc80a5-ded4-4376-9631-389772eec405" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1124" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/sites/config\",\"location\":\"Central US\",\"properties\":{\"APPINSIGHTS_INSTRUMENTATIONKEY\":\"cb115cc8-af7d-4524-bfe6-96dd84b6be7f\",\"AzureWebJobsDashboard\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"WEBSITE_NODE_DEFAULT_VERSION\":\"~12\",\"WEBSITE_CONTENTSHARE\":\"functions-powershell-g7pz5tefr0\",\"FUNCTIONS_EXTENSION_VERSION\":\"~3\",\"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\",\"FUNCTIONS_WORKER_RUNTIME\":\"powershell\",\"AzureWebJobsStorage\":\"DefaultEndpointsProtocol=https;AccountName=functionswinstorageg1x;AccountKey=er/A6LnFScNge2lannvFwYsXFLQYywPv7qMztNH8AGAWXbBgjEulwieQWoRiL6r1wllNV2MJRuQU61RQJH5Nig==\"}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "267" ],
+        "x-ms-client-request-id": [ "37dbde7f-1779-4f1a-9f37-ace1282484b6" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionApp" ],
+        "FullCommandName": [ "Get-AzFunctionApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F36B33960\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8e39e3e4-4b25-4b30-9825-da6f766ceb19" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11815" ],
+        "x-ms-correlation-request-id": [ "f8dc2ccc-7f60-4a60-af25-1b75e624f03c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064136Z:f8dc2ccc-7f60-4a60-af25-1b75e624f03c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3705" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0\",\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"type\":\"Microsoft.Web/sites\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"name\":\"Functions-PowerShell-g7pz5tefr0\",\"state\":\"Running\",\"hostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\"],\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"selfLink\":\"https://waws-prod-dm1-097.api.azurewebsites.windows.net:454/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/webspaces/Functions-Test-Windows-Premium-12thli-CentralUSwebspace/sites/Functions-PowerShell-g7pz5tefr0\",\"repositorySiteName\":\"Functions-PowerShell-g7pz5tefr0\",\"owner\":null,\"usageState\":\"Normal\",\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[{\"name\":\"LinuxFxVersion\",\"value\":\"\"},{\"name\":\"WindowsFxVersion\",\"value\":null}],\"appSettings\":null},\"availabilityState\":\"Normal\",\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Standard\"},{\"name\":\"functions-powershell-g7pz5tefr0.scm.azurewebsites.net\",\"sslState\":\"Disabled\",\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":\"NotConfigured\",\"hostType\":\"Repository\"}],\"computeMode\":null,\"serverFarm\":null,\"serverFarmId\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-wv5q3m\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"lastModifiedTimeUtc\":\"2020-05-11T06:41:34.71\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":\"Normal\",\"runtimeAvailabilityState\":\"Normal\",\"siteConfig\":null,\"deploymentId\":\"Functions-PowerShell-g7pz5tefr0\",\"trafficManagerHostNames\":null,\"sku\":\"ElasticPremium\",\"scmSiteAlsoStopped\":false,\"targetSwapSlot\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"clientAffinityEnabled\":false,\"clientCertEnabled\":false,\"clientCertMode\":\"Required\",\"clientCertExclusionPaths\":null,\"hostNamesDisabled\":false,\"domainVerificationIdentifiers\":null,\"customDomainVerificationId\":\"3A60014F75AE3C2D120BAD27B23583AF45148A24ADDB09602E322BD2777C248F\",\"kind\":\"functionapp\",\"inboundIpAddress\":\"23.100.82.11\",\"possibleInboundIpAddresses\":\"23.100.82.11\",\"ftpUsername\":\"Functions-PowerShell-g7pz5tefr0\\\\$Functions-PowerShell-g7pz5tefr0\",\"ftpsHostName\":\"ftps://waws-prod-dm1-097.ftp.azurewebsites.windows.net/site/wwwroot\",\"outboundIpAddresses\":\"23.101.113.59,23.101.120.15,23.101.125.15\",\"possibleOutboundIpAddresses\":\"23.100.82.11,23.101.121.37,23.101.123.100,23.101.122.96,23.101.122.233,23.101.113.59,23.101.120.15,23.101.125.15\",\"containerSize\":1536,\"dailyMemoryTimeQuota\":0,\"suspendedTill\":null,\"siteDisabledReason\":0,\"functionExecutionUnitsCache\":null,\"maxNumberOfWorkers\":null,\"homeStamp\":\"waws-prod-dm1-097\",\"cloningInfo\":null,\"hostingEnvironmentId\":null,\"tags\":null,\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"defaultHostName\":\"functions-powershell-g7pz5tefr0.azurewebsites.net\",\"slotSwapStatus\":null,\"httpsOnly\":false,\"redundancyMode\":\"None\",\"inProgressOperationId\":null,\"geoDistributions\":null,\"privateEndpointConnections\":[],\"buildVersion\":null,\"targetBuildVersion\":null}}"
+    }
+  },
+  "Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E+[NoContext]+Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting+$DELETE+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01+14": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/sites/Functions-PowerShell-g7pz5tefr0?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "270" ],
+        "x-ms-client-request-id": [ "9b52a50b-7f86-4698-83b6-9289874ff6e9" ],
+        "CommandName": [ "Az.Functions.internal\\Remove-AzFunctionApp" ],
+        "FullCommandName": [ "Remove-AzFunctionApp_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1D6275F36B33960\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5f85c0c2-b661-4d0a-b262-aeae9b32f09e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f4da9e72-46e7-4072-b25f-adeb98e223b5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064141Z:f4da9e72-46e7-4072-b25f-adeb98e223b5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:41:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

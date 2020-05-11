@@ -91,6 +91,20 @@ function Update-AzFunctionApp {
         ${Break},
 
         [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+
+        [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
@@ -111,223 +125,206 @@ function Update-AzFunctionApp {
     )
 
     process {
-
-        if ($PSBoundParameters.ContainsKey("AsJob"))
+        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        $paramsToRemove = @(
+            "PlanName",
+            "ApplicationInsightsName",
+            "ApplicationInsightsKey"
+            "IdentityType",
+            "IdentityID",
+            "Tag"
+        )
+        foreach ($paramName in $paramsToRemove)
         {
-            $PSBoundParameters.Remove("AsJob")  | Out-Null
-
-            $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
-
-            Start-Job -ScriptBlock {
-                param($arg, $modulePath)
-                Import-Module $modulePath
-                Az.Functions\Update-AzFunctionApp @arg
-            } -ArgumentList $PSBoundParameters, $modulePath
+            if ($PSBoundParameters.ContainsKey($paramName))
+            {
+                $PSBoundParameters.Remove($paramName)  | Out-Null
+            }
         }
 
-        else 
+        $existingFunctionApp = $null
+
+        if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {
-            # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
-            $paramsToRemove = @(
-                "PlanName",
-                "ApplicationInsightsName",
-                "ApplicationInsightsKey"
-                "IdentityType",
-                "IdentityID",
-                "Tag"
-            )
-            foreach ($paramName in $paramsToRemove)
+            if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                if ($PSBoundParameters.ContainsKey($paramName))
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
+            }
+
+            $Name = $InputObject.Name
+            
+            $PSBoundParameters.Add("Name", $Name)  | Out-Null
+            $PSBoundParameters.Add("ResourceGroupName", $InputObject.ResourceGroupName)  | Out-Null
+            $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
+            
+            $existingFunctionApp = $InputObject                
+        }
+        else
+        {
+            $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName
+        }
+
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
+        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
+
+        # Identity information
+        if ($IdentityType)
+        {
+            $functionAppDef.IdentityType = $IdentityType
+
+            if ($IdentityType -eq "UserAssigned")
+            {
+                # Set UserAssigned managed identity
+                if (-not $IdentityID)
                 {
-                    $PSBoundParameters.Remove($paramName)  | Out-Null
+                    $errorMessage = "IdentityID is required for UserAssigned identity"
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+
                 }
+
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
             }
-
-            $existingFunctionApp = $null
-
-            if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
+        }
+        elseif ($existingFunctionApp.IdentityType)
+        {
+            if ($existingFunctionApp.IdentityType -eq "UserAssigned")
             {
-                if ($PSBoundParameters.ContainsKey("InputObject"))
+                $functionAppDef.IdentityType = "UserAssigned"
+
+                if ($existingFunctionApp.IdentityUserAssignedIdentity -and $existingFunctionApp.IdentityUserAssignedIdentity.Count -gt 0)
                 {
-                    $PSBoundParameters.Remove("InputObject")  | Out-Null
-                }
-
-                $Name = $InputObject.Name
-                
-                $PSBoundParameters.Add("Name", $Name)  | Out-Null
-                $PSBoundParameters.Add("ResourceGroupName", $InputObject.ResourceGroupName)  | Out-Null
-                $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
-                
-                $existingFunctionApp = $InputObject                
-            }
-            else
-            {
-                $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName
-            }
-
-            $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-            $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
-            $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
-
-            # Identity information
-            if ($IdentityType)
-            {
-                $functionAppDef.IdentityType = $IdentityType
-
-                if ($IdentityType -eq "UserAssigned")
-                {
-                    # Set UserAssigned managed identity
-                    if (-not $IdentityID)
-                    {
-                        $errorMessage = "IdentityID is required for UserAssigned identity"
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                              -ErrorMessage $errorMessage `
-                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                              -Exception $exception
-
-                    }
-
-                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $existingFunctionApp.IdentityUserAssignedIdentity.Keys
                     $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                 }
             }
-            elseif ($existingFunctionApp.IdentityType)
+            elseif ($existingFunctionApp.IdentityType -eq "SystemAssigned")
             {
-                if ($existingFunctionApp.IdentityType -eq "UserAssigned")
-                {
-                    $functionAppDef.IdentityType = "UserAssigned"
+                $functionAppDef.IdentityType = "SystemAssigned"
+            }
+            else
+            {
+                $errorMessage = "Unknown IdentityType '$($existingFunctionApp.IdentityType)'"
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "UnknownIdentityType" `
+                                        -ErrorMessage $errorMessage `
+                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                        -Exception $exception
+            }
+        }
+        
+        # Update function app hosting plan
+        if ($PlanName)
+        {
+            # Validate that the new plan is exists
+            $newFunctionAppPlan = GetServicePlan $PlanName
 
-                    if ($existingFunctionApp.IdentityUserAssignedIdentity -and $existingFunctionApp.IdentityUserAssignedIdentity.Count -gt 0)
-                    {
-                        $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $existingFunctionApp.IdentityUserAssignedIdentity.Keys
-                        $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-                    }
-                }
-                elseif ($existingFunctionApp.IdentityType -eq "SystemAssigned")
+            # Get the current plan in which the app is being hosted
+            $currentFunctionAppPlan = GetFunctionAppServicePlanInfo $existingFunctionApp.ServerFarmId
+
+            ValidatePlanSwitchCompatibility -CurrentServicePlan $currentFunctionAppPlan -NewServicePlan $newFunctionAppPlan
+
+            $functionAppDef.ServerFarmId = $newFunctionAppPlan.Id
+            $functionAppDef.Location = $newFunctionAppPlan.Location
+            $functionAppDef.Reserved = $newFunctionAppPlan.Reserved
+        }
+        else
+        {
+            # Copy the existing function app plan settings
+            $functionAppDef.ServerFarmId = $existingFunctionApp.ServerFarmId
+            $functionAppDef.Location = $existingFunctionApp.Location
+            $functionAppDef.Reserved = $existingFunctionApp.Reserved                
+        }
+
+        # Set Application Insights
+        $currentApplicationSettings = $existingFunctionApp.ApplicationSettings
+
+        if ($ApplicationInsightsKey)
+        {
+            $currentApplicationSettings['APPINSIGHTS_INSTRUMENTATIONKEY'] = $ApplicationInsightsKey
+        }
+        elseif ($ApplicationInsightsName)
+        {
+            $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName
+            if (-not $appInsightsProject)
+            {
+                $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "ApplicationInsightsProjectNotFound" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+            }
+
+            $currentApplicationSettings['APPINSIGHTS_INSTRUMENTATIONKEY'] = $appInsightsProject.InstrumentationKey
+        }
+
+        # Set app settings
+        foreach ($appSettingName in $currentApplicationSettings.Keys)
+        {
+            $appSettingValue = $currentApplicationSettings[$appSettingName]
+            $appSettings.Add((NewAppSetting -Name $appSettingName -Value $appSettingValue))
+        }
+
+        # Set Tag
+        if ($Tag -and ($Tag.Count -gt 0))
+        {
+            $resourceTag = NewResourceTag -Tag $Tag
+            $functionAppDef.Tag = $resourceTag
+        }
+        elseif ($existingFunctionApp.Tag.AdditionalProperties -and ($existingFunctionApp.Tag.AdditionalProperties.Count -gt 0))
+        {
+            $functionAppDef.Tag = $existingFunctionApp.Tag
+        }
+
+        # Set siteConfig properties: AlwaysOn, LinuxFxVersion, JavaVersion, PowerShellVersion
+        $siteCofig.AlwaysOn = $existingFunctionApp.SiteConfig.AlwaysOn
+        $siteCofig.LinuxFxVersion = $existingFunctionApp.SiteConfig.LinuxFxVersion            
+        $siteCofig.JavaVersion = $existingFunctionApp.SiteConfig.JavaVersion
+        $siteCofig.PowerShellVersion = $existingFunctionApp.SiteConfig.PowerShellVersion
+
+        # Set the function app Kind
+        $functionAppDef.Kind = $existingFunctionApp.Kind
+
+        # Set app settings and site configuration
+        $siteCofig.AppSetting = $appSettings
+        $functionAppDef.Config = $siteCofig
+        $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
+
+        if ($PsCmdlet.ShouldProcess($Name, "Updating function app"))
+        {
+            # Save the ErrorActionPreference
+            $currentErrorActionPreference = $ErrorActionPreference
+            $ErrorActionPreference = 'Stop'
+
+            try
+            {
+                Az.Functions.internal\Set-AzFunctionApp @PSBoundParameters
+            }
+            catch
+            {
+                $errorMessage = GetErrorMessage -Response $_
+
+                if ($errorMessage)
                 {
-                    $functionAppDef.IdentityType = "SystemAssigned"
-                }
-                else
-                {
-                    $errorMessage = "Unknown IdentityType '$($existingFunctionApp.IdentityType)'"
                     $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "UnknownIdentityType" `
+                    ThrowTerminatingError -ErrorId "FailedToUdpateFunctionApp" `
                                             -ErrorMessage $errorMessage `
                                             -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                             -Exception $exception
                 }
+
+                throw $_
             }
-            
-            # Update function app hosting plan
-            if ($PlanName)
+            finally
             {
-                # Validate that the new plan is exists
-                $newFunctionAppPlan = GetServicePlan $PlanName
-
-                # Get the current plan in which the app is being hosted
-                $currentFunctionAppPlan = GetFunctionAppServicePlanInfo $existingFunctionApp.ServerFarmId
-
-                ValidatePlanSwitchCompatibility -CurrentServicePlan $currentFunctionAppPlan -NewServicePlan $newFunctionAppPlan
-
-                $functionAppDef.ServerFarmId = $newFunctionAppPlan.Id
-                $functionAppDef.Location = $newFunctionAppPlan.Location
-                $functionAppDef.Reserved = $newFunctionAppPlan.Reserved
-            }
-            else
-            {
-                # Copy the existing function app plan settings
-                $functionAppDef.ServerFarmId = $existingFunctionApp.ServerFarmId
-                $functionAppDef.Location = $existingFunctionApp.Location
-                $functionAppDef.Reserved = $existingFunctionApp.Reserved                
-            }
-
-            # Set Application Insights
-            $currentApplicationSettings = $existingFunctionApp.ApplicationSettings
-
-            if ($ApplicationInsightsKey)
-            {
-                $currentApplicationSettings['APPINSIGHTS_INSTRUMENTATIONKEY'] = $ApplicationInsightsKey
-            }
-            elseif ($ApplicationInsightsName)
-            {
-                $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName
-                if (-not $appInsightsProject)
-                {
-                    $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "ApplicationInsightsProjectNotFound" `
-                                        -ErrorMessage $errorMessage `
-                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                        -Exception $exception
-                }
-
-                $currentApplicationSettings['APPINSIGHTS_INSTRUMENTATIONKEY'] = $appInsightsProject.InstrumentationKey
-            }
-
-            # Set app settings
-            foreach ($appSettingName in $currentApplicationSettings.Keys)
-            {
-                $appSettingValue = $currentApplicationSettings[$appSettingName]
-                $appSettings.Add((NewAppSetting -Name $appSettingName -Value $appSettingValue))
-            }
-
-            # Set Tag
-            if ($Tag -and ($Tag.Count -gt 0))
-            {
-                $resourceTag = NewResourceTag -Tag $Tag
-                $functionAppDef.Tag = $resourceTag
-            }
-            elseif ($existingFunctionApp.Tag.AdditionalProperties -and ($existingFunctionApp.Tag.AdditionalProperties.Count -gt 0))
-            {
-                $functionAppDef.Tag = $existingFunctionApp.Tag
-            }
-
-            # Set siteConfig properties: AlwaysOn, LinuxFxVersion, JavaVersion, PowerShellVersion
-            $siteCofig.AlwaysOn = $existingFunctionApp.SiteConfig.AlwaysOn
-            $siteCofig.LinuxFxVersion = $existingFunctionApp.SiteConfig.LinuxFxVersion            
-            $siteCofig.JavaVersion = $existingFunctionApp.SiteConfig.JavaVersion
-            $siteCofig.PowerShellVersion = $existingFunctionApp.SiteConfig.PowerShellVersion
-
-            # Set the function app Kind
-            $functionAppDef.Kind = $existingFunctionApp.Kind
-
-            # Set app settings and site configuration
-            $siteCofig.AppSetting = $appSettings
-            $functionAppDef.Config = $siteCofig
-            $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
-
-            if ($PsCmdlet.ShouldProcess($Name, "Updating function app"))
-            {
-                # Save the ErrorActionPreference
-                $currentErrorActionPreference = $ErrorActionPreference
-                $ErrorActionPreference = 'Stop'
-
-                try
-                {
-                    Az.Functions.internal\Set-AzFunctionApp @PSBoundParameters
-                }
-                catch
-                {
-                    $errorMessage = GetErrorMessage -Response $_
-
-                    if ($errorMessage)
-                    {
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "FailedToUdpateFunctionApp" `
-                                              -ErrorMessage $errorMessage `
-                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                              -Exception $exception
-                    }
-
-                    throw $_
-                }
-                finally
-                {
-                    # Reset the ErrorActionPreference
-                    $ErrorActionPreference = $currentErrorActionPreference
-                }
+                # Reset the ErrorActionPreference
+                $ErrorActionPreference = $currentErrorActionPreference
             }
         }
     }

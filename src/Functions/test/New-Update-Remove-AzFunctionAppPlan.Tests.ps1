@@ -13,14 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunctionAppPlan E2E' {
 
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
-
     It "Validate New-AzFunctionAppPlan, Update-AzFunctionAppPlan and Remove-AzFunctionAppPlan" {
 
         $planName = $env.functionAppPlanName
@@ -65,12 +57,15 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
         }
         finally
         {
-            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
-    It "Validate New-AzFunctionAppPlan, Update-AzFunctionAppPlan and Remove-AzFunctionAppPlan with piping" {
+    It "Validate New-AzFunctionAppPlan, Update-AzFunctionAppPlan and Remove-AzFunctionAppPlan with piping (specifying InputObject)" {
 
         $planName = $env.functionAppPlanName
         $location = 'centralus'
@@ -100,8 +95,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             # Update function app plan SKU to EP2 and maxBurst to 7
             $sku = "EP2"
             $maxBurst = 7
-            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium | 
-                Update-AzFunctionAppPlan -Sku $sku -MaximumWorkerCount $maxBurst
+            Update-AzFunctionAppPlan -InputObject $plan -Sku $sku -MaximumWorkerCount $maxBurst
 
             $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $plan.WorkerType | Should -Be "Windows"
@@ -111,15 +105,22 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $plan.Capacity | Should -Be $minimumWorkerCount
             $plan.MaximumElasticWorkerCount | Should -Be $maxBurst
 
+            # Remove function app plan
+            Remove-AzFunctionAppPlan -InputObject $plan -Force
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan | Should -Be $null
         }
         finally
         {
-            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
-    It "Validate 'New-AzFunctionAppPlan -AsJob', 'Update-AzFunctionAppPlan -AsJob' and 'Remove-AzFunctionAppPlan -AsJob -Force'" {
+    It "Validate 'New-AzFunctionAppPlan -AsJob', 'Update-AzFunctionAppPlan -AsJob' and 'Remove-AzFunctionAppPlan -Force'" {
 
         $planName = $env.functionAppPlanName
         $location = 'centralus'
@@ -189,22 +190,17 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
                 $plan.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
             }
             
-            $removeFunctionAppPlanJob = Remove-AzFunctionAppPlan -Name $planName `
-                                                                 -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                                                                 -AsJob `
-                                                                 -Force                                                                 
-            
-            Write-Verbose "Remove-AzFunctionAppPlan job started." -Verbose
-            $result = WaitForJobToComplete -JobId $removeFunctionAppPlanJob.Id
-            $result.State | Should -Be "Completed"
-            $result | Remove-Job -ErrorAction SilentlyContinue
+            Remove-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
             $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $plan | Should -Be $null
         }
         finally
         {
-            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionAppPlan -Force -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }

@@ -1,0 +1,160 @@
+{
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$PUT+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01",
+      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"maximumElasticWorkerCount\": 10,\r\n    \"reserved\": false\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"EP1\",\r\n    \"capacity\": 1,\r\n    \"tier\": \"ElasticPremium\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "205" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9763b110-77af-4d62-a038-62e3ae37042e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1161" ],
+        "x-ms-correlation-request-id": [ "b974b649-c35b-42e7-81f5-7789065ce527" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064615Z:b974b649-c35b-42e7-81f5-7789065ce527" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:46:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y\",\"name\":\"Functions-MyPlan-uabqkrx68y\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":39609,\"name\":\"Functions-MyPlan-uabqkrx68y\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"subscription\":\"07308f04-ea00-494b-b320-690df74b1ce6\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-097_39609\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "542" ],
+        "x-ms-client-request-id": [ "452a4944-08f2-414a-984c-0227b74ed7bb" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1af5d9c4-e385-4b49-99bb-57faa5d52391" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11621" ],
+        "x-ms-correlation-request-id": [ "74abfd40-70db-4e9c-961b-920fc80eb8b6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064615Z:74abfd40-70db-4e9c-961b-920fc80eb8b6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:46:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y\",\"name\":\"Functions-MyPlan-uabqkrx68y\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":39609,\"name\":\"Functions-MyPlan-uabqkrx68y\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"subscription\":\"07308f04-ea00-494b-b320-690df74b1ce6\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-097_39609\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$GET+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "543" ],
+        "x-ms-client-request-id": [ "c621749d-ec0a-4183-9751-528ca468a19d" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2fe7b7e5-a5b8-47ea-b983-366b7044c77a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11620" ],
+        "x-ms-correlation-request-id": [ "66e69131-057e-4cea-9c3a-58bfd5851829" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064615Z:66e69131-057e-4cea-9c3a-58bfd5851829" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:46:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y\",\"name\":\"Functions-MyPlan-uabqkrx68y\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":39609,\"name\":\"Functions-MyPlan-uabqkrx68y\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-12thli-CentralUSwebspace\",\"subscription\":\"07308f04-ea00-494b-b320-690df74b1ce6\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-12thli\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-097_39609\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$DELETE+https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/07308f04-ea00-494b-b320-690df74b1ce6/resourceGroups/Functions-Test-Windows-Premium-12thli/providers/Microsoft.Web/serverfarms/Functions-MyPlan-uabqkrx68y?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "544" ],
+        "x-ms-client-request-id": [ "623f6bbb-f6e0-4b53-abe3-b317c4acc7bb" ],
+        "CommandName": [ "Az.Functions.internal\\Remove-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Remove-AzFunctionAppPlan_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "98d06014-2a0b-421d-b992-6c2317841449" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-correlation-request-id": [ "98d6741f-026c-498c-91b9-d558c19b868e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200511T064618Z:98d6741f-026c-498c-91b9-d558c19b868e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 11 May 2020 06:46:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

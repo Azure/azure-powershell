@@ -12,14 +12,6 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E' {
-    
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
 
     It "Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting" {
 
@@ -54,8 +46,8 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
             
             # App settings via Get-AzFunctionAppSetting
             Write-Verbose "Validate 'Get-AzFunctionAppSetting'" -Verbose
-            $appSettingsViaGetAzFunctionAppSettingWithPiping = $functionApp | Get-AzFunctionAppSetting
-            ValidateAppSetting -ExpectedAppSetting $expectedAppSettings -ActualAppSetting $appSettingsViaGetAzFunctionAppSettingWithPiping
+            $appSettingsViaGetAzFunctionAppSettingInputObject = Get-AzFunctionAppSetting -InputObject $functionApp
+            ValidateAppSetting -ExpectedAppSetting $expectedAppSettings -ActualAppSetting $appSettingsViaGetAzFunctionAppSettingInputObject
 
             # Add new app settings
             Write-Verbose "Validate 'Update-AzFunctionAppSetting'" -Verbose
@@ -67,9 +59,9 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
                 $updatedAppSettings[$appSettingName] | Should Be $appSetting1[$appSettingName]
             }
 
-            # Update app settings using piping
-            $updatedAppSettings2 = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium | 
-                                    Update-AzFunctionAppSetting -AppSetting $appSetting2
+            # Update app settings InputObject
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $updatedAppSettings2 = Update-AzFunctionAppSetting -InputObject $functionApp -AppSetting $appSetting2
             foreach ($appSettingName in $appSetting2.Keys)
             {
                 $updatedAppSettings2[$appSettingName] | Should Be $appSetting2[$appSettingName]
@@ -88,10 +80,11 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
                 $appSettings.ContainsKey($appSettingName) | Should be $false
             }
 
-            # Delete app settings using piping
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium | 
-                Remove-AzFunctionAppSetting -AppSettingName $appSetting2.Keys
-            $appSettings = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium | Get-AzFunctionAppSetting
+            # Delete app settings using InputObject
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Remove-AzFunctionAppSetting -InputObject $functionApp -AppSettingName $appSetting2.Keys
+
+            $appSettings = Get-AzFunctionAppSetting -InputObject $functionApp
             
             foreach ($appSettingName in $appSetting2.Keys)
             {
@@ -100,8 +93,11 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }

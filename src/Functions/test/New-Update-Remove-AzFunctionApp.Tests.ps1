@@ -13,15 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E' {
 
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
-
-    It "Validate Update-AzFunctionApp end to end" {
+    It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
 
         # Update-AzFunctionApp is an important scenario to validate given that in the update operation 
         # will copy the exiting function app configuration to create a new one.
@@ -73,7 +65,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $plan.Location | Should -Be "Central US"
             $plan.Name | Should -Be $planName
 
-            Write-Verbose "Update function app plan hosting plan to premium" -Verbose
+            Write-Verbose "Update function app plan hosting plan" -Verbose
             Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -PlanName $planName
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
@@ -90,7 +82,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
             # Remove the managed identity from the function app - run Update-AzFunctionApp
             Write-Verbose "Update function -> remove SystemAssigned manage identity" -Verbose
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium | Update-AzFunctionApp -IdentityType None
+            Update-AzFunctionApp -InputObject $functionApp -IdentityType None
             
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -100,8 +92,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
             # Update application insigts
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
-            $newApplInsights = $env.newApplInsights            
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium | Update-AzFunctionApp -ApplicationInsightsName $newApplInsights.Name
+            $newApplInsights = $env.newApplInsights
+            Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -118,12 +110,15 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
-    It "Validate New-AzFunctionAppPlan -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp -AsJob" {
+    It "Validate New-AzFunctionAppPlan -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
 
         $functionName = $env.functionNamePowerShell
 
@@ -162,19 +157,19 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.IdentityType | Should -Be "SystemAssigned"
             $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
 
-            Write-Verbose "Remove function app as job" -Verbose
-            $removeFunctionAppJob = Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force -AsJob
-            $result = WaitForJobToComplete -JobId $removeFunctionAppJob.Id
-            $result.State | Should -Be "Completed"
-            $result | Remove-Job -ErrorAction SilentlyContinue
+            Write-Verbose "Remove function app" -Verbose
+            Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp | Should -Be $null
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }
