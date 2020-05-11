@@ -17,6 +17,7 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -38,15 +39,26 @@ namespace Microsoft.Azure.Commands.Batch
         public byte[] RawData { get; set; }
 
         [Parameter]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public SecureString Password { get; set; }
+
+        [Parameter]
+        [ValidateNotNull]
+        public PSCertificateKind Kind { get; set; }
 
         protected override void ExecuteCmdletImpl()
         {
-            NewCertificateParameters parameters = new NewCertificateParameters(this.BatchContext, this.FilePath, this.RawData,
+            string password = this.Password?.ConvertToString();
+
+            NewCertificateParameters parameters = new NewCertificateParameters(
+                this.BatchContext,
+                this.FilePath,
+                this.RawData,
+                // If kind has been specified, take that -- otherwise, default to old logic of using password to guess
+                this.IsParameterBound(c => c.Kind) ? this.Kind : (password == null ? PSCertificateKind.Cer : PSCertificateKind.Pfx),
                 this.AdditionalBehaviors)
             {
-                Password = this.Password?.ConvertToString()
+                Password = password
             };
 
             BatchClient.AddCertificate(parameters);
