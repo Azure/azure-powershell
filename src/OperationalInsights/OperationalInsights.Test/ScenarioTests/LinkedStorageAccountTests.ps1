@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Test LinkedStorageAccountCRUD
+Test LinkedStorageAccount
 #>
-function Test-LinkedStorageAccountCRUD
+function Test-LinkedStorageAccount
 {
 	# setup
 	$rgname = Get-ResourceGroupName

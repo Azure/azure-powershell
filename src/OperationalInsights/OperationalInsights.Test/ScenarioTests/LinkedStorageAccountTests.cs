@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLinkedStorageAccountCRUD()
+        public void TestLinkedStorageAccount()
         {
-            RunPowerShellTest(_logger, "Test-LinkedStorageAccountCRUD");
+            RunPowerShellTest(_logger, "Test-LinkedStorageAccount");
         }
     }
 }
