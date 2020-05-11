@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Types>
     <Type>
-    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.Site</Name>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site</Name>
         <Members>
             <AliasProperty>
                 <Name>Status</Name>
@@ -18,7 +18,7 @@
         </Members>
     </Type>
     <Type>
-    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.AppServicePlan</Name>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan</Name>
         <Members>
             <AliasProperty>
                 <Name>ResourceGroupName</Name>

@@ -2,7 +2,6 @@ function Stop-AzFunctionApp {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='StopByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Stops a function app.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='StopByName', Mandatory=$true, HelpMessage='The name of function app.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
@@ -24,7 +23,7 @@ function Stop-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
         [ValidateNotNullOrEmpty()]
         ${InputObject},
 
@@ -91,11 +90,11 @@ function Stop-AzFunctionApp {
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
+                $PSBoundParameters.Remove("InputObject")  | Out-Null
             }
 
             $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
-            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+            $PSBoundParameters.Add("InputObject", $functionsIdentity)  | Out-Null
 
             # Set the name of the function app for the ShouldProcess and ShouldContinue calls.
             $Name = $InputObject.Name
@@ -108,7 +107,7 @@ function Stop-AzFunctionApp {
                 # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
                 if ($PSBoundParameters.ContainsKey("Force"))
                 {
-                    $null = $PSBoundParameters.Remove("Force")
+                    $PSBoundParameters.Remove("Force")  | Out-Null
                 }
 
                 Az.Functions.internal\Stop-AzFunctionApp @PSBoundParameters

@@ -1,11 +1,11 @@
 function Get-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets function apps in a subscription.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     [CmdletBinding(DefaultParametersetname="GetAll")]
     param(
         [Parameter(Mandatory=$true, ParameterSetName="ByName", HelpMessage='The Azure subscription ID.')]
-        [Parameter(ParameterSetName="BySubscriptionId")]
+        [Parameter(ParameterSetName="GetAll")]
+        [Parameter(ParameterSetName="ByResourceGroupName")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
@@ -31,7 +31,7 @@ function Get-AzFunctionApp {
         [System.String]
         ${Location},
         
-        [Parameter(Mandatory=$false, ParameterSetName="ByName", HelpMessage='Use to specify whether to include deployment slots in results.')]
+        [Parameter(Mandatory=$false, HelpMessage='Use to specify whether to include deployment slots in results.')]
         [System.Management.Automation.SwitchParameter]
         ${IncludeSlot},
 
@@ -93,7 +93,7 @@ function Get-AzFunctionApp {
             if ($PSBoundParameters.ContainsKey("Location"))
             {
                 $locationToUse = $Location
-                $null = $PSBoundParameters.Remove("Location")
+                $PSBoundParameters.Remove("Location") | Out-Null
             }
 
             $apps = @(Az.Functions.internal\Get-AzFunctionApp)

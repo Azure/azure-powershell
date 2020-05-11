@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Functions service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -46,11 +46,46 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
+### Suppression
+
+``` yaml
+directive:
+  - suppress: XmsResourceInPutResponse
+    from: WebApps.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}"].put
+    reason: Model type is not an Azure resource
+  - suppress: RequiredPropertiesMissingInResourceModel
+    from: WebApps.json
+    where: $.definitions.KeyInfo
+    reason: Model type is not an Azure resource
+  - suppress: BodyTopLevelProperties
+    from: WebApps.json
+    where: $.definitions.KeyInfo.properties
+    reason: Model type is not an Azure resource
+```
+
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/web/resource-manager/readme.md
-module-version: 0.0.2
+  - $(this-folder)/../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/Domains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/TopLevelDomains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/DomainRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Certificates.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/CommonDefinitions.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/DeletedWebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Diagnostics.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Provider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Recommendations.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServiceEnvironments.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServicePlans.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceHealthMetadata.json
+module-version: 1.0.0
 title: Functions
 subject-prefix: ''
 
@@ -66,6 +101,18 @@ metadata:
   projectUri: https://github.com/Azure/azure-powershell
 
 directive:
+  - from: WebApps.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.200
+    transform: delete $.schema
+  - from: WebApps.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.202
+    transform: delete $.schema
+  - from: WebApps.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.204
+    transform: delete $.schema
+  - from: Diagnostics.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute"].post
+    transform: delete $."x-ms-examples"
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
@@ -107,8 +154,8 @@ directive:
       model-name: GeoRegion
     set:
       format-table:
-        exclude-properties:
-          - Kind
+        properties:
+          - Name
   - where:
       model-name: AppServicePlan
     set:
@@ -139,6 +186,9 @@ directive:
     hide: true
   - where:
       subject: (.*)NameAvailability(.*)
+    hide: true
+  - where:
+      subject: (.*)WebAppConfiguration(.*)
     hide: true
 # Cmdlets to remove
   - where:
@@ -289,13 +339,7 @@ directive:
       subject: (.*)SubscriptionDeployment(.*)
     remove: true
   - where:
-      subject: (.*)WebAppAuthSetting(.*)
-    remove: true
-  - where:
       subject: (.*)WebAppAzureStorage(.*)
-    remove: true
-  - where:
-      subject: (.*)WebAppConfiguration(.*)
     remove: true
   - where:
       subject: (.*)WebAppConnection(.*)
@@ -349,12 +393,6 @@ directive:
       subject: (.*)AzWebAppWeb(.*)
     remove: true
   - where:
-      subject: (.*)WebAppSite(.*)
-    remove: true
-  - where:
-      subject: (.*)WebAppSite(.*)
-    remove: true
-  - where:
       subject: (.*)Execute(.*)
     remove: true
   - where:
@@ -374,9 +412,6 @@ directive:
     remove: true
   - where:
       subject: (.*)ManagedHosting(.*)
-    remove: true
-  - where:
-      subject: (.*)SiteInstance(.*)
     remove: true
   - where:
       subject: (.*)WebAppFrom(.*)
@@ -444,13 +479,17 @@ directive:
   - where:
       subject: (.*)ContainerSetting(.*)
     remove: true
+  - where:
+      subject: (.*)StaticSite(.*)
+    remove: true
 ```
 
 ``` yaml
 
 # Add Storage and AppInsights cmdlet subset
 require:
-  - $(this-folder)/../helpers/Storage/readme.md
-  - $(this-folder)/../helpers/AppInsights/readme.md
+  - $(this-folder)/../helpers/Storage/readme.noprofile.md
+  - $(this-folder)/../helpers/AppInsights/readme.noprofile.md
+  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
   
 ```
