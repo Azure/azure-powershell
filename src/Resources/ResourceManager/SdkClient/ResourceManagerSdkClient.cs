@@ -262,14 +262,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deploymentExtended =  this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
-                deploymentOperationError,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError, parameters.DeploymentName));
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError, 
+                    parameters.DeploymentName, 
+                    deploymentExtended?.Properties?.CorrelationId));
             }
 
             return deploymentExtended;
@@ -318,7 +319,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,
-            DeploymentOperationErrorInfo deploymentOperationError,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -349,10 +349,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
-                    deploymentOperationError.SetCorrelationIdFromResponseHeaders(getResult?.Response);
-
                     deployment = getResult.Body;
                     var response = getResult.Response;
+
                     if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
                     {
                         step = response.Headers.RetryAfter.Delta.Value.Seconds;
@@ -1702,7 +1701,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return null;
         }
 
-        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null)
+        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
         {
             if (errorInfo.ErrorMessages.Count == 0)
                 return String.Empty;
@@ -1726,7 +1725,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     .AppendLine());
 
             // Add correlationId
-             sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, errorInfo.CorrelationId);
+             sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, correlationId);
 
             return sb.ToString();
         }

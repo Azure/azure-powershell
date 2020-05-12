@@ -34,12 +34,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public DeploymentOperationErrorInfo()
         {
             ErrorMessages = new List<ErrorResponse>();
-            CorrelationId = string.Empty;
         }
 
         public List<ErrorResponse> ErrorMessages { get; private set; }
-
-        public string CorrelationId { get; private set; }
 
         #region Public Methods
 
@@ -50,15 +47,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             if (error != null)
             {    
                 ErrorMessages.Add(error);
-            }
-        }
-        public void SetCorrelationIdFromResponseHeaders(HttpResponseMessage response)
-        {
-            CorrelationId = string.Empty;
-
-            if (response?.Headers != null && response.Headers.TryGetValues("x-ms-request-id", out IEnumerable<string> requestIdValues))
-            {
-                CorrelationId = string.Join(";", requestIdValues);
             }
         }
         #endregion
