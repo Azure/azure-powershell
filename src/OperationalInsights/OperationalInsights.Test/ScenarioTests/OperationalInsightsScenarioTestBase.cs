@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.OperationalInsights;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -42,10 +43,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         {
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient(context);
+            var storageManagementClient = GetStorageManagementClient(context);
 
             _helper.SetupManagementClients(
                 operationalInsightsManagementClient,
-                resourceManagementClient);
+                resourceManagementClient,
+                storageManagementClient);
         }
 
         protected void SetupDataClient(RestTestFramework.MockContext context)
@@ -104,7 +107,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    _helper.GetRMModulePath(@"AzureRM.Storage.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }
@@ -118,6 +122,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

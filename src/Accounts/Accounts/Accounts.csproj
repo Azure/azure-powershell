@@ -22,6 +22,8 @@
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Azure.Core\PreloadAssemblies\*.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\Azure.Core\NetCoreAssemblies\*.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />

@@ -75,7 +75,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile', 
-               'Get-AzLogProfile', 'Add-AzLogProfile', 'Get-AzLog', 
+               'Get-AzLogProfile', 'Add-AzLogProfile', 'Get-AzActivityLog', 
                'Set-AzDiagnosticSetting', 'Get-AzDiagnosticSetting', 
                'Remove-AzDiagnosticSetting', 'New-AzAutoscaleNotification', 
                'New-AzAutoscaleProfile', 'New-AzAutoscaleRule', 
@@ -113,7 +113,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @("Get-AzLog")
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

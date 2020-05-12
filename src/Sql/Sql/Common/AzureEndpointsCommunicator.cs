@@ -347,13 +347,18 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
-        internal void AssignRoleForServerIdentityOnStorage(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
+        internal void AssignRoleForServerIdentityOnStorageIfNotAssigned(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
         {
+            if (IsRoleAssignedForServerIdentitiyOnStorage(storageAccountResourceId, principalId))
+            {
+                return;
+            }
+
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
             string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-01-01-preview";
 
-            string roleDefinitionId = $"/subscriptions/{GetStorageAccountSubscription(storageAccountResourceId)}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe";
+            string roleDefinitionId = $"/subscriptions/{GetStorageAccountSubscription(storageAccountResourceId)}/providers/Microsoft.Authorization/roleDefinitions/{StorageBlobDataContributorId}";
             string content = $"{{\"properties\": {{ \"roleDefinitionId\": \"{roleDefinitionId}\", \"principalId\": \"{principalId}\", \"principalType\": \"ServicePrincipal\"}}}}";
 
             int numberOfTries = 20;
@@ -361,6 +366,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
             var client = GetCurrentResourcesClient(Context);
             HttpResponseMessage response = null;
             bool isARetry = false;
+            System.Net.HttpStatusCode responseStatusCode;
+            string responseContent = null;
             do
             {
                 if (isARetry)
@@ -374,18 +381,44 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     RequestUri = new Uri(uri),
                     Content = new StringContent(content, Encoding.UTF8, "application/json")
                 };
-                client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-                response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
-                if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                if (response.IsSuccessStatusCode)
                 {
                     return;
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                {
+                    throw new Exception(string.Format(Properties.Resources.AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden, storageAccountResourceId));
+                }
 
+                responseStatusCode = response.StatusCode;
+                responseContent = response.Content.ReadAsStringAsync().Result;
                 numberOfTries--;
                 isARetry = true;
-            } while (response.StatusCode == System.Net.HttpStatusCode.BadRequest && numberOfTries > 0);
+            } while (numberOfTries > 0);
 
-            throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId));
+            throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId, responseStatusCode.ToString(), responseContent));
+        }
+
+        private bool IsRoleAssignedForServerIdentitiyOnStorage(string storageAccountResourceId, Guid principalId)
+        {
+            Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/?api-version=2018-01-01-preview&$filter=assignedTo('{principalId}')";
+            JToken roleDefinitionsToken = SendAsync(uri, HttpMethod.Get,
+                new Exception(string.Format(Properties.Resources.FailedToGetRoleAssignmentsForStorageAccount, storageAccountResourceId))).Result;
+            try
+            {
+                JArray roleDefinitionsArray = (JArray)roleDefinitionsToken["value"];
+                return roleDefinitionsArray.Any((token =>
+                {
+                    JToken roleDefinitionId = token["properties"]["roleDefinitionId"];
+                    return roleDefinitionId != null && roleDefinitionId.ToString().Contains(StorageBlobDataContributorId);
+                }));
+            }
+            catch (Exception) { }
+
+            return false;
         }
 
         internal bool IsStorageAccountInVNet(string storageAccountResourceId)
@@ -521,5 +554,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private const string PrimaryKey = "primaryKey";
 
         private const string SecondaryKey = "secondaryKey";
+
+        private const string StorageBlobDataContributorId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe";
     }
 }

@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)?api-version=2019-08-01.10.0&$select=thumbprint%2Cstate",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DMUU0OTRBNDE1MTQ5QzVGMjExQzQ3NzhCNTJGMkU4MzRBMDcyNDdDKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD10aHVtYnByaW50JTJDc3RhdGU=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)?api-version=2020-03-01.11.0&$select=thumbprint%2Cstate",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DMUU0OTRBNDE1MTQ5QzVGMjExQzQ3NzhCNTJGMkU4MzRBMDcyNDdDKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjAmJHNlbGVjdD10aHVtYnByaW50JTJDc3RhdGU=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f93525a9-1a29-4b9a-9d7b-0e834bb441d1"
+          "44eaf27f-5496-416a-a462-668152bea5f2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:42 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -28,7 +28,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "36c16fba-0b83-4928-bfe2-03fee5a42e48"
+          "73872de6-8d40-4383-984d-a6fffa942579"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,7 +40,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ],
         "Content-Length": [
           "363"
@@ -49,29 +49,29 @@
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"CertificateNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified certificate does not exist.\\nRequestId:36c16fba-0b83-4928-bfe2-03fee5a42e48\\nTime:2019-09-06T22:46:43.3807088Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"CertificateNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified certificate does not exist.\\nRequestId:73872de6-8d40-4383-984d-a6fffa942579\\nTime:2020-04-10T23:35:24.2310750Z\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/certificates?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"certificateFormat\": \"cer\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "bde689e2-1f28-4f26-9529-6f385cea03c4"
+          "10ef11f4-adce-4c3b-87b5-18e3800487e1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -92,7 +92,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "af9131c8-ed11-482f-8e16-841b3416f9d9"
+          "6ed60707-f9fd-437a-88cb-1d8ae443b89d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,32 +107,32 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTktMDgtMDEuMTAuMA==",
+      "RequestUri": "/pools?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"certPool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"certificateReferences\": [\r\n    {\r\n      \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"storeLocation\": \"currentuser\",\r\n      \"storeName\": \"My\",\r\n      \"visibility\": [\r\n        \"task\"\r\n      ]\r\n    }\r\n  ]\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "342e4820-fa1c-4342-8602-5877af68da5c"
+          "a5e1dec2-7ea9-4bb8-9e5b-1ac2bf093504"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -147,7 +147,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7331C172FD4AF"
+          "0x8D7DDA7D7CF78A9"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/certPool"
@@ -156,7 +156,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "05aa0317-d370-4d80-8194-0f87ff06123a"
+          "bf510a39-4fd9-4ee9-998c-067f90e7b115"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,35 +171,35 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/certPool"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ],
         "Last-Modified": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:24 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "21f7ede1-73fd-4888-8ce5-854c2794fe53"
+          "4cf7fa08-93b8-4797-83c2-302819287e13"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -214,7 +214,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "65c60a44-5159-44f0-bafd-9987a304ed2d"
+          "958ea555-d654-4ad8-aa95-04fbc312cd03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -226,32 +226,32 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "33e18a8a-4ac6-41aa-82e3-8b06d52e4f11"
+          "cd1046f9-5090-41a6-9101-da1cfbf5043c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:56 GMT"
+          "Fri, 10 Apr 2020 23:36:38 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -266,7 +266,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "926a42dc-5d4a-4a3b-9746-eaef151a6a25"
+          "b4a651f6-1c96-4915-b432-6f7665733647"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -278,32 +278,32 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:56 GMT"
+          "Fri, 10 Apr 2020 23:36:38 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "8084fa6b-edef-4c86-b6be-1ed4fde6a6c1"
+          "d3e52791-05a1-4c7d-8ec2-83050df60aa1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -315,7 +315,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "55305b0b-b065-42bd-94f4-d7d25035542e"
+          "5a7f0725-b72a-4452-a854-e5601db4de29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -327,35 +327,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:43 GMT"
+          "Fri, 10 Apr 2020 23:35:23 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "4ea7ed09-d779-41f9-a777-90d291ad3296"
+          "5e4ccf70-a638-4b1a-a228-49e5e9a7ce39"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:46:53 GMT"
+          "Fri, 10 Apr 2020 23:35:34 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -367,7 +367,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "a659f8f4-6515-49cd-847d-e164e1b11d6f"
+          "1689cbb1-ad52-4f22-93fb-aaa28e6c1836"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -379,35 +379,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:46:53 GMT"
+          "Fri, 10 Apr 2020 23:35:34 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "24bbceea-666b-4f4d-8b98-6762aed37f2f"
+          "863a90e4-e90b-4d27-aaf2-24f1aa3834c1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:03 GMT"
+          "Fri, 10 Apr 2020 23:35:44 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -419,7 +419,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "77946968-b29d-40f4-88b5-925669632833"
+          "fa220a3d-6233-4ca7-add1-81580bd7f76d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -431,35 +431,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:03 GMT"
+          "Fri, 10 Apr 2020 23:35:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b36d4f9d-c0d7-4bf9-8faa-94307aa34de1"
+          "5f732892-83f0-446a-aef4-4511b8be8b3c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:13 GMT"
+          "Fri, 10 Apr 2020 23:35:54 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -471,7 +471,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "eaf52fab-1da3-4476-86b2-0ac046f13a9c"
+          "81e9f51a-4ba9-478e-9889-9940401749aa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -483,35 +483,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:13 GMT"
+          "Fri, 10 Apr 2020 23:35:54 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f25e9ff6-2639-4cce-8487-2de10db8f2fa"
+          "ec8c3a30-ef9a-41b5-8f29-8557bdae7479"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:24 GMT"
+          "Fri, 10 Apr 2020 23:36:05 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -523,7 +523,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "44bf077e-78c8-4b4f-82ab-d1eadbaeeb68"
+          "4e5895b9-ca0e-44ec-b05c-52790401b91a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -535,35 +535,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:24 GMT"
+          "Fri, 10 Apr 2020 23:36:05 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3b4593e3-3aaf-49df-9a6e-22ba1443fd00"
+          "bf768bff-7152-49a7-b4cf-1fecc8b21e68"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:34 GMT"
+          "Fri, 10 Apr 2020 23:36:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -575,7 +575,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e575b7a6-fda1-4c59-bbf9-5d7f18be1e3e"
+          "e047d05b-ccd0-4e64-be04-f623063f17a5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -587,35 +587,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:34 GMT"
+          "Fri, 10 Apr 2020 23:36:15 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "dd91a642-62cf-426f-8069-9b2c53a53860"
+          "9630995f-f443-40c3-b561-8dced819c866"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:44 GMT"
+          "Fri, 10 Apr 2020 23:36:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -627,7 +627,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "88ac097e-7bba-4292-93ce-7d80bb957e69"
+          "5aa941fb-0aec-4cba-b3d5-9b49c8e007ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -639,35 +639,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:43 GMT"
+          "Fri, 10 Apr 2020 23:36:25 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.3930057Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deleting\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.4066544Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d9ae07b1-fdda-4e5b-8039-1389fee66731"
+          "7647cd21-ee7c-48c4-b67f-a871c3be14cf"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:54 GMT"
+          "Fri, 10 Apr 2020 23:36:35 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -679,7 +679,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "d7d7826b-69bd-4a23-9f1c-6259ea61e725"
+          "124b7c32-1f2f-4c53-93ec-b91f8306a70d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -691,35 +691,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:54 GMT"
+          "Fri, 10 Apr 2020 23:36:35 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:47:44.4294459Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:36:25.9569374Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "08b9c6d7-3ed8-443a-9481-62403c6be660"
+          "eeb6b9e2-1414-43f0-b5a1-001c5e140df4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:55 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -731,7 +731,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "36e3a935-038f-460d-ad3d-9527e599ce87"
+          "896c0fb1-ec3c-4f11-80b4-27014e4496b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -743,35 +743,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:54 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:47:44.4294459Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:36:25.9569374Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "6ee0180c-d8b5-4257-a7f4-f33b7c77aff4"
+          "9b7ce1fe-8dbf-43b8-b3a3-718cdb10dd90"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:55 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -783,7 +783,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "81aa8288-0fb0-4e80-a3bc-3b1c2a81f3ce"
+          "f773f003-333a-4a4c-8393-ccaf6e11855e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -795,35 +795,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:54 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2019-09-06T22:47:44.4294459Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2019-09-06T22:46:43.725209Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n  \"state\": \"deletefailed\",\r\n  \"stateTransitionTime\": \"2020-04-10T23:36:25.9569374Z\",\r\n  \"previousState\": \"deleting\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T23:35:24.7459069Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"deleteCertificateError\": {\r\n    \"code\": \"PoolsReferencingCertificate\",\r\n    \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Pools\",\r\n        \"value\": \"certPool\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)/canceldelete?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKS9jYW5jZWxkZWxldGU/YXBpLXZlcnNpb249MjAxOS0wOC0wMS4xMC4w",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)/canceldelete?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKS9jYW5jZWxkZWxldGU/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "12eaf86e-c671-4bed-aa92-754c21d91315"
+          "da7705c2-6774-4f5c-9792-689ac80b6742"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:55 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -835,7 +835,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "821a68d7-bf1d-4dba-b6a1-4b3e6265979c"
+          "95dbc565-319d-45c4-a1b1-e50414bfbeb3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -850,7 +850,7 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)/canceldelete"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:54 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "Content-Length": [
           "0"
@@ -860,25 +860,25 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/certificates?api-version=2019-08-01.10.0&$filter=state%20eq%20%27active%27",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJGZpbHRlcj1zdGF0ZSUyMGVxJTIwJTI3YWN0aXZlJTI3",
+      "RequestUri": "/certificates?api-version=2020-03-01.11.0&$filter=state%20eq%20%27active%27",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjAmJGZpbHRlcj1zdGF0ZSUyMGVxJTIwJTI3YWN0aXZlJTI3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "59d8acc6-338b-43fe-bf2e-2991ae977806"
+          "fa76e78e-0bae-43b5-9454-5c5e034c22f5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:55 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -890,7 +890,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "cfab7849-ea60-44ff-8df0-22ac38c0e2cb"
+          "cbc2ce7b-3ae1-4b65-ad83-ac1c41b6c669"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -902,35 +902,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:55 GMT"
+          "Fri, 10 Apr 2020 23:36:37 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-09-06T22:47:55.8324242Z\",\r\n      \"previousState\": \"deletefailed\",\r\n      \"previousStateTransitionTime\": \"2019-09-06T22:47:44.4294459Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-04-10T23:36:37.8201185Z\",\r\n      \"previousState\": \"deletefailed\",\r\n      \"previousStateTransitionTime\": \"2020-04-10T23:36:25.9569374Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/certPool?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzL2NlcnRQb29sP2FwaS12ZXJzaW9uPTIwMTktMDgtMDEuMTAuMA==",
+      "RequestUri": "/pools/certPool?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzL2NlcnRQb29sP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c2fa3662-0d66-42cf-8c97-bede17fec29f"
+          "f04415ac-a454-4044-a5f8-43d936a00d0e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 22:47:56 GMT"
+          "Fri, 10 Apr 2020 23:36:38 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -945,7 +945,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "be8f8ed3-60ef-416d-8f45-e83631c74d11"
+          "e6afcb36-6da1-454d-88a8-9c25a01f9355"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -957,7 +957,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 22:47:56 GMT"
+          "Fri, 10 Apr 2020 23:36:38 GMT"
         ]
       },
       "ResponseBody": "",

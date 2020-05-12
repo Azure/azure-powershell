@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Parameters: `RetentionInDays` `PublicNetworkAccessForIngestion` `PublicNetworkAccessForQuery` for `New-AzApplicationInsights`
+* Created cmdlet `Update-AzApplicationInsights`
+* Created cmdlets for Linked Storage Account
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

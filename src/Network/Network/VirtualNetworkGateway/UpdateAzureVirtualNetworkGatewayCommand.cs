@@ -167,6 +167,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "P2S multiple external Radius servers.")]
+        public PSRadiusServer[] RadiusServerList { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "P2S AAD authentication option:AadTenantUri.")]
         [ValidateNotNullOrEmpty]
@@ -265,6 +272,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
                  this.RadiusServerSecret != null ||
+                 this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
                  this.AadTenantUri != null) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
@@ -298,15 +306,23 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy?.ToList();
             }
 
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration) && ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration))
+            {
+                throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
+            }
+
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                if (this.RadiusServerSecret == null || this.RadiusServerAddress == null)
-                {
-                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
-                }
-
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = null;
+            }
+
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration))
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = null;
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = null;
             }
 
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration))

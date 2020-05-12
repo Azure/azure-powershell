@@ -4886,6 +4886,74 @@
                 <Label>ManualPrivateLinkServiceConnections</Label>
                 <PropertyName>ManualPrivateLinkServiceConnectionsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>CustomDnsConfigs</Label>
+                <PropertyName>CustomDnsConfigsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneGroup</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneConfigs</Label>
+                <PropertyName>PrivateDnsZoneConfigsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneConfig</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneId</Label>
+                <PropertyName>PrivateDnsZoneId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RecordSets</Label>
+                <PropertyName>RecordSetsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

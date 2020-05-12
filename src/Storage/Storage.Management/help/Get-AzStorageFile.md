@@ -44,11 +44,11 @@ You can use the **IsDirectory** property to distinguish between folders and file
 
 ### Example 1: List directories in a share
 ```
-PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "CloudFileDirectory"}
+PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "AzureStorageFileDirectory"}
 ```
 
 This command lists only the directories in the share ContosoShare06.
-It first retrieves both files and directories, passes them to the **where** operator by using the pipeline operator, then discards any objects whose type is not "CloudFileDirectory".
+It first retrieves both files and directories, passes them to the **where** operator by using the pipeline operator, then discards any objects whose type is not "AzureStorageFileDirectory".
 
 ### Example 2: List a File Directory
 ```
@@ -136,12 +136,12 @@ You can also use the **Get-AzStorageFile** cmdlet to obtain a directory.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
-Aliases:
+Aliases: CloudFileDirectory
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -188,12 +188,12 @@ If you specify this parameter, do not specify the *Context* parameter.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
-Aliases:
+Aliases: CloudFileShare
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -226,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFile
 
 ## NOTES
 

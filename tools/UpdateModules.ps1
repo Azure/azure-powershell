@@ -96,7 +96,7 @@ function New-ModulePsm1 {
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
         #Az.Storage is using Azure.Core, so need to check PS version
-        if ($IsNetcore -and $file.BaseName -eq 'Az.Storage')
+        if ($IsNetcore)
         {
             $template = $template -replace "%AZURECOREPREREQUISITE%", 
 @"
@@ -108,10 +108,6 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
     }
 }
 "@
-        }
-        else
-        {
-            $template = $template -replace "%AZURECOREPREREQUISITE%", ""
         }
         # Replace Az or AzureRM with correct information
         if ($IsNetcore)

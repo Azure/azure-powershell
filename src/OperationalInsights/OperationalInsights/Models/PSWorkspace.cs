@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSWorkspace: IOperationalInsightWorkspace
+    public class PSWorkspace
     {
         public PSWorkspace()
         {
@@ -38,14 +38,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            if (workspace!= null)
-            {
-                this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
-                this.retentionInDays = workspace.RetentionInDays;
-                this.CustomerId = new Guid(workspace.CustomerId);
-                this.PortalUrl = workspace.PortalUrl;
-                this.ProvisioningState = workspace.ProvisioningState;
-            }
+            this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
+            this.retentionInDays = workspace.RetentionInDays;
+            this.CustomerId = new Guid(workspace.CustomerId);
+            this.ProvisioningState = workspace.ProvisioningState;
+
+            this.PublicNetworkAccessForIngestion = workspace.PublicNetworkAccessForIngestion;
+            this.PublicNetworkAccessForQuery = workspace.PublicNetworkAccessForQuery;
+            this.PrivateLinkScopedResources = workspace.PrivateLinkScopedResources;
+
         }
 
         public string Name { get; set; }
@@ -62,10 +63,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public int? retentionInDays { get; set; }
 
-        public Guid? CustomerId { get; set; }
-
-        public string PortalUrl { get; set; }
+        public Guid? CustomerId { get; private set; }
 
         public string ProvisioningState { get; set; }
+
+        public string PublicNetworkAccessForIngestion { get; set; }
+
+        public string PublicNetworkAccessForQuery { get; set; }
+
+        public IList<PrivateLinkScopedResource> PrivateLinkScopedResources { get; private set; }
     }
 }
