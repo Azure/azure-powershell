@@ -90,7 +90,11 @@ CmdletsToExport = 'New-AzIoTDeviceProvisioningService',
                'Add-AzIoTDeviceProvisioningServiceCertificate', 
                'Remove-AzIoTDeviceProvisioningServiceCertificate', 
                'Set-AzIoTDeviceProvisioningServiceCertificate', 
-               'New-AzIoTDeviceProvisioningServiceCertificateVerificationCode'
+               'New-AzIoTDeviceProvisioningServiceCertificateVerificationCode',
+               'Add-AzIoTDeviceProvisioningServiceEnrollment',
+               'Get-AzIoTDeviceProvisioningServiceEnrollment',
+               'Remove-AzIoTDeviceProvisioningServiceEnrollment',
+               'Set-AzIoTDeviceProvisioningServiceEnrollment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -102,7 +106,8 @@ AliasesToExport = 'New-AzIoTDps', 'Get-AzIoTDps', 'Remove-AzIoTDps', 'Update-AzI
                'Get-AzIoTDpsHub', 'Add-AzIoTDpsHub', 'Remove-AzIoTDpsHub', 
                'Update-AzIoTDpsHub', 'Get-AzIoTDpsCertificate', 
                'Add-AzIoTDpsCertificate', 'Remove-AzIoTDpsCertificate', 
-               'Set-AzIoTDpsCertificate', 'New-AzIoTDpsCVC'
+               'Set-AzIoTDpsCertificate', 'New-AzIoTDpsCVC', 'Add-AzIoTDPSEnrollment',
+               'Get-AzIoTDPSEnrollment', 'Remove-AzIoTDPSEnrollment', 'Set-AzIoTDPSEnrollment'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

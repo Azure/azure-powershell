@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Defines values for Re-Provision.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public enum PSReprovisionType
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        reprovisionandmigratedata,
+        reprovisionandresetdata,
+        never
     }
 }
