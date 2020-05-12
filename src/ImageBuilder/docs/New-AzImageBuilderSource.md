@@ -119,7 +119,6 @@ Accept wildcard characters: False
 Product of the purchase plan.
 
 ```yaml
-Type: System.String
 Parameter Sets: PlatformImage
 Aliases:
 

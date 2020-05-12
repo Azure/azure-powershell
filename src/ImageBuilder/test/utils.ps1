@@ -147,7 +147,7 @@ function setupEnv() {
     Write-Host -ForegroundColor Green "Start $($env.Resources.Template.templateName10) template image for test."
     Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
     Write-Host -ForegroundColor Green "Successfully started templeate image."
-    
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -157,5 +157,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
+
 }
 

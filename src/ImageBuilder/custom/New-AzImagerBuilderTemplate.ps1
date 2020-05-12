@@ -24,7 +24,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBu
 #>
 function New-AzImageBuilderTemplate {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium', DefaultParameterSetName="Name")]
     param(
         [Parameter(ParameterSetName='Name', Mandatory, HelpMessage="The name of the image Template.")]
         [Alias('Name')]
@@ -256,10 +256,6 @@ function New-AzImageBuilderTemplate {
                 $Parameter.Distribute = $Distribute
                 $Null = $PSBoundParameters.Remove('Distribute')
             }
-            # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-            #     $Parameter.IdentityType = $IdentityType
-            #     $Null = $PSBoundParameters.Remove('IdentityType')
-            # }
             $Parameter.IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]::UserAssigned
             $UserAssignedIdentities = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateIdentityUserAssignedIdentities]::new()
             $UserassignedidentitiesAdditionalproperties = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties](@{})

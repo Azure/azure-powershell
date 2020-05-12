@@ -60,7 +60,7 @@ identity-correction-for-post: true
 
 directive:
   - where:
-      verb: Set
+      verb: Set|Update
       subject: VirtualMachineImageTemplate
     remove: true
   - where:
@@ -80,11 +80,6 @@ directive:
       parameter-name: ImageTemplateName
     set:
       alias: Name
-  - where:
-      verb: Set
-      subject: ImageBuilderTemplate
-    set:
-      verb: Update
   # - where:
   #     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
   #   remove: true

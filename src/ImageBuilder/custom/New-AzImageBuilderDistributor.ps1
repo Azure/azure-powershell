@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBu
 #>
 function New-AzImageBuilderDistributor {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium', DefaultParameterSetName="ManagedImageDistributor")]
     Param(
         #region DistributorCommon
         [Parameter(Mandatory, HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]

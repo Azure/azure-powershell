@@ -27,3 +27,4 @@ PS C:\> Stop-AzImageBuilderTemplate -InputObject $template
 
 This command stops image template creation.
 
+
