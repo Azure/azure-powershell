@@ -12,15 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzImageBuilderRunOutput' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $resultsList = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $resultsList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -RunOutputName $env.Resources.RunOutputName.runOutputName20
+        $result.Name | Should -Be $env.Resources.RunOutputName.runOutputName20
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $object = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -RunOutputName $env.Resources.RunOutputName.runOutputName20
+        $result = Get-AzImageBuilderRunOutput -InputObject $object
+        $result.Name | Should -Be $env.Resources.RunOutputName.runOutputName20
     }
 }

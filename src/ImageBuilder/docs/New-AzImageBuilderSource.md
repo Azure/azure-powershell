@@ -12,22 +12,16 @@ Describes a virtual machine image source for building, customizing and distribut
 
 ## SYNTAX
 
-### ManagedImage (Default)
+### PlatformImage (Default)
+```
+New-AzImageBuilderSource -SourceTypePlatformImage [-Offer <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPublisher <String>] [-Publisher <String>] [-Sku <String>] [-Version <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManagedImage
 ```
 New-AzImageBuilderSource -SourceTypeManagedImage [-ImageId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PlatformImage
-```
-New-AzImageBuilderSource -SourceTypePlatformImage [-Offer <String>] [-Publisher <String>] [-Sku <String>]
- [-Version <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PlatformImagePlanInfo
-```
-New-AzImageBuilderSource -PlanName <String> -PlanProduct <String> -PlanPublisher <String>
- -SourceTypePlatformImage [-Offer <String>] [-Publisher <String>] [-Sku <String>] [-Version <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SharedImageVersion
@@ -96,7 +90,7 @@ Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/res
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImage, PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
 Required: False
@@ -111,10 +105,10 @@ Name of the purchase plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,11 +119,10 @@ Accept wildcard characters: False
 Product of the purchase plan.
 
 ```yaml
-Type: System.String
-Parameter Sets: PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,10 +134,10 @@ Publisher of the purchase plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +149,7 @@ Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImage, PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
 Required: False
@@ -171,7 +164,7 @@ Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImage, PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
 Required: False
@@ -201,7 +194,7 @@ Describes an image source from [Azure Gallery Images](https://docs.microsoft.com
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PlatformImage, PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
 Required: True
@@ -231,7 +224,7 @@ Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/r
 
 ```yaml
 Type: System.String
-Parameter Sets: PlatformImage, PlatformImagePlanInfo
+Parameter Sets: PlatformImage
 Aliases:
 
 Required: False

@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzImageBuilderTemplate' {
-    It 'Run' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Run' {
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
+        $template.LastRunStatus.RunState | Should -Be 'Succeeded'
     }
 
-    It 'RunViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RunViaIdentity' {
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
+        Start-AzImageBuilderTemplate -InputObject $template
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
+        $template.LastRunStatus.RunState | Should -Be 'Succeeded'
     }
 }

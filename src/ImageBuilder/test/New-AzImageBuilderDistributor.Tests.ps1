@@ -12,15 +12,21 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzImageBuilderDistributor' {
-    It 'VhdDistributor' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'VhdDistributor' {
+        $outName = 'run-template-vhd'
+        $distributor = New-AzImageBuilderDistributor -ArtifactTag @{tag='VHD'} -VhdDistributor -RunOutputName $outName
+        $distributor.RunOutputName | Should -Be $outName
     }
 
-    It 'ManagedImageDistributor' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ManagedImageDistributor' {
+        $outName = 'run-template-managedimg'
+        $distributor = New-AzImageBuilderDistributor -ManagedImageDistributor  -ArtifactTag @{tag='lucasManage'} -ImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-image' -RunOutputName $outName -Location $env.Location
+        $distributor.RunOutputName | Should -Be $outName
     }
 
-    It 'SharedImageDistributor' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SharedImageDistributor' {
+        $outName = 'run-template-sharedimg'
+        $distributor = New-AzImageBuilderDistributor -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion $env.RepLocation -RunOutputName $outName -ExcludeFromLatest $false 
+        $distributor.RunOutputName | Should -Be $outName
     }
 }

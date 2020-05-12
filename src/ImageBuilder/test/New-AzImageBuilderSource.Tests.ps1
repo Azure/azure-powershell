@@ -12,15 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzImageBuilderSource' {
-    It 'PlatformImage' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PlatformImage' {
+        $publisher = 'Canonical'
+        $offer = 'UbuntuServer'
+        $sku = '18.04-LTS'
+        $version = 'latest'
+        $planInfoPlanName = 'UbuntuServer'
+        # New-AzImageBuilderSource -SourceTypePlatformImage -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest' -PlanInfoPlanName 'Canonical' -PlanInfoPlanProduct 'UbuntuServer' -PlanInfoPlanPublisher 'Canonical'
+        {New-AzImageBuilderSource -SourceTypePlatformImage -Publisher $publisher -Offer $offer -Sku $sku -Version $version} | Should -Not -Throw 
     }
 
-    It 'ManagedImage' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ManagedImage' {
+        $imageId = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/test-linux-image'
+        {New-AzImageBuilderSource -SourceTypeManagedImage -ImageId $imageId} | Should -Not -Throw
     }
 
-    It 'SharedImageVersion' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SharedImageVersion' {
+        $imageVersionId = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/lucasimagegallery/images/myimagedefinition/versions/1.0.0'
+        {New-AzImageBuilderSource -SourceTypeSharedImageVersion -ImageVersionId $imageVersionId} | Should -Not -Throw
     }
 }

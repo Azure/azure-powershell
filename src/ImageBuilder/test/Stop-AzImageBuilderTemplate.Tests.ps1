@@ -12,11 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Stop-AzImageBuilderTemplate' {
-    It 'Cancel' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Cancel' {
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -AsJob
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        Stop-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 
-    It 'CancelViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CancelViaIdentity' {
+        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -AsJob
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        Stop-AzImageBuilderTemplate -InputObject $template
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 }
