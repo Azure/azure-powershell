@@ -49,7 +49,7 @@ function Test-CortexCRUD
 		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
 		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
 		Assert-AreEqual $virtualWanName $virtualWan.Name
-		Assert-AreEqual $false $virtualWan.AllowVnetToVnetTraffic
+		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
 		Assert-AreEqual $false $virtualWan.AllowBranchToBranchTraffic
 
         $virtualWans = Get-AzureRmVirtualWan -ResourceGroupName $rgName

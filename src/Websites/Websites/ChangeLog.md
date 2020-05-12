@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
 
 ## Version 1.8.0
 * Added support for working with webapp Traffic Routing Rules via below new cmdlets

@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.RecoveryServices.Backup;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -45,6 +46,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             get
             {
                 return this.recoveryServicesClient;
+            }
+        }
+
+        /// <summary>
+        /// Gets the value of recovery services backup client.
+        /// </summary>
+        public RecoveryServicesBackupClient GetRecoveryServicesBackupClient
+        {
+            get
+            {
+                return this.recoveryServicesBackupClient;
             }
         }
 
@@ -80,6 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         private ResourceManagementClient resourceManagementClient;
 
+        private RecoveryServicesBackupClient recoveryServicesBackupClient;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
@@ -101,6 +115,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
+                defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
+            this.recoveryServicesBackupClient =
+            AzureSession.ClientFactory.CreateArmClient<RecoveryServicesBackupClient>(
                 defaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             resourceManagementClient = AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);

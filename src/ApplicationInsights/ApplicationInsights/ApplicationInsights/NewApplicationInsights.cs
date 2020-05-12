@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
+        #region Cmdlet parameters
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -48,6 +50,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [LocationCompleter("Microsoft.Insights/components")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Position = 3,
+            Mandatory = false,
+            HelpMessage = "Retention In Days, 90 by default.")]
+        [ValidateNotNull]
+        public int? RetentionInDays;
+
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
 
         [Parameter(
             Mandatory = false,
@@ -78,6 +99,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [ValidateNotNull]
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
+
+        #endregion
 
         public override void ExecuteCmdlet()
         {
@@ -110,6 +133,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 ApplicationType = Kind,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                 RequestSource = "AzurePowerShell",
+                RetentionInDays = this.RetentionInDays == null ? null : this.RetentionInDays,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery
             };
 
             if (this.ShouldProcess(this.ResourceGroupName, $"Create Application Insights Component {this.Name}"))

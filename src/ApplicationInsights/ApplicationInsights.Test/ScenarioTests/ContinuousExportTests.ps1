@@ -35,7 +35,7 @@ function Test-GetApplicationInsightsContinuousExport
 		$dummyContainer = "dummycontianer";
 
 		$destinatinStorageAccountId = "/subscriptions/" + $dummySubId + "/resourceGroups/" + $rgname + "/providers/Microsoft.Storage/storageAccounts/"+ $dummyStorageAccount;
-		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
+		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx&sp=w";
 		
 		$documentTypes = @("Request", "Custom Event");
 		$continuousExport = New-AzApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
@@ -88,7 +88,7 @@ function Test-NewApplicationInsightsContinuousExport
 		$dummyContainer = "dummycontianer";
 
 		$destinatinStorageAccountId = "/subscriptions/" + $dummySubId + "/resourceGroups/" + $rgname + "/providers/Microsoft.Storage/storageAccounts/"+ $dummyStorageAccount;
-		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
+		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx&sp=w";
 		
 		$documentTypes = @("Request", "Custom Event");
 		$continuousExport = New-AzApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
@@ -140,7 +140,7 @@ function Test-RemoveApplicationInsightsContinuousExport
 		$dummyContainer = "dummycontianer";
 
 		$destinatinStorageAccountId = "/subscriptions/" + $dummySubId + "/resourceGroups/" + $rgname + "/providers/Microsoft.Storage/storageAccounts/"+ $dummyStorageAccount;
-		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
+		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx&sp=w";
 		
 		$documentTypes = @("Request", "Custom Event");
 		$continuousExport = New-AzApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
@@ -190,7 +190,7 @@ function Test-SetApplicationInsightsContinuousExport
 		$dummyContainer = "dummycontianer";
 
 		$destinatinStorageAccountId = "/subscriptions/" + $dummySubId + "/resourceGroups/" + $rgname + "/providers/Microsoft.Storage/storageAccounts/"+ $dummyStorageAccount;
-		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
+		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx&sp=w";
 		
 		$documentTypes = @("Request", "Custom Event");
 		$continuousExport = New-AzApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;

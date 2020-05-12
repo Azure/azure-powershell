@@ -265,6 +265,17 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Error</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                   $_.Status.Error -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                    $_.Status.GetFormattedErrorString()
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Identity</Label>
                 <ScriptBlock>$_.Identity.UserAssignedIdentities.Keys</ScriptBlock>
               </ListItem>
