@@ -1,39 +1,41 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchaintransactionnode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/remove-azblockchainmember
 schema: 2.0.0
 ---
 
-# New-AzBlockchainTransactionNode
+# Remove-AzBlockchainMember
 
 ## SYNOPSIS
-Create or update the transaction node.
+Delete a blockchain member.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-New-AzBlockchainTransactionNode -BlockchainMemberName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FirewallRule <IFirewallRule[]>] [-Location <String>] [-Password <SecureString>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzBlockchainMember -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzBlockchainMember -InputObject <IBlockchainIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the transaction node.
+Delete a blockchain member.
 
 ## EXAMPLES
 
-### Example 1: Create a blockchain transaction node
+### Example 1: Remove a blockchain member
 ```powershell
-PS C:\> $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -Name tranctionnode001 -ResourceGroupName testgroup -Location eastus -Password $passwd
+PS C:\> Remove-AzBlockchainMember -Name dolauli001 -ResourceGroupName testgroup
 
-Name             Type                                                    Location
-----             ----                                                    --------
-tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-This command creates a blockchain transaction node.
+This command removes a blockchain member.
 
 ## PARAMETERS
 
@@ -50,23 +52,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BlockchainMemberName
-Blockchain member name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -82,56 +67,37 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -FirewallRule
-Gets or sets the firewall rules.
-To construct, see NOTES section for FIREWALLRULE properties and create a hash table.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Location
-Gets or sets the transaction node location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-Transaction node name.
+Blockchain member name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: TransactionNodeName
+Parameter Sets: Delete
+Aliases: BlockchainMemberName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -147,14 +113,13 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -Password
-Sets the transaction node dns endpoint basic auth password.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +128,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -172,7 +136,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -180,7 +144,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -189,7 +152,7 @@ The subscription ID is part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -197,7 +160,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -213,7 +175,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -230,7 +191,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -238,21 +198,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode
-
-## ALIASES
+### System.Boolean
 
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
-  - `[EndIPAddress <String>]`: Gets or sets the end IP address of the firewall rule range.
-  - `[RuleName <String>]`: Gets or sets the name of the firewall rules.
-  - `[StartIPAddress <String>]`: Gets or sets the start IP address of the firewall rule range.
+
+INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
+  - `[BlockchainMemberName <String>]`: Blockchain member name.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Location Name.
+  - `[OperationId <String>]`: Operation Id.
+  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[SubscriptionId <String>]`: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
+  - `[TransactionNodeName <String>]`: Transaction node name.
 
 ## RELATED LINKS
 

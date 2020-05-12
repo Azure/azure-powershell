@@ -21,7 +21,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [LocationName <String>]: Location Name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -32,7 +32,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.blockchain/update-azblockc
 function Update-AzBlockchainTransactionNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Path')]

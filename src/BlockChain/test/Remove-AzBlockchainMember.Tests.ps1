@@ -21,7 +21,10 @@ Describe 'Remove-AzBlockchainMember' {
 
     It 'DeleteViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { Get-AzBlockchainMember -Name ("myblockchain" + $env.rstr4) -ResourceGroupName $env.resourceGroup | Remove-AzBlockchainMember } | Should -Not -Throw
+        { 
+            $member = Get-AzBlockchainMember -Name ("myblockchain" + $env.rstr4) -ResourceGroupName $env.resourceGroup 
+            Remove-AzBlockchainMember -InputObject $member.Id
+        } | Should -Not -Throw
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }

@@ -26,7 +26,10 @@ Describe 'Get-AzBlockchainMember' {
 
     It 'GetViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { Get-AzBlockchainMember -SubscriptionId $env.SubscriptionId -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup | Get-AzBlockchainMember } | Should -Not -Throw
+        { 
+            $member = Get-AzBlockchainMember -SubscriptionId $env.SubscriptionId -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+            Get-AzBlockchainMember -InputObject $member.Id
+        } | Should -Not -Throw
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }

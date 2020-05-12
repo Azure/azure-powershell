@@ -1,57 +1,36 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchaintransactionnodeapikey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchainconsortium
 schema: 2.0.0
 ---
 
-# Get-AzBlockchainTransactionNodeApiKey
+# Get-AzBlockchainConsortium
 
 ## SYNOPSIS
-List the API keys for the transaction node.
+Lists the available consortiums for a subscription.
 
 ## SYNTAX
 
 ```
-Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName <String> -ResourceGroupName <String>
- -TransactionNodeName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzBlockchainConsortium -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the API keys for the transaction node.
+Lists the available consortiums for a subscription.
 
 ## EXAMPLES
 
-### Example 1: List Api keys for a transaction node
+### Example 1: Get Blockchain consortiums.
 ```powershell
-PS C:\> Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -TransactionNodeName tranctionnode001
+PS C:\> Get-AzBlockchainConsortium -Location eastus
 
-KeyName Value
-------- -----
-key1    H4_GPhxbqYENxwas4Vc4l5U9
-key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 ```
 
-This command lists Api keys for a transaction node.
+This command lists the consortiums under a subscription for a specific location.
 
 ## PARAMETERS
-
-### -BlockchainMemberName
-Blockchain member name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -66,12 +45,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -Location
+Location Name.
 
 ```yaml
 Type: System.String
@@ -83,7 +60,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -100,23 +76,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TransactionNodeName
-Transaction node name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -132,7 +91,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -149,7 +107,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -159,11 +116,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortium
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

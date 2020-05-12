@@ -1,39 +1,56 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/test-azblockchainlocationnameavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchaintransactionnodeapikey
 schema: 2.0.0
 ---
 
-# Test-AzBlockchainLocationNameAvailability
+# Get-AzBlockchainTransactionNodeApiKey
 
 ## SYNOPSIS
-To check whether a resource name is available.
+List the API keys for the transaction node.
 
 ## SYNTAX
 
 ```
-Test-AzBlockchainLocationNameAvailability -LocationName <String> [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName <String> -ResourceGroupName <String>
+ -TransactionNodeName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-To check whether a resource name is available.
+List the API keys for the transaction node.
 
 ## EXAMPLES
 
-### Example 1: Check whether a resource name is available
+### Example 1: List Api keys for a transaction node
 ```powershell
-PS C:\> Test-AzBlockchainLocationNameAvailability -LocationName eastus -Name erw123 -type Microsoft.Blockchain/blockchainMembers
+PS C:\> Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -TransactionNodeName tranctionnode001
 
-Message NameAvailable Reason
-------- ------------- ------
-        True          NotSpecified
+KeyName Value
+------- -----
+key1    H4_GPhxbqYENxwas4Vc4l5U9
+key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 ```
 
-The command checks whether a resource name is available.
+This command lists Api keys for a transaction node.
 
 ## PARAMETERS
+
+### -BlockchainMemberName
+Blockchain member name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -48,11 +65,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -LocationName
-Location Name.
+### -ResourceGroupName
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -64,23 +81,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Name
-Gets or sets the name to check.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -88,7 +88,7 @@ Gets the subscription Id which uniquely identifies the Microsoft Azure subscript
 The subscription ID is part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -97,23 +97,21 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -Type
-Gets or sets the type of the resource to check.
+### -TransactionNodeName
+Transaction node name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -129,7 +127,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -146,7 +143,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -156,11 +152,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

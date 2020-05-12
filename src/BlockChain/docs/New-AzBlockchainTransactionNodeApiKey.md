@@ -1,61 +1,46 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchaintransactionnode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchaintransactionnodeapikey
 schema: 2.0.0
 ---
 
-# Get-AzBlockchainTransactionNode
+# New-AzBlockchainTransactionNodeApiKey
 
 ## SYNOPSIS
-Get the details of the transaction node.
+Regenerate the API keys for the blockchain member.
 
 ## SYNTAX
 
-### List (Default)
+### RegenerateExpanded (Default)
 ```
-Get-AzBlockchainTransactionNode -BlockchainMemberName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzBlockchainTransactionNode -BlockchainMemberName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzBlockchainTransactionNodeApiKey -BlockchainMemberName <String> -ResourceGroupName <String>
+ -TransactionNodeName <String> [-SubscriptionId <String>] [-KeyName <String>] [-Value <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### RegenerateViaIdentityExpanded
 ```
-Get-AzBlockchainTransactionNode -InputObject <IBlockchainIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+New-AzBlockchainTransactionNodeApiKey -InputObject <IBlockchainIdentity> [-KeyName <String>] [-Value <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the details of the transaction node.
+Regenerate the API keys for the blockchain member.
 
 ## EXAMPLES
 
-### Example 1: List transaction nodes for a blockchain member
+### Example 1: Regenerate Api keys for a transaction node
 ```powershell
-PS C:\> Get-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -ResourceGroupName testgroup
+PS C:\> New-AzBlockchainTransactionNodeApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -TransactionNodeName tranctionnode001 -KeyName key1 -Value H4_GPhxbqYENxwas4Vc4l5U9
 
-Name             Type                                                    Location
-----             ----                                                    --------
-tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
+KeyName Value
+------- -----
+key1    0-UCaNSNfS0lwRKRyv09sgb-
+key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 ```
 
-This command lists transaction nodes for a blockchain member.
-
-### Example 2: Get a transaction node
-```powershell
-PS C:\> Get-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -Name tranctionnode001
-
-Name             Type                                                    Location
-----             ----                                                    --------
-tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
-```
-
-This command gets a transaction node.
+This command generates Api keys for a transaction node.
 
 ## PARAMETERS
 
@@ -64,7 +49,7 @@ Blockchain member name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -72,7 +57,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -88,7 +72,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
@@ -97,7 +80,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -105,23 +88,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -Name
-Transaction node name.
+### -KeyName
+Gets or sets the API key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: TransactionNodeName
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -130,7 +111,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -138,7 +119,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -146,8 +126,8 @@ Gets the subscription Id which uniquely identifies the Microsoft Azure subscript
 The subscription ID is part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -155,7 +135,67 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -TransactionNodeName
+Transaction node name.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value
+Gets or sets the API key value.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
@@ -167,19 +207,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey
 
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
+
+INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   - `[BlockchainMemberName <String>]`: Blockchain member name.
   - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: Location Name.
+  - `[Location <String>]`: Location Name.
   - `[OperationId <String>]`: Operation Id.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[SubscriptionId <String>]`: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.

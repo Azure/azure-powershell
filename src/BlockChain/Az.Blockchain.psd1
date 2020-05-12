@@ -1,7 +1,7 @@
 @{
-  GUID = '807473b6-22c7-4e49-80d1-05b11be37c71'
+  GUID = 'ae1a09bf-916c-480c-a1bb-bace1453a91e'
   RootModule = './Az.Blockchain.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Blockchain.private.dll'
   FormatsToProcess = './Az.Blockchain.format.ps1xml'
-  CmdletsToExport = 'Get-AzBlockchainConsortium', 'Get-AzBlockchainMember', 'Get-AzBlockchainMemberApiKey', 'Get-AzBlockchainMemberConsortiumMember', 'Get-AzBlockchainSku', 'Get-AzBlockchainTransactionNode', 'Get-AzBlockchainTransactionNodeApiKey', 'New-AzBlockchainMember', 'New-AzBlockchainMemberApiKey', 'New-AzBlockchainTransactionNode', 'New-AzBlockchainTransactionNodeApiKey', 'Remove-AzBlockchainMember', 'Remove-AzBlockchainTransactionNode', 'Test-AzBlockchainLocationNameAvailability', 'Update-AzBlockchainMember', 'Update-AzBlockchainTransactionNode', '*'
+  FunctionsToExport = 'Get-AzBlockchainConsortium', 'Get-AzBlockchainMember', 'Get-AzBlockchainMemberApiKey', 'Get-AzBlockchainMemberConsortiumMember', 'Get-AzBlockchainSku', 'Get-AzBlockchainTransactionNode', 'Get-AzBlockchainTransactionNodeApiKey', 'New-AzBlockchainMember', 'New-AzBlockchainMemberApiKey', 'New-AzBlockchainTransactionNode', 'New-AzBlockchainTransactionNodeApiKey', 'Remove-AzBlockchainMember', 'Remove-AzBlockchainTransactionNode', 'Test-AzBlockchainLocationNameAvailability', 'Update-AzBlockchainMember', 'Update-AzBlockchainTransactionNode', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
@@ -19,7 +19,6 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-30'
     }
   }
 }
