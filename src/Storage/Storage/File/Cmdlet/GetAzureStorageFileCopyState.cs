@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
 using XFile = Microsoft.Azure.Storage.File;
 using Microsoft.Azure.Storage.File;
 using System;
@@ -27,8 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
-    [OutputType(typeof(CloudFile))]
-    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to ShareFileCopyInfo in a future release.")]
+    [OutputType(typeof(CopyState))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
