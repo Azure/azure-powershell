@@ -15,13 +15,13 @@ Deletes a function app.
 ### ByName (Default)
 ```
 Remove-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,34 +29,21 @@ Deletes a function app.
 
 ## EXAMPLES
 
-### Example 1: Example 1: Get a function app by name and delete it.
-
+### Example 1: Get a function app by name and delete it.
 ```powershell
 PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 ```
 
-### Example 2: Delete a function app by name.
+This command gets a function app by name and delete it.
 
+### Example 2: Delete a function app by name.
 ```powershell
 PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
 
+This command deletes a function app by name.
+
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -363,7 +350,7 @@ INPUTOBJECT <ISite>:
   - `[HyperV <Boolean?>]`: Hyper-V sandbox.
   - `[IdentityType <ManagedServiceIdentityType?>]`: Type of managed service identity.
   - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+    - `[(Any) <IComponents1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[IsXenon <Boolean?>]`: Obsolete: Hyper-V sandbox.
   - `[RedundancyMode <RedundancyMode?>]`: Site redundancy mode
   - `[Reserved <Boolean?>]`: <code>true</code> if reserved; otherwise, <code>false</code>.

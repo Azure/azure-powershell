@@ -34,10 +34,14 @@ Starts a function app.
 PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 ```
 
+This command gets a function app by name and starts it.
+
 ### Example 2: Start a function app by name.
 ```powershell
 PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 ```
+
+This command starts a function app by name.
 
 ## PARAMETERS
 
@@ -331,7 +335,7 @@ INPUTOBJECT <ISite>:
   - `[HyperV <Boolean?>]`: Hyper-V sandbox.
   - `[IdentityType <ManagedServiceIdentityType?>]`: Type of managed service identity.
   - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+    - `[(Any) <IComponents1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[IsXenon <Boolean?>]`: Obsolete: Hyper-V sandbox.
   - `[RedundancyMode <RedundancyMode?>]`: Site redundancy mode
   - `[Reserved <Boolean?>]`: <code>true</code> if reserved; otherwise, <code>false</code>.

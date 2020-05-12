@@ -15,13 +15,13 @@ Deletes a function app plan.
 ### ByName (Default)
 ```
 Remove-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionAppPlan -InputObject <IAppServicePlan> [-Force] [-DefaultProfile <PSObject>] [-AsJob]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionAppPlan -InputObject <IAppServicePlan> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,33 +30,20 @@ Deletes a function app plan.
 ## EXAMPLES
 
 ### Example 1: Get a function app plan by name and delete it.
-
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 ```
 
-### Example 2: Delete a function app plan by name.
+This command gets a function app plan by name and deletes it.
 
+### Example 2: Delete a function app plan by name.
 ```powershell
 PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
 
+This command deletes a function app plan by name.
+
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

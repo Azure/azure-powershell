@@ -9,8 +9,15 @@ function RandomString([bool]$allChars, [int32]$len) {
 $env = @{}
 function setupEnv() {
 
-    $testSubscriptionId = "07308f04-ea00-494b-b320-690df74b1ce6"
-    Get-AzSubscription -SubscriptionId $testSubscriptionId | Set-AzContext
+    <#
+    $localEnvFilePath = Join-Path $PSScriptRoot 'localEnv.json'
+    if (Test-Path $localEnvFilePath)
+    {
+        write-verbose "Local 'localEnv.json' found" -Verbose
+        $env = Get-Content -Raw -Path $localEnvFilePath | ConvertFrom-Json
+        return
+    }
+    #>
 
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -18,8 +25,6 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
 
     # For any resources you created for test, you should add it to $env here.
-    $env.add('testSubscriptionId', $testSubscriptionId) | Out-Null
-
     $resourceGroupNameWindowsPremium = "Functions-Test-Windows-Premium-" + (RandomString -len 6)
     $resourceGroupNameLinuxPremium = "Functions-Test-Linux-Premium-" + (RandomString -len 6)
     $resourceGroupNameWindowsConsumption = "Functions-Test-Windows-Consumption-" + (RandomString -len 6)

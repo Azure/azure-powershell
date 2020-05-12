@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Resources service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -32,7 +32,7 @@ Use of the beta version of `autorest.powershell` generator requires the followin
 - [NodeJS LTS](https://nodejs.org) (10.15.x LTS preferred)
   - **Note**: It *will not work* with Node < 10.x. Using 11.x builds may cause issues as they may introduce instability or breaking changes.
 > If you want an easy way to install and update Node, [NVS - Node Version Switcher](../nodejs/installing-via-nvs.md) or [NVM - Node Version Manager](../nodejs/installing-via-nvm.md) is recommended.
-- [AutoRest](https://aka.ms/autorest) v3 beta <br>`npm install -g autorest@beta`<br>&nbsp;
+- [AutoRest](https://aka.ms/autorest) v3 beta <br>`npm install -g @autorest/autorest`<br>&nbsp;
 - PowerShell 6.0 or greater
   - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g pwsh`<br>&nbsp;
 - .NET Core SDK 2.0 or greater
@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 azure: true
 powershell: true
 branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/blob/resource-hybrid-profile-fix
+repo: https://github.com/Azure/azure-rest-api-specs/blob/powershell-function
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -74,7 +74,7 @@ clear-output-folder: true
 
 ``` yaml
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/resource-hybrid-profile-fix/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/powershell-function/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
 module-name: Az.Resources.TestSupport
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources
 
@@ -187,6 +187,10 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: DeploymentPropertyParameter
+  - where:
+      verb: New
+      subject: Deployment
+    hide: true
   - where:
       verb: Test
       subject: Deployment

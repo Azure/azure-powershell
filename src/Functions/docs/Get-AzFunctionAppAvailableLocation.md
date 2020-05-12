@@ -13,8 +13,8 @@ Gets the location where a function app for the given os and plan type is availab
 ## SYNTAX
 
 ```
-Get-AzFunctionAppAvailableLocation [[-PlanType] <String>] [[-OSType] <String>] [[-DefaultProfile] <PSObject>]
- [<CommonParameters>]
+Get-AzFunctionAppAvailableLocation [[-SubscriptionId] <String[]>] [[-PlanType] <String>] [[-OSType] <String>]
+ [[-DefaultProfile] <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,11 +23,8 @@ Gets the location where a function app for the given os and plan type is availab
 ## EXAMPLES
 
 ### Example 1: Get the locations where Premium is available for Windows. If no parameters are specified, PlanType is set to 'Premium' and OSType is set to 'Windows'.
-
-```powershell.
+```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation
-VERBOSE: PlanType not specified. Setting default PlanType to 'Premium'.
-VERBOSE: OSType not specified. Setting default OSType to 'Windows'.
 
 Name
 ----
@@ -63,8 +60,9 @@ Germany West Central
 Norway East
 ```
 
-### Example 2: Get the locations where Premium is available for Linux.
+This command gets the locations where Premium is available for Windows.
 
+### Example 2: Get the locations where Premium is available for Linux.
 ```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 
@@ -97,8 +95,9 @@ France Central
 Norway East
 ```
 
-### Example 3: Get the locations where Consumption is available for Windows.
+This command gets the locations where Premium is available for Linux.
 
+### Example 3: Get the locations where Consumption is available for Windows.
 ```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
@@ -140,6 +139,8 @@ Switzerland North
 Germany West Central
 ```
 
+This command gets the locations where Consumption is available for Windows.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -151,7 +152,7 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -166,7 +167,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -182,8 +183,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -30,16 +30,18 @@ Stops a function app.
 ## EXAMPLES
 
 ### Example 1: Get a function app by name and stop it.
-
 ```powershell
 PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
 ```
 
-### Example 2: Stop a function app by name.
+This command gets a function app by name and stops it.
 
+### Example 2: Stop a function app by name.
 ```powershell
 PS C:\> Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
+
+This command stops a function app by name.
 
 ## PARAMETERS
 
@@ -348,7 +350,7 @@ INPUTOBJECT <ISite>:
   - `[HyperV <Boolean?>]`: Hyper-V sandbox.
   - `[IdentityType <ManagedServiceIdentityType?>]`: Type of managed service identity.
   - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+    - `[(Any) <IComponents1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[IsXenon <Boolean?>]`: Obsolete: Hyper-V sandbox.
   - `[RedundancyMode <RedundancyMode?>]`: Site redundancy mode
   - `[Reserved <Boolean?>]`: <code>true</code> if reserved; otherwise, <code>false</code>.

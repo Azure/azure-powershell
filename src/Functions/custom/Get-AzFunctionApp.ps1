@@ -3,9 +3,10 @@ function Get-AzFunctionApp {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets function apps in a subscription.')]
     [CmdletBinding(DefaultParametersetname="GetAll")]
     param(
-        [Parameter(Mandatory=$true, ParameterSetName="ByName", HelpMessage='The Azure subscription ID.')]
+        [Parameter(ParameterSetName="ByName", HelpMessage='The Azure subscription ID.')]
         [Parameter(ParameterSetName="GetAll")]
         [Parameter(ParameterSetName="ByResourceGroupName")]
+        [Parameter(ParameterSetName="ByLocation")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
@@ -95,17 +96,15 @@ function Get-AzFunctionApp {
                 $locationToUse = $Location
                 $PSBoundParameters.Remove("Location") | Out-Null
             }
+        }
 
-            $apps = @(Az.Functions.internal\Get-AzFunctionApp)
-        }
-        else
-        {
-            $apps = @(Az.Functions.internal\Get-AzFunctionApp @PSBoundParameters)
-        }
+        $apps = @(Az.Functions.internal\Get-AzFunctionApp @PSBoundParameters)
 
         if ($apps.Count -gt 0)
         {
-            GetFunctionApps -Apps $apps -Location $locationToUse
+            $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                            -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+            GetFunctionApps -Apps $apps -Location $locationToUse @params
         }
     }
 }

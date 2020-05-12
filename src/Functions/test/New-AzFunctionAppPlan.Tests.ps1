@@ -13,14 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionAppPlan' {
 
-    BeforeAll {
-        $PSDefaultParameterValues["Disabled"] = $true
-    }
-
-    AfterAll {
-        $PSDefaultParameterValues["Disabled"] = $false
-    }
-
     It "New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., 'centralus'" {
 
         $planName = $env.functionAppPlanName
@@ -44,8 +36,11 @@ Describe 'New-AzFunctionAppPlan' {
         }
         finally
         {
-            Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
-                Remove-AzFunctionAppPlan -Force -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }

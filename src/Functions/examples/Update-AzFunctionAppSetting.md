@@ -3,3 +3,5 @@
 ```powershell
 PS C:\> Update-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSetting @{"Name1" = "Value1"}
 ```
+
+This command adds a new app setting in a function app.

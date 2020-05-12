@@ -176,6 +176,20 @@ function New-AzFunctionApp {
         ${Break},
 
         [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+
+        [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
@@ -196,360 +210,313 @@ function New-AzFunctionApp {
     )
 
     process {
-
-        if ($PSBoundParameters.ContainsKey("AsJob"))
+        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        $paramsToRemove = @(
+            "StorageAccountName",
+            "ApplicationInsightsName",
+            "ApplicationInsightsKey",
+            "Location",
+            "PlanName",
+            "OSType",
+            "Runtime",
+            "DisableApplicationInsights",
+            "DockerImageName",
+            "DockerRegistryCredential",
+            "FunctionsVersion",
+            "RuntimeVersion",
+            "AppSetting",
+            "IdentityType",
+            "IdentityID",
+            "Tag"
+        )
+        foreach ($paramName in $paramsToRemove)
         {
-            $PSBoundParameters.Remove("AsJob")  | Out-Null
-
-            $modulePath = Join-Path $PSScriptRoot "../Az.Functions.psd1"
-
-            Start-Job -ScriptBlock {
-                param($arg, $modulePath)
-                Import-Module $modulePath
-                Az.Functions\New-AzFunctionApp @arg
-            } -ArgumentList $PSBoundParameters, $modulePath
+            if ($PSBoundParameters.ContainsKey($paramName))
+            {
+                $PSBoundParameters.Remove($paramName)  | Out-Null
+            }
         }
 
+        $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
+
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
+        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
+
+        $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                        -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+        ValidateFunctionName -Name $Name @params
+
+        if (-not $functionAppIsCustomDockerImage)
+        {
+            if (-not $FunctionsVersion)
+            {
+                $FunctionsVersion = $DefaultFunctionsVersion
+                Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
+            }
+
+            if (-not $OSType)
+            {
+                $OSType = GetDefaultOSType -Runtime $Runtime
+                Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
+            }
+
+            if (-not $RuntimeVersion)
+            {
+                # If not runtime version is provided, set the default version for the worker
+                $RuntimeVersion = GetDefaultRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType
+                Write-Verbose "RuntimeVersion not specified. Setting default runtime version for $Runtime to '$RuntimeVersion'." -Verbose
+            }
+
+            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            {
+                Write-Verbose "DotNet version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to $FunctionsVersion." -Verbose
+                $RuntimeVersion = $FunctionsVersion
+            }
+
+            ValidateRuntimeAndRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+
+            $runtimeWorker = $Runtime.ToLower()
+            $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_WORKER_RUNTIME' -Value "$runtimeWorker"))
+
+            # Set Java version
+            if ($Runtime -eq "Java")
+            {
+                $JavaVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+                $siteCofig.JavaVersion = "$JavaVersion"
+            }
+        }
+
+        $servicePlan = $null
+        $consumptionPlan = $PsCmdlet.ParameterSetName -eq "Consumption"
+        $OSIsLinux = $OSType -eq "Linux"
+        
+        if ($consumptionPlan)
+        {
+            ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux @params
+            $functionAppDef.Location = $Location
+        }
         else 
         {
-            # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
-            $paramsToRemove = @(
-                "StorageAccountName",
-                "ApplicationInsightsName",
-                "ApplicationInsightsKey",
-                "Location",
-                "PlanName",
-                "OSType",
-                "Runtime",
-                "DisableApplicationInsights",
-                "DockerImageName",
-                "DockerRegistryCredential",
-                "FunctionsVersion",
-                "RuntimeVersion",
-                "AppSetting",
-                "IdentityType",
-                "IdentityID",
-                "Tag"
-            )
-            foreach ($paramName in $paramsToRemove)
+            # Host function app in Elastic Premium or app service plan
+            $servicePlan = GetServicePlan $PlanName @params
+
+            if ($null -ne $servicePlan.Location)
             {
-                if ($PSBoundParameters.ContainsKey($paramName))
-                {
-                    $PSBoundParameters.Remove($paramName)  | Out-Null
-                }
+                $Location = $servicePlan.Location
             }
 
-            $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
-
-            $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-            $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
-            $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
-
-            ValidateFunctionName -Name $Name
-
-            if (-not $functionAppIsCustomDockerImage)
+            if ($null -ne $servicePlan.Reserved)
             {
-                if (-not $FunctionsVersion)
-                {
-                    $FunctionsVersion = $DefaultFunctionsVersion
-                    Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
-                }
-
-                if (-not $OSType)
-                {
-                    $OSType = GetDefaultOSType -Runtime $Runtime
-                    Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
-                }
-
-                if (-not $RuntimeVersion)
-                {
-                    # If not runtime version is provided, set the default version for the worker
-                    $RuntimeVersion = GetDefaultRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType
-                    Write-Verbose "RuntimeVersion not specified. Setting default runtime version for $Runtime to '$RuntimeVersion'." -Verbose
-                }
-
-                if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
-                {
-                    Write-Verbose "DotNet version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to $FunctionsVersion." -Verbose
-                    $RuntimeVersion = $FunctionsVersion
-                }
-
-                ValidateRuntimeAndRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-
-                $runtimeWorker = $Runtime.ToLower()
-                $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_WORKER_RUNTIME' -Value "$runtimeWorker"))
-
-                # Set Java version
-                if ($Runtime -eq "Java")
-                {
-                    $JavaVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-                    $siteCofig.JavaVersion = "$JavaVersion"
-                }
+                $OSIsLinux = $servicePlan.Reserved
             }
 
-            $servicePlan = $null
-            $consumptionPlan = $PsCmdlet.ParameterSetName -eq "Consumption"
-            $OSIsLinux = $OSType -eq "Linux"
-            
-            if ($consumptionPlan)
+            $functionAppDef.ServerFarmId = $servicePlan.Id
+            $functionAppDef.Location = $Location
+        }
+
+        if ($OSIsLinux)
+        {
+            # These are the scenarios we currently support when creating a Docker container:
+            # 1) In Consumption, we only support images created by Functions with a predefine runtime name and version, e.g., Python 3.7
+            # 2) For App Service and Premium plans, a customer can specify a customer container image
+
+            # Linux function app
+            $functionAppDef.Kind = 'functionapp,linux'
+            $functionAppDef.Reserved = $true
+
+            # Bring your own container is only supported on App Service and Premium plans
+            if ($DockerImageName)
             {
-                ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
-                $functionAppDef.Location = $Location
-            }
-            else 
-            {
-                # Host function app in Elastic Premium or app service plan
-                $servicePlan = GetServicePlan $PlanName
+                $functionAppDef.Kind = 'functionapp,linux,container'
 
-                if ($null -ne $servicePlan.Location)
+                $imageName = $DockerImageName.Trim().ToLower()
+                $appSettings.Add((NewAppSetting -Name 'DOCKER_CUSTOM_IMAGE_NAME' -Value $imageName))
+                $appSettings.Add((NewAppSetting -Name 'FUNCTION_APP_EDIT_MODE' -Value 'readOnly'))
+                $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'false'))
+
+                $siteCofig.LinuxFxVersion = "DOCKER|$imageName"
+
+                # Parse the docker registry url, user name and password
+                $dockerRegistryServerUrl = ParseDockerImage -DockerImageName $DockerImageName
+                if ($dockerRegistryServerUrl)
                 {
-                    $Location = $servicePlan.Location
-                }
+                    $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_URL' -Value $dockerRegistryServerUrl))
 
-                if ($null -ne $servicePlan.Reserved)
-                {
-                    $OSIsLinux = $servicePlan.Reserved
-                }
-
-                $functionAppDef.ServerFarmId = $servicePlan.Id
-                $functionAppDef.Location = $Location
-            }
-
-            if ($OSIsLinux)
-            {
-                # These are the scenarios we currently support when creating a Docker container:
-                # 1) In Consumption, we only support images created by Functions with a predefine runtime name and version, e.g., Python 3.7
-                # 2) For App Service and Premium plans, a customer can specify a customer container image
-
-                # Linux function app
-                $functionAppDef.Kind = 'functionapp,linux'
-                $functionAppDef.Reserved = $true
-
-                # Bring your own container is only supported on App Service and Premium plans
-                if ($DockerImageName)
-                {
-                    $functionAppDef.Kind = 'functionapp,linux,container'
-
-                    $imageName = $DockerImageName.Trim().ToLower()
-                    $appSettings.Add((NewAppSetting -Name 'DOCKER_CUSTOM_IMAGE_NAME' -Value $imageName))
-                    $appSettings.Add((NewAppSetting -Name 'FUNCTION_APP_EDIT_MODE' -Value 'readOnly'))
-                    $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'false'))
-
-                    $siteCofig.LinuxFxVersion = "DOCKER|$imageName"
-
-                    # Parse the docker registry url, user name and password
-                    $dockerRegistryServerUrl = ParseDockerImage -DockerImageName $DockerImageName
-                    if ($dockerRegistryServerUrl)
+                    if ($DockerRegistryCredential)
                     {
-                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_URL' -Value $dockerRegistryServerUrl))
-
-                        if ($DockerRegistryCredential)
-                        {
-                            $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_USERNAME' -Value $DockerRegistryCredential.GetNetworkCredential().UserName))
-                            $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_PASSWORD' -Value $DockerRegistryCredential.GetNetworkCredential().Password))
-                        }
+                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_USERNAME' -Value $DockerRegistryCredential.GetNetworkCredential().UserName))
+                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_PASSWORD' -Value $DockerRegistryCredential.GetNetworkCredential().Password))
                     }
+                }
+            }
+            else
+            {
+                $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
+                $siteCofig.LinuxFxVersion = GetLinuxFxVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType -RuntimeVersion $RuntimeVersion
+            }
+        }
+        else 
+        {
+            # Windows function app
+            $functionAppDef.Kind = 'functionapp'
+
+            # Set default Node version
+            $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
+        }
+
+        # Validate storage account and get connection string
+        $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName @params
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
+
+        if (-not $functionAppIsCustomDockerImage)
+        {
+            $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
+        }
+
+        # If plan is not consumption or elastic premium, set always on
+        $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
+        if ((-not $consumptionPlan) -and (-not $planIsElasticPremium))
+        {
+            $siteCofig.AlwaysOn = $true
+        }
+
+        # If plan is elastic premium or windows consumption, we need these app settings
+        $IsWindowsConsumption = $consumptionPlan -and (-not $OSIsLinux)
+
+        if ($planIsElasticPremium -or $IsWindowsConsumption)
+        {
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionStrings))
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $Name.ToLower()))
+        }
+
+        if (-not $DisableAppInsights)
+        {
+            if ($ApplicationInsightsKey)
+            {
+                $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $ApplicationInsightsKey))
+            }
+            elseif ($ApplicationInsightsName)
+            {
+                $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName @params
+                if (-not $appInsightsProject)
+                {
+                    $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "ApplicationInsightsProjectNotFound" `
+                                        -ErrorMessage $errorMessage `
+                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                        -Exception $exception
+                }
+
+                $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $appInsightsProject.InstrumentationKey))
+            }
+            else
+            {
+                $newAppInsightsProject = CreateApplicationInsightsProject -ResourceGroupName $resourceGroupName `
+                                                                          -ResourceName $Name `
+                                                                          -Location $functionAppDef.Location `
+                                                                          @params
+                if ($newAppInsightsProject)
+                {
+                    $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
                 }
                 else
                 {
-                    $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
-                    $siteCofig.LinuxFxVersion = GetLinuxFxVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType -RuntimeVersion $RuntimeVersion
+                    $warningMessage = "Unable to create the Application Insights for the function app. Creation of Application Insights will help you monitor and diagnose your function apps in the Azure Portal. `r`n"
+                    $warningMessage += "Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for your function app."
+                    Write-Warning $warningMessage
                 }
             }
-            else 
-            {
-                # Windows function app
-                $functionAppDef.Kind = 'functionapp'
+        }
 
-                # Set default Node version
-                $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
-                $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
+        if ($Tag.Count -gt 0)
+        {
+            $resourceTag = NewResourceTag -Tag $Tag
+            $functionAppDef.Tag = $resourceTag
+        }
+
+        # Add user app settings
+        if ($appSetting.Count -gt 0)
+        {
+            foreach ($keyName in $appSetting.Keys)
+            {
+                $appSettings.Add((NewAppSetting -Name $keyName -Value $appSetting[$keyName]))
             }
+        }
 
-            # Validate storage account and get connection string
-            $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName
-            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
-            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
+        # Set function app managed identity
+        if ($IdentityType)
+        {
+            $functionAppDef.IdentityType = $IdentityType
 
-            if (-not $functionAppIsCustomDockerImage)
+            if ($IdentityType -eq "UserAssigned")
             {
-                $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
-            }
-
-            # If plan is not consumption or elastic premium, set always on
-            $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
-            if ((-not $consumptionPlan) -and (-not $planIsElasticPremium))
-            {
-                $siteCofig.AlwaysOn = $true
-            }
-
-            # If plan is elastic premium or windows consumption, we need these app settings
-            $IsWindowsConsumption = $consumptionPlan -and (-not $OSIsLinux)
-
-            if ($planIsElasticPremium -or $IsWindowsConsumption)
-            {
-                $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionStrings))
-                $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $Name.ToLower()))
-            }
-
-            if (-not $DisableAppInsights)
-            {
-                if ($ApplicationInsightsKey)
+                # Set UserAssigned managed identiy
+                if (-not $IdentityID)
                 {
-                    $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $ApplicationInsightsKey))
-                }
-                elseif ($ApplicationInsightsName)
-                {
-                    $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName
-                    if (-not $appInsightsProject)
-                    {
-                        $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "ApplicationInsightsProjectNotFound" `
+                    $errorMessage = "IdentityID is required for UserAssigned identity"
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
                                             -ErrorMessage $errorMessage `
                                             -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                             -Exception $exception
-                    }
 
-                    $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $appInsightsProject.InstrumentationKey))
                 }
-                else
+
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+            }
+        }
+
+        # Set app settings and site configuration
+        $siteCofig.AppSetting = $appSettings
+        $functionAppDef.Config = $siteCofig
+        $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
+
+        if ($PsCmdlet.ShouldProcess($Name, "Creating function app"))
+        {
+            # Save the ErrorActionPreference
+            $currentErrorActionPreference = $ErrorActionPreference
+            $ErrorActionPreference = 'Stop'
+
+            $exceptionThrown = $false
+
+            try
+            {
+                Az.Functions.internal\New-AzFunctionApp @PSBoundParameters
+            }
+            catch
+            {
+                $exceptionThrown = $true
+
+                $errorMessage = GetErrorMessage -Response $_
+
+                if ($errorMessage)
                 {
-                    # Create a new ApplicationInsights
-                    $maxNumberOfTries = 3
-                    $tries = 1
-
-                    $appInsightsEnabled = $false
-
-                    while ($true)
-                    {
-                        try
-                        {
-                            $newAppInsightsProject = Az.Functions.internal\New-AzAppInsights -ResourceGroupName $resourceGroupName `
-                                                                                             -ResourceName $Name  `
-                                                                                             -Location $functionAppDef.Location `
-                                                                                             -Kind web `
-                                                                                             -RequestSource "AzurePowerShell" `
-                                                                                             -ErrorAction Stop
-                            if ($newAppInsightsProject)
-                            {
-                                $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
-                                $appInsightsEnabled = $true
-
-                                break
-                            }
-                        }
-                        catch
-                        {
-                            # Ignore the failure and continue
-                        }
-
-                        if ($tries -ge $maxNumberOfTries)
-                        {
-                            break
-                        }
-
-                        # Wait for 2^(tries-1) seconds between retries. In this case, it would be 1, 2, and 4 seconds, respectively.
-                        $waitInSeconds = [Math]::Pow(2, $tries - 1)
-                        Start-Sleep -Seconds $waitInSeconds
-
-                        $tries++
-                    }
-
-                    if (-not $appInsightsEnabled)
-                    {
-                        $warningMessage = "Unable to create the Application Insights for the function app. Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for the function app."
-                        Write-Warning $warningMessage
-                    }
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "FailedToCreateFunctionApp" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
                 }
+
+                throw $_
+            }
+            finally
+            {
+                # Reset the ErrorActionPreference
+                $ErrorActionPreference = $currentErrorActionPreference
             }
 
-            if ($Tag.Count -gt 0)
+            if (-not $exceptionThrown)
             {
-                $resourceTag = NewResourceTag -Tag $Tag
-                $functionAppDef.Tag = $resourceTag
-            }
-
-            # Add user app settings
-            if ($appSetting.Count -gt 0)
-            {
-                foreach ($keyName in $appSetting.Keys)
+                if ($consumptionPlan -and $OSIsLinux)
                 {
-                    $appSettings.Add((NewAppSetting -Name $keyName -Value $appSetting[$keyName]))
-                }
-            }
-
-            # Set function app managed identity
-            if ($IdentityType)
-            {
-                $functionAppDef.IdentityType = $IdentityType
-
-                if ($IdentityType -eq "UserAssigned")
-                {
-                    # Set UserAssigned managed identiy
-                    if (-not $IdentityID)
-                    {
-                        $errorMessage = "IdentityID is required for UserAssigned identity"
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                              -ErrorMessage $errorMessage `
-                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                              -Exception $exception
-
-                    }
-
-                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-                }
-            }
-
-            # Set app settings and site configuration
-            $siteCofig.AppSetting = $appSettings
-            $functionAppDef.Config = $siteCofig
-            $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
-
-            if ($PsCmdlet.ShouldProcess($Name, "Creating function app"))
-            {
-                # Save the ErrorActionPreference
-                $currentErrorActionPreference = $ErrorActionPreference
-                $ErrorActionPreference = 'Stop'
-
-                $exceptionThrown = $false
-
-                try
-                {
-                    Az.Functions.internal\New-AzFunctionApp @PSBoundParameters
-                }
-                catch
-                {
-                    $exceptionThrown = $true
-
-                    $errorMessage = GetErrorMessage -Response $_
-
-                    if ($errorMessage)
-                    {
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "FailedToCreateFunctionApp" `
-                                              -ErrorMessage $errorMessage `
-                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                              -Exception $exception
-                    }
-
-                    throw $_
-                }
-                finally
-                {
-                    # Reset the ErrorActionPreference
-                    $ErrorActionPreference = $currentErrorActionPreference
-                }
-
-                if (-not $exceptionThrown)
-                {
-                    if ($consumptionPlan -and $OSIsLinux)
-                    {
-                        $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
-                        Write-Verbose $message -Verbose
-                    }
+                    $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
+                    Write-Verbose $message -Verbose
                 }
             }
         }

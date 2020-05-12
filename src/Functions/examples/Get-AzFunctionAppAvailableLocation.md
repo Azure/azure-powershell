@@ -1,9 +1,7 @@
 ### Example 1: Get the locations where Premium is available for Windows. If no parameters are specified, PlanType is set to 'Premium' and OSType is set to 'Windows'.
 
-```powershell.
+```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation
-VERBOSE: PlanType not specified. Setting default PlanType to 'Premium'.
-VERBOSE: OSType not specified. Setting default OSType to 'Windows'.
 
 Name
 ----
@@ -39,6 +37,8 @@ Germany West Central
 Norway East
 ```
 
+This command gets the locations where Premium is available for Windows.
+
 ### Example 2: Get the locations where Premium is available for Linux.
 
 ```powershell
@@ -72,6 +72,8 @@ Korea Central
 France Central
 Norway East
 ```
+
+This command gets the locations where Premium is available for Linux.
 
 ### Example 3: Get the locations where Consumption is available for Windows.
 
@@ -115,3 +117,5 @@ South Africa North
 Switzerland North
 Germany West Central
 ```
+
+This command gets the locations where Consumption is available for Windows.
