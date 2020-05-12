@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -59,10 +59,6 @@ subject-prefix: $(service-name)
 inlining-threshold: 40
 
 directive:
-  # Fix the error in swagger, RP actually returns 200 when deletion succeeds
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/204/g, "200")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$

@@ -20,13 +20,12 @@ Get-AzDatabricksWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObjec
 ### Get
 ```
 Get-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Get-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -119,22 +118,6 @@ Parameter Sets: Get
 Aliases: WorkspaceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
