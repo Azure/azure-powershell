@@ -21,7 +21,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchai
 function New-AzBlockchainMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Profile('latest-2019-04-30')]
 param(
     [Parameter(Mandatory)]
     [Alias('BlockchainMemberName')]

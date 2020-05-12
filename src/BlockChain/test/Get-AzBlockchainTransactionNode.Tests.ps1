@@ -22,7 +22,10 @@ Describe 'Get-AzBlockchainTransactionNode' {
 
     It 'GetViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode | Get-AzBlockchainTransactionNode } | Should -Not -Throw
+        { 
+            $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode 
+            Get-AzBlockchainTransactionNode -InputObject $node.Id
+        } | Should -Not -Throw
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }

@@ -136,3 +136,4 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
+```

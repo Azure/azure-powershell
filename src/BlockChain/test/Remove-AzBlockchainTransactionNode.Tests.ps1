@@ -20,7 +20,10 @@ Describe 'Remove-AzBlockchainTransactionNode' {
 
     It 'DeleteViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("tranctionnode" + $env.rstr4) -ResourceGroupName $env.resourceGroup | Remove-AzBlockchainTransactionNode } | Should -Not -Throw
+        { 
+            $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("tranctionnode" + $env.rstr4) -ResourceGroupName $env.resourceGroup 
+            Remove-AzBlockchainTransactionNode -InputObject $node.Id
+        } | Should -Not -Throw
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }

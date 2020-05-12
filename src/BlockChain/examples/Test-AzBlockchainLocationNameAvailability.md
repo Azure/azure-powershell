@@ -1,6 +1,6 @@
 ### Example 1: Check whether a resource name is available
 ```powershell
-PS C:\> Test-AzBlockchainLocationNameAvailability -LocationName eastus -Name erw123 -type Microsoft.Blockchain/blockchainMembers
+PS C:\> Test-AzBlockchainLocationNameAvailability -Location eastus -Name erw123 -type Microsoft.Blockchain/blockchainMembers
 
 Message NameAvailable Reason
 ------- ------------- ------

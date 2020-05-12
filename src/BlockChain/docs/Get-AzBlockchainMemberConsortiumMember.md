@@ -1,38 +1,37 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchainmemberapikey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchainmemberconsortiummember
 schema: 2.0.0
 ---
 
-# Get-AzBlockchainMemberApiKey
+# Get-AzBlockchainMemberConsortiumMember
 
 ## SYNOPSIS
-Lists the API keys for a blockchain member.
+Lists the consortium members for a blockchain member.
 
 ## SYNTAX
 
 ```
-Get-AzBlockchainMemberApiKey -BlockchainMemberName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzBlockchainMemberConsortiumMember -BlockchainMemberName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists the API keys for a blockchain member.
+Lists the consortium members for a blockchain member.
 
 ## EXAMPLES
 
-### Example 1: List blockchain Api keys
+### Example 1: Lists the consortium members for a blockchain member.
 ```powershell
-PS C:\> Get-AzBlockchainMemberApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup
+PS C:\> Get-AzBlockchainMemberConsortiumMember -BlockchainMemberName dolauli001 -ResourceGroupName testgroup
 
-KeyName Value
-------- -----
-key1    72_8u5HPZJxtZmtvm4Y4W9o-
-key2    eu9kx94TKH506R0i4JhYBmsx
+DateModified          DisplayName JoinDate              Name       Role  Status SubscriptionId
+------------          ----------- --------              ----       ----  ------ --------------
+11/19/2019 5:14:41 AM dolauli001  11/19/2019 5:01:20 AM dolauli001 ADMIN Ready  c9cbd920-c00c-427c-852b-8aaf38badaeb
 ```
 
-This command lists Api keys for a blockchain member.
+This command lists the consortium members for a blockchain member.
 
 ## PARAMETERS
 
@@ -49,7 +48,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -65,7 +63,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -82,7 +79,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -99,40 +95,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -142,11 +104,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortiumMember
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

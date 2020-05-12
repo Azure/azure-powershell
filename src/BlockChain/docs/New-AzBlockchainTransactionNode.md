@@ -1,43 +1,39 @@
 ---
 external help file:
 Module Name: Az.Blockchain
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchaintransactionnode
 schema: 2.0.0
 ---
 
-# New-AzBlockchainMember
+# New-AzBlockchainTransactionNode
 
 ## SYNOPSIS
-Create a blockchain member.
+Create or update the transaction node.
 
 ## SYNTAX
 
 ```
-New-AzBlockchainMember -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Consortium <String>] [-ConsortiumManagementAccountPassword <SecureString>]
- [-ConsortiumMemberDisplayName <String>] [-ConsortiumRole <String>] [-FirewallRule <IFirewallRule[]>]
- [-Location <String>] [-Password <SecureString>] [-Protocol <BlockchainProtocol>] [-SkuName <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-ValidatorNodeSkuCapacity <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzBlockchainTransactionNode -BlockchainMemberName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-FirewallRule <IFirewallRule[]>] [-Location <String>] [-Password <SecureString>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a blockchain member.
+Create or update the transaction node.
 
 ## EXAMPLES
 
-### Example 1: Create a new blockchain member
+### Example 1: Create a blockchain transaction node
 ```powershell
 PS C:\> $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> $csPasswd = 'strongConsortiumManagementPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzBlockchainMember -Name dolauli002 -ResourceGroupName testgroup -Consortium consor002 -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -SkuName S0
+PS C:\> New-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -Name tranctionnode001 -ResourceGroupName testgroup -Location eastus -Password $passwd
 
-Location Name       Type
--------- ----       ----
-eastus   dolauli002 Microsoft.Blockchain/blockchainMembers
+Name             Type                                                    Location
+----             ----                                                    --------
+tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-This command creates a new blockchain member.
+This command creates a blockchain transaction node.
 
 ## PARAMETERS
 
@@ -54,71 +50,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -Consortium
-Gets or sets the consortium for the blockchain member.
+### -BlockchainMemberName
+Blockchain member name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConsortiumManagementAccountPassword
-Sets the managed consortium management account password.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConsortiumMemberDisplayName
-Gets the display name of the member in the consortium.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConsortiumRole
-Gets the role of the member in the consortium.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -134,11 +80,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -FirewallRule
-Gets or sets firewall rules
+Gets or sets the firewall rules.
 To construct, see NOTES section for FIREWALLRULE properties and create a hash table.
 
 ```yaml
@@ -151,11 +96,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
-The GEO location of the blockchain service.
+Gets or sets the transaction node location.
 
 ```yaml
 Type: System.String
@@ -167,23 +111,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-Blockchain member name.
+Transaction node name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: BlockchainMemberName
+Aliases: TransactionNodeName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -199,11 +141,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Password
-Sets the basic auth password of the blockchain member.
+Sets the transaction node dns endpoint basic auth password.
 
 ```yaml
 Type: System.Security.SecureString
@@ -215,23 +156,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Protocol
-Gets or sets the blockchain protocol.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -248,39 +172,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
-Gets or sets Sku name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuTier
-Gets or sets Sku tier
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -297,39 +188,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Tag
-Tags of the service which is a list of key value pairs that describes the resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ValidatorNodeSkuCapacity
-Gets or sets the nodes capacity.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -345,7 +203,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -362,7 +219,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -372,16 +228,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode
 
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### FIREWALLRULE <IFirewallRule[]>: Gets or sets firewall rules
+
+FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
   - `[EndIPAddress <String>]`: Gets or sets the end IP address of the firewall rule range.
   - `[RuleName <String>]`: Gets or sets the name of the firewall rules.
   - `[StartIPAddress <String>]`: Gets or sets the start IP address of the firewall rule range.

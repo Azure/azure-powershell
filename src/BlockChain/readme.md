@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Blockchain service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -46,41 +46,15 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
-### General settings
-> Values
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-azure: true
-powershell: true
-branch: ps-preview
-repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
-```
+  - $(this-folder)/../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/blockchain.json
+module-version: 0.1.0
+title: Blockchain
+subject-prefix: 'Blockchain'
 
-> Names
-``` yaml
-prefix: Az
-subject-prefix: $(service-name)
-module-name: $(prefix).$(service-name)
-namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
-```
-
-> Folders
-``` yaml
-clear-output-folder: true
-output-folder: .
-```
-
-> Profiles
-``` yaml
-require: $(repo)/profiles/readme.md
-profile:
-  - hybrid-2019-03-01
-  - latest-2019-04-30
-```
-
-> Directives
-``` yaml
 directive:
   - from: swagger-document
     where: $.paths..operationId
@@ -142,12 +116,4 @@ directive:
     set:
       default:
         script: '(Get-AzContext).Subscription.Id'
-```
-
-``` yaml
-require:
-  - $(repo)/specification/blockchain/resource-manager/readme.md
-
-module-version: 0.0.1
-
 ```
