@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ImageBuilder
-Module Guid: 05d910e5-5c91-450e-ba83-005d9afd0909
+Module Guid: c0a7c10d-dd16-433c-a8f5-39ed80ea0ff8
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder
 Help Version: 1.0.0.0
 Locale: en-US
@@ -37,7 +37,4 @@ Create artifacts from a existing image template
 
 ### [Stop-AzImageBuilderTemplate](Stop-AzImageBuilderTemplate.md)
 Cancel the long running image build based on the image template
-
-### [Update-AzImageBuilderTemplate](Update-AzImageBuilderTemplate.md)
-Update the tags for this Virtual Machine Image Template
 

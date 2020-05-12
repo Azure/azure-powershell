@@ -55,4 +55,3 @@ downloadBuildArtifacts Shell        https://raw.githubusercontent.com/danielsoll
 
 This command creates a shell customizer.
 
-
