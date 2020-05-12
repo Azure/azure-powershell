@@ -70,13 +70,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
-        [Parameter(ParameterSetName = ListVMImageParamSetName,
-            ValueFromPipelineByPropertyName = false)]
-        [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChange("FilterExpression",
-            ChangeDescription = "FilterExpression parameter will be removed because FilterExpression has not been supported by the API.")]
-        public string FilterExpression { get; set; }
-
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -92,8 +85,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
-                    var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
-
                     var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
@@ -110,8 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      Version = r.Name,
                                      PublisherName = this.PublisherName,
                                      Offer = this.Offer,
-                                     Skus = this.Skus,
-                                     FilterExpression = this.FilterExpression
+                                     Skus = this.Skus
                                  };
 
                     WriteObject(SubResourceWildcardFilter(Version, images), true);

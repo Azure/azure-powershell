@@ -14,8 +14,8 @@ Create a PSBackend object
 
 ```
 New-AzFrontDoorBackendObject -Address <String> [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>]
- [-Weight <Int32>] [-EnabledState <PSEnabledState>] [-BackendHostHeader <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Weight <Int32>] [-EnabledState <PSEnabledState>] [-BackendHostHeader <String>] [-PrivateLinkAlias <String>]
+ [-PrivateLinkApprovalMessage <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +145,36 @@ Default value is 1
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkAlias
+The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkApprovalMessage
+A custom message to be included in the approval request to connect to the Private Link
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

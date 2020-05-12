@@ -17,66 +17,69 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [[-DefaultStorageAccountType] <StorageType>]
- [[-Config] <AzureHDInsightConfig>] [[-OozieMetastore] <AzureHDInsightMetastore>]
- [[-HiveMetastore] <AzureHDInsightMetastore>]
- [[-AdditionalStorageAccounts] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-Configurations] <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
- [[-ScriptActions] <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [[-DefaultStorageContainer] <String>] [[-DefaultStorageRootPath] <String>] [[-Version] <String>]
- [[-HeadNodeSize] <String>] [[-WorkerNodeSize] <String>] [[-EdgeNodeSize] <String>]
- [[-ZookeeperNodeSize] <String>] [[-ClusterType] <String>]
- [[-ComponentVersion] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-VirtualNetworkId] <String>] [[-SubnetName] <String>] [[-OSType] <OSType>] [[-ClusterTier] <Tier>]
- [[-SshCredential] <PSCredential>] [[-SshPublicKey] <String>] [[-RdpCredential] <PSCredential>]
- [[-RdpAccessExpiry] <DateTime>] [[-ObjectId] <Guid>] [[-ApplicationId] <Guid>]
- [[-CertificatePassword] <String>] [[-AadTenantId] <Guid>] [[-SecurityProfile] <AzureHDInsightSecurityProfile>]
- [[-DisksPerWorkerNode] <Int32>] [[-MinSupportedTlsVersion] <String>]
- [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
+ [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
+ [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
+ [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificatePassword <String>]
+ [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
+ [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>]
+ [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [[-DefaultStorageAccountType] <StorageType>]
- [[-Config] <AzureHDInsightConfig>] [[-OozieMetastore] <AzureHDInsightMetastore>]
- [[-HiveMetastore] <AzureHDInsightMetastore>]
- [[-AdditionalStorageAccounts] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-Configurations] <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
- [[-ScriptActions] <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [[-DefaultStorageContainer] <String>] [[-DefaultStorageRootPath] <String>] [[-Version] <String>]
- [[-HeadNodeSize] <String>] [[-WorkerNodeSize] <String>] [[-EdgeNodeSize] <String>]
- [[-ZookeeperNodeSize] <String>] [[-ClusterType] <String>]
- [[-ComponentVersion] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-VirtualNetworkId] <String>] [[-SubnetName] <String>] [[-OSType] <OSType>] [[-ClusterTier] <Tier>]
- [[-SshCredential] <PSCredential>] [[-SshPublicKey] <String>] [[-RdpCredential] <PSCredential>]
- [[-RdpAccessExpiry] <DateTime>] [[-ObjectId] <Guid>] [[-ApplicationId] <Guid>]
- [[-CertificateFilePath] <String>] [[-CertificatePassword] <String>] [[-AadTenantId] <Guid>]
- [[-SecurityProfile] <AzureHDInsightSecurityProfile>] [[-DisksPerWorkerNode] <Int32>]
- [[-MinSupportedTlsVersion] <String>] [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
+ [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
+ [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
+ [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFilePath <String>]
+ [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
+ [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
+ [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [[-DefaultStorageAccountType] <StorageType>]
- [[-Config] <AzureHDInsightConfig>] [[-OozieMetastore] <AzureHDInsightMetastore>]
- [[-HiveMetastore] <AzureHDInsightMetastore>]
- [[-AdditionalStorageAccounts] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-Configurations] <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
- [[-ScriptActions] <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [[-DefaultStorageContainer] <String>] [[-DefaultStorageRootPath] <String>] [[-Version] <String>]
- [[-HeadNodeSize] <String>] [[-WorkerNodeSize] <String>] [[-EdgeNodeSize] <String>]
- [[-ZookeeperNodeSize] <String>] [[-ClusterType] <String>]
- [[-ComponentVersion] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [[-VirtualNetworkId] <String>] [[-SubnetName] <String>] [[-OSType] <OSType>] [[-ClusterTier] <Tier>]
- [[-SshCredential] <PSCredential>] [[-SshPublicKey] <String>] [[-RdpCredential] <PSCredential>]
- [[-RdpAccessExpiry] <DateTime>] [[-ObjectId] <Guid>] [[-ApplicationId] <Guid>]
- [[-CertificateFileContents] <Byte[]>] [[-CertificatePassword] <String>] [[-AadTenantId] <Guid>]
- [[-SecurityProfile] <AzureHDInsightSecurityProfile>] [[-DisksPerWorkerNode] <Int32>]
- [[-MinSupportedTlsVersion] <String>] [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
+ [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
+ [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
+ [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>]
+ [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
+ [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
+ [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +109,6 @@ PS C:\&gt; # Primary storage account info
         # Create the cluster
         New-AzHDInsightCluster `
             -ClusterType Hadoop `
-            -OSType Windows `
             -ClusterSizeInNodes 4 `
             -ResourceGroupName $clusterResourceGroupName `
             -ClusterName $clusterName `
@@ -114,10 +116,54 @@ PS C:\&gt; # Primary storage account info
             -Location $location `
             -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
             -DefaultStorageAccountKey $storageAccountKey `
-            -DefaultStorageContainer $storageContainer
+            -DefaultStorageContainer $storageContainer `
+			-SshCredential $clusterCreds `
 ```
 
 This command creates a cluster in the current subscription.
+
+### Example 2: Create cluster with customer-managed key disk encryption
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-cmk-cluster"
+        $clusterCreds = Get-Credential
+
+		# Customer-managed Key info
+		$assignedIdentity = "your-ami-resource-id"
+		$encryptionKeyName = "new-key"
+		$encryptionVaultUri = "https://MyKeyVault.vault.azure.net"
+		$encryptionKeyVersion = "00000000000000000000000000000000"
+
+        # If the cluster's resource group doesn't exist yet, run:
+        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Spark `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -DefaultStorageContainer $storageContainer `
+			-SshCredential $clusterCreds `
+			-AssignedIdentity $assignedIdentity `
+			-EncryptionKeyName $encryptionKeyName `
+			-EncryptionVaultUri $encryptionVaultUri `
+			-EncryptionKeyVersion $encryptionKeyVersion
+```
 
 ## PARAMETERS
 
@@ -157,6 +203,21 @@ Gets or sets the Service Principal Application Id for accessing Azure Data Lake.
 
 ```yaml
 Type: System.Guid
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignedIdentity
+Gets or sets the assigned identity.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -434,6 +495,66 @@ Accept wildcard characters: False
 
 ### -EdgeNodeSize
 Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAlgorithm
+Gets or sets the encryption algorithm.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyName
+Gets or sets the encryption key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVersion
+Gets or sets the encryption key version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionVaultUri
+Gets or sets the encryption vault uri.
 
 ```yaml
 Type: System.String

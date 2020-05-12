@@ -92,7 +92,15 @@ CmdletsToExport = 'New-AzFrontDoor', 'Get-AzFrontDoor', 'Set-AzFrontDoor',
                'Disable-AzFrontDoorCustomDomainHttps', 
                'Get-AzFrontDoorFrontendEndpoint', 
                'New-AzFrontDoorWafManagedRuleOverrideObject', 
-               'New-AzFrontDoorWafManagedRuleExclusionObject'
+               'New-AzFrontDoorWafManagedRuleExclusionObject',
+               'New-AzFrontDoorRulesEngine', 
+               'New-AzFrontDoorRulesEngineRuleObject',
+               'New-AzFrontDoorRulesEngineActionObject',
+               'New-AzFrontDoorHeaderActionObject',
+               'New-AzFrontDoorRulesEngineMatchConditionObject',
+               'Get-AzFrontDoorRulesEngine', 
+               'Set-AzFrontDoorRulesEngine',
+               'Remove-AzFrontDoorRulesEngine'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -14,8 +14,7 @@ This command uses certificates that you provide or system generated self-signed 
 ## SYNTAX
 
 ### ByDefaultArmTemplate (Default)
-
-```powershell
+```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFolder <String>]
  [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
  -Location <String> [-Name <String>] [-VmUserName <String>] [-ClusterSize <Int32>]
@@ -24,17 +23,15 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFold
 ```
 
 ### ByExistingKeyVault
-
-```powershell
+```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
- -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SecretIdentifier <String> [-Thumbprint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
-
-```powershell
+```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>]
  [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateSubjectName <String>]
@@ -43,8 +40,7 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 ```
 
 ### ByExistingPfxAndVaultName
-
-```powershell
+```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
@@ -431,6 +427,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Thumbprint
+The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.
+
+```yaml
+Type: System.String
+Parameter Sets: ByExistingKeyVault
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VmPassword
 
 The password of the Vm.
@@ -525,7 +536,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

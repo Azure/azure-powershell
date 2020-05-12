@@ -81,7 +81,10 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Remove-AzNetAppFilesPool', 'Get-AzNetAppFilesVolume', 
                'New-AzNetAppFilesVolume', 'Remove-AzNetAppFilesVolume', 
                'Update-AzNetAppFilesVolume', 'Get-AzNetAppFilesSnapshot', 
-               'New-AzNetAppFilesSnapshot', 'Remove-AzNetAppFilesSnapshot'
+               'New-AzNetAppFilesSnapshot', 'Remove-AzNetAppFilesSnapshot',
+               'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesReplicationStatus',
+               'Suspend-AzNetAppFilesReplication', 'Remove-AzNetAppFilesReplication',
+               'Resume-AzNetAppFilesReplication'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -91,7 +94,9 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Set-AnfAccount', 'Update-AnfAccount', 'Get-AnfPool', 'New-AnfPool', 
                'Update-AnfPool', 'Remove-AnfPool', 'Get-AnfVolume', 'New-AnfVolume', 
                'Remove-AnfVolume', 'Update-AnfVolume', 'Get-AnfSnapshot', 
-               'New-AnfSnapshot', 'Remove-AnfSnapshot'
+               'New-AnfSnapshot', 'Remove-AnfSnapshot', 'Approve-AnfReplication',
+               'Get-AnfReplicationStatus', 'Suspend-AnfReplication',
+               'Remove-AnfReplication', 'Resume-AnfReplication'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -124,7 +129,7 @@ PrivateData = @{
 * Includes some additional volume properties associated with upcoming replication operations'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

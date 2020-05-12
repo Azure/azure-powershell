@@ -14,13 +14,13 @@ Gets the CosmosDB Gremlin Graph.
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBGremlinGraph -ResourceGroupName <String> [-Name <String>] [-Detailed]
+Get-AzCosmosDBGremlinGraph -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBGremlinGraph [-Name <String>] -InputObject <PSGremlinDatabaseGetResults> [-Detailed]
+Get-AzCosmosDBGremlinGraph [-Name <String>] -ParentObject <PSGremlinDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -86,36 +86,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Detailed
-If provided then, the cmdlet returns the Gremlin Graph with the corresponding throughput value.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Gremlin Database object.
-
-```yaml
-Type: PSGremlinDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Gremlin Graph Name.
 
@@ -128,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Gremlin Database object.
+
+```yaml
+Type: PSGremlinDatabaseGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

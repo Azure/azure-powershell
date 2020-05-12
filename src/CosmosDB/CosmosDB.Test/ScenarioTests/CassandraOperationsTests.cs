@@ -29,16 +29,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCassandraOperationsCmdlets()
+        public void TestCassandraCreateUpdateGetCmdletsByPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraOperationsCmdlets");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCassandraOperationsCmdletsUsingInputObject()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraOperationsCmdletsUsingInputObject");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraCreateUpdateGetCmdletsByPiping");
         }
 
         [Fact]
@@ -46,6 +39,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public void TestCassandraThroughputCmdlets()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraThroughputCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCassandraCreateUpdateGetCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraCreateUpdateGetCmdlets");
         }
     }
 }

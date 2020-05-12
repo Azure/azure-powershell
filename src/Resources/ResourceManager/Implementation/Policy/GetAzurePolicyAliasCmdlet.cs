@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Get an existing resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyAlias"), OutputType(typeof(PsResourceProviderAlias))]
-    public class GetAzurePolicyAlias : ResourceManagerCmdletBase
+    public class GetAzurePolicyAlias : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// Gets or sets the provider namespace match string
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             foreach (var provider in providers)
             {
                 var match = provider.ResourceTypes.Where(r => this.FilterFunction(r, listAvailable, resourceTypeMatch, aliasMatch, pathMatch, apiVersionMatch, locationMatch));
-                rv.AddRange(match.Select(t => new PsResourceProviderAlias {Aliases = t.Aliases, ApiVersions = t.ApiVersions, Locations = t.Locations, Namespace = provider.NamespaceProperty, ResourceType = t.ResourceType}));
+                rv.AddRange(match.Select(t => new PsResourceProviderAlias { Aliases = t.Aliases, ApiVersions = t.ApiVersions, Locations = t.Locations, Namespace = provider.NamespaceProperty, ResourceType = t.ResourceType }));
             }
 
             return rv;

@@ -32,5 +32,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PrivateEndpointCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azdevxps)]
+        public void TestPrivateDnsZoneGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-PrivateDnsZoneGroupCRUD");
+        }
     }
 }

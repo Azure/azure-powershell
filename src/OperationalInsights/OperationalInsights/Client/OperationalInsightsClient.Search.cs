@@ -44,46 +44,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponses;
         }
 
-        public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string resourceGroupName, string workspaceName, string savedSearchId)
-        {
-            SearchResultsResponse responses = OperationalInsightsManagementClient.SavedSearches.GetResults(resourceGroupName, workspaceName, savedSearchId);
-            PSSearchGetSearchResultsResponse searchResponses = new PSSearchGetSearchResultsResponse(responses);
-            return searchResponses;
-        }
-
         public virtual PSSearchGetSchemaResponse GetSchema(string resourceGroupName, string workspaceName)
         {
-            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Workspaces.GetSchema(resourceGroupName, workspaceName);
+            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Schema.Get(resourceGroupName, workspaceName);
             PSSearchGetSchemaResponse schemaResponse = new PSSearchGetSchemaResponse(response);
             return schemaResponse;
-        }
-
-        public virtual PSSearchGetSearchResultsResponse GetSearchResults(string resourceGroupName, string workspaceName, PSSearchGetSearchResultsParameters psParameters)
-        {
-            SearchParameters parameters = new SearchParameters();
-            
-            if (psParameters.Highlight != null)
-            {
-                parameters.Highlight = new SearchHighlight();
-                parameters.Highlight.Pre = psParameters.Highlight.Pre;
-                parameters.Highlight.Post = psParameters.Highlight.Post;
-            }
-            
-            parameters.Top = psParameters.Top == 0 ? 10 : psParameters.Top;
-            parameters.Query = psParameters.Query;
-            parameters.Start = psParameters.Start;
-            parameters.End = psParameters.End.GetValueOrDefault(DateTime.UtcNow);
-
-            SearchResultsResponse response = OperationalInsightsManagementClient.Workspaces.GetSearchResults(resourceGroupName, workspaceName, parameters);
-            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
-            return searchResponse;
-        }
-
-        public virtual PSSearchGetSearchResultsResponse GetSearchResultsUpdate(string resourceGroupName, string workspaceName, string id)
-        {
-            SearchResultsResponse response = OperationalInsightsManagementClient.Workspaces.UpdateSearchResults(resourceGroupName, workspaceName, id);
-            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
-            return searchResponse;
         }
 
         public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, SavedSearch properties, bool force, Action<bool, string, string, string, Action, Func<bool>> ConfirmAction, string ETag = null)
@@ -93,7 +58,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 {
                     if (ETag != null && ETag != "")
                     {
-                        properties.Etag = ETag;
+                        properties.ETag = ETag;
                     }
                     Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
                     status = result.Response.StatusCode;

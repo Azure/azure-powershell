@@ -486,4 +486,16 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="ActiveDirectoryClientNull" xml:space="preserve">
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
   </data>
+  <data name="DownloadNotSupported" xml:space="preserve">
+    <value>Key type '{0}' is not supported for downloading. (Supported types: RSA, RSA-HSM)</value>
+  </data>
+  <data name="PublicKeySavedAt" xml:space="preserve">
+    <value>Public key saved at '{0}'.</value>
+  </data>
+  <data name="KEKMustBeHSM" xml:space="preserve">
+    <value>When KeyOps is 'import', Destination must be HSM.</value>
+  </data>
+  <data name="KeyOpsImportIsExclusive" xml:space="preserve">
+    <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
+  </data>
 </root>

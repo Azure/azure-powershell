@@ -19,6 +19,37 @@
 -->
 
 ## Upcoming Release
+* PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
+* Detailed parameter is deprecated in the following cmdlets:
+    Get-AzCosmosDBSqlContainer,
+    Get-AzCosmosDBSqlDatabase, Get-AzCosmosDBGremlinDatabase,
+    Get-AzCosmosDBGremlinGraph, Get-AzCosmosDBTable,
+    Get-AzCosmosDBCassandraKeyspace, Get-AzCosmosDBCassandraTable,
+    Get-AzCosmosDBMongoDBCollection, Get-AzCosmosDBMongoDBDatabase
+* Introduces KeyVaultKeyUri as a paramter in PSCosmosDBAccount, enabling BYOK feature
+* Updates the Azure.Management.CosmosDB Sdk Version to 1.1.1 
+* Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
+The following cmdlets are added: 
+    New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
+    New-AzCosmosDBSqlUserDefinedFunction, 
+    Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger, 
+    Update-AzCosmosDBSqlUserDefinedFunction, New-AzCosmosDBSqlContainer,
+    New-AzCosmosDBSqlDatabase, Update-AzCosmosDBSqlContainer,
+    Update-AzCosmosDBSqlDatabase,
+    New-AzCosmosDBGremlinDatabase, New-AzCosmosDBGremlinGraph,
+    Update-AzCosmosDBGremlinDatabase, Update-AzCosmosDBGremlinGraph,
+    New-AzCosmosDBTable, Update-AzCosmosDBTable,
+    Update-AzCosmosDBCassandraKeyspace, Update-AzCosmosDBCassandraTable,
+    New-AzCosmosDBCassandraKeyspace, New-AzCosmosDBCassandraTable,
+    Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase, 
+    New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase  
+The following cmdlets are deprecated and would no longer be maintained: 
+    Set-AzCosmosDBSqlStoredProcedure, Set-AzCosmosDBSqlTrigger,
+    Set-AzCosmosDBSqlUserDefinedFunction, Set-AzCosmosDBSqlContainer,
+    Set-AzCosmosDBSqlDatabase, Set-AzCosmosDBGremlinDatabase,
+    Set-AzCosmosDBGremlinGraph, Set-AzCosmosDBTable,
+    Set-AzCosmosDBCassandraKeyspace, Set-AzCosmosDBCassandraTable,
+    Set-AzCosmosDBMongoDBCollection, Set-AzCosmosDBMongoDBDatabase
 
 ## Version 0.1.4
 * Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount

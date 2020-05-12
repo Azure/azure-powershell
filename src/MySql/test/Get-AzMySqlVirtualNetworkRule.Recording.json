@@ -1,0 +1,848 @@
+{
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "7acb7771-db3e-46f2-998d-7833ff88490d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "209" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/174655ec-ea44-45d2-9083-a25dd171349e?api-version=2017-12-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/174655ec-ea44-45d2-9083-a25dd171349e?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "174655ec-ea44-45d2-9083-a25dd171349e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "d56b31e4-2908-403e-a6b9-731c07198942" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110730Z:d56b31e4-2908-403e-a6b9-731c07198942" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:07:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "90" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:07:29.457Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/174655ec-ea44-45d2-9083-a25dd171349e?api-version=2017-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/174655ec-ea44-45d2-9083-a25dd171349e?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "78", "79" ],
+        "x-ms-client-request-id": [ "7acb7771-db3e-46f2-998d-7833ff88490d", "7acb7771-db3e-46f2-998d-7833ff88490d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "9b79d258-9e6e-46a4-bb8e-aa2171138337" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11934" ],
+        "x-ms-correlation-request-id": [ "24598b1f-f0fe-46b5-8b82-b0d4e0b89ae7" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110801Z:24598b1f-f0fe-46b5-8b82-b0d4e0b89ae7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"174655ec-ea44-45d2-9083-a25dd171349e\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:07:29.457Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "78", "79", "80" ],
+        "x-ms-client-request-id": [ "7acb7771-db3e-46f2-998d-7833ff88490d", "7acb7771-db3e-46f2-998d-7833ff88490d", "7acb7771-db3e-46f2-998d-7833ff88490d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8dc19158-036e-4f2d-859b-a175bbee1154" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
+        "x-ms-correlation-request-id": [ "255e5964-5bd0-420f-a83e-9130a71d9928" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110801Z:255e5964-5bd0-420f-a83e-9130a71d9928" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "ca908402-657e-44f8-a14f-16d5ca0c344e" ],
+        "CommandName": [ "Get-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Get-AzMySqlVirtualNetworkRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "995c2203-f51b-436f-b7bf-94f5917437c1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11932" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "6f23b537-a109-4923-9c3c-aed324262795" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110802Z:6f23b537-a109-4923-9c3c-aed324262795" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}]}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "c77b67e9-7853-4672-8edf-1ee96c391e46" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "0689391c-3d67-46a2-ba35-f0e751316078" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-correlation-request-id": [ "5923afac-d8e3-46fa-a4a1-eb596952c1d8" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110804Z:5923afac-d8e3-46fa-a4a1-eb596952c1d8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "88" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:08:03.537Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82", "83" ],
+        "x-ms-client-request-id": [ "c77b67e9-7853-4672-8edf-1ee96c391e46", "c77b67e9-7853-4672-8edf-1ee96c391e46" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "f92953a9-bbcb-4e48-9fcd-3ea8e489f52e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11931" ],
+        "x-ms-correlation-request-id": [ "385f2f11-9ff1-496a-a250-50452b708381" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110820Z:385f2f11-9ff1-496a-a250-50452b708381" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"0689391c-3d67-46a2-ba35-f0e751316078\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:08:03.537Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/0689391c-3d67-46a2-ba35-f0e751316078?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82", "83", "84" ],
+        "x-ms-client-request-id": [ "c77b67e9-7853-4672-8edf-1ee96c391e46", "c77b67e9-7853-4672-8edf-1ee96c391e46", "c77b67e9-7853-4672-8edf-1ee96c391e46" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "577cf076-b6b7-40d2-8d55-f616909d8d00" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11930" ],
+        "x-ms-correlation-request-id": [ "a3862510-9a1d-4d52-8796-764234936373" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110824Z:a3862510-9a1d-4d52-8796-764234936373" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "209" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ed32706b-8093-49b1-b937-f11bf377800d?api-version=2017-12-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed32706b-8093-49b1-b937-f11bf377800d?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "ed32706b-8093-49b1-b937-f11bf377800d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "0fc6e203-b619-4c72-830b-b2de3f4b23f5" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110826Z:0fc6e203-b619-4c72-830b-b2de3f4b23f5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "90" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:08:24.943Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed32706b-8093-49b1-b937-f11bf377800d?api-version=2017-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed32706b-8093-49b1-b937-f11bf377800d?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "85", "86" ],
+        "x-ms-client-request-id": [ "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1", "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "529d5ee4-579e-48a5-a48e-dc7d742555d5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11929" ],
+        "x-ms-correlation-request-id": [ "31903fec-32e8-4ed1-af86-789d9348fa73" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110856Z:31903fec-32e8-4ed1-af86-789d9348fa73" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"ed32706b-8093-49b1-b937-f11bf377800d\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:08:24.943Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "85", "86", "87" ],
+        "x-ms-client-request-id": [ "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1", "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1", "bb9f98c1-2983-4cd5-a8b6-e0afe8e503d1" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a43778d3-4bb7-4336-96f7-1ab61cf63745" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11928" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "f7634844-4b71-4d49-af2a-e19b7da4007e" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110856Z:f7634844-4b71-4d49-af2a-e19b7da4007e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "c36d311e-15ac-465f-97f1-6862298801f3" ],
+        "CommandName": [ "Get-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Get-AzMySqlVirtualNetworkRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ba1c2bb3-fac6-4225-882d-b09374cc483d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11927" ],
+        "x-ms-correlation-request-id": [ "5fb2b4f9-7359-441f-a78c-ab1b239a677b" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110857Z:5fb2b4f9-7359-441f-a78c-ab1b239a677b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "792ef6b9-8026-4d5c-aba3-9b6b67b91dda" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "f4bf62f5-055c-4f94-aec9-11a42563be75" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-correlation-request-id": [ "f0c5e52f-71ab-49a4-88a8-452b15062d65" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110859Z:f0c5e52f-71ab-49a4-88a8-452b15062d65" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "88" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:08:58.413Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "89", "90" ],
+        "x-ms-client-request-id": [ "792ef6b9-8026-4d5c-aba3-9b6b67b91dda", "792ef6b9-8026-4d5c-aba3-9b6b67b91dda" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "d525ae59-ad66-47d4-b83e-80643a1fde5c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "x-ms-correlation-request-id": [ "65aeb1ad-db5b-4cc3-81b6-2bc6ed76546b" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110915Z:65aeb1ad-db5b-4cc3-81b6-2bc6ed76546b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"f4bf62f5-055c-4f94-aec9-11a42563be75\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:08:58.413Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/f4bf62f5-055c-4f94-aec9-11a42563be75?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "89", "90", "91" ],
+        "x-ms-client-request-id": [ "792ef6b9-8026-4d5c-aba3-9b6b67b91dda", "792ef6b9-8026-4d5c-aba3-9b6b67b91dda", "792ef6b9-8026-4d5c-aba3-9b6b67b91dda" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "df680de0-8c2e-482e-83cb-0e86b3e3e451" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11925" ],
+        "x-ms-correlation-request-id": [ "ceac3bee-07c5-4a94-9cd2-05998b29d576" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110915Z:ceac3bee-07c5-4a94-9cd2-05998b29d576" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "a75b2a2b-01d6-4976-a4de-a265c7beee9d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "209" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/94a86324-0fa7-4de9-87dc-47a331c77393?api-version=2017-12-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/94a86324-0fa7-4de9-87dc-47a331c77393?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "94a86324-0fa7-4de9-87dc-47a331c77393" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "15863e9f-6caf-4f8c-9211-2a86eaca1387" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110917Z:15863e9f-6caf-4f8c-9211-2a86eaca1387" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "90" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:09:15.927Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/94a86324-0fa7-4de9-87dc-47a331c77393?api-version=2017-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/94a86324-0fa7-4de9-87dc-47a331c77393?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "92", "93" ],
+        "x-ms-client-request-id": [ "a75b2a2b-01d6-4976-a4de-a265c7beee9d", "a75b2a2b-01d6-4976-a4de-a265c7beee9d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "8b42dd15-9f64-479e-b5c9-8a730fa7d10c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "6d6543d8-bef2-4b01-b609-f1d20eb6f74f" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110952Z:6d6543d8-bef2-4b01-b609-f1d20eb6f74f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"94a86324-0fa7-4de9-87dc-47a331c77393\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:09:15.927Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "92", "93", "94" ],
+        "x-ms-client-request-id": [ "a75b2a2b-01d6-4976-a4de-a265c7beee9d", "a75b2a2b-01d6-4976-a4de-a265c7beee9d", "a75b2a2b-01d6-4976-a4de-a265c7beee9d" ],
+        "CommandName": [ "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule", "New-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded", "New-AzMySqlVirtualNetworkRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "dc2a2a03-9148-4b2d-8a3a-2b8e4394c155" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "x-ms-correlation-request-id": [ "cffb15a9-28a1-4ea0-916c-7a4ed92533f1" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110953Z:cffb15a9-28a1-4ea0-916c-7a4ed92533f1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "95" ],
+        "x-ms-client-request-id": [ "1c3445ea-d0a5-4469-b2f1-51520b27349e" ],
+        "CommandName": [ "Get-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Get-AzMySqlVirtualNetworkRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a944fdf2-072c-4942-b69f-184d77827755" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "x-ms-correlation-request-id": [ "8a1647e6-15db-4464-b5d9-133e6f319bfe" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110953Z:8a1647e6-15db-4464-b5d9-133e6f319bfe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBforMySQL/servers/virtualNetworkRules\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "96" ],
+        "x-ms-client-request-id": [ "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "d5b08b87-827f-4514-b44b-fc87fb698835" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
+        "x-ms-correlation-request-id": [ "a3773af6-1379-4bac-94f8-10cd8900dbaf" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T110955Z:a3773af6-1379-4bac-94f8-10cd8900dbaf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:09:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "88" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-08T11:09:53.887Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "96", "97" ],
+        "x-ms-client-request-id": [ "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03", "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "41b224fe-7202-4e95-8b88-885455d6e404" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-correlation-request-id": [ "78dd6c7b-87dd-4b63-87c4-a8f743580c73" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111010Z:78dd6c7b-87dd-4b63-87c4-a8f743580c73" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:10:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d5b08b87-827f-4514-b44b-fc87fb698835\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:09:53.887Z\"}"
+    }
+  },
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/d5b08b87-827f-4514-b44b-fc87fb698835?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "96", "97", "98" ],
+        "x-ms-client-request-id": [ "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03", "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03", "fe9e09bf-db9f-4eb7-8e66-45dc5f054b03" ],
+        "CommandName": [ "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule", "Remove-AzMySqlVirtualNetworkRule" ],
+        "FullCommandName": [ "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete", "Remove-AzMySqlVirtualNetworkRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a7c1909f-1501-4413-9896-a1570a46f320" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-correlation-request-id": [ "43dfcdbb-ef7d-4a8e-9222-9abce837b878" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111011Z:43dfcdbb-ef7d-4a8e-9222-9abce837b878" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Apr 2020 11:10:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

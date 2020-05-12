@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             if (result != null)
             {
-                deployment = CreatePSResourceGroupDeployment(result.Name, resourceGroup, result.Properties);
+                deployment = CreatePSResourceGroupDeployment(result, resourceGroup);
             }
 
             return deployment;
@@ -76,14 +77,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = result.Properties.StatusMessage,
+                    StatusMessage = DeploymentOperationErrorInfo
+                                    .DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())?
+                                    .ToFormattedString()?
+                                    .TrimEnd(System.Environment.NewLine.ToCharArray())
+                                        ?? result.Properties.StatusMessage, // To-Do: With the new API version this work will move to error model extensions.
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
 
             return null;
         }
-
 
         public static PSResourceManagerError ToPSResourceManagerError(this ErrorResponse error)
         {
@@ -102,6 +106,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             }
 
             return rmError;
+        }
+
+        public static string ToFormattedString(this ErrorResponse error, int level = 0)
+        {
+            if (error.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Message, error.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(' ', l * 2).Append(" - ").ToString();
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
@@ -205,13 +231,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             string managementGroupId,
             string resourceGroup)
         {
-            PSDeployment deploymentObject = new PSDeployment();
-
-            deploymentObject.Id = deployment.Id;
-            deploymentObject.DeploymentName = deployment.Name;
-            deploymentObject.Location = deployment.Location;
-            deploymentObject.ManagementGroupId = managementGroupId;
-            deploymentObject.ResourceGroupName = resourceGroup;
+            PSDeployment deploymentObject = new PSDeployment
+            {
+                Id = deployment.Id,
+                DeploymentName = deployment.Name,
+                Location = deployment.Location,
+                ManagementGroupId = managementGroupId,
+                ResourceGroupName = resourceGroup,
+                Tags = deployment.Tags == null ? new Dictionary<string, string>() : new Dictionary<string, string>(deployment.Tags)
+            };
 
             SetDeploymentProperties(deploymentObject, deployment.Properties);
 
@@ -219,16 +247,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
-            string name,
-            string resourceGroup,
-            DeploymentPropertiesExtended properties)
+            DeploymentExtended deployment,
+            string resourceGroup)
         {
-            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
+            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment
+            {
+                DeploymentName = deployment.Name,
+                ResourceGroupName = resourceGroup,
+                Tags = deployment.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
+            };
 
-            deploymentObject.DeploymentName = name;
-            deploymentObject.ResourceGroupName = resourceGroup;
-
-            SetDeploymentProperties(deploymentObject, properties);
+            SetDeploymentProperties(deploymentObject, deployment.Properties);
 
             return deploymentObject;
         }
@@ -280,8 +309,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         public static Hashtable ToHashtable(this object obj)
         {
             return new Hashtable(obj.GetType()
-                                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
-                                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+                .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
         }
     }

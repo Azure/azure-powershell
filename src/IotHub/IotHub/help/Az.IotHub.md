@@ -17,6 +17,9 @@ Create/update an Azure IoT Hub certificate.
 ### [Add-AzIotHubConfiguration](Add-AzIotHubConfiguration.md)
 Add an IoT automatic device management configuration in a target IoT Hub.
 
+### [Add-AzIotHubDeployment](Add-AzIotHubDeployment.md)
+Add an IoT Edge deployment in a target IoT Hub.
+
 ### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
 Create a device in an IoT Hub.
 
@@ -55,6 +58,9 @@ Lists all or a particular IoT automatic device management configuration.
 
 ### [Get-AzIotHubConnectionString](Get-AzIotHubConnectionString.md)
 Gets the IotHub connectionstrings.
+
+### [Get-AzIotHubDeployment](Get-AzIotHubDeployment.md)
+Lists all or a particular IoT Edge deployment.
 
 ### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
 Lists all devices or a particular device contained within an Azure IoT Hub. 
@@ -110,6 +116,12 @@ Get information on all the endpoints for your IoT Hub
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
+### [Invoke-AzIotHubConfigurationMetricsQuery](Invoke-AzIotHubConfigurationMetricsQuery.md)
+Invoke an IoT device configuration metric query.
+
+### [Invoke-AzIotHubDeploymentMetricsQuery](Invoke-AzIotHubDeploymentMetricsQuery.md)
+Invoke an IoT Edge deployment metric query.
+
 ### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
 Invoke a direct method on a device.
 
@@ -146,6 +158,9 @@ Deletes an Azure IoT Hub certificate.
 ### [Remove-AzIotHubConfiguration](Remove-AzIotHubConfiguration.md)
 Delete an IoT device configuration.
 
+### [Remove-AzIotHubDeployment](Remove-AzIotHubDeployment.md)
+Delete an IoT Edge deployment.
+
 ### [Remove-AzIotHubDevice](Remove-AzIotHubDevice.md)
 Delete an IoT Hub device.
 
@@ -176,6 +191,9 @@ Updates the properties of an IotHub.
 ### [Set-AzIotHubConfiguration](Set-AzIotHubConfiguration.md)
 Update the mutable fields of the configuration registration.
 
+### [Set-AzIotHubDeployment](Set-AzIotHubDeployment.md)
+Update the mutable fields of IoT Edge deployment.
+
 ### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
 Update an IoT Hub device.
 
@@ -184,6 +202,9 @@ Set the parent device of the specified device.
 
 ### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
 Update the distributed tracing options for a device.
+
+### [Set-AzIotHubEdgeModule](Set-AzIotHubEdgeModule.md)
+Set edge modules on a single edge device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.
