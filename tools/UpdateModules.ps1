@@ -104,7 +104,7 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
 {
     if (`$PSVersionTable.PSVersion -lt [Version]'6.2.4')
     {
-        throw "Az.Storage doesn't support PowerShell Core versions lower than 6.2.4. Please upgrade to PowerShell Core 6.2.4 or higher."
+        throw "Current Az version doesn't support PowerShell Core versions lower than 6.2.4. Please upgrade to PowerShell Core 6.2.4 or higher."
     }
 }
 "@
