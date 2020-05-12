@@ -118,7 +118,10 @@ function Update-AzFunctionAppSetting {
             return
         }
 
-        $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName
+        $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                        -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+
+        $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
         $currentAppSettings = $existingFunctionApp.ApplicationSettings
 
         # Add new or replace any existing app settings

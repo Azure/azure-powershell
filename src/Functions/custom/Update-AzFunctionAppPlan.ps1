@@ -142,7 +142,12 @@ function Update-AzFunctionAppPlan {
         }
         else
         {
-            $existingPlan = Az.Functions.internal\Get-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $Name -ErrorAction SilentlyContinue
+            $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                            -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+            $existingPlan = Az.Functions.internal\Get-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName `
+                                                                        -Name $Name `
+                                                                        -ErrorAction SilentlyContinue `
+                                                                        @params
 
             if (-not $existingPlan)
             {

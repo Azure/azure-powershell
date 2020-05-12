@@ -483,6 +483,15 @@ directive:
   - where:
       subject: (.*)StaticSite(.*)
     remove: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}FormatsToProcess = \{formatList\}\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}FormatsToProcess = \{formatList\}\"\);\r\nsb.AppendLine\(\$@\"\{Indent\}TypesToProcess = \'./custom/Functions.types.ps1xml\'{Environment.NewLine}\{Indent\}ScriptsToProcess = \'./custom/HelperFunctions.ps1\'{Environment.NewLine}\{Indent\}FunctionsToExport = \'Get-AzFunctionApp\', \'Get-AzFunctionAppAvailableLocation\', \'Get-AzFunctionAppPlan\', \'Get-AzFunctionAppSetting\', \'New-AzFunctionApp\', \'New-AzFunctionAppPlan\', \'Remove-AzFunctionApp\', \'Remove-AzFunctionAppPlan\', \'Remove-AzFunctionAppSetting\', \'Restart-AzFunctionApp\', \'Start-AzFunctionApp\', \'Stop-AzFunctionApp\', \'Update-AzFunctionApp\', \'Update-AzFunctionAppPlan\', \'Update-AzFunctionAppSetting\'\"\);');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}AliasesToExport = \{aliasesList\}\"\);/, '')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}FunctionsToExport = \{cmdletsList\}\"\);/, '')
 ```
 
 ``` yaml

@@ -10,3 +10,5 @@ PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                               -WorkerType Windows
 
 ```
+
+This command creates a Windows premium app plan in West Europe with burst out capability up to 10 instances.

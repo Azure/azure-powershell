@@ -19,7 +19,8 @@ Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] 
 
 ### ByLocation
 ```
-Get-AzFunctionAppPlan -Location <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionAppPlan -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByName
@@ -40,7 +41,6 @@ Get function apps plans in a subscription.
 ## EXAMPLES
 
 ### Example 1: Get all function app plans.
-
 ```powershell
 PS C:\> Get-AzFunctionAppPlan
 
@@ -55,6 +55,8 @@ Func99-Windows-Premium711892854    Windows    ElasticPremium EP1     West Europe
 Func99-Windows-Premium819994758    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
 
+This command gets all function app plans.
+
 ### Example 2: Get function app plans by resource group name.
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
@@ -66,6 +68,8 @@ Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe
 Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
 
+This command gets function app plans by resource group name.
+
 ### Example 3: Get function app plans for the given subscriptions.
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
@@ -75,6 +79,8 @@ Name                               WorkerType SkuTier        SkuName Location   
 Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
 ```
 
+This command gets function app plans for the given subscriptions.
+
 ### Example 4: Get function app plans by location.
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -Location "Central US"
@@ -83,6 +89,8 @@ Name                               WorkerType SkuTier        SkuName Location   
 ----                               ---------- -------        ------- --------   -----------------                --------------
 Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b
 ```
+
+This command gets function app plans by location.
 
 ## PARAMETERS
 
@@ -151,7 +159,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName, ByResourceGroupName, GetAll
+Parameter Sets: (All)
 Aliases:
 
 Required: False

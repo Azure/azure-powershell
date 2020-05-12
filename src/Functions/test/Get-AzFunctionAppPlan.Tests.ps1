@@ -12,33 +12,27 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzFunctionAppPlan' {
+
     It 'GetAll' {
         $functionAppPlans = @(Get-AzFunctionAppPlan)
         $functionAppPlans.Count | Should -BeGreaterThan 0
     }
 
-    It "-Location '$($env.location)' " {
+    # ByName
+    foreach ($planDefinition in $env.servicePlansToCreate)
+    {
+        It "ByName '$($planDefinition.Name)'" {
 
-        $functionAppPlans = @(Get-AzFunctionAppPlan -Location $env.location)
-        $functionAppPlans.Count | Should -BeGreaterThan 0
+            $functionAppPlan = Get-AzFunctionAppPlan -Name $planDefinition.Name -ResourceGroupName $planDefinition.ResourceGroupName
 
-        $functionAppPlans | ForEach-Object {
-            $_.Location | Should Be $env.location
+            $functionAppPlan.WorkerType | Should -Be $planDefinition.WorkerType
+            $functionAppPlan.ResourceGroupName | Should -Be $planDefinition.ResourceGroupName
+            $functionAppPlan.Location | Should -Be $planDefinition.Location
         }
     }
 
-    It "-SubscriptionId $($env.SubscriptionId)" {
 
-        $functionAppPlans = @(Get-AzFunctionAppPlan -SubscriptionId $env.SubscriptionId)
-        $functionAppPlans.Count | Should -BeGreaterThan 0
-
-        $functionAppPlans | ForEach-Object {
-            $_.SubscriptionId | Should Be $env.SubscriptionId
-        }
-    }
-
-    It "-ResourceGroupName '$($env.resourceGroupNameWindowsPremium)'" {
-
+    It 'ByResourceGroupName' {
         $functionAppPlans = @(Get-AzFunctionAppPlan -ResourceGroupName $env.resourceGroupNameWindowsPremium)
         $functionAppPlans.Count | Should -BeGreaterThan 0
 
@@ -47,16 +41,13 @@ Describe 'Get-AzFunctionAppPlan' {
         }
     }
 
-    # ByName
-    foreach ($planDefinition in $env.servicePlansToCreate)
-    {
-        It "-Name '$($planDefinition.Name)'" {
+    It 'ByLocation' {
+        $functionAppPlans = @(Get-AzFunctionAppPlan -Location $env.location)
+        $functionAppPlans.Count | Should -BeGreaterThan 0
 
-            $functionAppPlan = Get-AzFunctionAppPlan -Name $planDefinition.Name -ResourceGroupName $planDefinition.ResourceGroupName
-
-            $functionAppPlan.WorkerType | Should -Be $planDefinition.WorkerType
-            $functionAppPlan.ResourceGroupName | Should -Be $planDefinition.ResourceGroupName
-            $functionAppPlan.Location | Should -Be $planDefinition.Location
+        $functionAppPlans | ForEach-Object {
+            $_.Location | Should Be $env.location
         }
+
     }
 }

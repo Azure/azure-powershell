@@ -7,3 +7,5 @@ PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                                  -Sku EP2
 
 ```
+
+This command updates an app service plan to EP2 sku with twenty maximum workers.

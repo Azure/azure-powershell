@@ -12,33 +12,26 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzFunctionApp' {
+
     It 'GetAll' {
         $functionApps = @(Get-AzFunctionApp)
         $functionApps.Count | Should -BeGreaterThan 0
     }
 
-    It "ByLocation '$($env.location)'" {
+    # ByName
+    foreach ($functionDefinition in $env.functionAppsToCreate)
+    {
+        It "ByName '$($functionDefinition.Name)'" {
+            $functionApp = Get-AzFunctionApp -Name $functionDefinition.Name `
+                                             -ResourceGroupName $functionDefinition.ResourceGroupName
 
-        $functionApps = @(Get-AzFunctionApp -Location "$($env.location)")
-        $functionApps.Count | Should -BeGreaterThan 0
-
-        $functionApps | ForEach-Object {
-            $_.Location | Should Be $env.location
+            $functionApp.OSType | Should -Be $functionDefinition.OSType
+            $functionApp.Runtime | Should -Be $functionDefinition.Runtime
+            $functionApp.ResourceGroupName | Should -Be $functionDefinition.ResourceGroupName
         }
     }
 
-    It "-SubscriptionId $($env.SubscriptionId)" {
-
-        $functionApps = @(Get-AzFunctionApp -SubscriptionId $env.SubscriptionId)
-        $functionApps.Count | Should -BeGreaterThan 0
-
-        $functionApps | ForEach-Object {
-            $_.SubscriptionId | Should Be $env.SubscriptionId
-        }
-    }
-
-    It "-ResourceGroupName '$($env.resourceGroupNameWindowsPremium)'" {
-
+    It 'ByResourceGroupName' {
         $functionApps = @(Get-AzFunctionApp -ResourceGroupName $env.resourceGroupNameWindowsPremium)
         $functionApps.Count | Should -BeGreaterThan 0
 
@@ -47,16 +40,12 @@ Describe 'Get-AzFunctionApp' {
         }
     }
 
-    # ByName
-    foreach ($functionDefinition in $env.functionAppsToCreate)
-    {
-        It "Get-AzFunctionApp -Name '$($functionDefinition.Name)' and validate properties" {
-            $functionApp = Get-AzFunctionApp -Name $functionDefinition.Name `
-                                             -ResourceGroupName $functionDefinition.ResourceGroupName
+    It 'ByLocation' {
+        $functionApps = @(Get-AzFunctionApp -Location "$($env.location)")
+        $functionApps.Count | Should -BeGreaterThan 0
 
-            $functionApp.OSType | Should -Be $functionDefinition.OSType
-            $functionApp.Runtime | Should -Be $functionDefinition.Runtime
-            $functionApp.ResourceGroupName | Should -Be $functionDefinition.ResourceGroupName
+        $functionApps | ForEach-Object {
+            $_.Location | Should Be $env.location
         }
     }
 }

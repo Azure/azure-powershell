@@ -2,7 +2,14 @@ function Get-AzFunctionAppAvailableLocation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the location where a function app for the given os and plan type is available.')]
     [CmdletBinding()]
-    param(    
+    param(
+        [Parameter(HelpMessage='The Azure subscription ID.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [ValidateNotNullOrEmpty()]
+        [System.String[]]
+        ${SubscriptionId},
+
         [Parameter(HelpMessage="The plan type. Valid inputs: Consumption or Premium")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AvailablePlanType])]
         [ValidateNotNullOrEmpty()]

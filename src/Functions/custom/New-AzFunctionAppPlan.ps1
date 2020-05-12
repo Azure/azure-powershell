@@ -156,7 +156,9 @@ function New-AzFunctionAppPlan {
 
         # Validate location for a Premium plan
         $OSIsLinux = $WorkerType -eq "Linux"
-        ValidatePremiumPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
+        $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                        -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+        ValidatePremiumPlanLocation -Location $Location -OSIsLinux:$OSIsLinux @params
 
         $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan
 

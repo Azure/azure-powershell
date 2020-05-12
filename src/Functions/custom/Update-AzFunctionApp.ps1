@@ -142,6 +142,9 @@ function Update-AzFunctionApp {
             }
         }
 
+        $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                        -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+
         $existingFunctionApp = $null
 
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
@@ -161,7 +164,7 @@ function Update-AzFunctionApp {
         }
         else
         {
-            $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName
+            $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
         }
 
         $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
@@ -222,10 +225,10 @@ function Update-AzFunctionApp {
         if ($PlanName)
         {
             # Validate that the new plan is exists
-            $newFunctionAppPlan = GetServicePlan $PlanName
+            $newFunctionAppPlan = GetServicePlan $PlanName @params
 
             # Get the current plan in which the app is being hosted
-            $currentFunctionAppPlan = GetFunctionAppServicePlanInfo $existingFunctionApp.ServerFarmId
+            $currentFunctionAppPlan = GetFunctionAppServicePlanInfo $existingFunctionApp.ServerFarmId @params
 
             ValidatePlanSwitchCompatibility -CurrentServicePlan $currentFunctionAppPlan -NewServicePlan $newFunctionAppPlan
 
@@ -250,7 +253,9 @@ function Update-AzFunctionApp {
         }
         elseif ($ApplicationInsightsName)
         {
-            $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName
+            $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                            -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+            $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName @params
             if (-not $appInsightsProject)
             {
                 $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."

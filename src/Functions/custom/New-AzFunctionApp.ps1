@@ -243,7 +243,9 @@ function New-AzFunctionApp {
         $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
         $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
 
-        ValidateFunctionName -Name $Name
+        $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                        -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+        ValidateFunctionName -Name $Name @params
 
         if (-not $functionAppIsCustomDockerImage)
         {
@@ -291,13 +293,13 @@ function New-AzFunctionApp {
         
         if ($consumptionPlan)
         {
-            ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux
+            ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux @params
             $functionAppDef.Location = $Location
         }
         else 
         {
             # Host function app in Elastic Premium or app service plan
-            $servicePlan = GetServicePlan $PlanName
+            $servicePlan = GetServicePlan $PlanName @params
 
             if ($null -ne $servicePlan.Location)
             {
@@ -365,7 +367,7 @@ function New-AzFunctionApp {
         }
 
         # Validate storage account and get connection string
-        $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName
+        $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName @params
         $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
         $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
 
@@ -398,7 +400,7 @@ function New-AzFunctionApp {
             }
             elseif ($ApplicationInsightsName)
             {
-                $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName
+                $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName @params
                 if (-not $appInsightsProject)
                 {
                     $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
@@ -413,50 +415,18 @@ function New-AzFunctionApp {
             }
             else
             {
-                # Create a new ApplicationInsights
-                $maxNumberOfTries = 3
-                $tries = 1
-
-                $appInsightsEnabled = $false
-
-                while ($true)
+                $newAppInsightsProject = CreateApplicationInsightsProject -ResourceGroupName $resourceGroupName `
+                                                                          -ResourceName $Name `
+                                                                          -Location $functionAppDef.Location `
+                                                                          @params
+                if ($newAppInsightsProject)
                 {
-                    try
-                    {
-                        $newAppInsightsProject = Az.Functions.internal\New-AzAppInsights -ResourceGroupName $resourceGroupName `
-                                                                                            -ResourceName $Name  `
-                                                                                            -Location $functionAppDef.Location `
-                                                                                            -Kind web `
-                                                                                            -RequestSource "AzurePowerShell" `
-                                                                                            -ErrorAction Stop
-                        if ($newAppInsightsProject)
-                        {
-                            $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
-                            $appInsightsEnabled = $true
-
-                            break
-                        }
-                    }
-                    catch
-                    {
-                        # Ignore the failure and continue
-                    }
-
-                    if ($tries -ge $maxNumberOfTries)
-                    {
-                        break
-                    }
-
-                    # Wait for 2^(tries-1) seconds between retries. In this case, it would be 1, 2, and 4 seconds, respectively.
-                    $waitInSeconds = [Math]::Pow(2, $tries - 1)
-                    Start-Sleep -Seconds $waitInSeconds
-
-                    $tries++
+                    $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
                 }
-
-                if (-not $appInsightsEnabled)
+                else
                 {
-                    $warningMessage = "Unable to create the Application Insights for the function app. Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for the function app."
+                    $warningMessage = "Unable to create the Application Insights for the function app. Creation of Application Insights will help you monitor and diagnose your function apps in the Azure Portal. `r`n"
+                    $warningMessage += "Use the 'New-AzApplicationInsights' cmdlet or the Azure Portal to create a new Application Insights project. After that, use the 'Update-AzFunctionApp' cmdlet to update Application Insights for your function app."
                     Write-Warning $warningMessage
                 }
             }
