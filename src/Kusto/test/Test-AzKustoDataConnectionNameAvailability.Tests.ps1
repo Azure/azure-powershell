@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzKustoDataConnectionNameAvailability.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -27,7 +27,7 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $dataConnectionName = $env.dataConnectionName + "a"
+        $dataConnectionName = $env.dataConnectionName + $env.rstr4
         $dataConnectionResourceType = $env.dataConnectionResourceType
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

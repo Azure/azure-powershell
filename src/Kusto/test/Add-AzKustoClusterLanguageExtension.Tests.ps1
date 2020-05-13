@@ -24,7 +24,7 @@ Describe 'Add-AzKustoClusterLanguageExtension' {
         $clusterName = $env.clusterName
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-        
+
         { Add-AzKustoClusterLanguageExtension -InputObject $clusterGetItem -Value (@{Name=$env.langExt2}) } | Should -Not -Throw
     }
 }

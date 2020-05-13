@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoClusterSku.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzKustoClusterSku' {
     It 'List' {
         [array]$clusterSku = Get-AzKustoClusterSku
-        $clusterSku.Count | Should -Be 413        
+        $clusterSku.Count | Should -Be 308
     }
 
     It 'List1' {

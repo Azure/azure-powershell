@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzKustoDatabaseNameAvailability.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -26,7 +26,7 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
     It 'CheckViaIdentityExpanded' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $databaseName = $env.databaseName + "b"
+        $databaseName = $env.databaseName + $env.rstr6
         $databaseResourceType = $env.databaseType
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
