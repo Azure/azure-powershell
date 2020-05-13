@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
 
             PsDeploymentScriptLog deploymentScriptLog;
-            int TailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+            int tailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
 
             try
             {
@@ -91,19 +91,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case SaveDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, TailParam);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, tailParam);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
                             ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
-                            TailParam);
+                            tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             DeploymentScriptInputObject.Name,
                             ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
-                            TailParam);
+                            tailParam);
                         break;
                     default:
                         throw new PSInvalidOperationException();
