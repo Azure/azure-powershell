@@ -706,6 +706,7 @@ function Test-RaCreatedBySP
 {
     #Setup
     # Conect to azure with SP
+    # If you need to re-record replace this setup
     $passwd = ConvertTo-SecureString 'MCg1SVb3MX' -AsPlainText -Force
     $pscredential = New-Object System.Management.Automation.PSCredential('c82180ed-2f4b-4cb2-965f-ec5088751710' , $passwd)
     $tenantId = '1462fd46-afe5-491b-a340-31ebae81d1ce'
