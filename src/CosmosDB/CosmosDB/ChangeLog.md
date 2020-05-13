@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.5
 * PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
 * Detailed parameter is deprecated in the following cmdlets:
     Get-AzCosmosDBSqlContainer,

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.9.0
 * Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.
 * Azure Site Recovery added support for zone to zone replication.
 * Azure Backup Added Long term retention support for Azure FileShare Recovery Points.
