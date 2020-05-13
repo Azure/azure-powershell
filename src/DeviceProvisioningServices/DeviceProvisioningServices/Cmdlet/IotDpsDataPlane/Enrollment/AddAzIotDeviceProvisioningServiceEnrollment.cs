@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                         {
                             if (!this.IsParameterBound(c => c.PrimaryCAName))
                             {
-                                throw new ArgumentException("Primary certificate cannot be null or empty.");
+                                throw new ArgumentException("Primary CA reference cannot be null or empty.");
                             }
 
                             if (this.IsParameterBound(c => c.SecondaryCAName))
@@ -339,6 +339,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     {
                         enrollment.IotHubHostName = this.IotHubHostName;
                     }
+                }
+
+                if (this.IsParameterBound(c => c.ProvisioningStatus))
+                {
+                    enrollment.ProvisioningStatus = (ProvisioningStatus)Enum.Parse(typeof(ProvisioningStatus), this.ProvisioningStatus.ToString());
                 }
 
                 IndividualEnrollment result = client.CreateOrUpdateIndividualEnrollmentAsync(enrollment).GetAwaiter().GetResult();
