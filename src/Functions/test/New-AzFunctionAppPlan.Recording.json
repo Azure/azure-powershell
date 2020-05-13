@@ -1,0 +1,201 @@
+{
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$GET+https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions?sku=ElasticPremium\u0026linuxWorkersEnabled=False\u0026api-version=2019-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions?sku=ElasticPremium\u0026linuxWorkersEnabled=False\u0026api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "340" ],
+        "x-ms-client-request-id": [ "c13dfeec-45a1-41ac-bd52-943acfbdcf7e" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
+        "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d25a0934-f7de-49f0-8626-670eebbdcb82" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11789" ],
+        "x-ms-correlation-request-id": [ "2a508783-19b8-4fc0-ab00-6b38ea187483" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200513T004851Z:2a508783-19b8-4fc0-ab00-6b38ea187483" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 13 May 2020 00:48:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "11835" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Central US\",\"name\":\"Central US\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Central US\",\"description\":null,\"sortOrder\":0,\"displayName\":\"Central US\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/North Europe\",\"name\":\"North Europe\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"North Europe\",\"description\":\"\",\"sortOrder\":1,\"displayName\":\"North Europe\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;XENON;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX;LINUXDYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/West Europe\",\"name\":\"West Europe\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"West Europe\",\"description\":null,\"sortOrder\":2,\"displayName\":\"West Europe\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;XENON;SFCONTAINERS;LINUXDYNAMIC;ELASTICPREMIUM;ELASTICLINUX;LINUXFREE\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Southeast Asia\",\"name\":\"Southeast Asia\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Southeast Asia\",\"description\":\"\",\"sortOrder\":3,\"displayName\":\"Southeast Asia\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;XENON;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX;LINUXDYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/East Asia\",\"name\":\"East Asia\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"East Asia\",\"description\":null,\"sortOrder\":4,\"displayName\":\"East Asia\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;SFCONTAINERS;LINUXDYNAMIC;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/West US\",\"name\":\"West US\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"West US\",\"description\":null,\"sortOrder\":5,\"displayName\":\"West US\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;XENON;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX;LINUXDYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/East US\",\"name\":\"East US\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"East US\",\"description\":null,\"sortOrder\":6,\"displayName\":\"East US\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;FAKEORG;LINUXDSERIES;XENON;SFCONTAINERS;LINUXDYNAMIC;LINUXFREE;ELASTICLINUX;ELASTICPREMIUM\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Japan West\",\"name\":\"Japan West\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Japan West\",\"description\":null,\"sortOrder\":7,\"displayName\":\"Japan West\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Japan East\",\"name\":\"Japan East\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Japan East\",\"description\":null,\"sortOrder\":8,\"displayName\":\"Japan East\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;LINUXFREE;ELASTICLINUX;ELASTICPREMIUM\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/East US 2\",\"name\":\"East US 2\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"East US 2\",\"description\":null,\"sortOrder\":9,\"displayName\":\"East US 2\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/North Central US\",\"name\":\"North Central US\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"North Central US\",\"description\":null,\"sortOrder\":10,\"displayName\":\"North Central US\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;LINUXFREE;ELASTICPREMIUM;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/South Central US\",\"name\":\"South Central US\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"South Central US\",\"description\":null,\"sortOrder\":11,\"displayName\":\"South Central US\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Brazil South\",\"name\":\"Brazil South\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Brazil South\",\"description\":null,\"sortOrder\":12,\"displayName\":\"Brazil South\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;LINUXFREE;ELASTICPREMIUM;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Australia East\",\"name\":\"Australia East\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Australia East\",\"description\":null,\"sortOrder\":13,\"displayName\":\"Australia East\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;XENON;ELASTICPREMIUM;LINUXFREE;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Australia Southeast\",\"name\":\"Australia Southeast\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Australia Southeast\",\"description\":null,\"sortOrder\":14,\"displayName\":\"Australia Southeast\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/East Asia (Stage)\",\"name\":\"East Asia (Stage)\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"East Asia (Stage)\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"East Asia (Stage)\",\"orgDomain\":\"MSFTINT;DSERIES;ELASTICPREMIUM;FUNCTIONS;DYNAMIC;XENON;LINUX;LINUXFREE;LINUXDYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/West India\",\"name\":\"West India\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"West India\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"West India\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;ELASTICPREMIUM;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/South India\",\"name\":\"South India\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"South India\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"South India\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Canada Central\",\"name\":\"Canada Central\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Canada Central\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Canada Central\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/West US 2\",\"name\":\"West US 2\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"West US 2\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"West US 2\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;DSERIES;LINUXDSERIES;LINUXFREE;LINUXDYNAMIC;ELASTICPREMIUM;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/UK West\",\"name\":\"UK West\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"UK West\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"UK West\",\"orgDomain\":\"PUBLIC;MSFTPUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/UK South\",\"name\":\"UK South\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"UK South\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"UK South\",\"orgDomain\":\"PUBLIC;MSFTPUBLIC;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;LINUXFREE;LINUXDYNAMIC;ELASTICPREMIUM;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/East US 2 EUAP\",\"name\":\"East US 2 EUAP\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"East US 2 EUAP\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"East US 2 EUAP\",\"orgDomain\":\"EUAP;XENON;DSERIES;ELASTICPREMIUM;FUNCTIONS;DYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Central US EUAP\",\"name\":\"Central US EUAP\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Central US EUAP\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Central US EUAP\",\"orgDomain\":\"EUAP;LINUX;DSERIES;ELASTICPREMIUM;LINUXFREE;ELASTICLINUX;LINUXDYNAMIC;DYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Korea Central\",\"name\":\"Korea Central\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Korea Central\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Korea Central\",\"orgDomain\":\"PUBLIC;DREAMSPARK;MSFTPUBLIC;FUNCTIONS;DYNAMIC;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;DSERIES;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/France Central\",\"name\":\"France Central\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"France Central\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"France Central\",\"orgDomain\":\"PUBLIC;MSFTPUBLIC;DSERIES;DYNAMIC;LINUX;LINUXDSERIES;ELASTICPREMIUM;LINUXFREE;LINUXDYNAMIC;ELASTICLINUX\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Australia Central 2\",\"name\":\"Australia Central 2\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Australia Central 2\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Australia Central 2\",\"orgDomain\":\"PUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;LINUXFREE;ELASTICPREMIUM\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Australia Central\",\"name\":\"Australia Central\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Australia Central\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Australia Central\",\"orgDomain\":\"PUBLIC;FUNCTIONS;DYNAMIC;DSERIES;LINUX;LINUXDSERIES;LINUXFREE;ELASTICPREMIUM\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Germany West Central\",\"name\":\"Germany West Central\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Germany West Central\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Germany West Central\",\"orgDomain\":\"PUBLIC;DSERIES;ELASTICPREMIUM;FUNCTIONS;DYNAMIC\"}},{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/providers/Microsoft.Web/geoRegions/Norway East\",\"name\":\"Norway East\",\"type\":\"Microsoft.Web/geoRegions\",\"properties\":{\"name\":\"Norway East\",\"description\":null,\"sortOrder\":2147483647,\"displayName\":\"Norway East\",\"orgDomain\":\"PUBLIC;LINUX;LINUXDSERIES;DSERIES;ELASTICLINUX;ELASTICPREMIUM\"}}],\"nextLink\":null,\"id\":null}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$PUT+https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01",
+      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"maximumElasticWorkerCount\": 10,\r\n    \"reserved\": false\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"EP1\",\r\n    \"capacity\": 1,\r\n    \"tier\": \"ElasticPremium\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "205" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "531fdffb-131a-46b5-91b2-92f628d2b6f4" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1161" ],
+        "x-ms-correlation-request-id": [ "8e93187d-9aa6-4be0-9baf-132e242cd691" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200513T004856Z:8e93187d-9aa6-4be0-9baf-132e242cd691" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 13 May 2020 00:48:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1\",\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":43101,\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-0en4gz-CentralUSwebspace\",\"subscription\":\"13029c26-a786-43f8-b6ae-e2699a8ea360\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-0en4gz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-131_43101\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$GET+https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "342" ],
+        "x-ms-client-request-id": [ "306a0479-328b-4b89-921c-21b1ac64a305" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "edc79124-7761-4890-bc1e-e6dbccd8f825" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11788" ],
+        "x-ms-correlation-request-id": [ "bf19e640-f4bf-440b-8e1f-cbb124b1d43d" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200513T004856Z:bf19e640-f4bf-440b-8e1f-cbb124b1d43d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 13 May 2020 00:48:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1\",\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":43101,\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-0en4gz-CentralUSwebspace\",\"subscription\":\"13029c26-a786-43f8-b6ae-e2699a8ea360\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-0en4gz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-131_43101\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$GET+https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "343" ],
+        "x-ms-client-request-id": [ "af9771ee-2b23-4561-b761-ca74ef946ab2" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c25cdd4f-d707-4a28-b565-3cdb46148b6d" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11787" ],
+        "x-ms-correlation-request-id": [ "2540cc7d-d2a5-416e-aa1b-f3634806841c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200513T004856Z:2540cc7d-d2a5-416e-aa1b-f3634806841c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 13 May 2020 00:48:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1440" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1\",\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":43101,\"name\":\"Functions-MyPlan-cyn7qbs2v1\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-0en4gz-CentralUSwebspace\",\"subscription\":\"13029c26-a786-43f8-b6ae-e2699a8ea360\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"maximumElasticWorkerCount\":10,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-0en4gz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-131_43101\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}"
+    }
+  },
+  "New-AzFunctionAppPlan+[NoContext]+New-AzFunctionAppPlan -Location supports locations with no spaces, e.g., \u0027centralus\u0027+$DELETE+https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/13029c26-a786-43f8-b6ae-e2699a8ea360/resourceGroups/Functions-Test-Windows-Premium-0en4gz/providers/Microsoft.Web/serverfarms/Functions-MyPlan-cyn7qbs2v1?api-version=2019-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "344" ],
+        "x-ms-client-request-id": [ "8dd666c7-abf3-4a0c-bc24-f17760ef949f" ],
+        "CommandName": [ "Az.Functions.internal\\Remove-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Remove-AzFunctionAppPlan_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "582de494-7388-4f6d-866a-1b374a1bf386" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-correlation-request-id": [ "23c4f56b-00d2-441c-9755-94f957dde483" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200513T004858Z:23c4f56b-00d2-441c-9755-94f957dde483" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 13 May 2020 00:48:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}
