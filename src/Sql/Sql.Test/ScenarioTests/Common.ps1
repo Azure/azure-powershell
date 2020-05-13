@@ -1056,7 +1056,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
-		$getVnet =  DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
 		return $getVnet
 	}
 }
@@ -1072,11 +1072,36 @@ function DelegateSubnetToSQLMIAndGetVnet ($vnetName, $subnetName, $resourceGroup
 
 	$delegations = Get-AzDelegation -Subnet $subnet | ? {$_.ServiceName -eq "Microsoft.Sql/managedInstances"}
 
-	if ($delegations -eq $null){
+	# Condition (Get-SqlTestMode) -eq 'Record' is addedd in order to skip this path in Playback mode
+	if ($delegations -eq $null -and (Get-SqlTestMode) -eq 'Record'){
 		$subnet = Add-AzDelegation -Name "test-delegation-sqlmi" -ServiceName "Microsoft.Sql/managedInstances" -Subnet $subnet
 		Set-AzVirtualNetwork -VirtualNetwork $vnet
 		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
 	}
+
+	if ($subnet.NetworkSecurityGroup -eq $null -and (Get-SqlTestMode) -eq 'Record'){
+		$inboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-inbound -Description "Allow all inbound" `
+					-Access Allow -Protocol * -Direction Inbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$outboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-outbound -Description "Allow all outbound" `
+					-Access Allow -Protocol * -Direction Outbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$nsg = New-AzNetworkSecurityGroup `
+			-Name "$vnetName-$subnetName-nsg-allow-all" `
+			-ResourceGroupName $resourceGroupName `
+			-location $vnet.Location `
+			-SecurityRules $inboundAllowAllRule, $outboundAllowAllRule `
+            -Force
+
+        $subnet.NetworkSecurityGroup += $nsg
+
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+    }
 
 	return $vnet
 }
