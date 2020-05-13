@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+                {"Microsoft.Network", null},
                 {"Microsoft.Authorization", null}
             };
             var providersToIgnore = new Dictionary<string, string>

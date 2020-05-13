@@ -19,15 +19,16 @@
 -->
 ## Upcoming Release
 * Enhance performance of:
-    - Set-AzSqlDatabaseSensitivityClassification.
-    - Set-AzSqlInstanceDatabaseSensitivityClassification.
-    - Remove-AzSqlDatabaseSensitivityClassification.
-    - Remove-AzSqlInstanceDatabaseSensitivityClassification.
-    - Enable-AzSqlDatabaseSensitivityRecommendation.
-    - Enable-AzSqlInstanceDatabaseSensitivityRecommendation.
-    - Disable-AzSqlDatabaseSensitivityRecommendation.
-    - Disable-AzSqlInstanceDatabaseSensitivityRecommendation.
-* Remove client-side validation of 'RetentionDays' parameter from cmdlet SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy
+    - `Set-AzSqlDatabaseSensitivityClassification`
+    - `Set-AzSqlInstanceDatabaseSensitivityClassification`
+    - `Remove-AzSqlDatabaseSensitivityClassification`
+    - `Remove-AzSqlInstanceDatabaseSensitivityClassification`
+    - `Enable-AzSqlDatabaseSensitivityRecommendation`
+    - `Enable-AzSqlInstanceDatabaseSensitivityRecommendation`
+    - `Disable-AzSqlDatabaseSensitivityRecommendation`
+    - `Disable-AzSqlInstanceDatabaseSensitivityRecommendation`
+* Removed client-side validation of 'RetentionDays' parameter from cmdlet `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
+* Auditing to a storage account in Vnet, fixing a bug when creating a Storage Blob Data Contributor role.
 
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`

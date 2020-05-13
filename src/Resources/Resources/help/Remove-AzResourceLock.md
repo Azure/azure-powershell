@@ -51,13 +51,6 @@ Remove-AzResourceLock -LockName <String> [-Force] -ResourceName <String> -Resour
  [<CommonParameters>]
 ```
 
-### ByTenantLevel
-```
-Remove-AzResourceLock -LockName <String> [-Force] -ResourceName <String> -ResourceType <String> [-TenantLevel]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Remove-AzResourceLock** cmdlet removes an Azure resource lock.
 
@@ -138,7 +131,7 @@ Specifies the name of the lock that this cmdlet removes.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroup, ByResourceGroupLevel, BySpecifiedScope, BySubscription, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroup, ByResourceGroupLevel, BySpecifiedScope, BySubscription, BySubscriptionLevel
 Aliases: ExtensionResourceName, Name
 
 Required: True
@@ -185,7 +178,7 @@ Server`/`Database
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -200,7 +193,7 @@ Specifies the resource type of the resource for which the lock applies.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -222,21 +215,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TenantLevel
-Indicates that this cmdlet operates at the tenant level.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByTenantLevel
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

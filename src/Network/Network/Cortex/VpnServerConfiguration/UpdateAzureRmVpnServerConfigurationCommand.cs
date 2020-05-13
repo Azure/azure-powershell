@@ -169,7 +169,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
-        [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
@@ -184,8 +183,21 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
-        [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -364,19 +376,30 @@ namespace Microsoft.Azure.Commands.Network
             // VpnAuthenticationType = Radius related validations.
             else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
-                if (this.RadiusServerAddress != null)
+                if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
+                    throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
                 }
 
-                if (this.RadiusServerSecret != null)
+                if (RadiusServerList != null && this.RadiusServerList.Count() > 0)
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                    vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList.ToList();
+                    vpnServerConfigurationToUpdate.RadiusServerAddress = null;
+                    vpnServerConfigurationToUpdate.RadiusServerSecret = null;
                 }
-
-                if (vpnServerConfigurationToUpdate.RadiusServerAddress == null || vpnServerConfigurationToUpdate.RadiusServerSecret == null)
+                else
                 {
-                    throw new ArgumentException("Both radius server address and secret must be specified if VpnAuthenticationType is being configured as Radius.");
+                    if (this.RadiusServerAddress != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
+                    }
+
+                    if (this.RadiusServerSecret != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                    }
+
+                    vpnServerConfigurationToUpdate.RadiusServers = null;
                 }
 
                 // Read the RadiusServerRootCertificates if present

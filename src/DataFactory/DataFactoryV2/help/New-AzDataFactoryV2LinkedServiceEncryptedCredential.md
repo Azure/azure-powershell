@@ -27,16 +27,17 @@ New-AzDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <S
 ```
 
 ## DESCRIPTION
-The New-AzDataFactoryV2LinkedServiceEncryptCredential cmdlet encrypt credential in linked service with specified integration runtime.
+The New-AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet encrypt credential in linked service with specified integration runtime.
 
 ## EXAMPLES
 
 ### Example 1: Encrypt credentials in a linked service
-```
-PS C:\> New-AzDataFactoryV2LinkedServiceEncryptCredential -ResourceGroupName resourceGroup -DataFactoryName myDataFactory -IntegrationRuntimeName myIR -File D:\sql.json
-```
 
-This command encrypts credential in file D:\sql.json with the integration runtime named myIR.
+This command encrypts credential in file C:\samples\WikiSample\TaxiDemo1.json with the integration runtime named test-selfhost-ir.
+
+```powershell <!-- Aladdin Generated Example --> 
+New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName WikiADF -DefinitionFile 'C:\samples\WikiSample\TaxiDemo1.json' -IntegrationRuntimeName 'test-selfhost-ir' -ResourceGroupName MyResourceGroup
+```
 
 ## PARAMETERS
 

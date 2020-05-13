@@ -20,7 +20,7 @@ Get-AzCosmosDBCassandraKeyspace -ResourceGroupName <String> -AccountName <String
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBCassandraKeyspace [-Name <String>] -ParentObject <PSDatabaseAccount>
+Get-AzCosmosDBCassandraKeyspace [-Name <String>] -ParentObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

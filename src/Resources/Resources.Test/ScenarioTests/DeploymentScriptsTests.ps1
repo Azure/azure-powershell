@@ -125,12 +125,13 @@ function Test-GetDeploymentScriptWithBadScript
 	
 	try
 	{
-		# Prepare
+		# Prepare		
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		$exceptionMessage = "Unable to evaluate template outputs: 'result'. Please see error details and deployment operations. Please see https://aka.ms/arm-debug for usage details."
+		$exceptionMessage = "bad: command not found. Please refer to https://aka.ms/DeploymentScriptsTroubleshoot for more deployment script information."
 		Assert-ThrowsContains { New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeploymentCli.json -TemplateParameterFile TemplateScriptDeploymentParametersCliBadScript.json } $exceptionMessage	
-		
-		$deployment = Get-AzResourceGroupDeployment -ResourceGroupName $rgname
+	
+		#$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeploymentCli.json -TemplateParameterFile TemplateScriptDeploymentParametersCliBadScript.json
+		$deployment = Get-AzResourceGroupDeployment -ResourceGroupName $rgname 
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value
 
 		# Test
@@ -140,7 +141,7 @@ function Test-GetDeploymentScriptWithBadScript
 		Assert-NotNull $deploymentScript
 		Assert-AreEqual $deploymentScriptName $deploymentScript.Name
 		Assert-AreEqual $rgname $deploymentScript.ResourceGroupName
-		# Assert-NotNull $deploymentScript.Status.Error //Uncomment this when the new .NET SDK is added to the project.
+		Assert-NotNull $deploymentScript.Status.Error 
 
 	}
 	finally
