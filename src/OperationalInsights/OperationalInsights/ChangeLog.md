@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Updated legacy code to apply new generated SDK
+* Deleted cmdlets due to deprecated APIs
+    - `Get-AzOperationalInsightsSavedSearchResult` (alias `Get-AzOperationalInsightsSavedSearchResults`)
+    - `Get-AzOperationalInsightsSearchResult` (alias `Get-AzOperationalInsightsSearchResults`)
+    - `Get-AzOperationalInsightsLinkTarget` (alias `Get-AzOperationalInsightsLinkTargets`)
 * Added parameters for `Set-AzOperationalInsightsWorkspace` and `New-AzOperationalInsightsWorkspace`
 * Created cmdlets for Linked Stoarge Account
 * Created cmdlets for Clusters and Linked Service
