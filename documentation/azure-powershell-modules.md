@@ -11,10 +11,12 @@ Azure PowerShell                      | `Az`                                    
 Azure Service                         | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]
+Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery]
 Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery]
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
 Analysis Services                     | `Az.AnalysisServices`                   | [![AnalysisServices]][AnalysisServicesGallery]
 API Management                        | `Az.ApiManagement`                      | [![ApiManagement]][ApiManagementGallery]
+App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
@@ -54,6 +56,7 @@ Key Vault                             | `Az.KeyVault`                           
 Kusto                                 | `Az.Kusto`                              | [![Kusto]][KustoGallery]
 Logic App                             | `Az.LogicApp`                           | [![LogicApp]][LogicAppGallery]
 Machine Learning                      | `Az.MachineLearning`                    | [![MachineLearning]][MachineLearningGallery]
+Maintenance                           | `Az.Maintenance`                        | [![Maintenance]][MaintenanceGallery]
 Managed Service Identity              | `Az.ManagedServiceIdentity`             | [![ManagedServiceIdentity]][ManagedServiceIdentityGallery]
 Managed Services                      | `Az.ManagedServices`                    | [![ManagedServices]][ManagedServicesGallery]
 Management Partner                    | `Az.ManagementPartner`                  | [![ManagementPartner]][ManagementPartnerGallery]
