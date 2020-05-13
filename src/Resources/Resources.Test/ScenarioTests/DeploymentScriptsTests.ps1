@@ -224,7 +224,7 @@ function Test-GetDeploymentScriptLog-PowerShell
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeployment.json -TemplateParameterFile TemplateScriptDeploymentParameters.json
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
-		$TailInteger = 3
+		$TailInteger = 5
 
 		# Test - GetLogByNameAndResourceGroup
 		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName 
@@ -237,13 +237,13 @@ function Test-GetDeploymentScriptLog-PowerShell
 
 		# Test - GetLogByNameAndResourceGroup - WithTailParameter
 		$getLogByNameAndResourceGroupWithTail = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName -Tail $TailInteger
-		$Tail = [math]::min( $getLogByNameAndResourceGroup.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByNameAndResourceGroup.Log -split '\n').count, $TailInteger)
 
 		# Assert
 		Assert-NotNull $getLogByNameAndResourceGroupWithTail
 		Assert-NotNull $deploymentScriptName $getLogByNameAndResourceGroupWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByNameAndResourceGroupWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByNameAndResourceGroupWithTail.count $Tail
+		Assert-AreEqual ($getLogByNameAndResourceGroupWithTail.Log -split '\n').count $Tail
 
 
 		# Test - GetLogByDeploymentScriptResourceId
@@ -256,13 +256,13 @@ function Test-GetDeploymentScriptLog-PowerShell
 
 		# Test - GetLogByDeploymentScriptResourceId - WithTailParameter
 		$getLogByResourceIdWithTail = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId -Tail $TailInteger
-		$Tail = [math]::min( $getLogByResourceId.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByResourceId.Log -split '\n').count, $TailInteger)
 
 		#Assert
 		Assert-NotNull $getLogByResourceIdWithTail
 		Assert-NotNull $deploymentScriptName $getLogByResourceIdWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByResourceIdWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByResourceIdWithTail.count $Tail
+		Assert-AreEqual ($getLogByResourceIdWithTail.Log -split '\n').count $Tail
 	
 
 		#Test - GetLogByInputObject
@@ -277,13 +277,13 @@ function Test-GetDeploymentScriptLog-PowerShell
 		#Test - GetLogByInputObject - WithTailParameter
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
 		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $TailInteger
-		$Tail = [math]::min( $getLogByInputObject.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByInputObject.Log -split '\n').count, $TailInteger)
 
 		# Assert
 		Assert-NotNull $getLogByInputObjectWithTail
 		Assert-NotNull $deploymentScriptName $getLogByInputObjectWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByInputObjectWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByResourceIdWithTail.count $Tail
+		Assert-AreEqual ($getLogByResourceIdWithTail.Log -split '\n').count $Tail
 	}
 	finally
     {
@@ -312,7 +312,7 @@ function Test-GetDeploymentScriptLog-Cli
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeploymentCli.json -TemplateParameterFile TemplateScriptDeploymentParametersCli.json
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
-		$TailInteger = 3
+		$TailInteger = 1
 
 		# Test - GetLogByNameAndResourceGroup
 		$getLogByNameAndResourceGroup = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName
@@ -324,13 +324,13 @@ function Test-GetDeploymentScriptLog-Cli
 
 		# Test - GetLogByNameAndResourceGroup - WithTailParameter
 		$getLogByNameAndResourceGroupWithTail = Get-AzDeploymentScriptLog -ResourceGroupName $rgname -Name $deploymentScriptName  -Tail $TailInteger
-		$Tail = [math]::min( $getLogByNameAndResourceGroup.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByNameAndResourceGroup.Log -split '\n').count, $TailInteger)
 
 		# Assert
 		Assert-NotNull $getLogByNameAndResourceGroupWithTail
 		Assert-NotNull $deploymentScriptName $getLogByNameAndResourceGroupWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByNameAndResourceGroupWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByNameAndResourceGroupWithTail.count $Tail
+		Assert-AreEqual ($getLogByNameAndResourceGroupWithTail.Log -split '\n').count $Tail
 
 		# Test - GetLogByDeploymentScriptResourceId
 		$getLogByResourceId = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId
@@ -343,13 +343,13 @@ function Test-GetDeploymentScriptLog-Cli
 
 		# Test - GetLogByDeploymentScriptResourceId - WithTailParameter
 		$getLogByResourceIdWithTail = Get-AzDeploymentScriptLog -DeploymentScriptResourceId $resourceId -Tail $TailInteger
-		$Tail = [math]::min( $getLogByResourceId.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByResourceId.Log -split '\n').count, $TailInteger)
 
 		#Assert
 		Assert-NotNull $getLogByResourceIdWithTail
 		Assert-NotNull $deploymentScriptName $getLogByResourceIdWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByResourceIdWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByResourceIdWithTail.count $Tail
+		Assert-AreEqual ($getLogByResourceIdWithTail.Log -split '\n').count $Tail
 
 
 		#Test - GetLogByInputObject
@@ -365,13 +365,13 @@ function Test-GetDeploymentScriptLog-Cli
 		#Test - GetLogByInputObject - WithTailParameter
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
 		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $TailInteger
-		$Tail = [math]::min( $getLogByResourceId.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByResourceId.Log -split '\n').count, $TailInteger)
 
 		# Assert
 		Assert-NotNull $getLogByInputObjectWithTail
 		Assert-NotNull $deploymentScriptName $getLogByInputObjectWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByInputObjectWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByInputObjectWithTail.count $Tail
+		Assert-AreEqual ($getLogByInputObjectWithTail.Log -split '\n').count $Tail
 	}
 	finally
     {
@@ -389,7 +389,7 @@ function Test-PipeDeploymentScriptObjectToGetLogs
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
-	$TailInteger = 3
+	$TailInteger = 1
 
 	try
 	{
@@ -411,13 +411,13 @@ function Test-PipeDeploymentScriptObjectToGetLogs
 
 		#Test - GetLogsByInputObjectPiped - WithTailParameter
 		$getLogByInputObjectWithTail = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName | Get-AzDeploymentScriptLog -Tail $TailInteger
-		$Tail = [math]::min($getLogByInputObject.count, $TailInteger)
+		$Tail = [math]::min( ($getLogByInputObject.Log -split '\n').count, $TailInteger)
 
 		# Assert
 		Assert-NotNull $getLogByInputObjectWithTail
 		Assert-NotNull $deploymentScriptName $getLogByInputObjectWithTail.Log
 		Assert-AreEqual $deploymentScriptName $getLogByInputObjectWithTail.DeploymentScriptName
-		Assert-AreEqual $getLogByInputObjectWithTail.count $Tail
+		Assert-AreEqual ($getLogByInputObjectWithTail.Log -split '\n').count $Tail
 	}
 	finally
     {

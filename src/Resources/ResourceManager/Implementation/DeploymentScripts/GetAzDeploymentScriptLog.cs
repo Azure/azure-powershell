@@ -63,26 +63,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             PsDeploymentScriptLog deploymentScriptLog;
-            Tail = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+            int TailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+
             try
             {
                 switch (ParameterSetName)
                 {
                     case GetDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, Tail);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, TailParam);
                         break;
                     case GetDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
                             ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
-                            Tail);
+                            TailParam);
                         break;
                     case GetDeploymentScriptLogByInputObject:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             DeploymentScriptInputObject.Name, 
                             ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
-                            Tail);
+                            TailParam);
                         break;
                     default:
                         throw new PSInvalidOperationException();
