@@ -12,5 +12,3 @@ test/*-TestResults.xml
 /*.snk
 /*.csproj
 /*.nuspec
-tools
-/*.psd1
