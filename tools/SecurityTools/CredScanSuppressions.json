@@ -1100,6 +1100,18 @@
     {
       "file": "src\\TimeSeriesInsights\\test\\New-AzTimeSeriesInsightsEnvironment.Recording.json",
       "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\Get-Update-Remove-AzFunctionAppSetting.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\New-Update-Remove-AzFunctionApp.Tests.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\New-AzFunctionApp.Recording.json",
+      "_justification": "Test resource is deleted"
     }
   ]
 }
