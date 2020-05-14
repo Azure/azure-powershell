@@ -25,6 +25,7 @@
 * Azure Backup Added Long term retention support for Azure FileShare Recovery Points.
 * Azure Backup Added disk exclusion properties to `Get-AzRecoveryServicesBackupItem` cmdlet output.
 * Added private endpoint for Vault credential file for site recovery service.
+* Azure Site Recovery added support for zone to zone replication using recovery plan.
 
 ## Version 2.8.0
 * Azure Site Recovery added support for doing reprotect and updated vm properties for Azure disk encrypted Virtual Machines.
