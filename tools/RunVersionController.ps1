@@ -12,7 +12,10 @@ Param(
     [string]$ModuleName,
 
     [Parameter()]
-    [string]$GalleryName = "PSGallery"
+    [string]$GalleryName = "PSGallery",
+
+    [Parameter()]
+    [switch]$SkipAzInstall
 )
 
 enum PSVersion
@@ -176,6 +179,7 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
     }
 
@@ -215,13 +219,17 @@ switch ($PSCmdlet.ParameterSetName)
         }
         try
         {
-            Install-Module Az -Repository $GalleryName -Force -AllowClobber
+            if(!$SkipAzInstall.IsPresent)
+            {
+                Install-Module Az -Repository $GalleryName -Force -AllowClobber
+            }
         }
         catch
         {
             throw "Please rerun in Administrator mode."
         }
 
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Write-Host "Getting local Az information..." -ForegroundColor Yellow
@@ -300,6 +308,5 @@ switch ($PSCmdlet.ParameterSetName)
 
         Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
         Update-ChangeLog -Content $changeLog -RootPath $rootPath
-        Update-Image-Releases -ReleaseProps "$rootPath\docker\config\release.props" -AzVersion $newVersion
     }
 }

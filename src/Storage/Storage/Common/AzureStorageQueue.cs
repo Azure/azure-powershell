@@ -17,6 +17,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using Microsoft.Azure.Storage.Queue;
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using global::Azure.Storage;
+    using global::Azure.Storage.Queues;
+    using Microsoft.WindowsAzure.Commands.Storage;
 
     /// <summary>
     /// Azure storage queue
@@ -49,6 +52,38 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public bool EncodeMessage { get; private set; }
 
         /// <summary>
+        /// XSCL Track2 Queue Client, used to run Queue APIs
+        /// </summary>
+        public QueueClient QueueClient
+        {
+            get
+            {
+                if (privateQueueClient == null)
+                {
+                    privateQueueClient = GetTrack2QueueClient(this.CloudQueue, (AzureStorageContext)this.Context);
+                }
+                return privateQueueClient;
+            }
+        }
+        private QueueClient privateQueueClient = null;
+
+        /// <summary>
+        /// XSCL Track2 Queue properties, will retrieve the properties on server and return to user
+        /// </summary>
+        public global::Azure.Storage.Queues.Models.QueueProperties QueueProperties
+        {
+            get
+            {
+                if (privateQueueProperties == null)
+                {
+                    privateQueueProperties = QueueClient.GetProperties().Value;
+                }
+                return privateQueueProperties;
+            }
+        }
+        private global::Azure.Storage.Queues.Models.QueueProperties privateQueueProperties = null;
+
+        /// <summary>
         /// Azure storage queue constructor.
         /// </summary>
         /// <param name="queue">Cloud queue object</param>
@@ -59,6 +94,38 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Uri = queue.Uri;
             ApproximateMessageCount = queue.ApproximateMessageCount;
             EncodeMessage = queue.EncodeMessage;
+        }
+
+        // Convert Track1 queue object to Track 2 queue Client
+        protected static QueueClient GetTrack2QueueClient(CloudQueue cloudQueue, AzureStorageContext context)
+        {
+            QueueClient queueClient;
+            if (cloudQueue.ServiceClient.Credentials.IsToken) //Oauth
+            {
+                if (context == null)
+                {
+                    //TODO : Get Oauth context from current login user.
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                }
+                queueClient = new QueueClient(cloudQueue.Uri, context.Track2OauthToken);
+            }
+            else if (cloudQueue.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                string fullUri = cloudQueue.Uri.ToString();
+                fullUri = fullUri + cloudQueue.ServiceClient.Credentials.SASToken;
+                queueClient = new QueueClient(new Uri(fullUri));
+            }
+            else if (cloudQueue.ServiceClient.Credentials.IsSharedKey) //Shared Key
+            {
+                queueClient = new QueueClient(cloudQueue.Uri,
+                    new StorageSharedKeyCredential(context.StorageAccountName, cloudQueue.ServiceClient.Credentials.ExportBase64EncodedKey()));
+            }
+            else //Anonymous
+            {
+                queueClient = new QueueClient(cloudQueue.Uri);
+            }
+
+            return queueClient;
         }
     }
 }

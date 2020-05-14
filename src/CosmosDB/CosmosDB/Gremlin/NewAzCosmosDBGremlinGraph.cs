@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (UniqueKeyPolicy != null)
             {
-                gremlinGraphResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
+                gremlinGraphResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ToSDKModel(UniqueKeyPolicy);
             }
 
             if (TtlInSeconds != null)
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ConflictResolutionPolicy != null)
             {
-                gremlinGraphResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ConvertPSConflictResolutionPolicyToConflictResolutionPolicy(ConflictResolutionPolicy);
+                gremlinGraphResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
             else if (ConflictResolutionPolicyMode != null)
             {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (IndexingPolicy != null)
             {
-                gremlinGraphResource.IndexingPolicy = PSIndexingPolicy.ConvertPSIndexingToIndexingPolicy(IndexingPolicy);
+                gremlinGraphResource.IndexingPolicy = PSIndexingPolicy.ToSDKModel(IndexingPolicy);
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();

@@ -16,11 +16,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
-    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFileDirectory to AzureStorageFileDirectory, and AzureStorageFileDirectory will have CloudFileDirectory as a child property.")]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileDirectory))]
     public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -35,18 +35,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the directory would be created.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the new directory would be created.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
@@ -86,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             this.RunTask(async taskId =>
             {
                 await this.Channel.CreateDirectoryAsync(directoryToBeCreated, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                this.OutputStream.WriteObject(taskId, directoryToBeCreated);
+                WriteCloudFileDirectoryeObject(taskId, this.Channel, directoryToBeCreated);
             });
         }
     }

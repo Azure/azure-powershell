@@ -27,32 +27,32 @@ function Test-GetAzureLogAllParameters
     try 
     {
 		Write-Verbose " ****** Get ActivityLog records by corrrelationId "
-        $actual = Get-AzLog -CorrelationId $correlation -starttime 2015-03-02T18:00:00Z -endtime 2015-03-02T20:00:00Z -detailedOutput
+        $actual = Get-AzActivityLog -CorrelationId $correlation -starttime 2015-03-02T18:00:00Z -endtime 2015-03-02T20:00:00Z -detailedOutput
 
         # Assert TODO add more asserts
 		Assert-AreEqual 2 $actual.Count
 
 		Write-Verbose " ****** Get ActivityLog records by resource group "
-		$actual = Get-AzLog -ResourceGroup $rgname -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z
+		$actual = Get-AzActivityLog -ResourceGroup $rgname -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z
 
         # Assert TODO add more asserts
 		Assert-AreEqual 2 $actual.Count
 
 		Write-Verbose " ****** Get ActivityLog records by resource Id"
-		$actual = Get-AzLog -ResourceId $rname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
+		$actual = Get-AzActivityLog -ResourceId $rname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
 
         # Assert TODO add more asserts
 		# Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
 		Assert-AreEqual 2 $actual.Count
 
 		Write-Verbose " ****** Get ActivityLog records by resource provider"
-		$actual = Get-AzLog -ResourceProvider $rpname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
+		$actual = Get-AzActivityLog -ResourceProvider $rpname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
 
         # Assert
 		Assert-AreEqual 2 $actual.Count
 
 		Write-Verbose " ****** Get ActivityLog records by subscription Id"
-        $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
+        $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
 
         # Assert
         Assert-AreEqual 1 $actual.Count
@@ -77,26 +77,26 @@ function Test-GetAzureSubscriptionIdLogMaxEvents
 	    {
 		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
 		   Assert-AreEqual 7 $actual.Count
 		}
 
 		{
 		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents -3
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents -3
 		   Assert-AreEqual 7 $actual.Count
 		}
 
 		{
 		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 0
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 0
 		   Assert-AreEqual 7 $actual.Count
 		}
 
 		{
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
 		   Assert-AreEqual 3 $actual.Count
 		}
     }
@@ -120,35 +120,35 @@ function Test-GetAzureSubscriptionIdLogPaged
         {
 		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the commands is following the continuation token to get the records in the second page.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
 		   Assert-AreEqual 8 $actual.Count
         }
 
 		{
 		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the commands is following the continuation token to get only one record in the second page.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 7
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 7
 		   Assert-AreEqual 7 $actual.Count
         }
 
 		{
 		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the commands could have followed the continuation token but did not because it reached MaxEvents first.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z  -MaxEvents 6
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z  -MaxEvents 6
 		   Assert-AreEqual 6 $actual.Count
         }
 
         {
 		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the commands could have followed the continuation token but did not because it reached MaxEvents first.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
 		   Assert-AreEqual 3 $actual.Count
         }
 
 		{
 		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
 		   # So if this succeeds, the commands is following the continuation token to get the records in the second page and reached the last record before reaching MaxEvents.
-		   $actual = Get-AzLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 15
+		   $actual = Get-AzActivityLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 15
 		   Assert-AreEqual 8 $actual.Count
         }
     }

@@ -36,27 +36,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the files/directories would list File Handles.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would list File Handles.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the file to list File Handles.")]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
         [Parameter(

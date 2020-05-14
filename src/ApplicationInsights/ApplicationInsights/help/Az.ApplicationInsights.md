@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.ApplicationInsights
 Module Guid: da67eaa7-4cb1-4bfa-a194-8bf3faae8ac6
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights
@@ -20,6 +20,9 @@ Get application insights api keys for an application insights resource
 ### [Get-AzApplicationInsightsContinuousExport](Get-AzApplicationInsightsContinuousExport.md)
 Get application insights continuous export configuration for an application insights resource
 
+### [Get-AzApplicationInsightsLinkedStorageAccount](Get-AzApplicationInsightsLinkedStorageAccount.md)
+Get application insights linked storage account
+
 ### [New-AzApplicationInsights](New-AzApplicationInsights.md)
 Create a new application insights resource
 
@@ -28,6 +31,9 @@ Create an application insights api key for an application insights resource
 
 ### [New-AzApplicationInsightsContinuousExport](New-AzApplicationInsightsContinuousExport.md)
 Create a new application insights continuous export configuration for an application insights resource
+
+### [New-AzApplicationInsightsLinkedStorageAccount](New-AzApplicationInsightsLinkedStorageAccount.md)
+Create an application insights linked storage account
 
 ### [Remove-AzApplicationInsights](Remove-AzApplicationInsights.md)
 Remove an application insights resource
@@ -38,6 +44,9 @@ Remove an application insights api key for an application insights resource
 ### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
 Remove a continuous export configuration in an application insights resource
 
+### [Remove-AzApplicationInsightsLinkedStorageAccount](Remove-AzApplicationInsightsLinkedStorageAccount.md)
+Delete application insights linked storage account
+
 ### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
 Update a continuous export configuration in an application insights resource
 
@@ -46,4 +55,10 @@ Set daily data volume cap for an application insights resource
 
 ### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
 Set pricing plan and daily data volume information for an application insights resource
+
+### [Update-AzApplicationInsights](Update-AzApplicationInsights.md)
+update an existing application insights resource
+
+### [Update-AzApplicationInsightsLinkedStorageAccount](Update-AzApplicationInsightsLinkedStorageAccount.md)
+Update application insights linked storage account
 
