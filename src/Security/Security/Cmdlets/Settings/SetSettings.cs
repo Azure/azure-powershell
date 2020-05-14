@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 
         public override void ExecuteCmdlet()
         {
-            string settingName;
             Setting setting;
 
             switch (ParameterSetName)
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 
             if (ShouldProcess(SettingName, VerbsCommon.Set))
             {
-                var updatedSetting = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(settingName, setting).GetAwaiter().GetResult().Body;
+                var updatedSetting = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(SettingName, setting).GetAwaiter().GetResult().Body;
 
                 WriteObject(updatedSetting.ConvertToPSType(), enumerateCollection: false);
             }
