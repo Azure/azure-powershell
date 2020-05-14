@@ -84,24 +84,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             PsDeploymentScriptLog deploymentScriptLog;
             int tailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+            string scriptName = "";
 
             try
             {
                 switch (ParameterSetName)
                 {
                     case SaveDeploymentScriptLogByName:
+                        scriptName = Name;
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, tailParam);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName, ResourceGroupName, tailParam);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
-                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
+                        scriptName = ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId);
+                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName,
                             ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
                             tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
+                        scriptName = DeploymentScriptInputObject.Name;
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            DeploymentScriptInputObject.Name,
+                            scriptName,
                             ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
                             tailParam);
                         break;
@@ -118,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     this.ConfirmAction(
                         this.Force || !AzureSession.Instance.DataStore.FileExists(outputPathWithFileName),
                         string.Format(
-                            Properties.Resources.DeploymentScriptLogFileExists, Name, OutputPath),
+                            Properties.Resources.DeploymentScriptLogFileExists, scriptName, OutputPath),
                         Properties.Resources.DeploymentScriptShouldProcessString,
                         OutputPath,
                         () =>
