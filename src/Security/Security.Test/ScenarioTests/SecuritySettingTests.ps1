@@ -40,13 +40,13 @@ Set an Azure Security Center setting
 #>
 function Set-AzureRmSecuritySetting-SubscriptionLevelResource
 {
-    $setting1 = Get-AzSecuritySetting -SettingName "MCAS"
+    $setting = Get-AzSecuritySetting -SettingName "MCAS"
 
-	Validate-Setting $setting1
+	Validate-Setting $setting
 
-    $setting2 = Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting1
+    $updatedSetting = Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting
 
-	Validate-Setting $setting2
+	Validate-Setting $updatedSetting
 }
 
 <#

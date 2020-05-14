@@ -26,10 +26,9 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
             {
                 return new PSSecurityDataExportSetting()
                 {
-                    Id = ((DataExportSettings)value).Id,
-                    Name = ((DataExportSettings)value).Name,
-                    Kind = nameof(DataExportSettings),
-                    Type = ((DataExportSettings)value).Type,
+                    Id = value.Id,
+                    Name = value.Name,
+                    Type = value.Type,
                     Enabled = ((DataExportSettings)value).Enabled
                 };
             }
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
             {
                 Id = value.Id,
                 Name = value.Name,
-                Kind = nameof(Setting),
                 Type = value.Type
             };
         }

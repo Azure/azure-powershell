@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
 
         public string Name { get; set; }
 
-        public string Kind { get; set; }
-
         public string Type { get; set; }
     }
 }
