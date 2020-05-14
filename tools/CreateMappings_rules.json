@@ -172,6 +172,7 @@
     { "regex": "MySql", "alias": "MySql" },
     { "regex": "Portal", "alias": "Portal" },
     { "regex": "PostgreSql", "alias": "PostgreSQL" },
+    { "regex": "Functions", "alias": "Functions" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]
