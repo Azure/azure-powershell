@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Add-AzEnvironment` and `Set-AzEnvironment` to accept parameters `AzureSynapseAnalyticsEndpointResourceId` and `AzureSynapseAnalyticsEndpointSuffix`
+* Added Azure.Core related assemblies into Az.Accounts, supported PowerShell platforms include Windows PowerShell 5.1, PowerShell Core 6.2.4, PowerShell 7+
+
+## Version 1.7.5
+* Updated Azure PowerShell survey URL in `Resolve-AzError` [#11507]
+
+## Version 1.7.4
 * Fixed `Get-AzTenant`/`Get-AzDefault`/`Set-AzDefault` throw NullReferenceException when not login [#10292]
 
 ## Version 1.7.3

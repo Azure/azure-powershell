@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
 
-        #region New-AzureRmKeyVault        
+        #region New-AzureRmKeyVault
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -91,6 +91,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
+        #region Update-AzKeyVault
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateVault()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+               _logger,
+               () => { return new[] { "Test-UpdateKeyVault" }; },
+               null,
+               MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+               MethodBase.GetCurrentMethod().Name
+               );
+        }
+        #endregion
+
         #region Get-AzureRmKeyVault (list)
 
         [Fact]
@@ -108,7 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Remove-AzureRmKeyVault 
+        #region Remove-AzureRmKeyVault
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -405,19 +420,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
         #endregion
-
-        [Fact(Skip = "Fails in playback")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkSet()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                 _logger,
-                () => { return new[] { "Test-NetworkRuleSet" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
 
         #region Helper Methods
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)

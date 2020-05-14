@@ -28,9 +28,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
     using System.Runtime.InteropServices;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
-    [OutputType(typeof(CloudFile))]
+    [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
         [Parameter(
@@ -45,27 +47,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
         [Parameter(
@@ -213,7 +221,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
+                        WriteCloudFileObject(taskId, this.Channel, fileToBeDownloaded);
                     }
                 });
             }

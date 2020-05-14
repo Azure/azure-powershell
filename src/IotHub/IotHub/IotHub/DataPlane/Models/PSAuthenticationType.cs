@@ -14,14 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum PSAuthenticationType
     {
         Sas = 0,
         SelfSigned = 1,
-        CertificateAuthority = 2
+        CertificateAuthority = 2,
+        None = 3
     }
 }

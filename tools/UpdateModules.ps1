@@ -95,6 +95,20 @@ function New-ModulePsm1 {
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
+        #Az.Storage is using Azure.Core, so need to check PS version
+        if ($IsNetcore)
+        {
+            $template = $template -replace "%AZURECOREPREREQUISITE%", 
+@"
+if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
+{
+    if (`$PSVersionTable.PSVersion -lt [Version]'6.2.4')
+    {
+        throw "Current Az version doesn't support PowerShell Core versions lower than 6.2.4. Please upgrade to PowerShell Core 6.2.4 or higher."
+    }
+}
+"@
+        }
         # Replace Az or AzureRM with correct information
         if ($IsNetcore)
         {

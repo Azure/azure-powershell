@@ -43,24 +43,24 @@ You can specify the *Filter* parameter to get the tasks that match an Open Data 
 ### Example 1: Get a task by ID
 ```
 PS C:\>Get-AzBatchTask -JobId "Job01" -Id "Task03" -BatchContext $Context
-AffinityInformation         : 
+AffinityInformation         :
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
 CreationTime                : 7/25/2015 11:24:52 PM
-DisplayName                 : 
-EnvironmentSettings         : 
+DisplayName                 :
+EnvironmentSettings         :
 ETag                        : 0x8D295483E08BD9D
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
 Id                          : Task03
 LastModified                : 7/25/2015 11:24:52 PM
 PreviousState               : Running
 PreviousStateTransitionTime : 7/25/2015 11:24:59 PM
-ResourceFiles               : 
+ResourceFiles               :
 RunElevated                 : False
 State                       : Completed
 StateTransitionTime         : 7/25/2015 11:24:59 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/Job01/tasks/Task03
 ```
 
@@ -70,42 +70,42 @@ Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variabl
 ### Example 2: Get all completed tasks from a specified job
 ```
 PS C:\>Get-AzBatchTask -JobId "Job02" -Filter "state eq 'completed'" -BatchContext $Context
-AffinityInformation         : 
+AffinityInformation         :
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
 CreationTime                : 3/24/2015 10:21:51 PM
-EnvironmentSettings         : 
+EnvironmentSettings         :
 ETag                        : 0x8D295483E08BD9D
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
 Id                          : Task17
 LastModified                : 3/24/2015 10:21:51 PM
 PreviousState               : Running
 PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
-ResourceFiles               : 
+ResourceFiles               :
 RunElevated                 : False
 State                       : Completed
 StateTransitionTime         : 3/24/2015 10:22:00 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/Job02/tasks/Task17
 
-AffinityInformation         : 
+AffinityInformation         :
 CommandLine                 : cmd /c echo hello > newFile.txt
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
 CreationTime                : 3/24/2015 10:21:51 PM
-EnvironmentSettings         : 
+EnvironmentSettings         :
 ETag                        : 0x8D295483E08BD9D
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
 Id                          : Task27
 LastModified                : 3/24/2015 10:23:35 PM
 PreviousState               : Running
 PreviousStateTransitionTime : 3/24/2015 10:23:37 PM
-ResourceFiles               : 
+ResourceFiles               :
 RunElevated                 : True
 State                       : Completed
 StateTransitionTime         : 3/24/2015 10:23:37 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/Job02/tasks/Task27
 ```
 
@@ -285,6 +285,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

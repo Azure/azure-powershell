@@ -179,4 +179,12 @@
   <data name="EnterContainerPSSessionPSCoreVersionNotSupported" xml:space="preserve">
     <value>Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.</value>
   </data>
+  <data name="AddRoutingRuleErrorMessage" xml:space="preserve">
+    <value>"A Routing Rule with name '{0}' in WebApp '{1}' already exists.Please use Update-AzWebAppTrafficRouting to update an existing Routing Rule."</value>
+    <comment>{0}=RuleName,{1}=WebAppName</comment>
+  </data>
+  <data name="UpdateAndGetRoutingRuleErrorMessage" xml:space="preserve">
+    <value>"Given Routing Rule with name '{0}' in WebApp '{1}' is not present.Please use a valid Name to remove "</value>
+    <comment>{0}=RuleName,{1}=WebAppName</comment>
+  </data>
 </root>

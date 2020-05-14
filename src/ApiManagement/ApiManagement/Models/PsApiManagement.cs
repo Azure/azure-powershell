@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
             Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
-            Capacity = apiServiceResource.Sku.Capacity ?? 1;
+            Capacity = apiServiceResource.Sku.Capacity;
             CreatedTimeUtc = apiServiceResource.CreatedAtUtc;
             PublisherEmail = apiServiceResource.PublisherEmail;
             OrganizationName = apiServiceResource.PublisherName;

@@ -4,6 +4,7 @@ variables:
   TestFramework: netcoreapp2.2
   TestTarget: Test
   Configuration: Debug
+  DebugLocalBuildTasks: true
 
 jobs:
 - job: Build

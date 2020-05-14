@@ -72,6 +72,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Weekly Backup Schedule for Azure File Share policy is not allowed. Please give Daily Schedule input instead..
+        /// </summary>
+        public static string AFSWeeklyScheduleNotAllowed
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSWeeklyScheduleNotAllowed", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
         ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>
         public static string AggregateException {
@@ -137,7 +149,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureFileSourceFileTypeMissingException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both source file path and multiple source file paths provided. Please give only one option
+        /// </summary>
+        public static string AzureFileSourceFilePathRedundantException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileSourceFilePathRedundantException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore.
         /// </summary>
@@ -723,7 +746,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("InvalidSchedulePolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries.
         /// </summary>

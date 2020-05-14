@@ -1257,6 +1257,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryAzureCloudService = details.RecoveryCloudService;
             this.RecoveryFabricLocation = details.RecoveryFabricLocation;
             this.RecoveryAvailabilitySet = details.RecoveryAvailabilitySet;
+            this.RecoveryProximityPlacementGroupId = details.RecoveryProximityPlacementGroupId;
             this.TestFailoverRecoveryFabricObjectId = details.TestFailoverRecoveryFabricObjectId;
             this.MonitoringJobType = details.MonitoringJobType;
             this.MonitoringPercentageCompletion = details.MonitoringPercentageCompletion;
@@ -1267,6 +1268,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VmEncryptionType = details.VmEncryptionType;
             this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
             this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
+            this.InitialPrimaryZone = details.InitialPrimaryZone;
+            this.InitialRecoveryZone = details.InitialRecoveryZone;
             this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
@@ -1363,6 +1366,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySet { get; set; }
 
         /// <summary>
+        /// Recovery proximity placement group Id.
+        /// </summary>
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
         /// Synced configuration details of the virtual machine.
         /// </summary>
         public ASRAzureToAzureVmSyncedConfigDetails VmSyncedConfigDetails { get; set; }
@@ -1433,6 +1441,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the initial recovery fabric location.
         /// </summary>
         public string InitialRecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary zone.
+        /// </summary>
+        public string InitialPrimaryZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery zone.
+        /// </summary>
+        public string InitialRecoveryZone { get; set; }
 
         /// <summary>
         /// Gets or sets the only constant ID throught out the enable disable cycle.

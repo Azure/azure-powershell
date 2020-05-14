@@ -36,10 +36,10 @@ Get-AzVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-The **Get-AzVM** cmdlet gets the model view and instance view of an Azure virtual machine.
+The **Get-AzVM** cmdlet gets the model view or the instance view of an Azure virtual machine.
 The model view is the user specified properties of the virtual machine.
 The instance view is the instance level status of the virtual machine.
-Specify the *Status* parameter to get only the instance view of a virtual machine.
+Specify the *Status* parameter to get the instance view of a virtual machine instead of the model view which is the default.
 
 ## EXAMPLES
 

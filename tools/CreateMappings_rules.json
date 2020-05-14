@@ -47,6 +47,7 @@
 
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
+    { "regex": "Synapse", "alias": "Synapse" },
 	
     { "regex": "Relay", "alias": "Relay" },
 
@@ -83,6 +84,8 @@
     { "regex": "EventHub", "alias": "Event Hub" },
 
     { "regex": "HDInsight", "alias": "HDInsight" },
+
+    { "regex": "HPCCache", "alias": "HPCCache" },
 
     { "regex": "LogicApp", "alias": "Logic Apps" },
 
@@ -163,5 +166,13 @@
     { "regex": "Maintenance", "alias": "Maintenance" },
     { "regex": "CosmosDB", "alias": "Cosmos DB" },
     { "regex": "Support", "alias": "Support" },
+    { "regex": "Databricks", "alias": "Databricks" },
+    { "regex": "MariaDb", "alias": "MariaDb" },
+    { "regex": "TimeSeriesInsights", "alias": "Time Series Insights" },
+    { "regex": "MySql", "alias": "MySql" },
+    { "regex": "Portal", "alias": "Portal" },
+    { "regex": "PostgreSql", "alias": "PostgreSQL" },
+    { "regex": "Functions", "alias": "Functions" },
+    { "regex": "AppConfiguration", "alias": "App Configuration" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]

@@ -118,8 +118,20 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway bgpsettings.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
         public SwitchParameter EnableActiveActiveFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public bool? EnablePrivateIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -151,6 +163,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "P2S multiple external Radius servers.")]
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -224,6 +243,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.ActiveActive = false;
             }
 
+            if (this.EnablePrivateIpAddress.HasValue)
+            {
+                this.VirtualNetworkGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.Value;
+            }
 
             if (!string.IsNullOrEmpty(GatewaySku))
             {
@@ -249,6 +272,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
                  this.RadiusServerSecret != null ||
+                 this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
                  this.AadTenantUri != null) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
@@ -282,15 +306,23 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy?.ToList();
             }
 
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration) && ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration))
+            {
+                throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
+            }
+
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                if (this.RadiusServerSecret == null || this.RadiusServerAddress == null)
-                {
-                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
-                }
-
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = null;
+            }
+
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration))
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = null;
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = null;
             }
 
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration))
@@ -338,6 +370,44 @@ namespace Microsoft.Azure.Commands.Network
             else if (this.PeerWeight < 0)
             {
                 throw new ArgumentException("PeerWeight must be a positive integer");
+            }
+
+            if(this.IpConfigurationBgpPeeringAddresses != null)
+            {
+               if(this.VirtualNetworkGateway.BgpSettings == null)
+               {
+                    this.VirtualNetworkGateway.BgpSettings = new PSBgpSettings();
+               }
+
+               if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
+               {
+                    this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                    foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                    {
+                        this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                    }
+               }
+               else
+               {
+                    foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                    {
+                        bool isGatewayIpConfigurationExists = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Any(
+                        ipconfaddress => ipconfaddress.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                        if(isGatewayIpConfigurationExists)
+                        {
+                            var bgpPeeringPropertiesInRequest = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
+                                x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                            bgpPeeringPropertiesInRequest.CustomBgpIpAddresses = address.CustomBgpIpAddresses;
+                        }
+                        else
+                        {
+                            this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                        }
+                    }
+               }
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())

@@ -105,12 +105,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [CmdletParameterBreakingChange("AutomaticRepairMaxInstanceRepairsPercent",
-            ChangeDescription = "AutomaticRepairMaxInstanceRepairsPercent is not supported until future.")]
-        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
-
-        [Parameter(
-            Mandatory = false)]
         public bool BootDiagnosticsEnabled { get; set; }
 
         [Parameter(
@@ -1132,7 +1126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
             }
@@ -1218,7 +1212,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }

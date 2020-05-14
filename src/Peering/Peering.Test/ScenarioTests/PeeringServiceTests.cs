@@ -81,12 +81,5 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewPeeringService");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewPeeringServicePrefix()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewPeeringServicePrefix");
-        }
     }
 }

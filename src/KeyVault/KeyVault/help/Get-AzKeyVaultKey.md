@@ -15,55 +15,55 @@ Gets Key Vault keys.
 
 ### ByVaultName (Default)
 ```
-Get-AzKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyName
 ```
-Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyVersions
 ```
-Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVaultName
 ```
-Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectKeyName
 ```
-Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String> [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectKeyVersions
 ```
-Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdVaultName
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyName
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyVersions
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -246,6 +246,16 @@ Tags           :
 
 This command gets all the keys in the key vault named Contoso that start with "test".
 
+### Example 8: Download a public key as a .pem file
+
+```powershell
+PS C:\> $path = "D:\public.pem"
+PS C:\> Get-AzKeyVaultKey -VaultName $vaultName -KeyName $keyName -OutFile $path
+```
+
+You can download the public key of a RSA key by specifying the `-OutFile` parameter.
+This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -323,7 +333,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
@@ -335,7 +345,22 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
+```
+
+### -OutFile
+Specifies the output file for which this cmdlet saves the key. The public key is saved in PEM format by default.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceId

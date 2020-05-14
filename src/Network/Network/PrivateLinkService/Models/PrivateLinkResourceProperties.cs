@@ -38,10 +38,11 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// <param name="groupId">The private link resource group id.</param>
         /// <param name="requiredMembers">The private link resource required
         /// member names.</param>
-        public PrivateLinkResourceProperties(string groupId = default(string), IList<string> requiredMembers = default(IList<string>))
+        public PrivateLinkResourceProperties(string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>))
         {
             GroupId = groupId;
             RequiredMembers = requiredMembers;
+            RequiredZoneNames = requiredZoneNames;
             CustomInit();
         }
 
@@ -62,5 +63,10 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         [JsonProperty(PropertyName = "requiredMembers")]
         public IList<string> RequiredMembers { get; private set; }
 
+        /// <summary>
+        /// Gets the private link resource required zone names.
+        /// </summary>
+        [JsonProperty(PropertyName = "requiredZoneNames")]
+        public IList<string> RequiredZoneNames { get; private set; }
     }
 }

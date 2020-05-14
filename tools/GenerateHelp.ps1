@@ -78,7 +78,36 @@ if ($ValidateMarkdownHelp)
     }
 }
 
+# We need to define new version of module instead of hardcode here
+$NewModules = @("Az.AppConfiguration",
+                "Az.Databricks",
+                "Az.Functions",
+                "Az.Kusto",
+                "Az.MariaDb",
+                "Az.MySql",
+                "Az.Portal",
+                "Az.PostgreSql",
+                "Az.TimeSeriesInsights"
+                )
 if ($GenerateMamlHelp)
 {
-    $FilteredHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+    $FilteredMamlHelpFolders = @()
+    foreach ($HelpFolder in $FilteredHelpFolders)
+    {
+        $ModuleName = "" 
+        if($HelpFolder -match "(?s)artifacts\\$BuildConfig\\(?<module>.+)\\help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($HelpFolder -match "(?s)artifacts/$BuildConfig/(?<module>.+)/help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($NewModules -notcontains $ModuleName)
+        {
+            $FilteredMamlHelpFolders += $HelpFolder
+        }
+
+    }
+    $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
 }

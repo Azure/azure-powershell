@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string DisplayName { get; set; }
         public string Description { get; set; }
         public string BlueprintId { get; set; }
-        public IDictionary<string, PSParameterValueBase> Parameters { get; set; }
+        public IDictionary<string, PSParameterValue> Parameters { get; set; }
         public IDictionary<string, PSResourceGroupValue> ResourceGroups { get; set; }
         public PSAssignmentStatus Status { get; set; }
         public PSAssignmentLockSettings Locks { get; set; }
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         /// <param name="assignment">Assignment object from which to create the PSBlueprintAssignment.</param>
         /// <param name="subscriptionId">ID of the subscription the assignment is associated with.</param>
         /// <returns>A new PSBlueprintAssignment object.</returns>
-        internal static PSBlueprintAssignment FromAssignment(Assignment assignment, string scope)
+        internal static PSBlueprintAssignment FromAssignment(Assignment assignment)
         {
             var psAssignment = new PSBlueprintAssignment
             {
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Id = assignment.Id,
                 Type = assignment.Type,
                 Location = assignment.Location,
-                Scope = scope,
+                Scope = assignment.Scope,
                 Identity = new PSManagedServiceIdentity
                 {
                     PrincipalId = assignment.Identity.PrincipalId,
@@ -59,8 +60,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 BlueprintId = assignment.BlueprintId,
                 ProvisioningState = PSAssignmentProvisioningState.Unknown,
                 Status = new PSAssignmentStatus(),
-                Locks = new PSAssignmentLockSettings {Mode = PSLockMode.None},
-                Parameters = new Dictionary<string, PSParameterValueBase>(),
+                Locks = new PSAssignmentLockSettings
+                {
+                    Mode = PSLockMode.None,
+                    ExcludedActions = new List<string>(),
+                    ExcludedPrincipals = new List<string>()
+                },
+                Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
 
@@ -86,9 +92,25 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 psAssignment.Locks.Mode = PSLockMode.None;
             }
 
+            if (assignment.Locks.ExcludedActions != null)
+            {
+                foreach (var item in assignment.Locks.ExcludedActions)
+                {
+                    psAssignment.Locks.ExcludedActions.Add(item);
+                }
+            }
+
+            if (assignment.Locks.ExcludedPrincipals != null)
+            {
+                foreach (var item in assignment.Locks.ExcludedPrincipals)
+                {
+                    psAssignment.Locks.ExcludedPrincipals.Add(item);
+                }
+            }
+
             foreach (var item in assignment.Parameters)
             {
-                PSParameterValueBase parameter = GetAssignmentParameters(item);
+                PSParameterValue parameter = GetAssignmentParameters(item);
                 psAssignment.Parameters.Add(item.Key, parameter);
             }
 
@@ -110,20 +132,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             return psAssignment;
         }
 
-        private static PSParameterValueBase GetAssignmentParameters(KeyValuePair<string, ParameterValueBase> parameterKvp)
+        private static PSParameterValue GetAssignmentParameters(KeyValuePair<string, ParameterValue> parameterKvp)
         {
-            PSParameterValueBase parameter = null;
+            PSParameterValue parameter = null;
 
-            if (parameterKvp.Value != null && parameterKvp.Value is ParameterValue)
+            if (parameterKvp.Value?.Value != null)
             {
                 // Need to cast as ParameterValue since assignment.Parameters value type is ParameterValueBase. 
-                var parameterValue = (ParameterValue) parameterKvp.Value;
+                var parameterValue = parameterKvp.Value;
 
-                parameter = new PSParameterValue { Description = parameterValue.Description, Value = parameterValue.Value };
+                parameter = new PSParameterValue { Value = parameterValue.Value };
             }
-            else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
+            else if (parameterKvp.Value?.Reference != null)
             {
-                var parameterValue = (SecretReferenceParameterValue) parameterKvp.Value;
+                var parameterValue = parameterKvp.Value;
 
                 var secretReference = new PSSecretValueReference
                 {
@@ -132,7 +154,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                     SecretVersion = parameterValue.Reference.SecretVersion
                 };
 
-                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };
+                parameter = new PSParameterValue { Reference = secretReference };
             }
 
             return parameter;

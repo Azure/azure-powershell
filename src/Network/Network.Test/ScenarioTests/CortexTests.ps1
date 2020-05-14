@@ -49,7 +49,7 @@ function Test-CortexCRUD
 		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
 		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
 		Assert-AreEqual $virtualWanName $virtualWan.Name
-		Assert-AreEqual $false $virtualWan.AllowVnetToVnetTraffic
+		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
 		Assert-AreEqual $false $virtualWan.AllowBranchToBranchTraffic
 
         $virtualWans = Get-AzureRmVirtualWan -ResourceGroupName $rgName
@@ -118,6 +118,7 @@ function Test-CortexCRUD
 		$vpnSite2AddressSpaces[1] = "192.169.3.0/24"
 		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLink1Name -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
 		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLink2Name -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
 		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSite2AddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name
 		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName

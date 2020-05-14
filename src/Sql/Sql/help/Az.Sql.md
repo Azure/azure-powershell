@@ -71,7 +71,6 @@ Disables Advanced Data Security on a managed instance.
 ### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
 
-
 ### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Disables Azure AD only authentication for a specific SQL Server.
 
@@ -266,6 +265,9 @@ Gets the vulnerability assessment settings of a managed database.
 
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
+Gets a SQL managed instance's operations.
 
 ### [Get-AzSqlInstancePool](Get-AzSqlInstancePool.md)
 Returns information about the Azure SQL Instance pool.
@@ -701,6 +703,9 @@ Stops a job given it's job execution id
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
+
+### [Stop-AzSqlInstanceOperation](Stop-AzSqlInstanceOperation.md)
+Stops a SQL managed instance's operations.
 
 ### [Stop-AzSqlSyncGroupSync](Stop-AzSqlSyncGroupSync.md)
 Stops a sync group synchronization.

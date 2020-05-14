@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Corrected example 3 for `Start-AzPolicyComplianceScan`
+
+## Version 1.3.0
+* Added `Start-AzPolicyComplianceScan` cmdlet for triggering policy compliance scans
+* Added policy definition, set definition, and assignment versions to `Get-AzPolicyState` output
+
+## Version 1.2.1
 * Improved error messages
 
 ## Version 1.2.0

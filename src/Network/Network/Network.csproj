@@ -8,12 +8,13 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.19.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.21.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

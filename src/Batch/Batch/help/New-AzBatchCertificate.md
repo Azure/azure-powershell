@@ -15,14 +15,14 @@ Adds a certificate to the specified Batch account.
 
 ### File (Default)
 ```
-New-AzBatchCertificate [-FilePath] <String> [-Password <SecureString>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzBatchCertificate [-FilePath] <String> [-Password <SecureString>] [-Kind <PSCertificateKind>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RawData
 ```
-New-AzBatchCertificate [-RawData] <Byte[]> [-Password <SecureString>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzBatchCertificate [-RawData] <Byte[]> [-Password <SecureString>] [-Kind <PSCertificateKind>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +95,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Kind
+The kind of certificate to create. If this is not specified, it is assumed that all certificates without a password are CER and all certificates with password are PFX.
+
+```yaml
+Type: Microsoft.Azure.Commands.Batch.Models.PSCertificateKind
+Parameter Sets: (All)
+Aliases:
+Accepted values: Cer, Pfx
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Password
 Specifies the password to access the certificate private key.
 You must specify this parameter if you specify a certificate in .pfx format.
@@ -149,6 +165,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzBatchCertificate](./Remove-AzBatchCertificate.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

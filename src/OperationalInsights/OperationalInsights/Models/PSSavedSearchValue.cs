@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             if (v != null)
             {
                 this.Id = v.Id;
-                this.ETag = v.Etag;
+                this.ETag = v.ETag;
                 this.Properties = new PSSavedSearchProperties(v);
             }
         }

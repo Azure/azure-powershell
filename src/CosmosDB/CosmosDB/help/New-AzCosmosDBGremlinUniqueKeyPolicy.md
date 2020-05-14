@@ -13,7 +13,7 @@ Creates a new CosmosDB UniqueKeyPolicy object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey <PSUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey <PSSqlUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,14 +33,13 @@ PS C:\> $uk = New-AzCosmosDBGremlinUniqueKey -Path "abc"
 {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey, Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey}
 ```
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -55,7 +54,7 @@ Accept wildcard characters: False
 Array of objects of type PSUniqueKey.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSUniqueKey[]
+Type: PSSqlUniqueKey[]
 Parameter Sets: (All)
 Aliases:
 

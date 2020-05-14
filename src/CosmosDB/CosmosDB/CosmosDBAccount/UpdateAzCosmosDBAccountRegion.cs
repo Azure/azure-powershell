@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountRegion", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountRegion", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccountGetResults))]
     public class UpdateAzCosmosDBAccountRegion : AzureCosmosDBCmdletBase
     { 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount InputObject { get; set; }
+        public PSDatabaseAccountGetResults InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -76,16 +76,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (Location != null && Location.Length > 0)
                 {
+                    int failoverPriority = 0;
                     foreach (string location in Location)
                     {
-                        locations.Add(new Location(location));
+                        locations.Add(new Location(locationName: location, failoverPriority: failoverPriority));
+                        failoverPriority++;
                     }
                 }
                 if (LocationObject != null && LocationObject.Length > 0)
                 {
                     foreach (PSLocation psLocation in LocationObject)
                     {
-                        locations.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                        locations.Add(PSLocation.ToSDKModel(psLocation));
                     }
                 }
             }
@@ -102,7 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, createUpdateParameters).GetAwaiter().GetResult();
 
                 DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccount(databaseAccount));
+                WriteObject(new PSDatabaseAccountGetResults(databaseAccount));
             }
 
             return;

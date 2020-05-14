@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "The resource name.")]
         [Parameter(
@@ -51,6 +56,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -70,6 +80,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "location.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -126,6 +141,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
         public SwitchParameter EnableActiveActiveFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
+        public SwitchParameter EnablePrivateIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -209,6 +229,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway bgpsettings.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -232,6 +259,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "P2S multiple external Radius server servers.")]
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -356,6 +390,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
+            vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {
@@ -414,12 +449,17 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
                 }
 
-                if (this.RadiusServerAddress != null)
+                if (this.RadiusServerAddress != null && this.RadiusServerSecret != null)
                 {
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
                 
+                if (this.RadiusServerList != null && this.RadiusServerList.Any())
+                {
+                    vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
+                }
+
                 if (this.AadTenantUri != null)
                 {
                     if (this.AadIssuerUri == null || this.AadAudienceId == null)
@@ -463,6 +503,26 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
+            }
+
+            if (this.IpConfigurationBgpPeeringAddresses != null)
+            {
+                if(vnetGateway.BgpSettings == null)
+                {
+                    vnetGateway.BgpSettings = new PSBgpSettings();
+                }
+
+                vnetGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                {
+                    address.IpconfigurationId = FormatIdBgpPeeringAddresses(address.IpconfigurationId, this.ResourceGroupName, this.Name);
+                    vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                }
+            }
+            else if(vnetGateway.BgpSettings != null)
+            {
+                vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())

@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -25,7 +26,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccountGetResults))]
     public class NewAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public SwitchParameter EnableVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] IpRangeFilter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
@@ -81,8 +82,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
-        [PSArgumentCompleter("GlobalDocumentDB", "MongoDB", "Gremlin", "Cassandra", "Table")]
+        [PSArgumentCompleter("Sql", "MongoDB", "Gremlin", "Cassandra", "Table")]
         public string ApiKind { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
+        public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
+        public string KeyVaultKeyUri { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -149,7 +160,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 foreach (PSLocation psLocation in LocationObject)
                 {
-                    LocationCollection.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                    LocationCollection.Add(PSLocation.ToSDKModel(psLocation));
                     if (psLocation.FailoverPriority == 0)
                     {
                         writeLocation = psLocation.LocationName;
@@ -184,22 +195,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             { 
                 foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
                 {
-                    virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
+                    virtualNetworkRule.Add(PSVirtualNetworkRule.ToSDKModel(psVirtualNetworkRule));
                 }
             }
 
             string IpRangeFilterAsString = null;
             if (IpRangeFilter != null && IpRangeFilter.Length > 0)
             {
-                for (int i = 0; i < IpRangeFilter.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        IpRangeFilterAsString = IpRangeFilter[0];
-                    }
-                    else
-                        IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
-                }
+                IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
             }
 
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags, ipRangeFilter:IpRangeFilterAsString);
@@ -207,10 +210,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
+            databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
+            databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+            
+            if (KeyVaultKeyUri != null)
+            {
+                databaseAccountCreateUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
+            }
 
             if (!string.IsNullOrEmpty(ApiKind))
             {
-                if (!ApiKind.Equals("GlobalDocumentDB", StringComparison.OrdinalIgnoreCase) && !ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+                if (!ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
                     switch (ApiKind)
                     {
@@ -222,6 +233,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             break;
                         case "Table":
                             databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableTable" } };
+                            break;
+                        case "Sql":
                             break;
                     }
 
@@ -237,7 +250,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(Name, "Creating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccount(cosmosDBAccount));
+                WriteObject(new PSDatabaseAccountGetResults(cosmosDBAccount));
             }
 
             return;

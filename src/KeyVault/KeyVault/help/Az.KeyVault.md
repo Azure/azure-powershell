@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.KeyVault
 Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.keyvault
@@ -83,6 +83,9 @@ Creates an in-memory certificate organization details object.
 ### [New-AzKeyVaultCertificatePolicy](New-AzKeyVaultCertificatePolicy.md)
 Creates an in-memory certificate policy object.
 
+### [New-AzKeyVaultNetworkRuleSetObject](New-AzKeyVaultNetworkRuleSetObject.md)
+Create an object representing the network rule settings.
+
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes a key vault.
 
@@ -163,6 +166,9 @@ Recovers a deleted key vault into an active state.
 
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.
+
+### [Update-AzKeyVault](Update-AzKeyVault.md)
+Update the state of an Azure key vault.
 
 ### [Update-AzKeyVaultCertificate](Update-AzKeyVaultCertificate.md)
 Modifies editable attributes of a certificate.

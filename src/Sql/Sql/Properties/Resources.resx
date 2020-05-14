@@ -258,6 +258,12 @@
   <data name="StopAzureSqlServerUpgradeWarning" xml:space="preserve">
     <value>Are you sure you want to stop the upgrade for Azure Sql Database Server '{0}'?</value>
   </data>
+  <data name="StopAzureSqlInstanceOperationDescription" xml:space="preserve">
+    <value>Are you sure you want to submit request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'?</value>
+  </data>
+  <data name="StopAzureSqlInstanceOperationWarning" xml:space="preserve">
+    <value>Submiting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
+  </data>
   <data name="StorageAccountNotFound" xml:space="preserve">
     <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
   </data>
@@ -594,5 +600,17 @@
   </data>
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
+  </data>
+  <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
+    <value>Failed to retrieve properties of storage account '{0}'.</value>
+  </data>
+  <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
+    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
+  </data>
+  <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
+    <value>Failed to get Role Assignments for Storage Account '{0}'.</value>
+  </data>
+  <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
+    <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden</value>
   </data>
 </root>

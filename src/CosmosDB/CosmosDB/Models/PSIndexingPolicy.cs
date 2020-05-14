@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
@@ -25,10 +26,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSIndexingPolicy(IndexingPolicy indexingPolicy)
         {
+            if (indexingPolicy == null)
+            {
+                return;
+            }
+
             Automatic = indexingPolicy.Automatic;
             IndexingMode = indexingPolicy.IndexingMode;
 
-            if (indexingPolicy.IncludedPaths != null)
+            if (ModelHelper.IsNotNullOrEmpty(indexingPolicy.IncludedPaths))
             {
                 IncludedPaths = new List<PSIncludedPath>();
                 foreach (IncludedPath includedPath in indexingPolicy.IncludedPaths)
@@ -37,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (indexingPolicy.ExcludedPaths != null)
+            if (ModelHelper.IsNotNullOrEmpty(indexingPolicy.ExcludedPaths))
             {
                 ExcludedPaths = new List<PSExcludedPath>();
                 foreach (ExcludedPath excludedPath in indexingPolicy.ExcludedPaths)
@@ -46,21 +52,24 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (indexingPolicy.CompositeIndexes != null)
+            if (ModelHelper.IsNotNullOrEmpty(indexingPolicy.CompositeIndexes))
             {
                 CompositeIndexes = new List<IList<PSCompositePath>>();
                 foreach (IList<CompositePath> compositePathList in indexingPolicy.CompositeIndexes)
                 {
-                    List<PSCompositePath> pSCompositePathList = new List<PSCompositePath>();
-                    foreach (CompositePath compositePath in compositePathList)
+                    if (ModelHelper.IsNotNullOrEmpty(compositePathList))
                     {
-                        pSCompositePathList.Add(new PSCompositePath(compositePath));
+                        List<PSCompositePath> pSCompositePathList = new List<PSCompositePath>();
+                        foreach (CompositePath compositePath in compositePathList)
+                        {
+                            pSCompositePathList.Add(new PSCompositePath(compositePath));
+                        }
+                        CompositeIndexes.Add(pSCompositePathList);
                     }
-                    CompositeIndexes.Add(pSCompositePathList);
                 }
             }
 
-            if (indexingPolicy.SpatialIndexes != null)
+            if (ModelHelper.IsNotNullOrEmpty(indexingPolicy.SpatialIndexes))
             {
                 SpatialIndexes = new List<PSSpatialSpec>();
                 foreach (SpatialSpec spatialSpec in indexingPolicy.SpatialIndexes)
@@ -95,5 +104,73 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of spatial specifics
         public IList<PSSpatialSpec> SpatialIndexes { get; set; }
+
+        public static IndexingPolicy ToSDKModel(PSIndexingPolicy pSIndexingPolicy)
+        {
+            if (pSIndexingPolicy == null)
+            {
+                return null;
+            }
+
+            IndexingPolicy indexingPolicy = new IndexingPolicy
+            {
+                Automatic = pSIndexingPolicy.Automatic,
+            };
+
+            if (pSIndexingPolicy.IndexingMode != null)
+            {
+                indexingPolicy.IndexingMode = pSIndexingPolicy.IndexingMode;
+            }
+
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexingPolicy.IncludedPaths))
+            {
+                IList<IncludedPath> includedPaths = new List<IncludedPath>();
+                foreach (PSIncludedPath pSIncludedPath in pSIndexingPolicy.IncludedPaths)
+                {
+                    includedPaths.Add(PSIncludedPath.ToSDKModel(pSIncludedPath));
+                }
+                indexingPolicy.IncludedPaths = includedPaths;
+            }
+
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexingPolicy.ExcludedPaths))
+            {
+                IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
+                foreach (PSExcludedPath pSExcludedPath in pSIndexingPolicy.ExcludedPaths)
+                {
+                    excludedPaths.Add(PSExcludedPath.ToSDKModel(pSExcludedPath));
+                }
+                indexingPolicy.ExcludedPaths = excludedPaths;
+            }
+
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexingPolicy.CompositeIndexes))
+            {
+                IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
+                foreach (IList<PSCompositePath> pSCompositePathList in pSIndexingPolicy.CompositeIndexes)
+                {
+                    if (ModelHelper.IsNotNullOrEmpty(pSCompositePathList))
+                    {
+                        IList<CompositePath> compositePathList = new List<CompositePath>();
+                        foreach (PSCompositePath pSCompositePath in pSCompositePathList)
+                        {
+                            compositePathList.Add(PSCompositePath.ToSDKModel(pSCompositePath));
+                        }
+                        compositeIndexes.Add(compositePathList);
+                    }
+                }
+                indexingPolicy.CompositeIndexes = compositeIndexes;
+            }
+
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexingPolicy.SpatialIndexes))
+            {
+                IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
+                foreach (PSSpatialSpec pSSpatialSpec in pSIndexingPolicy.SpatialIndexes)
+                {
+                    spatialIndexes.Add(PSSpatialSpec.ToSDKModel(pSSpatialSpec));
+                }
+                indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
+            }
+
+            return indexingPolicy;
+        }
     }
 }

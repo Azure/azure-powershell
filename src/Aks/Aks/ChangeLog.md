@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API Version to 2019-10-01
+* Supported to create AKS using Windows container
+* Provided new cmdlets: `New-AzAksNodePool`, `Update-AzAksNodePool`, `Remove-AzAksNodePool`,
+         `Get-AzAksNodePool`, `Install-AzAksKubectl`, `Get-AzAksVersion`
+
+## Version 1.1.0-preview
+* Upgrade to API Version 2019-10-01
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

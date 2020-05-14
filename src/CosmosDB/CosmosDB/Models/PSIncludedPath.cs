@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
@@ -26,6 +27,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSIncludedPath(IncludedPath includedPath )
         {
+            if(includedPath == null)
+            {
+                return;
+            }
+
             Path = includedPath.Path;
             if (includedPath.Indexes != null)
             {
@@ -46,15 +52,33 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets list of indexes for this path
         public IList<PSIndexes> Indexes { get; set; }
 
-        static public List<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
+        static public IncludedPath ToSDKModel(PSIncludedPath pSIncludedPath)
         {
-            List<Indexes> indexes = new List<Indexes>();
-            foreach(PSIndexes pSIndex in pSIndexes)
+            if (pSIncludedPath == null)
             {
-                indexes.Add(PSIndexes.ConvertPSIndexesToIndexes(pSIndex));
+                return null;
             }
 
-            return indexes;
+            return new IncludedPath
+            {
+                Path = pSIncludedPath.Path,
+                Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
+            };
+        }
+
+        static private List<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
+        {
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexes))
+            {
+                List<Indexes> indexes = new List<Indexes>();
+                foreach (PSIndexes pSIndex in pSIndexes)
+                {
+                    indexes.Add(PSIndexes.ToSDKModel(pSIndex));
+                }
+                return indexes;
+            }
+
+            return null;
         }
     }
 }

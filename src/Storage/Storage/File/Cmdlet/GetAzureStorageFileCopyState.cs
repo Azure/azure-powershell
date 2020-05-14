@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
 using XFile = Microsoft.Azure.Storage.File;
 using Microsoft.Azure.Storage.File;
 using System;
@@ -22,11 +21,12 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
-    [OutputType(typeof(CloudFile))]
+    [OutputType(typeof(CopyState))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -49,8 +49,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             HelpMessage = "Target file instance", Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.FileParameterSetName)]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
         [Parameter(HelpMessage = "Indicates whether or not to wait util the copying finished.")]

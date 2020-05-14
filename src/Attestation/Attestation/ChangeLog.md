@@ -20,6 +20,11 @@
 
 
 ## Upcoming Release
+
+## Version 0.1.7
+* Added text based policy support to policy cmdlets
+
+## Version 0.1.6
 * Improved error messages for server response codes 400 and 401
 * Improved example code included in documentation files
 * Added three additional required assemblies to Az.Attestation.psd1

@@ -586,6 +586,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetContainerRequiredException" xml:space="preserve">
     <value>Target Container parameter is required for this operation.</value>
   </data>
+  <data name="AFSWeeklyScheduleNotAllowed" xml:space="preserve">
+    <value>Weekly Backup Schedule for Azure File Share policy is not allowed. Please give Daily Schedule input instead.</value>
+  </data>
   <data name="DiskExclusionParametersRedundant" xml:space="preserve">
     <value>Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks.</value>
   </data>
@@ -597,5 +600,8 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
     <value>The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter</value>
+  </data>
+  <data name="AzureFileSourceFilePathRedundantException" xml:space="preserve">
+    <value>Both source file path and multiple source file paths provided. Please give only one option</value>
   </data>
 </root>

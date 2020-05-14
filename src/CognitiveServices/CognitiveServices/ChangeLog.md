@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Supported Identity, Encryption, UserOwnedStorage 
+
 ## Version 1.2.3
 * Updated SDK to 7.0
 * Improved error message when server responses empty body

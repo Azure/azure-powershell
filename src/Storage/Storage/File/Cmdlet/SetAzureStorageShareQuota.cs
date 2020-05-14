@@ -17,10 +17,12 @@ using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota"), OutputType(typeof(FileShareProperties))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -33,12 +35,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string ShareName { get; set; }
 
         [Parameter(
-        Position = 0,
-        Mandatory = true,
-        ValueFromPipeline = true,
-        ParameterSetName = Constants.ShareParameterSetName,
-        HelpMessage = "CloudFileShare object indicated the share whose quota to set.")]
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share whose quota to set.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Alias("QuotaGiB")]
@@ -76,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 this.Channel.SetShareProperties(fileShare, null, this.RequestOptions, this.OperationContext);
             }
 
-            WriteObject(fileShare.Properties);
+            WriteObject( new AzureStorageFileShare(fileShare, this.Channel.StorageContext));
         }
     }
 }

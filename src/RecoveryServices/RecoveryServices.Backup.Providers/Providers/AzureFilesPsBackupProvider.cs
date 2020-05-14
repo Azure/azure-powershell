@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -39,6 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const CmdletModel.RetentionDurationType defaultFileRetentionType =
             CmdletModel.RetentionDurationType.Days;
         private const int defaultFileRetentionCount = 30;
+        private const int defaultWeeklyRetentionCount = 12;
+        private const int defaultMonthlyRetentionCount = 60;
+        private const int defaultYearlyRetentionCount = 10;
 
         Dictionary<Enum, object> ProviderData { get; set; }
 
@@ -177,12 +181,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFileShareName] : null;
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
+            string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
+                (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
 
             //validate file recovery request
-            ValidateFileRestoreRequest(sourceFilePath, sourceFileType);
+            ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
 
             //validate alternate location restore request
-            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName);
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
             {
@@ -227,6 +233,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 restoreFileSpecs = new List<RestoreFileSpecs>();
                 restoreFileSpecs.Add(restoreFileSpec);
+            }
+            else if(multipleSourceFilePaths != null)
+            {
+                restoreFileSpecs = new List<RestoreFileSpecs>();
+                foreach (string filepath in multipleSourceFilePaths)
+                {
+                    RestoreFileSpecs fileSpec = new RestoreFileSpecs();
+                    fileSpec.Path = filepath;
+                    fileSpec.FileSpecType = sourceFileType;
+                    restoreRequest.RestoreRequestType = RestoreRequestType.ItemLevelRestore;
+                    if(targetFolder != null)
+                    {
+                        fileSpec.TargetFolderPath = targetFolder;
+                        targetDetails = new TargetAFSRestoreInfo();
+                        targetDetails.Name = targetFileShareName;
+                        targetDetails.TargetResourceId = targetStorageAccountResource.Id;
+                        restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
+                    }
+                    else
+                    {
+                        fileSpec.TargetFolderPath = null;
+                        restoreRequest.RecoveryType = RecoveryType.OriginalLocation;
+                    }
+                    restoreFileSpecs.Add(fileSpec);
+                }
             }
             else
             {
@@ -327,13 +358,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 // validate RetentionPolicy and SchedulePolicy
                 if (schedulePolicy != null)
                 {
-                    AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
+                    AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);
                     ((AzureFileSharePolicy)policy).SchedulePolicy = schedulePolicy;
                     Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
                 }
                 if (retentionPolicy != null)
                 {
-                    AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
+                    AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
                     ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
                     Logger.Instance.WriteDebug("Validation of Retention policy is successful");
                 }
@@ -368,11 +399,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 // do validations
                 ValidateAzureFilesWorkloadType(workloadType);
-                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
+                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
                 // validate RetentionPolicy
-                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
+                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
                 Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
                 // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
@@ -592,6 +623,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
+            string backupMnagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -601,6 +633,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.DailySchedule.DurationCountInDays = defaultFileRetentionCount;
+            defaultRetention.DailySchedule.BackupManagementType = backupMnagementType;
+
+            // Weekly Retention Policy
+            defaultRetention.IsWeeklyScheduleEnabled = false;
+            defaultRetention.WeeklySchedule = new CmdletModel.WeeklyRetentionSchedule();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek = new List<System.DayOfWeek>();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
+            defaultRetention.WeeklySchedule.DurationCountInWeeks = defaultWeeklyRetentionCount;
+            defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.WeeklySchedule.BackupManagementType = backupMnagementType;
+
+            //Monthly retention policy
+            defaultRetention.IsMonthlyScheduleEnabled = false;
+            defaultRetention.MonthlySchedule = new CmdletModel.MonthlyRetentionSchedule();
+            defaultRetention.MonthlySchedule.DurationCountInMonths = defaultMonthlyRetentionCount;
+            defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.MonthlySchedule.RetentionScheduleFormatType =
+                CmdletModel.RetentionScheduleFormat.Weekly;
+            defaultRetention.MonthlySchedule.BackupManagementType = backupMnagementType;
+
+            //Initialize day based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+
+            //Initialize Week based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
+
+            //Yearly retention policy
+            defaultRetention.IsYearlyScheduleEnabled = false;
+            defaultRetention.YearlySchedule = new CmdletModel.YearlyRetentionSchedule();
+            defaultRetention.YearlySchedule.DurationCountInYears = 10;
+            defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.YearlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.YearlySchedule.RetentionScheduleFormatType =
+                CmdletModel.RetentionScheduleFormat.Weekly;
+            defaultRetention.YearlySchedule.MonthsOfYear = new List<Month>();
+            defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
+            defaultRetention.YearlySchedule.BackupManagementType = backupMnagementType;
+
+            defaultRetention.BackupManagementType = backupMnagementType;
+
             return defaultRetention;
         }
 
@@ -884,9 +960,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType)
+        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType,
+            string[] multipleSourceFilePaths)
         {
-            if (sourceFilePath == null && sourceFileType != null)
+            if (sourceFilePath == null && multipleSourceFilePaths == null && sourceFileType != null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
             }
@@ -894,15 +971,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
             }
+            else if(sourceFilePath != null && multipleSourceFilePaths != null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathRedundantException));
+            }
         }
 
-        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName)
+        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName, string targetFolder)
         {
             if (targetFileShareName == null && targetStorageAccountName != null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetFSNameMissingException));
             }
             else if (targetFileShareName != null && targetStorageAccountName == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
+            }
+            else if(targetFolder != null && targetFileShareName == null && targetStorageAccountName == null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }

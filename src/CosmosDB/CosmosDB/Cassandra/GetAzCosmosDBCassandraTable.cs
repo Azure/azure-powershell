@@ -23,7 +23,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTable", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSCassandraTableGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTable", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSCassandraTableGetResults))]
     public class GetAzCosmosDBCassandraTable : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
@@ -45,16 +45,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSCassandraKeyspaceGetResults InputObject { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
+        public PSCassandraKeyspaceGetResults ParentObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 KeyspaceName = resourceIdentifier.ResourceName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
@@ -64,12 +61,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CassandraTableGetResults cassandraTableGetResults = CosmosDBManagementClient.CassandraResources.GetCassandraTableWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSCassandraTableGetResults(cassandraTableGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.CassandraResources.GetCassandraTableThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {

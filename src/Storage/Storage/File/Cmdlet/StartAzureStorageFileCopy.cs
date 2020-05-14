@@ -23,10 +23,12 @@ using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(AzureStorageFile))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
         private const string ContainerNameParameterSet = "ContainerName";
@@ -72,13 +74,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(HelpMessage = "Source share instance", Mandatory = true, ParameterSetName = ShareParameterSet)]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare SrcShare { get; set; }
 
-        [Parameter(HelpMessage = "Source file instance", Mandatory = true,
-           ValueFromPipeline = true, ParameterSetName = FileFilePathParameterSet)]
-        [Parameter(HelpMessage = "Source file instance", Mandatory = true,
-           ValueFromPipeline = true, ParameterSetName = FileFileParameterSet)]
+        [Parameter(HelpMessage = "Source file instance", 
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = FileFilePathParameterSet)]
+        [Parameter(HelpMessage = "Source file instance", 
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = FileFileParameterSet)]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile SrcFile { get; set; }
 
         [Parameter(HelpMessage = "Source Uri", Mandatory = true, ParameterSetName = UriFilePathParameterSet)]
@@ -398,7 +408,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 string copyId = await startCopy().ConfigureAwait(false);
 
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
-                this.OutputStream.WriteObject(taskId, destFile);
+                WriteCloudFileObject(taskId, this.Channel, destFile);
             }
         }
     }
