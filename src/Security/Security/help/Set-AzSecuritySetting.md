@@ -1,46 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityContact
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzSecurityContact
+# Set-AzSecuritySetting
 
 ## SYNOPSIS
-Deletes a security contact.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### SubscriptionLevelResource (Default)
 ```
-Remove-AzSecurityContact -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Remove-AzSecurityContact -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSecuritySetting -SettingName <String> -SettingInput <PSSecuritySetting>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzSecurityContact -InputObject <PSSecurityContact> [-PassThru]
+Set-AzSecuritySetting -InputObject <PSSecuritySetting> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a security contact.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityContact -Name "default1"
+PS C:\> {{ Add example code here }}
 ```
 
-Deletes the "default1" security contact
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -48,7 +42,7 @@ Deletes the "default1" security contact
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,11 +53,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Input Object.
+### -Enabled
+Status .
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact
+Type: Boolean
 Parameter Sets: InputObject
 Aliases:
 
@@ -74,11 +68,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -InputObject
+Input Object.
 
 ```yaml
-Type: System.String
+Type: PSSecuritySetting
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SettingInput
+Setting.
+
+```yaml
+Type: PSSecuritySetting
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -89,33 +98,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether the operation was successful.
+### -SettingName
+Setting name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
+Type: String
+Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,7 +117,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -135,10 +129,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -154,13 +149,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 
-### Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact
+### System.Boolean
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 
 ## NOTES
 

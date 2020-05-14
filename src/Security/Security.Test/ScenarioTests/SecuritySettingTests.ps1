@@ -25,7 +25,7 @@ function Get-AzureRmSecuritySetting-SubscriptionScope
 
 <#
 .SYNOPSIS
-Get Azure Security Center setting on a subscription
+Get an Azure Security Center setting on a subscription
 #>
 function Get-AzureRmSecuritySetting-SubscriptionLevelResource
 {
@@ -51,7 +51,7 @@ function Set-AzureRmSecuritySetting-SubscriptionLevelResource
 
 <#
 .SYNOPSIS
-Set an Azure Security Center setting
+Set an Azure Security Center setting on an InputObject
 #>
 function Set-AzureRmSecuritySetting-InputObject
 {
