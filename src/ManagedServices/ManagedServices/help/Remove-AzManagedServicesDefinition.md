@@ -14,14 +14,8 @@ Deletes the registration definition.
 
 ### Default (Default)
 ```
-Remove-AzManagedServicesDefinition -Id <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzManagedServicesDefinition -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Remove-AzManagedServicesDefinition -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
@@ -37,23 +31,12 @@ Deletes the registration definition.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-RegistrationDefinition -Id 0513b566-cab0-4fef-9b53-a285cd33389f
+PS C:\> Remove-RegistrationDefinition -Name 0513b566-cab0-4fef-9b53-a285cd33389f
 ```
 
 Removes the registration definition given it identifier.
 
 ### Example 2
-```powershell
-PS C:\> Remove-AzManagedServicesDefinition -ResourceId /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/11b7c937-c5c1-4dd1-9a77-204591f93fcd
-
-Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
-----                                 -----------------                    -----------                          ----------------
-11b7c937-c5c1-4dd1-9a77-204591f93fcd bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
-```
-
-Removes the registration definition given the fully qualified resource id. 
-
-### Example 3
 ```powershell
 PS C:\> $def = New-AzManagedServicesDefinition -RegistrationDefinitionName 572e1807-b80b-4401-9128-1968f432a5ad -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
 PS C:\> Remove-AzManagedServicesDefinition -InputObject $def
@@ -97,8 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The registration definition identifier.
+### -Name
+The unique name of the Registration Definition.
 
 ```yaml
 Type: System.String
@@ -124,21 +107,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-ResourceId of the registration definition
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -138,7 +138,7 @@ function Test-ManagedServices_CRUD
 	Remove-AzManagedServicesAssignment -Id $assignmentId
 	
 	#remove definition
-	Remove-AzManagedServicesDefinition -Id $definitionId
+	Remove-AzManagedServicesDefinition -Name $definitionId
 
 	#list assignments
 	$assignments = Get-AzManagedServicesAssignment

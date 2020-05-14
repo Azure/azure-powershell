@@ -32,13 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string ByInputObjectParameterSet = "ByInputObject";
         protected const string ByResourceIdParameterSet = "ByResourceId";
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration definition identifier.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
-
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full qualified resource id of registration definition.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The registration definition object.")]
         [ValidateNotNull]
@@ -51,10 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         {
             string scope = null;
             string definitionId = null;
-            if (this.IsParameterBound(x => x.Id))
+            if (this.IsParameterBound(x => x.Name))
             {
                 scope = this.GetDefaultScope();
-                definitionId = this.Id;
+                definitionId = this.Name;
             }
             else if (this.IsParameterBound(x => x.InputObject))
             {
@@ -62,14 +58,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 if(!ManagedServicesUtility.TryParseDefinitionScopeFromResourceId(this.InputObject.Id, out scope))
                 {
                     throw new ApplicationException($"Unable to parse the scope from [{this.InputObject.Id}]");
-                }
-            }
-            else if (this.IsParameterBound(x => x.ResourceId))
-            {
-                definitionId = this.ResourceId.GetResourceName();
-                if (!ManagedServicesUtility.TryParseDefinitionScopeFromResourceId(this.ResourceId, out scope))
-                {
-                    throw new ApplicationException($"Unable to parse the scope from [{this.ResourceId}]");
                 }
             }
 
