@@ -53,12 +53,12 @@ function New-AzManagedServicesDefinitionWithId
 {
     [CmdletBinding()]
     param(
-        [string] [Parameter()] $Name,
+        [string] [Parameter()] $DisplayName,
         [string] [Parameter()] $ManagedByTenantId,
         [string] [Parameter()] $PrincipalId,
         [string] [Parameter()] $RoleDefinitionId,
 		[string] [Parameter()] $Description,
-        [Guid]   [Parameter()] $RegistrationDefinitionId
+        [string] [Parameter()] $Name
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
@@ -71,9 +71,9 @@ function New-AzManagedServicesDefinitionWithId
         $cmdlet.Description = $Description
     }
 
-    if (-not ([string]::IsNullOrEmpty($Name)))
+    if (-not ([string]::IsNullOrEmpty($DisplayName)))
     {
-        $cmdlet.Name = $Name
+        $cmdlet.DisplayName = $DisplayName
     }
 
     if (-not ([string]::IsNullOrEmpty($ManagedByTenantId)))
@@ -91,9 +91,9 @@ function New-AzManagedServicesDefinitionWithId
         $cmdlet.RoleDefinitionId = $RoleDefinitionId
     }
 
-    if ($RegistrationDefinitionId -ne $null -and $RegistrationDefinitionId -ne [System.Guid]::Empty)
+    if ($Name -ne $null -and $Name -ne [System.Guid]::Empty)
     {
-        $cmdlet.RegistrationDefinitionId = $RegistrationDefinitionId
+        $cmdlet.Name = $Name
     }
 
     $cmdlet.ExecuteCmdlet()
@@ -110,7 +110,7 @@ function Test-ManagedServices_CRUD
 	$definitionId = "1ccdb215-959a-48b9-bd7c-0584d461ea6c"
 
 	#put def
-	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -Name $name -RegistrationDefinitionId $definitionId
+	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -DisplayName $name -Name $definitionId
 
 	Assert-AreEqual $name $definition.Properties.Name
 	Assert-AreEqual $managedByTenantId $definition.Properties.ManagedByTenantId 

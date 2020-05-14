@@ -14,15 +14,15 @@ Creates or updates a registration definition.
 
 ### Default (Default)
 ```
-New-AzManagedServicesDefinition -Name <String> -ManagedByTenantId <String>
- -PrincipalId <String> -RoleDefinitionId <String> [-Description <String>] [-AsJob]
+New-AzManagedServicesDefinition -DisplayName <String> -ManagedByTenantId <String>
+ -PrincipalId <String> -RoleDefinitionId <String> [-Name <String>] [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPlan
 ```
-New-AzManagedServicesDefinition -Name <String> -ManagedByTenantId <String>
- -PrincipalId <String> -RoleDefinitionId <String> [-Description <String>] -PlanName <String>
+New-AzManagedServicesDefinition -DisplayName <String> -ManagedByTenantId <String>
+ -PrincipalId <String> -RoleDefinitionId <String> [-Name <String>] [-Description <String>] -PlanName <String>
  -PlanPublisher <String> -PlanProduct <String> -PlanVersion <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Creates or updates a registration definition.
 
 ### Example 1
 ```powershell
-PS C:\> PS C:\> New-AzManagedServicesDefinition -Name name -ManagedByTenantId bab3375b-6197-4a15-a44b-16c41faa91d7 -PrincipalId d6f6c88a-5b7a-455e-ba40-ce146d4d3671 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -Description mydef
+PS C:\> PS C:\> New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -ManagedByTenantId bab3375b-6197-4a15-a44b-16c41faa91d7 -PrincipalId d6f6c88a-5b7a-455e-ba40-ce146d4d3671 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -Description mydef
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
@@ -45,7 +45,7 @@ Creates or updates a registration definition given the required parameters.
 
 ### Example 2
 ```powershell
-PS C> New-AzManagedServicesDefinition -Name asd -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7" -PlanName plan -PlanPublisher publisher -PlanProduct product -PlanVersion 0.1
+PS C> New-AzManagedServicesDefinition -DisplayName asd -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7" -PlanName plan -PlanPublisher publisher -PlanProduct product -PlanVersion 0.1
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
@@ -101,6 +101,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the Registration Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedByTenantId
 The ManagedBy Tenant Identifier.
 
@@ -110,6 +125,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the Registration Definition (for example b0c052e5-c437-4771-a476-8b1201158a57).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,21 +208,6 @@ Accept wildcard characters: False
 
 ### -PrincipalId
 The ManagedBy Principal Identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RegistrationDefinitionName
-The name of the Registration Definition.
 
 ```yaml
 Type: System.String
