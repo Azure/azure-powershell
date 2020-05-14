@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Supported CRUD of data flow runtime properties in Managed IR.
+* Exposing the status result of remove trigger subscription
 
 ## Version 1.7.0
 * Updated ADF .Net SDK version to 4.8.0
