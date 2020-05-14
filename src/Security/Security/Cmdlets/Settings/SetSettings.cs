@@ -34,13 +34,37 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
         [ValidateNotNullOrEmpty]
         public PSSecuritySetting SettingInput { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSSecuritySetting InputObject { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Status)]
+        public bool Enabled { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var settingName = SettingName;
-            SettingInput.Name = SettingName;
-            var setting = SettingInput.ConvertToCSType();
+            string settingName;
+            Setting setting;
 
-            if (ShouldProcess(settingName, VerbsCommon.Set))
+            switch (ParameterSetName)
+            {
+                case ParameterSetNames.SubscriptionLevelResource:
+                    SettingInput.Name = SettingName;
+                    setting = SettingInput.ConvertToCSType();
+                    break;
+                case ParameterSetNames.InputObject:
+                    if (InputObject.GetType().Name == nameof(PSSecurityDataExportSetting))
+                    {
+                        ((PSSecurityDataExportSetting)InputObject).Enabled = Enabled ? Enabled : ((PSSecurityDataExportSetting)InputObject).Enabled;
+                    }
+                    SettingName = InputObject.Name;
+                    setting = InputObject.ConvertToCSType();
+                    break;
+                default:
+                    throw new PSInvalidOperationException();
+            }
+
+            if (ShouldProcess(SettingName, VerbsCommon.Set))
             {
                 var updatedSetting = SecurityCenterClient.Settings.UpdateWithHttpMessagesAsync(settingName, setting).GetAwaiter().GetResult().Body;
 

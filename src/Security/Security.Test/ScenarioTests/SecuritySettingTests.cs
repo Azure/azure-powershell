@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-SubscriptionLevelResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetInputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-InputObject");
+        }
     }
 }
