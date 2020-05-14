@@ -32,13 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string DefaultParameterSet = "Default";
         protected const string ByPlanParameterSet = "ByPlan";
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
         public string Name { get; set; }
-
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
-        public string DisplayName { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
@@ -75,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public Guid RegistrationDefinitionId { get; set; }
+        public Guid RegistrationDefinitionId { get; set; } = default(Guid);
 
         public override void ExecuteCmdlet()
         {
@@ -96,16 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 throw new ApplicationException("RoleDefinitionId must be a valid GUID.");
             }
 
-            if (this.Name != null)
-            {
-                if (!this.Name.IsGuid())
-                {
-                    throw new ApplicationException("Name must be a valid GUID.");
-                }
-
-                this.RegistrationDefinitionId = new Guid(this.Name);
-            }
-            else
+            if (this.RegistrationDefinitionId == default(Guid))
             {
                 this.RegistrationDefinitionId = Guid.NewGuid();
             }
@@ -135,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                         Properties = new RegistrationDefinitionProperties
                         {
                             Description = this.Description,
-                            RegistrationDefinitionName = this.DisplayName,
+                            RegistrationDefinitionName = this.Name,
                             ManagedByTenantId = this.ManagedByTenantId,
                             Authorizations = new List<Authorization>
                                     {
