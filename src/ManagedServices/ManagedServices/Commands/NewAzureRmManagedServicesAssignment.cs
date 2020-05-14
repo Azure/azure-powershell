@@ -34,20 +34,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Assignment.")]
+        public string RegistrationAssignmentName { get; set; }
+
         [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [Parameter(Position = 0, ParameterSetName = ByResourceIdParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [Parameter(Position = 0, ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration definition identifier.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string RegistrationDefinitionName { get; set; }
-
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The fully qualified resource id of the registration definition.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("ResourceId")]
-        public string RegistrationDefinitionResourceId { get; set; }
 
         [Parameter(ParameterSetName = ByInputObjectParameterSet, ValueFromPipeline = true, Mandatory = true, HelpMessage = "The registration definition input object.")]
         public PSRegistrationDefinition RegistrationDefinition { get; set; }
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         public override void ExecuteCmdlet()
         {
             string scope = this.GetDefaultScope();
-            string definitionId = this.RegistrationDefinitionResourceId;
+            string definitionId = String.Empty;
 
             if (this.IsParameterBound(x => x.RegistrationDefinitionName))
             {
@@ -70,18 +68,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 // registation definitions can only exist at the subscription level.
                 definitionId = $"{subscriptionScope}/providers/Microsoft.ManagedServices/registrationDefinitions/{this.RegistrationDefinitionName}";
             }
-            else if (this.IsParameterBound(x => x.RegistrationDefinitionResourceId))
-            {
-                definitionId = this.RegistrationDefinitionResourceId;
-                scope = this.Scope ?? definitionId.GetSubscriptionId().ToSubscriptionResourceId();
-            }
             else if (this.IsParameterBound(x => x.RegistrationDefinition))
             {
                 definitionId = this.RegistrationDefinition.Id;
                 scope = this.Scope ?? definitionId.GetSubscriptionId().ToSubscriptionResourceId();
             }
 
-            if (this.RegistrationAssignmentId == default(Guid))
+            if (this.RegistrationAssignmentName != null)
+            {
+                if (!this.RegistrationAssignmentName.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
+                this.RegistrationAssignmentId = new Guid(this.RegistrationAssignmentName);
+            }
+            else
             {
                 this.RegistrationAssignmentId = Guid.NewGuid();
             }

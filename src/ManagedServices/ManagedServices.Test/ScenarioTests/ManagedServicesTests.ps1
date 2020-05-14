@@ -22,8 +22,8 @@ function New-AzManagedServicesAssignmentWithId
     [CmdletBinding()]
     param(
         [string] [Parameter()] $Scope,
-        [string] [Parameter()] $RegistrationDefinitionResourceId,
-        [Guid]   [Parameter()] $RegistrationAssignmentId
+        [string] [Parameter()] $RegistrationDefinitionName,
+        [String]   [Parameter()] $RegistrationAssignmentName
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
@@ -36,14 +36,14 @@ function New-AzManagedServicesAssignmentWithId
         $cmdlet.Scope = $Scope
     }
 
-    if (-not ([string]::IsNullOrEmpty($RegistrationDefinitionResourceId)))
+    if (-not ([string]::IsNullOrEmpty($RegistrationDefinitionName)))
     {	
-        $cmdlet.RegistrationDefinitionResourceId = $RegistrationDefinitionResourceId
+        $cmdlet.RegistrationDefinitionName = $RegistrationDefinitionName
     }
 
-    if ($RegistrationAssignmentId -ne $null -and $RegistrationAssignmentId -ne [System.Guid]::Empty)
+    if ($RegistrationAssignmentName -ne $null -and $RegistrationAssignmentName -ne [System.Guid]::Empty)
     {
-		$cmdlet.RegistrationAssignmentId = $RegistrationAssignmentId
+		$cmdlet.RegistrationAssignmentName = $RegistrationAssignmentName
     }
 
     $cmdlet.ExecuteCmdlet()
@@ -124,8 +124,8 @@ function Test-ManagedServices_CRUD
 
 	#put assignment
 	$assignment = New-AzManagedServicesAssignmentWithId `
-					-RegistrationDefinitionResourceId $definition.Id `
-					-RegistrationAssignmentId $assignmentId	
+					-RegistrationDefinitionName $definition.Id `
+					-RegistrationAssignmentName $assignmentId
 	Assert-NotNull $assignment
 
 	#get assignment
