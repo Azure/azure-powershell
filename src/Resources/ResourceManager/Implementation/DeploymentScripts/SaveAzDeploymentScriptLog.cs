@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ValueFromPipeline = true,
             HelpMessage = "The deployment script PowerShell object.")]
         [ValidateNotNullOrEmpty]
-        public PsDeploymentScript DeploymentScriptInputObject { get; set; }
+        public PsDeploymentScript DeploymentScriptObject { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
@@ -102,10 +102,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
-                        scriptName = DeploymentScriptInputObject.Name;
+                        scriptName = DeploymentScriptObject.Name;
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             scriptName,
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptObject.Id),
                             tailParam);
                         break;
                     default:
