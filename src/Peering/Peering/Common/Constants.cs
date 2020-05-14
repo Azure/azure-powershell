@@ -34,6 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string AzPeeringDirectConnectionObject = "AzPeeringDirectConnectionObject";
         public const string AzPeeringExchangeConnectionObject = "AzPeeringExchangeConnectionObject";
         public const string AzPeering = "AzPeering";
+        public const string AzPeeringReceivedRoutes = "AzPeeringReceivedRoutes";
         public const string AzPeeringServiceLocation = "AzPeeringServiceLocation";
         public const string AzPeeringServiceProvider = "AzPeeringServiceProvider";
         public const string AzPeeringServiceCountry = "AzPeeringServiceCountry";
