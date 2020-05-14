@@ -19,13 +19,7 @@ Get-AzManagedServicesDefinition [-DefaultProfile <IAzureContextContainer>] [<Com
 
 ### ById
 ```
-Get-AzManagedServicesDefinition -Id <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzManagedServicesDefinition -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzManagedServicesDefinition -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,28 +45,14 @@ Gets all registration definitions.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzManagedServicesDefinition -Id fff287a4-1714-4a17-bc40-a17ca8e69e3f
+PS C:\> Get-AzManagedServicesDefinition -Name fff287a4-1714-4a17-bc40-a17ca8e69e3f
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
 fff287a4-1714-4a17-bc40-a17ca8e69e3f bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
 ```
 
-Gets the registration definition given its id.
-
-### Example 3
-```powershell
-PS C:\> $definitions = Get-AzManagedServicesDefinition
-PS C:\> $definitions[0].Id
-/subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/fff287a4-1714-4a17-bc40-a17ca8e69e3f
-PS C:\> Get-AzManagedServicesDefinition -ResourceId $definitions[0].Id
-
-Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
-----                                 -----------------                    -----------                          ----------------
-fff287a4-1714-4a17-bc40-a17ca8e69e3f bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
-```
-
-Gets the registration definition given the fully qualified resource id.
+Gets the registration definition given its unique name.
 
 ## PARAMETERS
 
@@ -91,8 +71,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The registration definition identifier (for example, b0c052e5-c437-4771-a476-8b1201158a57).
+### -Name
+The unique name of the Registration Definition (for example b0c052e5-c437-4771-a476-8b1201158a57).
 ```yaml
 Type: System.String
 Parameter Sets: ById
@@ -102,20 +82,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The fully qualified resource id of the registration definition (for example, /subscriptions/bb6d49b2-603d-489f-b6ca-ca4dc497c749/providers/Microsoft.ManagedServices/registrationDefinitions/b0c052e5-c437-4771-a476-8b1201158a57)
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

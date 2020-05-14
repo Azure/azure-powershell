@@ -29,17 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByIdParameterSet = "ById";
 
-        [Parameter(ParameterSetName = ByIdParameterSet, Mandatory = false, HelpMessage = "The registration definition identifier.")]
+        [Parameter(ParameterSetName = ByIdParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(
-            ParameterSetName = ByResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The full qualified resource id of registration definition.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -49,11 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             if (this.IsParameterBound(x => x.Name))
             {
                 definitionId = this.Name;
-            }
-            else if (this.IsParameterBound(x => x.ResourceId))
-            {
-                definitionId = this.ResourceId.GetResourceName();
-                scope = this.ResourceId.GetSubscriptionId().ToSubscriptionResourceId();
             }
 
             if (string.IsNullOrEmpty(definitionId))
