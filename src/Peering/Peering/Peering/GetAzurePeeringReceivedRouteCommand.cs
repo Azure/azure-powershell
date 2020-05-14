@@ -31,8 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     ///     The Get Az InputObject cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Constants.AzPeeringReceivedRoutes,
-        DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
-    [OutputType(typeof(PSPeering))]
+        DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+    [OutputType(typeof(List<PSPeeringReceivedRoute>))]
     public class GetAzurePeeringReceivedRouteCommand : PeeringBaseCmdlet
     {
         /// <summary>
@@ -68,6 +68,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        public string Prefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        public string AsPath { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        public string OriginAsValidationState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        public string RPKIValidationState { get; set; }
+
         /// <inheritdoc />
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -77,31 +117,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             base.Execute();
             try
             {
-                if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.ParameterSetNameByResourceAndName,
-                    StringComparison.OrdinalIgnoreCase))
-                {
-                    if (this.Name != null)
-                    {
-                        var item = this.GetPeeringByResourceAndName();
-                        this.WriteObject(item);
-                    }
-                    else
-                    {
-                        var list = this.GetPeeringByResource();
-                        this.WriteObject(list, true);
-                    }
-                }
-                else if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
+                if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
                 {
                     var resourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
                     this.Name = resourceId.ResourceName;
-                    this.WriteObject(this.GetPeeringByResourceAndName());
-                }else
+                }
                 {
-                    // TODO
+                    var list = this.GetPeeringRxRoutes();
+                    this.WriteObject(list, true);
                 }
             }
             catch (InvalidOperationException mapException)
@@ -116,76 +140,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets InputObject Resource by ResourceGroupName
-        /// </summary>
-        /// <returns>List of InputObject Resources</returns>
-        public List<object> GetPeeringByResource()
-        {
-            var icList = this.PeeringClient.ListByResourceGroup(this.ResourceGroupName);
-            var peering = icList.Select(this.ToPeeringPs).ToList();
-            List<object> psList = new List<object>();
-            foreach (var peer in peering)
-            {
-                if (peer.Exchange != null)
-                {
-                    psList.Add(new PSExchangePeeringModelView(peer));
-                }
-
-                if (peer.Direct != null)
-                {
-                    psList.Add(new PSDirectPeeringModelView(peer));
-                }
-            }
-
-            return psList;
-        }
-
-        /// <summary>
-        ///     Gets the InputObject Resource by ResourceGroupName and InputObject Name
-        /// </summary>
-        /// <returns>InputObject Resource</returns>
-        public object GetPeeringByResourceAndName()
-        {
-            var ic = this.PeeringClient.Get(this.ResourceGroupName, this.Name);
-            var peer = this.ToPeeringPs(ic);
-            if (peer.Exchange != null)
-            {
-                var obj = new PSExchangePeeringModelView(peer);
-                return obj;
-            }
-
-            if (peer.Direct != null)
-            {
-                var obj = new PSDirectPeeringModelView(peer);
-                return obj;
-            }
-
-            return null;
-        }
-
-        /// <summary>
         ///     Gets all InputObject for a subscription.
         /// </summary>
         /// <returns>List of all InputObject for a subscription</returns>
-        public List<object> GetPeeringBySubscription()
+        public List<object> GetPeeringRxRoutes()
         {
-            var icList = this.PeeringClient.ListBySubscription();
-            var peering = icList.Select(this.ToPeeringPs).ToList();
-            List<object> psList = new List<object>();
-            foreach (var peer in peering)
-            {
-                if (peer.Exchange != null)
-                {
-                    psList.Add(new PSExchangePeeringModelView(peer));
-                }
-
-                if (peer.Direct != null)
-                {
-                    psList.Add(new PSDirectPeeringModelView(peer));
-                }
-            }
-
-            return psList;
+            var icList = this.RxRoutesClient.ListByPeering(this.ResourceGroupName, this.Name, this.Prefix, this.AsPath, this.OriginAsValidationState, this.RPKIValidationState);
+            return icList.ToList<object>();
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/40076-Global9843?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/40076-Global9843?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80MDA3Ni1HbG9iYWw5ODQzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 40076,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS40076-Global2309.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS40076-Global2309.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS40076-Global2309\"\r\n  }\r\n}",
@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/40076-Global9843?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/40076-Global9843?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80MDA3Ni1HbG9iYWw5ODQzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 40076,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS40076-Global2309.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS40076-Global2309.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS40076-Global2309\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
@@ -253,7 +253,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection8184?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection8184?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9EaXJlY3RPbmVDb25uZWN0aW9uODE4ND9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium_Direct_Unlimited\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"bandwidthInMbps\": 40000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": false,\r\n          \"peeringDBFacilityId\": 63,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"167.199.228.0/31\",\r\n            \"sessionPrefixV6\": \"a7c7:e411:8aad:a543:8149:757f:ed2e:100/127\",\r\n            \"maxPrefixesAdvertisedV4\": 19617,\r\n            \"maxPrefixesAdvertisedV6\": 425,\r\n            \"md5AuthenticationKey\": \"2f8a7276de603ec641e22cf820240ed9\"\r\n          },\r\n          \"connectionIdentifier\": \"f9e131b2-6dbf-4010-9270-d78cf3fd36ad\"\r\n        },\r\n        {\r\n          \"bandwidthInMbps\": 40000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": true,\r\n          \"peeringDBFacilityId\": 63,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"103.181.171.0/31\",\r\n            \"sessionPrefixV6\": \"67b5:ab30:535e:b363:ef18:717b:a156:3000/127\",\r\n            \"maxPrefixesAdvertisedV4\": 19617,\r\n            \"maxPrefixesAdvertisedV6\": 425,\r\n            \"md5AuthenticationKey\": \"2f8a7276de603ec641e22cf820240ed9\"\r\n          },\r\n          \"connectionIdentifier\": \"36e9fea3-c8e1-4191-baf8-d3cfeba50f5f\"\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/40076-Global9843\"\r\n      },\r\n      \"directPeeringType\": \"Cdn\"\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tfs_40076\": \"value1\"\r\n  }\r\n}",

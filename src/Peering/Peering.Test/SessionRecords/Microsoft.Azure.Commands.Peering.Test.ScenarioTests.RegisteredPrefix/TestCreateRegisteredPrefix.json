@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerings?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerings?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncz9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -121,7 +121,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744?api-version=2020-01-01-preview",
+      "RequestUri": "//subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744?api-version=2020-04-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzNlOTE5ZjlhLTRlMjYtNDczNi1hYThkLWQ1OTZkOWE0OTIzOS9yZXNvdXJjZUdyb3Vwcy90ZXN0Q2Fycmllci9wcm92aWRlcnMvTWljcm9zb2Z0LlBlZXJpbmcvcGVlcmluZ3MvRGlyZWN0T25lQ29ubmVjdGlvbjI3NDQ/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -181,7 +181,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9EaXJlY3RPbmVDb25uZWN0aW9uMjc0NC9yZWdpc3RlcmVkUHJlZml4ZXMvbmFtZTI1MDU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"prefix\": \"63.176.223.155/32\"\r\n  }\r\n}",
@@ -247,7 +247,7 @@
       "StatusCode": 405
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9EaXJlY3RPbmVDb25uZWN0aW9uMjc0NC9yZWdpc3RlcmVkUHJlZml4ZXMvbmFtZTI1MDU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"prefix\": \"63.176.223.155/32\"\r\n  }\r\n}",
@@ -313,7 +313,7 @@
       "StatusCode": 405
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/DirectOneConnection2744/registeredPrefixes/name2505?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9EaXJlY3RPbmVDb25uZWN0aW9uMjc0NC9yZWdpc3RlcmVkUHJlZml4ZXMvbmFtZTI1MDU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"prefix\": \"63.176.223.155/32\"\r\n  }\r\n}",

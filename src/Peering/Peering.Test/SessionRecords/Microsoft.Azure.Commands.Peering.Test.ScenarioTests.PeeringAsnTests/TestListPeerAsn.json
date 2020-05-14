@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zMzA0My1HbG9iYWw0Mzc1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 33043,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS33043-Global7219.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS33043-Global7219.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS33043-Global7219\"\r\n  }\r\n}",
@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zMzA0My1HbG9iYWw0Mzc1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 33043,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS33043-Global7219.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS33043-Global7219.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS33043-Global7219\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
@@ -133,7 +133,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81OTY5MC1HbG9iYWwyNjM5P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 59690,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS59690-Global4394.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS59690-Global4394.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS59690-Global4394\"\r\n  }\r\n}",
@@ -199,7 +199,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81OTY5MC1HbG9iYWwyNjM5P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 59690,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS59690-Global4394.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS59690-Global4394.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS59690-Global4394\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
@@ -265,7 +265,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xOTI2MC1HbG9iYWw3NDA4P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 19260,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS19260-Global9601.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS19260-Global9601.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS19260-Global9601\"\r\n  }\r\n}",
@@ -331,7 +331,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xOTI2MC1HbG9iYWw3NDA4P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 19260,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS19260-Global9601.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS19260-Global9601.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS19260-Global9601\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
@@ -397,7 +397,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucz9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -457,7 +457,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucz9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -517,7 +517,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucz9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -577,7 +577,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNTQ1LUdsb2JhbDU0MTU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -634,7 +634,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33937-Global2313?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33937-Global2313?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zMzkzNy1HbG9iYWwyMzEzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -691,7 +691,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/7054-Global2472?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/7054-Global2472?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy83MDU0LUdsb2JhbDI0NzI/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -748,7 +748,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/47131-Global8068?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/47131-Global8068?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80NzEzMS1HbG9iYWw4MDY4P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -805,7 +805,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/12240-Global3475?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/12240-Global3475?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xMjI0MC1HbG9iYWwzNDc1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -862,7 +862,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/8064-Global8706?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/8064-Global8706?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy84MDY0LUdsb2JhbDg3MDY/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -919,7 +919,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/48050-Global5691?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/48050-Global5691?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80ODA1MC1HbG9iYWw1NjkxP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -976,7 +976,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/26074-Global4551?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/26074-Global4551?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNjA3NC1HbG9iYWw0NTUxP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1033,7 +1033,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/44842-Global4105?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/44842-Global4105?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80NDg0Mi1HbG9iYWw0MTA1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1090,7 +1090,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/35837-Global702?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/35837-Global702?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zNTgzNy1HbG9iYWw3MDI/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1147,7 +1147,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/63090-Global672?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/63090-Global672?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82MzA5MC1HbG9iYWw2NzI/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1204,7 +1204,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/55274-Global4177?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/55274-Global4177?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81NTI3NC1HbG9iYWw0MTc3P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1261,7 +1261,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/823-Global6001?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/823-Global6001?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy84MjMtR2xvYmFsNjAwMT9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1318,7 +1318,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/34611-Global3375?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/34611-Global3375?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zNDYxMS1HbG9iYWwzMzc1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1375,7 +1375,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/25089-Global9332?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/25089-Global9332?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNTA4OS1HbG9iYWw5MzMyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1432,7 +1432,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/8086-Global2987?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/8086-Global2987?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy84MDg2LUdsb2JhbDI5ODc/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1489,7 +1489,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19404-Global9288?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19404-Global9288?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xOTQwNC1HbG9iYWw5Mjg4P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1546,7 +1546,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/63359-Global386?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/63359-Global386?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82MzM1OS1HbG9iYWwzODY/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1603,7 +1603,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/16392-Global6365?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/16392-Global6365?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNjM5Mi1HbG9iYWw2MzY1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1660,7 +1660,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/52899-Global2553?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/52899-Global2553?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81Mjg5OS1HbG9iYWwyNTUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1717,7 +1717,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9585-Global4841?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9585-Global4841?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85NTg1LUdsb2JhbDQ4NDE/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1774,7 +1774,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/49072-Global9297?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/49072-Global9297?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy80OTA3Mi1HbG9iYWw5Mjk3P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1831,7 +1831,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/50955-Global7133?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/50955-Global7133?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81MDk1NS1HbG9iYWw3MTMzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1888,7 +1888,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/Global1549?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/Global1549?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9HbG9iYWwxNTQ5P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1945,7 +1945,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/33043-Global4375?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8zMzA0My1HbG9iYWw0Mzc1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -2002,7 +2002,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/59690-Global2639?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy81OTY5MC1HbG9iYWwyNjM5P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -2059,7 +2059,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/19260-Global7408?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xOTI2MC1HbG9iYWw3NDA4P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",

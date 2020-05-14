@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNTQ1LUdsb2JhbDU0MTU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 2545,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS2545-Global1529.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS2545-Global1529.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS2545-Global1529\"\r\n  }\r\n}",
@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNTQ1LUdsb2JhbDU0MTU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 2545,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS2545-Global1529.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS2545-Global1529.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS2545-Global1529\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
@@ -262,7 +262,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yNTQ1LUdsb2JhbDU0MTU/YXBpLXZlcnNpb249MjAyMC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -442,7 +442,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL01vY2tSZzgxOTAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdzL3BzNDM4OD9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"peerSessionIPv4Address\": \"10.12.97.135\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"002fae12-284d-4ded-9822-86ecefbe1003\"\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"peerSessionIPv4Address\": \"10.12.97.132\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"4c0104f2-d502-439e-b866-d232e9587582\"\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Seattle\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tfs_52441\": \"Active\"\r\n  }\r\n}",
@@ -508,7 +508,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL01vY2tSZzgxOTAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdzL3BzNDM4OD9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n            \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n            \"peerSessionIPv4Address\": \"10.12.97.135\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"maxPrefixesAdvertisedV6\": 0,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"002fae12-284d-4ded-9822-86ecefbe1003\"\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n            \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n            \"peerSessionIPv4Address\": \"10.12.97.132\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"maxPrefixesAdvertisedV6\": 0,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"4c0104f2-d502-439e-b866-d232e9587582\"\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n            \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n            \"peerSessionIPv4Address\": \"10.12.97.150\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"maxPrefixesAdvertisedV6\": 0,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"002fae12-284d-4ded-9822-86ecefbe1003\"\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 99999,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n            \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n            \"peerSessionIPv4Address\": \"10.12.97.152\",\r\n            \"maxPrefixesAdvertisedV4\": 15191,\r\n            \"maxPrefixesAdvertisedV6\": 0,\r\n            \"md5AuthenticationKey\": \"0fdebd616f2f3121505d57e45e385508\"\r\n          },\r\n          \"connectionIdentifier\": \"4c0104f2-d502-439e-b866-d232e9587582\"\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/2545-Global5415\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Seattle\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tfs_52441\": \"Active\"\r\n  }\r\n}",
@@ -574,7 +574,7 @@
       "StatusCode": 400
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-01-01-preview",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/MockRg8190/providers/Microsoft.Peering/peerings/ps4388?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL01vY2tSZzgxOTAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdzL3BzNDM4OD9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
