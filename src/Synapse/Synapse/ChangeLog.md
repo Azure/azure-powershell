@@ -19,4 +19,6 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.0
+
 * Preview release of `Az.Synapse` module

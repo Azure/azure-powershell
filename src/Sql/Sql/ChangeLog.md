@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.1
 * Enhance performance of:
     - `Set-AzSqlDatabaseSensitivityClassification`
     - `Set-AzSqlInstanceDatabaseSensitivityClassification`

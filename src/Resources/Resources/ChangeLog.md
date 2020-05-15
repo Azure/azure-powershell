@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * Added message warning about view delay when creating a new Role Definition
 * Changed policy cmdlets to output strongly-typed objects
 * Removed `-TenantLevel` parameter used for on the `Get-AzResourceLock` cmdlet [#11335]

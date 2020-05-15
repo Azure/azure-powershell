@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Updated `Add-AzEnvironment` and `Set-AzEnvironment` to accept parameters `AzureSynapseAnalyticsEndpointResourceId` and `AzureSynapseAnalyticsEndpointSuffix`
 * Added Azure.Core related assemblies into Az.Accounts, supported PowerShell platforms include Windows PowerShell 5.1, PowerShell Core 6.2.4, PowerShell 7+
 
