@@ -162,7 +162,7 @@ The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.
 
 #### Before
 ```powershell
-PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | Format-List
+PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = 'val1'} | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : Standard
@@ -182,7 +182,7 @@ AvailabilitySets                        : {}
 
 #### After
 ```powershell
-PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | Format-List
+PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = 'val1'} | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : StandardColocationStatus                        :
@@ -242,7 +242,7 @@ AvailabilitySets                        : {}
 
 #### Before
 ```powershell
-PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | fl
+PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : Standard
@@ -370,12 +370,12 @@ The alias `New-AzKeyVaultCertificateAdministratorDetails` is removed. Please use
 
 #### Before
 ```powershell
-PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetails -FirstName 'Patti' -LastName 'Fuller' -EmailAddress 'patti.fuller@contoso.com' -PhoneNumber '5553334444'
 ```
 
 #### After
 ```powershell
-PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName 'Patti' -LastName 'Fuller' -EmailAddress 'patti.fuller@contoso.com' -PhoneNumber '5553334444'
 ```
 
 ### `New-AzKeyVault`
@@ -383,12 +383,12 @@ PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName 
 
 #### Before
 ```powershell
-PS C:\> New-AzKeyVault -VaultName `Contoso03Vault` -ResourceGroupName `Group14` -Location `East US` -EnableSoftDelete
+PS C:\> New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US' -EnableSoftDelete
 ```
 
 #### After
 ```powershell
-PS C:\> New-AzKeyVault -VaultName `Contoso03Vault` -ResourceGroupName `Group14` -Location `East US`
+PS C:\> New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US'
 ```
 
 ## Az.Monitor
@@ -624,7 +624,7 @@ When remove sub File Directorys with parent Diretory object and -Path, Can't inp
 ```powershell
 PS C:\> $dir = Get-AzStorageFile -ShareName $shareName -Path testdir -Context $ctx
 
-PS C:\> @("dir1", "dir2") | Remove-AzStorageDirectory -Directory $dir
+PS C:\> @('dir1', 'dir2') | Remove-AzStorageDirectory -Directory $dir
 ```
 
 #### After
@@ -632,8 +632,8 @@ PS C:\> @("dir1", "dir2") | Remove-AzStorageDirectory -Directory $dir
 PS C:\> $dir = Get-AzStorageFile -ShareName $shareName -Path testdir -Context $ctx
 
 PS C:\> $paths = @(
-    [PSCustomObject]@{  Path = "dir1" }
-    [PSCustomObject]@{ Path = "dir2" }
+    [PSCustomObject]@{  Path = 'dir1 }
+    [PSCustomObject]@{ Path = 'dir2' }
 )
 
 PS C:\> $paths | Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory
