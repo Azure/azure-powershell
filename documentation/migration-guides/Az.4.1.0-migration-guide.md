@@ -162,7 +162,7 @@ The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.
 
 #### Before
 ```powershell
-PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | fl
+PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : Standard
@@ -182,7 +182,7 @@ AvailabilitySets                        : {}
 
 #### After
 ```powershell
-PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | fl
+PS C:\> New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"} | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : StandardColocationStatus                        :
@@ -202,7 +202,7 @@ AvailabilitySets                        : {}
 
 #### Before
 ```powershell
-PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Remove-AzProximityPlacementGroup | fl
+PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Remove-AzProximityPlacementGroup | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : Standard
@@ -222,7 +222,7 @@ AvailabilitySets                        : {}
 
 #### After
 ```powershell
-PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Remove-AzProximityPlacementGroup | fl
+PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Remove-AzProximityPlacementGroup | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : StandardColocationStatus                        :
@@ -262,7 +262,7 @@ AvailabilitySets                        : {}
 
 #### After
 ```powershell
-PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | fl
+PS C:\> Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName | Format-List
 
 ResourceGroupName                       : $resourceGroupName
 ProximityPlacementGroupType             : StandardColocationStatus                        :
