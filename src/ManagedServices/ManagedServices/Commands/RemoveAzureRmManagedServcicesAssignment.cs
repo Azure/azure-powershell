@@ -54,6 +54,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
             if (this.IsParameterBound(x => x.Name))
             {
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
                 assignmentId = this.Name;
                 scope = this.Scope ?? this.GetDefaultScope();
             }

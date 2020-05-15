@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Assignment.")]
-        public string RegistrationAssignmentName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [Parameter(Position = 0, ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
@@ -72,14 +72,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 scope = this.Scope ?? definitionId.GetSubscriptionId().ToSubscriptionResourceId();
             }
 
-            if (this.RegistrationAssignmentName != null)
+            if (!String.IsNullOrWhiteSpace(this.Name))
             {
-                if (!this.RegistrationAssignmentName.IsGuid())
+                if (!this.Name.IsGuid())
                 {
                     throw new ApplicationException("Name must be a valid GUID.");
                 }
 
-                this.RegistrationAssignmentId = new Guid(this.RegistrationAssignmentName);
+                this.RegistrationAssignmentId = new Guid(this.Name);
             }
             else
             {

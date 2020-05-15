@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 throw new ApplicationException("RoleDefinitionId must be a valid GUID.");
             }
 
-            if (this.Name != null)
+            if (!String.IsNullOrWhiteSpace(this.Name))
             {
                 if (!this.Name.IsGuid())
                 {

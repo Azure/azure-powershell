@@ -48,6 +48,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             string definitionId = null;
             if (this.IsParameterBound(x => x.Name))
             {
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
                 scope = this.GetDefaultScope();
                 definitionId = this.Name;
             }
