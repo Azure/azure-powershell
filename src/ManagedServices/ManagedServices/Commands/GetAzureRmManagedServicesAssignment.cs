@@ -27,21 +27,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     public class GetAzureRmManagedServicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
-        protected const string ByIdParameterSet = "ById";
+        protected const string ByNameParameterSet = "ByName";
 
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The scope where the registration assignment is created.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByIdParameterSet, HelpMessage = "The scope where the registration assignment is created.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The scope where the registration assignment is created.")]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByIdParameterSet, HelpMessage = "The unique name of the Registration Assignment.")]
+        [Parameter(Mandatory = true, ParameterSetName = ByNameParameterSet, HelpMessage = "The unique name of the Registration Assignment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Whether to include registration definition details.")]
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
-        [Parameter(ParameterSetName = ByIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
+        [Parameter(ParameterSetName = ByNameParameterSet, HelpMessage = "Whether to include registration definition details.")]
         public SwitchParameter ExpandRegistrationDefinition { get; set; }
 
         public override void ExecuteCmdlet()

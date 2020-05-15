@@ -22,14 +22,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     [Cmdlet(
     VerbsCommon.Get,
     Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
-    DefaultParameterSetName = ByIdParameterSet), OutputType(typeof(PSRegistrationDefinition))]
+    DefaultParameterSetName = ByNameParameterSet), OutputType(typeof(PSRegistrationDefinition))]
     public class GetAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
-        ////protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
-        protected const string ByIdParameterSet = "ById";
+        protected const string ByNameParameterSet = "ByName";
 
-        [Parameter(ParameterSetName = ByIdParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByNameParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

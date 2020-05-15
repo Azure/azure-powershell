@@ -14,7 +14,7 @@ Deletes a registration assignment.
 
 ### Default (Default)
 ```
-Remove-AzManagedServicesAssignment [[-Scope] <String>] -Id <String> [-AsJob]
+Remove-AzManagedServicesAssignment [[-Scope] <String>] -Name <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

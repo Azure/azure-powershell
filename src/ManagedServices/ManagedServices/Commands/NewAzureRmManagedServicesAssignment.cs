@@ -31,14 +31,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     public class NewAzureRmManagedServicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Assignment.")]
         public string RegistrationAssignmentName { get; set; }
 
         [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
-        [Parameter(Position = 0, ParameterSetName = ByResourceIdParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [Parameter(Position = 0, ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [ScopeCompleter]
         public string Scope { get; set; }

@@ -17,7 +17,7 @@ Gets a list of the registration definitions.
 Get-AzManagedServicesDefinition [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ById
+### ByName
 ```
 Get-AzManagedServicesDefinition -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```

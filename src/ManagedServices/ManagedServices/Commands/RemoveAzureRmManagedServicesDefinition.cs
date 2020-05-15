@@ -30,7 +30,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     {
         protected const string DefaultParameterSet = "Default";
         protected const string ByInputObjectParameterSet = "ByInputObject";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]

@@ -30,7 +30,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     public class RemoveAzureRmManagedServcicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
         [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]

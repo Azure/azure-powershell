@@ -18,9 +18,9 @@ Get-AzManagedServicesAssignment [-Scope <String>] [-ExpandRegistrationDefinition
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ById
+### ByName
 ```
-Get-AzManagedServicesAssignment [-Scope <String>] -Name <String> [-ExpandRegistrationDefinition]
+Get-AzManagedServicesAssignment -Name <String> [-Scope <String>] [-ExpandRegistrationDefinition]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
