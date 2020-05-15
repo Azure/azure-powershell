@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected string ModuleVersion { get { return AzurePowerShell.AssemblyVersion; } }
 
         /// <summary>
-        /// The context for management cmdlet requests - includes account, tenant, subscription, 
+        /// The context for management cmdlet requests - includes account, tenant, subscription,
         /// and credential information for targeting and authorizing management calls.
         /// </summary>
         protected abstract IAzureContext DefaultContext { get; }
@@ -647,7 +647,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy 
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy
         /// version forcompatibility with older RDFE cmdlets.
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
@@ -677,10 +677,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
-        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
-        /// particular action (e.g. a resource is being overwritten). By default, both 
-        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this
+        /// particular action (e.g. a resource is being overwritten). By default, both
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload
         /// must have a force parameter.
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
@@ -714,8 +714,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Prompt for confirmation depending on the ConfirmLevel. By default No confirmation prompt 
-        /// occurs unless ConfirmLevel >= $ConfirmPreference.  Guarding the actions of a cmdlet with this 
+        /// Prompt for confirmation depending on the ConfirmLevel. By default No confirmation prompt
+        /// occurs unless ConfirmLevel >= $ConfirmPreference.  Guarding the actions of a cmdlet with this
         /// method will enable the cmdlet to support -WhatIf and -Confirm parameters.
         /// </summary>
         /// <param name="processMessage">The change being made to the resource</param>
@@ -865,54 +865,48 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         //If there is no Az module, the version is "0.0.0"
         public static string AzVersion { set; get; }
 
-        //Initialized once AzVersion is loadded.
+        //Initialized once AzVersion is loaded.
         //Format: AzurePowershell/Az0.0.0;%AZUREPS_HOST_ENVIROMENT%
         public static string UserAgent { set; get; }
 
         protected string LoadAzVersion()
         {
-            Version defautVersion = new Version("0.0.0");
+            Version defaultVersion = new Version("0.0.0");
             if (this.Host == null)
             {
                 WriteDebug("Cannot fetch Az version due to no host in current environment");
-                return defautVersion.ToString();
+                return defaultVersion.ToString();
             }
 
-            Version latestAz = defautVersion;
+            Version latestAz = defaultVersion;
             string latestSuffix = "";
-            using (var powershell = System.Management.Automation.PowerShell.Create())
+
+            try
             {
-                try
+                var outputs = this.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                foreach (PSObject obj in outputs)
                 {
-                    powershell.Runspace = RunspaceFactory.CreateRunspace(this.Host);
-                    powershell.AddCommand("Get-Module");
-                    powershell.AddParameter("Name", "Az");
-                    powershell.AddParameter("ListAvailable", true);
-                    powershell.Runspace.Open();
-                    Collection<PSObject> outputs = powershell.Invoke();
-                    foreach (PSObject obj in outputs)
+                    string psVersion = obj.Properties["Version"].Value.ToString();
+                    int pos = psVersion.IndexOf('-');
+                    string currentSuffix = (pos == -1 || pos == psVersion.Length - 1) ? "" : psVersion.Substring(pos + 1);
+                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                    if (currentAz > latestAz)
                     {
-                        string psVersion = obj.Properties["Version"].Value.ToString();
-                        int pos = psVersion.IndexOf('-');
-                        string currentSuffix = (pos == -1 || pos == psVersion.Length - 1) ? "" : psVersion.Substring(pos + 1);
-                        Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                        if (currentAz > latestAz)
-                        {
-                            latestAz = currentAz;
-                            latestSuffix = currentSuffix;
-                        }
-                        else if (currentAz == latestAz)
-                        {
-                            latestSuffix = String.Compare(latestSuffix, currentSuffix) > 0 ? latestSuffix : currentSuffix;
-                        }
+                        latestAz = currentAz;
+                        latestSuffix = currentSuffix;
+                    }
+                    else if (currentAz == latestAz)
+                    {
+                        latestSuffix = String.Compare(latestSuffix, currentSuffix) > 0 ? latestSuffix : currentSuffix;
                     }
                 }
-                catch (Exception e)
-                {
-                    WriteDebug(string.Format("Cannot fetch Az version due to exception: {0}", e.Message));
-                    return defautVersion.ToString();
-                }
             }
+            catch (Exception e)
+            {
+                WriteDebug(string.Format("Cannot fetch Az version due to exception: {0}", e.Message));
+                return defaultVersion.ToString();
+            }
+
             string ret = latestAz.ToString();
             if (!String.IsNullOrEmpty(latestSuffix))
             {
