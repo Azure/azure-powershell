@@ -18,12 +18,6 @@ Remove-AzManagedServicesAssignment [[-Scope] <String>] -Id <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
-```
-Remove-AzManagedServicesAssignment -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByInputObject
 ```
 Remove-AzManagedServicesAssignment -InputObject <PSRegistrationAssignment> [-AsJob]
@@ -37,7 +31,7 @@ Deletes a registration assignment.
 
 ### Example 1
 ```powershell
-PS C:\Remove-AzManagedServicesAssignment -Id b037e73c-815e-4472-868f-59e51b49b949
+PS C:\Remove-AzManagedServicesAssignment -Name b037e73c-815e-4472-868f-59e51b49b949
 
 Name                                 RegistrationDefinitionId
 ----                                 ------------------------
@@ -48,18 +42,7 @@ Deletes the registration assignment under the default scope.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzManagedServicesAssignment -ResourceId /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationAssignments/88ba878b-9a3c-40c3-80da-015cbe488a2f
-
-Name                                 RegistrationDefinitionId
-----                                 ------------------------
-88ba878b-9a3c-40c3-80da-015cbe488a2f /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/40be0299-6573-4391-be2f-b41dd4aaf4f9
-```
-
-Deletes the registration assignment given the fully qualified resource id.
-
-### Example 3
-```powershell
-PS C:\> $assignment = New-AzManagedServicesAssignment -RegistrationDefinitionId /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/33974646-9bce-461d-89eb-331f20fca33c
+PS C:\> $assignment = New-AzManagedServicesAssignment -RegistrationDefinitionName /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/33974646-9bce-461d-89eb-331f20fca33c
 PS C:\> Remove-AzManagedServicesAssignment -InputObject $assignment
 ```
 
@@ -97,8 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The registration assignment GUID (for example, b0c052e5-c437-4771-a476-8b1201158a57)
+### -Name
+The unique name of the Registration Assignment (for example 26c128c2-fefa-4340-9bb1-6e081c90ada2).
 ```yaml
 Type: System.String
 Parameter Sets: Default
@@ -123,21 +106,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The fully qualified resource id of the registration assignment (for example, /subscriptions/bb6d49b2-603d-489f-b6ca-ca4dc497c749/providers/Microsoft.ManagedServices/registrationAssignments/b0c052e5-c437-4771-a476-8b1201158a57).
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

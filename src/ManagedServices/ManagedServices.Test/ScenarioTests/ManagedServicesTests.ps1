@@ -135,7 +135,7 @@ function Test-ManagedServices_CRUD
 	Assert-AreEqual $definition.Id $getAssignment.Properties.RegistrationDefinitionId
 
 	#remove assignment
-	Remove-AzManagedServicesAssignment -Id $assignmentId
+	Remove-AzManagedServicesAssignment -Name $assignmentId
 	
 	#remove definition
 	Remove-AzManagedServicesDefinition -Name $definitionId

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration assignment Id.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Assignment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
