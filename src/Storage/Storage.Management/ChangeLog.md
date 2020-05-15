@@ -27,6 +27,9 @@
     - `Restore-AzRmStorageShare`
 * Support enable/disable versioning on Blob Service of a Storage account
     - `Update-AzStorageBlobServiceProperty`
+* Support create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
 * Support Set/Get/Remove Object Replication Policy on Storage accounts
     - `New-AzStorageObjectReplicationPolicyRule`
     - `Set-AzStorageObjectReplicationPolicy`
