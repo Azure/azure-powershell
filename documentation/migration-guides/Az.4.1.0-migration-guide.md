@@ -528,7 +528,7 @@ The type of property `Status` of type `Microsoft.Azure.Commands.ResourceManager.
 ## Az.Storage
 
 ### `Update-AzStorageAccountNetworkRuleSet`, `Get-AzStorageAccountNetworkRuleSet`
-Change NetWorkRule DefaultAction value from: Allow = 1, Deny = 0, to: Allow = 0, Deny = 1.
+Changed NetWorkRule DefaultAction value from: Allow = 1, Deny = 0, to: Allow = 0, Deny = 1.
 
 ### `New-AzStorageTable`, `Get-AzStorageTable`
 Output object AzureStorageTable.CloudTable.ServiceClient have 2 properties removed: ConnectionPolicy, ConsistencyLevel.
@@ -618,7 +618,7 @@ ETag                LastModified                Quota
 ```
 
 ### `Remove-AzStorageDirectory`
-When remove sub File Directorys with parent Diretory object and -Path, Can't input -Path from pipeline with type (string) match anymore.
+When removing sub File Directories with parent Directory object and -Path, Can't input -Path from pipeline with type (string) match anymore.
 
 #### Before
 ```powershell
