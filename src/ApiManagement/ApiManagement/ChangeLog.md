@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
 * `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]
 * `Get-AzApiManagementProperty`: renamed as `Get-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.

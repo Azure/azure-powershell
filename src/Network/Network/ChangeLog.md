@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.6.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`
     - `New-AzPublicIpPrefix`

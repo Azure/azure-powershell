@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.14.2
 * Support enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
     - `Get-AzStorageFileServiceProperty`
