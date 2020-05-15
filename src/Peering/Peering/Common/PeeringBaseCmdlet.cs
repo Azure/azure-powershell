@@ -603,6 +603,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     return ermError.Error;
                 }
+                else
+                {
+                    return JsonConvert.DeserializeObject<ErrorDetail>(ex.Response.Content);
+                }
             }
 
             catch

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adding support for Received routes
 * Adding support for Peering Registered Prefix
 * Adding support for Peering Registered ASN
 * Adding filter to Legacy Peering

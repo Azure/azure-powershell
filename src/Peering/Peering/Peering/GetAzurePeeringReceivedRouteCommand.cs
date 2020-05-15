@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets or sets the name.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Name { get; set; }
@@ -70,41 +70,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxPrefix,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxPrefix,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Prefix { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxAsPath,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxAsPath,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string AsPath { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxOriginAsValidationState,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxOriginAsValidationState,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string OriginAsValidationState { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxRPKIValidationState,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [Parameter(
             Mandatory = false,
-            HelpMessage = Constants.ResourceIdHelp,
+            HelpMessage = Constants.RxRPKIValidationState,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string RPKIValidationState { get; set; }
 

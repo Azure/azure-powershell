@@ -258,6 +258,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The resource id help.
         /// </summary>
         public const string ResourceIdHelp = "The resource id string name.";
+        public const string RxPrefix = "Filter by prefix.";
+        public const string RxAsPath = "Filter by AS Path. Example: '9342 1234 4567'";
+        public const string RxOriginAsValidationState = "Filter by origin AS validation state.";
+        public const string RxRPKIValidationState = "Filter by RPKI validation state.";
 
         /// <summary>
         /// PeeringNameHelp

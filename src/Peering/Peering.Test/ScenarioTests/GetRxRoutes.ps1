@@ -15,22 +15,18 @@
 .SYNOPSIS
 GetLocationKindExchange 
 #>
-function Test-GetRxRoutes
-{
-try{
-#must be hard coded asn because they have legacy items.
+function Test-GetRxRoutes {
+    $routes = Get-AzPeeringReceivedRoutes -ResourceGroupName testMapsRG -Name NttAshburnPeering
+    Assert-NotNull $routes
+    Assert-True { $routes.Count -ge 1 }
 }
 
 <#
 .SYNOPSIS
 GetLocationKindDirect
 #>
-function Test-ListRxRoutesAsPath
-{
-#must be hard coded asn because they have legacy items.
-	$routes = Get-AzPeeringReceivedRoutes -ResourceGroupName testMapsRG -Name NttAshburnPeering -AsPath "9598 4842"
-	Assert-NotNull $routes
-	Assert-True {$routes.Count -ge 1}
-	}
+function Test-ListRxRoutesAsPath {
+    $routes = Get-AzPeeringReceivedRoutes -ResourceGroupName testMapsRG -Name NttAshburnPeering -AsPath "9598 4842"
+    Assert-NotNull $routes
+    Assert-True { $routes.Count -ge 1 }
 }
-
