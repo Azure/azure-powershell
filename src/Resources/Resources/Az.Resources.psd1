@@ -12,7 +12,8 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.13.0'
+# TODO: Change this back
+ModuleVersion = '1.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -143,7 +144,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Remove-AzTenantDeployment', 'Get-AzPolicyAlias', 'Remove-AzTag', 
                'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment', 'Update-AzTag', 
                'Get-AzDeploymentScript', 'Get-AzDeploymentScriptLog', 
-               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript'
+               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript',
+               'Get-AzTemplateSpec', 'New-AzTemplateSpec', 'Remove-AzTemplateSpec'
 
 # Variables to export from this module
 # VariablesToExport = @()
