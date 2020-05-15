@@ -23,7 +23,7 @@ function New-AzManagedServicesAssignmentWithId
     param(
         [string] [Parameter()] $Scope,
         [string] [Parameter()] $RegistrationDefinitionName,
-        [String] [Parameter()] $RegistrationAssignmentName
+        [string] [Parameter()] $RegistrationAssignmentName
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
