@@ -1,4 +1,9 @@
 ## 4.1.0 - May 2020
+### Highlights since the last release
+* PowerShell versions: Windows PowerShell 5.1, PowerShell Core 6.2.4+, PowerShell 7
+* General availability of Az.Functions 
+* Az.ApiManagement, Az.Batch, Az.Compute, Az.KeyVault, Az.Monitor, Az.Network, Az.OperationalInsights, Az.Resources, Az.Storage have major release
+
 #### Az.Accounts
 * Updated 'Add-AzEnvironment' and 'Set-AzEnvironment' to accept parameters 'AzureSynapseAnalyticsEndpointResourceId' and 'AzureSynapseAnalyticsEndpointSuffix'
 * Added Azure.Core related assemblies into Az.Accounts, supported PowerShell platforms include Windows PowerShell 5.1, PowerShell Core 6.2.4, PowerShell 7+
@@ -120,8 +125,8 @@
     - 'New-AzPrivateDnsZoneGroup'
     - 'Set-AzPrivateDnsZoneGroup'
     - 'Remove-AzPrivateDnsZoneGroup'
-* Add 'DNSEnableProxy', 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to 'AzureFirewall'
-* Add 'EnableDnsProxy', 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to 'AzureFirewall'
+* Added 'DNSEnableProxy', 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to 'AzureFirewall'
+* Added 'EnableDnsProxy', 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to 'AzureFirewall'
     - Updated cmdlet:
         - New-AzFirewall
 
