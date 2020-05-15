@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +15,19 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
-    /// <summary>
-    /// Defines values for AllocationPolicy.
-    /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public class PSCustomAllocationDefinition
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        /// <summary>
+        /// The webhook URL used for allocation requests.
+        /// </summary>
+        [JsonProperty(PropertyName = "webhookUrl", Required = Required.Always)]
+        public string WebhookUrl { get; set; }
+
+        /// <summary>
+        /// The API version of the provisioning service types (such as IndividualEnrollment) sent in the custom allocation request.
+        /// </summary>
+        [JsonProperty(PropertyName = "apiVersion", Required = Required.Always)]
+        public string ApiVersion { get; set; }
     }
 }

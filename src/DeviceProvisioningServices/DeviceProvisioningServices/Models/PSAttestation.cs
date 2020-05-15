@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Devices.Provisioning.Service;
+
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Description of the Attestation.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public class PSAttestation
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        public PSAttestationMechanismType Type { get; set; }
+
+        public TpmAttestation Tpm { get; set; }
+
+        public X509Attestation X509 { get; set; }
+
+        public SymmetricKeyAttestation SymmetricKey { get; set; }
     }
 }

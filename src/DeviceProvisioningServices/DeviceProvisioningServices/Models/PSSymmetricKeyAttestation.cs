@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +15,22 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Description of the shared access key.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public class PSSymmetricKeyAttestation : PSAttestation
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        /// <summary>
+        /// Gets the primary key used for attestation.
+        /// </summary>
+        [JsonProperty(PropertyName = "primaryKey", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string PrimaryKey { get; set; }
+
+        /// <summary>
+        /// Gets the secondary key used for attestation.
+        /// </summary>
+        [JsonProperty(PropertyName = "secondaryKey", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string SecondaryKey { get; set; }
     }
 }

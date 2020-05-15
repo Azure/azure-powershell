@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
-    /// <summary>
-    /// Defines values for AllocationPolicy.
-    /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public class PSIotDpsConnectionString
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        public string KeyName { get; set; }
+
+        public string PrimaryConnectionString { get; set; }
+
+        public string SecondaryConnectionString { get; set; }
     }
 }

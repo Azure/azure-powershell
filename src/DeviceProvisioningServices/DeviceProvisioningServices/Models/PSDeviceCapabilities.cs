@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +15,16 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
 {
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Status of Capabilities enabled on the device.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public class PSDeviceCapabilities
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        /// <summary>
+        /// IoT Edge capability.
+        /// </summary>
+        [JsonProperty(PropertyName = "iotEdge")]
+        public bool IotEdge { get; set; }
     }
 }
