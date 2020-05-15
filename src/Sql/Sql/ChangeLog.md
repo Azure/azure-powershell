@@ -29,6 +29,7 @@
     - `Disable-AzSqlInstanceDatabaseSensitivityRecommendation`
 * Removed client-side validation of 'RetentionDays' parameter from cmdlet `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
 * Auditing to a storage account in Vnet, fixing a bug when creating a Storage Blob Data Contributor role.
+* Allow Azure Active Directory applications to be set as SQL Server Azure Active Directory admin.
 
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
