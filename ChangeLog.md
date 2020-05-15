@@ -1,6 +1,6 @@
 ## 4.1.0 - May 2020
 ### Highlights since the last release
-* PowerShell versions: Windows PowerShell 5.1, PowerShell Core 6.2.4+, PowerShell 7
+* Supported PowerShell versions: Windows PowerShell 5.1, PowerShell Core 6.2.4+, PowerShell 7
 * General availability of Az.Functions 
 * Az.ApiManagement, Az.Batch, Az.Compute, Az.KeyVault, Az.Monitor, Az.Network, Az.OperationalInsights, Az.Resources, Az.Storage have major release
 
