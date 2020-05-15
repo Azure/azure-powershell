@@ -23,7 +23,7 @@ function New-AzManagedServicesAssignmentWithId
     param(
         [string] [Parameter()] $Scope,
         [string] [Parameter()] $RegistrationDefinitionName,
-        [String]   [Parameter()] $RegistrationAssignmentName
+        [String] [Parameter()] $RegistrationAssignmentName
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
@@ -129,7 +129,7 @@ function Test-ManagedServices_CRUD
 	Assert-NotNull $assignment
 
 	#get assignment
-	$getAssignment = Get-AzManagedServicesAssignment -Id $assignmentId -ExpandRegistrationDefinition
+	$getAssignment = Get-AzManagedServicesAssignment -Name $assignmentId -ExpandRegistrationDefinition
 	Assert-NotNull $getAssignment
 	Assert-AreEqual $assignment.Id $getAssignment.Id
 	Assert-AreEqual $definition.Id $getAssignment.Properties.RegistrationDefinitionId

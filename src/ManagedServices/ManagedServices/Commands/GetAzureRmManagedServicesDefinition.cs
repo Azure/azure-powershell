@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 // validate definitionId.
                 if (!definitionId.IsGuid())
                 {
-                    throw new ApplicationException("RegistrationDefinitionId must be a valid GUID.");
+                    throw new ApplicationException("Name must be a valid GUID.");
                 }
 
                 var result = this.PSManagedServicesClient.GetRegistrationDefinition(

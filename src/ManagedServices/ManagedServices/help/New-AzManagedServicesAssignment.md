@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegistrationAssignmentName
-The unique name of the Registration Definition (for example 26c128c2-fefa-4340-9bb1-6e081c90ada2).
+The unique name of the Registration Assignment (for example 26c128c2-fefa-4340-9bb1-6e081c90ada2).
 
 ```yaml
 Type: System.String

@@ -39,11 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration assignment Id.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
-
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified rsource id of the registration assignment.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The registration assignment object.", ParameterSetName = ByInputObjectParameterSet)]
         [ValidateNotNull]
@@ -57,9 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             string scope = null;
             string assignmentId = null;
 
-            if (this.IsParameterBound(x => x.Id))
+            if (this.IsParameterBound(x => x.Name))
             {
-                assignmentId = this.Id;
+                assignmentId = this.Name;
                 scope = this.Scope ?? this.GetDefaultScope();
             }
             else if (this.IsParameterBound(x => x.InputObject))
@@ -68,14 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 if (!ManagedServicesUtility.TryParseAssignmentScopeFromResourceId(this.InputObject.Id, out scope))
                 {
                     throw new ApplicationException($"Unable to parse the scope from [{this.InputObject.Id}]");
-                }
-            }
-            else if (this.IsParameterBound(x => x.ResourceId))
-            {
-                assignmentId = this.ResourceId.GetResourceName();
-                if (!ManagedServicesUtility.TryParseAssignmentScopeFromResourceId(this.ResourceId, out scope))
-                {
-                    throw new ApplicationException($"Unable to parse the scope from [{this.ResourceId}]");
                 }
             }
 

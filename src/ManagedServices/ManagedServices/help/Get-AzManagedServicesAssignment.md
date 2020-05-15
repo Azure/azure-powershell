@@ -20,13 +20,7 @@ Get-AzManagedServicesAssignment [-Scope <String>] [-ExpandRegistrationDefinition
 
 ### ById
 ```
-Get-AzManagedServicesAssignment [-Scope <String>] -Id <String> [-ExpandRegistrationDefinition]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzManagedServicesAssignment -ResourceId <String> [-ExpandRegistrationDefinition]
+Get-AzManagedServicesAssignment [-Scope <String>] -Name <String> [-ExpandRegistrationDefinition]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -73,7 +67,7 @@ Gets all registration assignments with the registration definition details.
 
 ### Example 3
 ```powershell
-PS C:\> $assignmnent = Get-AzManagedServicesAssignment -Id ddd0d277-e120-4de1-8498-52b8f767b699
+PS C:\> $assignmnent = Get-AzManagedServicesAssignment -Name ddd0d277-e120-4de1-8498-52b8f767b699
 PS C:\> $assignmnent
 
 Name                                 RegistrationDefinitionId
@@ -93,7 +87,7 @@ Gets a registration assignment without the registration definition details.
 
 ### Example 4
 ```powershell
-PS C:\> $assignmnentWithDef = Get-AzManagedServicesAssignment -Id ddd0d277-e120-4de1-8498-52b8f767b699 -ExpandRegistrationDefinition
+PS C:\> $assignmnentWithDef = Get-AzManagedServicesAssignment -Name ddd0d277-e120-4de1-8498-52b8f767b699 -ExpandRegistrationDefinition
 PS C:\> $assignmnentWithDef
 
 Name                                 RegistrationDefinitionId
@@ -124,20 +118,6 @@ aa891268-329a-4637-b3f6-2877ea304f8b /subscriptions/38bd4bef-41ff-45b5-b3af-d03e
 ```
 
 Gets all the registration assignments.
-
-### Example 6
-```powershell
-PS C:\> $assignments = Get-AzManagedServicesAssignment
-PS C:\> $assignments[0].Id
-/subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationAssignments/f2e18995-6c79-4ab7-876e-1b1c8393d12c
-PS C:\> Get-AzManagedServicesAssignment -ResourceId $assignments[0].Id
-
-Name                                 RegistrationDefinitionId
-----                                 ------------------------
-f2e18995-6c79-4ab7-876e-1b1c8393d12c /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/a156aad7-f3ce-4a46-b240-246242b6bd78
-```
-
-Gets the registration assignment given the fully qualified resource id.
 
 ## PARAMETERS
 
@@ -171,8 +151,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The Registration Assignment identifier (for example, b0c052e5-c437-4771-a476-8b1201158a57).
+### -Name
+The unique name of the Registration Assignment (for example 26c128c2-fefa-4340-9bb1-6e081c90ada2).
 ```yaml
 Type: System.String
 Parameter Sets: ById
@@ -182,20 +162,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Registration Assignment ResourceId (for example, /subscriptions/bb6d49b2-603d-489f-b6ca-ca4dc497c749/providers/Microsoft.ManagedServices/registrationAssignments/b0c052e5-c437-4771-a476-8b1201158a57)
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
