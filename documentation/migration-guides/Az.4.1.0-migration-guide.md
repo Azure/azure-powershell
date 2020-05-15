@@ -1,5 +1,7 @@
 # Migration Guide for Az 4.1.0
 
+This document describes the changes between the 3.0.0 and 4.1.0 versions of Az.
+
 - [Migration Guide for Az 4.1.0](#migration-guide-for-az-410)
   - [Az.ApiManagement](#azapimanagement)
     - [`Add-AzApiManagementRegion`](#add-azapimanagementregion)
@@ -93,66 +95,66 @@
     - [`New-AzPolicyAssignment`](#new-azpolicyassignment)
     - [`Remove-AzDeploymentScript`](#remove-azdeploymentscript)
   - [Az.Storage](#azstorage)
-    - [`Update-AzStorageAccountNetworkRuleSet, Get-AzStorageAccountNetworkRuleSet`](#update-azstorageaccountnetworkruleset-get-azstorageaccountnetworkruleset)
-    - [`New-AzStorageTable, Get-AzStorageTable`](#new-azstoragetable-get-azstoragetable)
-    - [`Get-AzStorageFile, Remove-AzStorageFile, Get-AzStorageFileContent, Set-AzStorageFileContent, Start-AzStorageFileCopy`](#get-azstoragefile-remove-azstoragefile-get-azstoragefilecontent-set-azstoragefilecontent-start-azstoragefilecopy)
-    - [`Get-AzStorageFile, New-AzStorageDirectory, Remove-AzStorageDirectory`](#get-azstoragefile-new-azstoragedirectory-remove-azstoragedirectory)
-    - [`Get-AzStorageShare, New-AzStorageShare, Remove-AzStorageShare`](#get-azstorageshare-new-azstorageshare-remove-azstorageshare)
+    - [`Update-AzStorageAccountNetworkRuleSet`, `Get-AzStorageAccountNetworkRuleSet`](#update-azstorageaccountnetworkruleset-get-azstorageaccountnetworkruleset)
+    - [`New-AzStorageTable`, `Get-AzStorageTable`](#new-azstoragetable-get-azstoragetable)
+    - [`Get-AzStorageFile`, `Remove-AzStorageFile`, `Get-AzStorageFileContent`, `Set-AzStorageFileContent`, `Start-AzStorageFileCopy`](#get-azstoragefile-remove-azstoragefile-get-azstoragefilecontent-set-azstoragefilecontent-start-azstoragefilecopy)
+    - [`Get-AzStorageFile`, `New-AzStorageDirectory`, `Remove-AzStorageDirectory`](#get-azstoragefile-new-azstoragedirectory-remove-azstoragedirectory)
+    - [`Get-AzStorageShare`, `New-AzStorageShare`, `Remove-AzStorageShare`](#get-azstorageshare-new-azstorageshare-remove-azstorageshare)
     - [`Set-AzStorageShareQuota`](#set-azstoragesharequota)
     - [`Remove-AzStorageDirectory`](#remove-azstoragedirectory)
 
 ## Az.ApiManagement
 
 ### `Add-AzApiManagementRegion`
-The type of property 'Type' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType' to 'System.String'.
+The type of property `Type` of type `Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity` has changed from `Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType` to `System.String`.
 
 ### `New-AzApiManagement`
-- The cmdlet 'New-AzApiManagement' no longer supports the parameter 'AssignIdentity' and no alias was found for the original parameter name.
-- The parameter set '__AllParameterSets' for cmdlet 'New-AzApiManagement' has been removed.
+- The cmdlet `New-AzApiManagement` no longer supports the parameter `AssignIdentity` and no alias was found for the original parameter name.
+- The parameter set `__AllParameterSets` for cmdlet `New-AzApiManagement` has been removed.
 
 ### `Set-AzApiManagement`
-- The cmdlet 'Set-AzApiManagement' no longer supports the parameter 'AssignIdentity' and no alias was found for the original parameter name.
-- The parameter set '__AllParameterSets' for cmdlet 'Set-AzApiManagement' has been removed.
+- The cmdlet `Set-AzApiManagement` no longer supports the parameter `AssignIdentity` and no alias was found for the original parameter name.
+- The parameter set `__AllParameterSets` for cmdlet `Set-AzApiManagement` has been removed.
 
 ### `Get-AzApiManagementProperty`
-The cmdlet 'Get-AzApiManagementProperty' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Get-AzApiManagementProperty` has been removed and no alias was found for the original cmdlet name.
 
 ### `New-AzApiManagementProperty`
-The cmdlet 'New-AzApiManagementProperty' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `New-AzApiManagementProperty` has been removed and no alias was found for the original cmdlet name.
 
 ### `Remove-AzApiManagementProperty`
-The cmdlet 'Remove-AzApiManagementProperty' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Remove-AzApiManagementProperty` has been removed and no alias was found for the original cmdlet name.
 
 ### `Set-AzApiManagementProperty`
-The cmdlet 'Set-AzApiManagementProperty' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Set-AzApiManagementProperty` has been removed and no alias was found for the original cmdlet name.
 
 ## Az.Batch
 
 ### `Get-AzBatchApplication`, `New-AzBatchApplication`
-The property 'ApplicationPackages' of type 'Microsoft.Azure.Commands.Batch.Models.PSApplication' has been removed.
+The property `ApplicationPackages` of type `Microsoft.Azure.Commands.Batch.Models.PSApplication` has been removed.
 
 ### `Get-AzBatchComputeNode`, `New-AzBatchPool`
-The property 'PublicIPs' of type 'Microsoft.Azure.Commands.Batch.Models.PSNetworkConfiguration' has been removed
+The property `PublicIPs` of type `Microsoft.Azure.Commands.Batch.Models.PSNetworkConfiguration` has been removed
 
 ### `Get-AzBatchApplicationPackage`, `New-AzBatchApplicationPackage`
-The type of property 'StorageUrlExpiry' of type 'Microsoft.Azure.Commands.Batch.Models.PSApplicationPackage' has changed from 'System.DateTime' to 'System.DateTime?'.
+The type of property `StorageUrlExpiry` of type `Microsoft.Azure.Commands.Batch.Models.PSApplicationPackage` has changed from `System.DateTime` to `System.DateTime?`.
 
 ## Az.Compute
 
 ### `Remove-AzVmssDiagnosticsExtension`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Get-AzVMImage`
-- The cmdlet 'Get-AzVMImage' no longer supports the parameter 'FilterExpression' and no alias was found for the original parameter name.
-- The parameter set 'ListVMImage' for cmdlet 'Get-AzVMImage' has been removed.
+- The cmdlet `Get-AzVMImage` no longer supports the parameter `FilterExpression` and no alias was found for the original parameter name.
+- The parameter set `ListVMImage` for cmdlet `Get-AzVMImage` has been removed.
 
 ### `New-AzVMConfig`
-- The cmdlet 'New-AzVMConfig' no longer supports the parameter 'AssignIdentity' and no alias was found for the original parameter name.
-- The parameter set 'AssignIdentityParameterSet' for cmdlet 'New-AzVMConfig' has been removed.
+- The cmdlet `New-AzVMConfig` no longer supports the parameter `AssignIdentity` and no alias was found for the original parameter name.
+- The parameter set `AssignIdentityParameterSet` for cmdlet `New-AzVMConfig` has been removed.
 
 ### `Update-AzVM`
-- The cmdlet 'Update-AzVM' no longer supports the parameter 'AssignIdentity' and no alias was found for the original parameter name.
-- The parameter set 'AssignIdentityParameterSet' for cmdlet 'Update-AzVM' has been removed.
+- The cmdlet `Update-AzVM` no longer supports the parameter `AssignIdentity` and no alias was found for the original parameter name.
+- The parameter set `AssignIdentityParameterSet` for cmdlet `Update-AzVM` has been removed.
 
 ### `New-AzProximityPlacementGroup`
 - The generic type for property `VirtualMachines`, `VirtualMachineScaleSets` and `AvailabilitySets` has been changed from `System.Collections.Generic.IList1[Microsoft.Azure.Management.Compute.Models.SubResource]` to `System.Collections.Generic.IList1[Microsoft.Azure.Management.Compute.Models.SubResourceWithColocationStatus]`. 
@@ -275,28 +277,28 @@ AvailabilitySets                        : {}
 ```
 
 ### `Add-AzVmssAdditionalUnattendContent`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssDataDisk`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssExtension`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssNetworkInterfaceConfiguration`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssSecret`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssSshPublicKey`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Add-AzVmssWinRMListener`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `New-AzVmssConfig`
-- The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
+- The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 - No longer supports the parameter `AutomaticRepairMaxInstanceRepairsPercent` and no alias was found for the original parameter name.
 - No longer supports the parameter `AssignIdentity` and no alias was found for the original parameter name.
 - The parameter set `__AllParameterSets` has been removed.
@@ -304,37 +306,37 @@ The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.
 - The parameter set `AssignIdentityParameterSet` has been removed.
 
 ### `Remove-AzVmssDataDisk`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Remove-AzVmssExtension`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Remove-AzVmssNetworkInterfaceConfiguration`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Set-AzVmssBootDiagnostic`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Set-AzVmssOsProfile`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Set-AzVmssRollingUpgradePolicy`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Set-AzVmssStorageProfile`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `New-AzVmss`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Repair-AzVmssServiceFabricUpdateDomain`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Get-AzVmss`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Set-AzVmssOrchestrationServiceState`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Update-AzVmss`
 - The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
@@ -343,10 +345,10 @@ The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.
 - The parameter set `ExplicitIdentityParameterSet` has been removed.
 
 ### `Add-AzVmssDiagnosticsExtension`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ### `Disable-AzVmssDiskEncryption`
-The type of property 'AutomaticRepairsPolicy' of type 'Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet' has changed from 'Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy' to 'Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy'.
+The type of property `AutomaticRepairsPolicy` of type `Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet` has changed from `Microsoft.Azure.Commands.Compute.Automation.Models.PSAutomaticRepairsPolicy` to `Microsoft.Azure.Management.Compute.Models.AutomaticRepairsPolicy`.
 
 ## Az.KeyVault
 
@@ -364,7 +366,7 @@ PS C:\> New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $Admin
 ```
 
 ### `New-AzKeyVaultCertificateAdministratorDetail`
-The alias `New-AzKeyVaultCertificateAdministratorDetails` is removed. Please use ``New-AzKeyVaultCertificateAdministratorDetail`.
+The alias `New-AzKeyVaultCertificateAdministratorDetails` is removed. Please use `New-AzKeyVaultCertificateAdministratorDetail`.
 
 #### Before
 ```powershell
@@ -381,157 +383,157 @@ PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName 
 
 #### Before
 ```powershell
-PS C:\> New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US' -EnableSoftDelete
+PS C:\> New-AzKeyVault -VaultName `Contoso03Vault` -ResourceGroupName `Group14` -Location `East US` -EnableSoftDelete
 ```
 
 #### After
 ```powershell
-PS C:\> New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US'
+PS C:\> New-AzKeyVault -VaultName `Contoso03Vault` -ResourceGroupName `Group14` -Location `East US`
 ```
 
 ## Az.Monitor
 
 ### `Add-AzLogProfile`
-The type of property 'RetentionPolicy' of type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile' has changed from 'Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy' to 'Microsoft.Azure.Management.Monitor.Models.RetentionPolicy'.
+The type of property `RetentionPolicy` of type `Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile` has changed from `Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy` to `Microsoft.Azure.Management.Monitor.Models.RetentionPolicy`.
 
 ### `Get-AzLogProfile`
-The type of property 'RetentionPolicy' of type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile' has changed from 'Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy' to 'Microsoft.Azure.Management.Monitor.Models.RetentionPolicy'.
+The type of property `RetentionPolicy` of type `Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile` has changed from `Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy` to `Microsoft.Azure.Management.Monitor.Models.RetentionPolicy`.
 
 ### `New-AzMetricAlertRuleV2Criteria`
-The parameter set '__AllParameterSets' for cmdlet 'New-AzMetricAlertRuleV2Criteria' has been removed.
+The parameter set `__AllParameterSets` for cmdlet `New-AzMetricAlertRuleV2Criteria` has been removed.
 
 ## Az.Network
 
 ### `Get-AzNetworkWatcherConnectionMonitor`
-The generic type for 'property RoundTripTimeMs' has been changed from 'System.Nullable`1[System.Int32]' to 'System.Nullable`1[System.Double]'.
+The generic type for property `RoundTripTimeMs` has been changed from `System.Nullable1[System.Int32]` to `System.Nullable1[System.Double]`.
 
 ### `New-AzNetworkWatcherConnectionMonitorTestConfigurationObject`
-The generic type for 'parameter SuccessThresholdRoundTripTimeMs' has been changed from 'System.Nullable`1[System.Int32]' to 'System.Nullable`1[System.Double]'. 
+The generic type for parameter `SuccessThresholdRoundTripTimeMs` has been changed from `System.Nullable1[System.Int32]` to `System.Nullable1[System.Double]`. 
 
 ## Az.OperationalInsights
 
 ### `Get-AzOperationalInsightsDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsApplicationInsightsDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsAzureActivityLogDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsCustomLogDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsLinuxPerformanceObjectDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsLinuxSyslogDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsWindowsEventDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsWindowsPerformanceCounterDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Remove-AzOperationalInsightsDataSource`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Disable-AzOperationalInsightsIISLogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Disable-AzOperationalInsightsLinuxCustomLogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Disable-AzOperationalInsightsLinuxPerformanceCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Disable-AzOperationalInsightsLinuxSyslogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Enable-AzOperationalInsightsIISLogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Enable-AzOperationalInsightsLinuxCustomLogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Enable-AzOperationalInsightsLinuxPerformanceCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Enable-AzOperationalInsightsLinuxSyslogCollection`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Get-AzOperationalInsightsSavedSearch`
-The property 'Metadata' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse' has been removed.
+The property `Metadata` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse` has been removed.
 
 ### `Get-AzOperationalInsightsSavedSearchResult`
-The cmdlet 'Get-AzOperationalInsightsSavedSearchResult' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Get-AzOperationalInsightsSavedSearchResult` has been removed and no alias was found for the original cmdlet name.
 
 ### `Get-AzOperationalInsightsSearchResult`
-The cmdlet 'Get-AzOperationalInsightsSearchResult' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Get-AzOperationalInsightsSearchResult` has been removed and no alias was found for the original cmdlet name.
 
 ### `Get-AzOperationalInsightsStorageInsight`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsStorageInsight`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Remove-AzOperationalInsightsStorageInsight`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Set-AzOperationalInsightsStorageInsight`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Get-AzOperationalInsightsLinkTarget`
-The cmdlet 'Get-AzOperationalInsightsLinkTarget' has been removed and no alias was found for the original cmdlet name.
+The cmdlet `Get-AzOperationalInsightsLinkTarget` has been removed and no alias was found for the original cmdlet name.
 
 ### `Get-AzOperationalInsightsWorkspace`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `New-AzOperationalInsightsWorkspace`
-- The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
-- The cmdlet 'New-AzOperationalInsightsWorkspace' no longer supports the parameter 'CustomerId' and no alias was found for the original parameter name.
-- The parameter set '__AllParameterSets' for cmdlet 'New-AzOperationalInsightsWorkspace' has been removed.
+- The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
+- The cmdlet `New-AzOperationalInsightsWorkspace` no longer supports the parameter `CustomerId` and no alias was found for the original parameter name.
+- The parameter set `__AllParameterSets` for cmdlet `New-AzOperationalInsightsWorkspace` has been removed.
 
 ### `Set-AzOperationalInsightsWorkspace`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Invoke-AzOperationalInsightsQuery`
-The property 'PortalUrl' of type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace' has been removed.
+The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ## Az.Resources
 
 ### `Get-AzDeploymentScript`
-The type of property 'Status' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript' has changed from 'Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus'.
+The type of property `Status` of type `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript` has changed from `Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus` to `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus`.
 
 ### `Get-AzDeploymentScriptLog`
-The type of property 'Status' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript' has changed from 'Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus'.
+The type of property `Status` of type `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript` has changed from `Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus` to `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus`.
 
 ### `Save-AzDeploymentScriptLog`
-The type of property 'Status' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript' has changed from 'Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus'.
+The type of property `Status` of type `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript` has changed from `Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus` to `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus`.
 
 ### `Get-AzResourceLock, New-AzResourceLock, Remove-AzResourceLock, Set-AzResourceLock`
-Parameter 'TenantLevel' has been removed.
+Parameter `TenantLevel` has been removed.
 
 ### `Get-AzPolicyAlias`
-The generic type for 'property Aliases' has been changed from 'System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasType]' to 'System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.Alias]'. 
+The generic type for property `Aliases` has been changed from `System.Collections.Generic.IList1[Microsoft.Azure.Management.ResourceManager.Models.AliasType]` to `System.Collections.Generic.IList1[Microsoft.Azure.Management.ResourceManager.Models.Alias]`. 
 
 ### `New-AzPolicyAssignment`
-- The cmdlet 'New-AzPolicyAssignment' no longer supports the type 'System.Management.Automation.PSObject' for parameter 'PolicyDefinition'.
-- The cmdlet 'New-AzPolicyAssignment' no longer supports the type 'System.Management.Automation.PSObject' for parameter 'PolicySetDefinition'.
+- The cmdlet `New-AzPolicyAssignment` no longer supports the type `System.Management.Automation.PSObject` for parameter `PolicyDefinition`.
+- The cmdlet `New-AzPolicyAssignment` no longer supports the type `System.Management.Automation.PSObject` for parameter `PolicySetDefinition`.
 
 ### `Remove-AzDeploymentScript`
-The type of property 'Status' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript' has changed from 'Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus'.
+The type of property `Status` of type `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript` has changed from `Microsoft.Azure.Management.ResourceManager.Models.ScriptStatus` to `Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsScriptStatus`.
 
 ## Az.Storage
 
-### `Update-AzStorageAccountNetworkRuleSet, Get-AzStorageAccountNetworkRuleSet`
+### `Update-AzStorageAccountNetworkRuleSet`, `Get-AzStorageAccountNetworkRuleSet`
 Change NetWorkRule DefaultAction value from: Allow = 1, Deny = 0, to: Allow = 0, Deny = 1.
 
-### `New-AzStorageTable, Get-AzStorageTable`
+### `New-AzStorageTable`, `Get-AzStorageTable`
 Output object AzureStorageTable.CloudTable.ServiceClient have 2 properties removed: ConnectionPolicy, ConsistencyLevel.
 
-### `Get-AzStorageFile, Remove-AzStorageFile, Get-AzStorageFileContent, Set-AzStorageFileContent, Start-AzStorageFileCopy`
+### `Get-AzStorageFile`, `Remove-AzStorageFile`, `Get-AzStorageFileContent`, `Set-AzStorageFileContent`, `Start-AzStorageFileCopy`
 Change output type from CloudFile to AzureStorageFile, the original output will become child property "CloudFile" of the new output
 
 #### Before
@@ -548,7 +550,7 @@ PS C:\> $file = Get-AzStorageFile -ShareName $shareName -Path testfile -Context 
 PS C:\> Remove-AzStorageFile -File $file.CloudFile
 ```
 
-### `Get-AzStorageFile, New-AzStorageDirectory, Remove-AzStorageDirectory`
+### `Get-AzStorageFile`, `New-AzStorageDirectory`, `Remove-AzStorageDirectory`
 Change output type from CloudFileDirectory to AzureStorageFileDirectory, the original output will become child property "CloudFileDirectory" of the new output
 
 #### Before
@@ -565,7 +567,7 @@ PS C:\> $dir = Get-AzStorageFile -ShareName $shareName -Path testdir -Context $c
 PS C:\> Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory
 ```
 
-### `Get-AzStorageShare, New-AzStorageShare, Remove-AzStorageShare`
+### `Get-AzStorageShare`, `New-AzStorageShare`, `Remove-AzStorageShare`
 Change output type from FileShareProperties to AzureStorageFileShare, the original output will become child property "CloudFileShare" of the new output
 
 #### Before
@@ -593,7 +595,7 @@ PS C:\> $shareProperties
 
 ETag                LastModified                Quota
 ----                ------------                -----
-""0x8D7F5BC7789FC63"" 5/11/2020 3:03:30 PM +00:00   100
+"0x8D7F5BC7789FC63" 5/11/2020 3:03:30 PM +00:00   100
 ```
 
 #### After
@@ -612,7 +614,7 @@ PS C:\> $share.CloudFileShare.Properties
 
 ETag                LastModified                Quota
 ----                ------------                -----
-""0x8D7F5BC7789FC63"" 5/11/2020 3:03:30 PM +00:00   100
+"0x8D7F5BC7789FC63" 5/11/2020 3:03:30 PM +00:00   100
 ```
 
 ### `Remove-AzStorageDirectory`
@@ -622,7 +624,7 @@ When remove sub File Directorys with parent Diretory object and -Path, Can't inp
 ```powershell
 PS C:\> $dir = Get-AzStorageFile -ShareName $shareName -Path testdir -Context $ctx
 
-PS C:\> @(""dir1"", ""dir2"") | Remove-AzStorageDirectory -Directory $dir
+PS C:\> @("dir1", "dir2") | Remove-AzStorageDirectory -Directory $dir
 ```
 
 #### After
@@ -630,8 +632,8 @@ PS C:\> @(""dir1"", ""dir2"") | Remove-AzStorageDirectory -Directory $dir
 PS C:\> $dir = Get-AzStorageFile -ShareName $shareName -Path testdir -Context $ctx
 
 PS C:\> $paths = @(
-    [PSCustomObject]@{  Path = ""dir1"" }
-    [PSCustomObject]@{ Path = ""dir2"" }
+    [PSCustomObject]@{  Path = "dir1" }
+    [PSCustomObject]@{ Path = "dir2" }
 )
 
 PS C:\> $paths | Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory
