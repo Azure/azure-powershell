@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using System.Collections.Generic;
 
@@ -25,6 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public IDictionary<string,string> Tags { get; set; }
 
-        public string ScriptKind { get; set; } 
+        public string ScriptKind { get; set; }
+
+        public string OutputsString
+        {
+            get { return ResourcesExtensions.ConstructOutputTable(Outputs); }
+        }
     }
 }

@@ -327,7 +327,7 @@
               </ListItem>
               <ListItem>
                 <Label>Outputs</Label>
-                <PropertyName>Outputs</PropertyName>
+                <PropertyName>OutputsString</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RetentionInterval</Label>

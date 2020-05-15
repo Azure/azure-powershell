@@ -195,6 +195,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return result.ToString();
         }
 
+        public static string ConstructOutputTable(IDictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var maxNameLength = 15;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            var maxTypeLength = 25;
+            dictionary.Values.ForEach(v => maxTypeLength = Math.Max(maxTypeLength, v.ToString().Split('\n').OrderByDescending(s => s.Length).First().Length + 2));
+
+            StringBuilder output = new StringBuilder();
+                
+                if (dictionary.Count > 0)
+                {
+                    string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxTypeLength + "}\r\n";
+                    output.AppendLine();
+                    output.AppendFormat(rowFormat, "Key", "Value");
+                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxTypeLength, "="));
+
+                    foreach (KeyValuePair<string, object> pair in dictionary)
+                    {
+                        String val = pair.Value.ToString().Replace("\n", "\n" + GeneralUtilities.GenerateSeparator(maxNameLength, " ") + "  ");
+                        output.AppendFormat(rowFormat, pair.Key, val);
+                    }
+                }
+
+            return output.ToString();
+        }
+
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
         {
             if (dictionary == null)
