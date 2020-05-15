@@ -1,6 +1,6 @@
-# Migration Guide for Az 4.0.0
+# Migration Guide for Az 4.1.0
 
-- [Migration Guide for Az 4.0.0](#migration-guide-for-az-400)
+- [Migration Guide for Az 4.1.0](#migration-guide-for-az-410)
   - [Az.ApiManagement](#azapimanagement)
     - [`Add-AzApiManagementRegion`](#add-azapimanagementregion)
     - [`New-AzApiManagement`](#new-azapimanagement)
