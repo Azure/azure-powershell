@@ -152,3 +152,9 @@ Gets regulatory compliance controls
 
 ### [Get-AzRegulatoryComplianceStandard](Get-AzRegulatoryComplianceStandard.md)
 Gets regulatoey compliance standards
+
+### [Get-AzSecuritySetting](Get-AzSecuritySetting.md)
+Gets security settings in Azure Security Center
+
+### [Set-AzSecuritySetting](Set-AzSecuritySetting.md)
+Sets a security setting in Azure Security Center

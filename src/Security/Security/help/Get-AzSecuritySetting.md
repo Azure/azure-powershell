@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSecuritySetting
 
 ## SYNOPSIS
-Update security settings in Azure Security Center
+Get security settings in Azure Security Center
 
 ## SYNTAX
 
