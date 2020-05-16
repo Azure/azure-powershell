@@ -36,7 +36,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-DefaultConsistencyLevel <String>
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBAccount -InputObject <PSDatabaseAccount> [-DefaultConsistencyLevel <String>]
+Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 

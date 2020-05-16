@@ -106,8 +106,8 @@ The Add-AzSqlElasticJobStep cmdlet adds a job step to a job
 
 ## EXAMPLES
 
-### Example 1 - Adds a step to a job
-```
+### Example 1: Adds a step to a job
+```powershell
 PS C:\> $job = Get-AzSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
 $job | Add-AzSqlElasticJobStep -Name step1 -TargetGroupName tg1 -CredentialName cred1 -CommandText "SELECT 1"
 

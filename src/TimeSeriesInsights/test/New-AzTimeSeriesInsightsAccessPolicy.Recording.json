@@ -1,0 +1,201 @@
+{
+  "New-AzTimeSeriesInsightsAccessPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"sku\": {\n    \"name\": \"S1\",\n    \"capacity\": 2\n  },\n  \"kind\": \"Standard\",\n  \"properties\": {\n    \"dataRetentionTime\": \"P1DT1H25M\"\n  }\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "b577d100-bd29-4b92-8a8b-76bd584b6dce" ],
+        "CommandName": [ "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment" ],
+        "FullCommandName": [ "New-AzTimeSeriesInsightsEnvironment_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "161" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "69e57506-f1d8-4c7e-969d-5e7c0a84d63d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "9c29185b-bfdc-4088-a278-32b082dd66a7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073527Z:9c29185b-bfdc-4088-a278-32b082dd66a7" ],
+        "Date": [ "Wed, 08 Apr 2020 07:35:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "654" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-04-08T07:35:25+00:00\",\"provisioningState\":\"Accepted\",\"dataAccessId\":\"64b41593-f9cb-4804-8f18-8d542f304af0\",\"dataAccessFqdn\":\"64b41593-f9cb-4804-8f18-8d542f304af0.env.timeseries.azure.com\",\"requestApiVersion\":\"2018-08-15-preview\",\"storageLimitExceededBehavior\":\"PurgeOldData\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1\",\"name\":\"rstr-8uxmh1\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsAccessPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17", "18" ],
+        "x-ms-client-request-id": [ "b577d100-bd29-4b92-8a8b-76bd584b6dce", "b577d100-bd29-4b92-8a8b-76bd584b6dce" ],
+        "CommandName": [ "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment", "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment" ],
+        "FullCommandName": [ "New-AzTimeSeriesInsightsEnvironment_Create", "New-AzTimeSeriesInsightsEnvironment_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "aa03c65c-92fa-4375-9553-eeb149de6eea" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "0b88b9ed-2931-47d8-b348-237c90ef172c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073558Z:0b88b9ed-2931-47d8-b348-237c90ef172c" ],
+        "Date": [ "Wed, 08 Apr 2020 07:35:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:35:25 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"64b41593-f9cb-4804-8f18-8d542f304af0\",\"dataAccessFqdn\":\"64b41593-f9cb-4804-8f18-8d542f304af0.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1\",\"name\":\"rstr-8uxmh1\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsAccessPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17", "18", "19" ],
+        "x-ms-client-request-id": [ "b577d100-bd29-4b92-8a8b-76bd584b6dce", "b577d100-bd29-4b92-8a8b-76bd584b6dce", "b577d100-bd29-4b92-8a8b-76bd584b6dce" ],
+        "CommandName": [ "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment", "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment", "Az.TimeSeriesInsights.internal\\New-AzTimeSeriesInsightsEnvironment" ],
+        "FullCommandName": [ "New-AzTimeSeriesInsightsEnvironment_Create", "New-AzTimeSeriesInsightsEnvironment_Create", "New-AzTimeSeriesInsightsEnvironment_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "35becc17-bcdf-4e18-9cb9-8ad0d20e1824" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "74ae624f-674b-468a-932a-6580c79e0fdc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073558Z:74ae624f-674b-468a-932a-6580c79e0fdc" ],
+        "Date": [ "Wed, 08 Apr 2020 07:35:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:35:25 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"64b41593-f9cb-4804-8f18-8d542f304af0\",\"dataAccessFqdn\":\"64b41593-f9cb-4804-8f18-8d542f304af0.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1\",\"name\":\"rstr-8uxmh1\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsAccessPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q?api-version=2018-08-15-preview+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q?api-version=2018-08-15-preview",
+      "Content": "{\n  \"properties\": {\n    \"principalObjectId\": \"97deab6c-e478-40b4-b4da-e7d9353dc1e8\",\n    \"roles\": [ \"Reader\" ]\n  }\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "48acf812-9cca-417a-bed1-ed8286c17500" ],
+        "CommandName": [ "New-AzTimeSeriesInsightsAccessPolicy" ],
+        "FullCommandName": [ "New-AzTimeSeriesInsightsAccessPolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "116" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "de230ae3-5e83-4b0c-9d0b-3fc01dcd0291" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "95196c44-6007-4eb2-9af5-21bb9cee0052" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073559Z:95196c44-6007-4eb2-9af5-21bb9cee0052" ],
+        "Date": [ "Wed, 08 Apr 2020 07:35:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "362" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"principalObjectId\":\"97deab6c-e478-40b4-b4da-e7d9353dc1e8\",\"roles\":[\"Reader\"]},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q\",\"name\":\"rstr-hszj9q\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/AccessPolicies\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsAccessPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q?api-version=2018-08-15-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q?api-version=2018-08-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "ed61ad34-856d-4632-9740-2e2db4e76b5c" ],
+        "CommandName": [ "Get-AzTimeSeriesInsightsAccessPolicy" ],
+        "FullCommandName": [ "Get-AzTimeSeriesInsightsAccessPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "1ea2e27e-6bd2-44fc-85d2-e2a67551b521" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "4337935d-38e0-46e0-8486-9f3c24f72e0c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073559Z:4337935d-38e0-46e0-8486-9f3c24f72e0c" ],
+        "Date": [ "Wed, 08 Apr 2020 07:35:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "362" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"principalObjectId\":\"97deab6c-e478-40b4-b4da-e7d9353dc1e8\",\"roles\":[\"Reader\"]},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1/accesspolicies/rstr-hszj9q\",\"name\":\"rstr-hszj9q\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/AccessPolicies\"}"
+    }
+  }
+}

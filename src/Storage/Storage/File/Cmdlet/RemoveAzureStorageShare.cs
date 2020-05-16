@@ -20,9 +20,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
-    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFileShare to AzureStorageFileShare, and AzureStorageFileShare will have CloudFileShare as a child property.")]
+    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(AzureStorageFileShare))]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -39,9 +39,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "File share object to be removed.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(HelpMessage = "Remove File Share with all of its snapshots")]
@@ -141,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        this.OutputStream.WriteObject(taskId, share);
+                        WriteCloudShareObject(taskId, this.Channel, share);
                     }
                 });
             }

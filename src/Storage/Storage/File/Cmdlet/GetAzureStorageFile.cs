@@ -17,13 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using System.Globalization;
     using System.Management.Automation;
     using System.Net;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
-    [OutputType(typeof(CloudFile))]
-    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to AzureStorageFile, and AzureStorageFile will have CloudFile as a child property.")]
+    [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -38,18 +38,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the files/directories would be listed.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would be listed.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
@@ -84,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     await this.Channel.EnumerateFilesAndDirectoriesAsync(
                         baseDirectory,
-                        item => this.OutputStream.WriteObject(taskId, item),
+                        item => this.WriteListFileItemObject(taskId, this.Channel, item),
                         this.RequestOptions,
                         this.OperationContext,
                         this.CmdletCancellationToken).ConfigureAwait(false);
@@ -120,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (foundAFolder)
                     {
-                        this.OutputStream.WriteObject(taskId, targetDir);
+                        WriteCloudFileDirectoryeObject(taskId, this.Channel, targetDir);
                         return;
                     }
 
@@ -134,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OperationContext,
                         this.CmdletCancellationToken).ConfigureAwait(false);
 
-                    this.OutputStream.WriteObject(taskId, targetFile);
+                    WriteCloudFileObject(taskId, this.Channel, targetFile);
                 });
             }
         }

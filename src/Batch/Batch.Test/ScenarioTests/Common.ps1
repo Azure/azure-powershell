@@ -67,7 +67,7 @@ function Get-BatchAccountProviderLocation($index)
         $type = "batchAccounts"
         $r = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
         $location = $r.Locations
-  
+
         if ($location -eq $null)
         {  
             return "westus"

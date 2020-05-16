@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccountGetResults))]
     public class NewAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 foreach (PSLocation psLocation in LocationObject)
                 {
-                    LocationCollection.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                    LocationCollection.Add(PSLocation.ToSDKModel(psLocation));
                     if (psLocation.FailoverPriority == 0)
                     {
                         writeLocation = psLocation.LocationName;
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             { 
                 foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
                 {
-                    virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
+                    virtualNetworkRule.Add(PSVirtualNetworkRule.ToSDKModel(psVirtualNetworkRule));
                 }
             }
 
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(Name, "Creating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccount(cosmosDBAccount));
+                WriteObject(new PSDatabaseAccountGetResults(cosmosDBAccount));
             }
 
             return;

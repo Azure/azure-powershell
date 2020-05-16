@@ -1268,6 +1268,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VmEncryptionType = details.VmEncryptionType;
             this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
             this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
+            this.InitialPrimaryZone = details.InitialPrimaryZone;
+            this.InitialRecoveryZone = details.InitialRecoveryZone;
             this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
@@ -1439,6 +1441,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the initial recovery fabric location.
         /// </summary>
         public string InitialRecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary zone.
+        /// </summary>
+        public string InitialPrimaryZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery zone.
+        /// </summary>
+        public string InitialRecoveryZone { get; set; }
 
         /// <summary>
         /// Gets or sets the only constant ID throught out the enable disable cycle.
