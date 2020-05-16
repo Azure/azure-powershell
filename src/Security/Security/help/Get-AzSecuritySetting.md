@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSecuritySetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update security settings in Azure Security Center
 
 ## SYNTAX
 
@@ -23,16 +23,21 @@ Get-AzSecuritySetting -SettingName <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzSecuritySetting cmdlet get security settings in Azure Security Center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzSecuritySetting -SettingName "MCAS"
+
+Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
+Name: "MCAS"
+Type: "Microsoft.Security/settings"
+Enabled: true
 ```
 
-{{ Add example description here }}
+Gets an MCAS data export setting   
 
 ## PARAMETERS
 
@@ -52,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingName
-Setting name.
+Setting name. (MCAS/WDATP)
 
 ```yaml
 Type: String
@@ -76,6 +81,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
 
 ## NOTES
 

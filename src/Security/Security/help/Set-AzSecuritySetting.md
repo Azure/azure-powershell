@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecuritySetting
 schema: 2.0.0
 ---
 
 # Set-AzSecuritySetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a security setting in Azure Security Center
 
 ## SYNTAX
 
@@ -25,16 +25,24 @@ Set-AzSecuritySetting -InputObject <PSSecuritySetting> -Enabled <Boolean>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-AzSecuritySetting cmdlet updates a specific security setting in Azure Security Center.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting]$setting = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
+PS C:\> $setting.Enabled = $true
+PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting
+
+Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
+Name: "MCAS"
+Type: "Microsoft.Security/settings"
+Enabled: true
 ```
 
-{{ Add example description here }}
+Updates an MCAS data export setting   
 
 ## PARAMETERS
 
@@ -99,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingName
-Setting name.
+Setting name. (MCAS/WDATP)
 
 ```yaml
 Type: String
@@ -150,12 +158,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
+
 
 ### System.Boolean
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
 
 ## NOTES
 
