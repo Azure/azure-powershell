@@ -16,7 +16,7 @@
 GetLocationKindExchange 
 #>
 function Test-GetRxRoutes {
-    $routes = Get-AzPeeringReceivedRoutes -ResourceGroupName testMapsRG -Name NttAshburnPeering
+    $routes = Get-AzPeeringReceivedRoutes -ResourceGroupName CenturyLink -Name Portland
     Assert-NotNull $routes
     Assert-True { $routes.Count -ge 1 }
 }
@@ -26,7 +26,9 @@ function Test-GetRxRoutes {
 GetLocationKindDirect
 #>
 function Test-ListRxRoutesAsPath {
-    $routes = Get-AzPeeringReceivedRoutes -ResourceGroupName testMapsRG -Name NttAshburnPeering -AsPath "9598 4842"
+    $peering = Get-AzPeering -ResourceGroupName CenturyLink -Name Portland
+    $id = $peering.id
+    $routes = Get-AzPeeringReceivedRoutes -ResourceId  $id -AsPath "3356"
     Assert-NotNull $routes
     Assert-True { $routes.Count -ge 1 }
 }
