@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
         [JsonProperty(Order = 1)] 
-        public IList<PSLoadBalancerBackendAddress> LoadBalancerBackendAddresses { get; set; }
+        public List<PSLoadBalancerBackendAddress> LoadBalancerBackendAddresses { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
         [JsonProperty(Order = 1)]

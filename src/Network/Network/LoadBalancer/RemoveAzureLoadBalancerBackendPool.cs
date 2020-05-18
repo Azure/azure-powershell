@@ -24,33 +24,42 @@ using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Net;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
     public partial class RemoveAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name of the load balancer.",
-            ValueFromPipelineByPropertyName = true)]
+        private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
+        private const string DeleteByParentObjectParameterSet = "DeleteByParentObjectParameterSet"; // tested
+        private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
+        private const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group name of the load balancer.", ParameterSetName = DeleteByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = DeleteByNameParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = DeleteByParentObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = false,HelpMessage = "The name of the load balancer.")]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The load balancer resource.", ValueFromPipeline = true,ParameterSetName = DeleteByParentObjectParameterSet)]
+        public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(Mandatory = false,HelpMessage = "The backend address pool to remove", ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string BackendAddressPoolName { get; set; }
+        public PSBackendAddressPool InputObject { get; set; }
+
+        [Parameter(Mandatory = true,ValueFromPipelineByPropertyName = true,ParameterSetName = DeleteByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -63,32 +72,50 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var found = NetworkBaseCmdlet.IsResourcePresent(() => this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(
+
+            if (this.IsParameterBound(c => c.LoadBalancer))
+            {
+                this.ResourceGroupName = this.LoadBalancer.ResourceGroupName;
+                this.LoadBalancerName = this.LoadBalancer.Name;
+            }
+
+            if (this.IsParameterBound(c => c.InputObject) || this.IsParameterBound(p => p.ResourceId))
+            {
+                var id = this.IsParameterBound(c => c.InputObject) ? this.InputObject.Id : this.ResourceId;
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(id);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.LoadBalancerName = resourceIdentifier.ParentResource.Split('/')[1];
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
+            // check if resource already exists
+            var found = NetworkBaseCmdlet.IsResourcePresent(
+                () => this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(
                 this.ResourceGroupName,
                 this.LoadBalancerName, 
-                this.BackendAddressPoolName));
+                this.Name));
 
             if (!found)
             {
                 throw new ArgumentException(Properties.Resources.ResourceNotFound);
             }
 
+            // this prompts user to confirm the deletion of the backend pool
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, BackendAddressPoolName),
+                string.Format(Properties.Resources.RemovingResource, Name),
                 Properties.Resources.RemoveResourceMessage,
-                BackendAddressPoolName,
+                Name,
                 () =>
                 {
                     this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Delete(this.ResourceGroupName, 
-                        this.LoadBalancerName, this.BackendAddressPoolName);
+                        this.LoadBalancerName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);
                     }
                 });
-
-            WriteObject(HttpStatusCode.OK);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestLoadBalancerBackendPoolCRUDNetworkInterfaceIpConfig()
+        public void TestLoadBalancerBackendPoolCRUD()
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCRUD");
         }
@@ -36,10 +36,41 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestLoadBalancerBackendPoolCRUDVirutalNetworkConfig()
+        public void TestLoadBalancerBackendPoolCreate()
         {
-            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCRUD-VirutalNetworkConfig");
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCreate");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendPoolRead()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolRead");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendPoolDelete()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendPoolUpdate()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendAddressConfig()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendAddressConfig");
+        }
     }
 }

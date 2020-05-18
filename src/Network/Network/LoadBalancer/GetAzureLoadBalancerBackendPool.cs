@@ -24,41 +24,67 @@ using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
     public partial class GetAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name of the load balancer.",
-            ValueFromPipelineByPropertyName = true)]
+
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group name of the load balancer.", ParameterSetName = GetByNameParameterSet)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the backend address pool.",
-            ValueFromPipelineByPropertyName = true)]
+
+        [Parameter(Mandatory = false, HelpMessage = "The name of the backend address pool.", ParameterSetName = GetByNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the backend address pool.", ParameterSetName = GetByParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string BackendAddressPoolName { get; set; }
+        public string Name {get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet)]
+        [ValidateNotNull]
+        public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
 
         public override void Execute()
         {
             base.Execute();
             BackendAddressPool loadBalancerBackendAddressPool = null;
 
-            if (ShouldGetByName(this.ResourceGroupName, this.BackendAddressPoolName))
+
+            if (this.IsParameterBound(c => c.LoadBalancer))
             {
-                loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.BackendAddressPoolName);
+                this.ResourceGroupName = this.LoadBalancer.ResourceGroupName;
+                this.LoadBalancerName = this.LoadBalancer.Name;
+            }
+
+            if (this.IsParameterBound(p => p.ResourceId))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.LoadBalancerName = resourceIdentifier.ParentResource.Split('/')[1];
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
+
+            // Get single backend pool
+            if (ShouldGetByName(this.ResourceGroupName, this.Name))
+            {
+                loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.Name);
 
                 var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
                 loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses = loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses.ToList();
@@ -68,9 +94,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 IPage<BackendAddressPool> backendAddressPoolPage = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.List(this.ResourceGroupName, this.LoadBalancerName);
 
+                // compose list of BackendAddressPools
                 var backendAddressPoolList = ListNextLink<BackendAddressPool>.GetAllResourcesByPollingNextLink(backendAddressPoolPage,
                             this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.ListNext);
-               
+
+
+                // convert list of BackendAddressPools to a list of Powershell BackendAddressPools
                 List<PSBackendAddressPool> psBackendAddressPoolList = new List<PSBackendAddressPool>();
                
                 foreach (var backendAddressPool in backendAddressPoolList)

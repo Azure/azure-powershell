@@ -8,50 +8,64 @@ schema: 2.0.0
 # Remove-AzLoadBalancerBackendAddressPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a backend pool from a load balancer
 
 ## SYNTAX
 
+### DeleteByNameParameterSet
 ```
-Remove-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String>
- -BackendAddressPoolName <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -Name <String> [-LoadBalancerName <String>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DeleteByParentObjectParameterSet
+```
+Remove-AzLoadBalancerBackendAddressPool -Name <String> [-LoadBalancerName <String>]
+ -LoadBalancer <PSLoadBalancer> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
+### DeleteByInputObjectParameterSet
+```
+Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] [-InputObject <PSBackendAddressPool>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] -ResourceId <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes a backend pool from a load balancer
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+##removing by passing lb object via pipeline
+PS C:\>$lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPool1 -Force
 
-{{ Add example description here }}
+### Example 2
+
+##removing by passing input object
+PS C:\> Remove-AzLoadBalancerBackendAddressPool -InputObject $backendPoolObject
+
+### Example 3
+
+##removing by passing resourceId
+PS C:\> Remove-AzLoadBalancerBackendAddressPool -ResourceId $backendPoolObject.Id
+
+```
 
 ## PARAMETERS
-
-### -BackendAddressPoolName
-The name of the load balancer.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +80,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,26 +91,70 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancerName
-The name of the load balancer.
+### -InputObject
+The backend address pool to remove
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancer
+The load balancer resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameter Sets: DeleteByParentObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The name of the load balancer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the load balancer.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,8 +169,23 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{ Fill ResourceId Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
 Required: True

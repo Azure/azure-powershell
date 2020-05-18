@@ -8,27 +8,52 @@ schema: 2.0.0
 # New-AzLoadBalancerBackendAddressConfig
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Returns a load balancer address config. 
 
 ## SYNTAX
 
 ```
-New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String>
- [-NetworkInterfaceIPConfiguration <PSNetworkInterfaceIPConfiguration>] [-VirtualNetwork <PSVirtualNetwork>]
+New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String> -VirtualNetwork <PSVirtualNetwork>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Returns a load balancer address config. 
 
 ## EXAMPLES
 
 ### Example 1
+### New loadbalancer address config with virtual network reference
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 
-{{ Add example description here }}
+New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
+
+
+Name                    : TestVNetRef
+IpAddress               : 10.0.0.5
+BackendIpConfigurations : null
+VirtualNetwork          : {
+                            "AddressSpace": {
+                              "AddressPrefixes": [
+                                "10.0.0.0/16"
+                              ]
+                            },
+                            "DhcpOptions": {},
+                            "Subnets": [],
+                            "VirtualNetworkPeerings": [],
+                            "ProvisioningState": "Succeeded",
+                            "EnableDdosProtection": false,
+                            "ResourceGroupName": "xxxxxxxxxxx",
+                            "Location": "brazilsouth",
+                            "ResourceGuid": "xxxxxxxxxxxxxxxxxx",
+                            "Type": "Microsoft.Network/virtualNetworks",
+                            "Name": "xxxxx",
+                            "Etag": "W/\"95f7ba63-642e-4ff0-b7dc-7b80bf1cc620\"",
+                            "Id": 
+                          "/subscriptions/xxxxxxxxx/resourceGroups/xxxxxxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxxxxxxxx"
+                          }
+```
 
 ## PARAMETERS
 
@@ -36,7 +61,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +76,7 @@ Accept wildcard characters: False
 The IPAddress to add to the backend pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +91,7 @@ Accept wildcard characters: False
 The name of the Backend Address config
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -77,30 +102,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NetworkInterfaceIPConfiguration
-The network interface IP config
-
-```yaml
-Type: PSNetworkInterfaceIPConfiguration
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -VirtualNetwork
 The virtual network associated with Backend Address config
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

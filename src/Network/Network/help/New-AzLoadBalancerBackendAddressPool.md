@@ -8,51 +8,115 @@ schema: 2.0.0
 # New-AzLoadBalancerBackendAddressPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a backend address pool on a loadbalancer. 
 
 ## SYNTAX
 
+### CreateByNameParameterSet
 ```
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String>
- -BackendAddressPoolName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### CreateByParentObjectParameterSet
+```
+New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a backend address pool on a loadbalancer. Allows for specifiying a array of PSLoadBalancerBackendAddress. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+
+PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
+PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
+
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
+$ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetwork $virtualNetwork
+
+$ips = @($ip1, $ip2)
+
+## create by passing loadbalancer without Ips
+PS C:\> $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
+```
+### Example 2
+```powershell
+## create by passing loadbalancer with ips
+PS C:\> $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool7 -LoadBalancerBackendAddress $ips
 ```
 
-{{ Add example description here }}
+### Example 3
+## create by Name without ip's
+```powershell
+PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3
+```
+### Example 4
+## create by Name with ip's
+```powershell
+PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -LoadBalancerBackendAddress $ips
+```
+
 
 ## PARAMETERS
-
-### -BackendAddressPoolName
-The name of the backend pool.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation if you want to overwrite a resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancer
+The load balancer resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameter Sets: CreateByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerBackendAddress
+The backend addresses.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -65,14 +129,29 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: CreateByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the backend pool.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -80,14 +159,14 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
