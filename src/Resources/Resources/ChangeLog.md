@@ -40,6 +40,7 @@
     - `New-AzManagementGroupDeployment`
     - `New-AzResourceGroupDeployment`
     - `New-AzTenantDeployment`
+* Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
