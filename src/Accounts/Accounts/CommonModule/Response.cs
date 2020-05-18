@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common
         public Response(Func<Task<T>> value) : base() => _resultDelegate = value;
 
         /// <summary>
-        /// Return an awaitable response, using any previously cached response value, or creating one if it doesn't exxist
+        /// Return an awaitable response, using any previously cached response value, or creating one if it doesn't exist
         /// </summary>
         public Task<T> Result => _resultValue ?? (_resultValue = this._resultDelegate());
     }
