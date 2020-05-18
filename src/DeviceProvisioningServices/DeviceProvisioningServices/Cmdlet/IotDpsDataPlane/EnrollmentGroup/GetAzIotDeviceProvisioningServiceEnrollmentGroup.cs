@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningServiceEnrollmentGroup", DefaultParameterSetName = ResourceParameterSet)]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDpsEnrollmentGroup")]
-    [OutputType(typeof(PSEnrollmentGroup), typeof(PSEnrollmentGroups))]
+    [OutputType(typeof(PSEnrollmentGroup), typeof(PSEnrollmentGroups[]))]
     public class GetAzIotDeviceProvisioningServiceEnrollmentGroup : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

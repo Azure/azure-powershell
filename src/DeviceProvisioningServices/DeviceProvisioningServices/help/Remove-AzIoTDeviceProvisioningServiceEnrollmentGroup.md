@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/remove-aziotdeviceprovisioningserviceenrollmentgroup
@@ -15,20 +15,20 @@ Delete a device enrollment group.
 ### ResourceSet (Default)
 ```
 Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup [-ResourceGroupName] <String> [-DpsName] <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup [-DpsObject] <PSProvisioningServiceDescription>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup [-ResourceId] <String> -Name <String> [-PassThru]
+Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup [-ResourceId] <String> [-Name <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,14 +51,13 @@ PS C:\> Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName 
 
 Delete all enrollment groups.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +72,7 @@ Accept wildcard characters: False
 Name of the IoT Device Provisioning Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -103,11 +102,11 @@ Accept wildcard characters: False
 Name of the enrollment group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +118,7 @@ Allows to return the boolean object.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +133,7 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
 Aliases:
 
@@ -164,7 +163,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +179,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,8 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

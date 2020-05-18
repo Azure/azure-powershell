@@ -154,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIndividualEnrollment
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIndividualEnrollments
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIndividualEnrollments[]
 
 ## NOTES
 
