@@ -21840,6 +21840,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -21921,6 +21922,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -22274,6 +22276,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -22428,6 +22431,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -22652,6 +22656,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -22902,6 +22907,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -23152,6 +23158,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -23290,6 +23297,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -23924,10 +23932,64 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PrimaryZone",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RecoveryZone",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Azure",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AzureZoneToZone",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -24204,7 +24266,7 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -24494,6 +24556,244 @@
           ]
         },
         {
+          "Name": "AzureZoneToZone",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrimaryFabric",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "FabricSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificDetails",
+                    "Name": "System.String",
+                    "FriendlyName": "System.String",
+                    "ID": "System.String",
+                    "Type": "System.String",
+                    "FabricType": "System.String",
+                    "SiteIdentifier": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "fabric",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrimaryZone",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryZone",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AzureZoneToZone",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ReplicationProtectedItem",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[], Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
           "Name": "ByRPFile",
           "Parameters": [
             {
@@ -24727,6 +25027,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -24914,6 +25215,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -25176,6 +25478,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -25313,6 +25616,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -29746,6 +30050,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "RecoveryProximityPlacementGroupId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "RecoveryAvailabilitySetId",
           "AliasList": [],
           "Type": {
@@ -32559,6 +32881,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "RecoveryProximityPlacementGroupId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "RecoveryAvailabilitySetId",
                 "AliasList": [],
                 "Type": {
@@ -33092,6 +33438,30 @@
             {
               "ParameterMetadata": {
                 "Name": "RecoveryAvailabilityZone",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryProximityPlacementGroupId",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -35324,6 +35694,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "RecoveryProximityPlacementGroupId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "EnableAcceleratedNetworkingOnRecovery",
           "AliasList": [],
           "Type": {
@@ -35998,6 +36386,30 @@
             {
               "ParameterMetadata": {
                 "Name": "RecoveryAvailabilitySet",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryProximityPlacementGroupId",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -37193,6 +37605,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -37408,6 +37821,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -37816,6 +38230,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -38200,6 +38615,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -39592,6 +40008,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -39917,6 +40334,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -40372,6 +40790,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -40838,6 +41257,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -41096,6 +41516,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -41400,6 +41821,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -42925,6 +43347,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -43306,6 +43729,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -45421,6 +45845,7 @@
             "Properties": {
               "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
               "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
               "Name": "System.String",
               "FriendlyName": "System.String",
               "ServerId": "System.String",
@@ -45646,6 +46071,24 @@
         },
         {
           "Name": "RecoveryAvailabilitySetId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RecoveryProximityPlacementGroupId",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -47818,6 +48261,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "RecoveryProximityPlacementGroupId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "RecoveryBootDiagStorageAccountId",
                 "AliasList": [],
                 "Type": {
@@ -48286,6 +48753,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "RecoveryProximityPlacementGroupId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "RecoveryBootDiagStorageAccountId",
                 "AliasList": [],
                 "Type": {
@@ -48459,6 +48950,7 @@
                   "Properties": {
                     "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
                     "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+                    "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
                     "Name": "System.String",
                     "FriendlyName": "System.String",
                     "ServerId": "System.String",
@@ -51258,7 +51750,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.7.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.8.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -51365,7 +51857,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.7.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.8.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -55064,7 +55556,7 @@
     "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.CurrentScenarioDetails": {
       "Namespace": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models",
       "Name": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.CurrentScenarioDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.CurrentScenarioDetails, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.CurrentScenarioDetails, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "StartTime": "System.Nullable`1[System.DateTime]",
         "JobId": "System.String",
@@ -55214,7 +55706,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -55226,7 +55718,7 @@
     "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig": {
       "Namespace": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models",
       "Name": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.IPConfig, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LBBackendAddressPoolIds": "System.Collections.Generic.IList`1[System.String]",
         "PublicIpAddressId": "System.String",
@@ -55302,7 +55794,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -55314,7 +55806,7 @@
     "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet": {
       "Namespace": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models",
       "Name": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AddressList": "System.Collections.Generic.IList`1[System.String]",
         "FriendlyName": "System.String",
@@ -56033,7 +56525,7 @@
     "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanAction": {
       "Namespace": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models",
       "Name": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanAction, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanAction, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CustomDetails": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanActionDetails",
         "FailoverTypes": "System.Collections.Generic.IList`1[System.String]",
@@ -56107,7 +56599,7 @@
     "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanActionDetails": {
       "Namespace": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models",
       "Name": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanActionDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanActionDetails, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.RecoveryPlanActionDetails, Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -56158,6 +56650,72 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails": {
+      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "PrimaryZone": "System.String",
+        "RecoveryZone": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "primaryZone",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "recoveryZone",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan",
@@ -56165,6 +56723,7 @@
       "Properties": {
         "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
         "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+        "ProviderSpecificDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanA2ADetails]",
         "Name": "System.String",
         "FriendlyName": "System.String",
         "ServerId": "System.String",
@@ -56525,9 +57084,11 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.7.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.8.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "ProvisioningState": "System.String"
+        "ProvisioningState": "System.String",
+        "PrivateEndpointStateForBackup": "System.String",
+        "PrivateEndpointStateForSiteRecovery": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

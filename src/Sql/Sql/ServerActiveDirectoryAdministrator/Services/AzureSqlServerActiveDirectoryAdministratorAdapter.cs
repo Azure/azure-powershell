@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -178,8 +180,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
 
             // Check for a Azure Active Directory group. Recommended to always use group.
             IEnumerable<PSADGroup> groupList = null;
+            PSADGroup group = null;
 
-                        var filter = new ADObjectFilterOptions()
+            var filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -197,15 +200,66 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             else if (groupList.Count() == 1)
             {
                 // Only one group was found. Get the group display name and object id
-                var group = groupList.First();
+                group = groupList.First();
 
                 // Only support Security Groups
                 if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidADGroupNotSecurity, displayName));
                 }
+            }
 
+            // Lookup for applications
+            ODataQuery<Application> odataQueryFilter;
 
+            if ((objectId != null && objectId != Guid.Empty))
+            {
+                var applicationIdString = objectId.ToString();
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationIdString);
+            }
+            else
+            {
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName == displayName);
+            }
+
+            var applicationList = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter);
+
+            // No application was found
+            if (applicationList == null || applicationList.Count() == 0)
+            {
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADObjectNotFound, displayName));
+            }
+            else if (applicationList.Count() > 1)
+            {
+                // More than one application was found.
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationMoreThanOneFound, displayName));
+            }
+            else if (applicationList.Count() == 1)
+            {
+                // Only one user was found. Get the user display name and object id
+                PSADApplication app = applicationList.First();
+
+                if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationDisplayNameMismatch, displayName, app.DisplayName));
+                }
+
+                if (group != null)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADDuplicateGroupAndApplicationFound, displayName));
+                }
+
+                return new ServerAzureADAdministrator()
+                {
+                    Login = displayName,
+                    Sid = app.ApplicationId,
+                    TenantId = tenantId,
+                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
+                };
+            }
+
+            if (group != null)
+            {
                 return new ServerAzureADAdministrator()
                 {
                     Login = group.DisplayName,
@@ -215,7 +269,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 };
             }
 
-            // No group was found. Check for a user
+            // No group or application was found. Check for a user
             filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
