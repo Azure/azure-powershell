@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string AddEnrollment {
+            get {
+                return ResourceManager.GetString("AddEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string AddLinkedHub {
@@ -133,6 +142,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string RemoveEnrollment {
+            get {
+                return ResourceManager.GetString("RemoveEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete linked IoT Hub from an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string RemoveLinkedHub {
@@ -165,6 +183,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         internal static string UpdateDeviceProvisioningService {
             get {
                 return ResourceManager.GetString("UpdateDeviceProvisioningService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string UpdateEnrollment {
+            get {
+                return ResourceManager.GetString("UpdateEnrollment", resourceCulture);
             }
         }
         
