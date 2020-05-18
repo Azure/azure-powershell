@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,34 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Enrollment status
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public enum PSEnrollmentStatus
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        /// <summary>
+        /// Device has not yet come on-line
+        /// </summary>
+        Unassigned = 1,
+
+        /// <summary>
+        /// Device has connected to the DRS but IoT Hub ID has not yet been returned to the device
+        /// </summary>
+        Assigning = 2,
+
+        /// <summary>
+        /// DRS successfully returned a device ID and connection string to the device
+        /// </summary>
+        Assigned = 3,
+
+        /// <summary>
+        /// Device enrollment failed
+        /// </summary>
+        Failed = 4,
+
+        /// <summary>
+        /// Device is disabled
+        /// </summary>
+        Disabled = 5
     }
 }

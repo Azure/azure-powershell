@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Defines values for AllocationPolicy.
+    /// Defines values for Attestation Mechanism.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSAllocationPolicy
+    public enum PSAttestationMechanismType
     {
-        Hashed,
-        GeoLatency,
-        Static,
-        Custom
+        None,
+        Tpm,
+        X509,
+        SymmetricKey
     }
 }

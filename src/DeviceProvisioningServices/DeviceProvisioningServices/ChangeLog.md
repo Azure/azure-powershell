@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Manage Device Enrollments. New cmdlets are:
+    - `Add-AzIoTDeviceProvisioningServiceEnrollment`
+    - `Get-AzIoTDeviceProvisioningServiceEnrollment`
+    - `Remove-AzIoTDeviceProvisioningServiceEnrollment`
+    - `Set-AzIoTDeviceProvisioningServiceEnrollment`
 ## Version 0.7.2
 * Update references in .psd1 to use relative path
