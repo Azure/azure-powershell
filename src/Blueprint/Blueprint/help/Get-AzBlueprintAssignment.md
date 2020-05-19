@@ -12,16 +12,28 @@ Get one or more blueprint assignments.
 
 ## SYNTAX
 
-### BlueprintAssignmentsBySubscription (Default)
+### SubscriptionScope (Default)
 ```
-Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzBlueprintAssignment [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### BlueprintAssignmentByName
+### BySubscriptionAndName
 ```
-Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBlueprintAssignment -Name <String> [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByManagementGroupAndName
+```
+Get-AzBlueprintAssignment -Name <String> -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ManagementGroupScope
+```
+Get-AzBlueprintAssignment -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +64,20 @@ PS C:\> Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-00000
 
 Get the blueprint assignment with the given name within the specified subscription.
 
+### Example 3
+```powershell
+PS C:\> Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup"
+```
+
+Get the blueprint assignments within the specified management group.
+
+### Example 4
+```powershell
+PS C:\> Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup" -Name "myAssignmentName"
+```
+
+Get the blueprint assignment with the given name within the specified management group.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -69,16 +95,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupId
+The ID of the management group where the Blueprint assignment is saved.
+
+```yaml
+Type: System.String
+Parameter Sets: ByManagementGroupAndName, ManagementGroupScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Blueprint assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: BlueprintAssignmentByName
+Parameter Sets: BySubscriptionAndName, ByManagementGroupAndName
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -89,18 +130,18 @@ Subscription Id the blueprint assignment is deployed to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SubscriptionScope, BySubscriptionAndName
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

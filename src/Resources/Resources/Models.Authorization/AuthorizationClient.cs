@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
-        static AuthorizationClient() {}
+        static AuthorizationClient() { }
 
         /// <summary>
         /// Creates AuthorizationClient using AzureContext instance.
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> GetAllRoleDefinitionsAtScopeAndBelow(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>();
-			return AuthorizationManagementClient.RoleDefinitions.List(scope ?? string.Empty, odataQuery)
-				.Select(r => r.ToPSRoleDefinition());
+            return AuthorizationManagementClient.RoleDefinitions.List(scope ?? string.Empty, odataQuery)
+                .Select(r => r.ToPSRoleDefinition());
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole);
-            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : odataQuery)
+            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery: odataQuery)
                 .Select(r => r.ToPSRoleDefinition());
         }
 
@@ -142,7 +142,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(
                 parameters.Scope, roleAssignmentId.ToString(), createParameters);
-            return assignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+            var PSRoleAssignment = assignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+            return PSRoleAssignment;
         }
 
         /// <summary>
@@ -397,7 +398,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
                 }
-                catch {
+                catch
+                {
                 }
                 if (fetchedRoleDefinition != null)
                 {
@@ -426,7 +428,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return this.CreateOrUpdateRoleDefinition(roleDefinitionId, roleDefinition);
         }
 
-                /// <summary>
+        /// <summary>
         /// Filters deny assignments based on the passed options.
         /// </summary>
         /// <param name="options">The filtering options</param>

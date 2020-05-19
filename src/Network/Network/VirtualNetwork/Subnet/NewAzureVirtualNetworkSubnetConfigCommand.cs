@@ -53,6 +53,14 @@ namespace Microsoft.Azure.Commands.Network
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
+            subnet.IpAllocations = new List<PSResourceId>();
+            if (this.IpAllocation != null)
+            {
+                foreach (var allocation in this.IpAllocation)
+                {
+                    subnet.IpAllocations.Add(allocation);
+                }
+            }
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {

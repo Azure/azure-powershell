@@ -53,6 +53,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByObject)
@@ -67,6 +77,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 WorkspaceName = Name,
                 Sku = Sku,
                 Tags = Tag,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 RetentionInDays = RetentionInDays
             };
 

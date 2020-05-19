@@ -155,6 +155,42 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.MinSupportedTlsVersion = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the assigned identity.")]
+        public string AssignedIdentity
+        {
+            get { return _config.AssignedIdentity; }
+            set { _config.AssignedIdentity = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
+        [ValidateSet(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        public string EncryptionAlgorithm
+        {
+            get { return _config.EncryptionAlgorithm; }
+            set { _config.EncryptionAlgorithm = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
+        public string EncryptionKeyName
+        {
+            get { return _config.EncryptionKeyName; }
+            set { _config.EncryptionKeyName = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption key version.")]
+        public string EncryptionKeyVersion
+        {
+            get { return _config.EncryptionKeyVersion; }
+            set { _config.EncryptionKeyVersion = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the encryption vault uri.")]
+        public string EncryptionVaultUri
+        {
+            get { return _config.EncryptionVaultUri; }
+            set { _config.EncryptionVaultUri = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightClusterConfigCommand()

@@ -2,6 +2,10 @@
   "tool": "Credential Scanner",
   "suppressions": [
     {
+      "file": "src\\KeyVault\\KeyVault.Test\\SessionRecords\\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\\TestCreateNewVault.json",
+      "_justification": "The 'ocp-aad-diagnostics-server-name' header in response is falsely recognized as a password."
+    },
+    {
       "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
       "_justification": "Documentation with non-live passwords in sample connection strings"
     },
@@ -498,6 +502,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCmkClusterRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
       "_justification": "Resource creation is mocked"
     },
@@ -964,6 +972,30 @@
     {
       "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdletsUsingRid.json",
       "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\TimeSeriesInsights\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\TimeSeriesInsights\\test\\New-AzTimeSeriesInsightsEnvironment.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\Get-Update-Remove-AzFunctionAppSetting.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\New-Update-Remove-AzFunctionApp.Tests.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\Functions\\test\\New-AzFunctionApp.Recording.json",
+      "_justification": "Test resource is deleted"
     }
   ]
 }

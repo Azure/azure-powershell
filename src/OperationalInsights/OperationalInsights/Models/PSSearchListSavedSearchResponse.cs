@@ -31,16 +31,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new ArgumentNullException("saved search response");
             }
 
-            SearchMetadata m = searchResponse.Metadata;
-            this.Metadata = new PSSearchMetadata(searchResponse.Metadata);
             this.Value = new List<PSSavedSearchValue>();
             foreach (SavedSearch v in searchResponse.Value)
             {
                 this.Value.Add(new PSSavedSearchValue(v));
             }
         }
-
-        public PSSearchMetadata Metadata { get; set; }
 
         public List<PSSavedSearchValue> Value { get; set; }
     }

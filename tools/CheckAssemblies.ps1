@@ -17,6 +17,25 @@ param(
     [System.String]$BuildConfig
 )
 
+function Get-PreloadAssemblies{
+    param(
+        [Parameter(Mandatory=$True)]
+        [string] $ModuleFolder
+    )
+
+    $preloadAssemblies = @()
+    if($PSEdition -eq 'Core') {
+        $preloadFolderName = "NetCoreAssemblies"
+    } else {
+        $preloadFolderName = "PreloadAssemblies"
+    }
+    $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
+    if(Test-Path $preloadFolder){
+        $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+    }
+    $preloadAssemblies
+}
+
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
 $DependencyMapPath = "$PSScriptRoot\..\artifacts\StaticAnalysisResults\DependencyMap.csv"
 
@@ -38,6 +57,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
         $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
     }
 
+    $LoadedAssemblies += Get-PreloadAssemblies $ModuleManifest.Directory
     $LoadedAssemblies += $ModuleMetadata.NestedModules
 
     if ($ModuleMetadata.RequiredModules) {
@@ -58,6 +78,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
                 }
                 $LoadedAssemblies += $ModuleMetadata.NestedModules
             }
+            $LoadedAssemblies += Get-PreloadAssemblies $RequiredModuleManifest.Directory
         }
     }
 

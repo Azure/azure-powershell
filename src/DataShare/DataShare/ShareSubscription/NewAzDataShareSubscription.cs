@@ -23,10 +23,12 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Defines the New-DataShareSubscription cmdlet.
     /// </summary>
+    [GenericBreakingChange("Parameter SourceShareLocation is mandatory to support cross region share subscription creation.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscription", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDataShare))]
     public class NewAzDataShareSubscription : AzureDataShareCmdletBase
     {
@@ -68,6 +70,15 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         [ValidateNotNullOrEmpty]
         public string InvitationId { get; set; }
 
+        /// <summary>
+        /// Location of the source share.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSetNames.FieldsParameterSet,
+            HelpMessage = "Azure data share location")]
+        [ValidateNotNullOrEmpty]
+        public string SourceShareLocation { get; set; }
+
         private const string ResourceType = "ShareSubscription";
 
         public override void ExecuteCmdlet()
@@ -80,7 +91,8 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
                     this.Name,
                     new ShareSubscription()
                     {
-                        InvitationId = this.InvitationId
+                        InvitationId = this.InvitationId,
+                        SourceShareLocation = this.SourceShareLocation
                     });
 
                 this.WriteObject(shareSubscription.ToPsObject());

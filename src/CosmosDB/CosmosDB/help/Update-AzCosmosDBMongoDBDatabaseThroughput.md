@@ -21,7 +21,7 @@ Update-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName <String> -AccountN
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDBMongoDBDatabaseThroughput [-Name <String>] -Throughput <Int32>
- -ParentObject <PSDatabaseAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,6 +31,9 @@ Update-AzCosmosDBMongoDBDatabaseThroughput [-Name <String>] -Throughput <Int32>
  -InputObject <PSMongoDBDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
+
+## DESCRIPTION
+Updates the throughput value of a CosmosDB MongoDB Database.
 
 ## EXAMPLES
 
@@ -125,7 +128,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

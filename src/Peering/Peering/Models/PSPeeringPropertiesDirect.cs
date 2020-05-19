@@ -37,8 +37,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// or not the peering is used for peering service.</param>
         /// <param name="peerAsn">The reference of the peer ASN.</param>
         /// <param name="directPeeringType">The type of direct peering.
-        /// Possible values include: 'Edge', 'Transit', 'Cdn',
-        /// 'Internal'</param>
+        /// Possible values include: 'Edge', 'Transit', 'Cdn', 'Internal',
+        /// 'Ix', 'IxRs'</param>
         public PSPeeringPropertiesDirect(IList<PSDirectConnection> connections = default(IList<PSDirectConnection>), bool? useForPeeringService = default(bool?), PSSubResource peerAsn = default(PSSubResource), string directPeeringType = default(string))
         {
             Connections = connections;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
 
         /// <summary>
         /// Gets or sets the type of direct peering. Possible values include:
-        /// 'Edge', 'Transit', 'Cdn', 'Internal'
+        /// 'Edge', 'Transit', 'Cdn', 'Internal', 'Ix', 'IxRs'
         /// </summary>
         [JsonProperty(PropertyName = "directPeeringType")]
         public string DirectPeeringType { get; set; }

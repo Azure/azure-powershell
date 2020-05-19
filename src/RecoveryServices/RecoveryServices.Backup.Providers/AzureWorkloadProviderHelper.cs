@@ -21,7 +21,9 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
 
@@ -248,12 +250,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return ConversionHelpers.GetContainerModelList(listResponse);
         }
 
-        public void ValidateSimpleSchedulePolicy(CmdletModel.SchedulePolicyBase policy)
+        public void ValidateSimpleSchedulePolicy(CmdletModel.SchedulePolicyBase policy, string backupManagementType = "")
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.SimpleSchedulePolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
                                             typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
+            }
+
+            if(backupManagementType == BackupManagementType.AzureStorage &&
+                ((CmdletModel.SimpleSchedulePolicy)policy).ScheduleRunFrequency == ScheduleRunType.Weekly)
+            {
+                throw new ArgumentException(Resources.AFSWeeklyScheduleNotAllowed);
             }
 
             // call validation
@@ -272,7 +280,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
-        public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
+        public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "")
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
             {

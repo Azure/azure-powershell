@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden.
+        /// </summary>
+        internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
+            get {
+                return ResourceManager.GetString("AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADGroupMoreThanOneFound {
@@ -390,6 +399,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string EnterUserId {
             get {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
+        /// </summary>
+        internal static string FailedToAddRoleAssignmentForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToAddRoleAssignmentForStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get Role Assignments for Storage Account &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailedToGetRoleAssignmentsForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToGetRoleAssignmentsForStorageAccount", resourceCulture);
             }
         }
         
@@ -1056,6 +1083,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RetrievingStorageAccountKeysFailed {
             get {
                 return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve properties of storage account &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountPropertiesFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountPropertiesFailed", resourceCulture);
             }
         }
         

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -25,6 +26,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy)
         {
+            if (conflictResolutionPolicy == null)
+            {
+                return;
+            }
+
             Mode = conflictResolutionPolicy.Mode;
             ConflictResolutionPath = conflictResolutionPolicy.ConflictResolutionPath;
             ConflictResolutionProcedure = conflictResolutionPolicy.ConflictResolutionProcedure;
@@ -43,5 +49,29 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the procedure to resolve conflicts in the case of custom mode.
         public string ConflictResolutionProcedure { get; set; }
+
+        public static ConflictResolutionPolicy ToSDKModel(PSConflictResolutionPolicy pSConflictResolutionPolicy)
+        {
+            if (pSConflictResolutionPolicy == null)
+            {
+                return null;
+            }
+
+            ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
+            {
+                Mode = pSConflictResolutionPolicy.Mode
+            };
+
+            if (pSConflictResolutionPolicy.Mode.Equals(ConflictResolutionMode.LastWriterWins, StringComparison.OrdinalIgnoreCase))
+            {
+                conflictResolutionPolicy.ConflictResolutionPath = pSConflictResolutionPolicy.ConflictResolutionPath;
+            }
+            else if (pSConflictResolutionPolicy.Mode.Equals(ConflictResolutionMode.Custom, StringComparison.OrdinalIgnoreCase))
+            {
+                conflictResolutionPolicy.ConflictResolutionProcedure = pSConflictResolutionPolicy.ConflictResolutionProcedure;
+            }
+
+            return conflictResolutionPolicy;
+        }
     }
 }
