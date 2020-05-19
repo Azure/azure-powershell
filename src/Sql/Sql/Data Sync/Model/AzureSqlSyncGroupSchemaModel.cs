@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 
         }
 
-        public AzureSqlSyncGroupSchemaModel(SyncGroupSchema schema)
+        public AzureSqlSyncGroupSchemaModel(Management.Sql.LegacySdk.Models.SyncGroupSchema schema)
         {
             if(schema.Tables != null){
                 Tables = new List<AzureSqlSyncGroupSchemaTableModel>();

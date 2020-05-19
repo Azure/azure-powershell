@@ -98,6 +98,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public string SyncState { get; set; }
 
         /// <summary>
+        /// Gets or sets the sync member resource Id
+        /// </summary>
+        public string SyncMemberAzureDatabaseResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to use private link connection
+        /// </summary>
+        public bool? UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlSyncMemberModel
         /// </summary>
         public AzureSqlSyncMemberModel()
@@ -128,6 +138,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             MemberDatabaseUserName = syncMember.Properties.UserName;
             MemberDatabaseType = syncMember.Properties.DatabaseType == null ? null : syncMember.Properties.DatabaseType.ToString();
             SyncState = syncMember.Properties.SyncState;
+            UsePrivateLinkConnection = syncMember.Properties.UsePrivateLinkConnection;
+            SyncMemberAzureDatabaseResourceId = syncMember.Properties.SyncMemberAzureDatabaseResourceId;
         }
     }
 }

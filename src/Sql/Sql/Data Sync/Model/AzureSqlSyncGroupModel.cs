@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public AzureSqlSyncGroupSchemaModel Schema { get; set; }
 
         /// <summary>
+        /// Gets or sets if private link connection should be used
+        /// </summary>
+        public bool? UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlSyncGroupModel
         /// </summary>
         public AzureSqlSyncGroupModel()
@@ -117,6 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             SyncState = syncGroup.Properties.SyncState;
             LastSyncTime = syncGroup.Properties.LastSyncTime;
             Schema = syncGroup.Properties.Schema == null ? null : new AzureSqlSyncGroupSchemaModel(syncGroup.Properties.Schema);
+            UsePrivateLinkConnection = syncGroup.Properties.UsePrivateLinkConnection;
         }
     }
 }
