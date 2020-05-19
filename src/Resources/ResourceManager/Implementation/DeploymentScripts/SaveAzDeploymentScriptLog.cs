@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string DeploymentScriptResourceId { get; set; }
 
+        [Alias("DeploymentScriptInputObject")]
         [Parameter(Position = 0, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The deployment script PowerShell object.")]
