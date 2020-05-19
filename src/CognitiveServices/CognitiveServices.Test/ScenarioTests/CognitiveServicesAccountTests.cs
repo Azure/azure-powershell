@@ -197,5 +197,12 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserOwnedStorage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpoint()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PrivateEndpoint");
+        }
     }
 }
