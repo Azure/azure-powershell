@@ -81,6 +81,7 @@ if ($ValidateMarkdownHelp)
 # We need to define new version of module instead of hardcode here
 $NewModules = @("Az.AppConfiguration",
                 "Az.Databricks",
+                "Az.DesktopVirtualization",
                 "Az.Functions",
                 "Az.Kusto",
                 "Az.MariaDb",
