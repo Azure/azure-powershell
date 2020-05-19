@@ -51,17 +51,6 @@ function Set-AzureRmSecuritySetting-SubscriptionLevelResource
 
 <#
 .SYNOPSIS
-Set an Azure Security Center setting on an InputObject
-#>
-function Set-AzureRmSecuritySetting-InputObject
-{
-    $updatedSetting = Get-AzSecuritySetting -SettingName "MCAS" | Set-AzSecuritySetting -Enabled $true
-
-	Validate-Setting $updatedSetting
-}
-
-<#
-.SYNOPSIS
 Validates a list of security pricings
 #>
 function Validate-Settings
