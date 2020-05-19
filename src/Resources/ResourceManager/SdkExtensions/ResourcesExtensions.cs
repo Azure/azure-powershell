@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 return null;
             }
 
-            var maxNameLength = 15;
+            var maxNameLength = 18;
             dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
 
             var maxTypeLength = 25;
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxTypeLength + "}\r\n";
                     output.AppendLine();
                     output.AppendFormat(rowFormat, "Key", "Value");
-                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxTypeLength, "="));
+                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxNameLength, "="));
 
                     foreach (KeyValuePair<string, object> pair in dictionary)
                     {

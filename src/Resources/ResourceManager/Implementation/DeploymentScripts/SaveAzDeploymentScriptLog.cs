@@ -126,6 +126,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         OutputPath,
                         () =>
                         {
+                            //Standardize newline character to be written into file
+                            string[] delims = new string[] { "\r", "\n", "\r\n" };
+                            string[] strings = deploymentScriptLog.Log.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+                            string log = String.Join(Environment.NewLine, strings);
+
                             AzureSession.Instance.DataStore.WriteFile(outputPathWithFileName,
                                 deploymentScriptLog.Log);
 
