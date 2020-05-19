@@ -35,8 +35,8 @@ function setupEnv() {
     $env.Add("passwd", $passwd)
     $env.Add("csPasswd", $csPasswd)
     $env.Add("blockchainMember", "myblockchain" + $rstr1)
-    New-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup -Consortium ('consortium' + $env.rstr1) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -SkuName S0
-    New-AzBlockchainMember -Name ("myblockchain" + $rstr4) -ResourceGroupName $env.resourceGroup -Consortium ('consortium' + $env.rstr4) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -SkuName S0
+    New-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup -Consortium ('consortium' + $env.rstr1) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
+    New-AzBlockchainMember -Name ("myblockchain" + $rstr4) -ResourceGroupName $env.resourceGroup -Consortium ('consortium' + $env.rstr4) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
 
     # Create the test blockchain transaction node
     $env.Add("blockchainTransactionNode", "tranctionnode" + $rstr1)
