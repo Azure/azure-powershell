@@ -84,6 +84,8 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string SettingName = "Setting name.";
         public const string Setting = "Setting.";
+        public const string SettingKind = "Setting kind.";
+        public const string Enabled = "Enables the setting.";
 
         #endregion
 

@@ -40,13 +40,10 @@ Set an Azure Security Center setting
 #>
 function Set-AzureRmSecuritySetting-SubscriptionLevelResource
 {
-    $setting = Get-AzSecuritySetting -SettingName "MCAS"
-
-	Validate-Setting $setting
-
-    $updatedSetting = Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting
+    $updatedSetting = Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
 
 	Validate-Setting $updatedSetting
+	Validate-EnabledProperty $updatedSetting
 }
 
 <#
@@ -74,4 +71,15 @@ function Validate-Setting
 	param($setting)
 
 	Assert-NotNull $setting
+}
+
+<#
+.SYNOPSIS
+Validates the enabled property in a setting
+#>
+function Validate-EnabledProperty
+{
+	param($setting)
+
+	Assert-True { $setting.Enabled -eq $true }
 }
