@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -128,12 +129,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         () =>
                         {
                             //Standardize newline character to be written into file
-                            string[] delims = new string[] { "\r", "\n", "\r\n" };
-                            string[] strings = deploymentScriptLog.Log.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-                            string log = String.Join(Environment.NewLine, strings);
+                            StringBuilder logs = new StringBuilder();
+                            StringReader stringReader = new StringReader(deploymentScriptLog.Log);
+
+                            String line = stringReader.ReadLine();
+                            while(line != null)
+                            {
+                                logs.Append(line);
+                                line = stringReader.ReadLine();
+                                if (line != null)
+                                    logs.Append(Environment.NewLine);
+                            }
 
                             AzureSession.Instance.DataStore.WriteFile(outputPathWithFileName,
-                                deploymentScriptLog.Log);
+                                logs.ToString());
 
                             WriteObject(new PsDeploymentScriptLogPath() {Path = outputPathWithFileName});
                         });
