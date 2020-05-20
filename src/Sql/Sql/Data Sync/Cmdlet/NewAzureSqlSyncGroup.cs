@@ -17,7 +17,7 @@ using System.Management.Automation;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Management.Sql.Models;
-using Hyak.Common;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;

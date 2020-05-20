@@ -16,7 +16,7 @@ using System.Security;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
