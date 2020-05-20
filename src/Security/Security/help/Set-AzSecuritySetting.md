@@ -14,7 +14,7 @@ Update a security setting in Azure Security Center
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzSecuritySetting -SettingName <String> -SettingInput <PSSecuritySetting>
+Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,14 +27,11 @@ Set-AzSecuritySetting -InputObject <PSSecuritySetting> -Enabled <Boolean>
 ## DESCRIPTION
 The Set-AzSecuritySetting cmdlet updates a specific security setting in Azure Security Center.
 
-
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> [Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting]$setting = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
-PS C:\> $setting.Enabled = $true
-PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingInput $setting
+PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
 
 Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
 Name: "MCAS"
@@ -50,7 +47,7 @@ Updates an MCAS data export setting
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,17 +59,29 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
-Status .
+Enables the setting.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
+Parameter Sets: SubscriptionLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Boolean
 Parameter Sets: InputObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -80,7 +89,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSSecuritySetting
+Type: Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 Parameter Sets: InputObject
 Aliases:
 
@@ -91,11 +100,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -SettingInput
-Setting.
+### -SettingKind
+Setting kind. (DataExportSettings)
 
 ```yaml
-Type: PSSecuritySetting
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -110,7 +119,7 @@ Accept wildcard characters: False
 Setting name. (MCAS/WDATP)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -125,7 +134,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -141,7 +150,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

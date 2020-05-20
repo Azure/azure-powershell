@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
                     if (InputObject.GetType().Name == nameof(PSSecurityDataExportSetting))
                     {
                         SettingKind = "DataExportSettings";
-                        Enabled = Enabled ? Enabled : ((PSSecurityDataExportSetting)InputObject).Enabled;
                     }
                     SettingName = InputObject.Name;
                     break;
