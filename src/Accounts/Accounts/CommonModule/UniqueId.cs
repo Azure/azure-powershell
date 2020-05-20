@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>
-        /// <param name="next">The next setp in the pipeline</param>
+        /// <param name="next">The next step in the pipeline</param>
         /// <returns>Amended pipeline for retrieving a response</returns>
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
         {

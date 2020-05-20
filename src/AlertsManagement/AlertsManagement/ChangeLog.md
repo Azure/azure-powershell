@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated help messages and document for `Get-AzActionRule`
 
 ## Version 0.1.1
 * Update references in .psd1 to use relative path

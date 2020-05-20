@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningServiceEnrollment", DefaultParameterSetName = ResourceParameterSet)]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDpsEnrollment")]
-    [OutputType(typeof(PSIndividualEnrollment), typeof(PSIndividualEnrollments[]))]
-    public class GetAzIotDeviceProvisioningServiceEnrollment : IotDpsBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningServiceEnrollmentGroup", DefaultParameterSetName = ResourceParameterSet)]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDpsEnrollmentGroup")]
+    [OutputType(typeof(PSEnrollmentGroup), typeof(PSEnrollmentGroups[]))]
+    public class GetAzIotDeviceProvisioningServiceEnrollmentGroup : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateNotNullOrEmpty]
         public string DpsName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Individual enrollment registration id.")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the enrollment group.")]
         [ValidateNotNullOrEmpty]
-        public string RegistrationId { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,15 +77,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             PSIotDpsConnectionString psIotDpsConnectionString = IotDpsUtils.ToPSIotDpsConnectionString(policy, provisioningServiceDescription.Properties.ServiceOperationsHostName);
             ProvisioningServiceClient client = ProvisioningServiceClient.CreateFromConnectionString(psIotDpsConnectionString.PrimaryConnectionString);
 
-            if (this.RegistrationId != null)
+            if (this.Name != null)
             {
-                IndividualEnrollment result = client.GetIndividualEnrollmentAsync(this.RegistrationId).GetAwaiter().GetResult();
-                this.WriteObject(IotDpsUtils.ToPSIndividualEnrollment(result));
+                EnrollmentGroup result = client.GetEnrollmentGroupAsync(this.Name).GetAwaiter().GetResult();
+                this.WriteObject(IotDpsUtils.ToPSEnrollmentGroup(result));
             }
             else
             {
-                QueryResult enrollments = client.CreateIndividualEnrollmentQuery(new QuerySpecification("select * from enrollments")).NextAsync().GetAwaiter().GetResult();
-                this.WriteObject(IotDpsUtils.ToPSIndividualEnrollments(enrollments.Items), true);
+                QueryResult enrollments = client.CreateEnrollmentGroupQuery(new QuerySpecification("select * from enrollments")).NextAsync().GetAwaiter().GetResult();
+                this.WriteObject(IotDpsUtils.ToPSEnrollmentGroups(enrollments.Items), true);
             }
         }
     }

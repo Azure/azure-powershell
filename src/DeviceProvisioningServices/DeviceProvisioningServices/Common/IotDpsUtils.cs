@@ -105,44 +105,64 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             foreach (IndividualEnrollment enrollment in enrollments)
             {
                 PSIndividualEnrollments psIndividualEnrollment = ConvertObject<IndividualEnrollment, PSIndividualEnrollments>(enrollment);
-                psIndividualEnrollment.Attestation = GetAttestationMechanism(enrollment);
+                psIndividualEnrollment.Attestation = GetAttestationMechanism(enrollment.Attestation);
                 psIndividualEnrollments.Add(psIndividualEnrollment);
             }
 
             return psIndividualEnrollments;
         }
 
+        public static IList<PSEnrollmentGroups> ToPSEnrollmentGroups(IEnumerable<object> enrollments)
+        {
+            IList<PSEnrollmentGroups> psEnrollmentGroups = new List<PSEnrollmentGroups>();
+            foreach (EnrollmentGroup enrollment in enrollments)
+            {
+                PSEnrollmentGroups psEnrollmentGroup = ConvertObject<EnrollmentGroup, PSEnrollmentGroups>(enrollment);
+                psEnrollmentGroup.Attestation = GetAttestationMechanism(enrollment.Attestation);
+                psEnrollmentGroups.Add(psEnrollmentGroup);
+            }
+
+            return psEnrollmentGroups;
+        }
+
         public static PSIndividualEnrollment ToPSIndividualEnrollment(IndividualEnrollment enrollment)
         {
             PSIndividualEnrollment psIndividualEnrollment = ConvertObject<IndividualEnrollment, PSIndividualEnrollment>(enrollment);
-            psIndividualEnrollment.Attestation = GetAttestationMechanism(enrollment);
+            psIndividualEnrollment.Attestation = GetAttestationMechanism(enrollment.Attestation);
             return psIndividualEnrollment;
         }
 
-        public static PSAttestation GetAttestationMechanism(IndividualEnrollment enrollment)
+        public static PSEnrollmentGroup ToPSEnrollmentGroup(EnrollmentGroup enrollment)
         {
-            if (enrollment.Attestation.GetType().Name.Equals("SymmetricKeyAttestation", StringComparison.OrdinalIgnoreCase))
+            PSEnrollmentGroup psEnrollmentGroup = ConvertObject<EnrollmentGroup, PSEnrollmentGroup>(enrollment);
+            psEnrollmentGroup.Attestation = GetAttestationMechanism(enrollment.Attestation);
+            return psEnrollmentGroup;
+        }
+
+        public static PSAttestation GetAttestationMechanism(Attestation enrollmentAttestation)
+        {
+            if (enrollmentAttestation.GetType().Name.Equals("SymmetricKeyAttestation", StringComparison.OrdinalIgnoreCase))
             {
                 return new PSAttestation()
                 {
                     Type = PSAttestationMechanismType.SymmetricKey,
-                    SymmetricKey = (SymmetricKeyAttestation)enrollment.Attestation
+                    SymmetricKey = (SymmetricKeyAttestation)enrollmentAttestation
                 };
             }
-            else if (enrollment.Attestation.GetType().Name.Equals("X509Attestation", StringComparison.OrdinalIgnoreCase))
+            else if (enrollmentAttestation.GetType().Name.Equals("X509Attestation", StringComparison.OrdinalIgnoreCase))
             {
                 return new PSAttestation()
                 {
                     Type = PSAttestationMechanismType.X509,
-                    X509 = (X509Attestation)enrollment.Attestation
+                    X509 = (X509Attestation)enrollmentAttestation
                 };
             }
-            else if (enrollment.Attestation.GetType().Name.Equals("TpmAttestation", StringComparison.OrdinalIgnoreCase))
+            else if (enrollmentAttestation.GetType().Name.Equals("TpmAttestation", StringComparison.OrdinalIgnoreCase))
             {
                 return new PSAttestation()
                 {
                     Type = PSAttestationMechanismType.Tpm,
-                    Tpm = (TpmAttestation)enrollment.Attestation
+                    Tpm = (TpmAttestation)enrollmentAttestation
                 };
             }
             else
