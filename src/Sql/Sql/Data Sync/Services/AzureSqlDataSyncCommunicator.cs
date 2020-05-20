@@ -126,17 +126,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Get a sync group
         /// </summary>
-        public SyncGroup GetSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        public Management.Sql.Models.SyncGroup GetSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            return GetLegacySqlClient().DataSync.GetSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName).SyncGroup;
+            return GetCurrentSqlClient().SyncGroups.Get(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>
         /// List all sync groups
         /// </summary>
-        public IList<SyncGroup> ListSyncGroups(string resourceGroupName, string serverName, string databaseName)
+        public IEnumerable<Management.Sql.Models.SyncGroup> ListSyncGroups(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetLegacySqlClient().DataSync.ListSyncGroup(resourceGroupName, serverName, databaseName).SyncGroups;
+            return GetCurrentSqlClient().SyncGroups.ListByDatabase(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -175,17 +175,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Get a sync group
         /// </summary>
-        public SyncMember GetSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberGeneralParameters parameters)
+        public Management.Sql.Models.SyncMember GetSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberGeneralParameters parameters)
         {
-            return GetLegacySqlClient().DataSync.GetSyncMember(resourceGroupName, serverName, databaseName, parameters).SyncMember;
+            return GetCurrentSqlClient().SyncMembers.Get(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
         /// List all sync members
         /// </summary>
-        public IList<SyncMember> ListSyncMembers(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        public IEnumerable<Management.Sql.Models.SyncMember> ListSyncMembers(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            return GetLegacySqlClient().DataSync.ListSyncMember(resourceGroupName, serverName, databaseName, syncGroupName).SyncMembers;
+            return GetCurrentSqlClient().SyncMembers.ListBySyncGroup(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>

@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="databaseName">The name of the database</param>
         /// <param name="syncGroup">The sync group object from the response</param>
         /// <returns>The converted model</returns>
-        public static AzureSqlSyncGroupModel CreateSyncGroupModelFromResponse(string resourceGroupName, string serverName, string databaseName, SyncGroup syncGroup)
+        public static AzureSqlSyncGroupModel CreateSyncGroupModelFromResponse(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.SyncGroup syncGroup)
         {
             return new AzureSqlSyncGroupModel(resourceGroupName, serverName, databaseName, syncGroup);
         }
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="databaseName">The name of the database</param>
         /// <param name="syncMember">The sync member object from the response</param>
         /// <returns>The converted model</returns>
-        public static AzureSqlSyncMemberModel CreateSyncMemberModelFromResponse(string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncMember syncMember)
+        public static AzureSqlSyncMemberModel CreateSyncMemberModelFromResponse(string resourceGroupName, string serverName, string databaseName, string syncGroupName, Management.Sql.Models.SyncMember syncMember)
         {
             return new AzureSqlSyncMemberModel(resourceGroupName, serverName, databaseName, syncGroupName, syncMember);
         }

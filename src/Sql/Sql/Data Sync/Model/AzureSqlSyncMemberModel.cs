@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
