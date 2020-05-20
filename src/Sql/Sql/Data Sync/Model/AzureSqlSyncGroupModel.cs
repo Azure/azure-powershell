@@ -115,14 +115,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             DatabaseName = databaseName;
             ResourceId = syncGroup.Id;
             SyncGroupName = syncGroup.Name;
-            IntervalInSeconds = syncGroup.Properties.Interval;
-            SyncDatabaseId = syncGroup.Properties.SyncDatabaseId;
-            HubDatabaseUserName = syncGroup.Properties.HubDatabaseUserName;
-            ConflictResolutionPolicy = syncGroup.Properties.ConflictResolutionPolicy == null ? null : syncGroup.Properties.ConflictResolutionPolicy.ToString();
-            SyncState = syncGroup.Properties.SyncState;
-            LastSyncTime = syncGroup.Properties.LastSyncTime;
-            Schema = syncGroup.Properties.Schema == null ? null : new AzureSqlSyncGroupSchemaModel(syncGroup.Properties.Schema);
-            UsePrivateLinkConnection = syncGroup.Properties.UsePrivateLinkConnection;
+            IntervalInSeconds = syncGroup.Interval;
+            SyncDatabaseId = syncGroup.SyncDatabaseId;
+            HubDatabaseUserName = syncGroup.HubDatabaseUserName;
+            ConflictResolutionPolicy = syncGroup.ConflictResolutionPolicy == null ? null : syncGroup.ConflictResolutionPolicy.ToString();
+            SyncState = syncGroup.SyncState;
+            LastSyncTime = syncGroup.LastSyncTime;
+            Schema = syncGroup.Schema == null ? null : new AzureSqlSyncGroupSchemaModel(syncGroup.Schema);
+            UsePrivateLinkConnection = syncGroup.UsePrivateLinkConnection;
         }
     }
 }

@@ -130,16 +130,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             ResourceId = syncMember.Id;
             SyncGroupName = syncGroupName;
             SyncMemberName = syncMember.Name;
-            SyncDirection = syncMember.Properties.SyncDirection == null ? null : syncMember.Properties.SyncDirection.ToString();
-            SyncAgentId = syncMember.Properties.SyncAgentId;
-            SqlServerDatabaseId = syncMember.Properties.SqlServerDatabaseId;
-            MemberServerName = syncMember.Properties.ServerName;
-            MemberDatabaseName = syncMember.Properties.DatabaseName;
-            MemberDatabaseUserName = syncMember.Properties.UserName;
-            MemberDatabaseType = syncMember.Properties.DatabaseType == null ? null : syncMember.Properties.DatabaseType.ToString();
-            SyncState = syncMember.Properties.SyncState;
-            UsePrivateLinkConnection = syncMember.Properties.UsePrivateLinkConnection;
-            SyncMemberAzureDatabaseResourceId = syncMember.Properties.SyncMemberAzureDatabaseResourceId;
+            SyncDirection = syncMember.SyncDirection == null ? null : syncMember.SyncDirection.ToString();
+            SyncAgentId = syncMember.SyncAgentId;
+            SqlServerDatabaseId = syncMember.SqlServerDatabaseId;
+            MemberServerName = syncMember.ServerName;
+            MemberDatabaseName = syncMember.DatabaseName;
+            MemberDatabaseUserName = syncMember.UserName;
+            MemberDatabaseType = syncMember.DatabaseType == null ? null : syncMember.DatabaseType.ToString();
+            SyncState = syncMember.SyncState;
+            UsePrivateLinkConnection = syncMember.UsePrivateLinkConnection;
+            SyncMemberAzureDatabaseResourceId = syncMember.SyncMemberAzureDatabaseResourceId;
         }
     }
 }
