@@ -298,24 +298,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public IList<ASRRecoveryPlanAction> StartGroupActions { get; set; }
     }
 
-    // 
-    // Summary: 
-    //     Recovery plan specific details. 
-    public class ASRRecoveryPlanProviderSpecificDetails
-    {
-        // 
-        // Summary: 
-        //     Initializes a new instance of the ASRRecoveryPlanProviderSpecificDetails class. 
-        // 
-        public ASRRecoveryPlanProviderSpecificDetails()
-        {
-        }
-    }
-
     //
     // Summary:
     //     Recovery plan A2A specific details.
-    public class ASRRecoveryPlanA2ADetails: ASRRecoveryPlanProviderSpecificDetails
+    public class ASRRecoveryPlanA2ADetails
     {      
         //
         // Summary:
@@ -405,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (recoveryPlan.Properties.ProviderSpecificDetails != null &&
                 recoveryPlan.Properties.ProviderSpecificDetails.Count > 0)
             {
-                this.ProviderSpecificDetails = new List<ASRRecoveryPlanProviderSpecificDetails>();
+                this.ProviderSpecificDetails = new List<ASRRecoveryPlanA2ADetails>();
                 foreach (var providerSpecificDetails in recoveryPlan.Properties.ProviderSpecificDetails)
                 {
                     if (providerSpecificDetails is RecoveryPlanA2ADetails)
@@ -499,7 +485,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Provider Specific Details
         /// </summary>
-        public List<ASRRecoveryPlanProviderSpecificDetails> ProviderSpecificDetails { get; set; }
+        public List<ASRRecoveryPlanA2ADetails> ProviderSpecificDetails { get; set; }
 
         #endregion
     }
