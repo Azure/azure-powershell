@@ -3,74 +3,11 @@
     {
       "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS?api-version=2019-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3MvTUNBUz9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c911d436-80ba-4e12-b6cc-dd5fe7b9a949"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "70bcdb30-9ede-4d8a-a865-f4adb53773b5"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "749"
-        ],
-        "x-ms-correlation-request-id": [
-          "321bf19c-c420-4bb3-bf22-56b999a813c1"
-        ],
-        "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200508T090301Z:321bf19c-c420-4bb3-bf22-56b999a813c1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 08 May 2020 09:03:00 GMT"
-        ],
-        "Content-Length": [
-          "212"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS\",\r\n  \"name\": \"MCAS\",\r\n  \"type\": \"Microsoft.Security/settings\",\r\n  \"kind\": \"DataExportSettings\",\r\n  \"properties\": {\r\n    \"enabled\": true\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3MvTUNBUz9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"kind\": \"DataExportSettings\",\r\n  \"properties\": {\r\n    \"enabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5f13ad9b-9a5f-440f-be15-8fe3cdf25b43"
+          "5269e478-3f5d-4833-8650-c7f970a73dd9"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8020524c-a130-43e1-9b63-6eb041f4f5c5"
+          "ce8ad3ff-0ceb-4b0e-a53c-8b80f2fe6d56"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,10 +42,10 @@
           "249"
         ],
         "x-ms-correlation-request-id": [
-          "c053dc92-4717-4c20-8e9e-2d640c901dee"
+          "75c43147-a18d-4a37-aa2d-6d64530d8091"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200508T090509Z:c053dc92-4717-4c20-8e9e-2d640c901dee"
+          "GERMANYWESTCENTRAL:20200520T134340Z:75c43147-a18d-4a37-aa2d-6d64530d8091"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 May 2020 09:05:08 GMT"
+          "Wed, 20 May 2020 13:43:40 GMT"
         ],
         "Content-Length": [
           "212"
