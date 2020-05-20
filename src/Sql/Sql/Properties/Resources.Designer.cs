@@ -484,6 +484,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database to be added with id &apos;{0}&apos; already exists in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
         /// </summary>
         internal static string FailoverGroupAddDatabaseAlreadyExists {

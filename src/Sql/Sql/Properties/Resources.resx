@@ -622,4 +622,10 @@
   <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
     <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden</value>
   </data>
+  <data name="FailoverAzureSqlInstanceDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Managed Instance '{0}'.</value>
+  </data>
+  <data name="FailoverAzureSqlInstanceWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Managed Instance '{0}'?</value>
+  </data>
 </root>

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for Azure SQL Managed Instance failover
 
 ## Version 2.6.1
 * Enhance performance of:
