@@ -15,7 +15,7 @@ Describe 'Remove-AzBlockchainMember' {
     $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
     $csPasswd = 'strongConsortiumManagementPassword@1' | ConvertTo-SecureString -AsPlainText -Force
     It 'Delete' {
-        New-AzBlockchainMember -Name ("myblockchain" + $env.rstr3) -ResourceGroupName $env.resourceGroup -Consortium ("consortium" + $env.rstr3) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -SkuName S0
+        New-AzBlockchainMember -Name ("myblockchain" + $env.rstr3) -ResourceGroupName $env.resourceGroup -Consortium ("consortium" + $env.rstr3) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
         { Remove-AzBlockchainMember -Name ("myblockchain" + $env.rstr3) -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
 

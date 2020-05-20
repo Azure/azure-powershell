@@ -100,7 +100,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [System.String]
     # Gets or sets Sku name
-    ${SkuName},
+    ${Sku},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
@@ -185,13 +185,17 @@ process {
     try {
         if ($PSBoundParameters.ContainsKey('Password')) {
             $psTxt = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['Password']))
-            $PSBoundParameters.Remove('Password')
+            $null = $PSBoundParameters.Remove('Password')
             $PSBoundParameters.Add('Password', $psTxt)
         }
         if ($PSBoundParameters.ContainsKey('ConsortiumManagementAccountPassword')) {
             $psTxt = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['ConsortiumManagementAccountPassword']))
-            $PSBoundParameters.Remove('ConsortiumManagementAccountPassword')
+            $null = $PSBoundParameters.Remove('ConsortiumManagementAccountPassword')
             $PSBoundParameters.Add('ConsortiumManagementAccountPassword', $psTxt)
+        }
+        if ($PSBoundParameters.ContainsKey('Sku')) {
+            $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
+            $null = $PSBoundParameters.Remove('Sku')
         }
         Az.Blockchain.internal\New-AzBlockchainMember @PSBoundParameters
     } catch {

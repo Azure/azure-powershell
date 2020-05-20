@@ -16,7 +16,7 @@ Create a blockchain member.
 New-AzBlockchainMember -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Consortium <String>] [-ConsortiumManagementAccountPassword <SecureString>]
  [-ConsortiumMemberDisplayName <String>] [-ConsortiumRole <String>] [-FirewallRule <IFirewallRule[]>]
- [-Location <String>] [-Password <SecureString>] [-Protocol <BlockchainProtocol>] [-SkuName <String>]
+ [-Location <String>] [-Password <SecureString>] [-Protocol <BlockchainProtocol>] [-Sku <String>]
  [-SkuTier <String>] [-Tag <Hashtable>] [-ValidatorNodeSkuCapacity <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Create a blockchain member.
 ```powershell
 PS C:\> $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> $csPasswd = 'strongConsortiumManagementPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzBlockchainMember -Name dolauli002 -ResourceGroupName testgroup -Consortium consor002 -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -SkuName S0
+PS C:\> New-AzBlockchainMember -Name dolauli002 -ResourceGroupName testgroup -Consortium consor002 -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
 
 Location Name       Type
 -------- ----       ----
@@ -238,7 +238,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 Gets or sets Sku name
 
 ```yaml
