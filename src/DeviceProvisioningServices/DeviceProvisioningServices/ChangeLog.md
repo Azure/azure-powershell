@@ -23,5 +23,10 @@
     - `Get-AzIoTDeviceProvisioningServiceEnrollment`
     - `Remove-AzIoTDeviceProvisioningServiceEnrollment`
     - `Set-AzIoTDeviceProvisioningServiceEnrollment`
+* Manage Enrollment Groups. New cmdlets are:
+    - `Add-AzIoTDeviceProvisioningServiceEnrollmentGroup`
+    - `Get-AzIoTDeviceProvisioningServiceEnrollmentGroup`
+    - `Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup`
+    - `Set-AzIoTDeviceProvisioningServiceEnrollmentGroup`
 ## Version 0.7.2
 * Update references in .psd1 to use relative path

@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string AddEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("AddEnrollmentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string AddLinkedHub {
@@ -151,6 +160,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string RemoveEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("RemoveEnrollmentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete linked IoT Hub from an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string RemoveLinkedHub {
@@ -192,6 +210,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         internal static string UpdateEnrollment {
             get {
                 return ResourceManager.GetString("UpdateEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string UpdateEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("UpdateEnrollmentGroup", resourceCulture);
             }
         }
         

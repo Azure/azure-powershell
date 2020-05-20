@@ -762,6 +762,10 @@
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
     {
+      "file": "src\\DeviceProvisioningServices\\DeviceProvisioningServices.Test\\SessionRecords\\Commands.DeviceProvisioningServices.Test.IotDpsEnrollmentGroupTests\\IotDpsEnrollmentGroupLifeCycle.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
       "file": "src\\HDInsight\\HDInsight.Test\\HDInsightTestBase.cs",
       "_justification": "Fake password used against mocked client"
     },
