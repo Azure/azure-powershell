@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// Construct AzureSqlSyncGroupSchemaTableModel
         /// </summary>
         /// <param name="table">sync group schema table</param>
-        public AzureSqlSyncGroupSchemaTableModel(Management.Sql.LegacySdk.Models.SyncGroupSchemaTable table)
+        public AzureSqlSyncGroupSchemaTableModel(SyncGroupSchemaTable table)
         {
             if (table != null && table.Columns != null)
             {

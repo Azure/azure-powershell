@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 
         }
 
-        public AzureSqlSyncGroupSchemaModel(Management.Sql.LegacySdk.Models.SyncGroupSchema schema)
+        public AzureSqlSyncGroupSchemaModel(SyncGroupSchema schema)
         {
             if(schema.Tables != null){
                 Tables = new List<AzureSqlSyncGroupSchemaTableModel>();

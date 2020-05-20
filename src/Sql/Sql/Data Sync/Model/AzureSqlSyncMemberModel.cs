@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             SyncMemberName = syncMember.Name;
             SyncDirection = syncMember.SyncDirection == null ? null : syncMember.SyncDirection.ToString();
             SyncAgentId = syncMember.SyncAgentId;
-            SqlServerDatabaseId = syncMember.SqlServerDatabaseId;
+            SqlServerDatabaseId = syncMember.SqlServerDatabaseId == null ? null : syncMember.SqlServerDatabaseId.ToString();
             MemberServerName = syncMember.ServerName;
             MemberDatabaseName = syncMember.DatabaseName;
             MemberDatabaseUserName = syncMember.UserName;

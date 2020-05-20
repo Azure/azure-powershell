@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// </summary>
         public Management.Sql.Models.SyncMember GetSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberGeneralParameters parameters)
         {
-            return GetCurrentSqlClient().SyncMembers.Get(resourceGroupName, serverName, databaseName, parameters);
+            return GetCurrentSqlClient().SyncMembers.Get(resourceGroupName, serverName, databaseName, parameters.SyncGroupName, parameters.SyncMemberName);
         }
 
         /// <summary>

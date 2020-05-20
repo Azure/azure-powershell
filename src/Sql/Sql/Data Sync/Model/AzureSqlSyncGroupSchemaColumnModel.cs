@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// Construct AzureSqlSyncGroupSchemaColumnModel
         /// </summary>
         /// <param name="column">sync group schema column</param>
-        public AzureSqlSyncGroupSchemaColumnModel(Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn column)
+        public AzureSqlSyncGroupSchemaColumnModel(SyncGroupSchemaTableColumn column)
         {
             QuotedName = column != null ? column.QuotedName : null;
             DataSize = column != null ? column.DataSize : null;
