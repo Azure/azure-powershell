@@ -157,9 +157,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
-
 
 ### System.Boolean
 
