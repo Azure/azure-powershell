@@ -15,19 +15,20 @@
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Security.Models.Settings;
 
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", DefaultParameterSetName = ParameterSetNames.SubscriptionLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecuritySetting))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", SupportsShouldProcess = true), OutputType(typeof(PSSecuritySetting))]
     public class SetSettings : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
         [ValidateNotNullOrEmpty]
         public string SettingKind { get; set; }
 
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
         [ValidateNotNullOrEmpty]
         public PSSecuritySetting InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Enabled)]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
@@ -46,12 +47,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 
             switch (ParameterSetName)
             {
-                case ParameterSetNames.SubscriptionLevelResource:
+                case ParameterSetNames.DataExportSettings:
                     break;
                 case ParameterSetNames.InputObject:
                     if (InputObject.GetType().Name == nameof(PSSecurityDataExportSetting))
                     {
                         SettingKind = "DataExportSettings";
+                        Enabled = !this.IsParameterBound(c => c.Enabled) ? ((PSSecurityDataExportSetting)InputObject).Enabled : Enabled;
                     }
                     SettingName = InputObject.Name;
                     break;
