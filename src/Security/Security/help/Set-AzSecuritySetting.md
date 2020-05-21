@@ -12,7 +12,7 @@ Update a security setting in Azure Security Center
 
 ## SYNTAX
 
-### SubscriptionLevelResource (Default)
+### DataExportSettingsScope
 ```
 Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -20,7 +20,7 @@ Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Bool
 
 ### InputObject
 ```
-Set-AzSecuritySetting -InputObject <PSSecuritySetting> -Enabled <Boolean>
+Set-AzSecuritySetting -InputObject <PSSecuritySetting> [-Enabled <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Enables the setting.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: SubscriptionLevelResource
+Parameter Sets: DataExportSettingsScope
 Aliases:
 
 Required: True
@@ -78,7 +78,7 @@ Type: System.Boolean
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +105,7 @@ Setting kind. (DataExportSettings)
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource
+Parameter Sets: DataExportSettingsScope
 Aliases:
 
 Required: True
@@ -120,7 +120,7 @@ Setting name. (MCAS/WDATP)
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource
+Parameter Sets: DataExportSettingsScope
 Aliases:
 
 Required: True
