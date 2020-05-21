@@ -5089,9 +5089,9 @@ end {
 
 <#
 .Synopsis
-
+Get the Windows virtual desktop registration info.
 .Description
-
+Get the Windows virtual desktop registration info.
 .Example
 PS C:\> Get-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
@@ -5132,39 +5132,46 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -5223,9 +5230,9 @@ end {
 
 <#
 .Synopsis
-
+Create Windows virtual desktop registration info.
 .Description
-
+Create Windows virtual desktop registration info.
 .Example
 PS C:\> New-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 
@@ -5272,39 +5279,46 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -5363,9 +5377,9 @@ end {
 
 <#
 .Synopsis
-
+Register a Windows virtual desktop application group.
 .Description
-
+Register a Windows virtual desktop application group.
 .Example
 PS C:\> Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
@@ -5414,39 +5428,46 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -5505,14 +5526,12 @@ end {
 
 <#
 .Synopsis
-
+Remove the Windows virtual desktop registration info.
 .Description
-
+Remove the Windows virtual desktop registration info.
 .Example
 PS C:\> Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
-.Outputs
-System.Object
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
 #>
@@ -5543,39 +5562,46 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -5634,9 +5660,9 @@ end {
 
 <#
 .Synopsis
-
+Unregister the Windows virtual desktop application group.
 .Description
-
+Unregister the Windows virtual desktop application group.
 .Example
 PS C:\> Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
@@ -5685,39 +5711,46 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
