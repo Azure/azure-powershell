@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Security.Models.Settings;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", SupportsShouldProcess = true), OutputType(typeof(PSSecuritySetting))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSecuritySetting))]
     public class SetSettings : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
