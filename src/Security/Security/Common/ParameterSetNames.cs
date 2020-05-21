@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #region Settings
 
-        public const string DataExportSettings = "DataExportSettings";
+        public const string DataExportSettingsScope = "DataExportSettingsScope";
 
         #endregion
     }

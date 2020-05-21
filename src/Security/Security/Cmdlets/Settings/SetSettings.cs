@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", SupportsShouldProcess = true), OutputType(typeof(PSSecuritySetting))]
     public class SetSettings : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
         [ValidateNotNullOrEmpty]
         public string SettingKind { get; set; }
 
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
         [ValidateNotNullOrEmpty]
         public PSSecuritySetting InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettings, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = false, HelpMessage = ParameterHelpMessages.Enabled)]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 
             switch (ParameterSetName)
             {
-                case ParameterSetNames.DataExportSettings:
+                case ParameterSetNames.DataExportSettingsScope:
                     break;
                 case ParameterSetNames.InputObject:
                     if (InputObject.GetType().Name == nameof(PSSecurityDataExportSetting))

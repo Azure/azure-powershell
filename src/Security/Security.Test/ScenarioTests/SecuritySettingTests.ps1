@@ -38,7 +38,7 @@ function Get-AzureRmSecuritySetting-SubscriptionLevelResource
 .SYNOPSIS
 Set an Azure Security Center setting
 #>
-function Set-AzureRmSecuritySetting-SubscriptionLevelResource
+function Set-AzureRmSecuritySetting-DataExportSettingsScope
 {
     $updatedSetting = Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
 

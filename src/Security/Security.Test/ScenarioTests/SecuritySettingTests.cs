@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetSubscriptionLevelResource()
+        public void SetDataExportSettingsScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-SubscriptionLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-DataExportSettingsScope");
         }
     }
 }
