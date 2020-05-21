@@ -66,6 +66,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public long Version { get; set; } = 1;
 
+        [Parameter(Position = 8, Mandatory = false,
+            HelpMessage = "The function alias if query serves as a function.")]
+        [ValidateNotNullOrEmpty]
+        public string FunctionAlias { get; set; }
+
+        [Parameter(Position = 9, Mandatory = false,
+            HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
+        [ValidateNotNullOrEmpty]
+        public string FunctionParameters { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -76,7 +86,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Category = this.Category,
                 DisplayName = this.DisplayName,
                 Query = this.Query,
-                Version = this.Version
+                Version = this.Version,
+                FunctionAlias = this.FunctionAlias,
+                FunctionParameters = this.FunctionParameters
             };
 
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
