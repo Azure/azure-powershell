@@ -38,8 +38,9 @@
 * Supported RoutingPreference settings in create/update Storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
-* Add -Adjob to get/list account cmdlet
-    - `Get-AzStorageAccount`
+
+## Version 2.0.0
+* Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
 * Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
     - `Set-AzStorageAccount`
 * Fixed remove Azure File Directory fail with pipeline
