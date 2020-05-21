@@ -18,7 +18,7 @@ Describe 'New-AzBlockchainMemberApiKey' {
         $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 
-    It 'RegenerateViaIdentityExpanded' -skip {
+    It 'RegenerateViaIdentityExpanded' {
         #$PSDefaultParameterValues["Disabled"] = $True
         $bcMember = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup 
         $keys = New-AzBlockchainMemberApiKey -InputObject $bcMember -KeyName $keyPair[0].KeyName
