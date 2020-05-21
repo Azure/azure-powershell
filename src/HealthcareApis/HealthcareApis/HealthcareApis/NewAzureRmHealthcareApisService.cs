@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public int? CosmosOfferThroughput { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ExportStorageAccountName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -168,6 +173,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
                             CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                            ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName},
                             AccessPolicies = accessPolicies
                         }
                     };

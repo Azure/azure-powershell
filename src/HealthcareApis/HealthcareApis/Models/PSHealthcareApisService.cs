@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
+            this.ExportStorageAccountName = serviceDescription.Properties.ExportConfiguration.StorageAccountName;
 
             var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
             foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
@@ -66,6 +67,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public IList<string> CorsOrigins { get; private set; }
 
         public int? CosmosDbOfferThroughput { get; private set; }
+
+        public string ExportStorageAccountName { get; private set; }
 
         public string Etag { get; private set; }
 

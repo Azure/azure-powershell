@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableCorsCredential { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ExportStorageAccountName { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
@@ -274,6 +279,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         Methods = CorsMethod ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
                         MaxAge = CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
                         AllowCredentials = IsCorsCredentialsAllowed(healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials)
+                    },
+                    ExportConfiguration = new ServiceExportConfigurationInfo()
+                    {
+                        StorageAccountName = ExportStorageAccountName
                     },
                     AccessPolicies = accessPolicies
                 },
