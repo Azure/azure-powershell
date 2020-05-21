@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -64,6 +65,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
+        [Parameter(Position = 3, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [ValidateNotNullOrEmpty]
+        public int Tail { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "Forces the overwrite of the existing file.")]
         public SwitchParameter Force { get; set; }
@@ -76,6 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
 
             PsDeploymentScriptLog deploymentScriptLog;
+            int tailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
 
             try
             {
@@ -83,17 +91,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case SaveDeploymentScriptLogByName:
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, tailParam);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
-                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId));
+                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
+                            tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
                             DeploymentScriptInputObject.Name,
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id));
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
+                            tailParam);
                         break;
                     default:
                         throw new PSInvalidOperationException();

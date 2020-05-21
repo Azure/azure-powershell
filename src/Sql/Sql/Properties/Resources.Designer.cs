@@ -1456,6 +1456,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string SyncMemberIdRequired {
+            get {
+                return ResourceManager.GetString("SyncMemberIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sync Member with name: ‘{0}&apos; already exists in Sync Group &apos;{1}&apos;..
         /// </summary>
         internal static string SyncMemberNameExists {

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Added SyncMemberAzureDatabaseResourceId to `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+
+## Version 2.6.1
 * Enhance performance of:
     - `Set-AzSqlDatabaseSensitivityClassification`
     - `Set-AzSqlInstanceDatabaseSensitivityClassification`
