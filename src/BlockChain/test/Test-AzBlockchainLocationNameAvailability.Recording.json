@@ -1,17 +1,14 @@
 {
-  "Test-AzBlockchainLocationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview+1": {
+  "Test-AzBlockchainLocationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview",
-      "Content": "{\r\n  \"name\": \"123\",\r\n  \"type\": \"Microsoft.Blockchain/blockchainMembers\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview",
+      "Content": "{\n  \"name\": \"123\",\n  \"type\": \"Microsoft.Blockchain/blockchainMembers\"\n}",
       "Headers": {
-        "x-ms-unique-id": [ "188" ],
-        "User-Agent": [ "PSVersion/v6.2.2" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "74" ]
+        "Content-Length": [ "71" ]
       }
     },
     "Response": {
@@ -19,14 +16,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
-        "x-ms-correlation-request-id": [ "dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T040728Z:dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
-        "Date": [ "Tue, 19 Nov 2019 04:07:28 GMT" ]
+        "x-ms-request-id": [ "00c87d20-8f41-457c-853e-38b432b28fae" ],
+        "x-ms-correlation-request-id": [ "00c87d20-8f41-457c-853e-38b432b28fae" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T092205Z:00c87d20-8f41-457c-853e-38b432b28fae" ],
+        "Date": [ "Wed, 20 May 2020 09:22:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "234" ],
@@ -34,6 +31,40 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"nameAvailable\":false,\"message\":\"The blockchain member name is invalid. It can contain only lowercase letters and numbers. The first character must be a letter. The value must be between 2 and 20 characters long.\",\"reason\":\"Invalid\"}"
+    }
+  },
+  "Test-AzBlockchainLocationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview",
+      "Content": "{\n  \"name\": \"lucasblockchain01\",\n  \"type\": \"Microsoft.Blockchain/blockchainMembers\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "85" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "6adaea75-6e76-468c-a808-a6af717c15eb" ],
+        "x-ms-correlation-request-id": [ "6adaea75-6e76-468c-a808-a6af717c15eb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T092206Z:6adaea75-6e76-468c-a808-a6af717c15eb" ],
+        "Date": [ "Wed, 20 May 2020 09:22:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"message\":null,\"reason\":\"NotSpecified\"}"
     }
   }
 }

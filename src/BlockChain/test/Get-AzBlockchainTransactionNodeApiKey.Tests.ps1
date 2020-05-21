@@ -13,6 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzBlockchainTransactionNodeApiKey' {
     It 'List' {
-        { Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode } | Should -Not -Throw
+        $tNodeKeys = Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode 
+        $tNodeKeys.Count | Should -Be 2
     }
 }

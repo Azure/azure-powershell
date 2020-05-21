@@ -1,17 +1,14 @@
 {
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+1": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
-      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"consortium\": \"PowershellConsortiumName4ugj85\",\r\n    \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\",\r\n    \"password\": \"strongMemberAccountPassword@1\",\r\n    \"protocol\": \"Quorum\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"consortium\": \"PowershellConsortiumNameajg3wi\",\n    \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\",\n    \"password\": \"strongMemberAccountPassword@1\",\n    \"protocol\": \"Quorum\"\n  },\n  \"sku\": {\n    \"name\": \"S0\"\n  }\n}",
       "Headers": {
-        "x-ms-unique-id": [ "79" ],
-        "User-Agent": [ "PSVersion/v6.2.2" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "302" ]
+        "Content-Length": [ "291" ]
       }
     },
     "Response": {
@@ -19,31 +16,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "22b51ca0-a029-4eea-ab56-7820acf577f2" ],
-        "x-ms-correlation-request-id": [ "22b51ca0-a029-4eea-ab56-7820acf577f2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032243Z:22b51ca0-a029-4eea-ab56-7820acf577f2" ],
-        "Date": [ "Tue, 19 Nov 2019 03:22:42 GMT" ]
+        "x-ms-request-id": [ "91eaef53-ab95-45b5-9304-fe0887dd136f" ],
+        "x-ms-correlation-request-id": [ "91eaef53-ab95-45b5-9304-fe0887dd136f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T081732Z:91eaef53-ab95-45b5-9304-fe0887dd136f" ],
+        "Date": [ "Wed, 20 May 2020 08:17:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "807" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":null,\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+2": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -54,31 +55,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "a074bdc5-aa2b-4e45-8110-a4ca3c06561b" ],
-        "x-ms-correlation-request-id": [ "a074bdc5-aa2b-4e45-8110-a4ca3c06561b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032313Z:a074bdc5-aa2b-4e45-8110-a4ca3c06561b" ],
-        "Date": [ "Tue, 19 Nov 2019 03:23:13 GMT" ]
+        "x-ms-request-id": [ "9e03e4cd-69de-4348-ac26-9b2ef97d5346" ],
+        "x-ms-correlation-request-id": [ "9e03e4cd-69de-4348-ac26-9b2ef97d5346" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T081802Z:9e03e4cd-69de-4348-ac26-9b2ef97d5346" ],
+        "Date": [ "Wed, 20 May 2020 08:18:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+3": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -89,31 +94,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
-        "x-ms-request-id": [ "b3b23538-0151-44fd-9422-f21148aa6235" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "b3b23538-0151-44fd-9422-f21148aa6235" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032343Z:b3b23538-0151-44fd-9422-f21148aa6235" ],
-        "Date": [ "Tue, 19 Nov 2019 03:23:43 GMT" ]
+        "x-ms-request-id": [ "56dd3459-08b3-4163-956e-d2fefaad4f36" ],
+        "x-ms-correlation-request-id": [ "56dd3459-08b3-4163-956e-d2fefaad4f36" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T081833Z:56dd3459-08b3-4163-956e-d2fefaad4f36" ],
+        "Date": [ "Wed, 20 May 2020 08:18:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+4": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -124,31 +133,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "6a8e8ac6-2876-495b-87c4-fc9e9ae46f83" ],
-        "x-ms-correlation-request-id": [ "6a8e8ac6-2876-495b-87c4-fc9e9ae46f83" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032415Z:6a8e8ac6-2876-495b-87c4-fc9e9ae46f83" ],
-        "Date": [ "Tue, 19 Nov 2019 03:24:15 GMT" ]
+        "x-ms-request-id": [ "908d1ec6-4120-4d8b-a66d-0d94b827e390" ],
+        "x-ms-correlation-request-id": [ "908d1ec6-4120-4d8b-a66d-0d94b827e390" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T081903Z:908d1ec6-4120-4d8b-a66d-0d94b827e390" ],
+        "Date": [ "Wed, 20 May 2020 08:19:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+5": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -159,31 +172,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "c0b6db7a-be62-477a-acf0-ee62e15a7d43" ],
-        "x-ms-correlation-request-id": [ "c0b6db7a-be62-477a-acf0-ee62e15a7d43" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032445Z:c0b6db7a-be62-477a-acf0-ee62e15a7d43" ],
-        "Date": [ "Tue, 19 Nov 2019 03:24:45 GMT" ]
+        "x-ms-request-id": [ "ef58ab5d-0022-4c8d-a0d8-bd43c7bd3ffe" ],
+        "x-ms-correlation-request-id": [ "ef58ab5d-0022-4c8d-a0d8-bd43c7bd3ffe" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T081933Z:ef58ab5d-0022-4c8d-a0d8-bd43c7bd3ffe" ],
+        "Date": [ "Wed, 20 May 2020 08:19:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+6": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -194,31 +211,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "43795233-a971-41bc-a427-f67baffd025c" ],
-        "x-ms-correlation-request-id": [ "43795233-a971-41bc-a427-f67baffd025c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032515Z:43795233-a971-41bc-a427-f67baffd025c" ],
-        "Date": [ "Tue, 19 Nov 2019 03:25:15 GMT" ]
+        "x-ms-request-id": [ "3b2ed4cd-ef8b-487d-a7e1-b1e86d517b78" ],
+        "x-ms-correlation-request-id": [ "3b2ed4cd-ef8b-487d-a7e1-b1e86d517b78" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082004Z:3b2ed4cd-ef8b-487d-a7e1-b1e86d517b78" ],
+        "Date": [ "Wed, 20 May 2020 08:20:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+7": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -229,31 +250,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11916" ],
-        "x-ms-request-id": [ "b2c7d8ef-9d36-48d3-ba3f-f6516fec2bab" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "b2c7d8ef-9d36-48d3-ba3f-f6516fec2bab" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032546Z:b2c7d8ef-9d36-48d3-ba3f-f6516fec2bab" ],
-        "Date": [ "Tue, 19 Nov 2019 03:25:45 GMT" ]
+        "x-ms-request-id": [ "d03e3a98-3ba0-4ead-8f86-30c0cfdadfbf" ],
+        "x-ms-correlation-request-id": [ "d03e3a98-3ba0-4ead-8f86-30c0cfdadfbf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082034Z:d03e3a98-3ba0-4ead-8f86-30c0cfdadfbf" ],
+        "Date": [ "Wed, 20 May 2020 08:20:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+8": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -264,31 +289,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11915" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "e1f3ae2a-01c6-4170-aa88-9cdad3f0739c" ],
-        "x-ms-correlation-request-id": [ "e1f3ae2a-01c6-4170-aa88-9cdad3f0739c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032617Z:e1f3ae2a-01c6-4170-aa88-9cdad3f0739c" ],
-        "Date": [ "Tue, 19 Nov 2019 03:26:17 GMT" ]
+        "x-ms-request-id": [ "9e4aa16b-ab66-46bd-8735-a3458a45969d" ],
+        "x-ms-correlation-request-id": [ "9e4aa16b-ab66-46bd-8735-a3458a45969d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082104Z:9e4aa16b-ab66-46bd-8735-a3458a45969d" ],
+        "Date": [ "Wed, 20 May 2020 08:21:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+9": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -299,31 +328,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11914" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "1a596bfc-47cb-465d-b531-1510f2833f81" ],
-        "x-ms-correlation-request-id": [ "1a596bfc-47cb-465d-b531-1510f2833f81" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032647Z:1a596bfc-47cb-465d-b531-1510f2833f81" ],
-        "Date": [ "Tue, 19 Nov 2019 03:26:47 GMT" ]
+        "x-ms-request-id": [ "980bf709-5cae-4ccf-9dce-88424cfe6a58" ],
+        "x-ms-correlation-request-id": [ "980bf709-5cae-4ccf-9dce-88424cfe6a58" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082135Z:980bf709-5cae-4ccf-9dce-88424cfe6a58" ],
+        "Date": [ "Wed, 20 May 2020 08:21:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+10": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -334,31 +367,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "54ce6bcd-1e8f-4a25-a862-65d27fd413ed" ],
-        "x-ms-correlation-request-id": [ "54ce6bcd-1e8f-4a25-a862-65d27fd413ed" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032717Z:54ce6bcd-1e8f-4a25-a862-65d27fd413ed" ],
-        "Date": [ "Tue, 19 Nov 2019 03:27:17 GMT" ]
+        "x-ms-request-id": [ "d66607e4-d181-421b-98c6-8a62b5ec09f1" ],
+        "x-ms-correlation-request-id": [ "d66607e4-d181-421b-98c6-8a62b5ec09f1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082205Z:d66607e4-d181-421b-98c6-8a62b5ec09f1" ],
+        "Date": [ "Wed, 20 May 2020 08:22:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+11": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -369,31 +406,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
-        "x-ms-request-id": [ "74e83e9a-b37e-45ce-a81e-5b87a8fc9845" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "74e83e9a-b37e-45ce-a81e-5b87a8fc9845" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032748Z:74e83e9a-b37e-45ce-a81e-5b87a8fc9845" ],
-        "Date": [ "Tue, 19 Nov 2019 03:27:47 GMT" ]
+        "x-ms-request-id": [ "5041793e-d1bb-4b92-8276-f818d8ec89a9" ],
+        "x-ms-correlation-request-id": [ "5041793e-d1bb-4b92-8276-f818d8ec89a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082236Z:5041793e-d1bb-4b92-8276-f818d8ec89a9" ],
+        "Date": [ "Wed, 20 May 2020 08:22:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+12": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -404,31 +445,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "d7ce2e26-1777-406a-b4fc-fde6719fad5b" ],
-        "x-ms-correlation-request-id": [ "d7ce2e26-1777-406a-b4fc-fde6719fad5b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032819Z:d7ce2e26-1777-406a-b4fc-fde6719fad5b" ],
-        "Date": [ "Tue, 19 Nov 2019 03:28:18 GMT" ]
+        "x-ms-request-id": [ "03ded82a-fe8e-48da-ba36-40d0daffe804" ],
+        "x-ms-correlation-request-id": [ "03ded82a-fe8e-48da-ba36-40d0daffe804" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200520T082307Z:03ded82a-fe8e-48da-ba36-40d0daffe804" ],
+        "Date": [ "Wed, 20 May 2020 08:23:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+13": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -439,31 +484,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "3abd58ae-f4f3-43b9-9d1d-b1ddd7175e83" ],
-        "x-ms-correlation-request-id": [ "3abd58ae-f4f3-43b9-9d1d-b1ddd7175e83" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032849Z:3abd58ae-f4f3-43b9-9d1d-b1ddd7175e83" ],
-        "Date": [ "Tue, 19 Nov 2019 03:28:48 GMT" ]
+        "x-ms-request-id": [ "09101529-2f80-4e10-884a-154d9c06b0aa" ],
+        "x-ms-correlation-request-id": [ "09101529-2f80-4e10-884a-154d9c06b0aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082339Z:09101529-2f80-4e10-884a-154d9c06b0aa" ],
+        "Date": [ "Wed, 20 May 2020 08:23:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "811" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":null,\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+14": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -474,31 +523,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "10bbdc6d-9845-497e-80a4-f814f0a979ce" ],
-        "x-ms-correlation-request-id": [ "10bbdc6d-9845-497e-80a4-f814f0a979ce" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032919Z:10bbdc6d-9845-497e-80a4-f814f0a979ce" ],
-        "Date": [ "Tue, 19 Nov 2019 03:29:19 GMT" ]
+        "x-ms-request-id": [ "279b8b13-1bc4-4e37-9d62-360768062fea" ],
+        "x-ms-correlation-request-id": [ "279b8b13-1bc4-4e37-9d62-360768062fea" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082409Z:279b8b13-1bc4-4e37-9d62-360768062fea" ],
+        "Date": [ "Wed, 20 May 2020 08:24:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "853" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":\"8SgzoZDIKH2pLeFCWOxNc29XCFaP6XLXSNLZgx8OWRs=\",\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+15": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -509,31 +562,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
-        "x-ms-request-id": [ "b40ba9e5-fadc-4fb5-a794-edd0f987df89" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "b40ba9e5-fadc-4fb5-a794-edd0f987df89" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032950Z:b40ba9e5-fadc-4fb5-a794-edd0f987df89" ],
-        "Date": [ "Tue, 19 Nov 2019 03:29:49 GMT" ]
+        "x-ms-request-id": [ "4542a093-3da6-40d4-93a8-37e268fa4a21" ],
+        "x-ms-correlation-request-id": [ "4542a093-3da6-40d4-93a8-37e268fa4a21" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082439Z:4542a093-3da6-40d4-93a8-37e268fa4a21" ],
+        "Date": [ "Wed, 20 May 2020 08:24:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "841" ],
+        "Content-Length": [ "853" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Updating\",\"dns\":null,\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":null,\"publicKey\":\"CQ3LuWJNYIarACsSzRobY8kgPDqVYwjNnVM6F3Og+1k=\",\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":null,\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":null,\"publicKey\":\"8SgzoZDIKH2pLeFCWOxNc29XCFaP6XLXSNLZgx8OWRs=\",\"provisioningState\":\"Updating\",\"dns\":null,\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+16": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -544,31 +601,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "829caa7e-ae87-4ea2-abf8-9796e7b8e295" ],
-        "x-ms-correlation-request-id": [ "829caa7e-ae87-4ea2-abf8-9796e7b8e295" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T033021Z:829caa7e-ae87-4ea2-abf8-9796e7b8e295" ],
-        "Date": [ "Tue, 19 Nov 2019 03:30:20 GMT" ]
+        "x-ms-request-id": [ "219c9f0d-8b50-4579-bb93-aa6bb33f3298" ],
+        "x-ms-correlation-request-id": [ "219c9f0d-8b50-4579-bb93-aa6bb33f3298" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082510Z:219c9f0d-8b50-4579-bb93-aa6bb33f3298" ],
+        "Date": [ "Wed, 20 May 2020 08:25:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "959" ],
+        "Content-Length": [ "971" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchain4ugj85.blockchain.azure.com\",\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":\"0xe8be5581a5e9c96021d7656e33c6b392b0debc17\",\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"CQ3LuWJNYIarACsSzRobY8kgPDqVYwjNnVM6F3Og+1k=\",\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":\"0xeb5e1c3138b9c02153c335b100c989b9743ca694\",\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"8SgzoZDIKH2pLeFCWOxNc29XCFaP6XLXSNLZgx8OWRs=\",\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchainajg3wi.blockchain.azure.com\",\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   },
-  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview+17": {
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95" ],
-        "User-Agent": [ "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2", "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17" ],
+        "x-ms-client-request-id": [ "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c", "aab053ad-75ff-4cd4-a21e-1ee171b61e1c" ],
+        "CommandName": [ "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember", "Az.Blockchain.internal\\New-AzBlockchainMember" ],
+        "FullCommandName": [ "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded", "New-AzBlockchainMember_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -579,21 +640,60 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "09ff1ff4-ec27-4207-8d3c-31954ad67d68" ],
-        "x-ms-correlation-request-id": [ "09ff1ff4-ec27-4207-8d3c-31954ad67d68" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T033021Z:09ff1ff4-ec27-4207-8d3c-31954ad67d68" ],
-        "Date": [ "Tue, 19 Nov 2019 03:30:21 GMT" ]
+        "x-ms-request-id": [ "2ebb1dd2-014f-4943-b06d-c9d972e3f24e" ],
+        "x-ms-correlation-request-id": [ "2ebb1dd2-014f-4943-b06d-c9d972e3f24e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082510Z:2ebb1dd2-014f-4943-b06d-c9d972e3f24e" ],
+        "Date": [ "Wed, 20 May 2020 08:25:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "959" ],
+        "Content-Length": [ "971" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchain4ugj85\",\"properties\":{\"protocol\":\"Quorum\",\"validatorNodesSku\":{\"capacity\":2},\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchain4ugj85.blockchain.azure.com\",\"userName\":\"myblockchain4ugj85\",\"password\":null,\"consortium\":\"PowershellConsortiumName4ugj85\",\"consortiumManagementAccountAddress\":\"0xe8be5581a5e9c96021d7656e33c6b392b0debc17\",\"consortiumManagementAccountPassword\":null,\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"CQ3LuWJNYIarACsSzRobY8kgPDqVYwjNnVM6F3Og+1k=\",\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}]},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchain4ugj85\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":\"0xeb5e1c3138b9c02153c335b100c989b9743ca694\",\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"8SgzoZDIKH2pLeFCWOxNc29XCFaP6XLXSNLZgx8OWRs=\",\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchainajg3wi.blockchain.azure.com\",\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+    }
+  },
+  "New-AzBlockchainMember+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "3ad2c64f-88f1-45e8-9fdd-178be201f1c0" ],
+        "CommandName": [ "Get-AzBlockchainMember" ],
+        "FullCommandName": [ "Get-AzBlockchainMember_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "d4327ab2-edac-4dfb-9140-6cd67aaa112e" ],
+        "x-ms-correlation-request-id": [ "d4327ab2-edac-4dfb-9140-6cd67aaa112e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200520T082511Z:d4327ab2-edac-4dfb-9140-6cd67aaa112e" ],
+        "Date": [ "Wed, 20 May 2020 08:25:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "971" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainajg3wi\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainajg3wi\",\"password\":null,\"consortium\":\"PowershellConsortiumNameajg3wi\",\"consortiumRole\":null,\"consortiumMemberDisplayName\":null,\"consortiumManagementAccountAddress\":\"0xeb5e1c3138b9c02153c335b100c989b9743ca694\",\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"8SgzoZDIKH2pLeFCWOxNc29XCFaP6XLXSNLZgx8OWRs=\",\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchainajg3wi.blockchain.azure.com\",\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainajg3wi\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
     }
   }
 }

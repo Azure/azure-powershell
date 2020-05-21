@@ -1,12 +1,16 @@
 {
-  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/listApiKeys?api-version=2018-06-01-preview+1": {
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhlqc92/listApiKeys?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/listApiKeys?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhlqc92/listApiKeys?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "96" ],
-        "User-Agent": [ "PSVersion/v6.2.2" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "15326ea0-a684-4765-bef5-85cc2ca9e8b3" ],
+        "CommandName": [ "Get-AzBlockchainMemberApiKey" ],
+        "FullCommandName": [ "Get-AzBlockchainMemberApiKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -17,36 +21,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "0491ac98-4d28-44f3-a3ef-6c1bf3b70239" ],
-        "x-ms-correlation-request-id": [ "0491ac98-4d28-44f3-a3ef-6c1bf3b70239" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T033022Z:0491ac98-4d28-44f3-a3ef-6c1bf3b70239" ],
-        "Date": [ "Tue, 19 Nov 2019 03:30:22 GMT" ]
+        "x-ms-request-id": [ "5ec19403-f7d8-4c94-991c-42ef79592626" ],
+        "x-ms-correlation-request-id": [ "5ec19403-f7d8-4c94-991c-42ef79592626" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T030924Z:5ec19403-f7d8-4c94-991c-42ef79592626" ],
+        "Date": [ "Thu, 21 May 2020 03:09:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "118" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"l2Dp0_QaolyEWrtZqbzaciAo\"},{\"keyName\":\"key2\",\"value\":\"-9xWnAd6wP0wFKLXgSswOsR4\"}]}"
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"hLjB8AY_6y5vgev5IZsPbZBF\"},{\"keyName\":\"key2\",\"value\":\"IfYyppP8q55WZLujDfsT46o2\"}]}"
     }
   },
-  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/regenerateApiKeys?api-version=2018-06-01-preview+2": {
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhlqc92/regenerateApiKeys?api-version=2018-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/regenerateApiKeys?api-version=2018-06-01-preview",
-      "Content": "{\r\n  \"keyName\": \"key1\",\r\n  \"value\": \"l2Dp0_QaolyEWrtZqbzaciAo\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-bc-rg/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhlqc92/regenerateApiKeys?api-version=2018-06-01-preview",
+      "Content": "{\n  \"keyName\": \"key1\"\n}",
       "Headers": {
-        "x-ms-unique-id": [ "97" ],
-        "User-Agent": [ "PSVersion/v6.2.2" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "65" ]
+        "Content-Length": [ "23" ]
       }
     },
     "Response": {
@@ -54,21 +55,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "bc021fb5-a622-4132-a306-ff7fa5d4b5ad" ],
-        "x-ms-correlation-request-id": [ "bc021fb5-a622-4132-a306-ff7fa5d4b5ad" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T033024Z:bc021fb5-a622-4132-a306-ff7fa5d4b5ad" ],
-        "Date": [ "Tue, 19 Nov 2019 03:30:23 GMT" ]
+        "x-ms-request-id": [ "85f63295-b951-428f-b726-4e13b23b2292" ],
+        "x-ms-correlation-request-id": [ "85f63295-b951-428f-b726-4e13b23b2292" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T030926Z:85f63295-b951-428f-b726-4e13b23b2292" ],
+        "Date": [ "Thu, 21 May 2020 03:09:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "118" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"Ye2DhlHBvZdMUqyuBNIwoyTg\"},{\"keyName\":\"key2\",\"value\":\"-9xWnAd6wP0wFKLXgSswOsR4\"}]}"
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"htmF5uHMIFvudnCkOOKuGHlc\"},{\"keyName\":\"key2\",\"value\":\"IfYyppP8q55WZLujDfsT46o2\"}]}"
     }
   }
 }

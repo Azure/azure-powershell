@@ -15,15 +15,20 @@ Describe 'Update-AzBlockchainMember' {
     $passwd2 = 'strongMemberAccountPassword@2' | ConvertTo-SecureString -AsPlainText -Force
     $passwd3 = 'strongMemberAccountPassword@3' | ConvertTo-SecureString -AsPlainText -Force
     It 'UpdateExpanded' {
-        { Update-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup -Password $passwd2 } | Should -Not -Throw
+        $tag = @{'update'='password'}
+        Update-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup -Password $passwd2 
+        Update-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup -Tag $tag
+        $member = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup
+        $member.Tag.ContainsKey('update') | Should -Be $True
     }
 
     It 'UpdateViaIdentityExpanded' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        {
-            $member = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup
-            Update-AzBlockchainMember -InputObject $member.Id -Password $passwd3
-        } | Should -Not -Throw
-        #$PSDefaultParameterValues["Disabled"] = $False
+        $tag = @{'againupdate'='password'}
+        $member = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup
+        Update-AzBlockchainMember -InputObject $member -Password $passwd3
+        Update-AzBlockchainMember -InputObject $member -Tag $tag
+        $member = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup
+        $member.Tag.ContainsKey('againupdate') | Should -Be $True
     }
 }

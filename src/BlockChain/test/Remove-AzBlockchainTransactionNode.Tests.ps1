@@ -12,18 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzBlockchainTransactionNode' {
-    $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
     It 'Delete' {
-        New-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("tranctionnode" + $env.rstr3) -ResourceGroupName $env.resourceGroup -Location eastus -Password $passwd
-        { Remove-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("tranctionnode" + $env.rstr3) -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
+        $tNodeName = "tranctionnode" + $env.rstr3
+        New-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name $tNodeName -ResourceGroupName $env.resourceGroup -Location eastus -Password $passwd
+        Remove-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name $tNodeName -ResourceGroupName $env.resourceGroup 
+        $tNodeList = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $tNodeList.Name | Should -Not -Contain $tNodeName
     }
 
     It 'DeleteViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { 
-            $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("tranctionnode" + $env.rstr4) -ResourceGroupName $env.resourceGroup 
-            Remove-AzBlockchainTransactionNode -InputObject $node.Id
-        } | Should -Not -Throw
+        $tNodeName = "tranctionnode" + $env.rstr4
+        $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name $tNodeName -ResourceGroupName $env.resourceGroup 
+        Remove-AzBlockchainTransactionNode -InputObject $node
+        $tNodeList = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $tNodeList.Name | Should -Not -Contain $tNodeName
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }

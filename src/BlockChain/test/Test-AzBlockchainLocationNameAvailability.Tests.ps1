@@ -13,8 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Test-AzBlockchainLocationNameAvailability' {
     It 'CheckExpanded' {
-        { 
-            Test-AzBlockchainLocationNameAvailability -Location eastus -Name 123 -Type Microsoft.Blockchain/blockchainMembers
-        } | Should -Not -Throw
+        $result = Test-AzBlockchainLocationNameAvailability -Location eastus -Name '123' -Type Microsoft.Blockchain/blockchainMembers
+        $result.NameAvailable| Should -Be $False
+        
+        $result = Test-AzBlockchainLocationNameAvailability -Location eastus -Name 'lucasblockchain01' -Type Microsoft.Blockchain/blockchainMembers
+        $result.NameAvailable| Should -Be $True
     }
 }

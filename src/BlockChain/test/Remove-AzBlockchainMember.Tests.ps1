@@ -15,16 +15,20 @@ Describe 'Remove-AzBlockchainMember' {
     $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
     $csPasswd = 'strongConsortiumManagementPassword@1' | ConvertTo-SecureString -AsPlainText -Force
     It 'Delete' {
-        New-AzBlockchainMember -Name ("myblockchain" + $env.rstr3) -ResourceGroupName $env.resourceGroup -Consortium ("consortium" + $env.rstr3) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
-        { Remove-AzBlockchainMember -Name ("myblockchain" + $env.rstr3) -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $bcMemberName = "myblockchain" + $env.rstr3
+        New-AzBlockchainMember -Name $bcMemberName -ResourceGroupName $env.resourceGroup -Consortium ("consortium" + $env.rstr3) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0
+        Remove-AzBlockchainMember -Name $bcMemberName -ResourceGroupName $env.resourceGroup 
+        $bcMemberList = Get-AzBlockchainMember -ResourceGroupName $env.resourceGroup
+        $bcMemberList.Name | Should -Not -Contain $bcMemberName
     }
 
     It 'DeleteViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { 
-            $member = Get-AzBlockchainMember -Name ("myblockchain" + $env.rstr4) -ResourceGroupName $env.resourceGroup 
-            Remove-AzBlockchainMember -InputObject $member.Id
-        } | Should -Not -Throw
+        $bcMemberName = "myblockchain" + $env.rstr4
+        $member = Get-AzBlockchainMember -Name $bcMemberName -ResourceGroupName $env.resourceGroup 
+        Remove-AzBlockchainMember -InputObject $member
+        $bcMemberList = Get-AzBlockchainMember -ResourceGroupName $env.resourceGroup
+        $bcMemberList.Name | Should -Not -Contain $bcMemberName
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }
