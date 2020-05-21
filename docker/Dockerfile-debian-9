@@ -1,14 +1,12 @@
 FROM mcr.microsoft.com/powershell:debian-9
 
-ARG ARTIFACTS=/tmp/artifacts/
-ARG ARTIFACT=*.nupkg
-ARG TEMPREPO=tmp
+ARG REPOSITORY=PSGallery
 ARG MODULE=Az
 ARG CONFIG=config
 ARG AZURERM_CONTEXT_SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
-ARG Build_Date=
+ARG BUILD_DATE=
 ARG VERSION=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-debian-9
 
@@ -17,7 +15,7 @@ ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-debian-9"
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
-      org.label-schema.build-date=${Build_Date} \
+      org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.usage="http://aka.ms/azpsdocker" \
       org.label-schema.url="http://aka.ms/azpsdockerreadme" \
       org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
@@ -31,13 +29,10 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       org.label-schema.docker.cmd.test="currently not available" \
       org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
-# install azure-powershell from built artifacts
-COPY ${ARTIFACT} ${ARTIFACTS}
-RUN pwsh -Command Register-PSRepository -Name ${TEMPREPO} -SourceLocation ${ARTIFACTS} -PublishLocation $ARTIFACTS -InstallationPolicy Trusted -PackageManagementProvider NuGet && \
-    pwsh -Command Install-Module -Name ${MODULE} -Repository ${TEMPREPO} && \
-    pwsh -Command Get-Module -ListAvailable && \
-    pwsh -Command Unregister-PSRepository -Name ${TEMPREPO} && \
-    pwsh -Command Remove-Item ${ARTIFACTS} -Recurse
+# install azure-powershell from PSGallery
+RUN pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
+    pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Repository ${REPOSITORY} && \
+    pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted
 
 # create AzureRmContextSettings.json before it was generated
 COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}

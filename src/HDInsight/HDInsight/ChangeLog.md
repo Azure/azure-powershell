@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Supported Customer-managed key disk encryption.
 
 ## Version 3.1.0
