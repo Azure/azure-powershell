@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel UpsertServerActiveDirectoryAdministrator(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryAdministratorModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId, model.IsAzureADOnlyAuthentication));
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId));
 
             return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroup, serverName, resp);
         }
@@ -171,9 +171,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="displayName">Azure Active Directory user or group display name</param>
         /// <param name="objectId">Azure Active Directory user or group object id</param>
-        /// <param name="isAzureADOnlyAuthentication">Allow only Azure Active Directory authentication</param>
         /// <returns></returns>
-        protected ServerAzureADAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId, bool? isAzureADOnlyAuthentication)
+        protected ServerAzureADAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId)
         {
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
@@ -253,8 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 {
                     Login = displayName,
                     Sid = app.ApplicationId,
-                    TenantId = tenantId,
-                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
+                    TenantId = tenantId
                 };
             }
 
@@ -264,8 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 {
                     Login = group.DisplayName,
                     Sid = group.Id,
-                    TenantId = tenantId,
-                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
+                    TenantId = tenantId
                 };
             }
 
@@ -313,8 +310,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 {
                     Login = displayName,
                     Sid = obj.Id,
-                    TenantId = tenantId,
-                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
+                    TenantId = tenantId
                 };
             }
         }
