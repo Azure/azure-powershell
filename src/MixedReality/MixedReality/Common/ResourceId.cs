@@ -14,7 +14,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
+namespace Microsoft.Azure.Commands.MixedReality
 {
     internal class ResourceId
     {
@@ -22,8 +22,9 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
         {
             internal const string Subscription = "subscription";
             internal const string ResourceGroup = "resourceGroup";
-            internal const string SpatialAnchorsAccount = "spatialAnchorAccount";
-            internal readonly static Regex Id = new Regex($@"\/subscriptions\/(?<{Subscription}>.*)\/resourcegroups\/(?<{ResourceGroup}>.*)\/providers\/Microsoft\.MixedReality\/SpatialAnchorsAccounts\/(?<{SpatialAnchorsAccount}>.*)", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            internal const string ResourceType = "resourceType";
+            internal const string ResourceName = "resourceName";
+            internal readonly static Regex Id = new Regex($@"\/subscriptions\/(?<{Subscription}>.*)\/resourcegroups\/(?<{ResourceGroup}>.*)\/providers\/Microsoft\.MixedReality\/(?<{ResourceType}>.*)\/(?<{ResourceName}>.*)", RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
         internal ResourceId(string resourceId)
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
             {
                 SubsciptionId = new Guid(match.Groups[RegEx.Subscription].Value);
                 ResourceGroupName = match.Groups[RegEx.ResourceGroup].Value;
-                SpatialAnchorsAccountName = match.Groups[RegEx.SpatialAnchorsAccount].Value;
+                ResourceType = match.Groups[RegEx.ResourceType].Value;
+                ResourceName = match.Groups[RegEx.ResourceName].Value;
             }
             else
             {
@@ -44,6 +46,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
 
         internal Guid SubsciptionId { get; private set; }
         internal string ResourceGroupName { get; private set; }
-        internal string SpatialAnchorsAccountName { get; private set; }
+        internal string ResourceType { get; private set; }
+        internal string ResourceName { get; private set; }
     }
 }

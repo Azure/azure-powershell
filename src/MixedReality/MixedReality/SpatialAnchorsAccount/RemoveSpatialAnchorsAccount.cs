@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 var resourceId = new ResourceId(ResourceId);
 
                 ResourceGroupName = resourceId.ResourceGroupName;
-                Name = resourceId.SpatialAnchorsAccountName;
+                Name = resourceId.ResourceName;
             }
 
             if (ParameterSetName == PipelineParameterSet)
