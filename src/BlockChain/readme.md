@@ -55,6 +55,8 @@ module-version: 0.1.0
 title: Blockchain
 subject-prefix: 'Blockchain'
 
+identity-correction-for-post: true
+
 directive:
   - from: swagger-document
     where: $.paths..operationId
