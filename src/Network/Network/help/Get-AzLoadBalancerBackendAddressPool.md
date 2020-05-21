@@ -37,127 +37,22 @@ Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools
 
 ### Example 1
 ```powershell
-$lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
+PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
 
 ## Get all backends under loadbalancer
 PS C:\> $lb | Get-AzLoadBalancerBackendAddressPool
-Name                           : test-backendPool
-Id                             : /subscriptions/xxxxxx/resourceGroups/test-resourcegroup/providers/Microsoft.Network/loadBalancers/xxxxx/backendAddressPools/xxxxx
-Etag                           : W/"b0c98b2c-7ebb-43e7-bcdb-af0b34360b80"
-ProvisioningState              : Succeeded
-BackendIpConfigurations        : []
-LoadBalancerBackendIPAddresses : [
-                                   {
-                                     "Name": "TestVNetRef",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                       "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.5"
-                                   },
-                                   {
-                                     "Name": "TestVNetRef2",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                           "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.6"
-                                   }
-                                 ]
-LoadBalancingRules             : []
-
-Name                           : test-backendPool2
-Id                             : /subscriptions/xxxxxx/resourceGroups/test-resourcegroup/providers/Microsoft.Network/loadBalancers/xxxxx/backendAddressPools/xxxxx
-Etag                           : W/"b0c98b2c-7ebb-43e7-bcdb-af0b34360b80"
-ProvisioningState              : Succeeded
-BackendIpConfigurations        : []
-LoadBalancerBackendIPAddresses : [
-                                   {
-                                     "Name": "TestVNetRef",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                       "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.5"
-                                   },
-                                   {
-                                     "Name": "TestVNetRef2",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                           "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.6"
-                                   }
-                                 ]
-LoadBalancingRules             : []
 
 ### Example 2
 ```powershell
 
 #Get specific backend from loadbalancer
 PS C:\> $lb | Get-AzLoadBalancerBackendAddressPool -Name $backendPool1
-Name                           : test-backendPool
-Id                             : /subscriptions/xxxxxx/resourceGroups/test-resourcegroup/providers/Microsoft.Network/loadBalancers/xxxxx/backendAddressPools/xxxxx
-Etag                           : W/"b0c98b2c-7ebb-43e7-bcdb-af0b34360b80"
-ProvisioningState              : Succeeded
-BackendIpConfigurations        : []
-LoadBalancerBackendIPAddresses : [
-                                   {
-                                     "Name": "TestVNetRef",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                       "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.5"
-                                   },
-                                   {
-                                     "Name": "TestVNetRef2",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                           "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.6"
-                                   }
-                                 ]
-LoadBalancingRules             : []
 
 ### Example 3
 ```powershell
 
 #Get a backend by resource Id
 PS C:\> Get-AzLoadBalancerBackendAddressPool -ResourceId $backendPool1.Id
-Name                           : test-backendPool
-Id                             : /subscriptions/xxxxxx/resourceGroups/test-resourcegroup/providers/Microsoft.Network/loadBalancers/xxxxx/backendAddressPools/xxxxx
-Etag                           : W/"b0c98b2c-7ebb-43e7-bcdb-af0b34360b80"
-ProvisioningState              : Succeeded
-BackendIpConfigurations        : []
-LoadBalancerBackendIPAddresses : [
-                                   {
-                                     "Name": "TestVNetRef",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                       "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.5"
-                                   },
-                                   {
-                                     "Name": "TestVNetRef2",
-                                     "VirtualNetwork": {
-                                       "Subnets": [],
-                                           "VirtualNetworkPeerings": [],
-                                       "Id": "/subscriptions/xxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxx"
-                                     },
-                                     "IpAddress": "10.0.0.6"
-                                   }
-                                 ]
-LoadBalancingRules             : []
 
 ```
 

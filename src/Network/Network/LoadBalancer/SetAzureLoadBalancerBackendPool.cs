@@ -27,7 +27,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool", SupportsShouldProcess = true), OutputType(typeof(PSBackendAddressPool))]
     public partial class SetAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceGroupName { get; set; }
 
 
-        [Parameter(Mandatory = true,HelpMessage = "The name of the load balancer.",  ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            BackendAddressPool backendAddressPool = null; 
+            BackendAddressPool backendAddressPool = null;
 
             if (this.IsParameterBound(c => c.LoadBalancer))
             {
                 this.ResourceGroupName = this.LoadBalancer.ResourceGroupName;
                 this.LoadBalancerName = this.LoadBalancer.Name;
             }
-            
+
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(this.ResourceId);
@@ -102,33 +102,25 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.LoadBalancerName = resourceIdentifier.ParentResource.Split('/')[1];
                 this.Name = resourceIdentifier.ResourceName;
-                backendAddressPool = SetupBackendPoolWithInputObject();
+                backendAddressPool = NetworkResourceManagerProfile.Mapper.Map<BackendAddressPool>(this.InputObject);
             }
-
-            BackendAddressPool existingloadBalancerBackendAddressPool = null;
 
             // Confirm if resource already exists
             try
             {
-                existingloadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.Name);
+                this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.Name);
             }
             catch (Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    existingloadBalancerBackendAddressPool = null;
+                    throw new Exception(string.Format("A BackendPool with name '{0}' in resource group '{1}' not found under LoadBalancer '{2}'. Please use New-AzLoadBalancerBackendAddressPool to create a BackendPool .",
+                        this.Name, this.ResourceGroupName, this.LoadBalancerName));
                 }
                 else
                 {
-                    throw;
+                    throw exception;
                 }
-            }
-
-            // Return error message to user if loadbalancer pool doesnt exist
-            if (existingloadBalancerBackendAddressPool == null)
-            {
-                throw new Exception(string.Format("A BackendPool with name '{0}' in resource group '{1}' not found under LoadBalancer '{2}'. Please use New-AzLoadBalancerBackendAddressPool to create a BackendPool .",
-                    this.Name, this.ResourceGroupName, this.LoadBalancerName));
             }
 
             // add loadbalancer address to the request available. 
@@ -137,20 +129,15 @@ namespace Microsoft.Azure.Commands.Network
                 backendAddressPool = SetupBackendPoolWithLoadBalancerAddresses();
             }
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format("Updated Backendpool '{0}' in resource group '{1}' under loadbalancer '{2}'.", this.Name, this.ResourceGroupName, this.LoadBalancerName),
-                Properties.Resources.UpdatingLongRunningOperationMessage,
-                Name,
-                () =>
-                {
-                    var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
+            {
+                var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(
                         this.ResourceGroupName, this.LoadBalancerName, this.Name, backendAddressPool);
 
-                    var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
+                var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
 
-                    WriteObject(loadBalancerBackendAddressPoolModel);
-                });
+                WriteObject(loadBalancerBackendAddressPoolModel);
+            }
         }
 
         private BackendAddressPool SetupBackendPoolWithLoadBalancerAddresses()
@@ -161,51 +148,11 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (var psBackendAddress in this.LoadBalancerBackendAddress)
             {
-                var backendAddress = ToLoadBalancerBackendAddress(psBackendAddress);
+                var backendAddress = NetworkResourceManagerProfile.Mapper.Map<LoadBalancerBackendAddress>(psBackendAddress);
                 backendAddressPool.LoadBalancerBackendAddresses.Add(backendAddress);
             }
 
             return backendAddressPool;
-        }
-
-        private BackendAddressPool SetupBackendPoolWithInputObject()
-        {
-            var backendAddressPool = new BackendAddressPool();
-
-            backendAddressPool.LoadBalancerBackendAddresses = new List<LoadBalancerBackendAddress>();
-
-            foreach (var psBackendAddress in InputObject.LoadBalancerBackendAddresses)
-            {
-                var backendAddress = ToLoadBalancerBackendAddress(psBackendAddress);
-                backendAddressPool.LoadBalancerBackendAddresses.Add(backendAddress);
-            }
-
-            return backendAddressPool;
-        }
-
-        private LoadBalancerBackendAddress ToLoadBalancerBackendAddress(PSLoadBalancerBackendAddress pSLoadBalancerBackendAddress)
-        {
-            var backendAddress = new LoadBalancerBackendAddress();
-            try
-            {
-                Microsoft.Azure.Management.Network.Models.VirtualNetwork virtualNetworkConfig = null;
-
-                if (pSLoadBalancerBackendAddress.VirtualNetwork != null)
-                {
-                    virtualNetworkConfig = new Microsoft.Azure.Management.Network.Models.VirtualNetwork(pSLoadBalancerBackendAddress.VirtualNetwork.Id);
-                }
-
-                backendAddress.Name = pSLoadBalancerBackendAddress.Name;
-                backendAddress.IpAddress = pSLoadBalancerBackendAddress.IpAddress;
-                backendAddress.VirtualNetwork = virtualNetworkConfig;
-
-            }
-            catch
-            {
-                throw new PSArgumentException($"Invalid LoadBalancerBackendAddress, use New-AzLoadBalancerBackendAddressConfig when creating IP configurations ");
-            }
-
-            return backendAddress;
         }
     }
 }

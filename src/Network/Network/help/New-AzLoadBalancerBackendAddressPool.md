@@ -15,15 +15,15 @@ Creates a backend address pool on a loadbalancer.
 ### CreateByNameParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,21 +72,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

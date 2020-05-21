@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerbackendaddressconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerbackendaddressconfig
 schema: 2.0.0
 ---
 
@@ -28,31 +28,6 @@ Returns a load balancer address config.
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 
 New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
-
-
-Name                    : TestVNetRef
-IpAddress               : 10.0.0.5
-BackendIpConfigurations : null
-VirtualNetwork          : {
-                            "AddressSpace": {
-                              "AddressPrefixes": [
-                                "10.0.0.0/16"
-                              ]
-                            },
-                            "DhcpOptions": {},
-                            "Subnets": [],
-                            "VirtualNetworkPeerings": [],
-                            "ProvisioningState": "Succeeded",
-                            "EnableDdosProtection": false,
-                            "ResourceGroupName": "xxxxxxxxxxx",
-                            "Location": "brazilsouth",
-                            "ResourceGuid": "xxxxxxxxxxxxxxxxxx",
-                            "Type": "Microsoft.Network/virtualNetworks",
-                            "Name": "xxxxx",
-                            "Etag": "W/\"95f7ba63-642e-4ff0-b7dc-7b80bf1cc620\"",
-                            "Id": 
-                          "/subscriptions/xxxxxxxxx/resourceGroups/xxxxxxxxxx/providers/Microsoft.Network/virtualNetworks/xxxxxxxxxxxx"
-                          }
 ```
 
 ## PARAMETERS

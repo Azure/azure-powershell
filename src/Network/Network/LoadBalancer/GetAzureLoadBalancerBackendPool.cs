@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.Network
                 loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(this.ResourceGroupName, this.LoadBalancerName, this.Name);
 
                 var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
-                loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses = loadBalancerBackendAddressPoolModel.LoadBalancerBackendAddresses.ToList();
                 WriteObject(loadBalancerBackendAddressPoolModel);
             }
             else

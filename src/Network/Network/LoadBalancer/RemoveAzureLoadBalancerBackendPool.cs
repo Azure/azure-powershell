@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true), OutputType(typeof(PSBackendAddressPool))]
     public partial class RemoveAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -88,34 +83,29 @@ namespace Microsoft.Azure.Commands.Network
                 this.LoadBalancerName = resourceIdentifier.ParentResource.Split('/')[1];
                 this.Name = resourceIdentifier.ResourceName;
             }
-
+         
             // check if resource already exists
             var found = NetworkBaseCmdlet.IsResourcePresent(
                 () => this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Get(
                 this.ResourceGroupName,
-                this.LoadBalancerName, 
+                this.LoadBalancerName,
                 this.Name));
 
             if (!found)
             {
                 throw new ArgumentException(Properties.Resources.ResourceNotFound);
             }
-
             // this prompts user to confirm the deletion of the backend pool
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, Name),
-                Properties.Resources.RemoveResourceMessage,
-                Name,
-                () =>
-                {
-                    this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Delete(this.ResourceGroupName, 
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage))
+            {
+                this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.Delete(this.ResourceGroupName,
                         this.LoadBalancerName, this.Name);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                });
+
+                if (this.PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
+            }
         }
     }
 }

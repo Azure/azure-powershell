@@ -2496,7 +2496,7 @@
                 <PropertyName>BackendIpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>LoadBalancerBackendIPAddresses</Label>
+                <Label>LoadBalancerBackendAddresses</Label>
                 <PropertyName>LoadBalancerBackendAddressesText</PropertyName>
               </ListItem>
               <ListItem>
@@ -2526,12 +2526,12 @@
                 <PropertyName>IpAddress</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>BackendIpConfigurations</Label>
-                <PropertyName>BackendIpConfigurationsText</PropertyName>
+                <Label>NetworkInterfaceIpConfiguration</Label>
+                <PropertyName>NetworkInterfaceIpConfigurationText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>VirtualNetwork</Label>
-                <PropertyName>VirtualNetworkText</PropertyName>
+                <PropertyName>VirtualNetworkChildResourceText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

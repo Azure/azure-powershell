@@ -15,26 +15,25 @@ Removes a backend pool from a load balancer
 ### DeleteByNameParameterSet
 ```
 Remove-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -Name <String> [-LoadBalancerName <String>]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByParentObjectParameterSet
 ```
 Remove-AzLoadBalancerBackendAddressPool -Name <String> [-LoadBalancerName <String>]
- -LoadBalancer <PSLoadBalancer> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -LoadBalancer <PSLoadBalancer> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByInputObjectParameterSet
 ```
 Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] [-InputObject <PSBackendAddressPool>]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
-Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] -ResourceId <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +44,7 @@ Removes a backend pool from a load balancer
 ### Example 1
 ```powershell
 ##removing by passing lb object via pipeline
-PS C:\>$lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPool1 -Force
+PS C:\>$lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPool1
 
 ### Example 2
 
@@ -68,21 +67,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -145,20 +129,6 @@ Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

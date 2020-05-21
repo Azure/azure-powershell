@@ -28,50 +28,31 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true),OutputType(typeof(PSBackendAddressPool))]
     public partial class NewAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name of the load balancer.",
-            ParameterSetName = CreateByNameParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group name of the load balancer.", ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer.",
-            ParameterSetName = CreateByNameParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The load balancer resource.",
-            ValueFromPipeline = true,
-            ParameterSetName = CreateByParentObjectParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The load balancer resource.", ValueFromPipeline = true, ParameterSetName = CreateByParentObjectParameterSet)]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the backend pool.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the backend pool.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The backend addresses.")]
+        [Parameter(Mandatory = false, HelpMessage = "The backend addresses.")]
         [ValidateNotNullOrEmpty]
         public PSLoadBalancerBackendAddress[] LoadBalancerBackendAddress { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -93,13 +74,9 @@ namespace Microsoft.Azure.Commands.Network
             }
             catch (Rest.Azure.CloudException exception)
             {
-                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
-                    existingloadBalancerBackendAddressPool = null;
-                }
-                else
-                {
-                    throw;
+                    throw exception;
                 }
             }
 
@@ -110,17 +87,12 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name, this.ResourceGroupName, this.LoadBalancerName));
             }
 
-            // Prompt a what if action to user, user can skip with force parameter
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.CreatingResourceMessage, Name),
-                Properties.Resources.CreatingResourceMessage,
-                this.Name,
-                () =>
-                {
-                    var backendPool = CreatePsBackendPool();
-                    WriteObject(backendPool);
-                });
+            // Prompt user if Confirm or What if flag is specified
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            {
+                var backendPool = CreatePsBackendPool();
+                WriteObject(backendPool);
+            }
         }
 
         private PSBackendAddressPool CreatePsBackendPool()
@@ -134,34 +106,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var psBackendAddress in LoadBalancerBackendAddress)
                 {
-                    var backendAddress = ToLoadBalancerBackendAddress(psBackendAddress);
+                    var backendAddress = NetworkResourceManagerProfile.Mapper.Map<LoadBalancerBackendAddress>(psBackendAddress);
                     backendAddressPool.LoadBalancerBackendAddresses.Add(backendAddress);
                 }
             }
 
             var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(this.ResourceGroupName, this.LoadBalancerName, this.Name, backendAddressPool);
             var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
-            loadBalancerBackendAddressPool.LoadBalancerBackendAddresses = loadBalancerBackendAddressPool.LoadBalancerBackendAddresses.ToList();
 
             return loadBalancerBackendAddressPoolModel;
-        }
-
-        // Converts the backend address powershell object to a LoadBalancerBackendAddress
-        private LoadBalancerBackendAddress ToLoadBalancerBackendAddress(PSLoadBalancerBackendAddress pSLoadBalancerBackendAddress)
-        {
-            Microsoft.Azure.Management.Network.Models.VirtualNetwork virtualNetworkConfig = null;
-
-            if (pSLoadBalancerBackendAddress.VirtualNetwork != null)
-            {
-                virtualNetworkConfig = new Microsoft.Azure.Management.Network.Models.VirtualNetwork(pSLoadBalancerBackendAddress.VirtualNetwork.Id);
-            }
-
-            var backendAddress = new LoadBalancerBackendAddress();
-            backendAddress.Name = pSLoadBalancerBackendAddress.Name;
-            backendAddress.IpAddress = pSLoadBalancerBackendAddress.IpAddress;
-            backendAddress.VirtualNetwork = virtualNetworkConfig;
-
-            return backendAddress;
         }
     }
 }

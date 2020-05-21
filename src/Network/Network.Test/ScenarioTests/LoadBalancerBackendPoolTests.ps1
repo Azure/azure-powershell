@@ -44,10 +44,10 @@ function Test-LoadBalancerBackendPoolCRUD
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create Standard Azure load balancer
-        New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard -Force
+        New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
         # Create load balancer backend pool
-        $backendPoolInitial = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -Force
+        $backendPoolInitial = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName
 
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress -Name $backendAddressConfigName -VirtualNetwork $vnet 
@@ -55,7 +55,7 @@ function Test-LoadBalancerBackendPoolCRUD
         # Add Ip to pool address list
         $backendPoolInitial.LoadBalancerBackendAddresses.Add($ip1)
 
-        $backendPoolSet1 =  Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolInitial -Force
+        $backendPoolSet1 = Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolInitial
        
         Assert-NotNull  $backendPoolSet1
 
@@ -71,7 +71,7 @@ function Test-LoadBalancerBackendPoolCRUD
 
         #remove IpAddress from list
         $backendPoolSet1.LoadBalancerBackendAddresses.Remove($backendPoolSet1.LoadBalancerBackendAddresses[0])
-        $backendPoolSet2 = Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolSet1 -Force
+        $backendPoolSet2 = Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolSet1
 
         Assert-NotNull  $backendPoolSet2
         
@@ -128,7 +128,7 @@ function Test-LoadBalancerBackendPoolCreate
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create Standard Azure load balancer
-        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard -Force
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetwork $vnet
         $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetwork $vnet 
@@ -137,23 +137,23 @@ function Test-LoadBalancerBackendPoolCreate
         $ips = @($ip1, $ip2)
         
         ## create by passing loadbalancer without Ips
-        $create1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1 -Force
+        $create1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
 
         Assert-NotNull $create1
 
         ## create by passing loadbalancer with ips
-        $create2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2 -LoadBalancerBackendAddress $ips -Force
+        $create2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2 -LoadBalancerBackendAddress $ips
 
         Assert-NotNull $create2
         Assert-True { @($create2.LoadBalancerBackendAddresses).Count -eq 2}
 
         ## create by Name without ip's
-        $create3 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool3 -Force
+        $create3 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool3
 
         Assert-NotNull $create3
 
         ## create by Name with ip's
-        $create4 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool4 -LoadBalancerBackendAddress $ips -Force
+        $create4 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool4 -LoadBalancerBackendAddress $ips
 
         Assert-NotNull $create4
         Assert-True { @($create4.LoadBalancerBackendAddresses).Count -eq 2}
@@ -194,24 +194,24 @@ function Test-LoadBalancerBackendPoolDelete
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
 
         # Create Standard Azure load balancer
-        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard -Force
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
-        $b1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName1 -Force
-        $b2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName2 -Force
-        $b3 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName3 -Force
+        $b1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName1
+        $b2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName2
+        $b3 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPoolName3
 
         Assert-NotNull $b1
         Assert-NotNull $b2
         Assert-NotNull $b3
 
         ##test passing lb object via pipeline
-        $lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPoolName1 -Force
+        $lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPoolName1
 
         ##test passing input object
-        Remove-AzLoadBalancerBackendAddressPool -InputObject $b2 -Force
+        Remove-AzLoadBalancerBackendAddressPool -InputObject $b2
 
         ##test passing resourceId
-        Remove-AzLoadBalancerBackendAddressPool -ResourceId $b3.Id -Force
+        Remove-AzLoadBalancerBackendAddressPool -ResourceId $b3.Id
 
         ## confirm removed
         $r1 = $lb | Get-AzLoadBalancerBackendAddressPool -Name $backendPoolName1 -ErrorAction SilentlyContinue
@@ -266,33 +266,33 @@ function Test-LoadBalancerBackendPoolUpdate
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create Standard Azure load balancer
-        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard -Force
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetwork $vnet
         $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetwork $vnet 
 
         $ips = @($ip1, $ip2)
        
-        $unmodified = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1 -Force
+        $unmodified = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
 
         Assert-NotNull $unmodified
 
         #Set by name and modified input object
         $unmodified.LoadBalancerBackendAddresses.Add($ip1)
 
-        $modified1 = Set-AzLoadBalancerBackendAddressPool -InputObject $unmodified -Force
+        $modified1 = Set-AzLoadBalancerBackendAddressPool -InputObject $unmodified
         
         Assert-NotNull $modified1
         Assert-True { @($modified1.LoadBalancerBackendAddresses).Count -eq 1}
 
         #Set by specific backend from piped loadbalancer and add two IP's
-        $modified2 = $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1 -Force
+        $modified2 = $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1
 
         Assert-NotNull $modified2
         Assert-True { @($modified2.LoadBalancerBackendAddresses).Count -eq 2}
 
         #set by ResourceId
-        $modified3 = Set-AzLoadBalancerBackendAddressPool -ResourceId $unmodified.Id -LoadBalancerBackendAddress $unmodified.LoadBalancerBackendAddresses -Force
+        $modified3 = Set-AzLoadBalancerBackendAddressPool -ResourceId $unmodified.Id -LoadBalancerBackendAddress $unmodified.LoadBalancerBackendAddresses
 
         Assert-NotNull $modified3
         Assert-True { @($modified3.LoadBalancerBackendAddresses).Count -eq 1}
@@ -333,11 +333,11 @@ function Test-LoadBalancerBackendPoolRead
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
 
         # Create Standard Azure load balancer
-        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard -Force
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
-        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1 -Force
-        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2 -Force
-        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool3 -Force
+        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
+        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2
+        $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool3
         
         #Get all backends under loadbalancer
         $getAllBackendPools = $lb | Get-AzLoadBalancerBackendAddressPool
