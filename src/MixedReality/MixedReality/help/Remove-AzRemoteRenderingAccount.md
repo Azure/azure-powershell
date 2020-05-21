@@ -1,43 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll-Help.xml
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/new-azspatialanchorsaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/remove-azremoterenderingaccount
 schema: 2.0.0
 ---
 
-# New-AzSpatialAnchorsAccount
+# Remove-AzRemoteRenderingAccount
 
 ## SYNOPSIS
-Create Spatial Anchors Account
+Delete Remote Rendering Account
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
-New-AzSpatialAnchorsAccount -ResourceGroupName <String> -Name <String> -Location <String>
+Remove-AzRemoteRenderingAccount -ResourceGroupName <String> -Name <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzRemoteRenderingAccount -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PipelineParameterSet
+```
+Remove-AzRemoteRenderingAccount -InputObject <PSRemoteRenderingAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new Spatial Anchors Account in certain Subscription, Resource Group and Region.
+Delete specified Remote Rendering Account from certain Subscription and Resource Group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSpatialAnchorsAccount -ResourceGroup rg1 -Name example -Location centralus
-
-ResourceGroupName   : rg1
-AccountId           : 5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef
-AccountEndpoint     : https://mrc-anchor-prod.trafficmanager.net/Accounts/5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef/
-AccountDomain       : mixedreality.azure.com
-Tags                : {}
-Location            : centralus
-Id                  : /subscriptions/10438cf7-a794-4c7b-ad4c-5ddc1313ba7d/resourceGroups/rg1/providers/Microsoft.MixedReality/SpatialAnchorsAccounts/example
-Name                : example
-Type                : Microsoft.MixedReality/SpatialAnchorsAccounts
+PS C:\> Remove-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example
 ```
 
-Create a new Spatial Anchors Account "example" in current Subscription, Resource Group "rg1" and Central US.
+Delete Remote Rendering Account "example" from current Subscription and Resource Group "rg1".
 
 ## PARAMETERS
 
@@ -71,13 +74,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Spatial Anchors Account Location.
+### -InputObject
+The custom domain object.
+
+```yaml
+Type: PSRemoteRenderingAccount
+Parameter Sets: PipelineParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Remote Rendering Account Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: DefaultParameterSet
+Aliases: RemoteRenderingAccountName, AccountName
 
 Required: True
 Position: Named
@@ -86,18 +104,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Spatial Anchors Account Name.
+### -PassThru
+Return object if specified.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: SpatialAnchorsAccountName, AccountName
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -106,13 +124,28 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: ResourceGroup
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource ID of Remote Rendering Account.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
+Aliases: Id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -138,11 +171,15 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### System.String
+
+### Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount.PSRemoteRenderingAccount
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount
+### System.Boolean
 
 ## NOTES
 
