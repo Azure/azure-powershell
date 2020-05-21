@@ -15,6 +15,9 @@ Describe 'New-AzBlockchainMember' {
     It 'CreateExpanded' {
         $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
         $csPasswd = 'strongConsortiumManagementPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-        { New-AzBlockchainMember -Name ("myblockchain" + $env.rstr2) -ResourceGroupName $env.resourceGroup -Consortium ('PowershellConsortiumName' + $env.rstr2) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0 } | Should -Not -Throw
+        $bcMemberName = "myblockchain" + $env.rstr2
+        New-AzBlockchainMember -Name $bcMemberName -ResourceGroupName $env.resourceGroup -Consortium ('PowershellConsortiumName' + $env.rstr2) -ConsortiumManagementAccountPassword $csPasswd -Location eastus -Password $passwd -Protocol Quorum -Sku S0 
+        $bcMember = Get-AzBlockchainMember -Name $bcMemberName -ResourceGroupName $env.resourceGroup
+        $bcMember.Name  | Should -Be $bcMemberName
     }
 }

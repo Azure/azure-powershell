@@ -16,13 +16,14 @@ Describe 'Update-AzBlockchainTransactionNode' {
     $passwd3 = 'strongMemberAccountPassword@3' | ConvertTo-SecureString -AsPlainText -Force
     It 'UpdateExpanded' {
         { Update-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name $env.blockchainTransactionNode -ResourceGroupName $env.resourceGroup -Password $passwd2 } | Should -Not -Throw
+
     }
 
     It 'UpdateViaIdentityExpanded' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { 
-            $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode 
-            Update-AzBlockchainTransactionNode -InputObject $node.Id -Password $passwd3
+        {
+            $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode 
+            Update-AzBlockchainTransactionNode -InputObject $tNode -Password $passwd3
         } | Should -Not -Throw
         #$PSDefaultParameterValues["Disabled"] = $False
     }

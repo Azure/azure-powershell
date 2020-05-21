@@ -14,12 +14,15 @@ while(-not $mockingPath) {
 Describe 'New-AzBlockchainMemberApiKey' {
     $keyPair = {}
     It 'RegenerateExpanded' {
-        { New-AzBlockchainMemberApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -KeyName $keyPair[0].KeyName -Value $keyPair[0].Value } | Should -Not -Throw
+        $keys = New-AzBlockchainMemberApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -KeyName $keyPair[0].KeyName
+        $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 
     It 'RegenerateViaIdentityExpanded' -skip {
         #$PSDefaultParameterValues["Disabled"] = $True
-        {  Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup | New-AzBlockchainMemberApiKey -KeyName $keyPair[0].KeyName -Value $keyPair[0].Value } | Should -Not -Throw
+        $bcMember = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $keys = New-AzBlockchainMemberApiKey -InputObject $bcMember -KeyName $keyPair[0].KeyName
+        $keys[0].Value | Should -Not -Be $keyPair[0].Value 
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 

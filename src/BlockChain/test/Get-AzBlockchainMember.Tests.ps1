@@ -13,23 +13,25 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzBlockchainMember' {
     It 'List1' {
-        { Get-AzBlockchainMember } | Should -Not -Throw
+        $bcMember = Get-AzBlockchainMember
+        $bcMember.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' {
-        { Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $bcMember = Get-AzBlockchainMember -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup
+        $bcMember.Name  | Should -Be $env.blockchainMember
     }
 
     It 'List' {
-        { Get-AzBlockchainMember -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $bcMember = Get-AzBlockchainMember -ResourceGroupName $env.resourceGroup
+        $bcMember.Count | Should -Be 2
     }
 
     It 'GetViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { 
-            $member = Get-AzBlockchainMember -SubscriptionId $env.SubscriptionId -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup 
-            Get-AzBlockchainMember -InputObject $member.Id
-        } | Should -Not -Throw
+        $member = Get-AzBlockchainMember -SubscriptionId $env.SubscriptionId -Name $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $bcMember = Get-AzBlockchainMember -InputObject $member
+        $bcMember.Name  | Should -Be $env.blockchainMember
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }
