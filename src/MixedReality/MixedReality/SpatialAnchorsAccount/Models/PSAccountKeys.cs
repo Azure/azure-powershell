@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
 {
     using Management.MixedReality.Models;
 
-    public sealed class PSSpatialAnchorsAccountKeys : SpatialAnchorsAccountKeys
+    public sealed class PSAccountKeys : AccountKeys
     {
-        public PSSpatialAnchorsAccountKeys(SpatialAnchorsAccountKeys another) :
+        public PSAccountKeys(AccountKeys another) :
             base(
                 primaryKey: another.PrimaryKey,
                 secondaryKey: another.SecondaryKey)

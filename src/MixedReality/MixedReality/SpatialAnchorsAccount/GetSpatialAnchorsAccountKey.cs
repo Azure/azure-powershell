@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + ResourceType + "Key", DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(PSSpatialAnchorsAccountKeys))]
+    [OutputType(typeof(PSAccountKeys))]
     public sealed class GetSpatialAnchorsAccountKeys : SpatialAnchorsAccountCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, HelpMessage = "Resource Group Name.")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 Name = InputObject.Name;
             }
 
-            var result = Client.SpatialAnchorsAccounts.GetKeys(ResourceGroupName, Name);
+            var result = Client.SpatialAnchorsAccounts.ListKeys(ResourceGroupName, Name);
 
             WriteObject(result);
         }
