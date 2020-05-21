@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount
         {
             if (ShouldProcess(ResourceType, MyInvocation.InvocationName))
             {
-                var account = new RemoteRenderingAccount(location: Location, name: Name, type: FullQualifiedResourceType);
+                var identity = new RemoteRenderingAccountIdentity(type: ResourceIdentityType.SystemAssigned);
+                var account = new RemoteRenderingAccount(location: Location, name: Name, type: FullQualifiedResourceType, identity: identity);
                 account = Client.RemoteRenderingAccounts.Create(this.ResourceGroupName, this.Name, account);
 
                 WriteObject(new PSRemoteRenderingAccount(account));
