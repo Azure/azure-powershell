@@ -12,6 +12,11 @@ Update a security setting in Azure Security Center
 
 ## SYNTAX
 
+### GeneralScope (Default)
+```
+Set-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DataExportSettingsScope
 ```
 Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
