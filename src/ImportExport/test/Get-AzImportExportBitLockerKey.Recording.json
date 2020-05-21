@@ -1,0 +1,41 @@
+{
+  "Get-AzImportExportBitLockerKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2016-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "686b8203-fcab-47e8-8f1d-36f4c714b44e" ],
+        "CommandName": [ "Get-AzImportExportBitLockerKey" ],
+        "FullCommandName": [ "Get-AzImportExportBitLockerKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0eaf1aa4-74c7-4dec-841e-8eb98b956d49" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "f7342150-c248-4011-b246-e7b7baa26aa7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200428T101454Z:f7342150-c248-4011-b246-e7b7baa26aa7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 28 Apr 2020 10:14:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"driveId\":\"9CA995BB\",\"bitLockerKey\":\"238810-662376-448998-450120-652806-203390-606320-483076\"}]}"
+    }
+  }
+}

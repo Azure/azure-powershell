@@ -1,0 +1,158 @@
+{
+  "Get-AzImportExport+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ImportExport/jobs?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ImportExport/jobs?api-version=2016-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "e7c693b2-0341-4bba-a852-943c24554a58" ],
+        "CommandName": [ "Get-AzImportExport" ],
+        "FullCommandName": [ "Get-AzImportExport_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "84187c12-2361-46dd-aae0-a84981a26e6f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "f517d84f-c2ba-46e6-bc31-4f30ccefb060" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200428T101450Z:f517d84f-c2ba-46e6-bc31-4f30ccefb060" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 28 Apr 2020 10:14:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1289" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BB\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job\",\"name\":\"test-job\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"East US\"}]}"
+    }
+  },
+  "Get-AzImportExport+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job?api-version=2016-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "090cac1c-03ec-49f1-b091-086a3211794a" ],
+        "CommandName": [ "Get-AzImportExport" ],
+        "FullCommandName": [ "Get-AzImportExport_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d78358c2-fb1f-4d7c-bf35-4a79073de542" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "273429d6-6db8-487e-8987-56655bb20617" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200428T101451Z:273429d6-6db8-487e-8987-56655bb20617" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 28 Apr 2020 10:14:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1277" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BB\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job\",\"name\":\"test-job\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"East US\"}"
+    }
+  },
+  "Get-AzImportExport+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs?api-version=2016-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "1ca01a34-8521-4213-a25e-a32c00158454" ],
+        "CommandName": [ "Get-AzImportExport" ],
+        "FullCommandName": [ "Get-AzImportExport_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "46cab599-7e4b-4a09-a81b-4c7879cafc15" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "2505a768-d1e3-4675-bf13-c17e5ca347e3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200428T101452Z:2505a768-d1e3-4675-bf13-c17e5ca347e3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 28 Apr 2020 10:14:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1122" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job\",\"name\":\"test-job\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"East US\"}]}"
+    }
+  },
+  "Get-AzImportExport+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job?api-version=2016-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job?api-version=2016-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "0e77fee7-9886-40d5-8147-aa05aa2cb179" ],
+        "CommandName": [ "Get-AzImportExport" ],
+        "FullCommandName": [ "Get-AzImportExport_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3a5aff5c-eb45-4bf6-bbc3-166099cf791a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "e55e8a27-9972-409d-8142-ab1e794bd00a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200428T101453Z:e55e8a27-9972-409d-8142-ab1e794bd00a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 28 Apr 2020 10:14:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1277" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BB\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job\",\"name\":\"test-job\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"East US\"}"
+    }
+  }
+}
