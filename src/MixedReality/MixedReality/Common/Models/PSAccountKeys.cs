@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
+namespace Microsoft.Azure.Commands.MixedReality
 {
     using Management.MixedReality.Models;
 
