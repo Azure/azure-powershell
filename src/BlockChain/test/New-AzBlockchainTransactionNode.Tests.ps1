@@ -14,6 +14,9 @@ while(-not $mockingPath) {
 Describe 'New-AzBlockchainTransactionNode' {
     It 'CreateExpanded' {
         $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
-        { New-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name ("myblockchain" + $env.rstr2) -ResourceGroupName $env.resourceGroup -Password $passwd -Location eastus } | Should -Not -Throw
+        $tNodeName = "myblockchain" + $env.rstr2
+        New-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -Name $tNodeName -ResourceGroupName $env.resourceGroup -Password $passwd -Location eastus 
+        $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $tNodeName
+        $tNode.Name | Should -Be $tNodeName
     }
 }

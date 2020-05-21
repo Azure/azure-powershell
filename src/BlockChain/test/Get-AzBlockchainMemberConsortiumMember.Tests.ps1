@@ -13,6 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzBlockchainMemberConsortiumMember' {
     It 'List' {
-        { Get-AzBlockchainMemberConsortiumMember -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $consortiums = Get-AzBlockchainMemberConsortiumMember -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $consortiums.Count | Should -Be 1
     }
 }

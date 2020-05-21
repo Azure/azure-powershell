@@ -15,11 +15,14 @@ Describe 'New-AzBlockchainTransactionNodeApiKey' {
     $keyPair = {}
 
     It 'RegenerateExpanded' {
-        { New-AzBlockchainTransactionNodeApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode -KeyName $keyPair[0].KeyName -Value $keyPair[0].Value } | Should -Not -Throw
+        $keys = New-AzBlockchainTransactionNodeApiKey -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode -KeyName $keyPair[0].KeyName
+        $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 
     It 'RegenerateViaIdentityExpanded' -skip {
-        { Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode | New-AzBlockchainTransactionNodeApiKey -KeyName $keyPair[0].KeyName -Value $keyPair[0].Value } | Should -Not -Throw
+        $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode 
+        $keys = New-AzBlockchainTransactionNodeApiKey -KeyName $keyPair[0].KeyName 
+        $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 
     BeforeEach {

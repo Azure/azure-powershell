@@ -20,3 +20,15 @@ tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 
 This command gets a transaction node.
 
+### Example 3: Get a transaction node
+```powershell
+PS C:\> $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -Name tranctionnode001
+PS C:\>Get-AzBlockchainTransactionNode -InputObject $tNode
+
+Name             Type                                                    Location
+----             ----                                                    --------
+tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
+```
+
+This command gets a transaction node.
+

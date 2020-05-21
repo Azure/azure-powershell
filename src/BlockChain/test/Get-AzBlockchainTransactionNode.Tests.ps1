@@ -13,19 +13,20 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzBlockchainTransactionNode' {
     It 'List' {
-        { Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
+        $tNodes = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup 
+        $tNodes.Count | Should -Be 2
     }
 
     It 'Get' {
-        { Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode } | Should -Not -Throw
+        $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode
+        $tNode.Name | Should -Be $env.blockchainTransactionNode
     }
 
     It 'GetViaIdentity' {
         #$PSDefaultParameterValues["Disabled"] = $True
-        { 
-            $node = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode 
-            Get-AzBlockchainTransactionNode -InputObject $node.Id
-        } | Should -Not -Throw
+        $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -Name $env.blockchainTransactionNode 
+        $tNode = Get-AzBlockchainTransactionNode -InputObject $tNode
+        $tNode.Name | Should -Be $env.blockchainTransactionNode
         #$PSDefaultParameterValues["Disabled"] = $False
     }
 }
