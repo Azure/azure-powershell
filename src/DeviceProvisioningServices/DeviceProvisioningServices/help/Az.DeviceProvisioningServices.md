@@ -17,6 +17,9 @@ Add a new shared access policy in an Azure IoT Hub device provisioning service.
 ### [Add-AzIoTDeviceProvisioningServiceCertificate](Add-AzIoTDeviceProvisioningServiceCertificate.md)
 Create/update an Azure IoT Hub Device Provisioning Service certificate.
 
+### [Add-AzIoTDeviceProvisioningServiceEnrollment](Add-AzIoTDeviceProvisioningServiceEnrollment.md)
+Create a device enrollment record.
+
 ### [Add-AzIoTDeviceProvisioningServiceLinkedHub](Add-AzIoTDeviceProvisioningServiceLinkedHub.md)
 Linked IoT hub to an Azure IoT Hub device provisioning service.
 
@@ -28,6 +31,9 @@ List all or show details of shared access policies in an Azure IoT Hub device pr
 
 ### [Get-AzIoTDeviceProvisioningServiceCertificate](Get-AzIoTDeviceProvisioningServiceCertificate.md)
 Lists all certificates or a particular certificate contained within an Azure IoT Hub Device Provisioning Service.
+
+### [Get-AzIoTDeviceProvisioningServiceEnrollment](Get-AzIoTDeviceProvisioningServiceEnrollment.md)
+Get a device enrollment record.
 
 ### [Get-AzIoTDeviceProvisioningServiceLinkedHub](Get-AzIoTDeviceProvisioningServiceLinkedHub.md)
 List all or show details of linked IoT hubs in an Azure IoT Hub device provisioning service.
@@ -47,11 +53,17 @@ Delete a shared access policies in an Azure IoT Hub device provisioning service.
 ### [Remove-AzIoTDeviceProvisioningServiceCertificate](Remove-AzIoTDeviceProvisioningServiceCertificate.md)
 Delete an Azure IoT Hub Device Provisioning Service certificate.
 
+### [Remove-AzIoTDeviceProvisioningServiceEnrollment](Remove-AzIoTDeviceProvisioningServiceEnrollment.md)
+Delete a device enrollment record.
+
 ### [Remove-AzIoTDeviceProvisioningServiceLinkedHub](Remove-AzIoTDeviceProvisioningServiceLinkedHub.md)
 Delete a linked IoT hub in an Azure IoT Hub device provisioning service.
 
 ### [Set-AzIoTDeviceProvisioningServiceCertificate](Set-AzIoTDeviceProvisioningServiceCertificate.md)
 Verify an Azure IoT Hub Device Provisioning Service certificate.
+
+### [Set-AzIoTDeviceProvisioningServiceEnrollment](Set-AzIoTDeviceProvisioningServiceEnrollment.md)
+Update a device enrollment record.
 
 ### [Update-AzIoTDeviceProvisioningService](Update-AzIoTDeviceProvisioningService.md)
 Update an Azure IoT Hub device provisioning service.

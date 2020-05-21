@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
 * Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
     - `Set-AzStorageAccount`
