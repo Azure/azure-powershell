@@ -12,9 +12,8 @@ This command creates a standard time series insights environment.
 
 ### Example 2: Create a longterm time series insights environment
 ```powershell
-PS C:\> New-AzStorageAccount -ResourceGroupName testgroup -AccountName staccount001 -Location eastus -SkuName Standard_GRS
 PS C:\> $ks = Get-AzStorageAccountKey -ResourceGroupName "testgroup" -Name "staccount001"
-PS C:\> $k  = $ks[0] | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> $k  = $ks[0].Value | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind LongTerm -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
 
 Kind     Location Name       SkuCapacity SkuName Type
