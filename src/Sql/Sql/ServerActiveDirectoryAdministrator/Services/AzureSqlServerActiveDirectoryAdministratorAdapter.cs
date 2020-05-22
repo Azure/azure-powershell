@@ -192,12 +192,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             // Get a list of groups from Azure Active Directory
             groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
-            if (groupList.Count() > 1)
+            if (groupList != null && groupList.Count() > 1)
             {
                 // More than one group was found with that display name.
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADGroupMoreThanOneFound, displayName));
             }
-            else if (groupList.Count() == 1)
+            else if (groupList != null && groupList.Count() == 1)
             {
                 // Only one group was found. Get the group display name and object id
                 group = groupList.First();
@@ -224,12 +224,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
 
             var applicationList = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter);
 
-            if (applicationList.Count() > 1)
+            if (applicationList != null && applicationList.Count() > 1)
             {
                 // More than one application was found.
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationMoreThanOneFound, displayName));
             }
-            else if (applicationList.Count() == 1)
+            else if (applicationList != null && applicationList.Count() == 1)
             {
                 // Only one user was found. Get the user display name and object id
                 PSADApplication app = applicationList.First();
