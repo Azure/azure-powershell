@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
             //Get existing permissions
             CloudQueue queue = Channel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = localChannel.GetPermissions(queue);
+            QueuePermissions queuePermissions = localChannel.GetPermissions(queue, this.RequestOptions, this.OperationContext);
 
             //remove the specified policy
             if (!queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             if (ShouldProcess(policyName, "Remove policy"))
             {
                 queuePermissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetPermissions(queue, queuePermissions);
+                localChannel.SetPermissions(queue, queuePermissions, null, OperationContext);
                 success = true;
             }
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix the issue that UserAgent not added for some dataplane cmdlets.
 
 ## Version 2.2.0
 * Supported create Storage account with RequireInfrastructureEncryption
