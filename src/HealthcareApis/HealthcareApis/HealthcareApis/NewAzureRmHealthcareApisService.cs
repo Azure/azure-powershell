@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
             Mandatory = false,
             HelpMessage = "Use Managed Identity?")]
-        public SwitchParameter Identity { get; set; }
+        public SwitchParameter ManagedIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         }
                     };
                     
-                    if (this.Identity.IsPresent)
+                    if (this.ManagedIdentity.IsPresent)
                     {
                         servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
                     }
