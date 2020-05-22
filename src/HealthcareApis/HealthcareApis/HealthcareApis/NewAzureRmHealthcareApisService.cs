@@ -131,13 +131,16 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             HelpMessage = "HealthcareApis Fhir Service EnableSmartProxy.")]
         public SwitchParameter EnableSmartProxy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use Managed Identity?")]
+        public SwitchParameter Identity { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Fhir Version.")]
         [ValidateNotNullOrEmpty]
         public string FhirVersion { get; set; }
-
 
         [Parameter(
             Mandatory = false,
@@ -177,10 +180,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             AccessPolicies = accessPolicies
                         }
                     };
+                    
+                    if (this.Identity.IsPresent)
+                    {
+                        servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                    }
 
                     if (ShouldProcess(this.Name, Resources.createService))
                     {
-
                         this.EnsureNameAvailabilityOrThrow();
 
                         try
