@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
 * Added SyncMemberAzureDatabaseResourceId to `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Add Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
 
 ## Version 2.6.1
 * Enhance performance of:
