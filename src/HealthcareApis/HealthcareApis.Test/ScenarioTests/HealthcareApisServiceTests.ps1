@@ -31,6 +31,7 @@ function Test-AzRmHealthcareApisService{
 	$offerThroughput =  Get-OfferThroughput
 	$kind = Get-Kind
 	$object_id = Get-AccessPolicyObjectID;
+	$storageAccountName = "exportStorage"
 	
 	try
 	{
@@ -38,9 +39,8 @@ function Test-AzRmHealthcareApisService{
 		# Create Resource Group
 		New-AzResourceGroup -Name $rgname -Location $location
 
-	# Create App
-		
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -Kind $kind -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
+		# Create App
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -Kind $kind -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
@@ -48,17 +48,25 @@ function Test-AzRmHealthcareApisService{
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.CosmosDbOfferThroughput $offerThroughput
 		Assert-AreEqual $actual.Kind $kind
+		Assert-AreEqual $actual.ExportStorageAccountName $storageAccountName
+		Assert-AreEqual $actual.IdentityType "SystemAssigned"
+		Assert-NotNull $actual.IdentityPrincipalId
+		Assert-NotNull $actual.IdentityTenantId
+
 		#Update using parameters
 		$newOfferThroughput = $offerThroughput - 600
-		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
+		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput -DisableManagedIdentity;
 
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+
 		# Assert the update
 		Assert-AreEqual $updatedAccount.Name $rname
 		Assert-AreEqual $updatedAccount.CosmosDbOfferThroughput $newOfferThroughput
+		Assert-Null $actual.IdentityType
 
+		# Create second App
 		$rname1 = $rname + "1"
-		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
+		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName $rgname -Location $location -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
 		
 		$actual1 = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname1
 
