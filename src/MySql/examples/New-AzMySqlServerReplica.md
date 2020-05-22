@@ -8,3 +8,15 @@ mysql-test-replica eastus   mysql_test         5.7     10240                   G
 ```
 
 This cmdlet creates a new MySql server replica.
+
+### Example 2: Create a new MySql server replica
+```powershell
+PS C:\> $mysql = Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> New-AzMySqlServerReplica -InputObject $mysql -Name mysql-test-replica -ResourceGroupName PowershellMySqlTest
+
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+```
+
+This cmdlet with parameter inputobject creates a new MySql server replica.
