@@ -1,61 +1,61 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll-Help.xml
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/get-azspatialanchorsaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/get-azremoterenderingaccountkey
 schema: 2.0.0
 ---
 
-# Get-AzSpatialAnchorsAccountKey
+# Get-AzRemoteRenderingAccountKey
 
 ## SYNOPSIS
-Get keys of Spatial Anchors Account
+Get keys of Remote Rendering Account
 
 ## SYNTAX
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSpatialAnchorsAccountKey -ResourceGroupName <String> -Name <String>
+Get-AzRemoteRenderingAccountKey -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSpatialAnchorsAccountKey -ResourceId <String>
+Get-AzRemoteRenderingAccountKey -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PipelineParameterSet
 ```
-Get-AzSpatialAnchorsAccountKey -InputObject <PSSpatialAnchorsAccount>
+Get-AzRemoteRenderingAccountKey -InputObject <PSRemoteRenderingAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get developer keys of Spatial Anchors Account.
+Get developer keys of Remote Rendering Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSpatialAnchorsAccountKey -ResourceGroup rg1 -Name example
+PS C:\> Get-AzRemoteRenderingAccountKey -ResourceGroup rg1 -Name example
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=
 ```
 
-Get developer keys of Spatial Anchors Account "example" from current Subscription and Resource Group "rg1".
+Get developer keys of Remote Rendering Account "example" from current Subscription and Resource Group "rg1".
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example | Get-AzSpatialAnchorsAccountKey 
+PS C:\> Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example | Get-AzRemoteRenderingAccountKey 
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=
 ```
 
-Get developer keys of Spatial Anchors Account "example" from current Subscription and Resource Group "rg1" with piping.
+Get developer keys of Remote Rendering Account "example" from current Subscription and Resource Group "rg1" with piping.
 
 ## PARAMETERS
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The custom domain object.
 
 ```yaml
-Type: PSSpatialAnchorsAccount
+Type: PSRemoteRenderingAccount
 Parameter Sets: PipelineParameterSet
 Aliases:
 
@@ -90,12 +90,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spatial Anchors Account Name.
+Remote Rendering Account Name.
 
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: SpatialAnchorsAccountName, AccountName
+Aliases: RemoteRenderingAccountName, AccountName
 
 Required: True
 Position: Named
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID of Spatial Anchors Account.
+Resource ID of Remote Rendering Account.
 
 ```yaml
 Type: String
@@ -142,11 +142,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount
+### Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount.PSRemoteRenderingAccount
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSAccountKeys
+### Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount.PSAccountKeys
 
 ## NOTES
 

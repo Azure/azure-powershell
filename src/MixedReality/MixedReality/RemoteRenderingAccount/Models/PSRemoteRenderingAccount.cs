@@ -12,17 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount
 {
     using Management.MixedReality.Models;
 
-    public sealed class PSSpatialAnchorsAccountKeys : SpatialAnchorsAccountKeys
+    public sealed class PSRemoteRenderingAccount : RemoteRenderingAccount
     {
-        public PSSpatialAnchorsAccountKeys(SpatialAnchorsAccountKeys another) :
+        private ResourceId resourceId;
+
+        public PSRemoteRenderingAccount(RemoteRenderingAccount another) : 
             base(
-                primaryKey: another.PrimaryKey,
-                secondaryKey: another.SecondaryKey)
+                location: another.Location,
+                id: another.Id,
+                name: another.Name,
+                type: another.Type,
+                tags: new Dictionary<string, string>(another.Tags),
+                accountId: another.AccountId,
+                accountDomain: another.AccountDomain)
         {
+            resourceId = new ResourceId(this.Id);
+        }
+
+        public string ResourceGroupName
+        {
+            get
+            {
+                return resourceId.ResourceGroupName;
+            }
         }
     }
 }

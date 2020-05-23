@@ -1,79 +1,79 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll-Help.xml
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/new-azremoterenderingaccountkey
 schema: 2.0.0
 ---
 
-# New-AzSpatialAnchorsAccountKey
+# New-AzRemoteRenderingAccountKey
 
 ## SYNOPSIS
-Regenerate key of Spatial Anchors Account
+Regenerate key of Remote Rendering Account
 
 ## SYNTAX
 
 ### RegeneratePrimaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -ResourceGroupName <String> -Name <String> [-Primary] [-Force]
+New-AzRemoteRenderingAccountKey -ResourceGroupName <String> -Name <String> [-Primary] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateSecondaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -ResourceGroupName <String> -Name <String> [-Secondary] [-Force]
+New-AzRemoteRenderingAccountKey -ResourceGroupName <String> -Name <String> [-Secondary] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdRegeneratePrimaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -ResourceId <String> [-Primary] [-Force]
+New-AzRemoteRenderingAccountKey -ResourceId <String> [-Primary] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdRegenerateSecondaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -ResourceId <String> [-Secondary] [-Force]
+New-AzRemoteRenderingAccountKey -ResourceId <String> [-Secondary] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipelineRegeneratePrimaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -InputObject <PSSpatialAnchorsAccount> -Primary [-Force]
+New-AzRemoteRenderingAccountKey -InputObject <PSRemoteRenderingAccount> -Primary [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipelineRegenerateSecondaryKeyParameterSet
 ```
-New-AzSpatialAnchorsAccountKey -InputObject <PSSpatialAnchorsAccount> -Secondary [-Force]
+New-AzRemoteRenderingAccountKey -InputObject <PSRemoteRenderingAccount> -Secondary [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerate primary key or secondary key of Spatial Anchors Account.
+Regenerate primary key or secondary key of Remote Rendering Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSpatialAnchorsAccountKey -ResourceGroupName rg1 -Name example -Secondary
+PS C:\> New-AzRemoteRenderingAccountKey -ResourceGroupName rg1 -Name example -Secondary
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= mF8lsBeEbs51H/jLe4COW4zUiEyg9lDM1XHQ03jtxZU=
 ```
 
-Regenerate secondary key of Spatial Anchors Account "example" in Resource Group "rg1". 
+Regenerate secondary key of Remote Rendering Account "example" in Resource Group "rg1". 
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example | New-AzSpatialAnchorsAccountKey -Secondary
+PS C:\> Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example | New-AzRemoteRenderingAccountKey -Secondary
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=
 ```
 
-Regenerate secondary key of Spatial Anchors Account "example" from current Subscription and Resource Group "rg1" with piping.
+Regenerate secondary key of Remote Rendering Account "example" from current Subscription and Resource Group "rg1" with piping.
 
 ## PARAMETERS
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The custom domain object.
 
 ```yaml
-Type: PSSpatialAnchorsAccount
+Type: PSRemoteRenderingAccount
 Parameter Sets: PipelineRegeneratePrimaryKeyParameterSet, PipelineRegenerateSecondaryKeyParameterSet
 Aliases:
 
@@ -123,12 +123,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spatial Anchors Account Name.
+Remote Rendering Account Name.
 
 ```yaml
 Type: String
 Parameter Sets: RegeneratePrimaryKeyParameterSet, RegenerateSecondaryKeyParameterSet
-Aliases: SpatialAnchorsAccountName, AccountName
+Aliases: RemoteRenderingAccountName, AccountName
 
 Required: True
 Position: Named
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Primary
-Regenerate primary key of Spatial Anchors Account.
+Regenerate primary key of Remote Rendering Account.
 
 ```yaml
 Type: SwitchParameter
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID of Spatial Anchors Account.
+Resource ID of Remote Rendering Account.
 
 ```yaml
 Type: String
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Secondary
-Regenerate primary key of Spatial Anchors Account.
+Regenerate primary key of Remote Rendering Account.
 
 ```yaml
 Type: SwitchParameter
@@ -235,11 +235,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount
+### Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount.PSRemoteRenderingAccount
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSAccountKeys
+### Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount.PSAccountKeys
 
 ## NOTES
 

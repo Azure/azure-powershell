@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
+namespace Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount
 {
     using Management.MixedReality;
     using ResourceManager.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + ResourceType, DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
-    public sealed class RemoveSpatialAnchorsAccount : SpatialAnchorsAccountCmdletBase
+    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + ResourceType + "Key", DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(PSAccountKeys))]
+    public sealed class GetRemoteRenderingAccountKeys : RemoteRenderingAccountCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
@@ -29,23 +29,20 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, HelpMessage = "Spatial Anchors Account Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, HelpMessage = "Remote Rendering Account Name.")]
         [ResourceNameCompleter(FullQualifiedResourceType, nameof(ResourceGroupName))]
-        [Alias("SpatialAnchorsAccountName", "AccountName")]
+        [Alias("RemoteRenderingAccountName", "AccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Spatial Anchors Account.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Remote Rendering Account.")]
         [ResourceIdCompleter(FullQualifiedResourceType)]
         [Alias("Id")]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = PipelineParameterSet, ValueFromPipeline = true, HelpMessage = "The custom domain object.")]
         [ValidateNotNull]
-        public PSSpatialAnchorsAccount InputObject { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
-        public SwitchParameter PassThru { get; set; }
+        public PSRemoteRenderingAccount InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,15 +60,9 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 Name = InputObject.Name;
             }
 
-            if (ShouldProcess(Name, MyInvocation.InvocationName))
-            {
-                Client.SpatialAnchorsAccounts.Delete(ResourceGroupName, Name);
-            }
+            var result = Client.RemoteRenderingAccounts.ListKeys(ResourceGroupName, Name);
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
+            WriteObject(result);
         }
     }
 }

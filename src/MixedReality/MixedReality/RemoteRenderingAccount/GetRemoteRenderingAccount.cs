@@ -15,15 +15,15 @@
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
+namespace Microsoft.Azure.Commands.MixedReality.RemoteRenderingAccount
 {
     using Management.MixedReality;
     using ResourceManager.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + ResourceType, DefaultParameterSetName = ListParameterSet)]
-    [OutputType(typeof(PSSpatialAnchorsAccount))]
-    public sealed class GetSpatialAnchorsAccount : SpatialAnchorsAccountCmdletBase
+    [OutputType(typeof(PSRemoteRenderingAccount))]
+    public sealed class GetRemoteRenderingAccount : RemoteRenderingAccountCmdletBase
     {
         public const string GetParameterSet = "GetParameterSet";
         public const string ListParameterSet = "ListParameterSet";
@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetParameterSet, HelpMessage = "Spatial Anchors Account Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetParameterSet, HelpMessage = "Remote Rendering Account Name.")]
         [ResourceNameCompleter(FullQualifiedResourceType, nameof(ResourceGroupName))]
-        [Alias("SpatialAnchorsAccountName", "AccountName")]
+        [Alias("RemoteRenderingAccountName", "AccountName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Spatial Anchors Account.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Remote Rendering Account.")]
         [ResourceIdCompleter(FullQualifiedResourceType)]
         [Alias("Id")]
         public string ResourceId { get; set; }
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
             if (ParameterSetName == ListParameterSet)
             {
                 var accounts = string.IsNullOrEmpty(this.ResourceGroupName)
-                    ? Client.SpatialAnchorsAccounts.EnumerateBySubscription()
-                    : Client.SpatialAnchorsAccounts.EnumerateByResourceGroup(this.ResourceGroupName);
+                    ? Client.RemoteRenderingAccounts.EnumerateBySubscription()
+                    : Client.RemoteRenderingAccounts.EnumerateByResourceGroup(this.ResourceGroupName);
 
-                result = accounts.Select(_ => new PSSpatialAnchorsAccount(_));
+                result = accounts.Select(_ => new PSRemoteRenderingAccount(_));
                 enumeration = true;
             }
             else
@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                     Name = resourceId.ResourceName;
                 }
 
-                var account = Client.SpatialAnchorsAccounts.Get(this.ResourceGroupName, this.Name);
+                var account = Client.RemoteRenderingAccounts.Get(this.ResourceGroupName, this.Name);
 
-                result = new PSSpatialAnchorsAccount(account);
+                result = new PSRemoteRenderingAccount(account);
                 enumeration = false;
             }
 
