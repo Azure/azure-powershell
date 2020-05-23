@@ -622,4 +622,7 @@
   <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
     <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden</value>
   </data>
+  <data name="SyncMemberIdRequired" xml:space="preserve">
+    <value>SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it.</value>
+  </data>
 </root>

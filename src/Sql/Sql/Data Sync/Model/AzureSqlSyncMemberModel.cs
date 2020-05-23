@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -98,6 +98,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public string SyncState { get; set; }
 
         /// <summary>
+        /// Gets or sets the sync member resource Id
+        /// </summary>
+        public string SyncMemberAzureDatabaseResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to use private link connection
+        /// </summary>
+        public bool? UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlSyncMemberModel
         /// </summary>
         public AzureSqlSyncMemberModel()
@@ -120,14 +130,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             ResourceId = syncMember.Id;
             SyncGroupName = syncGroupName;
             SyncMemberName = syncMember.Name;
-            SyncDirection = syncMember.Properties.SyncDirection == null ? null : syncMember.Properties.SyncDirection.ToString();
-            SyncAgentId = syncMember.Properties.SyncAgentId;
-            SqlServerDatabaseId = syncMember.Properties.SqlServerDatabaseId;
-            MemberServerName = syncMember.Properties.ServerName;
-            MemberDatabaseName = syncMember.Properties.DatabaseName;
-            MemberDatabaseUserName = syncMember.Properties.UserName;
-            MemberDatabaseType = syncMember.Properties.DatabaseType == null ? null : syncMember.Properties.DatabaseType.ToString();
-            SyncState = syncMember.Properties.SyncState;
+            SyncDirection = syncMember.SyncDirection == null ? null : syncMember.SyncDirection.ToString();
+            SyncAgentId = syncMember.SyncAgentId;
+            SqlServerDatabaseId = syncMember.SqlServerDatabaseId == null ? null : syncMember.SqlServerDatabaseId.ToString();
+            MemberServerName = syncMember.ServerName;
+            MemberDatabaseName = syncMember.DatabaseName;
+            MemberDatabaseUserName = syncMember.UserName;
+            MemberDatabaseType = syncMember.DatabaseType == null ? null : syncMember.DatabaseType.ToString();
+            SyncState = syncMember.SyncState;
+            UsePrivateLinkConnection = syncMember.UsePrivateLinkConnection;
+            SyncMemberAzureDatabaseResourceId = syncMember.SyncMemberAzureDatabaseResourceId;
         }
     }
 }
