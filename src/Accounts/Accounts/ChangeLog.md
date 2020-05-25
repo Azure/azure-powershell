@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed typo in comments
 * Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
 
 ## Version 1.8.0
