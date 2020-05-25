@@ -19,9 +19,9 @@
 -->
 ## Upcoming Release
 * Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
-* Format Output property and show it on the Get-AzDeploymentScript cmdlet output
-* Rename -DeploymentScriptInputObject parameter to -DeploymentScriptObject
-* Fix missing file/target name in cmdlet messages.
+* Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
+* Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
+* Fixed missing file/target name in cmdlet messages.
 
 ## Version 2.0.1
 * Added message warning about view delay when creating a new Role Definition
