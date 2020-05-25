@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Introducing Azure Remote Rendering Management Cmdlets
+* Added Azure Remote Rendering Management Cmdlets
 
 ## Version 0.1.3
 * Update references in .psd1 to use relative path
