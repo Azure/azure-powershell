@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Position = 2,
             HelpMessage = "The name of the Azure SQL Managed Instance to failover.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-        [Alias("InstanceName")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public string Name { get; set; }
+        public string ManagedInstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             return new List<Model.AzureSqlManagedInstanceModel>()
             {
-                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name)
+                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName)
             };
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceModel> entity)
         {
             string replicaType = this.ReadableSecondary.IsPresent ? ReadableSecondaryReplica : PrimaryReplica;
-            ModelAdapter.FailoverManagedInstance(this.ResourceGroupName, this.Name, replicaType);
+            ModelAdapter.FailoverManagedInstance(this.ResourceGroupName, this.ManagedInstanceName, replicaType);
             return entity;
         }
 
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             if (!this.Force.IsPresent && !base.ShouldProcess(
                 string.Format(CultureInfo.InvariantCulture,
-                Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlInstanceDescription, this.Name),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlInstanceDescription, this.ManagedInstanceName),
                 string.Format(CultureInfo.InvariantCulture,
-                    Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlInstanceWarning, this.Name),
+                    Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlInstanceWarning, this.ManagedInstanceName),
                 Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
