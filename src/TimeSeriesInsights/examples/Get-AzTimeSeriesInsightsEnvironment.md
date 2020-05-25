@@ -80,7 +80,7 @@ This command lists all time series insights environments in a resource group.
 
 ### Example 3: Get a time series insights environment by object
 ```powershell
-PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x 
+PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -Name tsi-envv8u56x 
 PS C:\> Get-AzTimeSeriesInsightsEnvironment -InputObject $env
 
 DataAccessFqdn               : d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com
