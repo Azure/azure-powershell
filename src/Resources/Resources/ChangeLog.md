@@ -22,6 +22,7 @@
 * Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
 * Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
 * Fixed missing file/target name in cmdlet messages.
+* Updated assembly version of resource manager and tags cmdlets
 
 ## Version 2.0.1
 * Added message warning about view delay when creating a new Role Definition

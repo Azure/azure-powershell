@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated assembly version of data plane cmdlets
 
 ## Version 2.0.0
 * Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
