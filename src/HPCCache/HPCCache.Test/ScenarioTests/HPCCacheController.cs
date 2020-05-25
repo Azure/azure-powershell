@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
                 { "Microsoft.Resources", null },
                 { "Microsoft.Features", null },
                 { "Microsoft.Authorization", null },
+                { "Microsoft.Network", null },
             };
             var providersToIgnore = new Dictionary<string, string>
             {
