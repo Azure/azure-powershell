@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
-        public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "The route table associated with this Virtual Hub.")]
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
@@ -136,26 +131,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.AddressPrefix))
             {
                 virtualHubToUpdate.AddressPrefix = this.AddressPrefix;
-            }
-
-            //// HubVirtualNetworkConnections
-            if (this.HubVnetConnection != null)
-            {
-                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
-
-                // get auth headers for cross-tenant hubvnet conn
-                List<string> resourceIds = new List<string>();
-                foreach (var connection in this.HubVnetConnection)
-                {
-                    resourceIds.Add(connection.RemoteVirtualNetwork.Id);
-                }
-
-                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                {
-                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                }
             }
 
             //// VirtualHubRouteTable

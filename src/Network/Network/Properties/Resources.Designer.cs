@@ -1578,7 +1578,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualWanReferenceNeededForVirtualHub", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualWan reference is required to create a VirtualHub..
+        /// </summary>
+        internal static string VirtualNetworkConnectionNotAllowedInHubOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkConnectionNotAllowedInHubOperation", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A valid Virtual WAN is required to generate a vpnSites configuration..
         /// </summary>

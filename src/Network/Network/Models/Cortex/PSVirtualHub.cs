@@ -32,8 +32,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId AzureFirewall { get; set; }
 
-        public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
-
         public List<PSVirtualHubRouteTable> RouteTables { get; set; }
 
         public PSVirtualHubRouteTable RouteTable { get; set; }

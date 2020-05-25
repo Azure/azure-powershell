@@ -158,6 +158,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var hubVnetConnection = new MNM.HubVirtualNetworkConnection();
             hubVnetConnection.Name = this.Name;
+            // Fixme.. make it a boolean
             hubVnetConnection.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
 
             //// Resolve the remote virtual network

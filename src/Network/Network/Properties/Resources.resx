@@ -318,6 +318,9 @@
   <data name="VirtualWanReferenceNeededForVirtualHub" xml:space="preserve">
     <value>A valid VirtualWan reference is required to create a VirtualHub.</value>
   </data>
+  <data name="VirtualNetworkConnectionNotAllowedInHubOperation" xml:space="preserve">
+    <value>HubVnetConnection not allowed in Virtual Hub. Use AzVirtualHubVnet commands.</value>
+  </data>
   <data name="VirtualWanRequiredForVpnSiteConfiguration" xml:space="preserve">
     <value>A valid Virtual WAN is required to generate a vpnSites configuration.</value>
   </data>

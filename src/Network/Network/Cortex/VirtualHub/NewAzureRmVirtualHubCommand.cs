@@ -28,12 +28,14 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualHub))]
+
     public class NewAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
     {
         [Parameter(
@@ -135,6 +137,11 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VirtualWanReferenceNeededForVirtualHub);
             }
 
+            if (this.HubVnetConnection != null)
+            {
+                throw new PSArgumentException(Properties.Resources.VirtualNetworkConnectionNotAllowedInHubOperation);
+            }
+
             PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
 
             ConfirmAction(
@@ -151,25 +158,6 @@ namespace Microsoft.Azure.Commands.Network
                         AddressPrefix = this.AddressPrefix,
                         Location = this.Location
                     };
-
-                    virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                    if (this.HubVnetConnection != null)
-                    {
-                        virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
-
-                        // get auth headers for cross-tenant hubvnet conn
-                        List<string> resourceIds = new List<string>();
-                        foreach (var connection in this.HubVnetConnection)
-                        {
-                            resourceIds.Add(connection.RemoteVirtualNetwork.Id);
-                        }
-
-                        var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                        {
-                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                        }
-                    }
 
                     virtualHub.RouteTable = this.RouteTable;
                     virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
