@@ -41,7 +41,7 @@ Location Name       Type
 -------- ----       ----
 eastus   dolauli001 Microsoft.Blockchain/blockchainMembers
 .Example
-PS C:\> $member = Get-AzBlockchainMember -ResourceGroupName lucas-blockchain-rg -Name myblockchaine0f3ol 
+PS C:\> $member = Get-AzBlockchainMember -ResourceGroupName blockchain-rg -Name myblockchaine0f3ol
 PS C:\> Get-AzBlockchainMember -InputObject $membe 
 
 Location Name               Type
