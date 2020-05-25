@@ -10,8 +10,9 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ImportExport.private.dll'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
   FormatsToProcess = './Az.ImportExport.format.ps1xml'
-  FunctionsToExport = 'Get-AzImportExport', 'Get-AzImportExportBitLockerKey', 'Get-AzImportExportLocation', 'New-AzImportExport', 'New-AzImportExportDriveListObject', 'Remove-AzImportExport', 'Update-AzImportExport', '*'
+  FunctionsToExport = 'Get-AzImportExport', 'Get-AzImportExportBitLockerKey', 'Get-AzImportExportLocation', 'New-AzImportExport', 'New-AzImportExportDriveListObject', 'Remove-AzImportExport', 'Update-AzImportExport'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
