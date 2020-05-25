@@ -11,7 +11,6 @@ key2    eu9kx94TKH506R0i4JhYBmsx
 
 This command regenerates Api keys for a blockchain member.
 
-<!--
 ### Example 1: Regenerate Api keys for a blockchain member
 
 ```powershell
@@ -26,4 +25,3 @@ key2    eu9kx94TKH506R0i4JhYBmsx
 ```
 
 This command regenerates Api keys for a blockchain member.
--->

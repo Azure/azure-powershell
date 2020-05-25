@@ -19,9 +19,9 @@ Describe 'New-AzBlockchainTransactionNodeApiKey' {
         $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 
-    It 'RegenerateViaIdentityExpanded' -skip {
+    It 'RegenerateViaIdentityExpanded' {
         $tNode = Get-AzBlockchainTransactionNode -BlockchainMemberName $env.blockchainMember -ResourceGroupName $env.resourceGroup -TransactionNodeName $env.blockchainTransactionNode 
-        $keys = New-AzBlockchainTransactionNodeApiKey -KeyName $keyPair[0].KeyName 
+        $keys = New-AzBlockchainTransactionNodeApiKey -InputObject $tnode -KeyName $keyPair[0].KeyName
         $keys[0].Value | Should -Not -Be $keyPair[0].Value
     }
 

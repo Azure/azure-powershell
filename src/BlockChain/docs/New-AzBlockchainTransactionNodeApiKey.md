@@ -43,8 +43,6 @@ key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 
 This command generates Api keys for a transaction node.
 
-\<!--
-
 ### Example 2: Regenerate Api keys for a transaction node
 ```powershell
 PS C:\> $keyPair = Get-AzBlockchainTransactionNodeApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -TransactionNodeName tranctionnode001 
@@ -58,7 +56,6 @@ key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 ```
 
 This command generates Api keys for a transaction node.
---\>
 
 ## PARAMETERS
 
