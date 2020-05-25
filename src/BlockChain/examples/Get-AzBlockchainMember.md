@@ -38,7 +38,7 @@ This command gets a blockchain member under a resource group.
 
 ### Example 4: Get a blockchain member
 ```powershell
-PS C:\> $member = Get-AzBlockchainMember -ResourceGroupName lucas-blockchain-rg -Name myblockchaine0f3ol 
+PS C:\> $member = Get-AzBlockchainMember -ResourceGroupName blockchain-rg -Name myblockchaine0f3ol
 PS C:\> Get-AzBlockchainMember -InputObject $membe 
 
 Location Name               Type
