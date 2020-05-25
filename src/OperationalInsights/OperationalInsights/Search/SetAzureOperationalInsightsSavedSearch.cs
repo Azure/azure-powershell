@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 10, Mandatory = false,
             HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
         [ValidateNotNullOrEmpty]
-        public string FunctionParameters { get; set; }
+        public string FunctionParameter { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Query = this.Query,
                 Version = this.Version,
                 FunctionAlias = this.FunctionAlias,
-                FunctionParameters = this.FunctionParameters
+                FunctionParameters = this.FunctionParameter
             };
 
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
