@@ -1,46 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityContact
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecuritySetting
 schema: 2.0.0
 ---
 
-# Remove-AzSecurityContact
+# Set-AzSecuritySetting
 
 ## SYNOPSIS
-Deletes a security contact.
+Update a security setting in Azure Security Center
 
 ## SYNTAX
 
-### SubscriptionLevelResource (Default)
+### GeneralScope (Default)
 ```
-Remove-AzSecurityContact -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceId
+### DataExportSettingsScope
 ```
-Remove-AzSecurityContact -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzSecurityContact -InputObject <PSSecurityContact> [-PassThru]
+Set-AzSecuritySetting -InputObject <PSSecuritySetting> [-Enabled <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a security contact.
+The Set-AzSecuritySetting cmdlet updates a specific security setting in Azure Security Center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityContact -Name "default1"
+PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
+
+Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
+Name: "MCAS"
+Type: "Microsoft.Security/settings"
+Enabled: true
 ```
 
-Deletes the "default1" security contact
+Updates an MCAS data export setting   
 
 ## PARAMETERS
 
@@ -59,11 +63,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Enabled
+Enables the setting.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: DataExportSettingsScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Boolean
+Parameter Sets: InputObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact
+Type: Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 Parameter Sets: InputObject
 Aliases:
 
@@ -74,12 +105,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -SettingKind
+Setting kind. (DataExportSettings)
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource
+Parameter Sets: DataExportSettingsScope
 Aliases:
 
 Required: True
@@ -89,33 +120,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether the operation was successful.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource ID.
+### -SettingName
+Setting name. (MCAS/WDATP)
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceId
+Parameter Sets: DataExportSettingsScope
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -155,12 +172,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
 
-### Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact
+### System.Boolean
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
 
 ## NOTES
 

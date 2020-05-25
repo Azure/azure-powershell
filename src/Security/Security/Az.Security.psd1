@@ -107,7 +107,8 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSqlInformationProtectionPolicy', 
                'Get-AzRegulatoryComplianceStandard', 
                'Get-AzRegulatoryComplianceControl', 
-               'Get-AzRegulatoryComplainceAssessment'
+               'Get-AzRegulatoryComplainceAssessment',
+			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting'
 
 # Variables to export from this module
 # VariablesToExport = @()
