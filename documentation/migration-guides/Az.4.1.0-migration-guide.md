@@ -467,10 +467,10 @@ The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.M
 The property `Metadata` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse` has been removed.
 
 ### `Get-AzOperationalInsightsSavedSearchResult`
-The cmdlet `Get-AzOperationalInsightsSavedSearchResult` has been removed.
+The cmdlet `Get-AzOperationalInsightsSavedSearchResult` was not supported by SDK anymore and has been removed.
 
 ### `Get-AzOperationalInsightsSearchResult`
-The cmdlet `Get-AzOperationalInsightsSearchResult` has been removed.
+The cmdlet `Get-AzOperationalInsightsSearchResult` was not supported by SDK anymore and has been removed.
 
 ### `Get-AzOperationalInsightsStorageInsight`
 The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
@@ -485,7 +485,7 @@ The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.M
 The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
 
 ### `Get-AzOperationalInsightsLinkTarget`
-The cmdlet `Get-AzOperationalInsightsLinkTarget` has been removed.
+The cmdlet `Get-AzOperationalInsightsLinkTarget` was not supported by SDK anymore and has been removed.
 
 ### `Get-AzOperationalInsightsWorkspace`
 The property `PortalUrl` of type `Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace` has been removed.
