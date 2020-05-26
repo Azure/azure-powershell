@@ -40,5 +40,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-FailoverManagedInstance");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverManagedInstancePassThru()
+        {
+            RunPowerShellTest("Test-FailoverManagedInstancePassThru");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverManagedInstancePiping()
+        {
+            RunPowerShellTest("Test-FailoverManagedInstancePiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverManagedInstanceReadableSecondary()
+        {
+            RunPowerShellTest("Test-FailoverManagedInstanceReadableSecondary");
+        }
     }
 }
