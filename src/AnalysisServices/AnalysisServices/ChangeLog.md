@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated assembly version of data plane cmdlets
 
 ## Version 1.1.2
 * Update references in .psd1 to use relative path
