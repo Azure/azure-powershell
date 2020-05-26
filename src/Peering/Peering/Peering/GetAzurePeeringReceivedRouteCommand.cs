@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Constants.AzPeeringReceivedRoute,
         DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
-    [OutputType(typeof(List<PSPeeringReceivedRoute>))]
+    [OutputType(typeof(PSPeeringReceivedRoute))]
     public class GetAzurePeeringReceivedRouteCommand : PeeringBaseCmdlet
     {
         /// <summary>
