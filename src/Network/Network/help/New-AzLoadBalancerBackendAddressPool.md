@@ -31,8 +31,8 @@ Creates a backend address pool on a loadbalancer. Allows for specifiying a array
 ## EXAMPLES
 
 ### Example 1
-## create by passing loadbalancer without Ips
 ```powershell
+## create by passing loadbalancer without Ips
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
 PS C:\> $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
