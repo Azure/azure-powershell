@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synaspe
     public class RemoveAzureSynapseFirewallRule : SynapseCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
-        private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
+        private const string DeleteByParentObjectParameterSet = "DeleteByParentObjectParameterSet";
 
         [Parameter(ParameterSetName = DeleteByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter()]
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.Synaspe
         public string WorkspaceName { get; set; }
 
         [Parameter(ParameterSetName = DeleteByNameParameterSet,Mandatory = true, HelpMessage = HelpMessages.FirewallRuleName)]
-        [Parameter(ParameterSetName = DeleteByInputObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.FirewallRuleName)]
+        [Parameter(ParameterSetName = DeleteByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.FirewallRuleName)]
         [Alias(SynapseConstants.FirewallRuleName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 

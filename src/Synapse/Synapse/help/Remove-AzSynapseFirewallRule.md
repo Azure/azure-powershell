@@ -18,7 +18,7 @@ Remove-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <Strin
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByInputObjectParameterSet
+### DeleteByParentObjectParameterSet
 ```
 Remove-AzSynapseFirewallRule -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -142,7 +142,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: DeleteByInputObjectParameterSet
+Parameter Sets: DeleteByParentObjectParameterSet
 Aliases:
 
 Required: True

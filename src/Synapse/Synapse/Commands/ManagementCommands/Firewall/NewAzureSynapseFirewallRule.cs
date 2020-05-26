@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 
-        [Parameter(ParameterSetName = CreateByNameAllowAllIpParameterSet, Mandatory = true,HelpMessage = HelpMessages.AzureIpRule)]
+        [Parameter(ParameterSetName = CreateByNameAllowAllIpParameterSet, Mandatory = true, HelpMessage = HelpMessages.AzureIpRule)]
         [Parameter(ParameterSetName = CreateByParentObjectAllowAllIpParameterSet, Mandatory = true, HelpMessage = HelpMessages.AzureIpRule)]
         public SwitchParameter AllowAllAzureIPs { get; set; }
 
