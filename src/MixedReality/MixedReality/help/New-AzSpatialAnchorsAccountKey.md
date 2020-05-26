@@ -239,7 +239,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys
+### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSAccountKeys
 
 ## NOTES
 

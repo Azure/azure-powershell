@@ -74,9 +74,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzSpatialAnchorsAccount', 'Get-AzSpatialAnchorsAccountKey', 
-               'New-AzSpatialAnchorsAccount', 'New-AzSpatialAnchorsAccountKey', 
-               'Remove-AzSpatialAnchorsAccount'
+CmdletsToExport = 'Get-AzSpatialAnchorsAccount',  'Get-AzSpatialAnchorsAccountKey',  'New-AzSpatialAnchorsAccount',  'New-AzSpatialAnchorsAccountKey',  'Remove-AzSpatialAnchorsAccount',
+                  'Get-AzRemoteRenderingAccount', 'Get-AzRemoteRenderingAccountKey', 'New-AzRemoteRenderingAccount', 'New-AzRemoteRenderingAccountKey', 'Remove-AzRemoteRenderingAccount'
 
 # Variables to export from this module
 # VariablesToExport = @()

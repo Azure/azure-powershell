@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string PassThru = "Return whether the operation was successful.";
         public const string Tags = "Tags.";
         public const string DisplayName = "Display name.";
-        public const string Status = "Status .";
+        public const string Status = "Status.";
         public const string Export = "Export data.";
         public const string DisabledDataSources = "Disabled data sources.";
         public const string IotHubs = "Iot hubs.";
@@ -77,6 +77,15 @@ namespace Microsoft.Azure.Commands.Security.Common
         #region Auto Provisioning Settings
 
         public const string AutoProvision = "Automatic Provisioning.";
+
+        #endregion
+
+        #region Settings
+
+        public const string SettingName = "Setting name.";
+        public const string Setting = "Setting.";
+        public const string SettingKind = "Setting kind.";
+        public const string Enabled = "Enables the setting.";
 
         #endregion
 
