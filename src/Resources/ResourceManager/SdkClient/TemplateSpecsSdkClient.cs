@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string templateSpecName,
             string templateSpecVersion,
             string location,
-            string templateJson,
+            PackagedTemplate packagedTemplate,
             string templateSpecDisplayName = null,
             string templateSpecDescription = null,
             string versionDescription = null)
@@ -192,7 +193,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var templateSpecVersionModel = new TemplateSpecVersionModel
             {
                 Location = location,
-                Template = JObject.Parse(templateJson),
+                Template = packagedTemplate.RootTemplate,
+                Artifacts = packagedTemplate.Artifacts?.ToList(),
                 Description = versionDescription
             };
 

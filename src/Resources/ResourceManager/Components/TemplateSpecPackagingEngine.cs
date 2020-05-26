@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// Represents a template packaged for Template Spec use.
@@ -161,6 +160,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                     string asRelativePath = AbsoluteToRelativePath(context.RootTemplateDirectory, absoluteLocalPath);
                     templateLinkObj["relativePath"] = asRelativePath;
+
+                    Console.WriteLine($"relativePath: {asRelativePath}");
 
                     if (context.Artifacts.Any(prevAddedArtifact => prevAddedArtifact.Path.Equals(
                             asRelativePath, StringComparison.OrdinalIgnoreCase)))

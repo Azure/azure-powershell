@@ -13,10 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -122,27 +125,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // TODO: Validate JSON
                 // TODO: Identify and package local template references as artifacts
 
-                if (TemplateJsonFile != null)
-                {
-                    string filePath = this.TryResolvePath(TemplateJsonFile);
-                    if (File.Exists(filePath))
-                    {
-                        TemplateJson = FileUtilities.DataStore.ReadFileAsText(filePath);
-                    }
-                    else
-                    {
-                        throw new PSInvalidOperationException(
-                            string.Format(ProjectResources.InvalidFilePath, TemplateJsonFile)
-                        );
-                    }
-                }
+                PackagedTemplate packagedTemplate;
 
+                switch (ParameterSetName)
+                {
+                    case FromJsonFileParameterSet:
+                        string filePath = this.TryResolvePath(TemplateJsonFile);
+                        if (!File.Exists(filePath))
+                        {
+                            throw new PSInvalidOperationException(
+                                string.Format(ProjectResources.InvalidFilePath, TemplateJsonFile)
+                            );
+                        }
+
+                        packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
+                        break;
+                    case FromJsonStringParameterSet:
+                        // When we're provided with a raw JSON string for the template we don't
+                        // do any special packaging... (ie: we don't pack artifacts because there
+                        // is no well known root path):
+
+                        packagedTemplate = new PackagedTemplate
+                        {
+                            RootTemplate = JObject.Parse(TemplateJson),
+                            Artifacts = new TemplateSpecArtifact[0]
+                        };
+                        break;
+                    default:
+                        throw new PSNotSupportedException();
+                }
+                
                 var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
                     ResourceGroupName,
                     Name,
                     Version,
                     Location,
-                    TemplateJson,
+                    packagedTemplate,
                     templateSpecDescription: Description,
                     templateSpecDisplayName: DisplayName
                 );
