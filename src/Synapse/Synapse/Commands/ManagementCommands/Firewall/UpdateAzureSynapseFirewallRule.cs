@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Commands.Synapse
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartIpAddress)]
+        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartIpAddress)]
         [ValidateNotNullOrEmpty]
         public string StartIpAddress { get; set; }
 
         [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = true, HelpMessage = HelpMessages.EndIpAddress)]
+        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.EndIpAddress)]
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 

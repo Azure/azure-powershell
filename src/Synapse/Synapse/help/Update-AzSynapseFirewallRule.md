@@ -21,8 +21,9 @@ Update-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <Strin
 
 ### UpdateByParentObjectParameterSet
 ```
-Update-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> -StartIpAddress <String>
+ -EndIpAddress <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +85,7 @@ Must be greater than or equal to startIpAddress.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -130,7 +131,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
