@@ -14,24 +14,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// The error response that indicates why an operation has failed.
+    /// The error detail that describes why an operation has failed.
     /// </summary>
-    public partial class PSErrorResponse
+    public partial class PSErrorDetail
     {
         /// <summary>
-        /// Initializes a new instance of the PSErrorResponse class.
+        /// Initializes a new instance of the PSErrorDetail class.
         /// </summary>
-        public PSErrorResponse()
+        public PSErrorDetail()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSErrorResponse class.
+        /// Initializes a new instance of the PSErrorDetail class.
         /// </summary>
         /// <param name="code">The error code.</param>
         /// <param name="message">The error message.</param>
-        public PSErrorResponse(string code = default(string), string message = default(string))
+        public PSErrorDetail(string code = default(string), string message = default(string))
         {
             Code = code;
             Message = message;

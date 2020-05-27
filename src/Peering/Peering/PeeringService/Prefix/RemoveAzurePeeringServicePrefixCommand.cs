@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         DefaultParameterSetName = Constants.ParameterSetNameByName,
         SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemovezurePeeringServicePrefixCommand : PeeringBaseCmdlet
+    public class RemoveAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the input object.
