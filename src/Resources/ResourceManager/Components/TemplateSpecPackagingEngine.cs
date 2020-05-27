@@ -161,8 +161,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     string asRelativePath = AbsoluteToRelativePath(context.RootTemplateDirectory, absoluteLocalPath);
                     templateLinkObj["relativePath"] = asRelativePath;
 
-                    Console.WriteLine($"relativePath: {asRelativePath}");
-
                     if (context.Artifacts.Any(prevAddedArtifact => prevAddedArtifact.Path.Equals(
                             asRelativePath, StringComparison.OrdinalIgnoreCase)))
                     {
