@@ -27,33 +27,63 @@ using System.Reflection;
 using System.Threading;
 using Microsoft.Azure.Internal.Common;
 using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.Profile
+namespace Microsoft.Azure.Commands.Profile.Rest
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementRequest", DefaultParameterSetName = ByUri),OutputType(typeof(string))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementRequest", DefaultParameterSetName = ByUri), OutputType(typeof(string))]
     public class InvokeAzManagementRequestCommand : AzureRMCmdlet
     {
         #region Parameter Set
 
         public const string ByUri = "ByUri";
 
+        public const string ByResourceGroupName = "ByResourceGroupName";
+
         #endregion
-
-
 
         #region Parameter
 
+        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = false, HelpMessage = "Target Subscription Id")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Group Name")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Provider Name")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceProviderName { get; set; }
+
+        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Type")]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceType { get; set; }
+
+        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Name")]
+        [ValidateNotNullOrEmpty]
+        public string[] Name { get; set; }
+
         [Parameter(ParameterSetName = ByUri, Mandatory = true, HelpMessage = "Target Uri")]
+        [ValidateNotNullOrEmpty]
         public string Uri { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Api Version")]
+        [ValidateNotNullOrEmpty]
         public string ApiVersion { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Http Method")]
+        [ValidateSet("GET", "POST", "PUT", "PATCH", "DELETE", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
         public string Method { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "JSON format payload")]
+        [ValidateNotNullOrEmpty]
+        public string Payload { get; set; }
 
         #endregion
 
+        IAzureContext context;
         private IAzureRestClient _client;
         private IAzureRestClient ServiceClient
         {
@@ -61,7 +91,6 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (_client == null)
                 {
-                    IAzureContext context = DefaultContext;
                     var clientFactory = AzureSession.Instance.ClientFactory;
                     _client = clientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                 }
@@ -72,14 +101,51 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            string response = ServiceClient
-                .Operations
-                .BeginHttpGetMessagesAsyncGeneric(Uri, ApiVersion)
-                .GetAwaiter()
-                .GetResult();
+            context = DefaultContext;
+            string response;
 
+            if (!this.IsParameterBound(c => c.Uri))
+            {
+                this.Uri = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name, this.ApiVersion);
+            }
+
+            switch (this.Method)
+            {
+                case "GET":
+                    response = ServiceClient
+                    .Operations
+                    .GetResouceGeneric(this.Uri, this.ApiVersion);
+                    break;
+                case "POST":
+                    response = ServiceClient
+                    .Operations
+                    .PostResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    break;
+                case "PUT":
+                    response = ServiceClient
+                    .Operations
+                    .PutResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    break;
+                case "PATCH":
+                    response = ServiceClient
+                    .Operations
+                    .PatchResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    break;
+                case "DELETE":
+                    response = ServiceClient
+                    .Operations
+                    .DeleteResouceGeneric(this.Uri, this.ApiVersion);
+                    break;
+                default:
+                    throw new PSArgumentException("Invalid HTTP Method");
+            }
             WriteObject(response);
         }
-    } 
+
+        public void ValidateParameters()
+        {
+
+        }
+    }
 
 }
