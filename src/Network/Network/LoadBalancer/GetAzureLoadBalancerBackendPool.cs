@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSBackendAddressPool))]
     public partial class GetAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
 

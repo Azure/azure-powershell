@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true),OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true,DefaultParameterSetName = "CreateByNameParameterSet"),OutputType(typeof(PSBackendAddressPool))]
     public partial class NewAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";

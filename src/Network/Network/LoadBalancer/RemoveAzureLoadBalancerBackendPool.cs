@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true, DefaultParameterSetName = "DeleteByNameParameterSet"), OutputType(typeof(PSBackendAddressPool))]
     public partial class RemoveAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
