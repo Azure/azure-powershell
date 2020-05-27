@@ -28,5 +28,8 @@
     - `Get-AzIoTDeviceProvisioningServiceEnrollmentGroup`
     - `Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup`
     - `Set-AzIoTDeviceProvisioningServiceEnrollmentGroup`
+* Manage Device Registration State. New cmdlets are:
+    - `Get-AzIoTDeviceProvisioningServiceRegistration`
+    - `Remove-AzIoTDeviceProvisioningServiceRegistration`
 ## Version 0.7.2
 * Update references in .psd1 to use relative path
