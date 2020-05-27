@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.9
+* Added new cmdlets: 
+	- `Get-AzSecuritySetting`
+	- `Set-AzSecuritySetting`
+
+## Version 0.7.8
 * Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
 					`Get-AzRegulatoryComplianceControl`, 
 					`Get-AzRegulatoryComplainceAssessment`

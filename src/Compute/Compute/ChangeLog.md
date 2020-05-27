@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.0
 * Added HostId parameter to `Update-AzVM` cmdlet
 * Updated Help documents for `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVmss`, `Set-AzVMOperatingSystem` and `Set-AzVmssOsProfile` cmdlets.
 * Breaking changes

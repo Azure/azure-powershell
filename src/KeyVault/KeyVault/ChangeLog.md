@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
 * Enabled soft delete by default when creating a key vault
 * Network rules can be set to govern the accessibility from specific network locations when creating a key vault

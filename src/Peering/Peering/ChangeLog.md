@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.8
 * Adding support for Peering Registered Prefix
 * Adding support for Peering Registered ASN
 * Adding filter to Legacy Peering

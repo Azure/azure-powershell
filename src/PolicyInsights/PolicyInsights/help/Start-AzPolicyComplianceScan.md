@@ -38,7 +38,7 @@ This command starts a policy compliance evaluation for the "myRG" resource group
 
 ### Example 3: Start a compliance scan and wait for it to complete in the background
 ```
-PS C:\> $job = Start-AzPolicyComplianceScan
+PS C:\> $job = Start-AzPolicyComplianceScan -AsJob
 PS C:\> $job | Wait-Job
 ```
 

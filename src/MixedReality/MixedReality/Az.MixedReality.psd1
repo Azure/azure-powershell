@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.MixedReality.dll'
@@ -74,9 +74,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzSpatialAnchorsAccount', 'Get-AzSpatialAnchorsAccountKey', 
-               'New-AzSpatialAnchorsAccount', 'New-AzSpatialAnchorsAccountKey', 
-               'Remove-AzSpatialAnchorsAccount'
+CmdletsToExport = 'Get-AzSpatialAnchorsAccount',  'Get-AzSpatialAnchorsAccountKey',  'New-AzSpatialAnchorsAccount',  'New-AzSpatialAnchorsAccountKey',  'Remove-AzSpatialAnchorsAccount',
+                  'Get-AzRemoteRenderingAccount', 'Get-AzRemoteRenderingAccountKey', 'New-AzRemoteRenderingAccount', 'New-AzRemoteRenderingAccountKey', 'Remove-AzRemoteRenderingAccount'
 
 # Variables to export from this module
 # VariablesToExport = @()
