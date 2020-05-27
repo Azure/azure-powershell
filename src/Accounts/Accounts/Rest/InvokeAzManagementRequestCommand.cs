@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         #region Parameter Set
 
         public const string ByUri = "ByUri";
-
         public const string ByResourceGroupName = "ByResourceGroupName";
 
         #endregion
@@ -101,6 +100,8 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         public override void ExecuteCmdlet()
         {
+            this.ValidateParameters();
+
             context = DefaultContext;
             string response;
 
@@ -144,7 +145,10 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         public void ValidateParameters()
         {
-
+            if (this.ResourceType.Length != this.Name.Length)
+            {
+                throw new PSArgumentException("number of resource types and resource names must be the same");
+            }
         }
     }
 
