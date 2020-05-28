@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.3
 * Updated assembly version of consumption cmdlets
 
 ## Version 1.0.2
