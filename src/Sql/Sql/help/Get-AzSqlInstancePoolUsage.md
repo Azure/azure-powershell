@@ -35,7 +35,7 @@ The **Get-AzSqlInstancePoolUsage** cmdlet returns information an Azure SQL Insta
 
 ## EXAMPLES
 
-### Example 1 : Gets the usage of an Azure SQL Instance pool
+### Example 1: Gets the usage of an Azure SQL Instance pool
 ```powershell
 PS C:\> Get-AzSqlInstancePoolUsage -ResourceGroupName resourcegroup01 -Name instancepool0
 
@@ -129,7 +129,7 @@ Type           : Microsoft.Sql/instancePools/usages
 
 Gets the usage for the Azure SQL Instance pool instancepool0 using an instance pool resource identifier.
 
-### Example 3: Gets the usage of an Azure SQL Instance pool with a breakdown of the managed instance usages within the pool.
+### Example 4: Gets the usage of an Azure SQL Instance pool with a breakdown of the managed instance usages within the pool.
 ```powershell
 PS C:\> Get-AzSqlInstancePoolUsage -ResourceGroupName resourcegroup01 -Name instancepool0 -ExpandChildren
 

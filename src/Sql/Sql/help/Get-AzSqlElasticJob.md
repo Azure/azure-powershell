@@ -35,8 +35,8 @@ The Get-AzSqlElasticJob cmdlet gets one or more jobs
 
 ## EXAMPLES
 
-### Example 1 - Gets a job
-```
+### Example 1: Gets a job
+```powershell
 PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Get-AzSqlElasticJob -Name job1
 
