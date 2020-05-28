@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             if (!this.IsParameterBound(c => c.Uri))
             {
-                this.Uri = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name, this.ApiVersion);
+                this.Uri = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
 
             switch (this.Method)
