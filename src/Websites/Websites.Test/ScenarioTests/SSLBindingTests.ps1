@@ -20,9 +20,9 @@ assign a custom domain to it and update global variable values.
 $rgname = "lketmtestantps10"
 $appname = "lketmtestantps10"
 $slot = "testslot"
-$prodHostname = "www.adorenow.net"
-$slotHostname = "testslot.adorenow.net"
-$thumbprint = "F75A7A8C033FBEA02A1578812DB289277E23EAB1"
+$prodHostname = "www.adoresnow.net"
+$slotHostname = "testslot.adoresnow.net"
+$thumbprint = "CD2ED68DADECFE4821589622694F32014F492FFC"
 
 <#
 .SYNOPSIS
