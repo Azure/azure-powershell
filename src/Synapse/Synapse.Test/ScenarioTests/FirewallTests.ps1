@@ -33,7 +33,7 @@ function Test-SynapseFirewall
 
 		# List firewall
 		$firewallList = Get-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName 
-		Assert-AreEqual 2 $firewallList.Count
+		Assert-NotNull  $firewallList
 
 		# Get firewall
 		$firewallGet = Get-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $firewallRuleName 
@@ -48,8 +48,6 @@ function Test-SynapseFirewall
 
         # Delete firewall
         Assert-True {Remove-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $firewallRuleName -PassThru} "Remove firewall rule failed"
-    	$firewallList = Get-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName 
-		Assert-AreEqual 1 $firewallList.Count
 	}
     finally
     {
