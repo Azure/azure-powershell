@@ -245,6 +245,7 @@ The network access type for Cognitive Services Account.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
