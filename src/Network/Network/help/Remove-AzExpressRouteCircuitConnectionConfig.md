@@ -36,6 +36,18 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzExpressRouteCircuit
 ```
 
+### Example 3: Remove a circuit connection configuration from an ExpressRoute circuit for a specific address family
+```
+$circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -AddressPrefixType IPv4
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
+```
+
+### Example 4: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit for a specific address family
+```
+Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -AddressPrefixType IPv6|Set-AzExpressRouteCircuit
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -79,6 +91,21 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -AddressPrefixType
+Specifies the address family that needs to be removed from the config 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, IPv6
+
+Required: False
+Position: Named
+Default value: None 
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
