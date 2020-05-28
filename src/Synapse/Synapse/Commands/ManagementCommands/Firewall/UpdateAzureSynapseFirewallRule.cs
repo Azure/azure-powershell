@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartIpAddress)]
-        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartIpAddress)]
+        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartIpAddress)]
+        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartIpAddress)]
         [ValidateNotNullOrEmpty]
         public string StartIpAddress { get; set; }
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = true, HelpMessage = HelpMessages.EndIpAddress)]
-        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = true, HelpMessage = HelpMessages.EndIpAddress)]
+        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndIpAddress)]
+        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndIpAddress)]
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 
@@ -69,10 +69,12 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new PSInvalidOperationException(string.Format(Resources.FirewallRuleDoesNotExist, Name));
             }
 
+            var originIpFirewallRull = SynapseAnalyticsClient.GetFirewallRule(ResourceGroupName, WorkspaceName, Name);
+
             IpFirewallRuleInfo ipFirewallRuleInfo = new IpFirewallRuleInfo
             {
-                StartIpAddress = StartIpAddress,
-                EndIpAddress = EndIpAddress
+                StartIpAddress = StartIpAddress??originIpFirewallRull.StartIpAddress,
+                EndIpAddress = EndIpAddress??originIpFirewallRull.EndIpAddress,
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingFirewallRule, this.WorkspaceName, this.Name)))
