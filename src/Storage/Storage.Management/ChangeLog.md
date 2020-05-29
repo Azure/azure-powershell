@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  `New-AzStorageAccount`
 
 ## Version 2.1.0
 * Updated assembly version of data plane cmdlets
