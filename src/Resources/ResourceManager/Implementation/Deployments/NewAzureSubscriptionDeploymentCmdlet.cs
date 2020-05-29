@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -54,8 +55,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
         
-        [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeTypes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -117,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ResultFormat = this.WhatIfResultFormat
                 };
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.WhatIfExcludeChangeTypes);
                 string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
 
                 // Clear status before returning result.

@@ -449,6 +449,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}..
+        /// </summary>
+        internal static string InvalidChangeType {
+            get {
+                return ResourceManager.GetString("InvalidChangeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The &apos;Complete&apos; mode is not supported for a deployment at the current scope. Please use &apos;Incremental&apos; mode instead..
         /// </summary>
         internal static string InvalidDeploymentMode {
