@@ -27,7 +27,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", SupportsShouldProcess = false), OutputType(typeof(PSLoadBalancerBackendAddress))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
     public partial class NewAzureLoadBalancerBackendAddress : NetworkBaseCmdlet
     {
         [Parameter(Mandatory = true,HelpMessage = "The IPAddress to add to the backend pool",ValueFromPipelineByPropertyName = true)]
