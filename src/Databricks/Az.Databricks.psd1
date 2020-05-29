@@ -1,7 +1,7 @@
 @{
   GUID = 'b453c0c1-7867-4fa1-9fd0-0cf8f6c6959c'
   RootModule = './Az.Databricks.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Databricks.private.dll'
   FormatsToProcess = './Az.Databricks.format.ps1xml'
-  CmdletsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace', '*'
+  FunctionsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

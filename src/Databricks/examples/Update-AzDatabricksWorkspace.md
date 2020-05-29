@@ -1,11 +1,18 @@
-### Example 1: Update a Databricks workspace
+### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test -Tag @{ dbr="home-resource" }
+PS C:\> $workspace | Update-AzDatabricksWorkspace -Tag @{key="value"}
 
-Location Name            Type
--------- ----            ----
-eastus   databricks-test Microsoft.Databricks/workspaces
+{{ Add output here }}
 ```
 
-This command updates a Databricks workspace.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

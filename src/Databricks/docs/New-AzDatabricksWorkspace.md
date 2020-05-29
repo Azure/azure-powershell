@@ -14,9 +14,10 @@ Creates a new workspace.
 
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrivateSubnetName <String>]
- [-PublicSubnetName <String>] [-Sku <String>] [-Tag <Hashtable>] [-VirtualNetworkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrepareEncryption]
+ [-PrivateSubnetName <String>] [-PublicSubnetName <String>] [-Sku <String>] [-Tag <Hashtable>]
+ [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -83,7 +83,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -99,7 +98,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ManagedResourceGroupName
@@ -115,7 +113,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -131,7 +128,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -147,7 +143,22 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -PrepareEncryption
+Prepare the workspace for encryption.
+Enables the Managed Identity for managed storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PrivateSubnetName
@@ -163,7 +174,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PublicSubnetName
@@ -179,7 +189,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -196,7 +205,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Sku
@@ -212,7 +220,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -228,7 +235,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -244,7 +250,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -VirtualNetworkId
@@ -260,7 +265,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -276,7 +280,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -293,7 +296,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -305,9 +307,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
