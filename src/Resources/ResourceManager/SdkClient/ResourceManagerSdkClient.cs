@@ -1376,7 +1376,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private string BuildCloudErrorMessage(CloudError cloudError)
+        private static string BuildCloudErrorMessage(CloudError cloudError)
         {
             if (cloudError == null)
             {
