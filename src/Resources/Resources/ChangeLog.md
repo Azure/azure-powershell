@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
 * Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
 * Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
