@@ -8,7 +8,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.MixedReality" Version="0.9.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.MixedReality" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

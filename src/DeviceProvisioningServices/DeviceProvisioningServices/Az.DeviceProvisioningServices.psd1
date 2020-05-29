@@ -53,10 +53,11 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.DeviceProvisioningServices.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.DeviceProvisioningServices.dll',
+                    'Microsoft.Azure.Devices.Shared.dll', 'Microsoft.Azure.Devices.Provisioning.Service.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -90,7 +91,17 @@ CmdletsToExport = 'New-AzIoTDeviceProvisioningService',
                'Add-AzIoTDeviceProvisioningServiceCertificate', 
                'Remove-AzIoTDeviceProvisioningServiceCertificate', 
                'Set-AzIoTDeviceProvisioningServiceCertificate', 
-               'New-AzIoTDeviceProvisioningServiceCertificateVerificationCode'
+               'New-AzIoTDeviceProvisioningServiceCertificateVerificationCode',
+               'Add-AzIoTDeviceProvisioningServiceEnrollment',
+               'Get-AzIoTDeviceProvisioningServiceEnrollment',
+               'Remove-AzIoTDeviceProvisioningServiceEnrollment',
+               'Set-AzIoTDeviceProvisioningServiceEnrollment',
+               'Add-AzIoTDeviceProvisioningServiceEnrollmentGroup',
+               'Get-AzIoTDeviceProvisioningServiceEnrollmentGroup',
+               'Remove-AzIoTDeviceProvisioningServiceEnrollmentGroup',
+               'Set-AzIoTDeviceProvisioningServiceEnrollmentGroup',
+               'Get-AzIoTDeviceProvisioningServiceRegistration',
+               'Remove-AzIoTDeviceProvisioningServiceRegistration'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -102,7 +113,11 @@ AliasesToExport = 'New-AzIoTDps', 'Get-AzIoTDps', 'Remove-AzIoTDps', 'Update-AzI
                'Get-AzIoTDpsHub', 'Add-AzIoTDpsHub', 'Remove-AzIoTDpsHub', 
                'Update-AzIoTDpsHub', 'Get-AzIoTDpsCertificate', 
                'Add-AzIoTDpsCertificate', 'Remove-AzIoTDpsCertificate', 
-               'Set-AzIoTDpsCertificate', 'New-AzIoTDpsCVC'
+               'Set-AzIoTDpsCertificate', 'New-AzIoTDpsCVC', 'Add-AzIoTDPSEnrollment',
+               'Get-AzIoTDPSEnrollment', 'Remove-AzIoTDPSEnrollment', 'Set-AzIoTDPSEnrollment',
+               'Get-AzIoTDPSEnrollmentGroup', 'Remove-AzIoTDPSEnrollmentGroup',
+               'Set-AzIoTDPSEnrollmentGroup', 'Add-AzIoTDPSEnrollmentGroup',
+               'Get-AzIoTDPSRegistration','Remove-AzIoTDPSRegistration'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
