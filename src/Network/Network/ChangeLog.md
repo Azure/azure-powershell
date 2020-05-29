@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
+
 * Added name validation for `New-AzIpGroup`
 
 ## Version 3.0.0
