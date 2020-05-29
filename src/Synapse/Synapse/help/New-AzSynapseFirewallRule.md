@@ -21,7 +21,7 @@ New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> 
 
 ### CreateByNameAllowAllIpParameterSet
 ```
-New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> [-AllowAllAzureIPs] [-AsJob]
+New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> [-AllowAllAzureIP] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> -
 
 ### CreateByParentObjectAllowAllIpParameterSet
 ```
-New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-AllowAllAzureIPs] [-AsJob]
+New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-AllowAllAzureIP] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,8 +67,8 @@ This command creates firewall rule that allow all azure ips under a workspace.
 
 ## PARAMETERS
 
-### -AllowAllAzureIPs
-Creates a special firewall rule that permits all Azure IPs to have access
+### -AllowAllAzureIP
+Creates a special firewall rule that permits all Azure IPs to have access.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

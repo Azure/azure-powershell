@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.FirewallRule,
         DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseIpFirewallRule))]
-    public class NewAzureSynapseFirewallRules : SynapseCmdletBase
+    public class NewAzureSynapseFirewallRule : SynapseCmdletBase
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ParameterSetName = CreateByNameAllowAllIpParameterSet, Mandatory = true, HelpMessage = HelpMessages.AzureIpRule)]
         [Parameter(ParameterSetName = CreateByParentObjectAllowAllIpParameterSet, Mandatory = true, HelpMessage = HelpMessages.AzureIpRule)]
-        public SwitchParameter AllowAllAzureIPs { get; set; }
+        public SwitchParameter AllowAllAzureIP { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
