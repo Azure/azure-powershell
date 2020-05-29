@@ -13,15 +13,9 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         private const string Providers = "providers";
 
-        private const string ApiVersion = "api-version";
-
         private const string slash = "/";
 
-        private const string qm = "?";
-
-        private const string eq = "=";
-
-        public static string ConstructUri(string sub, string rg, string rp, string[] types, string[] names, string api)
+        public static string ConstructUri(string sub, string rg, string rp, string[] types, string[] names)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -39,9 +33,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 sb.Append(slash + types[i]);
                 sb.Append(slash + names[i]);
             }
-
-            sb.Append(qm + ApiVersion);
-            sb.Append(eq + api);
 
             return sb.ToString();
         }
