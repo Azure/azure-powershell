@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             if (string.IsNullOrEmpty(this.Audience))
             {
-                return PSHealthcareApisFhirServiceAuthenticationConfig.defaultAudience;
+                return PSHealthcareApisFhirServiceAuthenticationConfig.getDefaultAudience(this.Name);
             }
 
             return this.Audience;

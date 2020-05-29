@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
-            this.ExportStorageAccountName = serviceDescription.Properties.ExportConfiguration.StorageAccountName;
-            this.IdentityType = serviceDescription.Identity.Type;
-            this.IdentityPrincipalId = serviceDescription.Identity.PrincipalId;
-            this.IdentityTenantId = serviceDescription.Identity.TenantId;
+            this.ExportStorageAccountName = serviceDescription.Properties.ExportConfiguration?.StorageAccountName;
+            this.IdentityType = serviceDescription.Identity?.Type;
+            this.IdentityPrincipalId = serviceDescription.Identity?.PrincipalId;
+            this.IdentityTenantId = serviceDescription.Identity?.TenantId;
 
             var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
             foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
