@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "Microsoft.Azure.Test.HttpRecorder.HttpMockServer unable to load error")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWindowsContainerWebAppCanIssuePSSession()
         {
