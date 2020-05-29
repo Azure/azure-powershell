@@ -18,37 +18,39 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
     using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SparkJobTests : SynapseTestBase
+    public class FirewallTests : SynapseTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public SparkJobTests(Xunit.Abstractions.ITestOutputHelper output)
+        public FirewallTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Job submission through Service Principal has not been supported.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSynapseSparkJob()
+        public void TestSynapseFirewall()
         {
-            string resourceGroupName = SynapseTestBase.TestResourceGroupName;
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            string testSparkPoolName = SynapseTestBase.TestSparkPoolName;
-            if (string.IsNullOrEmpty(resourceGroupName) || string.IsNullOrEmpty(testWorkspaceName) || string.IsNullOrEmpty(testSparkPoolName))
+            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
+            if (string.IsNullOrEmpty(testResourceGroupName))
             {
-                resourceGroupName = nameof(TestResourceGroupName);
+                testResourceGroupName = nameof(TestResourceGroupName);
+            }
+
+            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
+            if (string.IsNullOrEmpty(testWorkspaceName))
+            {
                 testWorkspaceName = nameof(TestWorkspaceName);
-                testSparkPoolName = nameof(TestSparkPoolName);
             }
 
             SynapseTestBase.NewInstance.RunPsTest(
                 _logger,
                 string.Format(
-                "Test-SynapseSparkJob -resourceGroupname '{0}' -workspaceName '{1}' -sparkPoolName {2}",
-                resourceGroupName,
-                testWorkspaceName,
-                testSparkPoolName));
+                "Test-SynapseFirewall -resourceGroupName '{0}' -workspaceName '{1}'",
+                "testResourceGroupName",
+                "testWorkspaceName"
+                ));
         }
     }
 }

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -87,7 +87,9 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Update-AzSynapseWorkspace', 'Get-AzSynapseSqlPool', 
                'New-AzSynapseSqlPool', 'Remove-AzSynapseSqlPool', 
                'Update-AzSynapseSqlPool', 'Test-AzSynapseWorkspace', 
-               'Test-AzSynapseSparkPool', 'Test-AzSynapseSqlPool'
+               'Test-AzSynapseSparkPool', 'Test-AzSynapseSqlPool',
+               'New-AzSynapseFirewallRule', 'Remove-AzSynapseFirewallRule', 
+               'Get-AzSynapseFirewallRule', 'Update-AzSynapseFirewallRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

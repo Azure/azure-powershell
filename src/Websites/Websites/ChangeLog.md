@@ -20,6 +20,7 @@
 ## Upcoming Release
 * updated the NuGet Microsoft.Azure.Management.Websites to use latest version(3.0)
 * Added Linux support parameter for New-AzAppServicePlan
+* Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
