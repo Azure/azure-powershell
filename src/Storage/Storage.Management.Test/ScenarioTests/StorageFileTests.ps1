@@ -68,7 +68,7 @@ function Test-StorageFileShare
         $quotaGiB = 300
 		$metadata = @{tag0="value0";tag1="value1";tag2="value2";tag3="value3"}
 		$shareName2 = "share2"+ $rgname		
-		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata -EnabledProtocol NFS -RootSquash RootSquash 
+		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata -EnabledProtocol NFS -RootSquash RootSquash -AccessTier Cool
 		$share = $stos | Get-AzRmStorageShare -Name $shareName2
 		Assert-AreEqual $rgname $share.ResourceGroupName
 		Assert-AreEqual $stoname $share.StorageAccountName
@@ -77,8 +77,9 @@ function Test-StorageFileShare
 		Assert-AreEqual $metadata.Count $share.Metadata.Count
 		#Assert-AreEqual "NFS" $share.EnabledProtocols
 		#Assert-AreEqual "RootSquash" $share.RootSquash
+		Assert-AreEqual "Cool" $share.Accesstier
 		
-		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -RootSquash NoRootSquash 	
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -RootSquash NoRootSquash 	-AccessTier Hot
 		$share = $stos | Get-AzRmStorageShare -Name $shareName2
 		Assert-AreEqual $rgname $share.ResourceGroupName
 		Assert-AreEqual $stoname $share.StorageAccountName
@@ -87,6 +88,7 @@ function Test-StorageFileShare
 		Assert-AreEqual $metadata.Count $share.Metadata.Count
 		#Assert-AreEqual "NFS" $share.EnabledProtocols
 		#Assert-AreEqual "NoRootSquash" $share.RootSquash
+		Assert-AreEqual "Hot" $share.Accesstier
 
 		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 2 $shares.Count
@@ -152,6 +154,12 @@ function Test-ShareSoftDelete
 		Assert-AreEqual $stoname $share.StorageAccountName
 		Assert-AreEqual $shareName1 $share.Name
 		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
+		
+		# Get share usage
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -GetShareUsage
+		Assert-AreEqual $shareName1 $share.Name
+		Assert-AreEqual 0 $share.ShareUsageBytes
+		Assert-AreEqual $null $share.Deleted
 		
 		#delete share
 		Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Force

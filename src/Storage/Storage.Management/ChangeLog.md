@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Support get single file share usage
+    - `Get-AzRmStorageShare`
+* Support create/update file share with access tier
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+    
 ## Version 2.0.1
 * Support enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
