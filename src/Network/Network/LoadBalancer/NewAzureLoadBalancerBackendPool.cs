@@ -28,29 +28,43 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true),OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool",SupportsShouldProcess = true,DefaultParameterSetName = "CreateByNameParameterSet"),OutputType(typeof(PSBackendAddressPool))]
     public partial class NewAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group name of the load balancer.", ParameterSetName = CreateByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name of the load balancer.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = CreateByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the load balancer.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The load balancer resource.", ValueFromPipeline = true, ParameterSetName = CreateByParentObjectParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The load balancer resource.",
+            ValueFromPipeline = true,
+            ParameterSetName = CreateByParentObjectParameterSet)]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the backend pool.")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the backend pool.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The backend addresses.")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The backend addresses.")]
         [ValidateNotNullOrEmpty]
         public PSLoadBalancerBackendAddress[] LoadBalancerBackendAddress { get; set; }
 
@@ -83,8 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             // Throw if object already exists
             if (existingloadBalancerBackendAddressPool != null)
             {
-                throw new Exception(string.Format("A BackendPool with name '{0}' in resource group '{1}' already exists under LoadBalancer '{2}'. Please use Set-AzLoadBalancerBackendAddressPool to update an existing BackendPool .",
-                    this.Name, this.ResourceGroupName, this.LoadBalancerName));
+                throw new ArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresent,this.Name,this.ResourceGroupName));
             }
 
             // Prompt user if Confirm or What if flag is specified

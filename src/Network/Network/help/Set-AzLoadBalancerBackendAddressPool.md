@@ -15,67 +15,53 @@ Updates the backend pool on a loadbalancer
 ### SetByNameParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -Name <String> -LoadBalancer <PSLoadBalancer>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool>
+Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Updates the backend pool on a loadbalancer
 
-
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
+###Set by name and modified input object
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
-
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
-$ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetwork $virtualNetwork
-
-$ips = @($ip1, $ip2)
-
-###Set by name and modified input object
+PS C:\> $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
+PS C:\> $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetwork $virtualNetwork
+PS C:\> $ips = @($ip1, $ip2)
 PS C:\> $b2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool1
-
-$b2.LoadBalancerBackendAddresses.Add($ip)
-
-Set-AzLoadBalancerBackendAddressPool -InputObject $b2
+PS C:\> $b2.LoadBalancerBackendAddresses.Add($ip)
+PS C:\> Set-AzLoadBalancerBackendAddressPool -InputObject $b2
 ```
 
 ### Example 2
-### Set by specific backend from piped loadbalancer and IP's
 ```powershell
-PS C:\> $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1
-```
-
-### Example 3
 ### #set by ResourceId
-```powershell
-PS C:\> Set-AzLoadBalancerBackendAddressPool -ResourceId $b3.Id -LoadBalancerBackendAddress $b3.LoadBalancerBackendAddresses
+PS C:\> Set-AzLoadBalancerBackendAddressPool -ResourceId b2.Id -LoadBalancerBackendAddress $b2.LoadBalancerBackendAddresses
 ```
-
-Updates the backend pool on a loadbalancer
 
 ## PARAMETERS
 
@@ -83,9 +69,24 @@ Updates the backend pool on a loadbalancer
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 The backend address pool to set
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Type: PSBackendAddressPool
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 The load balancer resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: SetByParentObjectParameterSet
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 The backend addresses.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress[]
+Type: PSLoadBalancerBackendAddress[]
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet, SetByResourceIdParameterSet
 Aliases:
 
@@ -143,7 +144,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -158,7 +159,7 @@ Accept wildcard characters: False
 The name of the backend pool.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet
 Aliases:
 
@@ -169,11 +170,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name of the load balancer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -187,7 +203,7 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -198,14 +214,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 
-### Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+### System.String
 
 ## OUTPUTS
 

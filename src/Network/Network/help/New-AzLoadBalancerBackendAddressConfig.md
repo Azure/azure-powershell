@@ -8,17 +8,17 @@ schema: 2.0.0
 # New-AzLoadBalancerBackendAddressConfig
 
 ## SYNOPSIS
-Returns a load balancer address config. 
+Returns a load balancer backend address config. 
 
 ## SYNTAX
 
 ```
-New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String> -VirtualNetwork <PSVirtualNetwork>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String> -VirtualNetworkId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a load balancer address config. 
+Returns a load balancer backend address config. 
 
 ## EXAMPLES
 
@@ -26,7 +26,6 @@ Returns a load balancer address config.
 ### New loadbalancer address config with virtual network reference
 ```powershell
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
-
 New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
 ```
 
@@ -77,11 +76,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetwork
+### -VirtualNetworkId
 The virtual network associated with Backend Address config
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,14 +91,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 

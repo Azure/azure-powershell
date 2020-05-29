@@ -28,43 +28,53 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressPool", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSBackendAddressPool))]
     public partial class GetAzureLoadBalancerBackendPool : NetworkBaseCmdlet
     {
-
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-
-        [Parameter(Mandatory = true, HelpMessage = "The resource group name of the load balancer.", ParameterSetName = GetByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name of the load balancer.",
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the load balancer.", ParameterSetName = GetByNameParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The name of the load balancer.",
+            ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string LoadBalancerName { get; set; }
 
-
-        [Parameter(Mandatory = false, HelpMessage = "The name of the backend address pool.", ParameterSetName = GetByNameParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the backend address pool.", ParameterSetName = GetByParentObjectParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the backend address pool.",
+            ParameterSetName = GetByNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the backend address pool.",
+            ParameterSetName = GetByParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name {get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = GetByParentObjectParameterSet)]
         [ValidateNotNull]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
 
         public override void Execute()
         {
             base.Execute();
             BackendAddressPool loadBalancerBackendAddressPool = null;
-
 
             if (this.IsParameterBound(c => c.LoadBalancer))
             {
@@ -79,7 +89,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.LoadBalancerName = resourceIdentifier.ParentResource.Split('/')[1];
                 this.Name = resourceIdentifier.ResourceName;
             }
-
 
             // Get single backend pool
             if (ShouldGetByName(this.ResourceGroupName, this.Name))

@@ -27,20 +27,29 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig"), OutputType(typeof(PSLoadBalancerBackendAddress))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
     public partial class NewAzureLoadBalancerBackendAddress : NetworkBaseCmdlet
     {
-        [Parameter(Mandatory = true,HelpMessage = "The IPAddress to add to the backend pool",ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The IPAddress to add to the Backend pool",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string IpAddress { get; set; }
 
-        [Parameter(Mandatory = true,HelpMessage = "The name of the Backend Address config",ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,HelpMessage = "The virtual network associated with Backend Address config",ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The virtual network associated with Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+        public string VirtualNetworkId { get; set; }
 
         public override void Execute()
         {
@@ -52,14 +61,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress();
-            
-            // resource id reference needed to add ip address
-            if (string.IsNullOrWhiteSpace(this.VirtualNetwork.Id))
-            {
-                throw new PSArgumentException($"Invalid Virtual Network, ID property empty");
-            }
 
-            loadBalancerBackendAddress.VirtualNetwork = this.VirtualNetwork;
+            loadBalancerBackendAddress.VirtualNetwork = new PSVirtualNetwork { 
+                Id = VirtualNetworkId
+            };
+
             loadBalancerBackendAddress.IpAddress = this.IpAddress;
             loadBalancerBackendAddress.Name = this.Name;
 
