@@ -138,6 +138,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
                 return _synapseManagementClient.IpFirewallRules.CreateOrUpdate(
                     resourceGroupName,
                     workspaceName,
@@ -150,11 +154,88 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public IpFirewallRuleInfo GetFirewallRule(string resourceGroupName, string workspaceName, string ruleName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return _synapseManagementClient.IpFirewallRules.Get(resourceGroupName, workspaceName, ruleName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public List<IpFirewallRuleInfo> ListFirewallRules(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var firstPage = _synapseManagementClient.IpFirewallRules.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.IpFirewallRules.ListByWorkspaceNext);
+            }
+            catch
+            {
+                throw new NotFoundException(string.Format(Properties.Resources.FailedToDiscoverFirewallRuleByWorkspace, workspaceName));
+            }
+        }
+
+        public void DeleteFirewallRule(string resourceGroupName, string workspaceName, string ruleName)
+        {
+
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+            }
+
+            if (!TestWorkspace(resourceGroupName, workspaceName))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.WorkspaceDoesNotExist, workspaceName));
+            }
+
+
+            if (!TestFirewallRule(resourceGroupName, workspaceName, ruleName))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.FirewallRuleDoesNotExist, ruleName));
+            }
+
+            try
+            {
+                _synapseManagementClient.IpFirewallRules.Delete(resourceGroupName, workspaceName, ruleName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         public bool TestWorkspace(string resourceGroupName, string workspaceName)
         {
             try
             {
                 GetWorkspace(resourceGroupName, workspaceName);
+                return true;
+            }
+            catch (NotFoundException)
+            {
+                return false;
+            }
+        }
+
+        public bool TestFirewallRule(string resourceGroupName, string workspaceName, string ruleName)
+        {
+            try
+            {
+                GetFirewallRule(resourceGroupName, workspaceName, ruleName);
                 return true;
             }
             catch (NotFoundException)
