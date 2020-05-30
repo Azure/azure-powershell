@@ -23,6 +23,9 @@
 * Added new cmdlets: 
 	- `Get-AzSecuritySetting`
 	- `Set-AzSecuritySetting`
+* Updated examples in `Get-AzSecurityPricing`
+* Updated examples in `Set-AzSecurityPricing`
+	
 
 ## Version 0.7.8
 * Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
