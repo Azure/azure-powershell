@@ -121,7 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -CustomDnsServer
-The list of Custom Dns Servers.```yaml
+The list of Custom Dns Servers.
+
+```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
