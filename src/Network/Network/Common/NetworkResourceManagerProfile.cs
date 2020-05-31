@@ -644,6 +644,14 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
 
+                // LoadBalancerBackendAddress
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerBackendAddress, MNM.LoadBalancerBackendAddress>();
+
+                // LoadBalancerBackendAddress
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerBackendAddress, CNM.PSLoadBalancerBackendAddress>();
+
                 // MNM to CNM
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
 

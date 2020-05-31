@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+ Added support for backend address pool operations
+    - `New-AzLoadBalancerBackendAddressConfig`
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+    - `Remove-AzLoadBalancerBackendAddressPool`
+    - `Get-AzLoadBalancerBackendAddressPool`
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`
     - `New-AzPublicIpPrefix`
