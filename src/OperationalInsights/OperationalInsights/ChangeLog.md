@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Upgraded SDK to 0.21.0
 * Added optional parameters to 
     - `New-AzOperationalInsightsSavedSearch`

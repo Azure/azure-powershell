@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Support modifying PublicNetworkAccess.
 
-## Upcoming Release
+## Version 1.4.0
 * Support PrivateEndpoint and PublicNetworkAccess control. 
 
 ## Version 1.3.0
