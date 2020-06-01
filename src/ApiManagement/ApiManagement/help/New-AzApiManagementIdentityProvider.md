@@ -16,7 +16,7 @@ Creates a new Identity Provider configuration.
 New-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> -ClientId <String> -ClientSecret <String>
  [-AllowedTenants <String[]>] [-Authority <String>] [-SignupPolicyName <String>] [-SigninPolicyName <String>]
- [-ProfileEditingPolicyName <String>] [-PasswordResetPolicyName <String>]
+ [-ProfileEditingPolicyName <String>] [-PasswordResetPolicyName <String>] [-SigninTenant <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -196,6 +196,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SigninTenant
+Signin Tenant to override in AAD B2C instead of the `common` Tenant
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SignupPolicyName
 Signup Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.
 
@@ -223,21 +238,6 @@ Aliases:
 Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SigninTenant
-Signin Tenant to override in AAD B2C instead of the `common` Tenant
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

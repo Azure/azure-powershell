@@ -21,12 +21,29 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string SubscriptionId = "Subscription ID.";
         public const string ResourceGroupName = "Resource group name.";
         public const string ResourceName = "Resource name.";
+        public const string SolutionName = "Solution name"; 
         public const string ResourceId = "ID of the security resource that you want to invoke the command on.";
         public const string Scope = "Scope.";
         public const string Kind = "Kind.";
         public const string InputObject = "Input Object.";
         public const string Location = "Location.";
         public const string PassThru = "Return whether the operation was successful.";
+        public const string Tags = "Tags.";
+        public const string DisplayName = "Display name.";
+        public const string Status = "Status.";
+        public const string Export = "Export data.";
+        public const string DisabledDataSources = "Disabled data sources.";
+        public const string IotHubs = "Iot hubs.";
+        public const string UserDefinedResources = "User defined resources.";
+        public const string AutoDiscoveredResources = "Auto discovered resources.";
+        public const string RecommendationsConfiguration = "Recommendations configuration.";
+        public const string UnmaskedIpLoggingStatus = "Unmasked ip logging status.";
+        public const string HubResourceId = "IoT Hub resource Id.";
+        public const string IsDefualt = "If present, get the default analytics set, otherwise, get the list of all analytics sets.";
+        public const string RecommendationType = "Recommendation type.";
+        public const string Query = "Query.";
+        public const string QuerySubscriptions = "Query subscriptions.";
+        public const string AsJob = "Run cmdlet in the background";
 
         #endregion
 
@@ -63,6 +80,15 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+        #region Settings
+
+        public const string SettingName = "Setting name.";
+        public const string Setting = "Setting.";
+        public const string SettingKind = "Setting kind.";
+        public const string Enabled = "Enables the setting.";
+
+        #endregion
+
         #region JIT Network Access Policies
 
         public const string VirutalMachines = "Virtual Machines.";
@@ -73,6 +99,32 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string Disable = "Disables Threat Protection Policy";
         public const string Enable = "Enables Threat Protection Policy";
+
+        #endregion
+
+
+        #region RegulatoryCompliance
+
+        public const string StandardName = "Standard Name.";
+        public const string ControlName = "Control Name.";
+      
+        #endregion
+
+        #region Device Security Groups
+
+        public const string ThresholdRules = "Threshold rules.";
+        public const string TimeWindowRules = "Time window rules.";
+        public const string AllowlistRules = "Allow list rules.";
+        public const string DenylistRules = "Deny list rules.";
+        public const string TimeWindowSize = "Time window size.";
+        public const string MinThreshold = "Minimum threshold.";
+        public const string MaxThreshold = "Maximum threshold.";
+        public const string Description = "Description.";
+        public const string IsEnabled = "Is rule enabled.";
+        public const string RuleType = "Rule type.";
+        public const string ValueType = "Value type.";
+        public const string AllowlistValues = "Allow list values.";
+        public const string DenylistValues = "Deny list values.";
 
         #endregion
     }

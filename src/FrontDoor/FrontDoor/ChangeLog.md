@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
+* Added helper cmdlets for construction of Front Door Rules Engine object
+* Added Rules Engine reference to Front Door Routing Rule object.
+* Added Private Link parameters to Front Door Backend object
+
 ## Version 1.4.0
 * Added cmdlet to get managed rule definitions that can be used in WAF
 

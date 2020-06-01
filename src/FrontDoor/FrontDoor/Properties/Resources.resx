@@ -174,4 +174,16 @@
   <data name="Error_InvalidResourceId" xml:space="preserve">
     <value>Invalid resource id - {0}</value>
   </data>
+  <data name="Error_DeleteNonExistingRulesEngine" xml:space="preserve">
+    <value>Rules Engine with name '{0}' in Front Door '{1}' in the resource group '{2}' does not exist.</value>
+  </data>
+  <data name="Error_RulesEngineNotFound" xml:space="preserve">
+    <value>Rules Engine with name '{0}' in Front Door '{1}' is not found.</value>
+  </data>
+  <data name="RemoveRulesEngine" xml:space="preserve">
+    <value>Remove Rules Engine?</value>
+  </data>
+  <data name="RulesEngineChangeWarning" xml:space="preserve">
+    <value>Updating RulesEngine '{0}' in FrontDoor '{1}'</value>
+  </data>
 </root>

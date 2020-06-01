@@ -19,12 +19,22 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string GeneralScope = "GeneralScope";
         public const string SubscriptionScope = "SubscriptionScope";
         public const string ResourceGroupScope = "ResourceGroupScope";
+        public const string ResourceIdScope = "ResourceIdScope";
+        public const string SolutionScope = "SolutionScope";
         public const string ScopeLevelResource = "ScopeLevelResource";
         public const string SubscriptionLevelResource = "SubscriptionLevelResource";
         public const string ResourceGroupLevelResource = "ResourceGroupLevelResource";
+        public const string SolutionLevelResource = "SolutionLevelResource";
+        public const string ResourceIdLevelResource = "ResourceIdLevelResource";
         public const string ResourceId = "ResourceId";
         public const string InputObject = "InputObject";
         public const string PolicyOn = "PolicyOn";
         public const string PolicyOff = "PolicyOff";
+
+        #region Settings
+
+        public const string DataExportSettingsScope = "DataExportSettingsScope";
+
+        #endregion
     }
 }

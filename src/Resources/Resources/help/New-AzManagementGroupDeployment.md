@@ -14,7 +14,7 @@ Create a deployment at a management group
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateObjectAndParameterObject
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateFileAndParameterObject
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,7 +38,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateUriAndParameterObject
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateObjectAndParameterFile
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterFile <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateFileAndParameterFile
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterFile <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -62,7 +62,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateUriAndParameterFile
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterFile <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -70,7 +70,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateObjectAndParameterUri
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterUri <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -78,7 +78,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateFileAndParameterUri
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterUri <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -86,7 +86,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateUriAndParameterUri
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateParameterUri <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -94,7 +94,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateObjectWithNoParameters
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -102,7 +102,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 
 ### ByTemplateUriWithNoParameters
 ```
-New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> [-Tag <Hashtable>]
  [-DeploymentDebugLogLevel <String>] [-AsJob] -TemplateUri <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -130,10 +130,10 @@ To add resources at tenant scope, use the **New-AzTenantDeployment** which creat
 
 ### Example 1: Use a custom template and parameter file to create a deployment
 ```
-PS C:\> New-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json"
+PS C:\> New-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json" -Tag @{"key1"="value1"; "key2"="value2";}
 ```
 
-This command creates a new deployment at the management group "myMG" by using a custom template and a template file on disk.
+This command creates a new deployment at the management group "myMG" by using a custom template and a template file on disk, with defined tags parameter.
 The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
 
 ### Example 2: Use a custom template object and parameter file to create a deployment
@@ -219,6 +219,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+The tags to put on the deployment.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

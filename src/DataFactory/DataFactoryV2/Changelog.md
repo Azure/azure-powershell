@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.8.1
+* Updated assembly version of data factory V2 cmdlets
+
+## Version 1.8.0
+* Supported CRUD of data flow runtime properties in Managed IR.
+
 ## Version 1.7.0
 * Updated ADF .Net SDK version to 4.8.0
 * Added optional parameters to `Invoke-AzDataFactoryV2Pipeline` command to support rerun

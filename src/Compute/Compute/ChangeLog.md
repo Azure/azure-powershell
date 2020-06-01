@@ -19,8 +19,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added Set-AzVmssOrchestrationServiceState cmdlet.
-* Get-AzVmss with -InstanceView shows OrchestrationService states.
+
+## Version 4.1.0
+* Added HostId parameter to `Update-AzVM` cmdlet
+* Updated Help documents for `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVmss`, `Set-AzVMOperatingSystem` and `Set-AzVmssOsProfile` cmdlets.
+* Breaking changes
+    - FilterExpression parameter is removed from `Get-AzVMImage` cmdlet.
+    - AssignIdentity parameter is removed from `New-AzVmssConfig`, `New-AzVMConfig` and `Update-AzVM` cmdlets.
+    - AutomaticRepairMaxInstanceRepairsPercent is removed from `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+    - AvailabilitySetsColocationStatus, VirtualMachinesColocationStatus and VirtualMachineScaleSetsColocationStatus properties are removed from ProximityPlacementGroup.
+    - MaxInstanceRepairsPercent property is removed from AutomaticRepairsPolicy.
+    - The types of AvailabilitySets, VirtualMachines and VirtualMachineScaleSets are changed from IList<SubResource> to IList<SubResourceWithColocationStatus>.
+* Description for `Get-AzVM` cmdlet has been updated to better describe it. 
+
+## Version 3.7.0
+* Added `Set-AzVmssOrchestrationServiceState` cmdlet.
+* `Get-AzVmss` with -InstanceView shows OrchestrationService states.
 
 ## Version 3.6.0
 * Added the following parameters to `New-AzDiskConfig` cmdlet: 

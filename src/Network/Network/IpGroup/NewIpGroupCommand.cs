@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -88,6 +89,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
 
+            ValidateName(this.Name);
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -114,6 +117,16 @@ namespace Microsoft.Azure.Commands.Network
             // Execute the Create IpGroups call
             this.IpGroupsClient.CreateOrUpdate(this.ResourceGroupName, this.Name, ipGroupSdkObject);
             return this.GetIpGroup(this.ResourceGroupName, this.Name);
+        }
+
+        private void ValidateName(string name)
+        {
+            var IpgroupNameRegex = new Regex("^[^_\\W]([\\w-.]{0,78}[\\w])?$");
+
+            if (!IpgroupNameRegex.IsMatch(name))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.InvalidName, this.Name));
+            }
         }
     }
 }

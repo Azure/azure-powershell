@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSSqlUniqueKey[] UniqueKey { get; set; }
 
         public override void ExecuteCmdlet()

@@ -1,3 +1,414 @@
+## 4.2.0 - June 2020
+#### Az.Accounts
+* Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
+
+#### Az.AnalysisServices
+* Updated assembly version of data plane cmdlets
+
+#### Az.ApiManagement
+* Updated assembly version of service management cmdlets
+
+#### Az.Billing
+* Updated assembly version of consumption cmdlets
+
+#### Az.CognitiveServices
+* Support PrivateEndpoint and PublicNetworkAccess control. 
+
+#### Az.DataFactory
+* Updated assembly version of data factory V2 cmdlets
+
+#### Az.DataShare
+* General availability of ''Az.DataShare'' module
+
+#### Az.DesktopVirtualization
+* General availability of ''Az.DesktopVirtualization'' module
+
+#### Az.OperationalInsights
+* Upgraded SDK to 0.21.0
+* Added optional parameters to 
+    - 'New-AzOperationalInsightsSavedSearch'
+    - 'Set-AzOperationalInsightsSavedSearch'
+
+#### Az.PolicyInsights
+* Corrected example 3 for 'Start-AzPolicyComplianceScan'
+
+#### Az.PowerBIEmbedded
+* Updated assembly version of PowerBI cmdlets
+
+#### Az.PrivateDns
+* Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
+* Updated assembly version of SiteRecovery and Backup cmdlets
+
+#### Az.Resources
+* Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
+* Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
+* Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
+* Fixed missing file/target name in cmdlet messages.
+* Updated assembly version of resource manager and tags cmdlets
+
+#### Az.Sql
+* Added UsePrivateLinkConnection to 'New-AzSqlSyncGroup', 'Update-AzSqlSyncGroup', 'New-AzSqlSyncMember' and 'Update-AzSqlSyncMember'
+* Added SyncMemberAzureDatabaseResourceId to 'New-AzSqlSyncMember' and 'Update-AzSqlSyncMember'
+* Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
+
+#### Az.Storage
+* Updated assembly version of data plane cmdlets
+
+## 4.1.0 - May 2020
+### Highlights since the last release
+* Supported PowerShell versions: Windows PowerShell 5.1, PowerShell Core 6.2.4+, PowerShell 7
+* General availability of Az.Functions 
+* Az.ApiManagement, Az.Batch, Az.Compute, Az.KeyVault, Az.Monitor, Az.Network, Az.OperationalInsights, Az.Resources, and Az.Storage have major release
+
+#### Az.Accounts
+* Updated 'Add-AzEnvironment' and 'Set-AzEnvironment' to accept parameters 'AzureSynapseAnalyticsEndpointResourceId' and 'AzureSynapseAnalyticsEndpointSuffix'
+* Added Azure.Core related assemblies into Az.Accounts, supported PowerShell platforms include Windows PowerShell 5.1, PowerShell Core 6.2.4, PowerShell 7+
+
+#### Az.Aks
+* Upgraded API Version to 2019-10-01
+* Supported to create AKS using Windows container
+* Provided new cmdlets: 'New-AzAksNodePool', 'Update-AzAksNodePool', 'Remove-AzAksNodePool',
+         'Get-AzAksNodePool', 'Install-AzAksKubectl', 'Get-AzAksVersion'
+
+#### Az.ApiManagement
+* 'New-AzApiManagement' and 'Set-AzApiManagement': [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
+* 'New-AzApiManagement' and 'Set-AzApiManagement': New parameter added: [-UserAssignedIdentity <String[]>]
+* 'Get-AzApiManagementProperty': renamed as 'Get-AzApiManagementNamedValue'. PropertyId parameter renamed as NamedValueId.
+* 'New-AzApiManagementProperty': renamed as 'New-AzApiManagementNamedValue'. PropertyId parameter renamed as NamedValueId. 
+* 'Set-AzApiManagementProperty': renamed as 'Set-AzApiManagementNamedValue'. PropertyId parameter renamed as NamedValueId.
+* 'Remove-AzApiManagementProperty': renamed as 'Remove-AzApiManagementNamedValue'. PropertyId parameter renamed as NamedValueId.
+* Added new 'Get-AzApiManagementAuthorizationServerClientSecret' cmdlet and 'Get-AzApiManagementAuthorizationServer' will not return client secret anymore.
+* Added new 'Get-AzApiManagementNamedValueSecretValue' cmdlet and 'Get-AzApiManagementNamedValue' will not return secret value.
+* Added new 'Get-AzApiManagementOpenIdConnectProviderClientSecret' cmdlet and 'Get-AzApiManagementOpenIdConnectProvider' will not return client secret anymore.
+* Added new 'Get-AzApiManagementSubscriptionKey' cmdlet and 'Get-AzApiManagementSubscription' will not return subscription keys anymore.
+* Added new 'Get-AzApiManagementTenantAccessSecret' cmdlet and 'Get-AzApiManagementTenantAccess' will not return keys anymore.
+* Added new 'Get-AzApiManagementTenantGitAccessSecret' cmdlet and 'Get-AzApiManagementTenantGitAccess' will not return keys anymore.
+
+#### Az.ApplicationInsights
+* Added Parameters: 'RetentionInDays' 'PublicNetworkAccessForIngestion' 'PublicNetworkAccessForQuery' for 'New-AzApplicationInsights'
+* Created cmdlet 'Update-AzApplicationInsights'
+* Created cmdlets for Linked Storage Account
+
+#### Az.Batch
+* Updated Az.Batch to use 'Microsoft.Azure.Batch' SDK version 13.0.0 and 'Microsoft.Azure.Management.Batch' SDK version 9.0.0.
+* Added the ability to select the kind of certificate being added using the new '-CertificateKind' parameter to 'New-AzBatchCertificate'.
+* Removed 'ApplicationPackages' property from 'PSApplication' which was previously always ''.
+  - The specific packages inside of an application now can be retrieved using 'Get-AzBatchApplicationPackage'. For example: 'Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication'.
+* When creating a pool using 'New-AzBatchPool', the 'VirtualMachineImageId' property of 'PSImageReference' can now only refer to a Shared Image Gallery image.
+* When creating a pool using 'New-AzBatchPool', the pool can be provisioned without a public IP using the new 'PublicIPAddressConfiguration' property of 'PSNetworkConfiguration'.
+  - The 'PublicIPs' property of 'PSNetworkConfiguration' has moved in to 'PSPublicIPAddressConfiguration' as well. This property can only be specified if 'IPAddressProvisioningType' is 'UserManaged'.
+
+#### Az.Compute
+* Added HostId parameter to 'Update-AzVM' cmdlet
+* Updated Help documents for 'New-AzVMConfig', 'New-AzVmssConfig', 'Update-AzVmss', 'Set-AzVMOperatingSystem' and 'Set-AzVmssOsProfile' cmdlets.
+* Breaking changes
+    - FilterExpression parameter is removed from 'Get-AzVMImage' cmdlet.
+    - AssignIdentity parameter is removed from 'New-AzVmssConfig', 'New-AzVMConfig' and 'Update-AzVM' cmdlets.
+    - AutomaticRepairMaxInstanceRepairsPercent is removed from 'New-AzVmssConfig' and 'Update-AzVmss' cmdlets.
+    - AvailabilitySetsColocationStatus, VirtualMachinesColocationStatus and VirtualMachineScaleSetsColocationStatus properties are removed from ProximityPlacementGroup.
+    - MaxInstanceRepairsPercent property is removed from AutomaticRepairsPolicy.
+    - The types of AvailabilitySets, VirtualMachines and VirtualMachineScaleSets are changed from IList<SubResource> to IList<SubResourceWithColocationStatus>.
+* Description for 'Get-AzVM' cmdlet has been updated to better describe it. 
+
+#### Az.DataFactory
+* Supported CRUD of data flow runtime properties in Managed IR.
+
+#### Az.FrontDoor
+* Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
+* Added helper cmdlets for construction of Front Door Rules Engine object
+* Added Rules Engine reference to Front Door Routing Rule object.
+* Added Private Link parameters to Front Door Backend object
+
+#### Az.Functions
+* General availability of ''Az.Functions'' module
+
+#### Az.HDInsight
+* Supported Customer-managed key disk encryption.
+
+#### Az.HealthcareApis
+* Access policies are no longer defaulted to the current principal
+
+#### Az.IotHub
+* Added cmdlet to invoke a query in an IoT hub to retrieve information using a SQL-like language.
+* Fix issue that 'Add-AzIotHubDevice' fails to create Edge Enabled Device without child devices [#11597]
+* Added cmdlet to generate SAS token for Iot Hub, device or module.
+* Added cmdlet to invoke configuration metrics query.
+* Manage IoT Edge automatic deployment at scale. New cmdlets are:
+    - 'Add-AzIotHubDeployment'
+    - 'Get-AzIotHubDeployment'
+    - 'Remove-AzIotHubDeployment'
+    - 'Set-AzIotHubDeployment'
+* Added cmdlet to invoke an IoT Edge deployment metrics query.
+* Added cmdlet to apply the configuration content to the specified edge device.
+
+#### Az.KeyVault
+* Removed two aliases: 'New-AzKeyVaultCertificateAdministratorDetails' and 'New-AzKeyVaultCertificateOrganizationDetails'
+* Enabled soft delete by default when creating a key vault
+* Network rules can be set to govern the accessibility from specific network locations when creating a key vault
+* Added support to bring your own key (BYOK)
+    - 'Add-AzKeyVaultKey' supports generating a key exchange key
+    - 'Get-AzKeyVaultKey' supports downloading a public key in PEM format
+* Updated the 'KeyOps' part of the help document of 'Add-AzKeyVaultKey'
+
+#### Az.Monitor
+* Fixed bug for 'Set-AzDiagnosticSettings', retention policy won't apply to all categories [#11589]
+* Supported WebTest availability criteria for metric alert V2
+	- 'New-AzMetricAlertRuleV2Criteria': an option to create webtest availability criteria was added
+	- 'Add-AzMetricAlertRuleV2': supports the new webtest availability criteria
+* Removed redundant definition for RetentionPolicy in PSLogProfile [#7608]
+* Removed redundant properties difined in PSEventData [#11353]
+* Renamed 'Get-AzLog' to 'Get-AzActivityLog'
+
+#### Az.Network
+* Added breaking change attribute to notify that Zone default behaviour will be changed
+    - 'New-AzPublicIpAddress'
+    - 'New-AzPublicIpPrefix'
+    - 'New-AzLoadBalancerFrontendIpConfig'
+* Added support for a new top level resource SecurityPartnerProvider
+    - New cmdlets added:
+        - New-AzSecurityPartnerProvider
+        - Remove-AzSecurityPartnerProvider
+        - Get-AzSecurityPartnerProvider
+        - Set-AzSecurityPartnerProvider
+* Added 'RequiredZoneNames' on 'PSPrivateLinkResource' and 'GroupId' on 'PSPrivateEndpointConnection'
+* Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
+* Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
+    - 'New-AzVirtualWan'
+    - 'Update-AzVirtualWan'
+* Added new cmdlets to support DNS zone group for private endpoint
+    - 'New-AzPrivateDnsZoneConfig'
+    - 'Get-AzPrivateDnsZoneGroup'
+    - 'New-AzPrivateDnsZoneGroup'
+    - 'Set-AzPrivateDnsZoneGroup'
+    - 'Remove-AzPrivateDnsZoneGroup'
+* Added 'DNSEnableProxy', 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to 'AzureFirewall'
+* Added 'EnableDnsProxy', 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to 'AzureFirewall'
+    - Updated cmdlet:
+        - New-AzFirewall
+
+#### Az.OperationalInsights
+* Updated legacy code to apply new generated SDK
+* Deleted cmdlets due to deprecated APIs
+    - 'Get-AzOperationalInsightsSavedSearchResult' (alias 'Get-AzOperationalInsightsSavedSearchResults')
+    - 'Get-AzOperationalInsightsSearchResult' (alias 'Get-AzOperationalInsightsSearchResults')
+    - 'Get-AzOperationalInsightsLinkTarget' (alias 'Get-AzOperationalInsightsLinkTargets')
+* Added parameters for 'Set-AzOperationalInsightsWorkspace' and 'New-AzOperationalInsightsWorkspace'
+* Created cmdlets for Linked Stoarge Account
+* Created cmdlets for Clusters and Linked Service
+
+#### Az.RecoveryServices
+* Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.
+* Azure Site Recovery added support for zone to zone replication.
+* Azure Backup Added Long term retention support for Azure FileShare Recovery Points.
+* Azure Backup Added disk exclusion properties to 'Get-AzRecoveryServicesBackupItem' cmdlet output.
+* Added private endpoint for Vault credential file for site recovery service.
+
+#### Az.Resources
+* Added message warning about view delay when creating a new Role Definition
+* Changed policy cmdlets to output strongly-typed objects
+* Removed '-TenantLevel' parameter used for on the 'Get-AzResourceLock' cmdlet [#11335]
+* Fixed 'Remove-AzResourceGroup -Id ResourceId'[#9882]
+* Added new cmdlet for getting ARM template What-If results at resource group scope: 'Get-AzDeploymentResourceGroupWhatIfResult'
+* Added new cmdlet for getting ARM template What-If results at subscription scope: 'Get-AzDeploymentWhatIfResult'
+   - Alias: 'Get-AzSubscriptionDeploymentWhatIf'
+* Overrode '-WhatIf' and '-Confirm' parameters for 'New-AzDeployment' and 'New-AzResourceGroupDeployment' to use ARM template What-If results
+* Added deprecation message for 'ApiVersion' parameter in deployment cmdlets
+* Added capability to show improved error messages for deployment failures
+* Added correlationId logging for deployment failures
+* Added 'error' property to the deployment script output
+* Updated nuget Microsoft.Azure.Management.ResourceManager to '3.7.1-preview'
+* Removed specific test cases as Error property in DeploymentValidateResult has changed to readonly from nuget 3.7.1-preview
+* Brought GenericResourceExpanded from SDK ResourceManager 3.7.1-preview
+* Added tag support for all Get cmdlets for deployment, as well as
+    - 'New-AzDeployment'
+    - 'New-AzManagementGroupDeployment'
+    - 'New-AzResourceGroupDeployment'
+    - 'New-AzTenantDeployment'
+
+#### Az.ServiceFabric
+* Fixed bug in add certificate using --SecretIdentifier that was getting the wrong certificate thumbprint
+
+#### Az.Sql
+* Enhance performance of:
+    - 'Set-AzSqlDatabaseSensitivityClassification'
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification'
+    - 'Remove-AzSqlDatabaseSensitivityClassification'
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification'
+    - 'Enable-AzSqlDatabaseSensitivityRecommendation'
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation'
+    - 'Disable-AzSqlDatabaseSensitivityRecommendation'
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation'
+* Removed client-side validation of 'RetentionDays' parameter from cmdlet 'Set-AzSqlDatabaseBackupShortTermRetentionPolicy'
+* Auditing to a storage account in Vnet, fixing a bug when creating a Storage Blob Data Contributor role.
+
+#### Az.Storage
+* Added '-AsJob' to get/list account cmdlet 'Get-AzStorageAccount'
+* Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
+    - 'Set-AzStorageAccount'
+* Fixed remove Azure File Directory fail with pipeline
+    - 'Remove-AzStorageDirectory'
+* Fixed [#9880]: Change NetWorkRule DefaultAction value defination to align with swagger.
+	- 'Update-AzStorageAccountNetworkRuleSet'
+	- 'Get-AzStorageAccountNetworkRuleSet'
+* Fixed [#11624]: Skip duplicated rules when add NetworkRules, to avoid server failure
+    - 'Add-AzStorageAccountNetworkRule'
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.7
+* Added a warning message to remind user to list again with ContinuationToken when only part items are returned in list DataLake Gen2 Items,
+    - 'Get-AzDataLakeGen2ChildItem'
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  'New-AzStorageAccount'
+    -  'Set-AzStorageAccount'
+* Supported to new or list Kerberos keys of Storage account
+    -  'New-AzStorageAccountKey'
+    -  'Get-AzStorageAccountKey'
+* Supported failover Storage account
+    - 'Invoke-AzStorageAccountFailover'
+* Updated help of 'Get-AzStorageBlobCopyState'
+* Updated help of 'Get-AzStorageFileCopyState' and 'Start-AzStorageBlobCopy'
+* Integrated Storage client library v12 to Queue and File cmdlets
+* Changed output type from CloudFile to AzureStorageFile, the original output will become a child property of the new output
+    - 'Get-AzStorageFile'
+    - 'Remove-AzStorageFile'
+    - 'Get-AzStorageFileContent'
+    - 'Set-AzStorageFileContent'
+    - 'Start-AzStorageFileCopy'
+* Changed output type from CloudFileDirectory to AzureStorageFileDirectory, the original output will become a child property of the new output
+    - 'New-AzStorageDirectory'
+    - 'Remove-AzStorageDirectory'
+* Changed output type from CloudFileShare to AzureStorageFileShare, the original output will become a child property of the new output
+    - 'Get-AzStorageShare'
+    - 'New-AzStorageShare'
+    - 'Remove-AzStorageShare'
+* Changed output type from FileShareProperties to AzureStorageFileShare, the original output will become a sub child property of the new output
+    - 'Set-AzStorageShareQuota'
+
+#### Az.TrafficManager
+* Fixed incorrect profile name in 'DisableAzureTrafficManagerEndpoint' verbose output
+
+#### Az.Websites
+* Fixed typo on help of 'Update-AzWebAppAccessRestrictionConfig'.
+
+## 3.8.0 - April 2020
+#### Az.Accounts
+* Updated Azure PowerShell survey URL in 'Resolve-AzError' [#11507]
+
+#### Az.ApiManagement
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* 'Set-AzApiManagementGroup' Updated documentation to specify the GroupId parameter
+
+#### Az.Cdn
+* Fixed ChinaCDN related pricing SKU display
+
+#### Az.CognitiveServices
+* Supported Identity, Encryption, UserOwnedStorage 
+
+#### Az.Compute
+* Added 'Set-AzVmssOrchestrationServiceState' cmdlet.
+* 'Get-AzVmss' with -InstanceView shows OrchestrationService states.
+
+#### Az.IotHub
+* Manage IoT device twin configuration, New cmdlets are:
+    - 'Get-AzIotHubDeviceTwin'
+    - 'Update-AzIotHubDeviceTwin'
+* Added cmdlet to invoke direct method on a device in an Iot Hub.
+* Manage IoT device module twin configuration, New cmdlets are:
+    - 'Get-AzIotHubModuleTwin'
+    - 'Update-AzIotHubModuleTwin'
+* Manage IoT automatic device management configuration at scale. New cmdlets are:
+    - 'Add-AzIotHubConfiguration'
+    - 'Get-AzIotHubConfiguration'
+    - 'Remove-AzIotHubConfiguration'
+    - 'Set-AzIotHubConfiguration'
+* Added cmdlet to invoke an edge module method in an Iot Hub.
+
+#### Az.KeyVault
+* Added a new cmdlet 'Update-AzKeyVault' that can enable soft delete and purge protection on a vault
+* Added support to Microsoft.PowerShell.SecretManagement [#11178]
+* Fixed error in the examples of 'Remove-AzKeyVaultManagedStorageSasDefinition' [#11479]
+* Added support to private endpoint
+
+#### Az.Maintenance
+* Publishing release version of Maintenance cmdlets for GA
+
+#### Az.Monitor
+* Added cmdlets for private link scope
+    - 'Get-AzInsightsPrivateLinkScope'
+    - 'Remove-AzInsightsPrivateLinkScope'
+    - 'New-AzInsightsPrivateLinkScope'
+    - 'Update-AzInsightsPrivateLinkScope'
+    - 'Get-AzInsightsPrivateLinkScopedResource'
+    - 'New-AzInsightsPrivateLinkScopedResource'
+    - 'Remove-AzInsightsPrivateLinkScopedResource'
+
+#### Az.Network
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - 'New-AzVirtualNetworkGateway'
+    - 'Set-AzVirtualNetworkGateway'
+    - 'New-AzVirtualNetworkGatewayConnection'
+    - 'Set-AzVirtualNetworkGatewayConnection'
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - 'New-AzLocalNetworkGateway'
+    - 'New-AzVpnSiteLink'
+* Added support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added 'Set-AzExpressRouteCircuitConnectionConfig'
+        - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    - Updated 'Add-AzExpressRouteCircuitConnectionConfig'
+        - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
+
+#### Az.PolicyInsights
+* Added 'Start-AzPolicyComplianceScan' cmdlet for triggering policy compliance scans
+* Added policy definition, set definition, and assignment versions to 'Get-AzPolicyState' output
+
+#### Az.ServiceFabric
+* Improved code formatting and usability of 'New-AzServiceFabricCluster' examples
+
+#### Az.Sql
+* Added cmdlets 'Get-AzSqlInstanceOperation' and 'Stop-AzSqlInstanceOperation'
+* Supported auditing to a storage account in VNet.
+
+#### Az.Storage
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported DataLake Gen2 
+    - 'New-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2ChildItem'
+    - 'Move-AzDataLakeGen2Item'
+    - 'Set-AzDataLakeGen2ItemAclObject'
+    - 'Update-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2ItemContent'
+    - 'Remove-AzDataLakeGen2Item'
+
+## 0.10.0-preview - April 2020
+### General
+* Az modules is now available in preview on Azure Stack Hub. This allows for cross-platform compatibility with Linux and macOs. Azure Stack Hub now supports PowerShell core with the Az modules, more information [here](https://aka.ms/az4AzureStack)
+* Az modules support profile 2019-03-01-hybrid:
+  - Az.Billing
+  - Az.Compute
+  - Az.DataBoxEdge
+  - Az.EventHub
+  - Az.IotHub
+  - Az.KeyVault
+  - Az.Monitor
+  - Az.Network
+  - Az.Resources
+  - Az.Storage
+  - Az.Websites
+* Three new PowerShell modules for az have been introduced that work with Azure Stack Hub, which are Az.Databox, Az.IotHub, and Az.EventHub
+* Commands remain relatively the same, with minor changes such as changing AzureRM to Az
+* Updated link to PowerShell documentation for Azure Stack Hub can be found [here](aka.ms/InstallASHPowerShell)
+
+#### Az.Accounts
+* Upgrade from ADAL to MSAL
+
 ## 3.7.0 - March 2020
 #### Az.Accounts
 * Fixed 'Get-AzTenant'/'Get-AzDefault'/'Set-AzDefault' throw NullReferenceException when not login [#10292]
@@ -45,6 +456,8 @@
     - 'New-AzVirtualHub'
     - 'Update-AzVirtualHub'
 * Removed Sql Management SDK dependency
+* Updated cmdlets to allow force firewallPolicy association
+    - 'New-AzApplicationGateway'
 
 #### Az.PolicyInsights
 * Improved error messages
@@ -74,10 +487,10 @@
 
 #### Az.Websites
 * Added support for working with webapp Traffic Routing Rules via below new cmdlets
-	- 'Get-AzWebAppTrafficRouting'
-	- 'Update-AzWebAppTrafficRouting'
-	- 'Add-AzWebAppTrafficRouting'
-	- 'Remove-AzWebAppTrafficRouting'
+  - 'Get-AzWebAppTrafficRouting'
+  - 'Update-AzWebAppTrafficRouting'
+  - 'Add-AzWebAppTrafficRouting'
+  - 'Remove-AzWebAppTrafficRouting'
 
 ## 3.6.1 - March 2020
 #### Az.Accounts
@@ -96,15 +509,15 @@
 
 #### Az.IotHub
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubDevice'
-	- 'Get-AzIotHubDevice'
-	- 'Remove-AzIotHubDevice'
-	- 'Set-AzIotHubDevice'
+  - 'Add-AzIotHubDevice'
+  - 'Get-AzIotHubDevice'
+  - 'Remove-AzIotHubDevice'
+  - 'Set-AzIotHubDevice'
 * Added support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubModule'
-	- 'Get-AzIotHubModule'
-	- 'Remove-AzIotHubModule'
-	- 'Set-AzIotHubModule'
+  - 'Add-AzIotHubModule'
+  - 'Get-AzIotHubModule'
+  - 'Remove-AzIotHubModule'
+  - 'Set-AzIotHubModule'
 * Added cmdlet to get the connection string of a target IoT device in an Iot Hub.
 * Added cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
 * Added support to get/set parent device of an IoT device. New Cmdlets are:
@@ -190,10 +603,10 @@
 
 #### Az.IotHub
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubDevice'
-	- 'Get-AzIotHubDevice'
-	- 'Remove-AzIotHubDevice'
-	- 'Set-AzIotHubDevice'
+  - 'Add-AzIotHubDevice'
+  - 'Get-AzIotHubDevice'
+  - 'Remove-AzIotHubDevice'
+  - 'Set-AzIotHubDevice'
 
 #### Az.KeyVault
 * Fixed duplicated text for Add-AzKeyVaultKey.md
@@ -201,7 +614,7 @@
 #### Az.Monitor
 * Fixed description of the Get-AzLog cmdlet.
 * A new parameter called ActionGroupId was added to 'New-AzMetricAlertRuleV2' command.
-	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+  - The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
 
 #### Az.Network
 * Added one extra parameter note for parameter '-EnableProxyProtocol' for 'New-AzPrivateLinkService' cmdlet.
@@ -451,12 +864,12 @@ to enable create Azure-SSIS IR with static public IP addresses.
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
+  - New-AzRmStorageShare
+  - Update-AzRmStorageShare
 * Add parameter alias 'QuotaGiB' to parameter 'Quota'
-	- Set-AzStorageShareQuota
+  - Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
+  - Set-AzStorageContainerAcl
 
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
@@ -807,13 +1220,13 @@ to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.Monitor
 * New action group receivers added for action group
-	-ItsmReceiver
-	-VoiceReceiver
-	-ArmRoleReceiver
-	-AzureFunctionReceiver
-	-LogicAppReceiver
-	-AutomationRunbookReceiver
-	-AzureAppPushReceiver
+  -ItsmReceiver
+  -VoiceReceiver
+  -ArmRoleReceiver
+  -AzureFunctionReceiver
+  -LogicAppReceiver
+  -AutomationRunbookReceiver
+  -AzureAppPushReceiver
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
 
@@ -885,10 +1298,10 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.IotHub
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 * Add support to manage message enrichment for an IotHub. New cmdlets are:
-	- Add-AzIotHubMessageEnrichment
-	- Get-AzIotHubMessageEnrichment
-	- Remove-AzIotHubMessageEnrichment
-	- Set-AzIotHubMessageEnrichment
+  - Add-AzIotHubMessageEnrichment
+  - Get-AzIotHubMessageEnrichment
+  - Remove-AzIotHubMessageEnrichment
+  - Set-AzIotHubMessageEnrichment
 
 #### Az.Monitor
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
@@ -898,8 +1311,8 @@ to enable create Azure-SSIS IR with static public IP addresses.
    - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
    - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
 * Support Dynamic Threshold criteria for metric alert V2
-	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
-	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+  - New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+  - Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Improvements in Scheduled Query Rule cmdlets (SQR)
  - Cmdlets will accept 'Location' paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
  - Illustrated 'Enabled' parameter in help files properly
@@ -1124,7 +1537,7 @@ to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.LogicApp
 * Fix for Get-AzIntegrationAccountMap to list all map types
-	- Added new MapType parameter for filtering
+  - Added new MapType parameter for filtering
 
 #### Az.ManagedServices
 * Added support for api version 2019-06-01 (GA)
@@ -1600,13 +2013,13 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.Compute
 * Proximity placement group feature.
     - The following new cmdlets are added:
-	    New-AzProximityPlacementGroup
-		Get-AzProximityPlacementGroup
-		Remove-AzProximityPlacementGroup
-	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
-	    New-AzAvailabilitySet
-		New-AzVMConfig
-		New-AzVmssConfig
+      New-AzProximityPlacementGroup
+    Get-AzProximityPlacementGroup
+    Remove-AzProximityPlacementGroup
+  - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+      New-AzAvailabilitySet
+    New-AzVMConfig
+    New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
 * SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
@@ -1641,23 +2054,23 @@ to enable create Azure-SSIS IR with static public IP addresses.
 * Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
 * Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
     - Users with reader role need to specify 'DefaultStorageAccountKey' parameter explicitly, otherwise error occurs.
-	- Users with hdinsight operator role will not be affected.
+  - Users with hdinsight operator role will not be affected.
 
 #### Az.Monitor
 * New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
-	- New-AzScheduledQueryRuleAznsActionGroup
-	- New-AzScheduledQueryRuleLogMetricTrigger
-	- New-AzScheduledQueryRuleSchedule
-	- New-AzScheduledQueryRuleSource
-	- New-AzScheduledQueryRuleTriggerCondition
-	- New-AzScheduledQueryRule
-	- Get-AzScheduledQueryRule
-	- Set-AzScheduledQueryRule
-	- Update-AzScheduledQueryRule
-	- Remove-AzScheduledQueryRule
-	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
-	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+  - New-AzScheduledQueryRuleAznsActionGroup
+  - New-AzScheduledQueryRuleLogMetricTrigger
+  - New-AzScheduledQueryRuleSchedule
+  - New-AzScheduledQueryRuleSource
+  - New-AzScheduledQueryRuleTriggerCondition
+  - New-AzScheduledQueryRule
+  - Get-AzScheduledQueryRule
+  - Set-AzScheduledQueryRule
+  - Update-AzScheduledQueryRule
+  - Remove-AzScheduledQueryRule
+  - [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+  - Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 #### Az.Network
 * Add support for Nat Gateway Resource
@@ -2017,15 +2430,15 @@ to enable create Azure-SSIS IR with static public IP addresses.
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
 * New cmdlets for Integration Account Assemblies
-	- Get-AzIntegrationAccountAssembly
-	- New-AzIntegrationAccountAssembly
-	- Remove-AzIntegrationAccountAssembly
-	- Set-AzIntegrationAccountAssembly
+  - Get-AzIntegrationAccountAssembly
+  - New-AzIntegrationAccountAssembly
+  - Remove-AzIntegrationAccountAssembly
+  - Set-AzIntegrationAccountAssembly
 * New cmdlets for Integration Account Batch Configuration
-	- Get-AzIntegrationAccountBatchConfiguration
-	- New-AzIntegrationAccountBatchConfiguration
-	- Remove-AzIntegrationAccountBatchConfiguration
-	- Set-AzIntegrationAccountBatchConfiguration
+  - Get-AzIntegrationAccountBatchConfiguration
+  - New-AzIntegrationAccountBatchConfiguration
+  - Remove-AzIntegrationAccountBatchConfiguration
+  - Set-AzIntegrationAccountBatchConfiguration
 * Update Logic App SDK to version 4.1.0
 
 #### Az.Monitor

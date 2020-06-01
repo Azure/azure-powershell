@@ -18,8 +18,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.0
+* Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Added SyncMemberAzureDatabaseResourceId to `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
+* Remove IsAzureADOnlyAuthentication parameter from Set-AzSqlServerActiveDirectoryAdministrator as it is not usable. 
+
+## Version 2.6.1
+* Enhance performance of:
+    - `Set-AzSqlDatabaseSensitivityClassification`
+    - `Set-AzSqlInstanceDatabaseSensitivityClassification`
+    - `Remove-AzSqlDatabaseSensitivityClassification`
+    - `Remove-AzSqlInstanceDatabaseSensitivityClassification`
+    - `Enable-AzSqlDatabaseSensitivityRecommendation`
+    - `Enable-AzSqlInstanceDatabaseSensitivityRecommendation`
+    - `Disable-AzSqlDatabaseSensitivityRecommendation`
+    - `Disable-AzSqlInstanceDatabaseSensitivityRecommendation`
+* Removed client-side validation of 'RetentionDays' parameter from cmdlet `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
+* Auditing to a storage account in Vnet, fixing a bug when creating a Storage Blob Data Contributor role.
+* Allow Azure Active Directory applications to be set as SQL Server Azure Active Directory admin.
+
+## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
 * Supported auditing to a storage account in VNet.
+* Assign 'None' value as StorageKeyKind when a storage account under VNet is a target for the audit records. 
 
 ## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`

@@ -22,6 +22,7 @@ param(
 Import-LocalizedData -BaseDirectory $PSScriptRoot"\..\Az" -FileName "Az.psd1" -BindingVariable AzMetaData 
 $version = $AzMetaData.ModuleVersion
 Write-Output "Az version: "$version" retrieved, from Az.psd1"
+$date = date -u +'%Y-%m-%dT%H:%M:%SZ'
 
 try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
@@ -29,13 +30,13 @@ try {
         Write-Output $os
         if ($os -eq "ubuntu-18.04") {
             docker build --build-arg VERSION=$version `
-                     --build-arg BUILD_DATE="date -u +'%Y-%m-%dT%H:%M:%SZ'" `
+                     --build-arg BUILD_DATE=$date `
                      --tag $DockerImageName':'$version"-"$os `
                      --tag $DockerImageName':latest' `
                      -f $dockerfile $DOCKER
         }else {
             docker build --build-arg VERSION=$version `
-                     --build-arg BUILD_DATE="date -u +'%Y-%m-%dT%H:%M:%SZ'" `
+                     --build-arg BUILD_DATE=$date `
                      --tag $DockerImageName':'$version"-"$os `
                      -f $dockerfile $DOCKER
         }

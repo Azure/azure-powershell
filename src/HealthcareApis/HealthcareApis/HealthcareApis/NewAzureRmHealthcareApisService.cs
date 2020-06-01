@@ -120,19 +120,27 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public int? CosmosOfferThroughput { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ExportStorageAccountName { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service EnableSmartProxy.")]
         public SwitchParameter EnableSmartProxy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use Managed Identity?")]
+        public SwitchParameter ManagedIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Fhir Version.")]
         [ValidateNotNullOrEmpty]
         public string FhirVersion { get; set; }
-
 
         [Parameter(
             Mandatory = false,
@@ -168,13 +176,18 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
                             CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                            ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName},
                             AccessPolicies = accessPolicies
                         }
                     };
+                    
+                    if (this.ManagedIdentity.IsPresent)
+                    {
+                        servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                    }
 
                     if (ShouldProcess(this.Name, Resources.createService))
                     {
-
                         this.EnsureNameAvailabilityOrThrow();
 
                         try
@@ -208,17 +221,13 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
 
-            if (AccessPolicyObjectId == null || AccessPolicyObjectId.Length == 0)
+            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
             {
-                string objectID = base.AccessPolicyID;
-                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
-                return accessPolicies;
-            }
-
-            foreach (var objectID in AccessPolicyObjectId)
-            {
-                HealthcareApisArgumentValidator.ValidateObjectId(objectID);
-                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+                foreach (var objectID in AccessPolicyObjectId)
+                {
+                    HealthcareApisArgumentValidator.ValidateObjectId(objectID);
+                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+                }
             }
 
             return accessPolicies;
@@ -272,7 +281,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             if (string.IsNullOrEmpty(this.Audience))
             {
-                return PSHealthcareApisFhirServiceAuthenticationConfig.defaultAudience;
+                return PSHealthcareApisFhirServiceAuthenticationConfig.getDefaultAudience(this.Name);
             }
 
             return this.Audience;

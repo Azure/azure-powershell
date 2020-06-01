@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// The get azure peering service location command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceLocation")]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringServiceLocation)]
     [OutputType(typeof(PSPeeringServiceLocation))]
     public class GetAzurePeeringServiceLocationCommand : PeeringBaseCmdlet
     {

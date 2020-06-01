@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSExcludedPath(ExcludedPath excludedPath )
         {
+            if (excludedPath == null)
+            {
+                return;
+            }
+
             Path = excludedPath.Path;
         }
         //
@@ -32,5 +37,18 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets the path for which the indexing behavior applies to. Index paths
         //     typically start with root and end with wildcard (/path/*)
         public string Path { get; set; }
+
+        public static ExcludedPath ToSDKModel(PSExcludedPath pSExcludedPath)
+        {
+            if (pSExcludedPath == null)
+            {
+                return null;
+            }
+
+            return new ExcludedPath
+            {
+                Path = pSExcludedPath.Path
+            };
+        }
     }
 }

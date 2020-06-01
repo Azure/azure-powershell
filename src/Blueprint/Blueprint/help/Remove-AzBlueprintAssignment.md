@@ -8,19 +8,25 @@ schema: 2.0.0
 # Remove-AzBlueprintAssignment
 
 ## SYNOPSIS
-Remove a blueprint assignment from a subscription.
+Remove a blueprint assignment from a subscription or a management group.
 
 ## SYNTAX
 
-### DeleteBlueprintAssignmentByName (Default)
+### BySubscriptionAndName (Default)
 ```
-Remove-AzBlueprintAssignment [[-SubscriptionId] <String>] [-Name] <String> [-PassThru]
+Remove-AzBlueprintAssignment [-Name] <String> [[-SubscriptionId] <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByManagementGroupAndName
+```
+Remove-AzBlueprintAssignment [-Name] <String> [-ManagementGroupId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteBlueprintAssignmentByObject
 ```
-Remove-AzBlueprintAssignment [[-SubscriptionId] <String>] [-InputObject] <PSBlueprintAssignment> [-PassThru]
+Remove-AzBlueprintAssignment -InputObject <PSBlueprintAssignment> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +68,22 @@ Parameter Sets: DeleteBlueprintAssignmentByObject
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagementGroupId
+The ID of the management group where the Blueprint assignment is saved.
+
+```yaml
+Type: System.String
+Parameter Sets: ByManagementGroupAndName
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -73,7 +94,7 @@ Blueprint assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteBlueprintAssignmentByName
+Parameter Sets: BySubscriptionAndName, ByManagementGroupAndName
 Aliases:
 
 Required: True
@@ -84,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+When set, the cmdlet will return an object representing the removed Blueprint assignment. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -103,25 +124,13 @@ Subscription Id the blueprint assignment is deployed to.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteBlueprintAssignmentByName
+Parameter Sets: BySubscriptionAndName
 Aliases:
 
 Required: False
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteBlueprintAssignmentByObject
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

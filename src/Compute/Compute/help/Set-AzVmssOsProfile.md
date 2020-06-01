@@ -70,7 +70,14 @@ Accept wildcard characters: False
 ```
 
 ### -AdminUsername
-Specifies the administrator account name to use for all the virtual machine instances in the VMSS.
+Specifies the administrator account name to use for all the virtual machine instances in the VMSS. <br>
+**Windows-only restriction:** Cannot end in \".\" <br>
+**Disallowed values:** \"administrator\", \"admin\", \"user\", \"user1\", \"test\", \"user2\", \"test1\", \"user3\", \"admin1\", \"1\", \"123\", \"a\", \"actuser\", \"adm\", \"admin2\", \"aspnet\", \"backup\", \"console\", \"david\", \"guest\", \"john\", \"owner\", \"root\", \"server\", \"sql\", \"support\", \"support_388945a0\", \"sys\", \"test2\", \"test3\", \"user4\", \"user5\". <br>
+**Minimum-length (Linux):** 1  character <br>
+**Max-length (Linux):** 64 characters <br>
+**Max-length (Windows):** 20 characters  <br>
+<li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).<br>
+<li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```yaml
 Type: System.String
@@ -103,7 +110,8 @@ Accept wildcard characters: False
 ### -CustomData
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
-The maximum length of the binary array is 65535 bytes.
+The maximum length of the binary array is 65535 bytes. <br>
+For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```yaml
 Type: System.String
@@ -197,7 +205,8 @@ Accept wildcard characters: False
 ```
 
 ### -TimeZone
-Specifies the time zone for the virtual machine.
+Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String

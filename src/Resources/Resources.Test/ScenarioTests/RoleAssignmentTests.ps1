@@ -697,3 +697,28 @@ function VerifyRoleAssignmentDeleted
                                                      -RoleDefinitionName $roleAssignment.RoleDefinitionName  | where {$_.roleAssignmentId -eq $roleAssignment.roleAssignmentId}
     Assert-Null $deletedRoleAssignment
 }
+
+<#
+.SYNOPSIS
+Verifies that creating an ra with an SP displays correct error message
+#>
+function Test-RaCreatedBySP
+{
+    #Setup
+    # Conect to azure with SP
+    # If you need to re-record replace this setup
+    $passwd = ConvertTo-SecureString 'MCg1SVb3MX' -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('c82180ed-2f4b-4cb2-965f-ec5088751710' , $passwd)
+    $tenantId = '1462fd46-afe5-491b-a340-31ebae81d1ce'
+    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
+
+    # Create role assignment
+    $testUser = '1d2121a7-1943-4c7a-a872-b1b2069db55a'
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $testUser `
+    -RoleDefinitionName 'Contributor' `
+    -Scope '/subscriptions/3e123c33-5ffc-400f-a9f8-a073bf35f8ca/resourceGroups/daorozco_bug_repro' `
+    -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca
+
+    Assert-NotNull $data
+}

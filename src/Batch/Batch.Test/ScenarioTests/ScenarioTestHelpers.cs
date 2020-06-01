@@ -46,6 +46,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
+        // We expect that the following pools be created, with a configuration like:
+        // testPool:
+        //  - 2 nodes
+        //  - PAAS
+        //  - A start task with: "cmd /c "echo hello""
+
+        // testIaasPool
+        //  - 1 node
+        //  - IAAS (Ubuntu 18.04)
+
         internal const string SharedPool = "testPool";
         internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -124,7 +134,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 }
             }
 
-            NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData);
+            NewCertificateParameters parameters = new NewCertificateParameters(
+                context, null, cert.RawData, PSCertificateKind.Cer);
 
             client.AddCertificate(parameters);
 

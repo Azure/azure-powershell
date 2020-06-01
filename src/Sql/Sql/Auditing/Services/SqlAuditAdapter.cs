@@ -434,13 +434,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
             if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
             {
-                Guid? principalId = Communicator.AssignServerIdentity(model.ResourceGroupName, model.ServerName);
-                AzureCommunicator.AssignRoleForServerIdentityOnStorage(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);
+                Guid? principalId = Communicator.AssignServerIdentityIfNotAssigned(model.ResourceGroupName, model.ServerName);
+                AzureCommunicator.AssignRoleForServerIdentityOnStorageIfNotAssigned(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);
             }
             else
             {
                 policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType];
+                policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(
+                    model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType == StorageKeyKind.Secondary ? StorageKeyKind.Secondary : StorageKeyKind.Primary];
             }
 
             if (model.RetentionInDays != null)

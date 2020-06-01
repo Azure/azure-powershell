@@ -121,7 +121,11 @@ Accept wildcard characters: False
 ### -CustomData
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
-The maximum length of the binary array is 65535 bytes.
+The maximum length of the binary array is 65535 bytes.<br>
+**Note: Do not pass any secrets or passwords in customData property**<br>
+This property cannot be updated after the VM is created. <br>
+customData is passed to the VM to be saved as a file, for more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br>
+For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init)
 
 ```yaml
 Type: System.String
@@ -226,7 +230,8 @@ Accept wildcard characters: False
 ```
 
 ### -TimeZone
-Specifies the time zone for the virtual machine.
+Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String

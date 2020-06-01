@@ -41,5 +41,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string ProvisioningState { get; set; }
 
         public string Cname { get; set; }
+
+        public List<PSRulesEngine> RulesEngine { get; set; }
     }
 }

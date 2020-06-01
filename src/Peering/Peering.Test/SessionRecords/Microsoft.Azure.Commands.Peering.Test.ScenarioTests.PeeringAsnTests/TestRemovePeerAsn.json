@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85MzY3LUdsb2JhbDE4NDA/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 9367,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS9367-Global9324\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "612e665a-5e6a-4f14-bf38-c6185fb38c30"
+          "2dc040aa-705b-48e9-9d4a-f0acaad07a19"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "280"
+          "382"
         ]
       },
       "ResponseHeaders": {
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fb0987ec-64a7-49dc-8f24-f3e44acdc646"
+          "4c0de89c-524f-4962-bb29-08f272340d48"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "53"
+          "57"
         ],
         "x-ms-correlation-request-id": [
-          "b8dda38e-4089-4032-9807-dc66cf0522eb"
+          "e087b574-8d5c-4d31-abca-f3d1f4290542"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185134Z:b8dda38e-4089-4032-9807-dc66cf0522eb"
+          "NORTHEUROPE:20200514T212156Z:e087b574-8d5c-4d31-abca-f3d1f4290542"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 07 Oct 2019 18:51:33 GMT"
+          "Thu, 14 May 2020 21:21:56 GMT"
         ],
         "Content-Length": [
-          "502"
+          "605"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,32 +63,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"65000-Global1207\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 9367,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS9367-Global9324\",\r\n    \"validationState\": \"Pending\"\r\n  },\r\n  \"name\": \"9367-Global1840\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85MzY3LUdsb2JhbDE4NDA/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 9367,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS9367-Global9324\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "92c1e95c-efeb-4f8b-b8c2-a0236ddd9f01"
+          "12d333c1-12d5-42ba-a77b-b9bdcfd41409"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "316"
+          "418"
         ]
       },
       "ResponseHeaders": {
@@ -99,76 +99,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "eaae1073-2e82-44ee-a9b9-de6c9b72c59e"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "52"
-        ],
-        "x-ms-correlation-request-id": [
-          "3b2d4778-49cc-43ae-985a-add05099db37"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185137Z:3b2d4778-49cc-43ae-985a-add05099db37"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 07 Oct 2019 18:51:36 GMT"
-        ],
-        "Content-Length": [
-          "506"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"65000-Global1207\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6e1f8e13-007c-4b65-8d12-29bffc277839"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "667c4d5e-73da-4ab7-b4dc-f19b68bf9d7d"
+          "ad441635-7003-405d-b3c2-573cbe18a7a0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "56"
         ],
         "x-ms-correlation-request-id": [
-          "fb42b84d-b0fa-40de-996d-0ac83761b3b8"
+          "3d4f0fd7-4c49-4a4e-b9f7-75a9b087bf55"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185136Z:fb42b84d-b0fa-40de-996d-0ac83761b3b8"
+          "NORTHEUROPE:20200514T212157Z:3d4f0fd7-4c49-4a4e-b9f7-75a9b087bf55"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,10 +117,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 07 Oct 2019 18:51:35 GMT"
+          "Thu, 14 May 2020 21:21:57 GMT"
         ],
         "Content-Length": [
-          "502"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,26 +129,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"65000-Global1207\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 9367,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS9367-Global9324\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"9367-Global1840\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85MzY3LUdsb2JhbDE4NDA/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ac306b82-f2e9-474b-ad05-3fd8a4bc16f1"
+          "11ea8377-bfe5-4111-be6d-f5b912dbd51d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -219,16 +159,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5c16b520-77f1-4282-9ec5-771206583c4b"
+          "848cdc67-2c32-4c93-bf66-1133260f0de5"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "55"
+          "59"
         ],
         "x-ms-correlation-request-id": [
-          "28fc50cd-6463-40ab-b79f-b11c5fe332d2"
+          "6940ab5e-a3bc-47e0-b97b-cced3ac8981a"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185137Z:28fc50cd-6463-40ab-b79f-b11c5fe332d2"
+          "NORTHEUROPE:20200514T212159Z:6940ab5e-a3bc-47e0-b97b-cced3ac8981a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,10 +177,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 07 Oct 2019 18:51:36 GMT"
+          "Thu, 14 May 2020 21:21:59 GMT"
         ],
         "Content-Length": [
-          "506"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -249,26 +189,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS65000-Global8391.com\",\r\n        \"noc@65000-Global1207.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324332235\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS65000-Global8391\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"65000-Global1207\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 9367,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS9367-Global9324.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS9367-Global9324\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"9367-Global1840\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85MzY3LUdsb2JhbDE4NDA/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8ca79ed7-fd1a-455b-804f-6d2661c31af3"
+          "396dc1c2-0442-4a33-9aac-bbfb3d6d343f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -279,16 +219,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6fe4cd4c-985c-4c53-b913-76b92e55f1f0"
+          "9bbe6771-6ede-4810-b7e4-d7511fa22de9"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "54"
+          "58"
         ],
         "x-ms-correlation-request-id": [
-          "5670e172-17cb-42e9-bdaf-7d12a3ed9956"
+          "27d8a966-57a9-4a6a-b4e5-2a0690d7f48e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185138Z:5670e172-17cb-42e9-bdaf-7d12a3ed9956"
+          "NORTHEUROPE:20200514T212200Z:27d8a966-57a9-4a6a-b4e5-2a0690d7f48e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -297,7 +237,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 07 Oct 2019 18:51:37 GMT"
+          "Thu, 14 May 2020 21:22:00 GMT"
         ],
         "Content-Length": [
           "68"
@@ -313,22 +253,22 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/65000-Global1207?api-version=2019-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82NTAwMC1HbG9iYWwxMjA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/9367-Global1840?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy85MzY3LUdsb2JhbDE4NDA/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d25c76e3-05eb-411c-a561-4bf095c474af"
+          "b7d52f7d-10ef-4ec5-997d-94de63ddac61"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -339,16 +279,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9997a62e-a460-4c1a-8be7-9261ce7d5be3"
+          "d79af980-4515-4f4b-be8f-b9ed7c13ebef"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14996"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "e14634ac-aeb2-490c-bfa4-36b4c801e2f4"
+          "54304aca-9620-4eef-a749-ce921a5e683c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20191007T185138Z:e14634ac-aeb2-490c-bfa4-36b4c801e2f4"
+          "NORTHEUROPE:20200514T212200Z:54304aca-9620-4eef-a749-ce921a5e683c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -357,7 +297,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 07 Oct 2019 18:51:37 GMT"
+          "Thu, 14 May 2020 21:22:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -372,9 +312,8 @@
   ],
   "Names": {
     "Test-RemovePeerAsn": [
-      "65000-Global1207",
-      "AS65000-Global8391",
-      "23424324332235"
+      "9367-Global1840",
+      "AS9367-Global9324"
     ]
   },
   "Variables": {

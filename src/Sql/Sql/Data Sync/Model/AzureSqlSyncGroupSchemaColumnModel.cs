@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -50,16 +50,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// Construct AzureSqlSyncGroupSchemaColumnModel
         /// </summary>
         /// <param name="column">sync group schema column</param>
-        public AzureSqlSyncGroupSchemaColumnModel(SyncGroupSchemaColumn column)
+        public AzureSqlSyncGroupSchemaColumnModel(SyncGroupSchemaTableColumn column)
         {
             QuotedName = column != null ? column.QuotedName : null;
             DataSize = column != null ? column.DataSize : null;
             DataType = column != null ? column.DataType : null;
         }
 
-        public SyncGroupSchemaColumn ToSyncGroupSchemaColumn()
+        public SyncGroupSchemaTableColumn ToSyncGroupSchemaColumn()
         {
-            return new SyncGroupSchemaColumn
+            return new SyncGroupSchemaTableColumn
             {
                 DataSize = this.DataSize,
                 DataType = this.DataType,

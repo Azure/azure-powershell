@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Tools.Common.Models;
 
 namespace VersionController.Models
 {
@@ -15,6 +16,8 @@ namespace VersionController.Models
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
+
+        public AzurePSVersion MinimalVersion { get; set; }
 
         public VersionBumper(VersionFileHelper fileHelper)
         {
@@ -44,12 +47,20 @@ namespace VersionController.Models
             }
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+            if(MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
+            {
+                Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
+                _newVersion = MinimalVersion.ToString();
+            }
             if (_oldVersion == _newVersion)
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
 
-                // Generate the serialized module metadata file
-                _metadataHelper.SerializeModule();
+                if (!_newVersion.StartsWith("0"))
+                {
+                    // Generate the serialized module metadata file
+                    _metadataHelper.SerializeModule();
+                }
             }
             else
             {
@@ -138,8 +149,8 @@ namespace VersionController.Models
                     continue;
                 }
                 var file = File.ReadAllLines(serializedCmdletFile);
-                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
+                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)(\s*)(\d*).(\d*).(\d*).(\d*)(\s*)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion + ".0"));
                 File.WriteAllLines(serializedCmdletFile, updatedFile);
             }
         }
@@ -177,10 +188,10 @@ namespace VersionController.Models
             foreach (var assemblyInfoPath in assemblyInfoPaths)
             {
                 var file = File.ReadAllLines(assemblyInfoPath);
-                var pattern = @"AssemblyVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                file = file.Select(l => Regex.Replace(l, pattern, "AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
-                pattern = @"AssemblyFileVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "AssemblyFileVersion(\"" + _newVersion + "\")"));
+                var pattern = @"^(\s*)\[assembly:(\s*)AssemblyVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                file = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
+                pattern = @"^(\s*)\[assembly:(\s*)AssemblyFileVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyFileVersion(\"" + _newVersion + "\")"));
                 File.WriteAllLines(assemblyInfoPath, updatedFile);
             }
         }

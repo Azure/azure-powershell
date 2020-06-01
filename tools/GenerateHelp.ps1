@@ -79,7 +79,20 @@ if ($ValidateMarkdownHelp)
 }
 
 # We need to define new version of module instead of hardcode here
-$NewModules = @("Az.Databricks")
+$NewModules = @("Az.AppConfiguration",
+                "Az.Blockchain",
+                "Az.Databricks",
+                "Az.DesktopVirtualization",
+                "Az.Functions",
+                "Az.ImageBuilder",
+                "Az.ImportExport",
+                "Az.Kusto",
+                "Az.MariaDb",
+                "Az.MySql",
+                "Az.Portal",
+                "Az.PostgreSql",
+                "Az.TimeSeriesInsights"
+                )
 if ($GenerateMamlHelp)
 {
     $FilteredMamlHelpFolders = @()
