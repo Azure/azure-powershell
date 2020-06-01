@@ -102,7 +102,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = user.DisplayName,
                 Id = user.ObjectId,
-                UserPrincipalName = user.UserPrincipalName
+                UserPrincipalName = user.UserPrincipalName,
+                Type = user.UserType,
+                UsageLocation = user.UsageLocation,
+                GivenName = user.GivenName,
+                Surname = user.Surname,
+                AccountEnabled = user.AccountEnabled,
+                MailNickname = user.MailNickname,
+                Mail = user.Mail
             };
         }
 
