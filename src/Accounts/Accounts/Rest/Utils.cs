@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         private const string slash = "/";
 
+        internal static readonly string API_VERSION = "api-version";
+
         public static string ConstructUri(string sub, string rg, string rp, string[] types, string[] names)
         {
             StringBuilder sb = new StringBuilder();

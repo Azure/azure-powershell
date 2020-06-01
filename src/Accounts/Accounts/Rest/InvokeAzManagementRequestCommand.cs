@@ -26,7 +26,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using Microsoft.Azure.Internal.Common;
-using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             this.ValidateParameters();
 
             context = DefaultContext;
-            string response;
+            AzureOperationResponse<string> response;
 
             if (!this.IsParameterBound(c => c.Uri))
             {
@@ -115,31 +115,32 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 case "GET":
                     response = ServiceClient
                     .Operations
-                    .GetResouceGeneric(this.Uri, this.ApiVersion);
+                    .GetResouceGenericFullResponse(this.Uri, this.ApiVersion);
                     break;
                 case "POST":
                     response = ServiceClient
                     .Operations
-                    .PostResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    .PostResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
                     break;
                 case "PUT":
                     response = ServiceClient
                     .Operations
-                    .PutResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    .PutResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
                     break;
                 case "PATCH":
                     response = ServiceClient
                     .Operations
-                    .PatchResouceGeneric(this.Uri, this.ApiVersion, this.Payload);
+                    .PatchResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
                     break;
                 case "DELETE":
                     response = ServiceClient
                     .Operations
-                    .DeleteResouceGeneric(this.Uri, this.ApiVersion);
+                    .DeleteResouceGenericFullResponse(this.Uri, this.ApiVersion);
                     break;
                 default:
                     throw new PSArgumentException("Invalid HTTP Method");
             }
+
             WriteObject(response);
         }
 
