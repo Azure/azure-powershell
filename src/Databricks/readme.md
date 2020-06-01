@@ -147,4 +147,9 @@ directive:
       property-name: ValueKeyVersion
     set:
       property-name: EncryptionKeyVersion
+  - where:
+      model-name: Workspace
+      property-name: PrepareEncryptionValue
+    set:
+      property-name: PrepareEncryption
 ```

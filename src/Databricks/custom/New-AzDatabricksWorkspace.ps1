@@ -92,12 +92,18 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
+    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The value which should be used for this field.
     ${VirtualNetworkId},
+    
+    [Parameter(HelpMessage="Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The value which should be used for this field.
+    ${PrepareEncryption},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -106,7 +112,7 @@ param(
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
-
+    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -156,13 +162,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials},
-
-    [Parameter(HelpMessage="Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The value which should be used for this field.
-    ${PrepareEncryption}
+    ${ProxyUseDefaultCredentials}
 )
 
 process {

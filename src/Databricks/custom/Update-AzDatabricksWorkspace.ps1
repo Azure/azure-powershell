@@ -51,6 +51,12 @@ function Update-AzDatabricksWorkspace {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
+        [Parameter(HelpMessage = "Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${PrepareEncryption},
+
         [Parameter(HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -152,38 +158,43 @@ function Update-AzDatabricksWorkspace {
             }
 
             # 1. GET
-            $PSBoundParameters.Remove('EncryptionKeySource') | Out-Null
-            $PSBoundParameters.Remove('EncryptionKeyVaultUri') | Out-Null
-            $PSBoundParameters.Remove('EncryptionKeyName') | Out-Null
-            $PSBoundParameters.Remove('EncryptionKeyVersion') | Out-Null
-            $PSBoundParameters.Remove('Tag') | Out-Null
-            $PSBoundParameters.Remove('WhatIf') | Out-Null
-            $PSBoundParameters.Remove('Confirm') | Out-Null
+            $hasPrepareEncryption = $PSBoundParameters.Remove('PrepareEncryption')
+            $hasEncryptionKeySource = $PSBoundParameters.Remove('EncryptionKeySource')
+            $hasEncryptionKeyVaultUri = $PSBoundParameters.Remove('EncryptionKeyVaultUri')
+            $hasEncryptionKeyName = $PSBoundParameters.Remove('EncryptionKeyName')
+            $hasEncryptionKeyVersion = $PSBoundParameters.Remove('EncryptionKeyVersion')
+            $hasTag = $PSBoundParameters.Remove('Tag')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
             $workspace = Get-AzDatabricksWorkspace @PSBoundParameters
 
             # 2. PUT
-            $PSBoundParameters.Remove('InputObject') | Out-Null
-            $PSBoundParameters.Remove('ResourceGroupName') | Out-Null
-            $PSBoundParameters.Remove('Name') | Out-Null
-            $PSBoundParameters.Remove('SubscriptionId') | Out-Null
-            if ($true -eq $AsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
+            if ($hasPrepareEncryption) {
+                $workspace.PrepareEncryption = $PrepareEncryption
             }
-            if ($null -ne $EncryptionKeySource) {
+            if ($hasEncryptionKeySource) {
                 $workspace.EncryptionKeySource = $EncryptionKeySource
             }
-            if ($null -ne $EncryptionKeyVaultUri) {
+            if ($hasEncryptionKeyVaultUri) {
                 $workspace.EncryptionKeyVaultUri = $EncryptionKeyVaultUri
             }
-            if ($null -ne $EncryptionKeyName) {
+            if ($hasEncryptionKeyName) {
                 $workspace.EncryptionKeyName = $EncryptionKeyName
             }
-            if ($null -ne $EncryptionKeyVersion) {
+            if ($hasEncryptionKeyVersion) {
                 $workspace.EncryptionKeyVersion = $EncryptionKeyVersion
             }
-            if ($null -ne $Tag) {
+            if ($hasTag) {
                 $workspace.Tag = $Tag
+            }
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("Databricks workspace $($workspace.Name)", "Create or update")) {
