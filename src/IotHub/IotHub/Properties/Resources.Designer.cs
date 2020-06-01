@@ -453,5 +453,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
                 return ResourceManager.GetString("VerifyIotHubCertificate", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Send Device 2 Cloud Message.
+        /// </summary>
+        internal static string SendIotHubD2CMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("SendIotHubD2CMessage", resourceCulture);
+            }
+        }
     }
 }

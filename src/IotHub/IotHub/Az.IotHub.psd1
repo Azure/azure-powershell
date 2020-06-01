@@ -110,7 +110,8 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Invoke-AzIotHubConfigurationMetricsQuery', 
                'Add-AzIotHubDeployment', 'Get-AzIotHubDeployment', 
                'Remove-AzIotHubDeployment', 'Set-AzIotHubDeployment', 
-               'Invoke-AzIotHubDeploymentMetricsQuery', 'Set-AzIotHubEdgeModule'
+               'Invoke-AzIotHubDeploymentMetricsQuery', 'Set-AzIotHubEdgeModule',
+               'Send-AzIotHubDevice2CloudMessage'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -122,7 +123,8 @@ AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG',
                'Set-AzIotHubMsgEnrich', 'Get-AzIotHubDCS', 'Get-AzIotHubMCS', 
                'Add-AzIotHubDCL', 'Remove-AzIotHubDCL', 'Get-AzIotHubDCL', 
                'Get-AzIotHubTracing', 'Set-AzIotHubTracing', 
-               'Invoke-AzIotHubConfigMetric', 'Invoke-AzIotHubDeployMetric'
+               'Invoke-AzIotHubConfigMetric', 'Invoke-AzIotHubDeployMetric',
+               'Send-AzIotHubD2CMessage'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
