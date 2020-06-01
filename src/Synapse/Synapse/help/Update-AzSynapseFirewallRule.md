@@ -1,64 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapseworkspace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapsefirewallrule
 schema: 2.0.0
 ---
 
-# Update-AzSynapseWorkspace
+# Update-AzSynapseFirewallRule
 
 ## SYNOPSIS
-Updates a Synapse Analytics workspace.
+Updates a Synapse Analytics Firewall Rule.
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### UpdateByNameParameterSet (Default)
 ```
-Update-AzSynapseWorkspace [-ResourceGroupName <String>] [-Name <String>] [-Tag <Hashtable>]
- [-SqlAdministratorLoginPassword <SecureString>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### SetByInputObjectParameterSet
-```
-Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
- [-SqlAdministratorLoginPassword <SecureString>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+ [-StartIpAddress <String>] [-EndIpAddress <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### UpdateByParentObjectParameterSet
 ```
-Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
- [-SqlAdministratorLoginPassword <SecureString>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-StartIpAddress <String>]
+ [-EndIpAddress <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSynapseWorkspace** cmdlet updates an Azure Synapse Analytics workspace.
+The **Update-AzSynapseFirewallRule** cmdlet modifys an Azure Synapse Analytics Firewall Rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -Tag @{'key'='value'}
+PS C:\> Update-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAssdress "255.255.255.255"
 ```
 
-This commands updates tags for the specififed Azure Synapse Analytics workspace.
+This command updates firewall rule named ContosoFirewallRule under workspace ContosoWorkspace with name ContosoFirewallRule.
 
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseWorkspace -Tag @{'key'='value1'}
+PS C:\> $ws | Update-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAssdress "255.255.255.255"
 ```
 
-This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline.
-
-### Example 3
-```powershell
-PS C:\> Update-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace -Tag @{'key'='value2'}
-```
-
-This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline with resource ID.
+This command updates firewall rule named ContosoFirewallRule under a workspace through pipeline.
 
 ## PARAMETERS
 
@@ -92,30 +78,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-workspace input object, usually passed through the pipeline.
+### -EndIpAddress
+The end IP address of the firewall rule.
+Must be IPv4 format.
+Must be greater than or equal to startIpAddress.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: SetByInputObjectParameterSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Synapse workspace.
+The firerwall rule name for the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
-Aliases: WorkspaceName
+Parameter Sets: (All)
+Aliases: FirewallRuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +115,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
@@ -137,12 +125,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource identifier of Synapse workspace.
+### -StartIpAddress
+The start IP address of the firewall rule.
+Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+Name of Synapse workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -152,33 +156,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlAdministratorLoginPassword
-The new SQL administrator password for the workspace.
+### -WorkspaceObject
+workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A string,string dictionary of tags associated with the resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -222,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+### Microsoft.Azure.Commands.Synapse.Models.PSSynapseIpFirewallRule
 
 ## NOTES
 

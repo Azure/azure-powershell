@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support modifying PublicNetworkAccess.
+
+## Upcoming Release
 * Support PrivateEndpoint and PublicNetworkAccess control. 
 
 ## Version 1.3.0
