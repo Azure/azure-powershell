@@ -70,7 +70,7 @@ ServiceName       : contoso
 
 This command gets all of the API Version sets for the specified context.
 
-### Example 3: Get a API Version Set by ID
+### Example 3: Get an API Version Set by ID
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
