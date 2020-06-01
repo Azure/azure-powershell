@@ -68,8 +68,8 @@ namespace VersionController.Models
                                                             .Where(f => !f.Contains("Stack") && !f.Contains(".Test"))
                                                             .ToList();
 
-        public string GalleryModuleDirectory => Path.Combine(OutputModuleDirectory, ModuleName);
+        public string GalleryModuleDirectory => OutputModuleDirectory;
 
-        public string GalleryModuleVersionDirectory => Directory.GetDirectories(GalleryModuleDirectory).FirstOrDefault();
+        public string GalleryModuleVersionDirectory => GalleryModuleDirectory;
     }
 }
