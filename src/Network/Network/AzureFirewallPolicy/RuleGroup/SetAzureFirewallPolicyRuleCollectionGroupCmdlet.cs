@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the Rule collection groupy", ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Network/FirewallPolicies")]
         public virtual string ResourceId { get; set; }
 
         [Parameter(

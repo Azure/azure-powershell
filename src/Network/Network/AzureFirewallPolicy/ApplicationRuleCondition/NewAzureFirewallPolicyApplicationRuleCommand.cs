@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] Protocol { get; set; }
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList(),
-                RuleType = "ApplicationRuleCondition"
+                RuleType = "ApplicationRule"
             };
             WriteObject(applicationRule);
         }
