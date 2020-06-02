@@ -96,9 +96,9 @@ function Update-AzurecmdFile
         [string]$RootPath
     )
 
-    $AzurecmdFile = Get-Item -Path "$RootPath\setup\azurecmd.wxs"
+    $AzurecmdFile = Get-Item -Path "$RootPath\setup\generate.ps1"
     (Get-Content $AzurecmdFile.FullName) | % {
-        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\w*)", "Microsoft Azure PowerShell - $Release"
+        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\d*)", "Microsoft Azure PowerShell - $Release"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
 
     (Get-Content $AzurecmdFile.FullName) | % {

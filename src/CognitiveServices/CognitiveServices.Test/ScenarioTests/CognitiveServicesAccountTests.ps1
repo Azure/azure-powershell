@@ -1162,3 +1162,70 @@ function Test-PrivateEndpoint
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test PublicNetworkAccess
+#>
+function Test-PublicNetworkAccess
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    # Test
+    $accountname = 'csa' + $rgname;
+    $skuname = 'S1';
+    $accounttype = 'TextAnalytics';
+    $loc = "Central US EUAP";
+
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Disabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Disabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Enabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Disabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Disabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

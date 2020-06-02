@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzRmHealthcareApisService()
         {
-            HeathcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisService");
+            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisService");
         }
     }
 }

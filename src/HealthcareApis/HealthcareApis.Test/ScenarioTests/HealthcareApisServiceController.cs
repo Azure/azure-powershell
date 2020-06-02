@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
     using ServiceManagement.Common.Models;
     using TestEnvironmentFactory = Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
-    public sealed class HeathcareApisServiceController
+    public sealed class HealthcareApisServiceController
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
 
         public GraphRbacManagementClient GraphRbacManagementClient { get; set; }
 
-        public static HeathcareApisServiceController NewInstance => new HeathcareApisServiceController();
+        public static HealthcareApisServiceController NewInstance => new HealthcareApisServiceController();
 
-        public HeathcareApisServiceController()
+        public HealthcareApisServiceController()
         {
             _helper = new EnvironmentSetupHelper();
         }
@@ -138,9 +138,5 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
         {
             return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
-
-
-       
     }
 }

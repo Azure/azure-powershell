@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * Updated assembly version of service management cmdlets
 
 ## Version 2.0.0
