@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed typo in comments
+
+## Version 1.8.1
+* Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
 
 ## Version 1.8.0
 * Updated `Add-AzEnvironment` and `Set-AzEnvironment` to accept parameters `AzureSynapseAnalyticsEndpointResourceId` and `AzureSynapseAnalyticsEndpointSuffix`

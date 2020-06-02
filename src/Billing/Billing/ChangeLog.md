@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.3
+* Updated assembly version of consumption cmdlets
+
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
 

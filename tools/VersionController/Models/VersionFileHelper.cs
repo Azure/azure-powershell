@@ -17,12 +17,12 @@ namespace VersionController.Models
 
             _outputDirectories = new List<string>{ DebugDirectory };
 
-            _projectDirectories = new List<string>{ SrcDirectory };
+            _projectDirectories = new List<string>{ Path.Combine(RootDirectory, @"src") };
         }
 
         public string RootDirectory { get; set; }
 
-        public string SrcDirectory => Path.Combine(RootDirectory, @"src");
+        public string SrcDirectory => Path.Combine(RootDirectory, @"src", ModuleNameWithoutAz);
 
         public string PackageDirectory => Path.Combine(RootDirectory, @"artifacts");
 
@@ -58,11 +58,13 @@ namespace VersionController.Models
 
         public string ModuleName => ModuleFileName.Replace(".psd1", "");
 
+        private string ModuleNameWithoutAz => ModuleName.Replace("Az.", "");
+
         public string ProjectDirectory => Directory.GetParent(ProjectModuleManifestPath).FullName;
 
         public string ChangeLogPath => Directory.GetFiles(ProjectDirectory, "ChangeLog.md").FirstOrDefault();
 
-        public List<string> AssemblyInfoPaths => Directory.GetFiles(ProjectDirectory, "AssemblyInfo.cs", SearchOption.AllDirectories)
+        public List<string> AssemblyInfoPaths => Directory.GetFiles(SrcDirectory, "AssemblyInfo.cs", SearchOption.AllDirectories)
                                                             .Where(f => !f.Contains("Stack") && !f.Contains(".Test"))
                                                             .ToList();
 

@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Azure Site Recovery support for creating recovery plan for zone to zoen replication from xml input.
+
+## Version 2.9.1
+* Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
+* Updated assembly version of SiteRecovery and Backup cmdlets
 
 ## Version 2.9.0
 * Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.

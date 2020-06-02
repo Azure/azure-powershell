@@ -46,6 +46,9 @@
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 
+## Version 2.1.0
+* Updated assembly version of data plane cmdlets
+
 ## Version 2.0.0
 * Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
 * Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
