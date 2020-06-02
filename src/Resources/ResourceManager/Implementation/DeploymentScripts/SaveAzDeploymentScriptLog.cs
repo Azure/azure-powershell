@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -53,11 +54,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string DeploymentScriptResourceId { get; set; }
 
+        [Alias("DeploymentScriptInputObject")]
         [Parameter(Position = 0, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The deployment script PowerShell object.")]
         [ValidateNotNullOrEmpty]
-        public PsDeploymentScript DeploymentScriptInputObject { get; set; }
+        public PsDeploymentScript DeploymentScriptObject { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
@@ -84,25 +86,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             PsDeploymentScriptLog deploymentScriptLog;
             int tailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+            string scriptName = "";
 
             try
             {
                 switch (ParameterSetName)
                 {
                     case SaveDeploymentScriptLogByName:
+                        scriptName = Name;
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName, tailParam);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName, ResourceGroupName, tailParam);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
-                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
+                        scriptName = ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId);
+                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName,
                             ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
                             tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
+                        scriptName = DeploymentScriptObject.Name;
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            DeploymentScriptInputObject.Name,
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
+                            scriptName,
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptObject.Id),
                             tailParam);
                         break;
                     default:
@@ -118,13 +123,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     this.ConfirmAction(
                         this.Force || !AzureSession.Instance.DataStore.FileExists(outputPathWithFileName),
                         string.Format(
-                            Properties.Resources.DeploymentScriptLogFileExists, Name, OutputPath),
+                            Properties.Resources.DeploymentScriptLogFileExists, scriptName, OutputPath),
                         Properties.Resources.DeploymentScriptShouldProcessString,
                         OutputPath,
                         () =>
                         {
+                            //Standardize newline character to be written into file
+                            StringBuilder logs = new StringBuilder();
+                            StringReader stringReader = new StringReader(deploymentScriptLog.Log);
+
+                            String line = stringReader.ReadLine();
+                            while(line != null)
+                            {
+                                logs.Append(line);
+                                line = stringReader.ReadLine();
+                                if (line != null)
+                                    logs.Append(Environment.NewLine);
+                            }
+
                             AzureSession.Instance.DataStore.WriteFile(outputPathWithFileName,
-                                deploymentScriptLog.Log);
+                                logs.ToString());
 
                             WriteObject(new PsDeploymentScriptLogPath() {Path = outputPathWithFileName});
                         });

@@ -343,6 +343,10 @@
                 <ScriptBlock>$_.Status.ContainerInstanceId</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>OutputsString</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>RetentionInterval</Label>
                 <PropertyName>RetentionInterval</PropertyName>
               </ListItem>

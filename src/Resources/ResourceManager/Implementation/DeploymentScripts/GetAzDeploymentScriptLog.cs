@@ -45,10 +45,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string DeploymentScriptResourceId { get; set; }
 
+        [Alias("DeploymentScriptInputObject")]
         [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptLogByInputObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The deployment script PowerShell object.")]
         [ValidateNotNullOrEmpty]
-        public PsDeploymentScript DeploymentScriptInputObject { get; set; }
+        public PsDeploymentScript DeploymentScriptObject { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = GetDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
         [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
@@ -81,8 +82,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         break;
                     case GetDeploymentScriptLogByInputObject:
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            DeploymentScriptInputObject.Name, 
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id),
+                            DeploymentScriptObject.Name, 
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptObject.Id),
                             tailParam);
                         break;
                     default:
