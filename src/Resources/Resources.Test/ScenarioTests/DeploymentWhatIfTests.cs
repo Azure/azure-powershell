@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RGLevelWhatIf_SetExcludeChangeType_HidesResourceChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtResourceGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubLevelWhatIf_BlankTemplate_ReturnsNoChange()
         {
             TestRunner.RunTestScript("Test-WhatIfWithBlankTemplateAtSubscriptionScope");
@@ -85,6 +92,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void SubLevelWhatIf_ModifyResources_ReturnsModifyChanges()
         {
             TestRunner.RunTestScript("Test-WhatIfModifyResourcesAtSubscriptionScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubLevelWhatIf_SetExcludeChangeType_HidesResourceChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtSubscriptionScope");
         }
     }
 }
