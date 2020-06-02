@@ -15,7 +15,7 @@ Create a deployment
 ### ByTemplateFileWithNoParameters (Default)
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateObjectAndParameterObject
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -32,7 +32,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateFileAndParameterObject
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -41,7 +41,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateUriAndParameterObject
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -50,7 +50,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateObjectAndParameterFile
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -59,7 +59,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateFileAndParameterFile
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -67,7 +67,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateUriAndParameterFile
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -75,7 +75,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateObjectAndParameterUri
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -84,7 +84,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateFileAndParameterUri
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -92,7 +92,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateUriAndParameterUri
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -100,7 +100,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateObjectWithNoParameters
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -108,7 +108,7 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ### ByTemplateUriWithNoParameters
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
- [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeTypes <String[]>] [-AsJob]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-AsJob]
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -387,7 +387,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIfExcludeChangeTypes
+### -WhatIfExcludeChangeType
 Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.
 
 ```yaml

@@ -20,8 +20,8 @@
 ## Upcoming Release
 * Added `UsageLocation`, `GivenName`, `Surname`, `AccountEnabled`, `MailNickname`, `Mail` on `PSADUser` [#10526] [#10497]
 * Fixed issue that `-Mail` doesn't work on `Get-AzADUser` [#11981]
-* Added `-ExcludeChangeTypes` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`
-* Added `-WhatIfExcludeChangeTypes` parameter to `New-AzDeployment` and `New-AzResourceGroupDeployment`
+* Added `-ExcludeChangeType` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`
+* Added `-WhatIfExcludeChangeType` parameter to `New-AzDeployment` and `New-AzResourceGroupDeployment`
 * Updated `Test-Az*Deployment` cmdlets to show better error messages
 
 ## Version 2.1.0

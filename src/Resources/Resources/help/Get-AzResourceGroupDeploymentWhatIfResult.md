@@ -15,7 +15,7 @@ Gets an ARM template What-If result for a deployment at resource group scope.
 ### ByTemplateFileWithNoParameters (Default)
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateFile <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateObjectAndParameterObject
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateFileAndParameterObject
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateUriAndParameterObject
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -47,7 +47,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateObjectAndParameterFile
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateFileAndParameterFile
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -63,7 +63,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateUriAndParameterFile
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -71,7 +71,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateObjectAndParameterUri
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -79,7 +79,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateFileAndParameterUri
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -87,7 +87,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateUriAndParameterUri
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -95,7 +95,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateObjectWithNoParameters
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateObject <Hashtable>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -103,7 +103,7 @@ Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <S
 ### ByTemplateUriWithNoParameters
 ```
 Get-AzResourceGroupDeploymentWhatIfResult [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeTypes <String[]>] -TemplateUri <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -178,7 +178,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludeChangeTypes
+### -ExcludeChangeType
 Comma-separated resource change types to be excluded from What-If results.
 
 ```yaml

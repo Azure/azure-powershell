@@ -15,14 +15,14 @@ Gets an ARM template What-If result for a deployment at subscription scope.
 ### ByTemplateFileWithNoParameters (Default)
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-ExcludeChangeType <String[]>] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
+ [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateFileAndParameterObject
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -38,7 +38,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateUriAndParameterObject
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -46,7 +46,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateObjectAndParameterFile
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
+ [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -54,7 +54,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateFileAndParameterFile
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String> -TemplateFile <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -62,7 +62,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateUriAndParameterFile
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterFile <String> -TemplateUri <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateObjectAndParameterUri
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
+ [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -78,7 +78,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateFileAndParameterUri
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String> -TemplateFile <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -86,7 +86,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateUriAndParameterUri
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateParameterUri <String> -TemplateUri <String>
+ [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -94,14 +94,14 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ### ByTemplateObjectWithNoParameters
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+ [-ExcludeChangeType <String[]>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeTypes <String[]>] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-ExcludeChangeType <String[]>] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -175,7 +175,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludeChangeTypes
+### -ExcludeChangeType
 Comma-separated list of resource change types to be excluded from What-If results.
 
 ```yaml

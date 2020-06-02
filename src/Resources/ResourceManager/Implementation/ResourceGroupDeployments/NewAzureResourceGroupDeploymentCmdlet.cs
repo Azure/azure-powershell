@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
         [ChangeTypeCompleter]
         [ValidateChangeTypes]
-        public string[] WhatIfExcludeChangeTypes { get; set; }
+        public string[] WhatIfExcludeChangeType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             try
             {
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.WhatIfExcludeChangeTypes);
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.WhatIfExcludeChangeType);
                 string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
 
                 // Clear status on success execution.

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource change types to be excluded from What-If results.")]
         [ChangeTypeCompleter]
         [ValidateChangeTypes]
-        public string[] ExcludeChangeTypes { get; set; }
+        public string[] ExcludeChangeType { get; set; }
 
 
         protected override void OnProcessRecord()
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ResultFormat = this.ResultFormat
                 };
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.ExcludeChangeTypes);
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.ExcludeChangeType);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);
