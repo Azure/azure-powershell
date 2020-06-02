@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System;
     using System.Collections.Generic;
     using Xunit;
 
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             result.Should().Be(@"TopLevelError - Top level error message.
 SecondLevelError - Second level error message.
 ThirdLevelError - Third level error message.
-AnotherSecondLevelError - Another second level error message.");
+AnotherSecondLevelError - Another second level error message.".Replace("\r\n", Environment.NewLine));
         }
     }
 }
