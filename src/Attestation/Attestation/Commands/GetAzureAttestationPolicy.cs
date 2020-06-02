@@ -64,6 +64,17 @@ namespace Microsoft.Azure.Commands.Attestation
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Attest uri of the attestation.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AttestUriParameterSet,
+            HelpMessage = "Specifies the AttestUri of an attestation provider.")]
+        [ValidateNotNullOrEmpty]
+        public string AttestUri { get; set; }
+        
+        /// <summary>
         /// Trusted Execution Environment
          /// </summary>
         [Parameter(Mandatory = true,
@@ -78,7 +89,7 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
-            String policy = AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, Tee);
+            String policy = AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, AttestUri, Tee);
             WriteObject(new PSPolicy(policy));
         }
     }
