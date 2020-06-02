@@ -108,7 +108,10 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzRegulatoryComplianceStandard', 
                'Get-AzRegulatoryComplianceControl', 
                'Get-AzRegulatoryComplainceAssessment',
-			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting'
+			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting',
+               'Get-AzSecurityAssessment', 'Set-AzSecurityAssessment', 'Remove-AzSecurityAssessment',
+               'Get-AzSecurityAssessmentMetadata', 'Set-AzSecurityAssessmentMetadata', 'Remove-AzSecurityAssessmentMetadata',
+               'Get-AzSecuritySubAssessment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -143,11 +146,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add new cmdlets: ''Get-AzRegulatoryComplianceStandard'', 
-					''Get-AzRegulatoryComplianceControl'', 
-					''Get-AzRegulatoryComplainceAssessment''
-* Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
-* Support management of SQL Information Protection Policy.'
+        ReleaseNotes = '* Add new cmdlets: Get-AzSecurityAssessment,
+                   Set-AzSecurityAssessment,
+                   Remove-AzSecurityAssessment,
+                   Get-AzSecurityAssessmentMetadata,
+                   Set-AzSecurityAssessmentMetadata,
+                   Remove-AzSecurityAssessmentMetadata,
+                   Get-AzSecuritySubAssessment'
 
         # Prerelease string of this module
         # Prerelease = ''
