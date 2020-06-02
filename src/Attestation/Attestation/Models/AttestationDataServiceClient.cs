@@ -88,26 +88,41 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             ThrowOn4xxErrors(serviceCallResult);
         }
 
-        public string  GetPolicy(string name, string resourceGroupName, string resourceId, string tee)
+        public string GetPolicy(string name, string resourceGroupName, string resourceId, string attestUri, string tee)
         {
-            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+            AzureOperationResponse<object> serviceCallResult = null;
             if (string.IsNullOrEmpty(tee))
                 throw new ArgumentNullException(nameof(tee));
+            if (!string.IsNullOrEmpty(attestUri))
+            {
+                serviceCallResult = _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(attestUri).Result;
+            }
+            else
+            {
+                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId, attestUri);
 
-            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
-                _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(tenantUri, tee).Result);
-            ThrowOn4xxErrors(serviceCallResult);
-
+                serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                    _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(tenantUri, tee).Result);
+                ThrowOn4xxErrors(serviceCallResult);
+            }
             return ((AttestationPolicy)serviceCallResult.Body).Policy;
         }
 
-        public string GetPolicySigners(string name, string resourceGroupName, string resourceId)
+        public string GetPolicySigners(string name, string resourceGroupName, string resourceId, string attestUri)
         {
-            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+            AzureOperationResponse<object> serviceCallResult = null;
+            if (!string.IsNullOrEmpty(attestUri))
+            {
+                serviceCallResult = _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(attestUri).Result;
+            }
+            else
+            {
+                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId, attestUri);
 
-            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
-                _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result);
-            ThrowOn4xxErrors(serviceCallResult);
+                serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                    _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result);
+                ThrowOn4xxErrors(serviceCallResult);
+            }
 
             return (string)serviceCallResult.Body;
         }
