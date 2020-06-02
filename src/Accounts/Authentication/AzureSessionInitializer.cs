@@ -266,8 +266,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     try
                     {
-                        var trace = AuthenticationTraceListeners[i] as TraceListener;
-                        trace.WriteLine(message);
+                        AuthenticationTraceListeners[i].WriteLine(message);
                     }
                     catch
                     {
