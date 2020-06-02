@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             else if (this.IsParameterBound(x => x.RegistrationDefinition))
             {
                 definitionId = this.RegistrationDefinition.Id;
-                scope = this.Scope ?? definitionId.GetSubscriptionId().ToSubscriptionResourceId();
+                scope = this.Scope ?? this.GetDefaultScope();
             }
 
             if (!String.IsNullOrWhiteSpace(this.Name))

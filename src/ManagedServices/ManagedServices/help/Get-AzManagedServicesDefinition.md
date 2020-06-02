@@ -46,13 +46,20 @@ Gets all registration definitions.
 ### Example 2
 ```powershell
 PS C:\> Get-AzManagedServicesDefinition -Name fff287a4-1714-4a17-bc40-a17ca8e69e3f
-
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
 fff287a4-1714-4a17-bc40-a17ca8e69e3f bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
 ```
 
-Gets the registration definition given its unique name.
+Gets the registration definition given its name.
+
+### Example 3
+```powershell
+PS C:\> $definitions = Get-AzManagedServicesDefinition
+PS C:\> $definitions[0].Name
+fff287a4-1714-4a17-bc40-a17ca8e69e3f
+PS C:\> Get-AzManagedServicesDefinition -Name $definitions[0].Name
+
 
 ## PARAMETERS
 

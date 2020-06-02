@@ -38,12 +38,12 @@ Removes the registration definition given it identifier.
 
 ### Example 2
 ```powershell
-PS C:\> $def = New-AzManagedServicesDefinition -Name 572e1807-b80b-4401-9128-1968f432a5ad -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+PS C:\> $def = New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -Name 572e1807-b80b-4401-9128-1968f432a5ad -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
 PS C:\> Remove-AzManagedServicesDefinition -InputObject $def
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
-eee59839-119f-453f-adec-4a72a8687125 bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
+572e1807-b80b-4401-9128-1968f432a5ad bab3375b-6197-4a15-a44b-16c41faa91d7 d6f6c88a-5b7a-455e-ba40-ce146d4d3671 acdd72a7-3385-48ef-bd42-f606fba81ae7
 ```
 
 Deletes the registration definition given the object.

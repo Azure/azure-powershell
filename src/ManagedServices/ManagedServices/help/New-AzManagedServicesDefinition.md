@@ -34,7 +34,7 @@ Creates or updates a registration definition.
 
 ### Example 1
 ```powershell
-PS C:\> PS C:\> New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -ManagedByTenantId bab3375b-6197-4a15-a44b-16c41faa91d7 -PrincipalId d6f6c88a-5b7a-455e-ba40-ce146d4d3671 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -Description mydef
+PS C:\> PS C:\> New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -ManagedByTenantId bab3375b-6197-4a15-a44b-16c41faa91d7 -PrincipalId d6f6c88a-5b7a-455e-ba40-ce146d4d3671 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -Description MyDescription
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------
@@ -45,7 +45,7 @@ Creates or updates a registration definition given the required parameters.
 
 ### Example 2
 ```powershell
-PS C> New-AzManagedServicesDefinition -DisplayName asd -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7" -PlanName plan -PlanPublisher publisher -PlanProduct product -PlanVersion 0.1
+PS C> New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7" -PlanName plan -PlanPublisher publisher -PlanProduct product -PlanVersion 0.1
 
 Name                                 ManagedByTenantId                    PrincipalId                          RoleDefinitionId
 ----                                 -----------------                    -----------                          ----------------

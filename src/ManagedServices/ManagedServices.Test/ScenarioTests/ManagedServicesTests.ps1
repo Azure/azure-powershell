@@ -17,7 +17,7 @@
 Create, update, and delete registration assignments and registration definitions
 #>
 
-function New-AzManagedServicesAssignmentWithId
+function New-AzManagedServicesAssignmentWithName
 {
     [CmdletBinding()]
     param(
@@ -49,7 +49,7 @@ function New-AzManagedServicesAssignmentWithId
     $cmdlet.ExecuteCmdlet()
 }
 
-function New-AzManagedServicesDefinitionWithId
+function New-AzManagedServicesDefinitionWithName
 {
     [CmdletBinding()]
     param(
@@ -110,7 +110,7 @@ function Test-ManagedServices_CRUD
 	$definitionId = "1ccdb215-959a-48b9-bd7c-0584d461ea6c"
 
 	#put def
-	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -DisplayName $name -Name $definitionId
+	$definition = New-AzManagedServicesDefinitionWithName -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -DisplayName $name -Name $definitionId
 
 	Assert-AreEqual $name $definition.Properties.Name
 	Assert-AreEqual $managedByTenantId $definition.Properties.ManagedByTenantId 
@@ -123,8 +123,8 @@ function Test-ManagedServices_CRUD
 	Assert-AreEqual $definition.Id $getDef.Id
 
 	#put assignment
-	$assignment = New-AzManagedServicesAssignmentWithId `
-					-RegistrationDefinitionName $definition.Id `
+	$assignment = New-AzManagedServicesAssignmentWithName `
+					-RegistrationDefinitionName $definition.Name `
 					-Name $assignmentId
 	Assert-NotNull $assignment
 

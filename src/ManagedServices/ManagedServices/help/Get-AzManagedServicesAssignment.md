@@ -119,6 +119,20 @@ aa891268-329a-4637-b3f6-2877ea304f8b /subscriptions/38bd4bef-41ff-45b5-b3af-d03e
 
 Gets all the registration assignments.
 
+### Example 6
+```powershell
+PS C:\> $assignments = Get-AzManagedServicesAssignment
+PS C:\> $assignments[0].Name
+f2e18995-6c79-4ab7-876e-1b1c8393d12c
+PS C:\> Get-AzManagedServicesAssignment -Name $assignments[0].Name
+Name                                 RegistrationDefinitionId
+----                                 ------------------------
+f2e18995-6c79-4ab7-876e-1b1c8393d12c /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/a156aad7-f3ce-4a46-b240-246242b6bd78
+```
+
+Gets the registration assignment given the name.
+
+
 ## PARAMETERS
 
 ### -DefaultProfile

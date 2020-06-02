@@ -42,7 +42,7 @@ Deletes the registration assignment under the default scope.
 
 ### Example 2
 ```powershell
-PS C:\> $assignment = New-AzManagedServicesAssignment -RegistrationDefinitionName /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/33974646-9bce-461d-89eb-331f20fca33c
+PS C:\> $assignment = New-AzManagedServicesAssignment -RegistrationDefinitionName 33974646-9bce-461d-89eb-331f20fca33c
 PS C:\> Remove-AzManagedServicesAssignment -InputObject $assignment
 ```
 
