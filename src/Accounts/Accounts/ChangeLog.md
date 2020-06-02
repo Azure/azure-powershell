@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
 * Fixed typo in comments
 * Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
 
