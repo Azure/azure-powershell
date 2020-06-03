@@ -354,6 +354,9 @@
   <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Field Name {0} contains invalid character.</value>
+  </data>
   <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
     <value>The VirtualHub to update could not be found.</value>
   </data>

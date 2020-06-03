@@ -12,7 +12,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string WorkspaceName = nameof(WorkspaceName);
 
-        public const string FilewallRuleAllowAll = nameof(FilewallRuleAllowAll);
+        public const string FirewallRuleName = nameof(FirewallRuleName);
+
+        public const string FirewallRule = nameof(FirewallRule);
 
         public const string SparkPool = nameof(SparkPool);
 

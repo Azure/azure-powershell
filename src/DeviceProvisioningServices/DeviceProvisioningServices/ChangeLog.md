@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.3
 * Manage Device Enrollments. New cmdlets are:
     - `Add-AzIoTDeviceProvisioningServiceEnrollment`
     - `Get-AzIoTDeviceProvisioningServiceEnrollment`

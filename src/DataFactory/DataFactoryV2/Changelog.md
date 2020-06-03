@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.1
 * Updated assembly version of data factory V2 cmdlets
 
 ## Version 1.8.0
