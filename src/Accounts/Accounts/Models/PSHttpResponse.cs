@@ -10,8 +10,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
 {
     public class PSHttpResponse
     {
-        public string RequestId { get; set; }
-
         public HttpResponseHeaders Headers { get; }
 
         public string Version { get; set; }
@@ -23,8 +21,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Content { get; set; }
 
         public PSHttpResponse(AzureOperationResponse<string> response)
-        {
-            this.RequestId = response.RequestId;          
+        {         
             this.Headers = response.Response.Headers;
             this.Version = response.Response.Version.ToString();
             this.StatusCode = (int)response.Response.StatusCode;
