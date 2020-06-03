@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Name { get; set; }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 3)]
+        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 4)]
         public string State { get; set; }
 
         /// <summary>
@@ -117,6 +117,32 @@ namespace Microsoft.Azure.Commands.Profile.Models
             set
             {
                 this.SetTenant(value);
+            }
+        }
+
+        [Ps1Xml(Label = "HomeTenantId", Target = ViewControl.Table, Position = 3)]
+        public string HomeTenantId
+        {
+            get
+            {
+                return this.GetHomeTenant();
+            }
+            set
+            {
+                this.SetHomeTenant(value);
+            }
+        }
+
+        [Ps1Xml(Label = "ManagedByTenantIds", Target = ViewControl.Table, Position = 5)]
+        public string[] ManagedByTenantIds
+        {
+            get
+            {
+                return this.GetManagedByTenants();
+            }
+            set
+            {
+                this.SetManagedByTenants(value);
             }
         }
 
