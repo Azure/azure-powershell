@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using YamlDotNet.RepresentationModel;
+using Microsoft.Azure.Management.ContainerService.Models;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -140,11 +141,20 @@ namespace Microsoft.Azure.Commands.Aks
                         WriteVerbose(Admin
                             ? Resources.FetchingTheClusterAdminKubectlConfig
                             : Resources.FetchingTheDefaultClusterUserKubectlConfig);
-                        var accessProfile = Client.ManagedClusters.GetAccessProfile(ResourceGroupName, Name,
-                            Admin ? "clusterAdmin" : "clusterUser");
+
+                        CredentialResult credentialResult = null;
+
+                        if(Admin)
+                        {
+                            credentialResult = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                        }
+                        else
+                        {
+                            credentialResult = Client.ManagedClusters.ListClusterUserCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                        }
 
                         var decodedKubeConfig =
-                            Encoding.UTF8.GetString(accessProfile.KubeConfig);
+                            Encoding.UTF8.GetString(credentialResult.Value);
                         if (ConfigPath == "-")
                         {
                             WriteObject(decodedKubeConfig);

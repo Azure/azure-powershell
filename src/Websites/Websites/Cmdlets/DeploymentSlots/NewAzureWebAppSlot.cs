@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                 cloningInfo = new CloningInfo
                 {
                     SourceWebAppId = SourceWebApp.Id,
+                    SourceWebAppLocation = SourceWebApp.Location,
                     CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
                     CloneSourceControl = !IgnoreSourceControl.IsPresent,
                     ConfigureLoadBalancing = false,

@@ -47,16 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         public Guid ObjectId { get; set; }
 
         /// <summary>
-        /// Only Azure Active Directory authentication allowed
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
-            HelpMessage = "Specifies if only Azure Active Directory authentication is allowed.")]
-        [Alias("IsAzureOnlyAuthentication")]
-        public bool? IsAzureADOnlyAuthentication { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -107,8 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 DisplayName = DisplayName,
-                ObjectId = ObjectId,
-                IsAzureADOnlyAuthentication = IsAzureADOnlyAuthentication,
+                ObjectId = ObjectId
             });
             return newEntity;
         }

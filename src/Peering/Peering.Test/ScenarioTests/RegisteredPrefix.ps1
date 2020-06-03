@@ -34,7 +34,8 @@ function Test-GetRegisteredPrefix {
     $assetName = getAssetName "peering"
     $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-ThrowsContains { $peering | Get-AzPeeringRegisteredPrefix -Name $name } "NotFound"
-    Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceId $peering.Id } "peeringName"
+    $resourceId = $peering.Id+"/registerdPrefix/"+$name
+    Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceId $resourceId } "NotFound"
    Assert-ThrowsContains {Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName} "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name -ResourceId "asdfa" } "Parameter set cannot be resolved using the specified named parameters"

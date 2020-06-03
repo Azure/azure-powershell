@@ -149,8 +149,8 @@ namespace VersionController.Models
                     continue;
                 }
                 var file = File.ReadAllLines(serializedCmdletFile);
-                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
+                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)(\s*)(\d*).(\d*).(\d*).(\d*)(\s*)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion + ".0"));
                 File.WriteAllLines(serializedCmdletFile, updatedFile);
             }
         }
@@ -188,10 +188,10 @@ namespace VersionController.Models
             foreach (var assemblyInfoPath in assemblyInfoPaths)
             {
                 var file = File.ReadAllLines(assemblyInfoPath);
-                var pattern = @"AssemblyVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                file = file.Select(l => Regex.Replace(l, pattern, "AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
-                pattern = @"AssemblyFileVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "AssemblyFileVersion(\"" + _newVersion + "\")"));
+                var pattern = @"^(\s*)\[assembly:(\s*)AssemblyVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                file = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
+                pattern = @"^(\s*)\[assembly:(\s*)AssemblyFileVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyFileVersion(\"" + _newVersion + "\")"));
                 File.WriteAllLines(assemblyInfoPath, updatedFile);
             }
         }

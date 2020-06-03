@@ -199,6 +199,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     SourceWebAppId = SourceWebApp.Id,
                     CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
+                    SourceWebAppLocation = SourceWebApp.Location,
                     CloneSourceControl = !IgnoreSourceControl.IsPresent,
                     TrafficManagerProfileId = trafficManagerProfielId,
                     TrafficManagerProfileName = trafficManagerProfileName,

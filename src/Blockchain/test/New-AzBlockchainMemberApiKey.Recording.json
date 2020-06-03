@@ -1,0 +1,187 @@
+{
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/listApiKeys?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/listApiKeys?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "2bf5676f-0dc8-49cc-b7ac-de58fc166446" ],
+        "CommandName": [ "Get-AzBlockchainMemberApiKey" ],
+        "FullCommandName": [ "Get-AzBlockchainMemberApiKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "d239ac3a-c409-4e81-b4f6-ebbf852a5892" ],
+        "x-ms-correlation-request-id": [ "d239ac3a-c409-4e81-b4f6-ebbf852a5892" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141847Z:d239ac3a-c409-4e81-b4f6-ebbf852a5892" ],
+        "Date": [ "Thu, 21 May 2020 14:18:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"8y6u3WirRR8jx1I25vLPYgvY\"},{\"keyName\":\"key2\",\"value\":\"axKnh8ZXnqWoJZXJt7vL_Ugc\"}]}"
+    }
+  },
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/regenerateApiKeys?api-version=2018-06-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/regenerateApiKeys?api-version=2018-06-01-preview",
+      "Content": "{\n  \"keyName\": \"key1\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "23" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "74ec9746-4eb1-4419-8560-5f5f9874a389" ],
+        "x-ms-correlation-request-id": [ "74ec9746-4eb1-4419-8560-5f5f9874a389" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141848Z:74ec9746-4eb1-4419-8560-5f5f9874a389" ],
+        "Date": [ "Thu, 21 May 2020 14:18:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"zJ-3AMTNbqDn_MixEAkiz1ig\"},{\"keyName\":\"key2\",\"value\":\"axKnh8ZXnqWoJZXJt7vL_Ugc\"}]}"
+    }
+  },
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/listApiKeys?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/listApiKeys?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "fe4fd03c-56b7-417e-9de3-7dcfd60b33ce" ],
+        "CommandName": [ "Get-AzBlockchainMemberApiKey" ],
+        "FullCommandName": [ "Get-AzBlockchainMemberApiKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "0ef77100-9b17-4cb6-b068-d4355f4983af" ],
+        "x-ms-correlation-request-id": [ "0ef77100-9b17-4cb6-b068-d4355f4983af" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141848Z:0ef77100-9b17-4cb6-b068-d4355f4983af" ],
+        "Date": [ "Thu, 21 May 2020 14:18:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"zJ-3AMTNbqDn_MixEAkiz1ig\"},{\"keyName\":\"key2\",\"value\":\"axKnh8ZXnqWoJZXJt7vL_Ugc\"}]}"
+    }
+  },
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n?api-version=2018-06-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "bc4ae6e6-8ef0-4100-b0aa-aa0a5290c203" ],
+        "CommandName": [ "Get-AzBlockchainMember" ],
+        "FullCommandName": [ "Get-AzBlockchainMember_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "8cdc57a9-fab3-4298-9a2d-01bc1de13209" ],
+        "x-ms-correlation-request-id": [ "8cdc57a9-fab3-4298-9a2d-01bc1de13209" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141848Z:8cdc57a9-fab3-4298-9a2d-01bc1de13209" ],
+        "Date": [ "Thu, 21 May 2020 14:18:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "980" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastus\",\"name\":\"myblockchainhv0x8n\",\"kind\":\"Quorum\",\"properties\":{\"validatorNodesSku\":{\"capacity\":2},\"userName\":\"myblockchainhv0x8n\",\"password\":null,\"consortium\":\"consortiumhv0x8n\",\"consortiumRole\":\"ADMIN\",\"consortiumMemberDisplayName\":\"myblockchainhv0x8n\",\"consortiumManagementAccountAddress\":\"0x69e234a9e922d6533ffe5d82ad841e717cc9a241\",\"consortiumManagementAccountPassword\":null,\"firewallRules\":[{\"ruleName\":\"AllowAll\",\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"}],\"rootContractAddress\":\"0xb255f55e8d600f09ebc1035dd2118acec1018912\",\"publicKey\":\"yQ5nsc8YtNUKuMHjb7Q+XHQiO7PY6DJVVm5E0g3D/lY=\",\"provisioningState\":\"Succeeded\",\"dns\":\"myblockchainhv0x8n.blockchain.azure.com\",\"protocol\":\"Quorum\"},\"type\":\"Microsoft.Blockchain/blockchainMembers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n\",\"tags\":null,\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\"}}"
+    }
+  },
+  "New-AzBlockchainMemberApiKey+[NoContext]+RegenerateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/regenerateApiKeys?api-version=2018-06-01-preview+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/regenerateApiKeys?api-version=2018-06-01-preview",
+      "Content": "{\n  \"keyName\": \"key1\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "23" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "58b64ba2-e197-4794-9bff-2cc8aa76f919" ],
+        "x-ms-correlation-request-id": [ "58b64ba2-e197-4794-9bff-2cc8aa76f919" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141849Z:58b64ba2-e197-4794-9bff-2cc8aa76f919" ],
+        "Date": [ "Thu, 21 May 2020 14:18:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"keys\":[{\"keyName\":\"key1\",\"value\":\"XEZpwH_GIBvuVN6DEUOPrL43\"},{\"keyName\":\"key2\",\"value\":\"axKnh8ZXnqWoJZXJt7vL_Ugc\"}]}"
+    }
+  }
+}

@@ -27,7 +27,7 @@ Save-AzDeploymentScriptLog [-DeploymentScriptResourceId] <String> [-OutputPath] 
 
 ### SaveDeploymentScriptLogByInputObject
 ```
-Save-AzDeploymentScriptLog [-DeploymentScriptInputObject] <PsDeploymentScript> [-OutputPath] <String>
+Save-AzDeploymentScriptLog [-DeploymentScriptObject] <PsDeploymentScript> [-OutputPath] <String>
  [[-Tail] <Int32>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -68,13 +68,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentScriptInputObject
+### -DeploymentScriptObject
 The deployment script PowerShell object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript
 Parameter Sets: SaveDeploymentScriptLogByInputObject
-Aliases:
+Aliases: DeploymentScriptInputObject
 
 Required: True
 Position: 0
