@@ -96,6 +96,17 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string TenantId { get { return Id; } }
 
         /// <summary>
+        /// The domain name suffix for the directory (domain)
+        /// </summary>
+        public string Directory
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.Directory);
+            }
+        }
+
+        /// <summary>
         /// Extended proeprties of the tenant
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -104,6 +115,30 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public override string ToString()
         {
             return this.Id;
+        }
+
+        public string[] Domains
+        {
+            get
+            {
+                return this.GetPropertyAsArray(AzureTenant.Property.Domains);
+            }
+        }
+
+        public string TenantCategory
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.TenantCategory);
+            }
+        }
+
+        public string DisplayName
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.DisplayName);
+            }
         }
     }
 }

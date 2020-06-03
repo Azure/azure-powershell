@@ -41,7 +41,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             {
                 UserId = account.Id,
                 LoginType = LoginType.OrgId,
-                AccessToken = Token.AccessToken
+                AccessToken = Token.AccessToken,
+                TenantId = tenant
             };
         }
 
