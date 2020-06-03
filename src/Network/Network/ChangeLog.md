@@ -20,10 +20,7 @@
 
 ## Upcoming Release
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
-
 * Added name validation for `New-AzIpGroup`
-
-* Added sample to `Set-AzFirewall` documentation: Update an existing rule within a Firewall application rule collection
 
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
