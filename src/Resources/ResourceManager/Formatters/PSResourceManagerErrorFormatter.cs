@@ -12,18 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using System;
     using System.Collections.Generic;
 
-    public class PSResourceManagerError
+    public class PSResourceManagerErrorFormatter
     {
-        public string Code { get; set; }
+        public static string Format(PSResourceManagerError error)
+        {
+            if (error == null)
+            {
+                return string.Empty;
+            }
 
-        public string Message { get; set; }
+            IList<string> messages = new List<string>
+            {
+                $"{error.Code} - {error.Message}"
+            };
 
-        public string Target { get; set; }
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    messages.Add(Format(innerError));
+                }
+            }
 
-        public List<PSResourceManagerError> Details { get; set; }
+            return string.Join(Environment.NewLine, messages);
+        }
     }
 }

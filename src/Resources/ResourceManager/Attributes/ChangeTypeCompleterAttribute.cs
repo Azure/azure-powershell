@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes
 {
-    using System.Collections.Generic;
+    using System.Management.Automation;
 
-    public class PSResourceManagerError
+    public class ChangeTypeCompleterAttribute : ArgumentCompleterAttribute
     {
-        public string Code { get; set; }
-
-        public string Message { get; set; }
-
-        public string Target { get; set; }
-
-        public List<PSResourceManagerError> Details { get; set; }
+        public ChangeTypeCompleterAttribute()
+            : base(typeof(ChangeTypeCompleter))
+        {
+        }
     }
 }
