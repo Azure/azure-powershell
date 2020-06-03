@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
         protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
 
+        protected const string TemplateSpecResourceIdParameterSetName = "ByTemplateSpecResourceId";
+
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
         private Hashtable templateObject;
@@ -112,6 +114,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
+
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
+        [ValidateNotNullOrEmpty]
+        public string TemplateSpecId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. " +
                                                     "This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and " +

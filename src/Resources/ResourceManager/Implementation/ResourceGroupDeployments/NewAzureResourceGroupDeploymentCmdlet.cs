@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         ResourceGroupName = ResourceGroupName,
                         DeploymentName = Name,
                         DeploymentMode = Mode,
+                        TemplateSpecId = TemplateSpecId ?? null,
                         TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                         TemplateObject = TemplateObject,
                         TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
