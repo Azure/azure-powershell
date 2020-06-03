@@ -17,7 +17,7 @@ namespace VersionController.Models
 
             _outputDirectories = new List<string>{ DebugDirectory };
 
-            _projectDirectories = new List<string>{ SrcDirectory };
+            _projectDirectories = new List<string>{ Path.Combine(RootDirectory, @"src") };
         }
 
         public string RootDirectory { get; set; }
