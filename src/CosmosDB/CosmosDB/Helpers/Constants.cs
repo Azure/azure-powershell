@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
         public const string EnableMultipleWriteLocationsHelpMessage = "Enable Multiple Write Locations. Accepted values: false, true ";
         public const string EnableVirtualNetworkHelpMessage = "Enables virtual network on the Cosmos DB database account. Accepted values: false, true ";
-        public const string IpRangeFilterHelpMessage = "Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account";
+        public const string IpRulesHelpMessage = "Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.";
         public const string MaxStalenessIntervalInSecondsHelpMessage = "When used with Bounded Staleness consistency, this value represents the time amount of staleness (in timespan) tolerated. Accepted range for this value is 5-86400.";
         public const string MaxStalenessPrefixHelpMessage = "When used with Bounded Staleness consistency, this value represents the number of stale requests tolerated. Accepted range for this value is 1 - 2,147,483,647. ";
         public const string TagHelpMessage = "Hashtable of tags as key-value pairs. Use empty string to clear existing tag.";

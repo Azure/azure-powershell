@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -51,9 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.EnableVirtualNetworkHelpMessage)]
         public SwitchParameter EnableVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IpRulesHelpMessage)]
         [ValidateNotNull]
-        public string[] IpRangeFilter { get; set; }
+        public string[] IpRules { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -199,21 +198,25 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            string IpRangeFilterAsString = null;
-            if (IpRangeFilter != null && IpRangeFilter.Length > 0)
-            {
-                IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
-            }
-
-            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags, ipRangeFilter:IpRangeFilterAsString);
+            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags);
             databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
-            databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
-            
+
+            if (IpRules != null && IpRules.Length > 0)
+            {
+                IList<IpAddressOrRange> iprules = new List<IpAddressOrRange>();
+                foreach (string ipAddressOrRange in IpRules)
+                {
+                    iprules.Add(new IpAddressOrRange(ipAddressOrRange));
+                }
+
+                databaseAccountCreateUpdateParameters.IpRules = iprules;
+            }
+
             if (KeyVaultKeyUri != null)
             {
                 databaseAccountCreateUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;

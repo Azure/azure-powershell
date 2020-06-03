@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableVirtualNetworkHelpMessage)]
         public bool? EnableVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IpRulesHelpMessage)]
         [ValidateNotNull]
-        public string[] IpRangeFilter { get; set; }
+        public string[] IpRules { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
         public int? MaxStalenessIntervalInSeconds { get; set; }
@@ -203,10 +203,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 
-            if (IpRangeFilter != null)
+            if (IpRules != null)
             {
-                string IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
-                databaseAccountUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
+                // not checking IpRules.Length > 0, to handle the removal of IpRules case
+                IList<IpAddressOrRange> iprules = new List<IpAddressOrRange>();
+                foreach (string ipAddressOrRange in IpRules)
+                {
+                    iprules.Add(new IpAddressOrRange(ipAddressOrRange));
+                }
+
+                databaseAccountUpdateParameters.IpRules = iprules;
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

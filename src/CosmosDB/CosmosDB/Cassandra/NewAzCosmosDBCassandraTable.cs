@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             CreateUpdateOptions options = new CreateUpdateOptions();
             if (Throughput != null)
             {
-                options.Throughput = Throughput.ToString();
+                options.Throughput = Throughput;
             }
 
             CassandraTableResource cassandraTableResource = new CassandraTableResource

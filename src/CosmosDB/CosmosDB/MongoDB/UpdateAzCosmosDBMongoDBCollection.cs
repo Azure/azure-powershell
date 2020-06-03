@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (Throughput != null)
             {
-                options.Throughput = Throughput.ToString();
+                options.Throughput = Throughput;
             }
 
             MongoDBCollectionCreateUpdateParameters mongoDBCollectionCreateUpdateParameters = new MongoDBCollectionCreateUpdateParameters

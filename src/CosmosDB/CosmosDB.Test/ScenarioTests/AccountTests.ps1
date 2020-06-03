@@ -28,11 +28,11 @@ function Test-AccountRelatedCmdlets
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $ipRangeFilter = "192.168.0.1"
+  $IpRules = "192.168.0.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
   $publicNetworkAccess = "Enabled"
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRules $IpRules -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess
     do 
     {
        $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
@@ -42,13 +42,13 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $cosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $cosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $ipRangeFilter $cosmosDBAccount.IpRangeFilter
+  Assert-AreEqual $IpRules $cosmosDBAccount.IpRules
   Assert-AreEqual $cosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $cosmosDBAccount.EnableMultipleWriteLocations 1
   Assert-AreEqual $cosmosDBAccount.IsVirtualNetworkFilterEnabled 1
   Assert-AreEqual $cosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRules $IpRules -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
       do 
     {
        $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -58,7 +58,7 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $updatedCosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $updatedCosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $ipRangeFilter $updatedCosmosDBAccount.IpRangeFilter
+  Assert-AreEqual $IpRules $updatedCosmosDBAccount.IpRules
   Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $updatedCosmosDBAccount.IsVirtualNetworkFilterEnabled 1
   Assert-AreEqual $updatedCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
@@ -88,7 +88,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $ipRangeFilter = "192.168.0.1"
+  $IpRules = "192.168.0.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -98,12 +98,12 @@ function Test-AccountRelatedCmdletsUsingRid
   Assert-AreEqual $cosmosDBAccountByRid.ConsistencyPolicy.DefaultConsistencyLevel $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual $cosmosDBAccountByRid.ConsistencyPolicy.MaxIntervalInSeconds $cosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual $cosmosDBAccountByRid.ConsistencyPolicy.MaxStalenessPrefix $cosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $cosmosDBAccountByRid.IpRangeFilter $cosmosDBAccount.IpRangeFilter
+  Assert-AreEqual $cosmosDBAccountByRid.IpRules $cosmosDBAccount.IpRules
   Assert-AreEqual $cosmosDBAccountByRid.EnableAutomaticFailover $cosmosDBAccount.EnableAutomaticFailover 
   Assert-AreEqual $cosmosDBAccountByRid.EnableMultipleWriteLocations $cosmosDBAccount.EnableMultipleWriteLocations
   Assert-AreEqual $cosmosDBAccountByRid.IsVirtualNetworkFilterEnabled $cosmosDBAccount.IsVirtualNetworkFilterEnabled
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRules $IpRules -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
       do 
     {
        $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -113,7 +113,7 @@ function Test-AccountRelatedCmdletsUsingRid
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $updatedCosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $updatedCosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $ipRangeFilter $updatedCosmosDBAccount.IpRangeFilter
+  Assert-AreEqual $IpRules $updatedCosmosDBAccount.IpRules
   Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $updatedCosmosDBAccount.IsVirtualNetworkFilterEnabled 1
 
@@ -136,12 +136,12 @@ function Test-AccountRelatedCmdletsUsingObject
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $ipRangeFilter = "192.168.0.1"
+  $IpRules = "192.168.0.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
  
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -InputObject $cosmosDBAccount -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -InputObject $cosmosDBAccount -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRules $IpRules -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
       do 
     {
        $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -151,7 +151,7 @@ function Test-AccountRelatedCmdletsUsingObject
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $updatedCosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $updatedCosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $ipRangeFilter $updatedCosmosDBAccount.IpRangeFilter
+  Assert-AreEqual $IpRules $updatedCosmosDBAccount.IpRules
   Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $updatedCosmosDBAccount.IsVirtualNetworkFilterEnabled 1
 

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConsistencyPolicy = databaseAccountGetResults.ConsistencyPolicy;
             EnableAutomaticFailover = databaseAccountGetResults.EnableAutomaticFailover;
             IsVirtualNetworkFilterEnabled = databaseAccountGetResults.IsVirtualNetworkFilterEnabled;
-            IpRangeFilter = databaseAccountGetResults.IpRangeFilter;
+            IpRules = databaseAccountGetResults.IpRules;
             DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType;
             DocumentEndpoint = databaseAccountGetResults.DocumentEndpoint;
             ProvisioningState = databaseAccountGetResults.ProvisioningState;
@@ -125,11 +125,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public bool? IsVirtualNetworkFilterEnabled { get; set; }
         //
         // Summary:
-        //     Gets or sets cosmos DB Firewall Support: This value specifies the set of IP addresses
-        //     or IP address ranges in CIDR form to be included as the allowed list of client
-        //     IPs for a given database account. IP addresses/ranges must be comma separated
-        //     and must not contain any spaces.
-        public string IpRangeFilter { get; set; }
+        //     Gets or sets list of IpRules.
+        public IList<IpAddressOrRange> IpRules { get; set; }
         //
         // Summary:
         //     Gets the offer type for the Cosmos DB database account. Default value: Standard.
