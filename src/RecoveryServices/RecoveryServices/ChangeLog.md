@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Backup added support for fetching MAB items.
 
 ## Version 2.9.1
 * Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
