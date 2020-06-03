@@ -35,8 +35,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public string Directory { get; set; }
 
         /// <summary>
+        /// Whether tenant category is home
+        /// </summary>
+        public bool IsHome { 
+            get {
+                return string.IsNullOrEmpty(this.GetProperty(Property.TenantCategory)) 
+                    || 0 == string.Compare(this.GetProperty(Property.TenantCategory), "Home", true);
+            }
+        }
+
+        /// <summary>
         /// Custom proeprties of the tenant
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public static class Property
+        {
+            public const string DisplayName = "DisplayName",
+            TenantCategory = "TenantCategory",
+            Domains = "Domains",
+            CountryCode = "CountryCode",
+            Directory = "Directory";
+        }
     }
 }

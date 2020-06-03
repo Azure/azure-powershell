@@ -224,5 +224,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 account.UpdateProperties(source);
             }
         }
+
+        /// <summary>
+        /// Get the common tenant from account
+        /// </summary>
+        /// <param name="account">The account to get tenant from</param>
+        public static string GetCommonTenant(this IAzureAccount account)
+        {
+            string result = AzureEnvironmentConstants.CommonAdTenant;
+            if (account.IsPropertySet(AzureAccount.Property.Tenants))
+            {
+                var candidate = account.GetTenants().FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(candidate))
+                {
+                    result = candidate;
+                }
+            }
+
+            return result;
+        }
     }
 }

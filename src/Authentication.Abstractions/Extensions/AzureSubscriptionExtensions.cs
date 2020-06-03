@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The list of tenants</returns>
         public static string GetTenant(this IAzureSubscription subscription)
         {
-            return subscription.GetProperty(AzureSubscription.Property.Tenants);
+            return subscription.GetRetrievedByTenant();
         }
 
         /// <summary>
@@ -138,7 +138,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="tenants">The tenants associated with the subscription</param>
         public static void SetTenant(this IAzureSubscription subscription, string tenant)
         {
+            subscription.SetRetrievedByTenant(tenant);
+        }
+
+        public static string GetHomeTenant(this IAzureSubscription subscription)
+        {
+            return subscription.GetProperty(AzureSubscription.Property.Tenants);
+        }
+
+        public static void SetHomeTenant(this IAzureSubscription subscription, string tenant)
+        {
             subscription.SetProperty(AzureSubscription.Property.Tenants, tenant);
+        }
+
+        public static string GetRetrievedByTenant(this IAzureSubscription subscription)
+        {
+            return subscription.GetProperty(AzureSubscription.Property.RetrievedByTenant);
+        }
+
+        public static void SetRetrievedByTenant(this IAzureSubscription subscription, string tenant)
+        {
+            subscription.SetProperty(AzureSubscription.Property.RetrievedByTenant, tenant);
+        }
+
+        /// <summary>
+        /// Get the tenants associated with this subscription
+        /// </summary>
+        /// <param name="subscription">The subscription to check</param>
+        /// <returns>The list of tenants</returns>
+        public static string[] GetManagedByTenants(this IAzureSubscription subscription)
+        {
+            return subscription.GetPropertyAsArray(AzureSubscription.Property.ManagedByTenants);
+        }
+
+        /// <summary>
+        /// Set the tenants associated with thsi susbcription
+        /// </summary>
+        /// <param name="subscription">The subscription to set</param>
+        /// <param name="tenants">The tenants associated with the subscription</param>
+        public static void SetManagedByTenants(this IAzureSubscription subscription, params string[] tenants)
+        {
+            subscription.SetOrAppendProperty(AzureSubscription.Property.ManagedByTenants, tenants);
         }
 
         /// <summary>
