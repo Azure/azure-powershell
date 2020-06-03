@@ -22,20 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     internal static class ModelExtensions
     {
-        internal static AzureSubscription ToAzureSubscription(this Subscription other, IAzureContext context)
-        {
-            var subscription = new AzureSubscription();
-            subscription.SetAccount(context.Account != null ? context.Account.Id : null);
-            subscription.SetEnvironment(context.Environment != null ? context.Environment.Name : EnvironmentName.AzureCloud);
-            subscription.Id = other.SubscriptionId;
-            subscription.Name = other.DisplayName;
-            subscription.State = other.State.ToString();
-            subscription.SetProperty(AzureSubscription.Property.Tenants,
-                context.Tenant.Id.ToString());
-            return subscription;
-        }
-
-        public static List<AzureTenant> MergeTenants( this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
+        public static List<AzureTenant> MergeTenants(this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
         {
             List<AzureTenant> result = null;
             if (tenants != null)
