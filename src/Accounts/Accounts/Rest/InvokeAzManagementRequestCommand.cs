@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     throw new PSArgumentException("Invalid HTTP Method");
             }
 
-            WriteObject(response);
+            WriteObject(new PSHttpResponse(response));
         }
 
         public void ValidateParameters()
