@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
 * Support get single file share usage
     - `Get-AzRmStorageShare`
 * Support create/update file share with access tier
