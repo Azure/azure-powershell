@@ -628,6 +628,57 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.MabItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.MabItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerType</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerUniqueName</Label>
+            <Width>60</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkloadType</Label>
+            <Width>20</Width>
+          </TableColumnHeader>  
+          <TableColumnHeader>
+            <Label>LastBackupStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkloadType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastBackupStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadProtectableItem</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadProtectableItem</TypeName>
