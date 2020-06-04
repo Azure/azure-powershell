@@ -58,7 +58,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ContainedResource
@@ -75,7 +74,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -91,7 +89,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -107,7 +104,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -123,7 +119,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -139,7 +134,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanName
@@ -158,7 +152,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanProduct
@@ -176,7 +169,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanPromotionCode
@@ -192,7 +184,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PlanPublisher
@@ -209,7 +200,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ReferencedResource
@@ -226,7 +216,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -243,7 +232,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -260,7 +248,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -276,7 +263,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WorkspaceResourceId
@@ -292,7 +278,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -308,7 +293,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -325,7 +309,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -337,9 +320,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
