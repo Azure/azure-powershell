@@ -72,9 +72,12 @@ directive:
     set:
       alias: Name
   - where:
-      verb: New
+      verb: New|Update
       subject: ConnectedKubernetes
     hide: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
   - where:
       verb: Get
       subject: ConnectedClusterUserCredentials
