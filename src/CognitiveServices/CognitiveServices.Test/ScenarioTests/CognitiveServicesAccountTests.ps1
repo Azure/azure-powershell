@@ -1229,3 +1229,33 @@ function Test-PublicNetworkAccess
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Capabilities
+#>
+function Test-Capabilities
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'F0';
+        $accounttype = 'FormRecognizer';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-True {$createdAccount.Capabilities.Length -gt 0}
+        Assert-True {$createdAccount.Capabilities[0].Name.Length -gt 0}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

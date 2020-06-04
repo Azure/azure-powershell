@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -44,6 +45,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat ResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] ExcludeChangeType { get; set; }
+
         protected override void OnProcessRecord()
         {
             const string statusMessage = "Getting the latest status of all resources...";
@@ -69,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ResultFormat = this.ResultFormat
                 };
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.ExcludeChangeType);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.4
 * Added Azure Remote Rendering Management Cmdlets
 
 ## Version 0.1.3

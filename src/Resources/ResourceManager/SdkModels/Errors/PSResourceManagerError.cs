@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Text;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
+    using System.Collections.Generic;
+
     public class PSResourceManagerError
     {
-        private const char Whitespace = ' ';
-
         public string Code { get; set; }
 
         public string Message { get; set; }
