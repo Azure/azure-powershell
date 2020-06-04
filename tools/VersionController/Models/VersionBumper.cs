@@ -6,7 +6,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
-using VersionController.Netcore.Utilities;
+using VersionController.Utilities;
 
 namespace VersionController.Models
 {
@@ -297,7 +297,7 @@ namespace VersionController.Models
                                                    .Where(f => !f.Contains("Netcore") &&
                                                                !f.Contains("bin") &&
                                                                !f.Contains("dll-Help") &&
-                                                               (!f.Contains("Stack") || WhiteList.Contains(f)))
+                                                               !ModuleFilter.IsAzureStackModule(f))
                                                    .ToList();
                 foreach (var moduleManifestPath in moduleManifestPaths)
                 {

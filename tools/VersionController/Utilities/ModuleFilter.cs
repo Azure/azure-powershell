@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
-namespace VersionController.Netcore.Utilities
+namespace VersionController.Utilities
 {
-    class WhiteList
+    class ModuleFilter
     {
-        public static bool Contains(String fileName)
+        public static bool IsAzureStackModule(String fileName)
         {
+            bool isAzureStackModule = false;
+            if (fileName.Contains("Stack"))
+            {
+                isAzureStackModule = true;
+            }
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var whiteListFile = Path.Combine(versionControllerDirectory, "WhiteList.csv");
@@ -27,12 +29,13 @@ namespace VersionController.Netcore.Utilities
                     {
                         if (fileName.Contains(cols[0]))
                         {
-                            return true;
+                            isAzureStackModule = false;
+                            break;
                         }
                     }
                 }
             }
-            return false;
+            return isAzureStackModule;
         }
     }
 }

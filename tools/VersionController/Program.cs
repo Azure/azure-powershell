@@ -7,7 +7,7 @@ using System.Management.Automation;
 using System.Reflection;
 using Tools.Common.Models;
 using VersionController.Models;
-using VersionController.Netcore.Utilities;
+using VersionController.Utilities;
 
 namespace VersionController
 {
@@ -106,7 +106,7 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => (!f.Contains("Stack") || WhiteList.Contains(f)) && IsChangeLogUpdated(f))
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f) && IsChangeLogUpdated(f))
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => m.Contains(_moduleNameFilter))
                                             .ToList();
@@ -171,7 +171,7 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => !f.Contains("Stack") || WhiteList.Contains(f))
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f))
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => !string.IsNullOrEmpty(m) && m.Contains(_moduleNameFilter))
                                             .ToList();

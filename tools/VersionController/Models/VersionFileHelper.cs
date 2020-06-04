@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using VersionController.Netcore.Utilities;
+using VersionController.Utilities;
 
 namespace VersionController.Models
 {
@@ -66,7 +66,7 @@ namespace VersionController.Models
         public string ChangeLogPath => Directory.GetFiles(ProjectDirectory, "ChangeLog.md").FirstOrDefault();
 
         public List<string> AssemblyInfoPaths => Directory.GetFiles(SrcDirectory, "AssemblyInfo.cs", SearchOption.AllDirectories)
-                                                            .Where(f => (!f.Contains("Stack") || WhiteList.Contains(f)) && !f.Contains(".Test"))
+                                                            .Where(f => !ModuleFilter.IsAzureStackModule(f) && !f.Contains(".Test"))
                                                             .ToList();
 
         public string GalleryModuleDirectory => OutputModuleDirectory;
