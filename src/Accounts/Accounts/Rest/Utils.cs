@@ -24,18 +24,26 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             sb.Append(slash + Subscriptions);
             sb.Append(slash + sub);
 
-            sb.Append(slash + ResourceGroups);
-            sb.Append(slash + rg);
-
-            sb.Append(slash + Providers);
-            sb.Append(slash + rp);
-
-            for (int i=0; i<types.Length; i++)
+            if (rg != null && rg.Length != 0)
             {
-                sb.Append(slash + types[i]);
-                sb.Append(slash + names[i]);
+                sb.Append(slash + ResourceGroups);
+                sb.Append(slash + rg);
             }
 
+            if (rp != null && rp.Length != 0)
+            {
+                sb.Append(slash + Providers);
+                sb.Append(slash + rp);
+            }
+
+            if (types != null && types.Length != 0)
+            {
+                for (int i = 0; i < types.Length; i++)
+                {
+                    sb.Append(slash + types[i]);
+                    sb.Append(slash + names[i]);
+                }
+            }
             return sb.ToString();
         }
     }

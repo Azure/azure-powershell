@@ -31,35 +31,35 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementRequest", DefaultParameterSetName = ByUri), OutputType(typeof(string))]
-    public class InvokeAzManagementRequestCommand : AzureRMCmdlet
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Rest", DefaultParameterSetName = ByUri, SupportsShouldProcess = true), OutputType(typeof(PSHttpResponse))]
+    public class InvokeAzRestCommand : AzureRMCmdlet
     {
         #region Parameter Set
 
         public const string ByUri = "ByUri";
-        public const string ByResourceGroupName = "ByResourceGroupName";
+        public const string ByParameters = "ByParameters";
 
         #endregion
 
         #region Parameter
 
-        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = false, HelpMessage = "Target Subscription Id")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Subscription Id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Group Name")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Group Name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Provider Name")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = true, HelpMessage = "Target Resource Provider Name")]
         [ValidateNotNullOrEmpty]
         public string ResourceProviderName { get; set; }
 
-        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Type")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Type")]
         [ValidateNotNullOrEmpty]
         public string[] ResourceType { get; set; }
 
-        [Parameter(ParameterSetName = ByResourceGroupName, Mandatory = true, HelpMessage = "Target Resource Name")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Name")]
         [ValidateNotNullOrEmpty]
         public string[] Name { get; set; }
 
@@ -79,6 +79,12 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [Parameter(Mandatory = false, HelpMessage = "JSON format payload")]
         [ValidateNotNullOrEmpty]
         public string Payload { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         #endregion
 
@@ -146,7 +152,17 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         public void ValidateParameters()
         {
-            if (this.ResourceType.Length != this.Name.Length)
+            if (this.IsParameterBound(c => this.ResourceType) && !this.IsParameterBound(c => this.Name))
+            {
+                throw new PSArgumentException("number of resource types and resource names must be the same");
+            }
+
+            if (!this.IsParameterBound(c => this.ResourceType) && this.IsParameterBound(c => this.Name))
+            {
+                throw new PSArgumentException("number of resource types and resource names must be the same");
+            }
+
+            if (this.IsParameterBound(c => this.ResourceType) && this.IsParameterBound(c => this.Name) && this.ResourceType.Length != this.Name.Length)
             {
                 throw new PSArgumentException("number of resource types and resource names must be the same");
             }
