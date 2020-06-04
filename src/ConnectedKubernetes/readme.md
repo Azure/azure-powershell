@@ -79,4 +79,9 @@ directive:
       verb: Get
       subject: ConnectedClusterUserCredentials
     remove: true
+  - from: swagger-document
+    where: $.definitions["ConnectedClusterAADProfile"].required
+    # remove: true
+    transform: >-
+        return undefined
 ```
