@@ -72,7 +72,7 @@ directive:
     set:
       alias: Name
   - where:
-      verb: New|Update
+      verb: New
       subject: ConnectedKubernetes
     hide: true
   - where:
