@@ -62,17 +62,17 @@ metadata:
 service-name: RegionMove
 powershell: true
 azure: true
-branch: hsingh-regionmove-Microsoft.Migrate-2019-10-01-preview
-repo: https://github.com/innosam/azure-rest-api-specs-pr/blob/$(branch)
+branch: regionmove
+repo: https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/$(branch)
 prefix: Az
 subject-prefix: ''
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate
+aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
 input-file:
-	- $(this-folder)/regionmovecollection.json
+	- $(aks)/regionmovecollection.json
 module-version: 1.0.0
 title: Rms-client
 directive:
