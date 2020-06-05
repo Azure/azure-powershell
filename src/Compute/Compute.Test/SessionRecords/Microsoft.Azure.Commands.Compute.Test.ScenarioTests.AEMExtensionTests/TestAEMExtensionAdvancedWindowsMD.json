@@ -1945,6 +1945,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"EdT6J6vVG4iIeie1rdDF0fksLia2ny7QVypmEKLCK1dm/XQDrGcGI3qQlLdouQfNGgi/QhX5Wyza+xWJlUSrOg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"9Fo6GvEBYkIIqhQuzTJDG1PEr0g1qqfFGHhRc7DevqXTHjoVC/+cgVxePwlzwRls+85Txb95UCuUaBrqCgfk0g==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },

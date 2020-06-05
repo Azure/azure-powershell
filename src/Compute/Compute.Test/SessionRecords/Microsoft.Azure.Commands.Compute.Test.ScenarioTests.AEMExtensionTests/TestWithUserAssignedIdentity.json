@@ -1538,6 +1538,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"K57XWL/VYyeM7XdkhZ5sdNdH5wKANW4c1Loh9EE0WojFsPo4JolV7xjJgx9HnHZ3+hhWrLPgliCmnTHusCoCtQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"5f7ZNbV5f5ytaiqGZvJbiOrZ1e+vYMpQrsGOqs6bGtwg1NW76YfMX+TslsBCFGmTvSPg11XGiWjy8H0RRgyrgg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
