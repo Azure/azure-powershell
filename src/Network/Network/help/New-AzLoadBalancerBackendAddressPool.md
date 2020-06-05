@@ -35,9 +35,10 @@ Creates a backend address pool on a loadbalancer. Allows for specifiying a array
 ## create by passing loadbalancer without Ips
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
-PS C:\> $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork
-PS C:\> $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetwork $virtualNetwork
+PS C:\> $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
+PS C:\> $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetworkId $virtualNetwork.Id
 PS C:\> $ips = @($ip1, $ip2)
+
 PS C:\> $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
 ```
 
@@ -49,13 +50,13 @@ PS C:\> $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool7 -LoadBala
 
 ### Example 3
 ```powershell
-## create by passing loadbalancer with ips
+## create by name without ips
 PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3
 ```
 
 ### Example 4
 ```powershell
-## create by passing loadbalancer with ips
+## create by name with ips
 PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -LoadBalancerBackendAddress $ips
 ```
 
