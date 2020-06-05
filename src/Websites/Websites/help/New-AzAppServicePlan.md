@@ -16,9 +16,9 @@ Creates an Azure App Service plan in a given Geo location.
 ### S1
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-HyperV] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]                                  
+ [-HyperV] [-Linux] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>] 
 ```
 
 ### S2
@@ -120,6 +120,22 @@ Accept wildcard characters: False
 
 ### -HyperV
 Specify this, App Service Plan will run Windows Containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+### -Linux
+Specify this, App Service Plan will run Linux Contaianers
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
