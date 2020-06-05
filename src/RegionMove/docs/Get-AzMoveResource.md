@@ -15,7 +15,7 @@ schema: 2.0.0
 ### List (Default)
 ```
 Get-AzMoveResource -MoveCollectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -61,6 +61,29 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+| Field | Supported operators | Supported functions |
+|------------------|------------------------|-----------------------------------|
+| id | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+| firstName | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+| lastName | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+| email | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+| state | eq | N/A |
+| registrationDate | ge, le, eq, ne, gt, lt | N/A |
+| note | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
@@ -165,6 +188,7 @@ ALIASES
 ### Add-AzResourceToMoveContext
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

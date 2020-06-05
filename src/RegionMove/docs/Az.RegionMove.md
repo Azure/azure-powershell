@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RegionMove
-Module Guid: 4d2aedf1-05ae-4ca3-81e3-e60a47768f3a
+Module Guid: c32239e7-3521-4764-87c1-80c57b27b8de
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.regionmove
 Help Version: 1.0.0.0
 Locale: en-US

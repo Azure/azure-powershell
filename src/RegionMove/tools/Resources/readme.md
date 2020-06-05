@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 azure: true
 powershell: true
 branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/blob/hsingh-regionmove-Microsoft.Migrate-2019-10-01-preview
+repo: https://github.com/Azure/azure-rest-api-specs/blob/regionmove
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -74,7 +74,7 @@ clear-output-folder: true
 
 ``` yaml
 input-file:
-  - https://github.com/innosam/azure-rest-api-specs-pr/blob/hsingh-regionmove-Microsoft.Migrate-2019-10-01-preview/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
+  - https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/regionmove/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
 module-name: Az.Resources.TestSupport
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources
 
