@@ -98,7 +98,8 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
                'Enable-AzHDInsightMonitoring', 'Disable-AzHDInsightMonitoring', 
                'Get-AzHDInsightMonitoring', 
-               'Set-AzHDInsightClusterDiskEncryptionKey'
+               'Set-AzHDInsightClusterDiskEncryptionKey',
+               'Get-AzHDInsightHost', 'Restart-AzHDInsightHost'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -133,7 +134,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported Customer-managed key disk encryption.'
+        ReleaseNotes = '* Supported list hosts and restart hosts of the cluster'
 
         # Prerelease string of this module
         # Prerelease = ''
