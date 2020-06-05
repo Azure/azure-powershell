@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added name validation for `New-AzIpGroup`
+* Added non-breaking changes : PeerAddressType functionality for Private Peering in Remove-AzExpressRouteCircutPeeringConfig
 
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
