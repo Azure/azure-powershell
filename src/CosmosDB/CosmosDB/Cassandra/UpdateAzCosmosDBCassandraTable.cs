@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,7 +23,6 @@ using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -50,6 +48,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableThroughputHelpMessage)]
         public int? Throughput { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        public int? AutoscaleMaxThroughput { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
@@ -107,13 +108,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (Schema != null)
             {
                 cassandraTableResource.Schema = PSCassandraSchema.ToSDKModel(Schema);
-            }          
-
-            CreateUpdateOptions options = new CreateUpdateOptions();
-            if (Throughput != null)
-            {
-                options.Throughput = Throughput;
             }
+
+            CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
             {

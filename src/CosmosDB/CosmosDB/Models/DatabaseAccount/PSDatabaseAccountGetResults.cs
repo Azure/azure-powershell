@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
             PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
+            EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
+            ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
+            EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
         }
 
         //
@@ -165,5 +168,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string KeyVaultKeyUri { get; set; }
         //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Free Tier is enabled.
+        public bool? EnableFreeTier { get; }
+        //
+        // Summary:
+        //     Gets or sets API specific properties.
+        public PSApiProperties ApiProperties { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether to enable storage analytics.
+        public bool? EnableAnalyticalStorage { get; set; }
     }
 }

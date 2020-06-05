@@ -16,7 +16,7 @@ Update a CosmosDB account attributes.
 ```
 Update-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
- [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
+ [-EnableVirtualNetwork <Boolean>] [-IpRules <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -27,7 +27,7 @@ Update-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultCon
 ```
 Update-AzCosmosDBAccount -ResourceId <String> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
- [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
+ [-EnableVirtualNetwork <Boolean>] [-IpRules <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -38,7 +38,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-DefaultConsistencyLevel <String>
 ```
 Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
- [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
+ [-EnableVirtualNetwork <Boolean>] [-IpRules <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-DisableKeyBasedMetadataWriteAccess <Boolean>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -219,9 +219,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IpRangeFilter
-Firewall support.
-Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account
+### -IpRules
+Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
 
 ```yaml
 Type: String[]

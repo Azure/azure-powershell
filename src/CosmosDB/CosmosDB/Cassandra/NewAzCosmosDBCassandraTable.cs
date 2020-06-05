@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableThroughputHelpMessage)]
         public int? Throughput { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        public int? AutoscaleMaxThroughput { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
 
@@ -89,11 +92,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
             }
 
-            CreateUpdateOptions options = new CreateUpdateOptions();
-            if (Throughput != null)
-            {
-                options.Throughput = Throughput;
-            }
+            CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             CassandraTableResource cassandraTableResource = new CassandraTableResource
             {

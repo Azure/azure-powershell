@@ -38,9 +38,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.MongoDatabaseThroughputHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.MongoDatabaseThroughputHelpMessage)]
         [ValidateNotNull]
-        public int Throughput { get; set; }
+        public int? Throughput { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        [ValidateNotNull]
+        public int? AutoscaleMaxThroughput { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
@@ -66,13 +70,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = new ThroughputSettingsUpdateParameters
-            {
-                Resource = new ThroughputSettingsResource
-                {
-                    Throughput = Throughput
-                }
-            };
+            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = ThroughputHelper.CreateThroughputSettingsObject(Throughput, AutoscaleMaxThroughput);
 
             if (ShouldProcess(Name, "Updating the throughput value of a CosmosDB MongoDB Database"))
             {

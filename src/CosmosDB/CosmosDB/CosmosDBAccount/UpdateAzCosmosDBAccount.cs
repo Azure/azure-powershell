@@ -91,6 +91,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
         public string KeyVaultKeyUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
+        public bool? EnableAnalyticalStorage { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -137,6 +140,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (KeyVaultKeyUri != null)
             {
                 databaseAccountUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
+            }
+            if (EnableAnalyticalStorage != null)
+            {
+                databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))

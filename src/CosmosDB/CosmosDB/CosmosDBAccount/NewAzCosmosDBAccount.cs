@@ -94,6 +94,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
         public string KeyVaultKeyUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableFreeTierHelpMessage)]
+        public bool? EnableFreeTier { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
+        public bool? EnableAnalyticalStorage { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.MongoSBServerVersionHelpMessage)]
+        public string MongoDBServerVersion { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -205,6 +214,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+            databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
+            databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
 
             if (IpRules != null && IpRules.Length > 0)
             {
@@ -242,6 +253,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
 
                     ApiKind = null;
+                }
+                else
+                {
+                    if (MongoDBServerVersion!=null)
+                    {
+                        databaseAccountCreateUpdateParameters.ApiProperties = new ApiProperties
+                        {
+                            ServerVersion = MongoDBServerVersion
+                        };
+                    }
                 }
             }
             else

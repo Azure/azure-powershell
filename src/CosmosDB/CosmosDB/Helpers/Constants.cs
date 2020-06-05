@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
+        public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
+        public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
+        public const string MongoSBServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -145,5 +148,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
+
+        // Throughput cmdlets for all APIs
+        public const string ThroughputHelpMessage = "Throughput value in int.";
+        public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
     }
 }
