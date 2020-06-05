@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             {
                 var results = this.PSManagedServicesClient.ListRegistrationDefinitions(
                     scope: scope);
-                this.WriteRegistrationDefinitionsList(results);
+                this.WriteRegistrationDefinitionsList(results, scope);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 var result = this.PSManagedServicesClient.GetRegistrationDefinition(
                     scope: scope,
                     registrationDefinitionId: definitionId);
-                WriteObject(new PSRegistrationDefinition(result), true);
+                WriteObject(new PSGetRegistrationDefinition(result, scope), true);
             }
         }
     }

@@ -52,22 +52,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
                 return DefaultContext.Subscription.Id;
             }
         }
-        protected void WriteRegistrationAssignmentList(IPage<RegistrationAssignment> assignments)
+        protected void WriteRegistrationAssignmentList(IPage<RegistrationAssignment> assignments, string scope)
         {
             if (assignments != null)
             {
-                List<PSRegistrationAssignment> output = new List<PSRegistrationAssignment>();
-                assignments.ForEach(assignment => output.Add(new PSRegistrationAssignment(assignment)));
+                List<PSGetRegistrationAssignment> output = new List<PSGetRegistrationAssignment>();
+                assignments.ForEach(assignment => output.Add(new PSGetRegistrationAssignment(assignment, scope)));
                 WriteObject(output, true);
             }
         }
 
-        protected void WriteRegistrationDefinitionsList(IPage<RegistrationDefinition> definitions)
+        protected void WriteRegistrationDefinitionsList(IPage<RegistrationDefinition> definitions, string scope)
         {
             if (definitions != null)
             {
-                List<PSRegistrationDefinition> output = new List<PSRegistrationDefinition>();
-                definitions.ForEach(definition => output.Add(new PSRegistrationDefinition(definition)));
+                List<PSGetRegistrationDefinition> output = new List<PSGetRegistrationDefinition>();
+                definitions.ForEach(definition => output.Add(new PSGetRegistrationDefinition(definition, scope)));
                 WriteObject(output, true);
             }
         }

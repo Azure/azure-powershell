@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 var results = this.PSManagedServicesClient.ListRegistrationAssignments(
                     scope: scope,
                     expandRegistrationDefinition: this.ExpandRegistrationDefinition);
-                this.WriteRegistrationAssignmentList(results);
+                this.WriteRegistrationAssignmentList(results, scope);
             }
             else
             {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     scope: scope,
                     registrationAssignmentId: assignmentId,
                     expandRegistrationDefinition: this.ExpandRegistrationDefinition);
-                WriteObject(new PSRegistrationAssignment(result), true);
+                WriteObject(new PSGetRegistrationAssignment(result, scope), true);
             }
         }
     }

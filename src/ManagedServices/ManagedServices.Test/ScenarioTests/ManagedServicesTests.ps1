@@ -121,6 +121,7 @@ function Test-ManagedServices_CRUD
 	$getDef = Get-AzManagedServicesDefinition -Name $definitionId
 	Assert-NotNull $getDef
 	Assert-AreEqual $definition.Id $getDef.Id
+    Assert-NotNull $getDef.Scope
 
 	#put assignment
 	$assignment = New-AzManagedServicesAssignmentWithName `
@@ -133,6 +134,7 @@ function Test-ManagedServices_CRUD
 	Assert-NotNull $getAssignment
 	Assert-AreEqual $assignment.Id $getAssignment.Id
 	Assert-AreEqual $definition.Id $getAssignment.Properties.RegistrationDefinitionId
+    Assert-AreEqual $getDef.Scope $getAssignment.Scope
 
 	#remove assignment
 	Remove-AzManagedServicesAssignment -Name $assignmentId

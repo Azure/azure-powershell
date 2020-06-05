@@ -16,23 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using System.Management.Automation.Language;
 
-    public class PSRegistrationAssignment
+    public class PSGetRegistrationAssignment : PSRegistrationAssignment
     {
-        public string Id { get; set; }
+        [Ps1Xml(Label = "Scope", Target = ViewControl.Table, Position = 2)]
+        public string Scope { get; set; }
 
-        public string Type { get; set; }
-
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
-        public string Name { get; set; }
-
-        [Ps1Xml(Label = "RegistrationDefinitionId", Target = ViewControl.Table, ScriptBlock = "$_.Properties.RegistrationDefinitionId", Position = 1)]
-        public PSRegistrationAssignmentProperties Properties { get; set; }
-
-        public PSRegistrationAssignment(RegistrationAssignment registrationAssignment)
+        public PSGetRegistrationAssignment(RegistrationAssignment registrationAssignment, string scope) : base(registrationAssignment)
         {
             if (registrationAssignment != null)
             {
@@ -40,6 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
                 this.Name = registrationAssignment.Name;
                 this.Type = registrationAssignment.Type;
                 this.Properties = new PSRegistrationAssignmentProperties(registrationAssignment.Properties);
+                this.Scope = scope;
             }
         }
     }
