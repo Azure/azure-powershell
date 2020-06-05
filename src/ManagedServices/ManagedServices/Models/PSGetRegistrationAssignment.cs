@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using System.Management.Automation.Language;
 
     public class PSGetRegistrationAssignment : PSRegistrationAssignment
     {
