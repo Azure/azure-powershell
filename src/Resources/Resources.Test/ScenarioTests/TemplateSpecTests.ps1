@@ -102,3 +102,48 @@ function Test-GetTemplateSpec
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests that we can create a basic template spec with New-AzTemplateSpec
+#>
+function Test-CreateTemplateSpec
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+    try
+    {
+        # Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpecV1 = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Description "My Basic Template Spec" -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		# Check to make sure all of the properties match expectations
+
+		Assert-NotNull $basicCreatedTemplateSpecV1
+		Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
+		Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
+		Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
+		Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
+		
+		# For the ARM template itself we'll do some normalization to ensure a valid comparison:
+		$normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
+		$normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+		
+		Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
+
+		# Make sure we can get the template spec back out:
+		$returnedByGet = Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
