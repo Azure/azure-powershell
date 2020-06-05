@@ -31,7 +31,6 @@ function Get-AreObjectsEquivalent
     return !($diff)
 }
 
-
 <#
 .SYNOPSIS
 Tests Template Spec GET operations with different parameter sets for PowerShell
@@ -124,22 +123,64 @@ function Test-CreateTemplateSpec
         $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
         $basicCreatedTemplateSpecV1 = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Description "My Basic Template Spec" -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
 
-		# Check to make sure all of the properties match expectations
+        # Check to make sure all of the properties match expectations
 
-		Assert-NotNull $basicCreatedTemplateSpecV1
-		Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
-		Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
-		Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
-		Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
-		
-		# For the ARM template itself we'll do some normalization to ensure a valid comparison:
-		$normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-		$normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
-		
-		Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
+        Assert-NotNull $basicCreatedTemplateSpecV1
+        Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
+        Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
+        Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
+        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
+        
+        # For the ARM template itself we'll do some normalization to ensure a valid comparison:
+        $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        
+        Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
-		# Make sure we can get the template spec back out:
-		$returnedByGet = Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1"
+        # Make sure we can get the template spec back out:
+        $returnedByGet = Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests 
+#>
+function Test-RemoveTemplateSpec
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+    try
+    {
+        # Prepare our RG and basic template spec (with two versions):
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpecV1 = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+        $basicCreatedTemplateSpecV2 = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v2" -TemplateJson $sampleTemplateJson
+
+        # Validate we can remove a single version:
+
+        # Temporarily blocked due to backend issue. Re-enable when fixed.
+        # $singleVersionRemovalResult = Remove-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" -Force
+        # Assert-True { $singleVersionRemovalResult }
+        # Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" }
+
+        # Validate we can remove the entire template spec:
+
+        $allVersionsRemovalResult = Remove-AzTemplateSpec -Id $basicCreatedTemplateSpecV1.Id -Force # Note: Id is Id of the root template spec
+        Assert-True { $allVersionsRemovalResult }
+        Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname }
     }
     finally
     {

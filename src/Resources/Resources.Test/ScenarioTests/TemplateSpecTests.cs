@@ -37,5 +37,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateTemplateSpec");
         }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTemplateSpecRemoval()
+        {
+            TestRunner.RunTestScript("Test-RemoveTemplateSpec");
+        }
     }
 }
