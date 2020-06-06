@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,,
+                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null
                 };
 
