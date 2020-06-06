@@ -31,3 +31,62 @@ function Test-NewSubscription
     Assert-AreEqual $myNewSubName $newSub.Name
 	Assert-NotNull $newSub.SubscriptionId
 }
+
+function Test-CancelSubscription
+{
+    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
+
+    $cancelSub = Cancel-AzSubscription -SubscriptionId $subId
+
+	Assert-NotNull cancelSub.SubscriptionId
+}
+
+function Test-EnableSubscription
+{
+    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
+
+    $enableSub = Enable-AzSubscription -SubscriptionId $subId
+
+	Assert-NotNull enableSub.SubscriptionId
+}
+
+function Test-RenameSubscription
+{
+    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
+	$newName = "NewSubName"
+
+    $renameSub = Rename-AzSubscription -SubscriptionId $subId -Name $newName
+
+	Assert-NotNull renameSub.SubscriptionId
+}
+
+function Test-NewModernSubscription
+{
+    # $accounts = Get-AzEnrollmentAccount
+    $billingAccountId = "d6fd151e-2f30-50d5-34b2-fe40b1d64b7f:31670802-3752-4741-b5cc-683c71eca69b_2019-05-31" 
+	$billingProfileId = "4S2P-T44P-BG7-TGB" 
+	$InvoiceSectionId = "74EQ-I4QH-PJA-TGB" 
+
+    $myNewSubName = "subscriptionName"
+	$skuId ="0001"
+
+    $newSub = New-AzModernSubscription -BillingAccountId $billingAccountId -BillingProfileId $billingProfileId -InvoiceSectionId $InvoiceSectionId -Name $myNewSubName -SkuId $skuId
+
+    Assert-AreEqual $myNewSubName $newSub.Name
+	Assert-NotNull $newSub.SubscriptionId
+}
+
+function Test-NewCspSubscription
+{
+    # $accounts = Get-AzEnrollmentAccount
+    $billingAccountId = "d6fd151e-2f30-50d5-34b2-fe40b1d64b7f:34756dd9-25b9-40c6-bc85-c25f68bff94f_2018-09-30" 
+	$customerId = "JIMI-YGZA-BG7-TGB" 
+
+    $myNewSubName = "subscriptionName"
+	$skuId ="0001"
+
+    $newSub = New-AzModernSubscription -BillingAccountId $billingAccountId -CustomerId $customerId -Name $myNewSubName -SkuId $skuId
+
+    Assert-AreEqual $myNewSubName $newSub.Name
+	Assert-NotNull $newSub.SubscriptionId
+}

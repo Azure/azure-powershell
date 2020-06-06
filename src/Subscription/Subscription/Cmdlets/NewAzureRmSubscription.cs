@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
                 var owners = this.ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName).Select(id => new AdPrincipal() { ObjectId = id }).ToArray();
 
                 // Create the subscription.
-                var result = this.SubscriptionClient.SubscriptionFactory.CreateSubscriptionInEnrollmentAccount(EnrollmentAccountObjectId, new SubscriptionCreationParameters()
+                var result = this.SubscriptionClient.Subscription.CreateSubscriptionInEnrollmentAccount(EnrollmentAccountObjectId, new SubscriptionCreationParameters()
                 {
                     DisplayName = this.Name,
                     OfferType = this.OfferType,

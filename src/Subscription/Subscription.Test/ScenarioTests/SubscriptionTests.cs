@@ -41,5 +41,40 @@ namespace Subscription.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscription");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewModernSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewModernSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewCspSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewCspSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCancelSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CancelSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRenameSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RenameSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EnableSubscription");
+        }
     }
 }
