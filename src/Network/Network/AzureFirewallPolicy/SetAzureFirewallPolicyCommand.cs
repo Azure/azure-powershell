@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The whitelist for Threat Intelligence")]
+        public PSAzureFirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
@@ -126,6 +131,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
                 this.ThreatIntelMode = this.IsParameterBound(c => c.ThreatIntelMode) ? ThreatIntelMode : InputObject.ThreatIntelMode;
+                this.ThreatIntelWhitelist = this.IsParameterBound(c => c.ThreatIntelWhitelist) ? ThreatIntelWhitelist : InputObject.ThreatIntelWhitelist;
                 this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
@@ -134,6 +140,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,,
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null
                 };
 
@@ -152,6 +159,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null
                 };
 
