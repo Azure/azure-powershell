@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSBgpConnection : PSChildResource
+    public partial class PSVirtualRouterPeer : PSChildResource
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public uint PeerAsn { get; set; }

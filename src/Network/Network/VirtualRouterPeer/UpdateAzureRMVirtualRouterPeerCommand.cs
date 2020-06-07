@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual router peer input object.")]
         [ValidateNotNullOrEmpty]
-        public PSBgpConnection InputObject { get; set; }
+        public PSVirtualRouterPeer InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId,
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual router peer resource Id.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Network/virtualHubs/bgpConnections")]
+        [ResourceIdCompleter("Microsoft.Network/virtualRouters/peerings")]
         public string ResourceId { get; set; }
 
         [Parameter(
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             var present = true;
-            BgpConnection existingBgpConnection = null;
+            VirtualRouterPeering existingVirtualRouterPeer = null;
 
             try
             {
-                existingBgpConnection = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Get(this.ResourceGroupName, this.VirtualRouterName, this.PeerName);
+                existingVirtualRouterPeer = this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.Get(this.ResourceGroupName, this.VirtualRouterName, this.PeerName);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.Network
             if (ParameterSetName.Equals(VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
-                PeerAsn = (uint) existingBgpConnection.PeerAsn;
-                PeerIp = existingBgpConnection.PeerIp;
+                PeerAsn = (uint) existingVirtualRouterPeer.PeerAsn;
+                PeerIp = existingVirtualRouterPeer.PeerIp;
             }
 
             ConfirmAction(
@@ -151,22 +151,21 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.PeerName));
-                    PSBgpConnection bgpConnection = new PSBgpConnection
+                    PSVirtualRouterPeer virtualRouterPeer = new PSVirtualRouterPeer
                     {
                         Name = this.PeerName,
                         PeerAsn = this.PeerAsn,
                         PeerIp = this.PeerIp
                     };
 
-                    var vBgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(bgpConnection);
+                    var vVirtualRouterPeerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualRouterPeering>(virtualRouterPeer);
 
-                    this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.VirtualRouterName, this.PeerName, vBgpConnectionModel);
-                    var getVirtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.VirtualRouterName);
-                    var vVirtualHubModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(getVirtualHub);
-                    vVirtualHubModel.ResourceGroupName = this.ResourceGroupName;
-                    vVirtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(getVirtualHub.Tags);
-                    AddBgpConnectionsToPSVirtualHub(getVirtualHub, vVirtualHubModel, ResourceGroupName, this.VirtualRouterName);
-                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<PSVirtualRouter>(vVirtualHubModel);
+                    this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.CreateOrUpdate(this.ResourceGroupName, this.VirtualRouterName, this.PeerName, vVirtualRouterPeerModel);
+                    var getVirtualRouter = this.NetworkClient.NetworkManagementClient.VirtualRouters.Get(this.ResourceGroupName, this.VirtualRouterName);
+                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouter>(getVirtualRouter);
+                    vVirtualRouterModel.ResourceGroupName = this.ResourceGroupName;
+                    vVirtualRouterModel.Tag = TagsConversionHelper.CreateTagHashtable(getVirtualRouter.Tags);
+                    AddPeeringsToPSVirtualRouter(getVirtualRouter, vVirtualRouterModel, ResourceGroupName, this.VirtualRouterName);
 
                     WriteObject(vVirtualRouterModel, true);
                 });

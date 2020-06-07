@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.RouterName,
                 () =>
                 {
-                    this.NetworkClient.NetworkManagementClient.VirtualHubs.Delete(ResourceGroupName, RouterName);
+                    this.NetworkClient.NetworkManagementClient.VirtualRouters.Delete(ResourceGroupName, RouterName);
                     if (PassThru)
                     {
                         WriteObject(true);

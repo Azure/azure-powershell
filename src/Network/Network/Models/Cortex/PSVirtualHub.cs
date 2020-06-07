@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
-        public List<PSSubnet> IpConfigurations { get; set; }
-
-        public List<PSBgpConnection> BgpConnections { get; set; }
-
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
 
