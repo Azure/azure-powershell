@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class AzureFirewallPolicyRuleCollectionGroupBaseCmdlet : NetworkBaseCmdlet
     {
-        public IFirewallPolicyRuleGroupsOperations AzureFirewallPolicyRuleGroupClient
+        public IFirewallPolicyRuleCollectionGroupsOperations AzureFirewallPolicyRuleGroupClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups;
+                return NetworkClient.NetworkManagementClient.FirewallPolicyRuleCollectionGroups;
             }
         }
 
@@ -52,26 +52,26 @@ namespace Microsoft.Azure.Commands.Network
             var ruleCollectionGroup = new PSAzureFirewallPolicyRuleCollectionGroup();
             ruleCollectionGroup.RuleCollection = new List<PSAzureFirewallPolicyBaseRuleCollection>();
 
-            for (int ruleCollectionIndex = 0; ruleCollectionIndex < getRuleCollectionGroup.Rules.Count; ruleCollectionIndex++)
+            for (int ruleCollectionIndex = 0; ruleCollectionIndex < getRuleCollectionGroup.RuleCollections.Count; ruleCollectionIndex++)
             {
                 var ruleCollection = new PSAzureFirewallPolicyBaseRuleCollection();
-                if (getRuleCollectionGroup.Rules[ruleCollectionIndex] is MNM.FirewallPolicyFilterRule)
+                if (getRuleCollectionGroup.RuleCollections[ruleCollectionIndex] is MNM.FirewallPolicyFilterRuleCollection)
                 {
-                    MNM.FirewallPolicyFilterRule filterRule = (MNM.FirewallPolicyFilterRule)getRuleCollectionGroup.Rules[ruleCollectionIndex];
-                    PSAzureFirewallPolicyFilterRuleCollection filterRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyFilterRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.Rules[ruleCollectionIndex]));
+                    MNM.FirewallPolicyFilterRuleCollection filterRule = (MNM.FirewallPolicyFilterRuleCollection)getRuleCollectionGroup.RuleCollections[ruleCollectionIndex];
+                    PSAzureFirewallPolicyFilterRuleCollection filterRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyFilterRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.RuleCollections[ruleCollectionIndex]));
                     filterRuleCollection.RuleCollectionType = "FirewallPolicyFilterRule";
                     filterRuleCollection.Rules = new List<PSAzureFirewallPolicyRule>();
-                    for (int ruleIndex = 0; ruleIndex < filterRule.RuleConditions.Count; ruleIndex++)
+                    for (int ruleIndex = 0; ruleIndex < filterRule.Rules.Count; ruleIndex++)
                     {
-                        if (filterRule.RuleConditions[ruleIndex] is MNM.ApplicationRuleCondition)
+                        if (filterRule.Rules[ruleIndex] is MNM.ApplicationRule)
                         {
-                            PSAzureFirewallPolicyApplicationRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyApplicationRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[ruleIndex]));
+                            PSAzureFirewallPolicyApplicationRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyApplicationRule>(JsonConvert.SerializeObject(filterRule.Rules[ruleIndex]));
                             rule.RuleType = "ApplicationRuleCondition";
                             filterRuleCollection.Rules.Add(rule);
                         }
                         else
                         {
-                            PSAzureFirewallPolicyNetworkRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[ruleIndex]));
+                            PSAzureFirewallPolicyNetworkRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(filterRule.Rules[ruleIndex]));
                             rule.RuleType = "NetworkRuleCondition";
                             filterRuleCollection.Rules.Add(rule);
                         }
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else
                 {
-                    MNM.FirewallPolicyNatRule natRule = (MNM.FirewallPolicyNatRule)getRuleCollectionGroup.Rules[ruleCollectionIndex];
-                    PSAzureFirewallPolicyNatRuleCollection natRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNatRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.Rules[ruleCollectionIndex]));
+                    MNM.FirewallPolicyNatRuleCollection natRule = (MNM.FirewallPolicyNatRuleCollection)getRuleCollectionGroup.RuleCollections[ruleCollectionIndex];
+                    PSAzureFirewallPolicyNatRuleCollection natRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNatRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.RuleCollections[ruleCollectionIndex]));
                     natRuleCollection.RuleCollectionType = "FirewallPolicyNatRule";
-                    natRuleCollection.Rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.RuleCondition));
+                    natRuleCollection.Rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.Rules));
                     natRuleCollection.Rule.RuleType = "NetworkRuleCondition";
                     ruleCollectionGroup.RuleCollection.Add(natRuleCollection);
                 }
