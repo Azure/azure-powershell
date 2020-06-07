@@ -37,6 +37,14 @@ PS C:\> New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelMod
 
 This example creates an azure firewall policy with a threat intel mode
 
+### 3. Create an empty policy with ThreatIntel Whitelist
+```powershell
+PS C:\> $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+PS C:\> New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelWhitelist $threatIntelWhitelist
+```
+
+This example creates an azure firewall policy with a threat intel whitelist
+
 ## PARAMETERS
 
 ### -AsJob

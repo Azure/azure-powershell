@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyThreatIntelWhitelist
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new threat intelligence whitelist for Azure Firewall Policy
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzFirewallPolicyThreatIntelWhitelist [-FQDN <String[]>] [-IpAddress <String[
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel whitelist object, which can be used when creating or setting an Azure Firewall Policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 ```
 
-{{ Add example description here }}
+This example creates a threat intel whitelist containing a FQDN whitelist of one entry and an Ip address whitelist of two entries
 
 ## PARAMETERS
 
