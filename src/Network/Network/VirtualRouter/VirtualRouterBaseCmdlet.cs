@@ -20,23 +20,23 @@ namespace Microsoft.Azure.Commands.Network
 {
     public class VirtualRouterBaseCmdlet : NetworkBaseCmdlet
     {
-        // Gateway ASN which gets populated for VirtualRouter as VR resides inside GW
+        // Gateway ASN which gets populated for VirtualHub as VR resides inside GW
         public const int GatewayAsn = 65515;
 
-        public void AddPeeringsToPSVirtualRouter (VirtualRouter vVirtualRouter, 
-                                                  CNM.PSVirtualRouter vVirtualRouterModel,
+        public void AddBgpConnectionsToPSVirtualHub (VirtualHub vVirtualHub, 
+                                                  CNM.PSVirtualHub vVirtualHubModel,
                                                   string resourceGroupName,
                                                   string routerName)
         {
-            if (vVirtualRouter.Peerings != null && vVirtualRouter.Peerings.Count > 0)
+            if (vVirtualHubModel.BgpConnections != null && vVirtualHubModel.BgpConnections.Count > 0)
             {
-                var vVirtualRouterPeering = this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.List(resourceGroupName, routerName);
-                var vVirtualRouterPeeringList = ListNextLink<VirtualRouterPeering>.GetAllResourcesByPollingNextLink(vVirtualRouterPeering, this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.ListNext);
-                foreach (var peering in vVirtualRouterPeeringList)
-                {
-                    vVirtualRouterModel.Peerings.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(peering));
+                var bgpConnections = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.List(this.ResourceGroupName, this.VirtualRouterName);
+                var bgpConnectionList = ListNextLink<BgpConnection>.GetAllResourcesByPollingNextLink(bgpConnections, this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.ListNext);
+                    foreach (var connection in bgpConnectionList)
+                    {
+                        vVirtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<PSBgpConnection>(connection));
+                    }
                 }
-            }
         }
     }
 }

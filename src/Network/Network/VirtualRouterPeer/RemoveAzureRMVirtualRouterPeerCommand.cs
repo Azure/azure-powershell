@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual router peer input object.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualRouterPeer InputObject { get; set; }
+        public PSBgpConnection InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual router peer resource Id.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Network/virtualRouters/peerings")]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs/bgpConnection")]
         public string ResourceId { get; set; }
 
         [Parameter(
@@ -104,13 +104,14 @@ namespace Microsoft.Azure.Commands.Network
                 PeerName,
                 () =>
                 {
-                    this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.Delete(ResourceGroupName, VirtualRouterName, PeerName);
-                    var vVirtualRouter = this.NetworkClient.NetworkManagementClient.VirtualRouters.Get(ResourceGroupName, VirtualRouterName);
-                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouter>(vVirtualRouter);
-                    vVirtualRouterModel.ResourceGroupName = this.ResourceGroupName;
-                    vVirtualRouterModel.Tag = TagsConversionHelper.CreateTagHashtable(vVirtualRouter.Tags);
-                    AddPeeringsToPSVirtualRouter(vVirtualRouter, vVirtualRouterModel, ResourceGroupName, this.VirtualRouterName);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Delete(ResourceGroupName, VirtualRouterName, PeerName);
+                    var vVirtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, VirtualRouterName);
+                    var vVirtualHubModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(vVirtualHub);
+                    vVirtualHubModel.ResourceGroupName = this.ResourceGroupName;
+                    vVirtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(vVirtualHub.Tags);
+                    AddBgpConnectionsToPSVirtualHub(vVirtualHub, vVirtualHubModel, ResourceGroupName, this.VirtualRouterName);
 
+                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouter>(vVirtualHubModel);
                     WriteObject(vVirtualRouterModel, true);
                 });
         }

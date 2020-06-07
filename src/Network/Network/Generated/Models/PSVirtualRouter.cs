@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSVirtualRouter : PSTopLevelResource
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSResourceId HostedGateway { get; set; }
+        public List<PSSubnet> IpConfiguration { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public uint VirtualRouterAsn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public List<string> VirtualRouterIps { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        public List<PSVirtualRouterPeer> Peerings { get; set; }
+        public List<PSBgpConnection> Peerings { get; set; }
 
         [JsonIgnore]
         public string PeeringsText
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string HostedGatewayText
+        public string HostedSubnetText
         {
-            get { return JsonConvert.SerializeObject(HostedGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(IPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
