@@ -16,10 +16,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     internal static class VirtualRouterParameterSetNames
     {
-        internal const string ByHostedGateway = "HostedGatewayParameterSet";
-        internal const string ByHostedGatewayId = "HostedGatewayIdParameterSet";
         internal const string ByVirtualRouterResourceId = "VirtualRouterResourceIdParameterSet";
         internal const string ByVirtualRouterInputObject = "VirtualRouterInputObjectParameterSet";
         internal const string ByVirtualRouterName = "VirtualRouterNameParameterSet";
+        internal const string ByVirtualWanObject = "ByVirtualWanObject";
     }
 }
