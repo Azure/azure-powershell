@@ -44,20 +44,6 @@ namespace Subscription.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewModernSubscription()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewModernSubscription");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewCspSubscription()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewCspSubscription");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateSubscription()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateSubscription");

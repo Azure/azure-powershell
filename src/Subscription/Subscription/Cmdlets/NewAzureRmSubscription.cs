@@ -67,6 +67,28 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "Name of the enrollment account to use when creating the subscription.")]
         public string EnrollmentAccountObjectId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of the billing account to use when creating the subscription.")]
+        public string BillingAccountId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Name of the billing profile to use when creating the subscription.")]
+        public string BillingProfileId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Name of the invoice section to use when creating the subscription.")]
+        public string InvoiceSectionId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Management Group Id.")]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "SkuId of the subscription.")]
+        [PSArgumentCompleter("0001", "0002")]
+        public string SkuId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Name of the customer to use when creating the subscription.")]
+        public string CustomerId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Reseller Id of the subscription")]
+        public string ResellerId { get; set; }
+
         [Parameter(Mandatory = false, Position = 0, HelpMessage = "Name of the subscription. When not specified, a name will be generated based on the specified offer type.")]
         public string Name { get; set; }
 
@@ -86,19 +108,48 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Alias("OwnerSPN", "OwnerServicePrincipalName")]
         public string[] OwnerApplicationId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Type of the subscription.")]
+        [PSArgumentCompleter("Modern", "Csp")]
+        public string SubscriptionType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription"))
             {
-                var owners = this.ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName).Select(id => new AdPrincipal() { ObjectId = id }).ToArray();
-
-                // Create the subscription.
-                var result = this.SubscriptionClient.Subscription.CreateSubscriptionInEnrollmentAccount(EnrollmentAccountObjectId, new SubscriptionCreationParameters()
+                SubscriptionCreationResult result = new SubscriptionCreationResult();
+                if (!string.IsNullOrWhiteSpace(EnrollmentAccountObjectId))
                 {
-                    DisplayName = this.Name,
-                    OfferType = this.OfferType,
-                    Owners = owners
-                });
+                    var owners = this
+                        .ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName)
+                        .Select(id => new AdPrincipal() {ObjectId = id}).ToArray();
+
+                    // Create the subscription.
+                    result = this.SubscriptionClient.Subscription.CreateSubscriptionInEnrollmentAccount(
+                        EnrollmentAccountObjectId, new SubscriptionCreationParameters()
+                        {
+                            DisplayName = this.Name,
+                            OfferType = this.OfferType,
+                            Owners = owners
+                        });
+                }
+                else if (SubscriptionType == "Modern")
+                {
+                    result = this.SubscriptionClient.Subscription.CreateSubscription(BillingAccountId, BillingProfileId, InvoiceSectionId, new ModernSubscriptionCreationParameters()
+                    {
+                        DisplayName = this.Name,
+                        SkuId = this.SkuId,
+                        ManagementGroupId = this.ManagementGroupId
+                    });
+                }
+                else if(SubscriptionType == "Csp")
+                {
+                    result = this.SubscriptionClient.Subscription.CreateCspSubscription(BillingAccountId, CustomerId, new ModernCspSubscriptionCreationParameters()
+                    {
+                        DisplayName = this.Name,
+                        SkuId = this.SkuId,
+                        ResellerId = this.ResellerId
+                    });
+                }
 
                 // Write output.
                 var createdSubscription = new AzureSubscription()
