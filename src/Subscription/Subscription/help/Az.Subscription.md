@@ -23,14 +23,6 @@ Creates Modern Azure subscription.
 Creates Csp Azure subscription.
 
 ## Az.Subscription Cmdlets
-### [Cancel-AzSubscription](Cancel-AzSubscription.md)
-Cancels an Azure subscription.
-
-## Az.Subscription Cmdlets
-### [Rename-AzSubscription](Rename-AzSubscription.md)
-Renames an Azure subscription.
-
-## Az.Subscription Cmdlets
-### [Enable-AzSubscription](Enable-AzSubscription.md)
-Enables an Azure subscription.
+### [Update-AzSubscription](Update-AzSubscription.md)
+Updates an Azure subscription.
 

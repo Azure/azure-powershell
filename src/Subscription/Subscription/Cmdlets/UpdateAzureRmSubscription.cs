@@ -16,15 +16,16 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.Subscription;
 using Microsoft.Azure.Management.Subscription.Models;
 
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
-    [Cmdlet("Rename", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Subscription", SupportsShouldProcess =
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Subscription", SupportsShouldProcess =
          true), OutputType(typeof(PSAzureSubscription))]
-    public class RenameAzureRmSubscription : AzureRmLongRunningCmdlet
+    public class UpdateAzureRmSubscription : AzureRmLongRunningCmdlet
     {
         private ISubscriptionClient _subscriptionClient;
 
@@ -43,23 +44,40 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
             set { _subscriptionClient = value; }
         }
 
-        [Parameter(Mandatory = true, HelpMessage = "Subscription Id to rename")]
+        [Parameter(Mandatory = true, HelpMessage = "Subscription Id to update")]
         public string SubscriptionId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of the subscription")]
+        [Parameter(Mandatory = true, HelpMessage = "Action to perform on subscription")]
+        [PSArgumentCompleter("Cancel", "Enable", "Rename")]
+        public string Action { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Name of the subscription")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(target: this.SubscriptionId, action: "Rename subscription"))
+            if (this.ShouldProcess(target: this.SubscriptionId, action: "Update subscription"))
             {
-                // Cancel the subscription.
-                var result = this.SubscriptionClient.Subscription.Rename(SubscriptionId,new SubscriptionName()
-                {
-                    SubscriptionNameProperty = Name
-                });
+                // Updates the subscription.
 
-                WriteObject(result);
+                if (Action == "Cancel")
+                {
+                    var result = this.SubscriptionClient.Subscription.Cancel(SubscriptionId);
+                    WriteObject(result);
+                }
+                else if (Action == "Enable")
+                {
+                    var result = this.SubscriptionClient.Subscription.Enable(SubscriptionId);
+                    WriteObject(result);
+                }
+                else
+                {
+                    var result = this.SubscriptionClient.Subscription.Rename(SubscriptionId, new SubscriptionName()
+                    {
+                        SubscriptionNameProperty = Name
+                    });
+                    WriteObject(result);
+                }
             }
         }
     }

@@ -32,32 +32,13 @@ function Test-NewSubscription
 	Assert-NotNull $newSub.SubscriptionId
 }
 
-function Test-CancelSubscription
+function Test-UpdateSubscription
 {
     $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
 
-    $cancelSub = Cancel-AzSubscription -SubscriptionId $subId
+    $updateSub = Update-AzSubscription -SubscriptionId $subId
 
-	Assert-NotNull cancelSub.SubscriptionId
-}
-
-function Test-EnableSubscription
-{
-    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
-
-    $enableSub = Enable-AzSubscription -SubscriptionId $subId
-
-	Assert-NotNull enableSub.SubscriptionId
-}
-
-function Test-RenameSubscription
-{
-    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
-	$newName = "NewSubName"
-
-    $renameSub = Rename-AzSubscription -SubscriptionId $subId -Name $newName
-
-	Assert-NotNull renameSub.SubscriptionId
+	Assert-NotNull updateSub.SubscriptionId
 }
 
 function Test-NewModernSubscription
