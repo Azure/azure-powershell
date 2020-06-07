@@ -210,6 +210,11 @@ namespace Microsoft.Azure.Commands.Network
         public string VirtualHubId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ip addresses for the firewall attached to a virtual hub")]
+        public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
+
+        [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The firewall policy attached to the firewall")]
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
+                if(this.HubIPAddresses != null && this.HubIPAddresses.PublicIPs != null && this.HubIPAddresses.PublicIPs.Addresses != null)
+                {
+                    throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
                 var sku = new PSAzureFirewallSku();
                 sku.Name = MNM.AzureFirewallSkuName.AZFWHub;
                 sku.Tier = MNM.AzureFirewallSkuTier.Standard;
@@ -276,7 +286,8 @@ namespace Microsoft.Azure.Commands.Network
                     Location = this.Location,
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
-                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                    HubIpAddresses = this.HubIPAddresses
                 };
             }
             else

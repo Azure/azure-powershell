@@ -53,6 +53,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
+        public PSAzureFirewallHubIpAddresses HubIpAddresses { get; set; }
+
         public string[] PrivateRange {
             get
             {
@@ -110,6 +112,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ThreatIntelWhitelistText
         {
             get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string HubIpAddressesText
+        {
+            get { return JsonConvert.SerializeObject(HubIpAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]
