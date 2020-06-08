@@ -86,7 +86,7 @@ function Log($test, $message)
 
 function Assert-NewExtension($ResourceGroupName, $VMName, $IdentityType) {
 	
-	$newPublisher = "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp"
+	$newPublisher = "Microsoft.AzureCAT.AzureEnhancedMonitoring"
 	$newTypeWin = "MonitorX64Windows"
 	$newTypeLnx = "MonitorX64Linux"
 
@@ -1176,7 +1176,7 @@ function Get-CustomResourceGroupName {
 
 function Get-LocationForNewExtension {
 	$loc = Get-ComputeVMLocation    
-
+    $loc = "westcentralus"
 	return $loc
 }
 
@@ -1187,7 +1187,7 @@ function Create-IdentityForNewExtension($ResourceGroupName, $TestName) {
 	return $ident
 }
 
-function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, $imageType, [Switch] $useMD, $zone)
+function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, $imageType = "Windows", [Switch] $useMD, $zone)
 {
     Write-Verbose "Start Create-AdvancedVM"
 
