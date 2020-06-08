@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.3
 * Updated assembly version of data plane cmdlets
 
 ## Version 1.1.2

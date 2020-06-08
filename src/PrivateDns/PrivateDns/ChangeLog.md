@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.3
 * Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
 
 ## Version 1.0.2
