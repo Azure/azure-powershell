@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
 * Added Linux support parameter for New-AzAppServicePlan
+* Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
