@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Returning Substatuses from Get-AzVMCustomScriptExtension [#11297]
+
 
 ## Version 4.1.0
 * Added HostId parameter to `Update-AzVM` cmdlet
