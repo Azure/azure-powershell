@@ -33,26 +33,16 @@ namespace VersionController.Models
         {
             var moduleName = _fileHelper.ModuleName;
             Console.WriteLine("Bumping version for " + moduleName + "...");
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
-                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
-                var cmdletResult = powershell.Invoke();
-                _oldVersion = cmdletResult[0]?.ToString();
-                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
-            }
 
-            if (_oldVersion == null)
-            {
-                throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
-            }
+            GetOldVersion();
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
-            if(MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
+            if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
                 _newVersion = MinimalVersion.ToString();
             }
+
             if (_oldVersion == _newVersion)
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
@@ -76,6 +66,68 @@ namespace VersionController.Models
             UpdateAssemblyInfo();
             UpdateDependentModules();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
+        }
+
+        /// <summary>
+        /// Get _oldVersion and _isPreview of the module.
+        /// Compare the version from PSGallery and TestGallery to the version obtain from manifest.
+        /// Choose the maximum one as the _oldVersion.
+        /// </summary>
+        public void GetOldVersion()
+        {
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
+                var cmdletResult = powershell.Invoke();
+                _oldVersion = cmdletResult[0]?.ToString();
+                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
+            }
+
+            if (_oldVersion == null)
+            {
+                throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " using the built module manifest.");
+            }
+
+            using (PowerShell powetshell = PowerShell.Create())
+            {
+                powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+                powetshell.AddScript("Find-Module -Name " + _fileHelper.ModuleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
+                var cmdletResult = powetshell.Invoke();
+                if (cmdletResult.Count == 0)
+                {
+                    throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " from PSGallery.");
+                }
+                string psVersionImformation = cmdletResult[0].ToString();
+                Regex reg = new Regex("Version=(.*?)(-|;)");
+                Match match = reg.Match(psVersionImformation);
+                var PSGalleryVersion = match.Groups[1].Value;
+                if (new AzurePSVersion(PSGalleryVersion) > new AzurePSVersion(_oldVersion))
+                {
+                    _oldVersion = PSGalleryVersion;
+                    _isPreview = Regex.IsMatch(psVersionImformation, "preview");
+                }
+            }
+
+            using (PowerShell powetshell = PowerShell.Create())
+            {
+                powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+                powetshell.AddScript("Find-Module -Name " + _fileHelper.ModuleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
+                var cmdletResult = powetshell.Invoke();
+                if (cmdletResult.Count == 0)
+                {
+                    throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " from PSGallery.");
+                }
+                var testVersionImformation = cmdletResult[0].ToString();
+                Regex reg = new Regex("Version=(.*?)(-|;)");
+                Match match = reg.Match(testVersionImformation);
+                var TestGalleryVersion = match.Groups[1].Value;
+                if (new AzurePSVersion(TestGalleryVersion) > new AzurePSVersion(_oldVersion))
+                {
+                    _oldVersion = TestGalleryVersion;
+                    _isPreview = Regex.IsMatch(testVersionImformation, "preview");
+                }
+            }
         }
 
         /// <summary>
