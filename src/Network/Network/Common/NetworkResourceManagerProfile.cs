@@ -1222,6 +1222,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallNatRCAction, MNM.AzureFirewallNatRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallRCAction, MNM.AzureFirewallRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<CNM.PSAzureFirewallHubIpAddresses, MNM.HubIPAddresses>();
+
+                // MNM to CNM
+                //cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().BeforeMap((src, dest) =>
+                //{
+                //   dest.HubIpAddresses = src.HubIpAddresses;
+                //});
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
@@ -1274,6 +1281,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNatRCAction, CNM.PSAzureFirewallNatRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<MNM.HubIPAddresses, CNM.PSAzureFirewallHubIpAddresses>();
 
                 // Azure Firewall FQDN Tags
                 // CNM to MNM
@@ -1282,14 +1290,14 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
-                // Azure Firewall Policies
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
-                cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
+                //// Azure Firewall Policies
+                //// CNM to MNM
+                //cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
+                //cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
 
-                // MNM to CNM
-                cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
-                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
+                //// MNM to CNM
+                //cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
+                //cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
 
                 // Virtual Network Tap
                 // CNM to MNM

@@ -23,7 +23,8 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewall : PSTopLevelResource
+    public class 
+        PSAzureFirewall : PSTopLevelResource
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const string AzureFirewallMgmtSubnetName = "AzureFirewallManagementSubnet";
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
-        public PSAzureFirewallHubIpAddresses HubIpAddresses { get; set; }
+        public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
 
         public string[] PrivateRange {
             get
@@ -114,11 +115,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
         }
 
-        [JsonIgnore]
-        public string HubIpAddressesText
-        {
-            get { return JsonConvert.SerializeObject(HubIpAddresses, Formatting.Indented); }
-        }
 
         [JsonIgnore]
         public string PrivateRangeText

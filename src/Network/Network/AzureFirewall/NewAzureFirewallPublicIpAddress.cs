@@ -18,12 +18,12 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NewAzureFirewallPublicIpAddress"), OutputType(typeof(PSAzureFirewallPublicIpAddress))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPublicIpAddress"), OutputType(typeof(PSAzureFirewallPublicIpAddress))]
     public class NewAzureFirewallPublicIpAddress : AzureFirewallBaseCmdlet
     {       
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Public IP Addresses of the Firewall attached to a hub")]
+            HelpMessage = "The IP Addresses of the Firewall attached to a hub")]
         [ValidateNotNull]
         public string Address { get; set; }
 

@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.Network
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
-                    HubIpAddresses = this.HubIPAddresses
+                    HubIPAddresses = this.HubIPAddresses
                 };
             }
             else
