@@ -468,6 +468,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Standard_LRS = "Standard_LRS";
 
         /// <summary>
+        ///     Represents StandardSSD_LRS storage account.
+        /// </summary>
+        public const string StandardSSD_LRS = "StandardSSD_LRS";
+
+        /// <summary>
         ///     Represents Standard_SSD storage account.
         /// </summary>
         public const string Standard_SSD = "Standard_SSD";
