@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix name of new VM Extension for SAP
+* Fixed name of new VM Extension for SAP
 
 ## Version 4.1.0
 * Added HostId parameter to `Update-AzVM` cmdlet
