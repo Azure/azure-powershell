@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+ Added support for backend address pool operations
+    - `New-AzLoadBalancerBackendAddressConfig`
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+    - `Remove-AzLoadBalancerBackendAddressPool`
+    - `Get-AzLoadBalancerBackendAddressPool`
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`
     - `New-AzPublicIpPrefix`
@@ -44,6 +50,9 @@
 * Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
     - Updated cmdlet:
         - New-AzFirewall
+* Updated below commands for feature: Custom dns servers set/remove on VirtualWan P2SVpnGateway.
+    - Updated New-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+    - Updated Update-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
