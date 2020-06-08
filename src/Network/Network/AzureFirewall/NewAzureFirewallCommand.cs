@@ -296,8 +296,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : "false"),
-                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : "true"),
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
                     DNSServer = this.DnsServer,
                     Sku = sku
                 };
