@@ -17,7 +17,7 @@ Creates a Batch account.
 New-AzBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
  [[-AutoStorageAccountId] <String>] [-PoolAllocationMode <PoolAllocationMode>] [-KeyVaultId <String>]
  [-KeyVaultUrl <String>] [-Tag <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccessType>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Identity <BatchAccountIdentity>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+The identity associated with the BatchAccount
+
+```yaml
+Type: Microsoft.Azure.Management.Batch.Models.BatchAccountIdentity
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
