@@ -8,26 +8,28 @@ schema: 2.0.0
 # New-AzFirewallHubIpAddresses
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Ip addresses assoicated to the firewall on virtual hub
 
 ## SYNTAX
 
 ```
-New-AzHubFirewallIpAddresses [-PrivateIPAddress <String>] [-PublicIPs <PSAzureFirewallHubPublicIpAddresses>]
+New-AzFirewallHubIpAddresses [-PrivateIPAddress <String>] [-PublicIPs <PSAzureFirewallHubPublicIpAddresses>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Ip addresses assoicated to the firewall on virtual hub. These can be public and private addresses
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+
+PS C:\> $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
+PS C:\> New-AzFirewallHubIpAddresses -PublicIPs $fwpips
 ```
 
-{{ Add example description here }}
+This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is ssociated to the firewall on the virtual hub.
 
 ## PARAMETERS
 
