@@ -800,6 +800,9 @@ Create a new Azure Firewall Policy Network Rule
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
+### [New-AzFirewallPolicyThreatIntelWhitelist](New-AzFirewallPolicyThreatIntelWhitelist.md)
+Create a new threat intelligence whitelist for Azure Firewall Policy
+
 ### [New-AzFirewallThreatIntelWhitelist](New-AzFirewallThreatIntelWhitelist.md)
 Create a new threat intelligence whitelist for Azure Firewall
 
