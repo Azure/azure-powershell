@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"id\": \"testDisableEnableTerminateJob\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "e46fcef1-ea9d-4f88-856d-09aafc99c2c9"
+          "2e4e800b-0bd6-4c4f-8abe-8c1a2557d6e6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:05 GMT"
+          "Tue, 09 Jun 2020 17:13:36 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -34,16 +34,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AAB0B24DE"
+          "0x8D80C987F4D1BE3"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+          "https://prodtest6.francecentral.batch.azure.com/jobs/job-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "4149cca4-0451-4cb4-adc8-24615a4590bb"
+          "7ca283ea-b8f6-4718-8da5-8adb54f473ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,13 +55,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+          "https://prodtest6.francecentral.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:13:58 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:13:58 GMT"
         ]
       },
       "ResponseBody": "",
@@ -74,13 +74,13 @@
       "RequestBody": "{\r\n  \"disableTasks\": \"terminate\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "ae7f1b9d-d9cf-44ee-9bfb-18e2baf114a3"
+          "7882e9f1-8301-4e47-b54b-ec2395718bed"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:13:58 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -101,13 +101,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AAB5B7DF9"
+          "0x8D80C988C8B5206"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f1d2df7d-39cc-4093-8d4e-9fd0be28b59e"
+          "875fa347-119d-47bd-b807-553e4d2f0213"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -119,13 +119,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob/disable"
+          "https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob/disable"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:14:20 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:14:20 GMT"
         ]
       },
       "ResponseBody": "",
@@ -138,13 +138,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "baba47d8-7d68-4e25-8380-0328ee0b46b2"
+          "e56e98b3-f358-4e9d-ba6f-3936cdd88920"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:30 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -159,13 +159,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AAB5B7DF9"
+          "0x8D80C988C8B5206"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "5a6e76fa-6dec-4d72-bb2f-a3c94b224f82"
+          "afd1dd44-d6ec-4c1b-802b-0e03fdd43624"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,16 +177,16 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:29 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:06 GMT"
+          "Tue, 09 Jun 2020 17:14:20 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJob\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n  \"eTag\": \"0x8D7DD9AAB5B7DF9\",\r\n  \"lastModified\": \"2020-04-10T22:01:06.5816569Z\",\r\n  \"creationTime\": \"2020-04-10T22:01:06.0391197Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2020-04-10T22:01:07.2400004Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T22:01:06.0550878Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2020-04-10T22:01:06.0550878Z\",\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"noaction\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJob\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n  \"eTag\": \"0x8D80C988C8B5206\",\r\n  \"lastModified\": \"2020-06-09T17:14:20.542823Z\",\r\n  \"creationTime\": \"2020-06-09T17:13:58.3007283Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2020-06-09T17:14:20.5753339Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T17:13:58.3247331Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2020-06-09T17:13:58.3247331Z\",\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"noaction\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -196,13 +196,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9349e5e8-0e8e-46a6-8c58-8022931373ee"
+          "d799b350-9383-4b2c-a69e-8b0e829927b0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:17 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -217,13 +217,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AB1981209"
+          "0x8D80C989310A647"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "331e25a9-a3f4-478d-81c7-af2d39885260"
+          "6c9bbda1-bf7d-4f66-80c2-1e19046dce7c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -235,16 +235,16 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:17 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJob\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n  \"eTag\": \"0x8D7DD9AB1981209\",\r\n  \"lastModified\": \"2020-04-10T22:01:17.0449929Z\",\r\n  \"creationTime\": \"2020-04-10T22:01:06.0391197Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2020-04-10T22:01:17.0449929Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-04-10T22:01:16.8469554Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2020-04-10T22:01:06.0550878Z\",\r\n    \"poolId\": \"testPool\",\r\n    \"terminateReason\": \"UserTerminate\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"noaction\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJob\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n  \"eTag\": \"0x8D80C989310A647\",\r\n  \"lastModified\": \"2020-06-09T17:14:31.4829383Z\",\r\n  \"creationTime\": \"2020-06-09T17:13:58.3007283Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2020-06-09T17:14:31.4829383Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T17:14:31.0334768Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2020-06-09T17:13:58.3247331Z\",\r\n    \"poolId\": \"testPool\",\r\n    \"terminateReason\": \"UserTerminate\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"noaction\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -254,13 +254,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a21e2b7c-4894-4887-88ee-c8a2b59dc0c8"
+          "05bac5da-6cb9-47c2-bc9a-7f33eb93dd73"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:30 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -278,13 +278,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AB179DA32"
+          "0x8D80C9892CC1130"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7e840fa7-3b4e-451b-8b9f-508aab467d77"
+          "4f67da3c-0dd1-4f3d-a246-6d116a9f3305"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -296,13 +296,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob/enable"
+          "https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob/enable"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ]
       },
       "ResponseBody": "",
@@ -315,13 +315,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "bd28b3b6-b10e-4660-9a67-063332f8fe3f"
+          "db022124-e0ba-4ab6-88c2-102fa07f375d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -339,7 +339,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "dbd5e389-beee-4014-a421-101387b3d620"
+          "bc568de6-a910-407b-bb7d-5de3992ee122"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -351,13 +351,13 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJob\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n      \"eTag\": \"0x8D7DD9AB179DA32\",\r\n      \"lastModified\": \"2020-04-10T22:01:16.8469554Z\",\r\n      \"creationTime\": \"2020-04-10T22:01:06.0391197Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-04-10T22:01:16.8469554Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2020-04-10T22:01:07.2400004Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-04-10T22:01:06.0550878Z\",\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJob\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob\",\r\n      \"eTag\": \"0x8D80C9892CC1130\",\r\n      \"lastModified\": \"2020-06-09T17:14:31.0334768Z\",\r\n      \"creationTime\": \"2020-06-09T17:13:58.3007283Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T17:14:31.0334768Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T17:14:20.5753339Z\",\r\n      \"priority\": 0,\r\n      \"usesTaskDependencies\": false,\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"poolInfo\": {\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-06-09T17:13:58.3247331Z\",\r\n        \"poolId\": \"testPool\"\r\n      },\r\n      \"onAllTasksComplete\": \"noaction\",\r\n      \"onTaskFailure\": \"noaction\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -367,13 +367,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0c84942c-4b2e-423d-b636-e54d4f2aa212"
+          "2b63af64-19a9-43ec-a48c-0d356361adc7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:17 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -391,13 +391,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AB1981209"
+          "0x8D80C989310A647"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7dc760f5-3e0e-4d42-8f60-c7579fb51fe3"
+          "b93facb6-5907-4b0f-8b4a-83ee232b47d7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -409,13 +409,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJob/terminate"
+          "https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJob/terminate"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:16 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:01:17 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ]
       },
       "ResponseBody": "",
@@ -428,13 +428,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0c0a4b6f-9527-4d38-a3bc-339a1da42925"
+          "7c0542b6-f7e5-4ced-af67-d1c414ecc9d2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:01:17 GMT"
+          "Tue, 09 Jun 2020 17:14:31 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -455,7 +455,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "480b081d-c8eb-4a2a-afc7-66014b6b4380"
+          "3f10ff34-4bbf-4c2a-afb0-cb734f70096d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -467,7 +467,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:01:18 GMT"
+          "Tue, 09 Jun 2020 17:14:33 GMT"
         ]
       },
       "ResponseBody": "",
@@ -476,9 +476,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "prodtest6",
+    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "abc"
   }
 }

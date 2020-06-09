@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"id\": \"resizePool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "37e6752b-85a5-4daa-9437-00032787375d"
+          "b8b9fbe1-0064-4ea1-94be-4695cf8acf55"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:00 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -34,16 +34,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA4141D64"
+          "0x8D80C945C9FA575"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool"
+          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "22f3d9e6-60a1-448b-b5ee-02fcafc0256b"
+          "d0720c46-d8f4-4a12-9aa5-fe1f502db63b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,13 +55,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool"
+          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:22 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:22 GMT"
         ]
       },
       "ResponseBody": "",
@@ -74,13 +74,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3e64ee40-f79e-4bf7-8f54-7a8847e52542"
+          "f0773c55-94b9-4a64-8691-91f860f9df93"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:22 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -95,13 +95,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA4141D64"
+          "0x8D80C945C9FA575"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b94314c0-5acd-4bd0-910b-4729567750b1"
+          "a0e90235-e1ae-433d-b73e-9f045119bbf6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -113,16 +113,16 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:22 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D7DD9AA4141D64\",\r\n  \"lastModified\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"creationTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80C945C9FA575\",\r\n  \"lastModified\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"creationTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T16:44:24.0630364Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -132,13 +132,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a2d0d1fe-ae9e-42f9-be4a-4e893f16388a"
+          "79429301-f28b-457b-919f-036bc4c31319"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:55 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -153,13 +153,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA46BF154"
+          "0x8D80C946A0420BE"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e019c098-4c35-4343-a3ec-856173704f55"
+          "3da85b3d-4d4b-4adf-9948-59ef8655f8ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,16 +171,16 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D7DD9AA46BF154\",\r\n  \"lastModified\": \"2020-04-10T22:00:54.9454164Z\",\r\n  \"creationTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2020-04-10T22:00:54.9454164Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80C946A0420BE\",\r\n  \"lastModified\": \"2020-06-09T16:44:44.6273726Z\",\r\n  \"creationTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T16:44:44.6273726Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -190,13 +190,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e5613259-50de-4d20-a916-fe9388ff4fa4"
+          "4423b3fc-1ce0-49e3-bba1-a14447a4adcb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:55 GMT"
+          "Tue, 09 Jun 2020 16:44:45 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -211,13 +211,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA46BF154"
+          "0x8D80C946A0420BE"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "fae1bab4-1fda-4373-be7c-971fc6ba3042"
+          "633d6ce2-72ac-4659-a609-88f8be9daa89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -229,16 +229,16 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D7DD9AA46BF154\",\r\n  \"lastModified\": \"2020-04-10T22:00:54.9454164Z\",\r\n  \"creationTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-04-10T22:00:54.3698276Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2020-04-10T22:00:55.109395Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80C946A0420BE\",\r\n  \"lastModified\": \"2020-06-09T16:44:44.6273726Z\",\r\n  \"creationTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:44:22.1584757Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T16:44:45.0464135Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -248,13 +248,13 @@
       "RequestBody": "{\r\n  \"targetDedicatedNodes\": 1\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "4f84b8a3-16c5-4682-a432-59ac2dac908f"
+          "5463b4c8-1d69-499d-9aa6-d51ead13140b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -275,13 +275,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA46BF154"
+          "0x8D80C946A0420BE"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3afab536-b004-4a69-b496-02b78d431922"
+          "5d39dd3e-fa6c-4bc6-a6de-d0e9b49841b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -293,13 +293,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool/resize"
+          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool/resize"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ]
       },
       "ResponseBody": "",
@@ -312,13 +312,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "84149147-b239-4dfe-92db-ba1f3dc46a56"
+          "35d863eb-219c-4576-b95d-24150fe56510"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:55 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -336,13 +336,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7DD9AA46BF154"
+          "0x8D80C946A0420BE"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e17d0235-237c-4271-9980-8feefd69b8a0"
+          "81a62c3a-7685-4618-9a4a-7d62b3813856"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -354,13 +354,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/resizePool/stopresize"
+          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool/stopresize"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ],
         "Last-Modified": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:44 GMT"
         ]
       },
       "ResponseBody": "",
@@ -373,13 +373,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a0b4105f-7c53-47b9-a185-220b80fa8b73"
+          "24b907d7-b9ad-4d64-90b1-cfb9f490e906"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 10 Apr 2020 22:00:55 GMT"
+          "Tue, 09 Jun 2020 16:44:45 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -400,7 +400,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "ffb3dd37-9413-457c-a802-a7e97751d1f0"
+          "c5cf146b-25af-476a-8583-345392ad4667"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -412,7 +412,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 10 Apr 2020 22:00:54 GMT"
+          "Tue, 09 Jun 2020 16:44:45 GMT"
         ]
       },
       "ResponseBody": "",
@@ -421,9 +421,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "prodtest6",
+    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "abc"
   }
 }
