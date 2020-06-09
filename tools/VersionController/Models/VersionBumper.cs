@@ -34,7 +34,10 @@ namespace VersionController.Models
             var moduleName = _fileHelper.ModuleName;
             Console.WriteLine("Bumping version for " + moduleName + "...");
 
-            GetOldVersion();
+            _oldVersion = GetOldVersion();
+            _isPreview = new AzurePSVersion(_oldVersion).IsPreview;
+            var comps = _oldVersion.Split('-').Select(c => c.Trim()).ToArray();
+            _oldVersion = comps[0];
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
@@ -69,65 +72,79 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get _oldVersion and _isPreview of the module.
+        /// Get the old version of the module.
         /// Compare the version from PSGallery and TestGallery to the version obtain from manifest.
-        /// Choose the maximum one as the _oldVersion.
+        /// Choose the maximum one as the old version.
         /// </summary>
-        public void GetOldVersion()
+        /// <returns>The old version before bumping.(x.x.x or x.x.x-preview)</returns>
+        public string GetOldVersion()
         {
+            string version;
+            string localVersion = null, psVersion = null, testVersion = null;
+            var moduleName = _fileHelper.ModuleName;
+            
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
-                _oldVersion = cmdletResult[0]?.ToString();
-                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
+                localVersion = cmdletResult[0]?.ToString();
+                if (!string.IsNullOrEmpty(cmdletResult[1]?.ToString()))
+                {
+                    localVersion += "-preview";
+                }
             }
-
-            if (_oldVersion == null)
+            if (localVersion == null)
             {
-                throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " using the built module manifest.");
+                throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
             }
+            version = localVersion;
 
             using (PowerShell powetshell = PowerShell.Create())
             {
                 powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-                powetshell.AddScript("Find-Module -Name " + _fileHelper.ModuleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
+                powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
                 var cmdletResult = powetshell.Invoke();
-                if (cmdletResult.Count == 0)
+                if (cmdletResult.Count != 0)
                 {
-                    throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " from PSGallery.");
+                    var psVersionImformation = cmdletResult[0].ToString();
+                    Regex reg = new Regex("Version=(.*?);");
+                    Match match = reg.Match(psVersionImformation);
+                    psVersion = match.Groups[1].Value;
                 }
-                string psVersionImformation = cmdletResult[0].ToString();
-                Regex reg = new Regex("Version=(.*?)(-|;)");
-                Match match = reg.Match(psVersionImformation);
-                var PSGalleryVersion = match.Groups[1].Value;
-                if (new AzurePSVersion(PSGalleryVersion) > new AzurePSVersion(_oldVersion))
-                {
-                    _oldVersion = PSGalleryVersion;
-                    _isPreview = Regex.IsMatch(psVersionImformation, "preview");
-                }
+            }
+            if (psVersion == null)
+            {
+                psVersion = "0.1.0";
+            }
+            if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
+            {
+                version = psVersion;
             }
 
             using (PowerShell powetshell = PowerShell.Create())
             {
                 powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
-                powetshell.AddScript("Find-Module -Name " + _fileHelper.ModuleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
+                powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
                 var cmdletResult = powetshell.Invoke();
-                if (cmdletResult.Count == 0)
+                if (cmdletResult.Count != 0)
                 {
-                    throw new Exception("Unable to obtain old version of " + _fileHelper.ModuleName + " from PSGallery.");
-                }
-                var testVersionImformation = cmdletResult[0].ToString();
-                Regex reg = new Regex("Version=(.*?)(-|;)");
-                Match match = reg.Match(testVersionImformation);
-                var TestGalleryVersion = match.Groups[1].Value;
-                if (new AzurePSVersion(TestGalleryVersion) > new AzurePSVersion(_oldVersion))
-                {
-                    _oldVersion = TestGalleryVersion;
-                    _isPreview = Regex.IsMatch(testVersionImformation, "preview");
+                    var testVersionImformation = cmdletResult[0].ToString();
+                    Regex reg = new Regex("Version=(.*?);");
+                    Match match = reg.Match(testVersionImformation);
+                    testVersion = match.Groups[1].Value;
                 }
             }
+            if (testVersion == null)
+            {
+                testVersion = "0.1.0";
+            }
+            if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
+            {
+                version = testVersion;
+            }
+
+            return version;
         }
 
         /// <summary>
