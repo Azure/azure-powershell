@@ -54,7 +54,7 @@
     - Updated New-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
     - Updated Update-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
 * Added new cmdlet to support resetting the routing state of a VirtualHub resource:
-    - Reset-HubRouter
+    - Reset-AzHubRouter
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
