@@ -166,7 +166,7 @@ function Test-CreateNewBatchAccountWithSystemIdentity
         $location = Get-BatchAccountProviderLocation
         # Create a Batch account
         New-AzResourceGroup -Name $resourceGroup -Location $location
-        $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -PublicNetworkAccess Disabled -Identity @{Type = "SystemAssigned"}
+        $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -Identity @{Type = "SystemAssigned"}
 
 		Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
 		Assert-NotNull $createdAccount.Identity.TenantId
