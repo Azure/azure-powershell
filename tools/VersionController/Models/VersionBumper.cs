@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
@@ -34,10 +35,7 @@ namespace VersionController.Models
             var moduleName = _fileHelper.ModuleName;
             Console.WriteLine("Bumping version for " + moduleName + "...");
 
-            _oldVersion = GetOldVersion();
-            _isPreview = new AzurePSVersion(_oldVersion).IsPreview;
-            var comps = _oldVersion.Split('-').Select(c => c.Trim()).ToArray();
-            _oldVersion = comps[0];
+            (_oldVersion, _isPreview) = GetOldVersion();
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
@@ -76,11 +74,13 @@ namespace VersionController.Models
         /// Compare the version from PSGallery and TestGallery to the version obtain from manifest.
         /// Choose the maximum one as the old version.
         /// </summary>
-        /// <returns>The old version before bumping.(x.x.x or x.x.x-preview)</returns>
-        public string GetOldVersion()
+        /// <returns>The old version and is or not preview before the bump.</returns>
+        public Tuple<string, bool> GetOldVersion()
         {
             string version;
             string localVersion = null, psVersion = null, testVersion = null;
+            bool isPreview;
+            bool localPreview = false, psPreview = false, testPreview = false;
             var moduleName = _fileHelper.ModuleName;
             
             using (PowerShell powershell = PowerShell.Create())
@@ -89,16 +89,14 @@ namespace VersionController.Models
                 powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
                 localVersion = cmdletResult[0]?.ToString();
-                if (!string.IsNullOrEmpty(cmdletResult[1]?.ToString()))
-                {
-                    localVersion += "-preview";
-                }
+                localPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
             }
             if (localVersion == null)
             {
                 throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
             }
             version = localVersion;
+            isPreview = localPreview;
 
             using (PowerShell powetshell = PowerShell.Create())
             {
@@ -108,9 +106,10 @@ namespace VersionController.Models
                 if (cmdletResult.Count != 0)
                 {
                     var psVersionImformation = cmdletResult[0].ToString();
-                    Regex reg = new Regex("Version=(.*?);");
+                    Regex reg = new Regex("Version=(.*?)(-|;)");
                     Match match = reg.Match(psVersionImformation);
                     psVersion = match.Groups[1].Value;
+                    psPreview = Regex.IsMatch(psVersionImformation, "preview");
                 }
             }
             if (psVersion == null)
@@ -120,6 +119,7 @@ namespace VersionController.Models
             if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
             {
                 version = psVersion;
+                isPreview = psPreview;
             }
 
             using (PowerShell powetshell = PowerShell.Create())
@@ -130,9 +130,10 @@ namespace VersionController.Models
                 if (cmdletResult.Count != 0)
                 {
                     var testVersionImformation = cmdletResult[0].ToString();
-                    Regex reg = new Regex("Version=(.*?);");
+                    Regex reg = new Regex("Version=(.*?)(-|;)");
                     Match match = reg.Match(testVersionImformation);
                     testVersion = match.Groups[1].Value;
+                    testPreview = Regex.IsMatch(testVersionImformation, "preview");
                 }
             }
             if (testVersion == null)
@@ -142,9 +143,10 @@ namespace VersionController.Models
             if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
             {
                 version = testVersion;
+                isPreview = testPreview;
             }
 
-            return version;
+            return Tuple.Create(version, isPreview);
         }
 
         /// <summary>
