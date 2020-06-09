@@ -1495,8 +1495,8 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
         #$virtualHub = New-AzVirtualHub -Name $virtualHubName -ResourceGroupName $rgname -Location $location -VirtualWanId $virtualWan.Id -AddressPrefix $virtualHubAddressPrefix
 
         $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
-        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIPs $fwpips
-        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub -HubIPAddresses $hubIpAddresses
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub -HubIPAddress $hubIpAddresses
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1510,8 +1510,8 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
         Assert-AreEqual $sku $getAzureFirewall.Sku.Name
         Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
         Assert-NotNull $getAzureFirewall.HubIPAddresses
-        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIpAddress
-        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIpAddress.Count
+        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
+        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
     }
     finally {
         # Cleanup
