@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallHubIpAddres", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallHubIpAddresses))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallHubIpAddress", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallHubIpAddresses))]
     public class NewAzureFirewallHubIpAddress : AzureFirewallBaseCmdlet
     {
         [Parameter(
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The IP Addresses of the Firewall attached to a hub")]
         [ValidateNotNull]
-        public PSAzureFirewallHubPublicIpAddresses PublicIPs { get; set; }
+        public PSAzureFirewallHubPublicIpAddresses PublicIP { get; set; }
 
         public override void Execute()
         {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var hubPublicIpAddress = new PSAzureFirewallHubIpAddresses
             {
-                PublicIPs = this.PublicIPs
+                PublicIPs = this.PublicIP
             };
             WriteObject(hubPublicIpAddress);
         }
