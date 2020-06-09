@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public const String ChangeDesc = "VirtualNetworkConnection parameter is deprecated. Use AzVirtualHubVnet commands";
+        public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
         [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
