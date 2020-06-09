@@ -38,6 +38,11 @@ function New-InMemoryObjectScriptCreator {
             if ($Argument.NameEquals.Name.Identifier.Value -eq "Description") {
                 $Description = $Argument.Expression.Token.Value.replace('"', '`"')
             }
+            if ($Argument.NameEquals.Name.Identifier.Value -eq "Readonly") {
+                if ($Argument.Expression.Token.Value) {
+                    continue
+                }
+            }
         }
         $Identifier = $Member.Identifier.Value
         $Type = $Member.Type.ToString()
@@ -101,3 +106,5 @@ ${ParameterAssignScript}
 "
     Set-Content -Path $OutputPath -Value $Script
 }
+
+# Export-ModuleMember New-InMemoryObjectScriptCreator
