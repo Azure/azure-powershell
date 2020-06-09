@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Returning Substatuses from Get-AzVMCustomScriptExtension [#11297]
+* Added Substatuses to VMCustomScriptExtension [#11297]
 * Fixed name of new VM Extension for SAP
 
 
