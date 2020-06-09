@@ -513,7 +513,7 @@ function Test-CortexExpressRouteCRUD
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
 		# Create the Virtual Wan
-		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic
 		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
 		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
 		Assert-AreEqual $virtualWanName $virtualWan.Name
@@ -548,7 +548,10 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces = New-Object string[] 2
 		$vpnClientAddressSpaces[0] = "192.168.2.0/24"
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1
+		$customDnsServers = New-Object string[] 2
+		$customDnsServers[0] = "7.7.7.7"
+		$customDnsServers[1] = "8.8.8.8"
+		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
@@ -557,6 +560,9 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
+		Assert-AreEqual 2 @($P2SVpnGateway.CustomDnsServers).Count
+        Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
+		Assert-AreEqual "8.8.8.8" $P2SVpnGateway.CustomDnsServers[1]
 
 		# Get all associated VpnServerConfigurations at Wan level using Get-AzVirtualWanVpnServerConfiguration
         $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
@@ -612,9 +618,9 @@ function Test-CortexExpressRouteCRUD
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
         Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
-        # Update existing P2SVpnGateway  with new VpnClientAddressPool using Update-AzP2sVpnGateway
+        # Update existing P2SVpnGateway  with new VpnClientAddressPool and CustomDnsServers using Update-AzP2sVpnGateway
         $vpnClientAddressSpaces[1] = "192.168.4.0/24"
-        $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces
+        $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9
 
         $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
@@ -622,7 +628,15 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		$setVpnClientAddressSpacesString = [system.String]::Join(" ", $vpnClientAddressSpaces)
         Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
-        
+		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
+        Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
+
+		# Update existing P2SVpnGateway to remove the CustomDnsServers
+		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @()
+        $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+        Assert-AreEqual 0 @($P2SVpnGateway.CustomDnsServers).Count
+
         $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -ResourceId $virtualWan.Id
         Assert-NotNull $associatedVpnServerConfigs
         Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
