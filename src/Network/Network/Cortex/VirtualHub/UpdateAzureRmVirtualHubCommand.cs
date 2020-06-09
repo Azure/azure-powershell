@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The address space string for this virtual hub.")]
         public string AddressPrefix { get; set; }
 
-        public const String ChangeDesc = "VirtualNetworkConnection parameter is deprecated. Use AzVirtualHubVnet commands";
+        public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
         [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
