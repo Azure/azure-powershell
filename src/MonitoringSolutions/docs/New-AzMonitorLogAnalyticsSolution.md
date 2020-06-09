@@ -13,11 +13,9 @@ Creates or updates the Solution.
 ## SYNTAX
 
 ```
-New-AzMonitorLogAnalyticsSolution -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ContainedResource <String[]>] [-Location <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-ReferencedResource <String[]>] [-Tag <Hashtable>]
- [-WorkspaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <String> -Location <String> -Type <String>
+ -WorkspaceId <String> -WorkspaceName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,22 +58,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContainedResource
-The azure resources that will be contained within the solutions.
-They will be locked and gets deleted automatically when the solution is deleted.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -99,21 +81,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-User Solution Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SolutionName
-
 Required: True
 Position: Named
 Default value: None
@@ -126,88 +93,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanName
-name of the solution to be created.
-For Microsoft published solution it should be in the format of solutionType(workspaceName).
-SolutionType part is case sensitive.
-For third party solution, it can be anything.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanProduct
-name of the solution to enabled/add.
-For Microsoft published gallery solution it should be in the format of OMSGallery/\<solutionType\>.
-This is case sensitive
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanPromotionCode
-promotionCode, Not really used now, can you left as empty
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanPublisher
-Publisher name.
-For gallery solution, it is Microsoft.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReferencedResource
-The resources that will be referenced from this solution.
-Deleting any of those solution out of band will break the solution.
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -265,15 +150,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkspaceResourceId
+### -Type
+User Solution Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SolutionType
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceId
 The azure resourceId for the workspace where the solution will be deployed/enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: WorkspaceResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+fake
+User Solution Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
