@@ -216,9 +216,10 @@ function Test-AzureFirewallPolicyCRUD {
     }
 }
 
+
 <#
 .SYNOPSIS
-Tests AzureFirewallPolicyCRUD.
+Tests AzureFirewallPolicyCRUD with ThreatIntelWhitelist.
 #>
 function Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD {
     # Setup
