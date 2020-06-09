@@ -97,12 +97,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VirtualHubToUpdateNotFound);
             }
 
-            if (string.Equals(virtualHub.RoutingState, MNM.RoutingState.Provisioned.ToString(), StringComparison.InvariantCultureIgnoreCase)
-            {
-                WriteVerbose($"The virtual hub routing state is already Provisioned. Nothing to do.");
-                WriteObject(virtualHub);
-                return;
-            }
+            //if (string.Equals(virtualHub.RoutingState, MNM.RoutingState.Provisioned.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            //{
+            //    WriteVerbose($"The virtual hub routing state is already Provisioned. Nothing to do.");
+            //    WriteObject(virtualHub);
+            //    return;
+            //}
 
             // trigger the Put on the VirtualHub
             ConfirmAction(
