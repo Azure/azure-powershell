@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.10.8
 * Support ARC machines
 
 ## Version 0.10.7
