@@ -242,7 +242,6 @@ $fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -Sku
 This example creates a Firewall attached to virtual hub "hub" in the same resource group as the firewall.
 The Firewall will be assigned 2 public IPs that are created implicitly.
 
-
 ## PARAMETERS
 
 ### -ApplicationRuleCollection

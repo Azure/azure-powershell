@@ -335,6 +335,12 @@ Gets a Azure Firewall.
 ### [Get-AzFirewallFqdnTag](Get-AzFirewallFqdnTag.md)
 Gets the available Azure Firewall Fqdn Tags.
 
+### [Get-AzFirewallPolicy](Get-AzFirewallPolicy.md)
+Gets a Azure Firewall Policy
+
+### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
+Gets a Azure Firewall Policy Rule Collection Group
+
 ### [Get-AzIpAllocation](Get-AzIpAllocation.md)
 Gets a Azure IpAllocation.
 
@@ -767,6 +773,12 @@ Creates a Firewall Application Rule.
 ### [New-AzFirewallApplicationRuleCollection](New-AzFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
 
+### [New-AzFirewallHubIpAddresses](New-AzFirewallHubIpAddresses.md)
+Ip addresses assoicated to the firewall on virtual hub
+
+### [New-AzFirewallHubPublicIpAddress](New-AzFirewallHubPublicIpAddress.md)
+Public Ip assoicated to the firewall on virtual hub
+
 ### [New-AzFirewallNatRule](New-AzFirewallNatRule.md)
 Creates a Firewall NAT Rule.
 
@@ -778,6 +790,27 @@ Creates a Firewall Network Rule.
 
 ### [New-AzFirewallNetworkRuleCollection](New-AzFirewallNetworkRuleCollection.md)
 Creates a Azure Firewall Network Collection of Network rules.
+
+### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
+Creates a new Azure Firewall Policy
+
+### [New-AzFirewallPolicyApplicationRule](New-AzFirewallPolicyApplicationRule.md)
+Create a new Azure Firewall Policy Application Rule
+
+### [New-AzFirewallPolicyFilterRuleCollection](New-AzFirewallPolicyFilterRuleCollection.md)
+Create a new Azure Firewall Policy Filter Rule Collection
+
+### [New-AzFirewallPolicyNatRuleCollection](New-AzFirewallPolicyNatRuleCollection.md)
+Create a new Azure Firewall Policy Nat Rule Collection
+
+### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
+Create a new Azure Firewall Policy Network Rule
+
+### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
+Create a new Azure Firewall Policy Rule Collection Group
+
+### [New-AzFirewallPublicIpAddress](New-AzFirewallPublicIpAddress.md)
+This is the placeholder for the Ip Address that can be used for multi pip on azure firewall.
 
 ### [New-AzFirewallThreatIntelWhitelist](New-AzFirewallThreatIntelWhitelist.md)
 Create a new threat intelligence whitelist for Azure Firewall
@@ -1123,6 +1156,12 @@ Removes a identity from an ExpressRoutePort.
 ### [Remove-AzFirewall](Remove-AzFirewall.md)
 Remove a Firewall.
 
+### [Remove-AzFirewallPolicy](Remove-AzFirewallPolicy.md)
+Removes an Azure Firewall Policy
+
+### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
+Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
+
 ### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
 Deletes an Azure IpAllocation.
 
@@ -1404,6 +1443,12 @@ Updates a identity assigned to an ExpressRoutePort.
 
 ### [Set-AzFirewall](Set-AzFirewall.md)
 Saves a modified Firewall.
+
+### [Set-AzFirewallPolicy](Set-AzFirewallPolicy.md)
+Saves a modified azure firewall policy
+
+### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
+saves a modified azure firewall policy rule collection group
 
 ### [Set-AzIpAllocation](Set-AzIpAllocation.md)
 Saves a modified IpAllocation.
