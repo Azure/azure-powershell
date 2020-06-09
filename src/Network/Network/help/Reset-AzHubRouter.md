@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.network/re
 schema: 2.0.0
 ---
 
-# Reset-HubRouter
+# Reset-AzHubRouter
 
 ## SYNOPSIS
 Resets the RoutingState of an Azure VirtualHub resource.
