@@ -26,7 +26,6 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        //[Fact(Skip = "Fails with Internal Server Error")]
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
