@@ -100,7 +100,10 @@ function Test-CortexCRUD
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		$routes = $virtualHub.RouteTable.Routes
-		Assert-AreEqual 2 @($routes).Count
+		Assert-AreEqual 2 @($routes).
+
+		# Reset routing state
+		Reset-AzHubRouter -ResourceGroupName $rgName -Name $virtualHubName
 		
 		# Create the VpnSite
 		$vpnSiteAddressSpaces = New-Object string[] 1
