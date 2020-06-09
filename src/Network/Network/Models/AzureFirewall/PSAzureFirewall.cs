@@ -23,8 +23,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class 
-        PSAzureFirewall : PSTopLevelResource
+    public class PSAzureFirewall : PSTopLevelResource
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const string AzureFirewallMgmtSubnetName = "AzureFirewallManagementSubnet";

@@ -1225,12 +1225,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallHubIpAddresses, MNM.HubIPAddresses>();
 
                 // MNM to CNM
-                //cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().BeforeMap((src, dest) =>
-                //{
-                //   dest.HubIpAddresses = src.HubIpAddresses;
-                //});
-
-                // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
                 {
                     // TODO: refactor after backend is refactored
