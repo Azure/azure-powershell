@@ -1494,9 +1494,9 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
         #$virtualWan = New-AzVirtualWan -Name $virtualWanName -ResourceGroupName $rgname -Location $location
         #$virtualHub = New-AzVirtualHub -Name $virtualHubName -ResourceGroupName $rgname -Location $location -VirtualWanId $virtualWan.Id -AddressPrefix $virtualHubAddressPrefix
 
-        #$fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
-        #$hubIpAddresses = New-AzFirewallHubIpAddresses -PublicIPs $fwpips
-        $fw=New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub #-HubIPAddresses $hubIpAddresses
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIPs $fwpips
+        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub -HubIPAddresses $hubIpAddresses
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname

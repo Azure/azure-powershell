@@ -773,7 +773,7 @@ Creates a Firewall Application Rule.
 ### [New-AzFirewallApplicationRuleCollection](New-AzFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
 
-### [New-AzFirewallHubIpAddresses](New-AzFirewallHubIpAddresses.md)
+### [New-AzFirewallHubIpAddress](New-AzFirewallHubIpAddress.md)
 Ip addresses assoicated to the firewall on virtual hub
 
 ### [New-AzFirewallHubPublicIpAddress](New-AzFirewallHubPublicIpAddress.md)

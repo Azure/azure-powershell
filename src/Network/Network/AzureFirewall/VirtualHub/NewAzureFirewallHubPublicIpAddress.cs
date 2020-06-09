@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The Public IP Addresses of the Firewall attached to a hub")]
         [ValidateNotNull]
-        public PSAzureFirewallPublicIpAddress[] Addresses { get; set; }
+        public PSAzureFirewallPublicIpAddress[] Address { get; set; }
 
         public override void Execute()
         {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             var hubPublicIpAddress = new PSAzureFirewallHubPublicIpAddresses
             {
                 Count = this.Count,
-                Addresses = this.Addresses
+                Addresses = this.Address
             };
             WriteObject(hubPublicIpAddress);
         }

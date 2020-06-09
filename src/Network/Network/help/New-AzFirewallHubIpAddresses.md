@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallhubipaddresses
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallhubipaddress
 schema: 2.0.0
 ---
 
-# New-AzFirewallHubIpAddresses
+# New-AzFirewallHubIpAddress
 
 ## SYNOPSIS
 Ip addresses assoicated to the firewall on virtual hub
@@ -13,7 +13,7 @@ Ip addresses assoicated to the firewall on virtual hub
 ## SYNTAX
 
 ```
-New-AzFirewallHubIpAddresses [-PrivateIPAddress <String>] [-PublicIPs <PSAzureFirewallHubPublicIpAddresses>]
+New-AzFirewallHubIpAddress [-PrivateIPAddress <String>] [-PublicIPs <PSAzureFirewallHubPublicIpAddresses>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Ip addresses assoicated to the firewall on virtual hub. These can be public and 
 ### Example 1
 ```powershell
 PS C:\> $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
-PS C:\> New-AzFirewallHubIpAddresses -PublicIPs $fwpips
+PS C:\> New-AzFirewallHubIpAddress -PublicIPs $fwpips
 ```
 
 This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is ssociated to the firewall on the virtual hub.
