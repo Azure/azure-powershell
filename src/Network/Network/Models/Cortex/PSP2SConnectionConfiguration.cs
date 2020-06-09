@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAddressSpace VpnClientAddressPool { get; set; }
 
+        [Ps1Xml(Label = "Routing Configuration", Target = ViewControl.Table)]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
         [JsonIgnore]
         public string VpnClientAddressPoolText
         {

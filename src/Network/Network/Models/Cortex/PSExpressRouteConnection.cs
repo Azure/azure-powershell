@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
         public bool EnableInternetSecurity { get; set; }
 
+        [Ps1Xml(Label = "Routing Configuration", Target = ViewControl.Table)]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
