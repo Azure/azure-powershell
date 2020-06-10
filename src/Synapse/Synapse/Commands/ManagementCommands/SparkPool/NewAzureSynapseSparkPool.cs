@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.NodeCount)]
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
@@ -139,7 +139,17 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            LibraryRequirements libraryRequirements = null;
+            // NodeCount and EnableAutoScale are given at the same time
+            if (this.NodeCount != 0 && EnableAutoScale.IsPresent)
+            {
+                throw new SynapseException(string.Format("",""));
+            }
+            // both NodeCount and EnableAutoScale are not given
+            if (this.NodeCount == 0 && !EnableAutoScale.IsPresent) {
+                throw new SynapseException(string.Format("", ""));
+            }
+
+                LibraryRequirements libraryRequirements = null;
             if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))
             {
                 var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
@@ -155,7 +165,10 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                NodeCount = this.NodeCount,
+                //NodeCount = this.NodeCount,
+
+                NodeCount = EnableAutoScale.IsPresent ? (int?) null : this.NodeCount,
+
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
                 AutoScale = !EnableAutoScale.IsPresent ? null : new AutoScaleProperties
