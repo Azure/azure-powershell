@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
-        [JsonProperty("ruleGroups")]
+        [JsonProperty("ruleCollectionGroups")]
         public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
 
     }

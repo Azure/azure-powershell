@@ -797,6 +797,9 @@ Create a new Azure Firewall Policy Nat Rule Collection
 ### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
 Create a new Azure Firewall Policy Network Rule
 
+### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNatRule.md)
+Create a new Azure Firewall Policy NAT Rule
+
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
