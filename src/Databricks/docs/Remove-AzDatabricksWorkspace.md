@@ -36,6 +36,14 @@ PS C:\> Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databric
 
 This command removes a Databricks workspace from a resource group.
 
+### Example 2: Remove a Databricks workspace by object
+```powershell
+PS C:\> $dbr = Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
+PS C:\> Remove-AzDatabricksWorkspace -InputObject $dbr
+```
+
+This command removes a Databricks workspace from a resource group.
+
 ## PARAMETERS
 
 ### -AsJob
