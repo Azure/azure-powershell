@@ -13,26 +13,35 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = CreateByNameAndEnableAutoScaleParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkPool))]
     public class NewAzureSynapseSparkPool : SynapseCmdletBase
     {
-        private const string CreateByNameParameterSet = "CreateByNameParameterSet";
-        private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
+        private const string CreateByNameAndEnableAutoScaleParameterSet = "CreateByNameAndEnableAutoScaleParameterSet";
+        private const string CreateByNameAndUnableAutoScaleParameterSet = "CreateByNameAndUnableAutoScaleParameterSet";
+        private const string CreateByParentObjectAndEnableAutoScaleParameterSet = "CreateByParentObjectAndEnableAutoScaleParameterSet";
+        private const string CreateByParentObjectAndUnableAutoScaleParameterSet = "CreateByParentObjectAndUnableAutoScaleParameterSet";
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameParameterSet,
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectAndUnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -48,8 +57,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.NodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.NodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByParentObjectAndUnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.NodeCount)]
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
 
@@ -63,13 +74,17 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.EnableAutoScale)]
         public SwitchParameter EnableAutoScale { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByParentObjectAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
         [ValidateRange(3, 200)]
         public int AutoScaleMinNodeCount { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.AutoScaleMaxNodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByParentObjectAndEnableAutoScaleParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
         [ValidateRange(3, 200)]
         public int AutoScaleMaxNodeCount { get; set; }
 
@@ -98,6 +113,16 @@ namespace Microsoft.Azure.Commands.Synapse
 
         public override void ExecuteCmdlet()
         {
+            switch (ParameterSetName)
+            {
+                case CreateByNameAndEnableAutoScaleParameterSet:
+                    this.EnableAutoScale = true;
+                    break;
+                case CreateByParentObjectAndEnableAutoScaleParameterSet:
+                    this.EnableAutoScale = true;
+                    break;
+            }
+
             if (this.IsParameterBound(c => c.WorkspaceObject))
             {
                 this.ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
@@ -139,17 +164,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            // NodeCount and EnableAutoScale are given at the same time
-            if (this.NodeCount != 0 && EnableAutoScale.IsPresent)
-            {
-                throw new SynapseException(string.Format("",""));
-            }
-            // both NodeCount and EnableAutoScale are not given
-            if (this.NodeCount == 0 && !EnableAutoScale.IsPresent) {
-                throw new SynapseException(string.Format("", ""));
-            }
 
-                LibraryRequirements libraryRequirements = null;
+            LibraryRequirements libraryRequirements = null;
             if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))
             {
                 var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
@@ -165,15 +181,12 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                //NodeCount = this.NodeCount,
-
-                NodeCount = EnableAutoScale.IsPresent ? (int?) null : this.NodeCount,
-
+                NodeCount = this.EnableAutoScale ? (int?) null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
-                AutoScale = !EnableAutoScale.IsPresent ? null : new AutoScaleProperties
+                AutoScale = !this.EnableAutoScale ? null : new AutoScaleProperties
                 {
-                    Enabled = EnableAutoScale.IsPresent,
+                    Enabled = this.EnableAutoScale,
                     MinNodeCount = AutoScaleMinNodeCount,
                     MaxNodeCount = AutoScaleMaxNodeCount
                 },
