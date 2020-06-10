@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     MNM.FirewallPolicyFilterRuleCollection filterRule = (MNM.FirewallPolicyFilterRuleCollection)getRuleCollectionGroup.RuleCollections[ruleCollectionIndex];
                     PSAzureFirewallPolicyFilterRuleCollection filterRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyFilterRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.RuleCollections[ruleCollectionIndex]));
-                    filterRuleCollection.RuleCollectionType = "FirewallPolicyFilterRule";
+                    filterRuleCollection.RuleCollectionType = "FirewallPolicyFilterRuleCollection";
                     filterRuleCollection.Rules = new List<PSAzureFirewallPolicyRule>();
                     for (int ruleIndex = 0; ruleIndex < filterRule.Rules.Count; ruleIndex++)
                     {

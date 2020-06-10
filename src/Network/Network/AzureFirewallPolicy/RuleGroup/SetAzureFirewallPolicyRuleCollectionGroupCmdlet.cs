@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Network
             var deserializedruleGroup = (MNM.FirewallPolicyRuleCollectionGroup)JsonConvert.DeserializeObject(
                                         json,
                                         typeof(MNM.FirewallPolicyRuleCollectionGroup),
-                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRule>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
+                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRuleCollection, MNM.FirewallPolicyRule>("ruleCollectionType", "ruleType"), new TransformationJsonConverter() });
             this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, deserializedruleGroup);
             WriteObject(InputObject);
         }
