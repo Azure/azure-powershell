@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 var resourceId = this.GetResourceId();
 
-                var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                var apiVersion = Constants.DeploymentOperationApiVersion;
 
                 var operationResult = this.GetResourcesClient()
                     .InvokeActionOnResource<JObject>(

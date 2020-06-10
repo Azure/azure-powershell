@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceId = this.GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.DeploymentOperationApiVersion : this.ApiVersion;
+            var apiVersion = Constants.DeploymentOperationApiVersion;
 
             return await this
                 .GetResourcesClient()
