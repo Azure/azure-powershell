@@ -218,15 +218,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
                     if (ContainerRegistryUrl != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerUrl] = ContainerRegistryUrl;
+                        appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
                     }
                     if (ContainerRegistryUser != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerUserName] = ContainerRegistryUser;
+                        appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
                     }
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))
