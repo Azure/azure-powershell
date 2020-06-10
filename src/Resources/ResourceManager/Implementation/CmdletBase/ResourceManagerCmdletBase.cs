@@ -67,14 +67,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private SubscriptionSdkClient subscriptionSdkClient;
 
         /// <summary>
-        /// Gets or sets the API version.
-        /// </summary>
-        /*[CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
-        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ApiVersion { get; set; }*/
-
-        /// <summary>
         /// Gets or sets the switch that indicates if pre-release API version should be considered.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.")]
