@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "39c8ca2c-27c8-402f-9414-4309e69b0cc5"
+          "9b773cb9-836b-400c-b5a0-e1d5cc90c865"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D80C92F0880343\""
+          "W/\"0x8D80CC2208DFA79\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "08a79264-2915-4580-9d82-cbd359616e2b"
+          "f7bd9397-a1ee-48f6-a496-a477be952af8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,16 +45,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "4fd9311f-bb8a-4f04-b388-400b4bb73491"
+          "99e0dd45-53ca-4e57-9a9f-bb230f8c220a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163411Z:4fd9311f-bb8a-4f04-b388-400b4bb73491"
+          "WESTUS:20200609T221158Z:99e0dd45-53ca-4e57-9a9f-bb230f8c220a"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:11 GMT"
+          "Tue, 09 Jun 2020 22:11:58 GMT"
         ],
         "Content-Length": [
-          "635"
+          "637"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,10 +63,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:34:11 GMT"
+          "Tue, 09 Jun 2020 22:11:58 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80C92F0880343\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-45242dec95314f1284076c120d48b994/foo?sv=2018-03-28&sr=b&sig=1LqMc5YyHRm7aVVGiU2imUyTm68sANXhxm%2BNVQv8WBU%3D&st=2020-06-09T16%3A29%3A11Z&se=2020-06-09T20%3A34%3A11Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-09T20:34:11.3167793Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC2208DFA79\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=eaI2Oz5GjNI%2Fzh1%2FaVXiR0ZzCv48J0i2T1HE6yf5Cd8%3D&st=2020-06-09T22%3A06%3A58Z&se=2020-06-10T02%3A11%3A58Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:11:58.2568852Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -76,7 +76,7 @@
       "RequestBody": "{\r\n  \"format\": \"zip\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "30f2d43e-b035-4509-90ef-5f0474d3b30f"
+          "10e50fe9-dd6a-4e98-9432-99bd181cca74"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D80C92F1F31F22\""
+          "W/\"0x8D80CC221A2F7B8\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "5013f16e-e609-444b-a512-fd296056242e"
+          "8a248c8d-4842-47ba-abc3-697f1b3aebae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,13 +120,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "3c7b9258-0515-4744-880d-f883f52ec9aa"
+          "d25c3e76-8e58-4227-b3ee-930998969a19"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163413Z:3c7b9258-0515-4744-880d-f883f52ec9aa"
+          "WESTUS:20200609T221200Z:d25c3e76-8e58-4227-b3ee-930998969a19"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:13 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "Content-Length": [
           "702"
@@ -138,10 +138,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:34:13 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80C92F1F31F22\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-45242dec95314f1284076c120d48b994/foo?sv=2018-03-28&sr=b&sig=XSoks0SV6%2BBbw%2FtI2wOEkQgGv2lPrB7wf07tEbdTKGY%3D&st=2020-06-09T16%3A29%3A13Z&se=2020-06-09T20%3A34%3A13Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-09T20:34:13.7122216Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T16:34:13.685772Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC221A2F7B8\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=HGM1bY7mqb52VH8klD4qu%2BJUe70iWIfI1w3nFZ%2FYLpA%3D&st=2020-06-09T22%3A07%3A00Z&se=2020-06-10T02%3A12%3A00Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:12:00.0893602Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T22:12:00.022087Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -151,7 +151,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1e322112-cf48-4d73-82aa-d439e0c8718a"
+          "c9274dbd-7147-4e74-8054-6f2ff1ed6ebc"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,13 +171,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D80C92F1F31F22\""
+          "W/\"0x8D80CC221A2F7B8\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "ce9d408a-fb14-4ac8-a684-ade4f0483f7e"
+          "8ef2ad7b-d759-4cba-b5cc-958ecd1f4581"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,13 +189,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "dba4e8c1-196a-40a8-bec6-b0ab728d0de3"
+          "6d2687b5-6663-4c83-8cd6-1cd5bb7658c3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163414Z:dba4e8c1-196a-40a8-bec6-b0ab728d0de3"
+          "WESTUS:20200609T221200Z:6d2687b5-6663-4c83-8cd6-1cd5bb7658c3"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:13 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "Content-Length": [
           "702"
@@ -207,10 +207,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:34:13 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80C92F1F31F22\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-45242dec95314f1284076c120d48b994/foo?sv=2018-03-28&sr=b&sig=XSoks0SV6%2BBbw%2FtI2wOEkQgGv2lPrB7wf07tEbdTKGY%3D&st=2020-06-09T16%3A29%3A13Z&se=2020-06-09T20%3A34%3A13Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-09T20:34:13.9456181Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T16:34:13.685772Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC221A2F7B8\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=HGM1bY7mqb52VH8klD4qu%2BJUe70iWIfI1w3nFZ%2FYLpA%3D&st=2020-06-09T22%3A07%3A00Z&se=2020-06-10T02%3A12%3A00Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:12:00.3214646Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T22:12:00.022087Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -220,13 +220,13 @@
       "RequestBody": "{\r\n  \"id\": \"testCreatePoolWithAppPackages\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 3,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"createPoolWithApplicationPackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ]\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "01d97016-e89b-4d28-8f60-9acd11ac8b8b"
+          "dd0488f5-c932-4f7a-9503-fc3eea404dc3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:34:14 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -247,7 +247,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C92FF39BF51"
+          "0x8D80CC22EE2BA00"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/pools/testCreatePoolWithAppPackages"
@@ -256,7 +256,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7a4392fd-2352-450c-8590-1180f0e64868"
+          "58b3cf70-ead6-452a-a173-806d5cbcb41e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -271,10 +271,10 @@
           "https://prodtest6.francecentral.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:35 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:34:35 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ]
       },
       "ResponseBody": "",
@@ -287,7 +287,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4f6e15a7-a703-484d-862b-aafccd61ab87"
+          "f7c4e9fb-088f-46b3-8e7b-a2cbf29cad2d"
         ],
         "Accept-Language": [
           "en-US"
@@ -307,7 +307,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "73b3c50d-32e0-4189-9db4-a1c412944dcf"
+          "70bf516a-c9f4-4deb-9477-59f216669ffd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -322,13 +322,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "b8ac3c73-0248-405c-8e1a-cb7f2cb40d2e"
+          "490b4b5c-f5dd-48d0-93cd-7dc199f555dd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163436Z:b8ac3c73-0248-405c-8e1a-cb7f2cb40d2e"
+          "WESTUS:20200609T221222Z:490b4b5c-f5dd-48d0-93cd-7dc199f555dd"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:36 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -347,7 +347,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "582ba52a-4f47-4fc6-bc1a-0a753cf59244"
+          "4c15247b-adcb-461d-9b05-86c65461a6b8"
         ],
         "Accept-Language": [
           "en-US"
@@ -367,7 +367,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "109f8575-5d2f-49e9-82e6-73aaee579710"
+          "287318ec-3f67-4861-a2df-83ce61f973e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -382,13 +382,13 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "7b2328e4-1077-45ae-af02-7bca6d2aea70"
+          "f0aa751c-0511-43c2-b332-0b1f9efe785a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163436Z:7b2328e4-1077-45ae-af02-7bca6d2aea70"
+          "WESTUS:20200609T221222Z:f0aa751c-0511-43c2-b332-0b1f9efe785a"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:36 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -407,13 +407,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d0639453-58ea-4e88-81aa-bd1584fa65ad"
+          "90999b00-6c92-437a-b76b-bcec1f5f5ebb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:34:36 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -434,7 +434,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c5e3e31e-beaf-4ba6-943f-6e5168775982"
+          "26772ec3-4443-4002-80cc-812cc35c0821"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -446,7 +446,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:34:37 GMT"
+          "Tue, 09 Jun 2020 22:12:23 GMT"
         ]
       },
       "ResponseBody": "",

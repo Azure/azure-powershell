@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"id\": \"pool1\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"enableInterNodeCommunication\": false\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "80106489-5a0c-457e-b011-7b33a07c42ed"
+          "17114dce-98d9-40ce-9fd4-cbfdb7f8299f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:44:48 GMT"
+          "Tue, 09 Jun 2020 22:30:19 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -34,7 +34,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C9479130276"
+          "0x8D80CC4BDBE59D4"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/pools/pool1"
@@ -43,7 +43,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f5439b8f-a0d2-4859-9834-e6fa89a5e94a"
+          "ba204a1b-810a-4df2-a1b7-2e186a9c0c68"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,10 +58,10 @@
           "https://prodtest6.francecentral.batch.azure.com/pools/pool1"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:09 GMT"
+          "Tue, 09 Jun 2020 22:30:40 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:45:09 GMT"
+          "Tue, 09 Jun 2020 22:30:40 GMT"
         ]
       },
       "ResponseBody": "",
@@ -74,13 +74,13 @@
       "RequestBody": "{\r\n  \"id\": \"pool2\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"16-04-lts\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n    \"containerConfiguration\": {\r\n      \"containerImageNames\": [\r\n        \"test\"\r\n      ],\r\n      \"type\": \"dockerCompatible\"\r\n    }\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"enableInterNodeCommunication\": false\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "3f34119d-2aa7-481c-bbbf-b3d736cc0473"
+          "303b47ba-7b69-4389-8f76-aae6107877c3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:10 GMT"
+          "Tue, 09 Jun 2020 22:30:41 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -101,7 +101,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C9479643146"
+          "0x8D80CC4BDFFB911"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/pools/pool2"
@@ -110,7 +110,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e39e3b80-6579-42ae-b2d2-09a3f74ba4a3"
+          "76501931-d51e-4cad-8311-cae3a8b200f8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -125,10 +125,10 @@
           "https://prodtest6.francecentral.batch.azure.com/pools/pool2"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:09 GMT"
+          "Tue, 09 Jun 2020 22:30:40 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:45:10 GMT"
+          "Tue, 09 Jun 2020 22:30:41 GMT"
         ]
       },
       "ResponseBody": "",
@@ -141,13 +141,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "62080c3b-f4b1-453d-a8ba-2a5ecb807af0"
+          "c95f4248-80ce-4107-b4e7-97fe3756b50a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:10 GMT"
+          "Tue, 09 Jun 2020 22:30:41 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -165,7 +165,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "31f40a15-5dab-4383-9992-e55229d0adc3"
+          "faa8d6e0-a956-484b-ab88-a670477220cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,13 +177,13 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:09 GMT"
+          "Tue, 09 Jun 2020 22:30:40 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8D80C9479130276\",\r\n      \"lastModified\": \"2020-06-09T16:45:09.8907254Z\",\r\n      \"creationTime\": \"2020-06-09T16:45:09.8907254Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:45:09.8907254Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:45:09.8907254Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D80C9479643146\",\r\n      \"lastModified\": \"2020-06-09T16:45:10.4227654Z\",\r\n      \"creationTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"16-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8D80CC4BDBE59D4\",\r\n      \"lastModified\": \"2020-06-09T22:30:40.9417172Z\",\r\n      \"creationTime\": \"2020-06-09T22:30:40.9417172Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:30:40.9417172Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T22:30:40.9417172Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D80CC4BDFFB911\",\r\n      \"lastModified\": \"2020-06-09T22:30:41.3701393Z\",\r\n      \"creationTime\": \"2020-06-09T22:30:41.3701393Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:30:41.3701393Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T22:30:41.3701393Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"16-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -193,13 +193,13 @@
       "RequestBody": "{\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\"\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [],\r\n  \"metadata\": []\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "925fd616-b881-47c6-a209-d0e73530ffd3"
+          "088e4e36-4f58-4486-a908-b4dfcb945c00"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:10 GMT"
+          "Tue, 09 Jun 2020 22:30:41 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -217,13 +217,13 @@
       },
       "ResponseHeaders": {
         "ETag": [
-          "0x8D80C947AE31138"
+          "0x8D80CC4BFDC7973"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9b53742b-9108-4bfa-8e04-4da7e6bd52d7"
+          "3929a6f4-ca61-4656-a797-d06b4b337865"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -238,13 +238,13 @@
           "https://prodtest6.francecentral.batch.azure.com/pools/pool2/updateproperties"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:43 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ]
       },
       "ResponseBody": "",
@@ -257,13 +257,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b6d91783-dcaa-4ed9-a0e2-b26032f88bf1"
+          "394b77cb-48af-430a-937a-cc2a329e6e7d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:13 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -278,13 +278,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C947AE31138"
+          "0x8D80CC4BFDC7973"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7798b074-9ef9-411e-8a45-7ef993e7d6e2"
+          "240e7f20-768a-4e82-b521-98bb2c42553a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -296,16 +296,16 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:43 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8D80C947AE31138\",\r\n  \"lastModified\": \"2020-06-09T16:45:12.9319736Z\",\r\n  \"creationTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T16:45:12.9139623Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"16-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test\"\r\n      ]\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8D80CC4BFDC7973\",\r\n  \"lastModified\": \"2020-06-09T22:30:44.4945779Z\",\r\n  \"creationTime\": \"2020-06-09T22:30:41.3701393Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:30:41.3701393Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T22:30:44.4795756Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"16-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test\"\r\n      ]\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -315,13 +315,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "89b1930d-698c-4de6-94c3-abdd00f28a12"
+          "fda2fdb2-0a86-4f47-b9da-33c9896b83d5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:13 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -342,7 +342,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9c556544-a1ce-4268-8eb6-ebfe663be7a0"
+          "39dde690-d584-43f8-a5c2-20c18ec8f1d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -354,7 +354,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ]
       },
       "ResponseBody": "",
@@ -367,13 +367,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a08225c1-a84e-4455-8b5c-de2e26a625c7"
+          "b663143a-a90f-44e7-b803-ff0ac4c691ba"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:13 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -394,7 +394,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "d4b24d54-4325-4d06-918d-c87c30d82c09"
+          "20a39ffd-3abe-49dc-b456-4493d6f4e578"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -406,7 +406,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ]
       },
       "ResponseBody": "",
@@ -419,13 +419,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "42be3026-c196-4882-8610-ee320e6cf0cb"
+          "8778d7c6-40d1-4e67-afe3-ee7e3434bd01"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:45:13 GMT"
+          "Tue, 09 Jun 2020 22:30:45 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -443,7 +443,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7f6fa9b3-984f-47b7-9e5a-0b00cc156016"
+          "504303aa-480b-4646-8951-b48f7105b67f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -455,13 +455,13 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:45:12 GMT"
+          "Tue, 09 Jun 2020 22:30:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"mpiPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/mpiPool\",\r\n      \"eTag\": \"0x8D80BFAD858C375\",\r\n      \"lastModified\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"creationTime\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-08T22:26:44.6359603Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D80C947B3842CD\",\r\n      \"lastModified\": \"2020-06-09T16:45:13.4902989Z\",\r\n      \"creationTime\": \"2020-06-09T16:45:10.4227654Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:45:13.4902989Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:45:13.6383224Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"16-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"test1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/test1\",\r\n      \"eTag\": \"0x8D6FB314F219431\",\r\n      \"lastModified\": \"2019-06-27T18:57:31.9073841Z\",\r\n      \"creationTime\": \"2019-04-10T23:12:01.6157899Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-04-10T23:12:01.6157899Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2019-06-27T18:59:02.3643195Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"6\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testIaasPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testIaasPool\",\r\n      \"eTag\": \"0x8D80C929D027240\",\r\n      \"lastModified\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"creationTime\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:33:03.2282492Z\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"canonical\",\r\n          \"offer\": \"ubuntuserver\",\r\n          \"sku\": \"18.04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 18.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8D80C9184CB6FC2\",\r\n      \"lastModified\": \"2020-06-09T16:24:01.0641346Z\",\r\n      \"creationTime\": \"2020-06-09T16:24:01.0641346Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:24:01.0641346Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:25:13.5964084Z\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 2,\r\n      \"targetDedicatedNodes\": 2,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"6\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"zfengautoscalepool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/zfengautoscalepool\",\r\n      \"eTag\": \"0x8D7D48880C5F463\",\r\n      \"lastModified\": \"2020-03-30T08:58:23.7312099Z\",\r\n      \"creationTime\": \"2019-06-27T18:53:16.5065249Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-06-27T18:53:16.5065249Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-03-30T09:02:09.5905317Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": true,\r\n      \"autoScaleFormula\": \"$curTime = time();\\n$workHours = $curTime.hour >= 8 && $curTime.hour<20;\\n$isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5;\\n$isWorkingWeekdayHour = $workHours && $isWeekday;\\n$TargetDedicated = $isWorkingWeekdayHour ? 0:0\",\r\n      \"autoScaleEvaluationInterval\": \"PT15M\",\r\n      \"autoScaleRun\": {\r\n        \"timestamp\": \"2020-06-09T16:41:53.4689021Z\",\r\n        \"results\": \"$TargetDedicatedNodes=0;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue;$curTime=2020-06-09T16:41:53.474Z;$isWeekday=1;$isWorkingWeekdayHour=1;$workHours=1\"\r\n      },\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"centos-container\",\r\n          \"sku\": \"7-6\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.centos 7\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"zfengpool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/zfengpool\",\r\n      \"eTag\": \"0x8D6FB5688912351\",\r\n      \"lastModified\": \"2019-06-27T23:23:59.6476241Z\",\r\n      \"creationTime\": \"2019-06-14T19:35:54.0821847Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-06-14T19:35:54.0821847Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2019-06-27T23:23:59.6731401Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"resizeErrors\": [\r\n        {\r\n          \"code\": \"AccountCoreQuotaReached\",\r\n          \"message\": \"The specified account has reached core quota\"\r\n        }\r\n      ],\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.6\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.centos 7\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"mpiPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/mpiPool\",\r\n      \"eTag\": \"0x8D80BFAD858C375\",\r\n      \"lastModified\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"creationTime\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-08T22:25:27.2350581Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-08T22:26:44.6359603Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"removenodepool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/removenodepool\",\r\n      \"eTag\": \"0x8D80CC492A45889\",\r\n      \"lastModified\": \"2020-06-09T22:29:28.6292617Z\",\r\n      \"creationTime\": \"2020-06-09T22:26:35.1510216Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:29:28.6292617Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T22:29:32.8290135Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"test1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/test1\",\r\n      \"eTag\": \"0x8D6FB314F219431\",\r\n      \"lastModified\": \"2019-06-27T18:57:31.9073841Z\",\r\n      \"creationTime\": \"2019-04-10T23:12:01.6157899Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-04-10T23:12:01.6157899Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2019-06-27T18:59:02.3643195Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"6\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testIaasPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testIaasPool\",\r\n      \"eTag\": \"0x8D80C929D027240\",\r\n      \"lastModified\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"creationTime\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:31:51.1866944Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T16:33:03.2282492Z\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"canonical\",\r\n          \"offer\": \"ubuntuserver\",\r\n          \"sku\": \"18.04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 18.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8D80C9791199D4A\",\r\n      \"lastModified\": \"2020-06-09T17:07:18.6895178Z\",\r\n      \"creationTime\": \"2020-06-09T16:24:01.0641346Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:24:01.0641346Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-06-09T17:08:19.0380872Z\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 2,\r\n      \"targetDedicatedNodes\": 2,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"6\",\r\n        \"osVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"zfengautoscalepool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/zfengautoscalepool\",\r\n      \"eTag\": \"0x8D7D48880C5F463\",\r\n      \"lastModified\": \"2020-03-30T08:58:23.7312099Z\",\r\n      \"creationTime\": \"2019-06-27T18:53:16.5065249Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-06-27T18:53:16.5065249Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2020-03-30T09:02:09.5905317Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": true,\r\n      \"autoScaleFormula\": \"$curTime = time();\\n$workHours = $curTime.hour >= 8 && $curTime.hour<20;\\n$isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5;\\n$isWorkingWeekdayHour = $workHours && $isWeekday;\\n$TargetDedicated = $isWorkingWeekdayHour ? 0:0\",\r\n      \"autoScaleEvaluationInterval\": \"PT15M\",\r\n      \"autoScaleRun\": {\r\n        \"timestamp\": \"2020-06-09T22:26:53.275134Z\",\r\n        \"results\": \"$TargetDedicatedNodes=0;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue;$curTime=2020-06-09T22:26:53.280Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0\"\r\n      },\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"centos-container\",\r\n          \"sku\": \"7-6\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.centos 7\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"zfengpool\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/zfengpool\",\r\n      \"eTag\": \"0x8D6FB5688912351\",\r\n      \"lastModified\": \"2019-06-27T23:23:59.6476241Z\",\r\n      \"creationTime\": \"2019-06-14T19:35:54.0821847Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2019-06-14T19:35:54.0821847Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2019-06-27T23:23:59.6731401Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"resizeErrors\": [\r\n        {\r\n          \"code\": \"AccountCoreQuotaReached\",\r\n          \"message\": \"The specified account has reached core quota\"\r\n        }\r\n      ],\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.6\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.centos 7\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

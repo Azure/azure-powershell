@@ -49,6 +49,7 @@ function Test-BatchAccountEndToEnd
         Assert-AreEqual $tagValue $createdAccount.Tags[$tagName]
         Assert-True { $createdAccount.PoolQuota -gt 0 }
         Assert-True { $createdAccount.ActiveJobAndJobScheduleQuota -gt 0 }
+		Assert-AreEqual "None" $createdAccount.Identity.Type
 
         # Update the Batch account
         $newTagName = "tag2"
@@ -77,10 +78,6 @@ function Test-BatchAccountEndToEnd
         Assert-NotNull $updatedKey.PrimaryAccountKey
         Assert-AreNotEqual $accountWithKeys.PrimaryAccountKey $updatedKey.PrimaryAccountKey
         Assert-AreEqual $accountWithKeys.SecondaryAccountKey $updatedKey.SecondaryAccountKey
-
-		# Assert identity is None
-		Assert-NotNull $updatedAccount.Identity
-		Assert-AreEqual $updatedAccount.Identity.Type "None"
     }
     finally
     {
@@ -166,7 +163,7 @@ function Test-CreateNewBatchAccountWithSystemIdentity
         $location = Get-BatchAccountProviderLocation
         # Create a Batch account
         New-AzResourceGroup -Name $resourceGroup -Location $location
-        $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -Identity @{Type = "SystemAssigned"}
+        $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -IdentityType "SystemAssigned"
 
 		Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
 		Assert-NotNull $createdAccount.Identity.TenantId

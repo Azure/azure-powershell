@@ -7,7 +7,7 @@
       "RequestBody": "{}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1aa8e1ce-70ec-46d8-93cf-cac100c9f359"
+          "f4825f58-e494-477a-95ac-a49d93c1b111"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,13 +33,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D80C9326850811\""
+          "W/\"0x8D80CB682453028\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "df16e8a6-f5a9-42c9-b296-5c6c5c657faf"
+          "42d5648b-6a69-4b2a-8144-ebf90c80d319"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,13 +51,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "59bc8695-d777-414a-80ff-2935d31e0ba8"
+          "a965f9fb-5d7e-435e-b192-c683de73fb75"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163542Z:59bc8695-d777-414a-80ff-2935d31e0ba8"
+          "WESTUS:20200609T204848Z:a965f9fb-5d7e-435e-b192-c683de73fb75"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:35:41 GMT"
+          "Tue, 09 Jun 2020 20:48:48 GMT"
         ],
         "Content-Length": [
           "281"
@@ -69,10 +69,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:35:41 GMT"
+          "Tue, 09 Jun 2020 20:48:48 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/test\",\r\n  \"name\": \"test\",\r\n  \"etag\": \"W/\\\"0x8D80C9326850811\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/test\",\r\n  \"name\": \"test\",\r\n  \"etag\": \"W/\\\"0x8D80CB682453028\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -82,7 +82,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2136a195-57a4-49f7-99ed-6ee4a5693e92"
+          "3e26adea-8d56-496d-926b-2bb0639ba7dc"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D80C9326850811\""
+          "W/\"0x8D80CB682453028\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "38f25bf0-811f-4f1e-9339-a98f789860d2"
+          "3077158e-5fee-44ed-8472-0d3b47d877c4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,13 +120,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "b4b014ca-e4d2-4fe4-8836-0770db0c489e"
+          "d650650d-806e-418c-8e91-d75009876406"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163542Z:b4b014ca-e4d2-4fe4-8836-0770db0c489e"
+          "WESTUS:20200609T204848Z:d650650d-806e-418c-8e91-d75009876406"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:35:41 GMT"
+          "Tue, 09 Jun 2020 20:48:48 GMT"
         ],
         "Content-Length": [
           "281"
@@ -138,10 +138,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:35:41 GMT"
+          "Tue, 09 Jun 2020 20:48:48 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/test\",\r\n  \"name\": \"test\",\r\n  \"etag\": \"W/\\\"0x8D80C9326850811\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/test\",\r\n  \"name\": \"test\",\r\n  \"etag\": \"W/\\\"0x8D80CB682453028\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -151,7 +151,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "73daad02-e73b-4cde-a0de-eda039ea3f7e"
+          "e65d8e67-613d-43c3-ba2c-e0390d38a0b7"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,7 +171,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9a8d9574-6d1e-47c7-bc61-cc843456fd8b"
+          "23741bbf-5a5e-4674-ac2d-aa2da60135ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,13 +186,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f9c1b974-16ea-4da1-9865-92545349ec92"
+          "5c342b65-0358-49b9-9680-51b4adc64768"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200609T163542Z:f9c1b974-16ea-4da1-9865-92545349ec92"
+          "WESTUS:20200609T204849Z:5c342b65-0358-49b9-9680-51b4adc64768"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:35:41 GMT"
+          "Tue, 09 Jun 2020 20:48:48 GMT"
         ],
         "Expires": [
           "-1"

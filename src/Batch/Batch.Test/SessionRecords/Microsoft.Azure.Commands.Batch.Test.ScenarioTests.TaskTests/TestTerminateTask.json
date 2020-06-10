@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"id\": \"testTerminateTaskJob\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "7899761f-8af9-4b37-9a22-441d479013a5"
+          "dc15486f-f1d9-4e76-976b-a98077ed6e7b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:05 GMT"
+          "Tue, 09 Jun 2020 22:33:57 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -34,7 +34,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C95366DBF18"
+          "0x8D80CC53F8DF03B"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/jobs/job-1"
@@ -43,7 +43,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "2bb85435-ff71-4fa5-8c25-3f6c46d3abf9"
+          "a8de55e5-bafa-498f-a75b-c5ec67092d0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,10 +58,10 @@
           "https://prodtest6.francecentral.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ]
       },
       "ResponseBody": "",
@@ -74,13 +74,13 @@
       "RequestBody": "{\r\n  \"id\": \"testTask1\",\r\n  \"commandLine\": \"ping -t localhost -w 60\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "149d2bef-a028-4cc4-bc3e-1b2f167d954e"
+          "51857926-646a-4351-9895-2a0ae8bd575f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -101,7 +101,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C95368C5BAF"
+          "0x8D80CC53FAB2597"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1"
@@ -110,7 +110,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "922aad50-c401-4771-8049-cefddad248a0"
+          "c5a8ed7e-ac6a-4e37-819e-052b1c5d9de4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -125,10 +125,10 @@
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ]
       },
       "ResponseBody": "",
@@ -141,13 +141,13 @@
       "RequestBody": "{\r\n  \"id\": \"testTask2\",\r\n  \"commandLine\": \"ping -t localhost -w 60\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "6359e383-02e8-44dd-aaf4-0710e23235e8"
+          "78287b5f-320e-429f-b5ce-94e8d4caf1f4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -168,7 +168,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C9536A7371D"
+          "0x8D80CC53FC5E180"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2"
@@ -177,7 +177,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3c9eb193-bb71-42f7-9d2c-9c05e1ee237a"
+          "d9653ef2-0198-45b9-8680-f95ec3c2a3d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -192,10 +192,10 @@
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:18 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:19 GMT"
         ]
       },
       "ResponseBody": "",
@@ -208,13 +208,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ef417fc4-2330-48a2-b315-c0288348c15c"
+          "cbc62edd-e6b9-4daa-8480-4e61e29d72f4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:28 GMT"
+          "Tue, 09 Jun 2020 22:34:19 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -229,13 +229,13 @@
       },
       "ResponseHeaders": {
         "ETag": [
-          "0x8D80C9544039C4E"
+          "0x8D80CC54D0816FA"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "cb810982-429e-4393-9b58-733e8ef3c428"
+          "eeddde3c-9bdd-472f-8113-d59108844788"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -250,13 +250,13 @@
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1/terminate"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ]
       },
       "ResponseBody": "",
@@ -269,13 +269,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "85d80fe2-f404-4718-b6e7-bd276fb04383"
+          "0fb75631-1b3b-48aa-942a-cd13f6b70ea2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -290,13 +290,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C9536A7371D"
+          "0x8D80CC53FC5E180"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "4f51941d-206b-43a6-bc56-57e4696693c5"
+          "b01a46e0-f43e-4b86-a90d-b0c10987400f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -308,16 +308,16 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:27 GMT"
+          "Tue, 09 Jun 2020 22:34:19 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask2\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2\",\r\n  \"eTag\": \"0x8D80C9536A7371D\",\r\n  \"creationTime\": \"2020-06-09T16:50:27.9513885Z\",\r\n  \"lastModified\": \"2020-06-09T16:50:27.9513885Z\",\r\n  \"state\": \"running\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:50:28.270187Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T16:50:28.270187Z\",\r\n  \"commandLine\": \"ping -t localhost -w 60\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2020-06-09T16:50:28.684958Z\",\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n    \"nodeUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n    \"poolId\": \"testPool\",\r\n    \"nodeId\": \"tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n    \"taskRootDirectory\": \"workitems\\\\testTerminateTaskJob\\\\job-1\\\\testTask2\",\r\n    \"taskRootDirectoryUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d/files/workitems/testTerminateTaskJob/job-1/testTask2\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask2\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2\",\r\n  \"eTag\": \"0x8D80CC53FC5E180\",\r\n  \"creationTime\": \"2020-06-09T22:34:19.0948736Z\",\r\n  \"lastModified\": \"2020-06-09T22:34:19.0948736Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:34:19.0948736Z\",\r\n  \"commandLine\": \"ping -t localhost -w 60\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -327,13 +327,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "2d833f52-58f8-4359-9a08-4dcffcc7fa57"
+          "04d84f8a-7184-4b74-9b03-b862bc892bf5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -348,13 +348,13 @@
       },
       "ResponseHeaders": {
         "ETag": [
-          "0x8D80C95446EBD6C"
+          "0x8D80CC54D6EC104"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "fb00c77f-3d19-4f91-b923-9e7dae18cbb1"
+          "c0f6083d-059b-46b0-b2f2-25d3fb9de729"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -369,13 +369,13 @@
           "https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2/terminate"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 16:50:51 GMT"
+          "Tue, 09 Jun 2020 22:34:42 GMT"
         ]
       },
       "ResponseBody": "",
@@ -388,13 +388,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0bee6e85-1be8-442d-8a7b-52dd4653df2a"
+          "66f6d66b-c152-4794-b805-732e6a59ba3e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:51 GMT"
+          "Tue, 09 Jun 2020 22:34:42 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -412,7 +412,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "eef961fd-c1de-4ebe-a066-5f9d341b9417"
+          "dca65299-9ed5-4254-9c12-c93e244dd91f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -424,13 +424,13 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:50 GMT"
+          "Tue, 09 Jun 2020 22:34:41 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1\",\r\n      \"eTag\": \"0x8D80C95368C5BAF\",\r\n      \"creationTime\": \"2020-06-09T16:50:27.7753775Z\",\r\n      \"lastModified\": \"2020-06-09T16:50:27.7753775Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:50:50.383272Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T16:50:28.334244Z\",\r\n      \"commandLine\": \"ping -t localhost -w 60\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"scope\": \"task\",\r\n          \"elevationLevel\": \"admin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P7D\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-06-09T16:50:28.681197Z\",\r\n        \"endTime\": \"2020-06-09T16:50:50.383272Z\",\r\n        \"exitCode\": -1073741510,\r\n        \"failureInfo\": {\r\n          \"category\": \"UserError\",\r\n          \"code\": \"TaskEnded\",\r\n          \"message\": \"Task Was Ended by User Request\",\r\n          \"details\": [\r\n            {\r\n              \"name\": \"AdditionalErrorCode\",\r\n              \"value\": \"FailureExitCode\"\r\n            }\r\n          ]\r\n        },\r\n        \"result\": \"failure\",\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      },\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"nodeUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"poolId\": \"testPool\",\r\n        \"nodeId\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"taskRootDirectory\": \"workitems\\\\testTerminateTaskJob\\\\job-1\\\\testTask1\",\r\n        \"taskRootDirectoryUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/files/workitems/testTerminateTaskJob/job-1/testTask1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testTask2\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2\",\r\n      \"eTag\": \"0x8D80C9536A7371D\",\r\n      \"creationTime\": \"2020-06-09T16:50:27.9513885Z\",\r\n      \"lastModified\": \"2020-06-09T16:50:27.9513885Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:50:51.105Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T16:50:28.270187Z\",\r\n      \"commandLine\": \"ping -t localhost -w 60\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"scope\": \"task\",\r\n          \"elevationLevel\": \"admin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P7D\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-06-09T16:50:28.684958Z\",\r\n        \"endTime\": \"2020-06-09T16:50:51.105Z\",\r\n        \"exitCode\": -1073741510,\r\n        \"failureInfo\": {\r\n          \"category\": \"UserError\",\r\n          \"code\": \"TaskEnded\",\r\n          \"message\": \"Task Was Ended by User Request\",\r\n          \"details\": [\r\n            {\r\n              \"name\": \"AdditionalErrorCode\",\r\n              \"value\": \"FailureExitCode\"\r\n            }\r\n          ]\r\n        },\r\n        \"result\": \"failure\",\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      },\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n        \"nodeUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n        \"poolId\": \"testPool\",\r\n        \"nodeId\": \"tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d\",\r\n        \"taskRootDirectory\": \"workitems\\\\testTerminateTaskJob\\\\job-1\\\\testTask2\",\r\n        \"taskRootDirectoryUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_433e31d38a6884897d9d2b7a9768581487c470359392e641501fd42c39417984_d/files/workitems/testTerminateTaskJob/job-1/testTask2\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask1\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1\",\r\n      \"eTag\": \"0x8D80CC53FAB2597\",\r\n      \"creationTime\": \"2020-06-09T22:34:18.9196695Z\",\r\n      \"lastModified\": \"2020-06-09T22:34:18.9196695Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:34:41.354785Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T22:34:19.81581Z\",\r\n      \"commandLine\": \"ping -t localhost -w 60\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"scope\": \"task\",\r\n          \"elevationLevel\": \"admin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P7D\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-06-09T22:34:20.159567Z\",\r\n        \"endTime\": \"2020-06-09T22:34:41.354785Z\",\r\n        \"exitCode\": -1073741510,\r\n        \"failureInfo\": {\r\n          \"category\": \"UserError\",\r\n          \"code\": \"TaskEnded\",\r\n          \"message\": \"Task Was Ended by User Request\",\r\n          \"details\": [\r\n            {\r\n              \"name\": \"AdditionalErrorCode\",\r\n              \"value\": \"FailureExitCode\"\r\n            }\r\n          ]\r\n        },\r\n        \"result\": \"failure\",\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      },\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"nodeUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"poolId\": \"testPool\",\r\n        \"nodeId\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n        \"taskRootDirectory\": \"workitems\\\\testTerminateTaskJob\\\\job-1\\\\testTask1\",\r\n        \"taskRootDirectoryUrl\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/files/workitems/testTerminateTaskJob/job-1/testTask1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testTask2\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask2\",\r\n      \"eTag\": \"0x8D80CC54D6EC104\",\r\n      \"creationTime\": \"2020-06-09T22:34:19.0948736Z\",\r\n      \"lastModified\": \"2020-06-09T22:34:42.0119812Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:34:42.0119812Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T22:34:19.0948736Z\",\r\n      \"commandLine\": \"ping -t localhost -w 60\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"scope\": \"task\",\r\n          \"elevationLevel\": \"admin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P7D\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"endTime\": \"2020-06-09T22:34:42.0119812Z\",\r\n        \"failureInfo\": {\r\n          \"category\": \"UserError\",\r\n          \"code\": \"TaskEnded\",\r\n          \"message\": \"Task Was Ended by User Request\"\r\n        },\r\n        \"result\": \"failure\",\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      },\r\n      \"nodeInfo\": {}\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -440,13 +440,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "76463021-ae5b-4655-b0b1-c3b297f341f9"
+          "a08af711-1d55-46b1-bbcd-2c8a8e4c3194"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 16:50:51 GMT"
+          "Tue, 09 Jun 2020 22:34:42 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -467,7 +467,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "451956ee-0d51-45de-9f58-9b270ba653ce"
+          "b89f7f8a-cf51-4266-9b70-d2d5b7aaeabc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -479,7 +479,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 16:50:51 GMT"
+          "Tue, 09 Jun 2020 22:34:42 GMT"
         ]
       },
       "ResponseBody": "",

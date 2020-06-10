@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"schedule\": {},\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "ecfa576e-6945-49e6-9c84-3d1d085e3fbd"
+          "45bd2030-3d00-4bfa-821f-62a30b6036c7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:12 GMT"
+          "Tue, 09 Jun 2020 21:04:29 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -34,7 +34,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C98DC201557"
+          "0x8D80CB8C00027A3"
         ],
         "Location": [
           "https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
@@ -43,7 +43,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0001ee24-02ce-4fad-9cc3-01336efa7785"
+          "7641ffec-20a6-4058-8732-659f35ba5be9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,10 +58,10 @@
           "https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:33 GMT"
+          "Tue, 09 Jun 2020 21:04:50 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:34 GMT"
+          "Tue, 09 Jun 2020 21:04:50 GMT"
         ]
       },
       "ResponseBody": "",
@@ -74,13 +74,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9f207c6e-4dfb-462b-8eda-e8e46c831a60"
+          "8f623b53-9499-4024-a834-32cfa140c5ef"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:34 GMT"
+          "Tue, 09 Jun 2020 21:04:51 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -95,13 +95,13 @@
       },
       "ResponseHeaders": {
         "ETag": [
-          "0x8D80C98E96A3FA2"
+          "0x8D80CB8CD4AC923"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "644ac354-c56c-4fd2-92fe-4583cc16e614"
+          "58882b55-d8b4-4258-9a36-46143548d362"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,13 +116,13 @@
           "https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ]
       },
       "ResponseBody": "",
@@ -135,13 +135,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d5e1a34c-c025-4a90-afc9-bd9f28c7831e"
+          "6ce7ba13-454a-4a39-93f8-113e181f2d00"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -156,13 +156,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C98E96A3FA2"
+          "0x8D80CB8CD4AC923"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "75ebea3d-4d7f-4105-a196-290e57bd7a39"
+          "0a584509-3b18-481a-842d-b5fe4348cb19"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,16 +174,16 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D80C98E96A3FA2\",\r\n  \"lastModified\": \"2020-06-09T17:16:56.3541922Z\",\r\n  \"creationTime\": \"2020-06-09T17:16:34.0577623Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2020-06-09T17:16:56.3541922Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T17:16:34.0577623Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D80CB8CD4AC923\",\r\n  \"lastModified\": \"2020-06-09T21:05:13.0671395Z\",\r\n  \"creationTime\": \"2020-06-09T21:04:50.7676579Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2020-06-09T21:05:13.0671395Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T21:04:50.7676579Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -193,13 +193,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "4c16ad1c-61a0-4432-87d9-1095637c08f3"
+          "b9e84748-68f1-4455-9945-62ad30f7d093"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:57 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -214,13 +214,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C98E9DA80B2"
+          "0x8D80CB8CDBAD799"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0aa14c1e-66b9-43ec-a94e-253a572142c7"
+          "175d656f-0d9a-4806-8969-aa6d1008bdda"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -232,16 +232,16 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:57 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D80C98E9DA80B2\",\r\n  \"lastModified\": \"2020-06-09T17:16:57.089861Z\",\r\n  \"creationTime\": \"2020-06-09T17:16:34.0577623Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2020-06-09T17:16:57.1788647Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T17:16:56.730632Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    },\r\n    \"endTime\": \"2020-06-09T17:16:57.1788647Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D80CB8CDBAD799\",\r\n  \"lastModified\": \"2020-06-09T21:05:13.8015129Z\",\r\n  \"creationTime\": \"2020-06-09T21:04:50.7676579Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2020-06-09T21:05:13.8965157Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2020-06-09T21:05:13.435582Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    },\r\n    \"endTime\": \"2020-06-09T21:05:13.8965157Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -251,13 +251,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ad8890c0-a752-471d-bbf2-bc28e7bfd4e7"
+          "53b8ddd8-a8bd-4e40-8af9-c94af7be5f5d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -272,13 +272,13 @@
       },
       "ResponseHeaders": {
         "ETag": [
-          "0x8D80C98E9A3B050"
+          "0x8D80CB8CD83016C"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "69a3405a-c57c-4d58-bd33-70e85a00a415"
+          "2ac0ba80-4361-4f9e-a88a-a64ee623bc5e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -293,13 +293,13 @@
           "https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ]
       },
       "ResponseBody": "",
@@ -312,13 +312,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d3d00e5c-16c6-4f51-881c-6729d4d67052"
+          "b27cef84-d26b-4807-9023-e76d1f5a36fb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -336,7 +336,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7a5888df-5537-4aae-a8b6-89879f2768ab"
+          "1c1fc0ba-8ca2-44a6-b13b-a2d5f06eebc0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -348,13 +348,13 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8D80C98E9A3B050\",\r\n      \"lastModified\": \"2020-06-09T17:16:56.730632Z\",\r\n      \"creationTime\": \"2020-06-09T17:16:34.0577623Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T17:16:56.730632Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T17:16:56.3541922Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8D80CB8CD83016C\",\r\n      \"lastModified\": \"2020-06-09T21:05:13.435582Z\",\r\n      \"creationTime\": \"2020-06-09T21:04:50.7676579Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-06-09T21:05:13.435582Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2020-06-09T21:05:13.0671395Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -364,13 +364,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0eb085cc-fc78-41db-89f3-247f8e6f8f1d"
+          "c424ab9f-4d14-4583-9e0d-bd20669414e1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -388,13 +388,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80C98E9DA80B2"
+          "0x8D80CB8CDBAD799"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "d18092e3-e707-4909-a472-030436df75e4"
+          "3a9d1ca1-dcb8-4162-b31e-713cd36e7379"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -409,10 +409,10 @@
           "https://prodtest6.francecentral.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:56 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 17:16:57 GMT"
+          "Tue, 09 Jun 2020 21:05:13 GMT"
         ]
       },
       "ResponseBody": "",
@@ -425,13 +425,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a454f0f3-f267-4d52-8c45-f82d4a3e46e0"
+          "355144a7-82cf-473f-8c8c-c053acca7d61"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 17:16:57 GMT"
+          "Tue, 09 Jun 2020 21:05:14 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -452,7 +452,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "427da681-36a7-4938-939c-aca9e3789814"
+          "af9b58c9-0c6f-465f-a7e3-e0b05c9c95f6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -464,7 +464,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 17:16:57 GMT"
+          "Tue, 09 Jun 2020 21:05:14 GMT"
         ]
       },
       "ResponseBody": "",
