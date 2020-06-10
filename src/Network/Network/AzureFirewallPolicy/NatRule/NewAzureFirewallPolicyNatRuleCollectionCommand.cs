@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
 {
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRuleCollection"), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
-    public class NewAzureFirewallPolicyNatRuleCollectionsCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallPolicyNatRuleCollectionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of network rules")]
+            HelpMessage = "The list of nat rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRule Rule { get; set; }
+        public PSAzureFirewallPolicyNatRule[] Rule { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -53,18 +53,6 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = false)]
         public string ActionType { get; set; }
 
-
-        [Parameter(
-                   Mandatory = true,
-                   HelpMessage = "The translated address for this NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string TranslatedAddress { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The translated port for this NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string TranslatedPort { get; set; }
         public override void Execute()
         {
             base.Execute();
@@ -73,11 +61,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rule = this.Rule,
+                Rules = this.Rule?.ToList(),
                 Action = new PSAzureFirewallPolicyNatRuleCollectionAction { Type = ActionType },
-                TranslatedAddress = this.TranslatedAddress,
-                TranslatedPort = this.TranslatedPort,
-                RuleCollectionType = "FirewallPolicyNatRule"
+                RuleCollectionType = "FirewallPolicyNatRuleCollection"
             };
 
             WriteObject(natRuleCollections);
