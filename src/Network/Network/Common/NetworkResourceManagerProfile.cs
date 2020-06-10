@@ -1284,14 +1284,14 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
-                //// Azure Firewall Policies
-                //// CNM to MNM
-                //cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
-                //cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
+                // Azure Firewall Policies
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
 
-                //// MNM to CNM
-                //cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
-                //cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
+                // MNM to CNM
+                cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
 
                 // Virtual Network Tap
                 // CNM to MNM
