@@ -152,11 +152,6 @@ function Update-AzDatabricksWorkspace {
 
     process {
         try {
-            $outBuffer = $null
-            if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-                $PSBoundParameters['OutBuffer'] = 1
-            }
-
             # 1. GET
             $hasPrepareEncryption = $PSBoundParameters.Remove('PrepareEncryption')
             $hasEncryptionKeySource = $PSBoundParameters.Remove('EncryptionKeySource')

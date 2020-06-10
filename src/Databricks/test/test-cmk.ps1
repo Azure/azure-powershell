@@ -1,7 +1,12 @@
+# How to test CMK
 # 1. new resource group
 
-# 2. new databricks workspace (prepare encryption)
+# 2. case 1: new databricks workspace (prepare encryption)
 $dbr = New-AzDatabricksWorkspace -Name "yeming" -ResourceGroupName "yeming" -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+
+# case 2: new databricks workspace (do not prepare encryption), then update workspace to prepare encryption
+$dbr = New-AzDatabricksWorkspace -Name "yeming" -ResourceGroupName "yeming" -Location "East US 2 EUAP" -Sku premium
+$dbr | Update-AzDatabricksWorkspace -PrepareEncryption
 
 # verify $dbr.PrepareEncryptionValue is $True
 # verify $dbr has these properties (not null):
