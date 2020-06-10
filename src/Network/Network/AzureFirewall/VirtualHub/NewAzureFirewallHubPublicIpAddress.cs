@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallHubPublicIpAddress", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallHubPublicIpAddresses))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallHubPublicIpAddress"), OutputType(typeof(PSAzureFirewallHubPublicIpAddresses))]
     public class NewAzureFirewallHubPublicIpAddress : AzureFirewallBaseCmdlet
     {
         [Parameter(
