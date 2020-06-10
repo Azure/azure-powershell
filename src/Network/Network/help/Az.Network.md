@@ -350,9 +350,6 @@ Get an Azure IpGroup
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets a load balancer.
 
-### [Get-AzLoadBalancerBackendAddressPool](Get-AzLoadBalancerBackendAddressPool.md)
-Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer. 
-
 ### [Get-AzLoadBalancerBackendAddressPoolConfig](Get-AzLoadBalancerBackendAddressPoolConfig.md)
 Gets a backend address pool configuration for a load balancer.
 
@@ -836,12 +833,6 @@ Creates a load balancer.
 ### [New-AzLoadBalancerBackendAddressConfig](New-AzLoadBalancerBackendAddressConfig.md)
 Returns a load balancer backend address config. 
 
-### [New-AzLoadBalancerBackendAddressPool](New-AzLoadBalancerBackendAddressPool.md)
-Creates a backend address pool on a loadbalancer. 
-
-### [New-AzLoadBalancerBackendAddressPoolConfig](New-AzLoadBalancerBackendAddressPoolConfig.md)
-Creates a backend address pool configuration for a load balancer.
-
 ### [New-AzLoadBalancerFrontendIpConfig](New-AzLoadBalancerFrontendIpConfig.md)
 Creates a front-end IP configuration for a load balancer.
 
@@ -1171,9 +1162,6 @@ Deletes an Azure IpGroup.
 ### [Remove-AzLoadBalancer](Remove-AzLoadBalancer.md)
 Removes a load balancer.
 
-### [Remove-AzLoadBalancerBackendAddressPool](Remove-AzLoadBalancerBackendAddressPool.md)
-Removes a backend pool from a load balancer
-
 ### [Remove-AzLoadBalancerBackendAddressPoolConfig](Remove-AzLoadBalancerBackendAddressPoolConfig.md)
 Removes a backend address pool configuration from a load balancer.
 
@@ -1458,9 +1446,6 @@ Saves a modified Firewall.
 
 ### [Set-AzLoadBalancer](Set-AzLoadBalancer.md)
 Updates a load balancer.
-
-### [Set-AzLoadBalancerBackendAddressPool](Set-AzLoadBalancerBackendAddressPool.md)
-Updates the backend pool on a loadbalancer
 
 ### [Set-AzLoadBalancerFrontendIpConfig](Set-AzLoadBalancerFrontendIpConfig.md)
 Updates a front-end IP configuration for a load balancer.
