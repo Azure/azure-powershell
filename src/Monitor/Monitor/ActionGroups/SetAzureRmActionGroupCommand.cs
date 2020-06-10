@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 if (ParameterSetName == ByInputObject)
                 {
                     this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    if ( this.Name == null )
+                    if (this.Name == null)
                     {
                         this.Name = this.InputObject.Name;
                     }
