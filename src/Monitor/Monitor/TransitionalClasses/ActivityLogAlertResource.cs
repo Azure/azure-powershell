@@ -54,7 +54,11 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
                   enabled: activityLogAlertResource?.Enabled,
                   description: activityLogAlertResource?.Description)
         {
-
+            if (activityLogAlertResource != null)
+            {
+                this.Actions = activityLogAlertResource.Actions != null ? new ActivityLogAlertActionList(activityLogAlertResource.Actions) : null;
+                this.Condition = activityLogAlertResource.Condition != null ? new ActivityLogAlertAllOfCondition(activityLogAlertResource.Condition) : null;
+            }
         }
     }
 }
