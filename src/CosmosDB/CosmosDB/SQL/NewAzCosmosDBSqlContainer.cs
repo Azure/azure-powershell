@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (UniqueKeyPolicy != null)
             {
-                sqlContainerResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
+                sqlContainerResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ToSDKModel(UniqueKeyPolicy);
             }
 
             if (TtlInSeconds != null)
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if(ConflictResolutionPolicy != null)
             {
-                sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ConvertPSConflictResolutionPolicyToConflictResolutionPolicy(ConflictResolutionPolicy);
+                sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
 
             if (ConflictResolutionPolicyMode != null)
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (IndexingPolicy != null)
             {
-                sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ConvertPSIndexingToIndexingPolicy(IndexingPolicy);
+                sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ToSDKModel(IndexingPolicy);
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();

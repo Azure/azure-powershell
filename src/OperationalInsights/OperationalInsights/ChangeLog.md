@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added alias "FunctionParameters" for parameter "FunctionParameter" to
+    - `New-AzOperationalInsightsSavedSearch`
+    - `Set-AzOperationalInsightsSavedSearch`
+
+## Version 2.1.0
+* Upgraded SDK to 0.21.0
+* Added optional parameters to 
+    - `New-AzOperationalInsightsSavedSearch`
+    - `Set-AzOperationalInsightsSavedSearch`
+
+## Version 2.0.0
+* Updated legacy code to apply new generated SDK
+* Deleted cmdlets due to deprecated APIs
+    - `Get-AzOperationalInsightsSavedSearchResult` (alias `Get-AzOperationalInsightsSavedSearchResults`)
+    - `Get-AzOperationalInsightsSearchResult` (alias `Get-AzOperationalInsightsSearchResults`)
+    - `Get-AzOperationalInsightsLinkTarget` (alias `Get-AzOperationalInsightsLinkTargets`)
+* Added parameters for `Set-AzOperationalInsightsWorkspace` and `New-AzOperationalInsightsWorkspace`
+* Created cmdlets for Linked Stoarge Account
+* Created cmdlets for Clusters and Linked Service
 
 ## Version 1.3.4
 * Update references in .psd1 to use relative path

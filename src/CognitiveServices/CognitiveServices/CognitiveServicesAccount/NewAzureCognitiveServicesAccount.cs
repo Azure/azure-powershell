@@ -155,6 +155,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [AllowEmptyCollection]
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for Cognitive Services Account. Commonly `Enabled` or `Disabled`.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        public string PublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -183,6 +189,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = properties
                 };
+
+                if (!string.IsNullOrEmpty(PublicNetworkAccess))
+                {
+                    createParameters.Properties.PublicNetworkAccess = PublicNetworkAccess;
+                }
 
                 if (AssignIdentity.IsPresent)
                 {

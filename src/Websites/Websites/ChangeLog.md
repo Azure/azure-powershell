@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added safeguard to delete created webapp if restore failed in `Restore-AzDeletedWebApp`
+* Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
+
+## Version 1.9.0
+* Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
 
 ## Version 1.8.0
 * Added support for working with webapp Traffic Routing Rules via below new cmdlets

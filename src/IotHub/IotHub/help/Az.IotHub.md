@@ -119,6 +119,9 @@ Gets all valid skus that this IotHub can transition to.
 ### [Invoke-AzIotHubConfigurationMetricsQuery](Invoke-AzIotHubConfigurationMetricsQuery.md)
 Invoke an IoT device configuration metric query.
 
+### [Invoke-AzIotHubDeploymentMetricsQuery](Invoke-AzIotHubDeploymentMetricsQuery.md)
+Invoke an IoT Edge deployment metric query.
+
 ### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
 Invoke a direct method on a device.
 
@@ -182,6 +185,9 @@ Delete a route in IoT Hub
 ### [Remove-AzIotHubRoutingEndpoint](Remove-AzIotHubRoutingEndpoint.md)
 Delete an endpoint for your IoT Hub
 
+### [Send-AzIotHubDevice2CloudMessage](Send-AzIotHubDevice2CloudMessage.md)
+Send device-to-cloud message.
+
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
 
@@ -199,6 +205,9 @@ Set the parent device of the specified device.
 
 ### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
 Update the distributed tracing options for a device.
+
+### [Set-AzIotHubEdgeModule](Set-AzIotHubEdgeModule.md)
+Set edge modules on a single edge device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.

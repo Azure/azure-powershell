@@ -20,7 +20,7 @@ Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName <String> -AccountName
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBMongoDBDatabaseThroughput -Name <String> -InputObject <PSDatabaseAccount>
+Get-AzCosmosDBMongoDBDatabaseThroughput -Name <String> -InputObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 

@@ -30,5 +30,11 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string InputObject = "InputObject";
         public const string PolicyOn = "PolicyOn";
         public const string PolicyOff = "PolicyOff";
+
+        #region Settings
+
+        public const string DataExportSettingsScope = "DataExportSettingsScope";
+
+        #endregion
     }
 }

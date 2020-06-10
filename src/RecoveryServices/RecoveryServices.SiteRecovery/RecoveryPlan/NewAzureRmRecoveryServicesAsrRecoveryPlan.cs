@@ -58,6 +58,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRFabric PrimaryFabric { get; set; }
 
@@ -80,8 +86,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
-        [ValidateNotNullOrEmpty]
         public ASRFabric RecoveryFabric { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the primary zone of the replication protected items that will be part of this recovery plan.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the recovery zone of the replication protected items that will be part of this recovery plan.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryZone { get; set; }
 
         /// <summary>
         ///     Switch parameter to specify that the recovery location for recovery plan is Azure.
@@ -90,6 +113,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         public SwitchParameter Azure { get; set; }
+
+        /// <summary>
+        ///    Switch parameter to specify that the replicated item is an Azure virtual machine 
+        ///    replicating from one Azure zone to another Azure zone.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true,
+            HelpMessage = "Switch parameter specifies creating the replicated item in azure zone to zone scenario.")]
+        public SwitchParameter AzureZoneToZone { get; set; }
 
         /// <summary>
         ///     Gets or sets the failover deployment model (Classic or Resource Manager)
@@ -115,6 +148,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }
 
@@ -145,6 +181,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.primaryserver = this.PrimaryFabric.ID;
                         this.recoveryserver = this.RecoveryFabric.ID;
                         break;
+                    case ASRParameterSets.AzureZoneToZone:
+                        this.failoverDeploymentModel = Constants.NotApplicable;
+                        this.primaryserver = this.PrimaryFabric.ID;
+                        this.recoveryserver = this.PrimaryFabric.ID;
+                        break;
                     case ASRParameterSets.EnterpriseToAzure:
                         this.failoverDeploymentModel = this.FailoverDeploymentModel;
                         this.primaryserver = this.PrimaryFabric.ID;
@@ -168,7 +209,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             this.recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
                                 file.ReadToEnd(),
-                                new RecoveryPlanActionDetailsConverter());
+                                new RecoveryPlanActionDetailsConverter(),
+                                new RecoveryPlanProviderSpecificDetailsConverter());
                         }
 
                         break;
@@ -290,6 +332,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             createRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);
 
+            // Add zone to zone details.
+            if (this.ParameterSetName == ASRParameterSets.AzureZoneToZone)
+            {
+                var recoveryPlanA2AInput = new RecoveryPlanA2AInput
+                {
+                    PrimaryZone = this.PrimaryZone,
+                    RecoveryZone = this.RecoveryZone
+                };
+
+                createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();
+                createRecoveryPlanInputProperties.ProviderSpecificInput.Add(recoveryPlanA2AInput);
+            }
+
+
             var createRecoveryPlanInput =
                 new CreateRecoveryPlanInput { Properties = createRecoveryPlanInputProperties };
 
@@ -311,6 +367,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 PrimaryFabricId = recoveryPlan.Properties.PrimaryFabricId,
                 RecoveryFabricId = recoveryPlan.Properties.RecoveryFabricId
             };
+
+            if (recoveryPlan.Properties.ProviderSpecificDetails != null &&
+                recoveryPlan.Properties.ProviderSpecificDetails.Count > 0)
+            {
+                createRecoveryPlanInputProperties.ProviderSpecificInput = 
+                    new List<RecoveryPlanProviderSpecificInput>();
+                foreach (var providerSpecificDetails in recoveryPlan.Properties.ProviderSpecificDetails)
+                {
+                    if (providerSpecificDetails is RecoveryPlanA2ADetails)
+                    {
+                        var a2aProviderDetails = (RecoveryPlanA2ADetails)providerSpecificDetails;
+                        var psd = new RecoveryPlanA2AInput
+                        {
+                            RecoveryZone = a2aProviderDetails.RecoveryZone,
+                            PrimaryZone = a2aProviderDetails.PrimaryZone
+                        };
+
+                        createRecoveryPlanInputProperties.ProviderSpecificInput.Add(psd);
+                    }
+                }
+            }
 
             var createRecoveryPlanInput =
                 new CreateRecoveryPlanInput { Properties = createRecoveryPlanInputProperties };

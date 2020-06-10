@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Newtonsoft.Json;
 using System;
@@ -24,22 +25,18 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     /// <summary>
-    /// This class processes failed deployment operations and formats the resulting errors to be outputed
-    /// at the end of a deployment.
+    /// This class processes failed deployment operations.
     /// </summary>
     public class DeploymentOperationErrorInfo
     {
-        private const int MaxErrorsToShow = 3;
+        public const int MaxErrorsToShow = 3;
 
         public DeploymentOperationErrorInfo()
         {
-            ErrorMessages = new List<string>();
-            RequestId = string.Empty;
+            ErrorMessages = new List<ErrorResponse>();
         }
 
-        public List<string> ErrorMessages { get; private set; }
-
-        public string RequestId { get; private set; }
+        public List<ErrorResponse> ErrorMessages { get; private set; }
 
         #region Public Methods
 
@@ -48,71 +45,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             ErrorResponse error = DeserializeDeploymentOperationError(operation.Properties?.StatusMessage?.ToString());
 
             if (error != null)
-            {
-                var sb = new StringBuilder();
-
-                sb.AppendLine().Append(GetErrorMessageWithDetails(error));
-
-                // if there is target information let's add that to the error string
-                if (operation.Properties.TargetResource?.ResourceType != null && operation.Properties.TargetResource?.ResourceName != null)
-                {
-                    sb.AppendLine().AppendFormat(ProjectResources.DeploymentOperationTargetInfoInErrror, operation.Properties.TargetResource.ResourceType,operation.Properties.TargetResource.ResourceName);                    
-                }
-                
-                ErrorMessages.Add(sb.ToString());
-            }            
-        }
-
-        public string GetErrorMessagesWithOperationId(string deploymentName = null)
-        {
-            if (ErrorMessages.Count == 0)
-                return String.Empty;
-
-            var sb = new StringBuilder();
-
-            int maxErrors = ErrorMessages.Count > MaxErrorsToShow
-               ? MaxErrorsToShow
-               : ErrorMessages.Count;
-
-            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, deploymentName, maxErrors, ErrorMessages.Count);
-            sb.Append(string.Join(Environment.NewLine, ErrorMessages.Take(maxErrors)));
-            sb.AppendLine().AppendFormat(ProjectResources.DeploymentOperationId, this.RequestId);
-            
-            return sb.ToString();
-        }
-
-
-        public void SetRequestIdFromResponseHeaders(HttpResponseMessage response)
-        {
-            RequestId = string.Empty;
-
-            if (response?.Headers != null && response.Headers.TryGetValues("x-ms-request-id", out IEnumerable<string> requestIdValues))
-            {
-                RequestId = string.Join(";", requestIdValues);
+            {    
+                ErrorMessages.Add(error);
             }
         }
         #endregion
 
-        #region Static Methods
-        public static string GetErrorMessageWithDetails(ErrorResponse error)
-        {
-            if (error == null) return null;
-
-            if (error.Details == null)
-            {
-                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Code, error.Message);
-            }
-
-            string errorDetail = null;
-
-            foreach (ErrorResponse detail in error.Details)
-            {
-                errorDetail += GetErrorMessageWithDetails(detail);
-            }
-
-            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Code, error.Message, errorDetail);            
-        }
-
+        #region Static Methods 
+        /// <summary>
+        /// A special method to deserialize the statusMessage. This method will be retired with new
+        /// Resources API version.
+        /// </summary>
+        /// <param name="statusMessage"></param>
+        /// <returns></returns>
         public static ErrorResponse DeserializeDeploymentOperationError(string statusMessage)
         {
             if (statusMessage == null)
@@ -120,22 +65,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 return null;
             }
 
+            dynamic dynamicStatusMessage = DeserializeDeploymentOperationStatusMessage(statusMessage);
             ErrorResponse error = null;
-            dynamic dynamicStatusMessage;
+
+            try
+            {
+                if (dynamicStatusMessage?.error != null )
+                {
+                    error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage.error.ToString());
+                }
+                else if (dynamicStatusMessage != null)
+                {
+                    error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage.ToString());
+                }
+            }
+            catch 
+            {
+                 error = new ErrorResponse(null, statusMessage);
+            }
+
+            return error;
+        }
+
+        private static dynamic DeserializeDeploymentOperationStatusMessage(string statusMessage)
+        {
+            dynamic dynamicStatusMessage = null;
 
             try
             {
                 dynamicStatusMessage = JsonConvert.DeserializeObject(statusMessage);
-                error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage?.error?.ToString());
             }
             catch
             {
-                // We'll ignore the exception if we can't properly deserialize the JSON.
-                // The reason for that can be 1- statusMessage is not a valid JSON(it can be a string when it's the outer generic error message)
-                // which will result is DeserializeObject exception. 2- If error is not properly modeled as ErrorResponse.
+                // Sometimes statusMessage is not a valid JSON(it can be a string when it's the outer generic error message)
+                // In that case, we'll ignore the error.
             }
 
-            return error;
+            return dynamicStatusMessage;
         }
         #endregion
     }

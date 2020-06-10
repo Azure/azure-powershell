@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
+* Added name validation for `New-AzIpGroup`
+
+## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`
     - `New-AzPublicIpPrefix`
@@ -29,6 +33,21 @@
         - Remove-AzSecurityPartnerProvider
         - Get-AzSecurityPartnerProvider
         - Set-AzSecurityPartnerProvider
+* Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
+* Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
+* Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
+    - `New-AzVirtualWan`
+    - `Update-AzVirtualWan`
+* Added new cmdlets to support DNS zone group for private endpoint
+    - `New-AzPrivateDnsZoneConfig`
+    - `Get-AzPrivateDnsZoneGroup`
+    - `New-AzPrivateDnsZoneGroup`
+    - `Set-AzPrivateDnsZoneGroup`
+    - `Remove-AzPrivateDnsZoneGroup`
+* Add `DNSEnableProxy`, 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to `AzureFirewall`
+* Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
+    - Updated cmdlet:
+        - New-AzFirewall
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

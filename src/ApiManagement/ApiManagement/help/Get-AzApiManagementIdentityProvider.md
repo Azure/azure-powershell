@@ -26,6 +26,7 @@ Get-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
 
 ## DESCRIPTION
 Get the identity provider configuration details.
+ClientSecret will not be included into result details. To get client secret, use **Get-AzApiManagementIdentityProviderClientSecret**.
 
 ## EXAMPLES
 

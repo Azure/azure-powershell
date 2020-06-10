@@ -207,6 +207,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 Name = privateEndpointConnection.Name,
                 Id = privateEndpointConnection.Id,
                 ProvisioningState = privateEndpointConnection.ProvisioningState,
+                GroupId = privateEndpointConnection.GroupId,
             };
             psPEC.PrivateEndpoint = new PSPrivateEndpoint
             {
@@ -230,7 +231,14 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 Type = privateLinkResource.Type,
                 GroupId = privateLinkResource.Properties.GroupId
             };
-            psPLR.RequiredMembers = new List<string>(privateLinkResource.Properties.RequiredMembers);
+            if(privateLinkResource.Properties.RequiredMembers != null)
+            {
+                psPLR.RequiredMembers = new List<string>(privateLinkResource.Properties.RequiredMembers);
+            }
+            if(privateLinkResource.Properties.RequiredZoneNames != null)
+            {
+                psPLR.RequiredZoneNames = new List<string>(privateLinkResource.Properties.RequiredZoneNames);
+            }
             return psPLR;
         }
         #endregion

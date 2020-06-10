@@ -17,10 +17,20 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> RequiredMembers { get; set; }
 
+        public List<string> RequiredZoneNames { get; set; }
+
         [JsonIgnore]
         public string RequiredMembersText
         {
             get { return JsonConvert.SerializeObject(RequiredMembers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        [JsonIgnore]
+        public string RequiredZoneNamesText
+        {
+            get { return JsonConvert.SerializeObject(RequiredZoneNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        
     }
 }

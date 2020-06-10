@@ -13,8 +13,9 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
-Set-AzApiManagement -InputObject <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ## EXAMPLES
 
-### Example 1 Get an API Management service and scale it to Premium and Add a region
+### Example 1: Get an API Management service and scale it to Premium and Add a region
 ```powershell
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.Sku = "Premium"
@@ -54,7 +55,7 @@ PS C:\>$proxyCustomConfig = @($proxy1,$proxy2)
 PS C:\>$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
 PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
-PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
+PS C:\>Set-AzApiManagement -InputObject $apim -SystemAssignedIdentity
 ```
 
 ### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
@@ -70,21 +71,6 @@ PS C:\> Set-AzApiManagement -InputObject $apim -PassThru
 
 ### -AsJob
 Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,6 +126,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemAssignedIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+Assign User Identities to this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
-        [PSArgumentCompleter("Deallocate")]
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
 
         [Parameter(

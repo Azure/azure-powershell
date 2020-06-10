@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
+    using System.Collections.Generic;
+
     public class PSResourceManagerError
     {
         public string Code { get; set; }

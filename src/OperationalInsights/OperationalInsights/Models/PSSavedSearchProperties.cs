@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Query = properties.Query;
                 this.Version = properties.Version;
                 this.Tags = new Hashtable();
+                this.FunctionAlias = properties.FunctionAlias;
+                this.FunctionParameters = properties.FunctionParameters;
 
                 if (properties.Tags != null)
                 {
@@ -42,10 +44,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 }
             }
         }
+
         public string Category { get; set; }
         public string DisplayName { get; set; }
         public string Query { get; set; }
         public long? Version { get; set; }
         public Hashtable Tags { get; set; }
+        public string FunctionAlias { get; set; }
+        public string FunctionParameters { get; set; }
     }
 }

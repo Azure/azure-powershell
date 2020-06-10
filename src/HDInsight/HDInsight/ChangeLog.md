@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.0
+* Supported Customer-managed key disk encryption.
+
 ## Version 3.1.0
 * Supported specifying minimal supported TLS version when creating cluster.
 

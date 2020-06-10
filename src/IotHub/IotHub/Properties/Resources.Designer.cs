@@ -347,6 +347,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send Device to Cloud Message.
+        /// </summary>
+        internal static string SendIotHubD2CMessage {
+            get {
+                return ResourceManager.GetString("SendIotHubD2CMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Configuration.
         /// </summary>
         internal static string SetIotHubConfiguration {
@@ -361,6 +370,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string SetIotHubDistributedTracing {
             get {
                 return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply Configuration on Edge Devices.
+        /// </summary>
+        internal static string SetIotHubEdgeModules {
+            get {
+                return ResourceManager.GetString("SetIotHubEdgeModules", resourceCulture);
             }
         }
         

@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         public PSCloningInfo(CloningInfo other)
             : base(
                   sourceWebAppId: other.SourceWebAppId,
+                  sourceWebAppLocation: other.SourceWebAppLocation,
                   correlationId: other.CorrelationId,
                   overwrite: other.Overwrite,
                   cloneCustomHostNames: other.CloneCustomHostNames,

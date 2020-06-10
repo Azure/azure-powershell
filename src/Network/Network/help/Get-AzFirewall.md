@@ -217,7 +217,7 @@ This example retrieves a firewall, then adds a application rule collection to th
 ### 5:  Retrieve a firewall and then add a network rule collection to the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
-$netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "UDP" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 $netRuleCollection = New-AzFirewallNetworkRuleCollection -Name "MyNetworkRuleCollection" -Priority 100 -Rule $netRule -ActionType "Allow"
 $azFw.AddNetworkRuleCollection($netRuleCollection)
 ```

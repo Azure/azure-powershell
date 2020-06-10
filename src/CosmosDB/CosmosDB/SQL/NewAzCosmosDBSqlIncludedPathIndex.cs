@@ -15,8 +15,9 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.CosmosDB.Models;
+using static Microsoft.Azure.Management.CosmosDB.Models.DataType;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBSqlIncludedPathIndex : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.IncludedPathIndexesDataTypeHelpMessage)]
-        [PSArgumentCompleter("String", "Number", "Point", "Polygon", "LineString", "MultiPolygon")]
+        [PSArgumentCompleter(String, Number, Point, Polygon, LineString, MultiPolygon)]
         [ValidateNotNullOrEmpty]
         public string DataType { get; set; }
 
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public int? Precision { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.IncludedPathIndexesKindHelpMessage)]
-        [PSArgumentCompleter("Hash", "Range", "Spatial")]
+        [PSArgumentCompleter(IndexKind.Hash, IndexKind.Range, IndexKind.Spatial)]
         [ValidateNotNullOrEmpty]
         public string Kind { get; set; }
 

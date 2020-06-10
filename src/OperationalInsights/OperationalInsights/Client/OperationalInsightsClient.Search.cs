@@ -44,60 +44,50 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponses;
         }
 
-        public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string resourceGroupName, string workspaceName, string savedSearchId)
-        {
-            SearchResultsResponse responses = OperationalInsightsManagementClient.SavedSearches.GetResults(resourceGroupName, workspaceName, savedSearchId);
-            PSSearchGetSearchResultsResponse searchResponses = new PSSearchGetSearchResultsResponse(responses);
-            return searchResponses;
-        }
-
         public virtual PSSearchGetSchemaResponse GetSchema(string resourceGroupName, string workspaceName)
         {
-            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Workspaces.GetSchema(resourceGroupName, workspaceName);
+            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Schema.Get(resourceGroupName, workspaceName);
             PSSearchGetSchemaResponse schemaResponse = new PSSearchGetSchemaResponse(response);
             return schemaResponse;
         }
 
-        public virtual PSSearchGetSearchResultsResponse GetSearchResults(string resourceGroupName, string workspaceName, PSSearchGetSearchResultsParameters psParameters)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, SavedSearch properties, bool patch, bool force, Action<bool, string, string, string, Action, Func<bool>> ConfirmAction, string ETag = null)
         {
-            SearchParameters parameters = new SearchParameters();
-            
-            if (psParameters.Highlight != null)
+            PSSearchGetSavedSearchResponse ExistingSearch;
+            bool existed;
+
+            try
             {
-                parameters.Highlight = new SearchHighlight();
-                parameters.Highlight.Pre = psParameters.Highlight.Pre;
-                parameters.Highlight.Post = psParameters.Highlight.Post;
+                ExistingSearch = GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);
             }
-            
-            parameters.Top = psParameters.Top == 0 ? 10 : psParameters.Top;
-            parameters.Query = psParameters.Query;
-            parameters.Start = psParameters.Start;
-            parameters.End = psParameters.End.GetValueOrDefault(DateTime.UtcNow);
+            catch (Rest.Azure.CloudException)
+            {
+                ExistingSearch = null;
+            }
 
-            SearchResultsResponse response = OperationalInsightsManagementClient.Workspaces.GetSearchResults(resourceGroupName, workspaceName, parameters);
-            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
-            return searchResponse;
-        }
+            existed = ExistingSearch == null ? false : true;
 
-        public virtual PSSearchGetSearchResultsResponse GetSearchResultsUpdate(string resourceGroupName, string workspaceName, string id)
-        {
-            SearchResultsResponse response = OperationalInsightsManagementClient.Workspaces.UpdateSearchResults(resourceGroupName, workspaceName, id);
-            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
-            return searchResponse;
-        }
-
-        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, SavedSearch properties, bool force, Action<bool, string, string, string, Action, Func<bool>> ConfirmAction, string ETag = null)
-        {
             HttpStatusCode status = HttpStatusCode.Ambiguous;
             Action createSavedSearch = () =>
+            {
+                if (ETag != null && ETag != "")
                 {
-                    if (ETag != null && ETag != "")
-                    {
-                        properties.Etag = ETag;
-                    }
-                    Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
-                    status = result.Response.StatusCode;
-                };
+                    properties.ETag = ETag;
+                }
+                Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
+                status = result.Response.StatusCode;
+            };
+
+            Action updateSavedSearch = () =>
+            {
+                if (ETag != null && ETag != "")
+                {
+                    properties.ETag = ETag;
+                }
+                properties.FunctionParameters = ExistingSearch.Properties.FunctionParameters;
+                Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
+                status = result.Response.StatusCode;
+            };
 
             ConfirmAction(
                 force,    // prompt only if the saved search exists
@@ -112,8 +102,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     savedSearchId,
                     workspaceName),
                 savedSearchId,
-                createSavedSearch,
-                () => CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId));
+                (patch && existed) ? updateSavedSearch : createSavedSearch ,
+                () => existed);
             return status;
         }
 
