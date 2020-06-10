@@ -20,12 +20,12 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRule", DefaultParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallPolicyApplicationRule))]
-    public class NewAzFirewallPolicyApplicationRuleCommand : AzureFirewallPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRule"), OutputType(typeof(PSAzureFirewallNatRule))]
+    public class NewAzFirewallPolicyNatRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Application Rule")]
+            HelpMessage = "The name of the Nat Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -43,52 +43,49 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
-            HelpMessage = "The target FQDNs of the rule")]
+            HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] TargetFqdn { get; set; }
+        public string[] DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.FqdnTag,
-            HelpMessage = "The FQDN Tags of the rule")]
+            HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] FqdnTag { get; set; }
+        public string[] DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] Protocol { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The translated address for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The translated port for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedPort { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (FqdnTag != null)
-            {
-                this.Protocol = new string[] { "http", "https" };
-                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallPolicyFqdnTagClient).ToArray();
-            }
-
-            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocol?.ToList());
-
-            var applicationRule = new PSAzureFirewallPolicyApplicationRule
+            var natRule = new PSAzureFirewallPolicyNatRule
             {
                 Name = this.Name,
+                Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
-                Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdn?.ToList(),
-                FqdnTags = this.FqdnTag?.ToList(),
-                RuleType = "ApplicationRule"
+                DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationPorts = this.DestinationPort?.ToList(),
+                TranslatedAddress = this.TranslatedAddress,
+                TranslatedPort = this.TranslatedPort,
+                RuleType = "NatRule"
             };
-            WriteObject(applicationRule);
-        }
-
-        private List<PSAzureFirewallPolicyApplicationRuleProtocol> MapUserProtocolsToFirewallPolicyProtocols(List<string> userProtocols)
-        {
-            return userProtocols.Select(PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol)?.ToList();
+            WriteObject(natRule);
         }
     }
 }

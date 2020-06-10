@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2,PropertyName = "priority")]
         public uint Priority { get; set; }
 
-        [JsonProperty("ruleType")]
+        [JsonProperty("ruleCollectionType")]
         public string RuleCollectionType { get; set; }
     }
 }
