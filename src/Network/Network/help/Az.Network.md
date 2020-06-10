@@ -830,8 +830,8 @@ Creates a traffic selector policy.
 ### [New-AzLoadBalancer](New-AzLoadBalancer.md)
 Creates a load balancer.
 
-### [New-AzLoadBalancerBackendAddressConfig](New-AzLoadBalancerBackendAddressConfig.md)
-Returns a load balancer backend address config. 
+### [New-AzLoadBalancerBackendAddressPoolConfig](New-AzLoadBalancerBackendAddressPoolConfig.md)
+Creates a backend address pool configuration for a load balancer.
 
 ### [New-AzLoadBalancerFrontendIpConfig](New-AzLoadBalancerFrontendIpConfig.md)
 Creates a front-end IP configuration for a load balancer.
