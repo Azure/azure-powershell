@@ -66,6 +66,7 @@
 * Updated below things based on recent swagger change for Firewall Policy
     - Changes names for RuleGroup, RuleCollectionGroup and RuleType
     - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* Support for IpGroups in AzureFirewallPolicy Application, Network, and NAT Rules.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

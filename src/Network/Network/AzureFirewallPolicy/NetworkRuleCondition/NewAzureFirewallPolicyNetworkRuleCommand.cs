@@ -37,16 +37,24 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The source ipgroups of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination ipgroups of the rule")]
+        public string[] DestinationIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -83,16 +91,23 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            // Only one of DestinationAddress or DestinationFqdns is allowed
-            if ((DestinationAddress != null) && (DestinationFqdn != null))
+            // Only one of DestinationAddress/DestinationIpGroup or DestinationFqdns is allowed
+            // Eventually we may want to have exclusitivity with IpGroup too but for now not doing that
+            if (((DestinationAddress != null) || (DestinationIpGroup == null)) && (DestinationFqdn != null))
             {
-                throw new ArgumentException("Both DestinationAddress and DestinationFqdns not allowed");
+                throw new ArgumentException("Both DestinationAddress or DestinationIpGroup and DestinationFqdns not allowed");
             }
 
-            // One of DestinationAddress or DestinationFqdns must be present
-            if ((DestinationAddress == null) && (DestinationFqdn == null))
+            // One of DestinationAddress, DestinationIpGroup or DestinationFqdns must be present
+            if ((DestinationAddress == null) && (DestinationIpGroup == null) && (DestinationFqdn == null))
             {
-                throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
+                throw new ArgumentException("Either DestinationAddress, DestinationIpGroup or DestinationFqdns is required");
+            }
+
+            // One of SourceAddress or SourceIpGroup must be present
+            if ((SourceAddress == null) && (SourceIpGroup == null))
+            {
+                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
             }
 
             var networkRule = new PSAzureFirewallPolicyNetworkRule
@@ -100,7 +115,9 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 DestinationFqdns = this.DestinationFqdn?.ToList(),
                 RuleType = "NetworkRule"
