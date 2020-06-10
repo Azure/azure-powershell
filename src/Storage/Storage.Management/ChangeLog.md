@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  `New-AzStorageAccount`
 * Moved the logic of loading Azure.Core to Az.Accounts
 
 ## Version 2.1.0
