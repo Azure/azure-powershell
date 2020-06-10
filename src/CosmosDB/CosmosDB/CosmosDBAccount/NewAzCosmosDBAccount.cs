@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
@@ -27,21 +26,8 @@ using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccountGetResults))]
-    public class NewAzCosmosDBAccount : AzureCosmosDBCmdletBase
+    public class NewAzCosmosDBAccount : NewOrUpdateAzCosmosDBAccount
     {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.DefaultConsistencyLevelHelpMessage)]
-        [PSArgumentCompleter("BoundedStaleness", "ConsistentPrefix", "Eventual", "Session", "Strong")]
-        public string DefaultConsistencyLevel { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAutomaticFailoverHelpMessage)]
         public SwitchParameter EnableAutomaticFailover { get; set; }
 
@@ -51,97 +37,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.EnableVirtualNetworkHelpMessage)]
         public SwitchParameter EnableVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.IpRulesHelpMessage)]
-        [ValidateNotNull]
-        public string[] IpRules { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string[] Location { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public PSLocation[] LocationObject { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
-        public int? MaxStalenessIntervalInSeconds { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessPrefixHelpMessage)]
-        public int? MaxStalenessPrefix { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.TagHelpMessage)]
-        [ValidateNotNull]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string[] VirtualNetworkRule { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
         [PSArgumentCompleter("Sql", "MongoDB", "Gremlin", "Cassandra", "Table")]
         public string ApiKind { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
-        [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
-        public string PublicNetworkAccess { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
-        public string KeyVaultKeyUri { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableFreeTierHelpMessage)]
         public bool? EnableFreeTier { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
-        public bool? EnableAnalyticalStorage { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
         [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
         public string ServerVersion { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
-            {
-                switch(DefaultConsistencyLevel)
-                {
-                    case "Strong":
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Strong;
-                        break;
-
-                    case "Session":
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Session;
-                        break;
-
-                    case "Eventual":
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Eventual;
-                        break;
-
-                    case "ConsistentPrefix":
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.ConsistentPrefix;
-                        break;
-
-                    case "BoundedStaleness":
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.BoundedStaleness;
-                        consistencyPolicy.MaxIntervalInSeconds = MaxStalenessIntervalInSeconds;
-                        consistencyPolicy.MaxStalenessPrefix = MaxStalenessPrefix;
-                        break;
-
-                    default:
-                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Session;
-                        break;
-                }
-            }
-
+            ConsistencyPolicy consistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             string writeLocation = null;
             Collection<Location> LocationCollection = new Collection<Location>();
 
@@ -187,10 +99,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Dictionary<string, string> tags = new Dictionary<string, string>();
             if (Tag != null)
             {
-                foreach (string key in Tag.Keys)
-                {
-                    tags.Add(key, Tag[key].ToString());
-                }
+                tags = base.PopulateTags(Tag);
             }
 
             Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
@@ -219,15 +128,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
 
-            if (IpRules != null && IpRules.Length > 0)
+            if (IpRule != null && IpRule.Length > 0)
             {
-                IList<IpAddressOrRange> iprules = new List<IpAddressOrRange>();
-                foreach (string ipAddressOrRange in IpRules)
-                {
-                    iprules.Add(new IpAddressOrRange(ipAddressOrRange));
-                }
-
-                databaseAccountCreateUpdateParameters.IpRules = iprules;
+                databaseAccountCreateUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
             }
 
             if (KeyVaultKeyUri != null)
