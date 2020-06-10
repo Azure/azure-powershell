@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzNzU3MC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMzODAyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -127,7 +127,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzNzU3MC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMzODAyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -191,7 +191,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzNzU3MC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMzODAyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -261,7 +261,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzNzU3MC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMzODAyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -331,7 +331,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps7570/providers/Microsoft.Network/azureFirewalls/ps3802?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzNzU3MC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMzODAyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"ipConfigurations\": [],\r\n    \"hubIPAddresses\": {\r\n      \"publicIPs\": {\r\n        \"addresses\": [],\r\n        \"count\": 2\r\n      }\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"AZFW_Hub\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"additionalProperties\": {}\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"eastus2euap\"\r\n}",
@@ -369,7 +369,7 @@
           "75ad21cf-f88d-4428-ae8a-624f8763a2dd"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/operations/75ad21cf-f88d-4428-ae8a-624f8763a2dd?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/operations/75ad21cf-f88d-4428-ae8a-624f8763a2dd?api-version=2020-04-01"
         ],
         "x-ms-correlation-request-id": [
           "71542b91-d74e-48bd-bcea-3d497f61db18"
@@ -413,7 +413,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/operations/75ad21cf-f88d-4428-ae8a-624f8763a2dd?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/operations/75ad21cf-f88d-4428-ae8a-624f8763a2dd?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9ucy83NWFkMjFjZi1mODhkLTQ0MjgtYWU4YS02MjRmODc2M2EyZGQ/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",

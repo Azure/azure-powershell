@@ -1491,8 +1491,6 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
-        #$virtualWan = New-AzVirtualWan -Name $virtualWanName -ResourceGroupName $rgname -Location $location
-        #$virtualHub = New-AzVirtualHub -Name $virtualHubName -ResourceGroupName $rgname -Location $location -VirtualWanId $virtualWan.Id -AddressPrefix $virtualHubAddressPrefix
 
         $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
         $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
