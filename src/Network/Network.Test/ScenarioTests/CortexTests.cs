@@ -66,5 +66,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DisconnectAzP2sVpnGatewayVpnConnection");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestBgpSettingsUpdateVpnGateway()
+        {
+            TestRunner.RunTestScript("Test-BgpUpdateVpnGateway");
+        }
     }
 }
