@@ -668,4 +668,10 @@
   <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
     <value>Circuit Connection with Name '{0}' is already added.</value>
   </data>
+  <data name="RemoveVHubRouteTableWarning" xml:space="preserve">
+    <value>Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub.</value>
+  </data>
+  <data name="VHubRouteTableNotFound" xml:space="preserve">
+    <value>The HubRouteTable could not be found.</value>
+  </data>
 </root>
