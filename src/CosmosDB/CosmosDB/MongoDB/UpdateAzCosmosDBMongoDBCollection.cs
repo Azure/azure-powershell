@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Shard { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.MongoCollectionAnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.MongoIndexHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSMongoIndex[] Index { get; set; }
@@ -118,6 +121,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 mongoDBCollectionResource.Indexes = Indexes;
             }
 
+            if(AnalyticalStorageTtl != null)
+            {
+                mongoDBCollectionResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
+            }
+
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             MongoDBCollectionCreateUpdateParameters mongoDBCollectionCreateUpdateParameters = new MongoDBCollectionCreateUpdateParameters
@@ -141,7 +149,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 Id = resource.Id,
                 Indexes = resource.Indexes,
-                ShardKey = resource.ShardKey
+                ShardKey = resource.ShardKey,
+                AnalyticalStorageTtl = resource.AnalyticalStorageTtl
             };
         }
     }

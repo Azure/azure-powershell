@@ -14,7 +14,7 @@
 
 function Test-AccountRelatedCmdlets
 {
-  $rgName = "CosmosDBResourceGroup3"
+  $rgName = "CosmosDBResourceGroup89"
   $location = "East US"
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"
@@ -22,43 +22,46 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb671"
+  $cosmosDBAccountName = "cosmosdb67"
 
   #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $IpRules = "192.168.0.1"
+  $IpRules = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
   $publicNetworkAccess = "Enabled"
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRules $IpRules -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess
-    do 
-    {
-       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRules $IpRules -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2"
+    #do 
+    #{
+    #   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+    #} while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $cosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $cosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $IpRules $cosmosDBAccount.IpRules
   Assert-AreEqual $cosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $cosmosDBAccount.EnableMultipleWriteLocations 1
   Assert-AreEqual $cosmosDBAccount.IsVirtualNetworkFilterEnabled 1
   Assert-AreEqual $cosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
+  Assert-AreEqual $cosmosDBAccount.ApiProperties.ServerVersion "3.2"
+  Assert-AreEqual $cosmosDBAccount.EnableAnalyticalStorage 0
+  Assert-AreEqual $cosmosDBAccount.EnableFreeTier 0
+
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRules $IpRules -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
-      do 
-    {
-       $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
-    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+    #  do 
+    #{
+    #   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
+    #} while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
 
   Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $updatedCosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
   Assert-AreEqual 20 $updatedCosmosDBAccount.ConsistencyPolicy.MaxStalenessPrefix
-  Assert-AreEqual $IpRules $updatedCosmosDBAccount.IpRules
+  Assert-AreEqual $IpRules $cosmosDBAccount.IpRules[0].IpAddressOrRange.Value
   Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $updatedCosmosDBAccount.IsVirtualNetworkFilterEnabled 1
   Assert-AreEqual $updatedCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
@@ -88,7 +91,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $IpRules = "192.168.0.1"
+  $IpRules = "192.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -136,7 +139,7 @@ function Test-AccountRelatedCmdletsUsingObject
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $IpRules = "192.168.0.1"
+  $IpRules = "192.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName

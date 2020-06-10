@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.CassandraSchemaHelpMessage)]
         [ValidateNotNull]
         public PSCassandraSchema Schema { get; set; }
@@ -110,6 +113,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 cassandraTableResource.Schema = PSCassandraSchema.ToSDKModel(Schema);
             }
 
+            if(AnalyticalStorageTtl != null)
+            {
+                cassandraTableResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
+            }
+
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
@@ -133,7 +141,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 DefaultTtl = resource.DefaultTtl,
                 Id = resource.Id,
-                Schema = resource.Schema
+                Schema = resource.Schema,
+                AnalyticalStorageTtl = resource.AnalyticalStorageTtl
             };
         }
     }

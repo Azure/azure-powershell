@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ApiKind { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
-        [PSArgumentCompleter("Disabled", "Enabled")]
+        [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
@@ -100,8 +101,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.MongoSBServerVersionHelpMessage)]
-        public string MongoDBServerVersion { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
+        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
+        public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -113,29 +115,29 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 switch(DefaultConsistencyLevel)
                 {
                     case "Strong":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Strong;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Strong;
                         break;
 
                     case "Session":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Session;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Session;
                         break;
 
                     case "Eventual":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Eventual;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Eventual;
                         break;
 
                     case "ConsistentPrefix":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.ConsistentPrefix;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.ConsistentPrefix;
                         break;
 
                     case "BoundedStaleness":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.BoundedStaleness;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.BoundedStaleness;
                         consistencyPolicy.MaxIntervalInSeconds = MaxStalenessIntervalInSeconds;
                         consistencyPolicy.MaxStalenessPrefix = MaxStalenessPrefix;
                         break;
 
                     default:
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Session;
+                        consistencyPolicy.DefaultConsistencyLevel = SDKModel.DefaultConsistencyLevel.Session;
                         break;
                 }
             }
@@ -235,7 +237,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(ApiKind))
             {
-                if (!ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+                if (ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ServerVersion != null)
+                    {
+                        databaseAccountCreateUpdateParameters.ApiProperties = new ApiProperties
+                        {
+                            ServerVersion = ServerVersion
+                        };
+                    }
+                }
+                else
                 {
                     switch (ApiKind)
                     {
@@ -254,21 +266,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                     ApiKind = null;
                 }
-                else
-                {
-                    if (MongoDBServerVersion!=null)
-                    {
-                        databaseAccountCreateUpdateParameters.ApiProperties = new ApiProperties
-                        {
-                            ServerVersion = MongoDBServerVersion
-                        };
-                    }
-                }
             }
             else
             {
                 ApiKind = "GlobalDocumentDB";
             }
+
             databaseAccountCreateUpdateParameters.Kind = ApiKind;
 
             if (ShouldProcess(Name, "Creating Database Account"))

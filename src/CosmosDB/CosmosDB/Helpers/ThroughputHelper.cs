@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             {
                 throughputSettingsUpdateParameters.Resource = new ThroughputSettingsResource
                 {
-                    Throughput = throughput
+                    Throughput = throughput.Value
                 };
             }
             else if (autoscaleMaxThroughput != null)
@@ -56,13 +55,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 
             CreateUpdateOptions createUpdateOptions = new CreateUpdateOptions();
 
-            if(Throughput != null)
+            if (Throughput != null)
             {
-                createUpdateOptions.Throughput = Throughput;
+                createUpdateOptions.Throughput = Throughput.Value;
             }
-            else
+            else if(autoscaleMaxThroughput != null)
             {
-                createUpdateOptions.AutoscaleSettings = new AutoscaleSettings { MaxThroughput = autoscaleMaxThroughput };
+                createUpdateOptions.AutoscaleSettings = new AutoscaleSettings { MaxThroughput = AutoscaleMaxThroughput.Value };
             }
 
             return createUpdateOptions;

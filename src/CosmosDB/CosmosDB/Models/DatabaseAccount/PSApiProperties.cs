@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSApiProperties(ApiProperties apiProperties)
         {
+            if (apiProperties == null)
+            {
+                return;
+            }
+
             ServerVersion = apiProperties.ServerVersion;
         }
         //

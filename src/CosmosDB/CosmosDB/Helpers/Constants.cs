@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
-        public const string MongoSBServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
+        public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -110,6 +110,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
         public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
+        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
         public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
         public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
         public const string MongoIndexKey = "Array of key values as strings.";
@@ -137,6 +138,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CassandraSchemaColumnHelpMessage = "PSColumn object.";
         public const string CassandraSchemaPartitionKeyHelpMessage = "Array of strings containing Partition Keys.";
         public const string CassandraSchemaClusterKeyHelpMessage = "Array of PSClusterKey objects.";
+        public const string AnalyticalStorageTtlHelpMessage = "Analytical Storage TTL."; 
 
         //Gremlin cmdlets help messages
         public const string GraphNameHelpMessage = "Gremlin Graph Name.";

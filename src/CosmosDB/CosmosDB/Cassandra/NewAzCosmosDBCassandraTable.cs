@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -55,6 +54,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = Constants.CassandraSchemaHelpMessage)]
         [ValidateNotNull]
@@ -101,6 +103,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             };
 
             cassandraTableResource.Schema = PSCassandraSchema.ToSDKModel(Schema);
+
+            if(AnalyticalStorageTtl != null)
+            {
+                cassandraTableResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
+            }
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
             {
