@@ -100,8 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The packing context of the current packing operation
         /// </param>
         /// <param name="artifactableTemplateObj">
-        /// The packagable template object (with artifact relative paths updated to
-        /// be relative to the current context's root directory)
+        /// The packagable template object
         /// </param>
         private static void PackArtifacts(
             string templateAbsoluteFilePath,
@@ -159,8 +158,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     // an artifact elsewhere, we'll do so here...
 
                     string asRelativePath = AbsoluteToRelativePath(context.RootTemplateDirectory, absoluteLocalPath);
-                    templateLinkObj["relativePath"] = asRelativePath;
-
                     if (context.Artifacts.Any(prevAddedArtifact => prevAddedArtifact.Path.Equals(
                             asRelativePath, StringComparison.OrdinalIgnoreCase)))
                     {
@@ -237,48 +234,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             foreach (var artifact in packagedTemplate.Artifacts)
             {
-                string absoluteLocalPath = Path.GetFullPath(
-                    Path.Combine(targetDirectory, artifact.Path)
-                );
-
                 if (!(artifact is TemplateSpecTemplateArtifact templateArtifact))
                 {
                     // TODO: Localize
                     throw new NotSupportedException("Unknown artifact type encountered...");
                 }
 
-                // In the template, we'll need to make files relative to the master relative
-                // to the artifact path instead. So let's get all the links to other artifacts
-                // and do the appropriate conversions:
-
-                JObject[] templateLinkToArtifactObjs = GetTemplateLinksToArtifacts(
-                    (JObject)templateArtifact.Template, includeNested: true);
-
-                foreach (var templateLinkToArtifactObj in templateLinkToArtifactObjs)
-                {
-                    string relativePathFromRoot = (string)templateLinkToArtifactObj["relativePath"];
-
-                    // Make sure we actually have the referenced artifact as part of our
-                    // package. If we don't, we'll skip transformations on the path in the
-                    // link:
-
-                    if (!packagedTemplate.Artifacts.Any(a =>
-                        a.Path.Equals(relativePathFromRoot, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        // We don't have the artifact... skip the transform
-                        continue;
-                    }
-
-                    string referenceAsAbsolutePath = Path.GetFullPath(
-                        Path.Combine(targetDirectory, relativePathFromRoot)
-                    );
-
-                    string relativePathFromFile = AbsoluteToRelativePath(
-                        Path.GetDirectoryName(absoluteLocalPath),
-                        referenceAsAbsolutePath);
-
-                    templateLinkToArtifactObj["relativePath"] = relativePathFromFile;
-                }
+                string absoluteLocalPath = Path.GetFullPath(
+                    Path.Combine(targetDirectory, artifact.Path)
+                );
 
                 FileUtilities.DataStore.CreateDirectory(Path.GetDirectoryName(absoluteLocalPath));
                 FileUtilities.DataStore.WriteFile(absoluteLocalPath,
@@ -287,7 +251,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets all of the deployment resource JObjects within the specified  template 
+        /// Gets all of the deployment resource JObjects within the specified template
         /// JObject.
         /// </summary>
         /// <param name="includeNested">If true, deployment resource objects from nested
