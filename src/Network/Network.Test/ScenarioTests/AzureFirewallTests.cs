@@ -97,12 +97,12 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallWithDNSProxy");
         }
 
-        //[Fact(Skip = "Just for debugging")]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //[Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        //public void TestAzureFirewallVirtualHubMultiPublicIPCRUD()
-        //{
-        //    TestRunner.RunTestScript("Test-AzureFirewallVirtualHubMultiPublicIPCRUD");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubMultiPublicIPCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubMultiPublicIPCRUD");
+        }
     }
 }
