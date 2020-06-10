@@ -24,10 +24,10 @@ The **Remove-AzureRmApplicationSecurityGroup** cmdlet removes an application sec
 
 ### Example 1
 ```
-PS C:\>Remove-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
+PS C:\>Remove-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGroup" -ResourceGroupName "MyResourceGroup"
 ```
 
-This command deletes an application security group named MyApplicationSecurityGrouo in the resource group named MyResourceGroup.
+This command deletes an application security group named MyApplicationSecurityGroup in the resource group named MyResourceGroup.
 
 ## PARAMETERS
 
