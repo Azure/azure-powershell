@@ -100,7 +100,7 @@ function Test-CortexCRUD
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		$routes = $virtualHub.RouteTable.Routes
-		Assert-AreEqual 2 @($routes).
+		Assert-AreEqual 2 @($routes).Count
 
 		# Reset routing state
 		Reset-AzHubRouter -ResourceGroupName $rgName -Name $virtualHubName
