@@ -2526,11 +2526,11 @@
                 <PropertyName>IpAddress</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>NetworkInterfaceIpConfiguration</Label>
+                <Label>NetworkInterfaceIpConfigurationId</Label>
                 <PropertyName>NetworkInterfaceIpConfigurationText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VirtualNetwork</Label>
+                <Label>VirtualNetworkId</Label>
                 <PropertyName>VirtualNetworkChildResourceText</PropertyName>
               </ListItem>
             </ListItems>

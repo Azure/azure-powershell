@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSNetworkInterfaceIPConfiguration NetworkInterfaceIpConfiguration { get; set; }
+        public PSResourceId NetworkInterfaceIpConfigurationId { get; set; }
 
         [JsonProperty(Order = 2)]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+        public PSResourceId VirtualNetworkId { get; set; }
 
         [JsonProperty(Order = 3)]
         public string IpAddress { get; set; }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationText
         {
-            get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfigurationId, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -42,15 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
-                // convert to child resource object to limit size of the output seen on the powershell console
-                var virtualNetworkChildResource = new PSChildResource
-                {
-                    Name = VirtualNetwork?.Name,
-                    Id = VirtualNetwork?.Id,
-                    Etag = VirtualNetwork?.Etag
-                };
-
-                return JsonConvert.SerializeObject(virtualNetworkChildResource, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                return JsonConvert.SerializeObject(VirtualNetworkId, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             }
         }
     }
