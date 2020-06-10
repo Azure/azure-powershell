@@ -62,17 +62,10 @@ namespace Microsoft.Azure.Commands.Batch
         public PublicNetworkAccessType PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The identity associated with the BatchAccount")]
-        public ResourceIdentityType? IdentityType { get; set; }
+        public ResourceIdentityType IdentityType { get; set; } = ResourceIdentityType.None;
 
         protected override void ExecuteCmdletImpl()
         {
-            // Set default Identity type
-            var identity = new BatchAccountIdentity(ResourceIdentityType.None);
-            if (IdentityType.HasValue)
-            {
-                identity = new BatchAccountIdentity(this.IdentityType.Value);
-            }
-
             AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
             {
                 AutoStorageAccountId = this.AutoStorageAccountId,
@@ -81,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Identity = identity
+                Identity = new BatchAccountIdentity(this.IdentityType)
             };
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);

@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "406f5f6e-140c-4ee2-b3fb-bcda2a04a3ee"
+          "0da6054a-6fa0-49d5-ac5f-a1094ed5124e"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11999"
         ],
         "x-ms-request-id": [
-          "36c6d256-1e79-49ba-94e4-9a74c0d5cf38"
+          "775f0ab0-6e40-442f-aa61-09c82e02b915"
         ],
         "x-ms-correlation-request-id": [
-          "36c6d256-1e79-49ba-94e4-9a74c0d5cf38"
+          "775f0ab0-6e40-442f-aa61-09c82e02b915"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181244Z:36c6d256-1e79-49ba-94e4-9a74c0d5cf38"
+          "WESTUS:20200610T225048Z:775f0ab0-6e40-442f-aa61-09c82e02b915"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:12:44 GMT"
+          "Wed, 10 Jun 2020 22:50:47 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps9165?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzOTE2NT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps88?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzODg/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1684303d-8810-441c-8859-6448bb654d77"
+          "695e8285-5a8f-40d6-8dd4-3ac00f311e58"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "0072af8c-363e-4f47-9283-f5fcb24dec69"
+          "09fece86-8065-4731-ae26-46f44034cd69"
         ],
         "x-ms-correlation-request-id": [
-          "0072af8c-363e-4f47-9283-f5fcb24dec69"
+          "09fece86-8065-4731-ae26-46f44034cd69"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181244Z:0072af8c-363e-4f47-9283-f5fcb24dec69"
+          "WESTUS:20200610T225048Z:09fece86-8065-4731-ae26-46f44034cd69"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +111,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:12:44 GMT"
+          "Wed, 10 Jun 2020 22:50:48 GMT"
         ],
         "Content-Length": [
-          "165"
+          "161"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,17 +123,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165\",\r\n  \"name\": \"ps9165\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88\",\r\n  \"name\": \"ps88\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fc1db599-9218-49ea-98a5-39d1d23f343e"
+          "3db73259-1432-4302-8388-d25cce5af13b"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,13 +159,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497/operationResults/7095cc5d-3dd9-46ee-adf9-4f3f8b135651?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341/operationResults/d9d7fac7-94b6-4343-830a-2569615ad5c9?api-version=2020-05-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-request-id": [
-          "7095cc5d-3dd9-46ee-adf9-4f3f8b135651"
+          "d9d7fac7-94b6-4343-830a-2569615ad5c9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,13 +180,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "606c7e2c-4f01-48c8-963b-c98768d57ab1"
+          "cefdcbcd-d303-40a1-8e02-6014dda93f78"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181246Z:606c7e2c-4f01-48c8-963b-c98768d57ab1"
+          "WESTUS:20200610T225050Z:cefdcbcd-d303-40a1-8e02-6014dda93f78"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:12:45 GMT"
+          "Wed, 10 Jun 2020 22:50:49 GMT"
         ],
         "Expires": [
           "-1"
@@ -199,13 +199,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ce821a0-cc94-4a8b-abe4-a2e95ca905e8"
+          "af8d4540-e47e-4861-9ab0-e685c97dcb38"
         ],
         "Accept-Language": [
           "en-US"
@@ -231,13 +231,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D80D69EA59A67F\""
+          "\"0x8D80D90C2978DEB\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-request-id": [
-          "2f406335-1b42-4d64-968e-915262844c69"
+          "43e5ee99-cad3-4344-a50f-bf7bc4bb0032"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -249,16 +249,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "d863e5ff-da78-4793-9915-5a7afd5a35a5"
+          "5fb3bfe9-b44d-4a77-a14b-cedbd922ec35"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181302Z:d863e5ff-da78-4793-9915-5a7afd5a35a5"
+          "WESTUS:20200610T225106Z:5fb3bfe9-b44d-4a77-a14b-cedbd922ec35"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
+          "Wed, 10 Jun 2020 22:51:05 GMT"
         ],
         "Content-Length": [
-          "2229"
+          "2227"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -267,15 +267,15 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
+          "Wed, 10 Jun 2020 22:51:06 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497/operationResults/7095cc5d-3dd9-46ee-adf9-4f3f8b135651?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3L29wZXJhdGlvblJlc3VsdHMvNzA5NWNjNWQtM2RkOS00NmVlLWFkZjktNGYzZjhiMTM1NjUxP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341/operationResults/d9d7fac7-94b6-4343-830a-2569615ad5c9?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MS9vcGVyYXRpb25SZXN1bHRzL2Q5ZDdmYWM3LTk0YjYtNDM0My04MzBhLTI1Njk2MTVhZDVjOT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -294,13 +294,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D80D69E9C69D08\""
+          "\"0x8D80D90C21CE7B6\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11999"
         ],
         "x-ms-request-id": [
-          "bf20d7e4-c2d0-45ba-95ca-b6c6952360ac"
+          "6edc34c3-ed16-4f05-aea4-b654ad71b585"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -312,16 +312,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "eb882849-d396-492e-be53-9aa5df26dc76"
+          "fc12a766-3272-4d2e-a29a-6cbf59bde892"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181301Z:eb882849-d396-492e-be53-9aa5df26dc76"
+          "WESTUS:20200610T225105Z:fc12a766-3272-4d2e-a29a-6cbf59bde892"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:01 GMT"
+          "Wed, 10 Jun 2020 22:51:04 GMT"
         ],
         "Content-Length": [
-          "2229"
+          "2227"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -330,20 +330,20 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:01 GMT"
+          "Wed, 10 Jun 2020 22:51:05 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5079944f-ebdf-44cc-8bc0-594a270d5595"
+          "524f7b38-2b06-41ad-a8d9-8a259d971be0"
         ],
         "Accept-Language": [
           "en-US"
@@ -363,13 +363,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D80D69E2E2E467\""
+          "\"0x8D80D90BB072410\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11998"
         ],
         "x-ms-request-id": [
-          "5e494f20-0976-4df4-b254-1db9bbca90ca"
+          "89d8c2b1-7640-480f-bcd8-b38e03b9d9b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -381,16 +381,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "f783055f-ff80-4bca-a4e9-41a35b3e9999"
+          "3e8fd9e2-18ea-433d-8517-7daa9975ddd0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181301Z:f783055f-ff80-4bca-a4e9-41a35b3e9999"
+          "WESTUS:20200610T225105Z:3e8fd9e2-18ea-433d-8517-7daa9975ddd0"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:01 GMT"
+          "Wed, 10 Jun 2020 22:51:04 GMT"
         ],
         "Content-Length": [
-          "2229"
+          "2227"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -399,20 +399,20 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 10 Jun 2020 18:12:50 GMT"
+          "Wed, 10 Jun 2020 22:50:53 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "79d97f0d-df68-4a14-9257-9c1412ddc49d"
+          "5a068aa2-b90b-4a73-b7a6-1bd7448e609e"
         ],
         "Accept-Language": [
           "en-US"
@@ -432,13 +432,286 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D80D69EA560428\""
+          "\"0x8D80D90C2935466\""
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "c918548e-4ea3-4fa1-afdc-326e7b256f3c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "daf5c209-94e9-405b-b88b-af8eebbb05e2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200610T225106Z:daf5c209-94e9-405b-b88b-af8eebbb05e2"
+        ],
+        "Date": [
+          "Wed, 10 Jun 2020 22:51:05 GMT"
+        ],
+        "Content-Length": [
+          "2227"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Last-Modified": [
+          "Wed, 10 Jun 2020 22:51:06 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7f713eba-f378-48ff-8fb9-7f282fab66e3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0x8D80D90C2935466\""
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "a34bd4da-8fc9-44ce-a74f-56a902aae5ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "28e4549f-f3fd-4d12-8c56-8118d52e0aa0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200610T225106Z:28e4549f-f3fd-4d12-8c56-8118d52e0aa0"
+        ],
+        "Date": [
+          "Wed, 10 Jun 2020 22:51:05 GMT"
+        ],
+        "Content-Length": [
+          "2227"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Last-Modified": [
+          "Wed, 10 Jun 2020 22:51:06 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "41ab65f8-5908-4ae5-a164-b7c9ee121c9f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0x8D80D90C2935466\""
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "420fd306-c6d8-44d8-94b5-a109fb4766df"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5040d70-9ac5-429d-9d5a-bbbf32dd2bd9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200610T225106Z:d5040d70-9ac5-429d-9d5a-bbbf32dd2bd9"
+        ],
+        "Date": [
+          "Wed, 10 Jun 2020 22:51:06 GMT"
+        ],
+        "Content-Length": [
+          "2227"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Last-Modified": [
+          "Wed, 10 Jun 2020 22:51:06 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8da4ace1-f97a-4a90-a628-7b789b676dd0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0x8D80D90C3111F98\""
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "3a82da79-027c-4ccd-80d8-60e1034d61a1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "1412144b-1fa3-42d8-b9a5-9650b0a97f20"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200610T225107Z:1412144b-1fa3-42d8-b9a5-9650b0a97f20"
+        ],
+        "Date": [
+          "Wed, 10 Jun 2020 22:51:06 GMT"
+        ],
+        "Content-Length": [
+          "2227"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Last-Modified": [
+          "Wed, 10 Jun 2020 22:51:07 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n  \"name\": \"ps1341\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps1341.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "151ac075-08ea-4f0f-bb8e-322f5586f0e1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11991"
         ],
         "x-ms-request-id": [
-          "ff6a7361-35e4-4d56-8b6a-6f6f7071b9ee"
+          "1e18a316-f1f0-4c84-91c4-a4b3f4fb7dd5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -450,286 +723,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "9c9e605b-f356-46f2-9b70-68768be5a780"
+          "a77c6d7e-b8d0-40e4-946d-404fb92d8741"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181302Z:9c9e605b-f356-46f2-9b70-68768be5a780"
+          "WESTUS:20200610T225122Z:a77c6d7e-b8d0-40e4-946d-404fb92d8741"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
-        ],
-        "Content-Length": [
-          "2229"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "feb4cb3b-e568-46ac-a284-5e93e9326698"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"0x8D80D69EA560428\""
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-request-id": [
-          "ce539fee-5713-4b0b-a278-b93f256c8a33"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-correlation-request-id": [
-          "1e6894ce-d4a9-4442-ba97-fe294a751788"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:1e6894ce-d4a9-4442-ba97-fe294a751788"
-        ],
-        "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
-        ],
-        "Content-Length": [
-          "2229"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "43d12af9-f41c-49b1-8112-3becda4a61fe"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"0x8D80D69EA560428\""
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "x-ms-request-id": [
-          "d087bc72-3df3-43d2-964b-33e0b7a01616"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-correlation-request-id": [
-          "228c75a6-fec1-4e96-9159-27f991e7684b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:228c75a6-fec1-4e96-9159-27f991e7684b"
-        ],
-        "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
-        ],
-        "Content-Length": [
-          "2229"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b7902fb3-29f6-4777-9692-f1d7f90d65d6"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"0x8D80D69EADC15BD\""
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "x-ms-request-id": [
-          "416008f0-7906-4aad-aade-79de2ba994f3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-correlation-request-id": [
-          "1a830694-0080-463c-8fed-df6852f23f0a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:1a830694-0080-463c-8fed-df6852f23f0a"
-        ],
-        "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
-        ],
-        "Content-Length": [
-          "2229"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Last-Modified": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n  \"name\": \"ps2497\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps2497.westus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 700,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 100\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 50\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": false,\r\n    \"lowPriorityCoreQuota\": 500,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag2\": \"tagValue2\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "43ee7e09-77b4-4583-b0ee-22eb95916d31"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
-        ],
-        "x-ms-request-id": [
-          "3ff11ab6-1591-4bd2-b6fa-6d057f03d26f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-correlation-request-id": [
-          "e786b68f-3f64-4bba-b969-b236fea54cbf"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200610T181319Z:e786b68f-3f64-4bba-b969-b236fea54cbf"
-        ],
-        "Date": [
-          "Wed, 10 Jun 2020 18:13:19 GMT"
+          "Wed, 10 Jun 2020 22:51:22 GMT"
         ],
         "Content-Length": [
           "193"
@@ -741,7 +741,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AccountNotFound\",\r\n    \"message\": \"The specified account does not exist.\\nRequestId:3ff11ab6-1591-4bd2-b6fa-6d057f03d26f\\nTime:2020-06-10T18:13:19.2410747Z\",\r\n    \"target\": \"BatchAccount\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AccountNotFound\",\r\n    \"message\": \"The specified account does not exist.\\nRequestId:1e18a316-f1f0-4c84-91c4-a4b3f4fb7dd5\\nTime:2020-06-10T22:51:22.8556662Z\",\r\n    \"target\": \"BatchAccount\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -751,7 +751,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8046546d-089f-4bdb-8acb-7939a5cbc666"
+          "f910e8b1-68a3-4389-be2c-77f1785f0ed9"
         ],
         "Accept-Language": [
           "en-US"
@@ -771,16 +771,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11998"
         ],
         "x-ms-request-id": [
-          "249492ec-0ce8-42b3-8710-57d955de0095"
+          "0c51730d-147d-42f5-84bf-1be778b103d3"
         ],
         "x-ms-correlation-request-id": [
-          "249492ec-0ce8-42b3-8710-57d955de0095"
+          "0c51730d-147d-42f5-84bf-1be778b103d3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:249492ec-0ce8-42b3-8710-57d955de0095"
+          "WESTUS:20200610T225106Z:0c51730d-147d-42f5-84bf-1be778b103d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -789,7 +789,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:02 GMT"
+          "Wed, 10 Jun 2020 22:51:06 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -798,20 +798,20 @@
           "-1"
         ],
         "Content-Length": [
-          "16752"
+          "16750"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengbyos\",\r\n      \"name\": \"zfengbyos\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest\",\r\n      \"name\": \"zfengtest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest1\",\r\n      \"name\": \"zfengtest1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest21\",\r\n      \"name\": \"zfengtest21\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest4\",\r\n      \"name\": \"zfengtest4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest7\",\r\n      \"name\": \"zfengtest7\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6\",\r\n      \"name\": \"prodtest6\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"francecentral\",\r\n      \"tags\": {\r\n        \"test3\": \"true\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/Accessibility/providers/Microsoft.Batch/batchAccounts/a11ytest\",\r\n      \"name\": \"a11ytest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/Accessibility/providers/Microsoft.Batch/batchAccounts/accessbilitytest\",\r\n      \"name\": \"accessbilitytest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/BatchDNCrg/providers/Microsoft.Batch/batchAccounts/adfrolling2\",\r\n      \"name\": \"adfrolling2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/canaryeast\",\r\n      \"name\": \"canaryeast\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0611021004990589\",\r\n      \"name\": \"euaptest0611021004990589\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0630031004731897\",\r\n      \"name\": \"euaptest0630031004731897\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0630121004863737\",\r\n      \"name\": \"euaptest0630121004863737\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0711041013356487\",\r\n      \"name\": \"euaptest0711041013356487\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0716041018413102\",\r\n      \"name\": \"euaptest0716041018413102\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0808191004097188\",\r\n      \"name\": \"euaptest0808191004097188\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0814041017852508\",\r\n      \"name\": \"euaptest0814041017852508\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822111005187123\",\r\n      \"name\": \"euaptest0822111005187123\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822121004763792\",\r\n      \"name\": \"euaptest0822121004763792\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822131005136953\",\r\n      \"name\": \"euaptest0822131005136953\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822141003901289\",\r\n      \"name\": \"euaptest0822141003901289\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822151004258761\",\r\n      \"name\": \"euaptest0822151004258761\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822161005474421\",\r\n      \"name\": \"euaptest0822161005474421\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822171004503623\",\r\n      \"name\": \"euaptest0822171004503623\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822181004907394\",\r\n      \"name\": \"euaptest0822181004907394\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0919211004355010\",\r\n      \"name\": \"euaptest0919211004355010\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0921031009642615\",\r\n      \"name\": \"euaptest0921031009642615\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1213011004867318\",\r\n      \"name\": \"euaptest1213011004867318\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1214051004320420\",\r\n      \"name\": \"euaptest1214051004320420\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1215061004521144\",\r\n      \"name\": \"euaptest1215061004521144\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/testcanary\",\r\n      \"name\": \"testcanary\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centraluseuap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/doAzureParallel/providers/Microsoft.Batch/batchAccounts/canaryeast1\",\r\n      \"name\": \"canaryeast1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest1/providers/Microsoft.Batch/batchAccounts/prodtest1\",\r\n      \"name\": \"prodtest1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"brazilsouth\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest3/providers/Microsoft.Batch/batchAccounts/prodtest3\",\r\n      \"name\": \"prodtest3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"southcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprod2test3\",\r\n      \"name\": \"pilotprod2test3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota3\",\r\n      \"name\": \"pilotprodtestquota3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota4\",\r\n      \"name\": \"pilotprodtestquota4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/prodtest4\",\r\n      \"name\": \"prodtest4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {\r\n        \"test\": \"true\",\r\n        \"test2\": \"true\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest5/providers/Microsoft.Batch/batchAccounts/prodtest5\",\r\n      \"name\": \"prodtest5\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps3584/providers/Microsoft.Batch/batchAccounts/ps6084\",\r\n      \"name\": \"ps6084\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps3892/providers/Microsoft.Batch/batchAccounts/ps4695\",\r\n      \"name\": \"ps4695\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"32e0b0da-c57b-4b36-b982-ddc483a638c9\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps8598/providers/Microsoft.Batch/batchAccounts/ps6118\",\r\n      \"name\": \"ps6118\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497\",\r\n      \"name\": \"ps2497\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"tag2\": \"tagValue2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/0prodtest\",\r\n      \"name\": \"0prodtest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/testing\",\r\n      \"name\": \"testing\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/testunusablenodes\",\r\n      \"name\": \"testunusablenodes\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/spark-hackathon/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota\",\r\n      \"name\": \"pilotprodtestquota\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/spark-hackathon/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota2\",\r\n      \"name\": \"pilotprodtestquota2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/twacdmtestRG/providers/Microsoft.Batch/batchAccounts/twacdmbatchacct\",\r\n      \"name\": \"twacdmbatchacct\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centraluseuap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/ade1\",\r\n      \"name\": \"ade1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"a\": \"b\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/byospilotprod2\",\r\n      \"name\": \"byospilotprod2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/ytre\",\r\n      \"name\": \"ytre\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfeng521\",\r\n      \"name\": \"zfeng521\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"efb7955a-899d-4096-ac74-d31daefce211\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfeng710\",\r\n      \"name\": \"zfeng710\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk\",\r\n      \"name\": \"zfengcmk\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk1\",\r\n      \"name\": \"zfengcmk1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk2\",\r\n      \"name\": \"zfengcmk2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk4\",\r\n      \"name\": \"zfengcmk4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp1\",\r\n      \"name\": \"zfengcmkpp1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"b72c8be9-e240-48bb-95b3-8df72be5c969\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp2\",\r\n      \"name\": \"zfengcmkpp2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"08e857f7-9f14-4d8a-985d-86546e35d747\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp3\",\r\n      \"name\": \"zfengcmkpp3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"a139e587-6fbe-43d9-b439-0f908be49bae\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengfff\",\r\n      \"name\": \"zfengfff\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"d1f7afbd-6333-44e2-92dd-0bdc15384f36\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengpna\",\r\n      \"name\": \"zfengpna\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengpna1\",\r\n      \"name\": \"zfengpna1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengscus\",\r\n      \"name\": \"zfengscus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"southcentralus\",\r\n      \"identity\": {\r\n        \"principalId\": \"bba85f11-cff7-4318-a339-b0ca615c1b6c\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengwus\",\r\n      \"name\": \"zfengwus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"0afcee94-2357-4d05-9f31-42a27a040ae5\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfwestus\",\r\n      \"name\": \"zfwestus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengbyos\",\r\n      \"name\": \"zfengbyos\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest\",\r\n      \"name\": \"zfengtest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest1\",\r\n      \"name\": \"zfengtest1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest21\",\r\n      \"name\": \"zfengtest21\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest4\",\r\n      \"name\": \"zfengtest4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/zfengtest7\",\r\n      \"name\": \"zfengtest7\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6\",\r\n      \"name\": \"prodtest6\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"francecentral\",\r\n      \"tags\": {\r\n        \"test3\": \"true\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/Accessibility/providers/Microsoft.Batch/batchAccounts/a11ytest\",\r\n      \"name\": \"a11ytest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/Accessibility/providers/Microsoft.Batch/batchAccounts/accessbilitytest\",\r\n      \"name\": \"accessbilitytest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/BatchDNCrg/providers/Microsoft.Batch/batchAccounts/adfrolling2\",\r\n      \"name\": \"adfrolling2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/canaryeast\",\r\n      \"name\": \"canaryeast\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0611021004990589\",\r\n      \"name\": \"euaptest0611021004990589\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0630031004731897\",\r\n      \"name\": \"euaptest0630031004731897\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0630121004863737\",\r\n      \"name\": \"euaptest0630121004863737\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0711041013356487\",\r\n      \"name\": \"euaptest0711041013356487\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0716041018413102\",\r\n      \"name\": \"euaptest0716041018413102\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0808191004097188\",\r\n      \"name\": \"euaptest0808191004097188\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0814041017852508\",\r\n      \"name\": \"euaptest0814041017852508\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822111005187123\",\r\n      \"name\": \"euaptest0822111005187123\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822121004763792\",\r\n      \"name\": \"euaptest0822121004763792\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822131005136953\",\r\n      \"name\": \"euaptest0822131005136953\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822141003901289\",\r\n      \"name\": \"euaptest0822141003901289\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822151004258761\",\r\n      \"name\": \"euaptest0822151004258761\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822161005474421\",\r\n      \"name\": \"euaptest0822161005474421\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822171004503623\",\r\n      \"name\": \"euaptest0822171004503623\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0822181004907394\",\r\n      \"name\": \"euaptest0822181004907394\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0919211004355010\",\r\n      \"name\": \"euaptest0919211004355010\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest0921031009642615\",\r\n      \"name\": \"euaptest0921031009642615\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1213011004867318\",\r\n      \"name\": \"euaptest1213011004867318\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1214051004320420\",\r\n      \"name\": \"euaptest1214051004320420\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/euaptest1215061004521144\",\r\n      \"name\": \"euaptest1215061004521144\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"region\": \"canary\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/canary/providers/Microsoft.Batch/batchAccounts/testcanary\",\r\n      \"name\": \"testcanary\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centraluseuap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/doAzureParallel/providers/Microsoft.Batch/batchAccounts/canaryeast1\",\r\n      \"name\": \"canaryeast1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2euap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest1/providers/Microsoft.Batch/batchAccounts/prodtest1\",\r\n      \"name\": \"prodtest1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"brazilsouth\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest3/providers/Microsoft.Batch/batchAccounts/prodtest3\",\r\n      \"name\": \"prodtest3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"southcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprod2test3\",\r\n      \"name\": \"pilotprod2test3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota3\",\r\n      \"name\": \"pilotprodtestquota3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota4\",\r\n      \"name\": \"pilotprodtestquota4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest4/providers/Microsoft.Batch/batchAccounts/prodtest4\",\r\n      \"name\": \"prodtest4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {\r\n        \"test\": \"true\",\r\n        \"test2\": \"true\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/prodtest5/providers/Microsoft.Batch/batchAccounts/prodtest5\",\r\n      \"name\": \"prodtest5\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus2\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps3584/providers/Microsoft.Batch/batchAccounts/ps6084\",\r\n      \"name\": \"ps6084\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps3892/providers/Microsoft.Batch/batchAccounts/ps4695\",\r\n      \"name\": \"ps4695\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"32e0b0da-c57b-4b36-b982-ddc483a638c9\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps8598/providers/Microsoft.Batch/batchAccounts/ps6118\",\r\n      \"name\": \"ps6118\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341\",\r\n      \"name\": \"ps1341\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"tag2\": \"tagValue2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/0prodtest\",\r\n      \"name\": \"0prodtest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/testing\",\r\n      \"name\": \"testing\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/rechentest/providers/Microsoft.Batch/batchAccounts/testunusablenodes\",\r\n      \"name\": \"testunusablenodes\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/spark-hackathon/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota\",\r\n      \"name\": \"pilotprodtestquota\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/spark-hackathon/providers/Microsoft.Batch/batchAccounts/pilotprodtestquota2\",\r\n      \"name\": \"pilotprodtestquota2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/twacdmtestRG/providers/Microsoft.Batch/batchAccounts/twacdmbatchacct\",\r\n      \"name\": \"twacdmbatchacct\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centraluseuap\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/ade1\",\r\n      \"name\": \"ade1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"a\": \"b\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/byospilotprod2\",\r\n      \"name\": \"byospilotprod2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/ytre\",\r\n      \"name\": \"ytre\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfeng521\",\r\n      \"name\": \"zfeng521\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"efb7955a-899d-4096-ac74-d31daefce211\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfeng710\",\r\n      \"name\": \"zfeng710\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk\",\r\n      \"name\": \"zfengcmk\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk1\",\r\n      \"name\": \"zfengcmk1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk2\",\r\n      \"name\": \"zfengcmk2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmk4\",\r\n      \"name\": \"zfengcmk4\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp1\",\r\n      \"name\": \"zfengcmkpp1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"b72c8be9-e240-48bb-95b3-8df72be5c969\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp2\",\r\n      \"name\": \"zfengcmkpp2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"08e857f7-9f14-4d8a-985d-86546e35d747\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengcmkpp3\",\r\n      \"name\": \"zfengcmkpp3\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus2\",\r\n      \"identity\": {\r\n        \"principalId\": \"a139e587-6fbe-43d9-b439-0f908be49bae\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengfff\",\r\n      \"name\": \"zfengfff\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"d1f7afbd-6333-44e2-92dd-0bdc15384f36\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengpna\",\r\n      \"name\": \"zfengpna\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengpna1\",\r\n      \"name\": \"zfengpna1\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengscus\",\r\n      \"name\": \"zfengscus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"southcentralus\",\r\n      \"identity\": {\r\n        \"principalId\": \"bba85f11-cff7-4318-a339-b0ca615c1b6c\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfengwus\",\r\n      \"name\": \"zfengwus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\",\r\n      \"identity\": {\r\n        \"principalId\": \"0afcee94-2357-4d05-9f31-42a27a040ae5\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/zfeng/providers/Microsoft.Batch/batchAccounts/zfwestus\",\r\n      \"name\": \"zfwestus\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497/listKeys?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341/listKeys?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d55f20d0-025d-4647-83bc-e6f1eaac5bed"
+          "9ac65b3f-6a9e-419c-8d27-c905092fe139"
         ],
         "Accept-Language": [
           "en-US"
@@ -834,7 +834,7 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "aa830352-442a-4508-810d-5428d78804c9"
+          "51bc8fa0-9d1b-46cb-b13a-1607b70ea737"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -846,13 +846,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "e5cf3777-97be-43f0-a48f-7032ee4e239b"
+          "c0566d3a-9173-4baa-8a9e-fd816aa0b895"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:e5cf3777-97be-43f0-a48f-7032ee4e239b"
+          "WESTUS:20200610T225106Z:c0566d3a-9173-4baa-8a9e-fd816aa0b895"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
+          "Wed, 10 Jun 2020 22:51:05 GMT"
         ],
         "Content-Length": [
           "228"
@@ -864,17 +864,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"ps2497\",\r\n  \"primary\": \"013OS+I9i3AUgjmMf8bl1cTTiTgjPsOo2n3kMSIgfhng+vm79NRdbrfqHUu4e3DQiysGAIUGJj2OqedPVqBU9A==\",\r\n  \"secondary\": \"/lb2NmTnGpXNBvYy74UGkdenShUXShNMkg1yLgVCf1eZ3zcqM+mSEA5GFed+qwNlZ2URwSoFUlv6p4FBZ5c5xw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"ps1341\",\r\n  \"primary\": \"zG+OffKl4Z1R53sA0WDVOazkzcU0F4+A8ZSWZBtTJD9dKNi8wfRDOEoy8dDiCO3yMkFzdsrLCZvk4KhEZMDg3Q==\",\r\n  \"secondary\": \"D00F44n1/CThIEbEQfw8ODBKzBpM7O/GTKgfmgCzf0N4RdmZH5wMNxin82rU4fsSLkt8C20ayUBIJ38xk9N15g==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497/listKeys?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341/listKeys?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bb0a1410-9660-444d-b082-c7f88aa4ba52"
+          "a8dfe470-9ac3-476d-bf68-22ddb9ef7ed0"
         ],
         "Accept-Language": [
           "en-US"
@@ -897,7 +897,7 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "ad717ad9-aeb0-4ef8-81d1-9772bbd4897c"
+          "8ac493a0-8cb1-4236-b0cc-5228144ac83c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -909,13 +909,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "1efc1fd4-f68a-4129-88cc-34b4b7a29f54"
+          "1ec9a73c-dcff-4b17-8aba-14abb3efcc2c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:1efc1fd4-f68a-4129-88cc-34b4b7a29f54"
+          "WESTUS:20200610T225107Z:1ec9a73c-dcff-4b17-8aba-14abb3efcc2c"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
+          "Wed, 10 Jun 2020 22:51:06 GMT"
         ],
         "Content-Length": [
           "228"
@@ -927,17 +927,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"ps2497\",\r\n  \"primary\": \"013OS+I9i3AUgjmMf8bl1cTTiTgjPsOo2n3kMSIgfhng+vm79NRdbrfqHUu4e3DQiysGAIUGJj2OqedPVqBU9A==\",\r\n  \"secondary\": \"/lb2NmTnGpXNBvYy74UGkdenShUXShNMkg1yLgVCf1eZ3zcqM+mSEA5GFed+qwNlZ2URwSoFUlv6p4FBZ5c5xw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"ps1341\",\r\n  \"primary\": \"zG+OffKl4Z1R53sA0WDVOazkzcU0F4+A8ZSWZBtTJD9dKNi8wfRDOEoy8dDiCO3yMkFzdsrLCZvk4KhEZMDg3Q==\",\r\n  \"secondary\": \"D00F44n1/CThIEbEQfw8ODBKzBpM7O/GTKgfmgCzf0N4RdmZH5wMNxin82rU4fsSLkt8C20ayUBIJ38xk9N15g==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497/regenerateKeys?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3L3JlZ2VuZXJhdGVLZXlzP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341/regenerateKeys?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MS9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyName\": \"Primary\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a97dd15c-3985-4c4e-8beb-b898bbb1e072"
+          "4d9ef02e-6ad1-4cb0-ac23-4334fb3c9fa6"
         ],
         "Accept-Language": [
           "en-US"
@@ -966,7 +966,7 @@
           "1197"
         ],
         "x-ms-request-id": [
-          "49e09f2e-c6ee-41ea-a688-ab49c20e57f3"
+          "9c813f81-2bac-44f5-aa88-b68dd2c834cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -978,13 +978,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "8fb0a0db-7a0d-47b3-9315-e58e948a264e"
+          "255236ab-b3ee-429e-85d3-ce45171908a2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181303Z:8fb0a0db-7a0d-47b3-9315-e58e948a264e"
+          "WESTUS:20200610T225107Z:255236ab-b3ee-429e-85d3-ce45171908a2"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:03 GMT"
+          "Wed, 10 Jun 2020 22:51:06 GMT"
         ],
         "Content-Length": [
           "228"
@@ -996,17 +996,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"ps2497\",\r\n  \"primary\": \"/fS0mxNdo8WVzKB2jJ+AU9XlI1qno+fchDpewSfX/Iwetp67DpvheJSrnVT2r6GjgWfcvU9dO9m7ApApLoWRnQ==\",\r\n  \"secondary\": \"/lb2NmTnGpXNBvYy74UGkdenShUXShNMkg1yLgVCf1eZ3zcqM+mSEA5GFed+qwNlZ2URwSoFUlv6p4FBZ5c5xw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"ps1341\",\r\n  \"primary\": \"1PSBJLaGIzGpw68MKsT+Txwd3mnODk2ru7kQI5WUyam9+6I6lDbcgl4hblnhOSLc+obaYvZn5v7oPM6BEt9CQQ==\",\r\n  \"secondary\": \"D00F44n1/CThIEbEQfw8ODBKzBpM7O/GTKgfmgCzf0N4RdmZH5wMNxin82rU4fsSLkt8C20ayUBIJ38xk9N15g==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps9165/providers/Microsoft.Batch/batchAccounts/ps2497?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzOTE2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHMyNDk3P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps88/providers/Microsoft.Batch/batchAccounts/ps1341?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzODgvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzMTM0MT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb595800-6dc4-4ece-858b-da5cadd0e41a"
+          "ae3e1ac9-3532-42b0-92c2-acda532ad785"
         ],
         "Accept-Language": [
           "en-US"
@@ -1026,13 +1026,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps2497-ea05b636-6554-4f00-8678-53109bd88805?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps1341-c7faaed9-7360-40f8-a06c-9bb67cf90544?api-version=2020-05-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-request-id": [
-          "ea05b636-6554-4f00-8678-53109bd88805"
+          "c7faaed9-7360-40f8-a06c-9bb67cf90544"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1047,13 +1047,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "dc2529d6-4b78-421f-be82-8268da60977c"
+          "c870cfb7-6ac2-4023-8995-a26482e2d5db"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181304Z:dc2529d6-4b78-421f-be82-8268da60977c"
+          "WESTUS:20200610T225107Z:c870cfb7-6ac2-4023-8995-a26482e2d5db"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:04 GMT"
+          "Wed, 10 Jun 2020 22:51:06 GMT"
         ],
         "Expires": [
           "-1"
@@ -1066,8 +1066,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps2497-ea05b636-6554-4f00-8678-53109bd88805?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL3dlc3R1cy9hY2NvdW50T3BlcmF0aW9uUmVzdWx0cy9wczI0OTctZWEwNWI2MzYtNjU1NC00ZjAwLTg2NzgtNTMxMDliZDg4ODA1P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps1341-c7faaed9-7360-40f8-a06c-9bb67cf90544?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL3dlc3R1cy9hY2NvdW50T3BlcmF0aW9uUmVzdWx0cy9wczEzNDEtYzdmYWFlZDktNzM2MC00MGY4LWEwNmMtOWJiNjdjZjkwNTQ0P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1086,7 +1086,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b3a1d544-9b6d-43c7-9de6-85c2e9107494"
+          "b0db6e1d-0d64-4582-a90f-cd4aef7ef9d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1098,16 +1098,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "19320058-f77c-4732-809a-3b304052ad89"
+          "67316f15-3411-432a-a479-9f4c1bf91197"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181319Z:19320058-f77c-4732-809a-3b304052ad89"
+          "WESTUS:20200610T225122Z:67316f15-3411-432a-a479-9f4c1bf91197"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:18 GMT"
+          "Wed, 10 Jun 2020 22:51:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -1120,8 +1120,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps2497-ea05b636-6554-4f00-8678-53109bd88805?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL3dlc3R1cy9hY2NvdW50T3BlcmF0aW9uUmVzdWx0cy9wczI0OTctZWEwNWI2MzYtNjU1NC00ZjAwLTg2NzgtNTMxMDliZDg4ODA1P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/westus/accountOperationResults/ps1341-c7faaed9-7360-40f8-a06c-9bb67cf90544?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL3dlc3R1cy9hY2NvdW50T3BlcmF0aW9uUmVzdWx0cy9wczEzNDEtYzdmYWFlZDktNzM2MC00MGY4LWEwNmMtOWJiNjdjZjkwNTQ0P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1140,7 +1140,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5a466561-8ed4-4a8b-b466-33828337bcbc"
+          "bf39ce08-9b9b-475d-85f0-3fca5f786835"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1152,16 +1152,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "842f229f-9c46-4b45-9d99-136c38087161"
+          "dd3e1548-31bb-48f3-9a51-03c806de0c87"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181319Z:842f229f-9c46-4b45-9d99-136c38087161"
+          "WESTUS:20200610T225122Z:dd3e1548-31bb-48f3-9a51-03c806de0c87"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:18 GMT"
+          "Wed, 10 Jun 2020 22:51:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -1174,13 +1174,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps9165?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzOTE2NT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps88?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzODg/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "397eb41d-4e7d-4f72-842e-c7323247b4f3"
+          "483400ae-fffd-4874-b480-66afecbb4338"
         ],
         "Accept-Language": [
           "en-US"
@@ -1200,22 +1200,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14999"
         ],
         "x-ms-request-id": [
-          "faf7b4a1-4206-406f-9100-5c0282a5184f"
+          "3dc01c3c-dc20-4afd-ac35-426428dc0809"
         ],
         "x-ms-correlation-request-id": [
-          "faf7b4a1-4206-406f-9100-5c0282a5184f"
+          "3dc01c3c-dc20-4afd-ac35-426428dc0809"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181320Z:faf7b4a1-4206-406f-9100-5c0282a5184f"
+          "WESTUS:20200610T225123Z:3dc01c3c-dc20-4afd-ac35-426428dc0809"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1224,7 +1224,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:20 GMT"
+          "Wed, 10 Jun 2020 22:51:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -1237,8 +1237,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreE5qVXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnNExWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1257,22 +1257,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11997"
         ],
         "x-ms-request-id": [
-          "f776fa7f-3393-46c5-8896-e65964d09bfa"
+          "e957e3e5-1656-4109-b835-b7048e7a33a1"
         ],
         "x-ms-correlation-request-id": [
-          "f776fa7f-3393-46c5-8896-e65964d09bfa"
+          "e957e3e5-1656-4109-b835-b7048e7a33a1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181335Z:f776fa7f-3393-46c5-8896-e65964d09bfa"
+          "WESTUS:20200610T225138Z:e957e3e5-1656-4109-b835-b7048e7a33a1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1281,7 +1281,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:34 GMT"
+          "Wed, 10 Jun 2020 22:51:37 GMT"
         ],
         "Expires": [
           "-1"
@@ -1294,8 +1294,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreE5qVXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnNExWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1314,22 +1314,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11996"
         ],
         "x-ms-request-id": [
-          "c8013924-c9b6-43a8-b6a9-3c7130bb5602"
+          "7445c0c6-e1a1-42c6-b6d4-2e71fbacb790"
         ],
         "x-ms-correlation-request-id": [
-          "c8013924-c9b6-43a8-b6a9-3c7130bb5602"
+          "7445c0c6-e1a1-42c6-b6d4-2e71fbacb790"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181350Z:c8013924-c9b6-43a8-b6a9-3c7130bb5602"
+          "WESTUS:20200610T225153Z:7445c0c6-e1a1-42c6-b6d4-2e71fbacb790"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1338,7 +1338,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:13:49 GMT"
+          "Wed, 10 Jun 2020 22:51:53 GMT"
         ],
         "Expires": [
           "-1"
@@ -1351,8 +1351,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreE5qVXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnNExWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1371,16 +1371,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11995"
         ],
         "x-ms-request-id": [
-          "c7be9610-d799-4415-b98c-40715b91a46c"
+          "0f6e3c53-c549-455b-93b4-4ab5d49d11aa"
         ],
         "x-ms-correlation-request-id": [
-          "c7be9610-d799-4415-b98c-40715b91a46c"
+          "0f6e3c53-c549-455b-93b4-4ab5d49d11aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181405Z:c7be9610-d799-4415-b98c-40715b91a46c"
+          "WESTUS:20200610T225208Z:0f6e3c53-c549-455b-93b4-4ab5d49d11aa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1389,7 +1389,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:14:04 GMT"
+          "Wed, 10 Jun 2020 22:52:08 GMT"
         ],
         "Expires": [
           "-1"
@@ -1402,8 +1402,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkxNjUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreE5qVXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnNExWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1422,16 +1422,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11994"
         ],
         "x-ms-request-id": [
-          "2c787f1e-8c50-41a7-be26-bc4a2d9669b2"
+          "767097f2-cc29-4239-ac87-395c89eb817e"
         ],
         "x-ms-correlation-request-id": [
-          "2c787f1e-8c50-41a7-be26-bc4a2d9669b2"
+          "767097f2-cc29-4239-ac87-395c89eb817e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200610T181405Z:2c787f1e-8c50-41a7-be26-bc4a2d9669b2"
+          "WESTUS:20200610T225208Z:767097f2-cc29-4239-ac87-395c89eb817e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1440,7 +1440,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jun 2020 18:14:04 GMT"
+          "Wed, 10 Jun 2020 22:52:08 GMT"
         ],
         "Expires": [
           "-1"
@@ -1455,8 +1455,8 @@
   ],
   "Names": {
     "Test-BatchAccountEndToEnd": [
-      "ps2497",
-      "ps9165"
+      "ps1341",
+      "ps88"
     ]
   },
   "Variables": {
