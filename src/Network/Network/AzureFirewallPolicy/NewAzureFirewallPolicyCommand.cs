@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The whitelist for Threat Intelligence")]
+        public PSAzureFirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
@@ -110,6 +115,7 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null
             };
 

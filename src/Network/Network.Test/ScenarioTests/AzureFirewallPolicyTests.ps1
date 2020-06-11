@@ -237,3 +237,67 @@ function Test-AzureFirewallPolicyCRUD {
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Tests AzureFirewallPolicyCRUD with ThreatIntelWhitelist.
+#>
+function Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "eastus2euap"
+
+    $ruleGroupName = Get-ResourceName
+    $threatIntelWhiteListIp1 = "20.3.4.5"
+    $threatIntelWhiteListIp2 = "37.1.2.3"
+    $threatIntelWhiteListIp3 = "208.199.20.37"
+    $threatIntelWhiteListFqdn1 = "microsoft.com"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        $tiWhiteList = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress $threatIntelWhiteListIp1,$threatIntelWhiteListIp2 -FQDN $threatIntelWhiteListFqdn1
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ThreatIntelWhitelist $tiWhiteList
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual $location $getAzureFirewallPolicy.Location
+        Assert-AreEqual "Alert" $getAzureFirewallPolicy.ThreatIntelMode
+        Assert-NotNull $getAzureFirewallPolicy.ThreatIntelWhitelist
+        Assert-AreEqual $threatIntelWhiteListIp1 $getAzureFirewallPolicy.ThreatIntelWhitelist.IpAddresses[0]
+        Assert-AreEqual $threatIntelWhiteListIp2 $getAzureFirewallPolicy.ThreatIntelWhitelist.IpAddresses[1]
+        Assert-AreEqual $threatIntelWhiteListFqdn1 $getAzureFirewallPolicy.ThreatIntelWhitelist.FQDNs[0]
+
+        # # Update ThreatIntel Whitelist
+        $azureFirewallPolicy.ThreatIntelWhitelist.IpAddresses[0] = $threatIntelWhiteListIp3
+        
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+		
+        # #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual $location $getAzureFirewallPolicy.Location
+        Assert-NotNull $getAzureFirewallPolicy.ThreatIntelWhitelist
+        Assert-AreEqual $threatIntelWhiteListIp3 $getAzureFirewallPolicy.ThreatIntelWhitelist.IpAddresses[0]
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

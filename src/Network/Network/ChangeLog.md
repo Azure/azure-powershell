@@ -35,6 +35,9 @@
         - Remove-AzSecurityPartnerProvider
         - Get-AzSecurityPartnerProvider
         - Set-AzSecurityPartnerProvider
+* Added new cmdlets for Azure FirewallPolicy
+    - New cmdlets added:
+        - New-AzFirewallPolicyThreatIntelWhitelist
 * Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
 * Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
