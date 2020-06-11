@@ -26,12 +26,20 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Fails with Internal Server Error")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallPolicyCRUD()
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyWithThreatIntelWhitelistCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD");
         }
     }
 }
