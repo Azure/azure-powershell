@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace VersionController.Utilities
 {
-    class ModuleFilter
+    public class ModuleFilter
     {
         public static bool IsAzureStackModule(String fileName)
         {
@@ -22,7 +22,7 @@ namespace VersionController.Utilities
                 var lines = File.ReadAllLines(whiteListFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
                 foreach (var line in lines)
                 {
-                    var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
+                    var cols = line.Split(',').Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
                                               .Select(c => c.EndsWith("\"") ? c.Substring(0, c.Length - 1) : c)
                                               .Select(c => c.Trim()).ToArray();
                     if (cols.Length >= 1)
