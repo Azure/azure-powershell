@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string NodeSize { get; set; }
-        private SwitchParameter EnableAutoScale { get; set; }
+
+        private SwitchParameter enableAutoScale;
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 case CreateByNameAndEnableAutoScaleParameterSet:
                 case CreateByParentObjectAndEnableAutoScaleParameterSet:
-                    this.EnableAutoScale = true;
+                    this.enableAutoScale = true;
                     break;
             }
 
@@ -174,12 +175,12 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                NodeCount = this.EnableAutoScale ? (int?) null : this.NodeCount,
+                NodeCount = this.enableAutoScale ? (int?) null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
-                AutoScale = !this.EnableAutoScale ? null : new AutoScaleProperties
+                AutoScale = !this.enableAutoScale ? null : new AutoScaleProperties
                 {
-                    Enabled = this.EnableAutoScale,
+                    Enabled = this.enableAutoScale,
                     MinNodeCount = AutoScaleMinNodeCount,
                     MaxNodeCount = AutoScaleMaxNodeCount
                 },

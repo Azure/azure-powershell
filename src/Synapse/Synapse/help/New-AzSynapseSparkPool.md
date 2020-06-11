@@ -4,7 +4,7 @@ Module Name: Az.Synapse
 online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/new-azsynapsesparkpool
 schema: 2.0.0
 ---
-# test
+
 # New-AzSynapseSparkPool
 
 ## SYNOPSIS
@@ -54,14 +54,14 @@ The **New-AzSynapseSparkPool** cmdlet creates an Azure Synapse Analytics Spark p
 PS C:\> New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
-This command creates a non-scalable Azure Synapse Analytics Spark pool
+This command creates an Azure Synapse Analytics Spark pool.
 
 ### Example 2
 ```powershell
 PS C:\> New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
 ```
 
-This command creates a scalable Azure Synapse Analytics Spark pool
+This command creates an Azure Synapse Analytics Spark pool with auto-scale enabled.
 
 ### Example 3
 ```powershell
@@ -69,7 +69,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
-This command creates a non-scalable Azure Synapse Analytics Spark pool through pipeline.
+This command creates an Azure Synapse Analytics Spark pool through pipeline.
 
 ### Example 4
 ```powershell
@@ -77,7 +77,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
 ```
 
-This command creates a scalable Azure Synapse Analytics Spark pool through pipeline.
+This command creates an Azure Synapse Analytics Spark pool with auto-scale enabled through pipeline.
 
 ## PARAMETERS
 
