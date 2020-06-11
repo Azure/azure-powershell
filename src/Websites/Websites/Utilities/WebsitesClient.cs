@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        private void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
+        public void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
