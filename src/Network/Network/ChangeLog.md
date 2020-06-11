@@ -55,6 +55,21 @@
     - Updated Update-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
 * Updated 'Update-AzVpnGateway'
     - Added optional parameter -BgpPeeringAddress for customers to specify their custom bgps to set on VpnGateway.
+* Added new cmdlets for HubRouteTables child resource of VirtualHub.
+    -`New-AzVHubRoute`
+    -`New-AzVHubRouteTable`
+    -`Get-AzVHubRouteTable`
+    -`Update-AzVHubRouteTable`
+    -`Remove-AzVHubRouteTable`
+* Updated existing cmdlets to support optional RoutingConfiguration input parameter for custom routing in VirtualWan.
+    -`New-AzExpressRouteConnection`
+    -`Set-AzExpressRouteConnection`
+    -`New-AzVirtualHubVnetConnection`
+    -`Update-AzVirtualHubVnetConnection`
+    -`New-AzVpnConnection`
+    -`Update-AzVpnConnection`
+    -`New-AzP2sVpnGateway`
+    -`Update-AzP2sVpnGateway`
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
