@@ -46,7 +46,6 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.EnableAnalyticalStorage 0
   Assert-AreEqual $cosmosDBAccount.EnableFreeTier 0
 
-
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
 
   Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount.Name
@@ -171,19 +170,15 @@ function Test-AddRegionOperation
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try{
-    #$cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    #if($cosmosDBAccount.Id -eq $null)
+    $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+    do 
     {
-        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
-        do 
-        {
-           $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-        } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
-    }
-
-      $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-      $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-      Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
+        $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+    
+    $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
+    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+    Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
    }
   finally{
       Remove-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
@@ -196,20 +191,17 @@ function Test-PrivateEndpoint
   $location = "East US"
   $peName = "mype";
   $storageAccount = "xdmsa2";
+  $vnetName = "MyVnetPE"
 	
   $cosmosDBAccountName = "db945" 
   $rgname = "CosmosDBResourceGroup9507"
 
   try{
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
-      if($cosmosDBAccount.Id -eq $null)
-      {
-        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName -Location $location
-	  }
       $resourceId = $cosmosDBAccount.Id
 
       $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
-      $vnetPE = New-AzVirtualNetwork -Name "vnetPE2" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+      $vnetPE = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
         
       $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $resourceId -GroupId 'Sql'
       $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
@@ -239,6 +231,7 @@ function Test-PrivateEndpoint
       } while (($pecGet3) -ne $null)
   }
   finally{
-      Remove-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
+      Remove-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Force
+      Remove-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Force
   }
 }
