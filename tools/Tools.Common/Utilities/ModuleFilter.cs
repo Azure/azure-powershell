@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace VersionController.Utilities
+namespace Tools.Common.Utilities
 {
     public class ModuleFilter
     {

@@ -7,7 +7,7 @@ using System.Management.Automation.Language;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
-using VersionController.Utilities;
+using Tools.Common.Utilities;
 
 namespace VersionController.Models
 {
