@@ -138,6 +138,11 @@ namespace Microsoft.Azure.Commands.Network
         public string[] CustomDnsServer { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this P2SVpnGateway P2SConnectionConfiguration")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -200,6 +205,12 @@ namespace Microsoft.Azure.Commands.Network
                     AddressPrefixes = new List<string>(this.VpnClientAddressPool)
                 }
             };
+
+            if (this.RoutingConfiguration != null)
+            {
+                p2sConnectionConfig.RoutingConfiguration = RoutingConfiguration;
+            }
+
             p2sVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
             {
                 p2sConnectionConfig

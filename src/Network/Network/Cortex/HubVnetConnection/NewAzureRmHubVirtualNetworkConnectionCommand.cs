@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this HubVirtualnNetwork connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -181,6 +186,11 @@ namespace Microsoft.Azure.Commands.Network
             if (parentVirtualHub.VirtualNetworkConnections == null)
             {
                 parentVirtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                hubVnetConnection.RoutingConfiguration = RoutingConfiguration;
             }
 
             List<string> resourceIds = new List<string>();

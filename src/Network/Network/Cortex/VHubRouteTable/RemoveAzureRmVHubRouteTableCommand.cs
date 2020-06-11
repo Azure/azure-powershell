@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             PSVHubRouteTable hubRouteTableToDelete = null;
-            if (ParameterSetName.Contains(CortexParameterSetNames.ByVHubRouteTableObject))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVHubRouteTableObject, StringComparison.OrdinalIgnoreCase))
             {
                 hubRouteTableToDelete = this.InputObject;
                 this.ResourceId = this.InputObject.Id;

@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             PSVHubRouteTable hubRouteTableToUpdate = null;
-            if (ParameterSetName.Contains(CortexParameterSetNames.ByVHubRouteTableObject))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVHubRouteTableObject, StringComparison.OrdinalIgnoreCase))
             {
                 hubRouteTableToUpdate = this.InputObject;
                 this.ResourceId = this.InputObject.Id;
