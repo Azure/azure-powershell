@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
        [Parameter(
             Mandatory = false,
             HelpMessage = "The DNS Setting")]
-        public PSAzureFirewallPolicyDnsSetting DnsSetting { get; set; }
+        public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
-                DnsSetting = this.DnsSetting
+                DnsSettings = this.DnsSetting
             };
 
             // Map to the sdk object

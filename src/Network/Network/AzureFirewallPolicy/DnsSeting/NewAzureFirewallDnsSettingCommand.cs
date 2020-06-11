@@ -23,7 +23,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyDnsSetting", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyDnsSetting))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyDnsSetting", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyDnsSettings))]
     public class NewAzureFirewallDnsSettingCommand : NetworkBaseCmdlet
     {
 
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var dnsSetting = new PSAzureFirewallPolicyDnsSetting
+            var dnsSetting = new PSAzureFirewallPolicyDnsSettings
             {
                 EnableProxy = this.EnableProxy.IsPresent ? true : (bool?)null,
                 RequireProxyForNetworkRules = this.ProxyNotRequiredForNetworkRule.IsPresent ? false : (bool?)null,
-                Server = this.Server?.ToList()
+                Servers = this.Server?.ToList()
             };
 
             WriteObject(dnsSetting);

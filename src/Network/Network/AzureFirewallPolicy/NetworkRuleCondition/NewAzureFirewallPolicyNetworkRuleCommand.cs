@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
                 SourceAddresses = this.SourceAddress?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
-                DestinationFqdn = this.DestinationFqdn?.ToList(),
+                DestinationFqdns = this.DestinationFqdn?.ToList(),
                 RuleType = "NetworkRule"
             };
 

@@ -17,9 +17,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyDnsSetting
+    public class PSAzureFirewallPolicyDnsSettings
     {
-        public IList<string> Server { get; set; }
+        public IList<string> Servers { get; set; }
 
         public bool? EnableProxy { get; set; }
 
