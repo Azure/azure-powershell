@@ -27,7 +27,7 @@ function Test-SynapseSparkPool
         # Test to make sure the SparkPool doesn't exist
         Assert-False {Test-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName}
 
-        # EnableAutoScale 
+        # UnableAutoScale 
         $sparkPoolCreated1 = New-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -NodeCount $sparkPoolNodeCount -SparkVersion $sparkVersion -NodeSize $sparkPoolNodeSize
 
         Assert-AreEqual $sparkPoolName $sparkPoolCreated1.Name
@@ -35,7 +35,7 @@ function Test-SynapseSparkPool
         Assert-AreEqual "Microsoft.Synapse/Workspaces/bigDataPools" $sparkPoolCreated1.Type
         Assert-True {$sparkPoolCreated1.Id -like "*$resourceGroupName*"}
 
-        # just test create for UnableAutoScale
+        # just test create for EnableAutoScale
         $sparkPoolCreated2 = New-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName1 -AutoScaleMinNodeCount $sparkAutoScaleMinNodeCount -AutoScaleMaxNodeCount $sparkAutoScaleMaxNodeCount   -SparkVersion $sparkVersion -NodeSize $sparkPoolNodeSize
 
         Assert-AreEqual $sparkPoolName1 $sparkPoolCreated2.Name
