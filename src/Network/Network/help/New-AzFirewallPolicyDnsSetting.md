@@ -71,7 +71,7 @@ Accept wildcard characters: False
 
 ### -ProxyNotRequiredForNetworkRule
 Requires DNS Proxy functionality for FQDNs within Network Rules.
-By default it is null.
+By default it is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
