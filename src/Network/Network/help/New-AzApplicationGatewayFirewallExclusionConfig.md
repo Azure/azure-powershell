@@ -87,6 +87,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
