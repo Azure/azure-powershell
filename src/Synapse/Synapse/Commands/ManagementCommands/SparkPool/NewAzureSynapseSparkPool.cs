@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string NodeSize { get; set; }
-        public SwitchParameter EnableAutoScale { get; set; }
+        private SwitchParameter EnableAutoScale { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
