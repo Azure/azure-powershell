@@ -35,21 +35,42 @@ Updates a workspace.
 
 ### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-PS C:\> $workspace | Update-AzDatabricksWorkspace -Tag @{key="value"}
+PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceopsc46 -Tag @{'key'=1}
+PS C:\> Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 
-{{ Add output here }}
+Name            Location Managed Resource Group ID
+----            -------- -------------------------
+workspaceopsc46 eastus   /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceopsc46-wfgp3ayhu6jkn
 ```
 
-{{ Add description here }}
+This command updates the tags of a Databricks workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Enable encryption on a Databricks workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -PrepareEncryption
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
 
-{{ Add output here }}
+Name            Location       Managed Resource Group ID
+----            --------       -------------------------
+workspaceypae6l East US 2 EUAP /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceypae6l-wzefrgv2b075t
 ```
 
-{{ Add description here }}
+Enabling encryption on a Databricks workspace takes two steps:
+1.
+Update a workspace with `-PrepareEncryption` (if the workspace was not created with `-PrepareEncryption`)
+1.
+Update the encryption key with the following parameters:
+    - `-EncryptionKeySource`
+    - `-EncryptionKeyVaultUri`
+    - `-EncryptionKeyName`
+    - `-EncryptionKeyVersion`
+
+### Example 3: Disable encryption on a Databricks workspace
+```powershell
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Default'
+```
+
+To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
 
 ## PARAMETERS
 

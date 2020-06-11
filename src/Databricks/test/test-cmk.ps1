@@ -23,6 +23,7 @@ $dbr | Update-AzDatabricksWorkspace -PrepareEncryption
 
 # 5. update workspace (enable encryption)
 $dbr = $dbr | Update-AzDatabricksWorkspace -EncryptionKeySource Microsoft.KeyVault -EncryptionKeyVaultUri https://yemingdbr.vault.azure.net/ -EncryptionKeyName rsa -EncryptionKeyVersion a78ebf48fadd477b9820a53b4c67e38a
+# Update-AzDatabricksWorkspace -InputObject $dbr -EncryptionKeySource Microsoft.KeyVault -EncryptionKeyVaultUri https://dbr-kv-t02.vault.azure.net/ -EncryptionKeyName rsa -EncryptionKeyVersion f71e150be6ba4592b2369a70fc9818df
 
 # verify these properties of $dbr equal to the input
 # - ValueKeyName                      :
