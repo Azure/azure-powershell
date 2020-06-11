@@ -134,7 +134,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported list hosts and restart hosts of the cluster'
+        ReleaseNotes = '* Supported Customer-managed key disk encryption.'
 
         # Prerelease string of this module
         # Prerelease = ''
