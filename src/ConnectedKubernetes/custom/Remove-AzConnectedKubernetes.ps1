@@ -195,7 +195,6 @@ param(
         }
         #Endregion
 
-        Write-Host "==================== $ReleaseNamespace ===================="
         if ($null -eq $ReleaseNamespace) {
             Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
             return
@@ -212,10 +211,6 @@ param(
             $PSBoundParameters.Add('ClusterName')
         }
         if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
-            Write-Host "==================== $ResourceGroupName ===================="
-            Write-Host "==================== $ConfigmapRgName ===================="
-            Write-Host "==================== $ClusterName ===================="
-            Write-Host "==================== $ConfigmapClusterName ===================="
             Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
             helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
         } else {
