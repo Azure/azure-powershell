@@ -784,3 +784,69 @@ function Test-CortexExpressRouteCRUD
 		Clean-ResourceGroup $rgname
      }
 }
+
+<# 
+.SYNOPSIS
+ Disconnect site to site vpn gateway BgpSettings
+ #>
+ function Test-BgpUpdateVpnGateway
+ {
+ param 
+    ( 
+        $basedir = ".\" 
+    )
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = "West Central US"
+ 
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $VpnGatewayName = Get-ResourceName
+    
+    try
+	{
+		# Create the resource group
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Create the Virtual Wan
+		New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual $virtualWan.Id $virtualhub.VirtualWan.Id
+		
+		# Create the VpnGateway
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 2
+		
+		# Get the created VpnGateway using Get-AzVpnGateway
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+
+		$addr1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $vpnGateway.BgpSettings.BgpPeeringAddresses[0].IpConfigurationId -CustomAddress @("169.254.22.5")
+		$addr2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $vpnGateway.BgpSettings.BgpPeeringAddresses[1].IpConfigurationId -CustomAddress @("169.254.22.10")
+		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -BgpPeeringAddress @($addr1,$addr2)
+		$updatedvpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[0]).Count
+		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[1]).Count
+     }
+     finally
+     {
+		# Delete VpnGateway using Remove-AzVpnGateway
+		$delete = Remove-AzVpnGateway -Name $VpnGatewayName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual hub
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual wan
+		$delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		Clean-ResourceGroup $rgname
+     }
+}

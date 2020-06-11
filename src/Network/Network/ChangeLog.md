@@ -65,6 +65,11 @@
 * Updated below commands for feature: Custom dns servers set/remove on VirtualWan P2SVpnGateway.
     - Updated New-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
     - Updated Update-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+* Updated 'Update-AzVpnGateway'
+    - Added optional parameter -BgpPeeringAddress for customers to specify their custom bgps to set on VpnGateway.
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
