@@ -13,7 +13,7 @@ This command updates the tags of a Databricks workspace.
 ### Example 2: Enable encryption on a Databricks workspace
 ```powershell
 PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -PrepareEncryption
-PS C:\> Update-AzDatabricksWorkspace -InputObject $dbr -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
 
 Name            Location       Managed Resource Group ID
 ----            --------       -------------------------
@@ -27,3 +27,10 @@ Enabling encryption on a Databricks workspace takes two steps:
     - `-EncryptionKeyVaultUri`
     - `-EncryptionKeyName`
     - `-EncryptionKeyVersion`
+
+### Example 3: Disable encryption on a Databricks workspace
+```powershell
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Default'
+```
+
+To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
