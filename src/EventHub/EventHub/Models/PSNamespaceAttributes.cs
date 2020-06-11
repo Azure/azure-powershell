@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
+                Identity = evResource.Identity;
+                ZoneRedundant = evResource.ZoneRedundant;
+                ClusterArmId = evResource.ClusterArmId;
+                Encryption = evResource.Encryption;               
 
             }
         }
@@ -141,6 +145,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// eventhub namespace.
         /// </summary>
         public bool? KafkaEnabled { get; set; }
+
+        public bool? ZoneRedundant { get; set; }
+
+        public string ClusterArmId { get; set; }     
+        
+        public Identity Identity { get; set; }
+
+        public Encryption Encryption { get; set; }
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
     }

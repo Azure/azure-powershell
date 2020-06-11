@@ -88,6 +88,43 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
 
+        /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Indicates whether Identity is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        public SwitchParameter Identity { get; set; }
+
+        /// <summary>
+        /// Sets Identity None or other than SystemAssigned .
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "User defined Identity or None")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "User defined Identity or None")]
+        [PSArgumentCompleter("None")]
+        public string IdentityUserDefined { get; set; }
+
+        /// <summary>
+        /// Key Source
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Key Source")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "Key Source ")]
+        [PSArgumentCompleter("Microsoft.KeyVault")]
+        public string KeySource { get; set; }
+
+        /// <summary>
+        /// Key Source
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
+        public List<string []> KeyProperties { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Update a EventHub namespace 
@@ -96,8 +133,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
             {
                 try
-                {                    
-                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent));                    
+                {
+
+                    WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

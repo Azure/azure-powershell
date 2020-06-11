@@ -66,9 +66,65 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? isKafkaEnabled)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? isKafkaEnabled, string clusterARMId, bool? isZoneRedundant, bool? isIdentity)
         {
             EHNamespace parameter = new EHNamespace();
+            parameter.Location = location;
+
+            if (tags != null)
+            {
+                parameter.Tags = new Dictionary<string, string>(tags);
+            }
+
+            if (skuName != null)
+            {
+                parameter.Sku = new Sku
+                {
+                    Name = skuName,
+                    Tier = skuName
+                };
+            }
+
+            if (clusterARMId != null)
+            {
+                parameter.ClusterArmId = clusterARMId;
+            }
+
+            if (skuCapacity.HasValue)
+            {
+                parameter.Sku.Capacity = skuCapacity;
+            }
+
+            if (isAutoInflateEnabled.HasValue)
+                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
+
+            if (maximumThroughputUnits.HasValue)
+                parameter.MaximumThroughputUnits = maximumThroughputUnits;
+
+            if (isKafkaEnabled.HasValue)
+                parameter.KafkaEnabled = isKafkaEnabled;
+
+            if (isZoneRedundant.HasValue)
+                parameter.ZoneRedundant = isZoneRedundant;
+
+            if (isIdentity.HasValue)
+                parameter.Identity = new Identity() { Type = IdentityType.SystemAssigned };
+
+            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
+            return new PSNamespaceAttributes(response);
+        }
+
+        // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
+        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? isKafkaEnabled, bool? isZoneRedundant, bool? isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties)
+        {          
+
+            EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
+
+            if (parameter.Identity != null && parameter.Encryption == null)
+            {
+                parameter.Encryption = new Encryption();
+            }
+
             parameter.Location = location;
 
             if (tags != null)
@@ -98,6 +154,67 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (isKafkaEnabled.HasValue)
                 parameter.KafkaEnabled = isKafkaEnabled;
+
+            if (isZoneRedundant.HasValue)
+                parameter.ZoneRedundant = isZoneRedundant;
+
+            if (isIdentity.HasValue)
+                parameter.Identity = new Identity() { Type = IdentityType.SystemAssigned };
+
+            //IdentityUserDefined, KeySource, KeyProperties
+            if (!String.IsNullOrEmpty(identityUserDefined) && identityUserDefined.ToLower() == "none")
+            {
+                parameter.Identity = new Identity() { Type = null};
+            }
+
+            if (!String.IsNullOrEmpty(keySource))
+            {
+                if (parameter.Encryption == null)
+                {
+                    parameter.Encryption = new Encryption()
+                    {
+                        KeySource = KeySource.MicrosoftKeyVault
+                    };
+                }
+                else
+                {
+                    parameter.Encryption.KeySource = KeySource.MicrosoftKeyVault;
+                }
+            }
+
+            if (KeyProperties != null)
+            {
+                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
+                foreach (string[] item in KeyProperties)
+                {
+                    KeyVaultProperties singleItem = new KeyVaultProperties();
+                    if (item.Length < 2)
+                    {
+                        throw new ErrorResponseException("please check KeyVaultProperties, missing required values");
+                    }
+                    else 
+                    {
+                        switch (item.Length)
+                        {
+                            case 2:
+                                {
+                                    singleItem.KeyName = item[0];
+                                    singleItem.KeyVaultUri = item[1];
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    singleItem.KeyName = item[0];
+                                    singleItem.KeyVaultUri = item[1];
+                                    singleItem.KeyVersion = item[2];
+                                    break;
+                                }
+                        }
+                    }
+
+                    parameter.Encryption.KeyVaultProperties.Add(singleItem);
+                }
+            }            
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
