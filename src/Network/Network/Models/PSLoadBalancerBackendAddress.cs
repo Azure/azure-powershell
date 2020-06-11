@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSResourceId NetworkInterfaceIpConfigurationId { get; set; }
+        public PSResourceId NetworkInterfaceIpConfiguration { get; set; }
 
         [JsonProperty(Order = 2)]
-        public PSResourceId VirtualNetworkId { get; set; }
+        public PSResourceId VirtualNetwork { get; set; }
 
         [JsonProperty(Order = 3)]
         public string IpAddress { get; set; }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationText
         {
-            get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfigurationId, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
-                return JsonConvert.SerializeObject(VirtualNetworkId, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             }
         }
     }
