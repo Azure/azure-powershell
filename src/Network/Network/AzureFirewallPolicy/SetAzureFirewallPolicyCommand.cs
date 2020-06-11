@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Network
         public string BasePolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The DNS Settings")]
+        public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
+
+        [Parameter(
                     Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
@@ -127,6 +132,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
                 this.ThreatIntelMode = this.IsParameterBound(c => c.ThreatIntelMode) ? ThreatIntelMode : InputObject.ThreatIntelMode;
                 this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
+                this.DnsSettings = this.IsParameterBound(c => c.DnsSettings) ? DnsSettings : (InputObject.DnsSettings != null ? InputObject.DnsSettings : null);
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -134,11 +140,12 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                    BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null
+                    BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
+                    DnsSettings = this.DnsSettings
                 };
 
-
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
+
                 // Execute the PUT AzureFirewall Policy call
                 this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, azureFirewallPolicyModel);
                 var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
@@ -152,7 +159,8 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                    BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null
+                    BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
+                    DnsSettings = this.DnsSettings
                 };
 
                 // Map to the sdk object

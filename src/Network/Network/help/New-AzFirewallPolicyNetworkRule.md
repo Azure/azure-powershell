@@ -14,7 +14,7 @@ Create a new Azure Firewall Policy Network Rule
 
 ```
 New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocols <String[]>
+ [-DestinationFqdns <String[]>] [-DestinationAddress <String[]>] -DestinationPort <String[]> -Protocols <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,7 +70,22 @@ Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationFqdn
+The destination FQDN of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

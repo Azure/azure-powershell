@@ -13,24 +13,16 @@
 // limitations under the License.
 //
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicy : PSTopLevelResource
+    public class PSAzureFirewallPolicyDnsSettings
     {
-        public string ThreatIntelMode { get; set; }
+        public IList<string> Servers { get; set; }
 
-        public Microsoft.Azure.Management.Network.Models.SubResource BasePolicy { get; set; }
+        public bool? EnableProxy { get; set; }
 
-        public string ProvisioningState { get; set; }
-
-        [JsonProperty("ruleCollectionGroups")]
-        public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
-
-        public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
+        public bool? RequireProxyForNetworkRules { get; set; }
     }
 }

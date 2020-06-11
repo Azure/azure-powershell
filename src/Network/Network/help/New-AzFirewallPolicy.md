@@ -14,7 +14,7 @@ Creates a new Azure Firewall Policy
 
 ```
 New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <String> [-ThreatIntelMode <String>]
- [-BasePolicy <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-BasePolicy <String>] [-DnsSettings <PSAzureFirewallPolicyDnsSettings>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -BasePolicy
-The operation mode for Threat Intelligence.
+The base policy to inherit from
 
 ```yaml
 Type: System.String
@@ -66,6 +66,20 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DnsSettings
+The DNS Settings
+
+```yaml
+Type: PSAzureFirewallPolicyDnsSettings
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
