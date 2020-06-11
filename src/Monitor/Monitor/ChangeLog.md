@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed input object parameter for `Set-AzActivityLogAlert`
 
 ## Version 2.0.0
 * Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories [#11589]
