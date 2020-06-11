@@ -3767,6 +3767,10 @@
                 <PropertyName>VirtualHub</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>HubIPAddresses</Label>
+                <PropertyName>HubIPAddresses</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>FirewallPolicy</Label>
                 <PropertyName>FirewallPolicy</PropertyName>
               </ListItem>
