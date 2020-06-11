@@ -33,10 +33,6 @@ function Test-AccountRelatedCmdlets
   $publicNetworkAccess = "Enabled"
 
   $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2"
-    #do 
-    #{
-    #   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    #} while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -52,10 +48,6 @@ function Test-AccountRelatedCmdlets
 
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
-    #  do 
-    #{
-    #   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
-    #} while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
 
   Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -90,7 +82,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $IpRule = "192.168.50.1"
+  $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -136,7 +128,7 @@ function Test-AccountRelatedCmdletsUsingObject
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
-  $IpRule = "192.168.50.1"
+  $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
@@ -175,18 +167,27 @@ function Test-AddRegionOperation
   $rgName = "CosmosDBResourceGroup2"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregion"
+  $cosmosDBAccountName = "testupdateregion2"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
-    $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
-    do 
+  try{
+    #$cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+    #if($cosmosDBAccount.Id -eq $null)
     {
-       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+        do 
+        {
+           $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+        } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+    }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
+      $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
+      $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+      Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
+   }
+  finally{
+      Remove-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  }
 }
 
 function Test-PrivateEndpoint
@@ -196,40 +197,48 @@ function Test-PrivateEndpoint
   $peName = "mype";
   $storageAccount = "xdmsa2";
 	
-  #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "db9934121" 
+  $cosmosDBAccountName = "db945" 
   $rgname = "CosmosDBResourceGroup9507"
 
-  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBExistingAccountName
-  $resourceId = $cosmosDBAccount.Id
+  try{
+      $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
+      if($cosmosDBAccount.Id -eq $null)
+      {
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName -Location $location
+	  }
+      $resourceId = $cosmosDBAccount.Id
 
-  $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
-  $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+      $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
+      $vnetPE = New-AzVirtualNetwork -Name "vnetPE2" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
         
-  $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $resourceId -GroupId 'Sql'
-  $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
+      $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $resourceId -GroupId 'Sql'
+      $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
-  $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
-  Assert-NotNull $pecGet;
-  Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
+      $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+      Assert-NotNull $pecGet;
+      Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
 
-  # Approve Private Endpoint Connection
-  $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
-  Assert-NotNull $pecApprove;
+      # Approve Private Endpoint Connection
+      $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+      Assert-NotNull $pecApprove;
 
-  $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
-  do 
-  {
-    $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
-  } while ($pecGet2.PrivateLinkServiceConnectionState.Status -ne "Approved")
+      $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+      do 
+      {
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+      } while ($pecGet2.PrivateLinkServiceConnectionState.Status -ne "Approved")
 
-  # Remove Private Endpoint Connection
-  $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
-  Assert-AreEqual true $pecRemove
+      # Remove Private Endpoint Connection
+      $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
+      Assert-AreEqual true $pecRemove
 
-  $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
-  do 
-  {
-    $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
-  } while (($pecGet3) -ne $null)
+      $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+      do 
+      {
+        $pecGet3 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+      } while (($pecGet3) -ne $null)
+  }
+  finally{
+      Remove-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
+  }
 }
