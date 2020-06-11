@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string CreateByParentObjectAndEnableAutoScaleParameterSet = "CreateByParentObjectAndEnableAutoScaleParameterSet";
         private const string CreateByParentObjectAndUnableAutoScaleParameterSet = "CreateByParentObjectAndUnableAutoScaleParameterSet";
 
-
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
@@ -69,9 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string NodeSize { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.EnableAutoScale)]
         public SwitchParameter EnableAutoScale { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
@@ -116,8 +112,6 @@ namespace Microsoft.Azure.Commands.Synapse
             switch (ParameterSetName)
             {
                 case CreateByNameAndEnableAutoScaleParameterSet:
-                    this.EnableAutoScale = true;
-                    break;
                 case CreateByParentObjectAndEnableAutoScaleParameterSet:
                     this.EnableAutoScale = true;
                     break;
@@ -163,7 +157,6 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
-
 
             LibraryRequirements libraryRequirements = null;
             if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))

@@ -9,7 +9,10 @@ function Test-SynapseSparkPool
         $resourceGroupName = (Get-ResourceGroupName),
         $workspaceName = (Get-SynapseWorkspaceName),
         $sparkPoolName = (Get-SynapseSparkPoolName),
+        $sparkPoolName1 = $sparkPoolName + "1",
         $sparkPoolNodeCount = 3,
+        $sparkAutoScaleMinNodeCount = 3,
+        $sparkAutoScaleMaxNodeCount = 6,
         $sparkPoolNodeSize = "Small",
         $sparkVersion = 2.4
     )
@@ -24,13 +27,22 @@ function Test-SynapseSparkPool
         # Test to make sure the SparkPool doesn't exist
         Assert-False {Test-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName}
 
-        $sparkPoolCreated = New-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -NodeCount $sparkPoolNodeCount -SparkVersion $sparkVersion -NodeSize $sparkPoolNodeSize
+        # EnableAutoScale 
+        $sparkPoolCreated1 = New-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -NodeCount $sparkPoolNodeCount -SparkVersion $sparkVersion -NodeSize $sparkPoolNodeSize
 
-        Assert-AreEqual $sparkPoolName $sparkPoolCreated.Name
-        Assert-AreEqual $location $sparkPoolCreated.Location
-        Assert-AreEqual "Microsoft.Synapse/Workspaces/bigDataPools" $sparkPoolCreated.Type
-        Assert-True {$sparkPoolCreated.Id -like "*$resourceGroupName*"}
+        Assert-AreEqual $sparkPoolName $sparkPoolCreated1.Name
+        Assert-AreEqual $location $sparkPoolCreated1.Location
+        Assert-AreEqual "Microsoft.Synapse/Workspaces/bigDataPools" $sparkPoolCreated1.Type
+        Assert-True {$sparkPoolCreated1.Id -like "*$resourceGroupName*"}
 
+        # just test create for UnableAutoScale
+        $sparkPoolCreated2 = New-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName1 -AutoScaleMinNodeCount $sparkAutoScaleMinNodeCount -AutoScaleMaxNodeCount $sparkAutoScaleMaxNodeCount   -SparkVersion $sparkVersion -NodeSize $sparkPoolNodeSize
+
+        Assert-AreEqual $sparkPoolName1 $sparkPoolCreated2.Name
+        Assert-AreEqual $location $sparkPoolCreated2.Location
+        Assert-AreEqual "Microsoft.Synapse/Workspaces/bigDataPools" $sparkPoolCreated2.Type
+        Assert-True {$sparkPoolCreated2.Id -like "*$resourceGroupName*"}
+        
         # In loop to check if Spark pool exists
         for ($i = 0; $i -le 60; $i++)
         {
@@ -40,7 +52,7 @@ function Test-SynapseSparkPool
                 Assert-AreEqual $sparkPoolName $sparkPoolGet[0].Name
                 Assert-AreEqual $location $sparkPoolGet[0].Location
                 Assert-AreEqual "Microsoft.Synapse/Workspaces/bigDataPools" $sparkPoolGet[0].Type
-                Assert-True {$sparkPoolCreated.Id -like "*$resourceGroupName*"}
+                Assert-True {$sparkPoolCreated1.Id -like "*$resourceGroupName*"}
                 break
             }
 
@@ -114,6 +126,7 @@ function Test-SynapseSparkPool
 
         # Delete SparkPool
         Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -PassThru} "Remove SparkPool failed."
+        Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName1 -PassThru} "Remove SparkPool failed."
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName}
@@ -122,5 +135,6 @@ function Test-SynapseSparkPool
     {
         # cleanup the spark pool that was used in case it still exists. This is a best effort task, we ignore failures here.
         Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName1 -ErrorAction SilentlyContinue} -IgnoreFailures
     }
 }
