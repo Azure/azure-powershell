@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableInternetSecurity { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this HubVirtualNetwork connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -126,6 +131,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableInternetSecurity.HasValue)
             {
                 connectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                connectionToModify.RoutingConfiguration = RoutingConfiguration;
             }
 
             List<string> resourceIds = new List<string>();

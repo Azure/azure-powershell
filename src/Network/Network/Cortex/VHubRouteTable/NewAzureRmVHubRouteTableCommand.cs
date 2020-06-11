@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualHubObject))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ParentObject.ResourceGroupName;
                 this.ParentResourceName = this.ParentObject.Name;
