@@ -163,10 +163,10 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup2"
+  $rgName = "CosmosDBResourceGroup3"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregion2"
+  $cosmosDBAccountName = "testupdateregionpowershell2"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try{
@@ -181,7 +181,8 @@ function Test-AddRegionOperation
     Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
    }
   finally{
-      Remove-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+      #unable to delete account immediately after adding region
+      #Remove-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   }
 }
 
