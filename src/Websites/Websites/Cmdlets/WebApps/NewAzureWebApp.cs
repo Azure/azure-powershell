@@ -318,17 +318,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
                 if (_cmdlet.ContainerRegistryUrl != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryUser != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryPassword != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.EnableContainerContinuousDeployment.IsPresent)

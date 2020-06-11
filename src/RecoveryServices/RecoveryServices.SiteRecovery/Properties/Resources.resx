@@ -507,4 +507,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="UnsupportedReplicationProvidedForNetworkingResources" xml:space="preserve">
     <value>Unsupported replication provider for network security group, public IP address, and/or backend address pool related updates.</value>
   </data>
+  <data name="RecoveryDiskTypeUnSupported" xml:space="preserve">
+    <value>Recovery manged disk type "Standard_SSD" is not supported. Converting it to "StandardSSD_LRS".</value>
+  </data>
 </root>
