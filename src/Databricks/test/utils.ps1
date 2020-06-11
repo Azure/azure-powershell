@@ -42,7 +42,7 @@ function setupEnv() {
     $dbr3 = New-AzDatabricksWorkspace -Name $testWorkspace3 -ResourceGroupName $resourceGroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
     $null = $env.Add("testWorkspace3", $testWorkspace3)
     Write-Host -ForegroundColor Green "Create completed" 
-    
+
     # Deploy virtual network and network security group for test
     Write-Host -ForegroundColor Green "Deloying network..." 
     $virtualNetwork = "databricks-test-vn"
@@ -71,7 +71,7 @@ function setupEnv() {
     $null = $env.Add('keyVaultKeyName', $key.Name)
     $null = $env.Add('keyVaultKeyVersion', $key.Version)
     Write-Host -ForegroundColor Green "key Vault deploy completed." 
-
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
