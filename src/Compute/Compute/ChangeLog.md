@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Fixed name of new VM Extension for SAP
 
 ## Version 4.1.0
 * Added HostId parameter to `Update-AzVM` cmdlet
