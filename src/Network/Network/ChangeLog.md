@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for Azure FirewallPolicy
+    
+    - New-AzFirewallPolicyDnsSetting
+	- Support for Destination FQDN in Network Rules for Firewall Policy
+	
  Added support for backend address pool operations
     - `New-AzLoadBalancerBackendAddressConfig`
     - `New-AzLoadBalancerBackendAddressPool`

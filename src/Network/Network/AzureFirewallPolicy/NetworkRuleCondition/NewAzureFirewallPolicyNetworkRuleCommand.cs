@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
@@ -53,6 +53,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] DestinationPort { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination fqdns of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -68,7 +74,27 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
+            if (DestinationFqdn != null)
+            {
+                foreach (string fqdn in DestinationFqdn)
+                {
+                    ValidateIsFqdn(fqdn);
+                }
+            }
+
+            // Only one of DestinationAddress or DestinationFqdns is allowed
+            if ((DestinationAddress != null) && (DestinationFqdn != null))
+            {
+                throw new ArgumentException("Both DestinationAddress and DestinationFqdns not allowed");
+            }
+
+            // One of DestinationAddress or DestinationFqdns must be present
+            if ((DestinationAddress == null) && (DestinationFqdn == null))
+            {
+                throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
+            }
+
             var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
                 Name = this.Name,
@@ -76,9 +102,21 @@ namespace Microsoft.Azure.Commands.Network
                 SourceAddresses = this.SourceAddress?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
+                DestinationFqdn = this.DestinationFqdn?.ToList(),
                 RuleType = "NetworkRule"
             };
+
             WriteObject(networkRule);
+        }
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^\\*$|^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
+            }
         }
     }
 }

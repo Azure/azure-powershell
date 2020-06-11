@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("destinationPorts")]
         public List<string> DestinationPorts { get; set; }
 
+        [JsonProperty("destinationFqdn")]
+        public List<string> DestinationFqdn { get; set; }
+
         [JsonIgnore]
         public string ProtocolsText
         {
@@ -54,6 +57,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationPortsText
         {
             get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationFqdnText
+        {
+            get { return JsonConvert.SerializeObject(DestinationFqdn, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType)

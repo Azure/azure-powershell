@@ -41,5 +41,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyWithDNSSettings()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyWithDNSSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs");
+        }
     }
 }
