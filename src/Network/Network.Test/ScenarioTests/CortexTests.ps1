@@ -20,7 +20,7 @@ function Test-CortexCRUD
 {
  # Setup
     $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
 
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
