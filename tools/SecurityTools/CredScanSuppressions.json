@@ -918,6 +918,10 @@
       "_justification": "Generated test resource group, deleted after test execution"
     },
     {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestP2SCortexCRUD.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },	
+    {
       "file": "src\\EventGrid\\EventGrid.Test\\SessionRecords\\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\\EventGrid_EventSubscriptionToAzureSubscription.json",
       "_justification": "Keys do not persist after test as resources got deleted"
     },
