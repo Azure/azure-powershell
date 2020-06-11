@@ -35,6 +35,9 @@
         - Remove-AzSecurityPartnerProvider
         - Get-AzSecurityPartnerProvider
         - Set-AzSecurityPartnerProvider
+* Added new cmdlets for Azure FirewallPolicy
+    - New cmdlets added:
+        - New-AzFirewallPolicyThreatIntelWhitelist
 * Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
 * Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
@@ -57,6 +60,9 @@
     - Added optional parameter -BgpPeeringAddress for customers to specify their custom bgps to set on VpnGateway.
 * Added new cmdlet to support resetting the routing state of a VirtualHub resource:
     - Reset-AzHubRouter
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
