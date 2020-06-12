@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpAddress { get; set; }
 
         [JsonIgnore]
-        public string NetworkInterfaceIpConfigurationText
+        public string NetworkInterfaceIpConfigurationIdText
         {
             get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string VirtualNetworkChildResourceText
+        public string VirtualNetworkIdText
         {
             get
             {

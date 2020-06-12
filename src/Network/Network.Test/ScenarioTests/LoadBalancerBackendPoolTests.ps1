@@ -402,7 +402,7 @@ function Test-LoadBalancerBackendAddressConfig
 
         Assert-AreEqual $ipconfig1.Name $backendAddressConfigName1
         Assert-AreEqual $ipconfig1.IpAddress $validIpAddress
-        Assert-AreEqual $ipconfig1.VirtualNetworkId.Id $virtualNetwork.Id
+        Assert-AreEqual $ipconfig1.VirtualNetwork.Id $virtualNetwork.Id
 
         Assert-ThrowsLike { New-AzLoadBalancerBackendAddressConfig -IpAddress $invalidIpAddress2 -Name $backendAddressConfigName1 -VirtualNetworkId $virtualNetwork.Id} "*Invalid IPAddress*"
 
