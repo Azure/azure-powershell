@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for Azure FirewallPolicy
+    
+    - New-AzFirewallPolicyDnsSetting
+	- Support for Destination FQDN in Network Rules for Firewall Policy
+	
  Added support for backend address pool operations
     - `New-AzLoadBalancerBackendAddressConfig`
     - `New-AzLoadBalancerBackendAddressPool`
@@ -35,6 +40,9 @@
         - Remove-AzSecurityPartnerProvider
         - Get-AzSecurityPartnerProvider
         - Set-AzSecurityPartnerProvider
+* Added new cmdlets for Azure FirewallPolicy
+    - New cmdlets added:
+        - New-AzFirewallPolicyThreatIntelWhitelist
 * Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
 * Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
@@ -55,6 +63,10 @@
     - Updated Update-AzP2sVpnGateway: Added optional parameter -CustomDnsServer for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
 * Updated 'Update-AzVpnGateway'
     - Added optional parameter -BgpPeeringAddress for customers to specify their custom bgps to set on VpnGateway.
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* Added Support for IpGroups in AzureFirewallPolicy Application, Network, and NAT Rules.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
