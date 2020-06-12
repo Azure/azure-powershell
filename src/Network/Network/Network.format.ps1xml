@@ -2527,11 +2527,11 @@
               </ListItem>
               <ListItem>
                 <Label>NetworkInterfaceIpConfiguration</Label>
-                <PropertyName>NetworkInterfaceIpConfigurationText</PropertyName>
+                <PropertyName>NetworkInterfaceIpConfigurationIdText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>VirtualNetwork</Label>
-                <PropertyName>VirtualNetworkChildResourceText</PropertyName>
+                <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
