@@ -402,7 +402,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
 
 <#
 .SYNOPSIS
-Tests AzureFirewallPolicyCRUD.
+Tests function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs.
 #>
 function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
     # Setup
@@ -436,7 +436,7 @@ function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
-
+        
         $dnsSettings = New-AzFirewallPolicyDnsSetting -EnableProxy -Server $dnsServers
 
         # Create AzureFirewallPolicy (with DNS Settings)
@@ -480,7 +480,7 @@ function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
         Assert-AreEqual 1 @($getRg.properties.ruleCollection).Count
 
         $filterRuleCollection = $getRg.Properties.GetRuleCollectionByName($networkRcName)
-
+        
         # Verify Filter Rule Collection 
         Assert-AreEqual $networkRcName $filterRuleCollection.Name
         Assert-AreEqual $networkRcPriority $filterRuleCollection.Priority
