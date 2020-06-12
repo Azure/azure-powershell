@@ -238,7 +238,6 @@ function Test-AzureFirewallPolicyCRUD {
     }
 }
 
-
 <#
 .SYNOPSIS
 Tests AzureFirewallPolicyCRUD with ThreatIntelWhitelist.
@@ -260,7 +259,7 @@ function Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD {
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
-        
+
         $tiWhiteList = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress $threatIntelWhiteListIp1,$threatIntelWhiteListIp2 -FQDN $threatIntelWhiteListFqdn1
 
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
@@ -282,12 +281,12 @@ function Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD {
 
         # # Update ThreatIntel Whitelist
         $azureFirewallPolicy.ThreatIntelWhitelist.IpAddresses[0] = $threatIntelWhiteListIp3
-        
+
         # Set AzureFirewallPolicy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
-		
+
         # #verification
         Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
         Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
@@ -318,7 +317,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
-        
+
         # Create AzureFirewallPolicy with No DNS Settings
         $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
 
@@ -330,7 +329,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
         Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
         Assert-NotNull $getAzureFirewallPolicy.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
-        
+
          # Check DNS Proxy
         Assert-Null $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-Null $getAzureFirewallPolicy.DnsSettings.Servers
@@ -350,7 +349,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
         Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
         Assert-NotNull $getAzureFirewallPolicy.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
-        
+
          # Check DNS Proxy
         Assert-AreEqual true $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewallPolicy.DnsSettings.Servers
@@ -369,7 +368,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
         Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
         Assert-NotNull $getAzureFirewallPolicy.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
-        
+
          # Check DNS Proxy
         Assert-AreEqual true $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewallPolicy.DnsSettings.Servers
@@ -403,7 +402,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
 
 <#
 .SYNOPSIS
-Tests AzureFirewallPolicyCRUD.
+Tests function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs.
 #>
 function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
     # Setup
@@ -522,3 +521,242 @@ function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
     }
 }
 
+<#
+.SYNOPSIS
+Tests AzureFirewallPolicyWithIpGroups.
+#>
+function Test-AzureFirewallPolicyWithIpGroups {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "eastus2euap"
+    $ipGroupLocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $ipGroupName1 = Get-ResourceName
+    $ipGroupName2 = Get-ResourceName
+
+    $ruleGroupName = Get-ResourceName
+
+    # AzureFirewallPolicyApplicationRuleCollection
+    $appRcName = "appRc"
+    $appRcPriority = 400
+    $appRcActionType = "Allow"
+
+    $pipelineRcPriority = 154
+
+    # AzureFirewallPolicyApplicationRule 1
+    $appRule1Name = "appRule"
+    $appRule1Desc = "desc1"
+    $appRule1Fqdn1 = "*google.com"
+    $appRule1Fqdn2 = "*microsoft.com"
+    $appRule1Protocol1 = "http:80"
+    $appRule1Port1 = 80
+    $appRule1ProtocolType1 = "http"
+    $appRule1Protocol2 = "https:443"
+    $appRule1Port2 = 443
+    $appRule1ProtocolType2 = "https"
+
+    # AzureFirewallPolicyApplicationRule 2
+    $appRule2Name = "appRule2"
+    $appRule2Fqdn1 = "*bing.com"
+    $appRule2Protocol1 = "http:8080"
+    $appRule2Protocol2 = "https:443"
+    $appRule2Port1 = 8080
+    $appRule2ProtocolType1 = "http"
+
+    # AzureFirewallPolicyNetworkRuleCollection
+    $networkRcName = "networkRc"
+    $networkRcPriority = 200
+    $networkRcActionType = "Deny"
+
+    # AzureFirewallPolicyNetworkRule 1
+    $networkRule1Name = "networkRule"
+    $networkRule1Desc = "desc1"
+    $networkRule1Protocol1 = "UDP"
+    $networkRule1Protocol2 = "TCP"
+    $networkRule1Protocol3 = "ICMP"
+    $networkRule1DestinationAddress1 = "10.10.10.1"
+    $networkRule1DestinationPort1 = "90"
+
+    # AzureFirewallPolicyNatRuleCollection
+    $natRcName = "natRc"
+    $natRcPriority = 100
+    $natRcActionType = "Dnat"
+
+    # AzureFirewallPolicyNatRule 1
+    $natRule1Name = "natRule"
+    $natRule1Desc = "desc1"
+    $natRule1Protocol1 = "UDP"
+    $natRule1Protocol2 = "TCP"
+    $natRule1DestinationPort1 = "90"
+    $natRule1TranslatedAddress = "10.1.2.3"
+    $natRule1TranslatedPort = "91"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-AreEqual "Alert" $getAzureFirewallPolicy.ThreatIntelMode
+
+        # Create IpGroup
+        $ipGroup1 = New-AzIpGroup -ResourceGroupName $rgname -location $ipgroupLocation -Name $ipGroupName1 -IpAddress 10.0.0.0/24,11.9.0.0/24
+        $returnedIpGroup1 = Get-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName1
+        Assert-AreEqual $returnedIpGroup1.ResourceGroupName $ipGroup1.ResourceGroupName	
+        Assert-AreEqual $returnedIpGroup1.Name $ipGroup1.Name
+
+        $ipGroup2 = New-AzIpGroup -ResourceGroupName $rgname -location $ipgroupLocation -Name $ipGroupName2 -IpAddress 12.0.0.0/24,13.9.0.0/24
+        $returnedIpGroup2 = Get-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName2
+        Assert-AreEqual $returnedIpGroup2.ResourceGroupName $ipGroup2.ResourceGroupName	
+        Assert-AreEqual $returnedIpGroup2.Name $ipGroup2.Name
+
+
+        #Create Application Rules
+        $appRule = New-AzFirewallPolicyApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceIpGroup $ipGroup1.Id
+        $appRule2 = New-AzFirewallPolicyApplicationRule -Name $appRule2Name -Description $appRule1Desc -Protocol $appRule2Protocol1, $appRule2Protocol2 -TargetFqdn $appRule2Fqdn1 -SourceIpGroup $ipGroup1.Id,$ipGroup2.Id
+
+        # Create Network Rule
+        $networkRule = New-AzFirewallPolicyNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceIpGroup $ipGroup1.Id -DestinationIpGroup $ipGroup2.Id -DestinationPort $networkRule1DestinationPort1
+
+
+        # Create Filter Rule with 2 application rules
+        $appRc = New-AzFirewallPolicyFilterRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule, $appRule2 -ActionType $appRcActionType
+        
+        # Create a second Filter Rule Collection with 1 network rule
+        $appRc2 = New-AzFirewallPolicyFilterRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
+
+
+        # Create NAT rule
+        $natRule = New-AzFirewallPolicyNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1, $natRule1Protocol2 -SourceIpGroup $ipGroup1.Id, $ipGroup2.Id -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+
+        # Create a NAT Rule Collection
+        $natRc = New-AzFirewallPolicyNatRuleCollection -Name $natRcName -ActionType $natRcActionType -Priority $natRcPriority -Rule $natRule
+
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -FirewallPolicyObject $azureFirewallPolicy
+
+
+        # # Update ThreatIntel mode
+        $azureFirewallPolicy.ThreatIntelMode = "Deny"
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual $location $getAzureFirewallPolicy.Location
+        Assert-AreEqual "Deny" $getAzureFirewallPolicy.ThreatIntelMode
+
+        # Check rule groups count
+        Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
+
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+
+        Assert-AreEqual 3 @($getRg.properties.ruleCollection).Count
+
+        $filterRuleCollection1 = $getRg.Properties.GetRuleCollectionByName($appRcName)
+        $filterRuleCollection2 = $getRg.Properties.GetRuleCollectionByName($networkRcName)
+        $natRuleCollection = $getRg.Properties.GetRuleCollectionByName($natRcName)
+
+        # Verify Filter Rule Collection1 
+        Assert-AreEqual $appRcName $filterRuleCollection1.Name
+        Assert-AreEqual $appRcPriority $filterRuleCollection1.Priority
+        Assert-AreEqual $appRcActionType $filterRuleCollection1.Action.Type
+        Assert-AreEqual 2 $filterRuleCollection1.Rules.Count
+        
+        $appRule = $filterRuleCollection1.GetRuleByName($appRule1Name)
+        # Verify application rule 1
+        Assert-AreEqual $appRule1Name $appRule.Name
+
+        Assert-AreEqual 1 $appRule.SourceIpGroups.Count
+
+        Assert-AreEqual 2 $appRule.Protocols.Count
+        Assert-AreEqual $appRule1ProtocolType1 $appRule.Protocols[0].ProtocolType
+        Assert-AreEqual $appRule1ProtocolType2 $appRule.Protocols[1].ProtocolType
+        Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
+        Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
+
+        Assert-AreEqual 2 $appRule.TargetFqdns.Count
+        Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
+        Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
+
+        # Verify application rule 2
+        $appRule2 = $filterRuleCollection1.GetRuleByName($appRule2Name)
+        Assert-AreEqual $appRule2Name $appRule2.Name
+
+        Assert-AreEqual 2 $appRule2.SourceIpGroups.Count
+        
+        Assert-AreEqual 2 $appRule.TargetFqdns.Count
+        Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
+        Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
+
+        # Verify Filter Rule Collection2 
+        Assert-AreEqual $networkRcName $filterRuleCollection2.Name
+        Assert-AreEqual $networkRcPriority $filterRuleCollection2.Priority
+        Assert-AreEqual $networkRcActionType $filterRuleCollection2.Action.Type
+        Assert-AreEqual 1 $filterRuleCollection2.Rules.Count
+
+        $networkRule = $filterRuleCollection2.GetRuleByName($networkRule1Name)
+        # Verify Network rule
+        Assert-AreEqual $networkRule1Name $networkRule.Name
+
+        Assert-AreEqual 1 $networkRule.SourceIpGroups.Count
+        Assert-AreEqual 1 $networkRule.DestinationIpGroups.Count
+
+        Assert-AreEqual 2 $networkRule.Protocols.Count
+        Assert-AreEqual $networkRule1Protocol1 $networkRule.Protocols[0]
+        Assert-AreEqual $networkRule1Protocol2 $networkRule.Protocols[1]
+
+        Assert-AreEqual 1 $networkRule.DestinationPorts.Count 
+        Assert-AreEqual $networkRule1DestinationPort1 $networkRule.DestinationPorts[0]
+
+        # Verify NAT rule collection and NAT rule
+        $natRule = $natRuleCollection.GetRuleByName($natRule1Name)
+
+        Assert-AreEqual $natRcName $natRuleCollection.Name
+        Assert-AreEqual $natRcPriority $natRuleCollection.Priority
+
+        Assert-AreEqual $natRule1Name $natRule.Name
+
+        Assert-AreEqual 2 $natRule.SourceIpGroups.Count
+
+        Assert-AreEqual 1 $natRule.DestinationAddresses.Count
+
+        Assert-AreEqual 2 $natRule.Protocols.Count
+        Assert-AreEqual $natRule1Protocol1 $natRule.Protocols[0]
+        Assert-AreEqual $natRule1Protocol2 $natRule.Protocols[1]
+
+        Assert-AreEqual 1 $natRule.DestinationPorts.Count
+        Assert-AreEqual $natRule1DestinationPort1 $natRule.DestinationPorts[0]
+
+        Assert-AreEqual $natRule1TranslatedAddress $natRule.TranslatedAddress
+        Assert-AreEqual $natRule1TranslatedPort $natRule.TranslatedPort
+
+
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        $testPipelineRg|Set-AzFirewallPolicyRuleCollectionGroup -Priority $pipelineRcPriority
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        Assert-AreEqual $pipelineRcPriority $testPipelineRg.properties.Priority 
+
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

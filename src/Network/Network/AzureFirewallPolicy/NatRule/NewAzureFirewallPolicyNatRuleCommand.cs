@@ -42,6 +42,11 @@ namespace Microsoft.Azure.Commands.Network
         public string[] SourceAddress { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroups of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
@@ -79,6 +84,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 TranslatedAddress = this.TranslatedAddress,
