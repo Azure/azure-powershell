@@ -157,6 +157,12 @@ namespace Microsoft.Azure.Commands.Batch
         public PublicNetworkAccessType? PublicNetworkAccess { get; private set; }
 
         /// <summary>
+        /// The identity of the Batch account, if configured. This is only used when the
+        /// user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
+        /// </summary>
+        public BatchAccountIdentity Identity { get; private set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
         public AccountKeyType KeyInUse
@@ -235,6 +241,7 @@ namespace Microsoft.Azure.Commands.Batch
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
             this.PublicNetworkAccess = resource.PublicNetworkAccess;
+            this.Identity = resource.Identity;
 
             if (resource.AutoStorage != null)
             {
