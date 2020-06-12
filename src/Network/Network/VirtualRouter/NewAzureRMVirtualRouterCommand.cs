@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The subnet where the virtual hub is hosted.")]
+            HelpMessage = "The subnet where the virtual router is hosted.")]
         [ValidateNotNullOrEmpty]
         public string HostedSubnet { get; set; }
 

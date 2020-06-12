@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSVirtualRouter : PSTopLevelResource
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSSubnet> IpConfiguration { get; set; }
+        public PSSubnet hostedSubnet { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public uint VirtualRouterAsn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string HostedSubnetText
         {
-            get { return JsonConvert.SerializeObject(IPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(hostedSubnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

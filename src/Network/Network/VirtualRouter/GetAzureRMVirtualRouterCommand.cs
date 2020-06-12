@@ -26,12 +26,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterSubscriptionId), OutputType(typeof(PSVirtualRouter))]
     public partial class GetAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {
         [Parameter(
             ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The resource group name of the virtual router.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 RouterName = resourceInfo.ResourceName;
             }
-
+            
             if (ShouldGetByName(ResourceGroupName, RouterName))
             {
                 var vVirtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouterName);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
                     vVirtualHubModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vVirtualHub.Id);
                     vVirtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(vVirtualHub.Tags);
                     AddBgpConnectionsToPSVirtualHub(vVirtualHub, vVirtualHubModel, ResourceGroupName, RouterName);
-                    var vVirtuaRouterModel = NetworkResourceManagerProfile.Mapper.Map<PSVirtualRouter>(vVirtualHubModel);
+                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<PSVirtualRouter>(vVirtualHubModel);
                     psVirtualRouterList.Add(vVirtualRouterModel);
                 }
                 WriteObject(psVirtualRouterList, true);

@@ -19,7 +19,20 @@
 --->
 
 ## Upcoming Release
- Added support for backend address pool operations
+* Updated below cmdlets to align resource virtual router and virtual hub
+    - `New-AzVirtualRouter`: 
+        - Added -HostedSubnet parameter to support IP configuration child resource
+        - Added -VirtualWan and -VirtualWanId to create virtual hub underneath
+        - deleted -HostedGateway and -HostedGatewayId
+    - `Get-AzVirtualRouter`:
+        - Added subcription level parameter set
+    - `Remove-AzVirtualRouter`
+    - `Add-AzVirtualRouterPeer`
+    - `Get-AzVirtualRouterPeer`
+    - `Update-AzVirtualRouterPeer`
+    - `Remove-AzVirtualRouterPeer`
+
+* Added support for backend address pool operations
     - `New-AzLoadBalancerBackendAddressConfig`
     - `New-AzLoadBalancerBackendAddressPool`
     - `Set-AzLoadBalancerBackendAddressPool`

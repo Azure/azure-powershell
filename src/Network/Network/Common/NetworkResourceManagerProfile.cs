@@ -103,13 +103,14 @@ namespace Microsoft.Azure.Commands.Network
                     Location = source.Location,
                     Type = source.Type,
                     ProvisioningState = source.ProvisioningState,
-                    VirtualRouterAsn = (uint)source.VirtualRouterAsn
+                    VirtualRouterAsn = (uint)source.VirtualRouterAsn,
+                    HostedSubnet = source.HostedSubnet
                 };
-                if (source.HostedGateway != null)
+                if (source.HostedSubnet != null)
                 {
-                    router.HostedGateway = new CNM.PSResourceId()
+                    router.HostedSubnet = new CNM.PSResourceId()
                     {
-                        Id = source.HostedGateway.Id
+                        Id = source.HostedSubnet.Id
                     };
                 }
                 if (source.VirtualRouterIps != null)
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
                     router.VirtualRouterIps = source.VirtualRouterIps.ToList<string>();
                 }
 
-                router.Peerings = new List<CNM.PSVirtualRouterPeer>();
+                router.Peerings = new List<CNM.PSBgpConnection>();
                 return router;
             }
         }
@@ -1284,11 +1285,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
 
                 // Virtual Network Tap

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual router peer input object.")]
         [ValidateNotNullOrEmpty]
-        public PSBgpConnection InputObject { get; set; }
+        public PSVirtualRouterPeer InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId,
@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Commands.Network
                     vVirtualHubModel.ResourceGroupName = this.ResourceGroupName;
                     vVirtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(vVirtualHub.Tags);
                     AddBgpConnectionsToPSVirtualHub(vVirtualHub, vVirtualHubModel, ResourceGroupName, this.VirtualRouterName);
-
                     var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouter>(vVirtualHubModel);
                     WriteObject(vVirtualRouterModel, true);
                 });

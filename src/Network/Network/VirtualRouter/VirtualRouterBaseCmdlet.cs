@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (vVirtualHubModel.BgpConnections != null && vVirtualHubModel.BgpConnections.Count > 0)
             {
-                var bgpConnections = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.List(this.ResourceGroupName, this.VirtualRouterName);
+                var bgpConnections = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.List(resourceGroupName, routerName);
                 var bgpConnectionList = ListNextLink<BgpConnection>.GetAllResourcesByPollingNextLink(bgpConnections, this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.ListNext);
                     foreach (var connection in bgpConnectionList)
                     {
-                        vVirtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<PSBgpConnection>(connection));
+                        vVirtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSBgpConnection>(connection));
                     }
                 }
         }
