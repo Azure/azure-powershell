@@ -1,28 +1,42 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/set-azeventhubnamespace
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzEventHubNamespace
 
 ## SYNOPSIS
-Updates the specified Event Hubs namespace.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### NamespaceParameterSet (Default)
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka]
+ [-ZoneRedundant] [-Identity] [-IdentityUserDefined <String>] [-KeySource <String>]
+ [-KeyProperties <System.Collections.Generic.List`1[System.String[]]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-ZoneRedundant] [-Identity]
+ [-IdentityUserDefined <String>] [-KeySource <String>]
+ [-KeyProperties <System.Collections.Generic.List`1[System.String[]]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdentityUpdateParameterSet
+```
+Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
+ [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-ZoneRedundant] [-Identity]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +70,7 @@ Updates the Tags for namespace \`MyNamespaceName\` to Created .
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10 
 
 Name                   : MyNamespaceName
 Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
@@ -108,7 +122,7 @@ Indicates whether AutoInflate is enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoInflateParameterSet
+Parameter Sets: AutoInflateParameterSet, IdentityUpdateParameterSet
 Aliases:
 
 Required: True
@@ -124,6 +138,66 @@ enabling or disabling Kafka for namespace
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+enabling or disabling Identity for namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserDefined
+User defined Identity or None
+
+```yaml
+Type: System.String
+Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyProperties
+List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String[]]
+Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeySource
+Key Source
+
+```yaml
+Type: System.String
+Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
 Aliases:
 
 Required: False
@@ -153,7 +227,7 @@ Upper limit of throughput units when AutoInflate is enabled, value should be wit
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: AutoInflateParameterSet
+Parameter Sets: AutoInflateParameterSet, IdentityUpdateParameterSet
 Aliases:
 
 Required: False
@@ -229,7 +303,7 @@ Disable/Enable Namespace.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]
-Parameter Sets: (All)
+Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
 Aliases:
 Accepted values: Unknown, Active, Disabled
 
@@ -252,6 +326,21 @@ Required: False
 Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZoneRedundant
+enabling or disabling Zone Redundant for namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -287,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -295,7 +384,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Collections.Hashtable
 

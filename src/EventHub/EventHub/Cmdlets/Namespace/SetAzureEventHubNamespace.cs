@@ -11,12 +11,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Eventhub;
+using Microsoft.Azure.Commands.EventHub;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
@@ -30,24 +33,28 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
         [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
         [ValidateSet(SKU.Basic,
           SKU.Standard,
           SKU.Premium,
@@ -56,6 +63,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 4,HelpMessage = "The eventhub throughput units.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
 
         public const string ChangeDesc = "'State' Parameter is being deprecated without being replaced";
@@ -66,18 +74,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Indicates whether AutoInflate is enabled.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
+        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]        
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
         [ValidateRange(0,20)]        
         public int? MaximumThroughputUnits { get; set; }
 
@@ -86,6 +97,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
 
         /// <summary>
@@ -93,6 +105,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
@@ -100,6 +113,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
         public SwitchParameter Identity { get; set; }
 
         /// <summary>
@@ -134,8 +148,15 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {
-
-                    WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
+                    if (ParameterSetName.Equals(IdentityUpdateParameterSet))
+                    {
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, null, null, null));
+                    }
+                    else
+                    {
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));
+                    }                   
+                    
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
