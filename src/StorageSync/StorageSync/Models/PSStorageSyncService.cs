@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         [Ps1Xml(Label = "StorageSyncServiceName ", Target = ViewControl.Table, Position = 5)]
         public string StorageSyncServiceName { get; set; }
         /// <summary>
+        /// Gets or sets the name of the incoming traffic policy.
+        /// </summary>
+        /// <value>The name of the incoming traffic policy.</value>
+        [Ps1Xml(Label = "IncomingTrafficPolicy ", Target = ViewControl.Table, Position = 6)]
+        public string IncomingTrafficPolicy { get; set; }
+        /// <summary>
         /// Gets or sets the tags.
         /// </summary>
         /// <value>The tags.</value>
