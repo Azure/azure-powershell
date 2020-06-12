@@ -48,7 +48,6 @@
 
   <ItemGroup>
     <Content Include="MinimalVersion.csv" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="WhiteList.csv" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
