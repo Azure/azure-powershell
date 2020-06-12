@@ -386,12 +386,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // VirtualNetwork
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetwork, MNM.SubResource>();
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>();
                 cfg.CreateMap<CNM.PSVirtualNetworkUsage, MNM.VirtualNetworkUsage>();
                 cfg.CreateMap<CNM.PSUsageName, MNM.VirtualNetworkUsageName>();
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.VirtualNetworkUsage, CNM.PSVirtualNetworkUsage>();
@@ -429,12 +431,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceTapConfiguration, MNM.NetworkInterfaceTapConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.SubResource>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<MNM.NetworkInterfaceTapConfiguration, CNM.PSNetworkInterfaceTapConfiguration>();
+                cfg.CreateMap<MNM.SubResource, CNM.PSNetworkInterfaceIPConfiguration>();
 
                 // Usage
                 cfg.CreateMap<CNM.PSUsage, MNM.Usage>();
@@ -1223,6 +1227,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallNatRCAction, MNM.AzureFirewallNatRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallRCAction, MNM.AzureFirewallRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<CNM.PSAzureFirewallHubIpAddresses, MNM.HubIPAddresses>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
@@ -1275,6 +1280,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNatRCAction, CNM.PSAzureFirewallNatRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<MNM.HubIPAddresses, CNM.PSAzureFirewallHubIpAddresses>();
 
                 // Azure Firewall FQDN Tags
                 // CNM to MNM
