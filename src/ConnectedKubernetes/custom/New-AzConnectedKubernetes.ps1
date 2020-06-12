@@ -127,8 +127,10 @@ function New-AzConnectedKubernetes {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
-        } else {
+        } elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
+        } else {
+            $KubeConfig = Join-Path -Path $Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         if (-not (Test-Path $KubeConfig)) {
             Write-Error 'Cannot find the kube-config. Please make sure that you have the kube-config on your machine.'
