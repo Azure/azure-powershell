@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-<<<<<<< HEAD
 * Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
         - Added -HostedSubnet parameter to support IP configuration child resource
@@ -33,15 +32,12 @@
     - `Update-AzVirtualRouterPeer`
     - `Remove-AzVirtualRouterPeer`
 
-* Added support for backend address pool operations
-=======
 * Added new cmdlets for Azure FirewallPolicy
     
     - New-AzFirewallPolicyDnsSetting
 	- Support for Destination FQDN in Network Rules for Firewall Policy
 	
  Added support for backend address pool operations
->>>>>>> f7b324f1f517ab020ea77c08e984bcbc7aaa1ee1
     - `New-AzLoadBalancerBackendAddressConfig`
     - `New-AzLoadBalancerBackendAddressPool`
     - `Set-AzLoadBalancerBackendAddressPool`
