@@ -20,7 +20,7 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateByNameAndUnableAutoScaleParameterSet
+### CreateByNameAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
@@ -36,7 +36,7 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateByParentObjectAndUnableAutoScaleParameterSet
+### CreateByParentObjectAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
@@ -208,7 +208,7 @@ Number of nodes to be allocated in the specified Spark pool.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateByNameAndUnableAutoScaleParameterSet, CreateByParentObjectAndUnableAutoScaleParameterSet
+Parameter Sets: CreateByNameAndDisableAutoScaleParameterSet, CreateByParentObjectAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True
@@ -240,7 +240,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndUnableAutoScaleParameterSet
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: False
@@ -286,7 +286,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndUnableAutoScaleParameterSet
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True
@@ -301,7 +301,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: CreateByParentObjectAndEnableAutoScaleParameterSet, CreateByParentObjectAndUnableAutoScaleParameterSet
+Parameter Sets: CreateByParentObjectAndEnableAutoScaleParameterSet, CreateByParentObjectAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True

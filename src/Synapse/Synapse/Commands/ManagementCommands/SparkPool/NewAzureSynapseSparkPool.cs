@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Commands.Synapse
     public class NewAzureSynapseSparkPool : SynapseCmdletBase
     {
         private const string CreateByNameAndEnableAutoScaleParameterSet = "CreateByNameAndEnableAutoScaleParameterSet";
-        private const string CreateByNameAndUnableAutoScaleParameterSet = "CreateByNameAndUnableAutoScaleParameterSet";
+        private const string CreateByNameAndDisableAutoScaleParameterSet = "CreateByNameAndDisableAutoScaleParameterSet";
         private const string CreateByParentObjectAndEnableAutoScaleParameterSet = "CreateByParentObjectAndEnableAutoScaleParameterSet";
-        private const string CreateByParentObjectAndUnableAutoScaleParameterSet = "CreateByParentObjectAndUnableAutoScaleParameterSet";
+        private const string CreateByParentObjectAndDisableAutoScaleParameterSet = "CreateByParentObjectAndDisableAutoScaleParameterSet";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndDisableAutoScaleParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndEnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndDisableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectAndEnableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectAndUnableAutoScaleParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectAndDisableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndUnableAutoScaleParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameAndDisableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.NodeCount)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByParentObjectAndUnableAutoScaleParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByParentObjectAndDisableAutoScaleParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.NodeCount)]
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
