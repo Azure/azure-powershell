@@ -8,30 +8,30 @@ schema: 2.0.0
 # Reset-AzHubRouter
 
 ## SYNOPSIS
-Resets the RoutingState of an Azure VirtualHub resource.
+Resets the RoutingState of a VirtualHub resource.
 
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
 ```
-Reset-HubRouter -ResourceGroupName <String> -Name <String> [-AsJob]
+Reset-AzHubRouter -ResourceGroupName <String> -Name <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Reset-HubRouter -ResourceId <String> [-AsJob]
+Reset-AzHubRouter -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-Reset-HubRouter -InputObject <PSVirtualHub> [-AsJob]
+Reset-AzHubRouter -InputObject <PSVirtualHub> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Resets the Routing State of an existing Azure VirtualHub resource only if the Routing State of the virtual hub is not Provisioned.
+Resets the Routing State of an existing VirtualHub resource only if the Routing State of the virtual hub is not Provisioned.
 
 ## EXAMPLES
 
