@@ -79,6 +79,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            // One of SourceAddress or SourceIpGroup must be present
+            if ((SourceAddress == null) && (SourceIpGroup == null))
+            {
+                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
+            }
+
+            if (DestinationAddress == null)
+            {
+                throw new ArgumentException("DestinationAddress is required.");
+            }
+
             var natRule = new PSAzureFirewallPolicyNatRule
             {
                 Name = this.Name,
