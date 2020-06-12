@@ -12,7 +12,7 @@ Lists the hosts of the HDInsight cluster.
 
 ## SYNTAX
 
-### SetByNameParameterSet
+### SetByNameParameterSet (Default)
 ```
 Get-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]

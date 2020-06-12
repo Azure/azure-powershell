@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightHost"),OutputType(typeof(AzureHDInsightHostInfo))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightHost", DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(AzureHDInsightHostInfo))]
     public class GetAzureHDInsightHostCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
