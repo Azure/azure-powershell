@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Authentication failed for auxiliary token: The '1' auxiliary tokens contains duplicates which are from the same tenant.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexCRUD()
@@ -73,6 +73,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestBgpSettingsUpdateVpnGateway()
         {
             TestRunner.RunTestScript("Test-BgpUpdateVpnGateway");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestCortexVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
         }
     }
 }
