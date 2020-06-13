@@ -223,6 +223,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             if (this.RoutingConfiguration != null)
             {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
                 vpnConnectionToModify.RoutingConfiguration = RoutingConfiguration;
             }
 
