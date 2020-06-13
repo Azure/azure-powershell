@@ -64,6 +64,8 @@
     -`Get-AzVHubRouteTable`
     -`Update-AzVHubRouteTable`
     -`Remove-AzVHubRouteTable`
+    -`New-AzStaticRoute`
+    -`New-AzRoutingConfiguration`
 * Updated existing cmdlets to support optional RoutingConfiguration input parameter for custom routing in VirtualWan.
     -`New-AzExpressRouteConnection`
     -`Set-AzExpressRouteConnection`
