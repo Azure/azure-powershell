@@ -1,41 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: 289B761C-1A1D-46D2-8755-B6B6A4758EFC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayfrontendipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayprivatelinkconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzApplicationGatewayFrontendIPConfig
+# Remove-AzApplicationGatewayPrivateLinkConfiguration
 
 ## SYNOPSIS
-Removes a front-end IP configuration from an application gateway.
+Removes a privateLink configuration from an application gateway.
 
 ## SYNTAX
 
 ```
-Remove-AzApplicationGatewayFrontendIPConfig -Name <String> -ApplicationGateway <PSApplicationGateway>
+Remove-AzApplicationGatewayPrivateLinkConfiguration -Name <String> -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzApplicationGatewayFrontendIPConfig** cmdlet removes frontend IP from an Azure application gateway.
+The **Remove-AzApplicationGatewayPrivateLinkConfiguration** cmdlet removes an privateLink configuration from an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1: Remove a front-end IP configuration
+### Example 1: Remove an application gateway PrivateLink Configuration
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontEndIP02"
+PS C:\> Remove-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $AppGw -Name "privateLinkConfig01"
 ```
 
-The first command gets an application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-The second command removes the front-end IP configuration named FrontEndIP02 from the application gateway stored in $AppGw.
+The first command gets an application gateway and stores it in the $AppGw variable.
+The second command removes the privateLink configuration named privateLinkConfig01 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
 
 ### -ApplicationGateway
-Specifies an application gateway from which to remove a front-end IP configuration.
+The applicationGateway
 
 ```yaml
 Type: PSApplicationGateway
@@ -50,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of a front-end IP configuration to remove.
+The name of the application gateway privateLink configuration
 
 ```yaml
 Type: String
@@ -94,12 +93,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayFrontendIPConfig](./Add-AzApplicationGatewayFrontendIPConfig.md)
+[New-AzApplicationGatewayPrivateLinkConfiguration](./New-AzApplicationGatewayPrivateLinkConfiguration.md)
 
-[Get-AzApplicationGatewayFrontendIPConfig](./Get-AzApplicationGatewayFrontendIPConfig.md)
+[Add-AzApplicationGatewayPrivateLinkConfiguration](./Add-AzApplicationGatewayPrivateLinkConfiguration.md)
 
-[New-AzApplicationGatewayFrontendIPConfig](./New-AzApplicationGatewayFrontendIPConfig.md)
+[Get-AzApplicationGatewayPrivateLinkConfiguration](./Get-AzApplicationGatewayPrivateLinkConfiguration.md)
 
-[Set-AzApplicationGatewayFrontendIPConfig](./Set-AzApplicationGatewayFrontendIPConfig.md)
-
-
+[Set-AzApplicationGatewayPrivateLinkConfiguration](./Set-AzApplicationGatewayPrivateLinkConfiguration.md)

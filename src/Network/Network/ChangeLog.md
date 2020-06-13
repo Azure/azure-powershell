@@ -67,7 +67,13 @@
     - Changes names for RuleGroup, RuleCollectionGroup and RuleType
     - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
 * Added Support for IpGroups in AzureFirewallPolicy Application, Network, and NAT Rules.
-
+* Added new cmdlets to support PrivateLink On Application Gateway
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Get-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Set-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Remove-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkIpConfiguration`
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
     - `New-AzVirtualNetworkGateway`
