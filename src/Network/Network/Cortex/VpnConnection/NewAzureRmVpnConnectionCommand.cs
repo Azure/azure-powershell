@@ -247,6 +247,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.RoutingConfiguration != null)
             {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
                 vpnConnection.RoutingConfiguration = RoutingConfiguration;
             }
 

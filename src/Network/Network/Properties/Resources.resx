@@ -686,4 +686,10 @@
   <data name="VHubRouteTableNotFound" xml:space="preserve">
     <value>The HubRouteTable could not be found.</value>
   </data>
+  <data name="StaticRoutesNotSupportedForThisRoutingConfiguration" xml:space="preserve">
+    <value>Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects.</value>
+  </data>
+  <data name="VHubRouteTableReferenceNotFound" xml:space="preserve">
+    <value>A valid HubRouteTable reference is required.</value>
+  </data>
 </root>

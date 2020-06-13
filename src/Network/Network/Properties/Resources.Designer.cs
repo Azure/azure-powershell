@@ -1303,6 +1303,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects..
+        /// </summary>
+        internal static string StaticRoutesNotSupportedForThisRoutingConfiguration {
+            get {
+                return ResourceManager.GetString("StaticRoutesNotSupportedForThisRoutingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TCP protocol configuration mast have port..
         /// </summary>
         internal static string TCPProtocolConfigurationMustHavePort {
@@ -1506,6 +1515,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VHubRouteTableNotFound {
             get {
                 return ResourceManager.GetString("VHubRouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid HubRouteTable reference is required..
+        /// </summary>
+        internal static string VHubRouteTableReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
         

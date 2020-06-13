@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
             if (this.RoutingConfiguration != null)
             {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
                 expressRouteConnectionToModify.RoutingConfiguration = RoutingConfiguration;
             }
 

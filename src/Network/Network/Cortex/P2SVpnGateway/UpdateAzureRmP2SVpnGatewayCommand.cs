@@ -232,6 +232,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.RoutingConfiguration != null)
             {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes!= null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
                 if (existingP2SVpnGateway.P2SConnectionConfigurations != null && existingP2SVpnGateway.P2SConnectionConfigurations.Any())
                 {
                     existingP2SVpnGateway.P2SConnectionConfigurations[0].RoutingConfiguration = RoutingConfiguration;

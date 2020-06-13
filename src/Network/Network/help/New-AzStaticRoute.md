@@ -1,23 +1,23 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvhubroute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azstaticroute
 schema: 2.0.0
 ---
 
-# New-AzVHubRoute
+# New-AzStaticRoute
 
 ## SYNOPSIS
-Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRouteTable command.
+Creates a StaticRoute object which can then be added to a RoutingConfiguration object.
 
 ## SYNTAX
 
 ```
-New-AzVHubRoute -Name <String> -Destination <String[]> -DestinationType <String> -NextHop <String> -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStaticRoute -Name <String> -AddressPrefix <String[]> -NextHopIpAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a VHubRoute object.
+Creates a StaticRoute object.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ Creates a VHubRoute object.
 PS C:\> 
 ```
 
-The above command will create a VHubRoute object which can then be added to a VHubRouteTable resource.
+The above command will create a StaticRoute object which can then be added to a RoutingConfiguration object.
 
 ## PARAMETERS
 
@@ -45,26 +45,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Destination
-List of Destinations.
+### -AddressPrefix
+List of address prefixes.
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationType
-Type of Destinations.
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,23 +75,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextHop
-The next hop.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NextHopType
-The Next Hop type.
+### -NextHopIpAddress
+The next hop ip address.
 
 ```yaml
 Type: String
@@ -129,16 +99,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVHubRoute
+### Microsoft.Azure.Commands.Network.Models.PSStaticRoute
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzVHubRouteTable](./Get-AzVHubRouteTable.md)
-
-[New-AzVHubRouteTable](./New-AzVHubRouteTable.md)
-
-[Remove-AzVHubRouteTable](./Remove-AzVHubRouteTable.md)
-
-[Update-AzVHubRouteTable](./Update-AzVHubRouteTable.md)
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)

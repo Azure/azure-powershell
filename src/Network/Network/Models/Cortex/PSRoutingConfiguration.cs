@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSPropagatedRouteTable PropagatedRouteTables { get; set; }
 
         [Ps1Xml(Label = "Vnet Routes", Target = ViewControl.Table)]
-        public PSVnetRoute VnetRoute { get; set; }
+        public PSVnetRoute VnetRoutes { get; set; }
     }
 
     public class PSPropagatedRouteTable

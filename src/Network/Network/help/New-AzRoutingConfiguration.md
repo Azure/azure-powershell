@@ -1,23 +1,23 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvhubroute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutingconfiguration
 schema: 2.0.0
 ---
 
-# New-AzVHubRoute
+# New-AzRoutingConfiguration
 
 ## SYNOPSIS
-Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRouteTable command.
+Creates a RoutingConfiguration object.
 
 ## SYNTAX
 
 ```
-New-AzVHubRoute -Name <String> -Destination <String[]> -DestinationType <String> -NextHop <String> -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]> -StaticRoute <PSStaticRoute[]>  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a VHubRoute object.
+Creates a RoutingConfiguration object.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ Creates a VHubRoute object.
 PS C:\> 
 ```
 
-The above command will create a VHubRoute object which can then be added to a VHubRouteTable resource.
+The above command will create a RoutingConfiguration object which can then be added to a connection resource.
 
 ## PARAMETERS
 
@@ -45,8 +45,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Destination
-List of Destinations.
+### -AssociatedRouteTable
+The hub route table associated with this routing configuration.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The list of resource ids of all the hub route tables to advertise the routes to for the PropagatedRouteTables property.
 
 ```yaml
 Type: String[]
@@ -60,26 +75,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationType
-Type of Destinations.
+### -Label
+The list of labels for the PropagatedRouteTables property.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The route name.
-
-```yaml
-Type: String
+Type: String[]
 Parameter Sets: (all)
 Aliases:
 
@@ -90,26 +90,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextHop
-The next hop.
+### -StaticRoute
+List of routes that control routing from VirtualHub into a virtual network connection.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NextHopType
-The Next Hop type.
-
-```yaml
-Type: String
+Type: PSStaticRoute[]
 Parameter Sets: (All)
 Aliases:
 
@@ -127,18 +112,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.Network.Models.PSStaticRoute
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVHubRoute
+### Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzVHubRouteTable](./Get-AzVHubRouteTable.md)
+[New-AzStaticRoute](./New-AzStaticRoute.md)
 
-[New-AzVHubRouteTable](./New-AzVHubRouteTable.md)
+[New-AzExpressRouteConnection](./New-AzExpressRouteConnection.md)
 
-[Remove-AzVHubRouteTable](./Remove-AzVHubRouteTable.md)
+[Set-AzExpressRouteConnection](./Set-AzExpressRouteConnection.md)
 
-[Update-AzVHubRouteTable](./Update-AzVHubRouteTable.md)
+[New-AzVirtualHubVnetConnection](./New-AzVpnConnection.md)
+
+[Update-AzVirtualHubVnetConnection](./Update-AzVpnConnection.md)
+
+[New-AzP2sVpnGateway](./New-AzP2sVpnGateway.md)
+
+[Update-AzP2sVpnGateway](./Update-AzP2sVpnGateway.md)
+
+[New-AzVpnConnection](./New-AzVpnConnection.md)
+
+[Update-AzVpnConnection](./Update-AzVpnConnection.md)
