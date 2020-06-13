@@ -491,7 +491,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzSecurityPartnerProvider', 'Get-AzSecurityPartnerProvider', 
                'Set-AzSecurityPartnerProvider',
                'Reset-AzHubRouter',
-               'New-AzVHubRoute',
+               'New-AzVHubRoute', 'New-AzStaticRoute', 'New-AzRoutingConfiguration',
                'New-AzVHubRouteTable', 'Get-AzVHubRouteTable',
                'Update-AzVHubRouteTable', 'Remove-AzVHubRouteTable'
 
