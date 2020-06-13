@@ -41,6 +41,9 @@ Enables monitoring in a HDInsight cluster and relevant logs will be sent to the 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
 
+### [Get-AzHDInsightHost](Get-AzHDInsightHost.md)
+Lists the hosts of the HDInsight cluster.
+
 ### [Get-AzHDInsightJob](Get-AzHDInsightJob.md)
 Gets the list of jobs from a cluster and lists them in reverse chronological order, or retrieves a specific job.
 
@@ -89,8 +92,11 @@ Removes the specified HDInsight cluster from the current subscription.
 ### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
 
+### [Restart-AzHDInsightHost](Restart-AzHDInsightHost.md)
+Restarts the specific hosts of HDInsight cluster.
+
 ### [Set-AzHDInsightClusterDiskEncryptionKey](Set-AzHDInsightClusterDiskEncryptionKey.md)
-Sets the disk encryption key of the specified HDInsight cluster.
+Rotate the disk encryption key of the specified HDInsight cluster.
 
 ### [Set-AzHDInsightClusterSize](Set-AzHDInsightClusterSize.md)
 Sets the number of Worker nodes in a specified cluster.

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Peering.dll', 'AutoMapper.dll'
@@ -86,10 +86,10 @@ CmdletsToExport = 'Get-AzPeering', 'Get-AzPeerAsn', 'New-AzPeerAsn', 'New-AzPeer
                'Get-AzPeeringServiceProvider', 'Get-AzPeeringService', 
                'New-AzPeeringService', 'Get-AzPeeringServiceCountry', 
                'New-AzPeeringRegisteredPrefix', 'Set-AzPeeringRegisteredPrefix', 
-               'Get-AzPeeringRegisteredPrefix', 'Remove-AzPeeringRegisteredPrefix', 
-               'New-AzPeeringRegisteredAsn', 'Set-AzPeeringRegisteredAsn', 
-               'Get-AzPeeringRegisteredAsn', 'Remove-AzPeeringRegisteredAsn', 
-               'New-AzPeerAsnContactDetail'
+               'Get-AzPeeringRegisteredPrefix', 'Remove-AzPeeringRegisteredPrefix',
+               'New-AzPeeringRegisteredAsn', 'Set-AzPeeringRegisteredAsn',
+               'Get-AzPeeringRegisteredAsn', 'Remove-AzPeeringRegisteredAsn',
+               'New-AzPeerAsnContactDetail', 'Get-AzPeeringReceivedRoute'
 
 # Variables to export from this module
 # VariablesToExport = @()

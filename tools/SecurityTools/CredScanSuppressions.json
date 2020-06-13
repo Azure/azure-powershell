@@ -506,6 +506,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightHostTests\\TestHostRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
       "_justification": "Resource creation is mocked"
     },
@@ -763,6 +767,10 @@
     },
     {
       "file": "src\\DeviceProvisioningServices\\DeviceProvisioningServices.Test\\SessionRecords\\Commands.DeviceProvisioningServices.Test.IotDpsEnrollmentGroupTests\\IotDpsEnrollmentGroupLifeCycle.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\DeviceProvisioningServices\\DeviceProvisioningServices.Test\\SessionRecords\\Commands.DeviceProvisioningServices.Test.IotDpsRegistrationTests\\IotDpsRegistrationLifeCycle.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
     {

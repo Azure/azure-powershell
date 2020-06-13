@@ -1,3 +1,62 @@
+## 4.2.0 - June 2020
+#### Az.Accounts
+* Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
+
+#### Az.AnalysisServices
+* Updated assembly version of data plane cmdlets
+
+#### Az.ApiManagement
+* Updated assembly version of service management cmdlets
+
+#### Az.Billing
+* Updated assembly version of consumption cmdlets
+
+#### Az.CognitiveServices
+* Support PrivateEndpoint and PublicNetworkAccess control. 
+
+#### Az.DataFactory
+* Updated assembly version of data factory V2 cmdlets
+
+#### Az.DataShare
+* General availability of ''Az.DataShare'' module
+
+#### Az.DesktopVirtualization
+* General availability of ''Az.DesktopVirtualization'' module
+
+#### Az.OperationalInsights
+* Upgraded SDK to 0.21.0
+* Added optional parameters to 
+    - 'New-AzOperationalInsightsSavedSearch'
+    - 'Set-AzOperationalInsightsSavedSearch'
+
+#### Az.PolicyInsights
+* Corrected example 3 for 'Start-AzPolicyComplianceScan'
+
+#### Az.PowerBIEmbedded
+* Updated assembly version of PowerBI cmdlets
+
+#### Az.PrivateDns
+* Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
+* Updated assembly version of SiteRecovery and Backup cmdlets
+
+#### Az.Resources
+* Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
+* Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
+* Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
+* Fixed missing file/target name in cmdlet messages.
+* Updated assembly version of resource manager and tags cmdlets
+
+#### Az.Sql
+* Added UsePrivateLinkConnection to 'New-AzSqlSyncGroup', 'Update-AzSqlSyncGroup', 'New-AzSqlSyncMember' and 'Update-AzSqlSyncMember'
+* Added SyncMemberAzureDatabaseResourceId to 'New-AzSqlSyncMember' and 'Update-AzSqlSyncMember'
+* Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
+
+#### Az.Storage
+* Updated assembly version of data plane cmdlets
+
 ## 4.1.0 - May 2020
 ### Highlights since the last release
 * Supported PowerShell versions: Windows PowerShell 5.1, PowerShell Core 6.2.4+, PowerShell 7

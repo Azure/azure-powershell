@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core assembly
+* Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
+
+## Version 1.8.1
 * Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
 
 ## Version 1.8.0

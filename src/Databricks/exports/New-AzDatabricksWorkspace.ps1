@@ -36,6 +36,12 @@ PS C:\> New-AzDatabricksWorkspace -Name databricks-test-with-custom-vn -Resource
 Location Name                           Type
 -------- ----                           ----
 eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
+.Example
+PS C:\> New-AzDatabricksWorkspace -Name databricks-test02 -ResourceGroupName testgroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+
+Location Name            Type
+-------- ----            ----
+eastus   databricks-test02 Microsoft.Databricks/workspaces
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
@@ -109,6 +115,13 @@ param(
     [System.String]
     # The value which should be used for this field.
     ${VirtualNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Prepare the workspace for encryption.
+    # Enables the Managed Identity for managed storage account.
+    ${PrepareEncryption},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scope is neither Resource or ResourceGroup type..
+        ///   Looks up a localized string similar to Scope is neither Subscription, ResourceGroup or Resource type..
         /// </summary>
         internal static string InvalidScopeType_Exception {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scope can either be list of Resource or ResourceGroup exclusively..
+        ///   Looks up a localized string similar to Scope can either be list of Resources, ResourceGroups or Subscriptions exclusively..
         /// </summary>
         internal static string MixedScopeType_Exception {
             get {

@@ -139,6 +139,16 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             return psEnrollmentGroup;
         }
 
+        public static PSDeviceRegistrationState ToPSDeviceRegistrationState(DeviceRegistrationState registration)
+        {
+            return ConvertObject<DeviceRegistrationState, PSDeviceRegistrationState>(registration);
+        }
+
+        public static IEnumerable<PSDeviceRegistrationStates> ToPSDeviceRegistrationStates(IEnumerable<object> registrations)
+        {
+            return ConvertObject<IEnumerable<object>, IEnumerable<PSDeviceRegistrationStates>>(registrations);
+        }
+
         public static PSAttestation GetAttestationMechanism(Attestation enrollmentAttestation)
         {
             if (enrollmentAttestation.GetType().Name.Equals("SymmetricKeyAttestation", StringComparison.OrdinalIgnoreCase))

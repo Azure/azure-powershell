@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
         public const string EnableMultipleWriteLocationsHelpMessage = "Enable Multiple Write Locations. Accepted values: false, true ";
         public const string EnableVirtualNetworkHelpMessage = "Enables virtual network on the Cosmos DB database account. Accepted values: false, true ";
-        public const string IpRangeFilterHelpMessage = "Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account";
+        public const string IpRulesHelpMessage = "Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.";
         public const string MaxStalenessIntervalInSecondsHelpMessage = "When used with Bounded Staleness consistency, this value represents the time amount of staleness (in timespan) tolerated. Accepted range for this value is 5-86400.";
         public const string MaxStalenessPrefixHelpMessage = "When used with Bounded Staleness consistency, this value represents the number of stale requests tolerated. Accepted range for this value is 1 - 2,147,483,647. ";
         public const string TagHelpMessage = "Hashtable of tags as key-value pairs. Use empty string to clear existing tag.";
@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
+        public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
+        public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
+        public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -107,6 +110,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
         public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
+        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
         public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
         public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
         public const string MongoIndexKey = "Array of key values as strings.";
@@ -134,6 +138,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CassandraSchemaColumnHelpMessage = "PSColumn object.";
         public const string CassandraSchemaPartitionKeyHelpMessage = "Array of strings containing Partition Keys.";
         public const string CassandraSchemaClusterKeyHelpMessage = "Array of PSClusterKey objects.";
+        public const string AnalyticalStorageTtlHelpMessage = "Analytical Storage TTL."; 
 
         //Gremlin cmdlets help messages
         public const string GraphNameHelpMessage = "Gremlin Graph Name.";
@@ -145,5 +150,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
+
+        // Throughput cmdlets for all APIs
+        public const string ThroughputHelpMessage = "Throughput value in int.";
+        public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
     }
 }

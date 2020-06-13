@@ -45,6 +45,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
@@ -117,13 +118,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
