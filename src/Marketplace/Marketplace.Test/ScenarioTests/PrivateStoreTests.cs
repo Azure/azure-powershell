@@ -34,5 +34,40 @@ namespace Microsoft.Azure.Commands.Marketplace.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStore");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateStoreOffers()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStoreOffers");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateStoreOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStoreOffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemovePrivateStoreOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveAzMarketplacePrivateStoreOffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreatePrivateStoreOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAzMarketplacePrivateStoreOffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdatePrivateStoreOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateAzMarketplacePrivateStoreOffer");
+        }
     }
 }

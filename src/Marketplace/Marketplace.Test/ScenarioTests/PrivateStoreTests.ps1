@@ -34,3 +34,112 @@ function Test-GetAzMarketplacePrivateStore
 		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
     }
 }
+
+<#
+.SYNOPSIS
+Gets private store offers that were defined in tenant level 
+#>
+function Test-GetAzMarketplacePrivateStoreOffers
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+
+	$queryResult = Get-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue
+	
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 3
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+    }
+}
+
+<#
+.SYNOPSIS
+Gets private store offers that were defined in tenant level 
+#>
+function Test-GetAzMarketplacePrivateStoreOffer
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$OfferIdValue="altamira-corporation.lumify"
+
+	$queryResult = Get-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -OfferId $OfferIdValue
+	
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 1
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+		Assert-AreEqual $queryResult[$i].UniqueOfferId $OfferIdValue
+    }
+}
+
+<#
+.SYNOPSIS
+Deletes private store offer that was defined in tenant level 
+#>
+function Test-RemoveAzMarketplacePrivateStoreOffer
+{
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$OfferIdValue="altamira-corporation.lumify"
+
+	$queryResult = Remove-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -OfferId $OfferIdValue -PassThru
+    
+	Assert-AreEqual true $queryResult
+	
+}
+
+<#
+.SYNOPSIS
+Creates private store offer that was defined in tenant level 
+#>
+function Test-CreateAzMarketplacePrivateStoreOffer
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$OfferIdValue="altamira-corporation.lumify"
+	$SpecificPlanIdsLimitationValue= @("lumify","0001")
+
+	$queryResult = Set-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -OfferId $OfferIdValue -SpecificPlanIdsLimitation $SpecificPlanIdsLimitationValue
+    
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 1
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+		Assert-AreEqual $queryResult[$i].UniqueOfferId $OfferIdValue
+    }
+}
+
+<#
+.SYNOPSIS
+Updates private store offer that was defined in tenant level 
+#>
+function Test-UpdateAzMarketplacePrivateStoreOffer
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$OfferIdValue="altamira-corporation.lumify"
+	$SpecificPlanIdsLimitationValue= @("lumify")
+	$EtagValue ="020032e7-0000-0100-0000-5ee629440000"
+
+	$queryResult = Set-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -OfferId $OfferIdValue -SpecificPlanIdsLimitation $SpecificPlanIdsLimitationValue -ETag $EtagValue
+    
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 1
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+		Assert-AreEqual $queryResult[$i].UniqueOfferId $OfferIdValue
+		Assert-AreEqual $queryResult[$i].SpecificPlanIdsLimitation.Count 1
+    }
+}
