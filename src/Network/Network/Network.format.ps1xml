@@ -2527,11 +2527,11 @@
               </ListItem>
               <ListItem>
                 <Label>NetworkInterfaceIpConfiguration</Label>
-                <PropertyName>NetworkInterfaceIpConfigurationText</PropertyName>
+                <PropertyName>NetworkInterfaceIpConfigurationIdText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>VirtualNetwork</Label>
-                <PropertyName>VirtualNetworkChildResourceText</PropertyName>
+                <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -3765,6 +3765,10 @@
               <ListItem>
                 <Label>VirtualHub</Label>
                 <PropertyName>VirtualHub</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HubIPAddresses</Label>
+                <PropertyName>HubIPAddresses</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>FirewallPolicy</Label>
