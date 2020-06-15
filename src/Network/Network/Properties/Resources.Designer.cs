@@ -160,6 +160,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to privateEndpointConnections.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateEndpointConnectionName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateEndpointConnectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to privateLinkConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ipConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkIpConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkIpConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to probes.
         /// </summary>
         internal static string ApplicationGatewayProbeName {
