@@ -4224,7 +4224,7 @@
     }
   ],
   "Names": {
-    "Test-VirtualMachineCustomScriptExtensionSubstatus": [
+    "Test-VirtualMachineCustomScriptExtensionSubstatuses": [
       "crptestps2437"
     ]
   },
