@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Mandatory = false, HelpMessage = "The public network access type")]
         public PublicNetworkAccessType PublicNetworkAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The identity associated with the BatchAccount")]
+        public ResourceIdentityType IdentityType { get; set; } = ResourceIdentityType.None;
+
         protected override void ExecuteCmdletImpl()
         {
             AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
@@ -70,7 +73,8 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultId = this.KeyVaultId,
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
-                PublicNetworkAccess = this.PublicNetworkAccess
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                Identity = new BatchAccountIdentity(this.IdentityType)
             };
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);

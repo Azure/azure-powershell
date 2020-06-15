@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
+* Update preloaded assemblies [#12024], [#11976]
+* Updated Azure.Core assembly
 * Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
 
 ## Version 1.8.1

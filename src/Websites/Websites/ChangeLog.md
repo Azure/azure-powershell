@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added safeguard to delete created webapp if restore failed in `Restore-AzDeletedWebApp`
 * Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed bug that prevented changing Container settings in `Set-AzWebApp` and `Set-AzWebAppSlot`
+* Fixed bug to get SiteConfig when -Name is not given for Get-AzWebApp
+* Added a support to create ASP for Linux Apps
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
