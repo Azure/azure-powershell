@@ -850,3 +850,89 @@ function Test-CortexExpressRouteCRUD
 		Clean-ResourceGroup $rgname
      }
 }
+
+function Test-VHubRouteTableCRUD {
+	# Setup
+	$rgName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$defaultRouteTableName = "defaultRouteTable"
+	$noneRouteTableName = "noneRouteTable"
+	$customRouteTableName = "customRouteTable"
+	$firewallName = "azFwInVirtualHub"
+
+	try
+	{
+		# Create the resource group
+		New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+
+		# Create the Virtual Hub
+		New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "10.0.0.0/16" $virtualHub.AddressPrefix
+
+		# Verify defaultRouteTable and noneRouteTable are created
+		$hubRouteTables = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName 
+		Assert-AreEqual 2 $hubRouteTables.Count
+
+		# Verify defaultRouteTable
+		$defaultRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $defaultRouteTableName
+		Assert-AreEqual 0 $defaultRouteTable.Routes.Count
+		Assert-AreEqual 1 $defaultRouteTable.Labels.Count
+
+		# Verify noneRouteTable
+		$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $noneRouteTableName
+		Assert-AreEqual 0 $noneRouteTable.Routes.Count
+		Assert-AreEqual 0 $noneRouteTable.Labels.Count
+
+		# Create a firewall in the Virtual hub
+		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location $rglocation -Sku AZFW_Hub -VirtualHubId $virtualHub.Id
+		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+		Assert-NotNull $firewall.IpConfigurations
+
+		# Create new route
+		$route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+
+		# Create new customRouteTable
+		New-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Route @($route1) -Label @("customLabel")
+		$customRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName
+		Assert-AreEqual $customRouteTableName $customRouteTable.Name
+		Assert-AreEqual 1 $customRouteTable.Routes.Count
+		Assert-AreEqual 1 $customRouteTable.Labels.Count
+
+		# Add one more route
+		$route2 = New-AzVHubRoute -Name "internet-traffic" -Destination @("0.0.0.0/0") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+		Update-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Route @($route1, $route2)
+		$updateCustomRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName
+		Assert-AreEqual $customRouteTableName $updateCustomRouteTable.Name
+		Assert-AreEqual 2 $updateCustomRouteTable.Routes.Count
+		Assert-AreEqual 1 $customRouteTable.Labels.Count
+
+		# Delete the custom route table
+		$ delete = Remove-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete the firewall
+		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+		Assert-AreEqual $True $delete
+
+		# Delete the resources
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
