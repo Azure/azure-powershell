@@ -77,7 +77,15 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestCortexVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestVHubRouteTableCRUD()
         {
             TestRunner.RunTestScript("Test-VHubRouteTableCRUD");

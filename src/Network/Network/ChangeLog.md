@@ -80,6 +80,8 @@
     -`Update-AzVpnConnection`
     -`New-AzP2sVpnGateway`
     -`Update-AzP2sVpnGateway`
+* Added new cmdlet to support resetting the routing state of a VirtualHub resource:
+    - Reset-AzHubRouter
 * Updated below things based on recent swagger change for Firewall Policy
     - Changes names for RuleGroup, RuleCollectionGroup and RuleType
     - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
