@@ -23,7 +23,7 @@ Creates a VHubRoute object.
 
 ### Example 1
 ```powershell
-PS C:\> 
+PS C:\> $route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
 ```
 
 The above command will create a VHubRoute object which can then be added to a VHubRouteTable resource.
