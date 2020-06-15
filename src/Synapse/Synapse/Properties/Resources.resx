@@ -135,6 +135,9 @@
   <data name="CreatingSynapseWorkspace" xml:space="preserve">
     <value>Creating a new workspace in resource group '{0}' with name '{1}'.</value>
   </data>
+  <data name="CreatingFirewallRule" xml:space="preserve">
+    <value>Creating a new firewall rule in workspace '{0}' with name '{1}'.</value>
+  </data>
   <data name="DisablingSynapseSparkPoolAutoPause" xml:space="preserve">
     <value>Disabling Auto-pause for spark pool '{0}' in resource group '{1}' under parent workspace '{2}'.</value>
   </data>
@@ -180,6 +183,12 @@
   <data name="FailedToDiscoverWorkspace" xml:space="preserve">
     <value>A workspace with name '{0}' in resource group '{1}' does not exist. Please use New-AzSynapseWorkspace to create a workspace with these properties.</value>
   </data>
+  <data name="FailedToDiscoverFirewallRuleByWorkspace" xml:space="preserve">
+    <value>The specified firewall rule '{0}' does not exist. Please use Add-AzSynapseFirewallRule to create a firewall rule with these properties.</value>
+  </data>
+  <data name="ConflictFirewallRuleName" xml:space="preserve">
+    <value>The specified firewall rule '{0}' already exists. Please use Set-AzSynapseFirewallRule to modify a firewall rule with these properties.</value>
+  </data>
   <data name="FailedToStartSession" xml:space="preserve">
     <value>Failed to start session.</value>
   </data>
@@ -221,6 +230,9 @@
   </data>
   <data name="RemovingSynapseWorkspace" xml:space="preserve">
     <value>Deleting workspace '{0}' in resource group '{1}'</value>
+  </data>
+  <data name="RemovingFirewallRule" xml:space="preserve">
+    <value>Deleting firewall rule '{0}' in workspace '{1}'</value>
   </data>
   <data name="ResettingSynapseSparkSessionTimeout" xml:space="preserve">
     <value>Resetting timeout for Spark session with Id: '{0}' ...</value>
@@ -278,5 +290,8 @@
   </data>
   <data name="WorkspaceDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified workspace '{0}' does not exist.</value>
+  </data>
+  <data name="FirewallRuleDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified firewall rule '{0}' does not exist.</value>
   </data>
 </root>

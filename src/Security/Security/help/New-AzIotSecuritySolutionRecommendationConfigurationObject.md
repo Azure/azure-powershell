@@ -51,11 +51,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecommendationType
-Recommendation type.
+### -Enabled
+Status .
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -66,11 +66,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Enabled
-Status .
+### -RecommendationType
+Recommendation type.
 
 ```yaml
-Type: System.Boolean
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

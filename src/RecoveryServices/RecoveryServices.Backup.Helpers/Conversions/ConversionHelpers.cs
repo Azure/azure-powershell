@@ -445,6 +445,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     itemModel = GetAzureVmWorkloadItemModel(protectedItem);
                 }
+
+                if(protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.MabFileFolderProtectedItem))
+                {
+                    itemModel = GetMabItemModel(protectedItem);
+                }
             }
 
             return itemModel;
@@ -495,6 +501,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 IdUtils.GetNameFromUri(containerUri),
                 ContainerType.AzureStorage,
                 policyName);
+            return itemModel;
+        }
+
+        private static ItemBase GetMabItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+
+            string containerUri = (protectedItem.Properties as ServiceClientModel.MabFileFolderProtectedItem).ContainerName;
+
+            itemModel = new MabItem(
+                protectedItem,
+                containerUri,
+                ContainerType.Windows,
+                null);
             return itemModel;
         }
 

@@ -13,8 +13,8 @@ Create new threshold custom alert rule for device security group (IoT Security)
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32> -Enabled <Boolean> -Type <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32>
+ -Enabled <Boolean> -Type <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

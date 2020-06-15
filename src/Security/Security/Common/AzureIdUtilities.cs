@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
         private static Regex regulatoryStandardAssessmentRegex = new Regex("regulatoryComplianceAssessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static Regex AssessmentNameRegex = new Regex("assessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex ExtendedResourceRegex = new Regex("(?<extendedId>.*?)/providers/microsoft.security.*?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         private static Regex iotHubNameRegex = new Regex("/iotHubs/(?<iotHubName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private static Regex iotSolutionNameRegex = new Regex("/iotSecuritySolutions/(?<iotSolutionName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -162,6 +166,38 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
                 return match.Groups["AssessmentName"].Value;
             }
+        }
+
+        /// <summary>
+        /// extracting the extended resource ID from an extension resource
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <returns>Assessment name</returns>
+        public static string GetExtendedResourceId(string id)
+        {
+            var match = ExtendedResourceRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the extension resource identifier.", nameof(id));
+            }
+
+            return match.Groups["extendedId"].Value;
+        }
+
+        /// <summary>
+        /// Gets the name of the resource above the nested resource
+        /// </summary>
+        public static string GetAssessmentResourceName(string id)
+        {
+            var match = AssessmentNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the extension resource identifier.", nameof(id));
+            }
+
+            return match.Groups["AssessmentName"].Value;
         }
     }
 }

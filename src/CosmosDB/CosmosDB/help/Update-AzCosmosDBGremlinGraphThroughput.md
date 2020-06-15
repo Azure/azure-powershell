@@ -15,22 +15,22 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBGremlinGraphThroughput -ResourceGroupName <String> -AccountName <String>
- -DatabaseName <String> [-Name <String>] -Throughput <Int32> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DatabaseName <String> [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -Throughput <Int32>
- -ParentObject <PSGremlinDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] [-Throughput <Int32>]
+ [-AutoscaleMaxThroughput <Int32>] -ParentObject <PSGremlinDatabaseGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -Throughput <Int32>
- -InputObject <PSGremlinGraphGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] [-Throughput <Int32>]
+ [-AutoscaleMaxThroughput <Int32>] -InputObject <PSGremlinGraphGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoscaleMaxThroughput
+Maximum Throughput value if autoscale is enabled.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,7 +194,7 @@ Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

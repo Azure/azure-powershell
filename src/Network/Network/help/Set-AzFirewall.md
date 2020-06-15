@@ -73,7 +73,6 @@ $pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
-
 This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
 service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 If user wants to start the service again, the Allocate method should be called on the firewall.
@@ -88,7 +87,6 @@ $mgmtPip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name MgmtPublicIpNa
 $firewall.Allocate($vnet, $pip, $mgmtPip)
 $firewall | Set-AzFirewall
 ```
-
 This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
 
 ### 6:	Add a Public IP address to an Azure Firewall
@@ -124,13 +122,36 @@ $azFw | Set-AzFirewall
 
 In this example, the management public IP address of the firewall will be changed to "AzFwMgmtPublicIp2"
 
+### 9:	Add DNS configuration to an Azure Firewall
+```
+$dnsServers = @("10.10.10.1", "20.20.20.2")
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.DNSEnableProxy = $true
+$azFw.DNSServer = $dnsServers
+
+$azFw | Set-AzFirewall
+```
+
+In this example, DNS Proxy and DNS Server configuration is attached to the Firewall.
+
+### 10:	Update destination of an existing rule within a Firewall application rule collection
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
+$rule=$ruleCollection.GetRuleByName("ruleName")
+$rule.DestinationAddresses="10.10.10.10"
+Set-AzFirewall -AzureFirewall $azFw
+```
+
+This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +166,7 @@ Accept wildcard characters: False
 The AzureFirewall
 
 ```yaml
-Type: PSAzureFirewall
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewall
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +181,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -175,7 +196,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -190,7 +211,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -202,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

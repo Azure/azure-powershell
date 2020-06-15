@@ -736,6 +736,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Field Name {0} contains invalid character..
+        /// </summary>
+        internal static string InvalidName {
+            get {
+                return ResourceManager.GetString("InvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Port value in protocol configuration is out of range. The value must be between 0 and 65535..
         /// </summary>
         internal static string InvalidPortValue {

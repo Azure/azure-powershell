@@ -706,17 +706,18 @@ function Test-RaCreatedBySP
 {
     #Setup
     # Conect to azure with SP
-    $passwd = ConvertTo-SecureString 'gtU/dY]hRw9[GRAEKj.CqYkMACk2nv99' -AsPlainText -Force
-    $pscredential = New-Object System.Management.Automation.PSCredential('a6399609-d0de-4c4b-ab98-4a01b45bc20a' , $passwd)
-    $tenantId = '1273adef-00a3-4086-a51a-dbcce1857d36'
+    # If you need to re-record replace this setup
+    $passwd = ConvertTo-SecureString 'MCg1SVb3MX' -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('c82180ed-2f4b-4cb2-965f-ec5088751710' , $passwd)
+    $tenantId = '1462fd46-afe5-491b-a340-31ebae81d1ce'
     Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
 
     # Create role assignment
-    $testUser = '11b1042e-d5b6-4f65-b308-d69565f16f1e'
+    $testUser = '1d2121a7-1943-4c7a-a872-b1b2069db55a'
     $data = New-AzRoleAssignmentWithId `
     -ObjectId $testUser `
     -RoleDefinitionName 'Contributor' `
-    -Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro' `
+    -Scope '/subscriptions/3e123c33-5ffc-400f-a9f8-a073bf35f8ca/resourceGroups/daorozco_bug_repro' `
     -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca
 
     Assert-NotNull $data

@@ -17,7 +17,8 @@ Updates an existing healthcareApis fhir service.
 Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosOfferThroughput <Int32>]
  [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
  [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
- [-DisableCorsCredential] [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>]
+ [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +27,8 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String>] [-Audience <String>]
  [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>]
  [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential]
- [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+ [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
+ [-DisableManagedIdentity] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -208,7 +210,6 @@ HealthcareApis FhirService List of Cors Methods.
 Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
-Accepted values: DELETE, GET, OPTIONS, PATCH, POST, PUT
 
 Required: False
 Position: Named
@@ -277,8 +278,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableManagedIdentity
+Disable Managed Identity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableSmartProxy
 HealthcareApis FhirService DisableSmartProxy.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableManagedIdentity
+Enable Managed Identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -297,6 +328,21 @@ HealthcareApis FhirService EnableSmartProxy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportStorageAccountName
+HealthcareApis Fhir Service Export Storage Account Name.
+
+```yaml
+Type: System.String
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
