@@ -24,11 +24,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         
         public PSThroughputSettingsGetResults(ThroughputSettingsGetResults throughputSettingsGetResults)
         {
+            if (throughputSettingsGetResults == null || throughputSettingsGetResults.Resource == null)
+                return;
+
             Name = throughputSettingsGetResults.Name;
             Id = throughputSettingsGetResults.Id;
             Throughput = throughputSettingsGetResults.Resource.Throughput.Value;
             MinimumThroughput = throughputSettingsGetResults.Resource.MinimumThroughput;
             OfferReplacePending = throughputSettingsGetResults.Resource.OfferReplacePending;
+            AutoscaleSettings = new PSAutoscaleSettingsResource(throughputSettingsGetResults.Resource.AutoscaleSettings);
         }
 
         /// <summary>
@@ -55,5 +59,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets the throughput replace is pending
         /// </summary>
         public string OfferReplacePending { get; set; }
+        //
+        // Summary:
+        //     Gets or sets cosmos DB resource for autoscale settings. Either throughput is
+        //     required or autoscaleSettings is required, but not both.
+        public PSAutoscaleSettingsResource AutoscaleSettings { get; set; }
     }
 }

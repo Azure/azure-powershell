@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added alias "FunctionParameters" for parameter "FunctionParameter" to
+* Added "pergb2018" to valid value set of parameter: `Sku` in `Set-AzOperationalInsightsWorkspace` 
+* Added alias "FunctionParameters" for parameter `FunctionParameter` to
     - `New-AzOperationalInsightsSavedSearch`
     - `Set-AzOperationalInsightsSavedSearch`
 
