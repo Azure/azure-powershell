@@ -25,4 +25,7 @@ Describe 'Remove-AzConnectedKubernetes' {
         $connaksList =  Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup
         $connaksList.Name | Should -Not -Contain $env.connaksName01
     }
+    BeforeAll {
+        helm delete azure-arc --no-hooks
+    }
 }

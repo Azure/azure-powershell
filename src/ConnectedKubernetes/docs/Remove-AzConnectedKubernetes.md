@@ -15,13 +15,15 @@ Delete a connected cluster, removing the tracked resource in Azure Resource Mana
 ### Delete (Default)
 ```
 Remove-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KubeConfig <String>] [-KubeContext <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-KubeConfig <String>]
+ [-KubeContext <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,20 +33,20 @@ Delete a connected cluster, removing the tracked resource in Azure Resource Mana
 
 ### Example 1: Remove a connected kubernetes
 ```powershell
-PS C:\> Remove-AzConnectedKubernetes -ResourceGroupName connected-aks -Name wyunchi-pwsh-aks3
+PS C:\> Remove-AzConnectedKubernetes -ResourceGroupName azureps-manual-test -ClusterName ps-connaks-t01
 
 ```
 
-This command removes a connected kubernetes.
+This command removes a connected kubernetes
 
 ### Example 2: Remove a connected kubernetes by object
 ```powershell
-PS C:\> $conAks = Get-AzConnectedKubernetes -ResourceGroupName connected-aks -Name wyunchi-pwsh-aks1
-PS C:\> Remove-AzConnectedKubernetes -InputObject $conAks
+PS C:\> $connaks = Get-AzConnectedKubernetes -ResourceGroupName azureps-manual-test -Name ps-connaks-t02
+PS C:\> Remove-AzConnectedKubernetes -InputObject $connaks
 
 ```
 
-This command removes a connected kubernetes by object.
+This command removes a connected kubernetes by object
 
 ## PARAMETERS
 
@@ -106,6 +108,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KubeConfig
+Path to the kube config file
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeContext
+Kubconfig context from current machine
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

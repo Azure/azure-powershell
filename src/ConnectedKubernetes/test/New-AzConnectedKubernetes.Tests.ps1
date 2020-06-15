@@ -13,9 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'New-AzConnectedKubernetes' {
     It 'CreateExpanded' {
-        $kubeContext = 'portal-aks-t01'
-        New-AzConnectedKubernetes -ClusterName $env.connaksName02 -ResourceGroupName $env.resourceGroup -Location $env.location -KubeConfig $HOME\.kube\config -KubeContext $kubeContext
+        New-AzConnectedKubernetes -ClusterName $env.connaksName02 -ResourceGroupName $env.resourceGroup -Location $env.location -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
         $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02
+        $connaks.ProvisioningState | Should -Be 'Succeeded'
+
+        New-AzConnectedKubernetes -ClusterName $env.connaksName03 -ResourceGroupName $env.resourceGroup -Location $env.location 
+        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName03
         $connaks.ProvisioningState | Should -Be 'Succeeded'
     }
 }
