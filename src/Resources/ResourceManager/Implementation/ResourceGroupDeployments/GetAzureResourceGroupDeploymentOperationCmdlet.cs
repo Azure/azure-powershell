@@ -14,20 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Commands.Common.Authentication.Abstractions;
     using Common.ArgumentCompleters;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Newtonsoft.Json.Linq;
     using System;
     using System.Management.Automation;
-    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSDeploymentOperation))]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -41,6 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the subscription id parameter.
         /// </summary>
+        [CmdletParameterBreakingChange("SubscriptionId", ChangeDescription = "Parameter is deprecated and is a no-op parameter. It will be retired in a future release")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
