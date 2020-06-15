@@ -78,9 +78,11 @@ namespace VersionController.Models
         public Tuple<string, bool> GetOldVersion()
         {
             string version;
-            string localVersion = null, psVersion = null, testVersion = null;
+            string localVersion = null;
+            // string localVersion = null, psVersion = null, testVersion = null;
             bool isPreview;
-            bool localPreview = false, psPreview = false, testPreview = false;
+            bool localPreview = false;
+            // bool localPreview = false, psPreview = false, testPreview = false;
             var moduleName = _fileHelper.ModuleName;
             
             using (PowerShell powershell = PowerShell.Create())
