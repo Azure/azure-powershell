@@ -96,8 +96,10 @@ function NamespaceTests
     $allCreatedNamespace = Get-AzEventHubNamespace
 	
     Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
+	
 
     Write-Debug " Delete namespaces"
-    #Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+    Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName2
 	
 }
