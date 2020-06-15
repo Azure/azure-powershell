@@ -1,13 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
     public static class CustomAssemblyResolver
     {
+        private static IDictionary<string, Version> NetFxPreloadAssemblies =
+            new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase);
+
+        private static string PreloadAssemblyFolder { get; set; }
+
         public static void Initialize()
         {
+            var accountFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            PreloadAssemblyFolder = Path.Combine(accountFolder, "PreloadAssemblies");
+            var assemblyInfo = File.ReadAllText(Path.Combine(accountFolder, "PreloadAssemblyInfo.json"));
+
+            var root = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(assemblyInfo);
+            var netfx = root["netfx"];
+            foreach(var info in netfx)
+            {
+                NetFxPreloadAssemblies[info.Key] = new Version(info.Value);
+            }
+
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
 
@@ -19,13 +37,13 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             try
             {
                 AssemblyName name = new AssemblyName(args.Name);
-                if(string.Equals(name.Name, "Azure.Core", StringComparison.OrdinalIgnoreCase)
-                    && name.Version?.Major == 1 && (name.Version?.Minor == 2 && name.Version?.Build <= 1 || 
-                    name.Version?.Minor == 1))
+                if (NetFxPreloadAssemblies.TryGetValue(args.Name, out Version version))
                 {
-                    string accountFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    string azureCorePath = Path.Combine(accountFolder, @"PreloadAssemblies\Azure.Core.dll");
-                    return Assembly.LoadFrom(azureCorePath);
+                    if (version >= name.Version && version.Major == name.Version.Major)
+                    {
+                        string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{args.Name}.dll");
+                        return Assembly.LoadFrom(requiredAssembly);
+                    }
                 }
             }
             catch
