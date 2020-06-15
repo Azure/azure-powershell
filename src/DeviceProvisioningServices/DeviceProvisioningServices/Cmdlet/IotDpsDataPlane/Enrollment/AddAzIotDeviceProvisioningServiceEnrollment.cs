@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateNotNullOrEmpty]
         public string IotHubHostName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Host name of target IoT Hub. Use space-separated list for multiple IoT Hubs.")]
+        [Parameter(Mandatory = false, HelpMessage = "Host name of target IoT Hub. Use comma-separated list for multiple IoT Hubs.")]
         [ValidateNotNullOrEmpty]
         public string[] IotHub { get; set; }
 
