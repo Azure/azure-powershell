@@ -1032,6 +1032,10 @@
     {
       "file": "src\\MixedReality\\MixedReality.Test\\SessionRecords\\Microsoft.Azure.Commands.MixedReality.Test.SpatialAnchorsAccountTests\\TestListSpatialAnchorsAccounts.json",
       "_justification": "Credentials do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\\NamespaceBYOKCRUD.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
     }
   ]
 }
