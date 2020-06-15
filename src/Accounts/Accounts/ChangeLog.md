@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
 * Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
 
 ## Version 1.8.1
