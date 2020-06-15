@@ -69,11 +69,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
-                Identity = evResource.Identity;
+                Identity = new PSIdentityAttributes(evResource.Identity);
                 ZoneRedundant = evResource.ZoneRedundant;
                 ClusterArmId = evResource.ClusterArmId;
-                Encryption = evResource.Encryption;               
-
+                Encryption = new PSEncryptionAttributes(evResource.Encryption);
             }
         }
         
@@ -150,9 +149,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
         public string ClusterArmId { get; set; }     
         
-        public Identity Identity { get; set; }
+        public PSIdentityAttributes Identity { get; set; }
 
-        public Encryption Encryption { get; set; }
+        public PSEncryptionAttributes Encryption { get; set; }
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
     }

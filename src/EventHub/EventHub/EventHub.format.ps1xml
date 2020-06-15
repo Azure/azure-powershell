@@ -64,6 +64,48 @@
               <ListItem>
                 <PropertyName>MaximumThroughputUnits</PropertyName>
               </ListItem>
+              <ListItem>
+                <PropertyName>ZoneRedundant</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ClusterArmId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Identity</Label>
+                <PropertyName>Identity</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Identity.PrincipalId</Label>
+                <ScriptBlock>$_.Identity.PrincipalId.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Identity.TenantId</Label>
+                <ScriptBlock>$_.Identity.TenantId.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Identity.Type</Label>
+                <ScriptBlock>$_.Identity.Type.ToString()</ScriptBlock>
+              </ListItem>              
+              <ListItem>
+                <Label>Encryption</Label>
+                <PropertyName>Encryption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Encryption.KeySource</Label>
+                <ScriptBlock>$_.Encryption.KeySource.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Encryption.KeyVaultProperties</Label>
+                <ScriptBlock>
+                  $keyvaultproperties = $_.Encryption.KeyVaultProperties;
+                  foreach ($item in $keyvaultproperties)
+                  {
+                  $item.KeyName.ToString();
+                  $item.KeyVaultUri.ToString();
+                  $item.KeyVersion.ToString();
+                  }
+                </ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

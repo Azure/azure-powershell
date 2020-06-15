@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
-        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, bool isZoneRedundant, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties)
+        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties)
         {          
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
@@ -155,9 +155,6 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (isKafkaEnabled)
                 parameter.KafkaEnabled = isKafkaEnabled;
-
-            if (isZoneRedundant)
-                parameter.ZoneRedundant = isZoneRedundant;
 
             if (isIdentity)
                 parameter.Identity = new Identity() { Type = IdentityType.SystemAssigned };

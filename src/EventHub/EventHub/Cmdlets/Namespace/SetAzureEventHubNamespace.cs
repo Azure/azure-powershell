@@ -101,14 +101,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public SwitchParameter EnableKafka { get; set; }
 
         /// <summary>
-        /// Indicates whether ZoneRedundant is enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
-        public SwitchParameter ZoneRedundant { get; set; }
-
-        /// <summary>
         /// Indicates whether Identity is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
@@ -150,11 +142,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 {
                     if (ParameterSetName.Equals(IdentityUpdateParameterSet))
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, null, null, null));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, null, null, null));
                     }
                     else
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));
                     }                   
                     
                 }
