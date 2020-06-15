@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         [Parameter(ParameterSetName = ByUri, Mandatory = true, HelpMessage = "Target Uri")]
         [ValidateNotNullOrEmpty]
-        public string Uri { get; set; }
+        public string Path { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Api Version")]
         [ValidateNotNullOrEmpty]
@@ -111,9 +111,9 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             context = DefaultContext;
             AzureOperationResponse<string> response;
 
-            if (!this.IsParameterBound(c => c.Uri))
+            if (!this.IsParameterBound(c => c.Path))
             {
-                this.Uri = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
+                this.Path = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
 
             switch (this.Method)
@@ -121,27 +121,27 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 case "GET":
                     response = ServiceClient
                     .Operations
-                    .GetResouceGenericFullResponse(this.Uri, this.ApiVersion);
+                    .GetResouceGenericFullResponse(this.Path, this.ApiVersion);
                     break;
                 case "POST":
                     response = ServiceClient
                     .Operations
-                    .PostResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
+                    .PostResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "PUT":
                     response = ServiceClient
                     .Operations
-                    .PutResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
+                    .PutResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "PATCH":
                     response = ServiceClient
                     .Operations
-                    .PatchResouceGenericFullResponse(this.Uri, this.ApiVersion, this.Payload);
+                    .PatchResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "DELETE":
                     response = ServiceClient
                     .Operations
-                    .DeleteResouceGenericFullResponse(this.Uri, this.ApiVersion);
+                    .DeleteResouceGenericFullResponse(this.Path, this.ApiVersion);
                     break;
                 default:
                     throw new PSArgumentException("Invalid HTTP Method");
