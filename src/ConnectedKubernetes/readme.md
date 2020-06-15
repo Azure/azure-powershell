@@ -50,8 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  # - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2020-01-01-preview/connectedClusters.json
-  - $(this-folder)/resources/hybridkubernetes.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2020-01-01-preview/connectedClusters.json
 title: ConnectedKubernetes
 module-version: 0.1.0
 subject-prefix: ''
@@ -72,8 +71,20 @@ directive:
       parameter-name: ClusterName
     set:
       alias: Name
-  # - where:
-  #     verb: New
-  #     subject: ConnectedKubernetes
-  #   hide: true
+  - where:
+      verb: New|Update
+      subject: ConnectedKubernetes
+    hide: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
+  - where:
+      verb: Get
+      subject: ConnectedClusterUserCredentials
+    remove: true
+  - from: swagger-document
+    where: $.definitions["ConnectedClusterAADProfile"].required
+    # remove: true
+    transform: >-
+        return undefined
 ```

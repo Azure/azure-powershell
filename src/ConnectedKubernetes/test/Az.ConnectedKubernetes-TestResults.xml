@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="9" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-06-15" time="02:37:36">
+  <environment clr-version="Unknown" user-domain="" nunit-version="2.5.8.0" cwd="/src/ConnectedKubernetes" machine-name="962f62cb4358" platform="Linux" os-version="4.19.76-linuxkit" user="root" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="154.8802" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/ConnectedKubernetes/test/Get-AzConnectedKubernetes.Tests.ps1" executed="True" result="Success" success="True" time="0.7464" asserts="0" description="/src/ConnectedKubernetes/test/Get-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzConnectedKubernetes" executed="True" result="Success" success="True" time="0.4954" asserts="0" description="Get-AzConnectedKubernetes">
+            <results>
+              <test-case description="List1" name="Get-AzConnectedKubernetes.List1" time="0.1873" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzConnectedKubernetes.List" time="0.021" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzConnectedKubernetes.Get" time="0.0494" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzConnectedKubernetes.GetViaIdentity" time="0.0531" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ConnectedKubernetes/test/New-AzConnectedKubernetes.Tests.ps1" executed="True" result="Failure" success="False" time="115.0489" asserts="0" description="/src/ConnectedKubernetes/test/New-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzConnectedKubernetes" executed="True" result="Failure" success="False" time="114.8664" asserts="0" description="New-AzConnectedKubernetes">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzConnectedKubernetes.CreateExpanded" time="114.7901" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing Request 'New-AzConnectedKubernetes+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-7fwpju?api-version=2020-01-01-preview+5' in recording file (Parameter 'rqKey')</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, /src/ConnectedKubernetes/custom/New-AzConnectedKubernetes.ps1: line 279
+279:         Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ConnectedKubernetes/test/Remove-AzConnectedKubernetes.Tests.ps1" executed="True" result="Success" success="True" time="38.7802" asserts="0" description="/src/ConnectedKubernetes/test/Remove-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzConnectedKubernetes" executed="True" result="Success" success="True" time="38.5675" asserts="0" description="Remove-AzConnectedKubernetes">
+            <results>
+              <test-case description="Delete" name="Remove-AzConnectedKubernetes.Delete" time="11.8139" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzConnectedKubernetes.DeleteViaIdentity" time="1.6992" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/ConnectedKubernetes/test/Update-AzConnectedKubernetes.Tests.ps1" executed="True" result="Success" success="True" time="0.3047" asserts="0" description="/src/ConnectedKubernetes/test/Update-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzConnectedKubernetes" executed="True" result="Success" success="True" time="0.1265" asserts="0" description="Update-AzConnectedKubernetes">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzConnectedKubernetes.UpdateExpanded" time="0.0632" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzConnectedKubernetes.UpdateViaIdentityExpanded" time="0.0318" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
