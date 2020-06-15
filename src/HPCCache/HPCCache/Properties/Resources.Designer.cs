@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.HPCCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Need CLFS or NFS flag..
+        /// </summary>
+        internal static string CLFSorNFS {
+            get {
+                return ResourceManager.GetString("CLFSorNFS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to create HPC cache storage target &apos;{0}&apos;?.
         /// </summary>
         internal static string ConfirmCreateStorageTarget {
