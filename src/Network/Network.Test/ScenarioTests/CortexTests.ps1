@@ -950,7 +950,7 @@ function Test-VHubRouteTableCRUD
 		Assert-AreEqual 1 $customRouteTable.Labels.Count
 
 		# Delete the custom route table
-		$ delete = Remove-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Force -PassThru
+		$delete = Remove-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Force -PassThru
 		Assert-AreEqual $True $delete
 	}
 	finally
