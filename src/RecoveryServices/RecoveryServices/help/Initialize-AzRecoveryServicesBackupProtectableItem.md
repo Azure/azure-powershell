@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return the container to be deleted.
+Returns the container where the discovery is being triggered.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -64,7 +64,8 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name 'NewPolicy' -RetentionPolicy 
 Specifies the Backup management type.
 The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- AzureWorkload
+- AzureStorage
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
@@ -160,7 +161,8 @@ Accept wildcard characters: False
 Specifies the workload type.
 The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- MSSQL
+- AzureFiles
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -191,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

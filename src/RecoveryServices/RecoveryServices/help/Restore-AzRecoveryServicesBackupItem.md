@@ -44,7 +44,8 @@ The **Restore-AzRecoveryServicesBackupItem** cmdlet restores the data and config
 This cmdlet starts the restore from the Recovery Services vault to customer's storage account.
 The restore operation does not restore the full virtual machine.
 It restores the managed disks to a target resource group and configuration information to customer storage account
-After the restore operation is finished, you must create the virtual machine and start it.
+After the restore operation is finished, you must create the virtual machine and start it. 
+Please refter to different possible parameter sets and parameter text for more information.
 Set the vault context by using the -VaultId parameter.
 
 Note: To successfully execute this cmdlet in addition to -VaultId parameter -VaultLocation parameter should be used as well.
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 
 ### -RecoveryPoint
 
-Specifies the recovery point to which to restore the virtual machine.
+Specifies the recovery point to which to restore the backup item.
 To obtain an **AzureRmRecoveryServicesBackupRecoveryPoint** object, use the **Get-AzRecoveryServicesBackupRecoveryPoint** cmdlet.
 
 ```yaml
@@ -436,7 +437,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

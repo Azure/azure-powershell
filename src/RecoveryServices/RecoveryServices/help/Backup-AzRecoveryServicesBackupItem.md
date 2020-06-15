@@ -22,9 +22,9 @@ Backup-AzRecoveryServicesBackupItem -Item <ItemBase> [-ExpiryDateTimeUTC <DateTi
 
 ## DESCRIPTION
 
-The **Backup-AzRecoveryServicesBackupItem** cmdlet starts a backup for a protected Azure Backup item that is not tied to the backup schedule.
-You can do an initial backup immediately after you enable protection or start a backup after a scheduled backup fails.
-Set the vault context by using the -VaultId parameter.
+The **Backup-AzRecoveryServicesBackupItem** cmdlet takes an adhoc backup of protected Azure backup item. 
+Using this cmdlet you can do an initial backup immediately after you enable protection or start a backup if a scheduled backup fails. 
+This cmdlet can also be used for custom retention with or without expiry date - refer parameters help text for more details. 
 
 ## EXAMPLES
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 
 ### -ExpiryDateTimeUTC
 
-Specifies an expiry time as a **DateTime** object.
+Specifies an expiry time for the Recovery point as a DateTime object, if nothing is given it takes the default value of  30 days. Applicable to VM, SQL (for only Copy-only-full backup type), AFS backup items.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

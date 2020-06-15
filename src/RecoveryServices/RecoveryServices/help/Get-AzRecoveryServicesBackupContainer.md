@@ -56,7 +56,7 @@ The acceptable values for this parameter are:
 
 - AzureVM
 - MARS
-- AzureSQL
+- AzureWorkload
 - AzureStorage
 
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
@@ -81,7 +81,6 @@ The acceptable values for this parameter are:
 
 - AzureVM
 - Windows
-- AzureSQL
 - AzureStorage
 - AzureVMAppContainer
 

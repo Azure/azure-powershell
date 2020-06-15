@@ -19,7 +19,8 @@ Remove-AzRecoveryServicesVault -Vault <ARSVault> [-DefaultProfile <IAzureContext
 ```
 
 ## DESCRIPTION
-The **Remove-AzRecoveryServicesVault** cmdlet deletes a Recovery Services vault.
+The **Remove-AzRecoveryServicesVault** cmdlet deletes a Recovery Services vault. 
+Before running this cmdlet all backup items within the vault need to deleted, all containers within the vault need to be unregistered.
 
 ## EXAMPLES
 

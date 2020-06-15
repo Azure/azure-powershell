@@ -33,7 +33,7 @@ Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [[-ItemType] <P
 ```
 
 ## DESCRIPTION
-The **Get-AzRecoveryServicesBackupProtectableItem** cmdlet gets the protectable items in a container or a value in Azure Backup and the protection status of the items.
+The **Get-AzRecoveryServicesBackupProtectableItem** cmdlet gets the list of protectable items in a container and the protection status of the items.
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 
 ## EXAMPLES
@@ -45,7 +45,7 @@ PS C:\> $Item = Get-AzRecoveryServicesProtectableItem -Container $Container -Ite
 ```
 
 The first command gets the container of type MSSQL, and then stores it in the $Container variable.
-The second command gets the Backup item in $Container, and then stores it in the $Item variable.
+The second command gets the Backup protectable item in $Container, and then stores it in the $Item variable.
 
 ## PARAMETERS
 

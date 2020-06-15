@@ -20,10 +20,9 @@ Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <
 
 ## DESCRIPTION
 The **Set-AzRecoveryServicesVaultProperty** cmdlet updates properties of a Recovery services vault.
-You can use **Set-AzRecoveryServicesVaultProperty** cmdlet to get the current properties of a vault.
-Using this cmdlet **SoftDeleteFeatureState** property of a vault can be enabled at any point of time.
+This cmdlet returns the updated vault properties after the current set operation.
+Using this cmdlet properties of vault such as soft-delete can be enabled at any point of time.
 **SoftDeleteFeatureState** property of a vault can be disabled only if there are no registered containers in the vault.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
 
@@ -100,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

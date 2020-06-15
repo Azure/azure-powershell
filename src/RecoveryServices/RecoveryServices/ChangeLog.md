@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Azure Backup added support for fetching MAB items.
+* Azure Backup added support for fetching MAB items. 
+* Azure Backup tuned cmdlets help text to be more accurate.
 * Azure Site Recovery supports disk type "StandardSSD_LRS"
 
 ## Version 2.9.1

@@ -45,7 +45,7 @@ The last command creates a backup protection policy using the retention policy a
 Specifies the Backup management type.
 The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- AzureWorkload
 - AzureStorage
 
 ```yaml
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Specifies the workload type.
 The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- MSSQL
 - AzureFiles
 
 ```yaml

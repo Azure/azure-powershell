@@ -34,8 +34,8 @@ Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-Va
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-BackupManagementType] <BackupManagementType>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,13 +67,13 @@ This command gets the protection policy named DefaultPolicy, and then stores it 
 
 ### -BackupManagementType
 Specifies the Backup management type.
-Currently, only AzureVM, AzureStorage is supported.
+Currently, only AzureVM, AzureStorage, AzureWorkload is supported.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload, MAB
 
 Required: True
 Position: 3

@@ -27,7 +27,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-FixForInco
 ```
 
 ## DESCRIPTION
-The **Set-AzBackupProtectionPolicy** cmdlet modifies an existing Azure Backup protection policy.
+The **Set-AzRecoveryServicesBackupProtectionPolicy** cmdlet modifies an existing Azure Backup protection policy.
 You can modify the Backup schedule and retention policy components.
 Any changes you make affect the backup and retention of the items associated with the policy.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

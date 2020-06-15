@@ -52,10 +52,11 @@ PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -W
 PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID
 ```
 
-The first command gets the date from seven days ago, and then stores it in the $StartDate variable.
-The second command gets today's date, and then stores it in the $EndDate variable.
-The third command gets AzureVM backup containers, and stores them in the $Containers variable.
-The fourth command gets the backup item named V2VM, and then stores it in the $BackupItem variable.
+The first command gets vault object based on vaultName. 
+The second command gets the date from seven days ago, and then stores it in the $StartDate variable.
+The third command gets today's date, and then stores it in the $EndDate variable.
+The fourth command gets AzureVM backup containers, and stores them in the $Container variable. 
+The fifth command gets the backup item based on workloadType, vaultId and then stores it in the $BackupItem variable.
 The last command gets an array of recovery points for the item in $BackupItem, and then stores them in the $RP variable.
 
 ## PARAMETERS

@@ -50,7 +50,7 @@ Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Item] <Item
 ```
 
 ## DESCRIPTION
-The **Enable-AzRecoveryServicesBackupProtection** cmdlet sets Azure Backup protection policy on an item.
+The **Enable-AzRecoveryServicesBackupProtection** cmdlet enables the backup by associating a protection policy with the item.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExclusionDisksList
-List of Disk LUNs to exclude in backup
+List of Disk LUNs to be excluded in backup and the rest are automatically included.
 
 ```yaml
 Type: System.String[]
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -InclusionDisksList
-List of Disk LUNs to include in backup
+List of Disk LUNs to be included in backup and the rest are automatically excluded except OS disk.
 
 ```yaml
 Type: System.String[]
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectableItem
-Filter value for status of job.
+Specifies the item to be protected with the given policy.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
@@ -223,22 +223,6 @@ Specify this parameter only for ARM virtual machines.
 ```yaml
 Type: System.String
 Parameter Sets: AzureVMComputeEnableProtection
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceName
-Specifies the service name.
-Specify this parameter only for ASM virtual machines.
-
-```yaml
-Type: System.String
-Parameter Sets: AzureVMClassicComputeEnableProtection
 Aliases:
 
 Required: True
@@ -294,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
