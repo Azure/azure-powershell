@@ -231,7 +231,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
             }
 
-            WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+            try
+            {
+                WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+            }
+            catch (Exception e)
+            {
+                if(e.Message.Contains("Operation returned an invalid status code \'BadRequest\'"))
+                {
+                    var message = e.Message + "\nIf AppServicePlan is present in other resourceGroup, please provide AppServicePlan in following format : \" /subscriptions/{subscriptionId}/resourcegroups/{resourcegroupName}/providers/Microsoft.Web/serverfarms/{serverFarmName}\"";
+                    WriteObject(message);
+                    throw new Exception(message, e);
+                }
+                throw e;
+            }
 
             if (cloneWebAppSlots)
             {
