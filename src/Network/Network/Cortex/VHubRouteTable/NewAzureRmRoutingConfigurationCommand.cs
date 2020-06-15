@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(
         VerbsCommon.New,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoutingConfguration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoutingConfiguration",
         SupportsShouldProcess = false),
         OutputType(typeof(PSRoutingConfiguration))]
     public class NewAzureRmRoutingConfigurationCommand : NetworkBaseCmdlet

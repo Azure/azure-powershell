@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Name for this route.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "The Next Hop type.")]
         [ValidateNotNullOrEmpty]
         public string NextHopType { get; set; }
@@ -55,6 +61,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var vHubRoute = new PSVHubRoute
             {
+                Name = this.Name,
                 Destinations = this.Destination?.ToList(),
                 DestinationType = this.DestinationType,
                 NextHop = this.NextHop,
