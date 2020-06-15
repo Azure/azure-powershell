@@ -72,7 +72,7 @@ directive:
     set:
       alias: Name
   - where:
-      verb: New|Update
+      verb: New|Update|Remove
       subject: ConnectedKubernetes
     hide: true
   - from: source-file-csharp
