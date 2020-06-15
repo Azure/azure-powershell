@@ -33,164 +33,191 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
 
-        internal static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments(IHttpOperations httpOperations)
+        private const string DefaultArmMetaDataEndpoint = "http://discover.azure.com/";
+        private const string DisableArmMetaDataEndpoint = "DISABLED";
+
+        internal static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments(string armMetadataRequestUri, Action<string> debugLogger = null, Action<string> warningLogger = null, IHttpOperations httpOperations = null)
         {
-            IDictionary<string, AzureEnvironment> armAzureEnvironments = null;
+            IDictionary<string, AzureEnvironment> armAzureEnvironments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
             try
             {
-                var armMetadataRequestUri = Environment.GetEnvironmentVariable(ArmMetadataEnvVariable);
+                if (string.IsNullOrEmpty(armMetadataRequestUri))
+                {
+                    armMetadataRequestUri = Environment.GetEnvironmentVariable(ArmMetadataEnvVariable);
+                    if (string.IsNullOrEmpty(armMetadataRequestUri))
+                    {
+                        armMetadataRequestUri = DefaultArmMetaDataEndpoint;
+                    }
+                    else
+                    {
+                        debugLogger?.Invoke($"Get {armMetadataRequestUri} from environment variable {ArmMetadataEnvVariable}");
+                    }
+                }
+                if (DisableArmMetaDataEndpoint.Equals(armMetadataRequestUri?.Trim().ToUpper()))
+                {
+                    warningLogger?.Invoke($"Discover feature is disabled by environment variable {ArmMetadataEnvVariable}");
+                    armMetadataRequestUri = null;
+                }
                 if (!string.IsNullOrEmpty(armMetadataRequestUri))
                 {
-                    armAzureEnvironments = InitializeEnvironmentsFromArm(httpOperations, armMetadataRequestUri).Result;
+                    debugLogger?.Invoke($"Discover environments via {armMetadataRequestUri}");
+                    List<ArmMetadata> list = InitializeEnvironmentsFromArm(armMetadataRequestUri, httpOperations).ConfigureAwait(false).GetAwaiter().GetResult();
+                    foreach (var metadata in list)
+                    {
+                        var env = MapArmToAzureEnvironment(metadata);
+                        env.Type = TypeDiscovered;
+                        armAzureEnvironments[env.Name] = env;
+                        debugLogger?.Invoke($"Added discovered environment {env.Name}");
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                armAzureEnvironments = null;
+                warningLogger?.Invoke("Cannot discover environments with error");
+                warningLogger?.Invoke(e.StackTrace);
             }
 
-            if (armAzureEnvironments != null)
+            if (armAzureEnvironments.Count == 0)
             {
-                return armAzureEnvironments;
+                debugLogger?.Invoke($"Load built-in environments");
+                var azureCloud = new AzureEnvironment
+                {
+                    Name = EnvironmentName.AzureCloud,
+                    Type = TypeBuiltIn,
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.AzurePublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.AzureServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.AzureResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.AzureManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.AzureActiveDirectoryEndpoint,
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.AzureServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix,
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix,
+                    GraphUrl = AzureEnvironmentConstants.AzureGraphEndpoint,
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
+                    DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
+                    BatchEndpointResourceId = AzureEnvironmentConstants.BatchEndpointResourceId,
+                    AdTenant = "Common"
+                };
+
+                var azureChina = new AzureEnvironment
+                {
+                    Name = EnvironmentName.AzureChinaCloud,
+                    Type = TypeBuiltIn,
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.ChinaPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.ChinaServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.ChinaResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.ChinaManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint,
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.ChinaServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.ChinaStorageEndpointSuffix,
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.ChinaSqlDatabaseDnsSuffix,
+                    GraphUrl = AzureEnvironmentConstants.ChinaGraphEndpoint,
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.ChinaTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.ChinaKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
+                    BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
+                    AdTenant = "Common"
+                };
+
+                var azureUSGovernment = new AzureEnvironment
+                {
+                    Name = EnvironmentName.AzureUSGovernment,
+                    Type = TypeBuiltIn,
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.USGovernmentManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint,
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.USGovernmentStorageEndpointSuffix,
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix,
+                    GraphUrl = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
+                    BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
+                    AdTenant = "Common"
+                };
+
+                var azureGermany = new AzureEnvironment
+                {
+                    Name = EnvironmentName.AzureGermanCloud,
+                    Type = TypeBuiltIn,
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.GermanPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.GermanServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.GermanResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.GermanManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.GermanActiveDirectoryEndpoint,
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.GermanServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.GermanStorageEndpointSuffix,
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.GermanSqlDatabaseDnsSuffix,
+                    GraphUrl = AzureEnvironmentConstants.GermanGraphEndpoint,
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.GermanTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.GermanKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
+                    BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
+                    AdTenant = "Common"
+                };
+
+                armAzureEnvironments[EnvironmentName.AzureCloud] = azureCloud;
+                armAzureEnvironments[EnvironmentName.AzureChinaCloud] = azureChina;
+                armAzureEnvironments[EnvironmentName.AzureUSGovernment] = azureUSGovernment;
+                armAzureEnvironments[EnvironmentName.AzureGermanCloud] = azureGermany;
             }
 
-            var azureCloud = new AzureEnvironment
-            {
-                Name = EnvironmentName.AzureCloud,
-                PublishSettingsFileUrl = AzureEnvironmentConstants.AzurePublishSettingsFileUrl,
-                ServiceManagementUrl = AzureEnvironmentConstants.AzureServiceEndpoint,
-                ResourceManagerUrl = AzureEnvironmentConstants.AzureResourceManagerEndpoint,
-                ManagementPortalUrl = AzureEnvironmentConstants.AzureManagementPortalUrl,
-                ActiveDirectoryAuthority = AzureEnvironmentConstants.AzureActiveDirectoryEndpoint,
-                ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.AzureServiceEndpoint,
-                StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix,
-                GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
-                SqlDatabaseDnsSuffix = AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix,
-                GraphUrl = AzureEnvironmentConstants.AzureGraphEndpoint,
-                TrafficManagerDnsSuffix = AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix,
-                AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix,
-                AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
-                AzureDataLakeStoreFileSystemEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix,
-                GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
-                DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
-                BatchEndpointResourceId = AzureEnvironmentConstants.BatchEndpointResourceId,
-                AdTenant = "Common"
-            };
+            SetExtendedProperties(armAzureEnvironments);
 
-            var azureChina = new AzureEnvironment
-            {
-                Name = EnvironmentName.AzureChinaCloud,
-                PublishSettingsFileUrl = AzureEnvironmentConstants.ChinaPublishSettingsFileUrl,
-                ServiceManagementUrl = AzureEnvironmentConstants.ChinaServiceEndpoint,
-                ResourceManagerUrl = AzureEnvironmentConstants.ChinaResourceManagerEndpoint,
-                ManagementPortalUrl = AzureEnvironmentConstants.ChinaManagementPortalUrl,
-                ActiveDirectoryAuthority = AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint,
-                ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.ChinaServiceEndpoint,
-                StorageEndpointSuffix = AzureEnvironmentConstants.ChinaStorageEndpointSuffix,
-                GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
-                SqlDatabaseDnsSuffix = AzureEnvironmentConstants.ChinaSqlDatabaseDnsSuffix,
-                GraphUrl = AzureEnvironmentConstants.ChinaGraphEndpoint,
-                TrafficManagerDnsSuffix = AzureEnvironmentConstants.ChinaTrafficManagerDnsSuffix,
-                AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.ChinaKeyVaultDnsSuffix,
-                AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
-                AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                DataLakeEndpointResourceId = null,
-                GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
-                BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
-                AdTenant = "Common"
-            };
-
-            var azureUSGovernment = new AzureEnvironment
-            {
-                Name = EnvironmentName.AzureUSGovernment,
-                PublishSettingsFileUrl = AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl,
-                ServiceManagementUrl = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
-                ResourceManagerUrl = AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint,
-                ManagementPortalUrl = AzureEnvironmentConstants.USGovernmentManagementPortalUrl,
-                ActiveDirectoryAuthority = AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint,
-                ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
-                StorageEndpointSuffix = AzureEnvironmentConstants.USGovernmentStorageEndpointSuffix,
-                GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
-                SqlDatabaseDnsSuffix = AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix,
-                GraphUrl = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
-                TrafficManagerDnsSuffix = AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix,
-                AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix,
-                AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
-                AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                DataLakeEndpointResourceId = null,
-                GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
-                BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
-                AdTenant = "Common"
-            };
-
-            var azureGermany = new AzureEnvironment
-            {
-                Name = EnvironmentName.AzureGermanCloud,
-                PublishSettingsFileUrl = AzureEnvironmentConstants.GermanPublishSettingsFileUrl,
-                ServiceManagementUrl = AzureEnvironmentConstants.GermanServiceEndpoint,
-                ResourceManagerUrl = AzureEnvironmentConstants.GermanResourceManagerEndpoint,
-                ManagementPortalUrl = AzureEnvironmentConstants.GermanManagementPortalUrl,
-                ActiveDirectoryAuthority = AzureEnvironmentConstants.GermanActiveDirectoryEndpoint,
-                ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.GermanServiceEndpoint,
-                StorageEndpointSuffix = AzureEnvironmentConstants.GermanStorageEndpointSuffix,
-                GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
-                SqlDatabaseDnsSuffix = AzureEnvironmentConstants.GermanSqlDatabaseDnsSuffix,
-                GraphUrl = AzureEnvironmentConstants.GermanGraphEndpoint,
-                TrafficManagerDnsSuffix = AzureEnvironmentConstants.GermanTrafficManagerDnsSuffix,
-                AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.GermanKeyVaultDnsSuffix,
-                AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
-                AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                DataLakeEndpointResourceId = null,
-                GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
-                BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
-                AdTenant = "Common"
-            };
-
-            var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                [EnvironmentName.AzureCloud] = azureCloud,
-                [EnvironmentName.AzureChinaCloud] = azureChina,
-                [EnvironmentName.AzureUSGovernment] = azureUSGovernment,
-                [EnvironmentName.AzureGermanCloud] = azureGermany
-            };
-
-            SetExtendedProperties(result);
-            return result;
+            return armAzureEnvironments;
         }
 
         /// <summary>
         /// Initializes cloud metadata dynamically from ARM.
         /// </summary>
-        private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(
-            IHttpOperations httpOperations, 
-            string armMetadataRequestUri)
+        private static async Task<List<ArmMetadata>> InitializeEnvironmentsFromArm(string armMetadataRequestUri, IHttpOperations httpOperations = null)
         {
+            if (httpOperations == null)
+            {
+                httpOperations = HttpClientOperationsFactory.Create().GetHttpOperations();
+            }
             var armResponseMessage = await httpOperations.GetAsync(armMetadataRequestUri);
             if (armResponseMessage?.StatusCode != HttpStatusCode.OK)
             {
-                throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
+                throw new Exception($"Failed to load cloud metadata from the url {armMetadataRequestUri}.");
             }
 
-            var armMetadataContent = await armResponseMessage.Content?.ReadAsStringAsync();
+            string armMetadataContent = null;
+
+            if (armResponseMessage.Content != null)
+            {
+                armMetadataContent = await armResponseMessage.Content.ReadAsStringAsync();
+            }
             if (string.IsNullOrEmpty(armMetadataContent))
             {
-                throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
+                throw new Exception($"Failed to load cloud metadata from the url {armMetadataRequestUri}.");
             }
 
-            var armMetadataList = JsonConvert.DeserializeObject<List<ArmMetadata>>(armMetadataContent);
-            var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var armMetadata in armMetadataList)
-            {
-                result[armMetadata.Name] = MapArmToAzureEnvironment(armMetadataList.First(a =>
-                    a.Name.Equals(armMetadata.Name, StringComparison.InvariantCultureIgnoreCase)));
-            }
-
-            SetExtendedProperties(result);
-            return result;
+            return JsonConvert.DeserializeObject<List<ArmMetadata>>(armMetadataContent);
         }
 
         /// <summary>
@@ -199,27 +226,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="azureEnvironments">Collection of AzureEnvironments</param>
         private static void SetExtendedProperties(IDictionary<string, AzureEnvironment> azureEnvironments)
         {
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.AzureAnalysisServicesEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
+            if(azureEnvironments.ContainsKey(EnvironmentName.AzureCloud))
+            {
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.AzureAnalysisServicesEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
+            }
 
-            azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.ChinaSynapseAnalyticsEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.ChinaSynapseAnalyticsEndpointResourceId);
+            if(azureEnvironments.ContainsKey(EnvironmentName.AzureChinaCloud))
+            {
+                azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.ChinaSynapseAnalyticsEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.ChinaSynapseAnalyticsEndpointResourceId);
+            }
 
-            azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpoint);
-            azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointResourceId);
+            if(azureEnvironments.ContainsKey(EnvironmentName.AzureUSGovernment))
+            {
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpoint);
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointResourceId);
+            }
 
-            azureEnvironments[EnvironmentName.AzureGermanCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureGermanCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.GermanAnalysisServicesEndpointResourceId);
+            if(azureEnvironments.ContainsKey(EnvironmentName.AzureGermanCloud))
+            {
+                azureEnvironments[EnvironmentName.AzureGermanCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureGermanCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.GermanAnalysisServicesEndpointResourceId);
+            }
         }
 
         /// <summary>
@@ -328,8 +367,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Predefined Microsoft Azure environments
         /// </summary>
-        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } =
-            InitializeBuiltInEnvironments(HttpClientOperationsFactory.Create().GetHttpOperations());
+        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+
+        static AzureEnvironment()
+        {
+            DiscoverEnvironments();
+        }
+
+        /// <summary>
+        /// Discover environments and load built-in environments
+        /// </summary>
+        public static void DiscoverEnvironments(string uri = null, Action<string> debugLogger = null, Action<string> warningLogger = null)
+        {
+            PublicEnvironments.Clear();
+            var environments = InitializeBuiltInEnvironments(uri, debugLogger, warningLogger);
+            foreach (var env in environments)
+            {
+                PublicEnvironments.Add(env.Key, env.Value);
+            }
+        }
 
         public AzureEnvironment()
         {
@@ -348,6 +404,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The name of the environment
         /// </summary>
         public string Name { get; set; }
+
+        public const string TypeUserDefined = "User-defined";
+        public const string TypeDiscovered = "Discovered";
+        public const string TypeBuiltIn = "Built-in";
+
+        /// <summary>
+        /// Type of environment
+        /// </summary>
+        public string Type { get; set; } = TypeUserDefined;
 
         /// <summary>
         /// Whether the environment uses AAD (false) or ADFS (true) authentication

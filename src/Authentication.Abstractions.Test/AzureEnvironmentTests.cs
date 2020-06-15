@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace Authentication.Abstractions.Test
@@ -30,15 +28,13 @@ namespace Authentication.Abstractions.Test
         public void TestArmAndNonArmBasedCloudMetadataInit()
         {
             Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\GoodArmResponse.json");
-            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(TestOperationsFactory.Create().GetHttpOperations());
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
 
-            var unequalItemsDict = armEnvironments
-                .Where(keyValuePair => !hardCodedEnvironments[keyValuePair.Key].Equals(keyValuePair.Value))
-                .ToDictionary(entry => entry.Key, entry => entry.Value);
-
-            if (unequalItemsDict.Any())
+            // Check all discovered environments are loaded.
+            Assert.Equal(4, armEnvironments.Count);
+            foreach (var env in armEnvironments.Values)
             {
-                Assert.True(false, "Hard coded and ARM based cloud metadata initializations have different values.");
+                Assert.Equal(AzureEnvironment.TypeDiscovered, env.Type);
             }
         }
 
@@ -46,15 +42,27 @@ namespace Authentication.Abstractions.Test
         public void TestFallbackWhenArmCloudMetadataInitFails()
         {
             Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\BadArmResponse.json");
-            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(TestOperationsFactory.Create().GetHttpOperations());
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
 
-            var unequalItemsDict = armEnvironments
-                .Where(keyValuePair => !hardCodedEnvironments[keyValuePair.Key].Equals(keyValuePair.Value))
-                .ToDictionary(entry => entry.Key, entry => entry.Value);
-
-            if (unequalItemsDict.Any())
+            // Check all built-in environments are loaded because discover is failed
+            Assert.Equal(4, armEnvironments.Count);
+            foreach (var env in armEnvironments.Values)
             {
-                Assert.True(false, "Hard coded and ARM based cloud metadata initializations have different values.");
+                Assert.Equal(AzureEnvironment.TypeBuiltIn, env.Type);
+            }
+        }
+
+        [Fact]
+        public void TestDisableArmCloudMetadataInit()
+        {
+            Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, "disabled");
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
+
+            // Check all built-in environments are loaded because discover is disabled
+            Assert.Equal(4, armEnvironments.Count);
+            foreach (var env in armEnvironments.Values)
+            {
+                Assert.Equal(AzureEnvironment.TypeBuiltIn, env.Type);
             }
         }
     }
