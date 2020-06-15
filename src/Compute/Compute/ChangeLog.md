@@ -19,7 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Returning Substatuses from Get-AzVMCustomScriptExtension [#11297]
+* Added Substatuses to VMCustomScriptExtension [#11297]
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Fixed name of new VM Extension for SAP
 
 
 ## Version 4.1.0

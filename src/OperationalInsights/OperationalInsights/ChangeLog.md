@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added alias "FunctionParameters" for parameter "FunctionParameter" to
+    - `New-AzOperationalInsightsSavedSearch`
+    - `Set-AzOperationalInsightsSavedSearch`
+
+## Version 2.1.0
 * Upgraded SDK to 0.21.0
 * Added optional parameters to 
     - `New-AzOperationalInsightsSavedSearch`

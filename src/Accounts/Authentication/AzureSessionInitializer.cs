@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             /// <summary>
             /// Adal Logger for Adal 3.x +
             /// </summary>
-            public AdalLogger AdalLogger { get; private set; }  
+            public AdalLogger AdalLogger { get; private set; }
 
             /// <summary>
             /// Write messages to the existing trace listeners when log messages occur
@@ -262,10 +262,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             /// <param name="message"></param>
             private void WriteToTraceListeners(string message)
             {
-                foreach (var listener in AuthenticationTraceListeners)
+                for (var i = 0; i < AuthenticationTraceListeners.Count; ++i) // don't use foreach, enumerator is not thread safe
                 {
-                    var trace = listener as TraceListener;
-                    trace.WriteLine(message);
+                    try
+                    {
+                        AuthenticationTraceListeners[i].WriteLine(message);
+                    }
+                    catch
+                    {
+                        // ignroe any exception
+                    }
                 }
             }
 #endif

@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added safeguard to delete created webapp if restore failed in `Restore-AzDeletedWebApp`
 * Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed bug that prevented changing Container settings in `Set-AzWebApp` and `Set-AzWebAppSlot`
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
