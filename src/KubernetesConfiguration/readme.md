@@ -63,7 +63,24 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
+      subject: SourceControlConfiguration
+    set:
+      subject: KubernetesConfiguration
+  - where:
       parameter-name: ClusterResourceName
     set:
       parameter-name: ClusterType
+  - where:
+      verb: Set
+      subject: KubernetesConfiguration
+    set:
+      verb: Update
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+    hide: true
+  - where:
+      verb: Update
+      subject: KubernetesConfiguration
+    remove: true
 ```
