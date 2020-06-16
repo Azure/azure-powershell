@@ -51,7 +51,7 @@ $constants["RuntimeToDefaultOSType"] = @{
     'Python' = 'Linux'
 }
 
-# These are use for tab completion for the RuntimeVersion parameter in New-AzFunctionApp.
+# These are used for tab completion for the RuntimeVersion parameter in New-AzFunctionApp.
 $constants["RuntimeVersions"] = @{
     'DotNet'= @('2', '3')
     'Node' = @('8', '10', '12')
