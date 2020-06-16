@@ -19,5 +19,5 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.0-preview
+## Version 0.1.0
 * General availability of `Az.Marketplace` module
