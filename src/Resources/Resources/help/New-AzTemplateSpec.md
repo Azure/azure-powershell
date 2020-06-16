@@ -1,0 +1,217 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+Module Name: Az.Resources
+online version:
+schema: 2.0.0
+---
+
+# New-AzTemplateSpec
+
+## SYNOPSIS
+Creates a new Template Spec.
+
+## SYNTAX
+
+### FromJsonStringParameterSet (Default)
+```
+New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
+ [-DisplayName <String>] [-Location <String>] -TemplateJson <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### FromJsonFileParameterSet
+```
+New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
+ [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Creates a new Template Spec version with the specified ARM Template content. The content can either come from a raw 
+JSON string (using **FromJsonStringParameterSet** parameter set) or from a specified JSON file
+(using **FromJsonFileParameterSet** parameter set).
+
+If the root Template Spec does not already exist it will be created along with the Template Spec version. If 
+a Template Spec already exists with the given name, it and the specified version will be updated (any other 
+existing versions will be preserved).
+
+## EXAMPLES
+
+### Example 1:
+```powershell
+PS C:\> $templateJson = @"
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "resources": []
+}
+"@
+PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
+```
+
+Creates a new Template Spec version "v1.0" in a Template Spec named "myTemplateSpec". The specified version 
+will have $templateJson as the version's ARM Template content.
+
+ **Note:** The ARM Template in the example is a no-op as 
+it contains no actual resources.
+
+### Example 2:
+```powershell
+PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateJsonFile 'myTemplateContent.json'
+```
+
+Creates a new Template Spec version "v2.0" in a Template Spec named "myTemplateSpec". The specified version 
+will have the content from the local file "myTemplateContent.json" as the version's ARM Template content.
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description of the template spec.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the template spec.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the template spec. Only required if the template spec does not already exist.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the template spec.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateJson
+The Azure Resource Manager template JSON.
+
+```yaml
+Type: System.String
+Parameter Sets: FromJsonStringParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateJsonFile
+The file path to the local Azure Resource Manager template JSON file.
+
+```yaml
+Type: System.String
+Parameter Sets: FromJsonFileParameterSet
+Aliases: InputFile
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The version of the template spec.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecSingleVersion
+
+## NOTES
+
+## RELATED LINKS
