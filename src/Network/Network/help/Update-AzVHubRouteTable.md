@@ -13,22 +13,22 @@ Delete a hub route table resource associated with a VirtualHub.
 ## SYNTAX
 
 ### ByVHubRouteTableName (Default)
-```
+```powershell
 Update-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String>[-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
+```powershell
 Update-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableObject
-```
+```powershell
 Update-AzVHubRouteTable -InputObject <PSVHubRouteTable> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableResourceId
-```
+```powershell
 Update-AzVHubRouteTable -ResourceId <String> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,6 +57,24 @@ PS C:\> Get-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHu
 PS C:\> $route2 = New-AzVHubRoute -Name "internet-traffic" -Destination @("0.0.0.0/0") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
 PS C:\> Update-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable" -Route @($route2)
 PS C:\> Get-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable"
+
+Name                   : testRouteTable
+Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRouteTable
+ProvisioningState      : Succeeded
+Labels                 : {testLabel}
+Routes                 : [
+                           {
+                             "Name": "internet-traffic",
+                             "DestinationType": "CIDR",
+                             "Destinations": [
+                               "0.0.0.0/0"
+                             ],
+                             "NextHopType": "ResourceId",
+                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                           }
+                         ]
+AssociatedConnections  : []
+PropagatingConnections : []
 ```
 
 This command deletes the hub route table of the virtual hub.

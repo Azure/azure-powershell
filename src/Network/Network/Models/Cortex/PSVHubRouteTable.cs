@@ -18,23 +18,39 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using System.Text;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVHubRouteTable : PSChildResource
     {
-        [Ps1Xml(Label = "Routes", Target = ViewControl.Table)]
         public List<PSVHubRoute> Routes { get; set; }
 
         [Ps1Xml(Label = "Labels", Target = ViewControl.Table)]
         public List<string> Labels { get; set; }
 
-        [Ps1Xml(Label = "Associated Connections", Target = ViewControl.Table)]
-        public List<PSResourceId> AssociatedConnections { get; set; }
+        public List<string> AssociatedConnections { get; set; }
 
-        [Ps1Xml(Label = "Propagating Connections", Target = ViewControl.Table)]
-        public List<PSResourceId> PropagatingConnections { get; set; }
+        public List<string> PropagatingConnections { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string RoutesText
+        {
+            get { return JsonConvert.SerializeObject(Routes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        
+        [JsonIgnore]
+        public string AssociatedConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(AssociatedConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        
+        [JsonIgnore]
+        public string PropagatingConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(PropagatingConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 
     public class PSVHubRoute

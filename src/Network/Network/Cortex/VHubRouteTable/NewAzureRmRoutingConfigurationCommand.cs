@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             // Resolve the Propagated RouteTable property
             var propagatedRouteTable = new PSPropagatedRouteTable
             {
-                Labels = Label.ToList()
+                Labels = Label?.ToList()
             };
 
             var resolvedIds = new List<PSResourceId>() { };
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VHubRouteTableReferenceNotFound);
             }
 
-            var parsedHubId = new ResourceIdentifier(parsedRouteTableId.ParentResource);
+            var parsedHubName = parsedRouteTableId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             var resolvedRouteTable = new VHubRouteTableBaseCmdlet()
-                .GetVHubRouteTable(parsedRouteTableId.ResourceGroupName, parsedHubId.ResourceName, parsedRouteTableId.ResourceName);
+                .GetVHubRouteTable(parsedRouteTableId.ResourceGroupName, parsedHubName, parsedRouteTableId.ResourceName);
             return resolvedRouteTable;
         }
     }

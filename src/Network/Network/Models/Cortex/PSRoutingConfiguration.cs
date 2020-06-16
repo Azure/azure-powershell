@@ -14,21 +14,31 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSRoutingConfiguration
     {
-        [Ps1Xml(Label = "Associated Route Table", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "AssociatedRouteTable", Target = ViewControl.Table, ScriptBlock = "$_.AssociatedRouteTable.Id")]
         public PSResourceId AssociatedRouteTable { get; set; }
 
-        [Ps1Xml(Label = "Propagated Route Tables", Target = ViewControl.Table)]
         public PSPropagatedRouteTable PropagatedRouteTables { get; set; }
 
-        [Ps1Xml(Label = "Vnet Routes", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "VnetRoutes", Target = ViewControl.Table)]
         public PSVnetRoute VnetRoutes { get; set; }
+
+        [JsonIgnore]
+        public string PropagatedRouteTablesText
+        {
+            get { return JsonConvert.SerializeObject(PropagatedRouteTables, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VnetRoutesText
+        {
+            get { return JsonConvert.SerializeObject(VnetRoutes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 
     public class PSPropagatedRouteTable
@@ -42,7 +52,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVnetRoute
     {
-        [Ps1Xml(Label = "Static Routes", Target = ViewControl.Table)]
         public List<PSStaticRoute> StaticRoutes { get; set; }
     }
 
@@ -51,10 +60,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; set; }
 
-        [Ps1Xml(Label = "Address Prefxes", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "AddressPrefxes", Target = ViewControl.Table)]
         public List<string> AddressPrefixes { get; set; }
 
-        [Ps1Xml(Label = "Next Hop IpAddress", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "NextHopIpAddress", Target = ViewControl.Table)]
         public string NextHopIpAddress { get; set; }
     }
 }

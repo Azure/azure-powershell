@@ -13,17 +13,20 @@ Creates a hub route table resource associated with a VirtualHub.
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
-```
+
+```powershell
 New-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> -Route <PSVHubRoute[]> -Label <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
+
+```powershell
 New-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> -Route <PSVHubRoute[]> -Label <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
-```
+
+```powershell
 New-AzVHubRouteTable -ParentResourceId <String> -Name <String> -Route <PSVHubRoute[]> -Label <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,6 +36,7 @@ Creates the specified route table that is associated with the specified virtual 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcentralus" -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
 PS C:\> $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
@@ -47,6 +51,25 @@ PS C:\> $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "test
 
 PS C:\> $route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
 PS C:\> New-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable" -Route @($route1) -Label @("testLabel")
+
+Name                   : testRouteTable
+Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRouteTable
+ProvisioningState      : Succeeded
+Labels                 : {testLabel}
+Routes                 : [
+                           {
+                             "Name": "private-traffic",
+                             "DestinationType": "CIDR",
+                             "Destinations": [
+                               "10.30.0.0/16",
+                               "10.40.0.0/16"
+                             ],
+                             "NextHopType": "ResourceId",
+                             "NextHop": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/RinagulaSampleRG/providers/Microsoft.Network/azureFirewalls/azFwInVirtualHub"
+                           }
+                         ]
+AssociatedConnections  : []
+PropagatingConnections : []
 ```
 
 This command creates a hub route table of the virtual hub.
