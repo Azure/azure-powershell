@@ -65,7 +65,7 @@ Routes                 : [
                                "10.40.0.0/16"
                              ],
                              "NextHopType": "ResourceId",
-                             "NextHop": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/RinagulaSampleRG/providers/Microsoft.Network/azureFirewalls/azFwInVirtualHub"
+                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
                            }
                          ]
 AssociatedConnections  : []
