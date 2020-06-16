@@ -41,20 +41,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVHubRouteTable GetVHubRouteTable(string resourceGroupName, string virtualHubName, string name)
         {
-            try
-            {
-                var routeTable = VHubRouteTableClient.Get(resourceGroupName, virtualHubName, name);
-                var psVHubRouteTable = ToPsVHubRouteTable(routeTable);
-                return psVHubRouteTable;
-            }
-            catch (Exception ex)
-            {
-                if (ex is Microsoft.Azure.Management.Network.Models.ErrorException || ex is Rest.Azure.CloudException)
-                {
-                    return null;
-                }
-                throw;
-            }
+            var routeTable = VHubRouteTableClient.Get(resourceGroupName, virtualHubName, name);
+            var psVHubRouteTable = ToPsVHubRouteTable(routeTable);
+
+            return psVHubRouteTable;
         }
 
         public List<PSVHubRouteTable> ListVHubRouteTables(string resourceGroupName, string virtualHubName)

@@ -128,10 +128,17 @@ namespace Microsoft.Azure.Commands.Network
                     this.ParentResourceName = parsedParentResourceId.ResourceName;
                 }
 
-                hubRouteTableToUpdate = this.GetVHubRouteTable(this.ResourceGroupName, this.ParentResourceName, this.Name);
-                if (hubRouteTableToUpdate == null)
+                try
                 {
-                    throw new PSArgumentException(Properties.Resources.VHubRouteTableNotFound);
+                    hubRouteTableToUpdate = this.GetVHubRouteTable(this.ResourceGroupName, this.ParentResourceName, this.Name);
+                }
+                catch (Exception ex)
+                {
+                    if (ex is Microsoft.Azure.Management.Network.Models.ErrorException || ex is Rest.Azure.CloudException)
+                    {
+                        throw new PSArgumentException(Properties.Resources.VHubRouteTableNotFound);
+                    }
+                    throw;
                 }
             }
 
