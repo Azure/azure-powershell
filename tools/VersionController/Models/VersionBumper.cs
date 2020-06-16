@@ -7,7 +7,7 @@ using System.Management.Automation.Language;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
-using VersionController.Utilities;
+using Tools.Common.Utilities;
 
 namespace VersionController.Models
 {
@@ -78,9 +78,11 @@ namespace VersionController.Models
         public Tuple<string, bool> GetOldVersion()
         {
             string version;
-            string localVersion = null, psVersion = null, testVersion = null;
+            string localVersion = null;
+            // string localVersion = null, psVersion = null, testVersion = null;
             bool isPreview;
-            bool localPreview = false, psPreview = false, testPreview = false;
+            bool localPreview = false;
+            // bool localPreview = false, psPreview = false, testPreview = false;
             var moduleName = _fileHelper.ModuleName;
             
             using (PowerShell powershell = PowerShell.Create())
@@ -98,53 +100,53 @@ namespace VersionController.Models
             version = localVersion;
             isPreview = localPreview;
 
-            using (PowerShell powetshell = PowerShell.Create())
-            {
-                powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-                powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
-                var cmdletResult = powetshell.Invoke();
-                if (cmdletResult.Count != 0)
-                {
-                    var psVersionImformation = cmdletResult[0].ToString();
-                    Regex reg = new Regex("Version=(.*?)(-|;)");
-                    Match match = reg.Match(psVersionImformation);
-                    psVersion = match.Groups[1].Value;
-                    psPreview = Regex.IsMatch(psVersionImformation, "preview");
-                }
-            }
-            if (psVersion == null)
-            {
-                psVersion = "0.1.0";
-            }
-            if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
-            {
-                version = psVersion;
-                isPreview = psPreview;
-            }
+            // using (PowerShell powetshell = PowerShell.Create())
+            // {
+            //     powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
+            //     var cmdletResult = powetshell.Invoke();
+            //     if (cmdletResult.Count != 0)
+            //     {
+            //         var psVersionImformation = cmdletResult[0].ToString();
+            //         Regex reg = new Regex("Version=(.*?)(-|;)");
+            //         Match match = reg.Match(psVersionImformation);
+            //         psVersion = match.Groups[1].Value;
+            //         psPreview = Regex.IsMatch(psVersionImformation, "preview");
+            //     }
+            // }
+            // if (psVersion == null)
+            // {
+            //     psVersion = "0.1.0";
+            // }
+            // if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
+            // {
+            //     version = psVersion;
+            //     isPreview = psPreview;
+            // }
 
-            using (PowerShell powetshell = PowerShell.Create())
-            {
-                powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
-                powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
-                var cmdletResult = powetshell.Invoke();
-                if (cmdletResult.Count != 0)
-                {
-                    var testVersionImformation = cmdletResult[0].ToString();
-                    Regex reg = new Regex("Version=(.*?)(-|;)");
-                    Match match = reg.Match(testVersionImformation);
-                    testVersion = match.Groups[1].Value;
-                    testPreview = Regex.IsMatch(testVersionImformation, "preview");
-                }
-            }
-            if (testVersion == null)
-            {
-                testVersion = "0.1.0";
-            }
-            if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
-            {
-                version = testVersion;
-                isPreview = testPreview;
-            }
+            // using (PowerShell powetshell = PowerShell.Create())
+            // {
+            //     powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
+            //     var cmdletResult = powetshell.Invoke();
+            //     if (cmdletResult.Count != 0)
+            //     {
+            //         var testVersionImformation = cmdletResult[0].ToString();
+            //         Regex reg = new Regex("Version=(.*?)(-|;)");
+            //         Match match = reg.Match(testVersionImformation);
+            //         testVersion = match.Groups[1].Value;
+            //         testPreview = Regex.IsMatch(testVersionImformation, "preview");
+            //     }
+            // }
+            // if (testVersion == null)
+            // {
+            //     testVersion = "0.1.0";
+            // }
+            // if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
+            // {
+            //     version = testVersion;
+            //     isPreview = testPreview;
+            // }
 
             return Tuple.Create(version, isPreview);
         }
