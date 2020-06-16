@@ -85,7 +85,7 @@ will have $templateJson as the version's ARM Template content. If the root Templ
 do not already exist they will be created.
 
 
- *Notes:** 
+**Notes:** 
 
 * The ARM Template in the example is a no-op as it contains no actual resources.
 * Location is only required when the Template Spec does not already exist
