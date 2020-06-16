@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network
     using AutoMapper;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Management.Network;
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -40,10 +41,20 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVHubRouteTable GetVHubRouteTable(string resourceGroupName, string virtualHubName, string name)
         {
-            var routeTable = VHubRouteTableClient.Get(resourceGroupName, virtualHubName, name);
-            var psVHubRouteTable = ToPsVHubRouteTable(routeTable);
-
-            return psVHubRouteTable;
+            try
+            {
+                var routeTable = VHubRouteTableClient.Get(resourceGroupName, virtualHubName, name);
+                var psVHubRouteTable = ToPsVHubRouteTable(routeTable);
+                return psVHubRouteTable;
+            }
+            catch (Exception ex)
+            {
+                if (ex is Microsoft.Azure.Management.Network.Models.ErrorException || ex is Rest.Azure.CloudException)
+                {
+                    return null;
+                }
+                throw;
+            }
         }
 
         public List<PSVHubRouteTable> ListVHubRouteTables(string resourceGroupName, string virtualHubName)
