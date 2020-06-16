@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoDiscover
-Discovers environments via default or configured endpoit.
+Discovers environments via default or configured endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
