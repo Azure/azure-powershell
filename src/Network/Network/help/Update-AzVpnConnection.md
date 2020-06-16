@@ -75,6 +75,22 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -114,6 +130,22 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -418,3 +450,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVpnConnection](./New-AzVpnConnection.md)
 
 [Remove-AzVpnConnection](./Remove-AzVpnConnection.md)
+
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)

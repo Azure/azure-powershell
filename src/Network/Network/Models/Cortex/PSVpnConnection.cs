@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVpnConnection : PSChildResource
     {
@@ -59,7 +60,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
         public bool EnableInternetSecurity { get; set; }
 
-        [Ps1Xml(Label = "Routing Configuration", Target = ViewControl.Table)]
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

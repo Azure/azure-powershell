@@ -12,21 +12,50 @@ Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRou
 
 ## SYNTAX
 
-```
+```powershell
 New-AzVHubRoute -Name <String> -Destination <String[]> -DestinationType <String> -NextHop <String> -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Creates a VHubRoute object.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> $route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+PS C:\> $rgName = "testRg"
+PS C:\> $firewallName = "testFirewall"
+PS C:\> $firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+PS C:\> New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+
+Name            : private-traffic
+DestinationType : CIDR
+Destinations    : {10.30.0.0/16, 10.40.0.0/16}
+NextHopType     : ResourceId
+NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall
 ```
 
-The above command will create a VHubRoute object which can then be added to a VHubRouteTable resource.
+The above command will create a VHubRoute object with nextHop as the specified Firewall which can then be added to a VHubRouteTable resource.
+
+### Example 2
+
+```powershell
+PS C:\> $rgName = "testRg"
+PS C:\> $hubName = "testHub"
+PS C:\> $hubVnetConnName = "testHubVnetConn"
+PS C:\> $hubVnetConnection = Get-AzVirtualHubVnetConnection -Name $hubVnetConnName -ParentResourceName $hubName -ResourceGroupName $rgName
+PS C:\> New-AzVHubRoute -Name "nva-traffic" -Destination @("10.20.0.0/16", "10.50.0.0/16") -DestinationType "CIDR" -NextHop $hubVnetConnection.Id -NextHopType "ResourceId"
+
+Name            : private-traffic
+DestinationType : CIDR
+Destinations    : {10.30.0.0/16, 10.40.0.0/16}
+NextHopType     : ResourceId
+NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testHubVnetConn
+```
+
+The above command will create a VHubRoute object with nextHop as the specified hubVnetConnection which can then be added to a VHubRouteTable resource.
 
 ## PARAMETERS
 

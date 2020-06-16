@@ -52,6 +52,22 @@ Id                     : /subscriptions/{subscriptionId}/resourceGroups/testRG/p
 RemoteVirtualNetwork   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 EnableInternetSecurity : True
 ProvisioningState      : Succeeded
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection is also created which is peer the Virtual Network to the Virtual Hub. This Virtual Network Connection is then updated to enable internet security.
@@ -230,3 +246,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)
