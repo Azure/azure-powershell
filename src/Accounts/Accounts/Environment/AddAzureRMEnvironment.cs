@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = DiscoveryParameterSet, Mandatory = true, 
-            HelpMessage = "Discovers environments via default or configured endpoit.")]
+            HelpMessage = "Discovers environments via default or configured endpoint.")]
         public SwitchParameter AutoDiscover  { get; set; }
 
         [Parameter(ParameterSetName = DiscoveryParameterSet, Mandatory = false, 
