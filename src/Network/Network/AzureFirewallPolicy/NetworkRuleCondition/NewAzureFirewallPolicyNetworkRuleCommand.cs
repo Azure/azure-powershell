@@ -16,7 +16,9 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Network.AzureFirewallPolicy;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -36,14 +38,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "SourceAddress",
+            ChangeDescription = "This parameter is becoming optional as SourceIpGroup can be provided without this.",
+            IsBecomingMandatory = false)]
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The source addresses of the rule")]
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddress,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
+        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The source ipgroups of the rule")]
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroup,
+            HelpMessage = "The source ipgroups of the rule. Either SourceIpGroup or SourceAddress must be present.")]
+        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
@@ -102,12 +112,6 @@ namespace Microsoft.Azure.Commands.Network
             if ((DestinationAddress == null) && (DestinationIpGroup == null) && (DestinationFqdn == null))
             {
                 throw new ArgumentException("Either DestinationAddress, DestinationIpGroup or DestinationFqdns is required");
-            }
-
-            // One of SourceAddress or SourceIpGroup must be present
-            if ((SourceAddress == null) && (SourceIpGroup == null))
-            {
-                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
             }
 
             var networkRule = new PSAzureFirewallPolicyNetworkRule

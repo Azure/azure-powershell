@@ -16,7 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.AzureFirewallPolicy;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,14 +38,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The source addresses of the rule")]
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddress,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The source ipgroups of the rule")]
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroup,
+            HelpMessage = "The source ipgroups of the rule. Either SourceIpGroup or SourceAddress must be present.")]
+        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
