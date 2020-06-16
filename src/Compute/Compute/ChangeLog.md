@@ -19,9 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
-* Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.
-* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Added SimulateEviction parameter to `Set-AzVM` and `Set-AzVmssVM` cmdlets.
+* Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for `New-AzGalleryImageVersion` cmdlet.
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for `New-AzVM` and `New-AzVMConfig` cmdlets.
 * Fixed name of new VM Extension for SAP
 
 ## Version 4.1.0

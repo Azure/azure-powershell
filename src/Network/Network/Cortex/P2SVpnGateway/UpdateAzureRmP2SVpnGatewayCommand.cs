@@ -154,6 +154,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Custom Dns Servers.")]
+        public string[] CustomDnsServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -217,6 +223,16 @@ namespace Microsoft.Azure.Commands.Network
                         p2sConnectionConfig
                     };
                 }
+            }
+
+            // Set the custom dns servers, if it is specified by customer.
+            if (CustomDnsServer != null && this.CustomDnsServer.Any())
+            {
+                existingP2SVpnGateway.CustomDnsServers = CustomDnsServer?.ToList();
+            }
+            else
+            {
+                existingP2SVpnGateway.CustomDnsServers = null;
             }
 
             //// Resolve the VpnServerConfiguration, if specified

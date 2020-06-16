@@ -210,6 +210,11 @@ namespace Microsoft.Azure.Commands.Network
         public string VirtualHubId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ip addresses for the firewall attached to a virtual hub")]
+        public PSAzureFirewallHubIpAddresses HubIPAddress { get; set; }
+
+        [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The firewall policy attached to the firewall")]
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
+                if(this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                {
+                    throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
                 var sku = new PSAzureFirewallSku();
                 sku.Name = MNM.AzureFirewallSkuName.AZFWHub;
                 sku.Tier = MNM.AzureFirewallSkuTier.Standard;
@@ -276,7 +286,8 @@ namespace Microsoft.Azure.Commands.Network
                     Location = this.Location,
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
-                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                    HubIPAddresses = this.HubIPAddress
                 };
             }
             else
@@ -296,8 +307,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : "false"),
-                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : "true"),
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
                     DNSServer = this.DnsServer,
                     Sku = sku
                 };
