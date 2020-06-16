@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -37,22 +37,36 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
+            HelpMessage = "The source ipgroups of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination ipgroups of the rule")]
+        public string[] DestinationIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] DestinationPort { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination fqdns of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -68,17 +82,58 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
+            if (DestinationFqdn != null)
+            {
+                foreach (string fqdn in DestinationFqdn)
+                {
+                    ValidateIsFqdn(fqdn);
+                }
+            }
+
+            // Only one of DestinationAddress/DestinationIpGroup or DestinationFqdns is allowed
+            // Eventually we may want to have exclusitivity with IpGroup too but for now not doing that
+            if (((DestinationAddress != null) || (DestinationIpGroup != null)) && (DestinationFqdn != null))
+            {
+                throw new ArgumentException("Both DestinationAddress or DestinationIpGroup and DestinationFqdns not allowed");
+            }
+
+            // One of DestinationAddress, DestinationIpGroup or DestinationFqdns must be present
+            if ((DestinationAddress == null) && (DestinationIpGroup == null) && (DestinationFqdn == null))
+            {
+                throw new ArgumentException("Either DestinationAddress, DestinationIpGroup or DestinationFqdns is required");
+            }
+
+            // One of SourceAddress or SourceIpGroup must be present
+            if ((SourceAddress == null) && (SourceIpGroup == null))
+            {
+                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
+            }
+
             var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
                 Name = this.Name,
                 protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
-                RuleType = "NetworkRuleCondition"
+                DestinationFqdns = this.DestinationFqdn?.ToList(),
+                RuleType = "NetworkRule"
             };
+
             WriteObject(networkRule);
+        }
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^\\*$|^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
+            }
         }
     }
 }

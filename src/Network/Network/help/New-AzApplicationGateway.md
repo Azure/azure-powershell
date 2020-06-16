@@ -33,6 +33,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>]
  [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -56,6 +57,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
  [-EnableHttp2] [-EnableFIPS] [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,8 +81,9 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdentityByIdentityObject
@@ -103,6 +106,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity>
  [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -192,7 +196,7 @@ PS C:\> $Gateway = New-AzApplicationGateway -Name "AppGateway01" -ResourceGroupN
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +211,7 @@ Accept wildcard characters: False
 Specifies authentication certificates for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
+Type: PSApplicationGatewayAuthenticationCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +226,7 @@ Accept wildcard characters: False
 Autoscale Configuration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAutoscaleConfiguration
+Type: PSApplicationGatewayAutoscaleConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +241,7 @@ Accept wildcard characters: False
 Specifies the list of back-end address pools for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
+Type: PSApplicationGatewayBackendAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +256,7 @@ Accept wildcard characters: False
 Specifies the list of back-end HTTP settings for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings[]
+Type: PSApplicationGatewayBackendHttpSettings[]
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +271,7 @@ Accept wildcard characters: False
 Customer error of an application gateway
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
+Type: PSApplicationGatewayCustomError[]
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +286,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -297,7 +301,7 @@ Accept wildcard characters: False
 Whether FIPS is enabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -312,7 +316,7 @@ Accept wildcard characters: False
 Whether HTTP2 is enabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -327,7 +331,7 @@ Accept wildcard characters: False
 Firewall configuration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
+Type: PSApplicationGatewayWebApplicationFirewallPolicy
 Parameter Sets: SetByResource
 Aliases:
 
@@ -342,7 +346,7 @@ Accept wildcard characters: False
 FirewallPolicyId
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -357,7 +361,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -372,7 +376,7 @@ Accept wildcard characters: False
 Whether Force firewallPolicy association is enabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -387,7 +391,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP configurations for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[]
+Type: PSApplicationGatewayFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +406,7 @@ Accept wildcard characters: False
 Specifies a list of front-end ports for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[]
+Type: PSApplicationGatewayFrontendPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -417,7 +421,7 @@ Accept wildcard characters: False
 Specifies a list of IP configurations for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration[]
+Type: PSApplicationGatewayIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -432,7 +436,7 @@ Accept wildcard characters: False
 Specifies a list of HTTP listeners for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener[]
+Type: PSApplicationGatewayHttpListener[]
 Parameter Sets: (All)
 Aliases:
 
@@ -447,7 +451,7 @@ Accept wildcard characters: False
 Application Gateway Identity to be assigned to Application Gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
+Type: PSManagedServiceIdentity
 Parameter Sets: IdentityByIdentityObject
 Aliases:
 
@@ -462,7 +466,7 @@ Accept wildcard characters: False
 Specifies the region in which to create the application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -477,7 +481,7 @@ Accept wildcard characters: False
 Specifies the name of application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -488,11 +492,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkConfiguration
+The list of privateLink Configuration
+
+```yaml
+Type: PSApplicationGatewayPrivateLinkConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Probes
 Specifies probes for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe[]
+Type: PSApplicationGatewayProbe[]
 Parameter Sets: (All)
 Aliases:
 
@@ -507,7 +526,7 @@ Accept wildcard characters: False
 The list of redirect configuration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[]
+Type: PSApplicationGatewayRedirectConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -522,7 +541,7 @@ Accept wildcard characters: False
 Specifies a list of request routing rules for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule[]
+Type: PSApplicationGatewayRequestRoutingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -537,7 +556,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group in which to create the application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -552,7 +571,7 @@ Accept wildcard characters: False
 The list of RewriteRuleSet
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet[]
+Type: PSApplicationGatewayRewriteRuleSet[]
 Parameter Sets: (All)
 Aliases:
 
@@ -567,7 +586,7 @@ Accept wildcard characters: False
 Specifies the stock keeping unit (SKU) of the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
+Type: PSApplicationGatewaySku
 Parameter Sets: (All)
 Aliases:
 
@@ -582,7 +601,7 @@ Accept wildcard characters: False
 Specifies the list of Secure Sockets Layer (SSL) certificates for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate[]
+Type: PSApplicationGatewaySslCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -597,7 +616,7 @@ Accept wildcard characters: False
 Specifies an SSL policy for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPolicy
+Type: PSApplicationGatewaySslPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -613,7 +632,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -628,7 +647,7 @@ Accept wildcard characters: False
 The list of trusted root certificates
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
+Type: PSApplicationGatewayTrustedRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -643,7 +662,7 @@ Accept wildcard characters: False
 Specifies URL path maps for the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap[]
+Type: PSApplicationGatewayUrlPathMap[]
 Parameter Sets: (All)
 Aliases:
 
@@ -658,7 +677,7 @@ Accept wildcard characters: False
 ResourceId of the user assigned identity to be assigned to Application Gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IdentityByUserAssignedIdentityId
 Aliases: UserAssignedIdentity
 
@@ -674,7 +693,7 @@ Specifies a web application firewall (WAF) configuration. You can use the
 Get-AzApplicationGatewayWebApplicationFirewallConfiguration cmdlet to get a WAF.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration
+Type: PSApplicationGatewayWebApplicationFirewallConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -689,7 +708,7 @@ Accept wildcard characters: False
 A list of availability zones denoting where the application gateway needs to come from.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -704,7 +723,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -720,7 +739,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
