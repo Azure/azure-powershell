@@ -23,6 +23,7 @@
 * Fixed bug that prevented changing Container settings in `Set-AzWebApp` and `Set-AzWebAppSlot`
 * Fixed bug to get SiteConfig when -Name is not given for Get-AzWebApp
 * Added a support to create ASP for Linux Apps
+* Added exceptions for clone across resource groups
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
