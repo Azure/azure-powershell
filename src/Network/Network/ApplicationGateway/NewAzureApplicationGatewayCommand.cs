@@ -229,6 +229,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of privateLink Configuration")]
+        public PSApplicationGatewayPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -353,6 +356,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.AutoscaleConfiguration != null)
             {
                 applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
+            }
+
+            if (this.PrivateLinkConfiguration != null)
+            {
+                applicationGateway.PrivateLinkConfigurations = this.PrivateLinkConfiguration?.ToList();
             }
 
             if (this.EnableHttp2.IsPresent)

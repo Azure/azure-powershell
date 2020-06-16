@@ -29,7 +29,10 @@ function Test-AzureRmIotHubLifecycle
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
 	$ResourceGroupName = getAssetName 
-	$SubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
+	# Commented below subscription and used one from EH Team as the EH PR was failing due to the updated in Microsoft.Azure.Management.EventHub to 2.7.0, 
+	# Please revert back this change ASAP  
+	#$SubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
+	$SubscriptionId = '326100e2-f69d-4268-8503-075374f62b6e'
 	$Sku = "B1"
 	$namespaceName = getAssetName 'eventHub'
 	$eventHubName = getAssetName

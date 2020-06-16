@@ -19,8 +19,37 @@
 --->
 
 ## Upcoming Release
-* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
+* Added new cmdlets for Azure FirewallPolicy
+    - New-AzFirewallPolicyDnsSetting
+    - Support for Destination FQDN in Network Rules for Firewall Policy
+ Added support for backend address pool operations
+    - `New-AzLoadBalancerBackendAddressConfig`
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+    - `Remove-AzLoadBalancerBackendAddressPool`
+    - `Get-AzLoadBalancerBackendAddressPool`
 * Added name validation for `New-AzIpGroup`
+* Added new cmdlets for Azure FirewallPolicy
+    - `New-AzFirewallPolicyThreatIntelWhitelist`
+* Updated below commands for feature: Custom dns servers set/remove on VirtualWan P2SVpnGateway.
+    - Updated New-AzP2sVpnGateway: Added optional parameter `-CustomDnsServer` for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+    - Updated Update-AzP2sVpnGateway: Added optional parameter `-CustomDnsServer` for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+* Updated `Update-AzVpnGateway`
+    - Added optional parameter `-BgpPeeringAddress` for customers to specify their custom bgps to set on VpnGateway.
+* Added new cmdlet to support resetting the routing state of a VirtualHub resource:
+    - `Reset-AzHubRouter`
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* Added Support for IpGroups in AzureFirewallPolicy Application, Network, and NAT Rules.
+* Added new cmdlets to support PrivateLink On Application Gateway
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Get-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Set-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Remove-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkIpConfiguration`
 
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
@@ -48,6 +77,18 @@
 * Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
     - Updated cmdlet:
         - New-AzFirewall
+* Add deprecation warning for `HubVnetConnection` parameter in following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+* Use HubVnetConnection create/update APIs instead of VirtualHub create/update APIs for following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+    - NewHubVirtualNetworkConnectionCommand
+    - UpdateAzureRmHubVirtualNetworkConnectionCommand
+    - RemoveHubVirtualNetworkConnectionCommand
+* Deprecate `EnableInternetSecurity` switch parameter and instead introduce `EnableInternetSecurityFlag` boolean in
+    - NewHubVirtualNetworkConnectionCommand.
+    The flag is also made true by default for newly created connections.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Network
             var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);
 
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
-            if(azureFirewallPolicy.RuleGroups != null)
+            if(azureFirewallPolicy.RuleCollectionGroups != null)
             {
-                psAzureFirewall.RuleCollectionGroups = new List<SubResource>(azureFirewallPolicy.RuleGroups);
+                psAzureFirewall.RuleCollectionGroups = new List<SubResource>(azureFirewallPolicy.RuleCollectionGroups);
             }
             else
             {
