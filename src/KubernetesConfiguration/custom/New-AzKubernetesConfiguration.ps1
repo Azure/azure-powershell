@@ -42,17 +42,11 @@ function New-AzKubernetesConfiguration {
         # The name of the kubernetes cluster.
         ${ClusterName},
     
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-        ${ClusterResourceName},
-    
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [System.String]
-        # The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
-        ${ClusterRp},
+        ${ClusterType},
     
         [Parameter(Mandatory)]
         [Alias('SourceControlConfigurationName')]
@@ -75,25 +69,6 @@ function New-AzKubernetesConfiguration {
         # This is a GUID-formatted string (e.g.
         # 00000000-0000-0000-0000-000000000000)
         ${SubscriptionId},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.DateTime]
-        # Datetime the configuration was last applied.
-        ${ComplianceStatusLastConfigApplied},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Message from when the configuration was applied.
-        ${ComplianceStatusMessage},
-    
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel])]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel]
-        # Level of the message.
-        ${ComplianceStatusMessageLevel},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -202,6 +177,17 @@ function New-AzKubernetesConfiguration {
             $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope]::Cluster
         } else {
             $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope]::Namespace
+        }
+
+        if ($PSBoundParameters.ContainsKey('ClusterType')) {
+            if ($ClusterType -eq 'ManagedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+            } elseif ($ClusterType -eq 'ConnectedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            }
+        } else {
+            $PSBoundParameters.Add('ClusterType', 'ConnectedClusters')
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
         }
 
         if ($PSBoundParameters.ContainsKey('HelmOperatorChartValues')) {
