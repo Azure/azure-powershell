@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported list hosts and restart sepcific hosts of the HDInsight cluster.
+* Supported listing hosts and restart specific hosts of the HDInsight cluster.
 
 ## Version 3.2.0
 * Supported Customer-managed key disk encryption.
