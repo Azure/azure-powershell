@@ -93,6 +93,18 @@
 * Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
     - Updated cmdlet:
         - New-AzFirewall
+* Add deprecation warning for `HubVnetConnection` parameter in following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+* Use HubVnetConnection create/update APIs instead of VirtualHub create/update APIs for following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+    - NewHubVirtualNetworkConnectionCommand
+    - UpdateAzureRmHubVirtualNetworkConnectionCommand
+    - RemoveHubVirtualNetworkConnectionCommand
+* Deprecate `EnableInternetSecurity` switch parameter and instead introduce `EnableInternetSecurityFlag` boolean in
+    - NewHubVirtualNetworkConnectionCommand.
+    The flag is also made true by default for newly created connections.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

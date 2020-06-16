@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Functions service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -86,7 +86,7 @@ input-file:
   - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServiceEnvironments.json
   - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServicePlans.json
   - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceHealthMetadata.json
-module-version: 1.0.0
+module-version: 1.0.1
 title: Functions
 subject-prefix: ''
 
