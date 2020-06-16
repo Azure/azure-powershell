@@ -18,7 +18,7 @@
         - Additional information about change #1
 --->
 
-## Upcoming Release
+## Upcoming Release 
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added new cmdlets for Azure FirewallPolicy
     - New-AzFirewallPolicyDnsSetting
@@ -42,7 +42,10 @@
 * Updated below things based on recent swagger change for Firewall Policy
     - Changes names for RuleGroup, RuleCollectionGroup and RuleType
     - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
-* Added Support for IpGroups in AzureFirewallPolicy Application, Network, and NAT Rules.
+* [Breaking Change] Added mandatory parameter `SourceIpGroup` for `New-AzFirewallPolicyApplicationRule` and `New-AzFirewallPolicyNetworkRule`.
+* [Breaking Change] Fixed `New-AzFirewallPolicyApplicationRule`, parameter `SourceAddress` to be mandatory.
+* [Breaking Change] Fixed `New-AzFirewallPolicyApplicationRule`, parameter `SourceAddress` to be mandatory.
+* [Breaking Change] Removed mandatory parameters: `TranslatedAddress`, `TranslatedPort` for `New-AzFirewallPolicyNatRuleCollection`.
 * Added new cmdlets to support PrivateLink On Application Gateway
     - `New-AzApplicationGatewayPrivateLinkConfiguration`
     - `Get-AzApplicationGatewayPrivateLinkConfiguration`
