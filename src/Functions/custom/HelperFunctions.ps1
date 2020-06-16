@@ -51,13 +51,13 @@ $constants["RuntimeToDefaultOSType"] = @{
     'Python' = 'Linux'
 }
 
-# This are use for tab completion for the RuntimeVersion parameter in New-AzFunctionApp
+# These are used for tab completion for the RuntimeVersion parameter in New-AzFunctionApp.
 $constants["RuntimeVersions"] = @{
-    'DotNet'= @(2, 3)
-    'Node' = @(8, 10, 12)
-    'Java' = @(8)
-    'PowerShell' = @(6.2)
-    'Python' = @(3.6, 3.7)
+    'DotNet'= @('2', '3')
+    'Node' = @('8', '10', '12')
+    'Java' = @('8', '11')
+    'PowerShell' = @('6.2', '7.0')
+    'Python' = @('3.6', '3.7', '3.8')
 }
 
 $constants["ReservedFunctionAppSettingNames"] = @(
@@ -223,6 +223,17 @@ function GetConnectionString
 
     $resourceGroupName = ($storageAccountInfo.Id -split "/")[4]
     $keys = Az.Functions.internal\Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountInfo.Name @PSBoundParameters -ErrorAction SilentlyContinue
+
+    if (-not $keys)
+    {
+        $errorMessage = "Failed to get key for storage account '$StorageAccountName'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetStorageAccountKey" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
     if ([string]::IsNullOrEmpty($keys[0].Value))
     {
         $errorMessage = "Storage account '$StorageAccountName' has no key value."
@@ -1013,7 +1024,9 @@ function ValidateRuntimeAndRuntimeVersion
     {
         if ($majorVersion.DisplayVersion -eq $RuntimeVersion)
         {
-            if ($majorVersion.SupportedFunctionsExtensionVersions -contains $FunctionsVersion)
+            # SupportedFunctionsExtensionVersions[0] is of the form '~int'
+            # Add '~' to the begining of FunctionsVersion
+            if ($majorVersion.SupportedFunctionsExtensionVersions -contains "~$FunctionsVersion")
             {
                 $runtimeVersionIsSupported = $true
                 break
@@ -1518,13 +1531,15 @@ function NewIdentityUserAssignedIdentity
 # Set Linux and Windows supported runtimes
 Class Runtime {
     [string]$Name
-    [Object[]]$MajorVersions
+    [MajorVersion[]]$MajorVersions
 }
 
 Class MajorVersion {
     [string]$DisplayVersion
     [string]$RuntimeVersion
     [string[]]$SupportedFunctionsExtensionVersions
+    [hashtable]$AppSettingsDictionary
+    [hashtable]$SiteConfigPropertiesDictionary
 }
 
 $LinuxRuntimes = @{}
@@ -1552,12 +1567,38 @@ function SetLinuxandWindowsSupportedRuntimes
             {
                 $majorVersion = [MajorVersion]::new()
 
+                $majorVersion.RuntimeVersion = $version.RuntimeVersion
+                $majorVersion.SupportedFunctionsExtensionVersions = $version.supportedFunctionsExtensionVersions
+
                 if ($version.displayVersion)
                 {
                     $majorVersion.DisplayVersion = $version.displayVersion
                 }
-                $majorVersion.RuntimeVersion = $version.RuntimeVersion
-                $majorVersion.SupportedFunctionsExtensionVersions = $version.supportedFunctionsExtensionVersions
+
+                if ($version.appSettingsDictionary)
+                {
+                    $appSettings = @{}
+
+                    foreach ($property in $version.appSettingsDictionary.PSObject.Properties)
+                    {
+                        $appSettings.Add($property.Name, $property.Value)
+                    }
+
+                    $majorVersion.appSettingsDictionary = $appSettings
+                }
+
+                if ($version.appSettingsDictionary)
+                {
+                    $siteConfigProperties = @{}
+
+                    foreach ($property in $version.siteConfigPropertiesDictionary.PSObject.Properties)
+                    {
+                        $siteConfigProperties.Add($property.Name, $property.Value)
+                    }
+
+                    $majorVersion.SiteConfigPropertiesDictionary = $siteConfigProperties
+                }
+
                 $runtime.MajorVersions += $majorVersion
             }
 
