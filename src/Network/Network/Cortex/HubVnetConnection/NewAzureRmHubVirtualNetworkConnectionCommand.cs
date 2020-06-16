@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.RoutingConfiguration != null)
             {
-                hubVnetConnection.RoutingConfiguration = RoutingConfiguration;
+                hubVnetConnection.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
             }
 
             List<string> resourceIds = new List<string>();

@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.RoutingConfiguration != null)
             {
-                connectionToModify.RoutingConfiguration = RoutingConfiguration;
+                connectionToModify.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
             }
 
             List<string> resourceIds = new List<string>();
