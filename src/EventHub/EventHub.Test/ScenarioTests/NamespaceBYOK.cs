@@ -11,25 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    public class NetworkRuleSetTests : EventHubTestRunner
+    public class NamespaceBYOKTests : EventHubTestRunner
     {
 
-        public NetworkRuleSetTests(Xunit.Abstractions.ITestOutputHelper output)
+        public NamespaceBYOKTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NetworkRuleSetCRUD()
+        public void NamespaceBYOKCRUD()
         {
-            TestRunner.RunTestScript("NetworkRuleSetTests");
+            TestRunner.RunTestScript("NamespaceTests");
         }
     }
 }
