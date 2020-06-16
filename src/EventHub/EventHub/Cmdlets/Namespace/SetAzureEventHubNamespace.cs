@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
-        public List<string []> KeyProperties { get; set; }
+        public List<string []> KeyProperty { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                     }
                     else
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty));
                     }                   
                     
                 }

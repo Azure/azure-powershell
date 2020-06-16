@@ -17,7 +17,7 @@ Updates the specified Event Hubs namespace.
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka]
  [-Identity] [-IdentityUserDefined <String>] [-KeySource <String>]
- [-KeyProperties <System.Collections.Generic.List`1[System.String[]]>]
+ [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
  [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-Identity]
  [-IdentityUserDefined <String>] [-KeySource <String>]
- [-KeyProperties <System.Collections.Generic.List`1[System.String[]]>]
+ [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -141,7 +141,7 @@ $key = New-AzKeyVault -ResourceGroupName prod-by3-533-rg -Name testingnewCluster
 
 # Update Namespace with KeyVault properties
 
-PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName -Location westus -KeySource Microsoft.KeyVault -KeyProperties @(@($key.Name, $keyvault.VaultUri,""))
+PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName -Location westus -KeySource Microsoft.KeyVault -KeyProperty @(@($key.Name, $keyvault.VaultUri,""))
 
 Name                          : MyNamespaceName
 Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
@@ -246,7 +246,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyProperties
+### -KeyProperty
 List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))
 
 ```yaml

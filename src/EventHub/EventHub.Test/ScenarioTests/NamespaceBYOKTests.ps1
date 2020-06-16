@@ -63,7 +63,7 @@ function NamespaceTests
         
 	### change the Namespace Keyvalut Properties
 	Write-Debug "Namespace name : $namespaceName"
-	$result = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -KeySource "Microsoft.KeyVault" -KeyProperties @(@($keyName,$keyVault.VaultUri,""))
+	$result = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -KeySource "Microsoft.KeyVault" -KeyProperty @(@($keyName,$keyVault.VaultUri,""))
 	
 	## Create Namespace and than set identity in update command 
 
