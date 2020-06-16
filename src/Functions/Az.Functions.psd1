@@ -13,7 +13,7 @@ For information on Azure Functions, please visit the following: https://docs.mic
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Functions.private.dll'
   FormatsToProcess = './Az.Functions.format.ps1xml', './custom/Functions.format.ps1xml'
-  TypesToProcess = './custom/Functions.types.ps1xml' 
+  TypesToProcess = './custom/Functions.types.ps1xml'
   ScriptsToProcess = './custom/HelperFunctions.ps1'
   FunctionsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'
   PrivateData = @{
