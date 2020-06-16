@@ -38,8 +38,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroups of the rule")]
+        public string[] SourceIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -78,10 +82,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList(),
-                RuleType = "ApplicationRuleCondition"
+                RuleType = "ApplicationRule"
             };
             WriteObject(applicationRule);
         }

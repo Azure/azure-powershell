@@ -89,6 +89,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableNoPublicIPValue { get => ParametersBody.EnableNoPublicIPValue; set => ParametersBody.EnableNoPublicIPValue = value; }
 
+        /// <summary>The name of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of KeyVault key.",
+        SerializedName = @"KeyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyName { get => ParametersBody.EncryptionKeyName ?? null; set => ParametersBody.EncryptionKeyName = value; }
+
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource EncryptionKeySource { get => ParametersBody.EncryptionKeySource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource)""); set => ParametersBody.EncryptionKeySource = value; }
+
+        /// <summary>The Uri of KeyVault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Uri of KeyVault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Uri of KeyVault.",
+        SerializedName = @"keyvaulturi",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyVaultUri { get => ParametersBody.EncryptionKeyVaultUri ?? null; set => ParametersBody.EncryptionKeyVaultUri = value; }
+
+        /// <summary>The version of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of KeyVault key.",
+        SerializedName = @"keyversion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyVersion { get => ParametersBody.EncryptionKeyVersion ?? null; set => ParametersBody.EncryptionKeyVersion = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -189,6 +236,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>The value which should be used for this field.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The value which should be used for this field.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter PrepareEncryption { get => ParametersBody.PrepareEncryption; set => ParametersBody.PrepareEncryption = value; }
 
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]

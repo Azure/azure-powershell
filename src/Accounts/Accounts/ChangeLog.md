@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update preloaded assemblies [#12024,#11976]
 * Updated Azure.Core assembly
 * Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
 
