@@ -25,6 +25,7 @@
     - Add `Get-AzSynapseFirewallRule` cmdlet 
     - Add `Update-AzSynapseFirewallRule` cmdlet 
 * Removed '-DisallowAllConnection' parameter from the 'New-AzSynapseWorkspace' cmdlet
+* Updated parameter set for New-AzSynapseSparkPool to fix node count issue for auto scale
 
 ## Version 0.1.0
 

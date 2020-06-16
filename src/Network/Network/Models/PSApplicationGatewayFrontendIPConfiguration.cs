@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
+        public PSResourceId PrivateLinkConfiguration { get; set; }
 
         [JsonIgnore]
         public string SubnetText
@@ -40,6 +41,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PublicIpAddressText
         {
             get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PrivateLinkConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(PrivateLinkConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
