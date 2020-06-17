@@ -30,18 +30,18 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         }
 
         /// <summary>
-        /// When the resolution of an assembly fails, if it's Newtonsoft.Json 9, redirect to 10
+        /// When the resolution of an assembly fails, if will try to redirect to the higher version
         /// </summary>
         public static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             try
             {
                 AssemblyName name = new AssemblyName(args.Name);
-                if (NetFxPreloadAssemblies.TryGetValue(args.Name, out Version version))
+                if (NetFxPreloadAssemblies.TryGetValue(name.Name, out Version version))
                 {
                     if (version >= name.Version && version.Major == name.Version.Major)
                     {
-                        string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{args.Name}.dll");
+                        string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{name.Name}.dll");
                         return Assembly.LoadFrom(requiredAssembly);
                     }
                 }

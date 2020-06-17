@@ -109,10 +109,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ' *General availability of `Az.Marketplace` module'
+        ReleaseNotes = '* the first preview release'
 
         # Prerelease string of this module
-         Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

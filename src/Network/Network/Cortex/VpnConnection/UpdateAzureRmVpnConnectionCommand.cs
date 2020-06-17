@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public bool? EnableInternetSecurity { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this vpn connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -214,6 +219,16 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             if (this.EnableInternetSecurity.HasValue)
             {
                 vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                vpnConnectionToModify.RoutingConfiguration = RoutingConfiguration;
             }
 
             ConfirmAction(

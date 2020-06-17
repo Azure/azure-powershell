@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
                 cfg.CreateMap<CNM.PSIpConfigurationConnectivityInformation, MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties>();
 
-                //// SDWAN
+                //// VirtualWan
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>()
                     .AfterMap((src, dest) =>
                     {
@@ -1168,6 +1168,22 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration, CNM.PSExpressRouteGatewayAutoscaleConfiguration>();
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds, CNM.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeeringId, CNM.PSExpressRouteCircuitPeeringId>();
+
+                //// Virtual Wan Custom Routing
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVHubRouteTable, MNM.HubRouteTable>();
+                cfg.CreateMap<CNM.PSVHubRoute, MNM.HubRoute>();
+                cfg.CreateMap<CNM.PSRoutingConfiguration, MNM.RoutingConfiguration>();
+                cfg.CreateMap<CNM.PSPropagatedRouteTable, MNM.PropagatedRouteTable>();
+                cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
+                cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
+                cfg.CreateMap<MNM.HubRoute, CNM.PSVHubRoute>();
+                cfg.CreateMap<MNM.RoutingConfiguration, CNM.PSRoutingConfiguration>();
+                cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
+                cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
 
                 // Virtual wan Point to site
                 // MNM to CNM
