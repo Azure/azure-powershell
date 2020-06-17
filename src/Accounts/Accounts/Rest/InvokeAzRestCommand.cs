@@ -31,12 +31,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Rest", DefaultParameterSetName = ByUri, SupportsShouldProcess = true), OutputType(typeof(PSHttpResponse))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Rest", DefaultParameterSetName = ByPath, SupportsShouldProcess = true), OutputType(typeof(PSHttpResponse))]
     public class InvokeAzRestCommand : AzureRMCmdlet
     {
         #region Parameter Set
 
-        public const string ByUri = "ByUri";
+        public const string ByPath = "ByPath";
         public const string ByParameters = "ByParameters";
 
         #endregion
@@ -51,19 +51,19 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ByParameters, Mandatory = true, HelpMessage = "Target Resource Provider Name")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Provider Name")]
         [ValidateNotNullOrEmpty]
         public string ResourceProviderName { get; set; }
 
-        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Type")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "List of Target Resource Type")]
         [ValidateNotNullOrEmpty]
         public string[] ResourceType { get; set; }
 
-        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "Target Resource Name")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = false, HelpMessage = "list of Target Resource Name")]
         [ValidateNotNullOrEmpty]
         public string[] Name { get; set; }
 
-        [Parameter(ParameterSetName = ByUri, Mandatory = true, HelpMessage = "Target Uri")]
+        [Parameter(ParameterSetName = ByPath, Mandatory = true, HelpMessage = "Target Uri")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -79,9 +79,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [Parameter(Mandatory = false, HelpMessage = "JSON format payload")]
         [ValidateNotNullOrEmpty]
         public string Payload { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -113,7 +110,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             if (!this.IsParameterBound(c => c.Path))
             {
-                this.Path = Utils.ConstructUri(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
+                this.Path = Utils.ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
 
             switch (this.Method)
