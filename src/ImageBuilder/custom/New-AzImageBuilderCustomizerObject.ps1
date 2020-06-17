@@ -41,9 +41,9 @@ function New-AzImageBuilderCustomizerObject {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${ScriptUri},
-        [Parameter(ParameterSetName='ShellCustomizer', Mandatory, HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
-        [Parameter(ParameterSetName='FileCustomizer', Mandatory, HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
-        [Parameter(ParameterSetName='PowerShellCustomizer', Mandatory, HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
+        [Parameter(ParameterSetName='ShellCustomizer', HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
+        [Parameter(ParameterSetName='FileCustomizer', HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
+        [Parameter(ParameterSetName='PowerShellCustomizer', HelpMessage="SHA256 checksum of the shell script provided in the scriptUri field.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Sha256Checksum},
