@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
-    public class UpdateAzureSynapseSqlPool : SynapseCmdletBase
+    public class UpdateAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
         private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";

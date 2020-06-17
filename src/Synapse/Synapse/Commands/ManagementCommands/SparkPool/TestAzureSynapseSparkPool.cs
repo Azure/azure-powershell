@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = TestByNameParameterSet)]
     [OutputType(typeof(bool))]
-    public class TestAzureSynapseSparkPool : SynapseCmdletBase
+    public class TestAzureSynapseSparkPool : SynapseManagementCmdletBase
     {
         private const string TestByNameParameterSet = "TestByNameParameterSet";
         private const string TestByParentObjectParameterSet = "TestByParentObjectParameterSet";

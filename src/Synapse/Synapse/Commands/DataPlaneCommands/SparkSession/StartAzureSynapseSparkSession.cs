@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = CreateByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkSession))]
-    public class StartAzureSynapseSparkSession : SynapseCmdletBase
+    public class StartAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.LanguageForExecutionCode)]
         [ValidateNotNullOrEmpty]
@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 ExecutorCount = this.ExecutorCount
             };
 
-            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
             var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion:true);
 
             PSSynapseSparkSession psSparkSession = null;

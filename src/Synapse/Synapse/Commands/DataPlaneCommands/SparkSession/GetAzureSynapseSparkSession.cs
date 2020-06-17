@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkSession))]
-    public class GetAzureSynapseSparkSession : SynapseCmdletBase
+    public class GetAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -67,8 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
                 this.SparkPoolName = resourceIdentifier.ResourceName;
             }
-
-            this.SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
 
             if (this.IsParameterBound(c => c.LivyId))
             {

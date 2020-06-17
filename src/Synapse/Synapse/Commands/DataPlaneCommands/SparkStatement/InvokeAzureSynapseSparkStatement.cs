@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkStatement, DefaultParameterSetName = RunSparkStatementByCodePathParameterSet)]
     [OutputType(typeof(PSSynapseExtendedSparkStatement))]
-    public class InvokeAzureSynapseSparkStatement : SynapseCmdletBase
+    public class InvokeAzureSynapseSparkStatement : SynapseSparkCmdletBase
     {
         private const string RunSparkStatementByCodeParameterSet = nameof(RunSparkStatementByCodeParameterSet);
         private const string RunSparkStatementByCodeAndInputObjectParameterSet = nameof(RunSparkStatementByCodeAndInputObjectParameterSet);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkStatementByCodeParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkStatementByCodeParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.LanguageForExecutionCode)]
@@ -105,8 +105,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 Code = this.Code
             };
 
-            // create spark session
-            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
             var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest, waitForCompletion:true);
             var psSessionStmt = new PSSynapseExtendedSparkStatement(sessionStmt);
             WriteObject(psSessionStmt);

@@ -80,12 +80,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// The extension key to use for the storage token audience value
         /// </summary>
-        public const string StorageOAuthEndpointResourceKey = "StorageOAuthEndpointResourceId";
+        public const string StorageOAuthEndpointResourceKey = "SynapseOAuthEndpointResourceKey";
 
         /// <summary>
         /// Default resourceId for storage OAuth tokens
         /// </summary>
-        public const string StorageOAuthEndpointResourceValue = "https://storage.azure.com";
+        public const string StorageOAuthEndpointResourceValue = "https://dev.azuresynapse.net";
 
 
         private IAccessToken accessToken;

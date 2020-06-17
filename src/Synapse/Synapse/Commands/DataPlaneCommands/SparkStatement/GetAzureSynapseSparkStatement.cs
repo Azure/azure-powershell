@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkStatement, DefaultParameterSetName = GetSparkStatementsByIdParameterSetName)]
     [OutputType(typeof(PSSynapseSparkStatement))]
-    public class GetAzureSynapseSparkStatement : SynapseCmdletBase
+    public class GetAzureSynapseSparkStatement : SynapseSparkCmdletBase
     {
         private const string GetSparkStatementsByIdParameterSetName = "GetSparkStatementsByIdParameterSet";
         private const string GetSparkStatementsByIdFromParentObjectParameterSetName = "GetSparkStatementsByParentObjectParameterSet";
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetSparkStatementsByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetSparkStatementsByIdFromParentObjectParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -57,8 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SparkPoolName = this.SessionObject.SparkPoolName;
                 this.SessionId = this.SessionObject.Id.Value;
             }
-
-            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
 
             if (this.IsParameterBound(c => c.LivyId))
             {

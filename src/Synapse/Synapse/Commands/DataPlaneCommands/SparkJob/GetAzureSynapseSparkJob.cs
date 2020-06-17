@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob,
         DefaultParameterSetName = GetSparkJobsByIdParameterSetName)]
     [OutputType(typeof(PSSynapseSparkJob))]
-    public class GetAzureSynapseSparkJob : SynapseCmdletBase
+    public class GetAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string GetSparkJobsByIdParameterSetName = "GetSparkJobsByIdParameterSet";
         private const string GetSparkJobsByIdFromParentObjectParameterSetName = "GetSparkJobsByIdFromParentObjectParameterSet";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetSparkJobsByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetSparkJobsByIdFromParentObjectParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -70,9 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
                 this.SparkPoolName = resourceIdentifier.ResourceName;
             }
-
-            SynapseAnalyticsClient.CreateSparkBatchClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
-   
 
             if (this.IsParameterBound(c => c.LivyId))
             {

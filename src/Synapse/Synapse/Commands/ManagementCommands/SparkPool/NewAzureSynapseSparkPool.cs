@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool, DefaultParameterSetName = CreateByNameAndEnableAutoScaleParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkPool))]
-    public class NewAzureSynapseSparkPool : SynapseCmdletBase
+    public class NewAzureSynapseSparkPool : SynapseManagementCmdletBase
     {
         private const string CreateByNameAndEnableAutoScaleParameterSet = "CreateByNameAndEnableAutoScaleParameterSet";
         private const string CreateByNameAndDisableAutoScaleParameterSet = "CreateByNameAndDisableAutoScaleParameterSet";

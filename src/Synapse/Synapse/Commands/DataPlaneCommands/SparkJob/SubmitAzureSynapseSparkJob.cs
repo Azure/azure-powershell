@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName)]
     [OutputType(typeof(PSSynapseSparkJob))]
-    public class SubmitAzureSynapseSparkJob : SynapseCmdletBase
+    public class SubmitAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string RunSparkJobParameterSetName = nameof(RunSparkJobParameterSetName);
         private const string RunSparkJobByParentObjectParameterSet = nameof(RunSparkJobByParentObjectParameterSet);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = RunSparkJobByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -184,7 +184,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 batchRequest.Configuration[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
             }
 
-            SynapseAnalyticsClient.CreateSparkBatchClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
             var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion:false);
             WriteObject(new PSSynapseSparkJob(jobInformation));
         }
