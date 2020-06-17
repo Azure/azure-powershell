@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.1
 * Fixed input object parameter for `Set-AzActivityLogAlert`
 * Fixed `InputObject` parameter for `Set-AzActionGroup` [#10868]
 

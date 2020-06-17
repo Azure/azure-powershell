@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Updated Az.Batch to use `Microsoft.Azure.Management.Batch` SDK version to 11.0.0
 * Added the ability to set the BatchAccount Identity in the `New-AzBatchAccount` cmdlet
 
