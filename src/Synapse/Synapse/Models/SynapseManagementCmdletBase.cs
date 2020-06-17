@@ -22,6 +22,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             set { _synapseAnalyticsManagementClient = value; }
         }
-
     }
 }

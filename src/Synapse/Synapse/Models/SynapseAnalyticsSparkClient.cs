@@ -6,7 +6,6 @@ using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +27,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
-            // choose to create batch or session
             _sparkBatchClient = new SparkBatchClient(uri, sparkPoolName, new AzureSessionCredential(context));
             _sparkSessionClient = new SparkSessionClient(uri, sparkPoolName, new AzureSessionCredential(context));
         }

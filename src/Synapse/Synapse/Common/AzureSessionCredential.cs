@@ -8,7 +8,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Common
+namespace Microsoft.Azure.Commands.Synapse.Common
 {
     public delegate void DebugLogWriter(string log);
     public class AzureSessionCredential : TokenCredential
@@ -26,12 +26,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
                DefaultContext.Account,
-               EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
+               EnsureSynapseOAuthAudienceSet(DefaultContext.Environment),
                DefaultContext.Tenant.Id,
                null,
                ShowDialog.Never,
                null,
-               StorageOAuthEndpointResourceKey);
+               SynapseOAuthEndpointResourceKey);
             accessToken =  accessToken1;
         }
 
@@ -64,13 +64,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return new ValueTask<AccessToken>(token);
         }
 
-        private IAzureEnvironment EnsureStorageOAuthAudienceSet(IAzureEnvironment environment)
+        private IAzureEnvironment EnsureSynapseOAuthAudienceSet(IAzureEnvironment environment)
         {
             if (environment != null)
             {
-                if (!environment.IsPropertySet(StorageOAuthEndpointResourceKey))
+                if (!environment.IsPropertySet(SynapseOAuthEndpointResourceKey))
                 {
-                    environment.SetProperty(StorageOAuthEndpointResourceKey, StorageOAuthEndpointResourceValue);
+                    environment.SetProperty(SynapseOAuthEndpointResourceKey, SynapseOAuthEndpointResourceValue);
                 }
             }
 
@@ -78,14 +78,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// The extension key to use for the storage token audience value
+        /// The extension key to use for the synapse token audience value
         /// </summary>
-        public const string StorageOAuthEndpointResourceKey = "SynapseOAuthEndpointResourceKey";
+        public const string SynapseOAuthEndpointResourceKey = "SynapseOAuthEndpointResourceKey";
 
         /// <summary>
-        /// Default resourceId for storage OAuth tokens
+        /// Default resourceId for synapse OAuth tokens
         /// </summary>
-        public const string StorageOAuthEndpointResourceValue = "https://dev.azuresynapse.net";
+        public const string SynapseOAuthEndpointResourceValue = "https://dev.azuresynapse.net";
 
 
         private IAccessToken accessToken;
