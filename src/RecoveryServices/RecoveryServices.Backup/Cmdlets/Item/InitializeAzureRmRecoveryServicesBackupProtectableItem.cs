@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Return the container to be deleted
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Return the container to be deleted.")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ProtectableItem.ItemContainer)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// The protected item which needs to be rehydrated
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem,
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ReprotectItem,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
