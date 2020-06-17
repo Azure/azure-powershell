@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjkxNWJiZDYtMTI1Mi00MDVmLTgxNzMtNmMwMDQyODE0NmQ5L3Jlc291cmNlR3JvdXBzL21hdHRoY2hyd2VzdGNlbnRyYWx1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWF0dGhjaHJ3ZXN0Y2VudHJhbHVzL2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHJvZHRlc3Q2L2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c39f481-e0c0-4694-9fb6-d3a78be266d0"
+          "9b773cb9-836b-400c-b5a0-e1d5cc90c865"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/10.0.0.0"
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D7E2F72B3145F9\""
+          "W/\"0x8D80CC2208DFA79\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "348d636b-1469-4a5b-9dd0-7daa281a6ce8"
+          "f7bd9397-a1ee-48f6-a496-a477be952af8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,16 +45,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "3c3f9494-8c21-4f7a-94ab-51f9eb9b9bb2"
+          "99e0dd45-53ca-4e57-9a9f-bb230f8c220a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200417T174550Z:3c3f9494-8c21-4f7a-94ab-51f9eb9b9bb2"
+          "WESTUS:20200609T221158Z:99e0dd45-53ca-4e57-9a9f-bb230f8c220a"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:50 GMT"
+          "Tue, 09 Jun 2020 22:11:58 GMT"
         ],
         "Content-Length": [
-          "663"
+          "637"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,20 +63,20 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 17 Apr 2020 17:45:50 GMT"
+          "Tue, 09 Jun 2020 22:11:58 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D7E2F72B3145F9\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-createpoolwithapplicationp-859ae56e0aeb4315a8d8ed85a2f0e869/foo?sv=2018-03-28&sr=b&sig=VfNW3bZayUm2F3qmh2mxodLY1vpugO1IckBjGxKiz2I%3D&st=2020-04-17T17%3A40%3A50Z&se=2020-04-17T21%3A45%3A50Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-04-17T21:45:50.5732366Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC2208DFA79\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=eaI2Oz5GjNI%2Fzh1%2FaVXiR0ZzCv48J0i2T1HE6yf5Cd8%3D&st=2020-06-09T22%3A06%3A58Z&se=2020-06-10T02%3A11%3A58Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:11:58.2568852Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjkxNWJiZDYtMTI1Mi00MDVmLTgxNzMtNmMwMDQyODE0NmQ5L3Jlc291cmNlR3JvdXBzL21hdHRoY2hyd2VzdGNlbnRyYWx1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWF0dGhjaHJ3ZXN0Y2VudHJhbHVzL2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28vYWN0aXZhdGU/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHJvZHRlc3Q2L2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28vYWN0aXZhdGU/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"format\": \"zip\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4d815843-d54e-413a-92b4-9587d431a0d2"
+          "10e50fe9-dd6a-4e98-9432-99bd181cca74"
         ],
         "Accept-Language": [
           "en-US"
@@ -85,7 +85,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/10.0.0.0"
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -102,13 +102,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D7E2F72C522BEA\""
+          "W/\"0x8D80CC221A2F7B8\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "e451c8fd-e19d-4f10-977e-c7496bcdd624"
+          "8a248c8d-4842-47ba-abc3-697f1b3aebae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,16 +120,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "97eb4afd-d400-4d8c-ad52-ad9ba6de0592"
+          "d25c3e76-8e58-4227-b3ee-930998969a19"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200417T174552Z:97eb4afd-d400-4d8c-ad52-ad9ba6de0592"
+          "WESTUS:20200609T221200Z:d25c3e76-8e58-4227-b3ee-930998969a19"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "Content-Length": [
-          "731"
+          "702"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,20 +138,20 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D7E2F72C522BEA\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-createpoolwithapplicationp-859ae56e0aeb4315a8d8ed85a2f0e869/foo?sv=2018-03-28&sr=b&sig=TYAY59pIMd5l5gBgrJJz50uRFXaZRymJk5uangtZ%2Bw0%3D&st=2020-04-17T17%3A40%3A52Z&se=2020-04-17T21%3A45%3A52Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-04-17T21:45:52.4912759Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-04-17T17:45:52.4393532Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC221A2F7B8\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=HGM1bY7mqb52VH8klD4qu%2BJUe70iWIfI1w3nFZ%2FYLpA%3D&st=2020-06-09T22%3A07%3A00Z&se=2020-06-10T02%3A12%3A00Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:12:00.0893602Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T22:12:00.022087Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjkxNWJiZDYtMTI1Mi00MDVmLTgxNzMtNmMwMDQyODE0NmQ5L3Jlc291cmNlR3JvdXBzL21hdHRoY2hyd2VzdGNlbnRyYWx1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWF0dGhjaHJ3ZXN0Y2VudHJhbHVzL2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHJvZHRlc3Q2L2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "35c66742-707f-4f74-afd6-45f9d889a8f1"
+          "c9274dbd-7147-4e74-8054-6f2ff1ed6ebc"
         ],
         "Accept-Language": [
           "en-US"
@@ -160,7 +160,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/10.0.0.0"
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -171,13 +171,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8D7E2F72C522BEA\""
+          "W/\"0x8D80CC221A2F7B8\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "e8b21a75-e675-4bc1-9609-4d388c8c6d6e"
+          "8ef2ad7b-d759-4cba-b5cc-958ecd1f4581"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,16 +189,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "64b8df0f-537d-4958-9bde-3b867dfe6441"
+          "6d2687b5-6663-4c83-8cd6-1cd5bb7658c3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200417T174552Z:64b8df0f-537d-4958-9bde-3b867dfe6441"
+          "WESTUS:20200609T221200Z:6d2687b5-6663-4c83-8cd6-1cd5bb7658c3"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "Content-Length": [
-          "731"
+          "702"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,10 +207,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D7E2F72C522BEA\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-createpoolwithapplicationp-859ae56e0aeb4315a8d8ed85a2f0e869/foo?sv=2018-03-28&sr=b&sig=TYAY59pIMd5l5gBgrJJz50uRFXaZRymJk5uangtZ%2Bw0%3D&st=2020-04-17T17%3A40%3A52Z&se=2020-04-17T21%3A45%3A52Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-04-17T21:45:52.6201751Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-04-17T17:45:52.4393532Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8D80CC221A2F7B8\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://prodtest6.blob.core.windows.net/app-createpoolwithapplicationp-f9ae94269c934ab7a486b1089c40562c/foo?sv=2018-03-28&sr=b&sig=HGM1bY7mqb52VH8klD4qu%2BJUe70iWIfI1w3nFZ%2FYLpA%3D&st=2020-06-09T22%3A07%3A00Z&se=2020-06-10T02%3A12%3A00Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2020-06-10T02:12:00.3214646Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2020-06-09T22:12:00.022087Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -220,13 +220,13 @@
       "RequestBody": "{\r\n  \"id\": \"testCreatePoolWithAppPackages\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 3,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"createPoolWithApplicationPackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ]\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "1ad5fb89-8dfa-4519-9f05-69893e101161"
+          "dd0488f5-c932-4f7a-9503-fc3eea404dc3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:00 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -247,16 +247,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D7E2F72CBB416D"
+          "0x8D80CC22EE2BA00"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://prodtest6.francecentral.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "29dbe47b-afd6-46cc-bb37-2a65a9357663"
+          "58b3cf70-ead6-452a-a173-806d5cbcb41e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -268,26 +268,26 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://prodtest6.francecentral.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:53 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Last-Modified": [
-          "Fri, 17 Apr 2020 17:45:53 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjkxNWJiZDYtMTI1Mi00MDVmLTgxNzMtNmMwMDQyODE0NmQ5L3Jlc291cmNlR3JvdXBzL21hdHRoY2hyd2VzdGNlbnRyYWx1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWF0dGhjaHJ3ZXN0Y2VudHJhbHVzL2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage/versions/foo?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHJvZHRlc3Q2L2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8f6906aa-74ac-4085-97a7-e50d5081d0ee"
+          "f7c4e9fb-088f-46b3-8e7b-a2cbf29cad2d"
         ],
         "Accept-Language": [
           "en-US"
@@ -296,7 +296,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/10.0.0.0"
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -307,7 +307,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8a987e15-f2b5-4f17-b650-020683906e6f"
+          "70bf516a-c9f4-4deb-9477-59f216669ffd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -322,13 +322,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f4d41c1d-4cec-44d3-9828-6948844946c3"
+          "490b4b5c-f5dd-48d0-93cd-7dc199f555dd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200417T174553Z:f4d41c1d-4cec-44d3-9828-6948844946c3"
+          "WESTUS:20200609T221222Z:490b4b5c-f5dd-48d0-93cd-7dc199f555dd"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:52 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -341,13 +341,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/2915bbd6-1252-405f-8173-6c00428146d9/resourceGroups/matthchrwestcentralus/providers/Microsoft.Batch/batchAccounts/matthchrwestcentralus/applications/createPoolWithApplicationPackage?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjkxNWJiZDYtMTI1Mi00MDVmLTgxNzMtNmMwMDQyODE0NmQ5L3Jlc291cmNlR3JvdXBzL21hdHRoY2hyd2VzdGNlbnRyYWx1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWF0dGhjaHJ3ZXN0Y2VudHJhbHVzL2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/abc/providers/Microsoft.Batch/batchAccounts/prodtest6/applications/createPoolWithApplicationPackage?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHJvZHRlc3Q2L2FwcGxpY2F0aW9ucy9jcmVhdGVQb29sV2l0aEFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "687505aa-e90a-442c-bfcc-149728ee803d"
+          "4c15247b-adcb-461d-9b05-86c65461a6b8"
         ],
         "Accept-Language": [
           "en-US"
@@ -356,7 +356,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/10.0.0.0"
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/11.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -367,7 +367,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "aeb04e9a-41c2-4a18-be3a-5d10f14d5d73"
+          "287318ec-3f67-4861-a2df-83ce61f973e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -382,13 +382,13 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "e2eb0ad2-d8e6-4c06-9be4-adb7da9c94d0"
+          "f0aa751c-0511-43c2-b332-0b1f9efe785a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200417T174553Z:e2eb0ad2-d8e6-4c06-9be4-adb7da9c94d0"
+          "WESTUS:20200609T221222Z:f0aa751c-0511-43c2-b332-0b1f9efe785a"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:53 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -407,13 +407,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e6d41180-0010-4363-b5b5-05c02558021a"
+          "90999b00-6c92-437a-b76b-bcec1f5f5ebb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 17 Apr 2020 17:45:53 GMT"
+          "Tue, 09 Jun 2020 22:12:22 GMT"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -434,7 +434,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f35c4fdb-9925-4687-99d2-36b20005c2e2"
+          "26772ec3-4443-4002-80cc-812cc35c0821"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -446,7 +446,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 17 Apr 2020 17:45:53 GMT"
+          "Tue, 09 Jun 2020 22:12:23 GMT"
         ]
       },
       "ResponseBody": "",
@@ -455,9 +455,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "prodtest6",
+    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "abc"
   }
 }

@@ -1,0 +1,89 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers?api-version=2020-01-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFya2V0cGxhY2UvcHJpdmF0ZVN0b3Jlcy9hNzBkMzg0ZC1lYzM0LTQ3ZGQtOWQzOC1lYzZkZjQ1MmNiYTEvb2ZmZXJzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84dca830-9bd6-4607-b358-4e901e58cfbe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Marketplace.MarketplaceManagementClient/1.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "x-ms-version": [
+          "1.0.0.1039 (AzureUX-MarketPlaceRP:master.0c59859b5.200612-1805)"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=d5875ee4588400a4fb0947a763344a490debf1cc23d0bcadd6b781766dbb1f00;Path=/;HttpOnly;Domain=df.marketplacerp.azure-test.net"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "621c91bf-5e55-4482-b506-b68724bc9f4a"
+        ],
+        "x-ms-correlation-request-id": [
+          "621c91bf-5e55-4482-b506-b68724bc9f4a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200614T134234Z:621c91bf-5e55-4482-b506-b68724bc9f4a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 14 Jun 2020 13:42:34 GMT"
+        ],
+        "Content-Length": [
+          "1334"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers/websense-apmailpe.triton-ap-data\",\r\n      \"name\": \"websense-apmailpe.triton-ap-data\",\r\n      \"type\": \"Microsoft.Marketplace/privateStores/offers\",\r\n      \"properties\": {\r\n        \"uniqueOfferId\": \"websense-apmailpe.triton-ap-data\",\r\n        \"specificPlanIdsLimitation\": [\r\n          \"0001\"\r\n        ],\r\n        \"eTag\": \"\\\"19001e9c-0000-0100-0000-5ee25b190000\\\"\",\r\n        \"privateStoreId\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers/manageengine.passwordmanagerpro-windows\",\r\n      \"name\": \"manageengine.passwordmanagerpro-windows\",\r\n      \"type\": \"Microsoft.Marketplace/privateStores/offers\",\r\n      \"properties\": {\r\n        \"uniqueOfferId\": \"manageengine.passwordmanagerpro-windows\",\r\n        \"specificPlanIdsLimitation\": [\r\n          \"0001\"\r\n        ],\r\n        \"eTag\": \"\\\"19003d9c-0000-0100-0000-5ee25b1b0000\\\"\",\r\n        \"privateStoreId\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers/altamira-corporation.lumify\",\r\n      \"name\": \"altamira-corporation.lumify\",\r\n      \"type\": \"Microsoft.Marketplace/privateStores/offers\",\r\n      \"properties\": {\r\n        \"uniqueOfferId\": \"altamira-corporation.lumify\",\r\n        \"specificPlanIdsLimitation\": [\r\n          \"lumify\",\r\n          \"0001\"\r\n        ],\r\n        \"eTag\": \"\\\"020032e7-0000-0100-0000-5ee629440000\\\"\",\r\n        \"privateStoreId\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "bc17bb69-1264-4f90-a9f6-0e51e29d5281"
+  }
+}

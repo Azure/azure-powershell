@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             ProtectedSettings = psExt.ProtectedSettings;
             ProvisioningState = psExt.ProvisioningState;
             Statuses = psExt.Statuses;
+            SubStatuses = psExt.SubStatuses;
             CommandToExecute = (publicSettings == null) ? null : publicSettings.commandToExecute;
         }
     }

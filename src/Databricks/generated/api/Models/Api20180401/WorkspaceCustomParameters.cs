@@ -83,6 +83,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
         public bool EnableNoPublicIPValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)EnableNoPublicIP).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)EnableNoPublicIP).Value = value; }
 
+        /// <summary>Backing field for <see cref="Encryption" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameter _encryption;
+
+        /// <summary>
+        /// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameter Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceEncryptionParameter()); set => this._encryption = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? EncryptionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).Type; }
+
         /// <summary>Backing field for <see cref="LoadBalancerBackendPoolName" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter _loadBalancerBackendPoolName;
 
@@ -143,6 +156,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         /// <summary>Internal Acessors for EnableNoPublicIPType</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.EnableNoPublicIPType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)EnableNoPublicIP).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)EnableNoPublicIP).Type = value; }
 
+        /// <summary>Internal Acessors for Encryption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameter Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceEncryptionParameter()); set { {_encryption = value;} } }
+
+        /// <summary>Internal Acessors for EncryptionType</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.EncryptionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).Type = value; }
+
+        /// <summary>Internal Acessors for EncryptionValue</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryption Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.EncryptionValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).Value = value; }
+
         /// <summary>Internal Acessors for LoadBalancerBackendPoolName</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.LoadBalancerBackendPoolName { get => (this._loadBalancerBackendPoolName = this._loadBalancerBackendPoolName ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomStringParameter()); set { {_loadBalancerBackendPoolName = value;} } }
 
@@ -154,6 +176,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>Internal Acessors for LoadBalancerIdType</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.LoadBalancerIdType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)LoadBalancerId).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)LoadBalancerId).Type = value; }
+
+        /// <summary>Internal Acessors for PrepareEncryption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameter Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.PrepareEncryption { get => (this._prepareEncryption = this._prepareEncryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomBooleanParameter()); set { {_prepareEncryption = value;} } }
+
+        /// <summary>Internal Acessors for PrepareEncryptionType</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.PrepareEncryptionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)PrepareEncryption).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)PrepareEncryption).Type = value; }
 
         /// <summary>Internal Acessors for RelayNamespaceName</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.RelayNamespaceName { get => (this._relayNamespaceName = this._relayNamespaceName ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomStringParameter()); set { {_relayNamespaceName = value;} } }
@@ -184,6 +212,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>Internal Acessors for VnetAddressPrefixType</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomParametersInternal.VnetAddressPrefixType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)VnetAddressPrefix).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)VnetAddressPrefix).Type = value; }
+
+        /// <summary>Backing field for <see cref="PrepareEncryption" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameter _prepareEncryption;
+
+        /// <summary>
+        /// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameter PrepareEncryption { get => (this._prepareEncryption = this._prepareEncryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomBooleanParameter()); set => this._prepareEncryption = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? PrepareEncryptionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)PrepareEncryption).Type; }
+
+        /// <summary>The value which should be used for this field.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public bool PrepareEncryptionValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)PrepareEncryption).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameterInternal)PrepareEncryption).Value = value; }
 
         /// <summary>Backing field for <see cref="RelayNamespaceName" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter _relayNamespaceName;
@@ -246,6 +291,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         /// <summary>The value which should be used for this field.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
         public string StorageAccountSkuNameValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)StorageAccountSkuName).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameterInternal)StorageAccountSkuName).Value = value; }
+
+        /// <summary>The name of KeyVault key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public string ValueKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyName = value; }
+
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource? ValueKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeySource = value; }
+
+        /// <summary>The Uri of KeyVault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public string ValueKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyVaultUri = value; }
+
+        /// <summary>The version of KeyVault key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
+        public string ValueKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameterInternal)Encryption).ValueKeyVersion = value; }
 
         /// <summary>Backing field for <see cref="VnetAddressPrefix" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter _vnetAddressPrefix;
@@ -361,6 +424,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         Description = @"The type of variable that this is",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? EncryptionType { get;  }
+        /// <summary>The type of variable that this is</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? LoadBalancerBackendPoolNameType { get;  }
         /// <summary>The value which should be used for this field.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
@@ -386,6 +457,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         string LoadBalancerIdValue { get; set; }
+        /// <summary>The type of variable that this is</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? PrepareEncryptionType { get;  }
+        /// <summary>The value which should be used for this field.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The value which should be used for this field.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool PrepareEncryptionValue { get; set; }
         /// <summary>The type of variable that this is</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -450,6 +537,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         string StorageAccountSkuNameValue { get; set; }
+        /// <summary>The name of KeyVault key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of KeyVault key.",
+        SerializedName = @"KeyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ValueKeyName { get; set; }
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource? ValueKeySource { get; set; }
+        /// <summary>The Uri of KeyVault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Uri of KeyVault.",
+        SerializedName = @"keyvaulturi",
+        PossibleTypes = new [] { typeof(string) })]
+        string ValueKeyVaultUri { get; set; }
+        /// <summary>The version of KeyVault key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of KeyVault key.",
+        SerializedName = @"keyversion",
+        PossibleTypes = new [] { typeof(string) })]
+        string ValueKeyVersion { get; set; }
         /// <summary>The type of variable that this is</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -502,6 +623,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? EnableNoPublicIPType { get; set; }
         /// <summary>The value which should be used for this field.</summary>
         bool EnableNoPublicIPValue { get; set; }
+        /// <summary>
+        /// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceEncryptionParameter Encryption { get; set; }
+        /// <summary>The type of variable that this is</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? EncryptionType { get; set; }
+        /// <summary>The value which should be used for this field.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryption EncryptionValue { get; set; }
         /// <summary>The name of a Backend Address Pool within an Azure Load Balancer</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter LoadBalancerBackendPoolName { get; set; }
         /// <summary>The type of variable that this is</summary>
@@ -514,6 +643,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? LoadBalancerIdType { get; set; }
         /// <summary>The value which should be used for this field.</summary>
         string LoadBalancerIdValue { get; set; }
+        /// <summary>
+        /// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomBooleanParameter PrepareEncryption { get; set; }
+        /// <summary>The type of variable that this is</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? PrepareEncryptionType { get; set; }
+        /// <summary>The value which should be used for this field.</summary>
+        bool PrepareEncryptionValue { get; set; }
         /// <summary>The name of an Azure Relay Namespace</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomStringParameter RelayNamespaceName { get; set; }
         /// <summary>The type of variable that this is</summary>
@@ -540,6 +677,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? StorageAccountSkuNameType { get; set; }
         /// <summary>The value which should be used for this field.</summary>
         string StorageAccountSkuNameValue { get; set; }
+        /// <summary>The name of KeyVault key.</summary>
+        string ValueKeyName { get; set; }
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource? ValueKeySource { get; set; }
+        /// <summary>The Uri of KeyVault.</summary>
+        string ValueKeyVaultUri { get; set; }
+        /// <summary>The version of KeyVault key.</summary>
+        string ValueKeyVersion { get; set; }
         /// <summary>
         /// The first 2 octets of the virtual network /16 address range (e.g., '10.139' for the address range 10.139.0.0/16).
         /// </summary>

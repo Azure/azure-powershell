@@ -17,7 +17,7 @@ Updates a VPN connection.
 Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-AsJob]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> 
 Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
  [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-Connec
 Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
  [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>]
  [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-AsJob]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,6 +75,22 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -114,6 +130,22 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -290,6 +322,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RoutingConfiguration
+Routing configuration for this connection
+
+```yaml
+Type: PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SharedKey
 The shared key required to set this connection up.
 
@@ -403,3 +450,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVpnConnection](./New-AzVpnConnection.md)
 
 [Remove-AzVpnConnection](./Remove-AzVpnConnection.md)
+
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)

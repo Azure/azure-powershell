@@ -198,7 +198,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 try
                 {
                     string upnOrMail = Normalize(options.UPN) ?? Normalize(options.Mail);
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.UserPrincipalName == upnOrMail);
+                    var odataQuery = new Rest.Azure.OData.ODataQuery<User>();
+                    if (!string.IsNullOrEmpty(options.UPN))
+                    {
+                        odataQuery.SetFilter(u => u.UserPrincipalName == upnOrMail);
+                    }
+                    else
+                    {
+                        odataQuery.SetFilter(u => u.Mail == upnOrMail);
+                    }
                     result = GraphClient.Users.List(odataQuery);
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }

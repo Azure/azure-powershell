@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported displaying account capabilities.
+* Supported modifying PublicNetworkAccess.
+
+## Version 1.4.0
 * Support PrivateEndpoint and PublicNetworkAccess control. 
 
 ## Version 1.3.0

@@ -59,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetVirtualNetworkGatewayCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
@@ -132,7 +132,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnClientConnectionHealth");
         }
 
-        [Fact]
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset5)]
         public void TestVirtualNetworKGatewayPacketCapture()

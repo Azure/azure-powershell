@@ -158,16 +158,20 @@ function setupEnv() {
     $functionNamePowerShell = "Functions-PowerShell-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
-    $functionNamePython = "Functions-Python-" + (RandomString -len 10)    
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
+    $functionNameNode = "Functions-Node-" + (RandomString -len 10)
+    $functionNameJava = "Functions-Java-" + (RandomString -len 10)
+    $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
 
+    $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
-    $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
-    $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
-    $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null 
+    $env.add('functionNameNode', $functionNameNode) | Out-Null
+    $env.add('functionNameJava', $functionNameJava) | Out-Null
+    $env.add('functionNamePython', $functionNamePython) | Out-Null
+    $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
 
     # Create user assigned identity
     $identityInfo = New-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name ID1 -Location $env.location
@@ -186,7 +190,7 @@ function setupEnv() {
 }
 
 function cleanupEnv() {
-    # Clean resources you create for testing
+    # Clean test resources
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsConsumption

@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `UsageLocation`, `GivenName`, `Surname`, `AccountEnabled`, `MailNickname`, `Mail` on `PSADUser` [#10526] [#10497]
+* Fixed issue that `-Mail` doesn't work on `Get-AzADUser` [#11981]
+* Added `-ExcludeChangeType` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`
+* Added `-WhatIfExcludeChangeType` parameter to `New-AzDeployment` and `New-AzResourceGroupDeployment`
+* Updated `Test-Az*Deployment` cmdlets to show better error messages
+* Fixed help message for `-Name` parameter of deployment create and What-If cmdlets
+
+## Version 2.1.0
 * Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
 * Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
 * Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
