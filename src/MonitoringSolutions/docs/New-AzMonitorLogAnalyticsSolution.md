@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzMonitorLogAnalyticsSolution
 
 ## SYNOPSIS
-Creates or updates the Solution.
+Creates a log analytics solution.
 
 ## SYNTAX
 
 ```
 New-AzMonitorLogAnalyticsSolution -ResourceGroupName <String> -Location <String> -Type <String>
- -WorkspaceId <String> -WorkspaceName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the Solution.
+Creates a log analytics solution.
 
 ## EXAMPLES
 
@@ -43,21 +43,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -74,7 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location
+Resource location.
+Must be the same as the log analytic workspace.
 
 ```yaml
 Type: System.String
@@ -82,21 +68,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-User Solution Name.
+Type of the solution to be created.
+For example "Container".
 
 ```yaml
 Type: System.String
@@ -165,24 +137,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkspaceId
-The azure resourceId for the workspace where the solution will be deployed/enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: WorkspaceResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-fake
-User Solution Name.
+### -WorkspaceResourceId
+The Azure resource ID for the workspace where the solution will be deployed/enabled.
 
 ```yaml
 Type: System.String
@@ -234,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
 
 ## NOTES
 

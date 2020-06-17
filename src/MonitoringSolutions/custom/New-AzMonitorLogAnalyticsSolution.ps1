@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Creates or updates the Solution.
+Creates a log analytics solution.
 .Description
-Creates or updates the Solution.
+Creates a log analytics solution.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -28,24 +28,18 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 #>
 function New-AzMonitorLogAnalyticsSolution {
-    [OutputType([System.Boolean])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        # fake
-        [Parameter(Mandatory)]
-        [System.String]
-        # User Solution Name.
-        ${WorkspaceName},
-
         [Parameter(Mandatory)]
         [Alias('SolutionType')]
         [System.String]
-        # User Solution Name.
+        # Type of the solution to be created. For example "Container".
         ${Type},
 
         [Parameter(Mandatory)]
@@ -66,7 +60,7 @@ function New-AzMonitorLogAnalyticsSolution {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Body')]
         [System.String]
-        # Resource location
+        # Resource location. Must be the same as the log analytic workspace.
         ${Location},
 
         [Parameter()]
@@ -77,11 +71,10 @@ function New-AzMonitorLogAnalyticsSolution {
         ${Tag},
 
         [Parameter(Mandatory)]
-        [Alias('WorkspaceResourceId')]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Body')]
         [System.String]
-        # The azure resourceId for the workspace where the solution will be deployed/enabled.
-        ${WorkspaceId},
+        # The Azure resource ID for the workspace where the solution will be deployed/enabled.
+        ${WorkspaceResourceId},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -90,12 +83,6 @@ function New-AzMonitorLogAnalyticsSolution {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Runtime')]
@@ -116,12 +103,6 @@ function New-AzMonitorLogAnalyticsSolution {
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Runtime')]
@@ -144,17 +125,15 @@ function New-AzMonitorLogAnalyticsSolution {
     )
 
     process {
-        $solutionName = "$Type($WorkspaceName)"
+        $resourceIdentifier = [Microsoft.Azure.Management.Internal.Resources.Utilities.Models.ResourceIdentifier]::new($WorkspaceResourceId)
+        $workspaceName = $resourceIdentifier.ResourceName
+        $solutionName = "$Type($workspaceName)"
         $PSBoundParameters.Add('Name', $solutionName) | Out-Null
         $PSBoundParameters.Add('PlanName', $solutionName) | Out-Null
         $PSBoundParameters.Add('PlanProduct', "OMSGallery/$Type") | Out-Null
         $PSBoundParameters.Add('PlanPublisher', "Microsoft") | Out-Null
         $PSBoundParameters.Add('PlanPromotionCode', "") | Out-Null
-        $PSBoundParameters.Remove('WorkspaceName') | Out-Null
         $PSBoundParameters.Remove('Type') | Out-Null
-        $PSBoundParameters.Remove('WorkspaceId') | Out-Null
-        $PSBoundParameters.Add('WorkspaceResourceId', $WorkspaceId) | Out-Null
         Az.MonitoringSolutions.internal\New-AzMonitorLogAnalyticsSolution @PSBoundParameters
     }
-
 }

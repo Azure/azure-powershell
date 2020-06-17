@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MonitoringSolutions
-Module Guid: 3bc23fa5-0b63-4297-9f3e-9207ac25416c
+Module Guid: 41f75f59-5fa3-44d9-827e-d16fd034356f
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: MonitoringSolutions cmdlets
 Retrieves the user solution.
 
 ### [New-AzMonitorLogAnalyticsSolution](New-AzMonitorLogAnalyticsSolution.md)
-Creates or updates the Solution.
+Creates a log analytics solution.
 
 ### [Remove-AzMonitorLogAnalyticsSolution](Remove-AzMonitorLogAnalyticsSolution.md)
 Deletes the solution in the subscription.

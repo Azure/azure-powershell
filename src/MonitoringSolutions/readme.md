@@ -49,8 +49,9 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - C:\Users\yeliu\isra-fel\azure-powershell\src\MonitoringSolutions\OperationsManagement.json
+  - C:\Users\yeliu\isra-fel\azure-powershell\src\MonitoringSolutions\custom\OperationsManagement.json
   # - $(repo)/specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json
+  # - https://github.com/Azure/azure-rest-api-specs/blob/740a40ba31720ad514a308054ba517a8ea956a3c/specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json
 
 module-version: 0.1.0
 title: MonitoringSolutions
@@ -67,13 +68,21 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Hide the cmdlets we don't need for now
+  # Remove the cmdlets we don't need for now
   - where:
       subject: Association$|Configuration$
-    hide: true
+    remove: true
   # Hide New-*Solution for customization
   - where:
       verb: New
       subject: Solution$
     hide: true
+  - where:
+      model-name: Solution
+    set:
+      format-table:
+        properties:
+          - Name
+          - Type
+          - Location
 ```
