@@ -56,7 +56,24 @@ RoutingWeight                      : 20
 ProvisioningState                  : Succeeded
 Name                               : testConnection
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
-Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection
+Id                                 : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection
+EnableInternetSecurity             : False
+RoutingConfiguration               : {
+                                       "AssociatedRouteTable": {
+                                         "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                       },
+                                       "PropagatedRouteTables": {
+                                         "Labels": [],
+                                         "Ids": [
+                                           {
+                                             "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                           }
+                                         ]
+                                       },
+                                       "VnetRoutes": {
+                                         "StaticRoutes": []
+                                       }
+                                     }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a ExpressRouteSite in West US in "testRG" resource group in Azure. 
@@ -78,6 +95,23 @@ ProvisioningState                  : Succeeded
 Name                               : testConnection1
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection1
+EnableInternetSecurity             : False
+RoutingConfiguration               : {
+                                       "AssociatedRouteTable": {
+                                         "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                       },
+                                       "PropagatedRouteTables": {
+                                         "Labels": [],
+                                         "Ids": [
+                                           {
+                                             "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                           }
+                                         ]
+                                       },
+                                       "VnetRoutes": {
+                                         "StaticRoutes": []
+                                       }
+                                     }
 
 ExpressRouteCircuitPeeringId       : Microsoft.Azure.Commands.Network.Models.PSResourceId
 AuthorizationKey                   :
@@ -86,6 +120,23 @@ ProvisioningState                  : Succeeded
 Name                               : testConnection2
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection2
+EnableInternetSecurity             : False
+RoutingConfiguration               : {
+                                       "AssociatedRouteTable": {
+                                         "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                       },
+                                       "PropagatedRouteTables": {
+                                         "Labels": [],
+                                         "Ids": [
+                                           {
+                                             "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                           }
+                                         ]
+                                       },
+                                       "VnetRoutes": {
+                                         "StaticRoutes": []
+                                       }
+                                     }
 ```
 
 This command will get all Connections in ExpressRoute "testExpressRoutegw" that start with "test"

@@ -137,6 +137,11 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableInternetSecurityFlag { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this HubVirtualnNetwork connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -181,7 +186,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 hubVnetConnection.RemoteVirtualNetwork = new MNM.SubResource(this.RemoteVirtualNetworkId);
             }
-            
+
+            if (this.RoutingConfiguration != null)
+            {
+                hubVnetConnection.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
+            }
+
             List<string> resourceIds = new List<string>();
             resourceIds.Add(hubVnetConnection.RemoteVirtualNetwork.Id);
             var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);

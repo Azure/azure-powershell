@@ -50,6 +50,21 @@
     - `Set-AzApplicationGatewayPrivateLinkConfiguration`
     - `Remove-AzApplicationGatewayPrivateLinkConfiguration`
     - `New-AzApplicationGatewayPrivateLinkIpConfiguration`
+* Added new cmdlets for HubRouteTables child resource of VirtualHub.
+    -`New-AzVHubRoute`
+    -`New-AzVHubRouteTable`
+    -`Get-AzVHubRouteTable`
+    -`Update-AzVHubRouteTable`
+    -`Remove-AzVHubRouteTable`
+* Updated existing cmdlets to support optional RoutingConfiguration input parameter for custom routing in VirtualWan.
+    -`New-AzExpressRouteConnection`
+    -`Set-AzExpressRouteConnection`
+    -`New-AzVirtualHubVnetConnection`
+    -`Update-AzVirtualHubVnetConnection`
+    -`New-AzVpnConnection`
+    -`Update-AzVpnConnection`
+    -`New-AzP2sVpnGateway`
+    -`Update-AzP2sVpnGateway`
 
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
