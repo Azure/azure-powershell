@@ -111,7 +111,8 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
 			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting',
                'Get-AzSecurityAssessment', 'Set-AzSecurityAssessment', 'Remove-AzSecurityAssessment',
                'Get-AzSecurityAssessmentMetadata', 'Set-AzSecurityAssessmentMetadata', 'Remove-AzSecurityAssessmentMetadata',
-               'Get-AzSecuritySubAssessment'
+               'Get-AzSecuritySubAssessment',
+               'Get-AzSecurityTopologies'
 
 # Variables to export from this module
 # VariablesToExport = @()
