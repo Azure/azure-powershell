@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adding Cross Region Restore feature in PowerShell.  
 * Blocked getting workload config when target item is an availability group.
 
 ## Version 3.2.0
