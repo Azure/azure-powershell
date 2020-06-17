@@ -23,8 +23,8 @@ Removes an existing Identity Provider Configuration.
 
 ## EXAMPLES
 
-### Removes the Facebook identity provider settings from ApiManagement service
-```
+### Example 1: Removes the Facebook identity provider settings from ApiManagement service
+```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
 ```

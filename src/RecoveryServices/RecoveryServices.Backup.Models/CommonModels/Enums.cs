@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents Azure Workload
         /// </summary>
-        AzureWorkload
+        AzureWorkload,
+        MAB
     }
 
     /// <summary>
@@ -118,6 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents MSSQL in Azure VM.
         /// </summary>
         MSSQL,
+        FileFolder
     }
 
     /// <summary>

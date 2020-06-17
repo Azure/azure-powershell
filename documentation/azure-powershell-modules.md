@@ -22,6 +22,7 @@ Attestation                           | `Az.Attestation`                        
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
 Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
+Blockchain                            | `Az.Blockchain`                         | [![Blockchain]][BlockchainGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
@@ -50,6 +51,8 @@ Guest Configuration                   | `Az.GuestConfiguration`                 
 HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
 API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
 HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
+Image Builder                         | `Az.ImageBuilder`                       | [![ImageBuilder]][ImageBuilderGallery]
+Import/Export                         | `Az.ImportExport`                       | [![ImportExport]][ImportExportGallery]
 IoT Central                           | `Az.IotCentral`                         | [![IotCentral]][IotCentralGallery]
 IoT Hub                               | `Az.IotHub`                             | [![IotHub]][IotHubGallery]
 Key Vault                             | `Az.KeyVault`                           | [![KeyVault]][KeyVaultGallery]
@@ -62,6 +65,7 @@ Managed Services                      | `Az.ManagedServices`                    
 Management Partner                    | `Az.ManagementPartner`                  | [![ManagementPartner]][ManagementPartnerGallery]
 Maps                                  | `Az.Maps`                               | [![Maps]][MapsGallery]
 Database for MariaDB                  | `Az.MariaDb`                            | [![MariaDb]][MariaDbGallery]
+Marketplace                           | `Az.Marketplace`                        | [![Marketplace]][MarketplaceGallery]
 Marketplace Ordering                  | `Az.MarketplaceOrdering`                | [![MarketplaceOrdering]][MarketplaceOrderingGallery]
 Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
 Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
@@ -117,6 +121,7 @@ Web App Service                       | `Az.Websites`                           
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
+[Blockchain]:                 https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
@@ -145,6 +150,8 @@ Web App Service                       | `Az.Websites`                           
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
+[ImportExport]:               https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport
+[ImageBuilder]:               https://img.shields.io/powershellgallery/v/Az.ImageBuilder.svg?style=flat-square&label=Az.ImageBuilder
 [IotCentral]:                 https://img.shields.io/powershellgallery/v/Az.IotCentral.svg?style=flat-square&label=Az.IotCentral
 [IotHub]:                     https://img.shields.io/powershellgallery/v/Az.IotHub.svg?style=flat-square&label=Az.IotHub
 [KeyVault]:                   https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault
@@ -157,6 +164,7 @@ Web App Service                       | `Az.Websites`                           
 [ManagementPartner]:          https://img.shields.io/powershellgallery/v/Az.ManagementPartner.svg?style=flat-square&label=Az.ManagementPartner
 [Maps]:                       https://img.shields.io/powershellgallery/v/Az.Maps.svg?style=flat-square&label=Az.Maps
 [MariaDb]:                    https://img.shields.io/powershellgallery/v/Az.MariaDb.svg?style=flat-square&label=Az.MariaDb
+[Marketplace]:                https://img.shields.io/powershellgallery/v/Az.Marketplace.svg?style=flat-square&label=Az.Marketplace
 [MarketplaceOrdering]:        https://img.shields.io/powershellgallery/v/Az.MarketplaceOrdering.svg?style=flat-square&label=Az.MarketplaceOrdering
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
@@ -210,6 +218,7 @@ Web App Service                       | `Az.Websites`                           
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
+[BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
@@ -238,6 +247,8 @@ Web App Service                       | `Az.Websites`                           
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
+[ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
+[ImageBuilderGallery]:               https://www.powershellgallery.com/packages/Az.ImageBuilder/
 [IotCentralGallery]:                 https://www.powershellgallery.com/packages/Az.IotCentral/
 [IotHubGallery]:                     https://www.powershellgallery.com/packages/Az.IotHub/
 [KeyVaultGallery]:                   https://www.powershellgallery.com/packages/Az.KeyVault/
@@ -250,6 +261,7 @@ Web App Service                       | `Az.Websites`                           
 [ManagementPartnerGallery]:          https://www.powershellgallery.com/packages/Az.ManagementPartner/
 [MapsGallery]:                       https://www.powershellgallery.com/packages/Az.Maps/
 [MariaDbGallery]:                    https://www.powershellgallery.com/packages/Az.MariaDb/
+[MarketplaceGallery]:                https://www.powershellgallery.com/packages/Az.Marketplace/
 [MarketplaceOrderingGallery]:        https://www.powershellgallery.com/packages/Az.MarketplaceOrdering/
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/

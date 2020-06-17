@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Hashtable tags = null,
             string storageId = null,
             bool dedicatedCoreQuotaPerVMFamilyEnforced = false,
-            IList<VirtualMachineFamilyCoreQuota> machineFamilyQuotas = null)
+            IList<VirtualMachineFamilyCoreQuota> machineFamilyQuotas = null,
+            BatchAccountIdentity identity = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
@@ -79,7 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 autoStorage: new AutoStorageProperties() { StorageAccountId = storageId },
                 tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true),
                 dedicatedCoreQuotaPerVMFamilyEnforced: dedicatedCoreQuotaPerVMFamilyEnforced,
-                dedicatedCoreQuotaPerVMFamily: machineFamilyQuotas);
+                dedicatedCoreQuotaPerVMFamily: machineFamilyQuotas,
+                identity: identity ?? new BatchAccountIdentity(ResourceIdentityType.None));
 
             return resource;
         }
@@ -710,7 +712,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         {
             var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            
+
             ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
             taskCounts.Active = active;
             taskCounts.Running = running;

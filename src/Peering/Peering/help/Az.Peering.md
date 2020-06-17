@@ -23,6 +23,9 @@ Gets the Peering Resources for a subscription
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
 Gets the Peering locations offered by Microsoft
 
+### [Get-AzPeeringReceivedRoute](Get-AzPeeringReceivedRoute.md)
+Lists the received routes for a Peering.
+
 ### [Get-AzPeeringRegisteredAsn](Get-AzPeeringRegisteredAsn.md)
 Gets the registered ASN for internet exchange route server type peerings.
 

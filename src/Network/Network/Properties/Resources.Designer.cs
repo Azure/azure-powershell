@@ -160,6 +160,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to privateEndpointConnections.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateEndpointConnectionName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateEndpointConnectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to privateLinkConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ipConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkIpConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkIpConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to probes.
         /// </summary>
         internal static string ApplicationGatewayProbeName {
@@ -529,6 +556,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; is already added..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionAlreadyAdded {
+            get {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; was not added to the private peering..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionNotFound {
+            get {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ExpressRouteConnection {0} could not be found..
         /// </summary>
         internal static string ExpressRouteConnectionNotFound {
@@ -554,41 +599,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        ///   Looks up a localized string similar to Private Peering needs to be configured on the Express Route Circuit..
         /// </summary>
-        internal static string ExpressRoutePrivatePeeringNotFound
-        {
-            get
-            {
+        internal static string ExpressRoutePrivatePeeringNotFound {
+            get {
                 return ResourceManager.GetString("ExpressRoutePrivatePeeringNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
-        /// </summary>
-        internal static string ExpressRouteCircuitConnectionNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
-            }
-        }
-
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
-        /// </summary>
-        internal static string ExpressRouteCircuitConnectionAlreadyAdded
-        {
-            get
-            {
-                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
@@ -712,6 +732,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string InvalidIPv6IPPrefixLength {
             get {
                 return ResourceManager.GetString("InvalidIPv6IPPrefixLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field Name {0} contains invalid character..
+        /// </summary>
+        internal static string InvalidName {
+            get {
+                return ResourceManager.GetString("InvalidName", resourceCulture);
             }
         }
         
@@ -1067,6 +1096,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
+        /// </summary>
+        internal static string RemoveVHubRouteTableWarning {
+            get {
+                return ResourceManager.GetString("RemoveVHubRouteTableWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveVirtualRouterWarning {
@@ -1265,6 +1303,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects..
+        /// </summary>
+        internal static string StaticRoutesNotSupportedForThisRoutingConfiguration {
+            get {
+                return ResourceManager.GetString("StaticRoutesNotSupportedForThisRoutingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TCP protocol configuration mast have port..
         /// </summary>
         internal static string TCPProtocolConfigurationMustHavePort {
@@ -1459,6 +1506,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UpdatingLongRunningOperationMessage {
             get {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The HubRouteTable could not be found..
+        /// </summary>
+        internal static string VHubRouteTableNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid HubRouteTable reference is required..
+        /// </summary>
+        internal static string VHubRouteTableReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
         

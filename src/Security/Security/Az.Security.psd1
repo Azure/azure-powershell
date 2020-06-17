@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -107,7 +107,11 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSqlInformationProtectionPolicy', 
                'Get-AzRegulatoryComplianceStandard', 
                'Get-AzRegulatoryComplianceControl', 
-               'Get-AzRegulatoryComplainceAssessment'
+               'Get-AzRegulatoryComplainceAssessment',
+			   'Get-AzSecuritySetting', 'Set-AzSecuritySetting',
+               'Get-AzSecurityAssessment', 'Set-AzSecurityAssessment', 'Remove-AzSecurityAssessment',
+               'Get-AzSecurityAssessmentMetadata', 'Set-AzSecurityAssessmentMetadata', 'Remove-AzSecurityAssessmentMetadata',
+               'Get-AzSecuritySubAssessment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -142,11 +146,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add new cmdlets: ''Get-AzRegulatoryComplianceStandard'', 
-					''Get-AzRegulatoryComplianceControl'', 
-					''Get-AzRegulatoryComplainceAssessment''
-* Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
-* Support management of SQL Information Protection Policy.'
+        ReleaseNotes = '* Add new cmdlets: Get-AzSecurityAssessment,
+                   Set-AzSecurityAssessment,
+                   Remove-AzSecurityAssessment,
+                   Get-AzSecurityAssessmentMetadata,
+                   Set-AzSecurityAssessmentMetadata,
+                   Remove-AzSecurityAssessmentMetadata,
+                   Get-AzSecuritySubAssessment'
 
         # Prerelease string of this module
         # Prerelease = ''

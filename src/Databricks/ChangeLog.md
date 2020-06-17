@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for customer-managed keys.
 
 ## Version 0.1.0
 * the first preview release

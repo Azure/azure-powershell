@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll'
@@ -203,6 +203,12 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayUrlPathMapConfig', 
                'Remove-AzApplicationGatewayUrlPathMapConfig', 
                'Set-AzApplicationGatewayUrlPathMapConfig', 
+               'New-AzApplicationGatewayPrivateLinkConfiguration',
+               'Add-AzApplicationGatewayPrivateLinkConfiguration',
+               'Set-AzApplicationGatewayPrivateLinkConfiguration',
+               'Get-AzApplicationGatewayPrivateLinkConfiguration',
+               'Remove-AzApplicationGatewayPrivateLinkConfiguration',
+               'New-AzApplicationGatewayPrivateLinkIpConfiguration',
                'Add-AzExpressRouteCircuitAuthorization', 
                'Get-AzExpressRouteCircuitAuthorization', 
                'New-AzExpressRouteCircuitAuthorization', 
@@ -308,6 +314,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzVirtualNetworkGatewayConnectionSharedKey', 
                'Set-AzVirtualNetworkGatewayConnection', 'New-AzIpsecPolicy', 
                'New-AzIpsecTrafficSelectorPolicy', 
+               'Get-AzLoadBalancerBackendAddressPool',
+               'New-AzLoadBalancerBackendAddressPool',
+               'Remove-AzLoadBalancerBackendAddressPool',
+               'Set-AzLoadBalancerBackendAddressPool',
+               'New-AzLoadBalancerBackendAddressConfig',
                'Get-AzLoadBalancerBackendAddressPoolConfig', 
                'Add-AzLoadBalancerBackendAddressPoolConfig', 
                'New-AzLoadBalancerBackendAddressPoolConfig', 
@@ -410,6 +421,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzFirewallApplicationRule', 'New-AzFirewallNatRuleCollection', 
                'New-AzFirewallNatRule', 'New-AzFirewallNetworkRuleCollection', 
                'New-AzFirewallNetworkRule', 'New-AzFirewallThreatIntelWhitelist', 
+               'New-AzFirewallHubPublicIpAddress','New-AzFirewallHubIpAddress',
+               'New-AzFirewallPublicIpAddress',
                'Get-AzFirewallFqdnTag', 'Get-AzNetworkProfile', 
                'New-AzNetworkProfile', 'Remove-AzNetworkProfile', 
                'Set-AzNetworkProfile', 'New-AzContainerNicConfig', 
@@ -455,6 +468,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Stop-AzVirtualNetworkGatewayConnectionPacketCapture', 
                'Disconnect-AzVirtualNetworkGatewayVpnConnection', 
                'New-AzFirewallPolicyNetworkRule', 
+               'New-AzFirewallPolicyNatRule',
                'New-AzFirewallPolicyApplicationRule', 
                'New-AzFirewallPolicyNatRuleCollection', 
                'New-AzFirewallPolicyFilterRuleCollection', 
@@ -464,6 +478,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzFirewallPolicyRuleCollectionGroup', 
                'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 
                'Set-AzFirewallPolicy', 'Remove-AzFirewallPolicy', 
+               'New-AzFirewallPolicyThreatIntelWhitelist',
+               'New-AzFirewallPolicyDnsSetting',
                'New-AzVirtualRouter', 'Remove-AzVirtualRouter', 
                'Get-AzVirtualRouter', 'Add-AzVirtualRouterPeer', 
                'Update-AzVirtualRouterPeer', 'Remove-AzVirtualRouterPeer', 
@@ -473,7 +489,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzIpAllocation', 'Get-AzIpAllocation', 'Remove-AzIpAllocation', 
                'Set-AzIpAllocation', 'New-AzSecurityPartnerProvider', 
                'Remove-AzSecurityPartnerProvider', 'Get-AzSecurityPartnerProvider', 
-               'Set-AzSecurityPartnerProvider'
+               'Set-AzSecurityPartnerProvider',
+               'Reset-AzHubRouter',
+               'New-AzVHubRoute', 'New-AzStaticRoute', 'New-AzRoutingConfiguration',
+               'New-AzVHubRouteTable', 'Get-AzVHubRouteTable',
+               'Update-AzVHubRouteTable', 'Remove-AzVHubRouteTable'
 
 # Variables to export from this module
 # VariablesToExport = @()

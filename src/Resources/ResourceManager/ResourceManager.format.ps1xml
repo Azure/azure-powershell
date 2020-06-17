@@ -2,6 +2,23 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters.PSResourceManagerErrorFormatter]::Format($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.PSWhatIfOperationResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.PSWhatIfOperationResult</TypeName>
@@ -341,6 +358,10 @@
               <ListItem>
                 <Label>ContainerInstanceId</Label>
                 <ScriptBlock>$_.Status.ContainerInstanceId</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>OutputsString</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RetentionInterval</Label>

@@ -204,5 +204,19 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PrivateEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicNetworkAccess()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapabilities()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
+        }
     }
 }

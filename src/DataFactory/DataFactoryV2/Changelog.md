@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated ADF .Net SDK version to 4.9.0
+
+## Version 1.8.1
+* Updated assembly version of data factory V2 cmdlets
 
 ## Version 1.8.0
 * Supported CRUD of data flow runtime properties in Managed IR.

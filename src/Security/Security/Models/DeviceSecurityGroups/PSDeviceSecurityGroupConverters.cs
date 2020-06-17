@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
                 Description = value.Description,
                 DisplayName = value.DisplayName,
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 ValueType = value.ValueType
             };
         }
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
                 Description = value.Description,
                 DisplayName = value.DisplayName,
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 ValueType = value.ValueType,
                 DenylistValues = value.DenylistValues
             };
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
                 Description = value.Description,
                 DisplayName = value.DisplayName,
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 MaxThreshold = value.MaxThreshold,
                 MinThreshold = value.MinThreshold
             };
@@ -101,7 +98,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
                 Description = value.Description,
                 DisplayName = value.DisplayName,
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 MaxThreshold = value.MaxThreshold,
                 MinThreshold = value.MinThreshold,
                 TimeWindowSize = value.TimeWindowSize
@@ -120,8 +116,7 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
             return new AllowlistCustomAlertRule()
             {
                 AllowlistValues = value.AllowlistValues,
-                IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType
+                IsEnabled = value.IsEnabled
             };
         }
 
@@ -135,7 +130,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
             return new DenylistCustomAlertRule()
             {
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 DenylistValues = value.DenylistValues
             };
         }
@@ -150,7 +144,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
             return new ThresholdCustomAlertRule()
             {
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 MaxThreshold = value.MaxThreshold,
                 MinThreshold = value.MinThreshold
             };
@@ -166,7 +159,6 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
             return new TimeWindowCustomAlertRule()
             {
                 IsEnabled = value.IsEnabled,
-                RuleType = value.RuleType,
                 MaxThreshold = value.MaxThreshold,
                 MinThreshold = value.MinThreshold,
                 TimeWindowSize = value.TimeWindowSize

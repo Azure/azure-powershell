@@ -240,6 +240,42 @@ function Test-WhatIfDeleteResourcesAtResourceGroupScope
 
 <#
 .SYNOPSIS
+Tests resource group level deployment what-if with ExcludeChangeType.
+#>
+function Test-WhatIfExcludeChangeTypesAtResourceGroupScope
+{
+	try
+	{
+		# Arrange.
+		$deploymentName = Get-ResourceName
+		$location = "westus"
+		$resourceGroupName = Get-ResourceGroupName
+		$storageAccountName = Get-ResourceName
+
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+		# Act.
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
+			-ResourceGroupName $resourceGroupName `
+			-Name $deploymentName `
+			-TemplateFile sampleDeploymentTemplate.json `
+			-ExcludeChangeType Create, Ignore `
+			-storageAccountName $storageAccountName
+
+		# Assert.
+		Assert-AreEqual "Succeeded" $result.Status
+		Assert-NotNull $result.Changes
+		Assert-True { $result.Changes.Count -eq 0 }
+	}
+	finally
+	{
+		# Cleanup.
+		Clean-ResourceGroup $resourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
 Tests subscription level deployment what-if with empty template.
 #>
 function Test-WhatIfWithBlankTemplateAtSubscriptionScope
@@ -366,4 +402,29 @@ function Test-WhatIfModifyResourcesAtSubscriptionScope
 	Assert-AreEqual "Modify" $policyRuleChange.PropertyChangeType
 	Assert-AreEqual "northeurope" $policyRuleChange.Before.ToString()
 	Assert-AreEqual "westeurope" $policyRuleChange.After.ToString()
+}
+
+<#
+.SYNOPSIS
+Tests subscription level deployment what-if with ExcludeChangeType.
+#>
+function Test-WhatIfExcludeChangeTypesAtSubscriptionScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ResultFormat ResourceIdOnly `
+		-TemplateFile subscription_level_template.json `
+		-ExcludeChangeType Create, Deploy, Ignore, NoChange
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -eq 0 }
 }

@@ -10,18 +10,17 @@
                 "dependency": null,
                 "majorVersions": [
                     {
-                        "displayVersion": "",
+                        "displayVersion": "3.1",
                         "supportedFunctionsExtensionVersions": [
-                            "1",
-                            "2",
-                            "3"
+                            "~3"
                         ],
-                        "runtimeVersion": null,
+                        "runtimeVersion": "dotnet|3.1",
                         "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+                            "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+                            "linuxFxVersion": "dotnet|3.1"
                         },
                         "siteConfigPropertiesDictionary": {
                             "Use32BitWorkerProcess": false
@@ -48,7 +47,7 @@
                         "displayVersion": "12",
                         "runtimeVersion": "Node|12",
                         "supportedFunctionsExtensionVersions": [
-                            "3"
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -68,8 +67,8 @@
                         "displayVersion": "10",
                         "runtimeVersion": "Node|10",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -103,8 +102,8 @@
                         "displayVersion": "3.6",
                         "runtimeVersion": "Python|3.6",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -124,8 +123,8 @@
                         "displayVersion": "3.7",
                         "runtimeVersion": "Python|3.7",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -145,7 +144,7 @@
                         "displayVersion": "3.8",
                         "runtimeVersion": "Python|3.8",
                         "supportedFunctionsExtensionVersions": [
-                            "3"
+                            "~3"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -179,7 +178,7 @@
                         "displayVersion": "8",
                         "runtimeVersion": "Java|8",
                         "supportedFunctionsExtensionVersions": [
-                            "3"
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -190,6 +189,26 @@
                         "siteConfigPropertiesDictionary": {
                             "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Java|8"
+                        },
+                        "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "11",
+                        "runtimeVersion": "Java|11",
+                        "supportedFunctionsExtensionVersions": [
+                            "~3"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "Use32BitWorkerProcess": false,
+                            "linuxFxVersion": "Java|11"
                         },
                         "isPreview": false,
                         "isDeprecated": false,

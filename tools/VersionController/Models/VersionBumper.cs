@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
+using Tools.Common.Utilities;
 
 namespace VersionController.Models
 {
@@ -32,26 +34,16 @@ namespace VersionController.Models
         {
             var moduleName = _fileHelper.ModuleName;
             Console.WriteLine("Bumping version for " + moduleName + "...");
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
-                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
-                var cmdletResult = powershell.Invoke();
-                _oldVersion = cmdletResult[0]?.ToString();
-                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
-            }
 
-            if (_oldVersion == null)
-            {
-                throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
-            }
+            (_oldVersion, _isPreview) = GetOldVersion();
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
-            if(MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
+            if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
                 _newVersion = MinimalVersion.ToString();
             }
+
             if (_oldVersion == _newVersion)
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
@@ -75,6 +67,88 @@ namespace VersionController.Models
             UpdateAssemblyInfo();
             UpdateDependentModules();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
+        }
+
+        /// <summary>
+        /// Get the old version of the module.
+        /// Compare the version from PSGallery and TestGallery to the version obtain from manifest.
+        /// Choose the maximum one as the old version.
+        /// </summary>
+        /// <returns>The old version and is or not preview before the bump.</returns>
+        public Tuple<string, bool> GetOldVersion()
+        {
+            string version;
+            string localVersion = null;
+            // string localVersion = null, psVersion = null, testVersion = null;
+            bool isPreview;
+            bool localPreview = false;
+            // bool localPreview = false, psPreview = false, testPreview = false;
+            var moduleName = _fileHelper.ModuleName;
+            
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
+                var cmdletResult = powershell.Invoke();
+                localVersion = cmdletResult[0]?.ToString();
+                localPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
+            }
+            if (localVersion == null)
+            {
+                throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
+            }
+            version = localVersion;
+            isPreview = localPreview;
+
+            // using (PowerShell powetshell = PowerShell.Create())
+            // {
+            //     powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
+            //     var cmdletResult = powetshell.Invoke();
+            //     if (cmdletResult.Count != 0)
+            //     {
+            //         var psVersionImformation = cmdletResult[0].ToString();
+            //         Regex reg = new Regex("Version=(.*?)(-|;)");
+            //         Match match = reg.Match(psVersionImformation);
+            //         psVersion = match.Groups[1].Value;
+            //         psPreview = Regex.IsMatch(psVersionImformation, "preview");
+            //     }
+            // }
+            // if (psVersion == null)
+            // {
+            //     psVersion = "0.1.0";
+            // }
+            // if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
+            // {
+            //     version = psVersion;
+            //     isPreview = psPreview;
+            // }
+
+            // using (PowerShell powetshell = PowerShell.Create())
+            // {
+            //     powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
+            //     var cmdletResult = powetshell.Invoke();
+            //     if (cmdletResult.Count != 0)
+            //     {
+            //         var testVersionImformation = cmdletResult[0].ToString();
+            //         Regex reg = new Regex("Version=(.*?)(-|;)");
+            //         Match match = reg.Match(testVersionImformation);
+            //         testVersion = match.Groups[1].Value;
+            //         testPreview = Regex.IsMatch(testVersionImformation, "preview");
+            //     }
+            // }
+            // if (testVersion == null)
+            // {
+            //     testVersion = "0.1.0";
+            // }
+            // if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
+            // {
+            //     version = testVersion;
+            //     isPreview = testPreview;
+            // }
+
+            return Tuple.Create(version, isPreview);
         }
 
         /// <summary>
@@ -149,8 +223,8 @@ namespace VersionController.Models
                     continue;
                 }
                 var file = File.ReadAllLines(serializedCmdletFile);
-                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
+                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)(\s*)(\d*).(\d*).(\d*).(\d*)(\s*)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion + ".0"));
                 File.WriteAllLines(serializedCmdletFile, updatedFile);
             }
         }
@@ -188,10 +262,10 @@ namespace VersionController.Models
             foreach (var assemblyInfoPath in assemblyInfoPaths)
             {
                 var file = File.ReadAllLines(assemblyInfoPath);
-                var pattern = @"AssemblyVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                file = file.Select(l => Regex.Replace(l, pattern, "AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
-                pattern = @"AssemblyFileVersion\(([\""])" + _oldVersion + @"([\""])\)";
-                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "AssemblyFileVersion(\"" + _newVersion + "\")"));
+                var pattern = @"^(\s*)\[assembly:(\s*)AssemblyVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                file = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
+                pattern = @"^(\s*)\[assembly:(\s*)AssemblyFileVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyFileVersion(\"" + _newVersion + "\")"));
                 File.WriteAllLines(assemblyInfoPath, updatedFile);
             }
         }
@@ -296,7 +370,7 @@ namespace VersionController.Models
                                                    .Where(f => !f.Contains("Netcore") &&
                                                                !f.Contains("bin") &&
                                                                !f.Contains("dll-Help") &&
-                                                               !f.Contains("Stack"))
+                                                               !ModuleFilter.IsAzureStackModule(f))
                                                    .ToList();
                 foreach (var moduleManifestPath in moduleManifestPaths)
                 {

@@ -158,6 +158,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Enabled
+Status .
+
+```yaml
+Type: System.Boolean
+Parameter Sets: ResourceGroupLevelResource, ResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Boolean
+Parameter Sets: InputObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Export
 Export data.
 
@@ -323,33 +350,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Enabled
-Status .
-
-```yaml
-Type: System.Boolean
-Parameter Sets: ResourceGroupLevelResource, ResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

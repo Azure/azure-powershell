@@ -1470,3 +1470,49 @@ function Test-AzureFirewallWithDNSProxy {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall with Multip IPs on Virtual Hub
+#>
+function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = "eastus2euap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $virtualHubAddressPrefix = "10.0.0.0/16"
+    $firewallPIPCount = "2"
+    $sku = "AZFW_Hub"
+    $tier = "Standard"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub -HubIPAddress $hubIpAddresses
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $sku $getAzureFirewall.Sku
+        Assert-AreEqual $sku $getAzureFirewall.Sku.Name
+        Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.HubIPAddresses
+        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
+        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
