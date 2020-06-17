@@ -80,12 +80,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.LivyId = this.IsParameterBound(c => c.LivyId) ? this.LivyId : this.SparkJobObject.Id.Value;
             }
 
-            var sparkJob = this.SynapseAnalyticsClient.GetSparkBatchJob(this.WorkspaceName, this.SparkPoolName, this.LivyId);
+            this.SynapseAnalyticsClient.CreateSparkBatchClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+            var sparkJob = this.SynapseAnalyticsClient.GetSparkBatchJob(this.LivyId);
             try
             {
                 sparkJob = this.SynapseAnalyticsClient.PollSparkBatchJobExecution(
-                    this.WorkspaceName,
-                    this.SparkPoolName,
                     sparkJob,
                     this.WaitIntervalInSeconds,
                     this.TimeoutInSeconds,

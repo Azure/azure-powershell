@@ -81,7 +81,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 LivyId.ToString(),
                 () =>
                 {
-                    SynapseAnalyticsClient.CancelSparkBatchJob(WorkspaceName, SparkPoolName, LivyId, waitForCompletion: false);
+                    SynapseAnalyticsClient.CreateSparkBatchClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+                    SynapseAnalyticsClient.CancelSparkBatchJob(LivyId, waitForCompletion: false);
                     if (PassThru)
                     {
                         WriteObject(true);

@@ -58,15 +58,17 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SessionId = this.SessionObject.Id.Value;
             }
 
+            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+
             if (this.IsParameterBound(c => c.LivyId))
             {
                 // Get for single Spark session statement
-                WriteObject(new PSSynapseSparkStatement(SynapseAnalyticsClient.GetSparkSessionStatement(this.WorkspaceName, this.SparkPoolName, this.SessionId, this.LivyId)));
+                WriteObject(new PSSynapseSparkStatement(SynapseAnalyticsClient.GetSparkSessionStatement(this.SessionId, this.LivyId)));
             }
             else
             {
                 // List all Spark session statements in given Spark session
-                var sessionStatements = SynapseAnalyticsClient.ListSparkSessionStatements(this.WorkspaceName, this.SparkPoolName, this.SessionId).Select(element => new PSSynapseSparkStatement(element));
+                var sessionStatements = SynapseAnalyticsClient.ListSparkSessionStatements(this.SessionId).Select(element => new PSSynapseSparkStatement(element));
                 WriteObject(sessionStatements, true);
             }
         }

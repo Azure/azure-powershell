@@ -1,18 +1,21 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿using Azure.Analytics.Synapse.Spark;
+using Azure.Analytics.Synapse.Spark.Models;
+using Azure.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.Azure.Synapse;
-using Microsoft.Azure.Synapse.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using CloudException = Microsoft.Rest.Azure.CloudException;
 using ResourceMoveDefinition = Microsoft.Azure.Management.Synapse.Models.ResourceMoveDefinition;
 using RestorePoint = Microsoft.Azure.Management.Synapse.Models.RestorePoint;
 
@@ -22,7 +25,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         private readonly Guid _subscriptionId;
         private readonly SynapseManagementClient _synapseManagementClient;
-        private readonly SynapseClient _synapseClient;
+        private SparkBatchClient _sparkBatchClient;
+        private SparkSessionClient _sparkSessionClient;
 
         public SynapseAnalyticsClient(IAzureContext context)
         {
@@ -36,8 +40,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _synapseManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
 
-            _synapseClient = SynapseCmdletBase.CreateSynapseClient<SynapseClient>(context,
-                AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, true);
+            //_synapseClient = SynapseCmdletBase.CreateSynapseClient<SynapseClient>(context,
+            //    AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, true);
+
+        }
+
+        public void CreateSparkBatchClient(string workspaceName, string sparkPoolName, IAzureContext context)
+        {
+            // ".dev.azuresynapse.net"
+            string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            Uri uri = new Uri("https://" + workspaceName + "." + suffix);
+            this._sparkBatchClient = new SparkBatchClient(uri, sparkPoolName, new AzureSessionCredential(context));
+        }
+
+        public void CreateSparkSessionClient(string workspaceName, string sparkPoolName, IAzureContext context)
+        {
+            string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            Uri uri = new Uri("https://" + workspaceName + "." + suffix);
+            this._sparkSessionClient = new SparkSessionClient(uri, sparkPoolName, new AzureSessionCredential(context));
         }
 
         #region Workspace operations
@@ -549,74 +569,72 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark batch job operations
 
-        public ExtendedLivyBatchResponse SubmitSparkBatchJob(string workspaceName, string sparkPoolName, ExtendedLivyBatchRequest livyRequest, bool waitForCompletion)
+        public SparkBatchJob SubmitSparkBatchJob(SparkBatchJobOptions sparkBatchJobOptions, bool waitForCompletion)
         {
-            var batch = _synapseClient.SparkBatch.Create(workspaceName, sparkPoolName, livyRequest, detailed:true);
+            var batch = _sparkBatchClient.CreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
             if (!waitForCompletion)
             {
                 return batch;
             }
-
-            return PollSparkBatchJobSubmission(workspaceName, sparkPoolName, batch);
+            
+            return PollSparkBatchJobSubmission(batch);
         }
 
-        public ExtendedLivyBatchResponse PollSparkBatchJobSubmission(string workspaceName, string sparkPoolName, ExtendedLivyBatchResponse batch)
+        public SparkBatchJob PollSparkBatchJobSubmission(SparkBatchJob batch)
         {
             return Poll(
                 batch,
-                b => b.Result,
+                b => b.Result.ToString(),
                 b => b.State,
-                b => this.GetSparkBatchJob(workspaceName, sparkPoolName, b.Id.Value),
+                b => this.GetSparkBatchJob(b.Id),
                 SparkJobLivyState.BatchSubmissionFinalStates);
         }
 
-        public ExtendedLivyBatchResponse PollSparkBatchJobExecution(
-            string workspaceName,
-            string sparkPoolName,
-            ExtendedLivyBatchResponse batch,
+        public SparkBatchJob PollSparkBatchJobExecution(
+            SparkBatchJob batch,
             int pollingIntervalInSeconds = 0,
             int timeoutInSeconds = 0,
             Action<string> writeLog = null)
         {
             return Poll(
                 batch,
-                b => b.Result,
+                b => b.Result.ToString(),
                 b => b.State,
-                b => this.GetSparkBatchJob(workspaceName, sparkPoolName, b.Id.Value),
+                b => this.GetSparkBatchJob(b.Id),
                 SparkJobLivyState.BatchExecutionFinalStates,
                 pollingInMilliseconds: pollingIntervalInSeconds * 1000,
                 timeoutInMilliseconds: timeoutInSeconds * 1000,
                 writeLog: (b) => writeLog?.Invoke(string.Format(Resources.WaitJobState, b.State)));
         }
 
-        public List<ExtendedLivyBatchResponse> ListSparkBatchJobs(string workspaceName, string sparkPoolName, bool detailed = true)
+        public List<SparkBatchJob> ListSparkBatchJobs(bool detailed = true)
         {
-            var batches = new List<ExtendedLivyBatchResponse>();
+            var batches = new List<SparkBatchJob>();
             int from = 0;
             int currentPageSize;
             int pageSize = SynapseConstants.PageSize;
             do
             {
-                var page = _synapseClient.SparkBatch.List(workspaceName, sparkPoolName, detailed: detailed, fromParameter: from, size: pageSize);
-                currentPageSize = page.Total.Value;
+                var page = _sparkBatchClient.GetSparkBatchJobs(from: from, size: pageSize, detailed: detailed);
+                currentPageSize = page.Value.Total;
                 from += currentPageSize;
-                batches.AddRange(page.Sessions.ToList());
+                batches.AddRange(page.Value.Sessions);
             } while (currentPageSize == pageSize);
             return batches;
         }
 
-        public ExtendedLivyBatchResponse GetSparkBatchJob(string workspaceName, string sparkPoolName, int batchId)
+        public SparkBatchJob GetSparkBatchJob(int batchId)
         {
-            return _synapseClient.SparkBatch.Get(workspaceName, sparkPoolName, batchId, detailed:true);
+            return _sparkBatchClient.GetSparkBatchJob(batchId, detailed: true);
         }
 
-        public void CancelSparkBatchJob(string workspaceName, string sparkPoolName, int batchId, bool waitForCompletion)
+        public void CancelSparkBatchJob(int batchId, bool waitForCompletion)
         {
-            _synapseClient.SparkBatch.Delete(workspaceName, sparkPoolName, batchId);
+            _sparkBatchClient.CancelSparkBatchJob(batchId);
             if (waitForCompletion)
             {
-                var batchJob = GetSparkBatchJob(workspaceName, sparkPoolName, batchId);
-                PollSparkBatchJobExecution(workspaceName, sparkPoolName, batchJob);
+                var batchJob = GetSparkBatchJob(batchId);
+                PollSparkBatchJobExecution(batchJob);
             }
         }
 
@@ -624,124 +642,122 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark session operations
 
-        public ExtendedLivySessionResponse CreateSparkSession(string workspaceName, string sparkPoolName, ExtendedLivySessionRequest livyRequest, bool waitForCompletion)
+        public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions, bool waitForCompletion)
         {
-            var session = _synapseClient.SparkSession.Create(workspaceName, sparkPoolName, livyRequest);
+            var session = _sparkSessionClient.CreateSparkSession(sparkSessionOptions);
             if (!waitForCompletion)
             {
                 return session;
             }
 
-            return PollSparkSession(workspaceName, sparkPoolName, session);
+            return PollSparkSession(session);
         }
 
-        public ExtendedLivySessionResponse PollSparkSession(
-            string workspaceName,
-            string sparkPoolName,
-            ExtendedLivySessionResponse session,
+        public SparkSession PollSparkSession(
+            SparkSession session,
             IList<string> livyReadyStates = null)
         {
             if (livyReadyStates == null)
             {
                 livyReadyStates = SparkJobLivyState.SessionSubmissionFinalStates;
             }
-
+            
             return Poll(
                 session,
-                s => s.Result,
+                s => s.Result.ToString(),
                 s => s.State,
-                s => this.GetSparkSession(workspaceName, sparkPoolName, s.Id.Value),
+                s => this.GetSparkSession(s.Id),
                 livyReadyStates);
         }
 
-        public ExtendedLivySessionResponse GetSparkSession(string workspaceName, string sparkPoolName, int sessionId)
+        public SparkSession GetSparkSession(int sessionId)
         {
-            return _synapseClient.SparkSession.Get(workspaceName, sparkPoolName, sessionId, detailed:true);
+            return _sparkSessionClient.GetSparkSession(sessionId, detailed: true);
         }
 
-        public List<ExtendedLivySessionResponse> ListSparkSessionsByName(string workspaceName, string sparkPoolName, string sessionName)
+        public List<SparkSession> ListSparkSessionsByName(string sessionName)
         {
-            return ListSparkSessions(workspaceName, sparkPoolName).Where(s => !string.IsNullOrEmpty(s.Name) && s.Name.Equals(sessionName, StringComparison.OrdinalIgnoreCase)).ToList();
+            return ListSparkSessions().Where(s => !string.IsNullOrEmpty(s.Name) && s.Name.Equals(sessionName, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public List<ExtendedLivySessionResponse> ListSparkSessions(string workspaceName, string sparkPoolName, bool detailed = true)
+        public List<SparkSession> ListSparkSessions(bool detailed = true)
         {
-            var sessions = new List<ExtendedLivySessionResponse>();
+            var sessions = new List<SparkSession>();
             int from = 0;
             int currentPageSize;
             int pageSize = SynapseConstants.PageSize;
             do
             {
-                var page = _synapseClient.SparkSession.List(workspaceName, sparkPoolName, detailed: detailed, fromParameter: from, size: pageSize);
-                currentPageSize = page.Total.Value;
+                var page = _sparkSessionClient.GetSparkSessions(from: from, size: pageSize, detailed: detailed);
+                currentPageSize = page.Value.Total;
                 from += currentPageSize;
-                sessions.AddRange(page.Sessions.ToList());
+                sessions.AddRange(page.Value.Sessions);
             } while (currentPageSize == pageSize);
 
             return sessions;
         }
 
-        public void StopSparkSession(string workspaceName, string sparkPoolName, int sessionId, bool waitForCompletion)
+        public void StopSparkSession(int sessionId, bool waitForCompletion)
         {
-            _synapseClient.SparkSession.Delete(workspaceName, sparkPoolName, sessionId);
+            _sparkSessionClient.CancelSparkSession(sessionId);
             if (waitForCompletion)
             {
-                var session = GetSparkSession(workspaceName, sparkPoolName, sessionId);
-                PollSparkSession(workspaceName, sparkPoolName, session, SparkJobLivyState.SessionCancellationFinalStates);
+                var session = GetSparkSession(sessionId);
+                PollSparkSession(session, SparkJobLivyState.SessionCancellationFinalStates);
             }
         }
 
-        public void ResetSparkSessionTimeout(string workspaceName, string sparkPoolName, int sessionId)
+        public void ResetSparkSessionTimeout(int sessionId)
         {
-            _synapseClient.SparkSession.ResetTimeout(workspaceName, sparkPoolName, sessionId);
+            _sparkSessionClient.ResetSparkSessionTimeout(sessionId);
         }
 
         #endregion
 
         #region Spark session statement operations
 
-        public LivyStatementResponseBody SubmitSparkSessionStatement(string workspaceName, string sparkPoolName, int sessionId, LivyStatementRequestBody livyRequest, bool waitForCompletion)
+        public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions, bool waitForCompletion)
         {
-            var statement = _synapseClient.SparkSession.CreateStatement(workspaceName, sparkPoolName, sessionId, livyRequest);
+            var statement = _sparkSessionClient.CreateSparkStatement(sessionId, sparkStatementOptions);
             if (!waitForCompletion)
             {
                 return statement;
             }
 
-            return PollSparkSessionStatement(workspaceName, sparkPoolName, sessionId, statement);
+            return PollSparkSessionStatement(sessionId, statement);
         }
 
-        public LivyStatementResponseBody PollSparkSessionStatement(string workspaceName, string sparkPoolName, int sessionId, LivyStatementResponseBody statement)
+        public SparkStatement PollSparkSessionStatement(int sessionId, SparkStatement statement)
         {
             return Poll(
                 statement,
                 s => null,
                 s => s.State,
-                s => this.GetSparkSessionStatement(workspaceName, sparkPoolName, sessionId, s.Id.Value),
+                s => this.GetSparkSessionStatement(sessionId, s.Id),
                 SparkSessionStatementLivyState.ExecutingStates,
                 isFinalState:false);
         }
 
-        public LivyStatementResponseBody GetSparkSessionStatement(string workspaceName, string sparkPoolName, int sessionId, int statementId)
+        public SparkStatement GetSparkSessionStatement(int sessionId, int statementId)
         {
-            return _synapseClient.SparkSession.GetStatement(workspaceName, sparkPoolName, sessionId, statementId);
+            return _sparkSessionClient.GetSparkStatement(sessionId, statementId);
         }
 
-        public List<LivyStatementResponseBody> ListSparkSessionStatements(string workspaceName, string sparkPoolName, int sessionId)
+        public List<SparkStatement> ListSparkSessionStatements(int sessionId)
         {
-            return _synapseClient.SparkSession.ListStatements(workspaceName, sparkPoolName, sessionId).Statements.ToList();
+            return _sparkSessionClient.GetSparkStatements(sessionId).Value.Statements.ToList();
         }
 
         public void CancelSparkSessionStatement(string workspaceName, string sparkPoolName, int sessionId, int statementId)
         {
             if (sessionId == SynapseConstants.UnknownId)
             {
-                var session = this.ListSparkSessions(workspaceName, sparkPoolName, detailed:false)
+                var session = this.ListSparkSessions(detailed:false)
                     .FirstOrDefault(s =>
                     {
                         try
                         {
-                            var stmt = this.GetSparkSessionStatement(workspaceName, sparkPoolName, s.Id.Value, statementId);
+                            var stmt = this.GetSparkSessionStatement(s.Id, statementId);
                             return SparkSessionStatementLivyState.CancellableStates.Contains(stmt.State);
                         }
                         catch
@@ -760,10 +776,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                         sparkPoolName));
                 }
 
-                sessionId = session.Id.Value;
+                sessionId = session.Id;
             }
 
-            _synapseClient.SparkSession.DeleteStatement(workspaceName, sparkPoolName, sessionId, statementId);
+            _sparkSessionClient.CancelSparkStatement(sessionId, statementId);
         }
 
         #endregion

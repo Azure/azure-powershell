@@ -1,9 +1,9 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.Azure.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -89,20 +89,20 @@ namespace Microsoft.Azure.Commands.Synapse
             }
 
             Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
-            var livyRequest = new ExtendedLivySessionRequest
+            var livyRequest = new SparkSessionOptions(this.Name)
             {
-                Name = this.Name,
                 Jars = jars,
                 Files = files,
-                Conf = this.Configuration?.ToDictionary(),
+                Configuration = this.Configuration?.ToDictionary(),
                 ExecutorMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 ExecutorCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 DriverMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 DriverCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
-                NumExecutors = this.ExecutorCount
+                ExecutorCount = this.ExecutorCount
             };
 
-            var sparkSession = SynapseAnalyticsClient.CreateSparkSession(this.WorkspaceName, this.SparkPoolName, livyRequest, waitForCompletion:true);
+            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+            var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion:true);
 
             PSSynapseSparkSession psSparkSession = null;
             if (this.IsParameterBound(c => c.Language))

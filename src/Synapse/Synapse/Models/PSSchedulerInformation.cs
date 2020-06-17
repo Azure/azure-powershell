@@ -1,10 +1,12 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿
+
+using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSchedulerInformation
     {
-        public PSSchedulerInformation(SchedulerInformation schedulerInfo)
+        public PSSchedulerInformation(SparkScheduler schedulerInfo)
         {
             this.SubmittedAt = schedulerInfo?.SubmittedAt;
             this.ScheduledAt = schedulerInfo?.ScheduledAt;
@@ -33,6 +35,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets possible values include: 'Queued', 'Scheduled',
         /// 'Ended'
         /// </summary>
-        public string CurrentState { get; set; }
+        public SchedulerCurrentState? CurrentState { get; set; }
     }
 }

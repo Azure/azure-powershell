@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -99,13 +99,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Code = this.ReadFileAsText(this.FilePath);
             }
 
-            var livyRequest = new LivyStatementRequestBody
+            var livyRequest = new SparkStatementOptions
             {
                 Kind = this.Language,
                 Code = this.Code
             };
 
-            var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.WorkspaceName, this.SparkPoolName, this.SessionId, livyRequest, waitForCompletion:true);
+            // create spark session
+            SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+            var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest, waitForCompletion:true);
             var psSessionStmt = new PSSynapseExtendedSparkStatement(sessionStmt);
             WriteObject(psSessionStmt);
         }

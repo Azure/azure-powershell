@@ -1,7 +1,9 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -69,15 +71,18 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SparkPoolName = resourceIdentifier.ResourceName;
             }
 
+            SynapseAnalyticsClient.CreateSparkBatchClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+   
+
             if (this.IsParameterBound(c => c.LivyId))
             {
                 // Get for single Spark batch job
-                WriteObject(new PSSynapseSparkJob(SynapseAnalyticsClient.GetSparkBatchJob(this.WorkspaceName, this.SparkPoolName, this.LivyId)));
+                WriteObject(new PSSynapseSparkJob(SynapseAnalyticsClient.GetSparkBatchJob(this.LivyId)));
             }
             else
             {
                 // List all Spark batch jobs in given Spark pool
-                var batchJobs = SynapseAnalyticsClient.ListSparkBatchJobs(this.WorkspaceName, this.SparkPoolName)
+                var batchJobs = SynapseAnalyticsClient.ListSparkBatchJobs()
                     .Select(element => new PSSynapseSparkJob(element));
                 if (!string.IsNullOrEmpty(this.Name))
                 {

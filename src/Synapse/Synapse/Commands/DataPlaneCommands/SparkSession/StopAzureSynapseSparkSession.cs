@@ -74,7 +74,8 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.LivyId.ToString(), string.Format(Resources.StoppingSynapseSparkSession, this.LivyId)))
             {
-                this.SynapseAnalyticsClient.StopSparkSession(this.WorkspaceName, this.SparkPoolName, this.LivyId, waitForCompletion:false);
+                this.SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+                this.SynapseAnalyticsClient.StopSparkSession(this.LivyId, waitForCompletion:false);
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);

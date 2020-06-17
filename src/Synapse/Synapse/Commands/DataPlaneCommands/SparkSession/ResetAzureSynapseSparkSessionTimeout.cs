@@ -74,7 +74,8 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.LivyId.ToString(), string.Format(Resources.ResettingSynapseSparkSessionTimeout, this.LivyId)))
             {
-                this.SynapseAnalyticsClient.ResetSparkSessionTimeout(this.WorkspaceName, this.SparkPoolName, this.LivyId);
+                this.SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+                this.SynapseAnalyticsClient.ResetSparkSessionTimeout(this.LivyId);
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);

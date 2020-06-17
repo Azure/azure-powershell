@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 LivyId.ToString(),
                 () =>
                 {
+                    SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
                     SynapseAnalyticsClient.CancelSparkSessionStatement(WorkspaceName, SparkPoolName, SessionId, LivyId);
                     if (PassThru)
                     {

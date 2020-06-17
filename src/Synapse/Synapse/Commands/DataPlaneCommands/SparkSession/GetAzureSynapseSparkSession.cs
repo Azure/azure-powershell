@@ -68,14 +68,16 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SparkPoolName = resourceIdentifier.ResourceName;
             }
 
+            this.SynapseAnalyticsClient.CreateSparkSessionClient(this.WorkspaceName, this.SparkPoolName, DefaultContext);
+
             if (this.IsParameterBound(c => c.LivyId))
             {
-                var result = new PSSynapseSparkSession(this.SynapseAnalyticsClient.GetSparkSession(this.WorkspaceName, this.SparkPoolName, this.LivyId));
+                var result = new PSSynapseSparkSession(this.SynapseAnalyticsClient.GetSparkSession(this.LivyId));
                 WriteObject(result);
             }
             else
             {
-                var result = this.SynapseAnalyticsClient.ListSparkSessions(this.WorkspaceName, this.SparkPoolName).Select(r => new PSSynapseSparkSession(r));
+                var result = this.SynapseAnalyticsClient.ListSparkSessions().Select(r => new PSSynapseSparkSession(r));
                 if (!string.IsNullOrEmpty(this.Name))
                 {
                     result = result.Where(r => this.Name.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
