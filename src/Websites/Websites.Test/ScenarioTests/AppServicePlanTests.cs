@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewAppServicePlanLinux()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanLinux");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAppServicePlan");

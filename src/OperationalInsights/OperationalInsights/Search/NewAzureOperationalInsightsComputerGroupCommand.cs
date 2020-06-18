@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Tags = new List<Tag>() { new Tag() { Name = "Group", Value = "Computer" } }
             };
 
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, Force, ConfirmAction), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, false, Force, ConfirmAction), true);
         }
 
     }

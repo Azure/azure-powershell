@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug PSWorkspace doesn't implement IOperationalInsightsWorkspace [#12135]
+* Added "pergb2018" to valid value set of parameter `Sku` in `Set-AzOperationalInsightsWorkspace` 
+* Added alias "FunctionParameters" for parameter `FunctionParameter` to
+    - `New-AzOperationalInsightsSavedSearch`
+    - `Set-AzOperationalInsightsSavedSearch`
 
 ## Version 2.1.0
 * Upgraded SDK to 0.21.0

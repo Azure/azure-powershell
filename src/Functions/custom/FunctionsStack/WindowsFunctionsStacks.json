@@ -10,12 +10,10 @@
                 "dependency": null,
                 "majorVersions": [
                     {
-                        "displayVersion": "",
+                        "displayVersion": "3.1",
                         "runtimeVersion": null,
                         "supportedFunctionsExtensionVersions": [
-                            "1",
-                            "2",
-                            "3"
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -46,7 +44,7 @@
                         "displayVersion": "12",
                         "runtimeVersion": "~12",
                         "supportedFunctionsExtensionVersions": [
-                            "3"
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -64,8 +62,8 @@
                         "displayVersion": "10",
                         "runtimeVersion": "~10",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -83,8 +81,8 @@
                         "displayVersion": "8",
                         "runtimeVersion": "~8",
                         "supportedFunctionsExtensionVersions": [
-                            "1",
-                            "2"
+                            "~1",
+                            "~2"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -92,25 +90,6 @@
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "node",
                             "WEBSITE_NODE_DEFAULT_VERSION": "~8"
-                        },
-                        "siteConfigPropertiesDictionary": {},
-                        "isPreview": false,
-                        "isDeprecated": false,
-                        "isHidden": false
-                    },
-                    {
-                        "displayVersion": "6",
-                        "runtimeVersion": "~6",
-                        "supportedFunctionsExtensionVersions": [
-                            "1",
-                            "2"
-                        ],
-                        "isDefault": false,
-                        "minorVersions": [],
-                        "applicationInsights": true,
-                        "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "node",
-                            "WEBSITE_NODE_DEFAULT_VERSION": "~6"
                         },
                         "siteConfigPropertiesDictionary": {},
                         "isPreview": false,
@@ -135,8 +114,25 @@
                         "displayVersion": "8",
                         "runtimeVersion": "1.8",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {},
+                        "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "11",
+                        "runtimeVersion": "11",
+                        "supportedFunctionsExtensionVersions": [
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -160,15 +156,15 @@
             "type": "Microsoft.Web/availableStacks?osTypeSelected=WindowsFunctions",
             "properties": {
                 "name": "powershell",
-                "display": "Powershell Core",
+                "display": "PowerShell Core",
                 "dependency": null,
                 "majorVersions": [
                     {
                         "displayVersion": "6.2",
                         "runtimeVersion": "~6",
                         "supportedFunctionsExtensionVersions": [
-                            "2",
-                            "3"
+                            "~2",
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -184,10 +180,10 @@
                         "isHidden": false
                     },
                     {
-                    "displayVersion": "7.0",
+                        "displayVersion": "7.0",
                         "runtimeVersion": "~7",
                         "supportedFunctionsExtensionVersions": [
-                            "3"
+                            "~3"
                         ],
                         "isDefault": true,
                         "minorVersions": [],

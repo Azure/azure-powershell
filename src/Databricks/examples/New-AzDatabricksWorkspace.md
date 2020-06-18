@@ -25,3 +25,14 @@ eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 ```
 
 This command creates a Databricks workspace with customized virtual network in a resource group.
+
+### Example 3: Create a Databricks workspace with enable encryption
+```powershell
+PS C:\> New-AzDatabricksWorkspace -Name databricks-test02 -ResourceGroupName testgroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+
+Location Name            Type
+-------- ----            ----
+eastus   databricks-test02 Microsoft.Databricks/workspaces
+```
+
+This command creates a Databricks workspace and sets it to prepare for encryption. Please refer to the examples of Update-AzDatabricksWorkspace for more settings to encryption.

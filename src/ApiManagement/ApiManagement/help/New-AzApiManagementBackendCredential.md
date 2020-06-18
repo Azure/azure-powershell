@@ -23,7 +23,7 @@ Creates a new Backend Credential contract.
 
 ## EXAMPLES
 
-### Create a Backend Credentials In-Memory Object
+### Example 1: Create a Backend Credentials In-Memory Object
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$credential = New-AzApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}

@@ -179,6 +179,11 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this vpn connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -239,6 +244,16 @@ namespace Microsoft.Azure.Commands.Network
                 UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
                 EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
             };
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                vpnConnection.RoutingConfiguration = RoutingConfiguration;
+            }
 
             //// Resolve the VpnSite reference
             //// And set it in the VpnConnection object.

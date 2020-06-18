@@ -44,6 +44,12 @@ Add-AzEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] 
  [<CommonParameters>]
 ```
 
+### Discovery
+```
+Add-AzEnvironment [-AutoDiscover] [-Uri <Uri>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Add-AzEnvironment cmdlet adds endpoints and metadata to enable Azure Resource Manager cmdlets to connect with a new instance of Azure Resource Manager.
 The built-in environments AzureCloud and AzureChinaCloud target existing public instances of Azure Resource Manager.
@@ -164,12 +170,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AutoDiscover
+Discovers environments via default or configured endpoint.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Discovery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureAnalysisServicesEndpointResourceId
 The resource identifier of the Azure Analysis Services resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -184,7 +205,7 @@ The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -199,13 +220,13 @@ The The resource identifier of the Azure Attestation service that is the recipie
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -214,13 +235,13 @@ Dns suffix of Azure Attestation service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -259,7 +280,7 @@ Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -274,7 +295,7 @@ Resource identifier of Azure Key Vault data service that is the recipient of the
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -289,7 +310,7 @@ The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -304,7 +325,7 @@ The audience for tokens authenticating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
@@ -319,13 +340,13 @@ The The resource identifier of the Azure Synapse Analytics that is the recipient
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -334,13 +355,13 @@ Dns suffix of Azure Synapse Analytics.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -349,7 +370,7 @@ The resource identifier of the Azure Batch service that is the recipient of the 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases: BatchResourceId, BatchAudience
 
 Required: False
@@ -364,7 +385,7 @@ The audience for tokens authenticating with the AD Data Lake services Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases: DataLakeEndpointResourceId, DataLakeResourceId
 
 Required: False
@@ -469,7 +490,7 @@ Specifies the name of the environment to add.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases:
 
 Required: True
@@ -560,7 +581,7 @@ Specifies the endpoint for storage (blob, table, queue, and file) access.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name, ARMEndpoint
 Aliases: StorageEndpointSuffix
 
 Required: False
@@ -582,6 +603,21 @@ Required: False
 Position: 12
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Uri
+Specifies URI of the internet resource to fetch environments.
+
+```yaml
+Type: System.Uri
+Parameter Sets: Discovery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -616,7 +652,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

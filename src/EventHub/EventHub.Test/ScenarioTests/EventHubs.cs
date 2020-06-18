@@ -12,35 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
-    using Xunit;
-    using Xunit.Abstractions;
-    public class EventHubsTests : RMTestBase
-    {
-        public XunitTracingInterceptor _logger;
 
-        public EventHubsTests(ITestOutputHelper output)
+    public class EventHubsTests : EventHubTestRunner
+    {
+        
+        public EventHubsTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest(_logger, "EventHubsTests");
+            TestRunner.RunTestScript("EventHubsTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsAuthorizationRulesCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest(_logger, "EventHubsAuthTests");
+            TestRunner.RunTestScript("EventHubsAuthTests");
         }
     }
 }
