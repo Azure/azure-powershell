@@ -76,7 +76,7 @@ directive:
     set:
       verb: Update
   - where:
-      verb: New
+      verb: New|Remove
       subject: KubernetesConfiguration
     hide: true
   - where:
