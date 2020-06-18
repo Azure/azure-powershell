@@ -10,6 +10,13 @@ Locale: en-US
 ## Description
 Microsoft Azure PowerShell: Databricks cmdlets
 
+This module is still in preview and must be installed separately using the following command
+```
+Install-Module -Name Az.Databricks
+```
+
+Module contains preview features which may not be available in your region. Please try it after couple days. 
+
 ## Az.Databricks Cmdlets
 ### [Get-AzDatabricksWorkspace](Get-AzDatabricksWorkspace.md)
 Gets the workspace.
