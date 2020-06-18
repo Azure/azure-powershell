@@ -26,7 +26,6 @@
 * Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
 * Remove IsAzureADOnlyAuthentication parameter from Set-AzSqlServerActiveDirectoryAdministrator as it is not usable. 
 * Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet
-* Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet
 
 ## Version 2.6.1
 * Enhance performance of:
