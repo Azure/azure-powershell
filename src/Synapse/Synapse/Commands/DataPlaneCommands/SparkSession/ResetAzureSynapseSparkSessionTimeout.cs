@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession + SynapseConstants.Timeout, DefaultParameterSetName = ResetByIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class ResetAzureSynapseSparkSessionTimeout : SynapseCmdletBase
+    public class ResetAzureSynapseSparkSessionTimeout : SynapseSparkCmdletBase
     {
         private const string ResetByIdParameterSet = "ResetByNameParameterSet";
         private const string ResetByParentObjectParameterSet = "ResetByParentObjectParameterSet";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ResetByIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ResetByIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SessionId)]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.LivyId.ToString(), string.Format(Resources.ResettingSynapseSparkSessionTimeout, this.LivyId)))
             {
-                this.SynapseAnalyticsClient.ResetSparkSessionTimeout(this.WorkspaceName, this.SparkPoolName, this.LivyId);
+                this.SynapseAnalyticsClient.ResetSparkSessionTimeout(this.LivyId);
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);

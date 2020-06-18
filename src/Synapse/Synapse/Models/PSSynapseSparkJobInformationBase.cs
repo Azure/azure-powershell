@@ -1,8 +1,9 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
-using Microsoft.Azure.Synapse.Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -19,17 +20,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             string submitterName,
             string submitterId,
             string artifactId,
-            string jobType,
+            SparkJobType? jobType,
             string result,
-            SchedulerInformation schedulerInfo,
-            SparkServicePluginInformation pluginInfo,
-            IList<ErrorInformation> errorInfo,
+            SparkScheduler scheduler,
+            SparkServicePlugin plugin,
+            IReadOnlyList<SparkServiceError> errors,
             IDictionary<string, string> tags,
             int? id,
             string appId,
-            IDictionary<string, string> appInfo,
+            IReadOnlyDictionary<string, string> appInfo,
             string state,
-            IList<string> log)
+            IReadOnlyList<string> logLines)
         {
             this.Name = name;
             this.WorkspaceName = workspaceName;
@@ -39,15 +40,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ArtifactId = artifactId;
             this.JobType = jobType;
             this.Result = result;
-            this.SchedulerInfo = schedulerInfo != null ? new PSSchedulerInformation(schedulerInfo) : null;
-            this.PluginInfo = pluginInfo != null ?new PSSparkServicePluginInformation(pluginInfo) : null;
-            this.ErrorInfo = errorInfo;
+            this.Scheduler = scheduler != null ? new PSSchedulerInformation(scheduler) : null;
+            this.Plugin = plugin != null ?new PSSparkServicePluginInformation(plugin) : null;
+            this.Errors = errors;
             this.Tags = TagsConversionHelper.CreateTagHashtable(tags);
             this.Id = id;
             this.AppId = appId;
             this.AppInfo = appInfo;
             this.State = state;
-            this.Log = log;
+            this.LogLines = logLines;
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets possible values include: 'SparkBatch', 'SparkSession'
         /// </summary>
-        public string JobType { get; set; }
+        public SparkJobType? JobType { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'Uncertain', 'Succeeded',
@@ -87,15 +88,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public PSSchedulerInformation SchedulerInfo { get; set; }
+        public PSSchedulerInformation Scheduler { get; set; }
 
         /// <summary>
         /// </summary>
-        public PSSparkServicePluginInformation PluginInfo { get; set; }
+        public PSSparkServicePluginInformation Plugin { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<ErrorInformation> ErrorInfo { get; set; }
+        public IReadOnlyList<SparkServiceError> Errors { get; set; }
 
         /// <summary>
         /// </summary>
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public IDictionary<string, string> AppInfo { get; set; }
+        public IReadOnlyDictionary<string, string> AppInfo { get; set; }
 
         /// <summary>
         /// </summary>
@@ -121,6 +122,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public IList<string> Log { get; set; }
+        public IReadOnlyList<string> LogLines { get; set; }
     }
 }

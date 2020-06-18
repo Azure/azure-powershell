@@ -9,23 +9,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseCmdletBase : AzureRMCmdlet
     {
-        private SynapseAnalyticsClient _synapseAnalyticsClient;
-
-        public SynapseAnalyticsClient SynapseAnalyticsClient
-        {
-            get
-            {
-                if (_synapseAnalyticsClient == null)
-                {
-                    _synapseAnalyticsClient = new SynapseAnalyticsClient(DefaultProfile.DefaultContext);
-                }
-
-                return _synapseAnalyticsClient;
-            }
-
-            set { _synapseAnalyticsClient = value; }
-        }
-
         internal static TClient CreateSynapseClient<TClient>(IAzureContext context, string endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
         {
             if (context == null)

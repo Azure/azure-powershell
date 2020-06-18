@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace)]
     [OutputType(typeof(bool))]
-    public class TestAzureSynapseWorkspace : SynapseCmdletBase
+    public class TestAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = false, Position = 0, Mandatory = true,
             HelpMessage = HelpMessages.WorkspaceName)]

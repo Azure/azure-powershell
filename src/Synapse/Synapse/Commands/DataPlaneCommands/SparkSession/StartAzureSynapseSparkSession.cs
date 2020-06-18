@@ -1,9 +1,9 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.Azure.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = CreateByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkSession))]
-    public class StartAzureSynapseSparkSession : SynapseCmdletBase
+    public class StartAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.LanguageForExecutionCode)]
         [ValidateNotNullOrEmpty]
@@ -89,20 +89,19 @@ namespace Microsoft.Azure.Commands.Synapse
             }
 
             Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
-            var livyRequest = new ExtendedLivySessionRequest
+            var livyRequest = new SparkSessionOptions(this.Name)
             {
-                Name = this.Name,
                 Jars = jars,
                 Files = files,
-                Conf = this.Configuration?.ToDictionary(),
+                Configuration = this.Configuration?.ToDictionary(),
                 ExecutorMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 ExecutorCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 DriverMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 DriverCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
-                NumExecutors = this.ExecutorCount
+                ExecutorCount = this.ExecutorCount
             };
 
-            var sparkSession = SynapseAnalyticsClient.CreateSparkSession(this.WorkspaceName, this.SparkPoolName, livyRequest, waitForCompletion:true);
+            var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion:true);
 
             PSSynapseSparkSession psSparkSession = null;
             if (this.IsParameterBound(c => c.Language))

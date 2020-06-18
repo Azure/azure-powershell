@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkSession))]
-    public class GetAzureSynapseSparkSession : SynapseCmdletBase
+    public class GetAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.LivyId))
             {
-                var result = new PSSynapseSparkSession(this.SynapseAnalyticsClient.GetSparkSession(this.WorkspaceName, this.SparkPoolName, this.LivyId));
+                var result = new PSSynapseSparkSession(this.SynapseAnalyticsClient.GetSparkSession(this.LivyId));
                 WriteObject(result);
             }
             else
             {
-                var result = this.SynapseAnalyticsClient.ListSparkSessions(this.WorkspaceName, this.SparkPoolName).Select(r => new PSSynapseSparkSession(r));
+                var result = this.SynapseAnalyticsClient.ListSparkSessions().Select(r => new PSSynapseSparkSession(r));
                 if (!string.IsNullOrEmpty(this.Name))
                 {
                     result = result.Where(r => this.Name.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
