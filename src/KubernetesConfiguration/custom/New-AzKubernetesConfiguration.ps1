@@ -36,32 +36,32 @@ function New-AzKubernetesConfiguration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfiguration])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="The name of the kubernetes cluster.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
     
-        [Parameter()]
+        [Parameter(HelpMessage="The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
         ${ClusterType},
     
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="Name of the Source Control Configuration.")]
         [Alias('SourceControlConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # Name of the Source Control Configuration.
         ${Name},
     
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="The name of the resource group.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         ${ResourceGroupName},
     
-        [Parameter()]
+        [Parameter(HelpMessage="The Azure subscription ID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -70,44 +70,44 @@ function New-AzKubernetesConfiguration {
         # 00000000-0000-0000-0000-000000000000)
         ${SubscriptionId},
     
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="Url of the SourceControl Repository.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Url of the SourceControl Repository.
         ${RepositoryUrl},
     
-        [Parameter()]
+        [Parameter(HelpMessage="Option to enable Helm Operator for this git configuration.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [switch]
         # Option to enable Helm Operator for this git configuration.
         ${EnableHelmOperator},
     
-        [Parameter()]
+        [Parameter(HelpMessage="Values override for the operator Helm chart.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Values override for the operator Helm chart.
         ${HelmOperatorChartValues},
     
-        [Parameter()]
+        [Parameter(HelpMessage="Version of the operator Helm chart.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Version of the operator Helm chart.
         ${HelmOperatorChartVersion},
     
-        [Parameter()]
+        [Parameter(HelpMessage="Instance name of the operator - identifying the specific configuration.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Instance name of the operator - identifying the specific configuration.
         ${OperatorInstanceName},
     
-        [Parameter()]
+        [Parameter(HelpMessage="The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # The namespace to which this operator is installed to.
         # Maximum of 253 lower case alphanumeric characters, hyphen and period only.
         ${OperatorNamespace},
     
-        [Parameter()]
+        [Parameter(HelpMessage="Any Parameters for the Operator instance in string format.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Any Parameters for the Operator instance in string format.
