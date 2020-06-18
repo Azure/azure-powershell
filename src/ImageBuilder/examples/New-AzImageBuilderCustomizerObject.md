@@ -30,6 +30,8 @@ Name                 Type       Inline                                          
 ----                 ----       ------                                                                                                  ----------- --------- --------------
 settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False
 
+```
+
 This command creates a powershell customizer.
 
 ### Example 4: Create a restart customizer
