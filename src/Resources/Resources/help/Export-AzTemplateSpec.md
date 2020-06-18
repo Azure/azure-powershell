@@ -20,7 +20,7 @@ Export-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <S
 
 ### ExportByIdParameterSet
 ```
-Export-AzTemplateSpec [-Id] <String> -Version <String> -OutputFolder <String>
+Export-AzTemplateSpec [-ResourceId] <String> -Version <String> -OutputFolder <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,9 +36,9 @@ PS C:\> Export-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'MyTemplateSpec' -
 
 Exports version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' to the local output folder "v1".
 
-### Example 1: Export by resource id
+### Example 2: Export by resource id
 ```powershell
-PS C:\> Export-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'MyTemplateSpec' -Version 'v1.0' -OutputFolder 'v1'
+PS C:\> Export-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -Version 'v1.0' -OutputFolder 'v1'
 ```
 
 Exports version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' of subscription \{subId\} to the local output folder "v1".
@@ -60,14 +60,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -ResourceId
 The fully qualified resource Id of the template spec.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
 
 ```yaml
 Type: System.String
 Parameter Sets: ExportByIdParameterSet
-Aliases: ResourceId
+Aliases: Id
 
 Required: True
 Position: 0

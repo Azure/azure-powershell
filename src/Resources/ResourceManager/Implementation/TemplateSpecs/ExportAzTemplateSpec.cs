@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceNameCompleter("Microsoft.Resources/templateSpecs", "ResourceGroupName")]
         public string Name { get; set; }
 
-        [Alias("ResourceId")]
+        [Alias("Id")]
         [Parameter(
             Position = 0,
             ParameterSetName = ExportByIdParameterSet,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/templateSpecs")]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -92,12 +92,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                ResourceIdentifier resourceIdentifier = (Id != null)
-                    ? new ResourceIdentifier(Id)
+                ResourceIdentifier resourceIdentifier = (ResourceId != null)
+                    ? new ResourceIdentifier(ResourceId)
                     : null;
 
                 ResourceGroupName = ResourceGroupName ?? resourceIdentifier.ResourceGroupName;
-                Name = Name ?? ResourceIdUtility.GetResourceName(Id);
+                Name = Name ?? ResourceIdUtility.GetResourceName(ResourceId);
 
                 // Get the template spec version model from the SDK:
                 TemplateSpecVersionModel specificVersion = 

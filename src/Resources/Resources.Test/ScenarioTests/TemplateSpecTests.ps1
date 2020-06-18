@@ -64,7 +64,7 @@ function Test-GetTemplateSpec
 
         # Validate we get expected results when getting a specific version (by id, and version)
 
-        $returnedByGetOnSpecificVersionById = Get-AzTemplateSpec -Id $basicCreatedTemplateSpecV2.Id -Version "v2"
+        $returnedByGetOnSpecificVersionById = Get-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV2.Id -Version "v2"
 
         Assert-NotNull $returnedByGetOnSpecificVersionById
         Assert-True { Get-AreObjectsEquivalent $basicCreatedTemplateSpecV2 $returnedByGetOnSpecificVersionById }
@@ -178,7 +178,7 @@ function Test-RemoveTemplateSpec
 
         # Validate we can remove the entire template spec:
 
-        $allVersionsRemovalResult = Remove-AzTemplateSpec -Id $basicCreatedTemplateSpecV1.Id -Force # Note: Id is Id of the root template spec
+        $allVersionsRemovalResult = Remove-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV1.Id -Force # Note: Id is Id of the root template spec
         Assert-True { $allVersionsRemovalResult }
         Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname }
     }

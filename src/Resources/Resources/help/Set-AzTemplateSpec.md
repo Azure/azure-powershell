@@ -19,20 +19,20 @@ Set-AzTemplateSpec [-Location <String>] [-DefaultProfile <IAzureContextContainer
 
 ### UpdateByIdParameterSet
 ```
-Set-AzTemplateSpec -Id <String> [-Description <String>] [-DisplayName <String>] [-Location <String>]
+Set-AzTemplateSpec -ResourceId <String> [-Description <String>] [-DisplayName <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonFileParameterSet
 ```
-Set-AzTemplateSpec -Id <String> -Version <String> [-Description <String>] [-DisplayName <String>]
+Set-AzTemplateSpec -ResourceId <String> -Version <String> [-Description <String>] [-DisplayName <String>]
  [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonParameterSet
 ```
-Set-AzTemplateSpec -Id <String> -Version <String> [-Description <String>] [-DisplayName <String>]
+Set-AzTemplateSpec -ResourceId <String> -Version <String> [-Description <String>] [-DisplayName <String>]
  [-Location <String>] -TemplateJson <String> [-VersionDescription <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -160,14 +160,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Id
+### -ResourceId
 The fully qualified resource Id of the template spec.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
 
 ```yaml
 Type: String
 Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet
-Aliases: ResourceId
+Aliases: Id
 
 Required: True
 Position: Named

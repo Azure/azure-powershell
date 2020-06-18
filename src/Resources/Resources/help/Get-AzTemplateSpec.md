@@ -26,7 +26,7 @@ Get-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Version] <S
 
 ### GetTemplateSpecByIdParameterSet
 ```
-Get-AzTemplateSpec [[-Version] <String>] [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzTemplateSpec [[-Version] <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Gets information about version 'v1.0' of the Template Spec named 'MyTemplateSpec
 
 ### Example 5: Get Template Spec (with all versions) by resource id
 ```powershell
-PS C:\> Get-AzTemplateSpec -Id '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec'
+PS C:\> Get-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec'
 ```
 
 Gets information about the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' of subscription \{subId\}.
@@ -85,7 +85,7 @@ of the return object.
 
 ### Example 6: Get Template Spec (specific version) by resource id
 ```powershell
-PS C:\> Get-AzTemplateSpec -Id '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -Version 'v1.0'
+PS C:\> Get-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -Version 'v1.0'
 ```
 
 Gets information about version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' of subscription \{subId\}.
@@ -109,14 +109,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -ResourceId
 The fully qualified resource Id of the template spec.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
 
 ```yaml
 Type: System.String
 Parameter Sets: GetTemplateSpecByIdParameterSet
-Aliases: ResourceId
+Aliases: Id
 
 Required: True
 Position: 0

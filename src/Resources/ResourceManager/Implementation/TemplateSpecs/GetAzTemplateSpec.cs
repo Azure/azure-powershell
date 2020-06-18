@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceNameCompleter("Microsoft.Resources/templateSpecs/versions", "ResourceGroupName", "Name")]
         public string Version { get; set; }
 
-        [Alias("ResourceId")]
+        [Alias("Id")]
         [Parameter(Position = 0, ParameterSetName = GetTemplateSpecByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/templateSpecs")]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         #endregion
 
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     case GetTemplateSpecByIdParameterSet:
                         WriteObject(
                             TemplateSpecsSdkClient.GetTemplateSpec(
-                                ResourceIdUtility.GetResourceName(this.Id),
-                                ResourceIdUtility.GetResourceGroupName(this.Id),
+                                ResourceIdUtility.GetResourceName(this.ResourceId),
+                                ResourceIdUtility.GetResourceGroupName(this.ResourceId),
                                 Version
                             )
                         );

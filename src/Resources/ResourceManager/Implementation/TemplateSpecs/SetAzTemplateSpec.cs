@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string UpdateVersionByIdFromJsonParameterSet = nameof(UpdateVersionByIdFromJsonParameterSet);
         internal const string UpdateVersionByNameFromJsonParameterSet = nameof(UpdateVersionByNameFromJsonParameterSet);
 
-        [Alias("ResourceId")]
+        [Alias("Id")]
         [Parameter(Position = 0, ParameterSetName = UpdateByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         //[Parameter(Position = 0, ParameterSetName = UpdateVersionByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/templateSpecs")]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group.")]
@@ -216,8 +216,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     }
 
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
-                        ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.Id),
-                        Name ?? ResourceIdUtility.GetResourceName(this.Id),
+                        ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.ResourceId),
+                        Name ?? ResourceIdUtility.GetResourceName(this.ResourceId),
                         Version,
                         Location,
                         packagedTemplate,
@@ -233,8 +233,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     // This is an update to the root template spec only:
 
                     var templateSpec = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpec(
-                            ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.Id),
-                            Name ?? ResourceIdUtility.GetResourceName(this.Id),
+                            ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.ResourceId),
+                            Name ?? ResourceIdUtility.GetResourceName(this.ResourceId),
                             Location,
                             templateSpecDescription: Description,
                             templateSpecDisplayName: DisplayName

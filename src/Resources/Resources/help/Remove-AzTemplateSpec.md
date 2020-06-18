@@ -20,7 +20,7 @@ Remove-AzTemplateSpec [-Force] [-ResourceGroupName] <String> [-Name] <String> [[
 
 ### RemoveByIdParameterSet
 ```
-Remove-AzTemplateSpec [-Force] [[-Version] <String>] [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzTemplateSpec [-Force] [[-Version] <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Removes version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the re
 
 ### Example 2: Removing a specific version by resource id
 ```powershell
-PS C:\> Remove-AzTemplateSpec -Id '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -Version 'v1.0'
+PS C:\> Remove-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -Version 'v1.0'
 ```
 
 Removes version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' of subscription \{subId\}.
@@ -54,7 +54,7 @@ Removes the Template Spec named 'MyTemplateSpec' and all of its versions within 
 
 ### Example 3: Removing a Template Spec and all versions by resource id
 ```powershell
-PS C:\> Remove-AzTemplateSpec -Id '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -ResourceGroupName 'myRG'
+PS C:\> Remove-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -ResourceGroupName 'myRG'
 ```
 
 Removes the Template Spec named 'MyTemplateSpec' and all of its versions within the resource group 'myRG' of subscription \{subId\}.
@@ -91,14 +91,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -ResourceId
 The fully qualified resource Id of the template spec.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
 
 ```yaml
 Type: System.String
 Parameter Sets: RemoveByIdParameterSet
-Aliases: ResourceId
+Aliases: Id
 
 Required: True
 Position: 0
