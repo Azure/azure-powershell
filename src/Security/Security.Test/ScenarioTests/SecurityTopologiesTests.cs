@@ -20,21 +20,21 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopologies-SubscriptionScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopology-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopologies-ResourceGroupLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopology-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopologies-ResourceId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTopology-ResourceId");
         }
     }
 }

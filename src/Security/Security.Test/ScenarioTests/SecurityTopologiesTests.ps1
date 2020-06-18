@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security topologies on a subscription scope
 #>
-function Get-AzureRmSecurityTopologies-SubscriptionScope
+function Get-AzureRmSecurityTopology-SubscriptionScope
 {
-    $securityTopologies = Get-AzSecurityTopologies
+    $securityTopologies = Get-AzSecurityTopology
 	Validate-SecurityTopologies $securityTopologies
 }
 
@@ -26,13 +26,13 @@ function Get-AzureRmSecurityTopologies-SubscriptionScope
 .SYNOPSIS
 Get security topologies
 #>
-function Get-AzureRmSecurityTopologies-ResourceGroupLevelResource
+function Get-AzureRmSecurityTopology-ResourceGroupLevelResource
 {
-	$securityTopologies = Get-AzSecurityTopologies | Select -First 1
+	$securityTopologies = Get-AzSecurityTopology | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $securityTopologies.Id
 	$location = Extract-ResourceLocation -ResourceId $securityTopologies.Id
 
-    $fetchedSecurityTopologies = Get-AzSecurityTopologies -ResourceGroupName $rgName -Location $location -Name $securityTopologies.Name
+    $fetchedSecurityTopologies = Get-AzSecurityTopology -ResourceGroupName $rgName -Location $location -Name $securityTopologies.Name
 	Validate-SecurityTopologies $fetchedSecurityTopologies
 }
 
@@ -40,11 +40,11 @@ function Get-AzureRmSecurityTopologies-ResourceGroupLevelResource
 .SYNOPSIS
 Get security topologies by a resource ID
 #>
-function Get-AzureRmSecurityTopologies-ResourceId
+function Get-AzureRmSecurityTopology-ResourceId
 {
-	$securityTopologies = Get-AzSecurityTopologies | Select -First 1
+	$securityTopologies = Get-AzSecurityTopology | Select -First 1
 
-    $securityTopologies = Get-AzSecurityTopologies -ResourceId $securityTopologies.Id
+    $securityTopologies = Get-AzSecurityTopology -ResourceId $securityTopologies.Id
 	Validate-SecurityTopologies $securityTopologies
 }
 
