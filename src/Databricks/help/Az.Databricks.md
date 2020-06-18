@@ -15,7 +15,7 @@ This module is still in preview and must be installed separately using the follo
 Install-Module -Name Az.Databricks
 ```
 
-Module contains preview features which may not be available in your region. Please try it after couple days. 
+Module contains preview features which may not be available in your region. Please try it later. 
 
 ## Az.Databricks Cmdlets
 ### [Get-AzDatabricksWorkspace](Get-AzDatabricksWorkspace.md)
