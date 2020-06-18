@@ -9,7 +9,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseCmdletBase : AzureRMCmdlet
     {
-
         internal static TClient CreateSynapseClient<TClient>(IAzureContext context, string endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
         {
             if (context == null)
