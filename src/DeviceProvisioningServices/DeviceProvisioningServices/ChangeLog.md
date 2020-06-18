@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix [#12154]: Enrollment does not retain/assign linked IotHubs while choosing Custom allocation policy.
 
 ## Version 0.7.3
 * Manage Device Enrollments. New cmdlets are:
