@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
-        [PSArgumentCompleter("Deallocate")]
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,

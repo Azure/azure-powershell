@@ -32,15 +32,15 @@ To create Eventhub with Capture description properties, please follow the below 
 
 ## EXAMPLES
 
-### Example 1  - Create new EventHub
-```
+### Example 1: - Create new EventHub
+```powershell
 PS C:\> New-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName
 ```
 
 Creates an Event Hub named \`MyEventHubName\` with a 3-day message retention period and two partitions, in the \`WestUS\` location, with resource group \`MyResourceGroupName\`.
 
-### Example 2 Update Eventhub with 'CaptureDescription'
-```
+### Example 2: Update Eventhub with 'CaptureDescription'
+```powershell
 PS C:\> New-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
 
 PS C:\> $CreatedEventHub = Get-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName

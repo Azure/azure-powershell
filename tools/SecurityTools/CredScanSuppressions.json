@@ -506,6 +506,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightHostTests\\TestHostRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
       "_justification": "Resource creation is mocked"
     },
@@ -930,6 +934,10 @@
       "_justification": "Generated test resource group, deleted after test execution"
     },
     {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestP2SCortexCRUD.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },	
+    {
       "file": "src\\EventGrid\\EventGrid.Test\\SessionRecords\\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\\EventGrid_EventSubscriptionToAzureSubscription.json",
       "_justification": "Keys do not persist after test as resources got deleted"
     },
@@ -1032,6 +1040,10 @@
     {
       "file": "src\\MixedReality\\MixedReality.Test\\SessionRecords\\Microsoft.Azure.Commands.MixedReality.Test.SpatialAnchorsAccountTests\\TestListSpatialAnchorsAccounts.json",
       "_justification": "Credentials do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\\NamespaceBYOKCRUD.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
     }
   ]
 }

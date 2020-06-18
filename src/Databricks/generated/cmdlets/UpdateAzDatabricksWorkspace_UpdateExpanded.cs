@@ -11,6 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// <remarks>
     /// [OpenAPI] Workspaces_Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDatabricksWorkspace_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Updates a workspace.")]

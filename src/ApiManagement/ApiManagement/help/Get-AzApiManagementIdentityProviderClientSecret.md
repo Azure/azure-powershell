@@ -22,8 +22,8 @@ Get the identity provider client secret.
 
 ## EXAMPLES
 
-### Example 2: Get the client secret of AAD Type Identity Provider
-```
+### Example 1: Get the client secret of AAD Type Identity Provider
+```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\> Get-AzApiManagementIdentityProviderClientSecret -Context $apimContext -Type Aad
 ```

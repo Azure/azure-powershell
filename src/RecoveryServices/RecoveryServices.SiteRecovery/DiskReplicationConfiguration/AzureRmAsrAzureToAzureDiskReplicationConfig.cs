@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -84,7 +85,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateSet(
             Constants.Premium_LRS,
             Constants.Standard_LRS,
-            Constants.Standard_SSD)]
+            Constants.Standard_SSD,
+            Constants.StandardSSD_LRS)]
         public string RecoveryReplicaDiskAccountType { get; set; }
 
         /// <summary>
@@ -95,7 +97,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateSet(
             Constants.Premium_LRS,
             Constants.Standard_LRS,
-            Constants.Standard_SSD)]
+            Constants.Standard_SSD,
+            Constants.StandardSSD_LRS)]
         public string RecoveryTargetDiskAccountType { get; set; }
 
         /// <summary>
@@ -174,6 +177,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         };
                         break;
                     case ASRParameterSets.AzureToAzureManagedDisk:
+
+                        if (this.RecoveryReplicaDiskAccountType == Constants.Standard_SSD  ||
+                            this.RecoveryTargetDiskAccountType == Constants.Standard_SSD)
+                        {
+                            this.WriteWarning(Resources.RecoveryDiskTypeUnSupported);
+
+                            if (this.RecoveryReplicaDiskAccountType == Constants.Standard_SSD)
+                            {
+                                this.RecoveryReplicaDiskAccountType = Constants.StandardSSD_LRS;
+                            }
+
+                            if (this.RecoveryTargetDiskAccountType == Constants.StandardSSD_LRS)
+                            {
+                                this.RecoveryTargetDiskAccountType = Constants.StandardSSD_LRS;
+                            }
+                        }
+
                         diskRelicationConfig = new ASRAzuretoAzureDiskReplicationConfig()
                         {
                             DiskId = this.DiskId,

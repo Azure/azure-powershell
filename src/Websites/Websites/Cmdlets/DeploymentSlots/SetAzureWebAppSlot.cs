@@ -96,15 +96,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         public string ContainerImageName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url", ParameterSetName = ParameterSet1Name)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string ContainerRegistryUrl { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username", ParameterSetName = ParameterSet1Name)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string ContainerRegistryUser { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password", ParameterSetName = ParameterSet1Name)]
-        [ValidateNotNullOrEmpty]
         public SecureString ContainerRegistryPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook", ParameterSetName = ParameterSet1Name)]
@@ -218,15 +217,28 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
                     if (ContainerRegistryUrl != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerUrl] = ContainerRegistryUrl;
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerUrl);
+                        if (ContainerRegistryUrl != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
+                        }
                     }
+
                     if (ContainerRegistryUser != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerUserName] = ContainerRegistryUser;
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerUserName);
+
+                        if (ContainerRegistryUser != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
+                        }
                     }
+
+                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))
@@ -305,7 +317,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
-                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp);
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp,rg);
                     WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray(), Slot);
                     break;
             }
