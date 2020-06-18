@@ -73,16 +73,14 @@ This command creates a file customizer.
 
 ### Example 3: Create a powershell customizer
 ```powershell
-
-```
-
-```powershell
-PS C:\\> $inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  \> c:\\buildActions\\buildActionsOutput.txt")
-PS C:\\> New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName settingUpMgmtAgtPath -RunElevated $false -Inline $inline
+PS C:\> $inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
+PS C:\> New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName settingUpMgmtAgtPath -RunElevated $false -Inline $inline
 
 Name                 Type       Inline                                                                                                  RunElevated ScriptUri Sha256Checksum
 ----                 ----       ------                                                                                                  ----------- --------- --------------
-settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  \> c:\\buildActions\\buildActionsOutput.txt} False
+settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False
+
+```
 
 This command creates a powershell customizer.
 
