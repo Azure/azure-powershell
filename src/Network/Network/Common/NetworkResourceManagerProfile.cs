@@ -394,6 +394,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpPrefixTag>();
                 cfg.CreateMap<MNM.ReferencedPublicIpAddress, CNM.PSPublicIpAddress>();
 
+                // BYOIP (MasterCustomIpPrefix and CustomIpPrefix)
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSMasterCustomIpPrefix, MNM.MasterCustomIpPrefix>();
+                cfg.CreateMap<CNM.PSCustomIpPrefix, MNM.CustomIpPrefix>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.MasterCustomIpPrefix, CNM.PSMasterCustomIpPrefix>();
+                cfg.CreateMap<MNM.CustomIpPrefix, CNM.PSCustomIpPrefix>();
+
                 // NetworkInterface
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
