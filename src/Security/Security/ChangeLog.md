@@ -19,12 +19,12 @@
 -->
 ## Upcoming Release
 * Add new cmdlets: 'Get-AzSecurityTopologies'
-* Add new cmdlets: 'Get-AzSecurityAssessment', 
-                   'Set-AzSecurityAssessment',	
-                   'Remove-AzSecurityAssessment',	
-                   'Get-AzSecurityAssessmentMetadata',	
-                   'Set-AzSecurityAssessmentMetadata',	
-                   'Remove-AzSecurityAssessmentMetadata',	
+* Add new cmdlets: 'Get-AzSecurityAssessment',
+                   'Set-AzSecurityAssessment',
+                   'Remove-AzSecurityAssessment',
+                   'Get-AzSecurityAssessmentMetadata',
+                   'Set-AzSecurityAssessmentMetadata',
+                   'Remove-AzSecurityAssessmentMetadata',
                    'Get-AzSecuritySubAssessment'
 
 ## Version 0.7.9
