@@ -1,6 +1,4 @@
-﻿
-
-using Azure.Analytics.Synapse.Spark.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
