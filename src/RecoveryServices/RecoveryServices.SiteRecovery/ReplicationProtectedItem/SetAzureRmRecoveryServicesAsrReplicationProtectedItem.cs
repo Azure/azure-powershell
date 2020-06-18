@@ -723,6 +723,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var vMNicInputDetails = new VMNicInputDetails();
 
                         vMNicInputDetails.NicId = nic.NicId;
+                        vMNicInputDetails.RecoveryNicName = nic.RecoveryNicName;
+                        vMNicInputDetails.RecoveryNicResourceGroupName = nic.RecoveryNicResourceGroupName;
+                        vMNicInputDetails.ReuseExistingNic = nic.ReuseExistingNic;
                         vMNicInputDetails.RecoveryVMSubnetName = nic.RecoveryVMSubnetName;
                         vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery =
                             nic.EnableAcceleratedNetworkingOnRecovery;
@@ -735,6 +738,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
                             nic.RecoveryIPConfigs?.FirstOrDefault()?.LBBackendAddressPoolIds;
 
+                        vMNicInputDetails.TfoNicName = nic.TfoNicName;
+                        vMNicInputDetails.TfoNicResourceGroupName = nic.TfoNicResourceGroupName;
+                        vMNicInputDetails.TfoReuseExistingNic = nic.TfoReuseExistingNic;
                         vMNicInputDetails.TfoVMSubnetName = nic.TfoVMSubnetName;
                         vMNicInputDetails.EnableAcceleratedNetworkingOnTfo =
                             nic.EnableAcceleratedNetworkingOnTfo;

@@ -2341,6 +2341,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMNetworkId { get; set; }
 
         /// <summary>
+        ///     Gets or sets the name of the recovery NIC.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the recovery NIC resource group name.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be reused during failover.
+        /// </summary>
+        [DataMember]
+        public bool ReuseExistingNic { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the recovery VM subnet.
         /// </summary>
         [DataMember]
@@ -2369,6 +2387,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic.
+        /// </summary>
+        [DataMember]
+        public string TfoNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic resource group name.
+        /// </summary>
+        [DataMember]
+        public string TfoNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be reused during TFO .
+        /// </summary>
+        [DataMember]
+        public bool TfoReuseExistingNic { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of the test failover VM subnet.
