@@ -14,15 +14,3 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Subsc
 ### [New-AzSubscription](New-AzSubscription.md)
 Creates an Azure subscription.
 
-## Az.Subscription Cmdlets
-### [New-AzModernSubscription](New-AzModernSubscription.md)
-Creates Modern Azure subscription.
-
-## Az.Subscription Cmdlets
-### [New-AzCspSubscription](New-AzCspSubscription.md)
-Creates Csp Azure subscription.
-
-## Az.Subscription Cmdlets
-### [Update-AzSubscription](Update-AzSubscription.md)
-Updates an Azure subscription.
-

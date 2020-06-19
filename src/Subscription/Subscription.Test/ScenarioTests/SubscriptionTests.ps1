@@ -20,11 +20,6 @@ function Test-NewSubscription
 {
     # $accounts = Get-AzEnrollmentAccount
     $accounts = @(@{ ObjectId = "cdf813b6-bdc2-4df5-b150-00ccfd7580e2" })
-	$billingAccountId = "d6fd151e-2f30-50d5-34b2-fe40b1d64b7f:31670802-3752-4741-b5cc-683c71eca69b_2019-05-31" 
-	$billingProfileId = "4S2P-T44P-BG7-TGB" 
-	$InvoiceSectionId = "74EQ-I4QH-PJA-TGB" 
-	$skuId ="0001"
-	$customerId = "JIMI-YGZA-BG7-TGB" 
     
     # Verify the caller has at least one enrollment account.
     Assert-True { $accounts.Count -gt 0 }
