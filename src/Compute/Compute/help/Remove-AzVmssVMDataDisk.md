@@ -33,6 +33,14 @@ The first command getsan existing Vmss VM given by the resource group name, the 
 The second command removes the data disk lun 0 from the VM scale set VM stored in $VmssVM
 The final command updates the Vmss VM with removed data disk.
 
+### Example 2
+
+The first command getsan existing Vmss VM given by the resource group name, the vmss name and the instance ID.
+
+```powershell <!-- Aladdin Generated Example --> 
+Remove-AzVmssVMDataDisk -Lun 0 -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVM>
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile
