@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
 
 ## Version 2.8.0
 * Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet
