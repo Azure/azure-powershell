@@ -1,3 +1,136 @@
+## 4.3.0 - June 2020
+#### Az.Accounts
+* Supported discovering environment setting by default and adding environment via 'Add-AzEnvironment'
+* Update preloaded assemblies [#12024], [#11976]
+* Updated Azure.Core assembly
+* Fixed an issue that may cause 'Connect-AzAccount' to fail in multi-threaded execution [#11201]
+
+#### Az.Aks
+* Replaced usage of old [AccessProfile API](https://docs.microsoft.com/rest/api/aks/managedclusters/getaccessprofile) with calls to [ListClusterAdmin](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials) and [ListClusterUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials) APIs
+
+#### Az.Batch
+* Updated Az.Batch to use 'Microsoft.Azure.Management.Batch' SDK version to 11.0.0
+* Added the ability to set the BatchAccount Identity in the 'New-AzBatchAccount' cmdlet
+
+#### Az.CognitiveServices
+* Supported displaying account capabilities.
+* Supported modifying PublicNetworkAccess.
+
+#### Az.Compute
+* Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
+* Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.
+* Added Substatuses to VMCustomScriptExtension [#11297]
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Fixed name of new VM Extension for SAP
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.9.0
+
+#### Az.EventHub
+* Added Managed Identity parameters to 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace' cmdlets
+
+#### Az.Functions
+* Added support to create PowerShell 7.0 and Java 11 function apps
+
+#### Az.HDInsight
+* Supported listing hosts and restart specific hosts of the HDInsight cluster.
+
+#### Az.HealthcareApis
+* Updated the SDK version to 1.1.0
+* Added support for Export settings and Managed Identity
+
+#### Az.Monitor
+* Fixed input object parameter for 'Set-AzActivityLogAlert'
+* Fixed 'InputObject' parameter for 'Set-AzActionGroup' [#10868]
+
+#### Az.Network
+* Added support for AddressPrefixType parameter to 'Remove-AzExpressRouteCircuitConnectionConfig'
+* Added new cmdlets for Azure FirewallPolicy
+    - 'New-AzFirewallPolicyDnsSetting'
+    - Support for Destination FQDN in Network Rules for Firewall Policy
+* Added support for backend address pool operations
+    - 'New-AzLoadBalancerBackendAddressConfig'
+    - 'New-AzLoadBalancerBackendAddressPool'
+    - 'Set-AzLoadBalancerBackendAddressPool'
+    - 'Remove-AzLoadBalancerBackendAddressPool'
+    - 'Get-AzLoadBalancerBackendAddressPool'
+* Added name validation for 'New-AzIpGroup'
+* Added new cmdlets for Azure FirewallPolicy
+    - 'New-AzFirewallPolicyThreatIntelWhitelist'
+* Updated below commands for feature: Custom dns servers set/remove on VirtualWan P2SVpnGateway.
+    - Updated New-AzP2sVpnGateway: Added optional parameter '-CustomDnsServer' for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+    - Updated Update-AzP2sVpnGateway: Added optional parameter '-CustomDnsServer' for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+* Updated 'Update-AzVpnGateway'
+    - Added optional parameter '-BgpPeeringAddress' for customers to specify their custom bgps to set on VpnGateway.
+* Added new cmdlet to support resetting the routing state of a VirtualHub resource:
+    - 'Reset-AzHubRouter'
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* [Breaking Change] Added mandatory parameter 'SourceIpGroup' for 'New-AzFirewallPolicyApplicationRule' and 'New-AzFirewallPolicyNetworkRule'.
+* [Breaking Change] Fixed 'New-AzFirewallPolicyApplicationRule', parameter 'SourceAddress' to be mandatory.
+* [Breaking Change] Fixed 'New-AzFirewallPolicyApplicationRule', parameter 'SourceAddress' to be mandatory.
+* [Breaking Change] Removed mandatory parameters: 'TranslatedAddress', 'TranslatedPort' for 'New-AzFirewallPolicyNatRuleCollection'.
+* Added new cmdlets to support PrivateLink On Application Gateway
+    - 'New-AzApplicationGatewayPrivateLinkConfiguration'
+    - 'Get-AzApplicationGatewayPrivateLinkConfiguration'
+    - 'New-AzApplicationGatewayPrivateLinkConfiguration'
+    - 'Set-AzApplicationGatewayPrivateLinkConfiguration'
+    - 'Remove-AzApplicationGatewayPrivateLinkConfiguration'
+    - 'New-AzApplicationGatewayPrivateLinkIpConfiguration'
+* Added new cmdlets for HubRouteTables child resource of VirtualHub.
+    - 'New-AzVHubRoute'
+    - 'New-AzVHubRouteTable'
+    - 'Get-AzVHubRouteTable'
+    - 'Update-AzVHubRouteTable'
+    - 'Remove-AzVHubRouteTable'
+* Updated existing cmdlets to support optional RoutingConfiguration input parameter for custom routing in VirtualWan.
+    - 'New-AzExpressRouteConnection'
+    - 'Set-AzExpressRouteConnection'
+    - 'New-AzVirtualHubVnetConnection'
+    - 'Update-AzVirtualHubVnetConnection'
+    - 'New-AzVpnConnection'
+    - 'Update-AzVpnConnection'
+    - 'New-AzP2sVpnGateway'
+    - 'Update-AzP2sVpnGateway'
+
+#### Az.OperationalInsights
+* Fixed bug PSWorkspace doesn't implement IOperationalInsightsWorkspace [#12135]
+* Added 'pergb2018' to valid value set of parameter 'Sku' in 'Set-AzOperationalInsightsWorkspace' 
+* Added alias 'FunctionParameters' for parameter 'FunctionParameter' to
+    - 'New-AzOperationalInsightsSavedSearch'
+    - 'Set-AzOperationalInsightsSavedSearch'
+
+#### Az.RecoveryServices
+* Azure Backup added support for fetching MAB items.
+* Azure Site Recovery supports disk type 'StandardSSD_LRS'
+
+#### Az.Resources
+* Added 'UsageLocation', 'GivenName', 'Surname', 'AccountEnabled', 'MailNickname', 'Mail' on 'PSADUser' [#10526] [#10497]
+* Fixed issue that '-Mail' doesn't work on 'Get-AzADUser' [#11981]
+* Added '-ExcludeChangeType' parameter to 'Get-AzDeploymentWhatIfResult' and 'Get-AzResourceGroupDeploymentWhatIfResult'
+* Added '-WhatIfExcludeChangeType' parameter to 'New-AzDeployment' and 'New-AzResourceGroupDeployment'
+* Updated 'Test-Az*Deployment' cmdlets to show better error messages
+* Fixed help message for '-Name' parameter of deployment create and What-If cmdlets
+
+#### Az.Sql
+* Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet
+* Fixed sync issue in Data Classification cmdlets.
+* Supported searching user by mail on 'Set-AzSqlServerActiveDirectoryAdministrator' [#12192]
+
+#### Az.Storage
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  'New-AzStorageAccount'
+* Moved the logic of loading Azure.Core to Az.Accounts
+
+#### Az.Websites
+* Added safeguard to delete created webapp if restore failed in 'Restore-AzDeletedWebApp'
+* Added 'SourceWebApp.Location' for 'New-AzWebApp' and 'New-AzWebAppSlot'
+* Fixed bug that prevented changing Container settings in 'Set-AzWebApp' and 'Set-AzWebAppSlot'
+* Fixed bug to get SiteConfig when -Name is not given for Get-AzWebApp
+* Added a support to create ASP for Linux Apps
+* Added exceptions for clone across resource groups
+
 ## 4.2.0 - June 2020
 #### Az.Accounts
 * Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]

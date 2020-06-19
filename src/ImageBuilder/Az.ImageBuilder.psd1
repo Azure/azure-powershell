@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ImageBuilder.private.dll'
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
   FormatsToProcess = './Az.ImageBuilder.format.ps1xml'
   FunctionsToExport = 'Get-AzImageBuilderRunOutput', 'Get-AzImageBuilderTemplate', 'New-AzImageBuilderCustomizerObject', 'New-AzImageBuilderDistributorObject', 'New-AzImageBuilderSourceObject', 'New-AzImageBuilderTemplate', 'Remove-AzImageBuilderTemplate', 'Start-AzImageBuilderTemplate', 'Stop-AzImageBuilderTemplate'
   AliasesToExport = '*'
