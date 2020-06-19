@@ -37,11 +37,20 @@ function Test-NewSubscription
 	Assert-NotNull $newSub.SubscriptionId
 }
 
-function Test-UpdateSubscription
+function Test-UpdateRenameSubscription
 {
-    $subId = "8f99ecea-4536-468e-9cce-ac18497a353d"
+    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
 
-    $updateSub = Update-AzSubscription -SubscriptionId $subId
+    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Rename" -Name "RenameFromPowershell"
+
+	Assert-NotNull updateSub.SubscriptionId
+}
+
+function Test-UpdateCancelSubscription
+{
+    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+
+    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Cancel"
 
 	Assert-NotNull updateSub.SubscriptionId
 }
