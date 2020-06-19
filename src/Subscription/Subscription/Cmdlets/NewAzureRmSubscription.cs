@@ -86,10 +86,6 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Alias("OwnerSPN", "OwnerServicePrincipalName")]
         public string[] OwnerApplicationId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Type of the subscription.")]
-        [PSArgumentCompleter("Modern", "Csp")]
-        public string SubscriptionType { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription"))
