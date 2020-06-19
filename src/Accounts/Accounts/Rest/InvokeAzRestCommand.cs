@@ -118,27 +118,27 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 case "GET":
                     response = ServiceClient
                     .Operations
-                    .GetResouceGenericFullResponse(this.Path, this.ApiVersion);
+                    .GetResourceWithFullResponse(this.Path, this.ApiVersion);
                     break;
                 case "POST":
                     response = ServiceClient
                     .Operations
-                    .PostResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    .PostResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "PUT":
                     response = ServiceClient
                     .Operations
-                    .PutResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    .PutResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "PATCH":
                     response = ServiceClient
                     .Operations
-                    .PatchResouceGenericFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    .PatchResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
                     break;
                 case "DELETE":
                     response = ServiceClient
                     .Operations
-                    .DeleteResouceGenericFullResponse(this.Path, this.ApiVersion);
+                    .DeleteResourceWithFullResponse(this.Path, this.ApiVersion);
                     break;
                 default:
                     throw new PSArgumentException("Invalid HTTP Method");
