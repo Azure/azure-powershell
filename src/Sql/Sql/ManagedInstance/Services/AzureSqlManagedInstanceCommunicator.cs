@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -113,6 +114,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         public void Remove(string resourceGroupName, string managedInstanceName)
         {
             GetCurrentSqlClient().ManagedInstances.Delete(resourceGroupName, managedInstanceName);
+        }
+
+        /// <summary>
+        /// Failovers a Managed instance
+        /// </summary>
+        public void Failover(string resourceGroupName, string name, string replicaType)
+        {
+            GetCurrentSqlClient().ManagedInstances.Failover(resourceGroupName, name, replicaType);
         }
 
         /// <summary>

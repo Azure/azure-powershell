@@ -362,6 +362,9 @@ Failovers a database.
 ### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
 Failovers an elastic pool.
 
+### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
+Failovers an Azure SQL Managed Instance.
+
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
