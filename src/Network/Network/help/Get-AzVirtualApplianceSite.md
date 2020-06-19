@@ -39,7 +39,7 @@ O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyPro
 ProvisioningState : Succeeded
 Name              : testsite
 Etag              : 1d1a2d81-3924-442d-ad18-8570bcfa3aa3
-Id                : /subscriptions/5e1e8156-5dec-452a-bfe5-6b6e0947c27a/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
 ```
 
 Get a Virtual Appliance site resource.
@@ -54,14 +54,14 @@ O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyPro
 ProvisioningState : Succeeded
 Name              : testsite
 Etag              : 1d1a2d81-3924-442d-ad18-8570bcfa3aa3
-Id                : /subscriptions/5e1e8156-5dec-452a-bfe5-6b6e0947c27a/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
 
 AddressPrefix     : 10.0.2.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
 Name              : testsite2
 Etag              : 52760ee9-a2f7-4f02-be3b-d7e1911f319e
-Id                : /subscriptions/5e1e8156-5dec-452a-bfe5-6b6e0947c27a/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite2
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite2
 ```
 
 List Virtual Appliance site resources in a Network Virtual Appliance.
