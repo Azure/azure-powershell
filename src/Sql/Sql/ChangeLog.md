@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed a bug in Data Classification cmdlets.
-* Add support for Azure SQL Managed Instance failover
+* Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
 
 ## Version 2.7.0
 * Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
