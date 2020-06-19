@@ -50,8 +50,8 @@ Type                        : Microsoft.Network/NetworkVirtualAppliances
 Tag                         :
 TagsTable                   :
 Name                        : nva
-Etag                        : da546a8d-6281-4479-bbcc-60fa16da47ec
-Id                          : /subscriptions/5e1e8156-5dec-452a-bfe5-6b6e0947c27a/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva
+Etag                        : 00000000-0000-0000-0000-000000000000
+Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva
 ```
 
 Get a Network Virtual Appliance resource.
