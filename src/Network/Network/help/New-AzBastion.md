@@ -76,7 +76,7 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName 
 ```
 
 ## DESCRIPTION
-Creates a bastion resource.This will need a Public Ip Address and a VirtualNetwork. There must be a subnet with name AzureBastionSubnet in this VirtualNetwork.The Pubic Ip Address must be created with Sku Standard.
+Creates a bastion resource.This will need a Public Ip Address and a VirtualNetwork. There must be a subnet with name AzureBastionSubnet in this VirtualNetwork.The Public Ip Address must be created with Sku Standard.
 
 ## EXAMPLES
 
