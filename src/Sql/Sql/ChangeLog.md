@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet
 * Fixed a bug in Data Classification cmdlets.
+* Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
 
 ## Version 2.7.0
 * Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
