@@ -12,7 +12,7 @@ Create a Network Virtual Appliance resource.
 
 ## SYNTAX
 
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
@@ -37,7 +37,7 @@ The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance re
 
 ### Example 1
 ```powershell
-PS C:\> $sku=New-AzVirtualApplianceSkuProperties -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
+PS C:\> $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
 PS C:\> $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 PS C:\> $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
 

@@ -23,7 +23,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSite", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSite", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(bool))]
     public class RemoveVirtualApplianceSiteCommand : VirtualApplianceSiteBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";

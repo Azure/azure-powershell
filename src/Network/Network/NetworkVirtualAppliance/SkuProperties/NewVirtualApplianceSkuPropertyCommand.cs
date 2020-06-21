@@ -22,8 +22,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSkuProperties"), OutputType(typeof(PSVirtualApplianceSkuProperties))]
-    public class NewVirtualApplianceSkuPropertiesCommand : VirtualApplianceSkuPropertiesBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSkuProperty"), OutputType(typeof(PSVirtualApplianceSkuProperties))]
+    public class NewVirtualApplianceSkuPropertyCommand : VirtualApplianceSkuPropertiesBaseCmdlet
     {
         [Alias("Name")]
         [Parameter(

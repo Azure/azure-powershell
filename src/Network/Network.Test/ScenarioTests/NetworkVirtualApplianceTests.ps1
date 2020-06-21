@@ -46,7 +46,7 @@ function Test-NetworkVirtualApplianceCRUD
     $prefix = "10.0.0.0/16"
     try{
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
-        $sku = New-AzVirtualApplianceSkuProperties -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+        $sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
         Assert-NotNull $sku
 
         $wan = New-AzVirtualWan -ResourceGroupName $rgname -Name $wanname -Location $location
@@ -94,7 +94,7 @@ function Test-VirtualApplianceSiteCRUD
     $newsiteprefix = "10.0.2.0/24"
     try{
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
-        $sku = New-AzVirtualApplianceSkuProperties -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+        $sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
         Assert-NotNull $sku
 
         $wan = New-AzVirtualWan -ResourceGroupName $rgname -Name $wanname -Location $location
@@ -102,7 +102,7 @@ function Test-VirtualApplianceSiteCRUD
         $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId /subscriptions/5e1e8156-5dec-452a-bfe5-6b6e0947c27a/resourceGroups/sliceTestRG/providers/Microsoft.Network/virtualHubs/sliceHub -Sku $sku -CloudInitConfiguration "echo hi" 
         $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
         
-        $o365Policy = New-AzOffice365PolicyProperties -Allow -Optimize
+        $o365Policy = New-AzOffice365PolicyProperty -Allow -Optimize
         $site = New-AzVirtualApplianceSite -Name $sitename -ResourceGroupName $rgname -AddressPrefix $siteprefix -O365Policy $o365Policy -NetworkVirtualApplianceId $getnva.Id
         $getsite = Get-AzVirtualApplianceSite -Name $sitename -ResourceGroupName $rgname -NetworkVirtualApplianceId $getnva.Id
         $setsite = Update-AzVirtualApplianceSite -Name $sitename -ResourceGroupName $rgname -NetworkVirtualApplianceId $getnva.Id -AddressPrefix $newsiteprefix -Force

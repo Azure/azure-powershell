@@ -26,7 +26,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance"), OutputType(typeof(PSNetworkVirtualAppliance))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance", DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSNetworkVirtualAppliance))]
     public class GetNetworkVirtualApplianceCommand : NetworkVirtualApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the Virtual Appliance Site.",
             ParameterSetName = ResourceIdParameterSet)]

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azoffice365policyproperties
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azoffice365policyproperty
 schema: 2.0.0
 ---
 
-# New-AzOffice365PolicyProperties
+# New-AzOffice365PolicyProperty
 
 ## SYNOPSIS
 Define a new Office 365 traffic breakout policy to be used with a Virtual Appliance site.
@@ -13,7 +13,7 @@ Define a new Office 365 traffic breakout policy to be used with a Virtual Applia
 ## SYNTAX
 
 ```
-New-AzOffice365PolicyProperties [-Allow] [-Optimize] [-Default] [-DefaultProfile <IAzureContextContainer>]
+New-AzOffice365PolicyProperty [-Allow] [-Optimize] [-Default] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The New-AzOffice365PolicyProperties command defines an Office 365 breakout polic
 
 ### Example 1
 ```powershell
-PS C:\> $o365Policy = New-AzOffice365PolicyProperties -Allow -Optimize 
+PS C:\> $o365Policy = New-AzOffice365PolicyProperty -Allow -Optimize 
 ```
 
 Create Office 365 traffic breakout policy object to be used with Virtual Appliance site commands.

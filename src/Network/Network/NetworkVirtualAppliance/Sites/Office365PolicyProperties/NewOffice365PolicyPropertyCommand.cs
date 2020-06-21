@@ -21,8 +21,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Office365PolicyProperties"), OutputType(typeof(PSOffice365PolicyProperties))]
-    public class NewOffice365PolicyPropertiesCommand : NetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Office365PolicyProperty"), OutputType(typeof(PSOffice365PolicyProperties))]
+    public class NewOffice365PolicyPropertyCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
