@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSWorkspace
+    public class PSWorkspace : IOperationalInsightWorkspace
     {
         public PSWorkspace()
         {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public int? retentionInDays { get; set; }
 
-        public Guid? CustomerId { get; private set; }
+        public Guid? CustomerId { get; set; }
 
         public string ProvisioningState { get; set; }
 

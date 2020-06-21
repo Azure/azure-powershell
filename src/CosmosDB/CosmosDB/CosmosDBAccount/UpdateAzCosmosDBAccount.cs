@@ -27,17 +27,8 @@ using System;
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccountGetResults))]
-    public class UpdateAzCosmosDBAccount : AzureCosmosDBCmdletBase
+    public class UpdateAzCosmosDBAccount : NewOrUpdateAzCosmosDBAccount
     {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -45,10 +36,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
         public PSDatabaseAccountGetResults InputObject { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.DefaultConsistencyLevelHelpMessage)]
-        [PSArgumentCompleter("BoundedStaleness", "ConsistentPrefix", "Eventual", "Session", "Strong")]
-        public string DefaultConsistencyLevel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAutomaticFailoverHelpMessage)]
         public bool? EnableAutomaticFailover { get; set; }
@@ -59,40 +46,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableVirtualNetworkHelpMessage)]
         public bool? EnableVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
-        [ValidateNotNull]
-        public string[] IpRangeFilter { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
-        public int? MaxStalenessIntervalInSeconds { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessPrefixHelpMessage)]
-        public int? MaxStalenessPrefix { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.TagHelpMessage)]
-        [ValidateNotNull]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string[] VirtualNetworkRule { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
-        [PSArgumentCompleter("Disabled", "Enabled")]
-        public string PublicNetworkAccess { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
-        public string KeyVaultKeyUri { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -138,49 +93,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
             }
+            if (EnableAnalyticalStorage != null)
+            {
+                databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
-                ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
-                {
-                    switch (DefaultConsistencyLevel)
-                    {
-                        case "Strong":
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Strong;
-                            break;
-                        case "Session":
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Session;
-                            break;
-                        case "Eventual":
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Eventual;
-                            break;
-                        case "ConsistentPrefix":
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.ConsistentPrefix;
-                            break;
-                        case "BoundedStaleness":
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.BoundedStaleness;
-                            consistencyPolicy.MaxIntervalInSeconds = MaxStalenessIntervalInSeconds;
-                            consistencyPolicy.MaxStalenessPrefix = MaxStalenessPrefix;
-                            break;
-                        default:
-                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Models.DefaultConsistencyLevel.Session;
-                            break;
-                    }
-
-                    databaseAccountUpdateParameters.ConsistencyPolicy = consistencyPolicy;
-                }
+               databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             }
 
             if (Tag != null)
             {
-                Dictionary<string, string> tags = new Dictionary<string, string>();
-                
-                foreach (string key in Tag.Keys)
-                {
-                    tags.Add(key, Tag[key].ToString());
-                }
-
-                databaseAccountUpdateParameters.Tags = tags;
+                databaseAccountUpdateParameters.Tags = base.PopulateTags(Tag);
             }
 
             if (VirtualNetworkRule != null || VirtualNetworkRuleObject != null)
@@ -203,10 +128,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 
-            if (IpRangeFilter != null)
+            if (IpRule != null)
             {
-                string IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
-                databaseAccountUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
+                // not checking IpRules.Length > 0, to handle the removal of IpRules case
+                databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

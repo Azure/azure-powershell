@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add new cmdlets: 'Get-AzSecurityTopologies'
+* Add new cmdlets: 'Get-AzSecurityTopology'
+
+## Version 0.7.9
 * Add new cmdlets: 'Get-AzSecurityAssessment',
                    'Set-AzSecurityAssessment',
                    'Remove-AzSecurityAssessment',

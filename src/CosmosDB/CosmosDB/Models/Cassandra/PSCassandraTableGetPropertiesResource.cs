@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Id = cassandraTableGetPropertiesResource.Id;
             DefaultTtl = cassandraTableGetPropertiesResource.DefaultTtl;
             Schema = new PSCassandraSchema(cassandraTableGetPropertiesResource.Schema);
+            AnalyticalStorageTtl = cassandraTableGetPropertiesResource.AnalyticalStorageTtl;
             _rid = cassandraTableGetPropertiesResource._rid;
             _ts = cassandraTableGetPropertiesResource._ts;
             _etag = cassandraTableGetPropertiesResource._etag;
@@ -63,5 +64,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets a system generated property representing the resource etag required for
         //     optimistic concurrency control.
         public string _etag { get; }
+        //
+        // Summary:
+        //     Gets or sets analytical TTL.
+        public int? AnalyticalStorageTtl { get; set; }
     }
 }
