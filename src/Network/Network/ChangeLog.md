@@ -68,7 +68,7 @@
     -`Update-AzVpnConnection`
     -`New-AzP2sVpnGateway`
     -`Update-AzP2sVpnGateway`
-
+* Application Gateway Onboarding to PrivateLink Common Cmdlets.
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`

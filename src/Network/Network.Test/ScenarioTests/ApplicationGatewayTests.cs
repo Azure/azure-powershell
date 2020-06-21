@@ -145,5 +145,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithPrivateLinkConfiguration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayPrivateEndpointConnectionsWorkFlows()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayPrivateEndpointWorkFlows -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
     }
 }
