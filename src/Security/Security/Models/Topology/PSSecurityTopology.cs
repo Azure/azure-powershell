@@ -15,9 +15,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Security.Models.Topologies
+namespace Microsoft.Azure.Commands.Security.Models.Topology
 {
-    public class PSSecurityTopologies
+    public class PSSecurityTopology
     {
         public string Id { get; set; }
 

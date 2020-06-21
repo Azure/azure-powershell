@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Topologies.PSSecurityTopologies
+### Microsoft.Azure.Commands.Security.Models.Topology.PSSecurityTopologies
 
 ## NOTES
 
