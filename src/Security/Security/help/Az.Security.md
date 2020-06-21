@@ -165,4 +165,4 @@ Gets security settings in Azure Security Center
 Sets a security setting in Azure Security Center
 
 ### [Get-AzSecurityTopology](Get-AzSecurityTopology.md)
-Gets a list of Security Topologies on a subscription
+Gets a list of Security Topology on a subscription

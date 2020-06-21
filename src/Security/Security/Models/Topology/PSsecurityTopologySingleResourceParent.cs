@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Security.Models.Topologies
+namespace Microsoft.Azure.Commands.Security.Models.Topology
 {
     public class PSsecurityTopologySingleResourceParent
     {

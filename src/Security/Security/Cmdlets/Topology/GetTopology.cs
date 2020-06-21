@@ -16,15 +16,15 @@ using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.Security.Models.Topologies;
+using Microsoft.Azure.Commands.Security.Models.Topology;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.Topologies
+namespace Microsoft.Azure.Commands.Security.Cmdlets.Topology
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityTopologies", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityTopologies))]
-    public class GetTopologies : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityTopology", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityTopology))]
+    public class GetTopology : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Topologies
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.Location)]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.Security/topologies")]
+        [LocationCompleter("Microsoft.Security/Topology")]
         public string Location { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]

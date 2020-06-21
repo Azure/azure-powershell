@@ -16,13 +16,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.Security.Models.Topologies
+namespace Microsoft.Azure.Commands.Security.Models.Topology
 {
-    public static class PSSecurityTopologiesConverters
+    public static class PSSecurityTopologyConverters
     {
-        public static PSSecurityTopologies ConvertToPSType(this TopologyResource value)
+        public static PSSecurityTopology ConvertToPSType(this TopologyResource value)
         {
-            return new PSSecurityTopologies()
+            return new PSSecurityTopology()
             {
                 Id = value.Id,
                 Name = value.Name,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Topologies
             };
         }
 
-        public static List<PSSecurityTopologies> ConvertToPSType(this IEnumerable<TopologyResource> value)
+        public static List<PSSecurityTopology> ConvertToPSType(this IEnumerable<TopologyResource> value)
         {
             return value.Select(tor => tor.ConvertToPSType()).ToList();
         }
@@ -82,15 +82,5 @@ namespace Microsoft.Azure.Commands.Security.Models.Topologies
         {
             return value.Select(tor => tor.ConvertToPSType()).ToList();
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
