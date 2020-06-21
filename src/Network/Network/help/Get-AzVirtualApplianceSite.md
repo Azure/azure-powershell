@@ -20,8 +20,7 @@ Get-AzVirtualApplianceSite [-Name <String>] [-NetworkVirtualApplianceId <String>
 
 ### ResourceIdParameterSet
 ```
-Get-AzVirtualApplianceSite [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVirtualApplianceSite -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +37,7 @@ AddressPrefix     : 10.0.1.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
 Name              : testsite
-Etag              : 1d1a2d81-3924-442d-ad18-8570bcfa3aa3
+Etag              : 00000000-0000-0000-0000-000000000000
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
 ```
 
@@ -53,14 +52,14 @@ AddressPrefix     : 10.0.1.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
 Name              : testsite
-Etag              : 1d1a2d81-3924-442d-ad18-8570bcfa3aa3
+Etag              : 00000000-0000-0000-0000-000000000000
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite
 
 AddressPrefix     : 10.0.2.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
 Name              : testsite2
-Etag              : 52760ee9-a2f7-4f02-be3b-d7e1911f319e
+Etag              : 00000000-0000-0000-0000-000000000000
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/testsite2
 ```
 
@@ -137,7 +136,7 @@ Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

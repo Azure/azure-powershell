@@ -22,7 +22,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSite", SupportsShouldProcess = true), OutputType(typeof(PSVirtualApplianceSite))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceSite", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSVirtualApplianceSite))]
     public class NewVirtualApplianceSiteCommand : VirtualApplianceSiteBaseCmdlet
     {
         

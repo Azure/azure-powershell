@@ -12,7 +12,7 @@ Create a site connected to a Network Virtual Appliance.
 
 ## SYNTAX
 
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 New-AzVirtualApplianceSite -Name <String> -ResourceGroupName <String> -AddressPrefix <String>
  -O365Policy <PSOffice365PolicyProperties> -NetworkVirtualApplianceId <String> [-Tag <Hashtable>] [-Force]
@@ -34,7 +34,7 @@ The New-AzVirtualApplianceSite command creates a Virtual Appliance site connecte
 ### Example 1
 ```powershell
 PS C:\> $nva = Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva 
-PS C:\> $o365Policy = New-AzOffice365PolicyProperties -Allow -Optimize
+PS C:\> $o365Policy = New-AzOffice365PolicyProperty -Allow -Optimize
 PS C:\> $site = New-AzVirtualApplianceSite -ResourceGroupName testrg -Name testsite -NetworkVirtualApplianceId $nva.Id -AddressPrefix 10.0.1.0/24 -O365Policy $o365Policy
 ```
 

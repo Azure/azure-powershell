@@ -12,7 +12,7 @@ Get or List Network Virtual Appliances.
 
 ## SYNTAX
 
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 Get-AzNetworkVirtualAppliance [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

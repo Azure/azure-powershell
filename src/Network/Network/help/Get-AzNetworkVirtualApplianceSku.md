@@ -32,7 +32,6 @@ AvailableScaleUnits : {Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualA
 Name                : barracudasdwanrelease
 Etag                : 00000000-0000-0000-0000-000000000000
 Id                  :
-
 ```
 
 Get a sku by name.

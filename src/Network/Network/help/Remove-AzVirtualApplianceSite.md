@@ -12,7 +12,7 @@ Remove a virtual appliance site from a Network Virtual Appliance resource.
 
 ## SYNTAX
 
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 Remove-AzVirtualApplianceSite -Name <String> -NetworkVirtualApplianceId <String> -ResourceGroupName <String>
  [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

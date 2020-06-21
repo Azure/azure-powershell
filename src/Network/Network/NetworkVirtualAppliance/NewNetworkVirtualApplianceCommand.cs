@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance", SupportsShouldProcess = true), OutputType(typeof(PSNetworkVirtualAppliance))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSNetworkVirtualAppliance))]
     public class NewNetworkVirtualApplianceCommand : NetworkVirtualApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
