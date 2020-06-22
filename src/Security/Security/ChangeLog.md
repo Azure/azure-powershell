@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.9
 * Add new cmdlets: 'Get-AzSecurityAssessment',
                    'Set-AzSecurityAssessment',
                    'Remove-AzSecurityAssessment',

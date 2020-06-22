@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.6
 * Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput. 
 * New-AzCosmosDBAccount cmdlet was updated with new paramters: EnableFreeTier, EnableAnalyticalStorage, ServerVersion, IpRule.
 * Update-AzCosmosDBAccount was updated with: EnableAnalyticalStorage and IpRule.
