@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Application Gateway Onboarding to PrivateLink Common Cmdlets.
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added new cmdlets for Azure FirewallPolicy
     - New-AzFirewallPolicyDnsSetting
@@ -68,7 +69,7 @@
     -`Update-AzVpnConnection`
     -`New-AzP2sVpnGateway`
     -`Update-AzP2sVpnGateway`
-* Application Gateway Onboarding to PrivateLink Common Cmdlets.
+
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
     - `New-AzPublicIpAddress`
