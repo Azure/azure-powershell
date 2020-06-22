@@ -19,6 +19,19 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for Azure Network Virtual Appliance Sites
+    - `Get-AzVirtualApplianceSite`
+    - `New-AzVirtualApplianceSite`
+    - `Remove-AzVirtualApplianceSite`
+    - `Update-AzVirtualApplianceSite`
+    - `New-AzOffice365PolicyProperty`
+* Added new cmdlets for Azure Network Virtual Appliance
+    - `Get-AzNetworkVirtualAppliance`
+    - `New-AzNetworkVirtualAppliance`
+    - `Remove-AzNetworkVirtualAppliance`
+    - `Update-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualApplianceSku`
+    - `New-AzVirtualApplianceSkuProperty`
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added new cmdlets for Azure FirewallPolicy
     - New-AzFirewallPolicyDnsSetting

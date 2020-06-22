@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Network.Common;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -80,6 +81,16 @@ namespace Microsoft.Azure.Commands.Network
             var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
 
             return resourceId.Substring(startIndex, endIndex - startIndex);
+        }
+
+        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null, string version = null)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = (instanceName == null && version == null)
+                      ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase)
+                      : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
         }
 
         public static bool IsResourcePresent(Action fn)
