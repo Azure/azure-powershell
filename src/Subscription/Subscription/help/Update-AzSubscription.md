@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure Subscription
 
 ## SYNTAX
 
@@ -18,16 +18,21 @@ Update-AzSubscription -SubscriptionId <String> -Action <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzSubscription** cmdlet updates an Azure subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Cancel"
 
-{{ Add example description here }}
+Name        : My Subscription
+Id          : 86869d42-1782-4337-98b0-c905fb937d46
+TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
+State       : Enabled
+
+```
+Updates the subscription
 
 ## PARAMETERS
 
