@@ -20,6 +20,10 @@
             <Alignment>Left</Alignment>
             <Label>ActiveDirectory Authority</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Type</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -35,6 +39,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ActiveDirectoryAuthority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

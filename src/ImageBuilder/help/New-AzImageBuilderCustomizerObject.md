@@ -14,20 +14,20 @@ Describes a unit of image customization
 
 ### ShellCustomizer (Default)
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -Sha256Checksum <String> -ShellCustomizer
- [-Inline <String[]>] [-ScriptUri <String>] [<CommonParameters>]
+New-AzImageBuilderCustomizerObject -CustomizerName <String> -ShellCustomizer [-Inline <String[]>]
+ [-ScriptUri <String>] [-Sha256Checksum <String>] [<CommonParameters>]
 ```
 
 ### FileCustomizer
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -FileCustomizer -Sha256Checksum <String>
- [-Destination <String>] [-SourceUri <String>] [<CommonParameters>]
+New-AzImageBuilderCustomizerObject -CustomizerName <String> -FileCustomizer [-Destination <String>]
+ [-Sha256Checksum <String>] [-SourceUri <String>] [<CommonParameters>]
 ```
 
 ### PowerShellCustomizer
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -PowerShellCustomizer -Sha256Checksum <String>
- [-Inline <String[]>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-ValidExitCode <Int32[]>]
+New-AzImageBuilderCustomizerObject -CustomizerName <String> -PowerShellCustomizer [-Inline <String[]>]
+ [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>] [-ValidExitCode <Int32[]>]
  [<CommonParameters>]
 ```
 
@@ -320,7 +320,7 @@ Type: System.String
 Parameter Sets: FileCustomizer, PowerShellCustomizer, ShellCustomizer
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -25,10 +25,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAddressSpace VpnClientAddressPool { get; set; }
 
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
         [JsonIgnore]
         public string VpnClientAddressPoolText
         {
             get { return JsonConvert.SerializeObject(VpnClientAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

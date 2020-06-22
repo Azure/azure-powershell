@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 3)]
         public PSAzureFirewallPolicyFilterRuleCollectionAction Action { get; set; }
 
-        [JsonProperty("ruleConditions")]
+        [JsonProperty("rules")]
         public List<PSAzureFirewallPolicyRule> Rules { get; set; }
 
 
@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
-        public void AddRule(PSAzureFirewallPolicyApplicationRule rule)
+        public void AddRule(PSAzureFirewallPolicyRule rule)
         {
             // Validate
             if (this.Rules != null)
             {
                 if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
                 {
-                    throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
+                    throw new ArgumentException($"Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else

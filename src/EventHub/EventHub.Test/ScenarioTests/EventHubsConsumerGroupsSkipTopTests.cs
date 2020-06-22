@@ -12,30 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ScenarioTest;
-    using ServiceManagement.Common.Models;
-    using Xunit;
-    using Xunit.Abstractions;
-    public class EventHubsConsumerGroupsSkipTopTests : RMTestBase
+    public class EventHubsConsumerGroupsSkipTopTests : EventHubTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public EventHubsConsumerGroupsSkipTopTests(ITestOutputHelper output)
+        public EventHubsConsumerGroupsSkipTopTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsConsumerGroupsskiptop()
         {
-            EventHubsController.NewInstance.RunPsTest(_logger, "SkipTopTests");
+            TestRunner.RunTestScript("SkipTopTests");
         }
         
     }

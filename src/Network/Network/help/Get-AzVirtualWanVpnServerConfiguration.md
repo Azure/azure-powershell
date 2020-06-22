@@ -49,7 +49,7 @@ VpnServerConfigurationResourceIds : [
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,8 +64,8 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: ByVirtualWanName
+Type: System.String
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: False
@@ -79,8 +79,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: ByVirtualWanName
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceId
 Aliases: VirtualWanId
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The virtual wan object.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases: VirtualWan
 
