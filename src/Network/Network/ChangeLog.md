@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Application Gateway Onboarding to PrivateLink Common Cmdlets.
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
     - `New-AzVirtualApplianceSite`
