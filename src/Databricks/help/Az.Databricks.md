@@ -10,6 +10,10 @@ Locale: en-US
 ## Description
 Microsoft Azure PowerShell: Databricks cmdlets
 
+While the Az.Databricks PowerShell module is in preview, you must install it separately from the Az PowerShell module using the following command: `Install-Module -Name Az.Databricks`. Once the Az.Databricks PowerShell module is generally available, it becomes part of future Az PowerShell module releases and available natively from within Azure Cloud Shell.
+
+This module allows the management of service features in preview which may not be available yet for your region or subscription. 
+
 ## Az.Databricks Cmdlets
 ### [Get-AzDatabricksWorkspace](Get-AzDatabricksWorkspace.md)
 Gets the workspace.
