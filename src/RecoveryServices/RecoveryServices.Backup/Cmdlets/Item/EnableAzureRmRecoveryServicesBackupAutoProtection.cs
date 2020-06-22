@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -30,6 +31,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class EnableAzureRmRecoveryServicesBackupAutoProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "MAB, AzureWorkload, AzureVM, AzureStorage";
+
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, WindowsServer, AzureFiles, MSSQL";
+
+        /// <summary>
         /// Item that needs to be auto protected
         /// </summary>
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -40,14 +51,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Backup management type of the items to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
         [ValidateNotNullOrEmpty]
         public Models.BackupManagementType BackupManagementType { get; set; }
 
         /// <summary>
         /// Backup management type of the items to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 

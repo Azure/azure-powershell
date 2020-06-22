@@ -40,7 +40,7 @@ Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
 
 ## DESCRIPTION
 
-The **Get-AzRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
+The **Get-AzRecoveryServicesBackupItem** cmdlet gets the list of protected items in a container and the protection status of the items.
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
 Set the vault context by using the -VaultId parameter.
@@ -68,20 +68,16 @@ PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -Wo
 
 The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
 The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
-Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases use -Name parameter with parameter value as the Name property returned in $BackupItem variable.
+Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases, execute the cmdlet by passing value for -Name parameter as the Name property returned in the result set of $BackupItem.
 
 ## PARAMETERS
 
 ### -BackupManagementType
 
-Specifies the Backup management type.
-The acceptable values for this parameter are:
+The class of resources being protected. The acceptable values for this parameter are:
 
 - AzureVM
 - MARS
-- SCDPM
-- AzureBackupServer
-- AzureSQL
 - AzureStorage
 - AzureWorkload
 
@@ -89,7 +85,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, MARS, AzureStorage, AzureWorkload
 
 Required: True
 Position: 1
@@ -168,7 +164,7 @@ Accept wildcard characters: False
 
 ### -Name
 
-Specifies the name of the container.
+Specifies the name of backup item. For file share, specify the unique ID of protected file share.
 
 ```yaml
 Type: System.String
@@ -264,11 +260,9 @@ Accept wildcard characters: False
 
 ### -WorkloadType
 
-Specifies the workload type.
-The acceptable values for this parameter are:
+Workload type of the resource. The acceptable values for this parameter are:
 
 - AzureVM
-- AzureSQLDatabase
 - AzureFiles
 - MSSQL
 

@@ -42,17 +42,16 @@ The last command creates a backup protection policy using the retention policy a
 ## PARAMETERS
 
 ### -BackupManagementType
-Specifies the Backup management type.
-The acceptable values for this parameter are:
+The class of resources being protected. The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- AzureWorkload
 - AzureStorage
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, AzureStorage, AzureWorkload
 
 Required: False
 Position: 1
@@ -77,17 +76,16 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Specifies the workload type.
-The acceptable values for this parameter are:
+Workload type of the resource. The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
+- MSSQL
 - AzureFiles
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureFiles, MSSQL
 
 Required: True
 Position: 0
