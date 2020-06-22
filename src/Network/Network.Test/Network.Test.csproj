@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkVirtualApplianceTests\TestNetworkVirtualApplianceCRUD.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ScenarioTests\Data\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Utils\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="TestData\*.json" CopyToOutputDirectory="PreserveNewest" />
@@ -33,6 +37,10 @@
     <None Update="ScenarioTests\ApplicationGatewayTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkVirtualApplianceTests\" />
   </ItemGroup>
 
 </Project>
