@@ -113,7 +113,9 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityAssessmentMetadata', 
                'Set-AzSecurityAssessmentMetadata', 
                'Remove-AzSecurityAssessmentMetadata', 
-               'Get-AzSecuritySubAssessment'
+               'Get-AzSecuritySubAssessment',
+			         'Get-AzSecurityTopology'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -176,4 +178,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
