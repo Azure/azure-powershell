@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class AllowedConnectionsTests
+    public class AllowedConnectionTests
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public AllowedConnectionsTests (Xunit.Abstractions.ITestOutputHelper output)
+        public AllowedConnectionTests (Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -20,21 +20,21 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnections-SubscriptionScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnection-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnections-ResourceGroupLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnection-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnections-ResourceId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAllowedConnection-ResourceId");
         }
     }
 }

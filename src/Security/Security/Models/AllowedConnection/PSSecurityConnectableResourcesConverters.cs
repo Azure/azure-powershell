@@ -16,13 +16,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.Security.Models.AllowedConnections
+namespace Microsoft.Azure.Commands.Security.Models.AllowedConnection
 {
-    public static class PSSecurityPSSecurityAllowedConnectionsConverters
+    public static class PSSecurityPSSecurityAllowedConnectionConverters
     {
-        public static PSSecurityAllowedConnections ConvertToPSType(this AllowedConnectionsResource value)
+        public static PSSecurityAllowedConnection ConvertToPSType(this AllowedConnectionsResource value)
         {
-            return new PSSecurityAllowedConnections()
+            return new PSSecurityAllowedConnection()
             {
                 Id = value.Id,
                 Name = value.Name,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Security.Models.AllowedConnections
             };
         }
 
-        public static List<PSSecurityAllowedConnections> ConvertToPSType(this IEnumerable<AllowedConnectionsResource> value)
+        public static List<PSSecurityAllowedConnection> ConvertToPSType(this IEnumerable<AllowedConnectionsResource> value)
         {
             return value.Select(tor => tor.ConvertToPSType()).ToList();
         }

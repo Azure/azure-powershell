@@ -1,26 +1,27 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzAllowedConnections
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzAllowedConnection
 schema: 2.0.0
 ---
 
-# Get-AzAllowedConnections
-List of all possible traffic between Azure resources
+# Get-AzAllowedConnection
+Gets the list of all possible traffic between resources for the subscription
 
 ## SYNOPSIS
+Used to display allowed traffic between resources for the subscription
 
 
 ## SYNTAX
 
 ### SubscriptionScope (Default)
 ```
-Get-AzAllowedConnections [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAllowedConnection [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzAllowedConnections -ResourceGroupName <String> -Name <String> -Location <String>
+Get-AzAllowedConnection -ResourceGroupName <String> -Name <String> -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,7 +29,7 @@ Get-AzAllowedConnections -ResourceGroupName <String> -Name <String> -Location <S
 ID of the security resource that you want to invoke the command on.
 
 ```
-Get-AzAllowedConnections -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -39,7 +40,7 @@ Gets the list of all possible traffic between resources for the subscription and
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAllowedConnections
+PS C:\> Get-AzAllowedConnection
 Id:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/allowedConnections/virtualMachines
 Name:	Internal
 Type:	Microsoft.Security/locations/allowedConnections
@@ -49,7 +50,7 @@ ConnectableResources:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f86
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAllowedConnections -ResourceGroupName "myService1" -Location "centralus" -Name "Internal"
+PS C:\> Get-AzAllowedConnection -ResourceGroupName "myService1" -Location "centralus" -Name "Internal"
 Id:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/allowedConnections/Internal
 Name:	virtualMachines
 Type:	Microsoft.Security/locations/allowedConnections
@@ -145,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.AllowedConnections.PSSecurityAllowedConnections
+### Microsoft.Azure.Commands.Security.Models.AllowedConnection.PSSecurityAllowedConnection
 
 
 ## NOTES

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Security.Models.AllowedConnections
+namespace Microsoft.Azure.Commands.Security.Models.AllowedConnection
 {
     public class PSSecurityConnectableResources
     {

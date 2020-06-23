@@ -16,15 +16,15 @@ using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.Security.Models.AllowedConnections;
+using Microsoft.Azure.Commands.Security.Models.AllowedConnection;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AllowedConnections
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AllowedConnection
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AllowedConnections", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAllowedConnections))]
-    public class AllowedConnections : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AllowedConnection", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAllowedConnection))]
+    public class AllowedConnection : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]

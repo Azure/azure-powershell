@@ -15,9 +15,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Security.Models.AllowedConnections
+namespace Microsoft.Azure.Commands.Security.Models.AllowedConnection
 {
-    public class PSSecurityAllowedConnections
+    public class PSSecurityAllowedConnection
     {
         public string Id { get; set; }
 
