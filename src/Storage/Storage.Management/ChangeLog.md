@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 
 ## Version 2.2.0
 * Supported create Storage account with RequireInfrastructureEncryption
