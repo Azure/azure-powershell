@@ -160,6 +160,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to privateEndpointConnections.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateEndpointConnectionName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateEndpointConnectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to privateLinkConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ipConfigurations.
+        /// </summary>
+        internal static string ApplicationGatewayPrivateLinkIpConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayPrivateLinkIpConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to probes.
         /// </summary>
         internal static string ApplicationGatewayProbeName {
@@ -1069,6 +1096,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
+        /// </summary>
+        internal static string RemoveVHubRouteTableWarning {
+            get {
+                return ResourceManager.GetString("RemoveVHubRouteTableWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveVirtualRouterWarning {
@@ -1267,6 +1303,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects..
+        /// </summary>
+        internal static string StaticRoutesNotSupportedForThisRoutingConfiguration {
+            get {
+                return ResourceManager.GetString("StaticRoutesNotSupportedForThisRoutingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TCP protocol configuration mast have port..
         /// </summary>
         internal static string TCPProtocolConfigurationMustHavePort {
@@ -1461,6 +1506,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UpdatingLongRunningOperationMessage {
             get {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The HubRouteTable could not be found..
+        /// </summary>
+        internal static string VHubRouteTableNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid HubRouteTable reference is required..
+        /// </summary>
+        internal static string VHubRouteTableReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
         

@@ -144,12 +144,15 @@ Valid values are:
 - free
 - standard
 - premium
+- pernode
+- standalone
+- pergb2018
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone
+Accepted values: free, standard, premium, pernode, standalone, pergb2018
 
 Required: False
 Position: 3

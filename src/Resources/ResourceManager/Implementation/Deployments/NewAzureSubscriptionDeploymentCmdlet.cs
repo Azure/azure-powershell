@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
+            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -54,8 +55,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
         
-        [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -117,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ResultFormat = this.WhatIfResultFormat
                 };
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.WhatIfExcludeChangeType);
                 string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
 
                 // Clear status before returning result.
