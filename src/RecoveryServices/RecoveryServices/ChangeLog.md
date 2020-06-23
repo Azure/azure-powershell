@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Azure Backup added support for fetching MAB items.
+* Azure Site Recovery support to update failover and test failover NIC names, existing NIC reuse.
 
 ## Version 2.9.1
 * Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
