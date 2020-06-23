@@ -59,8 +59,10 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering)
                 {
-                    if ((this.PeerAddressType == IPv4 && peering.MicrosoftPeeringConfig == null) ||
-                    (this.PeerAddressType == IPv6 &&(peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
+                    if ((string.Equals(this.PeerAddressType, "IPv4", StringComparison.OrdinalIgnoreCase) &&
+                            peering.MicrosoftPeeringConfig == null) ||
+                        (string.Equals(this.PeerAddressType, "IPv6", StringComparison.OrdinalIgnoreCase) &&
+                            (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
                     {
                         validateAddressFamilyPresent = false;
                     }
@@ -74,18 +76,18 @@ namespace Microsoft.Azure.Commands.Network
                     if (peering.MicrosoftPeeringConfig != null && peering.Ipv6PeeringConfig != null)
                     {
                         // Both IPv4 and IPv6 peering configs are present. Only nullify the config corresponding to the address family specified
-                        if (this.PeerAddressType == IPv4 || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                        if (string.Equals(this.PeerAddressType, "IPv4", StringComparison.OrdinalIgnoreCase) || string.IsNullOrWhiteSpace(this.PeerAddressType))
                         {
                             peering.PrimaryPeerAddressPrefix = null;
                             peering.SecondaryPeerAddressPrefix = null;
                             peering.RouteFilter = null;
                             peering.MicrosoftPeeringConfig = null;
                         }
-                        else if (this.PeerAddressType == IPv6)
+                        else if (string.Equals(this.PeerAddressType, "IPv6", StringComparison.OrdinalIgnoreCase))
                         {
                             peering.Ipv6PeeringConfig = null;
                         }
-                        else if(this.PeerAddressType == All)
+                        else if (string.Equals(this.PeerAddressType, "All", StringComparison.OrdinalIgnoreCase))
                         {
                             this.ExpressRouteCircuit.Peerings.Remove(peering);
                         }
@@ -99,16 +101,16 @@ namespace Microsoft.Azure.Commands.Network
 
                 else if (peering.PeeringType == MNM.ExpressRoutePeeringType.AzurePrivatePeering)
                 {
-                    if (this.PeerAddressType == IPv4 || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                    if (string.Equals(this.PeerAddressType, "IPv4", StringComparison.OrdinalIgnoreCase) || string.IsNullOrWhiteSpace(this.PeerAddressType))
                     {
                         peering.PrimaryPeerAddressPrefix = null;
                         peering.SecondaryPeerAddressPrefix = null;
                     }
-                    else if (this.PeerAddressType == IPv6)
+                    else if (string.Equals(this.PeerAddressType, "IPv6", StringComparison.OrdinalIgnoreCase))
                     {
                         peering.Ipv6PeeringConfig = null;
                     }
-                    else if(this.PeerAddressType == All)
+                    else if (string.Equals(this.PeerAddressType, "All", StringComparison.OrdinalIgnoreCase))
                     {
                         this.ExpressRouteCircuit.Peerings.Remove(peering);
                     }
