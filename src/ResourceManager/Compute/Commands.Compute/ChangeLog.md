@@ -18,6 +18,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
+## Upcoming Release
+* Updated the example of `Set-AzVMAccessExtension` to use version 2.4 instead of 2.0
+
 ## Current Release
 * Add support for UltraSSD and Gallery Images in the simple param sets for `New-AzVm(ss)` cmdlets.
 * Minor changes for upcoming AzureRM to Az transition
