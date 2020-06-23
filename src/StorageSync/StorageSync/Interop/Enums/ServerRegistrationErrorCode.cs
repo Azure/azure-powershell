@@ -119,6 +119,10 @@ namespace Commands.StorageSync.Interop.Enums
         /// The sync server not found
         /// </summary>
         SyncServerNotFound,
+        /// <summary>
+        /// Monitoring Service Endpoint Invalid or Not Set
+        /// </summary>
+        MonitoringServiceEndpointInvalidOrNotSet
 
     }
 }
