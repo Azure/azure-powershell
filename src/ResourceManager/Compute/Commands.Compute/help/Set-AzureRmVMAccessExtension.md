@@ -26,7 +26,7 @@ The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMA
 
 ### Example 1: Add a VMAccess extension
 ```
-PS C:\> Set-AzureRmVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"
+PS C:\> Set-AzureRmVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.4" -UserName "PFuller" -Password "Password"
 ```
 
 This command adds a VMAccess extension for the virtual machine named VirtualMachine07 in ResrouceGroup11.
