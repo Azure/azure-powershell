@@ -27,6 +27,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksoperation
 #>

@@ -2800,3 +2800,320 @@ function Test-ApplicationGatewayWithListenerHostNames
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-ApplicationGatewayWithPrivateLinkConfiguration
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$plsSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	$privateLinkIpConfigName1 = Get-ResourceName
+	$privateLinkIpConfigName2 = Get-ResourceName
+	$privateLinkIpConfigName3 = Get-ResourceName
+
+	$privateLinkConfigName = Get-ResourceName
+	$privateLinkConfigName2 = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24  -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
+		$plsSubnet = New-AzVirtualNetworkSubnetConfig -Name $plsSubnetName -AddressPrefix 10.0.1.0/24  -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $plsSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+		$plsSubnet = Get-AzVirtualNetworkSubnetConfig -Name $plsSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		# private link configuration
+		$privateLinkIpConfiguration1 =  New-AzApplicationGatewayPrivateLinkIpConfiguration -Name $privateLinkIpConfigName1 -Subnet $plsSubnet -Primary
+		$privateLinkIpConfiguration2 =  New-AzApplicationGatewayPrivateLinkIpConfiguration -Name $privateLinkIpConfigName2 -Subnet $plsSubnet
+		$privateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name $privateLinkConfigName -IpConfiguration $privateLinkIpConfiguration1, $privateLinkIpConfiguration2
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip -PrivateLinkConfiguration $privateLinkConfiguration
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSetting -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+		
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+
+		# autoscale configuration
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -PrivateLinkConfiguration $privateLinkConfiguration
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# Verify PrivateLink Configuration
+		Assert-NotNull $getgw.PrivateLinkConfigurations
+		Assert-AreEqual 1 $getgw.PrivateLinkConfigurations.Count
+		$getPrivateLinkConfig = Get-AzApplicationGatewayPrivateLinkConfiguration -Name $privateLinkConfigName -ApplicationGateway $getgw
+        Assert-NotNull $getPrivateLinkConfig
+		Assert-AreEqual $getPrivateLinkConfig.IpConfigurations.Count 2
+		
+		# Verify Frontend Ip has PrivateLink Configuration
+		$getFipConfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $getgw -Name $fipconfigName
+		Assert-NotNull $getFipconfig
+		Assert-NotNull $getFipconfig.PrivateLinkConfiguration
+		Assert-AreEqual $getPrivateLinkConfig.Id $getFipconfig.PrivateLinkConfiguration.Id
+
+		# check autoscale configuration
+		$autoscaleConfig01 = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
+		Assert-NotNull $autoscaleConfig01
+		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
+
+		# Set AppGw
+		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		# Cannot add same PrivateLinkConfiguration
+		Assert-ThrowsLike { Add-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw01 -Name $privateLinkConfigName -IpConfiguration $privateLinkIpConfiguration1 } "*already exists*"
+
+		# add another private link configuration and change the ip configuration
+		$getgw01 = Add-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw01 -Name $privateLinkConfigName2 -IpConfiguration $privateLinkIpConfiguration1
+		$privateLinkIpConfiguration3 =  New-AzApplicationGatewayPrivateLinkIpConfiguration -Name $privateLinkIpConfigName3 -Subnet $plsSubnet -Primary
+		$getgw01 = Set-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw01 -Name $privateLinkConfigName2 -IpConfiguration $privateLinkIpConfiguration3
+		$getPrivateLinkConfig = Get-AzApplicationGatewayPrivateLinkConfiguration -Name $privateLinkConfigName2 -ApplicationGateway $getgw01
+        Assert-NotNull $getPrivateLinkConfig
+		Assert-AreEqual $getPrivateLinkConfig.IpConfigurations.Count 1
+		Assert-AreEqual $getPrivateLinkConfig.IpConfigurations.Name $privateLinkIpConfigName3
+
+		# add / remove privateLinkConfiguration
+        $getgw = Set-AzApplicationGateway -ApplicationGateway $getgw01
+        $privateLinkConfigurations = Get-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw
+        Assert-NotNull $privateLinkConfigurations
+        Assert-AreEqual $privateLinkConfigurations.Count 2
+
+        $getgw01 = Remove-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw01 -Name $privateLinkConfigName2
+        $getgw = Set-AzApplicationGateway -ApplicationGateway $getgw01
+
+        $privateLinkConfigurations = Get-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $getgw
+        Assert-NotNull $privateLinkConfigurations
+        Assert-AreEqual $privateLinkConfigurations.Count 1
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayPrivateEndpointWorkFlows
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$plsSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	$privateLinkIpConfigName = Get-ResourceName
+	$privateLinkConfigName = Get-ResourceName
+
+	$peRgName = Get-ResourceGroupName
+	$peVnetName = Get-ResourceName
+	$peSubnetName = Get-ResourceName
+	$peName = Get-ResourceName
+	$peConnName = Get-ResourceName
+
+	try
+	{
+		# Create the appgw resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24  -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
+		$plsSubnet = New-AzVirtualNetworkSubnetConfig -Name $plsSubnetName -AddressPrefix 10.0.1.0/24  -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $plsSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+		$plsSubnet = Get-AzVirtualNetworkSubnetConfig -Name $plsSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		# private link configuration
+		$privateLinkIpConfiguration = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name $privateLinkIpConfigName -Subnet $plsSubnet -Primary
+		$privateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name $privateLinkConfigName -IpConfiguration $privateLinkIpConfiguration
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip -PrivateLinkConfiguration $privateLinkConfiguration
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSetting -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+		
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+
+		# autoscale configuration
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -PrivateLinkConfiguration $privateLinkConfiguration
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# Verify PrivateLink Configuration
+		Assert-NotNull $getgw.PrivateLinkConfigurations
+		Assert-AreEqual 1 $getgw.PrivateLinkConfigurations.Count
+		$getPrivateLinkConfig = Get-AzApplicationGatewayPrivateLinkConfiguration -Name $privateLinkConfigName -ApplicationGateway $getgw
+        Assert-NotNull $getPrivateLinkConfig
+		Assert-AreEqual $getPrivateLinkConfig.IpConfigurations.Count 1
+		
+		# Get Private Link Resource
+		$privateLinkResource = Get-AzPrivateLinkResource -PrivateLinkResourceId $getgw.Id
+		Assert-AreEqual $privateLinkResource.Name $fipconfigName
+		Assert-AreEqual $privateLinkResource.GroupId $fipconfigName
+
+		# Create the private endpoint resource group, vnet and subnet
+		$peRg = New-AzResourceGroup -Name $peRgName -Location $location -Tags @{ testtag = "APPGw PrivateEndpoint tag"}
+		$peSubnet = New-AzVirtualNetworkSubnetConfig -Name $peSubnetName -AddressPrefix 20.0.1.0/24  -PrivateEndpointNetworkPolicies "Disabled"
+		$peVnet = New-AzVirtualNetwork -Name $peVnetName -ResourceGroupName $peRgName -Location $location -AddressPrefix 20.0.0.0/16 -Subnet $peSubnet
+		$peVnet = Get-AzVirtualNetwork -Name $peVnetName -ResourceGroupName $peRgName
+		$peSubnet = Get-AzVirtualNetworkSubnetConfig -Name $peSubnetName -VirtualNetwork $peVnet
+
+		# Set Private Endpoint Connection in memory
+		$connection = New-AzPrivateLinkServiceConnection -Name $peConnName -PrivateLinkServiceId $getgw.Id -GroupId $privateLinkResource.GroupId
+		$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $peRgName -Name $peName -Location $location -Subnet $peSubnet -PrivateLinkServiceConnection $connection -ByManualRequest
+
+		# Get Private Endpoint and verify
+		$privateEndpoint = Get-AzPrivateEndpoint -ResourceGroupName $peRgName -Name $peName
+		Assert-AreEqual "Succeeded" $privateEndpoint.ProvisioningState
+
+		# Verify PrivateEndpointConnections using appgw Id
+		$connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $getgw.Id
+		Assert-AreEqual 1 $connection.Count
+		Assert-NotNull $connection.PrivateEndpoint
+		Assert-NotNull $connection.PrivateLinkServiceConnectionState
+		Assert-AreEqual $privateEndpoint.Id $connection.PrivateEndpoint.Id
+		Assert-AreEqual "Pending" $connection.PrivateLinkServiceConnectionState.Status
+
+		# Verify PrivateEndpointConnections using connection Id
+		$connection = Get-AzPrivateEndpointConnection -ResourceId $connection.Id
+		Assert-NotNull $connection.PrivateEndpoint
+		Assert-NotNull $connection.PrivateLinkServiceConnectionState
+		Assert-AreEqual $privateEndpoint.Id $connection.PrivateEndpoint.Id
+		Assert-AreEqual "Pending" $connection.PrivateLinkServiceConnectionState.Status
+		
+		# Verify PrivateEndpointConnections on Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Assert-AreEqual 1 $getgw.PrivateEndpointConnections.Count
+		$connection = $getgw.PrivateEndpointConnections
+
+		# Approve Connection
+		$approve = Approve-AzPrivateEndpointConnection -ResourceId $connection.Id
+		Assert-NotNull $approve;
+        Assert-AreEqual "Approved" $approve.PrivateLinkServiceConnectionState.Status
+		Start-Sleep -s 30
+
+		# Deny Connection
+		$deny = Deny-AzPrivateEndpointConnection -ResourceId $connection.Id
+		Assert-NotNull $deny;
+        Assert-AreEqual "Rejected" $deny.PrivateLinkServiceConnectionState.Status
+		Start-Sleep -s 30
+
+		# Remove Connection
+		$remove = Remove-AzPrivateEndpointConnection -ResourceId $connection.Id -Force
+		Start-Sleep -s 30
+
+		# Verify PrivateEndpointConnections on Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Assert-AreEqual 0 $getgw.PrivateEndpointConnections.Count
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $peRgName
+
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}

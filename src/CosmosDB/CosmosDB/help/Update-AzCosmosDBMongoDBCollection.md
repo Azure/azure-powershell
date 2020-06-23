@@ -15,21 +15,21 @@ Updates the CosmosDB MongoDB Collection. Performs a client side patch operation 
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBMongoDBCollection -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- [-Name <String>] [-Throughput <Int32>] [-Shard <String>] [-Index <PSMongoIndex[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-Shard <String>]
+ [-Index <PSMongoIndex[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBMongoDBCollection [-Name <String>] [-Throughput <Int32>] [-Shard <String>]
- [-Index <PSMongoIndex[]>] -ParentObject <PSMongoDBDatabaseGetResults>
+Update-AzCosmosDBMongoDBCollection [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+ [-Shard <String>] [-Index <PSMongoIndex[]>] -ParentObject <PSMongoDBDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBMongoDBCollection [-Name <String>] [-Throughput <Int32>] [-Shard <String>]
- [-Index <PSMongoIndex[]>] -InputObject <PSMongoDBCollectionGetResults>
+Update-AzCosmosDBMongoDBCollection [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+ [-Shard <String>] [-Index <PSMongoIndex[]>] -InputObject <PSMongoDBCollectionGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,6 +61,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoscaleMaxThroughput
+Maximum Throughput value if autoscale is enabled.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 6, PropertyName = "protocols")]
         public List<PSAzureFirewallPolicyApplicationRuleProtocol> Protocols { get; set; }
 
+        [JsonProperty(Order = 7, PropertyName = "sourceIpGroups")]
+        public List<string> SourceIpGroups { get; set; }
+
         [JsonIgnore]
         public string ProtocolsText
         {
@@ -46,6 +49,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
+        }
+
+            [JsonIgnore]
         public string TargetFqdnsText
         {
             get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }

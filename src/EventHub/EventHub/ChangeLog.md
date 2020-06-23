@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Managed Identity parameters to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` cmdlets
 
 ## Version 1.4.3
 * Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace

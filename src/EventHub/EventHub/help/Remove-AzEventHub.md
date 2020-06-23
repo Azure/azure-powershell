@@ -36,31 +36,31 @@ The Remove-AzEventHub cmdlet removes and deletes the specified Event Hub from th
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Remove-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 ```
 
 Removes the Event Hub \`MyEventHubName\`.
 
-### Example 2.1 - InputObject - Using Variable:
-```
+### Example 2: InputObject - Using Variable:
+```powershell
 PS C:\> $inputobject = Get-AzEventHub <params>
 PS C:\> Remove-AzEventHub -InputObject $inputobject
 ```
 
-### Example 2.2 - InputObject Using Piping:
-```
+### Example 3: InputObject Using Piping:
+```powershell
 PS C:\> Get-AzEventHub <params> | Remove-AzEventHub
 ```
 
-### Example 3.1 - ResourceId - Using Variable:
-```
+### Example 4: ResourceId - Using Variable:
+```powershell
 PS C:\> $resourceid = Get-AzEventHub <params>
 PS C:\> Remove-AzEventHub -ResourceId $resourceid.Id
 ```
 
-### Example 3.1 - ResourceId - Using string:
-```
+### Example 5: ResourceId - Using string:
+```powershell
 PS C:\> Remove-AzEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
 ```
 

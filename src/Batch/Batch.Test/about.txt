@@ -13,7 +13,7 @@ $env:TEST_CSM_ORGID_AUTHENTICATION="SubscriptionId=<subId>;BaseUri=https://manag
 Finally, set the AZURE_TEST_MODE environment variable to "Record"
 $env:AZURE_TEST_MODE="Record"
 
-To save time on recording, the scenario tests assume some basic setup.  
+To save time on recording, the scenario tests assume some basic setup.
 TODO: Tests should automatically run these steps at startup.
 Run the following scripts or equivalent to create a Windows pool and a Linux pool.
   $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
