@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "343b8612-6c2c-4678-999d-db1ef7cd553e"
+          "d68e3a12-0a00-4211-bbaa-de98a6b29942"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,34 +33,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADCY=\""
+          "\"AAAAAAAAMGs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d6c3a0e0-94ee-4470-bd05-8c0677bcbdd3"
+          "dd8f8512-f8ac-4851-8432-da815e21e9ea"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "82a4b5e6-306e-444e-b4e3-046f97f370a5"
+          "fa818903-508d-46c5-902a-256981d0dfdb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194004Z:82a4b5e6-306e-444e-b4e3-046f97f370a5"
+          "WESTUS:20200629T233944Z:fa818903-508d-46c5-902a-256981d0dfdb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:04 GMT"
+          "Mon, 29 Jun 2020 23:39:44 GMT"
         ],
         "Content-Length": [
-          "515"
+          "513"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,17 +69,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps9234\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps337\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8016cf55-e145-4103-b840-b315a97b33e7"
+          "1e240907-0eb2-4511-bad5-832a78c47c58"
         ],
         "Accept-Language": [
           "en-US"
@@ -88,7 +88,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -99,400 +99,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADCY=\""
+          "\"AAAAAAAAMGs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f8eddb57-41d0-4a90-bc92-36af80c6751c"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "a95b62ae-00fa-47dc-9d47-7dde6bb777c6"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194005Z:a95b62ae-00fa-47dc-9d47-7dde6bb777c6"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:04 GMT"
-        ],
-        "Content-Length": [
-          "515"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps9234\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ad38559c-aa2d-4025-9244-7d33729102c0"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAADCY=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "8510bf99-422e-45b0-9236-13fbb4395e80"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "44c1356b-6280-4ffd-9bbd-17a331c1d8ac"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194005Z:44c1356b-6280-4ffd-9bbd-17a331c1d8ac"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:04 GMT"
-        ],
-        "Content-Length": [
-          "515"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps9234\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "cdff35f4-7298-4dd4-87dd-5cbcd445e832"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAADDs=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "496efa85-7efc-4f49-85d5-978cca39fcce"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "508b2211-1097-467e-b6f8-8bd183a8d9b3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:508b2211-1097-467e-b6f8-8bd183a8d9b3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:36 GMT"
-        ],
-        "Content-Length": [
-          "515"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps9234\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ff3c4487-8947-4bf3-8a7e-202ef636c703"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAADDs=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "175a017e-b7c7-4802-9cc3-394919d12812"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "1be82cd8-4132-4673-b460-162ed0b83aaa"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:1be82cd8-4132-4673-b460-162ed0b83aaa"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:36 GMT"
-        ],
-        "Content-Length": [
-          "515"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps9234\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9140\",\r\n    \"description\": \"ps2101\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps9505\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ab4ca26c-58d3-4225-823e-2ca6ccb311d3"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "4a33e5bc-f450-44fd-81c7-354aa6097dc9"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-correlation-request-id": [
-          "ed1e8159-21eb-4c6e-8908-b37e73af5153"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194038Z:ed1e8159-21eb-4c6e-8908-b37e73af5153"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:37 GMT"
-        ],
-        "Content-Length": [
-          "97"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d7d3f2c1-1402-42c9-97ca-b6d3aae0a032"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "8af0b23f-8662-4907-91b1-93e823885d69"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "5a72433c-adfe-42c1-bebc-c886bf7ca16c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194038Z:5a72433c-adfe-42c1-bebc-c886bf7ca16c"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:37 GMT"
-        ],
-        "Content-Length": [
-          "97"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders?$filter=substringof('ps9140',properties/displayName)&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnM/JGZpbHRlcj1zdWJzdHJpbmdvZigncHM5MTQwJyxwcm9wZXJ0aWVzL2Rpc3BsYXlOYW1lKSZhcGktdmVyc2lvbj0yMDE5LTEyLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b0757ece-4006-4d87-8513-4a55b9b7b924"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "2f2860c0-274f-4d37-85ee-0b98bc069082"
+          "b9a87f52-03e6-4654-b82e-e833fa062a13"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -501,19 +114,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "5f30d561-ba58-4e9a-afbb-35926da0e8bc"
+          "942d351b-52b5-4228-9b44-0a4b20929919"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194005Z:5f30d561-ba58-4e9a-afbb-35926da0e8bc"
+          "WESTUS:20200629T233944Z:942d351b-52b5-4228-9b44-0a4b20929919"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:04 GMT"
+          "Mon, 29 Jun 2020 23:39:44 GMT"
         ],
         "Content-Length": [
-          "599"
+          "513"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -522,7 +135,394 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps9234\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps9140\",\r\n        \"description\": \"ps2101\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps9505\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps337\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cb241a79-ffd6-4c22-b55b-5c036b76ae0e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAMGs=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "79949f20-508c-48e8-8ec5-5f1c83d6e4f6"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "c74878cb-a535-44a2-8e03-444a1d4aa8d5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T233945Z:c74878cb-a535-44a2-8e03-444a1d4aa8d5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:39:44 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps337\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "042983cf-e7c1-4c7c-b380-24e656450ce7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAMII=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8e3dc873-647d-4411-b34a-c9e19a2df5c3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3224617-c82c-4c5c-8309-937356da4995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T234022Z:c3224617-c82c-4c5c-8309-937356da4995"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:40:22 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps337\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a742e192-cfc0-4901-ae32-4dfaf8208737"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAMII=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "17d5547c-0183-4dc5-a985-6d4711f1ca3d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f9c66e2-60bf-434b-81f6-931516160823"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T234022Z:8f9c66e2-60bf-434b-81f6-931516160823"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:40:22 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n  \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n  \"name\": \"ps337\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps3520\",\r\n    \"description\": \"ps5988\",\r\n    \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n    \"clientId\": \"ps7360\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "991703a6-5eb2-4468-aa76-ee661b801072"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "75101b5b-8028-480b-a16a-7be569a43c8c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "f0c003cd-a81d-4a46-b5b3-d1709c274183"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T234023Z:f0c003cd-a81d-4a46-b5b3-d1709c274183"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:40:23 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "16de2210-ff93-4021-a66f-77ecd9458d37"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "aeb17b10-d42f-4a16-a039-0be7f095577b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "47fd0629-e6a1-47a8-b205-6b5efdfd867d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T234024Z:47fd0629-e6a1-47a8-b205-6b5efdfd867d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:40:24 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"OpenidConnectProvider not found.\",\r\n    \"details\": null\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders?$filter=substringof('ps3520',properties/displayName)&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnM/JGZpbHRlcj1zdWJzdHJpbmdvZigncHMzNTIwJyxwcm9wZXJ0aWVzL2Rpc3BsYXlOYW1lKSZhcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "92f6cdae-7620-4286-889e-e32c60053278"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f8437a87-b4b5-4c00-bf04-c149cafb9208"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "140ddd0e-1791-4e63-8ac4-1a139555ac23"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T233945Z:140ddd0e-1791-4e63-8ac4-1a139555ac23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:39:44 GMT"
+        ],
+        "Content-Length": [
+          "597"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps337\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps3520\",\r\n        \"description\": \"ps5988\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps7360\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
@@ -532,7 +532,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b4a89997-3339-4fbf-9237-7ec4bfd531b1"
+          "3cdcf9fa-7c38-4b02-a8f7-fe8bd46b3126"
         ],
         "Accept-Language": [
           "en-US"
@@ -541,7 +541,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -555,28 +555,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cbe80ea2-8b2e-4f80-807c-2d72002457ed"
+          "e125916f-fb02-40ec-8c9a-a99845842936"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "52290c85-dc0d-4c66-aeb8-587b4332c4aa"
+          "ead36cde-4e45-4fdc-9a06-6076893ab88a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194005Z:52290c85-dc0d-4c66-aeb8-587b4332c4aa"
+          "WESTUS:20200629T233945Z:ead36cde-4e45-4fdc-9a06-6076893ab88a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:05 GMT"
+          "Mon, 29 Jun 2020 23:39:44 GMT"
         ],
         "Content-Length": [
-          "599"
+          "597"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -585,17 +585,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps9234\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps9140\",\r\n        \"description\": \"ps2101\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps9505\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337\",\r\n      \"type\": \"Microsoft.ApiManagement/service/openidConnectProviders\",\r\n      \"name\": \"ps337\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps3520\",\r\n        \"description\": \"ps5988\",\r\n        \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n        \"clientId\": \"ps7360\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234/listSecrets?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0L2xpc3RTZWNyZXRzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337/listSecrets?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzcvbGlzdFNlY3JldHM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc3ba044-597e-4d2b-b6a8-1a006bf405bf"
+          "aedbcb90-619f-4982-8f10-1e1af20166ea"
         ],
         "Accept-Language": [
           "en-US"
@@ -604,7 +604,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -615,13 +615,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADCY=\""
+          "\"AAAAAAAAMGs=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "207fe8ba-5304-47b5-ad76-1c88d624a517"
+          "544d6236-2dd9-422f-b417-8c2a4cf22f7c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -630,16 +630,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "39c878c7-f9be-43e5-815a-c3f82bd95fbe"
+          "804734bf-a5a4-4c4b-a790-f1bd194ac812"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194005Z:39c878c7-f9be-43e5-815a-c3f82bd95fbe"
+          "WESTUS:20200629T233945Z:804734bf-a5a4-4c4b-a790-f1bd194ac812"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:05 GMT"
+          "Mon, 29 Jun 2020 23:39:45 GMT"
         ],
         "Content-Length": [
           "21"
@@ -655,13 +655,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234/listSecrets?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0L2xpc3RTZWNyZXRzP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337/listSecrets?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzcvbGlzdFNlY3JldHM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5bc0cc39-b713-4b4b-a0fb-d1adf8c32e8e"
+          "a068ad89-4b51-42e5-a268-3fabec63ad62"
         ],
         "Accept-Language": [
           "en-US"
@@ -670,7 +670,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -681,13 +681,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADDs=\""
+          "\"AAAAAAAAMII=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "dee45734-d0f2-4f49-9d67-539d083926ad"
+          "254352d4-4992-4b04-873a-fd4ce19a9976"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -696,16 +696,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "2014878f-2cc8-43ae-9ea8-30063282d599"
+          "6578a95d-f77b-49ae-a8af-8e691eae539a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:2014878f-2cc8-43ae-9ea8-30063282d599"
+          "WESTUS:20200629T234023Z:6578a95d-f77b-49ae-a8af-8e691eae539a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:36 GMT"
+          "Mon, 29 Jun 2020 23:40:23 GMT"
         ],
         "Content-Length": [
           "25"
@@ -717,17 +717,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"clientSecret\": \"ps8189\"\r\n}",
+      "ResponseBody": "{\r\n  \"clientSecret\": \"ps2348\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"openapifromFile\",\r\n    \"value\": \"openapi: 3.0.1\\r\\nservers:\\r\\n  - url: 'https://developer.uspto.gov/ds-api'\\r\\ninfo:\\r\\n  description: >-\\r\\n    The Data Set API (DSAPI) allows the public users to discover and search\\r\\n    USPTO exported data sets. This is a generic API that allows USPTO users to\\r\\n    make any CSV based data files searchable through API. With the help of GET\\r\\n    call, it returns the list of data fields that are searchable. With the help\\r\\n    of POST call, data can be fetched based on the filters on the field names.\\r\\n    Please note that POST call is used to search the actual data. The reason for\\r\\n    the POST call is that it allows users to specify any complex search criteria\\r\\n    without worry about the GET size limitations as well as encoding of the\\r\\n    input parameters.\\r\\n  version: 1.0.0\\r\\n  title: USPTO Data Set API\\r\\n  contact:\\r\\n    name: Open Data Portal\\r\\n    url: 'https://developer.uspto.gov'\\r\\n    email: developer@uspto.gov\\r\\ntags:\\r\\n  - name: metadata\\r\\n    description: Find out about the data sets\\r\\n  - name: search\\r\\n    description: Search a data set\\r\\npaths:\\r\\n  /:\\r\\n    get:\\r\\n      tags:\\r\\n        - metadata\\r\\n      operationId: list-data-sets\\r\\n      summary: List available data sets\\r\\n      responses:\\r\\n        '200':\\r\\n          description: Returns a list of data sets\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                $ref: '#/components/schemas/dataSetList'\\r\\n              example:\\r\\n                {\\r\\n                  \\\"total\\\": 2,\\r\\n                  \\\"apis\\\": [\\r\\n                    {\\r\\n                      \\\"apiKey\\\": \\\"oa_citations\\\",\\r\\n                      \\\"apiVersionNumber\\\": \\\"v1\\\",\\r\\n                      \\\"apiUrl\\\": \\\"https://developer.uspto.gov/ds-api/oa_citations/v1/fields\\\",\\r\\n                      \\\"apiDocumentationUrl\\\": \\\"https://developer.uspto.gov/ds-api-docs/index.html?url=https://developer.uspto.gov/ds-api/swagger/docs/oa_citations.json\\\"\\r\\n                    },\\r\\n                    {\\r\\n                      \\\"apiKey\\\": \\\"cancer_moonshot\\\",\\r\\n                      \\\"apiVersionNumber\\\": \\\"v1\\\",\\r\\n                      \\\"apiUrl\\\": \\\"https://developer.uspto.gov/ds-api/cancer_moonshot/v1/fields\\\",\\r\\n                      \\\"apiDocumentationUrl\\\": \\\"https://developer.uspto.gov/ds-api-docs/index.html?url=https://developer.uspto.gov/ds-api/swagger/docs/cancer_moonshot.json\\\"\\r\\n                    }\\r\\n                  ]\\r\\n                }\\r\\n  /{dataset}/{version}/fields:\\r\\n    get:\\r\\n      tags:\\r\\n        - metadata\\r\\n      summary: >-\\r\\n        Provides the general information about the API and the list of fields\\r\\n        that can be used to query the dataset.\\r\\n      description: >-\\r\\n        This GET API returns the list of all the searchable field names that are\\r\\n        in the oa_citations. Please see the 'fields' attribute which returns an\\r\\n        array of field names. Each field or a combination of fields can be\\r\\n        searched using the syntax options shown below.\\r\\n      operationId: list-searchable-fields\\r\\n      parameters:\\r\\n        - name: dataset\\r\\n          in: path\\r\\n          description: 'Name of the dataset.'\\r\\n          required: true\\r\\n          example: \\\"oa_citations\\\"\\r\\n          schema:\\r\\n            type: string\\r\\n        - name: version\\r\\n          in: path\\r\\n          description: Version of the dataset.\\r\\n          required: true\\r\\n          example: \\\"v1\\\"\\r\\n          schema:\\r\\n            type: string\\r\\n      responses:\\r\\n        '200':\\r\\n          description: >-\\r\\n            The dataset API for the given version is found and it is accessible\\r\\n            to consume.\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: string\\r\\n        '404':\\r\\n          description: >-\\r\\n            The combination of dataset name and version is not found in the\\r\\n            system or it is not published yet to be consumed by public.\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: string\\r\\n  /{dataset}/{version}/records:\\r\\n    post:\\r\\n      tags:\\r\\n        - search\\r\\n      summary: >-\\r\\n        Provides search capability for the data set with the given search\\r\\n        criteria.\\r\\n      description: >-\\r\\n        This API is based on Solr/Lucense Search. The data is indexed using\\r\\n        SOLR. This GET API returns the list of all the searchable field names\\r\\n        that are in the Solr Index. Please see the 'fields' attribute which\\r\\n        returns an array of field names. Each field or a combination of fields\\r\\n        can be searched using the Solr/Lucene Syntax. Please refer\\r\\n        https://lucene.apache.org/core/3_6_2/queryparsersyntax.html#Overview for\\r\\n        the query syntax. List of field names that are searchable can be\\r\\n        determined using above GET api.\\r\\n      operationId: perform-search\\r\\n      parameters:\\r\\n        - name: version\\r\\n          in: path\\r\\n          description: Version of the dataset.\\r\\n          required: true\\r\\n          schema:\\r\\n            type: string\\r\\n            default: v1\\r\\n        - name: dataset\\r\\n          in: path\\r\\n          description: 'Name of the dataset. In this case, the default value is oa_citations'\\r\\n          required: true\\r\\n          schema:\\r\\n            type: string\\r\\n            default: oa_citations\\r\\n      responses:\\r\\n        '200':\\r\\n          description: successful operation\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: array\\r\\n                items:\\r\\n                  type: object\\r\\n                  additionalProperties:\\r\\n                    type: object\\r\\n        '404':\\r\\n          description: No matching record found for the given criteria.\\r\\n      requestBody:\\r\\n        content:\\r\\n          application/x-www-form-urlencoded:\\r\\n            schema:\\r\\n              type: object\\r\\n              properties:\\r\\n                criteria:\\r\\n                  description: >-\\r\\n                    Uses Lucene Query Syntax in the format of\\r\\n                    propertyName:value, propertyName:[num1 TO num2] and date\\r\\n                    range format: propertyName:[yyyyMMdd TO yyyyMMdd]. In the\\r\\n                    response please see the 'docs' element which has the list of\\r\\n                    record objects. Each record structure would consist of all\\r\\n                    the fields and their corresponding values.\\r\\n                  type: string\\r\\n                  default: '*:*'\\r\\n                start:\\r\\n                  description: Starting record number. Default value is 0.\\r\\n                  type: integer\\r\\n                  default: 0\\r\\n                rows:\\r\\n                  description: >-\\r\\n                    Specify number of rows to be returned. If you run the search\\r\\n                    with default values, in the response you will see 'numFound'\\r\\n                    attribute which will tell the number of records available in\\r\\n                    the dataset.\\r\\n                  type: integer\\r\\n                  default: 100\\r\\n              required:\\r\\n                - criteria\\r\\ncomponents:\\r\\n  schemas:\\r\\n    dataSetList:\\r\\n      type: object\\r\\n      properties:\\r\\n        total:\\r\\n          type: integer\\r\\n        apis:\\r\\n          type: array\\r\\n          items:\\r\\n            type: object\\r\\n            properties:\\r\\n              apiKey:\\r\\n                type: string\\r\\n                description: To be used as a dataset parameter value\\r\\n              apiVersionNumber:\\r\\n                type: string\\r\\n                description: To be used as a version parameter value\\r\\n              apiUrl:\\r\\n                type: string\\r\\n                format: uriref\\r\\n                description: \\\"The URL describing the dataset's fields\\\"\\r\\n              apiDocumentationUrl:\\r\\n                type: string\\r\\n                format: uriref\\r\\n                description: A URL to the API console for each API\",\r\n    \"format\": \"openapi\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8df36b43-c6f4-49db-80f7-f918898a7434"
+          "920a8312-c1d2-44fb-8fea-c472b8948e9a"
         ],
         "Accept-Language": [
           "en-US"
@@ -736,7 +736,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -753,31 +753,31 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?api-version=2019-12-01&asyncId=5eab2995a2ca6012300231e8&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?api-version=2019-12-01&asyncId=5efa7bc1a2ca601994fb7dcb&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8a4ce165-d066-46eb-ae13-697ed3dff9f7"
+          "322e4ed9-215f-4f72-87a9-86c8e601d1b5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "7d700635-34c8-4964-b638-94d239f0b0a7"
+          "11911d06-8a10-431b-b2f8-c79aa57d2792"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194006Z:7d700635-34c8-4964-b638-94d239f0b0a7"
+          "WESTUS:20200629T233946Z:11911d06-8a10-431b-b2f8-c79aa57d2792"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:05 GMT"
+          "Mon, 29 Jun 2020 23:39:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -790,8 +790,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?api-version=2019-12-01&asyncId=5eab2995a2ca6012300231e8&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4P2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZWFiMjk5NWEyY2E2MDEyMzAwMjMxZTgmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?api-version=2019-12-01&asyncId=5efa7bc1a2ca601994fb7dcb&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1P2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZWZhN2JjMWEyY2E2MDE5OTRmYjdkY2ImYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -799,7 +799,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -810,79 +810,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADCc=\""
+          "\"AAAAAAAAMGw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f0ab58a3-b7b7-437d-aa6b-d254dbcad3a9"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-correlation-request-id": [
-          "75a272ba-0d8f-4ffb-b0b6-5c02b6575a47"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200430T194036Z:75a272ba-0d8f-4ffb-b0b6-5c02b6575a47"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 30 Apr 2020 19:40:35 GMT"
-        ],
-        "Content-Length": [
-          "1381"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8888\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1c309ac6-79b1-459b-9416-5e3f747df130"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAADCc=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "582f0248-728c-4e10-bc4c-e28f89fb3536"
+          "384c0fad-da89-4d63-acd5-92c749875243"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -891,16 +825,16 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "a438b0f0-380f-4717-9eb5-67a4fcc2d813"
+          "3f9a25ca-97c6-4a68-aa84-efebb9f36079"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194036Z:a438b0f0-380f-4717-9eb5-67a4fcc2d813"
+          "WESTUS:20200629T234016Z:3f9a25ca-97c6-4a68-aa84-efebb9f36079"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:35 GMT"
+          "Mon, 29 Jun 2020 23:40:15 GMT"
         ],
         "Content-Length": [
           "1381"
@@ -912,20 +846,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8888\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2495\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888%3Brev%3D1?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4JTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"authenticationSettings\": {\r\n      \"openid\": {\r\n        \"openidProviderId\": \"ps9234\",\r\n        \"bearerTokenSendingMethods\": [\r\n          \"query\"\r\n        ]\r\n      }\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"http\",\r\n    \"apiRevision\": \"1\",\r\n    \"apiVersion\": \"\",\r\n    \"isCurrent\": true,\r\n    \"subscriptionRequired\": true,\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c5d952f-5c56-40ce-aecf-bc0ed7bb2d63"
-        ],
-        "If-Match": [
-          "*"
+          "c5679c43-d6d5-48a0-b9d8-719c3cb324eb"
         ],
         "Accept-Language": [
           "en-US"
@@ -934,13 +865,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "1276"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -951,34 +876,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAADDc=\""
+          "\"AAAAAAAAMGw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3e6878b6-d3af-4b69-93c2-95626067c7ee"
+          "b1787525-28eb-4e00-9530-d8a76890b66b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "3fdae47c-5d73-4744-8816-c10115311335"
+          "88a42115-240e-4dcb-ad99-62055f55b1ef"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194036Z:3fdae47c-5d73-4744-8816-c10115311335"
+          "WESTUS:20200629T234016Z:88a42115-240e-4dcb-ad99-62055f55b1ef"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:35 GMT"
+          "Mon, 29 Jun 2020 23:40:15 GMT"
         ],
         "Content-Length": [
-          "1519"
+          "1381"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -987,17 +912,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps8888\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": {\r\n        \"openidProviderId\": \"ps9234\",\r\n        \"bearerTokenSendingMethods\": [\r\n          \"query\"\r\n        ]\r\n      }\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2495\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
-      "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps8189\"\r\n  }\r\n}",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495%3Brev%3D1?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1JTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"authenticationSettings\": {\r\n      \"openid\": {\r\n        \"openidProviderId\": \"ps337\",\r\n        \"bearerTokenSendingMethods\": [\r\n          \"query\"\r\n        ]\r\n      }\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"http\",\r\n    \"apiRevision\": \"1\",\r\n    \"apiVersion\": \"\",\r\n    \"isCurrent\": true,\r\n    \"subscriptionRequired\": true,\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d843387a-fa7f-45f8-a3e9-78f635a8102e"
+          "119d9905-2849-4375-8d9d-6a49130b128a"
         ],
         "If-Match": [
           "*"
@@ -1009,7 +934,82 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1275"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAMH4=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5d92b513-88bf-438f-845d-1b92ab4b3211"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff971b0a-ab63-4002-b1fd-c3073ce5fb33"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200629T234022Z:ff971b0a-ab63-4002-b1fd-c3073ce5fb33"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 29 Jun 2020 23:40:22 GMT"
+        ],
+        "Content-Length": [
+          "1518"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2495\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": {\r\n        \"openidProviderId\": \"ps337\",\r\n        \"bearerTokenSendingMethods\": [\r\n          \"query\"\r\n        ]\r\n      }\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps2348\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c98c4a6-11db-4300-bada-c939b2eb5101"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1029,25 +1029,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1eb711b1-2688-4356-b856-a1e02348d9b2"
+          "dd018f49-a2e0-40da-8b2a-c85f7ec7b135"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "126f53cc-ba6b-4c36-bc44-06928e0fd63f"
+          "2163770b-3d6e-4961-8d4b-fca2efbbbec1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:126f53cc-ba6b-4c36-bc44-06928e0fd63f"
+          "WESTUS:20200629T234022Z:2163770b-3d6e-4961-8d4b-fca2efbbbec1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:36 GMT"
+          "Mon, 29 Jun 2020 23:40:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -1057,13 +1057,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bf5084b4-3fee-4ef8-b5aa-841a9f1457f5"
+          "8f10ec39-7fdc-409e-b4ce-efd97ae21c30"
         ],
         "If-Match": [
           "*"
@@ -1075,7 +1075,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1089,7 +1089,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "77be8615-97cf-4d0a-b567-42a0db60e5a6"
+          "f39835f8-7b49-48c3-839b-58a74aca5e0a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1098,16 +1098,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f835bc46-f0f9-453e-b0cc-35213b0dafdc"
+          "93ae3c86-f3a0-4c7e-a743-1a035eb70f1d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:f835bc46-f0f9-453e-b0cc-35213b0dafdc"
+          "WESTUS:20200629T234023Z:93ae3c86-f3a0-4c7e-a743-1a035eb70f1d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:36 GMT"
+          "Mon, 29 Jun 2020 23:40:23 GMT"
         ],
         "Expires": [
           "-1"
@@ -1120,13 +1120,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps8888?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM4ODg4P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2495?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDk1P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f0dd022b-2dd8-4c3f-86c7-2bae02e0ff44"
+          "cf00679a-91d9-46c4-a03c-56d59b0862da"
         ],
         "If-Match": [
           "*"
@@ -1138,7 +1138,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1152,7 +1152,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f8f2298e-001e-4865-8a70-fe7a08e06b7e"
+          "a043303f-7acb-4c72-89af-1e41f16d5e88"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1161,16 +1161,16 @@
           "14997"
         ],
         "x-ms-correlation-request-id": [
-          "337a3b2e-b51d-4fbc-bbbe-2ae3c904660f"
+          "deba679a-6046-4281-9943-34d7ff45ce35"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194038Z:337a3b2e-b51d-4fbc-bbbe-2ae3c904660f"
+          "WESTUS:20200629T234024Z:deba679a-6046-4281-9943-34d7ff45ce35"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:37 GMT"
+          "Mon, 29 Jun 2020 23:40:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -1180,13 +1180,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8dc00c06-3994-4fe2-8d14-ce2d7bfe1292"
+          "bdc32a64-0487-4394-9d62-11e40b5b6a86"
         ],
         "If-Match": [
           "*"
@@ -1198,7 +1198,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1212,7 +1212,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "664f437e-9ceb-4e90-9ad3-f554d28212cd"
+          "6e5fd3ca-bce9-4d86-bf5a-d3c8c1042e8c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1221,16 +1221,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "57ed1a63-a761-433e-8366-1c7088d5c43d"
+          "eab1f817-a0e8-438a-baf3-9cee166c2d79"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194037Z:57ed1a63-a761-433e-8366-1c7088d5c43d"
+          "WESTUS:20200629T234023Z:eab1f817-a0e8-438a-baf3-9cee166c2d79"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:37 GMT"
+          "Mon, 29 Jun 2020 23:40:23 GMT"
         ],
         "Expires": [
           "-1"
@@ -1243,13 +1243,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps9234?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHM5MjM0P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/openidConnectProviders/ps337?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL29wZW5pZENvbm5lY3RQcm92aWRlcnMvcHMzMzc/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6fd93d22-32ee-45ae-9859-c30ec6f0c504"
+          "6ddd55a2-2553-4f35-9268-cf8f1222abf3"
         ],
         "If-Match": [
           "*"
@@ -1261,7 +1261,7 @@
           "FxVersion/4.6.27817.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1275,7 +1275,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ba912561-d3e4-4695-9a0b-8b2746d0d9d1"
+          "a65b9963-0262-4317-ad03-ee163d9d2fb9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1284,16 +1284,16 @@
           "14996"
         ],
         "x-ms-correlation-request-id": [
-          "5d54c379-32cf-4ec3-8fcd-b62d36e3826d"
+          "78ed1136-957e-4c41-bc31-53e1b93cf234"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200430T194038Z:5d54c379-32cf-4ec3-8fcd-b62d36e3826d"
+          "WESTUS:20200629T234024Z:78ed1136-957e-4c41-bc31-53e1b93cf234"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 30 Apr 2020 19:40:37 GMT"
+          "Mon, 29 Jun 2020 23:40:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -1305,12 +1305,12 @@
   ],
   "Names": {
     "": [
-      "ps9234",
-      "ps8888",
-      "ps9140",
-      "ps9505",
-      "ps2101",
-      "ps8189"
+      "ps337",
+      "ps2495",
+      "ps3520",
+      "ps7360",
+      "ps5988",
+      "ps2348"
     ]
   },
   "Variables": {

@@ -3619,3 +3619,160 @@ function ApiDiagnostic-CrudTest {
         }
     }
 }
+
+<#
+.SYNOPSIS
+Tests CRUD operations on Properties.
+#>
+function Gateway-CrudTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # create non-Secret Property
+    $gatewayId = getAssetName
+    $hostnameConfigId = getAssetName
+    $certId = getAssetName
+
+
+    $gateways = Get-AzApiManagementGateway -Context $context
+
+    Assert-AreEqual 0 $gateways.Count
+
+#    for ($i = 0; $i -lt $gateways.Count; $i++) {
+   #      Remove-AzApiManagementGateway -Context $context -GatewayId $gateways[$i].GatewayId -PassThru
+   # }
+       #Remove-AzApiManagementCertificate -Context $context -CertificateId 'ps9906'  -PassThru
+    
+
+    try {
+        $description = getAssetName
+        $locationCity = getAssetName
+        $locationName = getAssetName
+        $locationRegion = getAssetName
+        $locationDistrict = getAssetName
+
+        $hostname = 'contoso.com'
+
+        #create
+        $location = New-AzApiManagementResourceLocation -Name $locationName -City $locationCity -District $locationDistrict -CountryOrRegion $locationRegion
+        $gateway = New-AzApiManagementGateway -Context $context -GatewayId $gatewayId -Description $description -LocationData $location 
+
+        Assert-NotNull $gateway
+        Assert-AreEqual $description $gateway.Description
+        Assert-AreEqual $locationCity $gateway.LocationData.City
+        Assert-AreEqual $locationName $gateway.LocationData.Name
+        Assert-AreEqual $locationDistrict $gateway.LocationData.District
+        Assert-AreEqual $locationRegion $gateway.LocationData.CountryOrRegion
+
+        #get list
+        $gateways = Get-AzApiManagementGateway -Context $context
+        Assert-AreEqual 1 $gateways.Count
+        $gateway = $gateways[0]
+        Assert-NotNull $gateway
+        Assert-AreEqual $description $gateway.Description
+        Assert-AreEqual $locationCity $gateway.LocationData.City
+        Assert-AreEqual $locationName $gateway.LocationData.Name
+        Assert-AreEqual $locationDistrict $gateway.LocationData.District
+        Assert-AreEqual $locationRegion $gateway.LocationData.CountryOrRegion
+
+        #get
+        $gateway = Get-AzApiManagementGateway -Context $context -GatewayId $gatewayId
+        Assert-NotNull $gateway
+        Assert-AreEqual $description $gateway.Description
+        Assert-AreEqual $locationCity $gateway.LocationData.City
+        Assert-AreEqual $locationName $gateway.LocationData.Name
+        Assert-AreEqual $locationDistrict $gateway.LocationData.District
+        Assert-AreEqual $locationRegion $gateway.LocationData.CountryOrRegion
+
+        #update
+        $newDescription = getAssetName
+        $gateway = Set-AzApiManagementGateway -Context $context -GatewayId $gatewayId -Description $newDescription -PassThru
+        Assert-NotNull $gateway
+        Assert-AreEqual $newDescription $gateway.Description
+        Assert-AreEqual $locationCity $gateway.LocationData.City
+        Assert-AreEqual $locationName $gateway.LocationData.Name
+        Assert-AreEqual $locationDistrict $gateway.LocationData.District
+        Assert-AreEqual $locationRegion $gateway.LocationData.CountryOrRegion
+
+        #update location
+        $newLocationCity = getAssetName
+        $location = New-AzApiManagementResourceLocation -Name $locationName -City $newLocationCity
+        $gateway = Set-AzApiManagementGateway -Context $context -GatewayId $gatewayId -LocationData @location -PassThru
+        Assert-NotNull $gateway
+        Assert-AreEqual $newDescription $gateway.Description
+        Assert-AreEqual $newLocationCity $gateway.LocationData.City
+        Assert-AreEqual $locationName $gateway.LocationData.Name
+        Assert-Null $gateway.LocationData.District
+        Assert-Null $gateway.LocationData.CountryOrRegion
+
+        #get keys
+        $key = Get-AzApiManagementGatewayKey -Context $context -GatewayId $gatewayId
+        Assert-NotNull $key
+        Assert-NotNull $key.PrimaryKey
+        Assert-NotNull $key.SecondaryKey
+
+        #attach to api
+        $apis = Get-AzApiManagementApi -Context $context
+        $apiId = $apis[0].ApiId
+
+        Add-AzApiManagementApiToGateway -Context $context -GatewayId $gatewayId -ApiId $apiId  
+
+        $apis = Get-AzApiManagementApi -Context $context -GatewayId $gatewayId
+        Assert-AreEqual 1 $apis.Count
+
+        #detach from api
+        Remove-AzApiManagementApiFromGateway -Context $context -GatewayId $gatewayId -ApiId $apiId -PassThru
+
+        $apis = Get-AzApiManagementApi -Context $context -GatewayId $gatewayId
+        Assert-AreEqual 0 $apis.Count
+
+        $certPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "powershelltest.pfx"
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $certPassword = 'Password'
+        $certSubject = "CN=*.msitesting.net"
+        $certThumbprint = '8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2'
+        # upload certificate
+        $cert = New-AzApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
+
+        #create hostname config
+        $hostnameConfig = New-AzApiManagementGatewayHostnameConfiguration -Context $context -GatewayId $gatewayId -CertificateResourceId $cert.Id -GatewayHostnameConfigurationId $hostnameConfigId -Hostname $hostname
+        Assert-NotNull $hostnameConfig
+        Assert-AreEqual $hostname $hostnameConfig.Hostname
+        Assert-AreEqual $cert.Id $hostnameConfig.CertificateResourceId
+        Assert-AreEqual $false $hostnameConfig.NegotiateClientCertificate
+
+        #get config
+        $hostnameConfig = Get-AzApiManagementGatewayHostnameConfiguration -Context $context -GatewayId $gatewayId -GatewayHostnameConfigurationId $hostnameConfigId
+        Assert-NotNull $hostnameConfig
+        Assert-AreEqual $hostname $hostnameConfig.Hostname
+        Assert-AreEqual $cert.Id $hostnameConfig.CertificateResourceId
+        Assert-AreEqual $false $hostnameConfig.NegotiateClientCertificate
+
+        #list config
+        $hostnameConfigs = Get-AzApiManagementGatewayHostnameConfiguration -Context $context -GatewayId $gatewayId
+        Assert-AreEqual 1 $hostnameConfigs.Count
+        $hostnameConfig = $hostnameConfigs[0]
+        Assert-AreEqual $hostname $hostnameConfig.Hostname
+        Assert-AreEqual $cert.Id $hostnameConfig.CertificateResourceId
+        Assert-AreEqual $false $hostnameConfig.NegotiateClientCertificate
+    }
+    finally {
+        Remove-AzApiManagementGatewayHostnameConfiguration -Context $context -GatewayId $gatewayId -GatewayHostnameConfigurationId $hostnameConfigId -PassThru
+
+        Remove-AzApiManagementCertificate -Context $context -CertificateId $certId  -PassThru
+
+        $removed = Remove-AzApiManagementGateway -Context $context -GatewayId $gatewayId -PassThru
+        Assert-True { $removed }
+
+        $gateway = $null
+        try {
+            # check it was removed
+            $gateway = Get-AzApiManagementGateway -Context $context -GatewayId $gatewayId
+        }
+        catch {
+        }
+
+        Assert-Null $gateway
+    }
+}
