@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.StorageSync.Models;
+using System.Collections.Generic;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -39,7 +41,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.StorageSyncService.</returns>
-        protected override StorageSyncModels.StorageSyncService Transform(PSStorageSyncService source) => new StorageSyncModels.StorageSyncService(source.Location, source.ResourceId, source.StorageSyncServiceName, StorageSyncConstants.StorageSyncServiceType, source.Tags);
+        protected override StorageSyncModels.StorageSyncService Transform(PSStorageSyncService source) => new StorageSyncModels.StorageSyncService(
+            source.Location,
+            source.ResourceId,
+            source.StorageSyncServiceName,
+            StorageSyncConstants.StorageSyncServiceType,
+            source.Tags,
+            source.IncomingTrafficPolicy);
 
         /// <summary>
         /// Transforms the specified source.
@@ -49,14 +57,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         protected override PSStorageSyncService Transform(StorageSyncModels.StorageSyncService source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
+
+            var psPrivateEndpointConnections = new List<PSPrivateEndpointConnection>();
+            // Convert individual PrivateEndpointConnection objects
+            if (source.PrivateEndpointConnections != null)
+            {
+                foreach(PrivateEndpointConnection privateEndpointConnection in source.PrivateEndpointConnections)
+                {
+                    psPrivateEndpointConnections.Add(new PrivateEndpointConnectionConverter().Convert(privateEndpointConnection));
+                }
+            }
+
             return new PSStorageSyncService()
             {
                 ResourceId = source.Id,
                 StorageSyncServiceName = source.Name,
                 ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 Location = source.Location,
+                IncomingTrafficPolicy = source.IncomingTrafficPolicy,
                 Tags = source.Tags,
-                Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.StorageSyncServiceType
+                Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.StorageSyncServiceType,
+                PrivateEndpointConnections = psPrivateEndpointConnections.Count > 0 ? psPrivateEndpointConnections : null
             };
         }
     }

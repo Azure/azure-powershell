@@ -49,7 +49,13 @@ function Test-StorageSyncService
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
         Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
+        # TODO : Remove the new generation of sss, it should work
+         $storageSyncServiceName = Get-ResourceName("sss")
+
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Get-AzStorageSyncService  | Remove-AzStorageSyncService -Force -AsJob | Wait-Job
+
+         # TODO : Remove the new generation of sss, it should work
+        $storageSyncServiceName = Get-ResourceName("sss")
 
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Remove-AzStorageSyncService -Force -AsJob | Wait-Job
     }

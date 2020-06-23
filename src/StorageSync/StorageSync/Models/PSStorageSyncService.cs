@@ -30,16 +30,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The location.</value>
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 4)]
         public string Location { get; set; }
+        
         /// <summary>
         /// Gets or sets the name of the storage sync service.
         /// </summary>
         /// <value>The name of the storage sync service.</value>
         [Ps1Xml(Label = "StorageSyncServiceName ", Target = ViewControl.Table, Position = 5)]
         public string StorageSyncServiceName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the name of the incoming traffic policy.
+        /// </summary>
+        /// <value>The name of the incoming traffic policy.</value>
+        [Ps1Xml(Label = "IncomingTrafficPolicy ", Target = ViewControl.Table, Position = 6)]
+        public string IncomingTrafficPolicy { get; set; }
+        
+        /// <summary>
+        /// Gets the private endpoint connections.
+        /// </summary>
+        /// <value>The private endpoint connections.</value>
+        [Ps1Xml(Label = "PrivateEndpointConnections ", Target = ViewControl.Table, Position = 7)]
+        public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+        
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
         /// <value>The tags.</value>
         public IDictionary<string, string> Tags { get; set; }
+
     }
 }
