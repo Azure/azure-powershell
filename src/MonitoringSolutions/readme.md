@@ -49,9 +49,11 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - C:\Users\yeliu\isra-fel\azure-powershell\src\MonitoringSolutions\custom\OperationsManagement.json
+  # Some of the requests are not long running operation but are defined this way. Service team doesn't want to change the swagger,
+  # they said it's going to deprecate
+  # - C:\Users\yeliu\isra-fel\azure-powershell\src\MonitoringSolutions\custom\OperationsManagement.json
   # - $(repo)/specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json
-  # - https://github.com/Azure/azure-rest-api-specs/blob/740a40ba31720ad514a308054ba517a8ea956a3c/specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/740a40ba31720ad514a308054ba517a8ea956a3c/specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json
 
 module-version: 0.1.0
 title: MonitoringSolutions
@@ -60,6 +62,19 @@ subject-prefix: MonitorLogAnalytics
 inlining-threshold: 40
 
 directive:
+  # Fix error in swagger: these operations should not be long running
+  - from: swagger-document
+    where: $..put
+    transform: $['x-ms-long-running-operation'] = false
+  - from: swagger-document
+    where: $..patch
+    transform: $['x-ms-long-running-operation'] = false
+  - from: swagger-document
+    where: $..delete
+    transform: $['x-ms-long-running-operation'] = false
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\"x-ms-long-running-operation\"\: true/g, ""x-ms-long-running-operation": false")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
