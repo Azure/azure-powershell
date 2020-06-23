@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01");
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview");
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview");
+            RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)
