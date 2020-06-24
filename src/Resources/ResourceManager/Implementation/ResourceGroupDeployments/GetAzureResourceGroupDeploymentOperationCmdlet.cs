@@ -14,16 +14,20 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSDeploymentOperation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -37,7 +41,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the subscription id parameter.
         /// </summary>
-        [CmdletParameterBreakingChange("SubscriptionId", ChangeDescription = "Parameter is deprecated and is a no-op parameter. It will be retired in a future release")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
@@ -55,10 +58,68 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected override void OnProcessRecord()
         {
-            var deploymentOperations = ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(
-                ResourceGroupName, DeploymentName);
+            base.OnProcessRecord();
 
-            WriteObject(deploymentOperations, true);
+            if (this.SubscriptionId == null)
+            {
+                this.SubscriptionId = DefaultContext.Subscription.GetId();
+            }
+
+            this.RunCmdlet();
+        }
+
+        /// <summary>
+        /// Contains the cmdlet's execution logic.
+        /// </summary>
+        private void RunCmdlet()
+        {
+            PaginatedResponseHelper.ForEach(
+                getFirstPage: () => this.GetResources(),
+                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
+                cancellationToken: this.CancellationToken,
+                action: resources => this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(resource =>
+                    resource.ToPsObject("System.Management.Automation.PSCustomObject#DeploymentOperation")), enumerateCollection: true));
+        }
+
+        /// <summary>
+        /// Queries the ARM cache and returns the cached resource that match the query specified.
+        /// </summary>
+        private async Task<ResponseWithContinuation<JObject[]>> GetResources()
+        {
+            var resourceId = this.GetResourceId();
+
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.DeploymentOperationApiVersion : this.ApiVersion;
+
+            return await this
+                .GetResourcesClient()
+                .ListObjectColleciton<JObject>(
+                    resourceCollectionId: resourceId,
+                    apiVersion: apiVersion,
+                    cancellationToken: this.CancellationToken.Value)
+                .ConfigureAwait(continueOnCapturedContext: false);
+        }
+
+        /// <summary>
+        /// Gets the next set of resources using the <paramref name="nextLink"/>
+        /// </summary>
+        /// <param name="nextLink">The next link.</param>
+        private Task<ResponseWithContinuation<TType[]>> GetNextLink<TType>(string nextLink)
+        {
+            return this
+                .GetResourcesClient()
+                .ListNextBatch<TType>(nextLink: nextLink, cancellationToken: this.CancellationToken.Value);
+        }
+
+        /// <summary>
+        /// Gets the resource Id from the supplied PowerShell parameters.
+        /// </summary>
+        protected string GetResourceId()
+        {
+            return ResourceIdUtility.GetResourceId(
+                subscriptionId: this.SubscriptionId,
+                resourceGroupName: this.ResourceGroupName,
+                resourceType: Constants.MicrosoftResourcesDeploymentOperationsType,
+                resourceName: this.DeploymentName);
         }
 
     }
