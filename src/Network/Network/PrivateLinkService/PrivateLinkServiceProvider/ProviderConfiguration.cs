@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DBforPostgreSQL/servers", "2018-06-01");
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview");
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false);
-            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", hasConnectionsURI: false);
+            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", hasConnectionsURI: true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2019-09-01", false);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview");
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18");
