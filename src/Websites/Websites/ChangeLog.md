@@ -25,6 +25,7 @@
 * Added a support to create ASP for Linux Apps
 * Added exceptions for clone across resource groups
 * Added support to perform operations for Slots not in the same resource group as the App Service Plan
+* Added support to use Id for Restore-AzDeletedWebApp.
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.
