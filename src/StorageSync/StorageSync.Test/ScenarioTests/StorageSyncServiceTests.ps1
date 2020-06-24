@@ -34,8 +34,15 @@ function Test-StorageSyncService
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
-        
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName -IncomingTrafficPolicy "AllowVirtualNetworksOnly"
+
+        $storageSyncService = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
+        Write-Verbose "Validating StorageSyncService Properties"
+        Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName
+        Assert-AreEqual "AllowVirtualNetworksOnly" $storageSyncService.IncomingTrafficPolicy
+
+        Set-AzStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -IncomingTrafficPolicy "AllowAllTraffic"
+
         Write-Verbose "List StorageSyncServices by ResourceGroup"
         $storageSyncServices = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName
 
@@ -44,6 +51,7 @@ function Test-StorageSyncService
 
         Write-Verbose "Validating StorageSyncService Properties"
         Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName
+        Assert-AreEqual "AllowAllTraffic" $storageSyncService.IncomingTrafficPolicy
         Assert-AreEqual (Normalize-Location($resourceLocation)) (Normalize-Location($storageSyncService.Location))
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"

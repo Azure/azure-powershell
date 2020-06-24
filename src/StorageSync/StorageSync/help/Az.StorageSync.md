@@ -47,6 +47,9 @@ This command creates a new server endpoint on a registered server. This enables 
 ### [New-AzStorageSyncService](New-AzStorageSyncService.md)
 This command creates a new storage sync service in a resource group.
 
+### [Set-AzStorageSyncService](New-AzStorageSyncService.md)
+This command sets a storage sync service in a resource group.
+
 ### [Register-AzStorageSyncServer](Register-AzStorageSyncServer.md)
 This command registers a server to a storage sync service which creates a trust relationship. PowerShell or the Azure portal can then be used to configure sync on this server.
 

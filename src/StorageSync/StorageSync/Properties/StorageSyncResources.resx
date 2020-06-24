@@ -279,4 +279,7 @@
   <data name="NewCloudEndpointUnableToRegisterErrorFormat" xml:space="preserve">
     <value>The given subscription {0} was unable to registered to Azure File Sync.</value>
   </data>
+  <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
+    <value>Updating a Storage Sync Service</value>
+  </data>
 </root>
