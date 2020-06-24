@@ -20,9 +20,6 @@
 
 ## Upcoming Release
 
-## Version 1.0.1
-* Documentation update of `Az.Support` module
-
 ## Version 1.0.0
 * General availability of `Az.Support` module
 
