@@ -30,9 +30,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-	<Target Name="CopyFiles" AfterTargets="Build">
-		<Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
-		<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
-	</Target>
-
 </Project>
