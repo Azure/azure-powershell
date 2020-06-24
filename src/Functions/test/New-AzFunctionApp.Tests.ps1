@@ -514,4 +514,142 @@ Describe 'New-AzFunctionApp' {
             }
         }
     }
+
+    $functionAppCreationTestCases = @(
+        @{
+            "Name" = $env.functionNameJava
+            "Runtime" = "Java"
+            "RuntimeVersion" = "11"
+            "StorageAccountName" = $env.storageAccountLinux
+            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
+            "Location" = $env.location
+            "FunctionsVersion" = 3
+            "OSType" = "Linux"
+            "ExpectedVersion" = @{
+                "LinuxFxVersion" = "JAVA|11"
+            }
+        },
+        @{
+            "Name" = $env.functionNamePowerShell
+            "Runtime" = "PowerShell"
+            "RuntimeVersion" = "7.0"
+            "StorageAccountName" = $env.storageAccountWindows
+            "ResourceGroupName" = $env.resourceGroupNameWindowsConsumption
+            "Location" = $env.location
+            "FunctionsVersion" = 3
+            "OSType" = "Windows"
+            <#
+            # TODO: The backend fix to return the PowerShellVersion property is fixed in ANT88. Uncomment this after ANT88 is deployed.
+            "ExpectedVersion" = @{
+                "PowerShellVersion" = "~7"
+            }
+            #>
+        },
+        @{
+            "Name" = $env.functionNameJava
+            "Runtime" = "Java"
+            "RuntimeVersion" = "11"
+            "StorageAccountName" = $env.storageAccountWindows
+            "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
+            "PlanName" = $env.planNameWorkerTypeWindows
+            "FunctionsVersion" = 3
+            "OSType" = "Windows"
+            "ExpectedVersion" = @{
+                "JavaVersion" = "11"
+            }
+        },
+        @{
+            "Name" = $env.functionNamePowerShell
+            "Runtime" = "PowerShell"
+            "RuntimeVersion" = "7.0"
+            "StorageAccountName" = $env.storageAccountWindows
+            "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
+            "PlanName" = $env.planNameWorkerTypeWindows
+            "FunctionsVersion" = 3
+            "OSType" = "Windows"
+            <#
+            # TODO: The backend fix to return the PowerShellVersion property is fixed in ANT88. Uncomment this after ANT88 is deployed.
+            "ExpectedVersion" = @{
+                "PowerShellVersion" = "~7"
+            }
+            #>
+        }
+    )
+
+    foreach ($testCase in $functionAppCreationTestCases)
+    {
+        $functionName =  $testCase["Name"]
+        $functionsVersion = $testCase["FunctionsVersion"]
+        $runtime = $testCase["Runtime"]
+        $runtimeVersion = $testCase["RuntimeVersion"]
+        $resourceGroupName = $testCase["ResourceGroupName"]
+        $storageAccountName = $testCase["StorageAccountName"]
+        $OSType = $testCase["OSType"]
+
+        $planType = $null
+        $location = $null
+        $planName = $null
+
+        if ($testCase.ContainsKey("location"))
+        {
+            $location = $testCase["Location"]
+            $planType = "Consumption"
+        }
+        else
+        {
+            $planType = "Premium"
+            $planName = $testCase["PlanName"]
+        }
+
+        It "Create $OSType $runtime $runtimeVersion function app hosted in a $planType plan" {
+
+            try
+            {
+                if ($planType -eq "Consumption")
+                {
+                    New-AzFunctionApp -Name $functionName `
+                                      -ResourceGroupName $resourceGroupName `
+                                      -Location $location `
+                                      -StorageAccountName $storageAccountName `
+                                      -FunctionsVersion $functionsVersion `
+                                      -OSType $OSType `
+                                      -Runtime $runtime `
+                                      -RuntimeVersion $runtimeVersion
+                }
+                else
+                {
+                    New-AzFunctionApp -Name $functionName `
+                                      -ResourceGroupName $resourceGroupName `
+                                      -PlanName $planName `
+                                      -StorageAccountName $storageAccountName `
+                                      -FunctionsVersion $functionsVersion `
+                                      -OSType $OSType `
+                                      -Runtime $runtime `
+                                      -RuntimeVersion $runtimeVersion
+                }
+
+                $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupName
+                $functionApp.OSType | Should -Be $OSType
+                $functionApp.Runtime | Should -Be $runtime
+
+                if ($testCase.ContainsKey("ExpectedVersion"))
+                {
+                    $expectedVersion = $testCase["ExpectedVersion"]
+                    foreach ($propertyName in $expectedVersion.Keys)
+                    {
+                        $expectedVersion = $expectedVersion[$propertyName]
+                        $functionApp.SiteConfig.$propertyName | Should -Be $expectedVersion
+                    }
+                }
+            }
+            finally
+            {
+                $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+                if ($functionApp)
+                {
+                    Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                }
+            }
+        }
+    }
 }

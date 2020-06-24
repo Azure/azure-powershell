@@ -1179,6 +1179,49 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
 
 <#
 .SYNOPSIS
+Test Virtual Machine Custom Script Extensions return Substatuses
+#>
+function Test-VirtualMachineCustomScriptExtensionSubstatuses
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = 'vm' + $rgname;
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel;
+
+        $csename = "myCustomExtension";
+        $fileUri = "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1";
+        $runname = "Create-File.ps1";
+
+        # Parameter set interactive
+        Set-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename `
+            -Location $loc -FileUri $fileUri -Run $runname;
+        $cseobject = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename -Status;
+
+        Assert-NotNull $cseobject;
+        Assert-NotNull $cseobject.SubStatuses;
+        Assert-Match $runname $cseobject.CommandToExecute;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
 Test Virtual Machine Access Extensions
 #>
 function Test-VirtualMachineAccessExtension

@@ -1013,14 +1013,6 @@ param(
     ${CustomizerName},
 
     [Parameter(ParameterSetName='ShellCustomizer', Mandatory)]
-    [Parameter(ParameterSetName='PowerShellCustomizer', Mandatory)]
-    [Parameter(ParameterSetName='FileCustomizer', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String]
-    # SHA256 checksum of the shell script provided in the scriptUri field.
-    ${Sha256Checksum},
-
-    [Parameter(ParameterSetName='ShellCustomizer', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Runs a shell script during the customization phase (Linux).
@@ -1042,6 +1034,14 @@ param(
     # URI of the shell script to be run for customizing.
     # It can be a github link, SAS URI for Azure Storage, etc.
     ${ScriptUri},
+
+    [Parameter(ParameterSetName='ShellCustomizer')]
+    [Parameter(ParameterSetName='PowerShellCustomizer')]
+    [Parameter(ParameterSetName='FileCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # SHA256 checksum of the shell script provided in the scriptUri field.
+    ${Sha256Checksum},
 
     [Parameter(ParameterSetName='PowerShellCustomizer', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]

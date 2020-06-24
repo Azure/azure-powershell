@@ -22,7 +22,7 @@ function New-AzFunctionAppPlan {
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory=$true, HelpMessage='The plan sku. Valid inputs are: EP1, P2, EP3')]
+        [Parameter(Mandatory=$true, HelpMessage='The plan sku. Valid inputs are: EP1, EP2, EP3')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuType])]
         [ValidateNotNullOrEmpty()]

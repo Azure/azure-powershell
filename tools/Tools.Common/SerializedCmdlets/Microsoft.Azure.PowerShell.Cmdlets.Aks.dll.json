@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -533,7 +533,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -823,7 +823,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1593,7 +1593,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3771,7 +3771,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -3897,7 +3897,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4787,7 +4787,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -5702,7 +5702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -5974,7 +5974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -6667,7 +6667,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -6812,7 +6812,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7028,7 +7028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -7575,7 +7575,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7943,7 +7943,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8067,7 +8067,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8559,7 +8559,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10329,7 +10329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks",
             "Name": "Microsoft.Azure.Commands.Aks.KubeTunnelJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HasMoreData": "System.Boolean",
               "ChildJobs": "System.Collections.Generic.IList`1[System.Management.Automation.Job]",
@@ -10541,7 +10541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10813,7 +10813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11638,7 +11638,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -11730,7 +11730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -12016,7 +12016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -12380,7 +12380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Upgrades": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]",
               "DefaultProperty": "System.Nullable`1[System.Boolean]",
@@ -12930,7 +12930,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -13056,7 +13056,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -13179,7 +13179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -13701,7 +13701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14018,7 +14018,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -14823,7 +14823,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ssh": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
         "AdminUsername": "System.String"
@@ -14882,7 +14882,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PublicKeys": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]"
       },
@@ -14936,7 +14936,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14948,7 +14948,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "KeyData": "System.String"
       },
@@ -15012,7 +15012,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "LoadBalancerProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
         "NetworkPlugin": "System.String",
@@ -15063,7 +15063,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ManagedOutboundIPs": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
         "OutboundIPPrefixes": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
@@ -15110,7 +15110,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]"
       },
@@ -15191,7 +15191,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PublicIPPrefixes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -15235,7 +15235,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15247,7 +15247,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceReference": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String"
       },
@@ -15291,7 +15291,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PublicIPs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -15335,7 +15335,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "KeyVaultSecretRef": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef",
         "Secret": "System.String",
@@ -15399,7 +15399,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VaultID": "System.String",
         "SecretName": "System.String",
@@ -15463,7 +15463,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ClientAppID": "System.String",
         "ServerAppID": "System.String",
@@ -15510,7 +15510,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AuthorizedIPRanges": "System.Collections.Generic.IList`1[System.String]",
         "EnablePrivateCluster": "System.Nullable`1[System.Boolean]"
@@ -15579,7 +15579,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
         "TenantId": "System.String",
@@ -15625,7 +15625,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15637,7 +15637,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15742,7 +15742,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdminUsername": "System.String",
         "AdminPassword": "System.String"
@@ -15787,7 +15787,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15800,7 +15800,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Enabled": "System.Boolean",
         "Config": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
@@ -15858,7 +15858,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15870,7 +15870,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ports": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
         "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
@@ -16352,7 +16352,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16364,7 +16364,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsPreview": "System.Nullable`1[System.Boolean]",
         "OrchestratorVersion": "System.String",
