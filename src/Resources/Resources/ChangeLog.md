@@ -26,8 +26,6 @@
 * Added `-ExcludeChangeType` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`
 * Added `-WhatIfExcludeChangeType` parameter to `New-AzDeployment` and `New-AzResourceGroupDeployment`
 * Updated `Test-Az*Deployment` cmdlets to show better error messages
-* Fixed help message for `-Name` parameter of deployment create and What-If cmdlets
-* Updated `Get-AzResourceGroupDeploymentOperation` and `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
 
 ## Version 2.1.0
 * Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
