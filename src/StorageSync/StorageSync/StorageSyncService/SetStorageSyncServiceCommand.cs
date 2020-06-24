@@ -23,18 +23,19 @@ using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 {
 
     /// <summary>
-    /// Creates a new StorageSyncService in a specific location.
+    /// Set StorageSyncService
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
-    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncService,
+    [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncService,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSStorageSyncService))]
-    public class NewStorageSyncServiceCommand : StorageSyncClientCmdletBase
+    public class SetStorageSyncServiceCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the resource group.
@@ -64,25 +65,37 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the location.
+        /// Gets or sets the input object.
         /// </summary>
-        /// <value>The location.</value>
-        [Parameter(
-           Position = 2,
-           ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = HelpMessages.StorageSyncServiceLocationParameter)]
-        [LocationCompleter(StorageSyncConstants.StorageSyncServiceType)]
+        /// <value>The input object.</value>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = StorageSyncParameterSets.InputObjectParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = HelpMessages.StorageSyncServiceInputObjectParameter)]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        [ResourceIdCompleter(StorageSyncConstants.StorageSyncServiceType)]
+        public PSStorageSyncService InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource identifier.
+        /// </summary>
+        /// <value>The resource identifier.</value>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.StorageSyncServiceResourceIdParameter)]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter(StorageSyncConstants.StorageSyncServiceType)]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the IncomingTrafficPolicy.
         /// </summary>
         /// <value>The IncomingTrafficPolicy.</value>
         [Parameter(
-           Position = 3,
+           Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
@@ -122,7 +135,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"{StorageSyncResources.NewStorageSyncServiceActionMessage} {Name}";
+        protected override string ActionMessage => $"{StorageSyncResources.SetStorageSyncServiceActionMessage} {Name}";
 
         /// <summary>
         /// Executes the cmdlet.
@@ -134,12 +147,25 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
             ExecuteClientAction(() =>
             {
+                var resourceName = default(string);
+                var resourceGroupName = default(string);
 
-                CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ", string.Empty), Name);
-
-                if (!checkNameAvailabilityResult.NameAvailable.Value)
+                // Handle ResourceId Parameter Set
+                if (this.IsParameterBound(c => c.ResourceId))
                 {
-                    throw new PSArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
+                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    resourceName = resourceIdentifier.ResourceName;
+                    resourceGroupName = resourceIdentifier.ResourceGroupName;
+                }
+                else if (this.IsParameterBound(c => c.InputObject))
+                {
+                    resourceName = InputObject.StorageSyncServiceName;
+                    resourceGroupName = InputObject.ResourceGroupName;
+                }
+                else
+                {
+                    resourceName = Name;
+                    resourceGroupName = ResourceGroupName;
                 }
 
                 string incomingTrafficPolicy;
@@ -156,17 +182,16 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     incomingTrafficPolicy = StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic;
                 }
 
-                var createParameters = new StorageSyncServiceCreateParameters()
+                var updateParameters = new StorageSyncServiceUpdateParameters()
                 {
-                    Location = Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
                     IncomingTrafficPolicy = incomingTrafficPolicy
                 };
 
-                Target = string.Join("/", ResourceGroupName, Name);
+                Target = string.Join("/", resourceGroupName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
+                    StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Update(ResourceGroupName, Name, updateParameters);
 
                     WriteObject(storageSyncService);
                 }

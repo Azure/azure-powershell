@@ -74,7 +74,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck', 
-               'New-AzStorageSyncService', 'Get-AzStorageSyncService', 
+               'New-AzStorageSyncService', 'Get-AzStorageSyncService', 'Set-AzStorageSyncService',
                'Remove-AzStorageSyncService', 'New-AzStorageSyncGroup', 
                'Get-AzStorageSyncGroup', 'Remove-AzStorageSyncGroup', 
                'New-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncCloudEndpoint', 

@@ -17,37 +17,39 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
-
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class PrivateEndpointConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateEndpoint, Microsoft.Azure.Management.StorageSync.Models.PrivateEndpoint}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateEndpoint, Microsoft.Azure.Management.StorageSync.Models.PrivateEndpoint}" />
+    public class PrivateEndpointConverter : ConverterBase<PSPrivateEndpoint, StorageSyncModels.PrivateEndpoint>
     {
+
         /// <summary>
-        /// Transforms the specified source.
+        /// Initializes a new instance of the <see cref="PrivateEndpointConverter" /> class.
         /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.SyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.ServerEndpointSyncSessionStatus(
-            source.LastSyncResult, source.LastSyncTimestamp, source.LastSyncSuccessTimestamp, source.LastSyncPerItemErrorCount);
+        public PrivateEndpointConverter()
+        {
+        }
 
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>StorageSyncModels.PrivateEndpoint.</returns>
+        protected override StorageSyncModels.PrivateEndpoint Transform(PSPrivateEndpoint source) => new StorageSyncModels.PrivateEndpoint(source.ResourceId);
+
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSPrivateEndpoint.</returns>
+        protected override PSPrivateEndpoint Transform(StorageSyncModels.PrivateEndpoint source)
         {
-            return new PSSyncSessionStatus()
+            return new PSPrivateEndpoint()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                ResourceId = source.Id
             };
         }
     }
-
 }
