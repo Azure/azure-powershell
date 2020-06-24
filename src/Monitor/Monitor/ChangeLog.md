@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.1
+* Fixed input object parameter for `Set-AzActivityLogAlert`
+* Fixed `InputObject` parameter for `Set-AzActionGroup` [#10868]
+
+## Version 2.0.0
 * Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories [#11589]
 * Supported WebTest availability criteria for metric alert V2
 	- `New-AzMetricAlertRuleV2Criteria`: an option to create webtest availability criteria was added

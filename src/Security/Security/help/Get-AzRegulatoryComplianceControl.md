@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzRegulatoryComplianceControl
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzRegulatoryComplianceControl
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/provide
 Name               : A1.1
 Type               : Microsoft.Security/regulatoryComplianceStandards/regulatoryComplianceControls
 Description        : Current processing capacity and usage are maintained, monitored, and evaluated to manage capacity
-                     demand and to enable the implementation of additional capacity to help meet the entity’s
+                     demand and to enable the implementation of additional capacity to help meet the entityï¿½s
                      availability commitments and system requirements.
 State              : Unsupported
 PassedAssessments  : 0
@@ -61,7 +61,7 @@ Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/provide
                      nceStandards/SOC-TSP/regulatoryComplianceControls/A1.3
 Name               : A1.3
 Type               : Microsoft.Security/regulatoryComplianceStandards/regulatoryComplianceControls
-Description        : Recovery plan procedures supporting system recovery are tested to help meet the entity’s
+Description        : Recovery plan procedures supporting system recovery are tested to help meet the entityï¿½s
                      availability commitments and system requirements.
 State              : Unsupported
 PassedAssessments  : 0

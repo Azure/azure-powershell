@@ -1343,16 +1343,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
             DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
 
             try
             {
-                return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
+                WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
                     ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
-                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
+                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+
+                if (excludeChangeTypeNames != null && excludeChangeTypeNames.Length > 0)
+                {
+                    ChangeType[] excludeChangeTypes = excludeChangeTypeNames
+                        .Select(changeType => changeType.ToLowerInvariant())
+                        .Distinct()
+                        .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true))
+                        .ToArray();
+
+                    whatIfOperationResult.Changes = whatIfOperationResult.Changes
+                        .Where(change => excludeChangeTypes.All(changeType => changeType != change.ChangeType))
+                        .ToList();
+                }
+
+                return new PSWhatIfOperationResult(whatIfOperationResult);
             }
             catch (CloudException ce)
             {
@@ -1361,7 +1376,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private string BuildCloudErrorMessage(CloudError cloudError)
+        private static string BuildCloudErrorMessage(CloudError cloudError)
         {
             if (cloudError == null)
             {

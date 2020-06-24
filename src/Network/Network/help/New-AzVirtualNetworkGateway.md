@@ -400,7 +400,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayType
-The type of this virtual network gateway: Vpn, ExoressRoute
+The type of this virtual network gateway: Vpn, ExpressRoute
 
 ```yaml
 Type: System.String

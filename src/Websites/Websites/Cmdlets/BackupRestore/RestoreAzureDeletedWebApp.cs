@@ -105,18 +105,26 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 {
                     throw new Exception("Target App Service Plan " + TargetAppServicePlanName + " not found in target Resource Group " + TargetResourceGroupName);
                 }
-                Action createRestoreAction = () =>
+                try
                 {
-                    WebsitesClient.CreateWebApp(TargetResourceGroupName, TargetName, TargetSlot, plan.Location, TargetAppServicePlanName,
-                        null, string.Empty, string.Empty);
-                    restoreAction();
-                };
-                string confirmMsg = string.Format("This web app will be created. App Name: {0}, Resource Group: {1}", TargetName, TargetResourceGroupName);
-                if (!string.IsNullOrEmpty(TargetSlot))
-                {
-                    confirmMsg += ", Slot: " + TargetSlot;
+                    Action createRestoreAction = () =>
+                    {
+                        WebsitesClient.CreateWebApp(TargetResourceGroupName, TargetName, TargetSlot, plan.Location, TargetAppServicePlanName,
+                            null, string.Empty, string.Empty);
+                        restoreAction();
+                    };
+                    string confirmMsg = string.Format("This web app will be created. App Name: {0}, Resource Group: {1}", TargetName, TargetResourceGroupName);
+                    if (!string.IsNullOrEmpty(TargetSlot))
+                    {
+                        confirmMsg += ", Slot: " + TargetSlot;
+                    }
+                    ConfirmAction(this.Force.IsPresent, confirmMsg, "The deleted app has been restored.", TargetName, createRestoreAction);
                 }
-                ConfirmAction(this.Force.IsPresent, confirmMsg, "The deleted app has been restored.", TargetName, createRestoreAction);
+                catch (Exception e)
+                {
+                    WebsitesClient.RemoveWebApp(TargetResourceGroupName, TargetName, TargetSlot, true, true, false);
+                    throw e;
+                }
             }
 
             PSSite restoredApp = new PSSite(WebsitesClient.GetWebApp(TargetResourceGroupName, TargetName, TargetSlot));

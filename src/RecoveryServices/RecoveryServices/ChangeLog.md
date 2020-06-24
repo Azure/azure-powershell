@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.10.0
+* Azure Backup added support for fetching MAB items.
+* Azure Site Recovery supports disk type "StandardSSD_LRS"
+
+## Version 2.9.1
+* Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
+* Updated assembly version of SiteRecovery and Backup cmdlets
+
+## Version 2.9.0
 * Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.
 * Azure Site Recovery added support for zone to zone replication.
 * Azure Backup Added Long term retention support for Azure FileShare Recovery Points.

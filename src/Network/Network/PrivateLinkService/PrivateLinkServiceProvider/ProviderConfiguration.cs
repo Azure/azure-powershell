@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview");
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18");
             RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01");
+            RegisterConfiguration("Microsoft.ContainerRegistry/registries", "2019-12-01-preview");
+            RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01");
+            RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview");
+            RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview");
+            RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)

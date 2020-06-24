@@ -37,31 +37,31 @@ The Remove-AzEventHubConsumerGroup cmdlet removes and deletes the specified cons
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
 ```
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
-### Example 2.1 - InputObject - Using Variable
-```
+### Example 2: InputObject - Using Variable
+```powershell
 PS C:\> $inputobject = Get-AzEventHubConsumerGroup <params>
 PS C:\> Remove-AzEventHubConsumerGroup -InputObject $inputobject
 ```
 
-### Example 2.2 - InputObject - Using Piping
-```
+### Example 3: InputObject - Using Piping
+```powershell
 PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
 ```
 
-### Example 3.1 - ResourceId Using Variable
-```
+### Example 4: ResourceId Using Variable
+```powershell
 PS C:\> $resourceid = Get-AzEventHubConsumerGroup <params>
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id
 ```
 
-### Example 3.2 - ResourceId Using string
-```
+### Example 5: ResourceId Using string
+```powershell
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
 ```
 

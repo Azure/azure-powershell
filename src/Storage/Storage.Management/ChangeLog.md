@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  `New-AzStorageAccount`
+* Moved the logic of loading Azure.Core to Az.Accounts
+
+## Version 2.1.0
+* Updated assembly version of data plane cmdlets
+
+## Version 2.0.0
 * Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
 * Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
     - `Set-AzStorageAccount`

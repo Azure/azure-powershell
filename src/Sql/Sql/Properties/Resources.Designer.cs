@@ -61,11 +61,38 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with any service principal display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADServicePrincipal -SearchString &quot;{1}&quot;..
+        /// </summary>
+        internal static string ADApplicationDisplayNameMismatch {
+            get {
+                return ResourceManager.GetString("ADApplicationDisplayNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or use use Get-AzADServicePrincipal -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADApplicationMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADApplicationMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden.
         /// </summary>
         internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
             get {
                 return ResourceManager.GetString("AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
+        /// </summary>
+        internal static string ADDuplicateGroupAndApplicationFound {
+            get {
+                return ResourceManager.GetString("ADDuplicateGroupAndApplicationFound", resourceCulture);
             }
         }
         
@@ -79,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser..
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group or application you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication..
         /// </summary>
         internal static string ADObjectNotFound {
             get {
@@ -453,6 +480,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string FailoverAzureSqlElasticPoolWarning {
             get {
                 return ResourceManager.GetString("FailoverAzureSqlElasticPoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceWarning", resourceCulture);
             }
         }
         
@@ -1425,6 +1470,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SyncGroupNameExists {
             get {
                 return ResourceManager.GetString("SyncGroupNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string SyncMemberIdRequired {
+            get {
+                return ResourceManager.GetString("SyncMemberIdRequired", resourceCulture);
             }
         }
         

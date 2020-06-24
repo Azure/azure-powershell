@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.2
+
+* Replaced usage of old [AccessProfile API](https://docs.microsoft.com/rest/api/aks/managedclusters/getaccessprofile) with calls to [ListClusterAdmin](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials) and [ListClusterUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials) APIs
+
+## Version 1.1.1
 * Upgraded API Version to 2019-10-01
 * Supported to create AKS using Windows container
 * Provided new cmdlets: `New-AzAksNodePool`, `Update-AzAksNodePool`, `Remove-AzAksNodePool`,

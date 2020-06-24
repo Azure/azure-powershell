@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                     if (deleted)
                     {
                         WriteVerbose(ProjectResources.Success);
-                        WriteVerbose(ProjectResources.Success_RemoveRecordSet);
+                        WriteVerbose(string.Format(ProjectResources.Success_RemoveRecordSet, this.Name, recordSetToDelete?.ZoneName));
                     }
 
                     if (this.PassThru)

@@ -434,6 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -441,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesDelete(string resourceGroupName, string workspaceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesDelete(string resourceGroupName, string workspaceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-04-01";
             // Constant Parameters
@@ -467,13 +468,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesDelete_Call(request,onOk,onDefault,eventListener,sender);
+                await this.WorkspacesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Deletes the workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -481,7 +483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-04-01";
             // Constant Parameters
@@ -519,13 +521,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesDelete_Call(request,onOk,onDefault,eventListener,sender);
+                await this.WorkspacesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="WorkspacesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -533,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task WorkspacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -647,6 +650,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                             await onOk(_response);
                             break;
                         }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -696,7 +705,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -704,7 +712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesGet(string resourceGroupName, string workspaceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesGet(string resourceGroupName, string workspaceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-04-01";
             // Constant Parameters
@@ -730,14 +738,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesGet_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
+                await this.WorkspacesGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Gets the workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -745,7 +752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-04-01";
             // Constant Parameters
@@ -783,14 +790,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesGet_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
+                await this.WorkspacesGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="WorkspacesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -798,7 +804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task WorkspacesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -816,12 +822,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.Workspace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNotFound(_response);
                             break;
                         }
                         default:

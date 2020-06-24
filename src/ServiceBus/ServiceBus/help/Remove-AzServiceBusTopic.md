@@ -36,31 +36,31 @@ The **Remove-AzServiceBusTopic** cmdlet removes the topic from the specified Ser
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Remove-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
 Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
-### Example 2.1 - InputObject - Using Variable:
-```
+### Example 2: InputObject - Using Variable:
+```powershell
 PS C:\> $inputobject = Get-AzServiceBusTopic <parmas>
 PS C:\> Remove-AzServiceBusTopic -InputObject $inputobject
 ```
 
-### Example 2.2 - InputObject - Using Piping:
-```
+### Example 3: InputObject - Using Piping:
+```powershell
 PS C:\> Get-AzServiceBusTopic <parmas> | Remove-AzServiceBusTopic
 ```
 
-### Example 3.1 - ResourceId Using Variable:
-```
+### Example 4: ResourceId Using Variable:
+```powershell
 PS C:\> $resourceid = Get-AzServiceBusTopic <params>
 PS C:\> Remove-AzServiceBusTopic -ResourceId $resourceid.Id
 ```
 
-### Example 3.2 - ResourceId Using String value
-```
+### Example 5: ResourceId Using String value
+```powershell
 PS C:\> Remove-AzServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
 ```
 

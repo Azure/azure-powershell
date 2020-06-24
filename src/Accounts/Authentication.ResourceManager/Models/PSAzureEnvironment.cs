@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureEnvironment(IAzureEnvironment environment)
         {
             this.CopyFrom(environment);
+            if(environment is AzureEnvironment source)
+            {
+                this.Type = source.Type;
+            }
         }
 
         /// <summary>
@@ -126,6 +130,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Type of environment
+        /// </summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether ADFS authentication should be allowed . 

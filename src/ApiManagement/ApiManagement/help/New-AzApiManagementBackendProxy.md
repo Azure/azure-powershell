@@ -22,7 +22,7 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 
 ## EXAMPLES
 
-### Create a Backend Proxy In-Memory Object
+### Example 1: Create a Backend Proxy In-Memory Object
 ```powershell
 PS C:\>$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\>$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)

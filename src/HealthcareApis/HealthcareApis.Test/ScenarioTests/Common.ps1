@@ -36,7 +36,7 @@ Gets valid location name
 #>
 function Get-Location
 {
-    return "West US"
+    return "southcentralus"
 }
 
 <#
