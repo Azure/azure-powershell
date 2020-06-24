@@ -145,7 +145,6 @@ namespace ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
-                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
