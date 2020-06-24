@@ -32,7 +32,7 @@
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-    <StorageToolsPath>$(NugetPackageRoot)\microsoft.azure.powershell.storage\1.3.16-preview\tools\</StorageToolsPath>
+    <StorageToolsPath>$(NugetPackageRoot)\microsoft.azure.powershell.storage\1.3.17-preview\tools\</StorageToolsPath>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3"/>
