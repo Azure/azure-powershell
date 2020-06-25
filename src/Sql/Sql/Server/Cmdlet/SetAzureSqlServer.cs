@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
     public class SetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
-        
+
         /// <summary>
         /// Get the server to update
         /// </summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData.Add(new Model.AzureSqlServerModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName,
+                ServerName = this.ServerName.ToLower(),
                 SqlAdministratorPassword = this.SqlAdministratorPassword,
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,

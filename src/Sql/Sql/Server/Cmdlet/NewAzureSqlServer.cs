@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class NewAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             {
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName,
+                ServerName = this.ServerName.ToLower(),
                 ServerVersion = this.ServerVersion,
                 SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
                 SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
