@@ -149,6 +149,59 @@ function Test-CreateTemplateSpec
 
 <#
 .SYNOPSIS
+Tests that we can create/update a basic template spec with Set-AzTemplateSpec
+#>
+function Test-SetTemplateSpec
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+    try
+    {
+        # Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpecV1 = Set-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Description "My Basic Template Spec" -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+        # Check to make sure all of the properties match expectations
+
+        Assert-NotNull $basicCreatedTemplateSpecV1
+        Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
+        Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
+        Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
+        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
+
+        # For the ARM template itself we'll do some normalization to ensure a valid comparison:
+        $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+
+        Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
+
+        # Now let's try to update the root template spec by resource id:
+        $updatedTemplateSpec = Set-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV1.Id -Description "Updated Description"
+        Assert-AreEqual "Updated Description" $updatedTemplateSpec.Description
+
+        # Try updating the version
+        $updatedTemplateSpecv1 = Set-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV1.Id -Version "v1" -VersionDescription "Updated Version" -TemplateJson $sampleTemplateJson
+        Assert-AreEqual "Updated Version" $updatedTemplateSpecv1.Version.Description
+
+        # Make sure we can get the template spec back out:
+        $returnedByGet = Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests 
 #>
 function Test-RemoveTemplateSpec
