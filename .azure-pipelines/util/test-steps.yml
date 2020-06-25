@@ -19,6 +19,7 @@ steps:
 - powershell: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: Test for AutoGen Modules With Windows PowerShell
@@ -27,6 +28,8 @@ steps:
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+   $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'

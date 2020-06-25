@@ -215,5 +215,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             HdInsightManagementClient.Clusters.RotateDiskEncryptionKey(resourceGroupName, clusterName, parameters);
         }
+
+        public virtual IList<HostInfo> GetHosts(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.VirtualMachines.ListHosts(resourceGroupName, clusterName);
+        }
+
+        public virtual void RestartHosts(string resourceGroupName, string clusterName, IList<string> hosts)
+        {
+            HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
+        }
     }
 }

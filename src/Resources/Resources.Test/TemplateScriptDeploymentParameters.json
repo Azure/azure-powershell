@@ -6,7 +6,7 @@
       "value": ""
     },
     "scriptContent": {
-      "value": "$DeploymentScriptOutputs['RGs'] = Get-AzResourceGroup"
+      "value": "$DeploymentScriptOutputs['RGs'] = Get-AzResourceGroup \n Write-Output $DeploymentScriptOutputs['RGs']"
     },
     "scriptKind": {
       "value": "AzurePowerShell"

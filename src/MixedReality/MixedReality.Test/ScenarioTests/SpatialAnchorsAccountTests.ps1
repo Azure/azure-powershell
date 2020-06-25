@@ -45,7 +45,7 @@ function Test-SpatialAnchorsAccountOperations
     $accountRemoved = Remove-AzSpatialAnchorsAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $accountName -PassThru
     Assert-True{$accountRemoved}
 
-    Assert-ThrowsContains { Get-AzSpatialAnchorsAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $accountName } "NotFound"
+    Assert-ThrowsContains { Get-AzSpatialAnchorsAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $accountName } "not found"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -78,7 +78,7 @@ function Test-SpatialAnchorsAccountOperationsWithPiping
     $accountRemoved = $createdAccount | Remove-AzSpatialAnchorsAccount -PassThru
     Assert-True{$accountRemoved}
 
-    Assert-ThrowsContains { Get-AzSpatialAnchorsAccount -Id $createdAccount.Id } "NotFound"
+    Assert-ThrowsContains { Get-AzSpatialAnchorsAccount -Id $createdAccount.Id } "not found"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

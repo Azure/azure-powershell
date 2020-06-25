@@ -702,8 +702,8 @@ function Test-ExpressRouteCircuitConnectionIPv6CRUD
     $secondaryPeerAddressPrefixV6 = "bb:cc:dd::/126"
 
     #$peeringLocation = ""
-    $peeringLocation = "Boydton 1 dc"
-    $serviceProviderName = "bvtazureixp01"
+    $peeringLocation = "Boydton cbn"
+    $serviceProviderName = "bvtcustomerixp01"
 
     try
     {
@@ -866,6 +866,21 @@ function Test-ExpressRouteCircuitConnectionIPv6CRUD
         Assert-AreEqual "Connected" $peerCkt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
 
         #Delete the circuit connection Resource
+        Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt -AddressPrefixType IPv6
+
+        #Set on Express Route Circuit
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt
+
+        #Get Express Route Circuit Resource
+        $initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+        $initCkt
+
+        #Verify Global reach enabled readonly flag
+        Assert-AreEqual $true $initckt.GlobalReachEnabled
+
+        #Verify Circuit Connection does not exist
+        Assert-AreEqual 1 $initckt.Peerings[0].Connections.Count
+
         Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt
 
         #Set on Express Route Circuit

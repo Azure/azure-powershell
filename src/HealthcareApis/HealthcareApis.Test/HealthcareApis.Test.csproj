@@ -11,11 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.HealthcareApis" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Azure.Management.HealthcareApis" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HealthcareApis\HealthcareApis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests.HealthcareApisServiceTests\" />
   </ItemGroup>
 
 </Project>

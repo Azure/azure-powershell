@@ -38,6 +38,13 @@ Set-AzVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Instance
  [<CommonParameters>]
 ```
 
+### SimulateEvictionMethodParameter
+```
+Set-AzVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String>
+ [-SimulateEviction] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzVmssVM** cmdlet modifies the state of a Virtual Machine Scale Set (VMSS) instance.
 
@@ -162,6 +169,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SimulateEviction
+Indicates that this cmdlet simulates the eviction of spot virtual machine in a VM scale set.
+The eviction will occur within 30 minutes of calling the API.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimulateEvictionMethodParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

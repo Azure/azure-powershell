@@ -121,10 +121,10 @@ PS C:\> Test-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -
 
 This command tests a deployment in the given resource group using the an in-memory hashtable created from the given template file and a parameter file.
 
-### Example 2: Test deployment via template file and parameter object
+### Example 2: Test deployment via template file and parameter file
 
 ```powershell
-PS C:\> New-AzResourceGroupDeployment -Name testDeployment1 -ResourceGroupName testRG01 -TemplateFile "D:\Azure\Templates\sampleDeploymentTemplate.json" -TemplateParameterFile "D:\Azure\Templates\sampleDeploymentTemplateParams.json"
+PS C:\> Test-AzResourceGroupDeployment -ResourceGroupName testRG01 -TemplateFile "D:\Azure\Templates\sampleDeploymentTemplate.json" -TemplateParameterFile "D:\Azure\Templates\sampleDeploymentTemplateParams.json"
 ```
 
 This command tests a deployment in the given resource group and resource using the provided template file and a parameter file.

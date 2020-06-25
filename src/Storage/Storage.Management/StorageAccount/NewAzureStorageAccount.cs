@@ -272,6 +272,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string EncryptionKeyTypeForQueue { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
+        public SwitchParameter  RequireInfrastructureEncryption { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -368,18 +371,30 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }
-            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
+            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null || this.RequireInfrastructureEncryption.IsPresent)
             {
                 createParameters.Encryption = new Encryption();
                 createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
-                createParameters.Encryption.Services = new EncryptionServices();
-                if (this.EncryptionKeyTypeForQueue != null)
+                if (this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
                 {
-                    createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                    createParameters.Encryption.Services = new EncryptionServices();
+                    if (this.EncryptionKeyTypeForQueue != null)
+                    {
+                        createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                    }
+                    if (this.EncryptionKeyTypeForTable != null)
+                    {
+                        createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                    }
                 }
-                if (this.EncryptionKeyTypeForTable != null)
+                if (this.RequireInfrastructureEncryption.IsPresent)
                 {
-                    createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                    createParameters.Encryption.RequireInfrastructureEncryption = true;
+                    if (createParameters.Encryption.Services is null)
+                    {
+                        createParameters.Encryption.Services = new EncryptionServices();
+                        createParameters.Encryption.Services.Blob = new EncryptionService();
+                    }
                 }
             }
 

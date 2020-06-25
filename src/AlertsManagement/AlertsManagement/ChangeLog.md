@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Updated AlertsManagement SDK version to 0.9.2-preview.
+* Added Subscription Scope Type for Set-AzActionRule.
+* Updated Examples for Set-AzActionRule, to show scope types as well.
+
+## Version 0.1.2
+* Updated help messages and document for `Get-AzActionRule`
+
 ## Version 0.1.1
 * Update references in .psd1 to use relative path
 

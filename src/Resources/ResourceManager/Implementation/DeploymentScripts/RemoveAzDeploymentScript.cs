@@ -61,25 +61,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         {
             try
             {
+                string scriptName = "";
+
                 switch (ParameterSetName)
                 {
                     case RemoveDeploymentScriptByName:
-                        if (ShouldProcess(Name, "Remove Deployment Script"))
+                        scriptName = Name;
+                        if (ShouldProcess(scriptName, "Remove Deployment Script"))
                         {
-                            DeploymentScriptsSdkClient.DeleteDeploymentScript(Name, ResourceGroupName);
+                            DeploymentScriptsSdkClient.DeleteDeploymentScript(scriptName, ResourceGroupName);
                         }
                         break;
                     case RemoveDeploymentScriptByResourceId:
-                        if (ShouldProcess(Name, "Remove Deployment Script"))
+                        scriptName = ResourceIdUtility.GetResourceName(this.Id);
+                        if (ShouldProcess(scriptName, "Remove Deployment Script"))
                         {
-                            DeploymentScriptsSdkClient.DeleteDeploymentScript( ResourceIdUtility.GetResourceName(this.Id),
+                            DeploymentScriptsSdkClient.DeleteDeploymentScript(scriptName,
                                 ResourceIdUtility.GetResourceGroupName(this.Id));
                         }
                         break;
                     case RemoveDeploymentScriptByInputObject:
-                        if (ShouldProcess(Name, "Remove Deployment Script"))
+                        scriptName = InputObject.Name;
+                        if (ShouldProcess(scriptName, "Remove Deployment Script"))
                         {
-                            DeploymentScriptsSdkClient.DeleteDeploymentScript(InputObject.Name, ResourceIdUtility.GetResourceGroupName(InputObject.Id));
+                            DeploymentScriptsSdkClient.DeleteDeploymentScript(scriptName, 
+                                ResourceIdUtility.GetResourceGroupName(InputObject.Id));
                         }
                         break;
                     default:

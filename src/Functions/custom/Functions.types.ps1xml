@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site</Name>
+        <Members>
+            <AliasProperty>
+                <Name>Status</Name>
+                <ReferencedMemberName>State</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>ResourceGroupName</Name>
+                <ReferencedMemberName>ResourceGroup</ReferencedMemberName>
+            </AliasProperty>
+            <ScriptProperty>
+            <Name>SubscriptionId</Name>
+            <GetScriptBlock>($this.ServerFarmId -split "/")[2]</GetScriptBlock>
+        </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan</Name>
+        <Members>
+            <AliasProperty>
+                <Name>ResourceGroupName</Name>
+                <ReferencedMemberName>ResourceGroup</ReferencedMemberName>
+            </AliasProperty>
+            <ScriptProperty>
+            <Name>SubscriptionId</Name>
+            <GetScriptBlock>($this.Id -split "/")[2]</GetScriptBlock>
+        </ScriptProperty>
+        </Members>
+    </Type>
+</Types>

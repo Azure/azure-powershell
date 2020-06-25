@@ -133,6 +133,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Custom Dns Servers.")]
+        public string[] CustomDnsServer { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this P2SVpnGateway P2SConnectionConfiguration")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -194,6 +205,17 @@ namespace Microsoft.Azure.Commands.Network
                     AddressPrefixes = new List<string>(this.VpnClientAddressPool)
                 }
             };
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                p2sConnectionConfig.RoutingConfiguration = RoutingConfiguration;
+            }
+
             p2sVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
             {
                 p2sConnectionConfig
@@ -226,6 +248,12 @@ namespace Microsoft.Azure.Commands.Network
             //// Let's not resolve the vpnServerConfiguration here. If this does not exist, NRP/GWM will fail the call.
             p2sVpnGateway.VpnServerConfiguration = new PSResourceId() { Id = vpnServerConfigurationResolvedId };
             p2sVpnGateway.VpnServerConfigurationLocation = string.IsNullOrWhiteSpace(this.VpnServerConfiguration.Location) ? string.Empty : this.VpnServerConfiguration.Location;
+
+            // Set the custom dns servers, if it is specified by customer.
+            if (CustomDnsServer != null && this.CustomDnsServer.Any())
+            {
+                p2sVpnGateway.CustomDnsServers = CustomDnsServer?.ToList();
+            }
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

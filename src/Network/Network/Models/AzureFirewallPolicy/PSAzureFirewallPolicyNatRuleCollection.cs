@@ -25,14 +25,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 3)]
         public PSAzureFirewallPolicyNatRuleCollectionAction Action { get; set; }
 
-        [JsonProperty("ruleCondition")]
-        public PSAzureFirewallPolicyNetworkRule Rule { get; set; }
-
-        [JsonProperty("translatedAddress")]
-        public string TranslatedAddress { get; set; }
-
-        [JsonProperty("translatedPort")]
-        public string TranslatedPort { get; set; }
+        [JsonProperty("rules")]
+        public List<PSAzureFirewallPolicyNatRule> Rules { get; set; }
 
         [JsonIgnore]
         public string ActionText
@@ -43,18 +37,35 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(Rule, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
+        public void AddRule(PSAzureFirewallPolicyNatRule rule)
+        {
+            // Validate
+            if (this.Rules != null)
+            {
+                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
+                {
+                    throw new ArgumentException($"NAT Rule names must be unique. {rule.Name} name is already used.");
+                }
+            }
+            else
+            {
+                this.Rules = new List<PSAzureFirewallPolicyNatRule>();
+            }
 
-        public PSAzureFirewallPolicyNetworkRule GetRuleByName(string ruleName)
+            this.Rules.Add(rule);
+        }
+
+        public PSAzureFirewallPolicyNatRule GetRuleByName(string ruleName)
         {
             if (string.IsNullOrEmpty(ruleName))
             {
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.Rule;
+            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
@@ -62,6 +73,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             return rule;
+        }
+
+        public void RemoveRuleByName(string ruleName)
+        {
+            var rule = this.GetRuleByName(ruleName);
+            this.Rules?.Remove(rule);
         }
     }
 }

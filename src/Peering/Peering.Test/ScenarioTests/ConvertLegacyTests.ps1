@@ -18,8 +18,8 @@ GetLocationKindExchange
 function Test-ConvertLegacyKindExchangeAshburn {
     try {
         #must be hard coded asn because they have legacy items.
-        $peerAsn = makePeerAsn 11164;
-        $name = getPeeringVariable "Name" "AS11164_Ashburn_Exchange"
+        $peerAsn = makePeerAsn 42;
+        $name = getPeeringVariable "Name" "AS42_Ashburn_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
         $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 		Assert-NotNull $peerAsn.Id
@@ -42,8 +42,8 @@ Convert Legacy Kind Exchange Amsterdam With New Connection
 function Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection {
     try {
         #must be hard coded asn because they have legacy items.
-        $peerAsn = makePeerAsn 15224
-        $name = getPeeringVariable "Name" "AS15224_Amsterdam_Exchange"
+        $peerAsn = makePeerAsn 42
+        $name = getPeeringVariable "Name" "AS42_Amsterdam_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
         $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
         Assert-NotNull $legacy
@@ -54,7 +54,7 @@ function Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection {
         $facilityId = 26
         $maxv4 = maxAdvertisedIpv4
         $connection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $ipaddress
-        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id -ExchangeConnection $connection -Tag @{ "tfs_813288" = "Approved" }
+        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id
     }
     finally {
         $isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
