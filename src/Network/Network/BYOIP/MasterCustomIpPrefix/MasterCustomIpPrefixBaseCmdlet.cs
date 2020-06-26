@@ -30,26 +30,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsMasterCustomIpPrefixPresent(string resourceGroupName, string name)
-        {
-            try
-            {
-                GetMasterCustomIpPrefix(resourceGroupName, name);
-            }
-            catch (Microsoft.Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-
-                throw;
-            }
-
-            return true;
-        }
-
         public PSMasterCustomIpPrefix GetMasterCustomIpPrefix(string resourceGroupName, string name, string expandResource = null)
         {
             var masterCustomIpPrefix = this.MasterCustomIpPrefixClient.Get(resourceGroupName, name, expandResource);

@@ -25,16 +25,20 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", DefaultParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List), OutputType(typeof(PSPublicIpPrefix))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSMasterCustomIpPrefix))]
     public class GetAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
     {
+        private const string ListParameterSet = "ListParameterSet";
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
-        [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
+            ParameterSetName = GetByNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -52,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByResourceId)]
+            ParameterSetName = GetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
@@ -67,52 +71,43 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {
-                PSPublicIpPrefix publicIpPrefix;
+                PSMasterCustomIpPrefix psModel;
 
-                publicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name);
+                psModel = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
 
-                WriteObject(publicIpPrefix);
+                WriteObject(psModel);
             }
             else
             {
-                IPage<PublicIPPrefix> publicipprefixPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                IPage<MasterCustomIpPrefix> page;
+                if (ShouldListByResourceGroup(this.ResourceGroupName, this.Name))
                 {
-                    publicipprefixPage = this.PublicIpPrefixClient.List(this.ResourceGroupName);
+                    page = this.MasterCustomIpPrefixClient.List(this.ResourceGroupName);
                 }
                 else
                 {
-                    publicipprefixPage = this.PublicIpPrefixClient.ListAll();
+                    page = this.MasterCustomIpPrefixClient.ListAll();
                 }
 
                 // Get all resources by polling on next page link
-                List<PublicIPPrefix> publicIPPrefixList;
+                List<MasterCustomIpPrefix> sdkModelList;
 
-                publicIPPrefixList = ListNextLink<PublicIPPrefix>.GetAllResourcesByPollingNextLink(publicipprefixPage, this.PublicIpPrefixClient.ListNext);
+                sdkModelList = ListNextLink<MasterCustomIpPrefix>.GetAllResourcesByPollingNextLink(page, this.MasterCustomIpPrefixClient.ListNext);
 
-                var psPublicIpPrefixes = new List<PSPublicIpPrefix>();
+                var psModelList = new List<PSMasterCustomIpPrefix>();
 
                 // populate the publicIpPrefixes with the ResourceGroupName
-                foreach (var publicIpPrefix in publicIPPrefixList)
+                foreach (var sdkModel in sdkModelList)
                 {
-                    var psPublicIpPrefix = this.ToPsPublicIpPrefix(publicIpPrefix);
-                    psPublicIpPrefix.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(publicIpPrefix.Id);
-                    psPublicIpPrefixes.Add(psPublicIpPrefix);
+                    var psModel = this.ToPsMasterCustomIpPrefix(sdkModel);
+                    psModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(psModel.Id);
+                    psModelList.Add(psModel);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psPublicIpPrefixes), true);
+                WriteObject(TopLevelWildcardFilter(this.ResourceGroupName, this.Name, psModelList), true);
             }
         }
-    }
-
-    public static class GetAzurePublicIpPrefixParameterSetNames
-    {
-        public const string GetByResourceId = "GetByResourceIdParameterSet";
-        public const string List = "ListParameterSet";
-
-        // The Default
-        public const string Default = List;
     }
 }

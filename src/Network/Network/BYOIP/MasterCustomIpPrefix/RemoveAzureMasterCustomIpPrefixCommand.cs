@@ -21,16 +21,20 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
     {
+        private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
+        private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
+        private const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName)]
-        [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
+            ParameterSetName = DeleteByNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -38,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName)]
+            ParameterSetName = DeleteByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -46,19 +50,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.DeleteByResourceId)]
+            ParameterSetName = DeleteByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true, 
             ValueFromPipeline = true, 
-            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.DeleteByInputObject)]
+            ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
-        public PSPublicIpPrefix InputObject
-        {
-            get; set;
-        }
+        public PSMasterCustomIpPrefix InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     if (this.ShouldProcess(this.Name, $"Deleting MasterCustomIpPrefix: {this.Name} in ResourceGroup: {this.ResourceGroupName}"))
                     {
-                        this.PublicIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
+                        this.MasterCustomIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
                         if (PassThru)
                         {
                             WriteObject(true);
@@ -105,15 +106,5 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 });
         }
-    }
-
-    public static class RemoveAzurePublicIpPrefixParameterSetNames
-    {
-        public const string RemoveByName = "RemoveByNameParameterSet";
-        public const string DeleteByResourceId = "DeleteByResourceIdParameterSet";
-        public const string DeleteByInputObject = "DeleteByInputObjectParameterSet";
-
-        // The Default
-        public const string Default = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName;
     }
 }
