@@ -483,10 +483,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzIpAllocation',
                'New-AzSecurityPartnerProvider', 'Remove-AzSecurityPartnerProvider', 
                'Get-AzSecurityPartnerProvider', 'Set-AzSecurityPartnerProvider',
-               'New-MasterCustomIpPrefix',
-               'Set-MasterCustomIpPrefix',
-               'Get-MasterCustomIpPrefix',
-               'Remove-MasterCustomIpPrefix'
+               'New-AzMasterCustomIpPrefix',
+               'Set-AzMasterCustomIpPrefix',
+               'Get-AzMasterCustomIpPrefix',
+               'Remove-AzMasterCustomIpPrefix'
 
 # Variables to export from this module
 # VariablesToExport = @()

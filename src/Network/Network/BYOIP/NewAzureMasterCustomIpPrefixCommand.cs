@@ -19,10 +19,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using System.Collections;
-    using System.Linq;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
-    using System;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
     public class NewAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
@@ -99,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsMasterCustomIpPrefixPresent(this.ResourceGroupName, this.Name);
+            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name));
             ConfirmAction(
                 false,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -118,25 +116,25 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSMasterCustomIpPrefix CreateMasterCustomIpPrefix()
         {
-            var masterCustomIpPrefix = new PSMasterCustomIpPrefix();
-            masterCustomIpPrefix.Name = this.Name;
-            masterCustomIpPrefix.Location = this.Location;
-            masterCustomIpPrefix.Geography = this.Geography;
-            masterCustomIpPrefix.Cidr = this.Cidr;
-            masterCustomIpPrefix.OriginalValidationMessage = this.ValidationMessage;
-            masterCustomIpPrefix.SignedValidationMessage = this.SignedValidationMessage;
-
-            
-            var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(masterCustomIpPrefix);
-
-            theModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-
-            if (this.ShouldProcess(this.Name, $"Creating a new PublicIpPrefix in ResourceGroup {this.ResourceGroupName} with Name {this.Name}"))
+            var psModel = new PSMasterCustomIpPrefix()
             {
-                this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, theModel);
+                Name = this.Name,
+                ResourceGroupName = this.ResourceGroupName,
+                Location = this.Location,
+                Geography = this.Geography,
+                Cidr = this.Cidr,
+                OriginalValidationMessage = this.ValidationMessage,
+                SignedValidationMessage = this.SignedValidationMessage
+            };
+            
+            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(psModel);
 
+            sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+            if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Create new MasterCustomIpPrefix"))
+            {
+                this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
                 var getMasterCustomIpPrefix = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
-
                 return getMasterCustomIpPrefix;
             }
 
