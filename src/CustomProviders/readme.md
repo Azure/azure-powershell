@@ -90,6 +90,11 @@ directive:
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
+  - where:
+       verb: Set
+       subject: CustomProviderAssociation
+    remove: true
+
 # Parameter renames
   - where: 
       subject: ^CustomProvider$

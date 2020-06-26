@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a custom provider.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> PS C:\> Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 ```
 
-{{ Add description here }}
+Remove a custom provider
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a custom provider with PassThru
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> PS C:\> Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -PassThru
 
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
+Remove a custom provider, using the PassThru feature to indicate success or failure.

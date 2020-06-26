@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CustomProviders.private.dll'
   FormatsToProcess = './Az.CustomProviders.format.ps1xml'
-  FunctionsToExport = 'Get-AzCustomProvider', 'Get-AzCustomProviderAssociation', 'New-AzCustomProvider', 'New-AzCustomProviderAssociation', 'Remove-AzCustomProvider', 'Remove-AzCustomProviderAssociation', 'Set-AzCustomProviderAssociation', 'Update-AzCustomProvider', '*'
+  FunctionsToExport = 'Get-AzCustomProvider', 'Get-AzCustomProviderAssociation', 'New-AzCustomProvider', 'New-AzCustomProviderAssociation', 'Remove-AzCustomProvider', 'Remove-AzCustomProviderAssociation', 'Update-AzCustomProvider', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

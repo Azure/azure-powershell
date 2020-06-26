@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a custom provider association
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
+PS C:\> New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
 
-{{ Add output here }}
+Location  Name     Type
+--------  ----     ----
+East US 2 MyAssoc  Microsoft.CustomProviders/associations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a custom provider association, the associated target provioder must be properly configured with a route for "associations"
 

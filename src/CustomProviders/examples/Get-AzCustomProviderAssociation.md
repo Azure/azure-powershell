@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List custom provider associations
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomProviderAssociation
 
-{{ Add output here }}
+Location  Name             Type
+--------  ----             ----
+East US 2 MyAssoc   Microsoft.CustomProviders/associations
 ```
 
-{{ Add description here }}
+List all custom provider associations for a given scope.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an association
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc
 
-{{ Add output here }}
+Location  Name             Type
+--------  ----             ----
+East US 2 MyAssoc   Microsoft.CustomProviders/associations
 ```
 
-{{ Add description here }}
+Get details for a single CustomProvider association
 
