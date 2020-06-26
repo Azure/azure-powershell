@@ -38,7 +38,7 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: succeeded()
+  condition: succeededOrFailed()
   strategy:
     matrix:
       windows:
@@ -62,7 +62,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: succeeded()
+  condition: succeededOrFailed()
   timeoutInMinutes: 120
   strategy:
     matrix:
