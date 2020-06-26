@@ -14,7 +14,7 @@ Deletes the custom resource provider.
 
 ### Delete (Default)
 ```
-Remove-AzCustomProvider -ResourceGroupName <String> -ResourceProviderName <String> [-SubscriptionId <String>]
+Remove-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -95,6 +95,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource provider.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ResourceProviderName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -127,21 +142,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceProviderName
-The name of the resource provider.
 
 ```yaml
 Type: System.String

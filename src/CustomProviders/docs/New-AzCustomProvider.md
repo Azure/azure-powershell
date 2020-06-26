@@ -13,11 +13,10 @@ Creates or updates the custom resource provider.
 ## SYNTAX
 
 ```
-New-AzCustomProvider -ResourceGroupName <String> -ResourceProviderName <String> -Location <String>
- [-SubscriptionId <String>] [-Action <ICustomRpActionRouteDefinition[]>]
- [-ResourceType <ICustomRpResourceTypeRouteDefinition[]>] [-Tag <Hashtable>]
- [-Validation <ICustomRpValidations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzCustomProvider -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Action <ICustomRpActionRouteDefinition[]>] [-ResourceType <ICustomRpResourceTypeRouteDefinition[]>]
+ [-Tag <Hashtable>] [-Validation <ICustomRpValidations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,23 +24,29 @@ Creates or updates the custom resource provider.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a custom provider
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}
 
-{{ Add output here }}
+
+Location  Name             Type
+--------  ----             ----
+West US 2 Namespace.Type   Microsoft.CustomProviders/resourceproviders
 ```
 
-{{ Add description here }}
+Create a custom resource provider
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a custom provider with associations
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}, @{Name="Associations"; Endpoint="https://contoso.com/myService", RoutingType="Proxy,Cache,Extension"}
 
-{{ Add output here }}
+Location  Name             Type
+--------  ----             ----
+West US 2 Namespace2.Type   Microsoft.CustomProviders/resourceproviders
+
 ```
 
-{{ Add description here }}
+Create a custom provider, with a route for Custom provider associations.
 
 ## PARAMETERS
 
@@ -106,6 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource provider.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceProviderName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -123,21 +143,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceProviderName
-The name of the resource provider.
 
 ```yaml
 Type: System.String

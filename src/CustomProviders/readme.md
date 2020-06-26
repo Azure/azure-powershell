@@ -90,10 +90,22 @@ directive:
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
+# Parameter renames
+  - where: 
+      subject: ^CustomProvider$
+      parameter-name: ResourceProviderName
+    set:
+      parameter-name: Name
+      alias: ResourceProviderName
+
+# Make ResourceId validation case insensitive
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/var _match = new global\:\:System\.Text\.RegularExpressions\.Regex\(\"([^\"]+)\"\).Match\(viaIdentity\);/g, 'var _match = new global\:\:System.Text.RegularExpressions.Regex\(\"$1\", global\:\:System\.Text\.RegularExpressions\.RegexOptions\.IgnoreCase\).Match\(viaIdentity\);');
 
-      
+# Fix issue with delete LRO operations
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/var _finalUri = _response.GetFirstHeader\(\@\"Location\"\);/g, 'var _finalUri = \"\";');
 
 ```

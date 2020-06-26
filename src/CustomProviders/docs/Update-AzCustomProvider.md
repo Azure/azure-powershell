@@ -15,7 +15,7 @@ The only value that can be updated via PATCH currently is the tags.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzCustomProvider -ResourceGroupName <String> -ResourceProviderName <String> [-SubscriptionId <String>]
+Update-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,13 +82,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the resource provider.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ResourceProviderName
 
 Required: True
 Position: Named
@@ -97,8 +97,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceProviderName
-The name of the resource provider.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String

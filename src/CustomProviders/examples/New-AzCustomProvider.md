@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a custom provider
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}
 
-{{ Add output here }}
+
+Location  Name             Type
+--------  ----             ----
+West US 2 Namespace.Type   Microsoft.CustomProviders/resourceproviders
 ```
 
-{{ Add description here }}
+Create a custom resource provider
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a custom provider with associations
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}, @{Name="Associations"; Endpoint="https://contoso.com/myService", RoutingType="Proxy,Cache,Extension"}
 
-{{ Add output here }}
+Location  Name             Type
+--------  ----             ----
+West US 2 Namespace2.Type   Microsoft.CustomProviders/resourceproviders
+
 ```
 
-{{ Add description here }}
+Create a custom provider, with a route for Custom provider associations.
 

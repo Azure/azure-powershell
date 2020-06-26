@@ -11,7 +11,12 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+	$rg1 = ("rg" + (RandomString $false 5))
+	$name1 = ("MSTest.MyTest" + (RandomString $false 5))
+	New-AzResourceGroup -Name $rg1 -Location "West US" | Out-Null
     # For any resources you created for test, you should add it to $env here.
+	$env['ResourceGroup'] = $rg1
+	$env['CustomProvider'] = $name1
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -20,5 +25,9 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+	if ($env.ResourceGroup -ne $null)
+	{
+		Remove-AzResourceGroup -Name $env.ResourceGroup | Out-Null
+	}
 }
 

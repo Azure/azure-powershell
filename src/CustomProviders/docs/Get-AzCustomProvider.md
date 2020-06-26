@@ -19,7 +19,7 @@ Get-AzCustomProvider [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [
 
 ### Get
 ```
-Get-AzCustomProvider -ResourceGroupName <String> -ResourceProviderName <String> [-SubscriptionId <String[]>]
+Get-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -39,23 +39,36 @@ Gets the custom resource provider manifest.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Custom Providers in a subscription
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomProvider
 
-{{ Add output here }}
+Location  Name             Type
+--------  ----             ----
+West US 2 Namespace.Type   Microsoft.CustomProviders/resourceproviders
+East US 2 Namespace2.Type  Microsoft.CustomProviders/resourceproviders
 ```
 
-{{ Add description here }}
+Lists all the custom providers in a subscription
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single custom provider
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Format-List
 
-{{ Add output here }}
+Action            :
+Id                : /subscriptions/xxxxx-yyyyy-xxxx-yyyy/resourceGroups/mc-cp01/providers/Microsoft.CustomProviders/resourceproviders/Namespace.Type
+Location          : West US 2
+Name              : Namespace.Type
+ProvisioningState : Succeeded
+ResourceType      : {CustomRoute1, associations}
+Tag               : Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceTags
+Type              : Microsoft.CustomProviders/resourceproviders
+Validation        :
+
 ```
 
-{{ Add description here }}
+Gets details for a single custom provider.
+Use Format-List to show object details on the screen.
 
 ## PARAMETERS
 
@@ -90,13 +103,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceProviderName
 
 Required: True
 Position: Named
@@ -105,12 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceProviderName
-The name of the resource provider.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

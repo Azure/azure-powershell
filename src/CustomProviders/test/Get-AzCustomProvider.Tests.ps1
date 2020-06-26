@@ -16,11 +16,11 @@ Describe 'Get-AzCustomProvider' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
