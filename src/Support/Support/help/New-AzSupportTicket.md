@@ -241,7 +241,16 @@ Name  Title SupportTicketId Severity ServiceDisplayName                       St
 test1 Test  150010521000317 Minimal  Service and subscription limits (quotas) Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 15: Create a support ticket by specifying individual customer contact parameters instead of CustomerContactDetail object. 
+### Example 15: Create a quota support ticket to increase quota for Azure SQL Managed Instance. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota SQL Managed Instance service problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_managed_instance_problemClassification_guid}" -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "SQLMI" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"NewLimit`":200,`"Type`":`"vCore`" }"}, @{Region = "westus"; Payload = "{`"NewLimit`":200,`"Type`":`"Subnet`" }"})} -CustomerContactDetail @{FirstName = "first" ; LastName = "last" ; PreferredTimeZone = "pacific standard time" ; PreferredSupportLanguage = "en-us" ; Country = "USA" ; PreferredContactMethod = "Email" ; PrimaryEmailAddress = "user@contoso.com"}
+
+Name  Title SupportTicketId Severity ServiceDisplayName                       Status CreatedDate
+----  ----- --------------- -------- ------------------                       ------ -----------
+test1 Test  150010521000317 Minimal  Service and subscription limits (quotas) Open   2/5/2020 1:33:53 AM
+```
+
+### Example 16: Create a support ticket by specifying individual customer contact parameters instead of CustomerContactDetail object. 
 ```powershell
 PS C:\> New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry = "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com"
 
@@ -250,7 +259,7 @@ Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
 test1 Test  150010521000317 Minimal  Billing            Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 16: Create a support ticket with request for 24 x 7 response from Azure. 
+### Example 17: Create a support ticket with request for 24 x 7 response from Azure. 
 ```powershell
 PS C:\> New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "critical" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry = "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com" -Require24X7Response 
 
@@ -259,7 +268,7 @@ Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
 test1 Test  150010521000317 Critical  Billing            Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 17: Create a support ticket on behalf of your customer if you are a Cloud Solution Provider (CSP). CSP should first login into their tenant, and then login into customer's tenant as shown in the example below. They must then use -CSPHomeTenantId parameter to specify their home tenant id at the time of creating a support ticket.  
+### Example 18: Create a support ticket on behalf of your customer if you are a Cloud Solution Provider (CSP). CSP should first login into their tenant, and then login into customer's tenant as shown in the example below. They must then use -CSPHomeTenantId parameter to specify their home tenant id at the time of creating a support ticket.  
 ```powershell
 
 PS C:\> Login-AzAccount
