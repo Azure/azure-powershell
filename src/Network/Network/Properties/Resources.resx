@@ -668,4 +668,8 @@
   <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
     <value>Circuit Connection with Name '{0}' is already added.</value>
   </data>
+  <data name="CommissioningStateConflict" xml:space="preserve">
+    <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
+    <comment>Error message for setting the customIpPrefix</comment>
+  </data>
 </root>

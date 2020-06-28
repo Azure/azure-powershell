@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Cidr { get; set; }
 
+        public PSResourceId MasterCustomIpPrefix { get; set; }
+
+        public string CommissionedState { get; set; }
+
+        public List<PSResourceId> PublicIpPrefixes { get; set; }
+
+        public List<string> Zones { get; set; }
+
         public string ProvisioningState { get; set; }
-
-        public string OriginalValidationMessage { get; set; }
-
-        public string SignedValidationMessage { get; set; }
-        
-        public string Geography { get; set; }
-
-        public List<PSResourceId> PublicIpAddresses { get; set; }
     }
 }

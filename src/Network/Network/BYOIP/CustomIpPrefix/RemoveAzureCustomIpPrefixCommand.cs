@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
-    public class RemoveAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
+    public class RemoveAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = DeleteByNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Network/customIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true, 
             ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
-        public PSMasterCustomIpPrefix InputObject { get; set; }
+        public PSCustomIpPrefix InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    if (this.ShouldProcess(this.Name, $"Deleting PublicIpPrefix {this.Name} in ResourceGroup {this.ResourceGroupName}"))
+                    if (this.ShouldProcess(this.Name, $"Deleting CustomIpPrefix: {this.Name} in ResourceGroup: {this.ResourceGroupName}"))
                     {
-                        this.MasterCustomIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
+                        this.CustomIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
                         if (PassThru)
                         {
                             WriteObject(true);

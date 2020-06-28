@@ -19,11 +19,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
-    public class NewAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSCustomIpPrefix))]
+    public class NewAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -44,25 +45,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The master custom IP prefix location.")]
-        [LocationCompleter("Microsoft.Network/masterCustomIpPrefix")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+            HelpMessage = "The MasterCustomIpPrefix that this CustomIpPrefix is associated with")]
+        public PSMasterCustomIpPrefix MasterCustomIpPrefix { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geography of edge routers this prefix range will be advertised on.")]
+            HelpMessage = "The master custom IP prefix location.")]
+        [LocationCompleter("Microsoft.Network/customIpPrefix")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.RIR.NorthAmerica,
-            MNM.RIR.Europe,
-            MNM.RIR.Asia,
-            MNM.RIR.SouthAmerica,
-            MNM.RIR.Africa,
-            MNM.RIR.Global,
-            IgnoreCase = true)]
-        public string Geography { get; set; }
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -72,18 +64,10 @@ namespace Microsoft.Azure.Commands.Network
         public string Cidr { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The message for master custom IP prefix validation.")]
-        [ValidateNotNullOrEmpty]
-        public string ValidationMessage { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The message for master custom IP prefix validation signed with public key.")]
-        [ValidateNotNullOrEmpty]
-        public string SignedValidationMessage { get; set; }
+            Mandatory = false,
+            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,45 +81,40 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name));
-            ConfirmAction(
-                false,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
-                Name,
-                () =>
-                {
-                    var masterCustomIpPrefix = CreateMasterCustomIpPrefix();
-                    if (masterCustomIpPrefix != null)
-                    {
-                        WriteObject(masterCustomIpPrefix);
-                    }
-                },
-                () => present);
+            var resourceExists = IsResourcePresent(() => GetCustomIpPrefix(this.ResourceGroupName, this.Name));
+
+            if (resourceExists)
+            {
+                throw new System.Exception(string.Format("A CustomIpPrefix with name '{0}' in resource group '{1}' already exists. Please use Set-AzCustomIpPrefix to update an existing CustomIpPrefix.", this.Name, this.ResourceGroupName));
+            }
+
+            var psModel = CreateCustomIpPrefix();
+            if (psModel != null)
+            {
+                WriteObject(psModel);
+            }
         }
 
-        private PSMasterCustomIpPrefix CreateMasterCustomIpPrefix()
+        private PSCustomIpPrefix CreateCustomIpPrefix()
         {
-            var psModel = new PSMasterCustomIpPrefix()
+            var psModel = new PSCustomIpPrefix()
             {
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                Geography = this.Geography,
+                MasterCustomIpPrefix = this.MasterCustomIpPrefix,
                 Cidr = this.Cidr,
-                OriginalValidationMessage = this.ValidationMessage,
-                SignedValidationMessage = this.SignedValidationMessage
+                Zones = this.Zone?.ToList()
             };
             
-            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(psModel);
+            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
 
             sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Create new MasterCustomIpPrefix"))
             {
-                this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
-                var getMasterCustomIpPrefix = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
-                return getMasterCustomIpPrefix;
+                var createdSdkModel = this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                return this.ToPsCustomIpPrefix(createdSdkModel);
             }
 
             return null;

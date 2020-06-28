@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
-    public class SetAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
+    public class SetAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Network/customIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
@@ -62,6 +62,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter Commission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter Decomission { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -91,18 +97,28 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = InputObject.Name;
             }
 
-            if (!NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name)))
+            var existingResourcePsModel = GetCustomIpPrefix(this.ResourceGroupName, this.Name);
+            if (existingResourcePsModel == null)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
+            if (Commission && Decomission)
+            {
+                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.CommissioningStateConflict);
+            }
 
-            var psModel = new PSMasterCustomIpPrefix()
+            var psModel = new PSCustomIpPrefix()
             {
                 Name = InputObject.Name,
                 ResourceGroupName = InputObject.ResourceGroupName
             };
-            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(psModel);
+            if (Commission || Decomission)
+            {
+                psModel.CommissionedState = Commission ? "Commissioning" : "Decomissioning";
+            }
+
+            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
 
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -116,9 +132,8 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
             {
                 // Execute the PUT MasterCustomIpPrefix Policy call
-                this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
-                var masterCustomIpPrefix = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
-                WriteObject(masterCustomIpPrefix);
+                var modifiedSdkModel = this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                WriteObject(this.ToPsCustomIpPrefix(modifiedSdkModel));
             }
         }
     }

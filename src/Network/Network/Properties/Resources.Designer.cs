@@ -241,6 +241,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot have both &apos;Commission&apos; and &apos;Decomission&apos; flags set.
+        /// </summary>
+        internal static string CommissioningStateConflict {
+            get {
+                return ResourceManager.GetString("CommissioningStateConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
         /// </summary>
         internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {
@@ -529,6 +538,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; is already added..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionAlreadyAdded {
+            get {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; was not added to the private peering..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionNotFound {
+            get {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ExpressRouteConnection {0} could not be found..
         /// </summary>
         internal static string ExpressRouteConnectionNotFound {
@@ -554,41 +581,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        ///   Looks up a localized string similar to Private Peering needs to be configured on the Express Route Circuit..
         /// </summary>
-        internal static string ExpressRoutePrivatePeeringNotFound
-        {
-            get
-            {
+        internal static string ExpressRoutePrivatePeeringNotFound {
+            get {
                 return ResourceManager.GetString("ExpressRoutePrivatePeeringNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
-        /// </summary>
-        internal static string ExpressRouteCircuitConnectionNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
-            }
-        }
-
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
-        /// </summary>
-        internal static string ExpressRouteCircuitConnectionAlreadyAdded
-        {
-            get
-            {
-                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
