@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a monitor log analytics solution for the log analytics workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName azureps-manual-test -Name monitoringworkspace-2vob7n
+PS C:\> New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName azureps-manual-test -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
 
-{{ Add output here }}
+Name                                   Type                                     Location
+----                                   ----                                     --------
+Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions East US
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a monitor log analytics solution for the log analytics workspace.
 
