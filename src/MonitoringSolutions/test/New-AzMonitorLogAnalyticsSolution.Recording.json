@@ -1,0 +1,39 @@
+{
+  "New-AzMonitorLogAnalyticsSolution+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview",
+      "Content": "{\n  \"plan\": {\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\n    \"product\": \"OMSGallery/Containers\",\n    \"promotionCode\": \"\",\n    \"publisher\": \"Microsoft\"\n  },\n  \"properties\": {\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\"\n  },\n  \"location\": \"eastus\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "418" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "6c130007-e588-4b39-8a3a-68ae31d968e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "29b2a645-999c-4ab6-aade-eb9c42f4fe63" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040108Z:29b2a645-999c-4ab6-aade-eb9c42f4fe63" ],
+        "Date": [ "Sun, 28 Jun 2020 04:01:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1154" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"lastModifiedTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-sfcz4y/views/Containers(monitoringworkspace-sfcz4y)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-sfcz4y)\",\r\n  \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\"\r\n}"
+    }
+  }
+}
