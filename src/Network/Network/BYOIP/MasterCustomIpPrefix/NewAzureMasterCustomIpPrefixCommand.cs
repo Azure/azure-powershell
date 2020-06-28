@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The master custom IP prefix location.")]
+            HelpMessage = "The MasterCustomIpPrefix location.")]
         [LocationCompleter("Microsoft.Network/masterCustomIpPrefix")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -69,21 +69,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The CIDR of the master custom IP prefix")]
+            HelpMessage = "The CIDR of the MasterCustomIpPrefix")]
         [ValidateNotNullOrEmpty]
         public string Cidr { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The message for master custom IP prefix validation.")]
+            HelpMessage = "The message for MasterCustomIpPrefix validation.")]
         [ValidateNotNullOrEmpty]
         public string ValidationMessage { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The message for master custom IP prefix validation signed with public key.")]
+            HelpMessage = "The message for MasterCustomIpPrefix validation signed with public key.")]
         [ValidateNotNullOrEmpty]
         public string SignedValidationMessage { get; set; }
 
@@ -99,21 +99,18 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsMasterCustomIpPrefixPresent(this.ResourceGroupName, this.Name);
-            ConfirmAction(
-                false,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
-                Name,
-                () =>
-                {
-                    var masterCustomIpPrefix = CreateMasterCustomIpPrefix();
-                    if (masterCustomIpPrefix != null)
-                    {
-                        WriteObject(masterCustomIpPrefix);
-                    }
-                },
-                () => present);
+            var resourceExists = NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name));
+
+            if (resourceExists)
+            {
+                throw new System.Exception(string.Format("A MasterCustomIpPrefix with name '{0}' in resource group '{1}' already exists. Please use Set-AzMasterCustomIpPrefix to update an existing MasterCustomIpPrefix.", this.Name, this.ResourceGroupName));
+            }
+
+            var psModel = CreateMasterCustomIpPrefix();
+            if (psModel != null)
+            {
+                WriteObject(psModel);
+            }
         }
 
         private PSMasterCustomIpPrefix CreateMasterCustomIpPrefix()
@@ -131,6 +128,7 @@ namespace Microsoft.Azure.Commands.Network
 
             theModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
+<<<<<<< HEAD:src/Network/Network/BYOIP/NewAzureMasterCustomIpPrefixCommand.cs
             if (this.ShouldProcess(this.Name, $"Creating a new PublicIpPrefix in ResourceGroup {this.ResourceGroupName} with Name {this.Name}"))
             {
                 this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, theModel);
@@ -138,6 +136,12 @@ namespace Microsoft.Azure.Commands.Network
                 var getMasterCustomIpPrefix = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
 
                 return getMasterCustomIpPrefix;
+=======
+            if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Creating a new MasterCustomIpPrefix"))
+            {
+                var createdSdkModel = this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                return this.ToPsMasterCustomIpPrefix(createdSdkModel);
+>>>>>>> 18ca1a0bbb... add customIpPrefix cmdlets:src/Network/Network/BYOIP/MasterCustomIpPrefix/NewAzureMasterCustomIpPrefixCommand.cs
             }
 
             return null;

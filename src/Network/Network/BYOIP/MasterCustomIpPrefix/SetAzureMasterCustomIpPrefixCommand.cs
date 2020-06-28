@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 var getPublicIpPrefix = this.GetPublicIpPrefix(this.PublicIpPrefix.ResourceGroupName, this.PublicIpPrefix.Name);
 
-                WriteObject(getPublicIpPrefix);
+            if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
+            {
+                // Execute the PUT MasterCustomIpPrefix Policy call
+                var modifiedSdkModel = this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                WriteObject(this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name));
             }
         }
     }
