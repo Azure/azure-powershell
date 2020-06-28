@@ -22,6 +22,9 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
+        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -44,6 +47,9 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
+        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -66,6 +72,9 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
+        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
