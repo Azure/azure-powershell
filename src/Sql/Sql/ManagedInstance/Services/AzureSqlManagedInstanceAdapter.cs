@@ -101,6 +101,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         }
 
         /// <summary>
+        /// Failovers a managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the instance is in.</param>
+        /// <param name="name">The name of Azure Managed Instance to failover.</param>
+        /// <param name="replicaType">The type of replica to failover.</param>
+        public void FailoverManagedInstance(string resourceGroupName, string name, string replicaType)
+        {
+            Communicator.Failover(resourceGroupName, name, replicaType);
+        }
+
+        /// <summary>
         /// Upserts a managed instance
         /// </summary>
         /// <param name="model">The managed instance to upsert</param>

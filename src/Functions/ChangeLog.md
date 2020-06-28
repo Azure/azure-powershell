@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.1
 * Added support to create PowerShell 7.0 and Java 11 function apps
 
 ## Version 1.0.0

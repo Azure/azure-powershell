@@ -625,4 +625,10 @@
   <data name="SyncMemberIdRequired" xml:space="preserve">
     <value>SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it.</value>
   </data>
+  <data name="FailoverAzureSqlInstanceDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Managed Instance '{0}'.</value>
+  </data>
+  <data name="FailoverAzureSqlInstanceWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Managed Instance '{0}'?</value>
+  </data>
 </root>
