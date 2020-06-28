@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AllowedConnection
                     WriteObject(tors.ConvertToPSType(), enumerateCollection: true);
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
-                    SecurityCenterClient.AscLocation = SecurityCenterClient.Locations.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.First().Name;
+                    SecurityCenterClient.AscLocation = Location;
 
                     var tor = SecurityCenterClient.AllowedConnections.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
                     WriteObject(tor.ConvertToPSType(), enumerateCollection: false);
