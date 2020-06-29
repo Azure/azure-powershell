@@ -345,7 +345,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile()));
+                () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext));
 
             this.RunTask(taskGenerator);
         }
