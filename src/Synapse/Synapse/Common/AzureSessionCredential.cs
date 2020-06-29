@@ -64,17 +64,6 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return new ValueTask<AccessToken>(token);
         }
 
-        /// <summary>
-        /// The extension key to use for the synapse token audience value
-        /// </summary>
-        public const string SynapseOAuthEndpointResourceKey = "SynapseOAuthEndpointResourceKey";
-
-        /// <summary>
-        /// Default resourceId for synapse OAuth tokens
-        /// </summary>
-        public const string SynapseOAuthEndpointResourceValue = "https://dev.azuresynapse.net";
-
-
         private IAccessToken accessToken;
         private DebugLogWriter debugLogWriter = null;
     }
