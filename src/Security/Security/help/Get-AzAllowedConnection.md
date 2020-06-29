@@ -6,7 +6,6 @@ schema: 2.0.0
 ---
 
 # Get-AzAllowedConnection
-Gets the list of all possible traffic between resources for the subscription
 
 ## SYNOPSIS
 Used to display allowed traffic between resources for the subscription
@@ -27,7 +26,6 @@ Get-AzAllowedConnection -ResourceGroupName <String> -Name <String> -Location <St
 
 ### -ResourceId
 ID of the security resource that you want to invoke the command on.
-
 ```
 Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
