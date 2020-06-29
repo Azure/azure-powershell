@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// A mutex to prevent IO to token cache file across threads / processes.
         /// </summary>
-        private static readonly Mutex fileLock = new Mutex(false, @"Global\AzurePowerShellAdalTokenCacheFile");
+        private static readonly Mutex fileLock = new Mutex(false, @"Local\AzurePowerShellAdalTokenCacheFile");
 
         private static readonly Lazy<ProtectedFileTokenCache> instance = new Lazy<ProtectedFileTokenCache>(() => new ProtectedFileTokenCache());
 
@@ -134,26 +134,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             fileLock.WaitOne();
-            if (_store.FileExists(cacheFileName))
+            try
             {
-                var existingData = _store.ReadFileAsBytes(cacheFileName);
-                if (existingData != null)
+                if (_store.FileExists(cacheFileName))
                 {
+                    var existingData = _store.ReadFileAsBytes(cacheFileName);
+                    if (existingData != null)
+                    {
 #if !NETSTANDARD
-                    try
-                    {
-                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                    }
-                    catch (CryptographicException)
-                    {
-                        _store.DeleteFile(cacheFileName);
-                    }
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            _store.DeleteFile(cacheFileName);
+                        }
 #else
-                    Deserialize(existingData);
+                        Deserialize(existingData);
 #endif
+                    }
                 }
             }
-            fileLock.ReleaseMutex();
+            finally
+            {
+                fileLock.ReleaseMutex();
+            }
         }
 
         private void WriteCacheIntoFile(string cacheFileName = null)
@@ -170,22 +176,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #endif
 
             fileLock.WaitOne();
-            if (HasStateChanged)
+            try
             {
-                _store.WriteFile(cacheFileName, dataToWrite);
-                HasStateChanged = false;
+                if (HasStateChanged)
+                {
+                    _store.WriteFile(cacheFileName, dataToWrite);
+                    HasStateChanged = false;
+                }
             }
-            fileLock.ReleaseMutex();
+            finally
+            {
+                fileLock.ReleaseMutex();
+            }
         }
 
         private void EnsureCacheFile(string cacheFileName = null)
         {
             fileLock.WaitOne();
-            if (_store.FileExists(cacheFileName))
+            try
             {
-                var existingData = _store.ReadFileAsBytes(cacheFileName);
-                if (existingData != null)
+                if (_store.FileExists(cacheFileName))
                 {
+                    var existingData = _store.ReadFileAsBytes(cacheFileName);
+                    if (existingData != null)
+                    {
 #if !NETSTANDARD
                         try
                         {
@@ -196,19 +210,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                             _store.DeleteFile(cacheFileName);
                         }
 #else
-                    Deserialize(existingData);
+                        Deserialize(existingData);
 #endif
+                    }
                 }
-            }
 
-            // Eagerly create cache file.
+                // Eagerly create cache file.
 #if !NETSTANDARD
                 var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
-            var dataToWrite = Serialize();
+                var dataToWrite = Serialize();
 #endif
-            _store.WriteFile(cacheFileName, dataToWrite);
-            fileLock.ReleaseMutex();
+                _store.WriteFile(cacheFileName, dataToWrite);
+            }
+            finally
+            {
+                fileLock.ReleaseMutex();
+            }
         }
     }
 }
