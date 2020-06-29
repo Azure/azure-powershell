@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
             IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
                DefaultContext.Account,
-               EnsureSynapseOAuthAudienceSet(DefaultContext.Environment),
+               DefaultContext.Environment,
                DefaultContext.Tenant.Id,
                null,
                ShowDialog.Never,
                null,
-               SynapseOAuthEndpointResourceKey);
+               AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId);
             accessToken =  accessToken1;
         }
 
@@ -62,19 +62,6 @@ namespace Microsoft.Azure.Commands.Synapse.Common
                 this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetTokenAsync: " + token.Token);
             }
             return new ValueTask<AccessToken>(token);
-        }
-
-        private IAzureEnvironment EnsureSynapseOAuthAudienceSet(IAzureEnvironment environment)
-        {
-            if (environment != null)
-            {
-                if (!environment.IsPropertySet(SynapseOAuthEndpointResourceKey))
-                {
-                    environment.SetProperty(SynapseOAuthEndpointResourceKey, SynapseOAuthEndpointResourceValue);
-                }
-            }
-
-            return environment;
         }
 
         /// <summary>
