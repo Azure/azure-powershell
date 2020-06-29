@@ -9,18 +9,19 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Get billing invoices of the subscription.
+Get billing invoices of a billing account and billing profile
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>]
+Get-AzBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>] [-BillingAccountName] [-BillingProfileName]
  [<CommonParameters>]
 ```
 
 ### Latest
 ```
-Get-AzBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>] [-BillingAccountName] [-BillingProfileName]
 ```
 
 ### Single
@@ -61,6 +62,14 @@ PS C:\> Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 10
 ```
 
 Get most recent 10 invoices of the subscription and include the download Url in the result.
+
+### Example 5
+```
+PS C:\> Get-AzBillingInvoice -GenerateDownloadUrl -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -BillingProfileName 0000-0000-000-000 -MaxCount 10
+```
+
+Get most recent 10 invoices of the billing account/billing profile and include the download Url in the result.
+
 
 ## PARAMETERS
 

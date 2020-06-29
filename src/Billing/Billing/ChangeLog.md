@@ -19,8 +19,13 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.3
-* Updated assembly version of consumption cmdlets
+## Version 2.0.0
+* Add Get-AzBillingAccount cmdlet
+* Add Get-AzBillingProfile cmdlet
+* Add Get-AzInvoiceSection cmdlet
+* Add new parameters in Get-AzBillingInvoice cmdlet
+* Breaking changes
+    - Get-AzBillingPeriod, Get-AzEnrollmentAccount cmdlets are deprecated.
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path

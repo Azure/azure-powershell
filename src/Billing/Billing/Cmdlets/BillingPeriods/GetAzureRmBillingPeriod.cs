@@ -19,9 +19,11 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
 {
+    [CmdletDeprecation("2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
     public class GetAzureRmBillingPeriod : AzureBillingCmdletBase
     {
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
             {
                 try
                 {
-                    WriteObject(BillingManagementClient.BillingPeriods.List(top: MaxCount).Select(x => new PSBillingPeriod(x)), true);
+                    WriteObject(new List<PSBillingPeriod>(), true);
                 }
                 catch (ErrorResponseException error)
                 {
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
                 {
                     try
                     {
-                        var billingPeriod = new PSBillingPeriod(BillingManagementClient.BillingPeriods.Get(billingPeriodName));
+                        var billingPeriod = new PSBillingPeriod();
                         WriteObject(billingPeriod);
                     }
                     catch (ErrorResponseException error)

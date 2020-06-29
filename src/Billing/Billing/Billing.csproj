@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Billing" Version="2.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Billing" Version="4.0.0" />
   </ItemGroup>
 
 </Project>
