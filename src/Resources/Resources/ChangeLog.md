@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added 'Unregister-AzResourceProvider' cmdlet.
 * Updated `Get-AzResourceGroupDeploymentOperation` and `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
 
 ## Version 2.2.0
