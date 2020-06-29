@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
     - `New-AzVirtualApplianceSite`
@@ -34,7 +35,6 @@
     - `New-AzVirtualApplianceSkuProperty`
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
-* Fix parameter swap in VWan HubVnet connection
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
