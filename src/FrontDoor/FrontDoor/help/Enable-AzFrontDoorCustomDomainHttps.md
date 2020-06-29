@@ -117,7 +117,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
+PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
 
 
 HostName                         : frontendpointname1.custom.xyz

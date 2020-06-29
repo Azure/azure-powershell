@@ -14,6 +14,8 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                     DisplayName = administrator.Login,
                     ObjectId = administrator.Sid
                 };
-            }).ToList() ;
+            }).ToList();
         }
 
         /// <summary>
@@ -162,6 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
 
             // Check for a Azure Active Directory group. Recommended to always use group.
             IEnumerable<PSADGroup> groupList = null;
+            PSADGroup group = null;
 
             var filter = new ADObjectFilterOptions()
             {
@@ -173,31 +176,77 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             // Get a list of groups from Azure Active Directory
             groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
-            if (groupList.Count() > 1)
+            if (groupList != null && groupList.Count() > 1)
             {
                 // More than one group was found with that display name.
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADGroupMoreThanOneFound, displayName));
             }
-            else if (groupList.Count() == 1)
+            else if (groupList != null && groupList.Count() == 1)
             {
                 // Only one group was found. Get the group display name and object id
-                var group = groupList.First();
+                group = groupList.First();
 
                 // Only support Security Groups
                 if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidADGroupNotSecurity, displayName));
                 }
+            }
 
+            // Lookup for serviceprincipals
+            ODataQuery<ServicePrincipal> odataQueryFilter;
+
+            if ((objectId != null && objectId != Guid.Empty))
+            {
+                var applicationIdString = objectId.ToString();
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+            }
+            else
+            {
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+            }
+
+            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+
+            if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
+            {
+                // More than one service principal was found.
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationMoreThanOneFound, displayName));
+            }
+            else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
+            {
+                // Only one user was found. Get the user display name and object id
+                PSADServicePrincipal app = servicePrincipalList.First();
+
+                if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationDisplayNameMismatch, displayName, app.DisplayName));
+                }
+
+                if (group != null)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADDuplicateGroupAndApplicationFound, displayName));
+                }
+
+                return new ManagedInstanceAdministrator()
+                {
+                    Login = displayName,
+                    Sid = app.ApplicationId,
+                    TenantId = tenantId
+                };
+            }
+
+            if (group != null)
+            {
                 return new ManagedInstanceAdministrator()
                 {
                     Login = group.DisplayName,
                     Sid = group.Id,
-                    TenantId = tenantId,
+                    TenantId = tenantId
                 };
             }
 
-            // No group was found. Check for a user
+            // No group or service principal was found. Check for a user
             filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
@@ -222,6 +271,20 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
+            // No user was found. Check if the display name is a guest user. 
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    Mail = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter);
+            }
+
             // No user was found
             if (userList == null || userList.Count() == 0)
             {
@@ -241,7 +304,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 {
                     Login = displayName,
                     Sid = obj.Id,
-                    TenantId = tenantId,
+                    TenantId = tenantId
                 };
             }
         }

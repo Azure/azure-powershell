@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             Helper.SetupSomeOfManagementClients(newResourcesClient,sqlClient, networkClient, graphClient);
         }
 
-        [Fact]
+        [Fact(Skip = "SQL MI team should re-record this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceActiveDirectoryAdministrator()
         {
