@@ -24,39 +24,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(
         VerbsCommon.Get,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
-        DefaultParameterSetName = GetAzTemplateSpec.ListTemplateSpec)]
+        DefaultParameterSetName = GetAzTemplateSpec.ListTemplateSpecsParameterSet)]
     [OutputType(typeof(PSTemplateSpec))]
     public class GetAzTemplateSpec : TemplateSpecCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
-        internal const string ListTemplateSpec = "ListTemplateSpec";
-        internal const string GetTemplateSpecByName = "GetTemplateSpecByName";
-        internal const string GetTemplateSpecById = "GetTemplateSpecById";
+        internal const string ListTemplateSpecsParameterSet = nameof(ListTemplateSpecsParameterSet);
+        internal const string GetTemplateSpecByNameParameterSet = nameof(GetTemplateSpecByNameParameterSet);
+        internal const string GetTemplateSpecByIdParameterSet = nameof(GetTemplateSpecByIdParameterSet);
 
-        [Parameter(Position = 0, ParameterSetName = ListTemplateSpec, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
-        [Parameter(Position = 0, ParameterSetName = GetTemplateSpecByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, ParameterSetName = ListTemplateSpecsParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, ParameterSetName = GetTemplateSpecByNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = GetTemplateSpecByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the template spec.")]
+        [Parameter(Position = 1, ParameterSetName = GetTemplateSpecByNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the template spec.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Resources/templateSpecs", "ResourceGroupName")]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = GetTemplateSpecByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The version of the template spec.")]
-        [Parameter(Position = 1, ParameterSetName = GetTemplateSpecById, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The version of the template spec.")]
+        [Parameter(Position = 2, ParameterSetName = GetTemplateSpecByNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The version of the template spec.")]
+        [Parameter(Position = 1, ParameterSetName = GetTemplateSpecByIdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The version of the template spec.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Resources/templateSpecs/versions", "ResourceGroupName", "Name")]
         public string Version { get; set; }
 
-        [Alias("ResourceId")]
-        [Parameter(Position = 0, ParameterSetName = GetTemplateSpecById, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Alias("Id")]
+        [Parameter(Position = 0, ParameterSetName = GetTemplateSpecByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/templateSpecs")]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         #endregion
 
@@ -68,21 +68,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 switch (ParameterSetName)
                 {
-                    case GetTemplateSpecByName:
+                    case GetTemplateSpecByNameParameterSet:
                         WriteObject(
                             TemplateSpecsSdkClient.GetTemplateSpec(Name, ResourceGroupName, Version)
                         );
                         break;
-                    case GetTemplateSpecById:
+                    case GetTemplateSpecByIdParameterSet:
                         WriteObject(
                             TemplateSpecsSdkClient.GetTemplateSpec(
-                                ResourceIdUtility.GetResourceName(this.Id),
-                                ResourceIdUtility.GetResourceGroupName(this.Id),
+                                ResourceIdUtility.GetResourceName(this.ResourceId),
+                                ResourceIdUtility.GetResourceGroupName(this.ResourceId),
                                 Version
                             )
                         );
                         break;
-                    case ListTemplateSpec:
+                    case ListTemplateSpecsParameterSet:
                         WriteObject(!string.IsNullOrEmpty(ResourceGroupName)
                             ? TemplateSpecsSdkClient.ListTemplateSpecsByResourceGroup(ResourceGroupName)
                             : TemplateSpecsSdkClient.ListTemplateSpecsBySubscription());

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceNameCompleter("Microsoft.Resources/templateSpecs/versions", "ResourceGroupName", "Name")]
         public string Version { get; set; }
 
-        [Alias("ResourceId")]
+        [Alias("Id")]
         [Parameter(
             Position = 0, 
             ParameterSetName = RemoveByIdParameterSet, 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/templateSpecs")]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         #endregion
 
@@ -83,14 +83,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                ResourceIdentifier resourceIdentifier = (Id != null) 
-                    ? new ResourceIdentifier(Id)
+                ResourceIdentifier resourceIdentifier = (ResourceId != null) 
+                    ? new ResourceIdentifier(ResourceId)
                     : null;
 
                 ResourceGroupName = ResourceGroupName ?? resourceIdentifier.ResourceGroupName;
-                Name = Name ?? ResourceIdUtility.GetResourceName(Id);
+                Name = Name ?? ResourceIdUtility.GetResourceName(ResourceId);
 
-                if (Id != null && Version == null)
+                if (ResourceId != null && Version == null)
                 {
                     // Check if the resource id includes a version...
                     string resourceType = resourceIdentifier.ResourceType;

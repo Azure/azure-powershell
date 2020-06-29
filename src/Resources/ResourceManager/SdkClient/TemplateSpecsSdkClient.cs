@@ -156,49 +156,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string templateSpecDescription = null,
             string versionDescription = null)
         {
-            var existingTemplateSpec = this.GetAzureSdkTemplateSpec(
+            var templateSpecModel = this.CreateOrUpdateTemplateSpecInternal(
                 resourceGroupName,
                 templateSpecName,
-                throwIfNotExists: false
-            );
-
-            if (location == null)
-            {
-                if (existingTemplateSpec != null)
-                {
-                    location = existingTemplateSpec.Location;
-                }
-                else
-                {
-                    // TODO: Use the resource group location
-                    // TODO: Localize
-                    throw new PSInvalidOperationException("Location cannot be inferred and must be specified.");
-                }
-            }
-
-            var templateSpecModel = new TemplateSpecModel
-            {
-                Location = location,
-                Description = templateSpecDescription ?? existingTemplateSpec?.Description,
-                DisplayName = templateSpecDisplayName ?? existingTemplateSpec?.DisplayName,
-                Tags = existingTemplateSpec?.Tags
-            };
-
-            templateSpecModel = TemplateSpecsClient.TemplateSpecs.CreateOrUpdate(
-                resourceGroupName,
-                templateSpecName,
-                templateSpecModel
+                location,
+                templateSpecDisplayName,
+                templateSpecDescription
             );
 
             var templateSpecVersionModel = new TemplateSpecVersionModel
             {
-                Location = location,
+                Location = templateSpecModel.Location,
                 Template = packagedTemplate.RootTemplate,
                 Artifacts = packagedTemplate.Artifacts?.ToList(),
                 Description = versionDescription
             };
-
-            // TODO: Handle artifacts
 
             templateSpecVersionModel = TemplateSpecsClient.TemplateSpecVersions.CreateOrUpdate(
                 resourceGroupName,
@@ -208,6 +180,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             );
 
             return new PSTemplateSpecSingleVersion(templateSpecModel, templateSpecVersionModel);
+        }
+
+        public PSTemplateSpec CreateOrUpdateTemplateSpec(
+            string resourceGroupName,
+            string templateSpecName,
+            string location,
+            string templateSpecDisplayName = null,
+            string templateSpecDescription = null)
+        {
+            var sdkTemplateSpecModel = this.CreateOrUpdateTemplateSpecInternal(
+                resourceGroupName,
+                templateSpecName,
+                location,
+                templateSpecDisplayName,
+                templateSpecDescription
+            );
+
+            return new PSTemplateSpec(sdkTemplateSpecModel);
         }
 
         public void DeleteTemplateSpec(
@@ -250,6 +240,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     $"Template Spec '{templateSpecName}' in resource group '{resourceGroupName}' not found!"
                 );
             }
+        }
+
+        /// <remarks>
+        /// Method name is protected and has an 'Internal' suffix because the return type is
+        /// the SDK model rather than the model wrapped for PS. See
+        /// <see cref="CreateOrUpdateTemplateSpec(string, string, string, string, string)"/>
+        /// for the method that returns the wrapped model.
+        /// </remarks>
+        protected TemplateSpecModel CreateOrUpdateTemplateSpecInternal(
+            string resourceGroupName,
+            string templateSpecName,
+            string location,
+            string templateSpecDisplayName = null,
+            string templateSpecDescription = null)
+        {
+            var existingTemplateSpec = this.GetAzureSdkTemplateSpec(
+                resourceGroupName,
+                templateSpecName,
+                throwIfNotExists: false
+            );
+
+            if (location == null)
+            {
+                if (existingTemplateSpec != null)
+                {
+                    location = existingTemplateSpec.Location;
+                }
+                else
+                {
+                    // TODO: Use the resource group location
+                    // TODO: Localize
+                    throw new PSInvalidOperationException("Location cannot be inferred and must be specified.");
+                }
+            }
+
+            var templateSpecModel = new TemplateSpecModel
+            {
+                Location = location,
+                Description = templateSpecDescription ?? existingTemplateSpec?.Description,
+                DisplayName = templateSpecDisplayName ?? existingTemplateSpec?.DisplayName,
+                Tags = existingTemplateSpec?.Tags
+            };
+
+            templateSpecModel = TemplateSpecsClient.TemplateSpecs.CreateOrUpdate(
+                resourceGroupName,
+                templateSpecName,
+                templateSpecModel
+            );
+
+            return templateSpecModel;
         }
     }
 }

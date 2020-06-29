@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
-        internal const string FromJsonStringParameterSet = "FromJsonString";
-        internal const string FromJsonFileParameterSet = "FromJsonFile";
+        internal const string FromJsonStringParameterSet = nameof(FromJsonStringParameterSet);
+        internal const string FromJsonFileParameterSet = nameof(FromJsonFileParameterSet);
 
         [Parameter(
             Position = 0,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the template spec.")]
+            HelpMessage = "The location of the template spec. Only required if the template spec does not already exist.")]
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
 
@@ -122,9 +122,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                // TODO: Validate JSON
-                // TODO: Identify and package local template references as artifacts
-
                 PackagedTemplate packagedTemplate;
 
                 switch (ParameterSetName)
@@ -154,7 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     default:
                         throw new PSNotSupportedException();
                 }
-                
+
                 var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
                     ResourceGroupName,
                     Name,
