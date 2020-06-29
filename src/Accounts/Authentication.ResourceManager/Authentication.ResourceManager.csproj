@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
 

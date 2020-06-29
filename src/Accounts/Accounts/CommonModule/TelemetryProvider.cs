@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.CommonModule;
@@ -182,11 +181,7 @@ namespace Microsoft.Azure.Commands.Common
         private static MetricHelper CreateMetricHelper(AzurePSDataCollectionProfile profile)
         {
             var result = new MetricHelper(profile);
-            result.AddTelemetryClient(new TelemetryClient
-            {
-                InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-            });
-
+            result.AddDefaultTelemetryClient();
             return result;
         }
 
