@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Common;
     using System;
     using System.Threading;
     using XTable = Microsoft.Azure.Cosmos.Table;
@@ -148,6 +149,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
             };
 
+            context.CustomUserAgent = ApiConstants.UserAgentHeaderValue;
+
+
             return context;
         }
 
@@ -206,6 +210,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     //catch the exception. If so, the storage client won't sleep and retry
                 }
             };
+
+            context.CustomUserAgent = ApiConstants.UserAgentHeaderValue;
 
             return context;
         }
