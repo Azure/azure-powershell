@@ -19,6 +19,7 @@ Describe 'New-AzWvdHostPool' {
                             -Location $env.Location `
                             -HostPoolType 'Pooled' `
                             -LoadBalancerType 'DepthFirst' `
+                            -PreferredAppGroupType 'Desktop' `
                             -DesktopAppGroupName 'FullSenerioCreateAG' `
                             -WorkspaceName 'FullSenerioCreateWS'
 

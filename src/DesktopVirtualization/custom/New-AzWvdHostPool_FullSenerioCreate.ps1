@@ -85,6 +85,11 @@ function New-AzWvdHostPool_FullSenerioCreate {
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType]
         ${LoadBalancerType},
 
+        [Parameter(Mandatory, HelpMessage='Preferred App Group Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType]
+        ${PreferredAppGroupType},
+
         [Parameter(Mandatory, HelpMessage='Location')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
         [System.String]
@@ -108,6 +113,7 @@ function New-AzWvdHostPool_FullSenerioCreate {
 
         $null = $PSBoundParameters.Remove("HostPoolType")
         $null = $PSBoundParameters.Remove("LoadBalancerType")
+        $null = $PSBoundParameters.Remove("PreferredAppGroupType")
         $null = $PSBoundParameters.Remove("Name")
         $null = $PSBoundParameters.Add("ApplicationGroupName", $saveDesktopAppGroupName)
         $applicationGroup = Az.DesktopVirtualization\New-AzWvdApplicationGroup @PSBoundParameters `

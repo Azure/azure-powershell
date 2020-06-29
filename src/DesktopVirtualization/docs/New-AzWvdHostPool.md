@@ -15,19 +15,21 @@ Create or update a host pool.
 ### CreateExpanded (Default)
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
- -Name <String> -ResourceGroupName <String> -PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>
- -PreferredAppGroupType <PreferredAppGroupType> [-SubscriptionId <String>] [-CustomRdpProperty <String>]
- [-Description <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-MaxSessionLimit <Int32>]
- [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
- [-SsoContext <String>] [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-CustomRdpProperty <String>] [-Description <String>] [-ExpirationTime <DateTime>]
+ [-FriendlyName <String>] [-MaxSessionLimit <Int32>]
+ [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-RegistrationInfoToken <String>]
+ [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SsoContext <String>]
+ [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
- -Name <String> -ResourceGroupName <String> [-DesktopAppGroupName <String>] [-SubscriptionId <String>]
- [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
+ [-DesktopAppGroupName <String>] [-SubscriptionId <String>] [-WorkspaceName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,7 +273,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalD
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -284,7 +286,7 @@ The type of preferred application group type, default to Desktop Application Gro
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
