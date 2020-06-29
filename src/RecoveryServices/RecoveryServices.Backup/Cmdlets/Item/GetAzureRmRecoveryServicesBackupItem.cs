@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validBackupManagementTypes = "AzureVM, MARS, AzureStorage, AzureWorkload";
+        private const string validBackupManagementTypes = "AzureVM, MAB, AzureStorage, AzureWorkload";
 
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.

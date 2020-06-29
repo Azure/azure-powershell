@@ -77,7 +77,7 @@ Using FriendlyName parameter can result in returning more than one Azure File Sh
 The class of resources being protected. The acceptable values for this parameter are:
 
 - AzureVM
-- MARS
+- MAB
 - AzureSQL
 - AzureStorage
 - AzureWorkload
