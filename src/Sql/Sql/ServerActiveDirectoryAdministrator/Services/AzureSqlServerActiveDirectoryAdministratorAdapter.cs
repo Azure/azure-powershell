@@ -208,30 +208,30 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 }
             }
 
-            // Lookup for applications
-            ODataQuery<Application> odataQueryFilter;
+            // Lookup for serviceprincipals
+            ODataQuery<ServicePrincipal> odataQueryFilter;
 
             if ((objectId != null && objectId != Guid.Empty))
             {
                 var applicationIdString = objectId.ToString();
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationIdString);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
             }
             else
             {
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName == displayName);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
             }
 
-            var applicationList = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter);
+            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
 
-            if (applicationList != null && applicationList.Count() > 1)
+            if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
             {
-                // More than one application was found.
+                // More than one service principal was found.
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationMoreThanOneFound, displayName));
             }
-            else if (applicationList != null && applicationList.Count() == 1)
+            else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
             {
                 // Only one user was found. Get the user display name and object id
-                PSADApplication app = applicationList.First();
+                PSADServicePrincipal app = servicePrincipalList.First();
 
                 if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
                 {
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 };
             }
 
-            // No group or application was found. Check for a user
+            // No group or service principal was found. Check for a user
             filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,

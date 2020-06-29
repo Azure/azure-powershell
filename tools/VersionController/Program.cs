@@ -7,7 +7,7 @@ using System.Management.Automation;
 using System.Reflection;
 using Tools.Common.Models;
 using VersionController.Models;
-using VersionController.Utilities;
+using Tools.Common.Utilities;
 
 namespace VersionController
 {

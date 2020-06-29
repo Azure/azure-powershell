@@ -684,6 +684,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recovery manged disk type &quot;Standard_SSD&quot; is not supported. Converting it to &quot;StandardSSD_LRS&quot;..
+        /// </summary>
+        internal static string RecoveryDiskTypeUnSupported {
+            get {
+                return ResourceManager.GetString("RecoveryDiskTypeUnSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Different recovery virtual network Ids present in ASRVMNics..
         /// </summary>
         internal static string RecoveryNetworkIdConflictInASRVMNics {

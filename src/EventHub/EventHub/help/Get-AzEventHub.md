@@ -24,15 +24,15 @@ If an Event Hub name is not provided, a list of all Event Hubs in the specified 
 
 ## EXAMPLES
 
-### Example 1 - specified EventHub
-```
+### Example 1: specified EventHub
+```powershell
 PS C:\> Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Returns the details of the Event Hub \`MyEventHubName\`.
 
-### Example 2 - List of EventHub in specified Namespace
-```
+### Example 2: List of EventHub in specified Namespace
+```powershell
 PS C:\> Get-AzEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 

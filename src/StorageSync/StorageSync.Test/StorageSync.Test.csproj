@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.0.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 	
