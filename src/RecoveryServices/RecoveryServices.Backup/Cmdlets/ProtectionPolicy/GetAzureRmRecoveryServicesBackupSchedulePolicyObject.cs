@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validBackupManagementTypes = "AzureVM, AzureWorkload, AzureStorage";
+        private const string validBackupManagementTypes = "AzureVM, AzureWorkload, AzureStorage, AzureSQL";
 
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, MSSQL, AzureFiles";
+        private const string validWorkloadTypes = "AzureVM, MSSQL, AzureFiles, AzureSQLDatabase";
 
         /// <summary>
         /// Workload type of the policy to be created.

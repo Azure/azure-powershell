@@ -45,7 +45,7 @@ Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType AzureVM -Inp
 ## PARAMETERS
 
 ### -BackupManagementType
-The class of resources being protected. Currently the values supported for this cmdlet are MAB, AzureWorkload, AzureVM, AzureStorage
+The class of resources being protected. Currently the values supported for this cmdlet are MAB, AzureWorkload, AzureVM
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource. The current supported values are AzureVM, WindowsServer, AzureFiles, MSSQL
+Workload type of the resource. The current supported values are AzureVM, WindowsServer, MSSQL
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

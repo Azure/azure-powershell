@@ -27,7 +27,7 @@ Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
 ```
 
 ## DESCRIPTION
-This command allows Azure Backup to convert the �Resource� to a �Backup Container� which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+This command allows Azure Backup to convert the Resource to a Backup Container which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## EXAMPLES
 
@@ -132,13 +132,13 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource. The current supported value is MSSQL
+Workload type of the resource. The current supported value is AzureVM, WindowsServer, AzureFiles, MSSQL
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: MSSQL
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
 
 Required: True
 Position: 2

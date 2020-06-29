@@ -18,7 +18,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -33,12 +32,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validBackupManagementTypes = "MAB, AzureWorkload, AzureVM, AzureStorage";
+        private const string validBackupManagementTypes = "MAB, AzureWorkload, AzureVM";
 
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, WindowsServer, AzureFiles, MSSQL";
+        private const string validWorkloadTypes = "AzureVM, WindowsServer, MSSQL";
 
         /// <summary>
         /// Item that needs to be auto protected

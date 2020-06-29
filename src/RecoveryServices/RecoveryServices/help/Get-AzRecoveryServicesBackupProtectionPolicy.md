@@ -34,8 +34,8 @@ Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-Va
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [[-BackupManagementType] <BackupManagementType>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +133,7 @@ Workload type of the resource. The current supported values are AzureVM, AzureFi
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]
 Parameter Sets: WorkloadParamSet, WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
 
 Required: True
 Position: 2
