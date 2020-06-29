@@ -14,10 +14,10 @@ Create or update a host pool.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-HostPoolType <HostPoolType>]
- [-LoadBalancerType <LoadBalancerType>] [-Location <String>] [-SubscriptionId <String>]
- [-CustomRdpProperty <String>] [-Description <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>]
- [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
+New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
+ -Name <String> -ResourceGroupName <String> -PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>
+ -PreferredAppGroupType <PreferredAppGroupType> [-SubscriptionId <String>] [-CustomRdpProperty <String>]
+ [-Description <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-MaxSessionLimit <Int32>]
  [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
  [-SsoContext <String>] [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -216,7 +216,7 @@ Dynamic: False
 ```
 
 ### -Location
-Resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -271,7 +271,23 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalD
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PreferredAppGroupType
+The type of preferred application group type, default to Desktop Application Group
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

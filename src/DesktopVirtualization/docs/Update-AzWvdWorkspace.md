@@ -15,15 +15,15 @@ Update a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
- [-Tag <IWorkspacePatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-ApplicationGroupReference <String[]>]
- [-Description <String>] [-FriendlyName <String>] [-Tag <IWorkspacePatchTags>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,7 +182,7 @@ Dynamic: False
 tags to be updated
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspacePatchTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
