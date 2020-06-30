@@ -21,6 +21,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Text;
 using System.Linq;
+using System;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
@@ -212,7 +213,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         private string GetApiVersion(string path)
         {
-            return path?.Split(API_VERSION.ToCharArray()).Last().Substring(1);
+            return path?.Substring(path.LastIndexOf(API_VERSION) + API_VERSION.Length + 1);
         }
 
         private string TruncateApiVersion(string path)
