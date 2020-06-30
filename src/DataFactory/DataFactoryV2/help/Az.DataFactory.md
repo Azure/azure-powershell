@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.DataFactory
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactory
@@ -13,9 +13,6 @@ Azure Data Factory V2 is the data integration platform that goes beyond Azure Da
 ## Az.DataFactory Cmdlets
 ### [Add-AzDataFactoryV2DataFlowDebugSessionPackage](Add-AzDataFactoryV2DataFlowDebugSessionPackage.md)
 Add data flow resource and its dependencies into specific data flow debug session.
-
-### [Add-AzDataFactoryV2TriggerSubscription](Add-AzDataFactoryV2TriggerSubscription.md)
-Subscribe the event trigger to external service events.
 
 ### [Get-AzDataFactory](Get-AzDataFactory.md)
 Gets information about Data Factories.
@@ -53,14 +50,14 @@ Gets information about Data Factory.
 ### [Get-AzDataFactoryV2ActivityRun](Get-AzDataFactoryV2ActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
+### [Get-AzDataFactoryV2Dataset](Get-AzDataFactoryV2Dataset.md)
+Gets information about datasets in Data Factory.
+
 ### [Get-AzDataFactoryV2DataFlow](Get-AzDataFactoryV2DataFlow.md)
 Gets information about data flows in Data Factory.
 
 ### [Get-AzDataFactoryV2DataFlowDebugSession](Get-AzDataFactoryV2DataFlowDebugSession.md)
-Get all active data flow debug sessions by Azure Data Factory
-
-### [Get-AzDataFactoryV2Dataset](Get-AzDataFactoryV2Dataset.md)
-Gets information about datasets in Data Factory.
+Get all active data flow debug sessions by Azure Data Factory.
 
 ### [Get-AzDataFactoryV2IntegrationRuntime](Get-AzDataFactoryV2IntegrationRuntime.md)
 Gets information about integration runtime resources.
@@ -89,17 +86,14 @@ Gets information about triggers in a data factory.
 ### [Get-AzDataFactoryV2TriggerRun](Get-AzDataFactoryV2TriggerRun.md)
 Returns information about trigger runs.
 
-### [Get-AzDataFactoryV2TriggerSubscriptionStatus](Get-AzDataFactoryV2TriggerSubscriptionStatus.md)
-Get the status of the subscription for the event trigger to the specified external service events.
+### [Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade](Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade.md)
+Upgrades self-hosted integration runtime.
 
 ### [Invoke-AzDataFactoryV2DataFlowDebugSessionCommand](Invoke-AzDataFactoryV2DataFlowDebugSessionCommand.md)
 Invoke debug action in data flow debug session.
 
-### [Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade](Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade.md)
-Upgrades self-hosted integration runtime.
-
 ### [Invoke-AzDataFactoryV2Pipeline](Invoke-AzDataFactoryV2Pipeline.md)
-  Invokes a pipeline to start a run for it.
+Invokes a pipeline to start a run for it.
 
 ### [New-AzDataFactory](New-AzDataFactory.md)
 Creates a data factory.
@@ -152,11 +146,11 @@ Removes a pipeline from Azure Data Factory.
 ### [Remove-AzDataFactoryV2](Remove-AzDataFactoryV2.md)
 Removes a data factory.
 
-### [Remove-AzDataFactoryV2DataFlow](Remove-AzDataFactoryV2DataFlow.md)
-Removes a data flow from Data Factory.
-
 ### [Remove-AzDataFactoryV2Dataset](Remove-AzDataFactoryV2Dataset.md)
 Removes a dataset from Data Factory.
+
+### [Remove-AzDataFactoryV2DataFlow](Remove-AzDataFactoryV2DataFlow.md)
+Removes a data flow from Data Factory.
 
 ### [Remove-AzDataFactoryV2IntegrationRuntime](Remove-AzDataFactoryV2IntegrationRuntime.md)
 Removes an integration runtime.
@@ -172,9 +166,6 @@ Removes a pipeline from Data Factory.
 
 ### [Remove-AzDataFactoryV2Trigger](Remove-AzDataFactoryV2Trigger.md)
 Removes a trigger from a data factory.
-
-### [Remove-AzDataFactoryV2TriggerSubscription](Remove-AzDataFactoryV2TriggerSubscription.md)
-Unsubscribe the event trigger to external service events.
 
 ### [Resume-AzDataFactoryPipeline](Resume-AzDataFactoryPipeline.md)
 Resumes a suspended pipeline in Data Factory.
@@ -194,11 +185,11 @@ Sets the status of slices for a dataset in Azure Data Factory.
 ### [Set-AzDataFactoryV2](Set-AzDataFactoryV2.md)
 Creates a data factory.
 
-### [Set-AzDataFactoryV2DataFlow](Set-AzDataFactoryV2DataFlow.md)
-Creates a data flow in Data Factory.
-
 ### [Set-AzDataFactoryV2Dataset](Set-AzDataFactoryV2Dataset.md)
 Creates a dataset in Data Factory.
+
+### [Set-AzDataFactoryV2DataFlow](Set-AzDataFactoryV2DataFlow.md)
+Creates a data flow in Data Factory.
 
 ### [Set-AzDataFactoryV2IntegrationRuntime](Set-AzDataFactoryV2IntegrationRuntime.md)
 Updates an integration runtime.
@@ -212,17 +203,14 @@ Creates a pipeline in Data Factory.
 ### [Set-AzDataFactoryV2Trigger](Set-AzDataFactoryV2Trigger.md)
 Creates a trigger in a data factory.
 
-### [Start-AzDataFactoryV2DataFlowDebugSession](Start-AzDataFactoryV2DataFlowDebugSession.md)
-Starts a data flow debug session in Azure Data Factory
-
 ### [Start-AzDataFactoryV2IntegrationRuntime](Start-AzDataFactoryV2IntegrationRuntime.md)
 Starts a managed dedicated integration runtime.
 
 ### [Start-AzDataFactoryV2Trigger](Start-AzDataFactoryV2Trigger.md)
 Starts a trigger in a data factory.
 
-### [Stop-AzDataFactoryV2DataFlowDebugSession](Stop-AzDataFactoryV2DataFlowDebugSession.md)
-Stops a data flow debug session in Azure Data Factory
+### [Start-AzDataFactoryV2DataFlowDebugSession](Start-AzDataFactoryV2DataFlowDebugSession.md)
+Starts a data flow debug session in Azure Data Factory.
 
 ### [Stop-AzDataFactoryV2IntegrationRuntime](Stop-AzDataFactoryV2IntegrationRuntime.md)
 Stops a managed dedicated integration runtime.
@@ -232,6 +220,9 @@ Stops a pipeline run in a data factory.
 
 ### [Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.
+
+### [Stop-AzDataFactoryV2DataFlowDebugSession](Stop-AzDataFactoryV2DataFlowDebugSession.md)
+Stops a data flow debug session in Azure Data Factory.
 
 ### [Suspend-AzDataFactoryPipeline](Suspend-AzDataFactoryPipeline.md)
 Suspends a pipeline in Azure Data Factory.
