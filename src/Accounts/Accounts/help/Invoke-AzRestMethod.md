@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzRestMethod
 
 ## SYNOPSIS
-Construct and perform HTTP request Azure resource management endpoint only
+Construct and perform HTTP request to Azure resource management endpoint only
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-R
 ```
 
 ## DESCRIPTION
-Construct and perform HTTP request Azure resource management endpoint only
+Construct and perform HTTP request to Azure resource management endpoint only
 
 ## EXAMPLES
 
