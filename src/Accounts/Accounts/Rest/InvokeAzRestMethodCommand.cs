@@ -213,12 +213,12 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         private string GetApiVersion(string path)
         {
-            return path?.Substring(path.LastIndexOf(API_VERSION) + API_VERSION.Length + 1);
+            return path?.Substring(path.ToLower().LastIndexOf(API_VERSION) + API_VERSION.Length + 1);
         }
 
         private string TruncateApiVersion(string path)
         {
-            return path?.Substring(0, path.LastIndexOf(API_VERSION) - 1);
+            return path?.Substring(0, path.ToLower().LastIndexOf(API_VERSION) - 1);
         }
     }
 }
