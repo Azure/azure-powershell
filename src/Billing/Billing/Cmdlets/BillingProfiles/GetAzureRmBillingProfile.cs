@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingProfiles
         public string BillingAccountName { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = "Expand the invoice sections under the billing profiles.")]
-        public SwitchParameter ExpandInvoiceSections { get; set; }
+        public SwitchParameter ExpandInvoiceSection { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                var expand = this.ExpandInvoiceSections.IsPresent ? InvoiceSectionsExpand : null;
+                var expand = this.ExpandInvoiceSection.IsPresent ? InvoiceSectionsExpand : null;
                 
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {

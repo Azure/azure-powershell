@@ -55,7 +55,7 @@ List billing accounts with billing profiles
 #>
 function Test-ListBillingAccountsWithBillingProfiles
 {
-    $billingAccounts = Get-AzBillingAccount -ExpandBillingProfiles
+    $billingAccounts = Get-AzBillingAccount -ExpandBillingProfile
 
     Assert-True {$billingAccounts.Count -ge 1}
 	Assert-NotNull $billingAccounts[0].Name
@@ -75,7 +75,7 @@ List billing accounts with invoice sections
 #>
 function Test-ListBillingAccountsWithInvoiceSections
 {
-    $billingAccounts = Get-AzBillingAccount -ExpandInvoiceSections
+    $billingAccounts = Get-AzBillingAccount -ExpandInvoiceSection
 
     Assert-True {$billingAccounts.Count -ge 1}
 	Assert-NotNull $billingAccounts[0].Name

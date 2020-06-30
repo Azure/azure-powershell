@@ -62,7 +62,7 @@ Get billing profiles and include invoice sections
 #>
 function Test-GetBillingProfileWithInvoiceSections
 {
-	$billingProfiles = Get-AzBillingProfile -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -ExpandInvoiceSections
+	$billingProfiles = Get-AzBillingProfile -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -ExpandInvoiceSection
 
     Assert-True {$billingProfiles.Count -ge 1}
 	Assert-NotNull $billingProfiles[0].Name
@@ -90,7 +90,7 @@ function Test-GetBillingProfileByNameWithInvoiceSections
 	$sampleBillingProfiles = Get-AzBillingProfile -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31
 	Assert-True {$sampleBillingProfiles.Count -ge 1}
 
-	$billingProfile = Get-AzBillingProfile -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -Name $sampleBillingProfiles[0].Name -ExpandInvoiceSections
+	$billingProfile = Get-AzBillingProfile -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -Name $sampleBillingProfiles[0].Name -ExpandInvoiceSection
 
 	Assert-NotNull $billingProfile.Name
 	Assert-NotNull $billingProfile.Id

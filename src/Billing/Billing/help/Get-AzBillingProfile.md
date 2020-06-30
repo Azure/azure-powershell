@@ -14,13 +14,13 @@ Get billing profiles.
 
 ### List (Default)
 ```
-Get-AzBillingProfile -BillingAccountName <String> -BillingProfileName <String> [-ExpandInvoiceSections]
+Get-AzBillingProfile -BillingAccountName <String> -BillingProfileName <String> [-ExpandInvoiceSection]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzBillingProfile -BillingAccountName <String> -BillingProfileName <String> -Name <System.Collections.Generic.List`1[System.String]> [-ExpandInvoiceSections]
+Get-AzBillingProfile -BillingAccountName <String> -BillingProfileName <String> -Name <System.Collections.Generic.List`1[System.String]> [-ExpandInvoiceSection]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,14 +45,14 @@ Get the billing profile with the specified name.
 
 ### Example 3
 ```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSections
+PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection
 ```
 
 Get all billing profiles under specified billing account, and include the invoice sections in the result.
 
 ### Example 4
 ```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSections -Name <System.Collections.Generic.List`1[System.String]>
+PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection -Name <System.Collections.Generic.List`1[System.String]>
 ```
 
 Get the billing profile with the specified name, and include the invoice sections in the result.
@@ -89,7 +89,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandInvoiceSections
+### -ExpandInvoiceSection
 Include the invoices sections under billing profile.
 
 ```yaml

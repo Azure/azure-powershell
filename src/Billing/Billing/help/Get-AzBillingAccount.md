@@ -14,13 +14,13 @@ Get billing accounts.
 
 ### List (Default)
 ```
-Get-AzBillingAccount [-IncludeAddress] [-ExpandBillingProfiles] [-ExpandInvoiceSections] [-DefaultProfile <IAzureContextContainer>]
+Get-AzBillingAccount [-IncludeAddress] [-ExpandBillingProfile] [-ExpandInvoiceSection] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzBillingAccount -Name <System.Collections.Generic.List`1[System.String]> [-IncludeAddress] [-ExpandBillingProfiles] [-ExpandInvoiceSections] [-ListEntitiesToCreateSubscription]
+Get-AzBillingAccount -Name <System.Collections.Generic.List`1[System.String]> [-IncludeAddress] [-ExpandBillingProfile] [-ExpandInvoiceSection] [-ListEntitiesToCreateSubscription]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -52,21 +52,21 @@ Get all billing accounts user has access to, and include the address in the resu
 
 ### Example 4
 ```
-PS C:\> Get-AzBillingAccount -ExpandBillingProfiles
+PS C:\> Get-AzBillingAccount -ExpandBillingProfile
 ```
 
 Get all billing accounts user has access to, and include the billing profiles in the result.
 
 ### Example 5
 ```
-PS C:\> Get-AzBillingAccount -ExpandInvoiceSections
+PS C:\> Get-AzBillingAccount -ExpandInvoiceSection
 ```
 
 Get all billing accounts user has access to, and include the billing profiles and invoice sections under them in the result.
 
 ### Example 6
 ```
-PS C:\> Get-AzBillingAccount -ExpandInvoiceSections -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
+PS C:\> Get-AzBillingAccount -ExpandInvoiceSection -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
 ```
 
 Get the billing account with the specified name, and include the address, billing profiles and invoice sections under them in the result.
@@ -103,7 +103,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandBillingProfiles
+### -ExpandBillingProfile
 Include the billing profiles under the billing account.
 
 ```yaml
@@ -118,7 +118,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandInvoiceSections
+### -ExpandInvoiceSection
 Include the billing profiles under billing account and invoices sections under them.
 
 ```yaml

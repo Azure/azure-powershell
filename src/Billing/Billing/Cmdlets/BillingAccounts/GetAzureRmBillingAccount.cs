@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
         public SwitchParameter IncludeAddress { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles under the billing accounts.")]
-        public SwitchParameter ExpandBillingProfiles { get; set; }
+        public SwitchParameter ExpandBillingProfile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles and invoice sections under the billing profiles.")]
-        public SwitchParameter ExpandInvoiceSections { get; set; }
+        public SwitchParameter ExpandInvoiceSection { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List the billing entities like billing profiles, invoice sections, azure plan which are used for creating a subscription.",
             ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
         {
             try
             {
-                var expand = this.ExpandBillingProfiles.IsPresent ? BillingProfilesExpand : null;
+                var expand = this.ExpandBillingProfile.IsPresent ? BillingProfilesExpand : null;
 
-                expand += this.ExpandInvoiceSections.IsPresent ? string.IsNullOrWhiteSpace(expand) ? InvoiceSectionsExpand : "," + InvoiceSectionsExpand : null;
+                expand += this.ExpandInvoiceSection.IsPresent ? string.IsNullOrWhiteSpace(expand) ? InvoiceSectionsExpand : "," + InvoiceSectionsExpand : null;
 
                 expand += this.IncludeAddress.IsPresent ? string.IsNullOrWhiteSpace(expand) ? AddressExpand : "," + AddressExpand : null;
 
