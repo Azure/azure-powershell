@@ -1,38 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/invoke-azrest
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/invoke-azrestmethod
 schema: 2.0.0
 ---
 
-# Invoke-AzRest
+# Invoke-AzRestMethod
 
 ## SYNOPSIS
-Construct and perform HTTP request
+Construct and perform HTTP request Azure resource management endpoint only
 
 ## SYNTAX
 
 ### ByPath (Default)
 ```
-Invoke-AzRest -Path <String> -ApiVersion <String> -Method <String> [-Payload <String>] [-AsJob]
+Invoke-AzRestMethod -Path <String> -Method <String> [-Payload <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameters
 ```
-Invoke-AzRest [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
+Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
  [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> -Method <String> [-Payload <String>]
-[-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Construct and perform HTTP request
+Construct and perform HTTP request Azure resource management endpoint only
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Invoke-AzRest -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}" -ApiVersion "{API}" -Method GET
+Invoke-AzRestMethod -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}" -Method GET
 
 Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [x-ms-request-id, System.String[]], [Strict-Transport-Security, System.String[]]…}
 Version    : 1.1
@@ -73,7 +73,7 @@ Content    : {
              }
 ```
 
-Get LA Workspace by path
+Get log analytics workspace by path
 
 ## PARAMETERS
 
@@ -81,8 +81,8 @@ Get LA Workspace by path
 Api Version
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByParameters
 Aliases:
 
 Required: True
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Http Method
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GET, POST, PUT, PATCH, DELETE
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 list of Target Resource Name
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -153,23 +153,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Path
-Target Uri
+Target Path
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPath
 Aliases:
 
@@ -184,7 +172,7 @@ Accept wildcard characters: False
 JSON format payload
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +187,7 @@ Accept wildcard characters: False
 Target Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -214,7 +202,7 @@ Accept wildcard characters: False
 Target Resource Provider Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -229,7 +217,7 @@ Accept wildcard characters: False
 List of Target Resource Type
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -244,7 +232,7 @@ Accept wildcard characters: False
 Target Subscription Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -259,7 +247,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -275,7 +263,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

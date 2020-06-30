@@ -72,8 +72,8 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzContext](Import-AzContext.md)
 Loads Azure authentication information from a file.
 
-### [Invoke-AzRest](Invoke-AzRest.md)
-{{ Fill in the Synopsis }}
+### [Invoke-AzRestMethod](Invoke-AzRestMethod.md)
+Construct and perform HTTP request Azure resource management endpoint only
 
 ### [Register-AzModule](Register-AzModule.md)
 FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets

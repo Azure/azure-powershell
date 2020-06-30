@@ -106,7 +106,7 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
                'Set-AzDefault', 'Get-AzDefault', 'Clear-AzDefault', 
                'Register-AzModule', 'Enable-AzureRmAlias', 'Disable-AzureRmAlias', 
                'Uninstall-AzureRm', 'Get-AzProfile', 'Select-AzProfile',
-               'Invoke-AzRest'
+               'Invoke-AzRestMethod'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -114,7 +114,7 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Add-AzAccount', 'Login-AzAccount', 'Remove-AzAccount', 
                'Logout-AzAccount', 'Select-AzSubscription', 'Resolve-Error', 
-               'Save-AzProfile', 'Get-AzDomain'
+               'Save-AzProfile', 'Get-AzDomain', 'Invoke-AzRest'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

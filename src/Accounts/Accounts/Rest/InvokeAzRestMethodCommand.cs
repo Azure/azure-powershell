@@ -13,26 +13,20 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Management.Automation;
-using System.Net.Http;
-using System.Reflection;
-using System.Threading;
 using Microsoft.Azure.Internal.Common;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Text;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Rest", DefaultParameterSetName = ByPath, SupportsShouldProcess = true), OutputType(typeof(PSHttpResponse))]
-    public class InvokeAzRestCommand : AzureRMCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RestMethod", DefaultParameterSetName = ByPath, SupportsShouldProcess = true), OutputType(typeof(PSHttpResponse))]
+    [Alias("Invoke-AzRest")]
+    public class InvokeAzRestMethodCommand : AzureRMCmdlet
     {
         #region Parameter Set
 
@@ -67,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Api Version")]
+        [Parameter(ParameterSetName = ByParameters, Mandatory = true, HelpMessage = "Api Version")]
         [ValidateNotNullOrEmpty]
         public string ApiVersion { get; set; }
 
@@ -110,7 +104,12 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             if (!this.IsParameterBound(c => c.Path))
             {
-                this.Path = Utils.ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
+                this.Path = ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
+            }
+            else
+            {
+                this.ApiVersion = GetApiVersion(this.Path);
+                this.Path = TruncateApiVersion(this.Path);
             }
 
             switch (this.Method)
@@ -149,21 +148,76 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         public void ValidateParameters()
         {
-            if (this.IsParameterBound(c => this.ResourceType) && !this.IsParameterBound(c => this.Name))
+            if (this.IsParameterBound(c => this.ResourceType) && !this.IsParameterBound(c => this.Name) && this.ResourceType.Length > 1)
             {
-                throw new PSArgumentException("number of resource types and resource names must be the same");
+                throw new PSArgumentException("Invalid resource type/name");
             }
 
             if (!this.IsParameterBound(c => this.ResourceType) && this.IsParameterBound(c => this.Name))
             {
-                throw new PSArgumentException("number of resource types and resource names must be the same");
+                throw new PSArgumentException("Invalid resource type/name");
             }
 
-            if (this.IsParameterBound(c => this.ResourceType) && this.IsParameterBound(c => this.Name) && this.ResourceType.Length != this.Name.Length)
+            if (this.IsParameterBound(c => this.ResourceType) && this.IsParameterBound(c => this.Name))
             {
-                throw new PSArgumentException("number of resource types and resource names must be the same");
+                if (this.Name.Length > this.ResourceType.Length || this.ResourceType.Length - this.Name.Length > 1)
+                {
+                    throw new PSArgumentException("Invalid resource type/name");
+                }
             }
         }
-    }
 
+        private const string Subscriptions = "subscriptions";
+
+        private const string ResourceGroups = "resourceGroups";
+
+        private const string Providers = "providers";
+
+        private const string slash = "/";
+
+        private const string API_VERSION = "api-version";
+
+        private string ConstructPath(string sub, string rg, string rp, string[] types, string[] names)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(slash + Subscriptions);
+            sb.Append(slash + sub);
+
+            if (rg != null && rg.Length != 0)
+            {
+                sb.Append(slash + ResourceGroups);
+                sb.Append(slash + rg);
+            }
+
+            if (rp != null && rp.Length != 0)
+            {
+                sb.Append(slash + Providers);
+                sb.Append(slash + rp);
+            }
+
+            if (types != null && types.Length != 0)
+            {
+                for (int i = 0; i < types.Length; i++)
+                {
+                    sb.Append(slash + types[i]);
+                    if (i != names.Length)
+                    {
+                        sb.Append(slash + names[i]);
+                    }       
+                }
+            }
+            return sb.ToString();
+        }
+
+        private string GetApiVersion(string path)
+        {
+            return path?.Split(API_VERSION.ToCharArray()).Last().Substring(1);
+        }
+
+        private string TruncateApiVersion(string path)
+        {
+            return path?.Substring(0, path.LastIndexOf(API_VERSION) - 1);
+        }
+    }
 }
