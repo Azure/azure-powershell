@@ -69,11 +69,11 @@ function Get-BatchAccountProviderLocation($index)
         $location = $r.Locations
 
         if ($location -eq $null)
-        {  
+        {
             return "westus"
-        } 
-        else 
-        {  
+        }
+        else
+        {
             if ($index -eq $null)
             {
                 return "westus"
@@ -82,7 +82,7 @@ function Get-BatchAccountProviderLocation($index)
             {
                 return $location[$index]
             }
-        }  
+        }
     }
 
     return "westus"

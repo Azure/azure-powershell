@@ -558,5 +558,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug(errorMessage);
             }
         }
+
+        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName)
+        {
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType == BackupManagementType.MAB);
+                            
+
+            List<ProtectedItemResource> protectedItems = ServiceClientAdapter.ListProtectedItem(
+                queryParams,
+                null,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+
+            return ConversionHelpers.GetItemModelList(protectedItems);
+        }
     }
 }

@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
             this.PublicNetworkAccess = cognitiveServicesAccount.Properties.PublicNetworkAccess;
             this.PrivateEndpointConnections = cognitiveServicesAccount.Properties.PrivateEndpointConnections;
+            this.Capabilities = cognitiveServicesAccount.Properties.Capabilities;
 
             if (cognitiveServicesAccount.Properties.NetworkAcls != null)
             {
@@ -87,6 +88,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         public CognitiveServicesAccountApiProperties ApiProperties { get; private set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; private set; }
+
+        public IList<SkuCapability> Capabilities { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 

@@ -50,9 +50,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerThroughputHelpMessage)]
         public int? Throughput { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        public int? AutoscaleMaxThroughput { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.MongoShardKeyHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Shard { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.MongoCollectionAnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.MongoIndexHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -111,11 +117,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 mongoDBCollectionResource.Indexes = Indexes;
             }
 
-            CreateUpdateOptions options = new CreateUpdateOptions();
-            if (Throughput != null)
+            if(AnalyticalStorageTtl != null)
             {
-                options.Throughput = Throughput.ToString();
+                mongoDBCollectionResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
+
+            CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             MongoDBCollectionCreateUpdateParameters mongoDBCollectionCreateUpdateParameters = new MongoDBCollectionCreateUpdateParameters
             {

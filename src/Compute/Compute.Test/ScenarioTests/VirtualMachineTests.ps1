@@ -3831,15 +3831,21 @@ function Test-LowPriorityVirtualMachine
         Assert-AreEqual "Deallocate" $vm.EvictionPolicy;
         Assert-AreEqual 0.1538 $vm.BillingProfile.MaxPrice;
         $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
 
-        # Update the max price of the VM
-        Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2
+        Set-AzVM -ResourceGroupName $rgname -Name $vmname -SimulateEviction;
 
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual "Low" $vm.Priority;
         Assert-AreEqual "Deallocate" $vm.EvictionPolicy;
-        Assert-AreEqual 0.2 $vm.BillingProfile.MaxPrice;
+        Assert-AreEqual 0.1538 $vm.BillingProfile.MaxPrice;
+
         $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
+
+        # Update the max price of the VM
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2; } `
+            "Max price change is not allowed.";
     }
     finally
     {

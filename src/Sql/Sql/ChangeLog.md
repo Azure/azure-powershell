@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`
+* Fixed a bug in Data Classification cmdlets.`
+* Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
+
+
+## Version 2.8.0
+* Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet
+* Fixed sync issue in Data Classification cmdlets.
+* Supported searching user by mail on `Set-AzSqlServerActiveDirectoryAdministrator` [#12192]
 
 ## Version 2.7.0
 * Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`

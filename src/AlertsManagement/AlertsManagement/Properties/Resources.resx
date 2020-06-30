@@ -133,10 +133,10 @@
     <value>'{0}' is not a valid ResourceId.</value>
   </data>
   <data name="InvalidScopeType_Exception" xml:space="preserve">
-    <value>Scope is neither Resource or ResourceGroup type.</value>
+    <value>Scope is neither Subscription, ResourceGroup or Resource type.</value>
   </data>
   <data name="MixedScopeType_Exception" xml:space="preserve">
-    <value>Scope can either be list of Resource or ResourceGroup exclusively.</value>
+    <value>Scope can either be list of Resources, ResourceGroups or Subscriptions exclusively.</value>
   </data>
   <data name="RemoveActionRule_Action" xml:space="preserve">
     <value>Remove action rule</value>
