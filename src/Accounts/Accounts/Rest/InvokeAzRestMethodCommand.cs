@@ -107,11 +107,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             {
                 this.Path = ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
-            else
-            {
-                this.ApiVersion = GetApiVersion(this.Path);
-                this.Path = TruncateApiVersion(this.Path);
-            }
 
             switch (this.Method)
             {
@@ -209,16 +204,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 }
             }
             return sb.ToString();
-        }
-
-        private string GetApiVersion(string path)
-        {
-            return path?.Substring(path.ToLower().LastIndexOf(API_VERSION) + API_VERSION.Length + 1);
-        }
-
-        private string TruncateApiVersion(string path)
-        {
-            return path?.Substring(0, path.ToLower().LastIndexOf(API_VERSION) - 1);
         }
     }
 }
