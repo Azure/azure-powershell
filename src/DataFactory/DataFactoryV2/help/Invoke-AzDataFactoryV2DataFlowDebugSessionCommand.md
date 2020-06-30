@@ -15,8 +15,8 @@ Invoke debug action in data flow debug session.
 ### ByFactoryName (Default)
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceGroupName] <String>
+ [-StreamName] <String> [-RowLimit <Int32>] [[-Expression] <String>]
+ [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -24,16 +24,16 @@ Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Comman
 ### ByFactoryObject
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DataFactory] <PSDataFactory>
+ [-StreamName] <String> [-RowLimit <Int32>] [[-Expression] <String>]
+ [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceId] <String>
+ [-StreamName] <String> [-RowLimit <Int32>] [[-Expression] <String>]
+ [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -72,8 +72,6 @@ PS C:\WINDOWS\system32> $output.output
       "schema": "output(ResourceAgencyNum as string, PublicName as string)" ,
       "data": [["4445679354", "Syrian Refugee Information", 1], ["44456793", "Syrian Refugee Information", 1]]
     }
-
-
 ```
 
 This example invokes data preview command for debug session "fd76cd0d-8b37-4dc0-a370-3f9d43ac686d" in data factory "WiKiADF" and then convert the JSON output into readable string.
@@ -95,7 +93,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Columns
+### -Column
 The columns list for data flow statistics preview.
 
 ```yaml
@@ -104,7 +102,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -215,7 +213,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RowLimits
+### -RowLimit
 The row limit for data flow data preview.
 
 ```yaml
@@ -224,7 +222,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
