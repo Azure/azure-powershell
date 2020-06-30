@@ -35,7 +35,7 @@ Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions 
 
 This command creates a monitor log analytics solution for the log analytics workspace.
 
-Parameter Type support value list
+Commonly used types are:
 
 | Type | Description |
 | :-----| :----- |
@@ -47,7 +47,7 @@ Parameter Type support value list
 | AzureActivity | Activity log analytics |
 | ChangeTracking | Change tracking and inventory |
 | VMInsights | Azure Monitor for VMs |
-| SecurityInsights | Azure Sentinel |  
+| SecurityInsights | Azure Sentinel |
 | NetworkMonitoring | Network Performance Monitor |
 | SQLVulnerabilityAssessment | SQL Vulnerability Assessment |
 | SQLAdvancedThreatProtection | SQL Advanced Threat Protection |
