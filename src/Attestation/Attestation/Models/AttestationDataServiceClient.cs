@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private readonly Management.Attestation.AttestationManagementClient _attestationControlPlaneClient;
         private readonly AttestationClient _attestationDataPlaneClient;
         private static readonly Dictionary<(string, string), string> DataPlaneUriLookup = new Dictionary<(string, string), string>();
+        private static readonly Dictionary<string, string> DefaultProviderDataPlaneUriLookup = new Dictionary<string, string>();
         private const string DefaultResetPolicy = "eyJhbGciOiJub25lIn0..";
 
         public AttestationDataServiceClient(IAuthenticationFactory authFactory, IAzureContext context)
@@ -88,43 +89,43 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             ThrowOn4xxErrors(serviceCallResult);
         }
 
-        public string GetPolicy(string name, string resourceGroupName, string resourceId, string attestUri, string tee)
+        public string GetPolicy(string name, string resourceGroupName, string resourceId, string tee, bool isDefaultProvider = false, string location = "")
         {
             AzureOperationResponse<object> serviceCallResult = null;
             if (string.IsNullOrEmpty(tee))
                 throw new ArgumentNullException(nameof(tee));
-            if (!string.IsNullOrEmpty(attestUri))
-            {
-                serviceCallResult = _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(attestUri).Result;
-            }
-            else
-            {
-                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId, attestUri);
 
-                serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
-                    _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(tenantUri, tee).Result);
-                ThrowOn4xxErrors(serviceCallResult);
+            if (isDefaultProvider && string.IsNullOrEmpty(location))
+                throw new ArgumentNullException(nameof(location));
+
+            if (!isDefaultProvider)
+            {
+                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
             }
+
+            serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.Policy.GetWithHttpMessagesAsync(tenantUri, tee).Result, isDefaultProvider, location);
+            ThrowOn4xxErrors(serviceCallResult);
+            
             return ((AttestationPolicy)serviceCallResult.Body).Policy;
         }
 
-        public string GetPolicySigners(string name, string resourceGroupName, string resourceId, string attestUri)
+        public string GetPolicySigners(string name, string resourceGroupName, string resourceId, bool isDefaultProvider = false, string location = "")
         {
             AzureOperationResponse<object> serviceCallResult = null;
-            if (!string.IsNullOrEmpty(attestUri))
-            {
-                serviceCallResult = _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(attestUri).Result;
-            }
-            else
-            {
-                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId, attestUri);
+            if (isDefaultProvider && string.IsNullOrEmpty(location))
+                throw new ArgumentNullException(nameof(location));
 
-                serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
-                    _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result);
-                ThrowOn4xxErrors(serviceCallResult);
+            if (!isDefaultProvider)
+            {
+                ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
             }
 
-            return (string)serviceCallResult.Body;
+            serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result, isDefaultProvider, location);
+            ThrowOn4xxErrors(serviceCallResult);
+
+                return (string)serviceCallResult.Body;
         }
 
         public string AddPolicySigner(string name, string resourceGroupName, string resourceId, string signer)
@@ -196,8 +197,22 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 throw new ArgumentNullException(nameof(resourceGroupName));
         }
 
-        private string GetDataPlaneUri(string name, string resourceGroupName, bool refreshCache)
+        private string GetDataPlaneUri(string name, string resourceGroupName, bool isDefaultProvider, string location, bool refreshCache)
         {
+            if (isDefaultProvider)
+            {
+                if (refreshCache)
+                    DefaultProviderDataPlaneUriLookup.Remove(location);
+
+                if (!DefaultProviderDataPlaneUriLookup.ContainsKey(location))
+                {
+                    var response = _attestationControlPlaneClient.AttestationProviders.GetDefaultByLocation(location);
+                    DefaultProviderDataPlaneUriLookup[location] = response.AttestUri.TrimEnd('/');
+                }
+
+                return DefaultProviderDataPlaneUriLookup[location];
+            }
+
             if (refreshCache)
                 DataPlaneUriLookup.Remove((name, resourceGroupName));
 
@@ -245,14 +260,14 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// discard our cached URI for the attestation provider and re-fetch it.
         /// 
         /// </summary>
-        private AzureOperationResponse<object> RefreshUriCacheAndRetryOnFailure(string name, string resourceGroupName, Func<string, AzureOperationResponse<object>> idempotentServiceCall)
+        private AzureOperationResponse<object> RefreshUriCacheAndRetryOnFailure(string name, string resourceGroupName, Func<string, AzureOperationResponse<object>> idempotentServiceCall, bool isDefaultProvider = false, string location = "")
         {
             bool shouldRetry = false;
             AzureOperationResponse<object> serviceCallResult = null;
 
             try
             {
-                string tenantUri = GetDataPlaneUri(name, resourceGroupName, false);
+                string tenantUri = GetDataPlaneUri(name, resourceGroupName, isDefaultProvider, location, false);
                 serviceCallResult = idempotentServiceCall(tenantUri);
                 if ((int) serviceCallResult.Response.StatusCode >= 400)
                     shouldRetry = true;
@@ -265,7 +280,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
             if (shouldRetry)
             {
-                string tenantUri = GetDataPlaneUri(name, resourceGroupName, true);
+                string tenantUri = GetDataPlaneUri(name, resourceGroupName, isDefaultProvider, location, true);
                 serviceCallResult = idempotentServiceCall(tenantUri);
             }
 

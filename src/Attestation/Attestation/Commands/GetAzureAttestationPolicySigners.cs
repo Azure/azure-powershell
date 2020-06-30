@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Attestation.Models;
+using Microsoft.Azure.Commands.Attestation.Properties;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -64,21 +65,49 @@ namespace Microsoft.Azure.Commands.Attestation
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Attest uri of the attestation.
+        /// Location of the default attestation.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AttestUriParameterSet,
-            HelpMessage = "Specifies the AttestUri of an attestation provider.")]
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies the Location of the default attestation provider.")]
         [ValidateNotNullOrEmpty]
-        public string AttestUri { get; set; }
-        
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Flag for the default attestation.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies this is the request to a default attestation provider.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DefaultProvider { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            String policySignersString = AttestationDataPlaneClient.GetPolicySigners(Name, ResourceGroupName, ResourceId, AttestUri);
+            String policySignersString;
+
+            switch (ParameterSetName)
+            {
+                case DefaultProviderParameterSet:
+                    policySignersString =
+                        AttestationDataPlaneClient.GetPolicySigners(Name, ResourceGroupName, ResourceId, true, Location);
+                    break;
+
+                case NameParameterSet:
+                case ResourceIdParameterSet:
+                    policySignersString =
+                        AttestationDataPlaneClient.GetPolicySigners(Name, ResourceGroupName, ResourceId);
+                    break;
+
+                default:
+                    throw new ArgumentException(Resources.BadParameterSetName);
+            }
+
             PSPolicySigners policySigners = new PSPolicySigners(policySignersString);
             WriteObject(policySigners);
         }

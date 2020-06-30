@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Attestation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Attestation.Properties;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -27,6 +29,7 @@ namespace Microsoft.Azure.Commands.Attestation
 
         private const string NameParameterSet = "NameParameterSet";
         private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        private const string DefaultProviderParameterSet = "DefaultProviderParameterSet";
         #endregion
 
         #region Input Parameter Definitions
@@ -65,19 +68,62 @@ namespace Microsoft.Azure.Commands.Attestation
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Location of the default attestation.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies the Location of the default attestation provider.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Flag for the default attestation.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies this is the request to a default attestation provider.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DefaultProvider { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (ResourceId != null)
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                Name = resourceIdentifier.ResourceName;
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            }
+            PSAttestation attestation;
 
-            PSAttestation attestation = AttestationClient.GetAttestation(Name, ResourceGroupName);
-            this.WriteObject(attestation);
+            switch (ParameterSetName)
+            {
+                case DefaultProviderParameterSet:
+                    if (string.IsNullOrEmpty(Location))
+                    {
+                        this.WriteObject(AttestationClient.ListDefaultAttestation());
+                    }
+                    else
+                    {
+                        attestation = AttestationClient.GetDefaultAttestationByLocation(Location);
+                        this.WriteObject(attestation);
+                    }
+                    break;
+
+                case NameParameterSet:
+                case ResourceIdParameterSet:
+                    if (ResourceId != null)
+                    {
+                        var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                        Name = resourceIdentifier.ResourceName;
+                        ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    }
+                    attestation = AttestationClient.GetAttestation(Name, ResourceGroupName);
+                    this.WriteObject(attestation);
+                    break;
+
+                default:
+                    throw new ArgumentException(Resources.BadParameterSetName);
+            }
         }
     }
 }
