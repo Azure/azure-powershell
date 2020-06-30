@@ -1,9 +1,9 @@
 {
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview+1": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview",
-      "Content": "{\n  \"plan\": {\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\n    \"product\": \"OMSGallery/Containers\",\n    \"promotionCode\": \"\",\n    \"publisher\": \"Microsoft\"\n  },\n  \"properties\": {\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\"\n  },\n  \"location\": \"eastus\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview",
+      "Content": "{\n  \"plan\": {\n    \"name\": \"Containers(monitoringworkspace-clihub)\",\n    \"product\": \"OMSGallery/Containers\",\n    \"promotionCode\": \"\",\n    \"publisher\": \"Microsoft\"\n  },\n  \"properties\": {\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-clihub\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -18,32 +18,32 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "cffcb6ff-6496-4e5e-a57a-fcb1d251739c" ],
+        "x-ms-request-id": [ "a23ab4e4-d4ab-4973-a130-9b372e91e284" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "a1f5951b-9eee-449a-be98-990c66393e51" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040109Z:a1f5951b-9eee-449a-be98-990c66393e51" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:08 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
+        "x-ms-correlation-request-id": [ "4d0a2546-5a17-4412-ab14-71e41b7dcb00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065724Z:4d0a2546-5a17-4412-ab14-71e41b7dcb00" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"lastModifiedTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-sfcz4y/views/Containers(monitoringworkspace-sfcz4y)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-sfcz4y)\",\r\n  \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\"\r\n}"
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-clihub)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-clihub\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"lastModifiedTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-clihub/views/Containers(monitoringworkspace-clihub)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-clihub)\",\r\n  \"name\": \"Containers(monitoringworkspace-clihub)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\"\r\n}"
     }
   },
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview+2": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "531b60fd-f1e3-4020-b64e-b5d4909574cb" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "09dcb65e-6c02-42d2-939f-5f2a8e48670f" ],
         "CommandName": [ "Remove-AzMonitorLogAnalyticsSolution" ],
         "FullCommandName": [ "Remove-AzMonitorLogAnalyticsSolution_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,15 +60,15 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "29efc3b3-868d-4c55-8e30-9474f0134187" ],
+        "x-ms-request-id": [ "9ffd4e71-8ff8-4a8a-bfd3-50679db2f13e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "afb6dea6-2705-4511-9561-342a357a6eff" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040113Z:afb6dea6-2705-4511-9561-342a357a6eff" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:12 GMT" ]
+        "x-ms-correlation-request-id": [ "cfee0cbe-cbd1-400d-8ee0-d4e51f960286" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065727Z:cfee0cbe-cbd1-400d-8ee0-d4e51f960286" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:27 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -77,14 +77,14 @@
       "Content": null
     }
   },
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview+3": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "3e0ee419-7ec4-4393-bccf-1e1fa4008933" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "636e6078-e3c1-40e2-97bd-4f485f6e1b4f" ],
         "CommandName": [ "Get-AzMonitorLogAnalyticsSolution" ],
         "FullCommandName": [ "Get-AzMonitorLogAnalyticsSolution_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -101,29 +101,29 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "d02f9df7-80be-469e-a10c-57352dd830a2" ],
+        "x-ms-request-id": [ "37672cb6-8c5c-4082-9f2f-14b8bacac561" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "9083eebb-d031-4f51-b86c-aeb061cb9ac8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040114Z:9083eebb-d031-4f51-b86c-aeb061cb9ac8" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:13 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "d46a3b2e-a32f-4f56-834e-61d87481a41c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065727Z:d46a3b2e-a32f-4f56-834e-61d87481a41c" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1263" ],
+        "Content-Length": [ "4750" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Containers(monitoringworkspace-ab79hg)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Containers\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-ab79hg\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Sun, 28 Jun 2020 04:00:57 GMT\",\r\n        \"lastModifiedTime\": \"Sun, 28 Jun 2020 04:00:57 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-ab79hg/views/Containers(monitoringworkspace-ab79hg)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-ab79hg)\",\r\n      \"name\": \"Containers(monitoringworkspace-ab79hg)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    }\r\n  ]\r\n}"
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Containers\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Containers(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Security(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Security\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:19 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:19 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Security(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Security(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Security(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/SecurityCenterFree\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:15 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:15 GMT\",\r\n        \"containedResources\": []\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Updates(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Updates\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:22 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:22 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Updates(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Updates(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Updates(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    }\r\n  ]\r\n}"
     }
   },
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview+1": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-sfcz4y%29?api-version=2015-11-01-preview",
-      "Content": "{\n  \"plan\": {\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\n    \"product\": \"OMSGallery/Containers\",\n    \"promotionCode\": \"\",\n    \"publisher\": \"Microsoft\"\n  },\n  \"properties\": {\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\"\n  },\n  \"location\": \"eastus\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-clihub%29?api-version=2015-11-01-preview",
+      "Content": "{\n  \"plan\": {\n    \"name\": \"Containers(monitoringworkspace-clihub)\",\n    \"product\": \"OMSGallery/Containers\",\n    \"promotionCode\": \"\",\n    \"publisher\": \"Microsoft\"\n  },\n  \"properties\": {\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-clihub\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -138,32 +138,32 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "cbda6c44-9333-4496-a053-4c3c7c15135a" ],
+        "x-ms-request-id": [ "d4f9146c-25bc-445e-ab01-916781b6f4c7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "bb726185-17a0-4d39-b8d9-268a49a34b85" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040117Z:bb726185-17a0-4d39-b8d9-268a49a34b85" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:16 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "d1b40f78-e203-4b2d-96a7-18a3684a7909" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065731Z:d1b40f78-e203-4b2d-96a7-18a3684a7909" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-sfcz4y\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"lastModifiedTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-sfcz4y/views/Containers(monitoringworkspace-sfcz4y)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-sfcz4y)\",\r\n  \"name\": \"Containers(monitoringworkspace-sfcz4y)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\"\r\n}"
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-clihub)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-clihub\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"lastModifiedTime\": \"Mon, 01 Jan 0001 00:00:00 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-clihub/views/Containers(monitoringworkspace-clihub)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-clihub)\",\r\n  \"name\": \"Containers(monitoringworkspace-clihub)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\"\r\n}"
     }
   },
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-sfcz4y)?api-version=2015-11-01-preview+2": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-clihub)?api-version=2015-11-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-sfcz4y)?api-version=2015-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-clihub)?api-version=2015-11-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "bac383f0-878a-4102-9cf2-91b27000881e" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "5b49de74-f95f-416a-8f85-859b15f58a0b" ],
         "CommandName": [ "Remove-AzMonitorLogAnalyticsSolution" ],
         "FullCommandName": [ "Remove-AzMonitorLogAnalyticsSolution_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -180,15 +180,15 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "d66fc4b4-9200-4da5-b42c-66dc015bf833" ],
+        "x-ms-request-id": [ "a6245144-d914-440f-9923-bc641938f9bb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "d418cc4b-14ae-452c-83e3-f74130610756" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040120Z:d418cc4b-14ae-452c-83e3-f74130610756" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:19 GMT" ]
+        "x-ms-correlation-request-id": [ "6e4487b0-36d8-407c-8aa0-b3d98cb2751f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065733Z:6e4487b0-36d8-407c-8aa0-b3d98cb2751f" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:33 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -197,14 +197,14 @@
       "Content": null
     }
   },
-  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview+3": {
+  "Remove-AzMonitorLogAnalyticsSolution+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions?api-version=2015-11-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "62de2d6a-1eab-49af-9f7d-6ff482b9dc05" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "c7444b55-ff2c-4e7d-b7d4-134f7a32535b" ],
         "CommandName": [ "Get-AzMonitorLogAnalyticsSolution" ],
         "FullCommandName": [ "Get-AzMonitorLogAnalyticsSolution_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -221,22 +221,22 @@
         "Pragma": [ "no-cache" ],
         "X-AMS-APIVersion": [ "WebAPI1.0" ],
         "CacheControl": [ "no-cache" ],
-        "x-ms-request-id": [ "134d90f6-a1e8-4c06-bcd2-ee63bf8293f8" ],
+        "x-ms-request-id": [ "cf88beef-df84-453b-9b7e-008258558440" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "c4654d5f-d4fa-475b-a0d8-04eaaca1f885" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200628T040120Z:c4654d5f-d4fa-475b-a0d8-04eaaca1f885" ],
-        "Date": [ "Sun, 28 Jun 2020 04:01:19 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "76ae32e4-54c5-44b1-b3aa-e572607d8bac" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065734Z:76ae32e4-54c5-44b1-b3aa-e572607d8bac" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1263" ],
+        "Content-Length": [ "4750" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Containers(monitoringworkspace-ab79hg)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Containers\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-ab79hg\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Sun, 28 Jun 2020 04:00:57 GMT\",\r\n        \"lastModifiedTime\": \"Sun, 28 Jun 2020 04:00:57 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-ab79hg/views/Containers(monitoringworkspace-ab79hg)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-253bym/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-ab79hg)\",\r\n      \"name\": \"Containers(monitoringworkspace-ab79hg)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    }\r\n  ]\r\n}"
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Containers\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Containers(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Security(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Security\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:19 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:19 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Security(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Security(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Security(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/SecurityCenterFree\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:15 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:15 GMT\",\r\n        \"containedResources\": []\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"SecurityCenterFree(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    },\r\n    {\r\n      \"plan\": {\r\n        \"name\": \"Updates(monitoringworkspace-k5foa9)\",\r\n        \"publisher\": \"Microsoft\",\r\n        \"promotionCode\": \"\",\r\n        \"product\": \"OMSGallery/Updates\"\r\n      },\r\n      \"properties\": {\r\n        \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"Tue, 30 Jun 2020 06:57:22 GMT\",\r\n        \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:22 GMT\",\r\n        \"containedResources\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/microsoft.operationalinsights/workspaces/monitoringworkspace-k5foa9/views/Updates(monitoringworkspace-k5foa9)\"\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Updates(monitoringworkspace-k5foa9)\",\r\n      \"name\": \"Updates(monitoringworkspace-k5foa9)\",\r\n      \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n      \"location\": \"East US\"\r\n    }\r\n  ]\r\n}"
     }
   }
 }
