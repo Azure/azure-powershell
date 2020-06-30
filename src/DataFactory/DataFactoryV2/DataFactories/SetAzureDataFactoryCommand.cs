@@ -505,10 +505,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
-                if (InputObject.GlobalParameters != null)
-                {
-                    this.GlobalParameters = InputObject.GlobalParameters;
-                }
+                
+                this.GlobalParameters = InputObject.GlobalParameters;
             }
 
             if (!string.IsNullOrWhiteSpace(ResourceId))
