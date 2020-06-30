@@ -20,10 +20,10 @@
 ## Upcoming Release
 
 ## Version 2.0.0
-* Add Get-AzBillingAccount cmdlet
-* Add Get-AzBillingProfile cmdlet
-* Add Get-AzInvoiceSection cmdlet
-* Add new parameters in Get-AzBillingInvoice cmdlet
+* Added `Get-AzBillingAccount` cmdlet
+* Added `Get-AzBillingProfile` cmdlet
+* Added `Get-AzInvoiceSection` cmdlet
+* Added new parameters in `Get-AzBillingInvoice` cmdlet
 * Breaking changes
     - Get-AzBillingPeriod, Get-AzEnrollmentAccount cmdlets are deprecated.
 
