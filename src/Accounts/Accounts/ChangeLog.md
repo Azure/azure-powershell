@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlet `Invoke-AzRest`
+* Added new cmdlet `Invoke-AzRestMethod`
 
 ## Version 1.9.0
 * Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
