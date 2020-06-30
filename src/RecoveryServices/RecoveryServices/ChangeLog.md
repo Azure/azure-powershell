@@ -21,6 +21,7 @@
 
 ## Version 2.10.0
 * Azure Backup added support for fetching MAB items.
+* Azure Site Recovery support to update failover and test failover NIC names, existing NIC reuse.
 * Azure Site Recovery supports disk type "StandardSSD_LRS"
 
 ## Version 2.9.1

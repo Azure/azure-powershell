@@ -108,10 +108,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return null;
             }
 
-            return GetCorrespondingTypeBlobReference(blob);
+            return GetCorrespondingTypeBlobReference(blob, operationContext);
         }
 
-        public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
+        public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob, OperationContext operationContext)
         {
             CloudBlob targetBlob;
             switch (blob.Properties.BlobType)
@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             try
             {
-                Task.Run(() => targetBlob.FetchAttributesAsync()).Wait();
+                Task.Run(() => targetBlob.FetchAttributesAsync(null, null, operationContext)).Wait();
             }
             catch (AggregateException e) when (e.InnerException is StorageException)
             {
