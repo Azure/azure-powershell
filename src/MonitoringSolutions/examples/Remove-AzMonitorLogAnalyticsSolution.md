@@ -15,3 +15,11 @@ PS C:\> Remove-AzMonitorLogAnalyticsSolution -InputObject $monitor
 
 This command removes a monitor log analytics solution by object.
 
+### Example 3: Remove a monitor log analytics solution by pipeline
+```powershell
+PS C:\> $monitor = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-manual-test -Name 'Containers(monitoringworkspace-asdehu)' | Remove-AzMonitorLogAnalyticsSolution
+
+```
+
+This command removes a monitor log analytics solution by pipeline.
+
