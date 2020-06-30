@@ -32,17 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 return null;
             }
 
-            Hashtable parameters = new Hashtable();
-            parameters.Add(Constants.PsCommandParamInputObject, inputObject);
-            parameters.Add(Constants.PsCommandParamDepth, Constants.PsCommandValueDepth);
-            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertToJson, parameters);
-
-            if (result.Count != 1)
-            {
-                return null;
-            }
-
-            return result[0].ToString();
+            return JsonConvert.SerializeObject(inputObject);
         }
 
         public static PSObject Deserialize(string json)
