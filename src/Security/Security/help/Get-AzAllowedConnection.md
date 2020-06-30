@@ -25,7 +25,6 @@ Get-AzAllowedConnection -ResourceGroupName <String> -Name <String> -Location <St
 ```
 
 ### -ResourceId
-ID of the security resource that you want to invoke the command on.
 ```
 Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
