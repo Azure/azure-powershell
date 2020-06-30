@@ -52,7 +52,11 @@ input-file:
   - $(this-folder)/resources/costmanagement.json
 title: CostManagement
 module-version: 0.1.0
+
 subject-prefix: 'CostManagement'
+
+identity-correction-for-post: true
+
 directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -78,6 +82,10 @@ directive:
   - where:
       subject: Alert|AlertExternal|Dimension|ExportExecutionHistory|View
     remove: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/\^\/\(\?<scope>\[\^\/\]\+\)/g, "(?<scope>.+)");
+    # transform: $ = $.replace("^/(?<scope>[^/]+)", "(?<scope>.+)");
 
   - no-inline:
     - QueryFilter
