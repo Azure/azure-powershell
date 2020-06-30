@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
 * Update preloaded assemblies [#12024], [#11976]
 * Updated Azure.Core assembly

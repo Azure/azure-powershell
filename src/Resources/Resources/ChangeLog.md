@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
+
+## Version 2.2.0
 * Added `UsageLocation`, `GivenName`, `Surname`, `AccountEnabled`, `MailNickname`, `Mail` on `PSADUser` [#10526] [#10497]
 * Fixed issue that `-Mail` doesn't work on `Get-AzADUser` [#11981]
 * Added `-ExcludeChangeType` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`

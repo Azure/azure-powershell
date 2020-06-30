@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Fixed bug for `New-AzHpcCacheStorageTarget` and help text.
 
 ## Version 0.1.0

@@ -66,30 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (ShouldProcess(DeploymentName, VerbsData.Save))
             {
-                var resourceId = this.GetResourceId();
-
-                var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
-
-                var operationResult = this.GetResourcesClient()
-                    .InvokeActionOnResource<JObject>(
-                        resourceId: resourceId,
-                        action: Constants.ExportTemplate,
-                        apiVersion: apiVersion,
-                        cancellationToken: this.CancellationToken.Value)
-                    .Result;
-
-                var managementUri = this.GetResourcesClient()
-                    .GetResourceManagementRequestUri(
-                        resourceId: resourceId,
-                        apiVersion: apiVersion,
-                        action: Constants.ExportTemplate);
-
-                var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-                var resultString = this.GetLongRunningOperationTracker(activityName: activity,
-                    isResourceCreateOrUpdate: false)
-                    .WaitOnOperation(operationResult: operationResult);
-
-                var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+                var template = ResourceManagerSdkClient.GetDeploymentTemplateAtResourceGroup(ResourceGroupName, DeploymentName);
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.DeploymentName,
@@ -103,18 +80,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }
-        }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceId()
-        {
-            return ResourceIdUtility.GetResourceId(
-                subscriptionId: DefaultContext.Subscription.GetId(),
-                resourceGroupName: this.ResourceGroupName,
-                resourceType: Constants.MicrosoftResourcesDeploymentType,
-                resourceName: this.DeploymentName);
         }
     }
 }
