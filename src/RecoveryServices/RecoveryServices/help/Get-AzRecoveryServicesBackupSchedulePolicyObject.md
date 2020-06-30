@@ -60,7 +60,6 @@ The last command creates a backup protection policy using the new schedule.
 ### -BackupManagementType
 The class of resources being protected. The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
 - AzureStorage
 - AzureWorkload
 
@@ -68,7 +67,7 @@ The class of resources being protected. The acceptable values for this parameter
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, AzureStorage, AzureWorkload
 
 Required: False
 Position: 1
@@ -95,7 +94,6 @@ Accept wildcard characters: False
 ### -WorkloadType
 Workload type of the resource. The acceptable values for this parameter are:
 - AzureVM 
-- AzureSQLDatabase
 - AzureFiles
 - MSSQL
 
@@ -104,7 +102,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureFiles, MSSQL
 
 Required: True
 Position: 0

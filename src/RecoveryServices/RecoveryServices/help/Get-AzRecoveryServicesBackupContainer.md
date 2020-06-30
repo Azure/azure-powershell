@@ -55,7 +55,6 @@ The class of resources being protected. The acceptable values for this parameter
 
 - AzureVM
 - MARS
-- AzureSQL
 - AzureWorkload
 - AzureStorage
 
@@ -65,7 +64,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, AzureSQL, AzureWorkload, AzureStorage
+Accepted values: AzureVM, MARS, AzureWorkload, AzureStorage
 
 Required: False
 Position: 2
