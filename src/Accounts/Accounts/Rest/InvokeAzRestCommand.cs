@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ValidateNotNullOrEmpty]
         public string[] Name { get; set; }
 
-        [Parameter(ParameterSetName = ByPath, Mandatory = true, HelpMessage = "Target Uri")]
+        [Parameter(ParameterSetName = ByPath, Mandatory = true, HelpMessage = "Target Path")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
