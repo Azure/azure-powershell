@@ -61,10 +61,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
                                 "Consider using \"latest\" as the image version.");
                             }
-                    var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                            //psObject.Sku.
                             WriteObject(psObject);
                         }
                     });
