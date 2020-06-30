@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+﻿﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -275,6 +275,22 @@ Get latest invoice by BillingProfileName
 function Test-GetLatestInvoicesByBillingProfileName
 {
     $billingInvoices = Get-AzBillingInvoice -Latest -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB
+
+    Assert-NotNull $billingInvoices
+    Assert-NotNull $billingInvoices.Name
+    Assert-NotNull $billingInvoices.Status
+    Assert-NotNull $billingInvoices.BillingProfileDisplayName
+    Assert-NotNull $billingInvoices.InvoiceDate
+    Assert-Null $billingInvoices.DownloadUrl
+}
+
+<#
+.SYNOPSIS
+Get invoices by BillingProfileName with billing period start and end date.
+#>
+function Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod
+{
+    $billingInvoices = Get-AzBillingInvoice -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
 
     Assert-NotNull $billingInvoices
     Assert-NotNull $billingInvoices.Name

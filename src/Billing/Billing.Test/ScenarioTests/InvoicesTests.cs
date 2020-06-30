@@ -151,5 +151,12 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetLatestInvoicesByBillingProfileName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetModernInvoicesByBillingAccountNameBillingProfileNameBillingPeriod()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod");
+        }
     }
 }
