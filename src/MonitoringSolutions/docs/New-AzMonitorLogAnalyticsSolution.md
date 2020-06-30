@@ -35,10 +35,6 @@ Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions 
 
 This command creates a monitor log analytics solution for the log analytics workspace.
 
-Related Links
-
-[Get-AzOperationalInsightsWorkspace](https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
-
 Parameter Type support value list
 
 | Type | Description |
@@ -216,4 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
+
+
+[Get-AzOperationalInsightsWorkspace](https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
 
