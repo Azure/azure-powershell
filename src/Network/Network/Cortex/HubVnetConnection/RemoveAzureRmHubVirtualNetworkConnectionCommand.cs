@@ -110,17 +110,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            //// Get the virtual hub - this will throw not found if the resource is invalid
-            PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-
-            if (parentVirtualHub == null)
-            {
-                throw new PSArgumentException(Properties.Resources.ParentVirtualHubNotFound);
-            }
-
-            var connectionToRemove = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
-            if (connectionToRemove != null)
-            {
                 base.Execute();
 
                 ConfirmAction(
@@ -130,15 +119,13 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        parentVirtualHub.VirtualNetworkConnections.Remove(connectionToRemove);
-                        this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
+                        this.HubVirtualNetworkConnectionsClient.Delete(this.ResourceGroupName, this.ParentResourceName, this.Name);
 
                         if (PassThru)
                         {
                             WriteObject(true);
                         }
                     });
-            }
         }
     }
 }

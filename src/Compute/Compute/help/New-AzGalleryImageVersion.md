@@ -249,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountType
-Specifies the storage account type to be used to store the image. This property is not updatable. Available values are Standard_LRS and Standard_ZRS.
+Specifies the storage account type to be used to store the image. This property is not updatable. Available values are Standard_LRS, Standard_ZRS and Premium_LRS.
 
 ```yaml
 Type: System.String

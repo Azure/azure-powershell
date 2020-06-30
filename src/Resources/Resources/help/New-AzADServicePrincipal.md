@@ -128,7 +128,7 @@ principal with the **Role** and **Scope** parameters. If both are omitted, the c
 assigned to the service principal. The default values for the **Role** and **Scope** parameters are
 **Contributor** for the current subscription. The cmdlet creates an application and sets its
 properties if an ApplicationId is not provided. To update the application-specific parameters, use
-the [Set-AzADApplication](./get-azadapplication.md) cmdlet.
+the [Update-AzADApplication](./update-azadapplication.md) cmdlet.
 
 ## EXAMPLES
 

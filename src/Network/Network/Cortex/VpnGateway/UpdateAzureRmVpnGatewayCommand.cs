@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The BGP peering addresses for this VpnGateway bgpsettings.")]
+        public PSIpConfigurationBgpPeeringAddress[] BgpPeeringAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -128,6 +133,45 @@ namespace Microsoft.Azure.Commands.Network
             {
                 existingVpnGateway.Connections = new List<PSVpnConnection>();
                 existingVpnGateway.Connections.AddRange(this.VpnConnection);
+            }
+
+            //// Modify BgpPeeringAddress
+            if (this.BgpPeeringAddress != null)
+            {
+                if (existingVpnGateway.BgpSettings == null)
+                {
+                    existingVpnGateway.BgpSettings = new PSBgpSettings();
+                }
+
+                if (existingVpnGateway.BgpSettings.BgpPeeringAddresses == null)
+                {
+                    existingVpnGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                    foreach (var address in this.BgpPeeringAddress)
+                    {
+                        existingVpnGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                    }
+                }
+                else
+                {
+                    foreach (var address in this.BgpPeeringAddress)
+                    {
+                        bool isGatewayIpConfigurationExists = existingVpnGateway.BgpSettings.BgpPeeringAddresses.Any(
+                        ipconfaddress => ipconfaddress.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                        if (isGatewayIpConfigurationExists)
+                        {
+                            var bgpPeeringPropertiesInRequest = existingVpnGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
+                                x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                            bgpPeeringPropertiesInRequest.CustomBgpIpAddresses = address.CustomBgpIpAddresses;
+                        }
+                        else
+                        {
+                            existingVpnGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                        }
+                    }
+                }
             }
 
             ConfirmAction(

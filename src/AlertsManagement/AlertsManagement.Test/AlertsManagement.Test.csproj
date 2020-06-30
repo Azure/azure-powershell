@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="0.9.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="0.9.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

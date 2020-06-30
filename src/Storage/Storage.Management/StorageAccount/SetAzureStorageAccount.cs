@@ -317,6 +317,43 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ActiveDirectoryAzureStorageSid { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow or disallow public access to all blobs or containers in the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowBlobPublicAccess
+        {
+            get
+            {
+                return allowBlobPublicAccess.Value;
+            }
+            set
+            {
+                allowBlobPublicAccess = value;
+            }
+        }
+        private bool? allowBlobPublicAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage.")]
+        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
+            StorageModels.MinimumTlsVersion.TLS11,
+            StorageModels.MinimumTlsVersion.TLS12,
+            IgnoreCase = true)]
+        public string MinimumTlsVersion
+        {
+            get
+            {
+                return minimumTlsVersion;
+            }
+            set
+            {
+                minimumTlsVersion = value;
+            }
+        }
+        private string minimumTlsVersion = null;
+
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -486,6 +523,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
                     { 
                         updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
+                    if (this.minimumTlsVersion != null)
+                    {
+                        updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
+                    }
+                    if (this.allowBlobPublicAccess != null)
+                    {
+                        updateParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

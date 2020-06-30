@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.0
+* Updated Az.Batch to use `Microsoft.Azure.Management.Batch` SDK version to 11.0.0
+* Added the ability to set the BatchAccount Identity in the `New-AzBatchAccount` cmdlet
+
 ## Version 3.0.0
 * Updated Az.Batch to use `Microsoft.Azure.Batch` SDK version 13.0.0 and `Microsoft.Azure.Management.Batch` SDK version 9.0.0.
 * Added the ability to select the kind of certificate being added using the new `-CertificateKind` parameter to `New-AzBatchCertificate`.

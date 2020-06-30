@@ -14,15 +14,14 @@ Azure Security Center gives you control over the security of your Azure subscrip
 ### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
 Dismiss Iot aggregated alert
 
-## Az.Security Cmdlets
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
-Disables the advanced threat protection policy for a storage account.
+Disables the advanced threat protection policy for a storage / cosmosDB account.
 
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
-Enables the advanced threat protection policy for a storage account.
+Enables the advanced threat protection policy for a storage / cosmosDB account.
 
 ### [Get-AzDeviceSecurityGroup](Get-AzDeviceSecurityGroup.md)
-Get device security group - IoT Hub security
+Get device security group (IoT Hub security)
 
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
 Gets security solutions that were discovered by Azure Security Center
@@ -40,13 +39,22 @@ Get IoT security aggregated alert
 Get IoT security aggregated recommendation
 
 ### [Get-AzIotSecuritySolution](Get-AzIotSecuritySolution.md)
-Get IoT security solution of IoT Hub
+Get IoT security solution
 
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
 
+### [Get-AzRegulatoryComplainceAssessment](Get-AzRegulatoryComplainceAssessment.md)
+Gets regulatory compliance assessments
+
+### [Get-AzRegulatoryComplianceControl](Get-AzRegulatoryComplianceControl.md)
+Gets regulatory compliance controls
+
+### [Get-AzRegulatoryComplianceStandard](Get-AzRegulatoryComplianceStandard.md)
+Gets regulatoey compliance standards
+
 ### [Get-AzSecurityAdvancedThreatProtection](Get-AzSecurityAdvancedThreatProtection.md)
-Gets the advanced threat protection policy for a storage account.
+Gets the advanced threat protection policy for a storage / cosmosDB account.
 
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
 Gets security alerts that were detected by Azure Security Center
@@ -99,9 +107,6 @@ Delete device security group
 ### [Remove-AzIotSecuritySolution](Remove-AzIotSecuritySolution.md)
 Delete IoT security solution
 
-### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
-Gets the SQL information protection policy.
-
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 Deletes a JIT network access policy.
 
@@ -136,7 +141,7 @@ Sets the pricing of Azure Security Center tier for a scope.
 Updates the workspace settings for the subscription.
 
 ### [Set-AzSqlInformationProtectionPolicy](Set-AzSqlInformationProtectionPolicy.md)
-Sets the SQL information protection policy.
+Sets the effective tenant SQL information protection policy.
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 Invokes a temporary network access request.
@@ -158,3 +163,6 @@ Gets security settings in Azure Security Center
 
 ### [Set-AzSecuritySetting](Set-AzSecuritySetting.md)
 Sets a security setting in Azure Security Center
+
+### [Get-AzSecurityTopology](Get-AzSecurityTopology.md)
+Gets a list of Security Topology on a subscription

@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
             return new AllowlistCustomAlertRule()
             {
                 AllowlistValues = value.AllowlistValues,
-                IsEnabled = value.IsEnabled,
+                IsEnabled = value.IsEnabled
             };
         }
 

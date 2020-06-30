@@ -205,6 +205,10 @@ switch ($PSCmdlet.ParameterSetName)
                         $JsonFile = $NestedModule.Replace(".\", "") + ".json"
                         $ExpectJsonHashSet.Add($JsonFile, $true)
                     }
+                    if($null -eq $Psd1Object.NestedModules)
+                    {
+                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
+                    }
                 }
             }
         }

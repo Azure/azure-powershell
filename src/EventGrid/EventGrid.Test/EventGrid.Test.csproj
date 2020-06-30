@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>EventGrid</PsModuleName>
@@ -12,10 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.5.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.0" />
     <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.2" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.1.0" />
   </ItemGroup>
 
 </Project>

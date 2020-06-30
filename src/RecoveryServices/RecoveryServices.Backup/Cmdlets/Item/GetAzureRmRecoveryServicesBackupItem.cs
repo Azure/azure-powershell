@@ -132,22 +132,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = null;
+                List<ItemBase> itemModels = null;
 
-                if (this.ParameterSetName == GetItemsForVaultParamSet)
+                if (BackupManagementType == BackupManagementType.MAB)
                 {
-                    psBackupProvider =
-                        providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
-                }
-                else if (this.ParameterSetName == GetItemsForContainerParamSet)
-                {
-                    psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
-                    (Container as ManagementContext).BackupManagementType);
+                    AzureWorkloadProviderHelper provider = new AzureWorkloadProviderHelper(ServiceClientAdapter);
+                    itemModels = provider.GetMABProtectedItems(vaultName, resourceGroupName);
                 }
                 else
                 {
-                    psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType);
+                    if (this.ParameterSetName == GetItemsForVaultParamSet)
+                    {
+                        psBackupProvider =
+                            providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                    }
+                    else if (this.ParameterSetName == GetItemsForContainerParamSet)
+                    {
+                        psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
+                        (Container as ManagementContext).BackupManagementType);
+                    }
+                    else
+                    {
+                        psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType);
+                    }
+                    itemModels = psBackupProvider.ListProtectedItems();
                 }
-                var itemModels = psBackupProvider.ListProtectedItems();
 
                 WriteObject(itemModels, enumerateCollection: true);
             });

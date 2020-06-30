@@ -231,7 +231,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
             }
 
-            WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+            try
+            {
+                WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+            }
+            catch (Exception e)
+            {
+                if(e.Message.Contains("Operation returned an invalid status code \'BadRequest\'"))
+                {
+                    var message = e.Message + "\nIf AppServicePlan is present in other resourceGroup, please provide AppServicePlan in following format : \" /subscriptions/{subscriptionId}/resourcegroups/{resourcegroupName}/providers/Microsoft.Web/serverfarms/{serverFarmName}\"";
+                    WriteObject(message);
+                    throw new Exception(message, e);
+                }
+                throw e;
+            }
 
             if (cloneWebAppSlots)
             {
@@ -318,17 +331,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
                 if (_cmdlet.ContainerRegistryUrl != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryUser != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryPassword != null)
                 {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
                     newConfigAdded = true;
                 }
                 if (_cmdlet.EnableContainerContinuousDeployment.IsPresent)

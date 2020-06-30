@@ -68,6 +68,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false)]
+        public SwitchParameter Linux { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (HyperV.IsPresent && Tier != "PremiumContainer")
@@ -113,7 +116,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent,
-                Tags= (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag)
+                Tags= (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
+                Reserved = Linux.IsPresent
             };
 
             AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);

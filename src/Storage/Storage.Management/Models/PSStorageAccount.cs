@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
             this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
+            this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
+            this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -125,6 +127,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
 
         public PSGeoReplicationStats GeoReplicationStats { get; set; }
+
+        public bool? AllowBlobPublicAccess { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

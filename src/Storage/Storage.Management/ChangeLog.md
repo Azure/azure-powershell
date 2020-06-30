@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that UserAgent not added for some dataplane cmdlets.
+* Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+
+## Version 2.2.0
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  `New-AzStorageAccount`
+* Moved the logic of loading Azure.Core to Az.Accounts
 
 ## Version 2.1.1
 * Support get single file share usage
