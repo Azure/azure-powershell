@@ -1,3 +1,8 @@
+$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+if (-Not (Test-Path -Path $loadEnvPath)) {
+    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+}
+. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMonitorLogAnalyticsSolution.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -8,18 +13,23 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMonitorLogAnalyticsSolution' {
     It 'List1' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $monitorList = Get-AzMonitorLogAnalyticsSolution 
+        $monitorList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $monitor = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+        $monitor.Name | Should -Be $env.monitorName01
     }
 
     It 'List' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $monitorList = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName $env.resourceGroup
+        $monitorList.Count | Should -Be 1
     }
 
     It 'GetViaIdentity' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $monitor = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+        $newMonitor = Get-AzMonitorLogAnalyticsSolution -InputObject $monitor
+        $newMonitor.Name | Should -Be $env.monitorName01
     }
 }
