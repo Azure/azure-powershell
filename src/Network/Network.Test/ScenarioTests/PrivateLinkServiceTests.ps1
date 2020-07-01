@@ -260,28 +260,3 @@ function Test-StoragePrivateEndpoint
         Clean-ResourceGroup $rgname;
     }
 }
-
-<#
-.SYNOPSIS
-Test operation for DBforMySQLPrivateEndpoint.
-#>
-function Test-DBforMySQLPrivateEndpoint
-{
-    # Setup
-    $rgname = Get-ResourceGroupName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus";
-    $peName = "mype";
-    $name = "testdbmysql";
-    $subId = getSubscription
-
-    try
-    {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
-
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
