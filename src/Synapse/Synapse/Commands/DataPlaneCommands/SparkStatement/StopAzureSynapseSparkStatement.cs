@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkStatement, DefaultParameterSetName = StopSparkStatementByIdParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class StopAzureSynapseSparkStatement : SynapseCmdletBase
+    public class StopAzureSynapseSparkStatement : SynapseSparkCmdletBase
     {
         private const string StopSparkStatementByIdParameterSetName = "StopSparkStatementByIdParameterSet";
         private const string StopSparkStatementByIdFromParentObjectParameterSet = "StopSparkStatementByIdFromParentObjectParameterSet";
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopSparkStatementByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = StopSparkStatementByIdFromParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SessionObject)]
