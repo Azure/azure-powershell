@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+* Fixed an issue that may cause authentication errors in multi-process scenarios such as running multiple Azure PowerShell cmdlets using `Start-Job` [#9448]
+
+## Version 1.9.0
+* Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
+* Update preloaded assemblies [#12024], [#11976]
+* Updated Azure.Core assembly
+* Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
+
 ## Version 1.8.1
 * Fixed an issue that may cause Az to skip logs in Azure Automation or PowerShell jobs [#11492]
 

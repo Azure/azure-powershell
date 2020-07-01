@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Net;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    public class HubVnetConnectionBaseCmdlet : VirtualHubBaseCmdlet
+    public class HubVnetConnectionBaseCmdlet : NetworkBaseCmdlet
     {
         public IHubVirtualNetworkConnectionsOperations HubVirtualNetworkConnectionsClient
         {
@@ -37,6 +37,26 @@ namespace Microsoft.Azure.Commands.Network
             var psVirtualHubVirtualNetworkConnection = NetworkResourceManagerProfile.Mapper.Map<PSHubVirtualNetworkConnection>(hubConnection);
 
             return psVirtualHubVirtualNetworkConnection;
+        }
+
+        public PSHubVirtualNetworkConnection CreateOrUpdateHubVirtualNetworkConnection(string resourceGroupName, string virtualHubName, string connectionName, MNM.HubVirtualNetworkConnection hubVirtualNetworkConnectionParameters,  Dictionary<string, List<string>> customHeaders = null)
+        {
+            MNM.HubVirtualNetworkConnection hubVnetConnCreated;
+
+            if (customHeaders == null)
+            {
+                hubVnetConnCreated = this.HubVirtualNetworkConnectionsClient.CreateOrUpdate(resourceGroupName, virtualHubName, connectionName, hubVirtualNetworkConnectionParameters);
+            }
+            else
+            {
+                // Execute the create call and pass the custom headers. 
+                using (var _result = this.HubVirtualNetworkConnectionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, hubVirtualNetworkConnectionParameters, customHeaders).GetAwaiter().GetResult())
+                {
+                    hubVnetConnCreated = _result.Body;
+                }
+            }
+
+            return this.ToPsHubVirtualNetworkConnection(hubVnetConnCreated);
         }
 
         public PSHubVirtualNetworkConnection GetHubVirtualNetworkConnection(string resourceGroupName, string virtualHubName, string name)

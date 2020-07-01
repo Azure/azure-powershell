@@ -154,6 +154,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Custom Dns Servers.")]
+        public string[] CustomDnsServer { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this P2SVpnGateway P2SConnectionConfiguration")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -217,6 +228,41 @@ namespace Microsoft.Azure.Commands.Network
                         p2sConnectionConfig
                     };
                 }
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes!= null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                if (existingP2SVpnGateway.P2SConnectionConfigurations != null && existingP2SVpnGateway.P2SConnectionConfigurations.Any())
+                {
+                    existingP2SVpnGateway.P2SConnectionConfigurations[0].RoutingConfiguration = RoutingConfiguration;
+                }
+                else
+                {
+                    PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
+                    {
+                        Name = P2SConnectionConfigurationName,
+                        RoutingConfiguration = RoutingConfiguration
+                    };
+                    existingP2SVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
+                    {
+                        p2sConnectionConfig
+                    };
+                }
+            }
+
+            // Set the custom dns servers, if it is specified by customer.
+            if (CustomDnsServer != null && this.CustomDnsServer.Any())
+            {
+                existingP2SVpnGateway.CustomDnsServers = CustomDnsServer?.ToList();
+            }
+            else
+            {
+                existingP2SVpnGateway.CustomDnsServers = null;
             }
 
             //// Resolve the VpnServerConfiguration, if specified

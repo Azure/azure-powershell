@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -728,7 +728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AliasPrimaryConnectionString": "System.String",
               "AliasSecondaryConnectionString": "System.String",
@@ -1438,7 +1438,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -2096,7 +2096,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessSignatureAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessSignatureAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessSignatureAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SharedAccessSignature": "System.String"
             },
@@ -2499,7 +2499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AliasPrimaryConnectionString": "System.String",
               "AliasSecondaryConnectionString": "System.String",
@@ -3930,7 +3930,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -4078,7 +4078,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -4328,7 +4328,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -4577,7 +4577,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -4774,7 +4774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
@@ -4948,7 +4948,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -5090,7 +5090,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Subnet": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]"
@@ -5394,7 +5394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Subnet": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
                     "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]"
@@ -5568,7 +5568,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -6038,7 +6038,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -6162,7 +6162,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpMask": "System.String",
               "Action": "System.String"
@@ -6526,7 +6526,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpMask": "System.String",
                     "Action": "System.String"
@@ -6853,21 +6853,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7157,21 +7161,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+                    "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
                     "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+                    "ZoneRedundant": "System.Nullable`1[System.Boolean]",
                     "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
                     "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-                    "ResourceGroup": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Location": "System.String",
+                    "ServiceBusEndpoint": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ClusterArmId": "System.String",
                     "ProvisioningState": "System.String",
-                    "ServiceBusEndpoint": "System.String"
+                    "ResourceGroup": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7539,7 +7547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -7663,7 +7671,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Subnet": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]"
@@ -8027,7 +8035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Subnet": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
                     "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]"
@@ -8297,7 +8305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -8421,7 +8429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
             "GenericTypeArguments": [],
@@ -8441,7 +8449,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
             "GenericTypeArguments": [],
@@ -8459,7 +8467,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -8633,7 +8641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -8824,7 +8832,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
                   "GenericTypeArguments": [],
@@ -8850,7 +8858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[], Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
                   "GenericTypeArguments": [],
@@ -9087,7 +9095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -9428,7 +9436,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -9559,7 +9567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -9830,7 +9838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
                     "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -10282,7 +10290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -10613,7 +10621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
                     "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -10996,7 +11004,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -11127,7 +11135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
               "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -11398,7 +11406,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CaptureDescription": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
                     "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
@@ -11773,7 +11781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
@@ -11915,7 +11923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpMask": "System.String",
               "Action": "System.String"
@@ -12219,7 +12227,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpMask": "System.String",
                     "Action": "System.String"
@@ -12393,7 +12401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -12499,21 +12507,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12759,21 +12771,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+                    "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
                     "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+                    "ZoneRedundant": "System.Nullable`1[System.Boolean]",
                     "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
                     "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-                    "ResourceGroup": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Location": "System.String",
+                    "ServiceBusEndpoint": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ClusterArmId": "System.String",
                     "ProvisioningState": "System.String",
-                    "ServiceBusEndpoint": "System.String"
+                    "ResourceGroup": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13069,7 +13085,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -13175,21 +13191,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13561,21 +13581,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+                    "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
                     "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+                    "ZoneRedundant": "System.Nullable`1[System.Boolean]",
                     "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
                     "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-                    "ResourceGroup": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Location": "System.String",
+                    "ServiceBusEndpoint": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ClusterArmId": "System.String",
                     "ProvisioningState": "System.String",
-                    "ServiceBusEndpoint": "System.String"
+                    "ResourceGroup": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14160,7 +14184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -14486,7 +14510,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -14941,7 +14965,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -15225,7 +15249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -15608,7 +15632,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -15892,7 +15916,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.RoleDisasterRecovery]",
@@ -16202,7 +16226,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -16586,7 +16610,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -17063,7 +17087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -17417,7 +17441,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -17797,7 +17821,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
@@ -18177,7 +18201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reason": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes]",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
@@ -18588,21 +18612,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18836,21 +18864,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19056,6 +19088,60 @@
         },
         {
           "Name": "EnableKafka",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ZoneRedundant",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ClusterARMId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Identity",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -19309,6 +19395,78 @@
             {
               "ParameterMetadata": {
                 "Name": "EnableKafka",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ZoneRedundant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ClusterARMId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Identity",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -19602,6 +19760,78 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ZoneRedundant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ClusterARMId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Identity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "AliasList": [],
                 "Type": {
@@ -19739,21 +19969,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20043,21 +20277,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+                    "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
                     "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+                    "ZoneRedundant": "System.Nullable`1[System.Boolean]",
                     "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+                    "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
                     "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-                    "ResourceGroup": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Location": "System.String",
+                    "ServiceBusEndpoint": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ClusterArmId": "System.String",
                     "ProvisioningState": "System.String",
-                    "ServiceBusEndpoint": "System.String"
+                    "ResourceGroup": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20425,21 +20663,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
             "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Encryption": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+              "Identity": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
               "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
+              "ZoneRedundant": "System.Nullable`1[System.Boolean]",
               "KafkaEnabled": "System.Nullable`1[System.Boolean]",
+              "IsAutoInflateEnabled": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "MaximumThroughputUnits": "System.Nullable`1[System.Int32]",
-              "ResourceGroup": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Location": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ClusterArmId": "System.String",
               "ProvisioningState": "System.String",
-              "ServiceBusEndpoint": "System.String"
+              "ResourceGroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20593,7 +20835,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -20673,6 +20915,80 @@
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Identity",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "IdentityUserDefined",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "KeySource",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "KeyProperty",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[System.String[]]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.String[]"
+            ],
             "Methods": [],
             "Constructors": []
           },
@@ -20854,7 +21170,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -20908,6 +21224,104 @@
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Identity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IdentityUserDefined",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeySource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "System.Collections.Generic.List`1[System.String[]]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.String[]"
+                  ],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -21100,7 +21514,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -21196,6 +21610,398 @@
             {
               "ParameterMetadata": {
                 "Name": "EnableKafka",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Identity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IdentityUserDefined",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeySource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "System.Collections.Generic.List`1[System.String[]]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.String[]"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "IdentityUpdateParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "NamespaceName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SkuName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Basic",
+                  "Standard",
+                  "Premium"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SkuCapacity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Int32]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 4,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 6,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableAutoInflate",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaximumThroughputUnits",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Int32]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 20,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableKafka",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Identity",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -21673,7 +22479,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21685,7 +22491,7 @@
     "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes": {
       "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
       "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IpMask": "System.String",
         "Action": "System.String"
@@ -21750,7 +22556,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21762,7 +22568,7 @@
     "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes": {
       "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
       "Name": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Subnet": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
         "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]"
@@ -21827,7 +22633,7 @@
     "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes": {
       "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
       "Name": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSSubnetAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String"
       },
@@ -21890,23 +22696,80 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.EventHub.Models.Sku": {
+    "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes": {
+      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
+      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "KeyVaultProperties": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties]",
+        "KeySource": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.KeySource]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "resEncryption",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties": {
       "Namespace": "Microsoft.Azure.Management.EventHub.Models",
-      "Name": "Microsoft.Azure.Management.EventHub.Models.Sku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.Sku, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.KeyVaultProperties, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Capacity": "System.Nullable`1[System.Int32]",
-        "Tier": "System.String",
-        "Name": "System.String"
+        "KeyName": "System.String",
+        "KeyVaultUri": "System.String",
+        "KeyVersion": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
         {
           "Name": "ToString",
           "Parameters": [],
@@ -21944,177 +22807,37 @@
           "ReturnType": null,
           "Parameters": [
             {
-              "Name": "name",
+              "Name": "keyName",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "tier",
+              "Name": "keyVaultUri",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "capacity",
+              "Name": "keyVersion",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
         }
       ]
     },
-    "System.Nullable`1[System.Int32]": {
+    "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.KeySource]": {
       "Namespace": "System",
-      "Name": "System.Nullable`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.KeySource]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.EventHub.Models.KeySource, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.Int32"
+        "Microsoft.Azure.Management.EventHub.Models.KeySource"
       ],
       "Methods": [],
       "Constructors": []
     },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.DateTime"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes": {
-      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
-      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Destination": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes",
-        "Encoding": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "SkipEmptyArchives": "System.Nullable`1[System.Boolean]",
-        "IntervalInSeconds": "System.Nullable`1[System.Int32]",
-        "SizeLimitInBytes": "System.Nullable`1[System.Int32]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "captureDescResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes": {
-      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
-      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Name": "System.String",
-        "StorageAccountResourceId": "System.String",
-        "BlobContainer": "System.String",
-        "ArchiveNameFormat": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "destinationResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription": {
-      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
-      "Name": "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Management.EventHub.Models.KeySource": {
+      "Namespace": "Microsoft.Azure.Management.EventHub.Models",
+      "Name": "Microsoft.Azure.Management.EventHub.Models.KeySource",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.KeySource, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22214,6 +22937,480 @@
       "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes": {
+      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
+      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Type": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.IdentityType]",
+        "TenantId": "System.String",
+        "PrincipalId": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "resIdentity",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.IdentityType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.IdentityType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.EventHub.Models.IdentityType, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.EventHub.Models.IdentityType"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.EventHub.Models.IdentityType": {
+      "Namespace": "Microsoft.Azure.Management.EventHub.Models",
+      "Name": "Microsoft.Azure.Management.EventHub.Models.IdentityType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.IdentityType, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.EventHub.Models.Sku": {
+      "Namespace": "Microsoft.Azure.Management.EventHub.Models",
+      "Name": "Microsoft.Azure.Management.EventHub.Models.Sku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.Sku, Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Capacity": "System.Nullable`1[System.Int32]",
+        "Tier": "System.String",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "tier",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "capacity",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes": {
+      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
+      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Destination": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes",
+        "Encoding": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "SkipEmptyArchives": "System.Nullable`1[System.Boolean]",
+        "IntervalInSeconds": "System.Nullable`1[System.Int32]",
+        "SizeLimitInBytes": "System.Nullable`1[System.Int32]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "captureDescResource",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes": {
+      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
+      "Name": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Name": "System.String",
+        "StorageAccountResourceId": "System.String",
+        "BlobContainer": "System.String",
+        "ArchiveNameFormat": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "destinationResource",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription": {
+      "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
+      "Name": "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
       "Constructors": []
     },
     "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": {
@@ -22552,7 +23749,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22564,7 +23761,7 @@
     "Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes": {
       "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
       "Name": "Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.UnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22659,7 +23856,7 @@
     "Microsoft.Azure.Commands.EventHub.Models.NamespaceState": {
       "Namespace": "Microsoft.Azure.Commands.EventHub.Models",
       "Name": "Microsoft.Azure.Commands.EventHub.Models.NamespaceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22749,6 +23946,16 @@
           "ReturnType": "System.Type"
         }
       ],
+      "Constructors": []
+    },
+    "System.String[]": {
+      "Namespace": "System",
+      "Name": "System.String[]",
+      "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": "System.String",
+      "GenericTypeArguments": [],
+      "Methods": [],
       "Constructors": []
     }
   }

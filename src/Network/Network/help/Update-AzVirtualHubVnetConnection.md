@@ -15,20 +15,20 @@ Updates an existing HubVirtualNetworkConnection.
 ### ByHubVirtualNetworkConnectionName (Default)
 ```
 Update-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionObject
 ```
 Update-AzVirtualHubVnetConnection -InputObject <PSHubVirtualNetworkConnection>
- -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionResourceId
 ```
-Update-AzVirtualHubVnetConnection -ResourceId <String> -EnableInternetSecurity <Boolean> [-AsJob]
+Update-AzVirtualHubVnetConnection -ResourceId <String> [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,6 +52,22 @@ Id                     : /subscriptions/{subscriptionId}/resourceGroups/testRG/p
 RemoteVirtualNetwork   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 EnableInternetSecurity : True
 ProvisioningState      : Succeeded
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection is also created which is peer the Virtual Network to the Virtual Hub. This Virtual Network Connection is then updated to enable internet security.
@@ -93,7 +109,7 @@ Enable internet security for this connection.
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,6 +186,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RoutingConfiguration
+Routing configuration for this connection
+
+```yaml
+Type: PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -215,3 +246,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)

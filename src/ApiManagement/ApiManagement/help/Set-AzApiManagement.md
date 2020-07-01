@@ -24,7 +24,7 @@ The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ## EXAMPLES
 
-### Example 1 Get an API Management service and scale it to Premium and Add a region
+### Example 1: Get an API Management service and scale it to Premium and Add a region
 ```powershell
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.Sku = "Premium"

@@ -20,8 +20,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
  [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
- [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -34,8 +35,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>] [-AsJob]
- [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,9 +105,9 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 
 This command creates a Storage account withenable Files Active Directory Domain Service Authentication.
 
-### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key.
+### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key, and Require Infrastructure Encryption.
 ```
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
 
 PS C:\>$account = get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName
 
@@ -120,11 +122,28 @@ PS C:\>$account.Encryption.Services.Table
 Enabled LastEnabledTime     KeyType
 ------- ---------------     -------
    True 1/9/2020 6:09:11 AM Account
+
+PS C:\> $account.Encryption.RequireInfrastructureEncryption
+True
 ```
 
-This command creates a Storage account with Queue and Table Service use account-scoped encryption key, so Queue and Table will use same encryption key with Blob and File service. Then get the Storage account properties, and view the encryption keytype of Queue and Table Service.
+This command creates a Storage account with Queue and Table Service use account-scoped encryption key and Require Infrastructure Encryption, so Queue and Table will use same encryption key with Blob and File service, and the service will apply a secondary layer of encryption with platform managed keys for data at rest.
+Then get the Storage account properties, and view the encryption keytype of Queue and Table Service, and RequireInfrastructureEncryption value.
 
-### Example 9: Create a Storage account with RoutingPreference setting
+### Example 9: Create account MinimumTlsVersion  and AllowBlobPublicAccess
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false
+
+PS C:\> $account.MinimumTlsVersion
+TLS1_1
+
+PS C:\> $account.AllowBlobPublicAccess
+False
+```
+
+The command create account with MinimumTlsVersion  and AllowBlobPublicAccess, and then show the the 2 properties of the created account 
+
+### Example 10: Create a Storage account with RoutingPreference setting
 ```powershell
 PS C:\>$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting
 
@@ -253,6 +272,21 @@ Specifies the NetBIOS domain name. This parameter must be set when -EnableActive
 ```yaml
 Type: System.String
 Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowBlobPublicAccess
+Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -475,6 +509,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MinimumTlsVersion
+The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: TLS1_0, TLS1_1, TLS1_2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Storage account to create.
 
@@ -535,6 +585,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequireInfrastructureEncryption
+The service will apply a secondary layer of encryption with platform managed keys for data at rest.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group in which to add the Storage account.
 
@@ -557,6 +622,7 @@ Routing Choice defines the kind of network routing opted by the user. Possible v
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: MicrosoftRouting, InternetRouting
 
 Required: False
 Position: Named
@@ -622,7 +688,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

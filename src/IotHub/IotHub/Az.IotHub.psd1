@@ -53,12 +53,16 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.IotHub.dll', 
                'Microsoft.Azure.Devices.Shared.dll', 'Microsoft.Azure.Devices.dll', 
-               'Microsoft.Azure.Amqp.dll'
+               'Microsoft.Azure.Amqp.dll','Microsoft.Azure.Devices.Client.dll',
+               'DotNetty.Codecs.Mqtt.dll','DotNetty.Buffers.dll','DotNetty.Common.dll',
+               'Microsoft.Extensions.Logging.dll','Microsoft.Extensions.DependencyInjection.Abstractions.dll',
+               'Microsoft.Extensions.Logging.Abstractions.dll','DotNetty.Codecs.dll',
+               'DotNetty.Transport.dll','DotNetty.Handlers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -110,7 +114,8 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Invoke-AzIotHubConfigurationMetricsQuery', 
                'Add-AzIotHubDeployment', 'Get-AzIotHubDeployment', 
                'Remove-AzIotHubDeployment', 'Set-AzIotHubDeployment', 
-               'Invoke-AzIotHubDeploymentMetricsQuery', 'Set-AzIotHubEdgeModule'
+               'Invoke-AzIotHubDeploymentMetricsQuery', 'Set-AzIotHubEdgeModule',
+               'Send-AzIotHubDevice2CloudMessage'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -122,7 +127,8 @@ AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG',
                'Set-AzIotHubMsgEnrich', 'Get-AzIotHubDCS', 'Get-AzIotHubMCS', 
                'Add-AzIotHubDCL', 'Remove-AzIotHubDCL', 'Get-AzIotHubDCL', 
                'Get-AzIotHubTracing', 'Set-AzIotHubTracing', 
-               'Invoke-AzIotHubConfigMetric', 'Invoke-AzIotHubDeployMetric'
+               'Invoke-AzIotHubConfigMetric', 'Invoke-AzIotHubDeployMetric',
+               'Send-AzIotHubD2CMessage'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

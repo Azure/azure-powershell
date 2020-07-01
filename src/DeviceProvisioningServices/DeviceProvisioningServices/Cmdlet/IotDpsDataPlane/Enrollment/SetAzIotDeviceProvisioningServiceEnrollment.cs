@@ -239,8 +239,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                             apiVersion = this.IsParameterBound(c => c.ApiVersion) ? this.ApiVersion : enrollment.CustomAllocationDefinition.ApiVersion;
 
                             enrollment.CustomAllocationDefinition = new CustomAllocationDefinition() { WebhookUrl = webhookUrl, ApiVersion = apiVersion };
-                            enrollment.IotHubs = null;
                             enrollment.IotHubHostName = null;
+                            if (this.IsParameterBound(c => c.IotHub))
+                            {
+                                enrollment.IotHubs = this.IotHub;
+                            }
                             break;
                         case Devices.Provisioning.Service.AllocationPolicy.Hashed:
                         case Devices.Provisioning.Service.AllocationPolicy.GeoLatency:

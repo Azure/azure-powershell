@@ -29,8 +29,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("destinationAddresses")]
         public List<string> DestinationAddresses { get; set; }
 
+        [JsonProperty("sourceIpGroups")]
+        public List<string> SourceIpGroups { get; set; }
+
+        [JsonProperty("destinationIpGroups")]
+        public List<string> DestinationIpGroups { get; set; }
+
         [JsonProperty("destinationPorts")]
         public List<string> DestinationPorts { get; set; }
+
+        [JsonProperty("destinationFqdns")]
+        public List<string> DestinationFqdns { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
@@ -51,9 +60,27 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
         public string DestinationPortsText
         {
             get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationFqdnsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationFqdns, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType)

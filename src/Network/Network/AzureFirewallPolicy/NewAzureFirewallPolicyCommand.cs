@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -66,9 +62,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The whitelist for Threat Intelligence")]
+        public PSAzureFirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
+
+       [Parameter(
+            Mandatory = false,
+            HelpMessage = "The DNS Setting")]
+        public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,17 +110,19 @@ namespace Microsoft.Azure.Commands.Network
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
 
-            var firewall = new PSAzureFirewallPolicy()
+            var firewallPolicy = new PSAzureFirewallPolicy()
             {
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null
+                ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
+                DnsSettings = this.DnsSetting
             };
 
             // Map to the sdk object
-            var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
+            var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
             azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create AzureFirewall call
