@@ -2371,6 +2371,8 @@ function Test-VirtualMachineScaleSetAutoRepair
         Clean-ResourceGroup $rgname
     }
 
+}
+
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set warning if not using latest image version
