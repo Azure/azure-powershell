@@ -30,6 +30,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Linq;
 using System.Collections;
 using FluentAssertions;
+using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {

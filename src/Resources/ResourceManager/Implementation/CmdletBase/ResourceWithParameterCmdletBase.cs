@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
 
         protected const string TemplateSpecResourceIdParameterSetName = "ByTemplateSpecResourceId";
+        protected const string TemplateSpecResourceIdParameterFileParameterSetName = "ByTemplateSpecResourceIdAndParams";
+        protected const string TemplateSpecResourceIdParameterUriParameterSetName = "ByTemplateSpecResourceIdAndParamsUri";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
@@ -70,6 +72,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
@@ -78,6 +82,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterUri { get; set; }
@@ -116,6 +122,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string TemplateUri { get; set; }
 
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
         [ValidateNotNullOrEmpty]
         public string TemplateSpecId { get; set; }
