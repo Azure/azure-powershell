@@ -127,7 +127,7 @@
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
   <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
-    <value>Changing public environment is not supported.</value>
+    <value>Changing built-in or discovered environment is not supported.</value>
   </data>
   <data name="CredentialOrganizationIdMessage" xml:space="preserve">
     <value>-Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account.</value>
@@ -190,7 +190,7 @@
     <value>&amp;whr={0}</value>
   </data>
   <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
-    <value>Removing public environment is not supported.</value>
+    <value>Removing built-in or discovered environment is not supported.</value>
   </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
     <value>Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzAccount.</value>

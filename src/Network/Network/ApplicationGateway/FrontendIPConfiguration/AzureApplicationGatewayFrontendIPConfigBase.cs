@@ -54,6 +54,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "PublicIPAddress")]
         public PSPublicIpAddress PublicIPAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "PrivateLinkConfiguration")]
+        public PSApplicationGatewayPrivateLinkConfiguration PrivateLinkConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "PrivateLinkConfigurationId")]
+        public string PrivateLinkConfigurationId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -68,6 +80,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.PublicIPAddress != null)
                 {
                     this.PublicIPAddressId = this.PublicIPAddress.Id;
+                }
+
+                if (this.PrivateLinkConfiguration != null)
+                {
+                    this.PrivateLinkConfigurationId = this.PrivateLinkConfiguration.Id;
                 }
             }
         }
@@ -97,6 +114,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 frontendIPConfig.PublicIPAddress = new PSResourceId();
                 frontendIPConfig.PublicIPAddress.Id = this.PublicIPAddressId;
+            }
+
+            if (!string.IsNullOrEmpty(this.PrivateLinkConfigurationId))
+            {
+                frontendIPConfig.PrivateLinkConfiguration = new PSResourceId();
+                frontendIPConfig.PrivateLinkConfiguration.Id = this.PrivateLinkConfigurationId;
             }
 
             frontendIPConfig.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

@@ -39,8 +39,8 @@ The Get-AzSqlElasticJobTargetExecution cmdlet gets one or more job target execut
 
 ## EXAMPLES
 
-### Example 1 - Gets one or more job target executions from a job executions
-```
+### Example 1: Gets one or more job target executions from a job executions
+```powershell
 PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzSqlElasticJobTargetExecution -Count 2
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle       TargetServerName TargetDatabaseName StartTime            EndTime
@@ -49,8 +49,8 @@ job1    1          step2    1      ea0a870b-dfe3-427e-9f95-d229d7815b65 Succeede
 job1    1          step1    1      ea0a870b-dfe3-427e-9f95-d229d7815b65 Succeeded       s1               db1                6/1/2018 10:11:44 PM 6/1/2018 10:11:47 PM
 ```
 
-### Example 2 - Gets one or more job target executions from a job executions - filtering by step name
-```
+### Example 2: Gets one or more job target executions from a job executions - filtering by step name
+```powershell
 PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzSqlElasticJobTargetExecution -Count 2 -StepName step2
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle       TargetServerName TargetDatabaseName StartTime            EndTime

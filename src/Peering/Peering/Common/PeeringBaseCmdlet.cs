@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             get
             {
-                if(this.peeringClient == null)
+                if (this.peeringClient == null)
                 {
                     this.peeringClient =
                                            AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
@@ -61,9 +61,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        ///     The InputObject client.
+        ///     The peering client.
         /// </summary>
         public IPeeringsOperations PeeringClient => this.PeeringManagementClient.Peerings;
+
+        /// <summary>
+        /// The Received routes client.
+        /// </summary>
+        public IReceivedRoutesOperations RxRoutesClient => this.PeeringManagementClient.ReceivedRoutes;
 
         /// <summary>
         /// The peer asn operations client
@@ -588,25 +593,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <returns>
         /// The <see cref="ErrorResponse"/>.
         /// </returns>
-        public ErrorResponse GetErrorCodeAndMessageFromArmOrErm(ErrorResponseException ex)
+        public ErrorDetail GetErrorCodeAndMessageFromArmOrErm(ErrorResponseException ex)
         {
-            ErrorResponse error = null;
+            ErrorDetail error = null;
             try
             {
-                var armError = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content);
-                if (armError.Values.FirstOrDefault()?.Code != null)
+                var ermError = JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                if (ermError.Error != null)
                 {
-                    error = new ErrorResponse(code: armError.Values.FirstOrDefault()?.Code, message: armError.Values.FirstOrDefault()?.Message);
+                    return ermError.Error;
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<ErrorDetail>(ex.Response.Content);
                 }
             }
+
             catch
             {
                 try
                 {
-                    var ermError = JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                    if (ermError.Code != null)
+                    var armError = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content);
+                    if (armError.Values.FirstOrDefault()?.Error != null)
                     {
-                        error = new ErrorResponse(code: ermError.Code, message: ermError.Message);
+                        return armError.Values.FirstOrDefault().Error;
                     }
                 }
                 catch
@@ -619,7 +629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
         public string ConvertToDirectPeeringType(string peeringType)
         {
-            if(peeringType == Constants.Ix)
+            if (peeringType == Constants.Ix)
             {
                 return DirectPeeringType.Ix;
             }

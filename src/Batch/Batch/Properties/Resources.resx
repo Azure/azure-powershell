@@ -496,4 +496,16 @@
   <data name="NoStartTime" xml:space="preserve">
     <value>No start time specified.</value>
   </data>
+  <data name="GetPrivateEndpointConnectionByName" xml:space="preserve">
+    <value>Getting private endpoint connection "{0}"</value>
+  </data>
+  <data name="GetPrivateEndpointConnectionNoFilter" xml:space="preserve">
+    <value>Getting all private endpoint connections in resource group "{0}", account "{0}"</value>
+  </data>
+  <data name="GetPrivateLinkResourceByName" xml:space="preserve">
+    <value>Getting private link resource  "{0}"</value>
+  </data>
+  <data name="GetPrivateLinkResourceNoFilter" xml:space="preserve">
+    <value>Getting all private link resources in resource group "{0}", account "{0}"</value>
+  </data>
 </root>

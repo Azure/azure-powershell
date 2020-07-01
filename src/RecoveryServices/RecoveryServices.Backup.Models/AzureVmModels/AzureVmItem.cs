@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -25,6 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string VirtualMachineId { get; set; }
 
         public string HealthStatus { get; set; }
+
+        public bool? IsInclusionList { get; set; }
+
+        public IList<int?> DiskLunList { get; set; }
 
         /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
@@ -52,6 +57,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+
+            if (protectedItem.ExtendedProperties != null &&
+                protectedItem.ExtendedProperties.DiskExclusionProperties != null)
+            {
+                DiskExclusionProperties diskExclusionProperties = protectedItem.ExtendedProperties.DiskExclusionProperties;
+                IsInclusionList = diskExclusionProperties.IsInclusionList;
+                DiskLunList = diskExclusionProperties.DiskLunList;
             }
         }
     }

@@ -208,6 +208,12 @@ The versioning tool that runs as a part of each release uses the `.json` files t
 | Minor | Additions were made to the module (_e.g._, new cmdlets, new parameters) | `1.2.3` --> `1.3.0` |
 | Patch | Bug fixes in the backend of a module or documentation updates | `1.2.3` --> `1.2.4` |
 
+Version bumping bases on installed version and changes of APIs. But it cannot handle below scenarios:
+* Module will be GAed from `0.n.n` --> `1.0.0`. The tool cannot detect this change because preview release module doesn't has `.json` file, or there is no breaking changes in current release.
+* Module has a preview release but new bumped version has the same semantic version just without `preview` label. This new version cannot be published to PSGallery. The tool needs a patch version increase.  
+
+Above scenarios can be supported by configurations `MinimalVersion.csv`. Each line contains module name and expected minimal version. If bumped version is lower than expected minital version, the tool will use minimal version for new release.
+
 ### `Issues`
 
 The `Issues` folder contains classes that represent the records that are created by the different analyzers found in static analysis. Each analyzer is responsible for implement a specific record for their analyzer that defines the following methods:

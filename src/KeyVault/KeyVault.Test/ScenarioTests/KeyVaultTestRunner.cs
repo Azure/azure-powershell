@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.KeyVault", null},
+                        {"Microsoft.Network", null},
                     }
                 )
                 .Build();

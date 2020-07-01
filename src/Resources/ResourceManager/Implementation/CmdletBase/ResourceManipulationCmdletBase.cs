@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The base class for manipulating resources.
     /// </summary>
-    public abstract class ResourceManipulationCmdletBase : ResourceManagerCmdletBase
+    public abstract class ResourceManipulationCmdletBase : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// The subscription level parameter set.

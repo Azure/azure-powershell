@@ -26,7 +26,7 @@ Get-AzCosmosDBAccountKey [-Type <String>] -ResourceId <String> [-DefaultProfile 
 
 ### ByObjectParameterSet
 ```
-Get-AzCosmosDBAccountKey [-Type <String>] -InputObject <PSDatabaseAccount>
+Get-AzCosmosDBAccountKey [-Type <String>] -InputObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccount
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 

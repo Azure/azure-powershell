@@ -46,9 +46,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.MongoDatabaseThroughputHelpMessage)]
         public int? Throughput { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        public int? AutoscaleMaxThroughput { get; set; }
+
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount ParentObject { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.MongoDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -83,11 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            CreateUpdateOptions options = new CreateUpdateOptions();         
-            if (Throughput != null)
-            {
-                options.Throughput = Throughput.ToString();
-            }
+            CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             MongoDBDatabaseCreateUpdateParameters mongoDBDatabaseCreateUpdateParameters = new MongoDBDatabaseCreateUpdateParameters
             {
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Updating an existing CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabase(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters);
                 WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 

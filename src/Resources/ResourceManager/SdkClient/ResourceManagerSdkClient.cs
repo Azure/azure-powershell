@@ -15,10 +15,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -261,14 +263,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deploymentExtended =  this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
-                deploymentOperationError,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId(parameters.DeploymentName));
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError, 
+                    parameters.DeploymentName, 
+                    deploymentExtended?.Properties?.CorrelationId));
             }
 
             return deploymentExtended;
@@ -317,7 +320,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,
-            DeploymentOperationErrorInfo deploymentOperationError,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -348,10 +350,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
-                    deploymentOperationError.SetRequestIdFromResponseHeaders(getResult.Response);
-
                     deployment = getResult.Body;
                     var response = getResult.Response;
+
                     if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
                     {
                         step = response.Headers.RetryAfter.Delta.Value.Seconds;
@@ -1346,6 +1347,64 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+
+            try
+            {
+                WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
+                    ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+
+                if (excludeChangeTypeNames != null && excludeChangeTypeNames.Length > 0)
+                {
+                    ChangeType[] excludeChangeTypes = excludeChangeTypeNames
+                        .Select(changeType => changeType.ToLowerInvariant())
+                        .Distinct()
+                        .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true))
+                        .ToArray();
+
+                    whatIfOperationResult.Changes = whatIfOperationResult.Changes
+                        .Where(change => excludeChangeTypes.All(changeType => changeType != change.ChangeType))
+                        .ToList();
+                }
+
+                return new PSWhatIfOperationResult(whatIfOperationResult);
+            }
+            catch (CloudException ce)
+            {
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
+            }
+        }
+
+        private static string BuildCloudErrorMessage(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return string.Empty;
+            }
+
+            IList<string> messages = new List<string>
+            {
+                $"{cloudError.Code} - {cloudError.Message}"
+            };
+
+            foreach (CloudError innerError in cloudError.Details)
+            {
+                messages.Add(BuildCloudErrorMessage(innerError));
+            }
+
+            return string.Join(Environment.NewLine, messages);
+        }
+
+        /// <summary>
         /// Creates new deployment at a resource group.
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>
@@ -1663,6 +1722,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return null;
+        }
+
+        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
+        {
+            if (errorInfo.ErrorMessages.Count == 0)
+                return String.Empty;
+
+            var sb = new StringBuilder();
+
+            int maxErrors = errorInfo.ErrorMessages.Count > DeploymentOperationErrorInfo.MaxErrorsToShow
+               ? DeploymentOperationErrorInfo.MaxErrorsToShow
+               : errorInfo.ErrorMessages.Count;
+
+            // Add outer message showing the total number of errors.
+            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
+
+            // Add each error message
+            errorInfo.ErrorMessages
+                .Take(maxErrors).ToList()
+                .ForEach(m => sb
+                    .AppendLine()
+                    .AppendFormat(ProjectResources.DeploymentOperationResultError, m
+                            .ToFormattedString())
+                    .AppendLine());
+
+            // Add correlationId
+             sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, correlationId);
+
+            return sb.ToString();
         }
     }
 }

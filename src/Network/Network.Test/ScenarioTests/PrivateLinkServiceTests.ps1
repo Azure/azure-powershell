@@ -33,7 +33,7 @@ function Test-PrivateLinkServiceCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westus";
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westcentralus";
     # Dependency parameters
     $IpConfigurationName = "IpConfigurationName";
     $vnetName = Get-ResourceName;

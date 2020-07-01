@@ -19,7 +19,24 @@
 -->
 
 ## Upcoming Release
-* Updated the Azure.Management.CosmosDB Sdk Version to 1.1.1 
+
+## Version 0.1.6
+* Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput. 
+* New-AzCosmosDBAccount cmdlet was updated with new paramters: EnableFreeTier, EnableAnalyticalStorage, ServerVersion, IpRule.
+* Update-AzCosmosDBAccount was updated with: EnableAnalyticalStorage and IpRule.
+* IpRangeFilter is deprecated, IpRule should be used, for both New-AzCosmosDBAccount and Update-AzCosmosDBAccount.
+* New-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBCollection, New-AzCosmosDBCassandraTable and Update-AzCosmosDBCassandraTable cmdlets allow specifying AnalyticalStorageTTL. 
+
+## Version 0.1.5
+* PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
+* Detailed parameter is deprecated in the following cmdlets:
+    Get-AzCosmosDBSqlContainer,
+    Get-AzCosmosDBSqlDatabase, Get-AzCosmosDBGremlinDatabase,
+    Get-AzCosmosDBGremlinGraph, Get-AzCosmosDBTable,
+    Get-AzCosmosDBCassandraKeyspace, Get-AzCosmosDBCassandraTable,
+    Get-AzCosmosDBMongoDBCollection, Get-AzCosmosDBMongoDBDatabase
+* Introduces KeyVaultKeyUri as a paramter in PSCosmosDBAccount, enabling BYOK feature
+* Updates the Azure.Management.CosmosDB Sdk Version to 1.1.1 
 * Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
 The following cmdlets are added: 
     New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 

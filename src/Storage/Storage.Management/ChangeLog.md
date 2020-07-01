@@ -18,28 +18,59 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add -Adjob to get/list account cmdlet
-    - `Get-AzStorageAccount`
-* Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
-    - `Set-AzStorageAccount`
-* Fix remove Azure File Directory fail with pipeline
-    - `Remove-AzStorageDirectory`
-* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
-	- `Update-AzStorageAccountNetworkRuleSet`
-	- `Get-AzStorageAccountNetworkRuleSet`
-* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
-    - `Add-AzStorageAccountNetworkRule`
-* Upgrade Microsoft.Azure.Cosmos.Table SDK to 1.0.7
-* When only part items are returned in list DataLake Gen2 Items, add a warning message to remind user to list again with ContinuationToken
-    - `Get-AzDataLakeGen2ChildItem`
-* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+* Fixed the issue that UserAgent not added for some dataplane cmdlets.
+* Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
-* Support New or List Kerberos keys of Storage account
+
+## Version 2.2.0
+* Supported create Storage account with RequireInfrastructureEncryption
+    -  `New-AzStorageAccount`
+* Moved the logic of loading Azure.Core to Az.Accounts
+
+## Version 2.1.0
+* Updated assembly version of data plane cmdlets
+
+## Version 2.0.0
+* Added `-AsJob` to get/list account cmdlet `Get-AzStorageAccount`
+* Make KeyVersion to optional when update Storage account with KeyvaultEncryption, to support key auto-rotation
+    - `Set-AzStorageAccount`
+* Fixed remove Azure File Directory fail with pipeline
+    - `Remove-AzStorageDirectory`
+* Fixed [#9880]: Change NetWorkRule DefaultAction value defination to align with swagger.
+	- `Update-AzStorageAccountNetworkRuleSet`
+	- `Get-AzStorageAccountNetworkRuleSet`
+* Fixed [#11624]: Skip duplicated rules when add NetworkRules, to avoid server failure
+    - `Add-AzStorageAccountNetworkRule`
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.7
+* Added a warning message to remind user to list again with ContinuationToken when only part items are returned in list DataLake Gen2 Items,
+    - `Get-AzDataLakeGen2ChildItem`
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported to new or list Kerberos keys of Storage account
     -  `New-AzStorageAccountKey`
     -  `Get-AzStorageAccountKey`
-* Support failover Storage account
+* Supported failover Storage account
     - `Invoke-AzStorageAccountFailover`
+* Updated help of `Get-AzStorageBlobCopyState`
+* Updated help of `Get-AzStorageFileCopyState` and `Start-AzStorageBlobCopy`
+* Integrated Storage client library v12 to Queue and File cmdlets
+* Changed output type from CloudFile to AzureStorageFile, the original output will become a child property of the new output
+    - `Get-AzStorageFile`
+    - `Remove-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+* Changed output type from CloudFileDirectory to AzureStorageFileDirectory, the original output will become a child property of the new output
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+* Changed output type from CloudFileShare to AzureStorageFileShare, the original output will become a child property of the new output
+    - `Get-AzStorageShare`
+    - `New-AzStorageShare`
+    - `Remove-AzStorageShare`
+* Changed output type from FileShareProperties to AzureStorageFileShare, the original output will become a sub child property of the new output
+    - `Set-AzStorageShareQuota`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release

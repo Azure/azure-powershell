@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPartnerProvider", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPartnerProvider", DefaultParameterSetName= SecurityPartnerProviderParameterSetName.ByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureSecurityPartnerProviderCommand : SecurityPartnerProviderBaseCmdlet
     {
         [Alias("ResourceName")]

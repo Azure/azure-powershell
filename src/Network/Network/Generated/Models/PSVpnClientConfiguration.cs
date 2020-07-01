@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
         public List<PSIpsecPolicy> VpnClientIpsecPolicies { get; set; }
+        public List<PSRadiusServer> RadiusServers { get; set; }
 
         [JsonIgnore]
         public string VpnClientProtocolsText
@@ -77,6 +78,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnClientIpsecPoliciesText
         {
             get { return JsonConvert.SerializeObject(VpnClientIpsecPolicies, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RadiusServersText
+        {
+            get { return JsonConvert.SerializeObject(RadiusServers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

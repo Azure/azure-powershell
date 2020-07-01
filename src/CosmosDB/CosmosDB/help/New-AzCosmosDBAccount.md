@@ -14,12 +14,13 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>]
- [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork] [-IpRangeFilter <String[]>]
+ [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork] [-IpRules <String[]>]
  [-Location <String[]>] [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-ApiKind <String>] [-PublicNetworkAccess <String>]
- [-DisableKeyBasedMetadataWriteAccess] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableKeyBasedMetadataWriteAccess] [-KeyVaultKeyUri <String>] [-EnableFreeTier <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-MongoDBServerVersion <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAnalyticalStorage
+Bool to indicate if AnalyticalStorage is enabled on the account.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutomaticFailover
 Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
 Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
@@ -156,6 +172,21 @@ Accepted values: false, true
 
 ```yaml
 Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFreeTier
+Bool to indicate if FreeTier is enabled on the account.
+
+```yaml
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -198,12 +229,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpRangeFilter
-Firewall support.
-Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account
+### -IpRules
+Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
 
 ```yaml
 Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultKeyUri
+URI of the KeyVault
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -267,6 +312,21 @@ Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MongoDBServerVersion
+ServerVersion, valid only in case of MongoDB Accounts.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.ResourceGroupName = this.ResourceGroupName;
             virtualWan.Location = this.Location;
             virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
-            virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.IsPresent;
+            virtualWan.AllowVnetToVnetTraffic = true;
 
             if(string.IsNullOrWhiteSpace(this.VirtualWANType))
             {

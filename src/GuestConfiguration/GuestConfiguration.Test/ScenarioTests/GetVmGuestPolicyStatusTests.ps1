@@ -18,8 +18,8 @@ Get guest configuration policy report by Vm name scope
 #>
 function Get-AzVMGuestPolicyStatus-VmNameScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $reports
@@ -32,8 +32,8 @@ Get guest configuration policy report by Vm name scope for custom policy
 #>
 function Get-AzVMGuestPolicyStatus-VmNameScope_Custom
 {
-	$rgName = "aashishCustomrole7ux"
-	$vmName = "aashishCustomrole7ux"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $reports
@@ -46,9 +46,9 @@ Get guest configuration policy report by Initiative id scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeIdScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeId = "/subscriptions/f66367e1-cf7d-407b-ba39-53230cc79071/providers/Microsoft.Authorization/policySetDefinitions/92e09915-8806-493c-baac-4858b0eeea7b"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $reports
@@ -61,9 +61,9 @@ Get guest configuration custom policy report by Initiative id scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeIdScope_Custom
 {
-	$rgName = "aashishCustomrole7ux"
-	$vmName = "aashishCustomrole7ux"
-	$initiativeId = "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/60062d3c-3282-4a3d-9bc4-3557dded22ca"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeId = "/subscriptions/f66367e1-cf7d-407b-ba39-53230cc79071/providers/Microsoft.Authorization/policySetDefinitions/92e09915-8806-493c-baac-4858b0eeea7b"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $reports
@@ -76,9 +76,9 @@ Get guest configuration policy report by Initiative name scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeNameScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
-	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeName = "92e09915-8806-493c-baac-4858b0eeea7b"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
@@ -91,9 +91,9 @@ Get guest configuration custom policy report by Initiative name scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeNameScope_Custom
 {
-	$rgName = "aashishCustomrole7ux"
-	$vmName = "aashishCustomrole7ux"
-	$initiativeName = "60062d3c-3282-4a3d-9bc4-3557dded22ca"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeName = "92e09915-8806-493c-baac-4858b0eeea7b"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
@@ -106,9 +106,9 @@ Get guest configuration policy by ReportId scope
 #>
 function Get-AzVMGuestPolicyStatus-ReportIdScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
-	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeName = "92e09915-8806-493c-baac-4858b0eeea7b"
 	$reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }
@@ -125,9 +125,9 @@ Get guest configuration custom policy by ReportId scope
 #>
 function Get-AzVMGuestPolicyStatus-ReportIdScope_Custom
 {
-	$rgName = "aashishCustomrole7ux"
-	$vmName = "aashishCustomrole7ux"
-	$initiativeName = "60062d3c-3282-4a3d-9bc4-3557dded22ca"
+	$rgName = "PolicyE2ETest_58_20_10_06-08-2020"
+	$vmName = "pol-2016corsml"
+	$initiativeName = "92e09915-8806-493c-baac-4858b0eeea7b"
 	$reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }

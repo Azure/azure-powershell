@@ -16,7 +16,8 @@ Creates a Batch account.
 ```
 New-AzBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
  [[-AutoStorageAccountId] <String>] [-PoolAllocationMode <PoolAllocationMode>] [-KeyVaultId <String>]
- [-KeyVaultUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeyVaultUrl <String>] [-Tag <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccessType>]
+ [-IdentityType <ResourceIdentityType>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +89,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+The identity associated with the BatchAccount
+
+```yaml
+Type: Microsoft.Azure.Management.Batch.Models.ResourceIdentityType
+Parameter Sets: (All)
+Aliases:
+Accepted values: SystemAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultId
 The resource ID of the Azure key vault associated with the Batch account.
 
@@ -147,6 +164,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The public network access type
+
+```yaml
+Type: Microsoft.Azure.Management.Batch.Models.PublicNetworkAccessType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

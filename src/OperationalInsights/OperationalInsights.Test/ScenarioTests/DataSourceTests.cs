@@ -30,21 +30,21 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateUpdateDelete()
         {
             RunPowerShellTest(_logger, "Test-DataSourceCreateUpdateDelete");
         }
 
-        [Fact]
+        [Fact(Skip = "waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateFailsWithoutWorkspace()
         {
             RunPowerShellTest(_logger, "Test-DataSourceCreateFailsWithoutWorkspace");
         }
 
-        [Fact]
+        [Fact(Skip="waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAllKindsOfDataSource()
         {

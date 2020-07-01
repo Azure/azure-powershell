@@ -126,6 +126,12 @@
   <data name="AddDeviceProvisioningService" xml:space="preserve">
     <value>Add a Device Provisioning Service</value>
   </data>
+  <data name="AddEnrollment" xml:space="preserve">
+    <value>Add individual device enrollment in Azure IoT Hub Device Provisioning Service</value>
+  </data>
+  <data name="AddEnrollmentGroup" xml:space="preserve">
+    <value>Add device enrollment group in Azure IoT Hub Device Provisioning Service</value>
+  </data>
   <data name="AddLinkedHub" xml:space="preserve">
     <value>Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service</value>
   </data>
@@ -141,6 +147,12 @@
   <data name="RemoveDeviceProvisioningService" xml:space="preserve">
     <value>Removes a Device ProvisioningService</value>
   </data>
+  <data name="RemoveEnrollment" xml:space="preserve">
+    <value>Remove individual device enrollment in Azure IoT Hub Device Provisioning Service</value>
+  </data>
+  <data name="RemoveEnrollmentGroup" xml:space="preserve">
+    <value>Remove device enrollment group in Azure IoT Hub Device Provisioning Service</value>
+  </data>
   <data name="RemoveLinkedHub" xml:space="preserve">
     <value>Delete linked IoT Hub from an Azure IoT Hub Device Provisioning Service</value>
   </data>
@@ -152,6 +164,12 @@
   </data>
   <data name="UpdateDeviceProvisioningService" xml:space="preserve">
     <value>Update a Device Provisioning Service</value>
+  </data>
+  <data name="UpdateEnrollment" xml:space="preserve">
+    <value>Update individual device enrollment in Azure IoT Hub Device Provisioning Service</value>
+  </data>
+  <data name="UpdateEnrollmentGroup" xml:space="preserve">
+    <value>Update device enrollment group in Azure IoT Hub Device Provisioning Service</value>
   </data>
   <data name="UpdateLinkedHub" xml:space="preserve">
     <value>Update a linked IoT Hub in an Azure IoT Hub Device Provisioning Service</value>

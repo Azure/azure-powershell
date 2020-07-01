@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseWorkspace))]
-    public class GetAzureSynapseWorkspace : SynapseCmdletBase
+    public class GetAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";

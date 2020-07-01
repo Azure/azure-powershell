@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
             base.CheckNewParameters(type);
         }
 
-        [Fact]
+        [Fact(Skip="TODO: 12276, ConfirmImpact Validation issue")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlVMGroup()
         {

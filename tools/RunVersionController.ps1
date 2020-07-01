@@ -12,7 +12,10 @@ Param(
     [string]$ModuleName,
 
     [Parameter()]
-    [string]$GalleryName = "PSGallery"
+    [string]$GalleryName = "PSGallery",
+
+    [Parameter()]
+    [switch]$SkipAzInstall
 )
 
 enum PSVersion
@@ -93,9 +96,9 @@ function Update-AzurecmdFile
         [string]$RootPath
     )
 
-    $AzurecmdFile = Get-Item -Path "$RootPath\setup\azurecmd.wxs"
+    $AzurecmdFile = Get-Item -Path "$RootPath\setup\generate.ps1"
     (Get-Content $AzurecmdFile.FullName) | % {
-        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\w*)", "Microsoft Azure PowerShell - $Release"
+        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\d*)", "Microsoft Azure PowerShell - $Release"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
 
     (Get-Content $AzurecmdFile.FullName) | % {
@@ -176,6 +179,7 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
     }
 
@@ -201,6 +205,10 @@ switch ($PSCmdlet.ParameterSetName)
                         $JsonFile = $NestedModule.Replace(".\", "") + ".json"
                         $ExpectJsonHashSet.Add($JsonFile, $true)
                     }
+                    if($null -eq $Psd1Object.NestedModules)
+                    {
+                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
+                    }
                 }
             }
         }
@@ -215,13 +223,17 @@ switch ($PSCmdlet.ParameterSetName)
         }
         try
         {
-            Install-Module Az -Repository $GalleryName -Force -AllowClobber
+            if(!$SkipAzInstall.IsPresent)
+            {
+                Install-Module Az -Repository $GalleryName -Force -AllowClobber
+            }
         }
         catch
         {
             throw "Please rerun in Administrator mode."
         }
 
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Write-Host "Getting local Az information..." -ForegroundColor Yellow
@@ -300,6 +312,5 @@ switch ($PSCmdlet.ParameterSetName)
 
         Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
         Update-ChangeLog -Content $changeLog -RootPath $rootPath
-        Update-Image-Releases -ReleaseProps "$rootPath\docker\config\release.props" -AzVersion $newVersion
     }
 }

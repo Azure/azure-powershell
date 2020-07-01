@@ -34,8 +34,12 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
-    Assert-NotNull $workspace.CustomerId
-    Assert-NotNull $workspace.PortalUrl
+    
+    #CustomerId was removed from SDK
+    #Assert-NotNull $workspace.CustomerId
+
+    #PortalUrl was removed from SDK
+    #Assert-NotNull $workspace.PortalUrl
 
     $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname
     Assert-AreEqual $rgname $workspace.ResourceGroupName
@@ -45,8 +49,12 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
-    Assert-NotNull $workspace.CustomerId
-    Assert-NotNull $workspace.PortalUrl
+    
+    #CustomerId was removed from SDK
+    #Assert-NotNull $workspace.CustomerId
+
+    #PortalUrl was removed from SDK
+    #Assert-NotNull $workspace.PortalUrl
 
     # Create a second workspace for list testing
     $wstwoname = Get-ResourceName
@@ -83,7 +91,9 @@ function Test-WorkspaceCreateUpdateDelete
     $workspace | Set-AzOperationalInsightsWorkspace -Tag @{} -Sku standalone -RetentionInDays 123
     $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname
     Assert-AreEqual 0 $workspace.Tags.Count
-    Assert-AreEqual standalone $workspace.Sku
+    
+    #cannot be updated
+    #Assert-AreEqual standalone $workspace.Sku
     Assert-AreEqual 123 $workspace.RetentionInDays
 
     # Delete the original workspace via piping
@@ -105,12 +115,14 @@ function Test-WorkspaceActions
 
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
+    #LinkTargets was removed from SDK
     # Query link targets for an identity
-    $accounts = Get-AzOperationalInsightsLinkTargets
-    Assert-AreEqual 0 $accounts.Count
+    #$accounts = Get-AzOperationalInsightsLinkTargets
+    #Assert-AreEqual 0 $accounts.Count
 
+    #CustomerId was removed from SDK
     # Attempt to link a workspace to an invalid account
-    Assert-ThrowsContains { New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -CustomerId ([guid]::NewGuid()) } "BadRequest"
+    #Assert-ThrowsContains { New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -CustomerId ([guid]::NewGuid()) } "BadRequest"
 
     # Create a real workspace for use in the rest of the test
     $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Tag @{"tag1" = "val1"} -Force
@@ -170,8 +182,12 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
     Assert-AreEqual "STANDARD" $workspace.Sku
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
-    Assert-NotNull $workspace.CustomerId
-    Assert-NotNull $workspace.PortalUrl
+    
+    #CustomerId was removed from SDK
+    #Assert-NotNull $workspace.CustomerId
+    
+    #PortalUrl was removed from SDK
+    #Assert-NotNull $workspace.PortalUrl
 
     # Enable intelligence packs
 	Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "ChangeTracking" -Enabled $true

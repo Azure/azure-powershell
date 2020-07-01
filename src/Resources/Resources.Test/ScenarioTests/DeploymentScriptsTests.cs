@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDeploymentScript-Cli");
         }
 
-        [Fact(Skip = "Need to wait until the Resources .NET SDK is updated to 3.3.0 in the PS module.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeploymentScriptGetDeploymentScriptWithBadScript()
         {

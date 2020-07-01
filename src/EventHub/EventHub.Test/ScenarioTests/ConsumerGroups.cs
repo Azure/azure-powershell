@@ -12,30 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ScenarioTest;
-    using ServiceManagement.Common.Models;
-    using Xunit;
-    using Xunit.Abstractions;
-    public class ConsumerGroupsTests : RMTestBase
-    {
-        public XunitTracingInterceptor _logger;
+    
+    public class ConsumerGroupsTests : EventHubTestRunner
+    {       
 
-        public ConsumerGroupsTests(ITestOutputHelper output)
-        {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
+        public ConsumerGroupsTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
+        {       
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConsumerGroupsCRUD()
-        {
-            EventHubsController.NewInstance.RunPsTest(_logger, "ConsumerGroupsTests");
+        {           
+            TestRunner.RunTestScript("ConsumerGroupsTests");
         }
         
     }

@@ -18,18 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
+* Updated assembly version of service management cmdlets
+
+## Version 2.0.0
 * `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
 * `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]
 * `Get-AzApiManagementProperty`: renamed as `Get-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
 * `New-AzApiManagementProperty`: renamed as `New-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId. 
 * `Set-AzApiManagementProperty`: renamed as `Set-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
 * `Remove-AzApiManagementProperty`: renamed as `Remove-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
-* new `Get-AzApiManagementAuthorizationServerClientSecret` cmdlet added. `Get-AzApiManagementAuthorizationServer` will not return client secret anymore.
-* new `Get-AzApiManagementNamedValueSecretValue` cmdlet added. `Get-AzApiManagementNamedValue` will not return secret value.
-* new `Get-AzApiManagementOpenIdConnectProviderClientSecret` cmdlet added. `Get-AzApiManagementOpenIdConnectProvider` will not return client secret anymore.
-* new `Get-AzApiManagementSubscriptionKey` cmdlet added. `Get-AzApiManagementSubscription` will not return subscription keys anymore.
-* new `Get-AzApiManagementTenantAccessSecret` cmdlet added. `Get-AzApiManagementTenantAccess` will not return keys anymore.
-* new `Get-AzApiManagementTenantGitAccessSecret` cmdlet added. `Get-AzApiManagementTenantGitAccess` will not return keys anymore.
+* Added new `Get-AzApiManagementAuthorizationServerClientSecret` cmdlet and `Get-AzApiManagementAuthorizationServer` will not return client secret anymore.
+* Added new `Get-AzApiManagementNamedValueSecretValue` cmdlet and `Get-AzApiManagementNamedValue` will not return secret value.
+* Added new `Get-AzApiManagementOpenIdConnectProviderClientSecret` cmdlet and `Get-AzApiManagementOpenIdConnectProvider` will not return client secret anymore.
+* Added new `Get-AzApiManagementSubscriptionKey` cmdlet and `Get-AzApiManagementSubscription` will not return subscription keys anymore.
+* Added new `Get-AzApiManagementTenantAccessSecret` cmdlet and `Get-AzApiManagementTenantAccess` will not return keys anymore.
+* Added new `Get-AzApiManagementTenantGitAccessSecret` cmdlet and `Get-AzApiManagementTenantGitAccess` will not return keys anymore.
 
 ## Version 1.4.1
 * Added breaking change notice for Azure File cmdlets output change in a future release

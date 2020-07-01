@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 Format = response.Format,
                 StorageUrl = response.StorageUrl,
-                StorageUrlExpiry = response.StorageUrlExpiry.Value,
+                StorageUrlExpiry = response.StorageUrlExpiry,
                 State = response.State.Value,
                 Id = response.Id,
                 Name = response.Name,

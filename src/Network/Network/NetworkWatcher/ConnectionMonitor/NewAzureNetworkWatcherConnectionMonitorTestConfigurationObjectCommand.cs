@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.")]
         [ValidateNotNullOrEmpty]
-        public int? SuccessThresholdRoundTripTimeMs { get; set; }
+        public double? SuccessThresholdRoundTripTimeMs { get; set; }
 
         [Parameter(
             Mandatory = false,

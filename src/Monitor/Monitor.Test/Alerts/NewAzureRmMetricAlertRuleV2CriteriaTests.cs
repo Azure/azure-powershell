@@ -89,5 +89,50 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewWebtestAlertRuleV2CriteriaParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.WebTest = new SwitchParameter(true);
+            cmdlet.ApplicationInsightsId = "ApplicationInsightsId";
+            cmdlet.WebTestId = "WebTestId";
+            cmdlet.FailedLocationCount = 4;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSWebtestLocationAvailabilityCriteria;
+                Assert.Equal("WebTestId", r.WebTestId);
+                Assert.Equal("ApplicationInsightsId", r.ComponentId);
+                Assert.Equal(4, r.FailedLocationCount);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewWebtestAlertRuleV2CriteriaWithoutWebtestSwitchParameterParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.ApplicationInsightsId = "ApplicationInsightsId";
+            cmdlet.WebTestId = "WebTestId";
+            cmdlet.FailedLocationCount = 4;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSWebtestLocationAvailabilityCriteria;
+                Assert.Equal("WebTestId", r.WebTestId);
+                Assert.Equal("ApplicationInsightsId", r.ComponentId);
+                Assert.Equal(4, r.FailedLocationCount);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
     }
 }

@@ -47,6 +47,7 @@ Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource
 ```
+
 ## PARAMETERS
 
 ### -AccountName

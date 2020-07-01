@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy)
         {
+            if (conflictResolutionPolicy == null)
+            {
+                return;
+            }
+
             Mode = conflictResolutionPolicy.Mode;
             ConflictResolutionPath = conflictResolutionPolicy.ConflictResolutionPath;
             ConflictResolutionProcedure = conflictResolutionPolicy.ConflictResolutionProcedure;
@@ -45,8 +50,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets the procedure to resolve conflicts in the case of custom mode.
         public string ConflictResolutionProcedure { get; set; }
 
-        public static ConflictResolutionPolicy ConvertPSConflictResolutionPolicyToConflictResolutionPolicy(PSConflictResolutionPolicy pSConflictResolutionPolicy)
+        public static ConflictResolutionPolicy ToSDKModel(PSConflictResolutionPolicy pSConflictResolutionPolicy)
         {
+            if (pSConflictResolutionPolicy == null)
+            {
+                return null;
+            }
+
             ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
             {
                 Mode = pSConflictResolutionPolicy.Mode

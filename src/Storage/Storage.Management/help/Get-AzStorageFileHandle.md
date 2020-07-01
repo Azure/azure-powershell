@@ -64,7 +64,7 @@ HandleId    Path                  ClientIp       ClientPort OpenTime            
 
 This command lists file handles on a file share, and sort the output by ClientIp, then by OpenTime.
 
-### Example 2: List first 2 file handles on a file directory recursively 
+### Example 2: List first 2 file handles on a file directory recursively
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2'  -Recursive -First 2
 
@@ -76,7 +76,7 @@ HandleId    Path      ClientIp       ClientPort OpenTime             LastReconne
 
 This command lists first 2 file handles on a file directory recursively .
 
-### Example 3: List the 3rd to the 6th file handles on a file 
+### Example 3: List the 3rd to the 6th file handles on a file
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -skip 2 -First 4 
 
@@ -159,12 +159,12 @@ CloudFileDirectory object indicated the base folder where the files/directories 
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
-Aliases:
+Aliases: CloudFileDirectory
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -174,12 +174,12 @@ CloudFile object indicated the file to list File Handles.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
-Aliases:
+Aliases: CloudFile
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -235,12 +235,12 @@ CloudFileShare object indicated the share where the files/directories would be l
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
-Aliases:
+Aliases: CloudFileShare
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -306,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

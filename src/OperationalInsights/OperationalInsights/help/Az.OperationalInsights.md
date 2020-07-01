@@ -35,26 +35,26 @@ Starts collection of performance counters from Linux computers.
 ### [Enable-AzOperationalInsightsLinuxSyslogCollection](Enable-AzOperationalInsightsLinuxSyslogCollection.md)
 Starts collection of syslog data from Linux computers.
 
+### [Get-AzOperationalInsightsCluster](Get-AzOperationalInsightsCluster.md)
+Get or list clusters
+
 ### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
 
 ### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
 
-### [Get-AzOperationalInsightsLinkTarget](Get-AzOperationalInsightsLinkTarget.md)
-Gets accounts that are not associated with a subscription.
+### [Get-AzOperationalInsightsLinkedService](Get-AzOperationalInsightsLinkedService.md)
+Get or list linked service for workspace
+
+### [Get-AzOperationalInsightsLinkedStorageAccount](Get-AzOperationalInsightsLinkedStorageAccount.md)
+Get or list linked storage account
 
 ### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.
 
-### [Get-AzOperationalInsightsSavedSearchResult](Get-AzOperationalInsightsSavedSearchResult.md)
-Returns the results from a query.
-
 ### [Get-AzOperationalInsightsSchema](Get-AzOperationalInsightsSchema.md)
 Returns the schema associated with a workspace.
-
-### [Get-AzOperationalInsightsSearchResult](Get-AzOperationalInsightsSearchResult.md)
-Returns search results based on the specified parameters.
 
 ### [Get-AzOperationalInsightsStorageInsight](Get-AzOperationalInsightsStorageInsight.md)
 Gets information about a Storage Insight.
@@ -80,11 +80,17 @@ Collect logs from given Application-Insights application.
 ### [New-AzOperationalInsightsAzureActivityLogDataSource](New-AzOperationalInsightsAzureActivityLogDataSource.md)
 Collect Azure Activity log from given subscription.
 
+### [New-AzOperationalInsightsCluster](New-AzOperationalInsightsCluster.md)
+Create cluster
+
 ### [New-AzOperationalInsightsComputerGroup](New-AzOperationalInsightsComputerGroup.md)
 Creates a computer group.
 
 ### [New-AzOperationalInsightsCustomLogDataSource](New-AzOperationalInsightsCustomLogDataSource.md)
 Defines a custom log collection policy.
+
+### [New-AzOperationalInsightsLinkedStorageAccount](New-AzOperationalInsightsLinkedStorageAccount.md)
+Create linked storage account for workspace
 
 ### [New-AzOperationalInsightsLinuxPerformanceObjectDataSource](New-AzOperationalInsightsLinuxPerformanceObjectDataSource.md)
 Adds performance counters to all Linux computers in a workspace.
@@ -107,8 +113,17 @@ Adds Windows performance counter data source for connected computers that run th
 ### [New-AzOperationalInsightsWorkspace](New-AzOperationalInsightsWorkspace.md)
 Creates a workspace.
 
+### [Remove-AzOperationalInsightsCluster](Remove-AzOperationalInsightsCluster.md)
+Delete cluster
+
 ### [Remove-AzOperationalInsightsDataSource](Remove-AzOperationalInsightsDataSource.md)
 Deletes a data source.
+
+### [Remove-AzOperationalInsightsLinkedService](Remove-AzOperationalInsightsLinkedService.md)
+Unlink service for workspace
+
+### [Remove-AzOperationalInsightsLinkedStorageAccount](Remove-AzOperationalInsightsLinkedStorageAccount.md)
+Delete linked storage account for workspace
 
 ### [Remove-AzOperationalInsightsSavedSearch](Remove-AzOperationalInsightsSavedSearch.md)
 Removes a saved search from the workspace.
@@ -125,6 +140,12 @@ Updates a data source.
 ### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
 
+### [Set-AzOperationalInsightsLinkedService](Set-AzOperationalInsightsLinkedService.md)
+link service for workspace
+
+### [Set-AzOperationalInsightsLinkedStorageAccount](Set-AzOperationalInsightsLinkedStorageAccount.md)
+Set linked storage account for workspace
+
 ### [Set-AzOperationalInsightsSavedSearch](Set-AzOperationalInsightsSavedSearch.md)
 Updates a saved search that already exists.
 
@@ -133,4 +154,7 @@ Updates a Storage Insight.
 
 ### [Set-AzOperationalInsightsWorkspace](Set-AzOperationalInsightsWorkspace.md)
 Updates a workspace.
+
+### [Update-AzOperationalInsightsCluster](Update-AzOperationalInsightsCluster.md)
+update cluster
 

@@ -21,14 +21,14 @@ Remove all Azure credentials, account, and subscription information.
 Clears the defaults set by the user in the current context.
 
 ### [Connect-AzAccount](Connect-AzAccount.md)
-Connect to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
+Connect to Azure with an authenticated account for use with cmdlets from the Az PowerShell modules.
 
 ### [Disable-AzContextAutosave](Disable-AzContextAutosave.md)
 Turn off autosaving Azure credentials.  Your login information will be forgotten the next time you open a PowerShell window
 
 ### [Disable-AzDataCollection](Disable-AzDataCollection.md)
-Opts out of collecting data to improve the AzurePowerShell cmdlets. 
-Data is not collected unless you explicitly opt in.
+Opts out of collecting data to improve the Azure PowerShell cmdlets. Data is collected by default
+unless you explicitly opt out.
 
 ### [Disable-AzureRmAlias](Disable-AzureRmAlias.md)
 Disables AzureRm prefix aliases for Az modules.
@@ -40,9 +40,9 @@ Disconnects a connected Azure account and removes all credentials and contexts a
 Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
 
 ### [Enable-AzDataCollection](Enable-AzDataCollection.md)
-Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets.
-Executing this cmdlet opts in to data collection for the current user on the current machine.
-No data is collected unless you explicitly opt in.
+Enables Azure PowerShell to collect data to improve the user experience with the Azure PowerShell
+cmdlets. Executing this cmdlet opts in to data collection for the current user on the current
+machine. Data is collected by default unless you explicitly opt out.
 
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
 Enables AzureRm prefix aliases for Az modules.
@@ -72,8 +72,11 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzContext](Import-AzContext.md)
 Loads Azure authentication information from a file.
 
+### [Invoke-AzRestMethod](Invoke-AzRestMethod.md)
+Construct and perform HTTP request to Azure resource management endpoint only
+
 ### [Register-AzModule](Register-AzModule.md)
-FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets.
+FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
 ### [Remove-AzContext](Remove-AzContext.md)
 Remove a context from the set of available contexts

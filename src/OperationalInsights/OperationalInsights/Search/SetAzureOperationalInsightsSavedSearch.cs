@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Net;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -71,6 +72,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string ETag { get; set; }
 
+        [Parameter(Position = 9, Mandatory = false,
+            HelpMessage = "The function alias if query serves as a function.")]
+        [ValidateNotNullOrEmpty]
+        public string FunctionAlias { get; set; }
+
+        [Parameter(Position = 10, Mandatory = false,
+            HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
+        [ValidateNotNull]
+        [Alias("FunctionParameters")]
+        public string FunctionParameter { get; set; }
+
         protected override void ProcessRecord()
         {
             SavedSearch properties = new SavedSearch()
@@ -78,11 +90,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Category = this.Category,
                 DisplayName = this.DisplayName,
                 Query = this.Query,
-                Version = this.Version
+                Version = this.Version,
+                FunctionAlias = this.FunctionAlias,
+                FunctionParameters = this.FunctionParameter
             };
 
+            bool patch = this.IsParameterBound(c => c.FunctionParameter);
+
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, true, ConfirmAction, ETag), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, patch, true, ConfirmAction, ETag), true);
         }
 
     }

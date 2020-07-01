@@ -148,14 +148,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
             }
-            catch (InvalidOperationException mapException)
-            {
-                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
-            }
             catch (ErrorResponseException ex)
             {
                 var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
         }
 

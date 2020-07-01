@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSUniqueKey(UniqueKey uniqueKey)
         {
+            if (uniqueKey == null)
+            {
+                return;
+            }
+
             Paths = uniqueKey.Paths;
         }
 

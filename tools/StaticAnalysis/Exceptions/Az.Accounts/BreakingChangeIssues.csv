@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll","Microsoft.Azure.Commands.Profile.Errors.ResolveError","Resolve-AzError","0","1010","The cmdlet 'Resolve-AzError' no longer supports the alias 'Resolve-Error'.","Add the alias 'Resolve-Error back to the cmdlet 'Resolve-AzError'."

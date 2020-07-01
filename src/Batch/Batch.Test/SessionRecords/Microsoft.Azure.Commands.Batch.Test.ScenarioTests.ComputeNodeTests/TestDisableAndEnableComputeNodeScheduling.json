@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testPool/nodes?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTktMDgtMDEuMTAuMA==",
+      "RequestUri": "/pools/testPool/nodes?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a74ba9cd-0491-4d25-af03-5516f20df548"
+          "92fc6903-08e9-474a-8bfb-8f9708ff04b8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:25:54 GMT"
+          "Wed, 10 Jun 2020 20:32:03 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -31,7 +31,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "4fd14242-28da-46b7-9142-2fc6d5c25a65"
+          "137e37ab-c527-479d-a291-1ad35e44f084"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,35 +43,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:25:54 GMT"
+          "Wed, 10 Jun 2020 20:32:25 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n      \"state\": \"rebooting\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2019-09-06T21:25:52.9994376Z\",\r\n      \"lastBootTime\": \"2019-09-06T20:33:23.232839Z\",\r\n      \"allocationTime\": \"2019-09-06T20:30:08.210403Z\",\r\n      \"ipAddress\": \"10.218.0.6\",\r\n      \"affinityId\": \"TVM:tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2019-09-06T20:33:23.996542Z\",\r\n        \"endTime\": \"2019-09-06T20:33:24.240507Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.138.218\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2019-09-06T20:33:23.232839Z\",\r\n        \"version\": \"1.6.6\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvmps_3c9b713ddc4708671b83ea90a5e85788f844622414d87cc2501c5d0bc92abe63_d\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3c9b713ddc4708671b83ea90a5e85788f844622414d87cc2501c5d0bc92abe63_d\",\r\n      \"state\": \"reimaging\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2019-09-06T21:25:53.379216Z\",\r\n      \"lastBootTime\": \"2019-09-06T20:33:53.155343Z\",\r\n      \"allocationTime\": \"2019-09-06T20:30:08.210403Z\",\r\n      \"ipAddress\": \"10.218.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_3c9b713ddc4708671b83ea90a5e85788f844622414d87cc2501c5d0bc92abe63_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2019-09-06T20:33:54.016366Z\",\r\n        \"endTime\": \"2019-09-06T20:33:54.375745Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.138.218\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2019-09-06T20:33:53.155343Z\",\r\n        \"version\": \"1.6.6\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvmps_50a6d39714b518ffd11dd18c6ea92040c5d99726b5171ebe349f8926c1eea510_d\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_50a6d39714b518ffd11dd18c6ea92040c5d99726b5171ebe349f8926c1eea510_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2019-09-06T20:34:51.475605Z\",\r\n      \"lastBootTime\": \"2019-09-06T20:34:50.161991Z\",\r\n      \"allocationTime\": \"2019-09-06T20:30:08.210403Z\",\r\n      \"ipAddress\": \"10.218.0.5\",\r\n      \"affinityId\": \"TVM:tvmps_50a6d39714b518ffd11dd18c6ea92040c5d99726b5171ebe349f8926c1eea510_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2019-09-06T20:34:51.131884Z\",\r\n        \"endTime\": \"2019-09-06T20:34:51.45998Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.138.218\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2019-09-06T20:34:50.161991Z\",\r\n        \"version\": \"1.6.6\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2020-06-09T22:34:41.401662Z\",\r\n      \"lastBootTime\": \"2020-06-09T22:20:57.944544Z\",\r\n      \"allocationTime\": \"2020-06-09T16:25:12.7257784Z\",\r\n      \"ipAddress\": \"10.218.0.5\",\r\n      \"affinityId\": \"TVM:tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"totalTasksRun\": 4,\r\n      \"totalTasksSucceeded\": 2,\r\n      \"runningTasksCount\": 0,\r\n      \"recentTasks\": [\r\n        {\r\n          \"taskUrl\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1\",\r\n          \"jobId\": \"testTerminateTaskJob\",\r\n          \"taskId\": \"testTask1\",\r\n          \"taskState\": \"completed\",\r\n          \"executionInfo\": {\r\n            \"startTime\": \"2020-06-09T22:34:20.159567Z\",\r\n            \"endTime\": \"2020-06-09T22:34:41.354785Z\",\r\n            \"exitCode\": -1073741510,\r\n            \"failureInfo\": {\r\n              \"category\": \"UserError\",\r\n              \"code\": \"TaskEnded\",\r\n              \"message\": \"Task Was Ended by User Request\",\r\n              \"details\": [\r\n                {\r\n                  \"name\": \"AdditionalErrorCode\",\r\n                  \"value\": \"FailureExitCode\"\r\n                }\r\n              ]\r\n            },\r\n            \"result\": \"failure\",\r\n            \"retryCount\": 0,\r\n            \"requeueCount\": 0\r\n          }\r\n        }\r\n      ],\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2020-06-09T22:21:00.444565Z\",\r\n        \"endTime\": \"2020-06-09T22:21:00.569566Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"20.43.39.67\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2020-06-09T16:28:51.733507Z\",\r\n        \"version\": \"1.8.2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvmps_b2261f234552ed255528c67c79ef395bf203c82862dc376e9005a0b9bf93c10d_d\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_b2261f234552ed255528c67c79ef395bf203c82862dc376e9005a0b9bf93c10d_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2020-06-10T20:18:50.374645Z\",\r\n      \"lastBootTime\": \"2020-06-10T20:18:47.608852Z\",\r\n      \"allocationTime\": \"2020-06-10T20:15:03.3327466Z\",\r\n      \"ipAddress\": \"10.218.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_b2261f234552ed255528c67c79ef395bf203c82862dc376e9005a0b9bf93c10d_d\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2020-06-10T20:18:50.249643Z\",\r\n        \"endTime\": \"2020-06-10T20:18:50.359019Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"20.43.39.67\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2020-06-10T20:18:47.608852Z\",\r\n        \"version\": \"1.8.2\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d?api-version=2020-03-01.11.0&$select=id%2Cstate",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZD9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "70276f9a-6eae-401a-bb06-5e2e1676be27"
+          "f7ebab99-8fb7-422d-b111-4da878e500c1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:25:55 GMT"
+          "Wed, 10 Jun 2020 20:32:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -83,7 +83,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "54df6c9d-c1ca-4660-9558-eb0d093ab9f0"
+          "56cd7dce-d683-4607-9c76-7c6af14e77b4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -95,35 +95,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:25:54 GMT"
+          "Wed, 10 Jun 2020 20:32:25 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"state\": \"idle\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZD9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b5e6dbc7-2d7c-431b-8e91-8c28eaad9551"
+          "e58ddfa3-9bb6-4835-806c-e521f9e498a9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:00 GMT"
+          "Wed, 10 Jun 2020 20:32:27 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -135,7 +135,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "89c5f030-db0b-4856-8508-8e6640e60dfa"
+          "9bb88868-aa71-4ece-8308-94ec7afb164c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -147,971 +147,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:26:00 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:34:41.401662Z\",\r\n  \"lastBootTime\": \"2020-06-09T22:20:57.944544Z\",\r\n  \"allocationTime\": \"2020-06-09T16:25:12.7257784Z\",\r\n  \"ipAddress\": \"10.218.0.5\",\r\n  \"affinityId\": \"TVM:tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"vmSize\": \"standard_d2_v3\",\r\n  \"totalTasksRun\": 4,\r\n  \"totalTasksSucceeded\": 2,\r\n  \"runningTasksCount\": 0,\r\n  \"recentTasks\": [\r\n    {\r\n      \"taskUrl\": \"https://prodtest6.francecentral.batch.azure.com/jobs/testTerminateTaskJob/tasks/testTask1\",\r\n      \"jobId\": \"testTerminateTaskJob\",\r\n      \"taskId\": \"testTask1\",\r\n      \"taskState\": \"completed\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2020-06-09T22:34:20.159567Z\",\r\n        \"endTime\": \"2020-06-09T22:34:41.354785Z\",\r\n        \"exitCode\": -1073741510,\r\n        \"failureInfo\": {\r\n          \"category\": \"UserError\",\r\n          \"code\": \"TaskEnded\",\r\n          \"message\": \"Task Was Ended by User Request\",\r\n          \"details\": [\r\n            {\r\n              \"name\": \"AdditionalErrorCode\",\r\n              \"value\": \"FailureExitCode\"\r\n            }\r\n          ]\r\n        },\r\n        \"result\": \"failure\",\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    }\r\n  ],\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2020-06-09T22:21:00.444565Z\",\r\n    \"endTime\": \"2020-06-09T22:21:00.569566Z\",\r\n    \"exitCode\": 0,\r\n    \"result\": \"success\",\r\n    \"retryCount\": 0\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"20.43.39.67\",\r\n        \"frontendPort\": 3389,\r\n        \"backendPort\": 20000\r\n      }\r\n    ]\r\n  },\r\n  \"nodeAgentInfo\": {\r\n    \"lastUpdateTime\": \"2020-06-09T16:28:51.733507Z\",\r\n    \"version\": \"1.8.2\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "0fcb01ff-ef6d-45ae-8eef-73abe6972cc6"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:05 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "8f0cf3cd-3a60-4f7c-ad1b-5635b8a5a0bf"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:05 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "f4a33cb9-0861-4093-8cd0-6a3116f294d7"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:10 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "b921df8b-b3cb-4b1a-9ad9-93e49bab2e63"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:09 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "570c30d5-644d-41b8-b8cc-419657dd4afa"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:15 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "b123f406-de45-4f5f-afb2-cdef10d3a3c8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:15 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "8713d4a9-0d08-4197-840f-eb921003a41b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:20 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "4f9f6916-1cb1-4660-a1a5-a2dc7574cdf9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:20 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "9a300a93-7aca-48b2-964a-47bf0b8b4ade"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:25 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "019a89c9-ae62-44f4-ae0d-becfdaddc135"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:24 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "8f0e52e3-fd8d-49ea-93ed-ad42ea7e0086"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:30 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "2dc7f2d1-0771-44db-b9fd-27bf2d34e981"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:30 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "5936a47c-e5f2-4f90-9069-65426d875e6a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:35 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "f3e6e9ea-ec28-44c6-b2e3-1f4581ee67c3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "43e092a4-c788-4c91-8969-bd4fc1ebb1d0"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:40 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "b30719a3-06ff-4e70-a967-94676c7d5c08"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:39 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "78216793-4bfe-4fa2-889d-89ac1c344d7d"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:45 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "a2aa5f0c-f75d-4ce8-9cd7-871a95aac604"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:44 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "f532e71f-7f92-48ff-ad43-1d4076bb2635"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:50 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "d4254a75-091e-4acb-95e2-30eae51b2bd4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:50 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "6ebd8cfa-84c2-480d-8c5d-2d4c94b323aa"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:26:55 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "806ef143-c385-457a-8384-48a8ef3497a8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:26:54 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "f1e91cab-a8bd-4cfb-8af9-f7b1e3d4e3ce"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:00 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "c3979a83-11cb-4b4b-84da-e1475eacc72e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:00 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "9893c24a-af26-4a51-aada-c1027299df7a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:05 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "951bf844-6c4b-426a-9b4c-3cfb9189c735"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:05 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "89c9e241-7c9e-442e-9eee-7fcb63767cd5"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:10 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "739371a5-a61f-44a1-8fc5-0d74d04aab31"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:09 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "b38e5872-ab68-4350-874d-aade41aeb20b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:15 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "f235ed18-a8fc-4390-99a3-5272caedba3b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:15 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "292aba7a-3ff7-4bc9-86b5-1ee804ba5fcc"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:20 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "f96bd630-af5b-457b-9012-3cf60fa72983"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:20 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"rebooting\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2Cstate",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3N0YXRl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "22403011-e8fd-44db-8633-9ea825e53c61"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:25 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "35c3a6b7-8a8f-4a81-a44f-9b71289745ec"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:25 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"idle\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "09c0faaf-5023-4794-b818-9863940b8d15"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:26 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "39d6763e-ce99-4e34-9820-32968b4c7c5c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Sep 2019 21:27:26 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2019-09-06T21:27:24.586521Z\",\r\n  \"lastBootTime\": \"2019-09-06T21:27:24.276612Z\",\r\n  \"allocationTime\": \"2019-09-06T20:30:08.210403Z\",\r\n  \"ipAddress\": \"10.218.0.6\",\r\n  \"affinityId\": \"TVM:tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2019-09-06T21:27:24.456884Z\",\r\n    \"endTime\": \"2019-09-06T21:27:24.566553Z\",\r\n    \"exitCode\": 0,\r\n    \"result\": \"success\",\r\n    \"retryCount\": 0\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"13.78.138.218\",\r\n        \"frontendPort\": 3389,\r\n        \"backendPort\": 20000\r\n      }\r\n    ]\r\n  },\r\n  \"nodeAgentInfo\": {\r\n    \"lastUpdateTime\": \"2019-09-06T20:33:23.232839Z\",\r\n    \"version\": \"1.6.6\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d/disablescheduling?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZC9kaXNhYmxlc2NoZWR1bGluZz9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjA=",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/disablescheduling?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZC9kaXNhYmxlc2NoZWR1bGluZz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"nodeDisableSchedulingOption\": \"terminate\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "547f0ea4-e093-4810-918e-3f794ef4c0a7"
+          "4a91a1c1-5e1e-47ec-8a77-f503409720f0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:26 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -1129,7 +193,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "fd52bb6d-d3f7-459e-bfbb-b516568fa34e"
+          "cd0ad0b1-2360-476d-bbdc-e160a7bc2ba4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1141,35 +205,35 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d/disablescheduling"
+          "https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/disablescheduling"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:27:27 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2CschedulingState",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3NjaGVkdWxpbmdTdGF0ZQ==",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d?api-version=2020-03-01.11.0&$select=id%2CschedulingState",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZD9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjAmJHNlbGVjdD1pZCUyQ3NjaGVkdWxpbmdTdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "1daa6dd6-6dc5-403f-a0aa-7003a6fbabb7"
+          "eee064cd-98af-471f-8c16-59f78ec4635a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:28 GMT"
+          "Wed, 10 Jun 2020 20:32:49 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -1181,7 +245,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "8504719b-8193-4d77-9c57-482b55f9de58"
+          "21aeefd2-05a0-45dc-a8b4-9d6bffff8fd8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1193,35 +257,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:27:27 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"schedulingState\": \"disabled\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"schedulingState\": \"disabled\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d?api-version=2019-08-01.10.0&$select=id%2CschedulingState",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLjEwLjAmJHNlbGVjdD1pZCUyQ3NjaGVkdWxpbmdTdGF0ZQ==",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d?api-version=2020-03-01.11.0&$select=id%2CschedulingState",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZD9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjAmJHNlbGVjdD1pZCUyQ3NjaGVkdWxpbmdTdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "2606397e-2c0d-4248-af53-fedd5c7340ac"
+          "cf48553c-ff7b-4ff7-b4db-e3bf27f6c0d0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:28 GMT"
+          "Wed, 10 Jun 2020 20:32:49 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -1233,7 +297,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "af0dbcfe-4071-4f48-999b-050bae73a97f"
+          "6614d39c-7bcb-421d-a7ca-fef9b73f2e1b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1245,35 +309,35 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:27:27 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d\",\r\n  \"schedulingState\": \"enabled\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n  \"schedulingState\": \"enabled\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d/enablescheduling?api-version=2019-08-01.10.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM1NTVjYTVhN2U2YmRiNDZhOWI0ODRmOGE4NjcxMzM0NWJjNzcwYmE5ZWYwMmVhNmM4ODU5NjAwMzg0ZGFiZTFfZC9lbmFibGVzY2hlZHVsaW5nP2FwaS12ZXJzaW9uPTIwMTktMDgtMDEuMTAuMA==",
+      "RequestUri": "/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/enablescheduling?api-version=2020-03-01.11.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzY3YzdjZDUzM2RhY2NmNDIyODA3YThlNzIxOTJhZmU2YjNiZDAzNWQ4NTlkYzJiMWIwODQ0Y2NkMjMzMWFhYmFfZC9lbmFibGVzY2hlZHVsaW5nP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0d78aa75-46d5-480e-8d4f-f87e80a1dec4"
+          "76b5f0a4-2511-4c8b-93fc-d223c427ab5c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Sep 2019 21:27:28 GMT"
+          "Wed, 10 Jun 2020 20:32:49 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/12.0.19.40611",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -1288,7 +352,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "262f10b1-ee02-48b4-8952-4b139a4b1b3b"
+          "c01e8fba-3c53-4f78-956f-04ca13c2aea3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1300,10 +364,10 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3555ca5a7e6bdb46a9b484f8a86713345bc770ba9ef02ea6c8859600384dabe1_d/enablescheduling"
+          "https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d/enablescheduling"
         ],
         "Date": [
-          "Fri, 06 Sep 2019 21:27:27 GMT"
+          "Wed, 10 Jun 2020 20:32:48 GMT"
         ]
       },
       "ResponseBody": "",
@@ -1312,9 +376,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "prodtest6",
+    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "abc"
   }
 }

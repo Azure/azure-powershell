@@ -75,20 +75,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
                     sb.Append($"### {output}{Environment.NewLine}{Environment.NewLine}");
                 }
 
-                sb.Append($"## ALIASES{Environment.NewLine}{Environment.NewLine}");
+                sb.Append($"## NOTES{Environment.NewLine}{Environment.NewLine}");
+                sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
                 foreach (var alias in markdownInfo.Aliases)
                 {
                     sb.Append($"### {alias}{Environment.NewLine}{Environment.NewLine}");
                 }
-
-                sb.Append($"## NOTES{Environment.NewLine}{Environment.NewLine}");
                 if (markdownInfo.ComplexInterfaceInfos.Any())
                 {
-                    sb.Append($"### {ComplexParameterHeader}");
+                    sb.Append($"{ComplexParameterHeader}{Environment.NewLine}");
                 }
                 foreach (var complexInterfaceInfo in markdownInfo.ComplexInterfaceInfos)
                 {
-                    sb.Append($"#### {complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"{complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
                 }
 
                 sb.Append($"## RELATED LINKS{Environment.NewLine}{Environment.NewLine}");

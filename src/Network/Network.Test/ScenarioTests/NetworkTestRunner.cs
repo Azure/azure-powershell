@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                     helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
+                    helper.GetRMModulePath("AzureRM.PrivateDns.psd1"),
                 })
                 .WithNewRecordMatcherArguments (
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                         {"Microsoft.Storage", null},
                         {"Microsoft.Sql", null},
                         {"Microsoft.ManagedServiceIdentity", null},
+                        {"Microsoft.PrivateDns", null},
                     }
                 )
                 .Build();

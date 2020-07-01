@@ -21,7 +21,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewCertificateParameters : BatchClientParametersBase
     {
-        public NewCertificateParameters(BatchAccountContext context, string filePath, byte[] rawData,
+        public NewCertificateParameters(
+            BatchAccountContext context,
+            string filePath,
+            byte[] rawData,
+            PSCertificateKind certKind,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(filePath) && rawData == null)
@@ -31,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             this.FilePath = filePath;
             this.RawData = rawData;
+            this.CertificateKind = certKind;
         }
 
         /// <summary>
@@ -47,5 +52,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The password to access the certificate private key for .pfx certificates.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// The kind of certificate
+        /// </summary>
+        public PSCertificateKind CertificateKind { get; set; }
     }
 }

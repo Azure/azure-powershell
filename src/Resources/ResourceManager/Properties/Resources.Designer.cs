@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to execute the deployment?.
+        /// </summary>
+        internal static string ConfirmDeploymentMessage {
+            get {
+                return ResourceManager.GetString("ConfirmDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to invoke the &apos;{0}&apos; action on the following resource: {1}.
         /// </summary>
         internal static string ConfirmInvokeAction {
@@ -232,8 +241,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} (Code: {1});
-        ///{2};.
+        ///   Looks up a localized string similar to {0} (Code: {1})
+        ///{2}.
         /// </summary>
         internal static string DeploymentOperationErrorMessage {
             get {
@@ -251,7 +260,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed. Showing {1} out of {2} error(s)..
+        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed with error(s). Showing {1} out of {2} error(s)..
         /// </summary>
         internal static string DeploymentOperationOuterError {
             get {
@@ -262,18 +271,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Status Message: {0}.
         /// </summary>
-        internal static string DeploymentOperationStatusMessage {
+        internal static string DeploymentOperationResultError {
             get {
-                return ResourceManager.GetString("DeploymentOperationStatusMessage", resourceCulture);
+                return ResourceManager.GetString("DeploymentOperationResultError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Target: {0}; {1}.
+        ///   Looks up a localized string similar to Target: {0}.
         /// </summary>
-        internal static string DeploymentOperationTargetInfoInErrror {
+        internal static string DeploymentOperationTargetInfo {
             get {
-                return ResourceManager.GetString("DeploymentOperationTargetInfoInErrror", resourceCulture);
+                return ResourceManager.GetString("DeploymentOperationTargetInfo", resourceCulture);
             }
         }
         
@@ -436,6 +445,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string InvalidAssignableScopes {
             get {
                 return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}..
+        /// </summary>
+        internal static string InvalidChangeType {
+            get {
+                return ResourceManager.GetString("InvalidChangeType", resourceCulture);
             }
         }
         
@@ -1156,6 +1174,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string WarnOnDeploymentDebugSetting {
             get {
                 return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+        ///You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues..
+        /// </summary>
+        internal static string WhatIfPreviewNotice {
+            get {
+                return ResourceManager.GetString("WhatIfPreviewNotice", resourceCulture);
             }
         }
     }

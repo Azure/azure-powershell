@@ -143,6 +143,12 @@ Approves a private endpoint connection.
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
 denies a private endpoint connection.
 
+### [Disconnect-AzP2SVpnGatewayVpnConnection](Disconnect-AzP2SVpnGatewayVpnConnection.md)
+Disconnect given connected vpn client connections with a given p2s vpn gateway
+
+### [Disconnect-AzVirtualNetworkGatewayVpnConnection](Disconnect-AzVirtualNetworkGatewayVpnConnection.md)
+Disconnect given connected vpn client connections with a given virtual network gateway.
+
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
 
@@ -237,7 +243,7 @@ Gets an application security group.
 Gets an array of private link service id that can be linked to a private end point with auto approved.
 
 ### [Get-AzAvailablePrivateEndpointType](Get-AzAvailablePrivateEndpointType.md)
-Return available private end point types in the location
+Return available private end point types in the location.
 
 ### [Get-AzAvailableServiceAlias](Get-AzAvailableServiceAlias.md)
 Get available service aliases in the region.
@@ -334,6 +340,9 @@ Gets a Azure Firewall Policy
 
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
+
+### [Get-AzIpAllocation](Get-AzIpAllocation.md)
+Gets a Azure IpAllocation.
 
 ### [Get-AzIpGroup](Get-AzIpGroup.md)
 Get an Azure IpGroup
@@ -440,6 +449,9 @@ Gets the detailed information of current point to site connections from P2SVpnGa
 ### [Get-AzP2sVpnGatewayVpnProfile](Get-AzP2sVpnGatewayVpnProfile.md)
 Generates and returns a SAS url for customer to download Vpn profile for point to site client setup to have point to site connectivity to P2SVpnGateway.
 
+### [Get-AzPrivateDnsZoneGroup](Get-AzPrivateDnsZoneGroup.md)
+Gets private DNS zone group
+
 ### [Get-AzPrivateEndpoint](Get-AzPrivateEndpoint.md)
 Get a private endpoint
 
@@ -469,6 +481,9 @@ Gets a route filter rule in a route filter.
 
 ### [Get-AzRouteTable](Get-AzRouteTable.md)
 Gets route tables.
+
+### [Get-AzSecurityPartnerProvider](Get-AzSecurityPartnerProvider.md)
+Get an Azure SecurityPartnerProvider
 
 ### [Get-AzServiceEndpointPolicy](Get-AzServiceEndpointPolicy.md)
 Gets a service endpoint policy.
@@ -683,11 +698,11 @@ Adds a condition to the RewriteRule for an application gateway.
 ### [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
 Creates a rewrite rule header configuration for an application gateway.
 
-### [New-AzApplicationGatewayRewriteRuleUrlConfiguration](New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)
-Creates a rewrite rule url configuration for an application gateway
-
 ### [New-AzApplicationGatewayRewriteRuleSet](New-AzApplicationGatewayRewriteRuleSet.md)
 Creates a request routing rule for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleUrlConfiguration](New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)
+Creates a rewrite rule url configuration for an application gateway.
 
 ### [New-AzApplicationGatewaySku](New-AzApplicationGatewaySku.md)
 Creates a SKU for an application gateway.
@@ -755,6 +770,12 @@ Creates a Firewall Application Rule.
 ### [New-AzFirewallApplicationRuleCollection](New-AzFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
 
+### [New-AzFirewallHubIpAddress](New-AzFirewallHubIpAddress.md)
+Ip addresses assoicated to the firewall on virtual hub
+
+### [New-AzFirewallHubPublicIpAddress](New-AzFirewallHubPublicIpAddress.md)
+Public Ip assoicated to the firewall on virtual hub
+
 ### [New-AzFirewallNatRule](New-AzFirewallNatRule.md)
 Creates a Firewall NAT Rule.
 
@@ -782,11 +803,26 @@ Create a new Azure Firewall Policy Nat Rule Collection
 ### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
 Create a new Azure Firewall Policy Network Rule
 
+### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNatRule.md)
+Create a new Azure Firewall Policy NAT Rule
+
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
+### [New-AzFirewallPublicIpAddress](New-AzFirewallPublicIpAddress.md)
+This is the placeholder for the Ip Address that can be used for multi pip on azure firewall.
+
+### [New-AzFirewallPolicyThreatIntelWhitelist](New-AzFirewallPolicyThreatIntelWhitelist.md)
+Create a new threat intelligence whitelist for Azure Firewall Policy
+
 ### [New-AzFirewallThreatIntelWhitelist](New-AzFirewallThreatIntelWhitelist.md)
 Create a new threat intelligence whitelist for Azure Firewall
+
+### [New-AzIpAllocation](New-AzIpAllocation.md)
+Creates an Azure IpAllocation.
+
+### [New-AzIpConfigurationBgpPeeringAddressObject](New-AzIpConfigurationBgpPeeringAddressObject.md)
+creates a new IpconfigurationBgpPeeringAddressObject
 
 ### [New-AzIpGroup](New-AzIpGroup.md)
 Creates an Azure IpGroup.
@@ -846,13 +882,13 @@ Creates a network security rule configuration.
 Creates a new Network Watcher resource.
 
 ### [New-AzNetworkWatcherConnectionMonitor](New-AzNetworkWatcherConnectionMonitor.md)
-Creates a connection monitor.
+Creates a connection monitor resource.
 
 ### [New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject](New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject.md)
 Creates a connection monitor endpoint filter item.
 
 ### [New-AzNetworkWatcherConnectionMonitorEndpointObject](New-AzNetworkWatcherConnectionMonitorEndpointObject.md)
-Creates a connection monitor endpoint.
+Creates connection monitor endpoint.
 
 ### [New-AzNetworkWatcherConnectionMonitorObject](New-AzNetworkWatcherConnectionMonitorObject.md)
 Create a connection monitor V2 object.
@@ -888,6 +924,12 @@ Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
 ### [New-AzPacketCaptureFilterConfig](New-AzPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
 
+### [New-AzPrivateDnsZoneConfig](New-AzPrivateDnsZoneConfig.md)
+Creates DNS zone configuration of the private dns zone group.
+
+### [New-AzPrivateDnsZoneGroup](New-AzPrivateDnsZoneGroup.md)
+Creates a private DNS zone group in the specified private endpoint.
+
 ### [New-AzPrivateEndpoint](New-AzPrivateEndpoint.md)
 Creates a private endpoint.
 
@@ -909,6 +951,9 @@ Creates a Public IP Prefix
 ### [New-AzPublicIpTag](New-AzPublicIpTag.md)
 Creates an IP Tag.
 
+### [New-AzRadiusServer](New-AzRadiusServer.md)
+Creates an external radius server configuration
+
 ### [New-AzRouteConfig](New-AzRouteConfig.md)
 Creates a route for a route table.
 
@@ -920,6 +965,9 @@ Creates a route filter rule for a route filter.
 
 ### [New-AzRouteTable](New-AzRouteTable.md)
 Creates a route table.
+
+### [New-AzSecurityPartnerProvider](New-AzSecurityPartnerProvider.md)
+Creates an Azure SecurityPartnerProvider.
 
 ### [New-AzServiceEndpointPolicy](New-AzServiceEndpointPolicy.md)
 Creates a service endpoint policy.
@@ -1111,6 +1159,9 @@ Removes an Azure Firewall Policy
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
+### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
+Deletes an Azure IpAllocation.
+
 ### [Remove-AzIpGroup](Remove-AzIpGroup.md)
 Deletes an Azure IpGroup.
 
@@ -1166,16 +1217,19 @@ Removes a network security rule from a network security group.
 Removes a Network Watcher.
 
 ### [Remove-AzNetworkWatcherConnectionMonitor](Remove-AzNetworkWatcherConnectionMonitor.md)
-Removes a connection monitor.
+Remove connection monitor.
 
 ### [Remove-AzNetworkWatcherFlowLog](Remove-AzNetworkWatcherFlowLog.md)
-Removes a flow log resource.
+Deletes the specified flow log resource.
 
 ### [Remove-AzNetworkWatcherPacketCapture](Remove-AzNetworkWatcherPacketCapture.md)
 Removes a packet capture resource.
 
 ### [Remove-AzP2sVpnGateway](Remove-AzP2sVpnGateway.md)
 Removes an existing P2SVpnGateway.
+
+### [Remove-AzPrivateDnsZoneGroup](Remove-AzPrivateDnsZoneGroup.md)
+Removes a DNS zone group.
 
 ### [Remove-AzPrivateEndpoint](Remove-AzPrivateEndpoint.md)
 Removes a private endpoint.
@@ -1203,6 +1257,9 @@ Removes a route filter rule from a route filter.
 
 ### [Remove-AzRouteTable](Remove-AzRouteTable.md)
 Removes a route table.
+
+### [Remove-AzSecurityPartnerProvider](Remove-AzSecurityPartnerProvider.md)
+Deletes an Azure SecurityPartnerProvider.
 
 ### [Remove-AzServiceEndpointPolicy](Remove-AzServiceEndpointPolicy.md)
 Removes a service endpoint policy.
@@ -1357,6 +1414,9 @@ Modifies the WAF configuration of an application gateway.
 ### [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 Modifies an ExpressRoute circuit.
 
+### [Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
+Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit. 
+
 ### [Set-AzExpressRouteCircuitPeeringConfig](Set-AzExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
 
@@ -1383,6 +1443,9 @@ Saves a modified azure firewall policy
 
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group
+
+### [Set-AzIpAllocation](Set-AzIpAllocation.md)
+Saves a modified IpAllocation.
 
 ### [Set-AzIpGroup](Set-AzIpGroup.md)
 Saves a modified Firewall.
@@ -1436,10 +1499,13 @@ Updates a network security rule configuration for a network security group.
 Configures flow logging for a target resource.
 
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
-Update a connection monitor.
+Updates connection monitor resource.
 
 ### [Set-AzNetworkWatcherFlowLog](Set-AzNetworkWatcherFlowLog.md)
-Update a flow log resource.
+Updates flow log resource.
+
+### [Set-AzPrivateDnsZoneGroup](Set-AzPrivateDnsZoneGroup.md)
+Updates DNS zone group
 
 ### [Set-AzPrivateEndpoint](Set-AzPrivateEndpoint.md)
 Updates a private endpoint.
@@ -1467,6 +1533,9 @@ Modifies the route filter rule of a route filter.
 
 ### [Set-AzRouteTable](Set-AzRouteTable.md)
 Updates a route table.
+
+### [Set-AzSecurityPartnerProvider](Set-AzSecurityPartnerProvider.md)
+Saves a modified Azure SecurityPartnerProvider.
 
 ### [Set-AzServiceEndpointPolicy](Set-AzServiceEndpointPolicy.md)
 Updates a service endpoint policy.
@@ -1576,8 +1645,3 @@ Updates an existing VpnServerConfiguration.
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.
 
-### [Disconnect-AzVirtualNetworkGatewayVpnConnection](Disconnect-AzVirtualNetworkGatewayVpnConnection.md)
-Disconnect virtual network gateway VPN connection.
-
-### [Disconnect-AzP2sVpnGatewayVpnConnection](Disconnect-AzP2sVpnGatewayVpnConnection.md)
-Disconnect p2s vpn gateway VPN connection.

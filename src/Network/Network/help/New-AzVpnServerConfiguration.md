@@ -24,11 +24,11 @@ New-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> -Locatio
 ### ByVpnServerConfigurationNameByRadiusAuthentication
 ```
 New-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> -Location <String>
- [-VpnProtocol <String[]>] [-VpnAuthenticationType <String[]>] -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VpnProtocol <String[]>] [-VpnAuthenticationType <String[]>] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>]
+ [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationNameByAadAuthentication
@@ -81,7 +81,7 @@ The above command will create a new VpnServerConfiguration with VpnAuthenticatio
 AAD audience for P2S AAD authentication.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 AAD issuer for P2S AAD authentication.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 AAD tenant for P2S AAD authentication.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The resource location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnServerConfigurationName
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication
 Aliases:
 
@@ -201,11 +201,26 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RadiusServerList
+P2S External multiple radius servers.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRadiusServer[]
+Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +231,7 @@ Accept wildcard characters: False
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication
 Aliases:
 
@@ -231,11 +246,11 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,7 +261,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +276,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +291,7 @@ Accept wildcard characters: False
 The list of P2S VPN client tunneling protocols.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Certificate, Radius, AAD
@@ -292,7 +307,7 @@ Accept wildcard characters: False
 A list of IPSec policies for VpnServerConfiguration.
 
 ```yaml
-Type: PSIpsecPolicy[]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +322,7 @@ Accept wildcard characters: False
 A list of VpnClientCertificates to be revoked files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication
 Aliases:
 
@@ -322,7 +337,7 @@ Accept wildcard characters: False
 A list of VpnClientRootCertificates to be added files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication
 Aliases:
 
@@ -337,7 +352,7 @@ Accept wildcard characters: False
 The list of P2S VPN client tunneling protocols.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: IkeV2, OpenVPN
@@ -353,7 +368,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -369,7 +384,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -381,7 +396,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -197,7 +197,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var json = JsonConvert.SerializeObject(
                     recoveryPlan,
                     Formatting.Indented,
-                     new RecoveryPlanActionDetailsConverter());
+                     new RecoveryPlanActionDetailsConverter(),
+                     new RecoveryPlanProviderSpecificDetailsConverter());
                 file.WriteLine(json);
             }
         }

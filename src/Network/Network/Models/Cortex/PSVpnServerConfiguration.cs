@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string RadiusServerSecret { get; set; }
 
+        public List<PSRadiusServer> RadiusServers { get; set; }
+
         public PSAadAuthenticationParameters AadAuthenticationParameters { get; set; }
 
         [Ps1Xml(Label = "P2SVpnGateway ids", Target = ViewControl.Table)]
@@ -59,6 +61,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnClientRevokedCertificatesText
         {
             get { return JsonConvert.SerializeObject(VpnClientRevokedCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RadiusServersText
+        {
+            get { return JsonConvert.SerializeObject(RadiusServers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

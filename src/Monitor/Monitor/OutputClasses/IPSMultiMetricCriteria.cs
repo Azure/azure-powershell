@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public enum CriterionType
     {
         StaticThresholdCriterion,
-        DynamicThresholdCriterion
+        DynamicThresholdCriterion,
+        WebtestLocationAvailabilityCriterion,
     }
 }

@@ -28,8 +28,8 @@ The **Get-AzWebAppBackupList** cmdlet gets a list of backups for an Azure Web Ap
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
 PS C:\>Get-AzWebAppBackupList -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
 ```
 

@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 GetResourceUri(resourceGroupName, serverName, databaseName), settings, settings.Name).Result;
         }
 
-        public Guid? AssignServerIdentity(string resourceGroupName, string serverName)
+        public Guid? AssignServerIdentityIfNotAssigned(string resourceGroupName, string serverName)
         {
             var server = GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
             if (server.Identity == null ||

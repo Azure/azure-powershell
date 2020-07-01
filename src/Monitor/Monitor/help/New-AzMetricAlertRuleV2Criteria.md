@@ -27,6 +27,12 @@ New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-Metri
  [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### WebtestParameterSet
+```
+New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsightsId <String>
+ [-FailedLocationCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input Add-AzMetricAlertRuleV2 cmdlet which creates a new metric alert rule.
 
@@ -86,7 +92,35 @@ Dimensions           : {availabilityResult/name}
 
 This set of commands creates a more complex metric alert criteria which includes dimension selection
 
+### Example 4: Create a webtest availability criteria
+
+```powershell
+PS C:\>New-AzMetricAlertRuleV2Criteria -WebTest -WebTestId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/webtests/PingTest-appInsights" -ApplicationInsightsId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/components/appInsights" -FailedLocationCount 3
+CriterionType        : WebtestLocationAvailabilityCriterion
+WebTestId            : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/webtests/PingTest-appInsights
+ComponentId          : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/components/appInsights
+FailedLocationCount  : 3
+AdditionalProperties :
+```
+
+This command creates a webtest availability criteria that can be used in a metric alert rule
+
 ## PARAMETERS
+
+### -ApplicationInsightsId
+The Application Insights resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: WebtestParameterSet
+Aliases: componentId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -108,7 +142,7 @@ List of dimension conditions
 
 ```yaml
 Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[]
-Parameter Sets: (All)
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: False
@@ -148,6 +182,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FailedLocationCount
+The minimum number of failed locations to raise an alert.
+
+```yaml
+Type: System.Int32
+Parameter Sets: WebtestParameterSet
+Aliases: AlertLocationThreshold
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IgnoreDataBefore
 The IgnoreDataBefore parameter
 
@@ -168,7 +217,7 @@ The metric name for rule
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
@@ -183,7 +232,7 @@ The Namespace of the metric
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: False
@@ -198,7 +247,7 @@ The rule condition operator
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
@@ -243,7 +292,7 @@ The aggregation operation used to roll up multiple metric values across the wind
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
@@ -262,6 +311,36 @@ Parameter Sets: DynamicThresholdParameterSet
 Aliases: FailingPeriod, NumberOfViolations
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebTest
+Switch parameter for using availability criteria Type
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: WebtestParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebTestId
+The Application Insights web test Id.
+
+```yaml
+Type: System.String
+Parameter Sets: WebtestParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

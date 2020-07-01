@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.13
+* Updated Blueprint .NET SDK version
+
 ## Version 0.2.12
 * Added support for management group level Blueprint assignment
 

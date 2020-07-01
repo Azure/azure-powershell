@@ -19,7 +19,19 @@
 -->
 
 ## Upcoming Release
-* Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories; issue: https://github.com/Azure/azure-powershell/issues/11589
+
+## Version 2.0.1
+* Fixed input object parameter for `Set-AzActivityLogAlert`
+* Fixed `InputObject` parameter for `Set-AzActionGroup` [#10868]
+
+## Version 2.0.0
+* Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories [#11589]
+* Supported WebTest availability criteria for metric alert V2
+	- `New-AzMetricAlertRuleV2Criteria`: an option to create webtest availability criteria was added
+	- `Add-AzMetricAlertRuleV2`: supports the new webtest availability criteria
+* Removed redundant definition for RetentionPolicy in PSLogProfile [#7608]
+* Removed redundant properties difined in PSEventData [#11353]
+* Renamed `Get-AzLog` to `Get-AzActivityLog`
 
 ## Version 1.7.0
 * Added cmdlets for private link scope

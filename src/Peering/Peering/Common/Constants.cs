@@ -34,6 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string AzPeeringDirectConnectionObject = "AzPeeringDirectConnectionObject";
         public const string AzPeeringExchangeConnectionObject = "AzPeeringExchangeConnectionObject";
         public const string AzPeering = "AzPeering";
+        public const string AzPeeringReceivedRoute = "AzPeeringReceivedRoute";
         public const string AzPeeringServiceLocation = "AzPeeringServiceLocation";
         public const string AzPeeringServiceProvider = "AzPeeringServiceProvider";
         public const string AzPeeringServiceCountry = "AzPeeringServiceCountry";
@@ -257,6 +258,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The resource id help.
         /// </summary>
         public const string ResourceIdHelp = "The resource id string name.";
+        public const string RxPrefix = "Filter by prefix.";
+        public const string RxAsPath = "Filter by AS Path. Example: '9342 1234 4567'";
+        public const string RxOriginAsValidationState = "Filter by origin AS validation state.";
+        public const string RxRPKIValidationState = "Filter by RPKI validation state.";
 
         /// <summary>
         /// PeeringNameHelp

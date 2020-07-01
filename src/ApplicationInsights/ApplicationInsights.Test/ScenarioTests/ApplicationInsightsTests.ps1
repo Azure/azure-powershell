@@ -14,6 +14,61 @@
 
 <#
 .SYNOPSIS
+Test ApplicationInsightsCRUD
+#>
+function Test-ApplicationInsightsCRUD
+{
+    # setup
+    $rgname = "azps-test-group-mock"
+    $appName = "azps-test-ai-mock";
+    $loc = Get-ProviderLocation ResourceManagement;
+    $kind = "web";
+    $key = "key"
+    $val = "val"
+    $tag = @{$key=$val}
+
+    try
+    {
+        # Test
+		
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
+
+        $app = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName
+
+        Assert-AreEqual $app.Name $appName
+        Assert-AreEqual $app.Kind $kind
+        Assert-NotNull $app.InstrumentationKey
+        Assert-AreEqual "Enabled" $app.PublicNetworkAccessForIngestion
+        Assert-AreEqual "Enabled" $app.PublicNetworkAccessForQuery
+
+        $apps = Get-AzApplicationInsights -ResourceGroupName $rgname;
+
+		Assert-AreEqual $apps.count 1
+        Assert-AreEqual $apps[0].Name $appName
+        Assert-AreEqual $apps[0].Kind $kind
+        Assert-NotNull $apps[0].InstrumentationKey
+
+        $app = Update-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Tags $tag -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
+
+        Assert-AreEqual "Disabled" $app.PublicNetworkAccessForIngestion
+        Assert-AreEqual "Disabled" $app.PublicNetworkAccessForQuery
+        Assert-AreEqual $val $app.Tags[$key]
+
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
+
+        Remove-AzResourceGroup -Name $rgname
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get-AzApplicationInsights
 #>
 function Test-GetApplicationInsights

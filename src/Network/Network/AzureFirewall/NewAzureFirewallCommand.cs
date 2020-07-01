@@ -156,6 +156,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable DNS Proxy. By default it is disabled."
+        )]
+        public SwitchParameter EnableDnsProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
+        )]
+        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of DNS Servers"
+        )]
+        public string[] DnsServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -190,6 +208,11 @@ namespace Microsoft.Azure.Commands.Network
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The virtual hub that a firewall is attached to")]
         public string VirtualHubId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ip addresses for the firewall attached to a virtual hub")]
+        public PSAzureFirewallHubIpAddresses HubIPAddress { get; set; }
 
         [Parameter(
                 Mandatory = false,
@@ -247,6 +270,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
+                if(this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                {
+                    throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
                 var sku = new PSAzureFirewallSku();
                 sku.Name = MNM.AzureFirewallSkuName.AZFWHub;
                 sku.Tier = MNM.AzureFirewallSkuTier.Standard;
@@ -258,7 +286,8 @@ namespace Microsoft.Azure.Commands.Network
                     Location = this.Location,
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
-                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                    HubIPAddresses = this.HubIPAddress
                 };
             }
             else
@@ -278,6 +307,9 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
+                    DNSServer = this.DnsServer,
                     Sku = sku
                 };
 
@@ -290,6 +322,8 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
                 }
+
+                firewall.ValidateDNSProxyRequirements();
             }
 
             // Map to the sdk object

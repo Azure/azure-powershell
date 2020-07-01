@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ProvisioningState { get; set; }
 
-        public ScriptStatus Status { get; set; }
+        public PsScriptStatus Status { get; set; }
 
         public IDictionary<string, object> Outputs { get; set; }
 

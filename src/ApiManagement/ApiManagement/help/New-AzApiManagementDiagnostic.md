@@ -25,7 +25,7 @@ The cmdlet **New-AzApiManagementDiagnostic** creates a diagnostic entity either 
 
 ## EXAMPLES
 
-### Example 1 : Create a new Global scope Diagnostic
+### Example 1: Create a new Global scope Diagnostic
 ```powershell
 PS D:\github\azure-powershell> $context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS D:\github\azure-powershell> $logger = Get-AzApiManagementLogger -Context $context -LoggerId "backendapisachinc"

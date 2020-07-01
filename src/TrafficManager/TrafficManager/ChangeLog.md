@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.4
 * Fixed incorrect profile name in `DisableAzureTrafficManagerEndpoint` verbose output
 
 ## Version 1.0.3

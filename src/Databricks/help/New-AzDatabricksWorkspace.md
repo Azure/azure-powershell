@@ -14,9 +14,10 @@ Creates a new workspace.
 
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrivateSubnetName <String>]
- [-PublicSubnetName <String>] [-Sku <String>] [-Tag <Hashtable>] [-VirtualNetworkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrepareEncryption]
+ [-PrivateSubnetName <String>] [-PublicSubnetName <String>] [-Sku <String>] [-Tag <Hashtable>]
+ [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,18 @@ eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 ```
 
 This command creates a Databricks workspace with customized virtual network in a resource group.
+
+### Example 3: Create a Databricks workspace with enable encryption
+```powershell
+PS C:\> New-AzDatabricksWorkspace -Name databricks-test02 -ResourceGroupName testgroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+
+Location Name            Type
+-------- ----            ----
+eastus   databricks-test02 Microsoft.Databricks/workspaces
+```
+
+This command creates a Databricks workspace and sets it to prepare for encryption.
+Please refer to the examples of Update-AzDatabricksWorkspace for more settings to encryption.
 
 ## PARAMETERS
 
@@ -131,6 +144,22 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrepareEncryption
+Prepare the workspace for encryption.
+Enables the Managed Identity for managed storage account.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

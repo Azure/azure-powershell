@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/45a81a6d-520b-4e1b-8355-5a4714332d26/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDVhODFhNmQtNTIwYi00ZTFiLTgzNTUtNWE0NzE0MzMyZDI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "22257e23-9cde-40b9-a01a-fca08934bd62"
+          "87d94a6e-39cf-4581-8530-81faf13d2630"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28516.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.19.10.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "eb1de711-ffdd-46a7-8bc0-51f03e6f0e76"
+          "3ddad91d-b2e3-4569-95a2-439154a69fa0"
         ],
         "x-ms-correlation-request-id": [
-          "b9a07ac7-d38e-4883-9451-f5a7aec32c98"
+          "385bec98-0e7e-49a6-90ab-71e6800731a0"
         ],
         "x-ms-arm-service-request-id": [
-          "e3906f4a-231f-4a75-abb9-f070f6a7a724"
+          "4a16baca-7496-46aa-9594-779fb0471141"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,13 +46,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200413T051056Z:b9a07ac7-d38e-4883-9451-f5a7aec32c98"
+          "CENTRALUS:20200607T135320Z:385bec98-0e7e-49a6-90ab-71e6800731a0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 Apr 2020 05:10:55 GMT"
+          "Sun, 07 Jun 2020 13:53:20 GMT"
         ],
         "Content-Length": [
           "94381"
@@ -70,6 +70,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "45a81a6d-520b-4e1b-8355-5a4714332d26"
+    "SubscriptionId": "f7e1a56e-347b-4103-87c7-e775a3e11ac5"
   }
 }

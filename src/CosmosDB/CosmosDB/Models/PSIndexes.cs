@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSIndexes(Indexes indexes )
         {
+            if (indexes == null)
+            {
+                return;
+            }
+
             DataType = indexes.DataType;
             Precision = indexes.Precision;
             Kind = indexes.Kind;
@@ -45,8 +50,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     'Spatial'
         public string Kind { get; set; }
 
-        static public Indexes ConvertPSIndexesToIndexes(PSIndexes pSIndexes)
+        static public Indexes ToSDKModel(PSIndexes pSIndexes)
         {
+            if (pSIndexes == null)
+            {
+                return null;
+            }
+
             return new Indexes
             {
                 DataType = pSIndexes.DataType,

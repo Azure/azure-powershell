@@ -20,8 +20,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -33,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
+             HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -58,6 +60,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -72,17 +82,83 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected override void OnProcessRecord()
         {
-            this.ConfirmAction(
-                this.Force,
-                string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
-                ProjectResources.CreateDeployment,
-                ResourceGroupName,
-                () =>
+            if (this.ShouldExecuteWhatIf())
+            {
+                string whatIfMessage = ExecuteWhatIf();
+                string warningMessage = $"{Environment.NewLine}{ProjectResources.ConfirmDeploymentMessage}";
+                string captionMessage = $"{(char)27}[1A{Color.Reset}{whatIfMessage}"; // {(char)27}[1A for cursor up.
+
+                if (this.ShouldProcess(whatIfMessage, warningMessage, captionMessage))
                 {
-                    if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
-                    {
-                        WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
-                    }
+                    this.ExecuteDeployment();
+                }
+            }
+            else
+            {
+                this.ConfirmAction(
+                    this.Force,
+                    string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
+                    ProjectResources.CreateDeployment,
+                    ResourceGroupName,
+                    this.ExecuteDeployment,
+                    () => this.Mode == DeploymentMode.Complete);
+            }
+        }
+
+        private bool ShouldExecuteWhatIf()
+        {
+            return this.MyInvocation.BoundParameters.ContainsKey("WhatIf") ||
+                   this.MyInvocation.BoundParameters.ContainsKey("Confirm");
+        }
+
+        private string ExecuteWhatIf()
+        {
+            const string statusMessage = "Getting the latest status of all resources...";
+            var clearMessage = new string(' ', statusMessage.Length);
+            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
+            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+            var tags = new[] { "PSHOST" };
+
+            // Write status message.
+            this.WriteInformation(information, tags);
+
+            var parameters = new PSDeploymentWhatIfCmdletParameters
+            {
+                DeploymentName = this.Name,
+                Mode = this.Mode,
+                ResourceGroupName = this.ResourceGroupName,
+                TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = this.TemplateObject,
+                TemplateParametersUri = this.TemplateParameterUri,
+                TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
+                ResultFormat = this.WhatIfResultFormat
+            };
+
+            try
+            {
+                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.WhatIfExcludeChangeType);
+                string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+                // Clear status on success execution.
+                this.WriteInformation(clearInformation, tags);
+
+                // Use \r to override the built-in "What if:" in output.
+                return $"\r        \r{Environment.NewLine}{whatIfMessage}{Environment.NewLine}";
+            }
+            catch (Exception)
+            {
+                // Clear status on exception.
+                this.WriteInformation(clearInformation, tags);
+                throw;
+            }
+        }
+
+        private void ExecuteDeployment()
+        {
+            if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
+            }
 
                     var parameters = new PSDeploymentCmdletParameters()
                     {
@@ -106,13 +182,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             : null
                     };
 
-                    if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
-                    {
-                        WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
-                    }
-                    WriteObject(ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
-                },
-                () => this.Mode == DeploymentMode.Complete);
+            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            {
+                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+            }
+            WriteObject(ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
         }
     }
 }

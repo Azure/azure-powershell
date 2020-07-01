@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
+    [GenericBreakingChange("The `Resolve-Error` alias will be removed in a future release.  Please change any scripts that use this alias to use `Resolve-AzError` instead.")]
+    [Alias("Resolve-Error")]
     [Cmdlet("Resolve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]

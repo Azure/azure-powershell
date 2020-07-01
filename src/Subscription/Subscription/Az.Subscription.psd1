@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Subscription.dll'
@@ -72,7 +72,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzSubscription'
+CmdletsToExport = 'New-AzSubscription','Update-AzSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -110,7 +110,7 @@ PrivateData = @{
         ReleaseNotes = '* Update references in .psd1 to use relative path'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

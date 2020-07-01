@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -23,64 +21,44 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinDatabaseThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class UpdateAzCosmosDBGremlinDatabaseThroughput : AzureCosmosDBCmdletBase
+    public class UpdateAzCosmosDBGremlinDatabaseThroughput : UpdateAzCosmosDBThroughput
     {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.GremlinDatabaseThroughputHelpMessage)]
-        [ValidateNotNull]
-        public int Throughput { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount ParentObject { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSGremlinDatabaseGetResults InputObject { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void PopulateFromParentObject() 
         {
-            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                AccountName = resourceIdentifier.ResourceName;
-            }
-            else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-            }
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+            ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            AccountName = resourceIdentifier.ResourceName;
+        }
 
-            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = new ThroughputSettingsUpdateParameters
-            {
-                Resource = new ThroughputSettingsResource
-                {
-                    Throughput = Throughput
-                }
-            };
+        public override void PopulateFromInputObject() 
+        {
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+            ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            Name = resourceIdentifier.ResourceName;
+            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
 
+        }
+
+        public override void CallSDKMethod(ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters) 
+        {
             if (ShouldProcess(Name, "Updating the throughput value of a CosmosDB Gremlin Database"))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.GremlinResources.UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, throughputSettingsUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
-
-            return;
         }
+
     }
 }

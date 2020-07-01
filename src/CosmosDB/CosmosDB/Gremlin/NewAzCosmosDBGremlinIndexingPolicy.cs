@@ -76,7 +76,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             indexingPolicy.Automatic = Automatic;
 
             if (IndexingMode != null)
+            {
                 indexingPolicy.IndexingMode = IndexingMode;
+            }
 
             WriteObject(indexingPolicy);
             return;

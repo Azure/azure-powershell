@@ -23,6 +23,7 @@ using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+using Tools.Common.Utilities;
 
 namespace StaticAnalysis.SignatureVerifier
 {
@@ -74,8 +75,10 @@ namespace StaticAnalysis.SignatureVerifier
             }
 
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
-                                                                       !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
+                                                                       !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
+                SharedAssemblyLoader.Load(baseDirectory);
+
                 //Add current directory for probing
                 probingDirectories.Add(baseDirectory);
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));

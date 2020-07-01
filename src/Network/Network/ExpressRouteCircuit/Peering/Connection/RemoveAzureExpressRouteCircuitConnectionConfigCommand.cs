@@ -41,6 +41,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Address family of the Circuit Connection")]
+        [ValidateSet(
+         IPv4,
+         IPv6,
+         IgnoreCase = true)]
+        public string AddressPrefixType { get; set; }
+
+
         public override void Execute()
         {
             base.Execute();
@@ -59,7 +69,21 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connection != null)
             {
-                peering.Connections.Remove(connection);
+                if (!string.IsNullOrWhiteSpace(this.AddressPrefixType))
+                {
+                    if (this.AddressPrefixType == IPv4)
+                    {
+                        connection.AddressPrefix = null;
+                    }
+                    if (this.AddressPrefixType == IPv6)
+                    {
+                        connection.IPv6CircuitConnectionConfig = null;
+                    }
+                }
+                else 
+                {
+                    peering.Connections.Remove(connection);
+                }
             }
 
             WriteObject(this.ExpressRouteCircuit);

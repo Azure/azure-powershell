@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             RunPowerShellTest(_logger, "Test-SearchGetSchema");
         }
 
-        [Fact]
+        [Fact(Skip="Related cmdlet/API was deleted")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSearchResultsAndUpdate()
         {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             RunPowerShellTest(_logger, "Test-SearchGetSavedSearchesAndResults");
         }
 
-        [Fact]
+        [Fact(Skip="Service break, waiting for the fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchSetAndRemoveSavedSearches()
         {

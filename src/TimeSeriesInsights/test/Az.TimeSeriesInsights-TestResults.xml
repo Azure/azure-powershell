@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="36" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-05-07" time="12:54:11">
+  <environment os-version="10.0.18363" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" cwd="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights" user="xidi" clr-version="Unknown" machine-name="DESKTOP-G9R8CMG" nunit-version="2.5.8.0" user-domain="FAREAST" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="6.1238" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsAccessPolicy.Tests.ps1" executed="True" result="Success" success="True" time="1.1774" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsAccessPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzTimeSeriesInsightsAccessPolicy" executed="True" result="Success" success="True" time="0.9205" asserts="0" description="Get-AzTimeSeriesInsightsAccessPolicy">
+            <results>
+              <test-case description="List" name="Get-AzTimeSeriesInsightsAccessPolicy.List" time="0.3246" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzTimeSeriesInsightsAccessPolicy.Get" time="0.0421" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzTimeSeriesInsightsAccessPolicy.GetViaIdentity" time="0.1002" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsEnvironment.Tests.ps1" executed="True" result="Success" success="True" time="0.3702" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsEnvironment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzTimeSeriesInsightsEnvironment" executed="True" result="Success" success="True" time="0.2373" asserts="0" description="Get-AzTimeSeriesInsightsEnvironment">
+            <results>
+              <test-case description="List" name="Get-AzTimeSeriesInsightsEnvironment.List" time="0.0512" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzTimeSeriesInsightsEnvironment.Get" time="0.0425" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InputObject" name="Get-AzTimeSeriesInsightsEnvironment.InputObject" time="0.053" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsEventSource.Tests.ps1" executed="True" result="Success" success="True" time="0.4291" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsEventSource.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzTimeSeriesInsightsEventSource" executed="True" result="Success" success="True" time="0.2727" asserts="0" description="Get-AzTimeSeriesInsightsEventSource">
+            <results>
+              <test-case description="List" name="Get-AzTimeSeriesInsightsEventSource.List" time="0.0602" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzTimeSeriesInsightsEventSource.Get" time="0.046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzTimeSeriesInsightsEventSource.GetViaIdentity" time="0.0646" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1" executed="True" result="Success" success="True" time="0.3711" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Get-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzTimeSeriesInsightsReferenceDataSet" executed="True" result="Success" success="True" time="0.2349" asserts="0" description="Get-AzTimeSeriesInsightsReferenceDataSet">
+            <results>
+              <test-case description="List" name="Get-AzTimeSeriesInsightsReferenceDataSet.List" time="0.0587" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzTimeSeriesInsightsReferenceDataSet.Get" time="0.0379" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzTimeSeriesInsightsReferenceDataSet.GetViaIdentity" time="0.0492" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsAccessPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.347" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsAccessPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzTimeSeriesInsightsAccessPolicy" executed="True" result="Success" success="True" time="0.2082" asserts="0" description="New-AzTimeSeriesInsightsAccessPolicy">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzTimeSeriesInsightsAccessPolicy.CreateExpanded" time="0.1438" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsEnvironment.Tests.ps1" executed="True" result="Success" success="True" time="0.3941" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsEnvironment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzTimeSeriesInsightsEnvironment" executed="True" result="Success" success="True" time="0.2552" asserts="0" description="New-AzTimeSeriesInsightsEnvironment">
+            <results>
+              <test-case description="standard" name="New-AzTimeSeriesInsightsEnvironment.standard" time="0.0594" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="longterm" name="New-AzTimeSeriesInsightsEnvironment.longterm" time="0.0705" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsEventSource.Tests.ps1" executed="True" result="Success" success="True" time="0.3219" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsEventSource.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzTimeSeriesInsightsEventSource" executed="True" result="Success" success="True" time="0.1941" asserts="0" description="New-AzTimeSeriesInsightsEventSource">
+            <results>
+              <test-case description="eventhub" name="New-AzTimeSeriesInsightsEventSource.eventhub" time="0.0753" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="iothub" name="New-AzTimeSeriesInsightsEventSource.iothub" time="0.0497" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1" executed="True" result="Success" success="True" time="0.2681" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\New-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzTimeSeriesInsightsReferenceDataSet" executed="True" result="Success" success="True" time="0.1318" asserts="0" description="New-AzTimeSeriesInsightsReferenceDataSet">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzTimeSeriesInsightsReferenceDataSet.CreateExpanded" time="0.0586" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsAccessPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.2789" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsAccessPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzTimeSeriesInsightsAccessPolicy" executed="True" result="Success" success="True" time="0.1481" asserts="0" description="Remove-AzTimeSeriesInsightsAccessPolicy">
+            <results>
+              <test-case description="Delete" name="Remove-AzTimeSeriesInsightsAccessPolicy.Delete" time="0.0421" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzTimeSeriesInsightsAccessPolicy.DeleteViaIdentity" time="0.0418" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsEnvironment.Tests.ps1" executed="True" result="Success" success="True" time="0.2908" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsEnvironment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzTimeSeriesInsightsEnvironment" executed="True" result="Success" success="True" time="0.1556" asserts="0" description="Remove-AzTimeSeriesInsightsEnvironment">
+            <results>
+              <test-case description="Delete" name="Remove-AzTimeSeriesInsightsEnvironment.Delete" time="0.0458" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteInputObject" name="Remove-AzTimeSeriesInsightsEnvironment.DeleteInputObject" time="0.047" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsEventSource.Tests.ps1" executed="True" result="Success" success="True" time="0.2622" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsEventSource.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzTimeSeriesInsightsEventSource" executed="True" result="Success" success="True" time="0.1478" asserts="0" description="Remove-AzTimeSeriesInsightsEventSource">
+            <results>
+              <test-case description="Delete" name="Remove-AzTimeSeriesInsightsEventSource.Delete" time="0.0353" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzTimeSeriesInsightsEventSource.DeleteViaIdentity" time="0.0386" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1" executed="True" result="Success" success="True" time="0.2853" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Remove-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzTimeSeriesInsightsReferenceDataSet" executed="True" result="Success" success="True" time="0.1714" asserts="0" description="Remove-AzTimeSeriesInsightsReferenceDataSet">
+            <results>
+              <test-case description="Delete" name="Remove-AzTimeSeriesInsightsReferenceDataSet.Delete" time="0.0574" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzTimeSeriesInsightsReferenceDataSet.DeleteViaIdentity" time="0.0393" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsAccessPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.2761" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsAccessPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzTimeSeriesInsightsAccessPolicy" executed="True" result="Success" success="True" time="0.1528" asserts="0" description="Update-AzTimeSeriesInsightsAccessPolicy">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzTimeSeriesInsightsAccessPolicy.UpdateExpanded" time="0.0461" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzTimeSeriesInsightsAccessPolicy.UpdateViaIdentityExpanded" time="0.0386" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsEnvironment.Tests.ps1" executed="True" result="Success" success="True" time="0.3952" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsEnvironment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzTimeSeriesInsightsEnvironment" executed="True" result="Success" success="True" time="0.2648" asserts="0" description="Update-AzTimeSeriesInsightsEnvironment">
+            <results>
+              <test-case description="UpdateStandard" name="Update-AzTimeSeriesInsightsEnvironment.UpdateStandard" time="0.0619" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateStandardInputObject" name="Update-AzTimeSeriesInsightsEnvironment.UpdateStandardInputObject" time="0.0389" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateLongTerm" name="Update-AzTimeSeriesInsightsEnvironment.UpdateLongTerm" time="0.0303" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateLongTermInputObject" name="Update-AzTimeSeriesInsightsEnvironment.UpdateLongTermInputObject" time="0.028" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsEventSource.Tests.ps1" executed="True" result="Success" success="True" time="0.3565" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsEventSource.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzTimeSeriesInsightsEventSource" executed="True" result="Success" success="True" time="0.2231" asserts="0" description="Update-AzTimeSeriesInsightsEventSource">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzTimeSeriesInsightsEventSource.UpdateExpanded" time="0.0962" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzTimeSeriesInsightsEventSource.UpdateViaIdentityExpanded" time="0.0495" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1" executed="True" result="Success" success="True" time="0.2998" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\TimeSeriesInsights\test\Update-AzTimeSeriesInsightsReferenceDataSet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzTimeSeriesInsightsReferenceDataSet" executed="True" result="Success" success="True" time="0.1582" asserts="0" description="Update-AzTimeSeriesInsightsReferenceDataSet">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzTimeSeriesInsightsReferenceDataSet.UpdateExpanded" time="0.0545" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzTimeSeriesInsightsReferenceDataSet.UpdateViaIdentityExpanded" time="0.0403" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

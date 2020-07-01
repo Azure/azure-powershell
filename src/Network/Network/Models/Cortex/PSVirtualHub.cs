@@ -46,5 +46,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         
         [Ps1Xml(Label = "Sku", Target = ViewControl.Table)]
         public string Sku { get; set; }
+
+        [Ps1Xml(Label = "RoutingState", Target = ViewControl.Table)]
+        public string RoutingState { get; set; }
     }
 }

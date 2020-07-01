@@ -77,8 +77,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = DeploymentOperationErrorInfo.GetErrorMessageWithDetails(DeploymentOperationErrorInfo.DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())) 
-                                    ?? ProjectResources.GenericDeploymentFailedWithErrors,
+                    StatusMessage = DeploymentOperationErrorInfo
+                                    .DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())?
+                                    .ToFormattedString()?
+                                    .TrimEnd(System.Environment.NewLine.ToCharArray())
+                                        ?? result.Properties.StatusMessage, // To-Do: With the new API version this work will move to error model extensions.
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
@@ -103,6 +106,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             }
 
             return rmError;
+        }
+
+        public static string ToFormattedString(this ErrorResponse error, int level = 0)
+        {
+            if (error.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Message, error.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(' ', l * 2).Append(" - ").ToString();
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
@@ -168,6 +193,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             result.AppendLine(string.Format("{0, -15}: {1}", "ContentVersion", templateLink.ContentVersion));
 
             return result.ToString();
+        }
+
+        public static string ConstructOutputTable(IDictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var maxNameLength = 18;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            StringBuilder output = new StringBuilder();
+                
+                if (dictionary.Count > 0)
+                {
+                    string rowFormat = "{0, -" + maxNameLength + "}  {1}\r\n";
+                    output.AppendLine();
+                    output.AppendFormat(rowFormat, "Key", "Value");
+                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxNameLength, "="));
+
+                    foreach (KeyValuePair<string, object> pair in dictionary)
+                    {
+                        String val = pair.Value.ToString().Replace("\n", "\n" + GeneralUtilities.GenerateSeparator(maxNameLength, " ") + "  ");
+                        output.AppendFormat(rowFormat, pair.Key, val);
+                    }
+                }
+
+            return output.ToString();
         }
 
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)

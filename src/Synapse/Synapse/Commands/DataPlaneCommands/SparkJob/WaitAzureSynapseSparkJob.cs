@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Wait, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = WaitSparkJobByIdParameterSetName)]
     [OutputType(typeof(bool))]
-    public class WaitAzureSynapseSparkJob : SynapseCmdletBase
+    public class WaitAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string WaitSparkJobByIdParameterSetName = "WaitSparkJobByIdParameterSet";
         private const string WaitSparkJobByIdFromParentObjectParameterSet = "WaitSparkJobByIdFromParentObjectParameterSet";
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = WaitSparkJobByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = WaitSparkJobByIdFromParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -80,12 +80,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.LivyId = this.IsParameterBound(c => c.LivyId) ? this.LivyId : this.SparkJobObject.Id.Value;
             }
 
-            var sparkJob = this.SynapseAnalyticsClient.GetSparkBatchJob(this.WorkspaceName, this.SparkPoolName, this.LivyId);
+            var sparkJob = this.SynapseAnalyticsClient.GetSparkBatchJob(this.LivyId);
             try
             {
                 sparkJob = this.SynapseAnalyticsClient.PollSparkBatchJobExecution(
-                    this.WorkspaceName,
-                    this.SparkPoolName,
                     sparkJob,
                     this.WaitIntervalInSeconds,
                     this.TimeoutInSeconds,

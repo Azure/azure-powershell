@@ -63,6 +63,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.ContainerRegistry", "PSContainerRegistry"},
             {"Microsoft.Azure.Batch.DataDisk", "PSDataDisk"},
             {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
+            {"Microsoft.Azure.Batch.DiskEncryptionConfiguration", "PSDiskEncryptionConfiguration"},
             {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
             {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
             {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
@@ -109,6 +110,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
             {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
             {"Microsoft.Azure.Batch.PoolUsageMetrics", "PSPoolUsageMetrics"},
+            {"Microsoft.Azure.Batch.PublicIPAddressConfiguration", "PSPublicIPAddressConfiguration"},
             {"Microsoft.Azure.Batch.RecentJob", "PSRecentJob"},
             {"Microsoft.Azure.Batch.ResizeError", "PSResizeError"},
             {"Microsoft.Azure.Batch.ResourceFile", "PSResourceFile"},
@@ -414,7 +416,7 @@ namespace PSModelGenerator
                     // Special handling for dict
                     Type argType = property.PropertyType.GetGenericArguments()[0];
                     bool magicalDictConversion = propertyType == "IDictionary";
-                    string wrapperArgType = argType.FullName.StartsWith("System") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
+                    string wrapperArgType = argType.FullName.StartsWith("System") || argType.FullName.StartsWith("Microsoft.Azure.Batch.Common") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
                     string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
                     string variableName = magicalDictConversion ? "dict" : "list";
                     if (property.GetMethod != null && property.GetMethod.IsPublic)
@@ -447,7 +449,7 @@ namespace PSModelGenerator
                         else
                         {
                             // Fill the list by individually wrapping each item in the loop
-                            if (wrapperArgType.Contains("System"))
+                            if (wrapperArgType.Contains("System") || wrapperArgType.StartsWith("Microsoft.Azure.Batch.Common"))
                             {
                                 CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", enumeratorCurrent);
                                 loopStatement.Statements.Add(addToList);

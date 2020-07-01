@@ -7,16 +7,16 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"pricingTier\": \"Standard\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eb4edb83-2017-4f74-832d-d8f48f4e8de5"
+          "4a8f2b51-9a9f-4117-9adf-82b183faa7e8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "89261a3c-f1c1-4427-b4ec-a478d24acad0"
+          "c2410d42-b56d-4542-a9ec-86404ad72fe5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -42,10 +42,10 @@
           "248"
         ],
         "x-ms-correlation-request-id": [
-          "d20d5603-4423-4dd3-8f40-df3dd72de1b5"
+          "45003f4a-c3c4-4201-bf84-fa4c867bfe21"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20190313T201316Z:d20d5603-4423-4dd3-8f40-df3dd72de1b5"
+          "GERMANYWESTCENTRAL:20200513T151840Z:45003f4a-c3c4-4201-bf84-fa4c867bfe21"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Mar 2019 20:13:15 GMT"
+          "Wed, 13 May 2020 15:18:39 GMT"
         ],
         "Content-Length": [
           "248"
@@ -70,22 +70,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default?api-version=2015-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Jlc291cmNlR3JvdXBzL215U2VydmljZTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9sb2NhdGlvbnMvY2VudHJhbHVzL2ppdE5ldHdvcmtBY2Nlc3NQb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Jlc291cmNlR3JvdXBzL215U2VydmljZTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9sb2NhdGlvbnMvY2VudHJhbHVzL2ppdE5ldHdvcmtBY2Nlc3NQb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"kind\": \"Basic\",\r\n  \"properties\": {\r\n    \"virtualMachines\": [\r\n      {\r\n        \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n        \"ports\": [\r\n          {\r\n            \"number\": 22,\r\n            \"protocol\": \"TCP\",\r\n            \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n            \"maxRequestAccessDuration\": \"PT3H\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "333d0b22-50de-482a-b568-38b16a0341f6"
+          "bedc6690-ba7e-46b0-801a-1e9e778cb7ef"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -102,19 +102,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "79cc021c-67e3-43a5-92ab-c25de7e517e3"
+          "104a3008-71c7-42cd-bc11-dbba28a4aefd"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "7b754686-b216-4054-91a5-68d2ca85805b"
+          "d6fba167-36d4-412a-887a-e47554b5da71"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20190313T201317Z:7b754686-b216-4054-91a5-68d2ca85805b"
+          "GERMANYWESTCENTRAL:20200513T151841Z:d6fba167-36d4-412a-887a-e47554b5da71"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,10 +123,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Mar 2019 20:13:16 GMT"
+          "Wed, 13 May 2020 15:18:40 GMT"
         ],
         "Content-Length": [
-          "626"
+          "644"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,26 +135,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"kind\": \"Basic\",\r\n  \"properties\": {\r\n    \"virtualMachines\": [\r\n      {\r\n        \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n        \"ports\": [\r\n          {\r\n            \"number\": 22,\r\n            \"protocol\": \"TCP\",\r\n            \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n            \"maxRequestAccessDuration\": \"PT3H\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"requests\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n  \"location\": \"centralus\"\r\n}",
+      "ResponseBody": "{\r\n  \"kind\": \"Basic\",\r\n  \"properties\": {\r\n    \"virtualMachines\": [\r\n      {\r\n        \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n        \"ports\": [\r\n          {\r\n            \"number\": 22,\r\n            \"protocol\": \"TCP\",\r\n            \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n            \"maxRequestAccessDuration\": \"PT3H\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"requests\": [],\r\n    \"provisioningState\": \"Updating\",\r\n    \"appendMode\": false\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n  \"location\": \"centralus\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/jitNetworkAccessPolicies?api-version=2015-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvaml0TmV0d29ya0FjY2Vzc1BvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/jitNetworkAccessPolicies?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvaml0TmV0d29ya0FjY2Vzc1BvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fc093c47-5c73-4238-a5e9-1f0f8898b6ed"
+          "dcf8fee1-d1f3-401f-b00e-2ea9e42f26d8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -165,21 +165,21 @@
           "no-cache"
         ],
         "x-ms-original-request-ids": [
-          "58d0fe45-6419-4cef-a7d5-10926effaa7a",
-          "bf66d480-fdb3-4d79-9df0-8806f63a6ef2",
-          "0ce99fd7-ab55-4096-b6b1-5136612f9257"
+          "04a5f316-611f-41e2-aa46-d1a0ec8fee96",
+          "916332d3-6cd9-44b8-92b3-b4e9e14a4e9a",
+          "43bc4660-a319-496d-bc2c-2d5aa074a61f"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
         "x-ms-request-id": [
-          "36c060bd-cee6-4bef-b472-ea1ed57aab7c"
+          "d7401509-10e7-4cca-bc0d-652dc4b2beb5"
         ],
         "x-ms-correlation-request-id": [
-          "36c060bd-cee6-4bef-b472-ea1ed57aab7c"
+          "d7401509-10e7-4cca-bc0d-652dc4b2beb5"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20190313T201318Z:36c060bd-cee6-4bef-b472-ea1ed57aab7c"
+          "GERMANYWESTCENTRAL:20200513T151841Z:d7401509-10e7-4cca-bc0d-652dc4b2beb5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -188,7 +188,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Mar 2019 20:13:17 GMT"
+          "Wed, 13 May 2020 15:18:40 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -197,10 +197,10 @@
           "-1"
         ],
         "Content-Length": [
-          "2324"
+          "1877"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"Basic\",\r\n      \"properties\": {\r\n        \"virtualMachines\": [\r\n          {\r\n            \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n            \"ports\": [\r\n              {\r\n                \"number\": 22,\r\n                \"protocol\": \"TCP\",\r\n                \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"requests\": [\r\n          {\r\n            \"virtualMachines\": [\r\n              {\r\n                \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n                \"ports\": [\r\n                  {\r\n                    \"number\": 22,\r\n                    \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n                    \"endTimeUtc\": \"2019-03-13T22:13:11.3215666Z\",\r\n                    \"status\": \"Initiated\",\r\n                    \"statusReason\": \"UserRequested\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"startTimeUtc\": \"2019-03-13T20:13:11.4862787Z\",\r\n            \"requestor\": \"\"\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"kind\": \"Basic\",\r\n      \"properties\": {\r\n        \"virtualMachines\": [\r\n          {\r\n            \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n            \"ports\": [\r\n              {\r\n                \"number\": 22,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              },\r\n              {\r\n                \"number\": 3389,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              },\r\n              {\r\n                \"number\": 5985,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              },\r\n              {\r\n                \"number\": 5986,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"requests\": [\r\n          {\r\n            \"virtualMachines\": [\r\n              {\r\n                \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n                \"ports\": [\r\n                  {\r\n                    \"number\": 3389,\r\n                    \"allowedSourceAddressPrefix\": \"167.220.197.64\",\r\n                    \"endTimeUtc\": \"2019-03-04T16:44:10.7715194Z\",\r\n                    \"status\": \"Revoked\",\r\n                    \"statusReason\": \"Expired\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"startTimeUtc\": \"2019-03-04T13:44:11.4344709Z\",\r\n            \"requestor\": \"\"\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/northeurope/jitNetworkAccessPolicies/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n      \"location\": \"northeurope\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"Basic\",\r\n      \"properties\": {\r\n        \"virtualMachines\": [\r\n          {\r\n            \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n            \"ports\": [\r\n              {\r\n                \"number\": 22,\r\n                \"protocol\": \"TCP\",\r\n                \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"requests\": [\r\n          {\r\n            \"virtualMachines\": [\r\n              {\r\n                \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n                \"ports\": [\r\n                  {\r\n                    \"number\": 22,\r\n                    \"allowedSourceAddressPrefix\": \"127.0.0.1\",\r\n                    \"endTimeUtc\": \"2020-05-13T17:18:22.009706Z\",\r\n                    \"status\": \"Initiated\",\r\n                    \"statusReason\": \"UserRequested\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"startTimeUtc\": \"2020-05-13T15:18:22.54646Z\",\r\n            \"requestor\": \"\"\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Updating\",\r\n        \"appendMode\": false\r\n      },\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"kind\": \"Basic\",\r\n      \"properties\": {\r\n        \"virtualMachines\": [\r\n          {\r\n            \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService\",\r\n            \"ports\": [\r\n              {\r\n                \"number\": 3389,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              },\r\n              {\r\n                \"number\": 5985,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              },\r\n              {\r\n                \"number\": 5986,\r\n                \"protocol\": \"*\",\r\n                \"allowedSourceAddressPrefix\": \"*\",\r\n                \"maxRequestAccessDuration\": \"PT3H\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"requests\": [],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"appendMode\": false\r\n      },\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/northeurope/jitNetworkAccessPolicies/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.Security/locations/jitNetworkAccessPolicies\",\r\n      \"location\": \"northeurope\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

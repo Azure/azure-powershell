@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ServiceLocation,
                 source.FriendlyName,
                 source.ManagementEndpointUri,
+                source.MonitoringEndpointUri,
                 source.MonitoringConfiguration);
         }
 
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId?.Trim('"'),
                 ManagementEndpointUri = source.ManagementEndpointUri?.Trim('"'),
+                MonitoringEndpointUri = source.MonitoringEndpointUri,
                 ResourceLocation = source.ResourceLocation,
                 ServerCertificate = source.ServerCertificate?.Trim('"'),
                 ServerId = source.ServerId?.Trim('"'),

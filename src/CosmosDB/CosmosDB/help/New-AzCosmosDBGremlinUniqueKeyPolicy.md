@@ -13,7 +13,7 @@ Creates a new CosmosDB UniqueKeyPolicy object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey <PSUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey <PSSqlUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Array of objects of type PSUniqueKey.
 
 ```yaml
-Type: PSUniqueKey[]
+Type: PSSqlUniqueKey[]
 Parameter Sets: (All)
 Aliases:
 

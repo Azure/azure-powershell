@@ -445,3 +445,53 @@ function Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold
 		Remove-AzResourceGroup -Name $rgname -Force
     }
 }
+
+	<#
+.SYNOPSIS
+Tests adding a GenV2 webtest metric alert rule.
+#>
+function Test-AddAzureRmMetricAlertRuleV2-Webtest
+{
+	# Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "Transactions" -Operator GreaterThan -DynamicThreshold -TimeAggregation Total -Sensitivity High
+	$appInsightsResourceName = "appName"
+	$webTestResourceName = "webTestName"
+	$webTestResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Insights/webtests/'+ $webTestResourceName
+
+	# Create the App Insights Resource
+	$appInsightsResource = New-AzureRmApplicationInsights -Name $appInsightsResourceName -ResourceGroupName $rgname -Location $location
+
+	# Create webtest
+	$templateFile = (Resolve-Path ".\SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\AlertTestsWebTestTemplate.json").Path
+    New-AzureRmResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateFile $templateFile;
+	$condition = New-AzMetricAlertRuleV2Criteria -WebTest -WebTestId $webTestResourceId -ApplicationInsightsId $appInsightsResource.id -FailedLocationCount 3
+
+    try
+    {
+        # Test
+		$actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $webTestResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+		Assert-AreEqual $actual.Name $ruleName
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmApplicationInsights -ResourceGroupName $rgName -Name $appInsightsResourceName
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+
+

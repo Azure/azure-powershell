@@ -98,10 +98,23 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableCorsCredential { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis Fhir Service Export Storage Account Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ExportStorageAccountName { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
         public string[] AccessPolicyObjectId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "Enable Managed Identity.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Enable Managed Identity.")]
+        public SwitchParameter EnableManagedIdentity { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "Disable Managed Identity.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Disable Managed Identity.")]
+        public SwitchParameter DisableManagedIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -141,31 +154,20 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     switch (ParameterSetName)
                     {
                         case ServiceNameParameterSet:
-                            {
-                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-
-                                IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
-
-                                ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
-
-                                try
-                                {
-                                    var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
-                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                                    WriteHealthcareApisAccount(healthCareFhirService);
-                                }
-                                catch (ErrorDetailsException wex)
-                                {
-                                    WriteError(WriteErrorforBadrequest(wex));
-                                }
-
-                                break;
-                            }
                         case ResourceIdParameterSet:
                             {
                                 string rgName = null;
                                 string name = null;
-                                ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                                
+                                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                                {
+                                    ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                                }
+                                else if (ParameterSetName.Equals(ServiceNameParameterSet))
+                                {
+                                    rgName = this.ResourceGroupName;
+                                    name = this.Name;
+                                }
 
                                 var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
 
@@ -252,7 +254,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private ServicesDescription GenerateServiceDescription(ServicesDescription healthcareApisAccount, IList<ServiceAccessPolicyEntry> accessPolicies)
         {
-            return new ServicesDescription()
+            ServicesDescription servicesDescription = new ServicesDescription()
             {
                 Location = healthcareApisAccount.Location,
                 Properties = new ServicesProperties()
@@ -275,11 +277,30 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         MaxAge = CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
                         AllowCredentials = IsCorsCredentialsAllowed(healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials)
                     },
+                    ExportConfiguration = new ServiceExportConfigurationInfo()
+                    {
+                        StorageAccountName = ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
+                    },
                     AccessPolicies = accessPolicies
                 },
                 Kind = healthcareApisAccount.Kind,
                 Tags = GetTags(healthcareApisAccount)
             };
+
+            if (this.EnableManagedIdentity.ToBool() && healthcareApisAccount.Identity == null)
+            {
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+            }
+            else if (!this.DisableManagedIdentity.ToBool())
+            {
+                servicesDescription.Identity = healthcareApisAccount.Identity;
+            }
+            else
+            {
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "None" };
+            }
+
+            return servicesDescription;
         }
 
         private IDictionary<string, string> GetTags(ServicesDescription healthcareApisAccount)
@@ -334,7 +355,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private ServicesDescription InputObjectToServiceDescription(ServicesDescription healthcareApisAccount, List<ServiceAccessPolicyEntry> accessPolicies)
         {
-            return new ServicesDescription()
+            ServicesDescription servicesDescription = new ServicesDescription()
             {
                 Location = InputObject.Location,
                 Properties = new ServicesProperties()
@@ -357,11 +378,26 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         MaxAge = InputObject.CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
                         AllowCredentials = InputObject.CorsAllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
                     },
+                    ExportConfiguration = new ServiceExportConfigurationInfo()
+                    {
+                        StorageAccountName = InputObject.ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
+                    },
                     AccessPolicies = accessPolicies
                 },
                 Kind = ParseKind(InputObject.Kind),
                 Tags = InputObject.Tags
             };
+
+            if (!String.IsNullOrEmpty(InputObject.IdentityType))
+            {
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity(InputObject.IdentityPrincipalId, InputObject.IdentityTenantId, InputObject.IdentityType);
+            }
+            else
+            {
+                servicesDescription.Identity = healthcareApisAccount.Identity;
+            }
+
+            return servicesDescription;
         }
     }
 }

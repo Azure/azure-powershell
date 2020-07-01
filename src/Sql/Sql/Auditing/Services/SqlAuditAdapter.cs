@@ -434,8 +434,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
             if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
             {
-                Guid? principalId = Communicator.AssignServerIdentity(model.ResourceGroupName, model.ServerName);
-                AzureCommunicator.AssignRoleForServerIdentityOnStorage(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);
+                Guid? principalId = Communicator.AssignServerIdentityIfNotAssigned(model.ResourceGroupName, model.ServerName);
+                AzureCommunicator.AssignRoleForServerIdentityOnStorageIfNotAssigned(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);
             }
             else
             {

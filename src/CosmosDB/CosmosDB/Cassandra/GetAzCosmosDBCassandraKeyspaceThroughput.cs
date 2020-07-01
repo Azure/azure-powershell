@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount InputObject { get; set; }
+        public PSDatabaseAccountGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-           if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+           if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 AccountName = resourceIdentifier.ResourceName;

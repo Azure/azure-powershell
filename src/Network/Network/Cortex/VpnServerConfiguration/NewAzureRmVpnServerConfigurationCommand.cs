@@ -87,18 +87,22 @@ namespace Microsoft.Azure.Commands.Network
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
-        [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
-        [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -172,6 +176,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRevokedCertificateFilesList,
                 this.RadiusServerAddress,
                 this.RadiusServerSecret,
+                this.RadiusServerList,
                 this.RadiusServerRootCertificateFilesList,
                 this.RadiusClientRootCertificateFilesList,
                 this.AadTenant,

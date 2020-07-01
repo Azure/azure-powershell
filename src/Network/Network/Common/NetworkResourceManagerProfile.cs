@@ -385,12 +385,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // VirtualNetwork
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetwork, MNM.SubResource>();
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>();
                 cfg.CreateMap<CNM.PSVirtualNetworkUsage, MNM.VirtualNetworkUsage>();
                 cfg.CreateMap<CNM.PSUsageName, MNM.VirtualNetworkUsageName>();
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.VirtualNetworkUsage, CNM.PSVirtualNetworkUsage>();
@@ -428,12 +430,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceTapConfiguration, MNM.NetworkInterfaceTapConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.SubResource>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<MNM.NetworkInterfaceTapConfiguration, CNM.PSNetworkInterfaceTapConfiguration>();
+                cfg.CreateMap<MNM.SubResource, CNM.PSNetworkInterfaceIPConfiguration>();
 
                 // Usage
                 cfg.CreateMap<CNM.PSUsage, MNM.Usage>();
@@ -643,6 +647,14 @@ namespace Microsoft.Azure.Commands.Network
                 // BackendAddressPool
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
+
+                // LoadBalancerBackendAddress
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerBackendAddress, MNM.LoadBalancerBackendAddress>();
+
+                // LoadBalancerBackendAddress
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerBackendAddress, CNM.PSLoadBalancerBackendAddress>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
@@ -873,7 +885,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
                 cfg.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
                 cfg.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
-                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>();
+                cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>()
+                    .AfterMap((src, dest) =>
+                    {
+                        dest.BgpPeeringAddresses = dest.BgpPeeringAddresses.Count == 0? null : dest.BgpPeeringAddresses;
+                    });
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
@@ -963,6 +979,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPredefinedPolicy, MNM.ApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAutoscaleConfiguration, MNM.ApplicationGatewayAutoscaleConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayCustomError, MNM.ApplicationGatewayCustomError>();
+                cfg.CreateMap<CNM.PSApplicationGatewayPrivateLinkConfiguration, MNM.ApplicationGatewayPrivateLinkConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayPrivateLinkIpConfiguration, MNM.ApplicationGatewayPrivateLinkIpConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayPrivateEndpointConnection, MNM.ApplicationGatewayPrivateEndpointConnection>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -1026,6 +1045,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewaySslPredefinedPolicy, CNM.PSApplicationGatewaySslPredefinedPolicy>();
                 cfg.CreateMap<MNM.ApplicationGatewayAutoscaleConfiguration, CNM.PSApplicationGatewayAutoscaleConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayCustomError, CNM.PSApplicationGatewayCustomError>();
+                cfg.CreateMap<MNM.ApplicationGatewayPrivateLinkConfiguration, CNM.PSApplicationGatewayPrivateLinkConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayPrivateLinkIpConfiguration, CNM.PSApplicationGatewayPrivateLinkIpConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayPrivateEndpointConnection, CNM.PSApplicationGatewayPrivateEndpointConnection>();
 
                 // Application Security Groups
                 // CNM to MNM
@@ -1075,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
                 cfg.CreateMap<CNM.PSIpConfigurationConnectivityInformation, MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties>();
 
-                //// SDWAN
+                //// VirtualWan
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>()
                     .AfterMap((src, dest) =>
                     {
@@ -1147,6 +1169,22 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds, CNM.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeeringId, CNM.PSExpressRouteCircuitPeeringId>();
 
+                //// Virtual Wan Custom Routing
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVHubRouteTable, MNM.HubRouteTable>();
+                cfg.CreateMap<CNM.PSVHubRoute, MNM.HubRoute>();
+                cfg.CreateMap<CNM.PSRoutingConfiguration, MNM.RoutingConfiguration>();
+                cfg.CreateMap<CNM.PSPropagatedRouteTable, MNM.PropagatedRouteTable>();
+                cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
+                cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
+                cfg.CreateMap<MNM.HubRoute, CNM.PSVHubRoute>();
+                cfg.CreateMap<MNM.RoutingConfiguration, CNM.PSRoutingConfiguration>();
+                cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
+                cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
+
                 // Virtual wan Point to site
                 // MNM to CNM
                 cfg.CreateMap<MNM.P2SVpnGateway, CNM.PSP2SVpnGateway>();
@@ -1193,7 +1231,10 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist?.FQDNs?.Aggregate((result, item) => result + "," + item) },
                         { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist?.IpAddresses?.Aggregate((result, item) => result + "," + item) },
-                        { "Network.SNAT.PrivateRanges", src.PrivateRange?.Aggregate((result, item) => result + "," + item) }
+                        { "Network.SNAT.PrivateRanges", src.PrivateRange?.Aggregate((result, item) => result + "," + item) },
+                        { "Network.DNS.EnableProxy", src.DNSEnableProxy },
+                        { "Network.DNS.RequireProxyForNetworkRules", src.DNSRequireProxyForNetworkRules },
+                        { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) }
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
@@ -1207,6 +1248,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallNatRCAction, MNM.AzureFirewallNatRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallRCAction, MNM.AzureFirewallRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<CNM.PSAzureFirewallHubIpAddresses, MNM.HubIPAddresses>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
@@ -1235,7 +1277,17 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     catch (PSArgumentException)
                     {
-                        dest.ThreatIntelWhitelist.IpAddresses = null;
+                        dest.PrivateRange = null;
+                    }
+                    dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
+                    dest.DNSRequireProxyForNetworkRules = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.RequireProxyForNetworkRules", StringComparison.OrdinalIgnoreCase)).Value;
+                    try
+                    {
+                        dest.DNSServer = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.Servers", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
+                    }
+                    catch (PSArgumentException)
+                    {
+                        dest.DNSServer = null;
                     }
                 });
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();
@@ -1249,6 +1301,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNatRCAction, CNM.PSAzureFirewallNatRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
+                cfg.CreateMap<MNM.HubIPAddresses, CNM.PSAzureFirewallHubIpAddresses>();
 
                 // Azure Firewall FQDN Tags
                 // CNM to MNM
@@ -1259,11 +1312,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
 
                 // Virtual Network Tap
@@ -1275,6 +1328,10 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
                 cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+                cfg.CreateMap<CNM.PSPrivateDnsZoneGroup, MNM.PrivateDnsZoneGroup>();
+                cfg.CreateMap<MNM.PrivateDnsZoneGroup, CNM.PSPrivateDnsZoneGroup>();
+                cfg.CreateMap<CNM.PSPrivateDnsZoneConfig, MNM.PrivateDnsZoneConfig>();
+                cfg.CreateMap<MNM.PrivateDnsZoneConfig, CNM.PSPrivateDnsZoneConfig>();
 
                 cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
                 cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
@@ -1332,6 +1389,28 @@ namespace Microsoft.Azure.Commands.Network
                 // IpAllocation
                 cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
                 cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
+
+                // Network Virtual Appliance & Sites
+                    // CNM to MNM
+                cfg.CreateMap<CNM.PSNetworkVirtualAppliance, MNM.NetworkVirtualAppliance>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceSku, MNM.NetworkVirtualApplianceSku>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceSkuInstances, MNM.NetworkVirtualApplianceSkuInstances>();
+                cfg.CreateMap<CNM.PSOffice365PolicyProperties, MNM.Office365PolicyProperties>();
+                cfg.CreateMap<CNM.PSBreakOutCategoryPolicies, MNM.BreakOutCategoryPolicies>();
+                cfg.CreateMap<CNM.PSVirtualApplianceNicProperties, MNM.VirtualApplianceNicProperties>();
+                cfg.CreateMap<CNM.PSVirtualApplianceSite, MNM.VirtualApplianceSite>();
+                cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
+
+                    // MNM to CNM
+                cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
+                cfg.CreateMap<MNM.Office365PolicyProperties, CNM.PSOffice365PolicyProperties>();
+                cfg.CreateMap<MNM.BreakOutCategoryPolicies, CNM.PSBreakOutCategoryPolicies>();
+                cfg.CreateMap<MNM.VirtualApplianceNicProperties, CNM.PSVirtualApplianceNicProperties>();
+                cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
+                cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
+
             });
 
             _mapper = config.CreateMapper();

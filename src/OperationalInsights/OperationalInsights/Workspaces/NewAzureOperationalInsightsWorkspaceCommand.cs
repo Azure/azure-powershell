@@ -45,10 +45,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [PSArgumentCompleter("free", "standard", "premium", "pernode", "standalone", "pergb2018")]
         public string Sku { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ID of an existing Operational Insights account that this workspace will be linked to.")]
-        public Guid? CustomerId { get; set; }
-
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tag { get; set; }
@@ -57,6 +53,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
+
+        [Parameter(
+            Position = 7,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Position = 8,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -69,10 +77,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 WorkspaceName = Name,
                 Location = Location,
                 Sku = Sku,
-                CustomerId = CustomerId,
                 Tags = Tag,
                 RetentionInDays = RetentionInDays,
                 Force = Force.IsPresent,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 ConfirmAction = ConfirmAction
             };
 

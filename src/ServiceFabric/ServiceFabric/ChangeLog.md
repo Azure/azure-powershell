@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix bug in add certificate using --SecretIdentifier that was getting the wrong certificate thumbprint
+
+## Version 2.1.0
+* Fixed bug in add certificate using --SecretIdentifier that was getting the wrong certificate thumbprint
 
 ## Version 2.0.2
 * Improved code formatting and usability of `New-AzServiceFabricCluster` examples

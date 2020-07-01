@@ -53,6 +53,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
+        public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
+
         public string[] PrivateRange {
             get
             {
@@ -65,6 +67,12 @@ namespace Microsoft.Azure.Commands.Network.Models
                 privateRange = value;
             }
         }
+
+        public string DNSEnableProxy { get; set; }
+
+        public string DNSRequireProxyForNetworkRules { get; set; }
+
+        public string[] DNSServer { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -106,10 +114,17 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
         }
 
+
         [JsonIgnore]
         public string PrivateRangeText
         {
             get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DNSServersText
+        {
+            get { return JsonConvert.SerializeObject(DNSServer, Formatting.Indented); }
         }
 
         #region Ip Configuration Operations
@@ -392,6 +407,45 @@ namespace Microsoft.Azure.Commands.Network.Models
             ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
             if (ip << bit != 0)
                 throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
+        }
+
+        #endregion
+
+        #region DNS Proxy Validation
+
+        public void ValidateDNSProxyRequirements()
+        {
+            if (string.Equals(this.DNSEnableProxy, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                // Nothing to validate since they have enabled DNS Proxy
+                return;
+            }
+
+            if (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase))
+            {
+                // Nothing to validate since both DNS Proxy and Requiring Proxy for Network Rules is disabled
+                return;
+            }
+
+            // Need to check if any Network Rules have FQDNs
+            var netRuleCollections = this.NetworkRuleCollections?.Where(rc => rc?.Rules != null && rc.Rules.Any()).ToList();
+            if (netRuleCollections == null)
+            {
+                // No network rules so nothing to do
+                return;
+            }
+
+            foreach (var netRuleCollection in netRuleCollections)
+            {
+                foreach (var rule in netRuleCollection.Rules)
+                {
+                    if (rule?.DestinationFqdns != null && rule.DestinationFqdns.Any())
+                    {
+                        throw new PSArgumentException(string.Format("Found FQDNs {0} in network rule collection {1} rule {2} without DNS proxy being enabled or requirement setting disabled",
+                            rule.DestinationFqdns, netRuleCollection.Name, rule.Name));
+                    }
+                }
+            }
         }
 
         #endregion

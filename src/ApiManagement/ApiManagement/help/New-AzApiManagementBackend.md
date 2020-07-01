@@ -26,7 +26,7 @@ Creates a new backend entity in Api Management.
 
 ## EXAMPLES
 
-### Create Backend 123 with a Basic Authorization Scheme
+### Example 1: Create Backend 123 with a Basic Authorization Scheme
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$credential = New-AzApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}

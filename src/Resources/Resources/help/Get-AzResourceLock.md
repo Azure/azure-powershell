@@ -44,12 +44,6 @@ Get-AzResourceLock [-LockName <String>] [-AtScope] -ResourceName <String> -Resou
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByTenantLevel
-```
-Get-AzResourceLock [-LockName <String>] [-AtScope] -ResourceName <String> -ResourceType <String> [-TenantLevel]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByLockId
 ```
 Get-AzResourceLock [-AtScope] -LockId <String> [-ApiVersion <String>] [-Pre]
@@ -144,7 +138,7 @@ Specifies the name of the lock that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroup, ByResourceGroupLevel, BySpecifiedScope, BySubscription, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroup, ByResourceGroupLevel, BySpecifiedScope, BySubscription, BySubscriptionLevel
 Aliases: ExtensionResourceName, Name
 
 Required: False
@@ -191,7 +185,7 @@ This cmdlet gets locks for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -207,7 +201,7 @@ This cmdlet gets locks for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
 Aliases:
 
 Required: True
@@ -230,21 +224,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TenantLevel
-Indicates that this cmdlet operates at the tenant level.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByTenantLevel
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

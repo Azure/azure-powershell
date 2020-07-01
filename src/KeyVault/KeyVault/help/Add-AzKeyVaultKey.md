@@ -393,12 +393,13 @@ Specifies an array of operations that can be performed by using the key that thi
 If you do not specify this parameter, all operations can be performed.
 The acceptable values for this parameter are a comma-separated list of key operations as defined by
 the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=613300):
-- Encrypt
-- Decrypt
-- Wrap
-- Unwrap
-- Sign
-- Verify
+- encrypt
+- decrypt
+- wrapKey
+- unwrapKey
+- sign
+- verify
+- import (for KEK only, see example 7)
 
 ```yaml
 Type: System.String[]

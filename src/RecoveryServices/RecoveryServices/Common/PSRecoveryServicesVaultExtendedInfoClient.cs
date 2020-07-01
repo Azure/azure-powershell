@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 arsVaultCreds.ResourceGroupName,
                 arsVaultCreds.ResourceName,
                 certificateName,
-                certificateRequest,
+                certificateRequest.Properties,
                 GetRequestHeaders()).Result.Body;
         }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 vault.ResourceGroupName,
                 vault.Name,
                 managementCert.FriendlyName,
-                certificateArgs,
+                certificateArgs.Properties,
                 GetRequestHeaders()).Result.Body;
         }
 

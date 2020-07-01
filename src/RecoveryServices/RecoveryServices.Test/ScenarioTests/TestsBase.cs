@@ -24,6 +24,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.RecoveryServices.Backup;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private readonly EnvironmentSetupHelper _helper;
 
         public RecoveryServicesClient RsClient { get; private set; }
+
+        public RecoveryServicesBackupClient RsBackupClient { get; private set; }
 
         public ResourceManagementClient InternalRmClient { get; private set; }
 
@@ -46,8 +49,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             RsClient = GetRsClient(context);
             InternalRmClient = GetInternalRmClient(context);
+            RsBackupClient = GetRsBackupClient(context);
 
-            _helper.SetupManagementClients(RsClient, InternalRmClient);
+            _helper.SetupManagementClients(RsClient, InternalRmClient, RsBackupClient);
         }
 
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -130,6 +134,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private static RecoveryServicesClient GetRsClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static RecoveryServicesBackupClient GetRsBackupClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<RecoveryServicesBackupClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

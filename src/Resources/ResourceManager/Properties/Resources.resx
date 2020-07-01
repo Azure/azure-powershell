@@ -463,11 +463,11 @@
     <value>Save script execution log to disk.</value>
   </data>
   <data name="DeploymentOperationErrorMessage" xml:space="preserve">
-    <value>{0} (Code: {1});
-{2};</value>
+    <value>{0} (Code: {1})
+{2}</value>
   </data>
   <data name="DeploymentOperationOuterError" xml:space="preserve">
-    <value>The deployment '{0}' failed. Showing {1} out of {2} error(s).</value>
+    <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
   </data>
   <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
     <value>{0} (Code:{1})</value>
@@ -475,13 +475,23 @@
   <data name="DeploymentCorrelationId" xml:space="preserve">
     <value>CorrelationId: {0}</value>
   </data>
-  <data name="DeploymentOperationTargetInfoInErrror" xml:space="preserve">
-    <value>Target: {0}; {1}</value>
+  <data name="DeploymentOperationTargetInfo" xml:space="preserve">
+    <value>Target: {0}</value>
   </data>
   <data name="GenericDeploymentFailedWithErrors" xml:space="preserve">
     <value>Deployment failed with errors.</value>
   </data>
-  <data name="DeploymentOperationStatusMessage" xml:space="preserve">
+  <data name="DeploymentOperationResultError" xml:space="preserve">
     <value>Status Message: {0}</value>
+  </data>
+  <data name="WhatIfPreviewNotice" xml:space="preserve">
+    <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
+  </data>
+  <data name="ConfirmDeploymentMessage" xml:space="preserve">
+    <value>Are you sure you want to execute the deployment?</value>
+  </data>
+  <data name="InvalidChangeType" xml:space="preserve">
+    <value>Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}.</value>
   </data>
 </root>

@@ -5,7 +5,7 @@ variables:
   LinuxImage: ubuntu-18.04
   MacOSName: macOS
   MacOSImage: macOS-10.14
-  TestFramework: netcoreapp2.2
+  TestFramework: netcoreapp2.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
@@ -22,8 +22,8 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
@@ -47,8 +47,8 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
@@ -72,8 +72,8 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
+      macOS:	
+        OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)

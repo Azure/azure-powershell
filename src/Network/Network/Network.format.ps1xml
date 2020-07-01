@@ -2496,8 +2496,42 @@
                 <PropertyName>BackendIpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>LoadBalancerBackendAddresses</Label>
+                <PropertyName>LoadBalancerBackendAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancingRules</Label>
                 <PropertyName>LoadBalancingRulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpAddress</Label>
+                <PropertyName>IpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NetworkInterfaceIpConfiguration</Label>
+                <PropertyName>NetworkInterfaceIpConfigurationIdText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetwork</Label>
+                <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -3733,6 +3767,10 @@
                 <PropertyName>VirtualHub</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>HubIPAddresses</Label>
+                <PropertyName>HubIPAddresses</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>FirewallPolicy</Label>
                 <PropertyName>FirewallPolicy</PropertyName>
               </ListItem>
@@ -4141,6 +4179,10 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RoutingConfiguration</Label>
+                <PropertyName>RoutingConfigurationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4574,6 +4616,10 @@
                 <Label>VpnClientAddressPool</Label>
                 <PropertyName>VpnClientAddressPoolText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>RoutingConfiguration</Label>
+                <PropertyName>RoutingConfigurationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4740,6 +4786,10 @@
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>RoutingConfiguration</Label>
+                <PropertyName>RoutingConfigurationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4885,6 +4935,74 @@
               <ListItem>
                 <Label>ManualPrivateLinkServiceConnections</Label>
                 <PropertyName>ManualPrivateLinkServiceConnectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CustomDnsConfigs</Label>
+                <PropertyName>CustomDnsConfigsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneGroup</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneConfigs</Label>
+                <PropertyName>PrivateDnsZoneConfigsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPrivateDnsZoneConfig</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateDnsZoneId</Label>
+                <PropertyName>PrivateDnsZoneId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RecordSets</Label>
+                <PropertyName>RecordSetsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -5276,6 +5394,74 @@
               <ListItem>
                 <Label>PeerIp</Label>
                 <PropertyName>PeerIp</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>AssociatedRouteTable</Label>
+                <PropertyName>AssociatedRouteTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PropagatedRouteTables</Label>
+                <PropertyName>PropagatedRouteTablesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VnetRoutes</Label>
+                <PropertyName>VnetRoutesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Labels</Label>
+                <PropertyName>Labels</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Routes</Label>
+                <PropertyName>RoutesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AssociatedConnections</Label>
+                <PropertyName>AssociatedConnectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PropagatingConnections</Label>
+                <PropertyName>PropagatingConnectionsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

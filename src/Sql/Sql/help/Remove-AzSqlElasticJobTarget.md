@@ -79,8 +79,8 @@ The Remove-AzSqlElasticJobTarget cmdlet removes a target resource to a target gr
 
 ## EXAMPLES
 
-### Example 1 - Remove a server target
-```
+### Example 1: Remove a server target
+```powershell
 PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -RefreshCredentialName cred1
 
@@ -89,8 +89,8 @@ TargetGroupName TargetType TargetServerName TargetDatabaseName TargetElasticPool
 tg1             SqlServer  s1                                                                           cred1                 Include
 ```
 
-### Example 2 - Remove a database target
-```
+### Example 2: Remove a database target
+```powershell
 PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -DatabaseName db2
 
@@ -99,8 +99,8 @@ TargetGroupName TargetType  TargetServerName TargetDatabaseName TargetElasticPoo
 tg1             SqlDatabase s1               db2                                                                               Include
 ```
 
-### Example 3 - Remove an elastic pool target
-```
+### Example 3: Remove an elastic pool target
+```powershell
 PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -ElasticPoolName ep1 -RefreshCredentialName cred1
 
@@ -109,8 +109,8 @@ TargetGroupName TargetType     TargetServerName TargetDatabaseName TargetElastic
 tg1             SqlElasticPool s1                                  ep1                                      cred1                 Include
 ```
 
-### Example 4 - Remove a shard map target
-```
+### Example 4: Remove a shard map target
+```powershell
 PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -ShardMapName sm1 -DatabaseName db1 -RefreshCredentialName cred1
 

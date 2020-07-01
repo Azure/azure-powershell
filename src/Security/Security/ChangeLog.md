@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet: 'Get-AzSecurityTopology'
+
+## Version 0.7.9
+* Add new cmdlets: 'Get-AzSecurityAssessment',
+                   'Set-AzSecurityAssessment',
+                   'Remove-AzSecurityAssessment',
+                   'Get-AzSecurityAssessmentMetadata',
+                   'Set-AzSecurityAssessmentMetadata',
+                   'Remove-AzSecurityAssessmentMetadata',
+                   'Get-AzSecuritySubAssessment'
+
+## Version 0.7.9
+* Added new cmdlets: 
+	- `Get-AzSecuritySetting`
+	- `Set-AzSecuritySetting`
+
+## Version 0.7.8
+* Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
+					`Get-AzRegulatoryComplianceControl`, 
+					`Get-AzRegulatoryComplainceAssessment`
 * Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
 * Support management of SQL Information Protection Policy.
 

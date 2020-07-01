@@ -49,6 +49,15 @@ Get deployment
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Get deployment operation
 
+### [Get-AzDeploymentScript](Get-AzDeploymentScript.md)
+Gets or lists deployment scripts.
+
+### [Get-AzDeploymentScriptLog](Get-AzDeploymentScriptLog.md)
+Gets the log of a deployment script execution.
+
+### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at subscription scope. 
+
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
 
@@ -62,7 +71,7 @@ Gets managed application definitions
 Gets Management Group(s)
 
 ### [Get-AzManagementGroupDeployment](Get-AzManagementGroupDeployment.md)
-Get deployment at a mangement group
+Get deployment at a management group
 
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
@@ -98,6 +107,9 @@ Gets the deployments in a resource group.
 
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
+
+### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at resource group scope. 
 
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.
@@ -138,7 +150,7 @@ Creates a new azure active directory application.
 Creates a new active directory group.
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
-Creates a new azure active directory service principal.
+Creates a new Azure active directory service principal.
 
 ### [New-AzADSpCredential](New-AzADSpCredential.md)
 Adds a credential to an existing service principal.
@@ -231,6 +243,9 @@ Deletes an active directory user.
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
 
+### [Remove-AzDeploymentScript](Remove-AzDeploymentScript.md)
+Removes a deployment script and its associated resources.
+
 ### [Remove-AzManagedApplication](Remove-AzManagedApplication.md)
 Removes a managed application
 
@@ -280,6 +295,9 @@ Deletes predefined Azure tags or values | Deletes the entire set of tags on a re
 
 ### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
 Removes a deployment at tenant scope and any associated operations
+
+### [Save-AzDeploymentScriptLog](Save-AzDeploymentScriptLog.md)
+Saves the log of a deployment script execution to disk.
 
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
 Saves a deployment template to a file.

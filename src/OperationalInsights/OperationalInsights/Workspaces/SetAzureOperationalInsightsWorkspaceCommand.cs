@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [ValidateSet("free", "standard", "premium", "pernode", "standalone", IgnoreCase = true)]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -52,6 +52,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
 
         public override void ExecuteCmdlet()
         {
@@ -67,6 +77,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 WorkspaceName = Name,
                 Sku = Sku,
                 Tags = Tag,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 RetentionInDays = RetentionInDays
             };
 

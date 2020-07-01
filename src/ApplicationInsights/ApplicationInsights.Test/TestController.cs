@@ -23,6 +23,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Storage;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
@@ -35,6 +36,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public ApplicationInsightsManagementClient ApplicationInsightsClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; set; }
 
         public string UserDomain { get; private set; }
 
@@ -91,6 +94,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -114,10 +118,12 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             ApplicationInsightsClient = GetApplicationInsightsManagementClient(context);
+            StorageManagementClient = GetStorageManagementClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
-                ApplicationInsightsClient);
+                ApplicationInsightsClient,
+                StorageManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -128,6 +134,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         private static ApplicationInsightsManagementClient GetApplicationInsightsManagementClient(MockContext context)
         {
             return context.GetServiceClient<ApplicationInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

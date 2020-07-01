@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSPoolEndpointConfiguration endpointConfiguration;
         
-        private IList<System.String> publicIPs;
+        private PSPublicIPAddressConfiguration publicIPAddressConfiguration;
         
         public PSNetworkConfiguration()
         {
@@ -89,38 +89,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<System.String> PublicIPs
+        public PSPublicIPAddressConfiguration PublicIPAddressConfiguration
         {
             get
             {
-                if (((this.publicIPs == null) 
-                            && (this.omObject.PublicIPs != null)))
+                if (((this.publicIPAddressConfiguration == null) 
+                            && (this.omObject.PublicIPAddressConfiguration != null)))
                 {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.PublicIPs.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.publicIPs = list;
+                    this.publicIPAddressConfiguration = new PSPublicIPAddressConfiguration(this.omObject.PublicIPAddressConfiguration);
                 }
-                return this.publicIPs;
+                return this.publicIPAddressConfiguration;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.PublicIPs = null;
+                    this.omObject.PublicIPAddressConfiguration = null;
                 }
                 else
                 {
-                    this.omObject.PublicIPs = new List<System.String>();
+                    this.omObject.PublicIPAddressConfiguration = value.omObject;
                 }
-                this.publicIPs = value;
+                this.publicIPAddressConfiguration = value;
             }
         }
         

@@ -1,0 +1,41 @@
+{
+  "Get-AzBlockchainMemberConsortiumMember+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/consortiumMembers?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgrouphv0x8n/providers/Microsoft.Blockchain/blockchainMembers/myblockchainhv0x8n/consortiumMembers?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "63ca3930-3b59-4e9d-90ed-730e5062d205" ],
+        "CommandName": [ "Get-AzBlockchainMemberConsortiumMember" ],
+        "FullCommandName": [ "Get-AzBlockchainMemberConsortiumMember_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "1fb15f64-e917-4ee3-a4d7-85c0057fdec9" ],
+        "x-ms-correlation-request-id": [ "1fb15f64-e917-4ee3-a4d7-85c0057fdec9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200521T141129Z:1fb15f64-e917-4ee3-a4d7-85c0057fdec9" ],
+        "Date": [ "Thu, 21 May 2020 14:11:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "243" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"myblockchainhv0x8n\",\"displayName\":\"myblockchainhv0x8n\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"role\":\"ADMIN\",\"status\":\"Ready\",\"joinDate\":\"2020-05-21T13:46:13.0148402Z\",\"dateModified\":\"2020-05-21T13:54:40\"}]}"
+    }
+  }
+}

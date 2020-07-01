@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             PSIncludedPath pSIncludedPath = new PSIncludedPath();
 
             if (Path != null)
+            {
                 pSIncludedPath.Path = Path;
+            }
 
             if(Index != null && Index.Length > 0)
             {

@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; already exists. Please use Set-AzSynapseFirewallRule to modify a firewall rule with these properties..
+        /// </summary>
+        internal static string ConflictFirewallRuleName {
+            get {
+                return ResourceManager.GetString("ConflictFirewallRuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new firewall rule in workspace &apos;{0}&apos; with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingFirewallRule {
+            get {
+                return ResourceManager.GetString("CreatingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new Spark pool in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string CreatingSynapseSparkPool {
@@ -174,6 +192,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDisableSparkPoolAutoScale {
             get {
                 return ResourceManager.GetString("FailedToDisableSparkPoolAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist. Please use Add-AzSynapseFirewallRule to create a firewall rule with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverFirewallRuleByWorkspace {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverFirewallRuleByWorkspace", resourceCulture);
             }
         }
         
@@ -277,6 +304,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified firewall rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string FirewallRuleDoesNotExist {
+            get {
+                return ResourceManager.GetString("FirewallRuleDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InteractiveSparkSessionTips.
         /// </summary>
         internal static string InteractiveSparkSessionTips {
@@ -345,6 +381,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string PrincipalNotFound {
             get {
                 return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting firewall rule &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemovingFirewallRule {
+            get {
+                return ResourceManager.GetString("RemovingFirewallRule", resourceCulture);
             }
         }
         

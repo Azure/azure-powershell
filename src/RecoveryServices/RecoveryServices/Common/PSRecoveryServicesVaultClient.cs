@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Rest.Azure;
 
@@ -99,10 +100,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
         /// <returns>Azure Operation response object.</returns>  
         public void UpdateVaultStorageType(string resouceGroupName, string vaultName,
-            BackupStorageConfig backupStorageConfig)
+            BackupResourceConfigResource backupStorageConfig)
         {
-            GetRecoveryServicesClient.BackupStorageConfigs.UpdateWithHttpMessagesAsync(
-                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
+            GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>  
@@ -111,10 +112,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="resouceGroupName">Name of the resouce group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Storage response object.</returns>  
-        public BackupStorageConfig GetVaultStorageType(string resouceGroupName, string vaultName)
+        public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
         {
-            return GetRecoveryServicesClient.BackupStorageConfigs.GetWithHttpMessagesAsync(
-                resouceGroupName, vaultName, GetRequestHeaders()).Result.Body;
+            return GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
+                vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
         }
     }
 }

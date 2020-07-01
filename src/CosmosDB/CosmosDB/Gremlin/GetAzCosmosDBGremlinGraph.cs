@@ -23,7 +23,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinGraph", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSGremlinGraphGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinGraph", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSGremlinGraphGetResults))]
     public class GetAzCosmosDBGremlinGraph : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
@@ -47,9 +47,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSGremlinDatabaseGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.GremlinGraphDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -64,12 +61,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 GremlinGraphGetResults gremlinGraphGetResults = CosmosDBManagementClient.GremlinResources.GetGremlinGraphWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinGraphGetResults(gremlinGraphGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.GremlinResources.GetGremlinGraphThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {

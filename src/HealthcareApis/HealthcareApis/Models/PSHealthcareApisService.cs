@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
+            this.ExportStorageAccountName = serviceDescription.Properties.ExportConfiguration?.StorageAccountName;
+            this.IdentityType = serviceDescription.Identity?.Type;
+            this.IdentityPrincipalId = serviceDescription.Identity?.PrincipalId;
+            this.IdentityTenantId = serviceDescription.Identity?.TenantId;
 
             var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
             foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
@@ -67,6 +71,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
 
         public int? CosmosDbOfferThroughput { get; private set; }
 
+        public string ExportStorageAccountName { get; private set; }
+
         public string Etag { get; private set; }
 
         public string Id { get; private set; }
@@ -84,6 +90,12 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public string ResourceType { get; private set; }
 
         public bool? SmartProxyEnabled { get; private set; }
+
+        public string IdentityType { get; private set; }
+
+        public string IdentityPrincipalId { get; private set; }
+
+        public string IdentityTenantId { get; private set; }
 
         public static PSHealthcareApisService Create(ServicesDescription healthcareApisAccount)
         {

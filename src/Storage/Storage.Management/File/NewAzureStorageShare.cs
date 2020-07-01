@@ -111,8 +111,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             this.ResourceGroupName,
                             this.StorageAccountName,
                             this.Name,
-                            MetadataDictionary,
-                            shareQuota);
+                            new FileShare(
+                                metadata: MetadataDictionary,
+                                shareQuota: shareQuota));
 
                 WriteObject(new PSShare(share));
             }

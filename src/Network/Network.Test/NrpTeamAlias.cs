@@ -32,6 +32,8 @@ namespace Commands.Network.Test
 
         // Windows Azure SLB Dev Team
         public const string slbdev = "slbdev";
+        // Azure PowerShell Team
+        public const string azdevxps = "azdevxps";
 
         // Brooklyn FTEs
         // Split into subsets due to tests' long running time

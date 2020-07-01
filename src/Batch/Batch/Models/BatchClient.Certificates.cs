@@ -84,24 +84,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (!string.IsNullOrWhiteSpace(parameters.FilePath))
             {
-                if (string.IsNullOrWhiteSpace(parameters.Password))
+                if (parameters.CertificateKind == PSCertificateKind.Cer)
                 {
-                    unboundCert = certOperations.CreateCertificate(parameters.FilePath);
+                    unboundCert = certOperations.CreateCertificateFromCer(parameters.FilePath);
                 }
                 else
                 {
-                    unboundCert = certOperations.CreateCertificate(parameters.FilePath, parameters.Password);
+                    unboundCert = certOperations.CreateCertificateFromPfx(parameters.FilePath, parameters.Password);
                 }
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(parameters.Password))
+                if (parameters.CertificateKind == PSCertificateKind.Cer)
                 {
-                    unboundCert = certOperations.CreateCertificate(parameters.RawData);
+                    unboundCert = certOperations.CreateCertificateFromCer(parameters.RawData);
                 }
                 else
                 {
-                    unboundCert = certOperations.CreateCertificate(parameters.RawData, parameters.Password);
+                    unboundCert = certOperations.CreateCertificateFromPfx(parameters.RawData, parameters.Password);
                 }
             }
 

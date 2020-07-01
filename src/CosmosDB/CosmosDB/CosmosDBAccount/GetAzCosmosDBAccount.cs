@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccountGetResults))]
     public class GetAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     IEnumerable<DatabaseAccountGetResults>  DatabaseAccounts = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
                     foreach (DatabaseAccountGetResults DatabaseAccount in DatabaseAccounts)
                     {
-                        WriteObject(new PSDatabaseAccount(DatabaseAccount));
+                        WriteObject(new PSDatabaseAccountGetResults(DatabaseAccount));
                     }
 
                     return;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-            WriteObject(new PSDatabaseAccount(databaseAccount));
+            WriteObject(new PSDatabaseAccountGetResults(databaseAccount));
 
             return;
         }

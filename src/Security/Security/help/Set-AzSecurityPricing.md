@@ -31,24 +31,11 @@ Sets the pricing of Azure Security Center tier for a scope.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
-Id                                                                                                 Name    PricingTier
---                                                                                                 ----    -----------
-/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default default Standard
+PS C:\> Set-AzSecurityPricing -Name "virtualmachines" -PricingTier "Standard"
 ```
 
 Sets the subscription Azure Security Center pricing tier to "Standard"
 
-### Example 2
-```powershell
-PS C:\> Set-AzSecurityPricing -Name "myService1" -ResourceGroupName "myService1" -PricingTier "Standard"
-
-Id                                                                                                                     
---                                                                                                                     
-/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/pricings/...
-```
-
-Sets the "myService1" resource group Azure Security Center pricing tier to "Standard"
 
 ## PARAMETERS
 
@@ -143,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

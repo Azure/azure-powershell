@@ -178,7 +178,8 @@ function Test-NewDirectPeeringPremiumDirectFree
 	#create peering
 	$connection2.UseForPeeringService = $true
 	Write-Output "New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku Premium_Direct_Free -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2"
-    Assert-ThrowsContains {$createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Premium_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2} "Internal"
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Premium_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
+	Assert-NotNull $createdPeering
 }
 
 <#

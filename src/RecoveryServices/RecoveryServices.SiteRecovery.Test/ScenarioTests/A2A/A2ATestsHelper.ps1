@@ -132,6 +132,11 @@ function getRecoveryCacheStorageAccountName{
 function getRecoveryResourceGroupName{
        return "recRG"+ $seed;
 }
+
+function getRecoveryNicName{
+       return "A2ArecNICName"+ $seed;
+}
+
 function Get-RandomSuffix(
 	[int] $size = 8)
 {

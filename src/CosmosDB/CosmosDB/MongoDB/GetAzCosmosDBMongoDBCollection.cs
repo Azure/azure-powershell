@@ -23,7 +23,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollection", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMongoDBCollectionGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollection", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMongoDBCollectionGetResults))]
     public class GetAzCosmosDBMongoDBCollection : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
@@ -47,9 +47,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSMongoDBDatabaseGetResults ParentObject{ get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.MongoCollectionDetailedParamHelpMessage)]
-        public SwitchParameter Detailed { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -64,12 +61,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 MongoDBCollectionGetResults mongoDBCollectionGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBCollectionGetResults(mongoDBCollectionGetResults));
-
-                if (Detailed)
-                {
-                    ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBCollectionThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
-                }
             }
             else
             {

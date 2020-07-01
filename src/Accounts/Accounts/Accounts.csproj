@@ -11,19 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.AccessControl.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\NetFxPreloadAssemblies\*.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\NetCorePreloadAssemblies\*.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
@@ -36,10 +25,12 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="$(RepoSrc)lib\PreloadAssemblyInfo.json" DestinationFolder="$(TargetDir)" />
   </Target>
 
   <ItemGroup>
     <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="StartupScripts\InitializeAssemblyResolver.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PostImportScripts\LoadAuthenticators.ps1" CopyToOutputDirectory="PreserveNewest" />

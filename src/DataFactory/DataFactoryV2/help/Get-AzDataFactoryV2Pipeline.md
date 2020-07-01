@@ -38,7 +38,7 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 ## EXAMPLES
 
 ### Example 1: Get information about all pipelines
-```
+```powershell
 PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
 
     PipelineName      : DPWikisample
@@ -59,7 +59,7 @@ You can use either one of the following example commands.
 The second one uses a DataFactory object as a parameter.
 
 ### Example 2: Get information about a specific pipeline
-```
+```powershell
 PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
 
     PipelineName      : DPWikisample
@@ -75,7 +75,7 @@ That Windows PowerShell cmdlet formats the results.
 For more information, type Get-Help Format-List.
 
 ### Example 3: Get the properties for a specific pipeline
-```
+```powershell
 PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
 
     Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
@@ -115,8 +115,8 @@ PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample
 
 This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.
 
-### Example 6: Get information about inputs for the first activity
-```
+### Example 4: Get information about inputs for the first activity
+```powershell
 PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
 
     ReferenceName : dsIn

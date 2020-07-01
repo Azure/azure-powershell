@@ -62,7 +62,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Tags = tagDictionary,
                 AutoStorage = autoStorage,
                 PoolAllocationMode = parameters.PoolAllocationMode,
-                KeyVaultReference = keyVaultRef
+                KeyVaultReference = keyVaultRef,
+                PublicNetworkAccess = parameters.PublicNetworkAccess,
+                Identity = parameters.Identity
             });
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
-            
+
             // need to the location in order to call
             var getResponse = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
 

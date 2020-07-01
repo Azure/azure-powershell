@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Internal.Common;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -41,6 +43,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public BatchManagementClient BatchManagementClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public AzureRestClient AzureRestClient { get; private set; }
 
         public static BatchController NewInstance => new BatchController();
 
@@ -80,6 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+                {"Microsoft.Network", null},
                 {"Microsoft.Authorization", null}
             };
             var providersToIgnore = new Dictionary<string, string>
@@ -102,7 +109,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Batch.psd1"),
+                    _helper.GetRMModulePath("Az.Batch.psd1"),
+                    _helper.GetRMModulePath("Az.Network.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -125,13 +133,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             BatchManagementClient = GetBatchManagementClient(context);
+            NetworkManagementClient = GetNetworkManagementClient(context);
+            AzureRestClient = context.GetServiceClient<AzureRestClient>(TestEnvironmentFactory.GetTestEnvironment());
 
-            _helper.SetupManagementClients(ResourceManagementClient, BatchManagementClient);
+            _helper.SetupManagementClients(ResourceManagementClient, BatchManagementClient, NetworkManagementClient, AzureRestClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private BatchManagementClient GetBatchManagementClient(MockContext context)

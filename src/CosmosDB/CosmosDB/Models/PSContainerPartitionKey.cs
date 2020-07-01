@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSContainerPartitionKey(ContainerPartitionKey containerPartitionKey)
         {
+            if (containerPartitionKey == null)
+            {
+                return;
+            }
+
             Paths = containerPartitionKey.Paths;
             Kind = containerPartitionKey.Kind;
             Version = containerPartitionKey.Version;
