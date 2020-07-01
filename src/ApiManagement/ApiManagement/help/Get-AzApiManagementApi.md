@@ -72,6 +72,14 @@ PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 
 This command gets the API with the specified name.
 
+### Example 4: Get a management API by GatewayId
+```
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -GatewayId "g01"
+```
+
+This command gets the API for the specified GatewayId.
+
 ## PARAMETERS
 
 ### -ApiId
@@ -135,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayId
-If specified will try to get all Gateway APIs. This parameter is optional.
+If specified will try to get all Gateway APIs.
 
 ```yaml
 Type: System.String
