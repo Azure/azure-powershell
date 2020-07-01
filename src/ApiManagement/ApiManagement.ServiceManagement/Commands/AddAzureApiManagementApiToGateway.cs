@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiToGateway")]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiToGateway", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class AddAzureApiManagementApiToGateway : AzureApiManagementCmdletBase
     {

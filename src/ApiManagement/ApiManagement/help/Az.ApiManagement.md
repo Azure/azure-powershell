@@ -69,13 +69,13 @@ Gets API Management certificates configured for Mutual Authentication with Backe
 Get details of the Diagnostic configured at the service level or the Api Level. Diagnostics are used to log requests/responses from Api Management gateway.
 
 ### [Get-AzApiManagementGateway](Get-AzApiManagementGateway.md)
-Gets the details of the Gateway.
+Gets all or specific API management Gateway.
 
 ### [Get-AzApiManagementGatewayHostnameConfiguration](Get-AzApiManagementGatewayHostnameConfiguration.md)
-Gets the hostname configuration of the Gateway.
+Gets all or specific hostname configuration for the existing Gateway.
 
 ### [Get-AzApiManagementGatewayKey](Get-AzApiManagementGatewayKey.md)
-Gets keys of the Gateway.
+Gets keys of the existing Gateway
 
 ### [Get-AzApiManagementGroup](Get-AzApiManagementGroup.md)
 Gets all or specific API management groups.
@@ -195,10 +195,10 @@ Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
 Creates a new diagnostics at the Global scope or Api Scope.
 
 ### [New-AzApiManagementGateway](New-AzApiManagementGateway.md)
-Creates a Gateway.
+Creates new Gateway entity.
 
 ### [New-AzApiManagementGatewayHostnameConfiguration](New-AzApiManagementGatewayHostnameConfiguration.md)
-Creates a hostname configuration for the Gateway.
+Creates a hostname configuratin for the existing Gateway.
 
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.
@@ -231,7 +231,7 @@ Creates an API Management product.
 Creates an instance of PsApiManagementRegion.
 
 ### [New-AzApiManagementResourceLocation](New-AzApiManagementResourceLocation.md)
-Create a new resource location contract (used in Gateways). 
+Create a new resource location contract (used in Gateways).
 
 ### [New-AzApiManagementSamplingSetting](New-AzApiManagementSamplingSetting.md)
 Create a new sampling setting for the Diagnostic
@@ -264,7 +264,7 @@ Removes an API Management service.
 Removes an API.
 
 ### [Remove-AzApiManagementApiFromGateway](Remove-AzApiManagementApiFromGateway.md)
-Detaches an API from a Gateway.
+Attaches an API to a gateway.
 
 ### [Remove-AzApiManagementApiFromProduct](Remove-AzApiManagementApiFromProduct.md)
 Removes an API from a product.
@@ -297,7 +297,7 @@ Removes an API Management certificate.
 Remove the Diagnostic entity from Global or API level scope.
 
 ### [Remove-AzApiManagementGateway](Remove-AzApiManagementGateway.md)
-Removes an existing Gateway.
+Detaches an API from a Gateway.
 
 ### [Remove-AzApiManagementGatewayHostnameConfiguration](Remove-AzApiManagementGatewayHostnameConfiguration.md)
 Removes a hostname configuration from the existing Gateway.

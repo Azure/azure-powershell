@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", DefaultParameterSetName = GetByGatewayId)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", DefaultParameterSetName = GetByGatewayId, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementGatewayHostnameConfiguration), ParameterSetName = new[] { GetByGatewayId, GetByGatewayHostnameId })]
     public class GetAzureApiManagementGatewayHostnameConfiguration : AzureApiManagementCmdletBase
     {

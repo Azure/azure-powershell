@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", DefaultParameterSetName = GetAll, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementGateway))]
     public class GetAzureApiManagementGateway : AzureApiManagementCmdletBase
     {

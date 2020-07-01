@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementGatewayHostnameConfiguration))]
     public class NewAzureApiManagementGatewayHostnameConfiguration : AzureApiManagementCmdletBase
     {
