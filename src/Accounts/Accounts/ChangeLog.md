@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet `Invoke-AzRestMethod`
 
 * Fixed an issue that may cause authentication errors in multi-process scenarios such as running multiple Azure PowerShell cmdlets using `Start-Job` [#9448]
 
