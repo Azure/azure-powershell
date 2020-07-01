@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Ut
                 tenant.SetOrAppendProperty(AzureTenant.Property.DisplayName, other.DisplayName);
             }
 
-            if (null != other.TenantCategory)
+            if (other.TenantCategory != null)
             {
                 tenant.SetOrAppendProperty(AzureTenant.Property.TenantCategory, other.TenantCategory?.ToSerializedValue());
             }

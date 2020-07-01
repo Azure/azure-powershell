@@ -167,8 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
             subscription.Id = other.SubscriptionId;
             subscription.Name = other.DisplayName;
             subscription.State = other.State.ToString();
-            subscription.SetProperty(AzureSubscription.Property.Tenants,
-                context.Tenant.Id.ToString());
+            subscription.SetTenant(context.Tenant.Id.ToString());
             return subscription;
         }
 

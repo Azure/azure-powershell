@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Ut
             {
                 subscription.SetManagedByTenants(other.ManagedByTenants.Select(t => t.TenantId).ToArray());
             }
-            subscription.SetRetrievedByTenant(retrievedByTenant);
+            subscription.SetTenant(retrievedByTenant);
             return subscription;
         }
     }

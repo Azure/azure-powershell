@@ -82,9 +82,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             public const string RegisteredResourceProviders = "RegisteredResourceProviders",
 
             /// <summary>
+            /// Tenants to be compatible with previous version
+            /// Equivalent to retrieved by tenant
+            /// </summary>
+            Tenants = "Tenants",
+            /// <summary>
             /// Home tenant
             /// </summary>
-            Tenants = "HomeTenant",
+            HomeTenant = "HomeTenant",
             /// <summary>
             /// Associated tenants
             /// </summary>
@@ -96,8 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             Default = "Default",
             StorageAccount = "StorageAccount",
             Environment = "Environment",
-            Account = "Account",
-            RetrievedByTenant = "RetrievedByTenant";
+            Account = "Account";
         }
     }
 }

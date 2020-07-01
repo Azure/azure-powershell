@@ -37,12 +37,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Whether tenant category is home
         /// </summary>
-        public bool IsHome { 
-            get {
-                return string.IsNullOrEmpty(this.GetProperty(Property.TenantCategory)) 
-                    || 0 == string.Compare(this.GetProperty(Property.TenantCategory), "Home", true);
-            }
-        }
+        public bool IsHome => string.IsNullOrEmpty(this.GetProperty(Property.TenantCategory))
+                    || this.GetProperty(Property.TenantCategory).Equals("Home", StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
         /// Custom proeprties of the tenant

@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The list of tenants</returns>
         public static string GetTenant(this IAzureSubscription subscription)
         {
-            return subscription.GetRetrievedByTenant();
+            return subscription.GetProperty(AzureSubscription.Property.Tenants);
         }
 
         /// <summary>
@@ -138,27 +138,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="tenants">The tenants associated with the subscription</param>
         public static void SetTenant(this IAzureSubscription subscription, string tenant)
         {
-            subscription.SetRetrievedByTenant(tenant);
+            subscription.SetProperty(AzureSubscription.Property.Tenants, tenant);
         }
 
         public static string GetHomeTenant(this IAzureSubscription subscription)
         {
-            return subscription.GetProperty(AzureSubscription.Property.Tenants);
+            return subscription.GetProperty(AzureSubscription.Property.HomeTenant);
         }
 
         public static void SetHomeTenant(this IAzureSubscription subscription, string tenant)
         {
-            subscription.SetProperty(AzureSubscription.Property.Tenants, tenant);
-        }
-
-        public static string GetRetrievedByTenant(this IAzureSubscription subscription)
-        {
-            return subscription.GetProperty(AzureSubscription.Property.RetrievedByTenant);
-        }
-
-        public static void SetRetrievedByTenant(this IAzureSubscription subscription, string tenant)
-        {
-            subscription.SetProperty(AzureSubscription.Property.RetrievedByTenant, tenant);
+            subscription.SetProperty(AzureSubscription.Property.HomeTenant, tenant);
         }
 
         /// <summary>

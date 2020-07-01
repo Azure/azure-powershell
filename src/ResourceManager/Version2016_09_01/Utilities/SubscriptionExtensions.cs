@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models.Utilities
             subscription.SetAccount(account?.Id);
             subscription.SetEnvironment(environment != null ? environment.Name : EnvironmentName.AzureCloud);
             subscription.SetHomeTenant(other.TenantId ?? retrievedByTenant);
-            subscription.SetRetrievedByTenant(retrievedByTenant);
+            subscription.SetTenant(retrievedByTenant);
             return subscription;
         }
     }
