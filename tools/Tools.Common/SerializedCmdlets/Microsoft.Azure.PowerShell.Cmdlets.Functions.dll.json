@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -215,7 +215,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -233,7 +233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -410,7 +410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -434,7 +434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -658,7 +658,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -682,7 +682,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -930,7 +930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -954,7 +954,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1178,7 +1178,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1202,7 +1202,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1310,7 +1310,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Description": "System.String",
               "DisplayName": "System.String",
@@ -1424,7 +1424,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1442,7 +1442,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1643,7 +1643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1667,7 +1667,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1775,7 +1775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -1936,7 +1936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1954,7 +1954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2107,7 +2107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2131,7 +2131,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2331,7 +2331,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2355,7 +2355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2579,7 +2579,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2603,7 +2603,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2803,7 +2803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2827,7 +2827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2935,7 +2935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Property": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties"
             },
@@ -3008,7 +3008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -3120,7 +3120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3138,7 +3138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3339,7 +3339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3363,7 +3363,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3464,7 +3464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -3594,7 +3594,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3618,7 +3618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3770,7 +3770,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3794,7 +3794,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3902,7 +3902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -4250,7 +4250,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4477,7 +4477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4495,7 +4495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4819,7 +4819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5028,7 +5028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5052,7 +5052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5519,7 +5519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5728,7 +5728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5752,7 +5752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6219,7 +6219,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6428,7 +6428,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6452,7 +6452,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6871,7 +6871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7080,7 +7080,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7104,7 +7104,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7212,7 +7212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -7503,7 +7503,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7521,7 +7521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7918,7 +7918,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7942,7 +7942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8139,7 +8139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -8269,7 +8269,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8287,7 +8287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8536,7 +8536,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8560,7 +8560,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8760,7 +8760,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8784,7 +8784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8885,7 +8885,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -9063,7 +9063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9087,7 +9087,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9284,7 +9284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -9410,7 +9410,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9428,7 +9428,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9683,7 +9683,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9707,7 +9707,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9907,7 +9907,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9931,7 +9931,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10008,7 +10008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -10188,7 +10188,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10212,7 +10212,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10296,7 +10296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Property": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties"
             },
@@ -10405,7 +10405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -10517,7 +10517,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10535,7 +10535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10784,7 +10784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10808,7 +10808,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11008,7 +11008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11032,7 +11032,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11133,7 +11133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -11311,7 +11311,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11335,7 +11335,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11532,7 +11532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -11662,7 +11662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11680,7 +11680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11929,7 +11929,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11953,7 +11953,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12153,7 +12153,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12177,7 +12177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12278,7 +12278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -12456,7 +12456,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12480,7 +12480,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12659,7 +12659,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -12789,7 +12789,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12807,7 +12807,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13032,7 +13032,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13056,7 +13056,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13157,7 +13157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -13311,7 +13311,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13335,7 +13335,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13511,7 +13511,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13535,7 +13535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13732,7 +13732,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -13862,7 +13862,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13880,7 +13880,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14129,7 +14129,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14153,7 +14153,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14353,7 +14353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14377,7 +14377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14478,7 +14478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -14656,7 +14656,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14680,7 +14680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14788,7 +14788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -14990,7 +14990,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15088,7 +15088,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -15236,7 +15236,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15254,7 +15254,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15504,7 +15504,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15713,7 +15713,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15737,7 +15737,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15938,7 +15938,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16147,7 +16147,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16171,7 +16171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16272,7 +16272,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -16451,7 +16451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16660,7 +16660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16684,7 +16684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16792,7 +16792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -16972,7 +16972,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -17098,7 +17098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17116,7 +17116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17465,7 +17465,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17489,7 +17489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17789,7 +17789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17813,7 +17813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17914,7 +17914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SkuCapability": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
@@ -18170,7 +18170,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18194,7 +18194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18302,7 +18302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Property": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties"
             },
@@ -18411,7 +18411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
               "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -18523,7 +18523,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -18541,7 +18541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -18790,7 +18790,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18814,7 +18814,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19014,7 +19014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19038,7 +19038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19139,7 +19139,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfoAppSettingsOverride": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
                     "HostNameSslState": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
@@ -19317,7 +19317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19341,7 +19341,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19580,7 +19580,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19590,7 +19590,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState",
       "GenericTypeArguments": [],
@@ -19600,7 +19600,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HostType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType]",
         "SslState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState]",
@@ -19617,7 +19617,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19629,7 +19629,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19733,7 +19733,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19745,7 +19745,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19829,7 +19829,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19839,7 +19839,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ConnectionString": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo[]",
         "HandlerMapping": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping[]",
@@ -19928,7 +19928,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo",
       "GenericTypeArguments": [],
@@ -19938,7 +19938,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringInfo, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType]",
         "Name": "System.String",
@@ -19952,7 +19952,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19964,7 +19964,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20036,7 +20036,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping",
       "GenericTypeArguments": [],
@@ -20046,7 +20046,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMapping, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Argument": "System.String",
         "Extension": "System.String",
@@ -20060,7 +20060,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction",
       "GenericTypeArguments": [],
@@ -20070,7 +20070,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIPSecurityRestriction, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tag": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag]",
         "Priority": "System.Nullable`1[System.Int32]",
@@ -20091,7 +20091,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20103,7 +20103,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20187,7 +20187,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair",
       "GenericTypeArguments": [],
@@ -20197,7 +20197,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -20210,7 +20210,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule",
       "GenericTypeArguments": [],
@@ -20220,7 +20220,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ChangeStep": "System.Nullable`1[System.Double]",
         "MaxReroutePercentage": "System.Nullable`1[System.Double]",
@@ -20251,7 +20251,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger",
       "GenericTypeArguments": [],
@@ -20261,7 +20261,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTrigger, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]",
         "Status": "System.Nullable`1[System.Int32]",
@@ -20277,7 +20277,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication",
       "GenericTypeArguments": [],
@@ -20287,7 +20287,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplication, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VirtualDirectory": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]",
         "PreloadEnabled": "System.Nullable`1[System.Boolean]",
@@ -20302,7 +20302,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory",
       "GenericTypeArguments": [],
@@ -20312,7 +20312,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PhysicalPath": "System.String",
         "VirtualPath": "System.String"
@@ -20325,7 +20325,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20337,7 +20337,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20409,7 +20409,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20421,7 +20421,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20493,7 +20493,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20505,7 +20505,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20577,7 +20577,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20589,7 +20589,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20661,7 +20661,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20673,7 +20673,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20745,7 +20745,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20757,7 +20757,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20873,7 +20873,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20885,7 +20885,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -20957,7 +20957,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -20969,7 +20969,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21041,7 +21041,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21053,7 +21053,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21125,7 +21125,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21137,7 +21137,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21209,7 +21209,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -21433,7 +21433,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[], Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[], Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability",
       "GenericTypeArguments": [],
@@ -21443,7 +21443,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Reason": "System.String",
@@ -21457,7 +21457,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21469,7 +21469,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21541,7 +21541,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21553,7 +21553,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptions, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21625,7 +21625,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties, Az.Functions.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionaryProperties, Az.Functions.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

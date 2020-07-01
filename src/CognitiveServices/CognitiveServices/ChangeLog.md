@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Supported displaying account capabilities.
 * Supported modifying PublicNetworkAccess.
 

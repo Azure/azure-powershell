@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.8.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.StorageSync.dll', 
@@ -74,7 +74,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck', 
-               'New-AzStorageSyncService', 'Get-AzStorageSyncService', 
+               'New-AzStorageSyncService', 'Get-AzStorageSyncService', 'Set-AzStorageSyncService',
                'Remove-AzStorageSyncService', 'New-AzStorageSyncGroup', 
                'Get-AzStorageSyncGroup', 'Remove-AzStorageSyncGroup', 
                'New-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncCloudEndpoint', 
