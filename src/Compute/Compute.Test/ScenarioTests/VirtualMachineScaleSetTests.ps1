@@ -2462,19 +2462,8 @@ function Test-VirtualMachineScaleSetImageVersion
 		Stop-Transcript
  
 		$wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
-
 		$file = (Get-Content -path "transcript.txt") -join ' ';
-		$containsWord = $file | %{$_ -match $wordToFind}
-		If($containsWord -contains $true)
-		{
-			$found = 'true';
-		}
-		else
-		{
-			$found = 'false';  
-		}
- 
-		Assert-AreEqual 'true' $found;
+        Assert-True { $file | %{$_ -match $wordToFind } } ;
  
 	}
 	finally
