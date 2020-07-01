@@ -93,6 +93,9 @@ function Test-NewDeploymentFromTemplateSpec
 		#Create deployment
 		$deployment = New-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateSpecId $resourceId -TemplateParameterFile "sampleTemplateParams.json"
 
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
 	}
 
 	finally
