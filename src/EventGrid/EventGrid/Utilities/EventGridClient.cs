@@ -140,15 +140,29 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string topicName,
             string location,
-            Dictionary<string, string> tags)
+            Dictionary<string, string> tags,
+            string inputSchema,
+            Dictionary<string, string> inputMappingFields,
+            Dictionary<string, string> inputMappingDefaultValuesDictionary)
         {
             Topic topic = new Topic();
+            JsonInputSchemaMapping jsonInputMapping = null;
             topic.Location = location;
+
+            topic.InputSchema = inputSchema;
 
             if (tags != null)
             {
                 topic.Tags = new Dictionary<string, string>(tags);
             }
+
+            if (inputMappingFields != null || inputMappingDefaultValuesDictionary != null)
+            {
+                jsonInputMapping = new JsonInputSchemaMapping();
+                this.PrepareInputSchemaMappingParameters(inputMappingFields, inputMappingDefaultValuesDictionary, jsonInputMapping);
+            }
+
+            topic.InputSchemaMapping = jsonInputMapping;
 
             return this.Client.Topics.CreateOrUpdate(resourceGroupName, topicName, topic);
         }
@@ -168,7 +182,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public Topic UpdateTopic(string resourceGroupName, string topicName, Dictionary<string, string> tags)
         {
-            return this.Client.Topics.Update(resourceGroupName, topicName, tags);
+            TopicUpdateParameters updateParams = new TopicUpdateParameters { Tags = tags };
+            return this.Client.Topics.Update(resourceGroupName, topicName, updateParams);
         }
 
         public void DeleteTopic(string resourceGroupName, string topicName)
@@ -271,15 +286,29 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string domainName,
             string location,
-            Dictionary<string, string> tags)
+            Dictionary<string, string> tags,
+            string inputSchema,
+            Dictionary<string, string> inputMappingFields,
+            Dictionary<string, string> inputMappingDefaultValuesDictionary)
         {
             Domain domain = new Domain();
+            JsonInputSchemaMapping jsonInputMapping = null;
             domain.Location = location;
+
+            domain.InputSchema = inputSchema;
 
             if (tags != null)
             {
                 domain.Tags = new Dictionary<string, string>(tags);
             }
+
+            if (inputMappingFields != null || inputMappingDefaultValuesDictionary != null)
+            {
+                jsonInputMapping = new JsonInputSchemaMapping();
+                this.PrepareInputSchemaMappingParameters(inputMappingFields, inputMappingDefaultValuesDictionary, jsonInputMapping);
+            }
+
+            domain.InputSchemaMapping = jsonInputMapping;
 
             return this.Client.Domains.CreateOrUpdate(resourceGroupName, domainName, domain);
         }
@@ -299,7 +328,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public Domain UpdateDomain(string resourceGroupName, string domainName, Dictionary<string, string> tags)
         {
-            return this.Client.Domains.Update(resourceGroupName, domainName, tags);
+            DomainUpdateParameters updateParams = new DomainUpdateParameters { Tags = tags };
+            return this.Client.Domains.Update(resourceGroupName, domainName, updateParams);
         }
 
         public void DeleteDomain(string resourceGroupName, string domainName)
@@ -389,6 +419,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string[] includedEventTypes,
             string[] labels,
             RetryPolicy retryPolicy,
+            string deliverySchema,
             string deadLetterEndpoint,
             DateTime expirationDate,
             Hashtable[] advancedFilter)
@@ -425,6 +456,20 @@ namespace Microsoft.Azure.Commands.EventGrid
             else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
             {
                 destination = new ServiceBusQueueEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusTopic, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusTopicEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.AzureFunction, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new AzureFunctionEventSubscriptionDestination()
                 {
                     ResourceId = endpoint
                 };
@@ -469,6 +514,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 eventSubscription.DeadLetterDestination = this.GetStorageBlobDeadLetterDestinationFromEndPoint(deadLetterEndpoint);
             }
+
+            eventSubscription.EventDeliverySchema = deliverySchema;
 
             if (expirationDate != null && expirationDate != DateTime.MinValue)
             {
@@ -528,6 +575,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                 else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new ServiceBusQueueEventSubscriptionDestination()
+                    {
+                        ResourceId = endpoint
+                    };
+                }
+                else if (string.Equals(endpointType, EventGridConstants.ServiceBusTopic, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new ServiceBusTopicEventSubscriptionDestination()
+                    {
+                        ResourceId = endpoint
+                    };
+                }
+                else if (string.Equals(endpointType, EventGridConstants.AzureFunction, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new AzureFunctionEventSubscriptionDestination()
                     {
                         ResourceId = endpoint
                     };
@@ -1091,6 +1152,83 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string.Equals(tokens[5], "providers", StringComparison.OrdinalIgnoreCase) &&
                 string.Equals(tokens[6], "Microsoft.Storage", StringComparison.OrdinalIgnoreCase) &&
                 string.Equals(tokens[7], "storageAccounts", StringComparison.OrdinalIgnoreCase));
+        }
+
+        void PrepareInputSchemaMappingParameters(
+            Dictionary<string, string> inputMappingFields,
+            Dictionary<string, string> inputMappingDefaultValuesDictionary,
+            JsonInputSchemaMapping jsonInputMapping)
+        {
+            if (inputMappingFields != null)
+            {
+                foreach (var entry in inputMappingFields)
+                {
+                    if (string.Equals(entry.Key, EventGridConstants.InputMappingId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.Id = new JsonField(entry.Value);
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingTopic, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.Topic = new JsonField(entry.Value);
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingEventTime, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.EventTime = new JsonField(entry.Value);
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.Subject = new JsonFieldWithDefault(sourceField: entry.Value, defaultValue: null);
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.EventType = new JsonFieldWithDefault(sourceField: entry.Value, defaultValue: null);
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        jsonInputMapping.DataVersion = new JsonFieldWithDefault(sourceField: entry.Value, defaultValue: null);
+                    }
+                }
+            }
+
+            if (inputMappingDefaultValuesDictionary != null)
+            {
+                foreach (var entry in inputMappingDefaultValuesDictionary)
+                {
+                    if (string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (jsonInputMapping.Subject == null)
+                        {
+                            jsonInputMapping.Subject = new JsonFieldWithDefault(sourceField: null, defaultValue: entry.Value);
+                        }
+                        else
+                        {
+                            jsonInputMapping.Subject.DefaultValue = entry.Value;
+                        }
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (jsonInputMapping.EventType == null)
+                        {
+                            jsonInputMapping.EventType = new JsonFieldWithDefault(sourceField: null, defaultValue: entry.Value);
+                        }
+                        else
+                        {
+                            jsonInputMapping.EventType.DefaultValue = entry.Value;
+                        }
+                    }
+                    else if (string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (jsonInputMapping.DataVersion == null)
+                        {
+                            jsonInputMapping.DataVersion = new JsonFieldWithDefault(sourceField: null, defaultValue: entry.Value);
+                        }
+                        else
+                        {
+                            jsonInputMapping.DataVersion.DefaultValue = entry.Value;
+                        }
+                    }
+                }
+            }
         }
 
         void UpdatedAdvancedFilterParameters(Hashtable[] advancedFilter, EventSubscriptionFilter filter)

@@ -75,14 +75,41 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputSchemaHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventSchemaV10, IgnoreCase = true)]
+        public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingFieldHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        public Hashtable InputMappingField { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        public Hashtable InputMappingDefaultValue { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Domain
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
+            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
+
+            EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid domain {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Domain domain = this.Client.CreateDomain(this.ResourceGroupName, this.Name, this.Location, tagDictionary);
+                Domain domain = this.Client.CreateDomain(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
                 PSDomain psDomain = new PSDomain(domain);
                 this.WriteObject(psDomain);
             }

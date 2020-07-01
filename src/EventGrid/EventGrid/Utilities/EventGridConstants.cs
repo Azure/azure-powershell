@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string SubjectEndsWithHelp = "Filter that specifies that only events matching the specified subject suffix will be included. If not specified, events with all subject suffixes will be included.";
         public const string SubjectCaseSensitiveHelp = "Filter that specifies that the subject field should be compared in a case sensitive manner. If not specified, subject will be compared in a case insensitive manner.";
         public const string LabelsHelp = "Labels for the event subscription.";
-        public const string EndpointTypeHelp = "Endpoint Type. This can be webhook, eventhub, storagequeue, hybridconnection or servicebusqueue. Default value is webhook.";
-        public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue, hybridconnection or servicebusqueue. For example, the resource ID for a hybrid connection " +
+        public const string EndpointTypeHelp = "Endpoint Type. This can be webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic or azurefunction. Default value is webhook.";
+        public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue, hybridconnection, servicebusqueue, servicebustopic or azurefunction. For example, the resource ID for a hybrid connection " +
                                            "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]. It is expected that " +
                                            "the destination endpoint to be created and available for use before executing any Event Grid cmdlets.";
         public const string ResourceGroupNameHelp = "The name of the resource group.";
@@ -57,8 +57,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainNameOfTheEventSubscriptionHelp = "The name of the domain to which the event subscription should be created.";
         public const string DomainTopicNameOfTheEventSubscriptionHelp = "The name of the domain topic to which the event subscription should be created.";
 
+        public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema. Note that if customeventschema " +
+                                              "is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.";
+        public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
+        public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30";
+        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01schema. Default value is CustomInputSchema.";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
         public const string ExpirationDateHelp = "Determines the expiration DateTime for the event subscription after which event subscription will retire.";
@@ -83,6 +88,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string StorageQueue = "storagequeue";
         public const string HybridConnection = "hybridconnection";
         public const string ServiceBusQueue = "servicebusqueue";
+        public const string ServiceBusTopic = "servicebustopic";
+        public const string AzureFunction = "azurefunction";
 
         public const string EventSubscriptionHandshakeValidationMessage = "If the provided endpoint doesn't support subscription validation " +
                                                                           "handshake, navigate to the validation URL that you receive in the " +
@@ -92,5 +99,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string IncludedEventTypeDeprecationMessage = "The usage of \"All\" for -IncludedEventType is not allowed starting from api-version 2019-02-01-preview. However, the call here " +
                                                                   "is still permitted by replacing \"All\" with $null in order to return all the event types (for the custom topics " +
                                                                   "and domains case) or default event types (for other topic types case). In any future calls, please consider leaving -IncludedEventType unspecified or use $null instead.";
+
+        // Input mapping keys
+        public const string InputMappingId = "id";
+        public const string InputMappingTopic = "topic";
+        public const string InputMappingEventTime = "eventtime";
+        public const string InputMappingSubject = "subject";
+        public const string InputMappingEventType = "eventtype";
+        public const string InputMappingDataVersion = "dataversion";
     }
 }
