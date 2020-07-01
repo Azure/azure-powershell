@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
             {
                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
-                    "Consider using \"latest\" as the image version.");
+                    "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
             }
 
             // If the user did not specify a load balancer name, mark the LB setting to ignore
