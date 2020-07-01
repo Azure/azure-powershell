@@ -34,7 +34,7 @@ namespace StaticAnalysis
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"PreloadSharedAssemblies: Failed to load assembly {Path.GetFileNameWithoutExtension(file)} with {e}");
+                        Console.WriteLine($"PreloadSharedAssemblies: Failed (but could be IGNORED) to load assembly {Path.GetFileNameWithoutExtension(file)} with {e}");
                     }
                 }
             }
