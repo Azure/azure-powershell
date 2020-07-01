@@ -57,7 +57,8 @@ Describe 'Update-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
