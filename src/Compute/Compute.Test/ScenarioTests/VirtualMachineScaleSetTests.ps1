@@ -2463,7 +2463,7 @@ function Test-VirtualMachineScaleSetImageVersion
  
 		$wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
 		#$wordToFind ="dummy string";
-		$file = Get-Content -path "transcript.txt";
+		$file = (Get-Content -path "transcript.txt") -join ' ';
 		$containsWord = $file | %{$_ -match $wordToFind}
 		If($containsWord -contains $true)
 		{
