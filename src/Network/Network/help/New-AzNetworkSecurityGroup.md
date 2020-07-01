@@ -24,15 +24,15 @@ The **New-AzNetworkSecurityGroup** cmdlet creates an Azure network security grou
 
 ## EXAMPLES
 
-### 1: Create a new network security group
-```
+### Example 1: Create a new network security group
+```powershell
 New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
 ```
 
 This command creates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus".
 
-### 2: Create a detailed network security group
-```
+### Example 2: Create a detailed network security group
+```powershell
 $rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
@@ -48,6 +48,15 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Na
 Step:1 Create a security rule allowing access from the Internet to port 3389.
 Step:2 Create a security rule allowing access from the Internet to port 80.
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
+
+### Example 3
+
+Step:1 Create a security rule allowing access from the Internet to port 3389.
+
+<!-- Aladdin Generated Example -->
+```powershell
+New-AzNetworkSecurityGroup -Location 'westus' -Name 'NSG-FrontEnd' -ResourceGroupName 'TestRG' -SecurityRules <PSSecurityRule[]>
+```
 
 ## PARAMETERS
 
