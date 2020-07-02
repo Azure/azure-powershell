@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     public class PSAzureDeletedWebApp
     {
+        public string Id { get; private set; }
         public int DeletedSiteId { get; set; }
 
         public string SubscriptionId { get; set; }
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public PSAzureDeletedWebApp(DeletedSite ds, string subscriptionId)
         {
+            Id = ds.Id;
             DeletedSiteId = ds.DeletedSiteId.Value;
             DeletionTime = DateTime.Parse(ds.DeletedTimestamp, System.Globalization.CultureInfo.InvariantCulture);
             SubscriptionId = subscriptionId;

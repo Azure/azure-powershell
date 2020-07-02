@@ -65,7 +65,23 @@ EnableBgp                 : False
 ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -92,7 +108,23 @@ EnableBgp                 : False
 ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection1
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection1
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 
 RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
 SharedKey                 :
@@ -106,7 +138,23 @@ EnableBgp                 : False
 ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection2
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection2
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
 ```
 
 This cmdlet gets all connections that start with "test".

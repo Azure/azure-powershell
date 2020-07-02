@@ -173,6 +173,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
+        /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
+        /// what happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onNoContent method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnNoContent(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -369,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.WorkspacesDelete(ResourceGroupName, Name, SubscriptionId, onOk, onDefault, this, Pipeline);
+                    await this.Client.WorkspacesDelete(ResourceGroupName, Name, SubscriptionId, onOk, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.UndeclaredResponseException urexception)
@@ -439,6 +449,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 204 (NoContent).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onNoContent(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnNoContent(responseMessage, ref _returnNow);
+                // if overrideOnNoContent has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onNoContent - response for 204 /
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
                 }
             }
         }

@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         result = VirtualMachineScaleSetVMsClient.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
+                    else if (this.ParameterSetName.Equals("SimulateEvictionMethodParameter"))
+                    {
+                        result = VirtualMachineScaleSetVMsClient.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                    }
                     else
                     {
                         result = VirtualMachineScaleSetVMsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
@@ -121,6 +125,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "PerformMaintenanceMethodParameter",
             Mandatory = true)]
         public SwitchParameter PerformMaintenance { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SimulateEvictionMethodParameter",
+            Mandatory = true)]
+        public SwitchParameter SimulateEviction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

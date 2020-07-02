@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.5.0" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.0" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventHub\EventHub.csproj" />
   </ItemGroup>
 </Project>

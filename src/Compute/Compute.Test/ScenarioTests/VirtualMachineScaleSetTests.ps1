@@ -1501,12 +1501,12 @@ function Test-VirtualMachineScaleSetPriority
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'Manual' -Priority 'Low' -EvictionPolicy 'Delete' `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_DS2_v2' -UpgradePolicyMode 'Manual' -Priority 'Low' -EvictionPolicy 'Delete' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
+            -ImageReferencePublisher $imgRef.PublisherName `
             | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
 
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
@@ -1521,6 +1521,20 @@ function Test-VirtualMachineScaleSetPriority
         $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
         Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
+
+        $vmssVMs = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $id = $vmssVMs[0].InstanceId
+
+        Set-AzVmssVM -ResourceGroupName $rgname -Name $vmssName -InstanceId $id -SimulateEviction;
+        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
+
+        $vmssInstanceViewResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
+
+        $vmssvmResult = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id;
+        Assert-AreEqual "Succeeded" $vmssvmResult.ProvisioningState;
 
         $vmssResult.VirtualMachineProfile.Priority = "Regular";
         Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult; } `

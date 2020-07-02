@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the resource group deployment to create.
+The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. "20131223140835".
 
 ```yaml
 Type: System.String

@@ -19,8 +19,74 @@
 --->
 
 ## Upcoming Release
-* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
+* Fixed parameters swap in VWan HubVnet connection
+* Added new cmdlets for Azure Network Virtual Appliance Sites
+    - `Get-AzVirtualApplianceSite`
+    - `New-AzVirtualApplianceSite`
+    - `Remove-AzVirtualApplianceSite`
+    - `Update-AzVirtualApplianceSite`
+    - `New-AzOffice365PolicyProperty`
+* Added new cmdlets for Azure Network Virtual Appliance
+    - `Get-AzNetworkVirtualAppliance`
+    - `New-AzNetworkVirtualAppliance`
+    - `Remove-AzNetworkVirtualAppliance`
+    - `Update-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualApplianceSku`
+    - `New-AzVirtualApplianceSkuProperty`
+* Onboarded Application Gateway to Private Link Common Cmdlets
+* Onboarded StorageSync to Private Link Common Cmdlets
+* Onboarded SignalR to Private Link Common Cmdlets
+
+## Version 3.1.0
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
+* Added new cmdlets for Azure FirewallPolicy
+    - `New-AzFirewallPolicyDnsSetting`
+    - Support for Destination FQDN in Network Rules for Firewall Policy
+* Added support for backend address pool operations
+    - `New-AzLoadBalancerBackendAddressConfig`
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+    - `Remove-AzLoadBalancerBackendAddressPool`
+    - `Get-AzLoadBalancerBackendAddressPool`
 * Added name validation for `New-AzIpGroup`
+* Added new cmdlets for Azure FirewallPolicy
+    - `New-AzFirewallPolicyThreatIntelWhitelist`
+* Updated below commands for feature: Custom dns servers set/remove on VirtualWan P2SVpnGateway.
+    - Updated New-AzP2sVpnGateway: Added optional parameter `-CustomDnsServer` for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+    - Updated Update-AzP2sVpnGateway: Added optional parameter `-CustomDnsServer` for customers to specify their dns servers to set on P2SVpnGateway, which can be used by Point to site clients.
+* Updated `Update-AzVpnGateway`
+    - Added optional parameter `-BgpPeeringAddress` for customers to specify their custom bgps to set on VpnGateway.
+* Added new cmdlet to support resetting the routing state of a VirtualHub resource:
+    - `Reset-AzHubRouter`
+* Updated below things based on recent swagger change for Firewall Policy
+    - Changes names for RuleGroup, RuleCollectionGroup and RuleType
+    - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* [Breaking Change] Added mandatory parameter `SourceIpGroup` for `New-AzFirewallPolicyApplicationRule` and `New-AzFirewallPolicyNetworkRule`.
+* [Breaking Change] Fixed `New-AzFirewallPolicyApplicationRule`, parameter `SourceAddress` to be mandatory.
+* [Breaking Change] Fixed `New-AzFirewallPolicyApplicationRule`, parameter `SourceAddress` to be mandatory.
+* [Breaking Change] Removed mandatory parameters: `TranslatedAddress`, `TranslatedPort` for `New-AzFirewallPolicyNatRuleCollection`.
+* Added new cmdlets to support PrivateLink On Application Gateway
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Get-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Set-AzApplicationGatewayPrivateLinkConfiguration`
+    - `Remove-AzApplicationGatewayPrivateLinkConfiguration`
+    - `New-AzApplicationGatewayPrivateLinkIpConfiguration`
+* Added new cmdlets for HubRouteTables child resource of VirtualHub.
+    - `New-AzVHubRoute`
+    - `New-AzVHubRouteTable`
+    - `Get-AzVHubRouteTable`
+    - `Update-AzVHubRouteTable`
+    - `Remove-AzVHubRouteTable`
+* Updated existing cmdlets to support optional RoutingConfiguration input parameter for custom routing in VirtualWan.
+    - `New-AzExpressRouteConnection`
+    - `Set-AzExpressRouteConnection`
+    - `New-AzVirtualHubVnetConnection`
+    - `Update-AzVirtualHubVnetConnection`
+    - `New-AzVpnConnection`
+    - `Update-AzVpnConnection`
+    - `New-AzP2sVpnGateway`
+    - `Update-AzP2sVpnGateway`
 
 ## Version 3.0.0
 * Added breaking change attribute to notify that Zone default behaviour will be changed
@@ -48,6 +114,18 @@
 * Add `EnableDnsProxy`, 'DnsProxyNotRequiredForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
     - Updated cmdlet:
         - New-AzFirewall
+* Add deprecation warning for `HubVnetConnection` parameter in following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+* Use HubVnetConnection create/update APIs instead of VirtualHub create/update APIs for following cmdlets
+    - NewAzureRmVirtualHubCommand
+    - UpdateAzureRmVirtualHubCommand
+    - NewHubVirtualNetworkConnectionCommand
+    - UpdateAzureRmHubVirtualNetworkConnectionCommand
+    - RemoveHubVirtualNetworkConnectionCommand
+* Deprecate `EnableInternetSecurity` switch parameter and instead introduce `EnableInternetSecurityFlag` boolean in
+    - NewHubVirtualNetworkConnectionCommand.
+    The flag is also made true by default for newly created connections.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.

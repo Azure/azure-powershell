@@ -37,31 +37,31 @@ The **Remove-AzServiceBusSubscription** cmdlet removes the subscription to a top
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Remove-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
 Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
-### Example 2.1 - InputObject - Using Variable:
-```
+### Example 2: InputObject - Using Variable:
+```powershell
 PS C:\> $inputobject = Get-AzServiceBusSubscription <params>
 PS C:\> Remove-AzServiceBusSubscription -InputObject $inputobject
 ```
 
-### Example 2.2 - InputObject - Using Piping:
-```
+### Example 3: InputObject - Using Piping:
+```powershell
 PS C:\>Get-AzServiceBusSubscription <params> |Remove-AzServiceBusSubscription
 ```
 
-### Example 3.1 - ResourceId - Using Variable:
-```
+### Example 4: ResourceId - Using Variable:
+```powershell
 PS C:\> $resourceid = Get-AzServiceBusSubscription <params>
 PS C:\> Remove-AzServiceBusSubscription -ResourceId $resourceid.Id
 ```
 
-### Example 3.2 - ResourceId - Using string value:
-```
+### Example 5: ResourceId - Using string value:
+```powershell
 PS C:\> Remove-AzServiceBusSubscription -ResourceId "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName"
 ```
 

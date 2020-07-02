@@ -15,22 +15,22 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBMongoDBCollectionThroughput -ResourceGroupName <String> -AccountName <String>
- -DatabaseName <String> [-Name <String>] -Throughput <Int32> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DatabaseName <String> [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBMongoDBCollectionThroughput [-Name <String>] -Throughput <Int32>
- -ParentObject <PSMongoDBDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDBMongoDBCollectionThroughput [-Name <String>] [-Throughput <Int32>]
+ [-AutoscaleMaxThroughput <Int32>] -ParentObject <PSMongoDBDatabaseGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBMongoDBCollectionThroughput [-Name <String>] -Throughput <Int32>
- -InputObject <PSMongoDBCollectionGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDBMongoDBCollectionThroughput [-Name <String>] [-Throughput <Int32>]
+ [-AutoscaleMaxThroughput <Int32>] -InputObject <PSMongoDBCollectionGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoscaleMaxThroughput
+Maximum Throughput value if autoscale is enabled.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +196,7 @@ Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

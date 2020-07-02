@@ -335,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### -EvictionPolicy
-The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.
+The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.
 
 ```yaml
 Type: System.String
