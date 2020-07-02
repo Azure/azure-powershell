@@ -631,4 +631,7 @@
   <data name="FailoverAzureSqlInstanceWarning" xml:space="preserve">
     <value>Are you sure you want to failover the Azure Sql Managed Instance '{0}'?</value>
   </data>
+  <data name="ServerNameInvalid" xml:space="preserve">
+    <value>Invalid server name: '{0}'. Server name can contain only lowercase letters, number.</value>
+  </data>
 </root>

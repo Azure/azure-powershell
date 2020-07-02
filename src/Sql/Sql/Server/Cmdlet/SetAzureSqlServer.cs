@@ -105,12 +105,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerModel> model)
         {
+            if (!Sql.Services.Util.ValidateServerName(this.ServerName))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
+            }
+
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlServerModel> updateData = new List<Model.AzureSqlServerModel>();
             updateData.Add(new Model.AzureSqlServerModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName.ToLower(),
+                ServerName = this.ServerName,
                 SqlAdministratorPassword = this.SqlAdministratorPassword,
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,

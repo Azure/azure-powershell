@@ -92,5 +92,18 @@ namespace Microsoft.Azure.Commands.Sql.Services
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
             return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
         }
+
+        /// <summary>
+        /// Validates SQL server nameValidateServerName
+        /// </summary>
+        public static bool ValidateServerName(string serverName)
+        {
+            // Basic character validation
+            foreach (char c in serverName)
+            {
+                if (char.IsUpper(c)) return false;
+            }
+            return true;
+        }
     }
 }

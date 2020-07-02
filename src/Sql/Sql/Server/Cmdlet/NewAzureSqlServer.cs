@@ -138,12 +138,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerModel> model)
         {
+            if (!Sql.Services.Util.ValidateServerName(this.ServerName))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
+            }
+
             List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
             newEntity.Add(new Model.AzureSqlServerModel()
             {
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName.ToLower(),
+                ServerName = this.ServerName,
                 ServerVersion = this.ServerVersion,
                 SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
                 SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,

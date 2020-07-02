@@ -1229,6 +1229,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid server name: &apos;{0}&apos;. Server name can contain only lowercase letters, number..
+        /// </summary>
+        internal static string ServerNameInvalid {
+            get {
+                return ResourceManager.GetString("ServerNameInvalid", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
