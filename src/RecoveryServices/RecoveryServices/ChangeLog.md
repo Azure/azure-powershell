@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Remove project reference to Authentication
+* Removed project reference to Authentication
 * Azure Backup tuned cmdlets help text to be more accurate.
 
 
