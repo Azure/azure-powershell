@@ -89,7 +89,9 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Update-AzSynapseSqlPool', 'Test-AzSynapseWorkspace', 
                'Test-AzSynapseSparkPool', 'Test-AzSynapseSqlPool', 
                'New-AzSynapseFirewallRule', 'Remove-AzSynapseFirewallRule', 
-               'Get-AzSynapseFirewallRule', 'Update-AzSynapseFirewallRule'
+               'Get-AzSynapseFirewallRule', 'Update-AzSynapseFirewallRule',
+               'Get-AzSynapseRoleAssignment','New-AzSynapseRoleAssignment',
+               'Remove-AzSynapseRoleAssignment','Get-AzSynapseRoleDefinition'
 
 # Variables to export from this module
 # VariablesToExport = @()
