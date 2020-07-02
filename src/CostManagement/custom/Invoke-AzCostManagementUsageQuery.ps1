@@ -260,7 +260,7 @@ param(
 )
 
   process {
-    $ApiVersion = '2019-11-01-preview'
+    $ApiVersion = '2019-11-01'
 
     $URL = ''
     if ($PSBoundParameters.ContainsKey('ExternalCloudProviderType')) {
@@ -273,7 +273,7 @@ param(
           $ErrorMessage = 'Id in input object should not be empty.'
           throw [System.IO.FileNotFoundException] $ErrorMessage
         }
-        $match = [System.Text.RegularExpressions].Regex("^/(?<scope>[^/]+)/providers/Microsoft.CostManagement/query$").Match($ResourceId);
+        $match = [System.Text.RegularExpressions].Regex("(?<scope>.+)/providers/Microsoft.CostManagement/query$").Match($ResourceId);
         if (-not $match.Success)
         {
           throw [System.IO.FileNotFoundException] "Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/query'"
@@ -283,47 +283,62 @@ param(
       $URL = [System.Uri]::New([System.Text.RegularExpressions.Regex]::Replace(
                       "https://management.azure.com/$Scope/providers/Microsoft.CostManagement/query?api-version=$ApiVersion" ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"))
     }
+    $URL = $URL -replace "https://management.azure.com/",""
 
-      $Request = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryDefinition]::New()
-      if ($PSBoundParameters.ContainsKey('ConfigurationColumn')) {
-        $Request.ConfigurationColumn = $ConfigurationColumn
-      }
-      if ($PSBoundParameters.ContainsKey('DatasetAggregation')) {
-        $Request.DatasetAggregation = $DatasetAggregation
-      }
-      if ($PSBoundParameters.ContainsKey('DatasetFilter')) {
-        $Request.DatasetFilter = $DatasetFilter
-      }
-      if ($PSBoundParameters.ContainsKey('DatasetGranularity')) {
-        $Request.DatasetGranularity = $DatasetGranularity
-      }
-      if ($PSBoundParameters.ContainsKey('DatasetGrouping')) {
-        $Request.DatasetGrouping = $DatasetGrouping
-      }
-      if ($PSBoundParameters.ContainsKey('TimePeriodFrom')) {
-        $Request.TimePeriodFrom = $TimePeriodFrom
-      }
-      if ($PSBoundParameters.ContainsKey('TimePeriodTo')) {
-        $Request.TimePeriodTo = $TimePeriodTo
-      }
-      if ($PSBoundParameters.ContainsKey('Timeframe')) {
-        $Request.Timeframe = $Timeframe
-      }
-      if ($PSBoundParameters.ContainsKey('Type')) {
-        $Request.Type = $Type
-      }
-      Write-Host $URL
-      $Response = Invoke-AzRest -Path $URL $RequestBody $Request | ConvertFrom-Json
-      $Result = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryResult]::New()
-      $Result.Column = $Response.Columns
-      $Result.Row = $Response.Rows
-      # foreach ($RawRow in $Response.Row) {
-      #   $Row = New-Object System.Collections.ArrayList
-      #   for ($Index=0; $Index -lt $Result.Column.Length; $Index++) {
-      #     $Column = $Result.Column[$Index]
+    $Request = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryDefinition]::New()
+    if ($PSBoundParameters.ContainsKey('ConfigurationColumn')) {
+      $Request.ConfigurationColumn = $ConfigurationColumn
+    }
+    if ($PSBoundParameters.ContainsKey('DatasetAggregation')) {
+      $Request.DatasetAggregation = $DatasetAggregation
+    }
+    if ($PSBoundParameters.ContainsKey('DatasetFilter')) {
+      $Request.DatasetFilter = $DatasetFilter
+    }
+    if ($PSBoundParameters.ContainsKey('DatasetGranularity')) {
+      $Request.DatasetGranularity = $DatasetGranularity
+    }
+    if ($PSBoundParameters.ContainsKey('DatasetGrouping')) {
+      $Request.DatasetGrouping = $DatasetGrouping
+    }
+    if ($PSBoundParameters.ContainsKey('TimePeriodFrom')) {
+      $Request.TimePeriodFrom = $TimePeriodFrom
+    }
+    if ($PSBoundParameters.ContainsKey('TimePeriodTo')) {
+      $Request.TimePeriodTo = $TimePeriodTo
+    }
+    if ($PSBoundParameters.ContainsKey('Timeframe')) {
+      $Request.Timeframe = $Timeframe
+    }
+    if ($PSBoundParameters.ContainsKey('Type')) {
+      $Request.Type = $Type
+    }
+    $ResponseContent = (Invoke-AzRest -Path $URL -Payload $Request.ToJsonString() -Method POST).Content | ConvertFrom-Json
+    if ($Null -ne $ResponseContent.Error) {
+      throw $ResponseContent.Error.Message
+    }
+    $Result = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryResult]::New()
+    $Result.NextLink = $ResponseContent.Properties.NextLink
 
-      #   }
-      # }
-      return $Result
+    $ColumnList = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryColumn]
+    foreach ($Column in $ResponseContent.Properties.Columns) {
+      Write-Host $Column.ToString()
+      $QueryColumn = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryColumn]::New()
+      $QueryColumn.Name = $Column.Name
+      $QueryColumn.Type = $Column.Type
+      $ColumnList.Add($QueryColumn)
+    }
+    $Result.Column = $ColumnList
+
+    $RowList = New-Object System.Collections.Generic.List[System.Collections.Generic.List[string]]
+    foreach ($Row in $ResponseContent.Properties.Rows) {
+      $QueryRow = New-Object System.Collections.Generic.List[string]
+      foreach ($Item in $Row) {
+        $QueryRow.Add($Item.ToString())
+      }
+      $RowList.Add($QueryRow)
+    }
+    $Result.Row = $RowList
+    return $Result
   }
 }

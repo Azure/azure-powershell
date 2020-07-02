@@ -85,7 +85,38 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/\^\/\(\?<scope>\[\^\/\]\+\)/g, "(?<scope>.+)");
-    # transform: $ = $.replace("^/(?<scope>[^/]+)", "(?<scope>.+)");
+  - where:
+      model-name: QueryResult
+    set:
+      format-table:
+        properties:
+          - NextLink
+          - Column
+          - Row
+  # - from: swagger-document
+  #   where: $.definitions.AlertProperties.properties.details.properties.resourceGroupFilter.items
+  #   transform: >-
+  #       return {
+  #         "type": "string"
+  #       }
+  # - from: swagger-document
+  #   where: $.definitions.AlertProperties.properties.details.properties.resourceFilter.items
+  #   transform: >-
+  #       return {
+  #         "type": "string"
+  #       }
+  # - from: swagger-document
+  #   where: $.definitions.AlertProperties.properties.details.properties.meterFilter.items
+  #   transform: >-
+  #       return {
+  #         "type": "string"
+  #       }
+  # - from: swagger-document
+  #   where: $.definitions.QueryProperties.rows.items.items
+  #   transform: >-
+  #       return {
+  #         "type": "string"
+  #       }
 
   - no-inline:
     - QueryFilter
