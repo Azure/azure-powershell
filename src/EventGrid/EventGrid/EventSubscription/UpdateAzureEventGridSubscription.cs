@@ -535,6 +535,72 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 1024)]
         public int PreferredBatchSizeInKiloBytes { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = DomainEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [Alias(AliasAadAppIdUri)]
+        public string AzureActiveDirectoryApplicationIdOrUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = DomainEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [Alias(AliasAadTenantId)]
+        public string AzureActiveDirectoryTenantId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(this.EventSubscriptionName))
@@ -556,6 +622,8 @@ namespace Microsoft.Azure.Commands.EventGrid
                 RetryPolicy retryPolicy = null;
                 int maxEventsPerBatch = 0;
                 int preferredBatchSizeInKiloBytes = 0;
+                string aadAppIdOrUri = string.Empty;
+                string aadTenantId = string.Empty;
 
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
@@ -607,14 +675,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                 if (string.Equals(this.EndpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
                 {
                     WebHookEventSubscriptionDestination dest = existingEventSubscription.Destination as WebHookEventSubscriptionDestination;
-                    maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? this.MaxEventsPerBatch : (int) dest.MaxEventsPerBatch;
-                    preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? this.PreferredBatchSizeInKiloBytes : (int) dest.PreferredBatchSizeInKilobytes;
+                    maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? this.MaxEventsPerBatch : (int)dest.MaxEventsPerBatch;
+                    preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? this.PreferredBatchSizeInKiloBytes : (int)dest.PreferredBatchSizeInKilobytes;
+                    aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : dest.AzureActiveDirectoryApplicationIdOrUri;
+                    aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : dest.AzureActiveDirectoryTenantId;
                 }
                 else
                 {
                     if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes))
                     {
                         throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloBytes are supported when EndpointType is webhook only.");
+                    }
+
+                    if (this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) || this.IsParameterBound(c => c.AzureActiveDirectoryTenantId))
+                    {
+                        throw new ArgumentException("AzureActiveDirectoryApplicationIdOrUri and AzureActiveDirectoryTenantId are supported when EndpointType is webhook only.");
                     }
                 }
 
@@ -645,7 +720,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     expirationDate: this.ExpirationDate,
                     advancedFilter: this.AdvancedFilter,
                     maxEventsPerBatch: maxEventsPerBatch,
-                    preferredBatchSizeInKiloBytes: preferredBatchSizeInKiloBytes);
+                    preferredBatchSizeInKiloBytes: preferredBatchSizeInKiloBytes,
+                    aadAppIdOrUri: aadAppIdOrUri,
+                    aadTenantId: aadTenantId);
 
                 PSEventSubscription psEventSubscription = new PSEventSubscription(eventSubscription);
                 this.WriteObject(psEventSubscription);

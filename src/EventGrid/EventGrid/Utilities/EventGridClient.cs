@@ -425,7 +425,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             DateTime expirationDate,
             Hashtable[] advancedFilter,
             int maxEventsPerBatch,
-            int preferredBatchSizeInKiloBytes)
+            int preferredBatchSizeInKiloBytes,
+            string aadTenantId,
+            string aadAppIdOrUri)
         {
             EventSubscription eventSubscription = new EventSubscription();
             EventSubscriptionDestination destination = null;
@@ -437,7 +439,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     EndpointUrl = endpoint,
                     MaxEventsPerBatch = (maxEventsPerBatch == 0) ? (int?) null : maxEventsPerBatch,
-                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloBytes == 0) ? (int?)null : preferredBatchSizeInKiloBytes
+                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloBytes == 0) ? (int?)null : preferredBatchSizeInKiloBytes,
+                    AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
+                    AzureActiveDirectoryTenantId = aadTenantId
                 };
             }
             else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
@@ -545,7 +549,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             DateTime expirationDate,
             Hashtable[] advancedFilter,
             int maxEventsPerBatch,
-            int preferredBatchSizeInKiloBytes)
+            int preferredBatchSizeInKiloBytes,
+            string aadAppIdOrUri,
+            string aadTenantId)
         {
             EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
 
@@ -560,7 +566,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     {
                         EndpointUrl = endpoint,
                         MaxEventsPerBatch = maxEventsPerBatch,
-                        PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloBytes
+                        PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloBytes,
+                        AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
+                        AzureActiveDirectoryTenantId = aadTenantId
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))

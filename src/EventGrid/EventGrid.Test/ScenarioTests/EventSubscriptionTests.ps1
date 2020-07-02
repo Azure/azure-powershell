@@ -1104,7 +1104,7 @@ function EventSubscriptionTests_DomainTopics {
 .SYNOPSIS
 Tests EventGrid EventSubscription CRUD operations for Custom Topic with Webhook batching.
 #>
-function EventSubscriptionTests_CustomTopic_WebhookBatching {
+function EventSubscriptionTests_CustomTopic_Webhook_Batching {
     # Setup
     $subscriptionId = Get-SubscriptionId
     $location = Get-LocationForEventGrid
@@ -1112,24 +1112,11 @@ function EventSubscriptionTests_CustomTopic_WebhookBatching {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $eventSubscriptionName3 = Get-EventSubscriptionName
-    $eventSubscriptionName4 = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
 
     New-ResourceGroup $resourceGroupName $location
-    $sbNamespaceName = Get-ServiceBusNameSpaceName
-    $sbQueueName = Get-ServiceBusQueueName
-    $sbTopicName = Get-ServiceBusTopicName
-
-    New-ServiceBusNamespace $ResourceGroupName $sbNamespaceName $Location
-
-    New-ServiceBusQueue $ResourceGroupName $sbNamespaceName $sbQueueName $Location
-    $eventSubscriptionServiceBusQueueResourceId = Get-ServiceBusQueueResourceId $ResourceGroupName $sbNamespaceName $sbQueueName
-
-    New-ServiceBusTopic $ResourceGroupName $sbNamespaceName $sbTopicName
-    $eventSubscriptionServiceBusTopicResourceId = Get-ServiceBusTopicResourceId $ResourceGroupName $sbNamespaceName $sbTopicName
-
     $eventSubscriptionAzureFunctionEndpoint = Get-EventSubscriptionAzureFunctionEndpoint
 
     try
@@ -1240,9 +1227,127 @@ function EventSubscriptionTests_CustomTopic_WebhookBatching {
     }
     finally
     {
-        Remove-ServiceBusQueueResources $ResourceGroupName $sbNamespaceName $sbQueueName
-        Remove-ServiceBusTopicResources $ResourceGroupName $sbNamespaceName $sbTopicName
-        Remove-ServiceBusNamespaceResources $ResourceGroupName $sbNamespaceName
+        Remove-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid EventSubscription CRUD operations for Custom Topic with Webhook AAD.
+#>
+function EventSubscriptionTests_CustomTopic_Webhook_AAD {
+    # Setup
+    $subscriptionId = Get-SubscriptionId
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $eventSubscriptionName = Get-EventSubscriptionName
+    $eventSubscriptionName2 = Get-EventSubscriptionName
+    $eventSubscriptionName3 = Get-EventSubscriptionName
+    $resourceGroupName = Get-ResourceGroupName
+    $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
+    $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
+    $aadTenantTd = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    $aadAppIdOrUri = "03d47d4a-7c50-43e0-ba90-89d090cc4582"
+
+    New-ResourceGroup $resourceGroupName $location
+    $eventSubscriptionAzureFunctionEndpoint = Get-EventSubscriptionAzureFunctionEndpoint
+
+    try
+    {
+        Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName"
+        $result = New-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
+        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName2 to topic $topicName in resource group $resourceGroupName"
+        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EndpointType webhook -EventSubscriptionName $eventSubscriptionName2 -MaxDeliveryAttempt 10 -MaxEventsPerBatch 1002 -PreferredBatchSizeInKiloBytes 1000 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$webHookDestination.MaxEventsPerBatch -eq 1002}
+        Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1000}
+        Assert-True {$webHookDestination.AzureActiveDirectoryApplicationIdOrUri -eq $aadAppIdOrUri}
+        Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
+            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionAzureFunctionEndpoint -EndpointType "azurefunction" $eventSubscriptionName3 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as  -AzureActiveDirectoryApplicationIdOrUri and -AzureActiveDirectoryTenantId are used for non webhook type"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        Write-Debug "Getting the created event subscription $eventSubscriptionName"
+        $result = Get-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
+        Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Getting the created event subscription $eventSubscriptionName2"
+        $result = Get-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName2 -IncludeFullEndpointUrl
+        Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName2}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$webHookDestination.MaxEventsPerBatch -eq 1002}
+        Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1000}
+        Assert-True {$webHookDestination.AzureActiveDirectoryApplicationIdOrUri -eq $aadAppIdOrUri}
+        Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
+
+
+        Write-Debug "Getting the created event subscription $eventSubscriptionName"
+        $result = Get-AzEventGridTopic -ResourceGroup $resourceGroupName -TopicName $topicName | Get-AzEventGridSubscription -EventSubscriptionName $eventSubscriptionName2 -IncludeFullEndpointUrl
+        Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName2}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$webHookDestination.MaxEventsPerBatch -eq 1002}
+        Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1000}
+        Assert-True {$webHookDestination.AzureActiveDirectoryApplicationIdOrUri -eq $aadAppIdOrUri}
+        Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
+
+        Write-Debug "Updating eventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
+        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -MaxEventsPerBatch 502 -PreferredBatchSizeInKiloBytes 1010 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$webHookDestination.MaxEventsPerBatch -eq 502}
+        Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1010}
+        Assert-True {$webHookDestination.AzureActiveDirectoryApplicationIdOrUri -eq $aadAppIdOrUri}
+        Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
+
+        Write-Debug "Updating eventSubscription $eventSubscriptionName2 to topic $topicName in resource group $resourceGroupName"
+        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName2 -EventTtl 10 -MaxDeliveryAttempt 20
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
+        Assert-True {$webHookDestination.MaxEventsPerBatch -eq 1002}
+        Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1000}
+        Assert-True {$result.EventTtl -eq 10}
+        Assert-True {$result.MaxDeliveryAttempt -eq 20}
+        Assert-True {$webHookDestination.AzureActiveDirectoryApplicationIdOrUri -eq $aadAppIdOrUri}
+        Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
+
+        Write-Debug "Deleting event subscription: $eventSubscriptionName"
+        Remove-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName
+
+        Write-Debug "Deleting event subscription: $eventSubscriptionName2"
+        Get-AzEventGridTopic -ResourceGroup $resourceGroupName -TopicName $topicName | Remove-AzEventGridSubscription -EventSubscriptionName $eventSubscriptionName2
+
+        # Verify that all event subscriptions have been deleted correctly
+        $returnedES = Get-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName
+        Assert-True {$returnedES.PsEventSubscriptionsList.Count -eq 0}
+    }
+    finally
+    {
         Remove-ResourceGroup $resourceGroupName
     }
 }
