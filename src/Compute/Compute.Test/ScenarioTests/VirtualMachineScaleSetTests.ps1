@@ -2456,9 +2456,9 @@ function Test-VirtualMachineScaleSetImageVersion
 		New-AzVmss -ResourceGroup $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
 		Stop-Transcript
  
-		$wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
-		$file = (Get-Content -path "transcript.txt") -join ' ';
-        Assert-True { $file | %{$_ -match $wordToFind } } ;
+	    $wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
+	    $file = (Get-Content -path "transcript.txt") -join ' ';
+        Assert-True { $file -match $wordToFind } ;
  
 	}
 	finally
