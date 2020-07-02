@@ -75,25 +75,74 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Hashtable which represents the Inbound IP Rules.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        public Hashtable InboundIpRule { get; set; }
+
+        /// <summary>
+        /// Public network access.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
 
         public override void ExecuteCmdlet()
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
             string resourceGroupName = string.Empty;
             string topicName = string.Empty;
 
@@ -120,7 +169,14 @@ namespace Microsoft.Azure.Commands.EventGrid
                     throw new Exception($"Cannot find an existing topic {topicName} in resource group {resourceGroupName}");
                 }
 
-                Topic topic = this.Client.ReplaceTopic(resourceGroupName, topicName, existingTopic.Location, tagDictionary);
+                Topic topic = this.Client.ReplaceTopic(
+                    resourceGroupName,
+                    topicName,
+                    existingTopic.Location,
+                    tagDictionary,
+                    inboundIpRuleDictionary,
+                    this.PublicNetworkAccess);
+
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }

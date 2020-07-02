@@ -31,6 +31,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Tags = domain.Tags;
             this.Endpoint = domain.Endpoint;
             this.InputSchema = domain.InputSchema;
+            this.PublicNetworkAccess = domain.PublicNetworkAccess;
+
+            if (domain.InboundIpRules != null)
+            {
+                this.InboundIpRule = new Dictionary<string, string>();
+
+                foreach (var rule in domain.InboundIpRules)
+                {
+                    this.InboundIpRule.Add(rule.IpMask, rule.Action);
+                }
+            }
 
             if (domain.InputSchemaMapping != null)
             {
@@ -116,6 +127,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public IDictionary<string, string> InputMappingField { get; set; }
 
         public IDictionary<string, string> InputMappingDefaultValue { get; set; }
+
+        public IDictionary<string, string> InboundIpRule { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Return a string representation of this domain

@@ -411,3 +411,67 @@ function TopicInputMappingTests {
         Remove-ResourceGroup $resourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic with IpFiltering operations.
+#>
+function TopicIpFilteringTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    New-ResourceGroup $resourceGroupName $location
+
+    try
+    {
+        $tags1 = @{ test1 = "testval1"; test2 = "testval2" }
+        $ipRule1 = @{ "10.0.0.0/8" = "Allow"; "10.2.0.0/8" = "Allow" }
+        $ipRule2 = @{ "10.3.0.0/16" = "Allow" }
+
+        Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName"
+        $result = New-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -InboundIpRule $ipRule1 -PublicNetworkAccess "enabled"
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.PublicNetworkAccess -eq "Enabled"}
+        Assert-AreEqual 2 $result.InboundIpRule.Count;
+        Assert-AreEqual $ipRule1["10.0.0.0/8"] $result.InboundIpRule["10.0.0.0/8"];
+        Assert-AreEqual $ipRule1["10.2.0.0/8"] $result.InboundIpRule["10.2.0.0/8"];
+
+        $result = Get-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.PublicNetworkAccess -eq "enabled"}
+        $returned_ipRules2 = $result.InboundIpRule;
+        Assert-AreEqual 2 $returned_ipRules2.Count;
+        Assert-AreEqual $ipRule1["10.0.0.0/8"] $returned_ipRules2["10.0.0.0/8"];
+        Assert-AreEqual $ipRule1["10.2.0.0/8"] $returned_ipRules2["10.2.0.0/8"];
+
+        Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
+        $tags2 = @{test1 = "testval1"; test2 = "testval2" };
+        $replacedTopic2 = Set-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag $tags2 -InboundIpRule $ipRule2 -PublicNetworkAccess enabled
+        Assert-True {$replacedTopic2.InboundIpRule.Count -eq 1}
+        Assert-True {$replacedTopic2.PublicNetworkAccess -eq "enabled"}
+        Assert-True {$replacedTopic2.TopicName -eq $topicName} "Topic updated earlier is not found."
+
+        $returned_ipRules2 = $replacedTopic2.InboundIpRule;
+        Assert-AreEqual 1 $returned_ipRules2.Count;
+        Assert-AreEqual $ipRule2["10.3.0.0/16"] $returned_ipRules2["10.3.0.0/16"];
+
+        Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
+        $tags3 = @{test1 = "testval10"; test2 = "testval20" };
+        $replacedTopic3 = Get-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Set-AzEventGridTopic -Tag $tags3 -PublicNetworkAccess enabled -InboundIpRule $ipRule1
+        Assert-True {$replacedTopic3.Count -eq 1}
+        Assert-True {$replacedTopic3.TopicName -eq $topicName} "Topic updated earlier is not found."
+        Assert-True {$result.InboundIpRule.Count -eq 2}
+        Assert-True {$result.PublicNetworkAccess -eq "enabled"}
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+    }
+    finally
+    {
+        Remove-ResourceGroup $resourceGroupName
+    }
+}

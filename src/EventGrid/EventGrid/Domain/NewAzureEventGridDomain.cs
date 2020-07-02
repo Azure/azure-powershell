@@ -98,18 +98,51 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingDefaultValue { get; set; }
 
+        /// <summary>
+        /// Hashtable which represents the Inbound IP Rules.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        public Hashtable InboundIpRule { get; set; }
+
+        /// <summary>
+        /// Public network access.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
+
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Domain
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
+            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid domain {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Domain domain = this.Client.CreateDomain(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+                Domain domain = this.Client.CreateDomain(
+                    this.ResourceGroupName,
+                    this.Name,
+                    this.Location,
+                    tagDictionary,
+                    InputSchema,
+                    inputMappingFieldsDictionary,
+                    inputMappingDefaultValuesDictionary,
+                    inboundIpRuleDictionary,
+                    this.PublicNetworkAccess);
+
                 PSDomain psDomain = new PSDomain(domain);
                 this.WriteObject(psDomain);
             }

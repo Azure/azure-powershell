@@ -99,18 +99,51 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable InputMappingDefaultValue { get; set; }
 
+        /// <summary>
+        /// Hashtable which represents the Inbound IP Rules.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InboundIpRule { get; set; }
+
+        /// <summary>
+        /// Public network access.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
+
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
+            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+                Topic topic = this.Client.CreateTopic(
+                    this.ResourceGroupName,
+                    this.Name,
+                    this.Location,
+                    tagDictionary,
+                    InputSchema,
+                    inputMappingFieldsDictionary,
+                    inputMappingDefaultValuesDictionary,
+                    inboundIpRuleDictionary,
+                    this.PublicNetworkAccess);
+
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }

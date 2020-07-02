@@ -31,6 +31,18 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Tags = topic.Tags;
             this.Endpoint = topic.Endpoint;
             this.InputSchema = topic.InputSchema;
+            this.PublicNetworkAccess = topic.PublicNetworkAccess;
+
+            if (topic.InboundIpRules != null)
+            {
+                this.InboundIpRule = new Dictionary<string, string>();
+
+                foreach (var rule in topic.InboundIpRules)
+                {
+                    this.InboundIpRule.Add(rule.IpMask, rule.Action);
+                }
+            }
+
 
             if (topic.InputSchemaMapping != null)
             {
@@ -116,6 +128,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public IDictionary<string, string> InputMappingField { get; set; }
 
         public IDictionary<string, string> InputMappingDefaultValue { get; set; }
+
+        public IDictionary<string, string> InboundIpRule { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Return a string representation of this topic

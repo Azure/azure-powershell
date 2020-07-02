@@ -88,6 +88,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string AzureActiveDirectoryTenantIdHelp = "The Azure Active Directory (AAD) Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
         public const string AzureActiveDirectoryApplicationIdOrUriHelp = "The Azure Active Directory (AAD) Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
 
+        public const string InboundIpRuleHelp = "Hashtable which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
+        public const string PublicNetworkAccessHelp = "This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring InboundIpRule parameters. Allowed values are disabled and enabled.";
+
         // Event Subscription destination types
         public const string Webhook = "webhook";
         public const string EventHub = "eventhub";
@@ -96,6 +99,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string ServiceBusQueue = "servicebusqueue";
         public const string ServiceBusTopic = "servicebustopic";
         public const string AzureFunction = "azurefunction";
+
+        public const string Enabled = "enabled";
+        public const string Disabled = "disabled";
 
         public const string EventSubscriptionHandshakeValidationMessage = "If the provided endpoint doesn't support subscription validation " +
                                                                           "handshake, navigate to the validation URL that you receive in the " +

@@ -144,7 +144,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> tags,
             string inputSchema,
             Dictionary<string, string> inputMappingFields,
-            Dictionary<string, string> inputMappingDefaultValuesDictionary)
+            Dictionary<string, string> inputMappingDefaultValuesDictionary,
+            Dictionary<string, string> inboundIpRules,
+            string publicNetworkAccess)
         {
             Topic topic = new Topic();
             JsonInputSchemaMapping jsonInputMapping = null;
@@ -165,10 +167,34 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             topic.InputSchemaMapping = jsonInputMapping;
 
+            topic.PublicNetworkAccess = publicNetworkAccess;
+
+            if (inboundIpRules != null)
+            {
+                topic.InboundIpRules = new List<InboundIpRule>();
+
+                foreach (var rule in inboundIpRules)
+                {
+                    InboundIpRule ipRule = new InboundIpRule
+                    {
+                        IpMask = rule.Key,
+                        Action = rule.Value
+                    };
+
+                    topic.InboundIpRules.Add(ipRule);
+                }
+            }
+
             return this.Client.Topics.CreateOrUpdate(resourceGroupName, topicName, topic);
         }
 
-        public Topic ReplaceTopic(string resourceGroupName, string topicName, string location, Dictionary<string, string> tags)
+        public Topic ReplaceTopic(
+            string resourceGroupName,
+            string topicName,
+            string location,
+            Dictionary<string, string> tags,
+            Dictionary<string, string> inboundIpRules,
+            string publicNetworkAccess)
         {
             var topic = new Topic();
             topic.Location = location;
@@ -176,6 +202,24 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (tags != null && tags.Any())
             {
                 topic.Tags = new Dictionary<string, string>(tags);
+            }
+
+            topic.PublicNetworkAccess = publicNetworkAccess;
+
+            if (inboundIpRules != null && inboundIpRules.Any())
+            {
+                topic.InboundIpRules = new List<InboundIpRule>();
+
+                foreach (var rule in inboundIpRules)
+                {
+                    InboundIpRule ipRule = new InboundIpRule
+                    {
+                        IpMask = rule.Key,
+                        Action = rule.Value
+                    };
+
+                    topic.InboundIpRules.Add(ipRule);
+                }
             }
 
             return this.Client.Topics.CreateOrUpdate(resourceGroupName, topicName, topic);
@@ -290,7 +334,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> tags,
             string inputSchema,
             Dictionary<string, string> inputMappingFields,
-            Dictionary<string, string> inputMappingDefaultValuesDictionary)
+            Dictionary<string, string> inputMappingDefaultValuesDictionary,
+            Dictionary<string, string> inboundIpRules,
+            string publicNetworkAccess)
         {
             Domain domain = new Domain();
             JsonInputSchemaMapping jsonInputMapping = null;
@@ -311,10 +357,34 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             domain.InputSchemaMapping = jsonInputMapping;
 
+            domain.PublicNetworkAccess = publicNetworkAccess;
+
+            if (inboundIpRules != null)
+            {
+                domain.InboundIpRules = new List<InboundIpRule>();
+
+                foreach (var rule in inboundIpRules)
+                {
+                    InboundIpRule ipRule = new InboundIpRule
+                    {
+                        IpMask = rule.Key,
+                        Action = rule.Value
+                    };
+
+                    domain.InboundIpRules.Add(ipRule);
+                }
+            }
+
             return this.Client.Domains.CreateOrUpdate(resourceGroupName, domainName, domain);
         }
 
-        public Domain ReplaceDomain(string resourceGroupName, string domainName, string location, Dictionary<string, string> tags)
+        public Domain ReplaceDomain(
+            string resourceGroupName,
+            string domainName,
+            string location,
+            Dictionary<string, string> tags,
+            Dictionary<string, string> inboundIpRules,
+            string publicNetworkAccess)
         {
             var domain = new Domain();
             domain.Location = location;
@@ -322,6 +392,24 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (tags != null && tags.Any())
             {
                 domain.Tags = new Dictionary<string, string>(tags);
+            }
+
+            domain.PublicNetworkAccess = publicNetworkAccess;
+
+            if (inboundIpRules != null && inboundIpRules.Any())
+            {
+                domain.InboundIpRules = new List<InboundIpRule>();
+
+                foreach (var rule in inboundIpRules)
+                {
+                    InboundIpRule ipRule = new InboundIpRule
+                    {
+                        IpMask = rule.Key,
+                        Action = rule.Value
+                    };
+
+                    domain.InboundIpRules.Add(ipRule);
+                }
             }
 
             return this.Client.Domains.CreateOrUpdate(resourceGroupName, domainName, domain);
