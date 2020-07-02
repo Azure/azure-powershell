@@ -20,6 +20,10 @@
 
 
 ## Upcoming Release
+* Added default provider support to `Az.Attestation` module
+    - Added `Location` and `DefaultProvider` to `Get-AzAttestation`
+    - Added `Location` and `DefaultProvider` to policy signer management cmdlets
+	- Added `Location` and `DefaultProvider` to policy management cmdlets
 
 ## Version 0.1.7
 * Added text based policy support to policy cmdlets

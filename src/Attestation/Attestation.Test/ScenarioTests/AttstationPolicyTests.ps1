@@ -21,7 +21,7 @@ function Test-GetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 	$teeType = "SgxEnclave"
 
 	try
@@ -50,6 +50,19 @@ function Test-GetAttestationPolicy
 	}
 }
 
+function Test-GetDefaultProviderPolicy
+{
+	$location = "Central US"
+	$teeType = "SgxEnclave"
+
+	$getPolicy = Get-AzAttestationPolicy -DefaultProvider -Location $location -Tee $teeType
+	Assert-NotNull $getPolicy.Jwt
+	Assert-NotNull $getPolicy.Text
+	Assert-AreEqual "none" $getPolicy.Algorithm
+	Assert-True { $getPolicy.JwtLength -gt 0 }
+	Assert-True { $getPolicy.TextLength -gt 0 }
+}
+
 <#
 .SYNOPSIS
 Test Reset-AzAttestationPolicy
@@ -59,7 +72,7 @@ function Test-ResetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 	$teeType = "SgxEnclave"
 	try
 	{
@@ -95,7 +108,7 @@ function Test-SetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 	$teeType = "SgxEnclave"
 	$policyJwt = "eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ICJ7XHJcbiAgICBcIiR2ZXJzaW9uXCI6IDEsXHJcbiAgICBcIiRhbGxvdy1kZWJ1Z2dhYmxlXCIgOiB0cnVlLFxyXG4gICAgXCIkY2xhaW1zXCI6W1xyXG4gICAgICAgIFwiaXMtZGVidWdnYWJsZVwiICxcclxuICAgICAgICBcInNneC1tcnNpZ25lclwiLFxyXG4gICAgICAgIFwic2d4LW1yZW5jbGF2ZVwiLFxyXG4gICAgICAgIFwicHJvZHVjdC1pZFwiLFxyXG4gICAgICAgIFwic3ZuXCIsXHJcbiAgICAgICAgXCJ0ZWVcIixcclxuICAgICAgICBcIk5vdERlYnVnZ2FibGVcIlxyXG4gICAgXSxcclxuICAgIFwiTm90RGVidWdnYWJsZVwiOiB7XCJ5ZXNcIjp7XCIkaXMtZGVidWdnYWJsZVwiOnRydWUsIFwiJG1hbmRhdG9yeVwiOnRydWUsIFwiJHZpc2libGVcIjpmYWxzZX19LFxyXG4gICAgXCJpcy1kZWJ1Z2dhYmxlXCIgOiBcIiRpcy1kZWJ1Z2dhYmxlXCIsXHJcbiAgICBcInNneC1tcnNpZ25lclwiIDogXCIkc2d4LW1yc2lnbmVyXCIsXHJcbiAgICBcInNneC1tcmVuY2xhdmVcIiA6IFwiJHNneC1tcmVuY2xhdmVcIixcclxuICAgIFwicHJvZHVjdC1pZFwiIDogXCIkcHJvZHVjdC1pZFwiLFxyXG4gICAgXCJzdm5cIiA6IFwiJHN2blwiLFxyXG4gICAgXCJ0ZWVcIiA6IFwiJHRlZVwiXHJcbn0ifQ."
 	$policyText = 'version= 1.0;authorizationrules{c:[type=="$is-debuggable"] => permit();};issuancerules{c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);c:[type=="$product-id"] => issue(type="product-id", value=c.value);c:[type=="$svn"] => issue(type="svn", value=c.value);c:[type=="$tee"] => issue(type="tee", value=c.value);c:[type=="$tee-future"] => issue(type="tee-future", value=c.value);};'

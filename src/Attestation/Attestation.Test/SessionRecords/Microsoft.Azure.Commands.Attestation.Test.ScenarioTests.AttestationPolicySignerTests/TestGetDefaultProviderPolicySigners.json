@@ -1,0 +1,143 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/operations/policy/certificates?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L29wZXJhdGlvbnMvcG9saWN5L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f858537b-7d4e-4f42-bbab-4b0e91853514"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Attestation.AttestationClient/0.1000.20.12804"
+        ]
+      },
+      "ResponseHeaders": {
+        "Date": [
+          "Thu, 02 Jul 2020 09:30:35 GMT"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/33e01921-4d64-4f8c-a055-5bdaffd5e33d\", resource=\"https://attest.azure.net\""
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/operations/policy/certificates?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L29wZXJhdGlvbnMvcG9saWN5L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fd0b26d0-4aa4-4d38-8f4e-aaf7af20a433"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Attestation.AttestationClient/0.1000.20.12804"
+        ]
+      },
+      "ResponseHeaders": {
+        "Date": [
+          "Thu, 02 Jul 2020 09:30:35 GMT"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/33e01921-4d64-4f8c-a055-5bdaffd5e33d\", resource=\"https://attest.azure.net\""
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/a724c543-53ce-44a6-b633-e11ef27839b7/providers/Microsoft.Attestation/locations/Central%20US/defaultProvider?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTcyNGM1NDMtNTNjZS00NGE2LWI2MzMtZTExZWYyNzgzOWI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9kZWZhdWx0UHJvdmlkZXI/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9d088a58-f022-4a5e-934f-d6a284ba61f5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "106989e9-9941-4af8-9f48-9dbb67a37db1"
+        ],
+        "x-ms-correlation-request-id": [
+          "106989e9-9941-4af8-9f48-9dbb67a37db1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200702T093036Z:106989e9-9941-4af8-9f48-9dbb67a37db1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2020 09:30:35 GMT"
+        ],
+        "Content-Length": [
+          "283"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedcus\",\r\n  \"name\": \"sharedcus\",\r\n  \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n  \"location\": \"Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"trustModel\": \"AAD\",\r\n    \"status\": \"Ready\",\r\n    \"attestUri\": \"https://sharedcus.cus.attest.azure.net\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a724c543-53ce-44a6-b633-e11ef27839b7"
+  }
+}

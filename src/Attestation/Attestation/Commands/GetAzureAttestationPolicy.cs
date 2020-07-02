@@ -83,7 +83,6 @@ namespace Microsoft.Azure.Commands.Attestation
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultProviderParameterSet,
             HelpMessage = "Specifies this is the request to a default attestation provider.")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter DefaultProvider { get; set; }
 
         /// <summary>

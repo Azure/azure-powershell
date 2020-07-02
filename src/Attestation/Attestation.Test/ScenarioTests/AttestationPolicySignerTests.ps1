@@ -21,7 +21,7 @@ function Test-GetAttestationPolicySigners
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 
 	try
 	{
@@ -48,6 +48,17 @@ function Test-GetAttestationPolicySigners
 	}
 }
 
+function Test-GetDefaultProviderPolicySigners
+{
+	$location = "Central US"
+	   
+	$policySigners = Get-AzAttestationPolicySigners -DefaultProvider -Location $location
+	Assert-NotNull $policySigners
+	Assert-AreEqual $policySigners.CertificateCount 1
+	Assert-NotNull $policySigners.Jwt
+	Assert-NotNull $policySigners.Certificates
+}
+
 <#
 .SYNOPSIS
 Test Add-AzAttestationPolicySigner
@@ -57,7 +68,7 @@ function Test-AddAttestationPolicySigner
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 
 	try
 	{
@@ -93,7 +104,7 @@ function Test-RemoveAttestationPolicySigner
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-	$location = "East US"
+	$location = "Central US"
 
 	try
 	{

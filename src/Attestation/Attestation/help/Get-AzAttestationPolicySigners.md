@@ -24,6 +24,12 @@ Get-AzAttestationPolicySigners [-ResourceId] <String> [-DefaultProfile <IAzureCo
  [<CommonParameters>]
 ```
 
+### DefaultProviderParameterSet
+```
+Get-AzAttestationPolicySigners [-Location] <String> [-DefaultProvider]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzAttestationPolicySigners cmdlet gets the trusted policy signers from a tenant in Azure Attestation.
 
@@ -59,6 +65,14 @@ Certificates     : {{
 
 Gets the trusted policy signers for the Attestation Provider *pshtest2* in Resource Group *psh-test-rg*.  Note that there is one trusted signer for this Attestation Provider.
 
+### Example 3
+```powershell
+PS C:\> Get-AzAttestationPolicySigners -Name pshtest2 -ResourceGroupName psh-test-rg                                                                                                                                                                                                                                         
+Output pending
+```
+
+Gets the trusted policy signers for the Attestation Default Provider in Location *Central US*.  Note that there are no trusted signers for Attestation Default Provider.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -73,6 +87,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProvider
+Specifies this is the request to a default attestation provider.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultProviderParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the Location of the default attestation provider.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultProviderParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
