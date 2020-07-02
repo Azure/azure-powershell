@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Remove project reference to Authentication
 
 ## Version 2.10.0
 * Azure Backup added support for fetching MAB items.
