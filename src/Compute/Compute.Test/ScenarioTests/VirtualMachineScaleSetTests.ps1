@@ -2385,7 +2385,6 @@ function Test-VirtualMachineScaleSetImageVersion
 	try
 	{
 		# Common
-		#$loc = Get-Location "Microsoft.Compute" "virtualMachines";
 		$loc = "westus" ;
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
  
@@ -2430,10 +2429,6 @@ function Test-VirtualMachineScaleSetImageVersion
 		$adminUsername = 'Foo12';
 		$adminPassword = $PLACEHOLDER;
  
-		#$PublisherName = "MicrosoftWindowsServer" 
-		#$Offer         = "WindowsServer" 
-		#$Sku           = "2012-R2-Datacenter" 
-		#$Version       = "4.127.20190204"
 		$imgRef = Get-DefaultCRPImage -loc $loc;
 		$vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
  
