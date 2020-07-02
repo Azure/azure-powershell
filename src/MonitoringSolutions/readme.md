@@ -88,4 +88,9 @@ directive:
           - Name
           - Type
           - Location
+
+  # Update the cmdlet description of Update-AzMonitorLogAnalyticsSolution
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/solutions/{solutionName}"].patch.description
+    transform: return "Update the tags of a solution."
 ```

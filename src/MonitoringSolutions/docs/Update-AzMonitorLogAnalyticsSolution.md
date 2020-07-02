@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzMonitorLogAnalyticsSolution
 
 ## SYNOPSIS
-Patch a Solution.
-Only updating tags supported.
+Update the tags of a solution.
 
 ## SYNTAX
 
@@ -26,8 +25,7 @@ Update-AzMonitorLogAnalyticsSolution -InputObject <IMonitoringSolutionsIdentity>
 ```
 
 ## DESCRIPTION
-Patch a Solution.
-Only updating tags supported.
+Update the tags of a solution.
 
 ## EXAMPLES
 
