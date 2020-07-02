@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
+* Added 'Unregister-AzResourceProvider' cmdlet.
 
 ## Version 2.2.0
 * Added `UsageLocation`, `GivenName`, `Surname`, `AccountEnabled`, `MailNickname`, `Mail` on `PSADUser` [#10526] [#10497]
