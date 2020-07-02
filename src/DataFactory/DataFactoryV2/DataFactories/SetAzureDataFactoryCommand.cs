@@ -229,9 +229,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public SwitchParameter Force { get; set; }
 
         #region Attributes
-        [Parameter(Mandatory = false, HelpMessage = Constants.HelpGlobalParameters)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpGlobalParameter)]
         #endregion
-        public IDictionary<string, GlobalParameterSpecification> GlobalParameters { get; set; }
+        public IDictionary<string, GlobalParameterSpecification> GlobalParameterDefinition { get; set; }
 
         #region Attributes
         [Parameter(
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Force = Force.IsPresent,
                 RepoConfiguration = repoConfiguration,
                 ConfirmAction = ConfirmAction,
-                GlobalParameters = GlobalParameters
+                GlobalParameters = GlobalParameterDefinition
             };
 
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     }
                 }
                 
-                this.GlobalParameters = InputObject.GlobalParameters;
+                this.GlobalParameterDefinition = InputObject.GlobalParameters;
             }
 
             if (!string.IsNullOrWhiteSpace(ResourceId))

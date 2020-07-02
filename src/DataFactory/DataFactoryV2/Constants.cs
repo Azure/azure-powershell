@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryLocation = "The geographic region of the data factory.";
 
-        public const string HelpGlobalParameters = "The global parameters object of the data factory.";
+        public const string HelpGlobalParameter = "The dictionary containing the global parameters of the data factory.";
 
         public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
 
