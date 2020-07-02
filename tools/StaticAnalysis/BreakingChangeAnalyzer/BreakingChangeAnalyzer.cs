@@ -100,6 +100,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                         !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 var probingDirectories = new List<string> {baseDirectory};
 
                 // Add current directory for probing

@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+* Changed some property names and types of output for the following cmdlets
+    - For `Get-AzSynapseSparkJob`, `Submit-AzSynapseSparkJob`, ` Get-AzSynapseSparkSession` and `Start-AzSynapseSparkSession` cmdlet
+        - Change JobType's type from `string` to `SparkJobType?`
+        - Change AppInfo's type from `IDictionary<string, string>` to `IReadOnlyDictionary<string, string>`
+        - Change ErrorInfo's type from `IList<ErrorInformation>` to `IReadOnlyList<SparkServiceError>`
+        - Change Log's type from `IList<string>` to `IReadOnlyList<string>`
+        - Change `Scheduler` to `Scheduler`
+        - Change `PluginInfo` to `Plugin`
+        - Change `ErrorInfo` to `Errors`
+        - Change `Log` to `LogLines`
+
 ## Version 0.1.1
 
 * Added support for operation of Synapse FirewallRule

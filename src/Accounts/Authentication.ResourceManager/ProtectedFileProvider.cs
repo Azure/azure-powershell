@@ -36,13 +36,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         public const int MaxTries = 30;
         static readonly TimeSpan RetryInterval = TimeSpan.FromMilliseconds(500);
         protected Stream _stream;
-        object _initializationLock = new object();
+
+        /// <summary>
+        /// Use a Mutex to prevent cross-process file I/O
+        /// </summary>
+        /// <returns></returns>
+        private static readonly Mutex _initializationLock = new Mutex(false, @"Local\AzurePowerShellProtectedFileProviderInit");
         public string FilePath { get; set; }
 
         protected IDataStore DataStore { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Stream Stream
         {
@@ -87,7 +92,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 
         protected virtual void InitializeStream()
         {
-            lock (_initializationLock)
+            _initializationLock.WaitOne();
+            try
             {
                 if (_stream == null)
                 {
@@ -96,9 +102,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                     {
                         throw new UnauthorizedAccessException(string.Format(Resources.FileLockFailure, FilePath));
                     }
-
                     _stream = stream;
                 }
+            }
+            finally
+            {
+                _initializationLock.ReleaseMutex();
             }
         }
 

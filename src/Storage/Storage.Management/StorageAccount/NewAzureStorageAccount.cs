@@ -275,6 +275,43 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
         public SwitchParameter  RequireInfrastructureEncryption { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowBlobPublicAccess
+        {
+            get
+            {
+                return allowBlobPublicAccess.Value;
+            }
+            set
+            {
+                allowBlobPublicAccess = value;
+            }
+        }
+        private bool? allowBlobPublicAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
+        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
+            StorageModels.MinimumTlsVersion.TLS11,
+            StorageModels.MinimumTlsVersion.TLS12,
+            IgnoreCase = true)]
+        public string MinimumTlsVersion
+        {
+            get
+            {
+                return minimumTlsVersion;
+            }
+            set
+            {
+                minimumTlsVersion = value;
+            }
+        }
+        private string minimumTlsVersion = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -396,6 +433,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         createParameters.Encryption.Services.Blob = new EncryptionService();
                     }
                 }
+            }
+            if (this.minimumTlsVersion != null)
+            {
+                createParameters.MinimumTlsVersion = this.minimumTlsVersion;
+            }
+            if (this.allowBlobPublicAccess != null)
+            {
+                createParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
