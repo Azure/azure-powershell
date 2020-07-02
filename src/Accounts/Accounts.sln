@@ -20,14 +20,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Test", "Auth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\..\azure-powershell-common\src\Common\Common.csproj", "{71934300-0209-4C13-AF87-D73134C61865}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj", "{DABFE461-D589-4F68-8816-FD4BCCA5D263}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Abstractions", "..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj", "{65D2447D-D54C-4860-9772-13D7A839B9C5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "..\..\..\azure-powershell-common\src\Authorization\Authorization.csproj", "{32B1D2BB-B258-4E19-A8FC-769CE1A846B1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,22 +58,6 @@ Global
 		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71934300-0209-4C13-AF87-D73134C61865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71934300-0209-4C13-AF87-D73134C61865}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71934300-0209-4C13-AF87-D73134C61865}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71934300-0209-4C13-AF87-D73134C61865}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DABFE461-D589-4F68-8816-FD4BCCA5D263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DABFE461-D589-4F68-8816-FD4BCCA5D263}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DABFE461-D589-4F68-8816-FD4BCCA5D263}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DABFE461-D589-4F68-8816-FD4BCCA5D263}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65D2447D-D54C-4860-9772-13D7A839B9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65D2447D-D54C-4860-9772-13D7A839B9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65D2447D-D54C-4860-9772-13D7A839B9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65D2447D-D54C-4860-9772-13D7A839B9C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32B1D2BB-B258-4E19-A8FC-769CE1A846B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32B1D2BB-B258-4E19-A8FC-769CE1A846B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32B1D2BB-B258-4E19-A8FC-769CE1A846B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32B1D2BB-B258-4E19-A8FC-769CE1A846B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
