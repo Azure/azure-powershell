@@ -187,7 +187,7 @@ function New-AzKubernetesConfiguration {
             }
         } else {
             $PSBoundParameters.Add('ClusterType', 'ConnectedClusters')
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
         if ($PSBoundParameters.ContainsKey('HelmOperatorChartValues')) {
