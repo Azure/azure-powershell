@@ -469,6 +469,72 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DeadLetterEndpoint { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = DomainEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [ValidateRange(1, 5000)]
+        public int MaxEventsPerBatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = DomainEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [ValidateRange(1, 1024)]
+        public int PreferredBatchSizeInKiloBytes { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(this.EventSubscriptionName))
@@ -488,6 +554,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 string scope;
                 RetryPolicy retryPolicy = null;
+                int maxEventsPerBatch = 0;
+                int preferredBatchSizeInKiloBytes = 0;
 
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
@@ -536,6 +604,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                     retryPolicy = existingEventSubscription.RetryPolicy;
                 }
 
+                if (string.Equals(this.EndpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
+                {
+                    WebHookEventSubscriptionDestination dest = existingEventSubscription.Destination as WebHookEventSubscriptionDestination;
+                    maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? this.MaxEventsPerBatch : (int) dest.MaxEventsPerBatch;
+                    preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? this.PreferredBatchSizeInKiloBytes : (int) dest.PreferredBatchSizeInKilobytes;
+                }
+                else
+                {
+                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes))
+                    {
+                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloBytes are supported when EndpointType is webhook only.");
+                    }
+                }
+
                 if (EventGridUtils.ShouldShowEventSubscriptionWarningMessage(this.Endpoint, this.EndpointType))
                 {
                     WriteWarning(EventGridConstants.EventSubscriptionHandshakeValidationMessage);
@@ -561,7 +643,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     retryPolicy: retryPolicy,
                     deadLetterEndpoint: this.DeadLetterEndpoint,
                     expirationDate: this.ExpirationDate,
-                    advancedFilter: this.AdvancedFilter);
+                    advancedFilter: this.AdvancedFilter,
+                    maxEventsPerBatch: maxEventsPerBatch,
+                    preferredBatchSizeInKiloBytes: preferredBatchSizeInKiloBytes);
 
                 PSEventSubscription psEventSubscription = new PSEventSubscription(eventSubscription);
                 this.WriteObject(psEventSubscription);

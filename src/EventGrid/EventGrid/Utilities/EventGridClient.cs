@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.EventGrid;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Rest.Azure;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -422,7 +423,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             string deliverySchema,
             string deadLetterEndpoint,
             DateTime expirationDate,
-            Hashtable[] advancedFilter)
+            Hashtable[] advancedFilter,
+            int maxEventsPerBatch,
+            int preferredBatchSizeInKiloBytes)
         {
             EventSubscription eventSubscription = new EventSubscription();
             EventSubscriptionDestination destination = null;
@@ -432,7 +435,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 destination = new WebHookEventSubscriptionDestination()
                 {
-                    EndpointUrl = endpoint
+                    EndpointUrl = endpoint,
+                    MaxEventsPerBatch = (maxEventsPerBatch == 0) ? (int?) null : maxEventsPerBatch,
+                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloBytes == 0) ? (int?)null : preferredBatchSizeInKiloBytes
                 };
             }
             else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
@@ -538,7 +543,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             RetryPolicy retryPolicy,
             string deadLetterEndpoint,
             DateTime expirationDate,
-            Hashtable[] advancedFilter)
+            Hashtable[] advancedFilter,
+            int maxEventsPerBatch,
+            int preferredBatchSizeInKiloBytes)
         {
             EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
 
@@ -551,7 +558,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     eventSubscriptionUpdateParameters.Destination = new WebHookEventSubscriptionDestination()
                     {
-                        EndpointUrl = endpoint
+                        EndpointUrl = endpoint,
+                        MaxEventsPerBatch = maxEventsPerBatch,
+                        PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloBytes
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
