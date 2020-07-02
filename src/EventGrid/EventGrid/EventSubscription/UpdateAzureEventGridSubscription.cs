@@ -620,8 +620,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 string scope;
                 RetryPolicy retryPolicy = null;
-                int maxEventsPerBatch = 0;
-                int preferredBatchSizeInKiloBytes = 0;
+                int? maxEventsPerBatch = null;
+                int? preferredBatchSizeInKiloBytes = null;
                 string aadAppIdOrUri = string.Empty;
                 string aadTenantId = string.Empty;
 
@@ -675,10 +675,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                 if (string.Equals(this.EndpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
                 {
                     WebHookEventSubscriptionDestination dest = existingEventSubscription.Destination as WebHookEventSubscriptionDestination;
-                    maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? this.MaxEventsPerBatch : (int)dest.MaxEventsPerBatch;
-                    preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? this.PreferredBatchSizeInKiloBytes : (int)dest.PreferredBatchSizeInKilobytes;
-                    aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : dest.AzureActiveDirectoryApplicationIdOrUri;
-                    aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : dest.AzureActiveDirectoryTenantId;
+                    if (dest != null)
+                    {
+                        maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? (int?)this.MaxEventsPerBatch : dest.MaxEventsPerBatch.HasValue ? dest.MaxEventsPerBatch : null;
+                        preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? (int?)this.PreferredBatchSizeInKiloBytes : dest.PreferredBatchSizeInKilobytes.HasValue ? dest.PreferredBatchSizeInKilobytes : null;
+                        aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : dest.AzureActiveDirectoryApplicationIdOrUri;
+                        aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : dest.AzureActiveDirectoryTenantId;
+                    }
+                    else
+                    {
+                        maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? (int?)this.MaxEventsPerBatch : null;
+                        preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? (int?)this.PreferredBatchSizeInKiloBytes : null;
+                        aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : string.Empty;
+                        aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : string.Empty;
+                    }
                 }
                 else
                 {

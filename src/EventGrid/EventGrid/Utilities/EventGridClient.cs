@@ -636,8 +636,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             string deadLetterEndpoint,
             DateTime expirationDate,
             Hashtable[] advancedFilter,
-            int maxEventsPerBatch,
-            int preferredBatchSizeInKiloBytes,
+            int? maxEventsPerBatch,
+            int? preferredBatchSizeInKiloBytes,
             string aadAppIdOrUri,
             string aadTenantId)
         {

@@ -75,7 +75,7 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookEndpoint
 {
-    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=an3f31ORDSQ/llPPTaUDJiEJGoebE9ha7dODRhb1nIyg/LiYLfSVCA=="
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=<HIDDEN>"
 }
 
 <#
@@ -93,7 +93,7 @@ Get EventSubscription Webhook Endpoint With Cloud Event
 #>
 function Get-EventSubscriptionWebhookEndpointWithCloudEvent
 {
-    return "https://eventgridclitestapp.azurewebsites.net/api/cloudeventfunc?code=oxj0RWIKd4RxsIGecqeRso5x9powUZOqbmprm8WOBt0Dbcxh89sRFw=="
+    return "https://eventgridclitestapp.azurewebsites.net/api/cloudeventfunc?code=<HIDDEN>"
 }
 
 <#
@@ -323,8 +323,8 @@ function New-StorageQueue($ResourceGroupName, $StorageAccountName, $QueueName, $
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
-    # Uncomment when live recording
-    New-AzStorageQueue -Name $StorageQueueName -Context $cxt
+    # NOTE: Uncomment when live recording
+    #### New-AzStorageQueue -Name $StorageQueueName -Context $cxt
 }
 
 <#
@@ -338,8 +338,9 @@ function Remove-StorageResources($ResourceGroupName, $StorageAccountName, $Queue
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
-    # Uncomment when live recording
-    Remove-AzStorageQueue -Name $QueueName -Context $cxt -Force
+    # NOTE: Uncomment when live recording
+    #### Remove-AzStorageQueue -Name $QueueName -Context $cxt -Force
+
     Write-Debug "Deleting storage account $StorageAccount in resource group $ResourceGroupName"
     Remove-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Force
 }
@@ -373,8 +374,9 @@ function New-StorageBlob($ResourceGroupName, $StorageAccountName, $ContainerName
     $storageAccount = New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroupName -SkuName Standard_LRS -Location $Location
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKeyValue
-    # Uncomment when live recording
-    New-AzStoragecontainer -Name $ContainerName -Context $cxt
+
+    # NOTE: Uncomment when live recording
+    #### New-AzStoragecontainer -Name $ContainerName -Context $cxt
 }
 
 <#
@@ -387,8 +389,8 @@ function Remove-StorageContainerResources($ResourceGroupName, $StorageAccountNam
     $StorageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $StorageAccountName
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
-    # Uncomment when live recording
-    Remove-AzStorageContainer -Name $ContainerName -Context $cxt
+    # NOTE: Uncomment when live recording
+    #### Remove-AzStorageContainer -Name $ContainerName -Context $cxt
     Write-Debug "Deleting storage account $StorageAccount in resource group $ResourceGroupName"
     Remove-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Force
 }

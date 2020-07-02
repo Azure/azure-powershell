@@ -145,6 +145,7 @@ function EventSubscriptionTests_CustomTopic {
         Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName2}
         Assert-True {$result.EventTtl -eq 15}
         Assert-True {$result.MaxDeliveryAttempt -eq 11}
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
         Write-Debug "Getting the created event subscription $eventSubscriptionName"
         $result = Get-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl

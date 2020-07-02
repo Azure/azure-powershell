@@ -129,6 +129,9 @@ function TopicSetTests {
 
     try
     {
+        $ipRule1 = @{ "10.0.0.0/8" = "Allow"; "10.2.0.0/8" = "Allow" }
+        $ipRule2 = @{ "10.3.0.0/16" = "Allow" }
+
         Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
         Write-Debug "Topic: $topicName"
         $result = New-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
@@ -136,13 +139,14 @@ function TopicSetTests {
 
         Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
         $tags1 = @{test1 = "testval1"; test2 = "testval2" };
-        $replacedTopic1 = Set-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag $tags1
+        $replacedTopic1 = Set-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag $tags1 -InboundIpRule $ipRule1 -PublicNetworkAccess "enabled"
         Assert-True {$replacedTopic1.Count -eq 1}
         Assert-True {$replacedTopic1.TopicName -eq $topicName} "Topic updated earlier is not found."
 
+
         Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
         $tags2 = @{test1 = "testval1"; test2 = "testval2" };
-        $replacedTopic2 = Set-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag $tags2
+        $replacedTopic2 = Set-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag $tags2 -InboundIpRule $ipRule2 -PublicNetworkAccess "enabled"
         Assert-True {$replacedTopic2.Count -eq 1}
         Assert-True {$replacedTopic2.TopicName -eq $topicName} "Topic updated earlier is not found."
         $returned_tags2 = $replacedTopic2.Tags;
@@ -152,7 +156,7 @@ function TopicSetTests {
 
         Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
         $tags3 = @{test1 = "testval10"; test2 = "testval20" };
-        $replacedTopic3 = Get-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Set-AzEventGridTopic -Tag $tags3
+        $replacedTopic3 = Get-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Set-AzEventGridTopic -Tag $tags3 -InboundIpRule $ipRule1 -PublicNetworkAccess "enabled"
         Assert-True {$replacedTopic3.Count -eq 1}
         Assert-True {$replacedTopic3.TopicName -eq $topicName} "Topic updated earlier is not found."
         $returned_tags3 = $replacedTopic3.Tags;
