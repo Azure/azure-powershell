@@ -101,13 +101,18 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Invoke-AzSynapseIntegrationRuntimeUpgrade', 'New-AzSynapseIntegrationRuntimeKey',
                'Remove-AzSynapseIntegrationRuntime', 'Remove-AzSynapseIntegrationRuntimeNode',
                'Set-AzSynapseIntegrationRuntime', 'Sync-AzSynapseIntegrationRuntimeCredential',
-               'Update-AzSynapseIntegrationRuntime', 'Update-AzSynapseIntegrationRuntimeNode'
+               'Update-AzSynapseIntegrationRuntime', 'Update-AzSynapseIntegrationRuntimeNode',
+               'Get-AzSynapsePipeline','Remove-AzSynapsePipeline',
+               'Set-AzSynapsePipeline','Invoke-AzSynapsePipelineRun',
+               'Get-AzSynapsePipelineRun','Stop-AzSynapsePipelineRun',
+               'Get-AzSynapseActivityRun'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'New-AzSynapsePipeline'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

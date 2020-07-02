@@ -88,6 +88,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
+        public const string Pipeline = nameof(Pipeline);
+
+        public const string PipelineRun = nameof(PipelineRun);
+
+        public const string ActivityRun = nameof(ActivityRun);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

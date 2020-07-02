@@ -257,5 +257,31 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string IntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
     
         public const string IntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
+
+        public const string PipelineName = "The pipeline name.";
+
+        public const string RunId = "The pipeline run identifier.";
+
+        public const string LastUpdatedAfter = "The time at or after which the run event was updated in 'ISO 8601' format.";
+
+        public const string LastUpdatedBefore = "The time at or before which the run event was updated in 'ISO 8601' format.";
+
+        public const string HelpJsonFilePath = "The JSON file path.";
+
+        public const string ActivityName = "The name of the activity.";
+
+        public const string RunStatus = "The status of the pipeline run.";
+
+        public const string PipelineRunObject = "The information about the pipeline run.";
+
+        public const string ParametersForRun = "Parameters for pipeline run.";
+
+        public const string HelpParameterFileForRun = "The name of the file with parameters for pipeline run.";
+
+        public const string ReferencePipelineRunIdForRun = "The pipeline run ID for rerun. If run ID is specified, the parameters of the specified run will be used to create a new run.";
+
+        public const string IsRecoveryForRun = "Recovery mode flag. If recovery mode is set to true, the specified referenced pipeline run and the new run will be grouped under the same groupId.";
+
+        public const string StartActivityNameForRun = "In recovery mode, the rerun will start from this activity. If not specified, all activities will run.";
     }
 }

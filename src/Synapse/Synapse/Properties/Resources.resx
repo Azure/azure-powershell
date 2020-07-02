@@ -402,4 +402,19 @@ Are you sure you want to continue?</value>
   <data name="SubmittingSynapseSparkJob" xml:space="preserve">
     <value>Submitting Spark job in Spark pool '{0}' under workspace '{1}' ...</value>
   </data>
+  <data name="SettingSynapsePipeline" xml:space="preserve">
+    <value>Setting pipeline '{1}' in workspace '{0}'.</value>
+  </data>
+  <data name="RemovingSynapsePipeline" xml:space="preserve">
+    <value>Deleting pipeline '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="CreatingSynapsePipelineRun" xml:space="preserve">
+    <value>Creating a run of a pipeline in workspace '{0}' with name '{1}'.</value>
+  </data>
+  <data name="StoppingPipelineRun" xml:space="preserve">
+    <value>Stopping Pipeline with Id: '{0}' ...</value>
+  </data>
+  <data name="InvalidCastParameterKeyExceptionMessage" xml:space="preserve">
+    <value>All keys in the parameters hashtable must be of type string since they represent pipeline parameter names.</value>
+  </data>
 </root>

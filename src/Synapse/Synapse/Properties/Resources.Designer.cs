@@ -116,6 +116,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a run of a pipeline in workspace &apos;{0}&apos; with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingSynapsePipelineRun {
+            get {
+                return ResourceManager.GetString("CreatingSynapsePipelineRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new role assignment in workspace &apos;{0}&apos; with RoleDefinitionId &apos;{1}&apos; and ObjectId &apos;{2}&apos;..
         /// </summary>
         internal static string CreatingSynapseRoleAssignment {
@@ -595,6 +604,16 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting pipeline &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapsePipeline {
+            get {
+                return ResourceManager.GetString("RemovingSynapsePipeline", resourceCulture);
+
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting role assignment with RoleDefinitionId &apos;{0}&apos; and ObjectId &apos;{1}&apos; in workspace &apos;{2}&apos;..
         /// </summary>
         internal static string RemovingSynapseRoleAssignment {
@@ -685,6 +704,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting pipeline &apos;{1}&apos; in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSynapsePipeline {
+            get {
+                return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because the specified Spark pool &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string SparkPoolDoesNotExist {
@@ -717,6 +745,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StartingSynapseSparkSession {
             get {
                 return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping Pipeline with Id: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string StoppingPipelineRun {
+            get {
+                return ResourceManager.GetString("StoppingPipelineRun", resourceCulture);
             }
         }
         
