@@ -21,6 +21,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using global::Azure.Storage.Blobs.Specialized;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using global::Azure.Storage.Sas;
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs;
+    using System.Collections.Generic;
+    using global::Azure.Storage;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
@@ -52,6 +59,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPermision)]
         [ValidateNotNull]
         public CloudBlob CloudBlob { get; set; }
+
+        [Parameter(HelpMessage = "BlobBaseClient Object", Mandatory = false,
+            ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPolicy)]
+        [Parameter(HelpMessage = "BlobBaseClient Object", Mandatory = false,
+            ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPermision)]
+        [ValidateNotNull]
+        public BlobBaseClient BlobBaseClient { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
             ParameterSetName = BlobNamePipelineParmeterSetWithPermission)]
@@ -118,6 +132,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
 
+        protected override bool UseTrack2SDK()
+        {
+            if (this.Permission != null && this.Permission.ToLower().Contains("t"))
+            {
+                return true;
+            }
+            return base.UseTrack2SDK();
+        }
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageBlobSasCommand class.
         /// </summary>
@@ -172,30 +194,220 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, blob.Container.Name, accessPolicy, accessPolicyIdentifier);
-            SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange), generateUserDelegationSas);
-
-            if (FullUri)
+            if (!(blob is InvalidCloudBlob) && !UseTrack2SDK())
             {
-                string fullUri = blob.SnapshotQualifiedUri.ToString();
-                if (blob.IsSnapshot)
+
+                SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
+                bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, blob.Container.Name, accessPolicy, accessPolicyIdentifier);
+                SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
+                string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange), generateUserDelegationSas);
+
+                if (FullUri)
                 {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + sasToken.Substring(1);
+                    string fullUri = blob.SnapshotQualifiedUri.ToString();
+                    if (blob.IsSnapshot)
+                    {
+                        // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                        fullUri = fullUri + "&" + sasToken.Substring(1);
+                    }
+                    else
+                    {
+                        fullUri = fullUri + sasToken;
+                    }
+                    WriteObject(fullUri);
                 }
                 else
                 {
-                    fullUri = fullUri + sasToken;
+                    WriteObject(sasToken);
                 }
-                WriteObject(fullUri);
+            }
+            else // Use Track2 SDk
+            {
+                BlobBaseClient blobClient;
+                if (this.BlobBaseClient != null)
+                {
+                    blobClient = this.BlobBaseClient;
+                }
+                else
+                {
+                    blobClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
+                }
+
+                BlobSasBuilder sasBuilder;
+                if (ParameterSetName == BlobNamePipelineParmeterSetWithPolicy || ParameterSetName == BlobPipelineParameterSetWithPolicy)
+                {
+                    BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(Channel.GetContainerReference(blobClient.BlobContainerName), Channel.StorageContext, ClientOptions);
+                    IEnumerable<BlobSignedIdentifier> signedIdentifiers = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value.SignedIdentifiers;
+                    BlobSignedIdentifier signedIdentifier = null;
+                    foreach (BlobSignedIdentifier identifier in signedIdentifiers)
+                    {
+                        if (identifier.Id == this.Policy)
+                        {
+                            signedIdentifier = identifier;
+                            break;
+                        }
+                    }
+                    if (signedIdentifier is null)
+                    {
+                        throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, this.Policy));
+                    }
+                    sasBuilder = new BlobSasBuilder
+                    {
+                        BlobContainerName = blobClient.BlobContainerName,
+                        BlobName = blobClient.Name,
+                        Identifier = this.Policy
+                    };
+
+                    if (this.StartTime != null)
+                    {
+                        if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue)
+                        {
+                            throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+                        }
+                        else
+                        {
+                            sasBuilder.StartsOn = this.StartTime.Value.ToUniversalTime();
+                        }
+                    }
+
+                    if (this.ExpiryTime != null)
+                    {
+                        if (signedIdentifier.AccessPolicy.ExpiresOn != DateTimeOffset.MinValue)
+                        {
+                            throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                        }
+                        else
+                        {
+                            sasBuilder.ExpiresOn = this.ExpiryTime.Value.ToUniversalTime();
+                        }
+                    }
+                    else if (signedIdentifier.AccessPolicy.ExpiresOn == DateTimeOffset.MinValue)
+                    {
+                        if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                        {
+                            sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
+                        }
+                        else
+                        {
+                            sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                        }
+                    }
+
+                    if (this.Permission != null)
+                    {
+                        if (signedIdentifier.AccessPolicy.Permissions != null)
+                        {
+                            throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                        }
+                        else
+                        {
+                            sasBuilder.SetPermissions(this.Permission);
+                        }
+                    }
+                }
+                else
+                {
+                    sasBuilder = new BlobSasBuilder
+                    {
+                        BlobContainerName = blobClient.BlobContainerName,
+                        BlobName = blobClient.Name,
+                    };
+                    sasBuilder.SetPermissions(this.Permission);
+                    if (this.StartTime != null)
+                    {
+                        sasBuilder.StartsOn = this.StartTime.Value.ToUniversalTime();
+                    }
+                    if (this.ExpiryTime != null)
+                    {
+                        sasBuilder.ExpiresOn = this.ExpiryTime.Value.ToUniversalTime();
+                    }
+                    else
+                    {
+                        if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                        {
+                            sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
+                        }
+                        else
+                        {
+                            sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                        }
+                    }
+                }
+                if (this.IPAddressOrRange != null)
+                {
+                    sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(this.IPAddressOrRange);
+                }
+                if (this.Protocol != null)
+                {
+                    if (this.Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                    {
+                        sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
+                    }
+                    else //HttpsOnly
+                    {
+                        sasBuilder.Protocol = SasProtocol.Https;
+                    }
+                }
+                if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
+                {
+                    sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
+                }
+                if (Util.GetSnapshotTimeFromBlobUri(blobClient.Uri) != null)
+                {
+                    sasBuilder.Snapshot = Util.GetSnapshotTimeFromBlobUri(blobClient.Uri).Value.ToString("o");
+                }
+
+                string sasToken = GetBlobSharedAccessSignature(blobClient, sasBuilder, generateUserDelegationSas);
+                if (sasToken[0] != '?')
+                {
+                    sasToken = "?" + sasToken;
+                }
+
+                if (FullUri)
+                {
+                    string fullUri = blobClient.Uri.ToString();
+                    if (blob.IsSnapshot)
+                    {
+                        // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                        fullUri = fullUri + "&" + sasToken.Substring(1);
+                    }
+                    else
+                    {
+                        fullUri = fullUri + sasToken;
+                    }
+                    WriteObject(fullUri);
+                }
+                else
+                {
+                    WriteObject(sasToken);
+                }
+            }
+        }
+
+        private string GetBlobSharedAccessSignature(BlobBaseClient blob, BlobSasBuilder sasBuilder, bool generateUserDelegationSas)
+        {
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(Channel.StorageContext.StorageAccountName, Channel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            if (generateUserDelegationSas)
+            {
+                global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
+                BlobServiceClient oauthService = new BlobServiceClient(Channel.StorageContext.StorageAccount.BlobEndpoint, Channel.StorageContext.Track2OauthToken, ClientOptions);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: CmdletCancellationToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, blob.AccountName).ToString();
             }
             else
             {
-                WriteObject(sasToken);
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
             }
-
         }
 
         /// <summary>
@@ -210,7 +422,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobContainer container = blob.Container;
             if (generateUserDelegationSas)
             {
-                UserDelegationKey userDelegationKey = Channel.GetUserDelegationKey(accessPolicy.SharedAccessStartTime, accessPolicy.SharedAccessExpiryTime, null, null, OperationContext);
+                Azure.Storage.UserDelegationKey userDelegationKey = Channel.GetUserDelegationKey(accessPolicy.SharedAccessStartTime, accessPolicy.SharedAccessExpiryTime, null, null, OperationContext);
                 return blob.GetUserDelegationSharedAccessSignature(userDelegationKey, accessPolicy, null, protocol, iPAddressOrRange);
             }
             else
