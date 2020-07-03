@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result, isDefaultProvider, location);
             ThrowOn4xxErrors(serviceCallResult);
 
-                return (string)serviceCallResult.Body;
+            return (string)serviceCallResult.Body;
         }
 
         public string AddPolicySigner(string name, string resourceGroupName, string resourceId, string signer)

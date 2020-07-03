@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Attestation
                 case DefaultProviderParameterSet:
                     if (string.IsNullOrEmpty(Location))
                     {
-                        this.WriteObject(AttestationClient.ListDefaultAttestation());
+                        this.WriteObject(AttestationClient.ListDefaultAttestation(), true);
                     }
                     else
                     {
