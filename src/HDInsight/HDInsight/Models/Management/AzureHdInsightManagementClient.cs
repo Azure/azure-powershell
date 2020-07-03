@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
         }
         
-        private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string cloudAadAuthority, string cloudDataLakeAudience)
+        private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;
             Dictionary<string, string> clusterIdentity;
@@ -235,12 +235,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 return;
             }
-            clusterIdentity.SetProperty("clusterIdentity.resourceUri", cloudDataLakeAudience);
+            clusterIdentity["clusterIdentity.resourceUri"]=dataLakeAudience;
 
             string aadTenantIdWithUrl;
             clusterIdentity.TryGetValue("clusterIdentity.aadTenantId", out aadTenantIdWithUrl);
-            string newAadTenantIdWithUrl = aadTenantIdWithUrl?.Replace("https://login.windows.net/", cloudAadAuthority);
-            clusterIdentity.SetProperty("clusterIdentity.aadTenantId", newAadTenantIdWithUrl);
+
+            const string defaultPubliCloudAadAuthority= "https://login.windows.net/";
+            string newAadTenantIdWithUrl = aadTenantIdWithUrl?.Replace(defaultPubliCloudAadAuthority, aadAuthority);
+            clusterIdentity["clusterIdentity.aadTenantId"]=newAadTenantIdWithUrl;
         }
     }
 }
