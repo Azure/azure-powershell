@@ -163,5 +163,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRepair");
         }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetImageVersion()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageVersion");
+        }
     }
 }
