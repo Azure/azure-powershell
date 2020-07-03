@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a724c543-53ce-44a6-b633-e11ef27839b7/providers/Microsoft.Attestation/defaultProviders?api-version=2018-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTcyNGM1NDMtNTNjZS00NGE2LWI2MzMtZTExZWYyNzgzOWI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vZGVmYXVsdFByb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/f782b158-10b8-4a42-b9e4-f7fbaf769f35/providers/Microsoft.Attestation/defaultProviders?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc4MmIxNTgtMTBiOC00YTQyLWI5ZTQtZjdmYmFmNzY5ZjM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vZGVmYXVsdFByb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ac9190d1-a50e-4688-9b2e-5474465f416d"
+          "62f9961b-9b58-42fd-8843-7e98edc1fba7"
         ],
         "Accept-Language": [
           "en-US"
@@ -29,19 +29,21 @@
         "x-ms-original-request-ids": [
           "",
           "",
-          ""
+          "00-ee7b5219acf343fc6091b61dcdc5d6bf-0000000000000000-00",
+          "00-d469bf99ce2f1b48f1e8f6c662f07bc0-0000000000000000-00",
+          "00-8c72abcb00f840fe4bb1f47c67fabb08-0000000000000000-00"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "d5ce0147-5b00-471f-9c44-8bd2f26effc8"
+          "c72ced98-19f0-4d5f-aee0-2a3b6a31a9bb"
         ],
         "x-ms-correlation-request-id": [
-          "d5ce0147-5b00-471f-9c44-8bd2f26effc8"
+          "c72ced98-19f0-4d5f-aee0-2a3b6a31a9bb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T192238Z:d5ce0147-5b00-471f-9c44-8bd2f26effc8"
+          "WESTUS:20200703T001220Z:c72ced98-19f0-4d5f-aee0-2a3b6a31a9bb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,7 +52,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 19:22:38 GMT"
+          "Fri, 03 Jul 2020 00:12:19 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -59,15 +61,15 @@
           "-1"
         ],
         "Content-Length": [
-          "864"
+          "1440"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus2\",\r\n      \"name\": \"sharedeus2\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"East US 2\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedeus2.eus2.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedcus\",\r\n      \"name\": \"sharedcus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedcus.cus.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/shareduks\",\r\n      \"name\": \"shareduks\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"UK South\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://shareduks.uks.attest.azure.net\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus2\",\r\n      \"name\": \"sharedeus2\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"East US 2\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedeus2.eus2.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedcus\",\r\n      \"name\": \"sharedcus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedcus.cus.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedwus\",\r\n      \"name\": \"sharedwus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"West US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedwus.us.test.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n      \"name\": \"sharedeus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"East US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedeus.eus.test.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/shareduks\",\r\n      \"name\": \"shareduks\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"UK South\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://shareduks.uks.test.attest.azure.net\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "a724c543-53ce-44a6-b633-e11ef27839b7"
+    "SubscriptionId": "f782b158-10b8-4a42-b9e4-f7fbaf769f35"
   }
 }

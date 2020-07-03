@@ -22,7 +22,7 @@ function Test-CreateAttestation
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
 	$attestationName2 = getAssetName
-	$location = "Central US"
+	$location = "East US"
 
 	try
 	{
@@ -55,7 +55,7 @@ function Test-CreateAttestation
 function Test-CreateAttestationWithPolicySigningCertificate
 {
 	$attestationName = getAssetName
-	$location = "Central US"
+	$location = "East US"
 	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 	$PemDir = Join-Path $TestOutputRoot "PemFiles"
     $file = Join-Path $PemDir "policySigningCerts.pem"
@@ -83,7 +83,7 @@ function Test-CreateAttestationWithPolicySigningCertificate
 function Test-CreateAttestationWithTags
 {
 	$attestationName = getAssetName
-	$location = "Central US"
+	$location = "East US"
 	$tags = @{Key1="value1";Key2="value2";Key3="value3"}
 
 	try
@@ -114,7 +114,7 @@ Test Get-AzAttestation
 function Test-GetAttestation
 {
 	$attestationName = getAssetName
-	$location = "Central US"
+	$location = "East US"
 	
 	try
 	{
@@ -165,15 +165,15 @@ function Test-GetDefaultProviders
 
 function Test-GetDefaultProviderByLocation
 {
-	$location = "Central US"
+	$location = "East US"
 
 	$got = Get-AzAttestation -DefaultProvider -Location $location
 
 	Assert-NotNull $got
-	Assert-AreEqual "sharedcus" $got.Name
+	Assert-AreEqual "sharedeus" $got.Name
 	Assert-AreEqual $location $got.Location
-	Assert-AreEqual "https://sharedcus.cus.attest.azure.net" $got.AttestUri
-	Assert-AreEqual "/providers/Microsoft.Attestation/attestationProviders/sharedcus" $got.Id
+	Assert-AreEqual "https://sharedeus.eus.test.attest.azure.net" $got.AttestUri
+	Assert-AreEqual "/providers/Microsoft.Attestation/attestationProviders/sharedeus" $got.Id
 	Assert-NotNull $got.Status
 }
 
@@ -185,7 +185,7 @@ Test Remove-AzAttestation
 function Test-DeleteAttestationByName
 {
 	$attestationName = getAssetName
-	$location = "Central US"
+	$location = "East US"
 
 	try
 	{
