@@ -25,11 +25,11 @@ The **Disable-AzRecoveryServicesBackupAutoProtection** cmdlet disables protectio
 
 ### Example 1
 ```powershell
-PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
-PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Disable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Name "TestSQLServerVM"
+PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" -Name "MSSQLInstance"| Disable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"
 ```
 
-The first cmdlet disables the Backup protection policy.
+The first cmdlet gets the Backup container of type AzureVMAppContainer.  The second cmdlet gets  the protectable BackupItem and disables auto protection.
 
 ### Example 2
 
@@ -42,13 +42,13 @@ Disable-AzRecoveryServicesBackupAutoProtection -BackupManagementType AzureVM -In
 ## PARAMETERS
 
 ### -BackupManagementType
-Backup Management type of the resource (for example: MAB, DPM).
+The class of resources being protected. Currently the value supported for this cmdlet is AzureWorkload
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureWorkload
 
 Required: True
 Position: 1
@@ -118,13 +118,13 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource. The current supported value is "MSSQL"
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+Accepted values: MSSQL
 
 Required: True
 Position: 2

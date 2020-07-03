@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = StopSparkJobByIdParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class StopAzureSynapseSparkJob : SynapseCmdletBase
+    public class StopAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string StopSparkJobByIdParameterSetName = "StopSparkJobByIdParameterSet";
         private const string StopSparkJobByIdFromParentObjectParameterSet = "StopSparkJobByIdFromParentObjectParameterSet";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopSparkJobByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = StopSparkJobByIdFromParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 LivyId.ToString(),
                 () =>
                 {
-                    SynapseAnalyticsClient.CancelSparkBatchJob(WorkspaceName, SparkPoolName, LivyId, waitForCompletion: false);
+                    SynapseAnalyticsClient.CancelSparkBatchJob(LivyId, waitForCompletion: false);
                     if (PassThru)
                     {
                         WriteObject(true);

@@ -81,14 +81,13 @@ Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azu
 
 ### -BackupManagementType
 
-Specifies the Backup management type.
-Currently, only AzureVM, AzureStorage is supported.
+The class of resources being protected. Currently the values supported for this cmdlet are AzureVM, AzureStorage, AzureWorkload.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, AzureStorage, AzureWorkload
 
 Required: False
 Position: Named
