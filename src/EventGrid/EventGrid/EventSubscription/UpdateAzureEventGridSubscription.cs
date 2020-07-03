@@ -505,35 +505,35 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = DomainEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateRange(1, 1024)]
-        public int PreferredBatchSizeInKiloBytes { get; set; }
+        public int PreferredBatchSizeInKiloByte { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string scope;
                 RetryPolicy retryPolicy = null;
                 int? maxEventsPerBatch = null;
-                int? preferredBatchSizeInKiloBytes = null;
+                int? preferredBatchSizeInKiloByte = null;
                 string aadAppIdOrUri = string.Empty;
                 string aadTenantId = string.Empty;
 
@@ -678,23 +678,23 @@ namespace Microsoft.Azure.Commands.EventGrid
                     if (dest != null)
                     {
                         maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? (int?)this.MaxEventsPerBatch : dest.MaxEventsPerBatch.HasValue ? dest.MaxEventsPerBatch : null;
-                        preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? (int?)this.PreferredBatchSizeInKiloBytes : dest.PreferredBatchSizeInKilobytes.HasValue ? dest.PreferredBatchSizeInKilobytes : null;
+                        preferredBatchSizeInKiloByte = this.IsParameterBound(c => c.PreferredBatchSizeInKiloByte) ? (int?)this.PreferredBatchSizeInKiloByte : dest.PreferredBatchSizeInKilobytes.HasValue ? dest.PreferredBatchSizeInKilobytes : null;
                         aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : dest.AzureActiveDirectoryApplicationIdOrUri;
                         aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : dest.AzureActiveDirectoryTenantId;
                     }
                     else
                     {
                         maxEventsPerBatch = this.IsParameterBound(c => c.MaxEventsPerBatch) ? (int?)this.MaxEventsPerBatch : null;
-                        preferredBatchSizeInKiloBytes = this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes) ? (int?)this.PreferredBatchSizeInKiloBytes : null;
+                        preferredBatchSizeInKiloByte = this.IsParameterBound(c => c.PreferredBatchSizeInKiloByte) ? (int?)this.PreferredBatchSizeInKiloByte : null;
                         aadAppIdOrUri = this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) ? this.AzureActiveDirectoryApplicationIdOrUri : string.Empty;
                         aadTenantId = this.IsParameterBound(c => c.AzureActiveDirectoryTenantId) ? this.AzureActiveDirectoryTenantId : string.Empty;
                     }
                 }
                 else
                 {
-                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes))
+                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloByte))
                     {
-                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloBytes are supported when EndpointType is webhook only.");
+                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloByte are supported when EndpointType is webhook only.");
                     }
 
                     if (this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) || this.IsParameterBound(c => c.AzureActiveDirectoryTenantId))
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     expirationDate: this.ExpirationDate,
                     advancedFilter: this.AdvancedFilter,
                     maxEventsPerBatch: maxEventsPerBatch,
-                    preferredBatchSizeInKiloBytes: preferredBatchSizeInKiloBytes,
+                    preferredBatchSizeInKiloByte: preferredBatchSizeInKiloByte,
                     aadAppIdOrUri: aadAppIdOrUri,
                     aadTenantId: aadTenantId);
 

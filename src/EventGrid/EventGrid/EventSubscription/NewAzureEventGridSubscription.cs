@@ -786,45 +786,45 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = DomainEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = EventSubscriptionDomainInputObjectParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloBytesHelp,
+            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
         [ValidateRange(1, 1024)]
-        public int PreferredBatchSizeInKiloBytes { get; set; }
+        public int PreferredBatchSizeInKiloByte { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -958,9 +958,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                 if (!string.Equals(this.EndpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloBytes))
+                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloByte))
                     {
-                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloBytes are supported when EndpointType is webhook only.");
+                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloByte are supported when EndpointType is webhook only.");
                     }
 
                     if (this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) || this.IsParameterBound(c => c.AzureActiveDirectoryTenantId))
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     this.ExpirationDate,
                     this.AdvancedFilter,
                     this.MaxEventsPerBatch,
-                    this.PreferredBatchSizeInKiloBytes,
+                    this.PreferredBatchSizeInKiloByte,
                     this.AzureActiveDirectoryTenantId,
                     this.AzureActiveDirectoryApplicationIdOrUri);
 

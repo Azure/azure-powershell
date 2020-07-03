@@ -1134,7 +1134,7 @@ function EventSubscriptionTests_CustomTopic_Webhook_Batching {
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
 
         Write-Debug "Creating a new EventSubscription $eventSubscriptionName2 to topic $topicName in resource group $resourceGroupName"
-        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EndpointType webhook -EventSubscriptionName $eventSubscriptionName2 -MaxDeliveryAttempt 10 -MaxEventsPerBatch 1002 -PreferredBatchSizeInKiloBytes 1000
+        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EndpointType webhook -EventSubscriptionName $eventSubscriptionName2 -MaxDeliveryAttempt 10 -MaxEventsPerBatch 1002 -PreferredBatchSizeInKiloByte 1000
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
         $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
@@ -1144,7 +1144,7 @@ function EventSubscriptionTests_CustomTopic_Webhook_Batching {
         try
         {
             Write-Debug "Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 21 -MaxEventsPerBatch 100002 -PreferredBatchSizeInKiloBytes 1000
+            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 21 -MaxEventsPerBatch 100002 -PreferredBatchSizeInKiloByte 1000
             Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as MaxEventsPerBatch range is invalid"
         }
         catch
@@ -1155,8 +1155,8 @@ function EventSubscriptionTests_CustomTopic_Webhook_Batching {
         try
         {
             Write-Debug "Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -MaxDeliveryAttempt 30 -MaxEventsPerBatch 102 -PreferredBatchSizeInKiloBytes 100000
-            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as PreferredBatchSizeInKiloBytes range is invalid"
+            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -MaxDeliveryAttempt 30 -MaxEventsPerBatch 102 -PreferredBatchSizeInKiloByte 100000
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as PreferredBatchSizeInKiloByte range is invalid"
         }
         catch
         {
@@ -1166,8 +1166,8 @@ function EventSubscriptionTests_CustomTopic_Webhook_Batching {
         try
         {
             Write-Debug "Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionAzureFunctionEndpoint -EndpointType "azurefunction" $eventSubscriptionName3 -MaxDeliveryAttempt 30 -MaxEventsPerBatch 102 -PreferredBatchSizeInKiloBytes 1000
-            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as -MaxEventsPerBatch and -PreferredBatchSizeInKiloBytes is used for non webhook type"
+            $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionAzureFunctionEndpoint -EndpointType "azurefunction" $eventSubscriptionName3 -MaxDeliveryAttempt 30 -MaxEventsPerBatch 102 -PreferredBatchSizeInKiloByte 1000
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as -MaxEventsPerBatch and -PreferredBatchSizeInKiloByte is used for non webhook type"
         }
         catch
         {
@@ -1199,7 +1199,7 @@ function EventSubscriptionTests_CustomTopic_Webhook_Batching {
         Assert-True {$webHookDestination.PreferredBatchSizeInKiloBytes -eq 1000}
 
         Write-Debug "Updating eventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
-        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -MaxEventsPerBatch 502 -PreferredBatchSizeInKiloBytes 1010
+        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -MaxEventsPerBatch 502 -PreferredBatchSizeInKiloByte 1010
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
         $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
@@ -1267,7 +1267,7 @@ function EventSubscriptionTests_CustomTopic_Webhook_AAD {
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
 
         Write-Debug "Creating a new EventSubscription $eventSubscriptionName2 to topic $topicName in resource group $resourceGroupName"
-        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EndpointType webhook -EventSubscriptionName $eventSubscriptionName2 -MaxDeliveryAttempt 10 -MaxEventsPerBatch 1002 -PreferredBatchSizeInKiloBytes 1000 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
+        $result = New-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EndpointType webhook -EventSubscriptionName $eventSubscriptionName2 -MaxDeliveryAttempt 10 -MaxEventsPerBatch 1002 -PreferredBatchSizeInKiloByte 1000 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
         $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
@@ -1316,7 +1316,7 @@ function EventSubscriptionTests_CustomTopic_Webhook_AAD {
         Assert-True {$webHookDestination.AzureActiveDirectoryTenantId -eq $aadTenantTd}
 
         Write-Debug "Updating eventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
-        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -MaxEventsPerBatch 502 -PreferredBatchSizeInKiloBytes 1010 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
+        $result = Update-AzEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -MaxEventsPerBatch 502 -PreferredBatchSizeInKiloByte 1010 -AzureActiveDirectoryApplicationIdOrUri $aadAppIdOrUri -AzureActiveDirectoryTenantId $aadTenantTd
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
         $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
         Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint

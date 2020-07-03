@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
         public const string MaxEventsPerBatchHelp = "The maximum number of events in a batch. This value must be between 1 and 5000. This parameter is valid when Endpint Type is webhook only.";
-        public const string PreferredBatchSizeInKiloBytesHelp = "The preferred batch size in kilobytes. This value must be between 1 and 1024. This parameter is valid when Endpint Type is webhook only.";
+        public const string PreferredBatchSizeInKiloByteHelp = "The preferred batch size in kilobytes. This value must be between 1 and 1024. This parameter is valid when Endpint Type is webhook only.";
 
         public const string AzureActiveDirectoryTenantIdHelp = "The Azure Active Directory (AAD) Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
         public const string AzureActiveDirectoryApplicationIdOrUriHelp = "The Azure Active Directory (AAD) Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";

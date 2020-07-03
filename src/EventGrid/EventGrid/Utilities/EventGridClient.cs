@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             DateTime expirationDate,
             Hashtable[] advancedFilter,
             int maxEventsPerBatch,
-            int preferredBatchSizeInKiloBytes,
+            int preferredBatchSizeInKiloByte,
             string aadTenantId,
             string aadAppIdOrUri)
         {
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     EndpointUrl = endpoint,
                     MaxEventsPerBatch = (maxEventsPerBatch == 0) ? (int?) null : maxEventsPerBatch,
-                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloBytes == 0) ? (int?)null : preferredBatchSizeInKiloBytes,
+                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloByte == 0) ? (int?)null : preferredBatchSizeInKiloByte,
                     AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
                     AzureActiveDirectoryTenantId = aadTenantId
                 };
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             DateTime expirationDate,
             Hashtable[] advancedFilter,
             int? maxEventsPerBatch,
-            int? preferredBatchSizeInKiloBytes,
+            int? preferredBatchSizeInKiloByte,
             string aadAppIdOrUri,
             string aadTenantId)
         {
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     {
                         EndpointUrl = endpoint,
                         MaxEventsPerBatch = maxEventsPerBatch,
-                        PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloBytes,
+                        PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloByte,
                         AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
                         AzureActiveDirectoryTenantId = aadTenantId
                     };
