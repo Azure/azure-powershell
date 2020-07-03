@@ -139,7 +139,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Location = parameters.Location,
                             Tags = parameters.Tags?.ToDictionary(),
                             RepoConfiguration = parameters.RepoConfiguration,
-                            Identity = new FactoryIdentity()
+                            Identity = new FactoryIdentity(),
+                            GlobalParameters = parameters.GlobalParameters
                         }),
                     parameters.ResourceGroupName);
             };
