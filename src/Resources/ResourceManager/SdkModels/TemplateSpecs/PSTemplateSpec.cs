@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public PSTemplateSpec() { }
 
-        internal PSTemplateSpec(TemplateSpecModel templateSpec)
+        internal PSTemplateSpec(TemplateSpec templateSpec)
         {
             this.Id = templateSpec.Id;
             this.Type = templateSpec.Type;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.Tags = templateSpec.Tags;
         }
 
-        internal static PSTemplateSpec FromAzureSDKTemplateSpec(TemplateSpecModel templateSpec)
+        internal static PSTemplateSpec FromAzureSDKTemplateSpec(TemplateSpec templateSpec)
         {
             return templateSpec != null 
                 ? new PSTemplateSpec(templateSpec)
@@ -92,8 +92,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public PSTemplateSpecVersion Version { get; set; }
 
-        internal PSTemplateSpecSingleVersion(TemplateSpecModel templateSpecModel, 
-            TemplateSpecVersionModel versionModel) : base(templateSpecModel)
+        internal PSTemplateSpecSingleVersion(TemplateSpec templateSpecModel, 
+            TemplateSpecVersion versionModel) : base(templateSpecModel)
         {
             // TODO: Validate version belongs to templateSpecModel
             this.Version = PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(versionModel);
@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public PSTemplateSpecVersion[] Versions { get; set; }
 
-        internal PSTemplateSpecMultiVersion(TemplateSpecModel templateSpecModel,
-            TemplateSpecVersionModel[] versionModels) : base(templateSpecModel)
+        internal PSTemplateSpecMultiVersion(TemplateSpec templateSpecModel,
+            TemplateSpecVersion[] versionModels) : base(templateSpecModel)
         {
             if (versionModels == null)
             {

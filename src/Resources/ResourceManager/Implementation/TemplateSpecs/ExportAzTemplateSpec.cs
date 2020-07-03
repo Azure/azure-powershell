@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name = Name ?? ResourceIdUtility.GetResourceName(ResourceId);
 
                 // Get the template spec version model from the SDK:
-                TemplateSpecVersionModel specificVersion = 
+                TemplateSpecVersion specificVersion = 
                     TemplateSpecsSdkClient.TemplateSpecsClient.TemplateSpecVersions.Get(
                         ResourceGroupName,
                         Name,

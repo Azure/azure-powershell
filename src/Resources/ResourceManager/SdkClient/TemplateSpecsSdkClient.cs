@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (templateSpecVersion == null)
             {
-                List<TemplateSpecVersionModel> allVersions = new List<TemplateSpecVersionModel>();
+                List<TemplateSpecVersion> allVersions = new List<TemplateSpecVersion>();
 
                 var versionPage = TemplateSpecsClient.TemplateSpecVersions.List(resourceGroupName, templateSpecName);
                 allVersions.AddRange(versionPage);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             // We have a specific version specified:
 
-            TemplateSpecVersionModel specificVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
+            TemplateSpecVersion specificVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
                 resourceGroupName,
                 templateSpecName,
                 templateSpecVersion
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return list;
         }
 
-        private TemplateSpecModel GetAzureSdkTemplateSpec(
+        private TemplateSpec GetAzureSdkTemplateSpec(
             string resourceGroupName,
             string templateSpecName,
             bool throwIfNotExists = true)
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 templateSpecDescription
             );
 
-            var templateSpecVersionModel = new TemplateSpecVersionModel
+            var templateSpecVersionModel = new TemplateSpecVersion
             {
                 Location = templateSpecModel.Location,
                 Template = packagedTemplate.RootTemplate,
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <see cref="CreateOrUpdateTemplateSpec(string, string, string, string, string)"/>
         /// for the method that returns the wrapped model.
         /// </remarks>
-        protected TemplateSpecModel CreateOrUpdateTemplateSpecInternal(
+        protected TemplateSpec CreateOrUpdateTemplateSpecInternal(
             string resourceGroupName,
             string templateSpecName,
             string location,
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
-            var templateSpecModel = new TemplateSpecModel
+            var templateSpecModel = new TemplateSpec
             {
                 Location = location,
                 Description = templateSpecDescription ?? existingTemplateSpec?.Description,

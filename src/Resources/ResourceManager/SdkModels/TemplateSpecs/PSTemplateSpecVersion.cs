@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// <param name="templateSpecVersion">The Azure SDK template spec model</param>
         /// <returns>The converted model or null if no model was specified</returns>
         internal static PSTemplateSpecVersion FromAzureSDKTemplateSpecVersion(
-            TemplateSpecVersionModel templateSpecVersion)
+            TemplateSpecVersion templateSpecVersion)
         {
             if (templateSpecVersion == null)
             {
