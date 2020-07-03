@@ -163,9 +163,9 @@ param(
         
         if ($PSBoundParameters.ContainsKey('ClusterType')) {
             if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            } elseif ($ClusterType -eq 'ConnectedClusters') {
                 $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            } elseif ($ClusterType -eq 'ConnectedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
             }
         }
 
