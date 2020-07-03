@@ -108,8 +108,7 @@ function New-AzWvdHostPool_FullSenerioCreate {
         $null = $PSBoundParameters.Remove("DesktopAppGroupName")
         $null = $PSBoundParameters.Remove("WorkspaceName")
         
-        $hostpool = Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters `
-            -MaxSessionLimit 5
+        $hostpool = Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters
 
         $null = $PSBoundParameters.Remove("HostPoolType")
         $null = $PSBoundParameters.Remove("LoadBalancerType")
