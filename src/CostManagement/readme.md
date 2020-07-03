@@ -48,8 +48,8 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  # - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2019-11-01/costmanagement.json
-  - $(this-folder)/resources/costmanagement.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2019-11-01/costmanagement.json
+  # - $(this-folder)/resources/costmanagement.json
 title: CostManagement
 module-version: 0.1.0
 
@@ -80,7 +80,7 @@ directive:
       verb: invoke
     remove: true
   - where:
-      subject: Alert|AlertExternal|Dimension|ExportExecutionHistory|View
+      subject: Alert|AlertExternal|Dimension|View
     remove: true
   - from: source-file-csharp
     where: $
@@ -93,30 +93,30 @@ directive:
           - NextLink
           - Column
           - Row
-  # - from: swagger-document
-  #   where: $.definitions.AlertProperties.properties.details.properties.resourceGroupFilter.items
-  #   transform: >-
-  #       return {
-  #         "type": "string"
-  #       }
-  # - from: swagger-document
-  #   where: $.definitions.AlertProperties.properties.details.properties.resourceFilter.items
-  #   transform: >-
-  #       return {
-  #         "type": "string"
-  #       }
-  # - from: swagger-document
-  #   where: $.definitions.AlertProperties.properties.details.properties.meterFilter.items
-  #   transform: >-
-  #       return {
-  #         "type": "string"
-  #       }
-  # - from: swagger-document
-  #   where: $.definitions.QueryProperties.rows.items.items
-  #   transform: >-
-  #       return {
-  #         "type": "string"
-  #       }
+  - from: swagger-document
+    where: $.definitions.AlertProperties.properties.details.properties.resourceGroupFilter.items
+    transform: >-
+        return {
+          "type": "string"
+        }
+  - from: swagger-document
+    where: $.definitions.AlertProperties.properties.details.properties.resourceFilter.items
+    transform: >-
+        return {
+          "type": "string"
+        }
+  - from: swagger-document
+    where: $.definitions.AlertProperties.properties.details.properties.meterFilter.items
+    transform: >-
+        return {
+          "type": "string"
+        }
+  - from: swagger-document
+    where: $.definitions.QueryProperties.properties.rows.items.items
+    transform: >-
+        return {
+          "type": "string"
+        }
 
   - no-inline:
     - QueryFilter
