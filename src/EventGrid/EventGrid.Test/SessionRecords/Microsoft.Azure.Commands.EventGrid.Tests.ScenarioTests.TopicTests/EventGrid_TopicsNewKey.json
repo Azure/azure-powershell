@@ -384,7 +384,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"Zr5ylXO8m2vxi1Nti4/omRLc5qKSr5CK8/DvqZ1sTM4=\",\r\n  \"key2\": \"wYcqGbI9bkVE3JnoLuBjvf0zftMpwFMJaqxIO/7nyek=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -453,7 +453,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"Zr5ylXO8m2vxi1Nti4/omRLc5qKSr5CK8/DvqZ1sTM4=\",\r\n  \"key2\": \"UxrhvE7pa7N34MFIjR3yjIuIFgUpQJikAmZ+gmc5eHI=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -522,7 +522,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"Zr5ylXO8m2vxi1Nti4/omRLc5qKSr5CK8/DvqZ1sTM4=\",\r\n  \"key2\": \"8ZWmfOJnIY4vDGbbevB+b5IM8L96r2YB1TCy5hS1vQA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
       "StatusCode": 200
     },
     {
