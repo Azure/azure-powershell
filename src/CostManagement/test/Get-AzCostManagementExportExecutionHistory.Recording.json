@@ -1,0 +1,43 @@
+{
+  "Get-AzCostManagementExportExecutionHistory+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/runHistory?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/runHistory?api-version=2019-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "01ae81a0-0ec4-4553-bdcf-db1d52c0ab6b" ],
+        "CommandName": [ "Get-AzCostManagementExportExecutionHistory" ],
+        "FullCommandName": [ "Get-AzCostManagementExportExecutionHistory_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "session-id": [ "6402746e-153b-4d7a-8c12-eae907ab014c" ],
+        "x-ms-request-id": [ "0845b9a7-88dd-4bf6-9b58-f7fc66473a05" ],
+        "x-ms-correlation-request-id": [ "f4b904f4-db8a-46ba-a758-854bf7b669a1" ],
+        "x-ms-client-request-id": [ "01ae81a0-0ec4-4553-bdcf-db1d52c0ab6b" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200705T073717Z:f4b904f4-db8a-46ba-a758-854bf7b669a1" ],
+        "Date": [ "Sun, 05 Jul 2020 07:37:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/Run/9872b773-44de-475c-8d2b-fcd96aba976a\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/staaccountmhot0q\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"aggregation\":{\"cost\":{\"name\":\"Cost\",\"function\":\"Sum\"},\"costsum\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}},\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}},\"executionType\":\"Scheduled\",\"status\":\"Failed\",\"submittedBy\":\"System\",\"submittedTime\":\"2020-07-01T12:03:15.4047733Z\",\"processingStartTime\":\"2020-07-01T12:03:15.4047733Z\",\"processingEndTime\":\"2020-07-01T12:03:26.6235717Z\",\"fileName\":\"ad-hoc/export-xjsoqu/20200701-20200731/export-xjsoqu_9872b773-44de-475c-8d2b-fcd96aba976a.csv\"}},{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/Run/a4d1dd0e-a642-4cd7-8b3f-f2c8a1fd69e1\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/staaccountmhot0q\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"aggregation\":{\"cost\":{\"name\":\"Cost\",\"function\":\"Sum\"},\"costsum\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}},\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}},\"executionType\":\"Scheduled\",\"status\":\"Failed\",\"submittedBy\":\"System\",\"submittedTime\":\"2020-07-02T12:05:33.1096023Z\",\"processingStartTime\":\"2020-07-02T12:05:33.1096023Z\",\"processingEndTime\":\"2020-07-02T12:05:44.3974901Z\",\"fileName\":\"ad-hoc/export-xjsoqu/20200701-20200731/export-xjsoqu_a4d1dd0e-a642-4cd7-8b3f-f2c8a1fd69e1.csv\"}},{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/Run/c3db74b5-a5d0-4a8f-a0e9-afb344df6a26\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/staaccountmhot0q\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"aggregation\":{\"cost\":{\"name\":\"Cost\",\"function\":\"Sum\"},\"costsum\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}},\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}},\"executionType\":\"Scheduled\",\"status\":\"Failed\",\"submittedBy\":\"System\",\"submittedTime\":\"2020-07-03T12:08:32.5381073Z\",\"processingStartTime\":\"2020-07-03T12:08:32.5381073Z\",\"processingEndTime\":\"2020-07-03T12:08:43.9167209Z\",\"fileName\":\"ad-hoc/export-xjsoqu/20200701-20200731/export-xjsoqu_c3db74b5-a5d0-4a8f-a0e9-afb344df6a26.csv\"}},{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-xjsoqu/Run/34d3c3a6-4565-4aa0-9aa9-6dbd7b780f4d\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/staaccountmhot0q\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"aggregation\":{\"cost\":{\"name\":\"Cost\",\"function\":\"Sum\"},\"costsum\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}},\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}},\"executionType\":\"Scheduled\",\"status\":\"Failed\",\"submittedBy\":\"System\",\"submittedTime\":\"2020-07-04T12:07:49.5569837Z\",\"processingStartTime\":\"2020-07-04T12:07:49.5569837Z\",\"processingEndTime\":\"2020-07-04T12:08:01.4788868Z\",\"fileName\":\"ad-hoc/export-xjsoqu/20200701-20200731/export-xjsoqu_34d3c3a6-4565-4aa0-9aa9-6dbd7b780f4d.csv\"}}]}"
+    }
+  }
+}
