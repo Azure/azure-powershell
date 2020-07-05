@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_AzureSubscription()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
+            // NOTE: Uncomment when testing in live mode.
+            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
         }
 
         [Fact]
@@ -98,7 +99,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_Deadletter()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
+            // NOTE: Uncomment when testing in live mode.
+            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
         }
 
         [Fact]
