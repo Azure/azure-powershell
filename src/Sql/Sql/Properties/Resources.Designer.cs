@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Invalid server name: &apos;{0}&apos;. Server name can contain only lowercase letters, number..
+        ///   Looks up a localized string similar to The server name &apos;{0}&apos; cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists..
         /// </summary>
         internal static string ServerNameInvalid {
             get {

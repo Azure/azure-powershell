@@ -101,8 +101,12 @@ namespace Microsoft.Azure.Commands.Sql.Services
             // Basic character validation
             foreach (char c in serverName)
             {
-                if (char.IsUpper(c)) return false;
+                if (char.IsUpper(c) || c == '.' || c == '_') return false;
             }
+
+            // Additional LiveDns restrictions
+            if (serverName.StartsWith("-", StringComparison.Ordinal) || serverName.EndsWith("-", StringComparison.Ordinal)) return false;
+
             return true;
         }
     }
