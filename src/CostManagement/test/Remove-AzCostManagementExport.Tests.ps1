@@ -15,7 +15,7 @@ Describe 'Remove-AzCostManagementExport' {
     It 'Delete' {
         Remove-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName04
         $exportList = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)"
-        $exportList.Name| Should -Not -Contain $env.exportName02
+        $exportList.Name| Should -Not -Contain $env.exportName04
     }
 
     It 'DeleteViaIdentity' {

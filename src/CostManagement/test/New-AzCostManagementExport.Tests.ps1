@@ -20,6 +20,7 @@ Describe 'New-AzCostManagementExport' {
         -DestinationResourceId $env.storageAccountId `
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
         -DatasetGranularity "Daily" 
+
         $export.ScheduleStatus | Should -Be 'Active'
     }
     It 'CreateExpandedByResourceGroup' {
@@ -30,6 +31,7 @@ Describe 'New-AzCostManagementExport' {
         -DestinationResourceId $env.storageAccountId `
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
         -DatasetGranularity "Daily" 
+
         $export.ScheduleStatus | Should -Be 'Active'
     }
     It 'CreateExpandedByColumn' {
@@ -40,6 +42,7 @@ Describe 'New-AzCostManagementExport' {
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
         -DatasetGranularity "Daily" `
         -ConfigurationColumn @('SubscriptionGuid', 'MeterId', 'InstanceId', 'ResourceGroup', 'PreTaxCost')
+
         $export.ScheduleStatus | Should -Be 'Active'
     }
 
@@ -51,25 +54,25 @@ Describe 'New-AzCostManagementExport' {
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
         -DatasetGranularity "Daily" `
         -DatasetGrouping @(@{type='Dimension'; name='ResourceGroup'})
+
         $export.ScheduleStatus | Should -Be 'Active'
     }
-    It 'CreateExpandedByGroupAggregation' -skip {
+    It 'CreateExpandedByGroupAggregation' {
         #Group Aggregation: Created successfully, No data generated in the storage account
-        #TODO: The issue fix
-        <#
         $Aggregation1 = @{ name = 'PreTaxCost'; function='sum'}
         $Aggregation2 = @{ name = 'Cost'; function='sum'}
         $AggregationDict = @{costsum=$aggregation1; cost=$aggregation2}
 
-        New-AzCostManagementExport -Debug -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name "ps-groupaggregation-t" `
-        -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom "2020-06-29T13:00:00Z" `
-        -RecurrencePeriodTo "2020-07-01T00:00:00Z" -Format "Csv" `
-        -DestinationResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/lucasstorageaccount" `
+        $export =  New-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName06 `
+        -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom $env.fromDate `
+        -RecurrencePeriodTo $env.toDate -Format "Csv" `
+        -DestinationResourceId $env.storageAccountId `
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
         -DatasetGranularity "Daily" `
         -DatasetGrouping @(@{type='Dimension'; name='ResourceGroup'}) `
         -DatasetAggregation $AggregationDict
-        #>
+
+        $export.ScheduleStatus | Should -Be 'Active'
     }
 
     It 'CreateExpandedByFilter' -skip {

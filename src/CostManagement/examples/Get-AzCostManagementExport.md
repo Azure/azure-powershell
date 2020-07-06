@@ -33,13 +33,3 @@ TestExport Microsoft.CostManagement/exports
 
 This command gets a cost management export by object.
 
-### Example 4: Get a cost management export by pipeline
-```powershell
-PS C:\> @{Id = 'subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/TestExport' } | Get-AzCostManagementExport
-
-Name       Type
-----       ----
-TestExport Microsoft.CostManagement/exports
-```
-
-This command gets a cost management export by pipeline.

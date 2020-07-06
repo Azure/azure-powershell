@@ -13,13 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Invoke-AzCostManagementExecuteExport' {
     It 'Execute'  {
-        { Invoke-AzCostManagementExecuteExport -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01 } | Should -Not -Throw
+        Invoke-AzCostManagementExecuteExport -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01 
+        $exportHist = Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
+        $exportHist.Count | Should -Be 2
     }
 
     It 'ExecuteViaIdentity'  {
-        { 
-            $export = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
-            Invoke-AzCostManagementExecuteExport -InputObject $export
-        } | Should -Not -Throw
+        $export = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
+        Invoke-AzCostManagementExecuteExport -InputObject $export
+        $exportHist = Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
+        $exportHist.Count | Should -Be 3
     }
 }

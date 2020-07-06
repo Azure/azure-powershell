@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccounts_name": {
-            "defaultValue": "staaccountmhot0q",
+            "defaultValue": "staaccountjshubiu",
             "type": "String"
         }
     },

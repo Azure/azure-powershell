@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzCostManagementExportExecutionHistory' {
     It 'Get' {
-        { Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01 } | Should -Not -Throw
+        $exportHist = Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
+        $exportHist.Count | Should -Be 1
     }
 
-    It 'GetViaIdentity' -skip {
-        # An exception "Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory'" was thrown
-        # TODO: The issue fix
+    It 'GetViaIdentity' {
         $export = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
-        { Get-AzCostManagementExportExecutionHistory -InputObject  $export} | Should -Not -Throw
+        $exportHist = Get-AzCostManagementExportExecutionHistory -InputObject $export
+        $exportHist.Count | Should -Be 1
     }
 }

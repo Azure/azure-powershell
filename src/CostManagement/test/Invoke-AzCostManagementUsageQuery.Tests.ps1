@@ -12,8 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzCostManagementUsageQuery' {
-    It 'UsageExpanded' {
-        #Import-Module -Name D:\azure-service\_AzurePowershellTest\azure-powershell\src\CostManagement\generated\modules\Az.Accounts\1.9.0 -Verbose
-        { Invoke-AzCostManagementUsageQuery -Scope "subscriptions/$($env.SubscriptionId)" -Timeframe MonthToDate -Type Usage  -DatasetGranularity 'daily' } | Should -Not -Throw
+    It 'UsageExpanded' -Skip {
+        # The record file not generated, Because using Invoke-AzRest when call Invoke-AzCostManagementUsageQuery.
+        # TODO: When Invoke-AzRest support record model.
+        { Invoke-AzCostManagementUsageQuery -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Timeframe MonthToDate -Type Usage  -DatasetGranularity 'daily' } | Should -Not -Throw
     }
 }

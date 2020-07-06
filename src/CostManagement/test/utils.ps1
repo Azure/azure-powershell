@@ -27,15 +27,22 @@ function setupEnv() {
     $exportName03 = 'export-' + (RandomString -allChars $false -len 6)
     $exportName04 = 'export-' + (RandomString -allChars $false -len 6)
     $exportName05 = 'export-' + (RandomString -allChars $false -len 6)
+    $exportName06 = 'export-' + (RandomString -allChars $false -len 6)
+    $exportName07 = 'export-' + (RandomString -allChars $false -len 6)
+    $exportName08 = 'export-' + (RandomString -allChars $false -len 6)
 
     $null = $env.Add('exportName01', $exportName01)
     $null = $env.Add('exportName02', $exportName02)
     $null = $env.Add('exportName03', $exportName03)
     $null = $env.Add('exportName04', $exportName04)
     $null = $env.Add('exportName05', $exportName05)
+    $null = $env.Add('exportName06', $exportName06)
+    $null = $env.Add('exportName07', $exportName07)
+    $null = $env.Add('exportName08', $exportName08)
 
     Write-Host -ForegroundColor Green "Create test group..."
     $resourceGroup = 'costmanagement-rg-' + (RandomString -allChars $false -len 6)
+    Write-Host $resourceGroup
     New-AzResourceGroup -Name $resourceGroup -Location $env.location
     $null = $env.Add('resourceGroup', $resourceGroup)
     Write-Host -ForegroundColor Green 'The test group create completed.'
@@ -52,7 +59,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $staaccountParam)
     #> 
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -ResourceGroupName $env.resourceGroup
-    $staaccountName = 'staaccountmhot0q' # Value in template.json
+    $staaccountName = 'staaccountjshubiu' # Value in template.json
     $env.storageAccountId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Storage/storageAccounts/$($staaccountName)"
     Start-Sleep -s 60 # Waiting storage account create complete.
     Write-Host -ForegroundColor Green "The storage account deployed successfully."
@@ -67,6 +74,8 @@ function setupEnv() {
     -DestinationResourceId $env.storageAccountId `
     -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" `
     -DefinitionTimeframe "MonthToDate" -DatasetGranularity "Daily" 
+
+    Invoke-AzCostManagementExecuteExport -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
 
     Write-Host -ForegroundColor Green "The cost management export created successfully."
 
