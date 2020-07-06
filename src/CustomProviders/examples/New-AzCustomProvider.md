@@ -17,7 +17,6 @@ PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace2.Type -Loca
 Location  Name             Type
 --------  ----             ----
 West US 2 Namespace2.Type   Microsoft.CustomProviders/resourceproviders
-
 ```
 
 Create a custom provider, with a route for Custom provider associations.
