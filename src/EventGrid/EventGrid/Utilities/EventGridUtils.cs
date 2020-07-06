@@ -20,6 +20,47 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 {
     class EventGridUtils
     {
+        public static void GetResourceGroupNameAndTopicName(
+            string resourceId,
+            out string resourceGroupName,
+            out string topicName)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException(nameof(resourceId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 8)
+            {
+                throw new Exception($"ResourceId {resourceId} not in the expected format");
+            }
+
+            resourceGroupName = tokens[3];
+            topicName = tokens[7];
+        }
+
+        public static void GetResourceGroupNameAndDomainName(string resourceId, out string resourceGroupName, out string domainName)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException(nameof(resourceId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/domains/domain1
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 8)
+            {
+                throw new Exception($"ResourceId {resourceId} not in the expected format");
+            }
+
+            resourceGroupName = tokens[3];
+            domainName = tokens[7];
+        }
+
         public static void GetResourceGroupNameAndDomainNameAndDomainTopicName(
             string resourceId,
             out string resourceGroupName,
@@ -122,6 +163,53 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
                 !Endpoint.ToLowerInvariant().Contains("logic.azure.com") &&
                 !Endpoint.ToLowerInvariant().Contains("hookbin") &&
                 !Endpoint.ToLowerInvariant().Contains("azure-automation"));
+        }
+
+        public static void ValidateInputMappingInfo(string inputSchema, Dictionary<string, string> inputMappingFieldsDictionary, Dictionary<string, string> inputMappingDefaultValuesDictionary)
+        {
+            if (string.Equals(inputSchema, InputSchema.CustomEventSchema, StringComparison.OrdinalIgnoreCase))
+            {
+                if (inputMappingFieldsDictionary == null && inputMappingDefaultValuesDictionary == null)
+                {
+                    throw new Exception($"Either input mapping fields or input mapping default values should be specified if the input mapping schema is customeventschema.");
+                }
+            }
+            else
+            {
+                if (inputMappingFieldsDictionary != null || inputMappingDefaultValuesDictionary != null)
+                {
+                    throw new Exception($"Input mapping fields and input mapping default values cannot be specified if the input mapping schema is not customeventschema.");
+                }
+            }
+
+            if (inputMappingFieldsDictionary != null)
+            {
+                foreach (var entry in inputMappingFieldsDictionary)
+                {
+                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingId, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingTopic, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventTime, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingField");
+                    }
+                }
+            }
+
+            if (inputMappingDefaultValuesDictionary != null)
+            {
+                foreach (var entry in inputMappingDefaultValuesDictionary)
+                {
+                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingDefaultValue");
+                    }
+                }
+            }
         }
     }
 }

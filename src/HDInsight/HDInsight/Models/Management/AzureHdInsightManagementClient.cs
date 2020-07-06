@@ -34,11 +34,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters, string minSupportedTlsVersion=default(string))
+        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters, string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string), string cloudDataLakeAudience =default(string))
         {
             var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
             createParams.Properties.OsType = osType;
             createParams.Properties.MinSupportedTlsVersion = minSupportedTlsVersion;
+            ResetClusterIdentity(createParams, cloudAadAuthority, cloudDataLakeAudience);
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
@@ -224,6 +225,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual void RestartHosts(string resourceGroupName, string clusterName, IList<string> hosts)
         {
             HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
+        }
+        
+        private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
+        {
+            var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;
+            Dictionary<string, string> clusterIdentity;
+            if(!configuation.TryGetValue("clusterIdentity", out clusterIdentity))
+            {
+                return;
+            }
+            clusterIdentity["clusterIdentity.resourceUri"]=dataLakeAudience;
+
+            string aadTenantIdWithUrl;
+            clusterIdentity.TryGetValue("clusterIdentity.aadTenantId", out aadTenantIdWithUrl);
+
+            const string defaultPubliCloudAadAuthority= "https://login.windows.net/";
+            string newAadTenantIdWithUrl = aadTenantIdWithUrl?.Replace(defaultPubliCloudAadAuthority, aadAuthority);
+            clusterIdentity["clusterIdentity.aadTenantId"]=newAadTenantIdWithUrl;
         }
     }
 }

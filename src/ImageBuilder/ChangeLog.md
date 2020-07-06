@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed `Sha256Checksum` parameter from example of `New-AzImageBuilderCustomizerObject`.
 
 ## Version 0.1.1
 * Made `Sha256Checksum` optional in `New-AzImageBuilderCustomizerObject`.

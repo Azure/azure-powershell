@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes?api-version=2019-06-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes?api-version=2020-06-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXM/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e5692e98-b0a6-4051-9b89-821929035e08"
+          "af8fe49c-f088-400e-b332-0efa76818d1c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -33,25 +33,25 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-request-id": [
-          "da2ad007-a6d5-42ad-92c3-89e6e01dd609"
+          "44fef6ef-8792-4521-a664-f4f647388292"
         ],
         "x-ms-correlation-request-id": [
-          "da2ad007-a6d5-42ad-92c3-89e6e01dd609"
+          "44fef6ef-8792-4521-a664-f4f647388292"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190604T083358Z:da2ad007-a6d5-42ad-92c3-89e6e01dd609"
+          "WESTUS:20200702T204608Z:44fef6ef-8792-4521-a664-f4f647388292"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 04 Jun 2019 08:33:58 GMT"
+          "Thu, 02 Jul 2020 20:46:08 GMT"
         ],
         "Content-Length": [
-          "7863"
+          "16005"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,26 +60,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Eventhub\",\r\n        \"displayName\": \"Event Hubs Namespaces\",\r\n        \"description\": \"Microsoft Event Hubs service events.\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Eventhub.Namespaces\",\r\n      \"name\": \"Microsoft.Eventhub.Namespaces\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Storage\",\r\n        \"displayName\": \"Storage Accounts\",\r\n        \"description\": \"Microsoft Storage service events.\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US 2 (Stage)\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n      \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Resources\",\r\n        \"displayName\": \"Azure Subscriptions\",\r\n        \"description\": \"Resource management events under an Azure subscription\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Resources.Subscriptions\",\r\n      \"name\": \"Microsoft.Resources.Subscriptions\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Resources\",\r\n        \"displayName\": \"Resource Groups\",\r\n        \"description\": \"Resource management events under a resource group.\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Resources.ResourceGroups\",\r\n      \"name\": \"Microsoft.Resources.ResourceGroups\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Devices\",\r\n        \"displayName\": \"Azure IoT Hub Accounts\",\r\n        \"description\": \"Azure IoT Hub service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"UK West\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"South Central US\",\r\n          \"Korea Central\",\r\n          \"Korea South\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Devices.IoTHubs\",\r\n      \"name\": \"Microsoft.Devices.IoTHubs\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.EventGrid\",\r\n        \"displayName\": \"Event Grid Topics\",\r\n        \"description\": \"Custom events via Event Grid Topics\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.EventGrid.Topics\",\r\n      \"name\": \"Microsoft.EventGrid.Topics\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.ServiceBus\",\r\n        \"displayName\": \"Service Bus Namespaces\",\r\n        \"description\": \"Service Bus events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.ServiceBus.Namespaces\",\r\n      \"name\": \"Microsoft.ServiceBus.Namespaces\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.ContainerRegistry\",\r\n        \"displayName\": \"Azure Container Registry\",\r\n        \"description\": \"Azure Container Registry service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"South Central US\",\r\n          \"North Central US\",\r\n          \"Central US EUAP\",\r\n          \"Brazil South\",\r\n          \"Canada East\",\r\n          \"Canada Central\",\r\n          \"UK South\",\r\n          \"UK West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Central India\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"South India\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.ContainerRegistry.Registries\",\r\n      \"name\": \"Microsoft.ContainerRegistry.Registries\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Media\",\r\n        \"displayName\": \"Microsoft Azure Media Services\",\r\n        \"description\": \"Microsoft Azure Media Services events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Brazil South\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"Central US\",\r\n          \"Central US EUAP\",\r\n          \"East Asia\",\r\n          \"East US\",\r\n          \"East US 2\",\r\n          \"France Central\",\r\n          \"France South\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"North Central US\",\r\n          \"North Europe\",\r\n          \"South Central US\",\r\n          \"South India\",\r\n          \"Southeast Asia\",\r\n          \"UK South\",\r\n          \"UK West\",\r\n          \"West Central US\",\r\n          \"West Europe\",\r\n          \"West India\",\r\n          \"West US\",\r\n          \"West US 2\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Media.MediaServices\",\r\n      \"name\": \"Microsoft.Media.MediaServices\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Maps\",\r\n        \"displayName\": \"Azure Maps Accounts\",\r\n        \"description\": \"Microsoft Maps service events.\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Maps.Accounts\",\r\n      \"name\": \"Microsoft.Maps.Accounts\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.EventGrid\",\r\n        \"displayName\": \"Event Grid Domains\",\r\n        \"description\": \"Custom events via Event Grid Domains\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.EventGrid.Domains\",\r\n      \"name\": \"Microsoft.EventGrid.Domains\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Eventhub\",\r\n        \"displayName\": \"Event Hubs Namespaces\",\r\n        \"description\": \"Microsoft Event Hubs service events.\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"Central US EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.EventHub/namespaces/<namespaceName>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Eventhub.Namespaces\",\r\n      \"name\": \"Microsoft.Eventhub.Namespaces\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Storage\",\r\n        \"displayName\": \"Storage Accounts (Blob & GPv2)\",\r\n        \"description\": \"Microsoft Storage service events.\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US 2 (Stage)\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n      \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Resources\",\r\n        \"displayName\": \"Azure Subscriptions\",\r\n        \"description\": \"Resource management events under an Azure subscription\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Resources.Subscriptions\",\r\n      \"name\": \"Microsoft.Resources.Subscriptions\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Resources\",\r\n        \"displayName\": \"Resource Groups\",\r\n        \"description\": \"Resource management events under a resource group.\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Resources.ResourceGroups\",\r\n      \"name\": \"Microsoft.Resources.ResourceGroups\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Devices\",\r\n        \"displayName\": \"Azure IoT Hub Accounts\",\r\n        \"description\": \"Azure IoT Hub service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"UK West\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"France Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Devices/ioTHubs/<hubName>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Devices.IoTHubs\",\r\n      \"name\": \"Microsoft.Devices.IoTHubs\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.EventGrid\",\r\n        \"displayName\": \"Event Grid Topics\",\r\n        \"description\": \"Custom events via Event Grid Topics\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.EventGrid.Topics\",\r\n      \"name\": \"Microsoft.EventGrid.Topics\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.ServiceBus\",\r\n        \"displayName\": \"Service Bus Namespaces\",\r\n        \"description\": \"Service Bus events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.ServiceBus/namespaces/<namespaceName>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.ServiceBus.Namespaces\",\r\n      \"name\": \"Microsoft.ServiceBus.Namespaces\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.ContainerRegistry\",\r\n        \"displayName\": \"Azure Container Registry\",\r\n        \"description\": \"Azure Container Registry service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"South Central US\",\r\n          \"North Central US\",\r\n          \"Central US EUAP\",\r\n          \"Brazil South\",\r\n          \"Canada East\",\r\n          \"Canada Central\",\r\n          \"UK South\",\r\n          \"UK West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Central India\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"South India\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.ContainerRegistry.Registries\",\r\n      \"name\": \"Microsoft.ContainerRegistry.Registries\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Media\",\r\n        \"displayName\": \"Microsoft Azure Media Services\",\r\n        \"description\": \"Microsoft Azure Media Services events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"Brazil South\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"Central US\",\r\n          \"Central US EUAP\",\r\n          \"East Asia\",\r\n          \"East US\",\r\n          \"East US 2\",\r\n          \"East US 2 EUAP\",\r\n          \"France Central\",\r\n          \"France South\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"North Central US\",\r\n          \"North Europe\",\r\n          \"South Central US\",\r\n          \"South India\",\r\n          \"Southeast Asia\",\r\n          \"UK South\",\r\n          \"UK West\",\r\n          \"West Central US\",\r\n          \"West Europe\",\r\n          \"West India\",\r\n          \"West US\",\r\n          \"West US 2\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Media/MediaServices/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Media.MediaServices\",\r\n      \"name\": \"Microsoft.Media.MediaServices\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Maps\",\r\n        \"displayName\": \"Azure Maps Accounts\",\r\n        \"description\": \"Microsoft Maps service events.\",\r\n        \"resourceRegionType\": \"GlobalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Maps/Accounts/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Maps.Accounts\",\r\n      \"name\": \"Microsoft.Maps.Accounts\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.EventGrid\",\r\n        \"displayName\": \"Event Grid Domains\",\r\n        \"description\": \"Custom events via Event Grid Domains.\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ]\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.EventGrid.Domains\",\r\n      \"name\": \"Microsoft.EventGrid.Domains\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.AppConfiguration\",\r\n        \"displayName\": \"Microsoft Azure App Configuration\",\r\n        \"description\": \"Microsoft Azure App Configuration events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"East US 2 EUAP\",\r\n          \"West Central US\",\r\n          \"East US\",\r\n          \"South East Asia\",\r\n          \"West Europe\",\r\n          \"Australia East\",\r\n          \"North Europe\",\r\n          \"UK South\",\r\n          \"South Central US\",\r\n          \"East US 2\",\r\n          \"West US 2\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"Brazil South\",\r\n          \"Canada Central\",\r\n          \"East Asia\",\r\n          \"France Central\",\r\n          \"Japan East\",\r\n          \"Korea Central\",\r\n          \"North Central US\",\r\n          \"Central India\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.AppConfiguration/ConfigurationStores/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.AppConfiguration.ConfigurationStores\",\r\n      \"name\": \"Microsoft.AppConfiguration.ConfigurationStores\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.KeyVault\",\r\n        \"displayName\": \"Microsoft Key Vault\",\r\n        \"description\": \"Microsoft Key Vault service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Germany North\",\r\n          \"Germany West Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.KeyVault/vaults/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.KeyVault.vaults\",\r\n      \"name\": \"Microsoft.KeyVault.vaults\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Web\",\r\n        \"displayName\": \"App Services\",\r\n        \"description\": \"App Services events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Web/sites/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Web.Sites\",\r\n      \"name\": \"Microsoft.Web.Sites\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.Web\",\r\n        \"displayName\": \"App Service Plans\",\r\n        \"description\": \"App Service Plans events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"West US 2\",\r\n          \"West Central US\",\r\n          \"East US 2 EUAP\",\r\n          \"East US\",\r\n          \"West US\",\r\n          \"Central US\",\r\n          \"East US 2\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Japan West\",\r\n          \"Australia East\",\r\n          \"Australia Southeast\",\r\n          \"North Central US\",\r\n          \"South Central US\",\r\n          \"Canada Central\",\r\n          \"Canada East\",\r\n          \"Central India\",\r\n          \"South India\",\r\n          \"France Central\",\r\n          \"UK West\",\r\n          \"Korea Central\",\r\n          \"Korea South\",\r\n          \"Central US EUAP\",\r\n          \"West India\",\r\n          \"Brazil South\",\r\n          \"UK South\",\r\n          \"Australia Central\",\r\n          \"Australia Central 2\",\r\n          \"France South\",\r\n          \"South Africa North\",\r\n          \"South Africa West\",\r\n          \"UAE North\",\r\n          \"UAE Central\",\r\n          \"Switzerland North\",\r\n          \"Switzerland West\",\r\n          \"Germany North\",\r\n          \"Germany West Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Web/ServerFarms/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Web.ServerFarms\",\r\n      \"name\": \"Microsoft.Web.ServerFarms\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.SignalRService\",\r\n        \"displayName\": \"Azure SignalR Service\",\r\n        \"description\": \"Azure SignalR service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"Australia East\",\r\n          \"Canada East\",\r\n          \"Central US\",\r\n          \"Central US EUAP\",\r\n          \"East US\",\r\n          \"East US 2\",\r\n          \"Japan East\",\r\n          \"North Europe\",\r\n          \"South Central US\",\r\n          \"Southeast Asia\",\r\n          \"UK South\",\r\n          \"West Central US\",\r\n          \"West Europe\",\r\n          \"West US\",\r\n          \"West US 2\",\r\n          \"Brazil South\",\r\n          \"Korea Central\",\r\n          \"France Central\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.SignalRService/SignalR/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.SignalRService.SignalR\",\r\n      \"name\": \"Microsoft.SignalRService.SignalR\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provider\": \"Microsoft.MachineLearningServices\",\r\n        \"displayName\": \"Machine Learning Workspaces\",\r\n        \"description\": \"Microsoft Azure Machine Learning Service events\",\r\n        \"resourceRegionType\": \"RegionalResource\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"supportedLocations\": [\r\n          \"East US 2 EUAP\",\r\n          \"West Central US\",\r\n          \"East US\",\r\n          \"East US 2\",\r\n          \"Central US EUAP\",\r\n          \"Central US\",\r\n          \"South Central US\",\r\n          \"North Central US\",\r\n          \"West US\",\r\n          \"West US 2\",\r\n          \"Canada Central\",\r\n          \"Brazil South\",\r\n          \"West Europe\",\r\n          \"North Europe\",\r\n          \"UK South\",\r\n          \"France Central\",\r\n          \"Southeast Asia\",\r\n          \"East Asia\",\r\n          \"Japan East\",\r\n          \"Korea South\",\r\n          \"Australia East\"\r\n        ],\r\n        \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.MachineLearningServices/Workspaces/<name>\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.MachineLearningServices.Workspaces\",\r\n      \"name\": \"Microsoft.MachineLearningServices.Workspaces\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2019-06-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2020-06-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "099dd074-251f-4500-ba5e-5ead34627bb9"
+          "9dc021ca-6f11-4b33-855d-4d96ae0d88c7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -93,7 +93,70 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "57f842af-d1c7-4c89-a745-6e9b360905d1"
+          "9e33a2ec-18da-4a6b-9739-0b41ce870853"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ae04d5e-9ecb-4561-9c39-f306f6a57b8d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200702T204608Z:9ae04d5e-9ecb-4561-9c39-f306f6a57b8d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2020 20:46:08 GMT"
+        ],
+        "Content-Length": [
+          "1211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts (Blob & GPv2)\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US 2 (Stage)\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\",\r\n      \"North Central US\",\r\n      \"South Central US\",\r\n      \"Canada Central\",\r\n      \"Canada East\",\r\n      \"Central India\",\r\n      \"South India\",\r\n      \"France Central\",\r\n      \"UK West\",\r\n      \"Korea Central\",\r\n      \"Korea South\",\r\n      \"Central US EUAP\",\r\n      \"West India\",\r\n      \"Brazil South\",\r\n      \"UK South\",\r\n      \"Australia Central\",\r\n      \"Australia Central 2\",\r\n      \"France South\",\r\n      \"South Africa North\",\r\n      \"South Africa West\",\r\n      \"UAE North\",\r\n      \"UAE Central\",\r\n      \"Switzerland North\",\r\n      \"Switzerland West\",\r\n      \"Germany North\",\r\n      \"Germany West Central\"\r\n    ],\r\n    \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>\"\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2020-06-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "051deeab-dac3-4a89-8267-72d435deb55f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "31563078-cd2c-4631-9d5e-a1680e990c78"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -102,19 +165,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "03ebe2f2-9646-43c9-a4d8-b7140adf020a"
+          "c41563a7-db30-42ad-98ab-a6c15340b99e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190604T083358Z:03ebe2f2-9646-43c9-a4d8-b7140adf020a"
+          "WESTUS:20200702T204608Z:c41563a7-db30-42ad-98ab-a6c15340b99e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 04 Jun 2019 08:33:58 GMT"
+          "Thu, 02 Jul 2020 20:46:08 GMT"
         ],
         "Content-Length": [
-          "895"
+          "1211"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,26 +186,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US 2 (Stage)\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\",\r\n      \"North Central US\",\r\n      \"South Central US\",\r\n      \"Canada Central\",\r\n      \"Canada East\",\r\n      \"Central India\",\r\n      \"South India\",\r\n      \"France Central\",\r\n      \"UK West\",\r\n      \"Korea Central\",\r\n      \"Korea South\",\r\n      \"Central US EUAP\",\r\n      \"West India\",\r\n      \"Brazil South\",\r\n      \"UK South\",\r\n      \"Australia Central\",\r\n      \"Australia Central 2\",\r\n      \"France South\"\r\n    ]\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts (Blob & GPv2)\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US 2 (Stage)\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\",\r\n      \"North Central US\",\r\n      \"South Central US\",\r\n      \"Canada Central\",\r\n      \"Canada East\",\r\n      \"Central India\",\r\n      \"South India\",\r\n      \"France Central\",\r\n      \"UK West\",\r\n      \"Korea Central\",\r\n      \"Korea South\",\r\n      \"Central US EUAP\",\r\n      \"West India\",\r\n      \"Brazil South\",\r\n      \"UK South\",\r\n      \"Australia Central\",\r\n      \"Australia Central 2\",\r\n      \"France South\",\r\n      \"South Africa North\",\r\n      \"South Africa West\",\r\n      \"UAE North\",\r\n      \"UAE Central\",\r\n      \"Switzerland North\",\r\n      \"Switzerland West\",\r\n      \"Germany North\",\r\n      \"Germany West Central\"\r\n    ],\r\n    \"sourceResourceFormat\": \"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>\"\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2019-06-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes?api-version=2020-06-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzL2V2ZW50VHlwZXM/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2ff39ed0-c160-4462-bbe3-93b34d3c41bf"
+          "63a1e687-6c72-404b-bd15-1bb32eec0fc8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -156,7 +219,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ae54518b-81ea-4761-a55a-10b30baf2604"
+          "74bfc14c-6c5e-4db5-894b-53b090af77fe"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -165,19 +228,19 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "e65cff62-e371-4c0e-8e11-03926e9a3a00"
+          "ca873c8d-6a1e-460d-a792-f3a339a710be"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190604T083359Z:e65cff62-e371-4c0e-8e11-03926e9a3a00"
+          "WESTUS:20200702T204608Z:ca873c8d-6a1e-460d-a792-f3a339a710be"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 04 Jun 2019 08:33:58 GMT"
+          "Thu, 02 Jul 2020 20:46:08 GMT"
         ],
         "Content-Length": [
-          "895"
+          "2387"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -186,70 +249,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US 2 (Stage)\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\",\r\n      \"North Central US\",\r\n      \"South Central US\",\r\n      \"Canada Central\",\r\n      \"Canada East\",\r\n      \"Central India\",\r\n      \"South India\",\r\n      \"France Central\",\r\n      \"UK West\",\r\n      \"Korea Central\",\r\n      \"Korea South\",\r\n      \"Central US EUAP\",\r\n      \"West India\",\r\n      \"Brazil South\",\r\n      \"UK South\",\r\n      \"Australia Central\",\r\n      \"Australia Central 2\",\r\n      \"France South\"\r\n    ]\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes?api-version=2019-06-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzL2V2ZW50VHlwZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ab4535ca-3361-4d4b-a59a-85b5f6543cdd"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27617.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "c3721aac-5731-40c5-8cf6-7662e99edecd"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11995"
-        ],
-        "x-ms-correlation-request-id": [
-          "56e1cf96-46c9-4f60-85fe-52fc121409fd"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190604T083359Z:56e1cf96-46c9-4f60-85fe-52fc121409fd"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 04 Jun 2019 08:33:58 GMT"
-        ],
-        "Content-Length": [
-          "999"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Blob Created\",\r\n        \"description\": \"Raised when a blob is created.\",\r\n        \"schemaUrl\": \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json\",\r\n        \"isInDefaultSet\": true\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.BlobCreated\",\r\n      \"name\": \"Microsoft.Storage.BlobCreated\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Blob Deleted\",\r\n        \"description\": \"Raised when a blob is deleted.\",\r\n        \"schemaUrl\": \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json\",\r\n        \"isInDefaultSet\": true\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.BlobDeleted\",\r\n      \"name\": \"Microsoft.Storage.BlobDeleted\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Blob Created\",\r\n        \"description\": \"Raised when a blob is created.\",\r\n        \"schemaUrl\": \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json\",\r\n        \"isInDefaultSet\": true\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.BlobCreated\",\r\n      \"name\": \"Microsoft.Storage.BlobCreated\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Blob Deleted\",\r\n        \"description\": \"Raised when a blob is deleted.\",\r\n        \"schemaUrl\": \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json\",\r\n        \"isInDefaultSet\": true\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.BlobDeleted\",\r\n      \"name\": \"Microsoft.Storage.BlobDeleted\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Directory Created\",\r\n        \"description\": \"Event published when a directory is created\",\r\n        \"schemaUrl\": \"tbd\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.DirectoryCreated\",\r\n      \"name\": \"Microsoft.Storage.DirectoryCreated\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Directory Deleted\",\r\n        \"description\": \"Event published when a directory is deleted\",\r\n        \"schemaUrl\": \"tbd\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.DirectoryDeleted\",\r\n      \"name\": \"Microsoft.Storage.DirectoryDeleted\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Blob Renamed\",\r\n        \"description\": \"Event published when a blob is renamed\",\r\n        \"schemaUrl\": \"tbd\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.BlobRenamed\",\r\n      \"name\": \"Microsoft.Storage.BlobRenamed\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"Directory Renamed\",\r\n        \"description\": \"Event published when a directory is renamed\",\r\n        \"schemaUrl\": \"tbd\"\r\n      },\r\n      \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts/eventTypes/Microsoft.Storage.DirectoryRenamed\",\r\n      \"name\": \"Microsoft.Storage.DirectoryRenamed\",\r\n      \"type\": \"Microsoft.EventGrid/topicTypes/eventTypes\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
