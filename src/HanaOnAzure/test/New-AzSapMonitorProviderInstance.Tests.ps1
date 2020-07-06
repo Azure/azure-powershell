@@ -14,6 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzSapMonitorProviderInstance' {
     It 'CreateExpandedByString' {
         $hostName = 'hdb1-0'
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
         $sapIns = New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns03 -SapMonitorName $env.sapMonitor02 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
         $sapIns.ProvisioningState | Should -Be 'Succeeded'
     }

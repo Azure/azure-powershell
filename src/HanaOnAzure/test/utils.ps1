@@ -51,6 +51,7 @@ function setupEnv() {
     Write-Host -ForegroundColor Green 'Deploying key valut...'
     $kvName = 'kv-' + (RandomString -allChars $false -len 6) + '-test'
     $keyValut = New-AzKeyVault -VaultName $kvName -ResourceGroupName $env.costResourceGroup -Location $env.location
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $hanaDbPasswordSecret = Set-AzKeyVaultSecret -VaultName $kvName -Name 'hanaPassword' -SecretValue (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
     $env.hanaDbPasswordKvResourceId = $keyValut.ResourceId
     $env.hanaDbPasswordSecretId = $hanaDbPasswordSecret.Id 
@@ -71,6 +72,7 @@ function setupEnv() {
 
     Write-Host -ForegroundColor Green 'create SAP instance for test...'
     $hostName = 'hdb1-0'
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns01 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
     New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns02 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePasswordSecretId $env.hanaDbPasswordSecretId -HanaDatabasePasswordKeyVaultResourceId $env.hanaDbPasswordKvResourceId
     Write-Host -ForegroundColor Green 'The SAP instance created successfully'
