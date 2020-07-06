@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = FindByGatewayId,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "If specified will try to get all Gateway APIs. This parameter is optional.")]
+            HelpMessage = "If specified will try to get all Gateway APIs.")]
         public String GatewayId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

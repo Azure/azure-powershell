@@ -374,9 +374,6 @@ Modifies an API Management certificate which is configured for mutual authentica
 ### [Set-AzApiManagementDiagnostic](Set-AzApiManagementDiagnostic.md)
 Modifies an API Management diagnostic at the Global or Api scope.
 
-### [Set-AzApiManagementGateway](Set-AzApiManagementGateway.md)
-Configures an API management Gateway.
-
 ### [Set-AzApiManagementGroup](Set-AzApiManagementGroup.md)
 Configures an API management group.
 
@@ -415,6 +412,9 @@ Updates a particular Api Release.
 
 ### [Update-AzApiManagementCache](Update-AzApiManagementCache.md)
 updates a cache in Api Management service.
+
+### [Update-AzApiManagementGateway](Update-AzApiManagementGateway.md)
+Configures an API management Gateway.
 
 ### [Update-AzApiManagementRegion](Update-AzApiManagementRegion.md)
 Updates existing deployment region in PsApiManagement instance.

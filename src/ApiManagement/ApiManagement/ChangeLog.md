@@ -28,7 +28,7 @@
 * Added new `Remove-AzApiManagementApiFromGateway` cmdlet.
 * Added new `Remove-AzApiManagementGateway` cmdlet.
 * Added new `Remove-AzApiManagementGatewayHostnameConfiguration` cmdlet.
-* Added new `Set-AzApiManagementGateway` cmdlet.
+* Added new `Update-AzApiManagementGateway` cmdlet.
 * Added new optional [-GatewayId] parameter to the `Get-AzApiManagementApi` cmdlet.
 
 ## Version 2.0.1

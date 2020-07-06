@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", DefaultParameterSetName = GetByGatewayId, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", DefaultParameterSetName = GetByGatewayId)]
     [OutputType(typeof(PsApiManagementGatewayHostnameConfiguration), ParameterSetName = new[] { GetByGatewayId, GetByGatewayHostnameId })]
     public class GetAzureApiManagementGatewayHostnameConfiguration : AzureApiManagementCmdletBase
     {
@@ -50,18 +50,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = GetByGatewayHostnameId,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Hostname Configuration identifier. This parameter is optional.")]
+            HelpMessage = "Hostname Configuration identifier.")]
         public String GatewayHostnameConfigurationId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(GetByGatewayId))
             {
-                var gateway = Client.GatewayHostnameConfigurationByGateway(
+                var gateways = Client.GatewayHostnameConfigurationByGateway(
                     Context.ResourceGroupName,
                     Context.ServiceName,
                     GatewayId);
-                WriteObject(gateway);
+                WriteObject(gateways, true);
             }
             else if (ParameterSetName.Equals(GetByGatewayHostnameId))
             {

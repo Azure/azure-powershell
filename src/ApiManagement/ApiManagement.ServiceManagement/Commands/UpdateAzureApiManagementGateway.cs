@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementGateway))]
-    public class SetAzureApiManagementGateway : AzureApiManagementCmdletBase
+    public class UpdateAzureApiManagementGateway : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,

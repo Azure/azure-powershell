@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", DefaultParameterSetName = GetAll, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementGateway))]
     public class GetAzureApiManagementGateway : AzureApiManagementCmdletBase
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of a gateway. If specified will try to find gateway by the identifier. This parameter is optional.")]
+            HelpMessage = "Identifier of a gateway. If specified will try to find gateway by the identifier.")]
         public String GatewayId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

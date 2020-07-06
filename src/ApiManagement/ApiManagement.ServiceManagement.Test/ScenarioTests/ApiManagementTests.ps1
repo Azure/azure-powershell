@@ -3687,7 +3687,7 @@ function Gateway-CrudTest {
 
         #update
         $newDescription = getAssetName
-        $gateway = Set-AzApiManagementGateway -Context $context -GatewayId $gatewayId -Description $newDescription -PassThru
+        $gateway = Update-AzApiManagementGateway -Context $context -GatewayId $gatewayId -Description $newDescription -PassThru
         Assert-NotNull $gateway
         Assert-AreEqual $newDescription $gateway.Description
         Assert-AreEqual $locationCity $gateway.LocationData.City
@@ -3698,7 +3698,7 @@ function Gateway-CrudTest {
         #update location
         $newLocationCity = getAssetName
         $location = New-AzApiManagementResourceLocation -Name $locationName -City $newLocationCity
-        $gateway = Set-AzApiManagementGateway -Context $context -GatewayId $gatewayId -LocationData @location -PassThru
+        $gateway = Update-AzApiManagementGateway -Context $context -GatewayId $gatewayId -LocationData @location -PassThru
         Assert-NotNull $gateway
         Assert-AreEqual $newDescription $gateway.Description
         Assert-AreEqual $newLocationCity $gateway.LocationData.City
