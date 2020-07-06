@@ -79,6 +79,14 @@ directive:
       subject: ByDimensionExternalCloudProviderType|CloudForecast|DismissAlert|Forecast
       verb: invoke
     remove: true
+  # - where:
+  #     subject: ExportExecutionHistory
+  #     verb: Get
+  #     variant: GetViaIdentity
+  #   remove: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/\/runHistory\$/g, "$");
   - where:
       subject: Alert|AlertExternal|Dimension|View
     remove: true
@@ -93,6 +101,17 @@ directive:
           - NextLink
           - Column
           - Row
+  - where:
+      model-name: ExportExecution
+    set:
+      format-table:
+        properties:
+          - ExecutionType
+          - ProcessingStartTime
+          - ProcessingEndTime
+          - RunSetting
+          - Status
+          - FileName
   - from: swagger-document
     where: $.definitions.AlertProperties.properties.details.properties.resourceGroupFilter.items
     transform: >-
