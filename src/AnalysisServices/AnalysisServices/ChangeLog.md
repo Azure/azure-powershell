@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed project reference to Authentication
 
 ## Version 1.1.3
 * Updated assembly version of data plane cmdlets
