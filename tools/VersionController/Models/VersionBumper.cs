@@ -220,7 +220,7 @@ namespace VersionController.Models
         /// Under the same Major version, check if there exist preview version in gallery that has greater version.
         /// </summary>
         /// <returns>True if exist a version, false otherwise.</returns>
-        private bool HasGreaterPreviewVersion(AzurePSVersion version, in List<AzurePSVersion> galleryVersion)
+        private bool HasGreaterPreviewVersion(AzurePSVersion version, List<AzurePSVersion> galleryVersion)
         {
             foreach (var gaVersion in galleryVersion)
             {
