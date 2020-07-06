@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet `Update-AzSubscription`
 
 ## Version 0.7.2
 * Update references in .psd1 to use relative path

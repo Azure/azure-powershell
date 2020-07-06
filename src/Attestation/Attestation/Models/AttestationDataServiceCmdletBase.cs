@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        protected const string DefaultProviderParameterSet = "DefaultProviderParameterSet";
 
         #endregion
 

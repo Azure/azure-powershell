@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var autorestException = new Microsoft.Rest.Azure.CloudException("exception message")
             {
                 Body = new Microsoft.Rest.Azure.CloudError { Code = "AutorestCode", Message = "Autorest message" },
-                Request = new Rest.HttpRequestMessageWrapper(request, ""),
-                Response = new Rest.HttpResponseMessageWrapper(response, ""),
+                Request = new Microsoft.Rest.HttpRequestMessageWrapper(request, ""),
+                Response = new Microsoft.Rest.HttpResponseMessageWrapper(response, ""),
                 RequestId = "AutoRestRequestId"
             };
 

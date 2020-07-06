@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Subscription
 Module Guid: 8074e741-0979-4b4e-8f9b-7243f213d98a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.subscription
@@ -13,4 +13,7 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Subsc
 ## Az.Subscription Cmdlets
 ### [New-AzSubscription](New-AzSubscription.md)
 Creates an Azure subscription.
+
+### [Update-AzSubscription](Update-AzSubscription.md)
+Updates the Azure subscription
 
