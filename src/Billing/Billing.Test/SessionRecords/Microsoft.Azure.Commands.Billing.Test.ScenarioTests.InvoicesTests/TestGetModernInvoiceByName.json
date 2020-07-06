@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a62be9bc-d134-4dfa-9bde-5f4bb0b12769"
+          "effb8f48-cb40-4608-b440-e8e8708795bc"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11997"
+          "11999"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-service-version": [
-          "10.6.1273.447"
+          "10.6.1278.449"
         ],
         "api-supported-versions": [
           "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
@@ -45,19 +45,19 @@
           "DENY"
         ],
         "x-ms-request-id": [
-          "090daf8d-f547-41da-82de-27ea4ad7386b"
+          "11468b3e-fda3-4bc1-95e1-1dcd410058ce"
         ],
         "x-ms-correlation-request-id": [
-          "090daf8d-f547-41da-82de-27ea4ad7386b"
+          "11468b3e-fda3-4bc1-95e1-1dcd410058ce"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200627T055529Z:090daf8d-f547-41da-82de-27ea4ad7386b"
+          "WESTUS:20200706T191754Z:11468b3e-fda3-4bc1-95e1-1dcd410058ce"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sat, 27 Jun 2020 05:55:28 GMT"
+          "Mon, 06 Jul 2020 19:17:53 GMT"
         ],
         "Content-Length": [
           "1395"
