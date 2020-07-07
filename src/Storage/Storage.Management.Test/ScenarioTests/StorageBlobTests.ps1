@@ -12,6 +12,51 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+<#
+.SYNOPSIS
+Test StorageAccount blob IsVersioningEnabled
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobIsVersioningEnabled
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+		
+		# Enable Blob  versioning
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -IsVersioningEnabled $true
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.IsVersioningEnabled 
+		
+		# Disable Blob  versioning
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -IsVersioningEnabled $false
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $false $property.IsVersioningEnabled 
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Test StorageAccount
@@ -635,5 +680,7 @@ function Test-StorageBlobORS
         Clean-ResourceGroup $rgname
     }
 }
+
+
 
 

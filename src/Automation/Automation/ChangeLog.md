@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that string with escape chars cannot be converted into json object.
 
 ## Version 1.3.6
 * Fixed typo in Example 1 in reference documentation for `New-AzAutomationSoftwareUpdateConfiguration`

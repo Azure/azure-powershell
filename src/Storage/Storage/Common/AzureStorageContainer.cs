@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track1 Container object to Track 2 Container Client
-        public static BlobContainerClient GetTrack2BlobContainerClient(CloudBlobContainer cloubContainer, AzureStorageContext context)
+        public static BlobContainerClient GetTrack2BlobContainerClient(CloudBlobContainer cloubContainer, AzureStorageContext context, BlobClientOptions options = null)
         {
             BlobContainerClient blobContainerClient;
             if (cloubContainer.ServiceClient.Credentials.IsToken) //Oauth
@@ -127,23 +127,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                     //TODO : Get Oauth context from current login user.
                     throw new System.Exception("Need Storage Context to convert Track1 object in token credentail to Track2 object.");
                 }
-                blobContainerClient = new BlobContainerClient(cloubContainer.Uri, context.Track2OauthToken);
+                blobContainerClient = new BlobContainerClient(cloubContainer.Uri, context.Track2OauthToken, options);
 
             }
             else if (cloubContainer.ServiceClient.Credentials.IsSAS) //SAS
             {
                 string fullUri = cloubContainer.Uri.ToString();
                 fullUri = fullUri + cloubContainer.ServiceClient.Credentials.SASToken;
-                blobContainerClient = new BlobContainerClient(new Uri(fullUri));
+                blobContainerClient = new BlobContainerClient(new Uri(fullUri), options);
             }
             else if (cloubContainer.ServiceClient.Credentials.IsSharedKey) //Shared Key
             {
                 blobContainerClient = new BlobContainerClient(cloubContainer.Uri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloubContainer.ServiceClient.Credentials.ExportBase64EncodedKey()));
+                    new StorageSharedKeyCredential(context.StorageAccountName, cloubContainer.ServiceClient.Credentials.ExportBase64EncodedKey()), options);
             }
             else //Anonymous
             {
-                blobContainerClient = new BlobContainerClient(cloubContainer.Uri);
+                blobContainerClient = new BlobContainerClient(cloubContainer.Uri, options);
             }
 
             return blobContainerClient;

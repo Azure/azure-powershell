@@ -19,7 +19,7 @@ Create subscription
 function Test-NewSubscription
 {
     # $accounts = Get-AzEnrollmentAccount
-    $accounts = @(@{ ObjectId = "cdf813b6-bdc2-4df5-b150-00ccfd7580e2" })
+    $accounts = @(@{ ObjectId = "455fd0a7-b04e-4a92-9e1b-d0650c8ba276" })
     
     # Verify the caller has at least one enrollment account.
     Assert-True { $accounts.Count -gt 0 }
@@ -30,4 +30,22 @@ function Test-NewSubscription
 
     Assert-AreEqual $myNewSubName $newSub.Name
 	Assert-NotNull $newSub.SubscriptionId
+}
+
+function Test-UpdateRenameSubscription
+{
+    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+
+    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Rename" -Name "RenameFromPowershell"
+
+	Assert-NotNull updateSub.SubscriptionId
+}
+
+function Test-UpdateCancelSubscription
+{
+    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+
+    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Cancel"
+
+	Assert-NotNull updateSub.SubscriptionId
 }

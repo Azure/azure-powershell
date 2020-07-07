@@ -31,14 +31,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using global::Azure.Storage;
     using global::Azure;
     using global::Azure.Storage.Files.DataLake.Models;
+    using global::Azure.Core;
+    using Microsoft.WindowsAzure.Commands.Common;
     using Track2blobModel = global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Blobs.Specialized;
+    using System.Management.Automation;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
     /// </summary>
     public class StorageCloudBlobCmdletBase : StorageCloudCmdletBase<IStorageBlobManagement>
     {
+        //[Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false)]
+        //[ValidateNotNullOrEmpty]
+        //public virtual string TagCondition { get; set; }        
+
         /// <summary>
         /// Initializes a new instance of the StorageCloudBlobCmdletBase class.
         /// </summary>
@@ -66,6 +73,57 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 return (BlobRequestOptions)GetRequestOptions(StorageServiceType.Blob);
             }
         }
+
+        public BlobClientOptions ClientOptions
+        {
+            get
+            {
+                BlobClientOptions options = new BlobClientOptions();
+                options.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                return options;
+            }
+        }
+
+        public global::Azure.Storage.Blobs.Models.BlobRequestConditions BlobRequestConditions
+        {
+            get
+            {
+                global::Azure.Storage.Blobs.Models.BlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.BlobRequestConditions();
+                //if (this.TagCondition != null)
+                //{
+                //    requestConditions.TagConditions = this.TagCondition;
+                //}
+                return requestConditions;
+            }
+        }
+
+        public global::Azure.Storage.Blobs.Models.PageBlobRequestConditions PageBlobRequestConditions
+        {
+            get
+            {
+                global::Azure.Storage.Blobs.Models.PageBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.PageBlobRequestConditions();
+                //if (this.TagCondition != null)
+                //{
+                //    requestConditions.TagConditions = this.TagCondition;
+                //}
+                return requestConditions;
+            }
+        }
+
+        public global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions AppendBlobRequestConditions
+        {
+            get
+            {
+                global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions();
+                //if (this.TagCondition != null)
+                //{
+                //    requestConditions.TagConditions = this.TagCondition;
+                //}
+                return requestConditions;
+            }
+        }
+
+
 
         protected static CloudBlob GetBlobReferenceFromServerWithContainer(
             IStorageBlobManagement localChannel,
@@ -153,6 +211,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
+        /// Make sure the pipeline blob is valid and already existing
+        /// </summary>
+        /// <param name="blob">CloudBlob object</param>
+        internal void ValidatePipelineCloudBlobTrack2(BlobBaseClient blob)
+        {
+            if (null == blob)
+            {
+                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+            }
+
+            if (!NameUtil.IsValidBlobName(blob.Name))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blob.Name));
+            }
+
+            if (!NameUtil.IsValidContainerName(blob.BlobContainerName))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidContainerName, blob.BlobContainerName));
+            }
+        }
+
+        /// <summary>
         /// Make sure the container is valid and already existing 
         /// </summary>
         /// <param name="container">A CloudBlobContainer object</param>
@@ -219,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <param name="channel">IStorageBlobManagement channel object</param>
         internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
         {
-            AzureStorageBlob azureBlob = new AzureStorageBlob(blob, channel.StorageContext);
+            AzureStorageBlob azureBlob = new AzureStorageBlob(blob, channel.StorageContext, ClientOptions);
             azureBlob.ContinuationToken = continuationToken;
             OutputStream.WriteObject(taskId, azureBlob);
         }
@@ -833,85 +913,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         // Convert Track1 Blob object to Track 2 page blob Client
         public static PageBlobClient GetTrack2PageBlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
         {
-            PageBlobClient blobClient;
-            if (cloubBlob.ServiceClient.Credentials.IsToken) //Oauth
-            {
-                if (context == null)
-                {
-                    //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
-                }
-                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
-
-            }
-            else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
-            {
-                string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
-                if (cloubBlob.IsSnapshot)
-                {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
-                }
-                else
-                {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
-                }
-                blobClient = new PageBlobClient(new Uri(fullUri), options);
-            }
-            else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
-            {
-                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloubBlob.ServiceClient.Credentials.ExportBase64EncodedKey()),
-                    options);
-            }
-            else //Anonymous
-            {
-                blobClient = new PageBlobClient(cloubBlob.SnapshotQualifiedUri, options);
-            }
-
+            PageBlobClient blobClient = (PageBlobClient)Util.GetTrack2BlobClientWithType(
+                AzureStorageBlob.GetTrack2BlobClient(cloubBlob, context, options),
+                context,
+                Track2blobModel.BlobType.Page,
+                options);
             return blobClient;
         }
 
         // Convert Track1 Blob object to Track 2 append blob Client
         public static AppendBlobClient GetTrack2AppendBlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
         {
-            AppendBlobClient blobClient;
-            if (cloubBlob.ServiceClient.Credentials.IsToken) //Oauth
-            {
-                if (context == null)
-                {
-                    //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
-                }
-                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
-
-            }
-            else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
-            {
-                string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
-                if (cloubBlob.IsSnapshot)
-                {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
-                }
-                else
-                {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
-                }
-                blobClient = new AppendBlobClient(new Uri(fullUri), options);
-            }
-            else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
-            {
-                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloubBlob.ServiceClient.Credentials.ExportBase64EncodedKey()),
-                    options);
-            }
-            else //Anonymous
-            {
-                blobClient = new AppendBlobClient(cloubBlob.SnapshotQualifiedUri, options);
-            }
-
+            AppendBlobClient blobClient = (AppendBlobClient)Util.GetTrack2BlobClientWithType(
+               AzureStorageBlob.GetTrack2BlobClient(cloubBlob, context, options),
+               context,
+               Track2blobModel.BlobType.Append,
+               options);
             return blobClient;
+        }
+
+        protected virtual bool UseTrack2SDK()
+        {
+            return false;
         }
     }
 }

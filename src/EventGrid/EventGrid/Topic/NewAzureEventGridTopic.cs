@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -70,20 +71,79 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputSchemaHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventSchemaV10, IgnoreCase = true)]
+        public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingFieldHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InputMappingField { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InputMappingDefaultValue { get; set; }
+
+        /// <summary>
+        /// Hashtable which represents the Inbound IP Rules.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InboundIpRule { get; set; }
+
+        /// <summary>
+        /// Public network access.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
+
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
+            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
+            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
+
+            EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary);
+                Topic topic = this.Client.CreateTopic(
+                    this.ResourceGroupName,
+                    this.Name,
+                    this.Location,
+                    tagDictionary,
+                    InputSchema,
+                    inputMappingFieldsDictionary,
+                    inputMappingDefaultValuesDictionary,
+                    inboundIpRuleDictionary,
+                    this.PublicNetworkAccess);
+
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }
