@@ -76,11 +76,19 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
+            else
+            {
+                subnet.NetworkSecurityGroup = null;
+            }
 
             if (!string.IsNullOrEmpty(this.RouteTableId))
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
+            }
+            else
+            {
+                subnet.RouteTable = null;
             }
 
             if (this.ServiceEndpoint != null)
