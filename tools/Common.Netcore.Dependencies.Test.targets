@@ -35,20 +35,20 @@
 
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="[10.0.3]" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.6" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
  </ItemGroup>
 
  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.3" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
  </ItemGroup>
 
