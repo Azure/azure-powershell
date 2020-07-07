@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
   RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
   FormatsToProcess = './Az.KubernetesConfiguration.format.ps1xml'
-  FunctionsToExport = 'Get-AzKubernetesConfiguration', 'New-AzKubernetesConfiguration', 'Remove-AzKubernetesConfiguration', '*'
+  FunctionsToExport = 'Get-AzKubernetesConfiguration', 'New-AzKubernetesConfiguration', 'Remove-AzKubernetesConfiguration'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
