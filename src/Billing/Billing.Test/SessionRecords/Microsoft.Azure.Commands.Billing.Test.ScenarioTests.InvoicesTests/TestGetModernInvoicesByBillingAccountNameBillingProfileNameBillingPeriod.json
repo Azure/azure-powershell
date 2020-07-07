@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0cc29f1a-8d90-40be-afe1-46e87f25816e"
+          "f61c209c-abcd-40d8-867b-a9a0df0c8b50"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,7 +36,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-service-version": [
-          "10.6.1273.447"
+          "10.6.1278.449"
         ],
         "api-supported-versions": [
           "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
@@ -45,22 +45,22 @@
           "DENY"
         ],
         "x-ms-request-id": [
-          "17894fbd-fd59-491d-ad7c-8badd17ccdee"
+          "45aa9378-bcea-4d74-965a-3c57a0bbb3f7"
         ],
         "x-ms-correlation-request-id": [
-          "17894fbd-fd59-491d-ad7c-8badd17ccdee"
+          "45aa9378-bcea-4d74-965a-3c57a0bbb3f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200630T231221Z:17894fbd-fd59-491d-ad7c-8badd17ccdee"
+          "WESTUS:20200706T192746Z:45aa9378-bcea-4d74-965a-3c57a0bbb3f7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 30 Jun 2020 23:12:21 GMT"
+          "Mon, 06 Jul 2020 19:27:46 GMT"
         ],
         "Content-Length": [
-          "1442"
+          "2885"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000492132\",\r\n      \"name\": \"T000492132\",\r\n      \"properties\": {\r\n        \"amountDue\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"azurePrepaymentApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billedAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n        \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n        \"creditAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"documents\": [\r\n          {\r\n            \"kind\": \"Invoice\",\r\n            \"url\": \"https://management.azure.com/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000492132/download?downloadToken=Drs_5380563725&api-version=2020-05-01\",\r\n            \"source\": \"DRS\"\r\n          }\r\n        ],\r\n        \"dueDate\": \"2020-07-05T01:05:32.3576511Z\",\r\n        \"freeAzureCreditApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"invoiceDate\": \"2020-06-05T01:05:32.3576511Z\",\r\n        \"invoicePeriodEndDate\": \"2020-05-31T23:59:59.9999999\",\r\n        \"invoicePeriodStartDate\": \"2020-05-01T00:00:00\",\r\n        \"isMonthlyInvoice\": true,\r\n        \"payments\": [],\r\n        \"purchaseOrderNumber\": \"32863285\",\r\n        \"status\": \"Paid\",\r\n        \"subTotal\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"taxAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"totalAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        }\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/invoices\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000492132\",\r\n      \"name\": \"T000492132\",\r\n      \"properties\": {\r\n        \"amountDue\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"azurePrepaymentApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billedAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n        \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n        \"creditAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"documents\": [\r\n          {\r\n            \"kind\": \"Invoice\",\r\n            \"url\": \"https://management.azure.com/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000492132/download?downloadToken=Drs_5380563725&api-version=2020-05-01\",\r\n            \"source\": \"DRS\"\r\n          }\r\n        ],\r\n        \"dueDate\": \"2020-07-05T01:05:32.3576511Z\",\r\n        \"freeAzureCreditApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"invoiceDate\": \"2020-06-05T01:05:32.3576511Z\",\r\n        \"invoicePeriodEndDate\": \"2020-05-31T23:59:59.9999999\",\r\n        \"invoicePeriodStartDate\": \"2020-05-01T00:00:00\",\r\n        \"isMonthlyInvoice\": true,\r\n        \"payments\": [],\r\n        \"purchaseOrderNumber\": \"32863285\",\r\n        \"status\": \"Paid\",\r\n        \"subTotal\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"taxAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"totalAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        }\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/invoices\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000534838\",\r\n      \"name\": \"T000534838\",\r\n      \"properties\": {\r\n        \"amountDue\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 100.0\r\n        },\r\n        \"azurePrepaymentApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billedAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 1100.0\r\n        },\r\n        \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n        \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n        \"creditAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": -1000.0\r\n        },\r\n        \"documents\": [\r\n          {\r\n            \"kind\": \"Invoice\",\r\n            \"url\": \"https://management.azure.com/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/invoices/T000534838/download?downloadToken=Drs_5404766150&api-version=2020-05-01\",\r\n            \"source\": \"DRS\"\r\n          }\r\n        ],\r\n        \"dueDate\": \"2020-08-04T00:27:09.0187174Z\",\r\n        \"freeAzureCreditApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"invoiceDate\": \"2020-07-05T00:27:09.0187174Z\",\r\n        \"invoicePeriodEndDate\": \"2020-06-30T23:59:59.9999999\",\r\n        \"invoicePeriodStartDate\": \"2020-06-01T00:00:00\",\r\n        \"isMonthlyInvoice\": true,\r\n        \"payments\": [],\r\n        \"purchaseOrderNumber\": \"32863285\",\r\n        \"status\": \"Due\",\r\n        \"subTotal\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 100.0\r\n        },\r\n        \"taxAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"totalAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 100.0\r\n        }\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/invoices\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

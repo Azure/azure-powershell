@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                         }
                         else
                         {
-                            foreach (var invoice in invoices)
+                            foreach (var invoice in recentInvoices)
                             {
                                 var psInvoice = new PSInvoice(invoice);
                                 if (GenerateDownloadUrl)
