@@ -176,7 +176,7 @@
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
 
     <!-- Publish static analysis for use cross-platform -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp3.1" />
 
     <!-- Delete powershell runtime files -->
     <PropertyGroup>
