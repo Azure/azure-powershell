@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for Azure Express Route Port
+    - `New-AzExpressRoutePortLOA`
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
