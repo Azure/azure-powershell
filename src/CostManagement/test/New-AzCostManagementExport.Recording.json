@@ -1,0 +1,187 @@
+{
+  "New-AzCostManagementExport+[NoContext]+CreateExpandedBySubscription+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-r6xjol?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-r6xjol?api-version=2019-11-01",
+      "Content": "{\n  \"properties\": {\n    \"definition\": {\n      \"dataset\": {\n        \"granularity\": \"Daily\"\n      },\n      \"type\": \"Usage\",\n      \"timeframe\": \"MonthToDate\"\n    },\n    \"deliveryInfo\": {\n      \"destination\": {\n        \"container\": \"exports\",\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\n        \"rootFolderPath\": \"ad-hoc\"\n      }\n    },\n    \"format\": \"Csv\",\n    \"schedule\": {\n      \"recurrencePeriod\": {\n        \"from\": \"2020-07-06T09:13:02.0000000\",\n        \"to\": \"2020-07-26T09:13:02.0000000\"\n      },\n      \"recurrence\": \"Daily\",\n      \"status\": \"Active\"\n    }\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "700" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://consumption.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-r6xjol?api-version=2019-11-01" ],
+        "session-id": [ "361a8dc7-600f-48f9-b480-814e2805b158" ],
+        "x-ms-request-id": [ "9b7c7f17-026c-4665-9b68-c7351118fabf" ],
+        "x-ms-correlation-request-id": [ "940aeece-adb9-45a5-b838-c40fbf9395fd" ],
+        "x-ms-client-request-id": [ "82d6e05b-9aeb-4b1e-a93d-dcad8420be2d" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T092243Z:940aeece-adb9-45a5-b838-c40fbf9395fd" ],
+        "Date": [ "Mon, 06 Jul 2020 09:22:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-r6xjol\",\"name\":\"export-r6xjol\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d65377005b37c6\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
+    }
+  },
+  "New-AzCostManagementExport+[NoContext]+CreateExpandedByResourceGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.CostManagement/exports/export-rs3qh5?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.CostManagement/exports/export-rs3qh5?api-version=2019-11-01",
+      "Content": "{\n  \"properties\": {\n    \"definition\": {\n      \"dataset\": {\n        \"granularity\": \"Daily\"\n      },\n      \"type\": \"Usage\",\n      \"timeframe\": \"MonthToDate\"\n    },\n    \"deliveryInfo\": {\n      \"destination\": {\n        \"container\": \"exports\",\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\n        \"rootFolderPath\": \"ad-hoc\"\n      }\n    },\n    \"format\": \"Csv\",\n    \"schedule\": {\n      \"recurrencePeriod\": {\n        \"from\": \"2020-07-06T09:13:02.0000000\",\n        \"to\": \"2020-07-26T09:13:02.0000000\"\n      },\n      \"recurrence\": \"Daily\",\n      \"status\": \"Active\"\n    }\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "700" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://consumption.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.CostManagement/exports/export-rs3qh5?api-version=2019-11-01" ],
+        "session-id": [ "5b9bb6b5-cc5f-49fc-9af1-aef16afed5ec" ],
+        "x-ms-request-id": [ "91135221-6de8-4fbe-b4f0-7b0d6c122e40" ],
+        "x-ms-correlation-request-id": [ "4f2fc077-2b2f-4705-88a4-ee1329c3ea32" ],
+        "x-ms-client-request-id": [ "8e5a1cc5-b5af-426f-a6d6-d0bd1fd02884" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T092244Z:4f2fc077-2b2f-4705-88a4-ee1329c3ea32" ],
+        "Date": [ "Mon, 06 Jul 2020 09:22:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "749" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.CostManagement/exports/export-rs3qh5\",\"name\":\"export-rs3qh5\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d65377017c569f\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
+    }
+  },
+  "New-AzCostManagementExport+[NoContext]+CreateExpandedByColumn+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-ni0ar2?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-ni0ar2?api-version=2019-11-01",
+      "Content": "{\n  \"properties\": {\n    \"definition\": {\n      \"dataset\": {\n        \"configuration\": {\n          \"columns\": [ \"SubscriptionGuid\", \"MeterId\", \"InstanceId\", \"ResourceGroup\", \"PreTaxCost\" ]\n        },\n        \"granularity\": \"Daily\"\n      },\n      \"type\": \"Usage\",\n      \"timeframe\": \"MonthToDate\"\n    },\n    \"deliveryInfo\": {\n      \"destination\": {\n        \"container\": \"exports\",\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\n        \"rootFolderPath\": \"ad-hoc\"\n      }\n    },\n    \"format\": \"Csv\",\n    \"schedule\": {\n      \"recurrencePeriod\": {\n        \"from\": \"2020-07-06T09:13:02.0000000\",\n        \"to\": \"2020-07-26T09:13:02.0000000\"\n      },\n      \"recurrence\": \"Daily\",\n      \"status\": \"Active\"\n    }\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "838" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://consumption.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-ni0ar2?api-version=2019-11-01" ],
+        "session-id": [ "c0a0fcfb-517c-40b0-abfd-74a6fd6f5350" ],
+        "x-ms-request-id": [ "960a8d4b-ac23-4895-959a-b2c77f6fd30f" ],
+        "x-ms-correlation-request-id": [ "cdd904bf-1506-42f0-a6e7-f373594a55f9" ],
+        "x-ms-client-request-id": [ "95a913d0-9eb2-44b7-a4fc-bfb725432239" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T092246Z:cdd904bf-1506-42f0-a6e7-f373594a55f9" ],
+        "Date": [ "Mon, 06 Jul 2020 09:22:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "810" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-ni0ar2\",\"name\":\"export-ni0ar2\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6537702554d6a\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"configuration\":{\"columns\":[\"SubscriptionGuid\",\"MeterId\",\"InstanceId\",\"ResourceGroup\",\"PreTaxCost\"]},\"granularity\":\"Daily\"}}}}"
+    }
+  },
+  "New-AzCostManagementExport+[NoContext]+CreateExpandedByGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-gq1kft?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-gq1kft?api-version=2019-11-01",
+      "Content": "{\n  \"properties\": {\n    \"definition\": {\n      \"dataset\": {\n        \"granularity\": \"Daily\",\n        \"grouping\": [\n          {\n            \"name\": \"ResourceGroup\",\n            \"type\": \"Dimension\"\n          }\n        ]\n      },\n      \"type\": \"Usage\",\n      \"timeframe\": \"MonthToDate\"\n    },\n    \"deliveryInfo\": {\n      \"destination\": {\n        \"container\": \"exports\",\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\n        \"rootFolderPath\": \"ad-hoc\"\n      }\n    },\n    \"format\": \"Csv\",\n    \"schedule\": {\n      \"recurrencePeriod\": {\n        \"from\": \"2020-07-06T09:13:02.0000000\",\n        \"to\": \"2020-07-26T09:13:02.0000000\"\n      },\n      \"recurrence\": \"Daily\",\n      \"status\": \"Active\"\n    }\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "826" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://consumption.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-gq1kft?api-version=2019-11-01" ],
+        "session-id": [ "bbebf88b-bfaf-4862-9452-ac4c1d301006" ],
+        "x-ms-request-id": [ "605da652-113d-459e-9b0a-844f85d8e68f" ],
+        "x-ms-correlation-request-id": [ "655498cc-40ac-4af0-b979-37f07a1d8009" ],
+        "x-ms-client-request-id": [ "609dabb6-22f5-432c-8116-44ceff4f8782" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T092248Z:655498cc-40ac-4af0-b979-37f07a1d8009" ],
+        "Date": [ "Mon, 06 Jul 2020 09:22:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "766" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-gq1kft\",\"name\":\"export-gq1kft\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6537703972b88\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}}}"
+    }
+  },
+  "New-AzCostManagementExport+[NoContext]+CreateExpandedByGroupAggregation+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-j8s5of?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-j8s5of?api-version=2019-11-01",
+      "Content": "{\n  \"properties\": {\n    \"definition\": {\n      \"dataset\": {\n        \"aggregation\": {\n          \"costsum\": {\n            \"name\": \"PreTaxCost\",\n            \"function\": \"sum\"\n          },\n          \"cost\": {\n            \"name\": \"Cost\",\n            \"function\": \"sum\"\n          }\n        },\n        \"granularity\": \"Daily\",\n        \"grouping\": [\n          {\n            \"name\": \"ResourceGroup\",\n            \"type\": \"Dimension\"\n          }\n        ]\n      },\n      \"type\": \"Usage\",\n      \"timeframe\": \"MonthToDate\"\n    },\n    \"deliveryInfo\": {\n      \"destination\": {\n        \"container\": \"exports\",\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\n        \"rootFolderPath\": \"ad-hoc\"\n      }\n    },\n    \"format\": \"Csv\",\n    \"schedule\": {\n      \"recurrencePeriod\": {\n        \"from\": \"2020-07-06T09:13:02.0000000\",\n        \"to\": \"2020-07-26T09:13:02.0000000\"\n      },\n      \"recurrence\": \"Daily\",\n      \"status\": \"Active\"\n    }\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1052" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://consumption.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-j8s5of?api-version=2019-11-01" ],
+        "session-id": [ "f4257420-e658-4922-8a45-5070a7a873f9" ],
+        "x-ms-request-id": [ "bcbee889-01b3-4622-9367-79d39cc4209e" ],
+        "x-ms-correlation-request-id": [ "c33b1ea7-0200-4131-ba5e-ce80b54e9f22" ],
+        "x-ms-client-request-id": [ "61711854-579b-4158-ac78-77280128fe03" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T092249Z:c33b1ea7-0200-4131-ba5e-ce80b54e9f22" ],
+        "Date": [ "Mon, 06 Jul 2020 09:22:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "871" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-j8s5of\",\"name\":\"export-j8s5of\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d65377046dbf7c\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\",\"aggregation\":{\"costsum\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"},\"cost\":{\"name\":\"Cost\",\"function\":\"Sum\"}},\"grouping\":[{\"type\":\"Dimension\",\"name\":\"ResourceGroup\"}]}}}}"
+    }
+  }
+}
