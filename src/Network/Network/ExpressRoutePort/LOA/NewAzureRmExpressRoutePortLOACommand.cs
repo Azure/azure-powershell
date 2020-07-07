@@ -105,7 +105,6 @@ namespace Microsoft.Azure.Commands.Network
             GenerateExpressRoutePortsLOARequest generateExpressRoutePortsLOARequest = new GenerateExpressRoutePortsLOARequest(CustomerName);
             var response = this.NetworkClient.NetworkManagementClient.ExpressRoutePorts.GenerateLOA(this.ResourceGroupName, this.PortName, generateExpressRoutePortsLOARequest);
             var decodedDocument = Convert.FromBase64String(response.EncodedContent);
-            string pwd = Directory.GetCurrentDirectory();
             if (String.IsNullOrEmpty(Destination))
             {
                 Destination = DefaultFileName;
