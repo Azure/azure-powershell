@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PsModuleName>Databricks</PsModuleName>
+    <PsModuleName>HanaOnAzure</PsModuleName>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
