@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
             AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestationWithPolicySigningCertificate");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAttestationWithTags()
@@ -61,6 +60,20 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         public void TestGetAttestation()
         {
             AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetAttestation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviders()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviders");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviderByLocation()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviderByLocation");
         }
         #endregion
 

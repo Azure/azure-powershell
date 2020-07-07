@@ -96,7 +96,7 @@ namespace StaticAnalysis.HelpAnalyzer
             var helpLogger = Logger.CreateLogger<HelpIssue>("HelpIssues.csv");
             foreach (var baseDirectory in scopes.Where(s => Directory.Exists(Path.GetFullPath(s))))
             {
-                PreloadSharedAssemblies(baseDirectory);
+                SharedAssemblyLoader.Load(baseDirectory);
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
                     if (modulesToAnalyze != null &&
@@ -113,30 +113,6 @@ namespace StaticAnalysis.HelpAnalyzer
                         AnalyzeMarkdownHelp(scopes, directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
                 }
-            }
-        }
-
-        private static void PreloadSharedAssemblies(string directory)
-        {
-            var sharedAssemblyFolder = Path.Combine(directory, "Az.Accounts", "NetCoreAssemblies");
-            if (Directory.Exists(sharedAssemblyFolder))
-            {
-                foreach (var file in Directory.GetFiles(sharedAssemblyFolder))
-                {
-                    try
-                    {
-                        Console.WriteLine($"PreloadSharedAssemblies: Starting to load assembly {file}.");
-                        Assembly.LoadFrom(file);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine($"PreloadSharedAssemblies: Failed to load assembly {Path.GetFileNameWithoutExtension(file)} with {e}");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {sharedAssemblyFolder}.");
             }
         }
 

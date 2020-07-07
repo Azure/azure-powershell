@@ -83,6 +83,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public string DefaultServiceVersion { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Gets or sets versioning is enabled if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool IsVersioningEnabled
+        {
+            get
+            {
+                return isVersioningEnabled is null ? false : isVersioningEnabled.Value;
+            }
+            set
+            {
+                isVersioningEnabled = value;
+            }
+        }
+        private bool? isVersioningEnabled = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -110,6 +127,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (DefaultServiceVersion != null)
                 {
                     serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                }
+                if (isVersioningEnabled != null)
+                {
+                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);

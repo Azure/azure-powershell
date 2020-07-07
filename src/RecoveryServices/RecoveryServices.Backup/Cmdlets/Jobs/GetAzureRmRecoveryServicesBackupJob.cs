@@ -30,6 +30,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "AzureVM, AzureStorage, AzureWorkload, MAB";
+
+        /// <summary>
         /// Filter value for status of job.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.StatusFilter, Position = 1)]
@@ -74,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Filter value for backup management type of job.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.BackupManagementTypeFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 

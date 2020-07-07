@@ -68,6 +68,28 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             var response = attestationClient.AttestationProviders.Get(resourceGroupName, attestationName);
             return new PSAttestation(response);
         }
+
+        public PSAttestation GetDefaultAttestationByLocation(string location)
+        {
+            if (string.IsNullOrEmpty(location))
+            {
+                throw new ArgumentNullException(nameof(location));
+            }
+            var response = attestationClient.AttestationProviders.GetDefaultByLocation(location);
+            return new PSAttestation(response);
+        }
+
+        public List<PSAttestation> ListDefaultAttestation()
+        {
+            List<PSAttestation> result = new List<PSAttestation>();
+            var response = attestationClient.AttestationProviders.ListDefault();
+            foreach (var defaultProvider in response.Value)
+            {
+                result.Add(new PSAttestation(defaultProvider));
+            }
+            return result;
+        }
+
         public void DeleteAttestation(string attestationName, string resourceGroupName)
         {
             if (string.IsNullOrEmpty(attestationName))
