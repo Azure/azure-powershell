@@ -10,15 +10,16 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedKubernetes.private.dll'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
   FormatsToProcess = './Az.ConnectedKubernetes.format.ps1xml'
-  FunctionsToExport = 'Get-AzConnectedKubernetes', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Update-AzConnectedKubernetes', '*'
+  FunctionsToExport = 'Get-AzConnectedKubernetes', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Update-AzConnectedKubernetes'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ConnectedKubernetes'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
-      ReleaseNotes = ''
+      ReleaseNotes = '* the first preview release'
     }
   }
 }

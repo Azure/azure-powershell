@@ -181,6 +181,6 @@
     { "regex": "CustomProviders", "alias": "Custom Resource Providers" },
     { "regex": "MonitoringSolutions", "alias": "Monitoring Solutions" },
     { "regex": "StackEdge", "alias": "Stack Edge" },
-    { "regex": "ConnectedKubernetes", "alias": "ConnectedKubernetes" },
+    { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
     { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" }
 ]

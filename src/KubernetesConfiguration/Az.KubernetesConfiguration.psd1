@@ -10,6 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
   FormatsToProcess = './Az.KubernetesConfiguration.format.ps1xml'
   FunctionsToExport = 'Get-AzKubernetesConfiguration', 'New-AzKubernetesConfiguration', 'Remove-AzKubernetesConfiguration', '*'
   AliasesToExport = '*'
@@ -18,7 +19,7 @@
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'KubernetesConfiguration'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
-      ReleaseNotes = ''
+      ReleaseNotes = '* the first preview release'
     }
   }
 }

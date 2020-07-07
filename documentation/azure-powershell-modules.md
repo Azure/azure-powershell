@@ -27,6 +27,8 @@ Blueprints                            | `Az.Blueprint`                          
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
+Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
+
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
 Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
 Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
@@ -59,6 +61,7 @@ Import/Export                         | `Az.ImportExport`                       
 IoT Central                           | `Az.IotCentral`                         | [![IotCentral]][IotCentralGallery]
 IoT Hub                               | `Az.IotHub`                             | [![IotHub]][IotHubGallery]
 Key Vault                             | `Az.KeyVault`                           | [![KeyVault]][KeyVaultGallery]
+Kubernetes Configuration              | `Az.KubernetesConfiguration`            | [![KubernetesConfiguration]][KubernetesConfigurationGallery]
 Kusto                                 | `Az.Kusto`                              | [![Kusto]][KustoGallery]
 Logic App                             | `Az.LogicApp`                           | [![LogicApp]][LogicAppGallery]
 Machine Learning                      | `Az.MachineLearning`                    | [![MachineLearning]][MachineLearningGallery]
@@ -130,6 +133,7 @@ Web App Service                       | `Az.Websites`                           
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
+[ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
@@ -162,6 +166,7 @@ Web App Service                       | `Az.Websites`                           
 [IotCentral]:                 https://img.shields.io/powershellgallery/v/Az.IotCentral.svg?style=flat-square&label=Az.IotCentral
 [IotHub]:                     https://img.shields.io/powershellgallery/v/Az.IotHub.svg?style=flat-square&label=Az.IotHub
 [KeyVault]:                   https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault
+[KubernetesConfiguration]:    https://img.shields.io/powershellgallery/v/Az.KubernetesConfiguration.svg?style=flat-square&label=Az.KubernetesConfiguration
 [Kusto]:                      https://img.shields.io/powershellgallery/v/Az.Kusto.svg?style=flat-square&label=Az.Kusto
 [LogicApp]:                   https://img.shields.io/powershellgallery/v/Az.LogicApp.svg?style=flat-square&label=Az.LogicApp
 [MachineLearning]:            https://img.shields.io/powershellgallery/v/Az.MachineLearning.svg?style=flat-square&label=Az.MachineLearning
@@ -231,6 +236,7 @@ Web App Service                       | `Az.Websites`                           
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
+[ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -263,6 +269,7 @@ Web App Service                       | `Az.Websites`                           
 [IotCentralGallery]:                 https://www.powershellgallery.com/packages/Az.IotCentral/
 [IotHubGallery]:                     https://www.powershellgallery.com/packages/Az.IotHub/
 [KeyVaultGallery]:                   https://www.powershellgallery.com/packages/Az.KeyVault/
+[KubernetesConfigurationGallery]:    https://www.powershellgallery.com/packages/Az.KubernetesConfiguration/
 [KustoGallery]:                      https://www.powershellgallery.com/packages/Az.Kusto/
 [LogicAppGallery]:                   https://www.powershellgallery.com/packages/Az.LogicApp/
 [MachineLearningGallery]:            https://www.powershellgallery.com/packages/Az.MachineLearning/
