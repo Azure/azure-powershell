@@ -10,6 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.HanaOnAzure.private.dll'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.0'; })
   FormatsToProcess = './Az.HanaOnAzure.format.ps1xml'
   FunctionsToExport = 'Get-AzSapMonitor', 'Get-AzSapMonitorProviderInstance', 'New-AzSapMonitor', 'New-AzSapMonitorProviderInstance', 'Remove-AzSapMonitor', 'Remove-AzSapMonitorProviderInstance', 'Update-AzSapMonitor'
   AliasesToExport = '*'
@@ -18,7 +19,7 @@
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'HanaOn'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
-      ReleaseNotes = ''
+      ReleaseNotes = '* the first preview release'
     }
   }
 }

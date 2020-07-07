@@ -177,5 +177,8 @@
     { "regex": "Functions", "alias": "Functions" },
     { "regex": "DesktopVirtualization", "alias": "DesktopVirtualization" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
+    { "regex": "HanaOnAzure", "alias": "SAP HANA on Azure" },
+    { "regex": "CustomProviders", "alias": "Custom Resource Providers" },
+    { "regex": "MonitoringSolutions", "alias": "Monitoring Solutions" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]
