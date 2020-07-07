@@ -39,6 +39,7 @@ Data Lake Store                       | `Az.DataLakeStore`                      
 Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
 Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
+Windows Virtual Desktop               | `Az.DesktopVirtualization`              | [![DesktopVirtualization]][DesktopVirtualizationGallery]
 Device Provisioning Services          | `Az.DeviceProvisioningServices`         | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery]
 Dev Spaces                            | `Az.DevSpaces`                          | [![DevSpaces]][DevSpacesGallery]
 DevTest Labs                          | `Az.DevTestLabs`                        | [![DevTestLabs]][DevTestLabsGallery]
@@ -138,6 +139,7 @@ Web App Service                       | `Az.Websites`                           
 [DataMigration]:              https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
+[DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
 [DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
@@ -235,6 +237,7 @@ Web App Service                       | `Az.Websites`                           
 [DataMigrationGallery]:              https://www.powershellgallery.com/packages/Az.DataMigration/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/
+[DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
 [DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
