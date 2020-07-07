@@ -30,6 +30,7 @@ Compute                               | `Az.Compute`                            
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
 Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
 Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
+Custom Resource Providers             | `Az.CustomProviders`                    | [![CustomProviders]][CustomProvidersGallery]
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
 Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
@@ -49,6 +50,7 @@ Event Hubs                            | `Az.EventHub`                           
 Front Door                            | `Az.FrontDoor`                          | [![FrontDoor]][FrontDoorGallery]
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
+SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery]
 HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
 API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
 HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
@@ -71,6 +73,7 @@ Marketplace Ordering                  | `Az.MarketplaceOrdering`                
 Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
 Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
 Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery]
+Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery]
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
 NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
 Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
@@ -130,6 +133,7 @@ Web App Service                       | `Az.Websites`                           
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
+[CustomProvidersDB]:          https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
 [Databricks]:                 https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks
@@ -149,6 +153,7 @@ Web App Service                       | `Az.Websites`                           
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
+[HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
@@ -171,6 +176,7 @@ Web App Service                       | `Az.Websites`                           
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
+[MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
@@ -228,6 +234,7 @@ Web App Service                       | `Az.Websites`                           
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
+[CustomProvidersGallery]:            https://www.powershellgallery.com/packages/Az.CustomProviders/
 [DataBoxGallery]:                    https://www.powershellgallery.com/packages/Az.DataBox/
 [DataBoxEdgeGallery]:                https://www.powershellgallery.com/packages/Az.DataBoxEdge/
 [DatabricksGallery]:                 https://www.powershellgallery.com/packages/Az.Databricks/
@@ -247,6 +254,7 @@ Web App Service                       | `Az.Websites`                           
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
+[HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
@@ -269,6 +277,7 @@ Web App Service                       | `Az.Websites`                           
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
+[MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
