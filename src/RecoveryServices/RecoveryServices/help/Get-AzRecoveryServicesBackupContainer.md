@@ -51,12 +51,11 @@ The **BackupManagementType** parameter is only required for Windows containers.
 
 ### -BackupManagementType
 
-Specifies the backup management type.
-The acceptable values for this parameter are:
+The class of resources being protected. The acceptable values for this parameter are:
 
 - AzureVM
 - MARS
-- AzureSQL
+- AzureWorkload
 - AzureStorage
 
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
@@ -65,7 +64,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, AzureSQL, AzureStorage
+Accepted values: AzureVM, MARS, AzureWorkload, AzureStorage
 
 Required: False
 Position: 2

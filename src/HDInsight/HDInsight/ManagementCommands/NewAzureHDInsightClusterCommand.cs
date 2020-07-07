@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion);
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId);
 
             if (cluster != null)
             {

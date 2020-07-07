@@ -1,10 +1,10 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSynapseSparkStatement
     {
-        public PSSynapseSparkStatement(LivyStatementResponseBody livyStatement)
+        public PSSynapseSparkStatement(SparkStatement livyStatement)
         {
             this.Id = livyStatement?.Id;
             this.Code = livyStatement?.Code;

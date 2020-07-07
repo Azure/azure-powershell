@@ -30,6 +30,81 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.ProvisioningState = topic.ProvisioningState;
             this.Tags = topic.Tags;
             this.Endpoint = topic.Endpoint;
+            this.InputSchema = topic.InputSchema;
+            this.PublicNetworkAccess = topic.PublicNetworkAccess;
+
+            if (topic.InboundIpRules != null)
+            {
+                this.InboundIpRule = new Dictionary<string, string>();
+
+                foreach (var rule in topic.InboundIpRules)
+                {
+                    this.InboundIpRule.Add(rule.IpMask, rule.Action);
+                }
+            }
+
+
+            if (topic.InputSchemaMapping != null)
+            {
+                this.InputMappingField = new Dictionary<string, string>();
+                this.InputMappingDefaultValue = new Dictionary<string, string>();
+
+                var jsonInputSchemaMapping = topic.InputSchemaMapping as JsonInputSchemaMapping;
+
+                if (jsonInputSchemaMapping.Id != null)
+                {
+                    this.InputMappingField["id"] = jsonInputSchemaMapping.Id.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.Topic != null)
+                {
+                    this.InputMappingField["topic"] = jsonInputSchemaMapping.Topic.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.EventTime != null)
+                {
+                    this.InputMappingField["eventtime"] = jsonInputSchemaMapping.EventTime.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.EventType != null)
+                {
+                    if (jsonInputSchemaMapping.EventType.SourceField != null)
+                    {
+                        this.InputMappingField["eventtype"] = jsonInputSchemaMapping.EventType.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.EventType.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValue["eventtype"] = jsonInputSchemaMapping.EventType.DefaultValue;
+                    }
+                }
+
+                if (jsonInputSchemaMapping.Subject != null)
+                {
+                    if (jsonInputSchemaMapping.Subject.SourceField != null)
+                    {
+                        this.InputMappingField["subject"] = jsonInputSchemaMapping.Subject.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.Subject.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValue["subject"] = jsonInputSchemaMapping.Subject.DefaultValue;
+                    }
+                }
+
+                if (jsonInputSchemaMapping.DataVersion != null)
+                {
+                    if (jsonInputSchemaMapping.DataVersion.SourceField != null)
+                    {
+                        this.InputMappingField["dataversion"] = jsonInputSchemaMapping.DataVersion.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.DataVersion.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValue["dataversion"] = jsonInputSchemaMapping.DataVersion.DefaultValue;
+                    }
+                }
+            }
         }
 
         public string ResourceGroupName { get; set; }
@@ -46,7 +121,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public string ProvisioningState { get; set; }
 
+        public string InputSchema { get; set; }
+
         public IDictionary<string, string> Tags { get; set; }
+
+        public IDictionary<string, string> InputMappingField { get; set; }
+
+        public IDictionary<string, string> InputMappingDefaultValue { get; set; }
+
+        public IDictionary<string, string> InboundIpRule { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Return a string representation of this topic

@@ -11,7 +11,7 @@
 
   <!-- Build -->
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
     <IsPackable>false</IsPackable>
