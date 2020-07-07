@@ -6,11 +6,11 @@ $ErrorActionPreference = 'Stop'
 
 #region User visible strings
 
-$AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzureStackHCI again with same parameters to complete registration."
+$AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
 $NoClusterError = "Computer {0} is not part of an Azure Stack HCI cluster. Use the -ComputerName parameter to specify an Azure Stack HCI cluster node and try again."
-$CloudResourceDoesNotExist = "The Azure resource with ID {0} doesn't exist. Unregister the cluster using Unregister-AzureStackHCI and then try again."
-$RegisteredWithDifferentResourceId = "Azure Stack HCI is already registered with Azure resource ID {0}. To register or change registration, first unregister the cluster using Unregister-AzureStackHCI, then try again."
-$RegistrationInfoNotFound = "Additional parameters are required to unregister. Run 'Get-Help Unregister-AzureStackHCI -Full' for more information."
+$CloudResourceDoesNotExist = "The Azure resource with ID {0} doesn't exist. Unregister the cluster using Unregister-AzStackHCI and then try again."
+$RegisteredWithDifferentResourceId = "Azure Stack HCI is already registered with Azure resource ID {0}. To register or change registration, first unregister the cluster using Unregister-AzStackHCI, then try again."
+$RegistrationInfoNotFound = "Additional parameters are required to unregister. Run 'Get-Help Unregister-AzStackHCI -Full' for more information."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -514,7 +514,7 @@ enum OperationStatus
 
 <#
     .Description
-    Register-AzureStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
+    Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
 
     .PARAMETER SubscriptionId
     Specifies the Azure Subscription to create the resource. This is the only Mandatory parameter.
@@ -558,7 +558,7 @@ enum OperationStatus
 
     .EXAMPLE
     Invoking on one of the cluster node.
-    C:\PS>Register-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" 
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" 
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
@@ -566,7 +566,7 @@ enum OperationStatus
 
     .EXAMPLE
     Invoking from the management node
-    C:\PS>Register-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2/overview
@@ -574,7 +574,7 @@ enum OperationStatus
 
     .EXAMPLE
     Invoking from WAC
-    C:\PS>Register-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
     Result: PendingForAdminConsent
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3/overview
@@ -582,13 +582,13 @@ enum OperationStatus
 
     .EXAMPLE
     Invoking with all the parameters
-    C:\PS>Register-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
     PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/990be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
 #>
-function Register-AzureStackHCI{
+function Register-AzStackHCI{
 param(
     [Parameter(Mandatory = $true)]
     [string] $SubscriptionId,
@@ -711,7 +711,7 @@ param(
 
         $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName
 
-        Write-Verbose "Register-AzureStackHCI triggered - Region: $Region ResourceName: $ResourceName `
+        Write-Verbose "Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
             SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName AccountId: $AccountId EnvironmentName: $EnvironmentName"
 
         $resourceId = Get-ResourceId -ResourceName $ResourceName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
@@ -907,7 +907,7 @@ param(
     }
     catch
     {
-        Write-Debug ("Exception occured in Register-AzureStackHCI. ErrorMessage : " + $_.Exception.Message)
+        Write-Debug ("Exception occured in Register-AzStackHCI. ErrorMessage : " + $_.Exception.Message)
         Write-Debug $_
         throw
     }
@@ -921,7 +921,7 @@ param(
 
 <#
     .Description
-    Unregister-AzureStackHCI delets the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
+    Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
     The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
     .PARAMETER SubscriptionId
@@ -959,26 +959,26 @@ param(
     Result: Success or Failed or Cancelled.
 
     .EXAMPLE
-    Invoking on one of the cluster node.
-    C:\PS>Unregister-AzureStackHCI
+    Invoking on one of the cluster node
+    C:\PS>Unregister-AzStackHCI
     Result: Success
 
     .EXAMPLE
     Invoking from the management node
-    C:\PS>Unregister-AzureStackHCI -ComputerName ClusterNode1
+    C:\PS>Unregister-AzStackHCI -ComputerName ClusterNode1
     Result: Success
 
     .EXAMPLE
     Invoking from WAC
-    C:\PS>Unregister-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
     Result: Success
 
     .EXAMPLE
     Invoking with all the parameters
-    C:\PS>Unregister-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
     Result: Success
 #>
-function Unregister-AzureStackHCI{
+function Unregister-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
 param(
     [Parameter(Mandatory = $false)]
@@ -1087,7 +1087,7 @@ param(
         {
             $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName
 
-            Write-Verbose "Unregister-AzureStackHCI triggered - ResourceName: $ResourceName `
+            Write-Verbose "Unregister-AzStackHCI triggered - ResourceName: $ResourceName `
                    SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
                    AccountId: $AccountId EnvironmentName: $EnvironmentName"
 
@@ -1139,7 +1139,7 @@ param(
     }
     catch
     {
-        Write-Debug ("Exception occured in Unregister-AzureStackHCI. ErrorMessage : " + $_.Exception.Message)
+        Write-Debug ("Exception occured in Unregister-AzStackHCI. ErrorMessage : " + $_.Exception.Message)
         Write-Debug $_
         throw
     }
@@ -1151,5 +1151,5 @@ param(
     }
 }
 
-Export-ModuleMember -Function Register-AzureStackHCI
-Export-ModuleMember -Function Unregister-AzureStackHCI
+Export-ModuleMember -Function Register-AzStackHCI
+Export-ModuleMember -Function Unregister-AzStackHCI

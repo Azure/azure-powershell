@@ -20,4 +20,4 @@
 ## Upcoming Release
 
 ## Version 1.0.0
-* Public Preview of `Az.AzureStackHCI` module
+* Public Preview of `Az.StackHCI` module

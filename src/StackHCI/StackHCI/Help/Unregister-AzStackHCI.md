@@ -1,35 +1,35 @@
 ---
-external help file: Az.AzureStackHCI-help.xml
-Module Name: Az.AzureStackHCI
+external help file: Az.StackHCI-help.xml
+Module Name: Az.StackHCI
 online version:
 schema: 2.0.0
 ---
 
-# Unregister-AzureStackHCI
+# Unregister-AzStackHCI
 
 ## SYNOPSIS
 
 ## SYNTAX
 
 ```
-Unregister-AzureStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
+Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>]
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Unregister-AzureStackHCI delets the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
+Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Invoking on one of the cluster node.
+Invoking on one of the cluster node
 ```
 
-C:\PS\>Unregister-AzureStackHCI
+C:\PS\>Unregister-AzStackHCI
 Result: Success
 
 ### EXAMPLE 2
@@ -37,7 +37,7 @@ Result: Success
 Invoking from the management node
 ```
 
-C:\PS\>Unregister-AzureStackHCI -ComputerName ClusterNode1
+C:\PS\>Unregister-AzStackHCI -ComputerName ClusterNode1
 Result: Success
 
 ### EXAMPLE 3
@@ -45,7 +45,7 @@ Result: Success
 Invoking from WAC
 ```
 
-C:\PS\>Unregister-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+C:\PS\>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 Result: Success
 
 ### EXAMPLE 4
@@ -53,7 +53,7 @@ Result: Success
 Invoking with all the parameters
 ```
 
-C:\PS\>Unregister-AzureStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+C:\PS\>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 Result: Success
 
 ## PARAMETERS
