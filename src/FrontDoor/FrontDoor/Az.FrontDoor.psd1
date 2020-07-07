@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.5.0'
+ModuleVersion = '1.6.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -134,10 +134,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
-* Added helper cmdlets for construction of Front Door Rules Engine object
-* Added Rules Engine reference to Front Door Routing Rule object.
-* Added Private Link parameters to Front Door Backend object'
+        ReleaseNotes = '* API 2020-05-01. Added Private link support for Storage, Keyvault and Web App Service resources.'
 
         # Prerelease string of this module
         # Prerelease = ''

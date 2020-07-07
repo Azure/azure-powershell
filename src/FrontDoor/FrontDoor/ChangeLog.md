@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added Private Link Resource Id and Location parameters to Front Door Backend object
+
 ## Version 1.5.0
 * Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
 * Added helper cmdlets for construction of Front Door Rules Engine object
