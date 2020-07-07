@@ -18,15 +18,6 @@
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
 .Link
