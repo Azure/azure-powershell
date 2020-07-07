@@ -1060,6 +1060,26 @@
     {
       "file": "src\\Attestation\\Attestation.Test\\SessionRecords\\Microsoft.Azure.Commands.Attestation.Test.ScenarioTests.AttestationPolicySignerTests\\TestAddAttestationPolicySigner.json",
       "_justification": "The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\HanaOnAzure\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\exports\\New-AzSapMonitorProviderInstance.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\exports\\ProxyCmdletDefinitions.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\internal\\New-AzSapMonitorProviderInstance.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\internal\\ProxyCmdletDefinitions.ps1",
+      "_justification": "Test resource is deleted"
     }
   ]
 }
