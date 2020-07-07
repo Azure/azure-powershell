@@ -522,26 +522,44 @@
               <ListItem>
                 <Label>Currency</Label>
                 <PropertyName>Currency</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>Currency</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>InvoiceDay</Label>
                 <PropertyName>InvoiceDay</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>InvoiceDay</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>InvoiceEmailOptIn</Label>
                 <PropertyName>InvoiceEmailOptIn</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>InvoiceEmailOptIn</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>PurchaseOrderNumber</Label>
                 <PropertyName>PurchaseOrderNumber</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>PurchaseOrderNumber</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>SpendingLimit</Label>
                 <PropertyName>SpendingLimit</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>SpendingLimit</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>Status</Label>
                 <PropertyName>Status</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>Status</PropertyName>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>StatusReasonCode</Label>
