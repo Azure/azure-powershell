@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Get-AzDiagnosticSetting` when metrics or logs are null [#12272]
 
 ## Version 2.0.1
 * Fixed input object parameter for `Set-AzActivityLogAlert`
