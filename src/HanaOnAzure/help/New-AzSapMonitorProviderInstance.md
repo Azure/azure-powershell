@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hana/new-azsapproviderinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapproviderinstance
 schema: 2.0.0
 ---
 
