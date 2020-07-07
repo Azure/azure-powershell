@@ -89,7 +89,7 @@ function Invoke-AzCostManagementUsageQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryResult])]
 [CmdletBinding(DefaultParameterSetName='UsageExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="The scope associated with query and export operations.")]
+    [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Path')]
     [System.String]
     # The scope associated with query and export operations.
@@ -110,18 +110,8 @@ param(
     # This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
     ${ExternalCloudProviderType},
 
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage="Identity Parameter")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', Mandatory, ValueFromPipeline, HelpMessage="Identity Parameter")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.TimeframeType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.TimeframeType]
@@ -131,8 +121,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="The type of the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory, HelpMessage="The type of the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', Mandatory, HelpMessage="The type of the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', Mandatory, HelpMessage="The type of the query.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.ExportType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.ExportType]
@@ -141,8 +129,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="Array of column names to be included in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Array of column names to be included in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="Array of column names to be included in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="Array of column names to be included in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [System.String[]]
     # Array of column names to be included in the query.
@@ -152,8 +138,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="Dictionary of aggregation expression to use in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Dictionary of aggregation expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="Dictionary of aggregation expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="Dictionary of aggregation expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryDatasetAggregation]))]
     [System.Collections.Hashtable]
@@ -164,8 +148,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="Has filter expression to use in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Has filter expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="Has filter expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="Has filter expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter]
     # Has filter expression to use in the query.
@@ -174,8 +156,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="The granularity of rows in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="The granularity of rows in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="The granularity of rows in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="The granularity of rows in the query.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.GranularityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.GranularityType]
@@ -184,8 +164,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage='Array of group by expression to use in the query.')]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Array of group by expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="Array of group by expression to use in the query.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="Array of group by expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryGrouping[]]
     # Array of group by expression to use in the query.
@@ -195,8 +173,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="The start date to pull data from.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="The start date to pull data from.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="The start date to pull data from.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="The start date to pull data from.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [System.DateTime]
     # The start date to pull data from.
@@ -204,8 +180,6 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="The end date to pull data to.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="The end date to pull data to.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded', HelpMessage="The end date to pull data to.")]
-    [Parameter(ParameterSetName='UsageViaIdentityExpanded1', HelpMessage="The end date to pull data to.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cost.Category('Body')]
     [System.DateTime]
     # The end date to pull data to.
@@ -264,26 +238,12 @@ param(
 
     $URL = ''
     if ($PSBoundParameters.ContainsKey('ExternalCloudProviderType')) {
-      $URL = [System.Uri]::New([System.Text.RegularExpressions.Regex]::Replace(
-                      "https://management.azure.com/providers/Microsoft.CostManagement/$ExternalCloudProviderType/$ExternalCloudProviderId/query?api-version=$ApiVersion" ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"))
+      $URL = [System.Text.RegularExpressions.Regex]::Replace(
+                      "providers/Microsoft.CostManagement/$ExternalCloudProviderType/$ExternalCloudProviderId/query?api-version=$ApiVersion" ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2")
     } else {
-      if (-not $PSBoundParameters.ContainsKey('Scope')) {
-        $ResourceId = $InputObject.Id
-        if ($null -eq $ResourceId) {
-          $ErrorMessage = 'Id in input object should not be empty.'
-          throw [System.IO.FileNotFoundException] $ErrorMessage
-        }
-        $match = [System.Text.RegularExpressions].Regex("(?<scope>.+)/providers/Microsoft.CostManagement/query$").Match($ResourceId);
-        if (-not $match.Success)
-        {
-          throw [System.IO.FileNotFoundException] "Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/query'"
-        }
-        $Scope = $match.Groups["scope"].Value
-      }
-      $URL = [System.Uri]::New([System.Text.RegularExpressions.Regex]::Replace(
-                      "https://management.azure.com/$Scope/providers/Microsoft.CostManagement/query?api-version=$ApiVersion" ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"))
+      $URL = [System.Text.RegularExpressions.Regex]::Replace(
+                      "$Scope/providers/Microsoft.CostManagement/query?api-version=$ApiVersion" ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2")
     }
-    $URL = $URL -replace "https://management.azure.com/",""
 
     $Request = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryDefinition]::New()
     if ($PSBoundParameters.ContainsKey('ConfigurationColumn')) {

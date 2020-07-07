@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for QueryFilter
+Create a in-memory object for QueryFilter. On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
 .Description
-Create a in-memory object for QueryFilter
+Create a in-memory object for QueryFilter. On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryFilter

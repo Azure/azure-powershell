@@ -77,13 +77,14 @@ directive:
     hide: true
   - where:
       subject: ByDimensionExternalCloudProviderType|CloudForecast|DismissAlert|Forecast
-      verb: invoke
+      verb: Invoke
     remove: true
-  # - where:
-  #     subject: ExportExecutionHistory
-  #     verb: Get
-  #     variant: GetViaIdentity
-  #   remove: true
+  - where:
+      subject: Export|ExportExecutionHistory|ExportExecution
+      parameter-name: Scope
+    set:
+      parameter-name: ABC
+      # parameter-description: This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/\/runHistory\$/g, "$");
