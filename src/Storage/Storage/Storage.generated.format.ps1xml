@@ -253,12 +253,17 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>SnapshotTime</Label>
-            <Width>20</Width>
+            <Width>28</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>IsDeleted</Label>
             <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VersionId</Label>
+            <Width>30</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -286,23 +291,27 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
+                <ScriptBlock>$_.AccessTier</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
+                <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("o")</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>IsDeleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.IsLatestVersion){$_.VersionId + " *"} else {$_.VersionId}</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
-        <Label>Container Uri</Label>
+        <ScriptBlock>$_.BlobBaseClient.AccountName + ", ContainerName: " + $_.BlobBaseClient.BlobContainerName</ScriptBlock>
+        <Label>AccountName</Label>
       </GroupBy>
     </View>
     <View>
