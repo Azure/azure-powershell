@@ -500,7 +500,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Update-AzVirtualApplianceSite',
                'New-AzOffice365PolicyProperty',
                'Get-AzNetworkVirtualApplianceSku',
-               'New-AzVirtualApplianceSkuProperty'
+               'New-AzVirtualApplianceSkuProperty',
+               'New-AzExpressRoutePortLOA'
 
 # Variables to export from this module
 # VariablesToExport = @()
