@@ -9,19 +9,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSPipelineFolder(PipelineFolder pipelineFolder)
         {
-            if (pipelineFolder != null)
-            {
-                this.Name = pipelineFolder.Name;
-            }
+            this.Name = pipelineFolder?.Name;
         }
 
         public string Name { get; set; }
 
-        public static PipelineFolder ToSdkObject(PSPipelineFolder pSPipelineFolder) 
+        public PipelineFolder ToSdkObject() 
         {
             return new PipelineFolder()
             {
-                Name = pSPipelineFolder.Name
+                Name = this.Name
             };
         }
     }

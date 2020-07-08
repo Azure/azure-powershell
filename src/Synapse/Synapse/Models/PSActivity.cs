@@ -1,8 +1,6 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -20,6 +18,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 this.Values = activity.Values;
             }
         }
+
+        public PSActivity() { }
         
         public string Name { get; set; }
 
@@ -33,31 +33,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public ICollection<object> Values { get; set; }
 
-        public static Activity ToSdkObject(PSActivity pSActivity)
+        public virtual void Validate() { }
+
+        public virtual Activity ToSdkObject()
         {
-            Activity activity = new Activity(pSActivity.Name)
+            Activity activity = new Activity(this.Name)
             {
-                Description = pSActivity.Description,
+                Description = this.Description,
             };
 
-            IList<PSActivityDependency> pSDependsOn = pSActivity.DependsOn;
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
             if (pSDependsOn != null)
             {
                 IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
                 foreach (PSActivityDependency pSDependOn in pSDependsOn)
                 {
-                    dependsOn.Add(PSActivityDependency.ToSdkObject(pSDependOn));
+                    dependsOn.Add(pSDependOn.ToSdkObject());
                 }
                 activity.DependsOn = dependsOn;
             }
 
-            IList<PSUserProperty> pSUserProperties = pSActivity.UserProperties;
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
             if (pSUserProperties != null)
             {
                 IList<UserProperty> userProperties = new List<UserProperty>();
                 foreach (PSUserProperty pSUserProperty in pSUserProperties)
                 {
-                    userProperties.Add(PSUserProperty.ToSdkObject(pSUserProperty));
+                    userProperties.Add(pSUserProperty.ToSdkObject());
                 }
                 activity.UserProperties = userProperties;
             }

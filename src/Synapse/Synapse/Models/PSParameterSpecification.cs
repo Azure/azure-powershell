@@ -9,19 +9,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSParameterSpecification(ParameterSpecification parameterSpecification)
         {
-            this.Type = parameterSpecification.Type;
-            this.DefaultValue = parameterSpecification.DefaultValue;
+            if (parameterSpecification != null)
+            {
+                this.Type = parameterSpecification.Type;
+                this.DefaultValue = parameterSpecification.DefaultValue;
+            }
         }
 
         public ParameterType Type { get; set; }
 
         public object DefaultValue { get; set; }
 
-        public static ParameterSpecification ToSdkObject(PSParameterSpecification pSParameterSpecification)
+        public ParameterSpecification ToSdkObject()
         {
-            return  new ParameterSpecification(pSParameterSpecification.Type)
+            return  new ParameterSpecification(this.Type)
             {
-                DefaultValue = pSParameterSpecification.DefaultValue
+                DefaultValue = this.DefaultValue
             };
         }
     }

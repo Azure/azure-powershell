@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.HelpJsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
         public string DefinitionFile { get; set; }

@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public object DefaultValue { get; set; }
 
-        public static VariableSpecification ToSdkObject(PSVariableSpecification pSVariableSpecification)
+        public VariableSpecification ToSdkObject()
         {
-            return new VariableSpecification(pSVariableSpecification.Type)
+            return new VariableSpecification(this.Type)
             {
-                DefaultValue = pSVariableSpecification.DefaultValue
+                DefaultValue = this.DefaultValue
             };
         }
     }

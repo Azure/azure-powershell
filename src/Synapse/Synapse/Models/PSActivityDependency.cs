@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public ICollection<object> Values { get; }
 
-        public static ActivityDependency ToSdkObject(PSActivityDependency pSActivityDependency)
+        public ActivityDependency ToSdkObject()
         {
-           return new ActivityDependency(pSActivityDependency.Activity, pSActivityDependency.DependencyConditions);
+           return new ActivityDependency(this.Activity, this.DependencyConditions);
         }
     }
 }

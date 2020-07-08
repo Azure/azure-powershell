@@ -16,8 +16,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsArtifactsClient
     {
+        private readonly JsonSerializerSettings Settings;
         private readonly PipelineClient _pipelineClient;
         private readonly PipelineRunClient _pipelineRunClient;
+        private readonly LinkedServiceClient _linkedServiceClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -26,32 +28,36 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new SynapseException(Resources.InvalidDefaultSubscription);
             }
 
+            Settings = new JsonSerializerSettings
+            {
+                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
+                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
+                ContractResolver = new ReadOnlyJsonContractResolver(),
+                Converters = new List<JsonConverter>
+                    {
+                        new Iso8601TimeSpanConverter()
+                    }
+            };
+            Settings.Converters.Add(new TransformationJsonConverter());
+            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSActivity>("type"));
+            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSLinkedService>("type"));
+
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
             _pipelineClient = new PipelineClient(uri, new AzureSessionCredential(context));
             _pipelineRunClient = new PipelineRunClient(uri, new AzureSessionCredential(context));
+            _linkedServiceClient = new LinkedServiceClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
 
         public PipelineResource CreateOrUpdatePipeline(string pipelineName, string rawJsonContent)
         {
-            PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent);
-            PipelineResource pipeline = GetPipelienResource(psPipeline);
+            PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent,Settings);
+            PipelineResource pipeline = psPipeline.ToSdkObject();
             return _pipelineClient.CreateOrUpdatePipeline(pipelineName, pipeline).Value;
-        }
-
-        public virtual string ReadJsonFileContent(string path)
-        {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException(path);
-            }
-
-            using (TextReader reader = new StreamReader(path))
-            {
-                return reader.ReadToEnd();
-            }
         }
 
         public PipelineResource GetPipeline(string pipelineName)
@@ -100,57 +106,45 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
+        #region LinkedService
+
+        public LinkedServiceResource GetLinkedService(string linkedServiceName)
+        {
+            return _linkedServiceClient.GetLinkedService(linkedServiceName);
+        }
+
+        public Pageable<LinkedServiceResource> GetLinkedServicesByWorkspace()
+        {
+            return _linkedServiceClient.GetLinkedServicesByWorkspace();
+        }
+
+        public LinkedServiceResource CreateOrUpdateLinkedService(string linkedServiceName, string rawJsonContent)
+        {
+            PSLinkedServiceResource psLinkedService = JsonConvert.DeserializeObject<PSLinkedServiceResource>(rawJsonContent, Settings);
+            LinkedServiceResource linkedService = psLinkedService.ToSdkObject();
+            return _linkedServiceClient.CreateOrUpdateLinkedService(linkedServiceName, linkedService);
+        }
+
+        public void DeleteLinkedService(string linkedServiceName)
+        {
+            _linkedServiceClient.DeleteLinkedService(linkedServiceName);
+        }
+
+        #endregion
+
         #region helpers
 
-        public PipelineResource GetPipelienResource(PSPipelineResource pSPipelineResource)
+        public virtual string ReadJsonFileContent(string path)
         {
-            PipelineResource pipeline = new PipelineResource
+            if (!File.Exists(path))
             {
-                Description = pSPipelineResource.Description,
-                Concurrency = pSPipelineResource.Concurrency,
-                Annotations = pSPipelineResource.Annotations,
-                RunDimensions = pSPipelineResource.RunDimensions
-            };
-
-            IList<PSActivity> pSActivities = pSPipelineResource.Activities;
-            if (pSActivities != null)
-            {
-                IList<Activity> activities = new List<Activity>();
-                foreach (PSActivity pSActivity in pSActivities)
-                {
-                    activities.Add(PSActivity.ToSdkObject(pSActivity));
-                }
-                pipeline.Activities = activities;
+                throw new FileNotFoundException(path);
             }
 
-            IDictionary<string, PSVariableSpecification> pSVariables = pSPipelineResource.Variables;
-            if (pSVariables != null)
+            using (TextReader reader = new StreamReader(path))
             {
-                IDictionary<string, VariableSpecification> variables = new Dictionary<string, VariableSpecification>();
-                foreach (var pSVariable in pSVariables)
-                {
-                    variables.Add(pSVariable.Key, PSVariableSpecification.ToSdkObject(pSVariable.Value));
-                }
-                pipeline.Variables = variables;
+                return reader.ReadToEnd();
             }
-
-            if (pSPipelineResource.Folder != null)
-            {
-                pipeline.Folder = PSPipelineFolder.ToSdkObject(pSPipelineResource.Folder);
-            }
-
-            IDictionary<string, PSParameterSpecification> pSParameters = pSPipelineResource.Parameters;
-            if (pSParameters != null)
-            {
-                IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
-                foreach (var pSParameter in pSParameters)
-                {
-                    parameters.Add(pSParameter.Key, PSParameterSpecification.ToSdkObject(pSParameter.Value));
-                }
-                pipeline.Parameters = parameters;
-            }
-
-            return pipeline;
         }
 
         #endregion

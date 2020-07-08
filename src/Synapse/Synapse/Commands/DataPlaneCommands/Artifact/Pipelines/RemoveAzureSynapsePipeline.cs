@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string RemoveByName = "RemoveByName";
         private const string RemoveByObject = "RemoveByObject";
+        private const string RemoveByInputObject = "NewByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -33,6 +34,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByInputObject,
+            Mandatory = true, HelpMessage = HelpMessages.PipelineObject)]
+        [ValidateNotNull]
+        public PSPipelineResource InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
@@ -44,6 +50,12 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.IsParameterBound(c => c.WorkspaceObject))
             {
                 this.WorkspaceName = this.WorkspaceObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.Name = this.InputObject.Name;
             }
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapsePipeline, this.Name, this.WorkspaceName)))

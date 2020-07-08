@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         
         public object Value { get; set; }
 
-        public static UserProperty ToSdkObject(PSUserProperty pSUserProperty)
+        public UserProperty ToSdkObject()
         {
-            return new UserProperty(pSUserProperty.Name, pSUserProperty.Value);
+            return new UserProperty(this.Name, this.Value);
         }
     }
 }

@@ -417,4 +417,10 @@ Are you sure you want to continue?</value>
   <data name="InvalidCastParameterKeyExceptionMessage" xml:space="preserve">
     <value>All keys in the parameters hashtable must be of type string since they represent pipeline parameter names.</value>
   </data>
+  <data name="SettingSynapseLinkedService" xml:space="preserve">
+    <value>Setting linked service '{1}' in workspace '{0}'.</value>
+  </data>
+  <data name="RemovingSynapseLinkedService" xml:space="preserve">
+    <value>Deleting linked service '{0}' in workspace '{1}'.</value>
+  </data>
 </root>
