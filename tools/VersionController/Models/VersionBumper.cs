@@ -171,6 +171,12 @@ namespace VersionController.Models
                 {
                     versionBump = Version.MINOR;
                 }
+                // fix for https://github.com/Azure/azure-powershell/pull/12356
+                // this only work when version is 1.9.x
+                if (splitVersion[0] == 1 && splitVersion[1] == 9 && versionBump == Version.MINOR)
+                {
+                    versionBump = Version.PATCH;
+                }
             }
 
             // PATCH update for preview modules (0.x.x or x.x.x-preview)
