@@ -59,13 +59,13 @@ namespace VersionController.Models
                 Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
             }
 
-            UpdateSerializedAssemblyVersion();
+            /*UpdateSerializedAssemblyVersion();
             UpdateChangeLog();
             var releaseNotes = GetReleaseNotes();
             UpdateOutputModuleManifest(releaseNotes);
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
-            UpdateDependentModules();
+            UpdateDependentModules();*/
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
         }
 
@@ -171,8 +171,11 @@ namespace VersionController.Models
                 {
                     versionBump = Version.MINOR;
                 }
-                // Fix for https://github.com/Azure/azure-powershell/pull/12356
-                // This only work when version is 1.9.x
+                // for https://github.com/Azure/azure-powershell/pull/12356
+                // Because of the wrong compare script in the link above, we need to avoid the minor bump when the version of Az.Accounts is 1.9.x
+                // So we add a special judge for it when the version is 1.9.x and the expect bump type is minor, 
+                // we will change the type to patch so that it can work until 1.9.9.Once the version is greater or equal than 2.0.0
+                // this special judge will not works anymore.
                 if (splitVersion[0] == 1 && splitVersion[1] == 9 && versionBump == Version.MINOR)
                 {
                     versionBump = Version.PATCH;
