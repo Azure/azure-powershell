@@ -59,13 +59,13 @@ namespace VersionController.Models
                 Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
             }
 
-            /*UpdateSerializedAssemblyVersion();
+            UpdateSerializedAssemblyVersion();
             UpdateChangeLog();
             var releaseNotes = GetReleaseNotes();
             UpdateOutputModuleManifest(releaseNotes);
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
-            UpdateDependentModules();*/
+            UpdateDependentModules();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
         }
 
