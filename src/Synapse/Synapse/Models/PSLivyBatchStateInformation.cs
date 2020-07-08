@@ -1,14 +1,14 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLivyBatchStateInformation : PSLivyStateInformation
     {
-        public PSLivyBatchStateInformation(LivyBatchStateInformation stateInfo)
+        public PSLivyBatchStateInformation(SparkBatchJobState stateInfo)
             : base(stateInfo?.NotStartedAt,
                 stateInfo?.StartingAt,
                 stateInfo?.DeadAt,
-                stateInfo?.KilledAt,
+                stateInfo?.TerminatedAt,
                 stateInfo?.RecoveringAt,
                 stateInfo?.CurrentState,
                 stateInfo?.JobCreationRequest)

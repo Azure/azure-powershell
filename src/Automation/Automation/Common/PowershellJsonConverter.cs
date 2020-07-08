@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -31,17 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 return null;
             }
 
-            Hashtable parameters = new Hashtable();
-            parameters.Add(Constants.PsCommandParamInputObject, inputObject);
-            parameters.Add(Constants.PsCommandParamDepth, Constants.PsCommandValueDepth);
-            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertToJson, parameters);
-
-            if (result.Count != 1)
-            {
-                return null;
-            }
-
-            return result[0].ToString();
+            return JsonConvert.SerializeObject(inputObject);
         }
 
         public static PSObject Deserialize(string json)
@@ -51,16 +42,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 return null;
             }
 
-            Hashtable parameters = new Hashtable();
-            parameters.Add(Constants.PsCommandParamInputObject, json);
-            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
-            if (result.Count != 1)
+            try
             {
-                return null;
+                object result = JsonConvert.DeserializeObject(json);
+                return new PSObject(result);
+            } catch
+            {
+                return json;
             }
-
-            //count == 1. return the first psobject
-            return result[0];
         }
 
         /// <summary>

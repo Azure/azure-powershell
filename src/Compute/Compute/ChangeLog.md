@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning when using `New-AzVmss` without "latest" image version
 
 ## Version 4.2.0
 * Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.

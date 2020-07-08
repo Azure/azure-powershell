@@ -36,6 +36,7 @@ using Azure.Storage.Files.DataLake.Models;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 using Azure.Storage;
+using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -374,15 +375,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
                 IStorageBlobManagement localChannel = Channel;
                 Func<long, Task> taskGenerator;
-                if (string.IsNullOrEmpty(this.EncryptionScope))
+                if (!UseTrack2SDK() && string.IsNullOrEmpty(this.EncryptionScope))
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 else
                 {
-                    // As DMlib still not support Encryption scope, need upload with SDK directly to support Encryption scope
-                    taskGenerator = (taskId) => UploadBlobwithSDK(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
+                   taskGenerator = (taskId) => UploadBlobwithSDK(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 RunTask(taskGenerator);
             }
@@ -422,7 +422,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         internal virtual async Task UploadBlobwithSDK(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
         {
-            BlobClientOptions options = null;
+            BlobClientOptions options = this.ClientOptions;
             if (!string.IsNullOrEmpty(this.EncryptionScope))
             {
                 options = new BlobClientOptions()
@@ -431,8 +431,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 };
             }
 
-            if (this.Force.IsPresent 
-                || !blob.Exists() 
+            if (this.Force.IsPresent
+                || !blob.Exists()
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, blob.Uri), null))
             {
                 // Prepare blob Properties, MetaData, accessTier
@@ -465,7 +465,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     {
                         BlobClient blobClient = GetTrack2BlobClient(blob, localChannel.StorageContext, options);
                         StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
-                        await blobClient.UploadAsync(stream, blobHttpHeaders, metadata, null, progressHandler, accesstier, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+                        BlobUploadOptions uploadOptions = new BlobUploadOptions();
+
+                        uploadOptions.Metadata = metadata;
+                        uploadOptions.HttpHeaders = blobHttpHeaders;
+                        uploadOptions.Conditions = this.BlobRequestConditions;
+                        uploadOptions.AccessTier = accesstier;
+                        uploadOptions.ProgressHandler = progressHandler;
+                        uploadOptions.TransferOptions = trasnferOption;
+
+                        await blobClient.UploadAsync(stream, uploadOptions, CmdletCancellationToken).ConfigureAwait(false);
                     }
                     //Page or append blob
                     else if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)
@@ -482,12 +491,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                                 throw new ArgumentException(String.Format("File size {0} Bytes is invalid for PageBlob, must be a multiple of 512 bytes.", fileSize.ToString()));
                             }
                             pageblobClient = GetTrack2PageBlobClient(blob, localChannel.StorageContext, options);
-                            Response<BlobContentInfo> blobInfo = await pageblobClient.CreateAsync(fileSize, null, blobHttpHeaders, metadata, null, CmdletCancellationToken).ConfigureAwait(false);
+                            PageBlobCreateOptions createOptions = new PageBlobCreateOptions();
+
+                            createOptions.Metadata = metadata;
+                            createOptions.HttpHeaders = blobHttpHeaders;
+                            createOptions.Conditions = this.PageBlobRequestConditions;
+                            Response<BlobContentInfo> blobInfo = await pageblobClient.CreateAsync(fileSize, createOptions, CmdletCancellationToken).ConfigureAwait(false);
                         }
                         else //append
                         {
                             appendblobClient = GetTrack2AppendBlobClient(blob, localChannel.StorageContext, options);
-                            Response<BlobContentInfo> blobInfo = await appendblobClient.CreateAsync(blobHttpHeaders, metadata, null, CmdletCancellationToken).ConfigureAwait(false);
+                            AppendBlobCreateOptions createOptions = new AppendBlobCreateOptions();
+
+                            createOptions.Metadata = metadata;
+                            createOptions.HttpHeaders = blobHttpHeaders;
+                            createOptions.Conditions = this.AppendBlobRequestConditions;
+                            Response<BlobContentInfo> blobInfo = await appendblobClient.CreateAsync(createOptions, CmdletCancellationToken).ConfigureAwait(false);
                         }
 
                         // Upload blob content
@@ -498,7 +517,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         while (offset < fileSize)
                         {
                             // Get chunk size and prepare cache
-                            int chunksize = size4MB; 
+                            int chunksize = size4MB;
                             if (chunksize <= (fileSize - offset)) // Chunk size will be 4MB
                             {
                                 if (uploadcache4MB == null)
@@ -538,7 +557,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             offset += readoutcount;
                             progressHandler.Report(offset);
                         }
-                        if(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase) && accesstier != null)
+                        if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase) && accesstier != null)
                         {
                             await pageblobClient.SetAccessTierAsync(accesstier.Value, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
                         }
@@ -671,6 +690,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
                     {
+                        if (CloudBlob is InvalidCloudBlob)
+                        {
+                            throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                        }
                         SetAzureBlobContent(ResolvedFileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);

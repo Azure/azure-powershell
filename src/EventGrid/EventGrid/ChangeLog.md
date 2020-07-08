@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to use the 2020-06-01 API version.
+* New features:
+    - Input mapping
+    - Event Delivery Schema
+    - Private Link
+    - Cloud Event V10 Schema
+    - Service Bus Topic As Destination
+    - Azure Function As Destination
+    - WebHook Batching
+    - Secure webhook (AAD support)
+    - IpFiltering
+* Updated cmdlets:
+    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+        - Add new optional parameters to support webhook batching.
+        - Add new optional parameters to support secured webhook using AAD.
+        - Add new enum for EndpointType parameter to support azure function and service bus topic as new destinations.
+        - Add new optional parameter for delivery schema.
+    - New-AzureRmEventGridTopic/Update-AzureRmEventGridTopic and New-AzureRmEventGridDomain/Update-AzureRmEventGridDomain:
+        - Add new optional parameters to support IpFiltering.
+    - New-AzureRmEventGridTopic/New-AzureRmEventGridDomain:
+        - Add new optional parameters to support Input mapping.
 
 ## Version 1.2.3
 * Update references in .psd1 to use relative path

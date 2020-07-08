@@ -25,6 +25,11 @@ using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Azure.Storage.Blobs.Specialized;
+using System.Globalization;
+using Track2Models = global::Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs;
+using Azure.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -51,6 +56,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [ValidateNotNull]
         public CloudBlob CloudBlob { get; set; }
+
+        [Parameter(HelpMessage = "BlobBaseClient Object", Mandatory = false,
+            ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
+        [ValidateNotNull]
+        public BlobBaseClient BlobBaseClient { get; set; }
 
         [Parameter(HelpMessage = "Azure Container Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
@@ -150,6 +160,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             this.WriteCloudBlobObject(data.TaskId, data.Channel, blob);
         }
 
+
+
+        /// <summary>
+        /// Download blob to local file
+        /// </summary>
+        /// <param name="blob">Source blob object</param>
+        /// <param name="filePath">Destination file path</param>
+        internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, string filePath)
+        {
+            Track2Models.BlobProperties blobProperties = blob.GetProperties(cancellationToken: CmdletCancellationToken);
+
+            if (this.Force.IsPresent
+                || !System.IO.File.Exists(filePath)
+                || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))
+            {
+                StorageTransferOptions trasnferOption = new StorageTransferOptions()
+                {
+                    MaximumConcurrency = this.GetCmdletConcurrency(),
+                    MaximumTransferSize = size4MB,
+                    InitialTransferSize = size4MB
+                };
+                await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+                OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel.StorageContext, blobProperties, options: ClientOptions));
+            }
+        }
+
         /// <summary>
         /// get blob content
         /// </summary>
@@ -159,23 +195,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>the downloaded AzureStorageBlob object</returns>
         internal void GetBlobContent(string containerName, string blobName, string fileName)
         {
-            if (!NameUtil.IsValidBlobName(blobName))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
-            }
-
             if (!NameUtil.IsValidContainerName(containerName))
             {
                 throw new ArgumentException(String.Format(Resources.InvalidContainerName, containerName));
             }
 
             CloudBlobContainer container = Channel.GetContainerReference(containerName);
-            BlobRequestOptions requestOptions = RequestOptions;
-            AccessCondition accessCondition = null;
-
-            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
-
-            GetBlobContent(blob, fileName, true);
+            GetBlobContent(container, blobName, fileName);
         }
 
         /// <summary>
@@ -195,12 +221,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string filePath = GetFullReceiveFilePath(fileName, blobName, null);
 
             ValidatePipelineCloudBlobContainer(container);
-            AccessCondition accessCondition = null;
-            BlobRequestOptions requestOptions = RequestOptions;
 
-            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
+            if (UseTrack2SDK())
+            {
+                BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, Channel.StorageContext, ClientOptions);
+                BlobBaseClient blobClient = track2container.GetBlobBaseClient(blobName);
+                GetBlobContent(blobClient, filePath, true);
+            }
+            else
+            {
+                AccessCondition accessCondition = null;
+                BlobRequestOptions requestOptions = RequestOptions;
+                CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
-            GetBlobContent(blob, filePath, true);
+                GetBlobContent(blob, filePath, true);
+            }
         }
 
         /// <summary>
@@ -231,6 +266,53 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (!isValidBlob)
             {
                 ValidatePipelineCloudBlob(blob);
+            }
+
+            //create the destination directory if not exists.
+            String dirPath = Path.GetDirectoryName(filePath);
+
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+
+            IStorageBlobManagement localChannel = Channel;
+            Func<long, Task> taskGenerator = (taskId) => DownloadBlob(taskId, localChannel, blob, filePath);
+            RunTask(taskGenerator);
+        }
+
+        /// <summary>
+        /// get blob content
+        /// </summary>
+        /// <param name="blob">source BlobBaseClient object</param>
+        /// <param name="fileName">destination file path</param>
+        /// <param name="isValidBlob">whether the source container validated</param>
+        /// <returns>the downloaded AzureStorageBlob object</returns>
+        internal void GetBlobContent(BlobBaseClient blob, string fileName, bool isValidBlob = false)
+        {
+            if (null == blob)
+            {
+                throw new ArgumentNullException(typeof(CloudBlob).Name, String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+            }
+
+            if (!isValidBlob)
+            {
+                ValidatePipelineCloudBlobTrack2(blob);
+            }
+
+            //skip download the snapshot except the CloudBlob pipeline
+            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromBlobUri(blob.Uri);
+            if (snapshotTime != null && ParameterSetName != BlobParameterSet)
+            {
+                WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, snapshotTime));
+                return;
+            }
+
+            string filePath = GetFullReceiveFilePath(fileName, blob.Name, snapshotTime);
+
+            if (!isValidBlob)
+            {
+                ValidatePipelineCloudBlobTrack2(blob);
             }
 
             //create the destination directory if not exists.
@@ -314,7 +396,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, "Download"))
                     {
-                        GetBlobContent(CloudBlob, FileName, true);
+                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2SDK())
+                        {
+                            GetBlobContent(CloudBlob, FileName, true);
+                        }
+                        else
+                        {
+                            GetBlobContent(this.BlobBaseClient, FileName, true);
+                        }
                     }
                     break;
 
