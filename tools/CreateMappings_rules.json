@@ -2,7 +2,6 @@
     { "regex": "ApiManagement", "alias": "API Management" },
 
     { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" },
-    { "regex": "MlOp", "group": "Machine Learning Compute", "alias": "Machine Learning Compute" },
     { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" },
 
     { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" },

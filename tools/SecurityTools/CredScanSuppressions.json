@@ -802,10 +802,6 @@
       "_justification": "Generated test resource group, deleted after test execution"
     },
     {
-      "file": "src\\MachineLearning\\MachineLearningCompute.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\\TestGetKeys.json",
-      "_justification": "Generated test resource group, deleted after test execution"
-    },
-    {
       "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestCreateAndGetRegionalProperties.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
