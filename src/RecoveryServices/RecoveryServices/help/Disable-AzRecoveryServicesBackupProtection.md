@@ -21,7 +21,7 @@ Disable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPo
 ## DESCRIPTION
 The **Disable-AzRecoveryServicesBackupProtection** cmdlet disables protection for an Azure Backup-protected item.
 This cmdlet stops regular scheduled backup of an item.
-This cmdlet can also delete existing recovery points for the backup item.
+This cmdlet can also delete existing recovery points for the backup item if executed with RemoveRecoveryPoints parameter.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -95,7 +95,6 @@ Accept wildcard characters: False
 
 ### -RemoveRecoveryPoints
 Indicates that this cmdlet deletes existing recovery points.
-To delete stored recovery points later, run this cmdlet again and specify this parameter.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

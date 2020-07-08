@@ -29,6 +29,11 @@
         - Change `PluginInfo` to `Plugin`
         - Change `ErrorInfo` to `Errors`
         - Change `Log` to `LogLines`
+* Added support for operation of Synapse access control
+    - Add `Get-AzSynapseRoleDefinition` cmdlet
+    - Add `New-AzSynapseRoleAssignment` cmdlet
+    - Add `Remove-AzSynapseRoleAssignment` cmdlet
+    - Add `Get-AzSynapseRoleAssignment` cmdlet
 
 ## Version 0.1.1
 

@@ -33,8 +33,9 @@
     - `Update-AzNetworkVirtualAppliance`
     - `Get-AzNetworkVirtualApplianceSku`
     - `New-AzVirtualApplianceSkuProperty`
-* Onboard Application Gateway to Private Link Common Cmdlets
-* Onboard StorageSync to Private Link Common Cmdlets
+* Onboarded Application Gateway to Private Link Common Cmdlets
+* Onboarded StorageSync to Private Link Common Cmdlets
+* Onboarded SignalR to Private Link Common Cmdlets
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
