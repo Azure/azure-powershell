@@ -4,6 +4,7 @@
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/loggers/ps1897?api-version=2019-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2xvZ2dlcnMvcHMxODk3P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"loggerType\": \"azureEventHub\",\r\n    \"description\": \"ps9173\",\r\n    \"credentials\": {\r\n      \"name\": \"powershell\",\r\n      \"connectionString\": \"Endpoint=sb://vifedoeventhub.servicebus.windows.net/;SharedAccessKeyName=manage;SharedAccessKey=GQmdXBfPkD/lY7/X1LDAWxDBVszam4GidL+4h0l85TY=;EntityPath=test\"\r\n    },\r\n    \"isBuffered\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
