@@ -28,7 +28,7 @@ function Test-GetResourceSku
 
 <#
 .SYNOPSIS
-Test List Resource Skus
+Test List Resource Skus by Location
 #>
 function Test-GetResourceSkuByLocation
 {

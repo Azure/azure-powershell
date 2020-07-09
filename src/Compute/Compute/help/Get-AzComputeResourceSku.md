@@ -23,7 +23,7 @@ List all compute resource Skus
 
 ### Example 1
 ```
-PS C:\> PS C:\> Get-AzComputeResourceSku "westus";
+PS C:\> Get-AzComputeResourceSku "westus";
 ```
 
 List all compute resource skus in West US region
