@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2019-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9Gcm9udERvb3JXZWJBcHBsaWNhdGlvbkZpcmV3YWxsTWFuYWdlZFJ1bGVTZXRzP2FwaS12ZXJzaW9uPTIwMTktMTAtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9Gcm9udERvb3JXZWJBcHBsaWNhdGlvbkZpcmV3YWxsTWFuYWdlZFJ1bGVTZXRzP2FwaS12ZXJzaW9uPTIwMjAtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "489776b6-662b-4209-b400-114d07087965"
+          "b8540452-abc5-4639-a6fc-8bfb9c28fb8d"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,8 +15,8 @@
         "User-Agent": [
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,10 +27,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2bbe63b0-0310-4284-9d2e-fd8f462c93ad"
+          "43164f73-76f9-471f-8f02-0869706129c9"
         ],
         "x-ms-client-request-id": [
-          "489776b6-662b-4209-b400-114d07087965"
+          "b8540452-abc5-4639-a6fc-8bfb9c28fb8d"
         ],
         "OData-Version": [
           "4.0"
@@ -51,16 +51,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "a81b8106-0e5a-43b1-9f51-61d69d7d426b"
+          "1641ec4e-f50a-4a6c-a0c9-27c0d3ce0e12"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200206T021627Z:a81b8106-0e5a-43b1-9f51-61d69d7d426b"
+          "WESTUS2:20200708T235754Z:1641ec4e-f50a-4a6c-a0c9-27c0d3ce0e12"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Feb 2020 02:16:27 GMT"
+          "Wed, 08 Jul 2020 23:57:54 GMT"
         ],
         "Content-Length": [
           "43395"
