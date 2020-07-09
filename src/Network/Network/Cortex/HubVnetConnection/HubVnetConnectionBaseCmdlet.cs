@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 // Execute the create call and pass the custom headers. 
-                using (var _result = this.HubVirtualNetworkConnectionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, connectionName, virtualHubName, hubVirtualNetworkConnectionParameters, customHeaders).GetAwaiter().GetResult())
+                using (var _result = this.HubVirtualNetworkConnectionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, hubVirtualNetworkConnectionParameters, customHeaders).GetAwaiter().GetResult())
                 {
                     hubVnetConnCreated = _result.Body;
                 }

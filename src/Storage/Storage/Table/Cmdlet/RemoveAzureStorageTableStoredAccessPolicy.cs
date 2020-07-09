@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             //Get existing permissions
             CloudTable table = localChannel.GetTableReference(tableName);
-            TablePermissions tablePermissions = localChannel.GetTablePermissions(table);
+            TablePermissions tablePermissions = localChannel.GetTablePermissions(table, this.RequestOptions, this.TableOperationContext);
 
             //remove the specified policy
             if (!tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             if (ShouldProcess(policyName, "Remove policy"))
             {
                 tablePermissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetTablePermissions(table, tablePermissions);
+                localChannel.SetTablePermissions(table, tablePermissions, null, TableOperationContext);
                 success = true;
             }
 

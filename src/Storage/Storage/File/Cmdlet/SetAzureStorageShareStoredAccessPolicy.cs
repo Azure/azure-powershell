@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             permissions.SharedAccessPolicies[policyName] = policy;
 
             //Set permission back to share
-            localChannel.SetSharePermissions(share, permissions);
+            localChannel.SetSharePermissions(share, permissions, null, null, OperationContext);
             WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessFilePolicy>(permissions.SharedAccessPolicies, policyName));
             return policyName;
         }

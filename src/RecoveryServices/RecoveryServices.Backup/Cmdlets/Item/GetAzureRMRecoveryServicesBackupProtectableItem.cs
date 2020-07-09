@@ -31,10 +31,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem",
         DefaultParameterSetName = NoFilterParamSet), OutputType(typeof(ProtectableItemBase))]
     public class GetAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
-    {
+    {        
         internal const string NoFilterParamSet = "NoFilterParamSet";
         internal const string FilterParamSet = "FilterParamSet";
         internal const string IdParamSet = "IdParamSet";
+
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, WindowsServer, AzureFiles, MSSQL";
 
         [Parameter(Mandatory = false, Position = 0, ParameterSetName = NoFilterParamSet,
             HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
@@ -49,9 +54,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string ParentID { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = NoFilterParamSet,
-            HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = FilterParamSet,
-            HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 

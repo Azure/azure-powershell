@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.ContainerService;
+
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -86,10 +86,13 @@ namespace Microsoft.Azure.Commands.Aks
                         WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(idCluster), true);
                         break;
                     case ResourceGroupParameterSet:
-                        var kubeClusters = string.IsNullOrEmpty(ResourceGroupName)
-                            ? Client.ManagedClusters.List()
-                            : Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
-                        WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>), true);
+                        var kubeClusterList = string.IsNullOrEmpty(ResourceGroupName)
+                                    ? ListPaged(() => Client.ManagedClusters.List(),
+                                        nextPageLink => Client.ManagedClusters.ListNext(nextPageLink))
+                                    : ListPaged(() => Client.ManagedClusters.ListByResourceGroup(ResourceGroupName),
+                                        nextPageLink => Client.ManagedClusters.ListNext(nextPageLink));
+
+                        WriteObject(kubeClusterList.Select(PSMapper.Instance.Map<PSKubernetesCluster>), true);
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -92,21 +91,27 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(this.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.TopicName = resourceIdentifier.ResourceName;
-            }
-            else if (this.InputObject != null)
-            {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.TopicName = this.InputObject.TopicName;
-            }
-
             if (this.ShouldProcess(this.TopicName, $"Regenerate key {this.KeyName} for topic {this.TopicName} in Resource Group {this.ResourceGroupName}"))
             {
-                this.WriteObject(this.Client.RegenerateTopicKey(this.ResourceGroupName, this.TopicName, this.KeyName));
+                string resourceGroupName;
+                string topicName;
+
+                if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                }
+                else if (this.InputObject != null)
+                {
+                    resourceGroupName = this.InputObject.ResourceGroupName;
+                    topicName = this.InputObject.TopicName;
+                }
+                else
+                {
+                    resourceGroupName = this.ResourceGroupName;
+                    topicName = this.TopicName;
+                }
+
+                this.WriteObject(this.Client.RegenerateTopicKey(resourceGroupName, topicName, this.KeyName));
             }
         }
     }

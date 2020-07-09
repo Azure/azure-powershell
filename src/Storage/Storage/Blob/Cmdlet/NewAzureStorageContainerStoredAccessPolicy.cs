@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             //Get existing permissions
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container);
+            BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container, null, null, OperationContext);
 
             //Add new policy
             if (blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             blobContainerPermissions.SharedAccessPolicies.Add(policyName, policy);
 
             //Set permissions back to container
-            localChannel.SetContainerPermissions(container, blobContainerPermissions);
+            localChannel.SetContainerPermissions(container, blobContainerPermissions, null, null, OperationContext);
             return policyName;
         }
 
