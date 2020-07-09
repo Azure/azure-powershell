@@ -134,7 +134,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* API 2020-05-01. Added Private link support for Storage, Keyvault and Web App Service resources.'
+        ReleaseNotes = '* Updated module to use API 2020-05-01.
+* Added Private link support for Storage, Keyvault and Web App Service resources.'
 
         # Prerelease string of this module
         # Prerelease = ''

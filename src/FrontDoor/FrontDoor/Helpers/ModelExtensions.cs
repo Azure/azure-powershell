@@ -326,8 +326,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Weight = sdkBackend.Weight,
                 BackendHostHeader = sdkBackend.BackendHostHeader,
                 PrivateLinkAlias = sdkBackend.PrivateLinkAlias,
-                PrivateLinkResourceId = sdkBackend.PrivateLinkAlias,
-                PrivateLinkLocation = sdkBackend.PrivateLinkAlias,
+                PrivateLinkResourceId = sdkBackend.PrivateLinkResourceId,
+                PrivateLinkLocation = sdkBackend.PrivateLinkLocation,
                 PrivateEndpointStatus = sdkBackend.PrivateEndpointStatus == null ?
                         (PSPrivateEndpointStatus?)null :
                         (PSPrivateEndpointStatus)Enum.Parse(typeof(PSPrivateEndpointStatus), sdkBackend.PrivateEndpointStatus.ToString()),
@@ -345,6 +345,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 weight: psBackend.Weight,
                 backendHostHeader: psBackend.BackendHostHeader,
                 privateLinkAlias: psBackend.PrivateLinkAlias,
+                privateLinkResourceId: psBackend.PrivateLinkResourceId,
+                privateLinkLocation: psBackend.PrivateLinkLocation,
                 privateEndpointStatus: psBackend.PrivateEndpointStatus?.ToString(),
                 privateLinkApprovalMessage: psBackend.PrivateLinkApprovalMessage
                 );

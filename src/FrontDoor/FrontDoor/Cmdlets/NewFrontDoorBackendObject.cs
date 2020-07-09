@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 Priority = !this.IsParameterBound(c => c.Priority) ? 1 : Priority,
                 Weight = !this.IsParameterBound(c => c.Weight) ? 50 : Weight,
                 BackendHostHeader = !this.IsParameterBound(c => c.BackendHostHeader) ? Address : BackendHostHeader,
-                PrivateLinkAlias = !this.IsParameterBound(c => c.PrivateLinkAlias) ? null : PrivateLinkAlias,
-                PrivateLinkResourceId = !this.IsParameterBound(c => c.PrivateLinkResourceId) ? null : PrivateLinkResourceId,
-                PrivateLinkLocation = !this.IsParameterBound(c => c.PrivateLinkLocation) ? null : PrivateLinkLocation,
+                PrivateLinkAlias = PrivateLinkAlias,
+                PrivateLinkResourceId = PrivateLinkResourceId,
+                PrivateLinkLocation = PrivateLinkLocation,
                 PrivateLinkApprovalMessage = PrivateLinkApprovalMessage
             };
             WriteObject(Backend);
