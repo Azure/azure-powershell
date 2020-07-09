@@ -110,16 +110,9 @@ In this example we are creating a new Azure environment with sample endpoints us
 
 ### Example 2: Discovering a new environment via Uri
 ```
-PS C:\> Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+<#
+Uri https://configuredmetadata.net returns an array of metadata of environments. Below is an example of payload containing default environment AzureCloud.
 
-Name            Resource Manager Url ActiveDirectory Authority
-----            -------------------- -------------------------
-TestEnvironment TestRMEndpoint       TestADEndpoint/
-```
-
-In this example we are discovering a new Azure environment from given Uri https://configuredmetadata.net.
-The payload of Uri is an array of metadata of environments. Below is an example of payload containing default environment AzureCloud.
-```
 [
   {
     "portal": "https://portal.azure.com",
@@ -153,7 +146,16 @@ The payload of Uri is an array of metadata of environments. Below is an example 
   },
 ……
 ]
+#>
+
+PS C:\> Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
+
+In this example we are discovering a new Azure environment from given Uri https://configuredmetadata.net.
 
 ## PARAMETERS
 
