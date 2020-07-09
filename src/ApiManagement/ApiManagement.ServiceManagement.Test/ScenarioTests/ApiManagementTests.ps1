@@ -3622,7 +3622,7 @@ function ApiDiagnostic-CrudTest {
 
 <#
 .SYNOPSIS
-Tests CRUD operations on Properties.
+Tests CRUD operations on Gateway.
 #>
 function Gateway-CrudTest {
     Param($resourceGroupName, $serviceName)
@@ -3731,7 +3731,6 @@ function Gateway-CrudTest {
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
         $certPassword = 'Password'
         $certSubject = "CN=*.msitesting.net"
-        $certThumbprint = '8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2'
         # upload certificate
         $cert = New-AzApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
 
