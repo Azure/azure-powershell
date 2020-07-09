@@ -104,8 +104,55 @@ AzureSynapseAnalyticsEndpointResourceId           :
 VersionProfiles                                   : {}
 ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
+```
 
 In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
+
+### Example 2: Discovering a new environment via Uri
+```
+PS C:\> Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
+```
+
+In this example we are discovering a new Azure environment from given Uri https://configuredmetadata.net.
+The payload of Uri is an array of metadata of environments. Below is an example of payload containing default environment AzureCloud.
+```
+[
+  {
+    "portal": "https://portal.azure.com",
+    "authentication": {
+      "loginEndpoint": "https://login.microsoftonline.com/",
+      "audiences": [
+        "https://management.core.windows.net/"
+      ],
+      "tenant": "common",
+      "identityProvider": "AAD"
+    },
+    "media": "https://rest.media.azure.net",
+    "graphAudience": "https://graph.windows.net/",
+    "graph": "https://graph.windows.net/",
+    "name": "AzureCloud",
+    "suffixes": {
+      "azureDataLakeStoreFileSystem": "azuredatalakestore.net",
+      "acrLoginServer": "azurecr.io",
+      "sqlServerHostname": ".database.windows.net",
+      "azureDataLakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+      "keyVaultDns": "vault.azure.net",
+      "storage": "core.windows.net",
+      "azureFrontDoorEndpointSuffix": "azurefd.net"
+    },
+    "batch": "https://batch.core.windows.net/",
+    "resourceManager": "https://management.azure.com/",
+    "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+    "activeDirectoryDataLake": "https://datalake.azure.net/",
+    "sqlManagement": "https://management.core.windows.net:8443/",
+    "gallery": "https://gallery.azure.com/"
+  },
+……
+]
 ```
 
 ## PARAMETERS
