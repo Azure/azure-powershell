@@ -14,18 +14,11 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.Origin;
-using Microsoft.Azure.Commands.Cdn.Properties;
-using Microsoft.Azure.Management.Cdn;
-using System.Linq;
-using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOrigin))]
-    public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    public class RemoveAzCdnOrigin : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -47,34 +40,5 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         [Parameter(Mandatory = true, HelpMessage = "The resource id of the Azure CDN origin.", ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.", ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNull]
-        public PSEndpoint CdnEndpoint { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-
-            if(ParameterSetName == ObjectParameterSet)
-            {
-                EndpointName = CdnEndpoint.Name;
-                ProfileName = CdnEndpoint.ProfileName;
-                ResourceGroupName = CdnEndpoint.ResourceGroupName;
-            }
-
-            if (OriginName == null)
-            {
-                //list all origins on this endpoint
-                var origins = CdnManagementClient.Origins.ListByEndpoint(ResourceGroupName, ProfileName, EndpointName).Select(o => o.ToPsOrigin());
-                WriteVerbose(Resources.Success);
-                WriteObject(origins, true);
-            }
-            else
-            {
-                var origin = CdnManagementClient.Origins.Get(ResourceGroupName, ProfileName, EndpointName, OriginName);
-                WriteVerbose(Resources.Success);
-                WriteObject(origin.ToPsOrigin());
-            }
-        }
     }
 }

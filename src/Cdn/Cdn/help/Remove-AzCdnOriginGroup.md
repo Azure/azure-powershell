@@ -1,61 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-ms.assetid: 91919242-59ED-4938-A3A3-23A66F85FBC1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigin
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzCdnOrigin
+# Remove-AzCdnOriginGroup
 
 ## SYNOPSIS
-Gets a CDN origin server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzCdnOrigin -OriginName <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzCdnOriginGroup -OriginGroupName <String> -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzCdnOrigin -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Get-AzCdnOrigin -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzCdnOriginGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) origin server and its configuration data.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-## PARAMETERS
-
-### -CdnEndpoint
-Specifies the CDN endpoint object to which the origin belongs.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
+{{ Add example description here }}
+
+## PARAMETERS
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,10 +55,10 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointName
-Specifies the name of the endpoint to which the origin server belongs.
+Azure CDN endpoint name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -81,11 +69,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginName
-Specifies the name of the origin server.
+### -OriginGroupName
+Azure CDN origin group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -97,10 +85,10 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Specifies the name of the profile to which the origin server belongs.
+Azure CDN profile name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -112,10 +100,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group to which the origin server belongs.
+The resource group of the Azure CDN profile.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -127,14 +115,45 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the Azure CDN origin.
+The resource id of the Azure CDN origin group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,16 +165,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzCdnOrigin](./Set-AzCdnOrigin.md)
-
-

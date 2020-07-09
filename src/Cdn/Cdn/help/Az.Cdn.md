@@ -77,6 +77,12 @@ Creates a delivery rule condition.
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
 
+### [New-AzCdnOrigin](New-AzCdnOrigin.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
@@ -109,6 +115,9 @@ Stops the CDN endpoint.
 
 ### [Test-AzCdnCustomDomain](Test-AzCdnCustomDomain.md)
 Checks whether a custom domain can be added to an endpoint.
+
+### [Test-DotNet](Test-DotNet.md)
+{{ Fill in the Synopsis }}
 
 ### [Unpublish-AzCdnEndpointContent](Unpublish-AzCdnEndpointContent.md)
 Purges a CDN endpoint.

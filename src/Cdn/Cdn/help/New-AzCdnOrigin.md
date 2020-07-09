@@ -1,21 +1,20 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-ms.assetid: 0EB9F1C9-54CC-4794-9E37-108342341FE5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnorigin
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzCdnOrigin
+# New-AzCdnOrigin
 
 ## SYNOPSIS
-Updates a CDN origin server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### ByFieldsParameterSet
+### ByFieldsParameterSet (Default)
 ```
-Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
+New-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
  [-OriginHostHeader <String>] -OriginName <String> -ProfileName <String> [-Priority <Int32>]
  [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
  -ResourceGroupName <String> [-Weight <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -24,19 +23,26 @@ Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-
 
 ### ByObjectParameterSet
 ```
-Set-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzCdnOrigin** cmdlet updates an Azure Content Delivery Network (CDN) origin server.
+{{ Fill in the Description }}
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -CdnOrigin
-Specifies the origin server that this cmdlet updates.
+The CDN origin object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
@@ -51,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -295,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
+### None
 
 ## OUTPUTS
 
@@ -304,7 +310,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzCdnOrigin](./Get-AzCdnOrigin.md)
-
-

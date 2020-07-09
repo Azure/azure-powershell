@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", SupportsShouldProcess = true), OutputType(typeof(PSOrigin))]
-    public class SetAzureRmCdnOrigin : AzureCdnCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOrigin))]
+    public class NewAzCdnOrigin : AzureCdnCmdletBase
     {
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
@@ -86,25 +86,7 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(MyInvocation.InvocationName,
-               string.Format("{0} ({1})", CdnOrigin.Name, CdnOrigin.HostName),
-               SetOrigin);
-        }
-
-        private void SetOrigin()
-        {
-            var origin = CdnManagementClient.Origins.Update(
-                CdnOrigin.ResourceGroupName,
-                CdnOrigin.ProfileName,
-                CdnOrigin.EndpointName,
-                CdnOrigin.Name,
-                new OriginUpdateParameters(
-                    hostName: CdnOrigin.HostName,
-                    httpPort: CdnOrigin.HttpPort,
-                    httpsPort: CdnOrigin.HttpsPort));
-
-            WriteVerbose(Resources.Success);
-            WriteObject(origin.ToPsOrigin());
+            base.ExecuteCmdlet();
         }
     }
 }

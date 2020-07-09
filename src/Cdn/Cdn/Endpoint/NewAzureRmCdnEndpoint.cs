@@ -103,6 +103,34 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin groups.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public Object OriginGroups { get; set; } //PSOriginGroup[]
+
+        [Parameter(Mandatory = false, HelpMessage = "The default origin group.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public Object DefaultOriginGroup { get; set; } //PSDefaultOriginGroup
+
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin priority.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int? Priority { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin weight.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int? Weight { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkApprovalMessage { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link location.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkLocation { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link resource id.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)

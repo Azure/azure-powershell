@@ -20,8 +20,9 @@ New-AzCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupNam
  [-IsCompressionEnabled <Boolean>] [-IsHttpAllowed <Boolean>] [-IsHttpsAllowed <Boolean>]
  [-QueryStringCachingBehavior <PSQueryStringCachingBehavior>] -OriginName <String> -OriginHostName <String>
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OptimizationType <String>] [-ProbePath <String>]
- [-GeoFilters <PSGeoFilter[]>] [-DeliveryPolicy <PSDeliveryPolicy>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GeoFilters <PSGeoFilter[]>] [-DeliveryPolicy <PSDeliveryPolicy>] [-Tag <Hashtable>] [-OriginGroups <Object>]
+ [-DefaultOriginGroup <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -63,6 +64,21 @@ Specifies an array of content types to compress from the edge node to the client
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultOriginGroup
+The default origin group.
+
+```yaml
+Type: System.Object
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: False
@@ -228,6 +244,21 @@ Specifies any optimization this endpoint has.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroups
+Azure CDN origin groups.
+
+```yaml
+Type: System.Object
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: False

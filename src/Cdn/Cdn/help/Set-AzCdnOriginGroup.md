@@ -1,57 +1,58 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomain
+online version:
 schema: 2.0.0
 ---
 
-# Enable-AzCdnCustomDomain
+# Set-AzCdnOriginGroup
 
 ## SYNOPSIS
-Enables Custom Domain HTTPS (Deprecated).
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Enable-AzCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzCdnOriginGroup -EndpointName <String> -OriginGroupName <String>
+ -OriginGroupIds <System.Collections.Generic.List`1[System.Object]> [-ProbeIntervalInSeconds <Int32>]
+ [-ProbePath <String>] [-ProbeProtocol <String>] [-ProbeRequestType <String>] -ProfileName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzCdnCustomDomain -InputObject <PSCustomDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzCdnOriginGroup -CdnOriginGroup <Object> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzCdnCustomDomain** cmdlet enables the secured HTTPS delivery of a CDN custom domain.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Enable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
-true
+PS C:\> {{ Add example code here }}
 ```
 
-Enable https delivery of the custom domain.
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -CustomDomainName
-Azure CDN custom domain display name.
+### -CdnOriginGroup
+The CDN origin group object.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: Object
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -59,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,7 +75,7 @@ Accept wildcard characters: False
 Azure CDN endpoint name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -85,27 +86,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The custom domain object.
+### -OriginGroupIds
+Azure CDN origin group ids.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-Parameter Sets: ByObjectParameterSet
+Type: System.Collections.Generic.List`1[System.Object]
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return object (if specified).
+### -OriginGroupName
+Azure CDN origin group name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeIntervalInSeconds
+The number of seconds between health probes.
+
+```yaml
+Type: Int32
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbePath
+The path relative to the origin that is used to determine the health of the origin.
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeProtocol
+Protocol to use for health probe.
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeRequestType
+The type of health probe request that is made.
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: False
@@ -119,7 +180,7 @@ Accept wildcard characters: False
 Azure CDN profile name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -134,7 +195,7 @@ Accept wildcard characters: False
 The resource group of the Azure CDN profile.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -149,7 +210,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -161,10 +222,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -180,11 +242,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+### System.Object
 
 ## OUTPUTS
 
-### System.Boolean
+### System.Object
 
 ## NOTES
 
