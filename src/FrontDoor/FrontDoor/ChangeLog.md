@@ -18,10 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.6.0
-* Updated module to use API 2020-05-01.
-* Added Private link support for Storage, Keyvault and Web App Service resources.
+* Updated module to use API 2020-05-01
+* Added Private link support for Storage, Keyvault and Web App Service resources
 
 ## Version 1.5.0
 * Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
