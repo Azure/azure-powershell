@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.7
 * Fixed the issue that string with escape chars cannot be converted into json object.
 
 ## Version 1.3.6

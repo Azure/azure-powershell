@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Updated to use the 2020-06-01 API version.
 * Added new features:
     - Input mapping
