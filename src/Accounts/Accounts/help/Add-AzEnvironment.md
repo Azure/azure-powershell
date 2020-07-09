@@ -111,7 +111,7 @@ In this example we are creating a new Azure environment with sample endpoints us
 ### Example 2: Discovering a new environment via Uri
 ```
 <#
-Uri https://configuredmetadata.net returns an array of metadata of environments. Below is an example of payload containing default environment AzureCloud.
+Uri https://configuredmetadata.net returns an array of environment metadata. The following example contains a payload for the AzureCloud default environment.
 
 [
   {
@@ -155,7 +155,7 @@ Name            Resource Manager Url ActiveDirectory Authority
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
-In this example we are discovering a new Azure environment from given Uri https://configuredmetadata.net.
+In this example, we are discovering a new Azure environment from the https://configuredmetadata.net Uri.
 
 ## PARAMETERS
 
