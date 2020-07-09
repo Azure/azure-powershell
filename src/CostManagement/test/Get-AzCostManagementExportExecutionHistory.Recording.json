@@ -1,0 +1,125 @@
+{
+  "Get-AzCostManagementExportExecutionHistory+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/runHistory?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/runHistory?api-version=2019-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "2a0a5bf2-9b76-420d-a8ea-9d9699448e89" ],
+        "CommandName": [ "Get-AzCostManagementExportExecutionHistory" ],
+        "FullCommandName": [ "Get-AzCostManagementExportExecutionHistory_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "session-id": [ "f6325027-63a8-44da-bac4-eb3b1fc4edaa" ],
+        "x-ms-request-id": [ "e93206c3-a347-431f-baf8-a4322f8f77c4" ],
+        "x-ms-correlation-request-id": [ "b98e6547-5487-444d-9ffb-f603326e2313" ],
+        "x-ms-client-request-id": [ "2a0a5bf2-9b76-420d-a8ea-9d9699448e89" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T091524Z:b98e6547-5487-444d-9ffb-f603326e2313" ],
+        "Date": [ "Mon, 06 Jul 2020 09:15:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "934" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/Run/359a6e8b-abcf-45e3-aecf-b9ff3d4fc760\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}},\"executionType\":\"OnDemand\",\"status\":\"Completed\",\"submittedBy\":\"v-diya@microsoft.com\",\"submittedTime\":\"2020-07-06T09:13:09.3467006Z\",\"processingStartTime\":\"2020-07-06T09:13:11.7355631Z\",\"processingEndTime\":\"2020-07-06T09:14:13.9746936Z\",\"fileName\":\"ad-hoc/export-38we0i/20200701-20200731/export-38we0i_359a6e8b-abcf-45e3-aecf-b9ff3d4fc760.csv\"}}]}"
+    }
+  },
+  "Get-AzCostManagementExportExecutionHistory+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i?api-version=2019-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i?api-version=2019-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d22920aa-bfa5-4531-b17e-7e6005a2fb7a" ],
+        "CommandName": [ "Get-AzCostManagementExport" ],
+        "FullCommandName": [ "Get-AzCostManagementExport_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "session-id": [ "0709d528-7606-42af-b2d3-b17281e8b216" ],
+        "x-ms-request-id": [ "8c702ba6-09bc-4620-b7e0-1a602ef61a00" ],
+        "x-ms-correlation-request-id": [ "a37c5acd-2082-43e9-bd8c-e0dadb5dd53f" ],
+        "x-ms-client-request-id": [ "d22920aa-bfa5-4531-b17e-7e6005a2fb7a" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T091526Z:a37c5acd-2082-43e9-bd8c-e0dadb5dd53f" ],
+        "Date": [ "Mon, 06 Jul 2020 09:15:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i\",\"name\":\"export-38we0i\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d65375a9692caf\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2020-07-06T09:13:02\",\"to\":\"2020-07-26T09:13:02\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
+    }
+  },
+  "Get-AzCostManagementExportExecutionHistory+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/runHistory?api-version=2019-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/runHistory?api-version=2019-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "8e58532d-a286-4a8c-a0b1-b0d4c2f71b9b" ],
+        "CommandName": [ "Get-AzCostManagementExportExecutionHistory" ],
+        "FullCommandName": [ "Get-AzCostManagementExportExecutionHistory_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "session-id": [ "cb1ec8fb-ecd1-413a-b855-dcb25d7e919c" ],
+        "x-ms-request-id": [ "2d05bda6-0934-4177-9254-6ea7b56d8b7d" ],
+        "x-ms-correlation-request-id": [ "47e339ab-943c-4c5a-ac20-f3c20e8cf4d0" ],
+        "x-ms-client-request-id": [ "8e58532d-a286-4a8c-a0b1-b0d4c2f71b9b" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200706T091527Z:47e339ab-943c-4c5a-ac20-f3c20e8cf4d0" ],
+        "Date": [ "Mon, 06 Jul 2020 09:15:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "934" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-38we0i/Run/359a6e8b-abcf-45e3-aecf-b9ff3d4fc760\",\"name\":null,\"type\":null,\"eTag\":null,\"properties\":{\"runSettings\":{\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-5rij6b/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}},\"executionType\":\"OnDemand\",\"status\":\"Completed\",\"submittedBy\":\"v-diya@microsoft.com\",\"submittedTime\":\"2020-07-06T09:13:09.3467006Z\",\"processingStartTime\":\"2020-07-06T09:13:11.7355631Z\",\"processingEndTime\":\"2020-07-06T09:14:13.9746936Z\",\"fileName\":\"ad-hoc/export-38we0i/20200701-20200731/export-38we0i_359a6e8b-abcf-45e3-aecf-b9ff3d4fc760.csv\"}}]}"
+    }
+  }
+}
