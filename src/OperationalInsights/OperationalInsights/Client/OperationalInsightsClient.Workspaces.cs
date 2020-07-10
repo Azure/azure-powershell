@@ -213,17 +213,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual List<PSWorkspace> GetDeletedWorkspace(string resourceGroupName)
         {
-            List<PSWorkspace> workspaces = new List<PSWorkspace>();
-
-            if (String.IsNullOrEmpty(resourceGroupName))
-            {
-                return OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList();
-            }
-            else
-            {
-                return OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
-            }
-            
+            return String.IsNullOrEmpty(resourceGroupName) 
+                ? OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList() 
+                : OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
         }
 
         public virtual bool DeletedWorkspace(string resourceGroupName, string name)
