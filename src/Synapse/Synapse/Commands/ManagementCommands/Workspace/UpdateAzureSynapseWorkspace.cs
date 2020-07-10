@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true, DefaultParameterSetName = SetByNameParameterSet)]
     [OutputType(typeof(PSSynapseWorkspace))]
-    public class UpdateAzureSynapseWorkspace : SynapseCmdletBase
+    public class UpdateAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";

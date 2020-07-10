@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = "EventGrid Topic Type Name.")]
         public string Name { get; set; }
 
