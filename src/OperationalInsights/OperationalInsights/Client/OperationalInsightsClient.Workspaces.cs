@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
-        public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
+        public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName, bool? ForceDelete)
         {
-            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
+            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ForceDelete).GetAwaiter().GetResult();
             return result.Response.StatusCode;
         }
 
