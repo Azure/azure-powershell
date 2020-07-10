@@ -802,10 +802,6 @@
       "_justification": "Generated test resource group, deleted after test execution"
     },
     {
-      "file": "src\\MachineLearning\\MachineLearningCompute.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\\TestGetKeys.json",
-      "_justification": "Generated test resource group, deleted after test execution"
-    },
-    {
       "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestCreateAndGetRegionalProperties.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
@@ -1044,6 +1040,42 @@
     {
       "file": "src\\EventHub\\EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\\NamespaceBYOKCRUD.json",
       "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\Attestation\\Attestation.Test\\SessionRecords\\Microsoft.Azure.Commands.Attestation.Test.ScenarioTests.AttestationPolicySignerTests\\TestGetDefaultProviderPolicySigners.json",
+      "_justification": "Mocked Test resources."
+    },
+    {
+      "file": "src\\Attestation\\Attestation.Test\\SessionRecords\\Microsoft.Azure.Commands.Attestation.Test.ScenarioTests.AttestationPolicySignerTests\\TestGetAttestationPolicySigners.json",
+      "_justification": "The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\Attestation\\Attestation.Test\\SessionRecords\\Microsoft.Azure.Commands.Attestation.Test.ScenarioTests.AttestationPolicySignerTests\\TestRemoveAttestationPolicySigner.json",
+      "_justification": "The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\Attestation\\Attestation.Test\\SessionRecords\\Microsoft.Azure.Commands.Attestation.Test.ScenarioTests.AttestationPolicySignerTests\\TestAddAttestationPolicySigner.json",
+      "_justification": "The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\HanaOnAzure\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\exports\\New-AzSapMonitorProviderInstance.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\exports\\ProxyCmdletDefinitions.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\internal\\New-AzSapMonitorProviderInstance.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HanaOnAzure\\internal\\ProxyCmdletDefinitions.ps1",
+      "_justification": "Test resource is deleted"
     }
   ]
 }

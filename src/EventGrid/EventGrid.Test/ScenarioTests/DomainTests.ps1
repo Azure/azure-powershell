@@ -195,6 +195,173 @@ function DomainNewKeyTests {
 
 <#
 .SYNOPSIS
+Tests EventGrid Domain Create, Get and List operations with Input mapping
+#>
+function DomainInputMappingTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $domainName = Get-DomainName
+    $domainName2 = Get-DomainName
+    $domainName3 = Get-DomainName
+    $domainName4 = Get-DomainName
+    $domainName5 = Get-DomainName
+    $domainName6 = Get-DomainName
+
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    $expectedInputMappingEventGridSchema = "EventGridSchema"
+    $expectedInputMappingCloudEventSchema = "CloudEventSchemaV1_0"
+    $expectedInputMappingCustomEventSchema = "CustomEventSchema"
+
+    $inputSchemaInvalid = "InvalidSchema"
+    $inputSchemaEventGridSchema1 = "eventgriDSChemA"
+    $inputSchemaEventGridSchema2 = "eventgridschema"
+    $inputSchemaCloudEventSchema1 = "CloUDEventScHemaV1_0"
+    $inputSchemaCloudEventSchema2 = "ClOudEveNtSCHemav1_0"
+    $inputSchemaCustomEventSchema1 = "cUsTomEVeNTSchEma"
+    $inputSchemaCustomEventSchema2 = "customeventschema"
+
+    Write-Debug "Creating first resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    try
+    {
+        try
+        {
+            Write-Debug "Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
+            $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location -InputSchema $inputSchemaInvalid
+            Assert-True {$false} "New-AzEventGridDomain succeeded while it is expected to fail"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        Write-Debug "Creating a new EventGrid Domain: $domainName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location -InputSchema $inputSchemaEventGridSchema1
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "EventGridSchema is expected."
+
+        Write-Debug "Getting the created domain within the resource group"
+        $createdDomain = Get-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
+        Assert-True {$createdDomain.Count -eq 1}
+        Assert-True {$createdDomain.DomainName -eq $domainName} "Domain created earlier is not found."
+        Assert-True {$createdDomain.InputSchema -eq $expectedInputMappingEventGridSchema} "InputSchema is not correct. EventGridSchema is expected."
+
+        Write-Debug "Creating a second EventGrid domain: $domainName2 in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema2"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } -InputSchema $inputSchemaEventGridSchema2
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "InputSchema is not correct. EventGridSchema is expected"
+
+        Write-Debug "Creating a third EventGrid domain: $domainName3 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema1"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName3 -Location $location -InputSchema $inputSchemaCloudEventSchema1
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingCloudEventSchema} "InputSchema is not correct. CloudEventSchema is expected."
+
+        Write-Debug "Creating a fourth EventGrid domain: $domainName4 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema2"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName4 -Location $location -InputSchema $inputSchemaCloudEventSchema2
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingCloudEventSchema} "InputSchema is not correct. CloudEventSchema is expected."
+
+        Write-Debug "Getting the created domain within the resource group"
+        $createdDomain = Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName3"
+        Assert-True {$createdDomain.Count -eq 1}
+        Assert-True {$createdDomain.DomainName -eq $domainName3} "$domainName3 created earlier is not found."
+
+        Write-Debug "Listing all the domains created in the resourceGroup $resourceGroupName"
+        $allCreatedDomains = Get-AzEventGridDomain -ResourceGroup $resourceGroupName
+        Assert-True {$allCreatedDomains.PsDomainsList.Count -eq 4 } "Domains created earlier is not found in the list."
+
+        Write-Debug "Getting all the domains created in the subscription"
+        $allCreatedDomains = Get-AzEventGridDomain
+
+        Assert-True {$allCreatedDomains.PsDomainsList.Count -ge 0} "Domains created earlier are not found."
+
+        try
+        {
+            Write-Debug "Creating a fifth EventGrid domain: $domainName5 in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+            $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5 -Location $location -InputSchema $inputSchemaEventGridSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+            Assert-True {$false} "New-AzEventGridDomain succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema EventGridSchema"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a fifth EventGrid domain: $domainName5 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema1"
+            $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5 -Location $location -InputSchema $inputSchemaCloudEventSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+            Assert-True {$false} "New-AzEventGridDomain succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema CloudEventSchema"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a fifth EventGrid domain: $domainName5 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema1"
+            $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1
+            Assert-True {$false} "New-AzEventGridDomain succeeded while it is expected to fail as inputmapping parameters are null"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        Write-Debug "Creating a fifth EventGrid domain: $domainName5 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema1"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" }
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+        Write-Debug "Creating a sixth EventGrid domain: $domainName6 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema2"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName6 -Location $location -InputSchema $inputSchemaCustomEventSchema2 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" } -InputMappingDefaultValue @{ subject = "MySubjectDefaultValue"; eventtype = "MyEventTypeDefaultValue"; dataversion = "MyDataVersionDefaultValue" }
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+        Write-Debug "Getting the created domain within the resource group"
+        $createdDomain = Get-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5
+        Assert-True {$createdDomain.Count -eq 1}
+        Assert-True {$createdDomain.DomainName -eq $domainName5} "Domain created earlier is not found."
+        Assert-True {$createdDomain.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+        Write-Debug "Deleting domain: $domainName"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
+
+        Write-Debug "Deleting domain: $domainName2 using the ResourceID parameter set"
+        Remove-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName2"
+
+        Write-Debug "Deleting domain: $domainName3"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName3
+
+        Write-Debug "Deleting domain: $domainName4"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName4
+
+        Write-Debug "Deleting domain: $domainName5"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName5
+
+        Write-Debug "Deleting domain: $domainName6"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName6
+
+        # Verify that all domains have been deleted correctly
+        $returnedDomains1 = Get-AzEventGridDomain -ResourceGroup $resourceGroupName
+        Assert-True {$returnedDomains1.PsDomainsList.Count -eq 0}
+
+        $returnedDomains2 = Get-AzEventGridDomain -ResourceGroup $resourceGroupName
+        Assert-True {$returnedDomains2.PsDomainsList.Count -eq 0}
+    }
+    finally
+    {
+        Write-Debug "Deleting resourcegroup $resourceGroupName"
+        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+<#
+.SYNOPSIS
 Tests EventGrid domain topic Get operations.
 #>
 function DomainTopicTests {

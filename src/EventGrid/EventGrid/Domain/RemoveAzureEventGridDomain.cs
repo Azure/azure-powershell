@@ -16,7 +16,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -31,6 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = DomainNameParameterSet)]
@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainNameParameterSet)]
@@ -74,19 +75,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.Name, $"Remove domain {this.Name} in resource group {this.ResourceGroupName}"))
             {
-                if (!string.IsNullOrEmpty(this.ResourceId))
+                string resourceGroupName = string.Empty;
+                string domainName = string.Empty;
+
+                if (!string.IsNullOrEmpty(this.Name))
                 {
-                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                    this.Name = resourceIdentifier.ResourceName;
+                    resourceGroupName = this.ResourceGroupName;
+                    domainName = this.Name;
+                }
+                else if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
                 }
                 else if (this.InputObject != null)
                 {
-                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    this.Name = this.InputObject.DomainName;
+                    resourceGroupName = this.InputObject.ResourceGroupName;
+                    domainName = this.InputObject.DomainName;
                 }
 
-                this.Client.DeleteDomain(this.ResourceGroupName, this.Name);
+                this.Client.DeleteDomain(resourceGroupName, domainName);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

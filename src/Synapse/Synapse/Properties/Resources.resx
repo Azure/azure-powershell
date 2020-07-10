@@ -294,4 +294,22 @@
   <data name="FirewallRuleDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified firewall rule '{0}' does not exist.</value>
   </data>
+  <data name="RoleDefinitionNameDoesNotExist" xml:space="preserve">
+    <value>Role Definition Name '{0}' does not exist.</value>
+  </data>
+  <data name="UserNameDoesNotExist" xml:space="preserve">
+    <value>User with Name '{0}' does not exist.</value>
+  </data>
+  <data name="CreatingSynapseRoleAssignment" xml:space="preserve">
+    <value>Creating a new role assignment in workspace '{0}' with RoleDefinitionId '{1}' and ObjectId '{2}'.</value>
+  </data>
+  <data name="RemovingSynapseRoleAssignment" xml:space="preserve">
+    <value>Deleting role assignment with RoleDefinitionId '{0}' and ObjectId '{1}' in workspace '{2}'.</value>
+  </data>
+  <data name="RemovingSynapseRoleAssignmentById" xml:space="preserve">
+    <value>Deleting role assignment with RoleAssignmentId '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="ServicePrincipalNameDoesNotExist" xml:space="preserve">
+    <value>Service principal with Name '{0}' does not exist.</value>
+  </data>
 </root>

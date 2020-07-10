@@ -14,11 +14,11 @@
 
 using System.Linq;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
 {
@@ -77,7 +77,8 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 }
                 if (string.IsNullOrEmpty(Name))
                 {
-                    var pools = Client.AgentPools.List(ResourceGroupName, ClusterName);
+                    var pools = ListPaged(() => Client.AgentPools.List(ResourceGroupName, ClusterName),
+                        nextPageLink => Client.AgentPools.ListNext(nextPageLink));
                     WriteObject(pools.Select(PSMapper.Instance.Map<PSNodePool>), true);
                 }
                 else

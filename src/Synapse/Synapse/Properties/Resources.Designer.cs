@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new role assignment in workspace &apos;{0}&apos; with RoleDefinitionId &apos;{1}&apos; and ObjectId &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseRoleAssignment {
+            get {
+                return ResourceManager.GetString("CreatingSynapseRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new Spark pool in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string CreatingSynapseSparkPool {
@@ -394,6 +403,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting role assignment with RoleDefinitionId &apos;{0}&apos; and ObjectId &apos;{1}&apos; in workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseRoleAssignment {
+            get {
+                return ResourceManager.GetString("RemovingSynapseRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting role assignment with RoleAssignmentId &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseRoleAssignmentById {
+            get {
+                return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting Spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string RemovingSynapseSparkPool {
@@ -435,6 +462,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ResumingSynapseSqlPool {
             get {
                 return ResourceManager.GetString("ResumingSynapseSqlPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role Definition Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string RoleDefinitionNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalNameDoesNotExist", resourceCulture);
             }
         }
         
@@ -561,6 +606,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("UpdatingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string UserNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("UserNameDoesNotExist", resourceCulture);
             }
         }
         
