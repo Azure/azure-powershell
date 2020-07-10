@@ -26,6 +26,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -208,6 +209,21 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 () => CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName));
 
             return workspace;
+        }
+
+        public virtual List<PSWorkspace> GetDeletedWorkspace(string resourceGroupName)
+        {
+            List<PSWorkspace> workspaces = new List<PSWorkspace>();
+
+            if (String.IsNullOrEmpty(resourceGroupName))
+            {
+                return OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList();
+            }
+            else
+            {
+                return OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
+            }
+            
         }
 
         public virtual List<PSWorkspace> FilterPSWorkspaces(string resourceGroupName, string workspaceName)

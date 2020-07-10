@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added `-ForceDelete` option for `Remove-AzOperationalInsightsworkspace`
+* Added new cmdlet `Get-AzOperationalInsightsDeletedWorkspace`
 
 ## Version 2.2.0
 * Fixed bug PSWorkspace doesn't implement IOperationalInsightsWorkspace [#12135]
