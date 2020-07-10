@@ -122,7 +122,8 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Get-AzOperationalInsightsLinkedService', 
                'Set-AzOperationalInsightsLinkedService', 
                'Remove-AzOperationalInsightsLinkedService', 
-               'Get-AzOperationalInsightsDeletedWorkspace'
+               'Get-AzOperationalInsightsDeletedWorkspace', 
+               'Recover-AzOperationalInsightsWorkspace'
 
 # Variables to export from this module
 # VariablesToExport = @()

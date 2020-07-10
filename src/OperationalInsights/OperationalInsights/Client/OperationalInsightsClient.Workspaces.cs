@@ -226,6 +226,21 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             
         }
 
+        public virtual bool DeletedWorkspace(string resourceGroupName, string name)
+        {
+            List<PSWorkspace> workspaces = GetDeletedWorkspace(resourceGroupName);
+
+            foreach (PSWorkspace workspace in workspaces)
+            {
+                if (workspace.Name.Equals(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public virtual List<PSWorkspace> FilterPSWorkspaces(string resourceGroupName, string workspaceName)
         {
             List<PSWorkspace> workspaces = new List<PSWorkspace>();
