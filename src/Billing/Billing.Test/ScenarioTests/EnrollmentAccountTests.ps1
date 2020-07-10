@@ -27,7 +27,9 @@ function Test-ListEnrollmentAccounts
 {
     $enrollmentAccounts = Get-AzEnrollmentAccount
 
-    Assert-Null $enrollmentAccounts
+    Assert-True {$enrollmentAccounts.Count -ge 1}
+	Assert-NotNull $enrollmentAccounts[0].ObjectId
+	Assert-NotNull $enrollmentAccounts[0].PrincipalName
 }
 
 <#
@@ -36,8 +38,11 @@ Get billing period with specified name
 #>
 function Test-GetEnrollmentAccountWithName
 {
-    $enrollmentAccount = Get-AzEnrollmentAccount -ObjectId Test
-	
-	Assert-NotNull $enrollmentAccount
-	Assert-Null $enrollmentAccount.PrincipalName
+    $enrollmentAccounts = @(Get-AzEnrollmentAccount)
+
+	$enrollmentAccountObjectId = $enrollmentAccounts[0].ObjectId
+    $enrollmentAccount = Get-AzEnrollmentAccount -ObjectId $enrollmentAccountObjectId
+
+	Assert-AreEqual $enrollmentAccountObjectId $enrollmentAccount.ObjectId
+	Assert-NotNull $enrollmentAccount.PrincipalName
 }

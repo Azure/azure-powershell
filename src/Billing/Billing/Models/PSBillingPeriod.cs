@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Billing.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ApiBillingPeriod = Microsoft.Azure.Management.Billing.Models.BillingPeriod;
 
 namespace Microsoft.Azure.Commands.Billing.Models
 {
@@ -35,6 +36,22 @@ namespace Microsoft.Azure.Commands.Billing.Models
 
         public PSBillingPeriod()
         {
+        }
+
+        public PSBillingPeriod(ApiBillingPeriod billingPeriod)
+        {
+            if (billingPeriod != null)
+            {
+                this.Id = billingPeriod.Id;
+                this.Type = billingPeriod.Type;
+                this.Name = billingPeriod.Name;
+                this.BillingPeriodStartDate = billingPeriod.BillingPeriodStartDate;
+                this.BillingPeriodEndDate = billingPeriod.BillingPeriodEndDate;
+                if (billingPeriod.InvoiceIds != null)
+                {
+                    this.InvoiceNames = billingPeriod.InvoiceIds.Select(x => Utilities.GetResourceNameFromId(x)).ToList();
+                }
+            }
         }
     }
 }

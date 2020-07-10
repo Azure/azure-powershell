@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
             {
                 try
                 {
-                    WriteObject(new List<PSBillingPeriod>(), true);
+                    WriteObject(BillingManagementClient.BillingPeriods.List(top: MaxCount).Select(x => new PSBillingPeriod(x)), true);
                 }
                 catch (ErrorResponseException error)
                 {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
                 {
                     try
                     {
-                        var billingPeriod = new PSBillingPeriod();
+                        var billingPeriod = new PSBillingPeriod(BillingManagementClient.BillingPeriods.Get(billingPeriodName));
                         WriteObject(billingPeriod);
                     }
                     catch (ErrorResponseException error)

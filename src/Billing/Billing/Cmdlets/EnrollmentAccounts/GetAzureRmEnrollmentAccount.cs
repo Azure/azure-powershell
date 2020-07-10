@@ -23,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
-    [CmdletDeprecation()]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EnrollmentAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
     public class GetAzureRmEnrollmentAccount : AzureBillingCmdletBase
     {
@@ -35,13 +34,13 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
             {
-                WriteObject(new PSEnrollmentAccount());
+                WriteObject(new PSEnrollmentAccount(BillingManagementClient.EnrollmentAccounts.Get(ObjectId)));
             }
             else
             {
                 try
                 {
-                    WriteObject(new List<PSEnrollmentAccount>(), enumerateCollection: true);
+                    WriteObject(BillingManagementClient.EnrollmentAccounts.List().Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
                 }
                 catch (ErrorResponseException error)
                 {
