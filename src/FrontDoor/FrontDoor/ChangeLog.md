@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Updated module to use API 2020-05-01
 * Added Private link support for Storage, Keyvault and Web App Service resources
 

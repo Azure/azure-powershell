@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.10
 * Added new cmdlet: 'Get-AzAllowedConnection'
 * Added new cmdlet: 'Get-AzSecurityTopology'
 
