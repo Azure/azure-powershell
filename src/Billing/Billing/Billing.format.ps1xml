@@ -10,22 +10,22 @@
         <ListEntries>
           <ListEntry>
             <ListItems>
-              <ListItem>
+                <ListItem>
                 <Label>Name</Label>
                 <PropertyName>Name</PropertyName>
               </ListItem>
 	            <ListItem>
 		            <Label>AmountDue</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>AmountDue</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>AmountDue</PropertyName>
+			            <ScriptBlock>$_.AmountDue.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.AmountDue.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.AmountDue.Currency</ScriptBlock>
+			            <ScriptBlock>$_.AmountDue.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -37,16 +37,16 @@
 	            </ListItem>
 	            <ListItem>
 		            <Label>AzurePrepaymentApplied</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>AzurePrepaymentApplied</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>AzurePrepaymentApplied</PropertyName>
+			            <ScriptBlock>$_.AzurePrepaymentApplied.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.AzurePrepaymentApplied.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.AzurePrepaymentApplied.Currency</ScriptBlock>
+			            <ScriptBlock>$_.AzurePrepaymentApplied.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -58,16 +58,16 @@
 	            </ListItem>
 	            <ListItem>
 		            <Label>BilledAmount</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>BilledAmount</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>BilledAmount</PropertyName>
+			            <ScriptBlock>$_.BilledAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.BilledAmount.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.BilledAmount.Currency</ScriptBlock>
+			            <ScriptBlock>$_.BilledAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -77,26 +77,32 @@
 			            <ScriptBlock>$_.BilledAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
-	          <ListItem>
-		        <Label>BillingProfileId</Label>
-		        <PropertyName>BillingProfileId</PropertyName>
-	          </ListItem>
+	            <ListItem>
+		            <Label>BillingProfileId</Label>
+		            <ScriptBlock>$_.BillingProfileId.ToString()</ScriptBlock>
+		            <ItemSelectionCondition>
+			            <ScriptBlock>$_.BillingProfileId.ToString()</ScriptBlock>
+		            </ItemSelectionCondition>
+	            </ListItem>
 				<ListItem>
 					<Label>BillingProfileDisplayName</Label>
-					<PropertyName>BillingProfileDisplayName</PropertyName>
+					<ScriptBlock>$_.BillingProfileDisplayName.ToString()</ScriptBlock>
+					<ItemSelectionCondition>
+						<ScriptBlock>$_.BillingProfileDisplayName.ToString()</ScriptBlock>
+					</ItemSelectionCondition>
 				</ListItem>
 	            <ListItem>
 		            <Label>CreditAmount</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>CreditAmount</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>CreditAmount</PropertyName>
+			            <ScriptBlock>$_.CreditAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.CreditAmount.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.CreditAmount.Currency</ScriptBlock>
+			            <ScriptBlock>$_.CreditAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -108,20 +114,23 @@
 	            </ListItem>
 	            <ListItem>
 		            <Label>DueDate</Label>
-		            <ScriptBlock>$_.DueDate.ToString("yyyy-MM-dd")</ScriptBlock>
+		            <ScriptBlock>DueDate</ScriptBlock>
+		            <ItemSelectionCondition>
+			            <ScriptBlock>$_.DueDate.ToString("yyyy-MM-dd")</ScriptBlock>
+		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>FreeAzureCreditApplied</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>FreeAzureCreditApplied</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>FreeAzureCreditApplied</PropertyName>
+			            <ScriptBlock>$_.FreeAzureCreditApplied.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.FreeAzureCreditApplied.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.FreeAzureCreditApplied.Currency</ScriptBlock>
+			            <ScriptBlock>$_.FreeAzureCreditApplied.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -139,17 +148,23 @@
                 <Label>InvoicePeriodStartDate</Label>
                 <ScriptBlock>$_.InvoicePeriodStartDate.ToString("yyyy-MM-dd")</ScriptBlock>
               </ListItem>
-              <ListItem>
+                <ListItem>
                 <Label>InvoicePeriodEndDate</Label>
                 <ScriptBlock>$_.InvoicePeriodEndDate.ToString("yyyy-MM-dd")</ScriptBlock>
               </ListItem>
 	            <ListItem>
 		            <Label>IsMonthlyInvoice</Label>
 		            <ScriptBlock>$_.IsMonthlyInvoice.ToString()</ScriptBlock>
+		            <ItemSelectionCondition>
+			            <ScriptBlock>$_.IsMonthlyInvoice.ToString()</ScriptBlock>
+		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>PurchaseOrderNumber</Label>
 		            <ScriptBlock>$_.PurchaseOrderNumber.ToString()</ScriptBlock>
+		            <ItemSelectionCondition>
+			            <ScriptBlock>$_.PurchaseOrderNumber.ToString()</ScriptBlock>
+		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Status</Label>
@@ -158,19 +173,22 @@
 	            <ListItem>
 		            <Label>SubscriptionId</Label>
 		            <ScriptBlock>$_.SubscriptionId.ToString()</ScriptBlock>
+		            <ItemSelectionCondition>
+			            <ScriptBlock>$_.SubscriptionId.ToString()</ScriptBlock>
+		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>SubTotal</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>SubTotal</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>SubTotal</PropertyName>
+			            <ScriptBlock>$_.SubTotal.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.SubTotal.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.SubTotal.Currency</ScriptBlock>
+			            <ScriptBlock>$_.SubTotal.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -182,16 +200,16 @@
 	            </ListItem>
 	            <ListItem>
 		            <Label>TaxAmount</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>TaxAmount</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>TaxAmount</PropertyName>
+			            <ScriptBlock>$_.TaxAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.TaxAmount.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.TaxAmount.Currency</ScriptBlock>
+			            <ScriptBlock>$_.TaxAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -203,16 +221,16 @@
 	            </ListItem>
 	            <ListItem>
 		            <Label>TotalAmount</Label>
-		            <ScriptBlock>""</ScriptBlock>
+		            <ScriptBlock>TotalAmount</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <PropertyName>TotalAmount</PropertyName>
+			            <ScriptBlock>$_.TotalAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
 		            <Label>Currency</Label>
 		            <ScriptBlock>$_.TotalAmount.Currency</ScriptBlock>
 		            <ItemSelectionCondition>
-			            <ScriptBlock>$_.TotalAmount.Currency</ScriptBlock>
+			            <ScriptBlock>$_.TotalAmount.Value</ScriptBlock>
 		            </ItemSelectionCondition>
 	            </ListItem>
 	            <ListItem>
@@ -229,14 +247,13 @@
                   <PropertyName>DownloadUrl</PropertyName>
                 </ItemSelectionCondition>
               </ListItem>
-              <ListItem>
+                <ListItem>
                 <Label>DownloadUrlExpiry</Label>
                 <ScriptBlock>$_.DownloadUrlExpiry.ToString("yyyy-MM-dd")</ScriptBlock>
                 <ItemSelectionCondition>
                   <PropertyName>DownloadUrlExpiry</PropertyName>
                 </ItemSelectionCondition>
               </ListItem>
-
             </ListItems>
           </ListEntry>
         </ListEntries>
