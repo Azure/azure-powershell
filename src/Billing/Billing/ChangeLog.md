@@ -19,13 +19,11 @@
 -->
 ## Upcoming Release
 
-## Version 2.0.0
+## Version 1.0.3
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet
 * Added `Get-AzInvoiceSection` cmdlet
 * Added new parameters in `Get-AzBillingInvoice` cmdlet
-* Breaking changes
-    - Get-AzBillingPeriod, Get-AzEnrollmentAccount cmdlets are deprecated.
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
