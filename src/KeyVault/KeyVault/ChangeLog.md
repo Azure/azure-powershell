@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed a document issue of `Import-AzKeyVaultCertificate` [#12248]
 
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
