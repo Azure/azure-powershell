@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
