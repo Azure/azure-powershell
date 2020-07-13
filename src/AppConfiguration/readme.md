@@ -61,14 +61,19 @@ directive:
       parameter-name: ConfigStoreCreationParameter|RegenerateKeyParameter|CheckNameAvailabilityParameter
     select: command
     hide: true
+
+  # Hide Update for customization
   - where:
       verb: Update
       subject: ConfigurationStore
     hide: true
+
+  # Rename parameters to follow design guideline
   - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
+
   - where:
       subject: ConfigurationStoreKeyValue
       verb: Get
@@ -84,5 +89,10 @@ directive:
   # Private link features are implemented in Az.Network so we don't need them
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
+    remove: true
+
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 ```

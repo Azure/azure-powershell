@@ -12,19 +12,9 @@ Creates a configuration store with the specified parameters.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
  [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyIdentityClientId <String>] [-KeyVaultPropertyKeyIdentifier <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> -Location <String> -SkuName <String>
- [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyIdentityClientId <String>] [-KeyVaultPropertyKeyIdentifier <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -118,22 +108,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -KeyVaultPropertyIdentityClientId
 The client id of the identity which will be used to access key vault.
 
@@ -185,7 +159,7 @@ The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -230,7 +204,7 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -260,7 +234,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -321,8 +295,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IConfigurationStore
@@ -330,19 +302,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  - `[ConfigStoreName <String>]`: The name of the configuration store.
-  - `[GroupName <String>]`: The name of the private link resource group.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 
 ## RELATED LINKS
 
