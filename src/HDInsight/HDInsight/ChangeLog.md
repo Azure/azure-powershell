@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.3.1
+* Supported creating cluster with ADLSGen1/2 storage in national clouds.
+
 ## Version 3.3.0
 * Supported listing hosts and restart specific hosts of the HDInsight cluster.
 

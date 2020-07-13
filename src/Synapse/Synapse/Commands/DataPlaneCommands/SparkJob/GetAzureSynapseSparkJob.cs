@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob,
         DefaultParameterSetName = GetSparkJobsByIdParameterSetName)]
     [OutputType(typeof(PSSynapseSparkJob))]
-    public class GetAzureSynapseSparkJob : SynapseCmdletBase
+    public class GetAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string GetSparkJobsByIdParameterSetName = "GetSparkJobsByIdParameterSet";
         private const string GetSparkJobsByIdFromParentObjectParameterSetName = "GetSparkJobsByIdFromParentObjectParameterSet";
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetSparkJobsByIdParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetSparkJobsByIdFromParentObjectParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -72,12 +73,12 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.IsParameterBound(c => c.LivyId))
             {
                 // Get for single Spark batch job
-                WriteObject(new PSSynapseSparkJob(SynapseAnalyticsClient.GetSparkBatchJob(this.WorkspaceName, this.SparkPoolName, this.LivyId)));
+                WriteObject(new PSSynapseSparkJob(SynapseAnalyticsClient.GetSparkBatchJob(this.LivyId)));
             }
             else
             {
                 // List all Spark batch jobs in given Spark pool
-                var batchJobs = SynapseAnalyticsClient.ListSparkBatchJobs(this.WorkspaceName, this.SparkPoolName)
+                var batchJobs = SynapseAnalyticsClient.ListSparkBatchJobs()
                     .Select(element => new PSSynapseSparkJob(element));
                 if (!string.IsNullOrEmpty(this.Name))
                 {

@@ -58,7 +58,7 @@ Create cluster
 function Create-Cluster{
     param(
       [string] $clusterName="hdi-ps-test",
-      [string] $location="West US",
+      [string] $location="East US",
       [string] $resourceGroupName="group-ps-test",
       [string] $clusterType="Spark",
       [string] $storageAccountName="storagepstest",

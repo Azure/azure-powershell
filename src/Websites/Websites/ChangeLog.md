@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.0
+* Added support to perform operations for Slots not in the same resource group as the App Service Plan
+
 ## Version 1.10.0
 * Added safeguard to delete created webapp if restore failed in `Restore-AzDeletedWebApp`
 * Added "SourceWebApp.Location" for `New-AzWebApp` and `New-AzWebAppSlot`
@@ -27,6 +30,7 @@
 * Added a support to create ASP for Linux Apps
 * Added exceptions for clone across resource groups
 * Added support to perform operations for Slots not in the same resource group as the App Service Plan
+* Added support to use Id for Restore-AzDeletedWebApp.
 
 ## Version 1.9.0
 * Fixed typo on help of `Update-AzWebAppAccessRestrictionConfig`.

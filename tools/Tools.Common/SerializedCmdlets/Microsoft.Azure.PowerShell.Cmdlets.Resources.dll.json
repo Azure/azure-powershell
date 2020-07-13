@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DoNotApplyToChildScopes": "System.Boolean",
               "IsSystemProtected": "System.Boolean",
@@ -2235,7 +2235,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsDataAction": "System.Boolean",
               "Operation": "System.String",
@@ -2431,7 +2431,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -5341,7 +5341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -7369,7 +7369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -7636,7 +7636,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -9589,7 +9589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CanDelegate": "System.Boolean",
                     "RoleAssignmentId": "System.String",
@@ -9730,7 +9730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -10229,7 +10229,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -10308,7 +10308,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -10475,7 +10475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -10691,7 +10691,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -11124,7 +11124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -11381,7 +11381,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -11460,7 +11460,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -11627,7 +11627,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -11788,7 +11788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -11851,7 +11851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -12104,7 +12104,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -12827,7 +12827,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -12974,7 +12974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -13542,7 +13542,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -13615,7 +13615,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -13780,7 +13780,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -13926,7 +13926,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -14428,7 +14428,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -14701,7 +14701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -15089,7 +15089,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -15412,7 +15412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -15522,7 +15522,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -15826,7 +15826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -15988,7 +15988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -16574,7 +16574,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -17053,7 +17053,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DisplayName": "System.String",
               "Id": "System.String",
@@ -17147,7 +17147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -17383,7 +17383,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -17542,7 +17542,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -17674,7 +17674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -18068,7 +18068,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -18304,7 +18304,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -18416,7 +18416,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -18718,7 +18718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -18878,7 +18878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountEnabled": "System.Nullable`1[System.Boolean]",
               "UserPrincipalName": "System.String",
@@ -19539,7 +19539,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -19649,7 +19649,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -20661,7 +20661,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -20844,7 +20844,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -21126,7 +21126,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -21278,7 +21278,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": [],
@@ -21296,7 +21296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": [],
@@ -21945,7 +21945,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -22369,7 +22369,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -22488,7 +22488,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -22763,7 +22763,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -22817,7 +22817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "Secret": "System.Security.SecureString",
@@ -22917,7 +22917,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22980,7 +22980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": [],
@@ -23000,7 +23000,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": [],
@@ -23375,7 +23375,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -23609,7 +23609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -24099,7 +24099,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -24333,7 +24333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -24401,7 +24401,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -24560,7 +24560,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -24629,7 +24629,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -24697,7 +24697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -24880,7 +24880,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -24949,7 +24949,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -25068,7 +25068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -25120,7 +25120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Secret": "System.Security.SecureString",
               "StartDate": "System.String",
@@ -25222,7 +25222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -25892,7 +25892,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -26071,7 +26071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -26327,7 +26327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountEnabled": "System.Nullable`1[System.Boolean]",
               "UserPrincipalName": "System.String",
@@ -26823,7 +26823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -27379,7 +27379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -27710,7 +27710,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -28194,7 +28194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -28507,7 +28507,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -28872,7 +28872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -29218,7 +29218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -29473,7 +29473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -29861,7 +29861,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -30188,7 +30188,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -30323,7 +30323,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -30380,7 +30380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -30985,7 +30985,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -31140,7 +31140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -31471,7 +31471,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -32017,7 +32017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -32390,7 +32390,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountEnabled": "System.Nullable`1[System.Boolean]",
               "UserPrincipalName": "System.String",
@@ -32993,7 +32993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountEnabled": "System.Nullable`1[System.Boolean]",
                     "UserPrincipalName": "System.String",
@@ -33252,7 +33252,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -33350,7 +33350,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -33928,7 +33928,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -34216,7 +34216,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -34332,7 +34332,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -35062,7 +35062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -35438,7 +35438,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountEnabled": "System.Nullable`1[System.Boolean]",
               "UserPrincipalName": "System.String",
@@ -35557,7 +35557,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountEnabled": "System.Nullable`1[System.Boolean]",
               "UserPrincipalName": "System.String",
@@ -36232,7 +36232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountEnabled": "System.Nullable`1[System.Boolean]",
                     "UserPrincipalName": "System.String",
@@ -36626,7 +36626,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -36638,7 +36638,7 @@
     "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
       "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ObjectId": "System.Guid",
         "ObjectType": "System.String",
@@ -36906,7 +36906,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -36918,7 +36918,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
       "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
         "Type": "System.String",
@@ -37020,7 +37020,7 @@
     "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential": {
       "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
       "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartDate": "System.DateTime",
         "EndDate": "System.DateTime",
@@ -37067,7 +37067,7 @@
     "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential": {
       "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
       "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartDate": "System.DateTime",
         "EndDate": "System.DateTime",

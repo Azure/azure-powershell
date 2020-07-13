@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.1
+* Added warning when using `New-AzVmss` without "latest" image version
+
 ## Version 4.2.0
 * Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
 * Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.

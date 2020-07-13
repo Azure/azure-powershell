@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
+
+## Version 2.9.0
+* Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`
+* Fixed a bug in Data Classification cmdlets.`
 * Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
 
 ## Version 2.8.0

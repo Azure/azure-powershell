@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = DeleteByIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class StopAzureSynapseSparkSession : SynapseCmdletBase
+    public class StopAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
         private const string DeleteByIdParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByParentObjectParameterSet = "DeleteByParentObjectParameterSet";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = DeleteByIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = DeleteByIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SessionId)]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.LivyId.ToString(), string.Format(Resources.StoppingSynapseSparkSession, this.LivyId)))
             {
-                this.SynapseAnalyticsClient.StopSparkSession(this.WorkspaceName, this.SparkPoolName, this.LivyId, waitForCompletion:false);
+                this.SynapseAnalyticsClient.StopSparkSession(this.LivyId, waitForCompletion:false);
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);

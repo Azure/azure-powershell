@@ -1389,6 +1389,28 @@ namespace Microsoft.Azure.Commands.Network
                 // IpAllocation
                 cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
                 cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
+
+                // Network Virtual Appliance & Sites
+                    // CNM to MNM
+                cfg.CreateMap<CNM.PSNetworkVirtualAppliance, MNM.NetworkVirtualAppliance>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceSku, MNM.NetworkVirtualApplianceSku>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceSkuInstances, MNM.NetworkVirtualApplianceSkuInstances>();
+                cfg.CreateMap<CNM.PSOffice365PolicyProperties, MNM.Office365PolicyProperties>();
+                cfg.CreateMap<CNM.PSBreakOutCategoryPolicies, MNM.BreakOutCategoryPolicies>();
+                cfg.CreateMap<CNM.PSVirtualApplianceNicProperties, MNM.VirtualApplianceNicProperties>();
+                cfg.CreateMap<CNM.PSVirtualApplianceSite, MNM.VirtualApplianceSite>();
+                cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
+
+                    // MNM to CNM
+                cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
+                cfg.CreateMap<MNM.Office365PolicyProperties, CNM.PSOffice365PolicyProperties>();
+                cfg.CreateMap<MNM.BreakOutCategoryPolicies, CNM.PSBreakOutCategoryPolicies>();
+                cfg.CreateMap<MNM.VirtualApplianceNicProperties, CNM.PSVirtualApplianceNicProperties>();
+                cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
+                cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
+
             });
 
             _mapper = config.CreateMapper();
