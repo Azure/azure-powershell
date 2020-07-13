@@ -20,7 +20,8 @@
 ## Upcoming Release
 * Added new cmdlet: 'Get-AzAllowedConnection'
 * Added new cmdlet: 'Get-AzSecurityTopology'
-
+* Added new cmdlet: 'Get-AzSecurityAdaptiveApplicationControl'
+* Added new cmdlet: 'Get-AzSecurityAdaptiveApplicationControlGroup'
 
 ## Version 0.7.9
 * Add new cmdlets: 'Get-AzSecurityAssessment',
