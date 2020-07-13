@@ -46,7 +46,7 @@
 ## Version 1.4.0
 * Update references in .psd1 to use relative path
 * Fixed error accessing value that is potentially not set
-* Elliptic Curve Cryptography Certificate Managment
+* Elliptic Curve Cryptography Certificate Management
     - Added support to specify the Curve for Certificate Policies
 
 ## Version 1.3.1
