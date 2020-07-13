@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
          IPv4,
          IPv6,
-         All
+         All,
          IgnoreCase = true)]
         public string AddressPrefixType { get; set; }
 

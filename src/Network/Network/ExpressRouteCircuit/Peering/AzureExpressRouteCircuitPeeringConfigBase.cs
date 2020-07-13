@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
