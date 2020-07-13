@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the AppConfiguration service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -48,10 +48,13 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/appconfiguration/resource-manager/readme.md
+  - $(this-folder)/../readme.azure.noprofile.md
+# locking the commit
+input-file:
+  - https://github.com/Azure/azure-rest-api-specs/blob/29446bf77d48b7128b0c6d587b78355c2b4dde73/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/preview/2019-11-01-preview/appconfiguration.json
 
-module-version: 0.1.4
+module-version: 0.2.0
+title: AppConfiguration
 
 directive:
   - where:
@@ -63,15 +66,23 @@ directive:
       subject: ConfigurationStore
     hide: true
   - where:
-      parameter-name: ConfigStoreName
-    set:
-      parameter-name: Name
-  - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
   - where:
       subject: ConfigurationStoreKeyValue
       verb: Get
+    remove: true
+
+  # Sanitize doesn't work because parameter name doesn't start with subject
+  - where:
+      subject: ConfigurationStore|ConfigurationStoreKey
+      parameter-name: ConfigStoreName
+    set:
+      parameter-name: Name
+
+  # Private link features are implemented in Az.Network so we don't need them
+  - where:
+      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
 ```

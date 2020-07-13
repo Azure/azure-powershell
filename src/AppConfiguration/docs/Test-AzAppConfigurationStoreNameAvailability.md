@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 schema: 2.0.0
 ---
 
-# New-AzAppConfigurationStoreKey
+# Test-AzAppConfigurationStoreNameAvailability
 
 ## SYNOPSIS
-Regenerates an access key for the specified configuration store.
+Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### RegenerateExpanded (Default)
+### CheckExpanded (Default)
 ```
-New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Id <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzAppConfigurationStoreNameAvailability -Name <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RegenerateViaIdentityExpanded
+### CheckViaIdentityExpanded
 ```
-New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> [-Id <String>]
+Test-AzAppConfigurationStoreNameAvailability -InputObject <IAppConfigurationIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates an access key for the specified configuration store.
+Checks whether the configuration store name is available for use.
 
 ## EXAMPLES
 
@@ -62,31 +62,15 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Id
-The id of the key to regenerate.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: RegenerateViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,15 +78,14 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-The name of the configuration store.
+The name to check for availability.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -110,23 +93,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
-
-```yaml
-Type: System.String
-Parameter Sets: RegenerateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -134,15 +100,14 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -158,7 +123,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -175,7 +139,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -187,9 +150,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.INameAvailabilityStatus
 
-## ALIASES
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  - `[ConfigStoreName <String>]`: The name of the configuration store.
+  - `[GroupName <String>]`: The name of the private link resource group.
+  - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
+  - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
+  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 
 ## RELATED LINKS
 

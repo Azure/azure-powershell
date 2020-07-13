@@ -7,9 +7,8 @@ Updates a configuration store with the specified parameters.
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
 #>
 function Update-AzAppConfigurationStore {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore')]
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IConfigurationStore')]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description('Updates a configuration store with the specified parameters.')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the configuration store.')]
@@ -35,7 +34,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='The ARM resource tags.')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', HelpMessage='The ARM resource tags.')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IConfigurationStoreUpdateParametersTags]
     ${Tag},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
