@@ -17,13 +17,23 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Net.Http;
+using System.Management.Automation.Language;
+using System;
+using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class RenewingTokenCredential : ServiceClientCredentials
     {
         private IAccessToken _token;
+        private readonly Func<IAccessToken> _f;
 
+
+        public RenewingTokenCredential(IAccessToken token, Func<IAccessToken> f)
+        {
+            _f = f;
+            _token = token;
+        }
 
         public RenewingTokenCredential(IAccessToken token)
         {
@@ -32,7 +42,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            return Task.Run( () => _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token)));
+            return Task.Run(() => 
+                {
+                    _token = (_f == null) ? _token : _f();
+                    _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token));
+                });
         }
 
     }
