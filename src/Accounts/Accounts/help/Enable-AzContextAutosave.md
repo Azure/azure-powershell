@@ -8,7 +8,9 @@ schema: 2.0.0
 # Enable-AzContextAutosave
 
 ## SYNOPSIS
-Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
+Azure contexts are PowerShell objects representing your active subscription to run commands against, and the authentication information needed to connect to an Azure cloud. With Azure contexts, Azure PowerShell doesn't need to reauthenticate your account each time you switch subscriptions. More information about context can be found in the [Azure PowerShell context objects](https://docs.microsoft.com/en-us/powershell/azure/context-persistence) page.
+
+This cmdlet allows the Azure context information to be saved and automatically loaded when a PowerShell process starts (for example when opening a new window).
 
 ## SYNTAX
 
@@ -18,7 +20,7 @@ Enable-AzContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
+Allow the azure context information to be saved and automatically loaded when a PowerShell process starts. The context is saved at the end of the execution of any cmdlet that affects the context (any profile cmdlet).  If you are using user authentication, then tokens can be updated durign the course of runnign any cmdlet.
 
 ## EXAMPLES
 
@@ -55,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user
+Determines the scope of context changes for example, whether changes apply only to the current process, or to all sessions started by this user.
+Changes made with the scope `CurrentUser` will affect all PowerShell sessions started by the user. If a particual session need to have settings different, use the scope `Process`.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
@@ -65,7 +68,7 @@ Accepted values: Process, CurrentUser
 
 Required: False
 Position: Named
-Default value: None
+Default value: CurrentUser
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
