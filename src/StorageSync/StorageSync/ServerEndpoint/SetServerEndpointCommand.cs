@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -160,7 +161,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
 
-         /// <summary>
+        /// <summary>
+        /// Gets or sets a value indicating the policy to use for regular download sync sessions.
+        /// </summary>
+        /// <value>The local cache mode.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.LocalCacheModeParameter)]
+        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
+        //    IgnoreCase = true)]
+        [ValidateSet("DownloadNewAndModifiedFiles",
+            "UpdateLocallyCachedFiles",
+            IgnoreCase = true)]
+        public string LocalCacheMode { get; set; }
+
+        /// <summary>
         /// Gets or sets as job.
         /// </summary>
         /// <value>As job.</value>
@@ -241,6 +258,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (this.IsParameterBound(c => c.OfflineDataTransfer))
                 {
                     updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
+                }
+
+                StorageSyncModels.LocalCacheMode localCacheMode;
+                if (this.IsParameterBound(c => c.LocalCacheMode))
+                {
+                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
+                    {
+                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
+                    }
+                    updateParameters.LocalCacheMode = localCacheMode;
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);

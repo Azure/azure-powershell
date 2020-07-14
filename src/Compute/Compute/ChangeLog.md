@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version
 
 ## Version 4.2.0

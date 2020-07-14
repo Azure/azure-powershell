@@ -124,6 +124,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to InitialDownloadPolicy parameter has invalid value..
+        /// </summary>
+        internal static string InvalidInitialDownloadPolicyErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidInitialDownloadPolicyErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LocalCacheMode parameter has invalid value..
+        /// </summary>
+        internal static string InvalidLocalCacheModeErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidLocalCacheModeErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoke change detection for Cloud Endpoint.
         /// </summary>
         internal static string InvokeChangeDetectionActionMessage {

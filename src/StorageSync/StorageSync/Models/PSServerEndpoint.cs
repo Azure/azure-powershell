@@ -110,5 +110,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The offline data transfer storage account tenant identifier.</value>
         public string OfflineDataTransferStorageAccountTenantId { get; internal set; }
+
+        // <summary>
+        /// Gets or sets a value indicating the policy to use for the initial download sync.
+        /// </summary>
+        /// <value>The initial download policy.</value>
+        public string InitialDownloadPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the policy to use for regular download sync sessions.
+        /// </summary>
+        /// <value>The local cache mode.</value>
+        public string LocalCacheMode { get; set; }
     }
 }
