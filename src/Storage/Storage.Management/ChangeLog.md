@@ -18,10 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed the issue that UserAgent not added for some dataplane cmdlets.
+
+## Version 2.3.0
+* Fixed the issue that UserAgent is not added for some data plane cmdlets.
 * Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
+* Support enable/disable versioning on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
+* Support list blobs with blob versions
+    - `Get-AzStorageBlob`
+* Support get/remove single blob snapshot or blob version
+    - `Get-AzStorageBlob`
+    - `Remove-AzStorageBlob`
+* Support pipeline from blob object generated from Azure.Storage.Blobs V12
+    - `Get-AzStorageBlobContent`
+    - `New-AzStorageBlobSASToken`
+    - `Remove-AzStorageBlob`
+    - `Set-AzStorageBlobContent`
+    - `Start-AzStorageBlobCopy`
 
 ## Version 2.2.0
 * Supported create Storage account with RequireInfrastructureEncryption
