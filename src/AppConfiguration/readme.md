@@ -57,14 +57,19 @@ module-version: 0.2.0
 title: AppConfiguration
 
 directive:
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
   - where:
       parameter-name: ConfigStoreCreationParameter|RegenerateKeyParameter|CheckNameAvailabilityParameter
     select: command
     hide: true
 
-  # Hide Update for customization
+  # Hide New & Update for customization
   - where:
-      verb: Update
+      verb: Update|New
       subject: ConfigurationStore
     hide: true
 
@@ -89,10 +94,5 @@ directive:
   # Private link features are implemented in Az.Network so we don't need them
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
-    remove: true
-
-  # Remove the unexpanded parameter set
-  - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 ```

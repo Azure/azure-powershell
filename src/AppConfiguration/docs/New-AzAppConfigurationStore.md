@@ -15,9 +15,7 @@ Creates a configuration store with the specified parameters.
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
  [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyIdentityClientId <String>] [-KeyVaultPropertyKeyIdentifier <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,36 +106,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyVaultPropertyIdentityClientId
-The client id of the identity which will be used to access key vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultPropertyKeyIdentifier
-The URI of the key vault key used to encrypt data.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The location of the resource.
 This cannot be changed after the resource is created.
@@ -174,21 +142,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicNetworkAccess
-Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
