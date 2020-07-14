@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string ManagedServiceParameterSet = "ManagedServiceLogin";
         public const string MSIEndpointVariable = "MSI_ENDPOINT";
         public const string MSISecretVariable = "MSI_SECRET";
+        public const int DefaultMaxContextPopulation = 25;
 
         private IAzureEnvironment _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
@@ -156,6 +157,15 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [PSDefaultValue(Value = DefaultMaxContextPopulation)]
+        public int MaxContextPopulation { get; set; } = DefaultMaxContextPopulation;
 
         [Parameter(ParameterSetName = UserParameterSet,
                    Mandatory = false, HelpMessage = "Use device code authentication instead of a browser control")]
@@ -333,7 +343,8 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         WriteWarning,
                         name,
-                        !SkipContextPopulation.IsPresent));
+                        !SkipContextPopulation.IsPresent,
+                        MaxContextPopulation));
                });
             }
         }
