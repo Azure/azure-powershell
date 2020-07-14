@@ -21,12 +21,28 @@ Get-AzStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] [-M
  [<CommonParameters>]
 ```
 
+### SingleBlobSnapshotTime
+```
+Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] -SnapshotTime <DateTimeOffset>
+ [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+```
+
+### SingleBlobVersionID
+```
+Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] -VersionId <String>
+ [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+```
+
 ### BlobPrefix
 ```
-Get-AzStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
- [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+Get-AzStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-IncludeVersion]
+ [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +104,49 @@ $Token changes value as the loop runs.
 For more information, type `Get-Help About_Do`.
 The final command uses the **Echo** command to display the total.
 
+### Example 5: Get all blobs in a container include blob version
+```
+PS C:\>Get-AzStorageBlob -Container "containername"  -IncludeVersion 
+
+   AccountName: storageaccountname, ContainerName: containername
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
+----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
+blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot                                     False      2020-07-06T06:56:06.2432658Z  
+blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot        2020-07-06T06:56:06.8588431Z False                                    
+blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot                                     False      2020-07-06T06:56:06.8598431Z *  
+blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z  
+blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:35Z Hot                                     False      2020-07-03T16:19:35.2381110Z *
+```
+
+This command gets all blobs in a container include blob version.
+
+### Example 6: Get a single blob version
+```
+PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
+
+   AccountName: storageaccountname, ContainerName: containername
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
+----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
+blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z  
+```
+
+This command gets a single blobs verion with VersionId.
+
+### Example 7: Get a single blob snapshot
+```
+PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
+
+   AccountName: storageaccountname, ContainerName: containername
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
+----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
+blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot        2020-07-06T06:56:06.8588431Z False               
+```
+
+This command gets a single blobs snapshot with SnapshotTime.
+
 ## PARAMETERS
 
 ### -Blob
@@ -104,7 +163,19 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SingleBlobSnapshotTime, SingleBlobVersionID
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ClientTimeoutPerRequest
@@ -220,6 +291,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeVersion
+Blob versions will be listed only if this parameter is present, by default get blob won't include blob versions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: BlobPrefix
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxCount
 Specifies the maximum number of objects that this cmdlet returns.
 
@@ -263,6 +349,36 @@ Parameter Sets: (All)
 Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotTime
+Blob SnapshotTime
+
+```yaml
+Type: System.Nullable`1[System.DateTimeOffset]
+Parameter Sets: SingleBlobSnapshotTime
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VersionId
+Blob VersionId
+
+```yaml
+Type: System.String
+Parameter Sets: SingleBlobVersionID
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

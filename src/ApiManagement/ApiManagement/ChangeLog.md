@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Updated assembly version of service management cmdlets
+
 ## Version 2.0.0
 * `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
 * `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]

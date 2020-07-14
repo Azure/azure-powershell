@@ -11,6 +11,15 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Synapse Analytics.
 
 ## Az.Synapse Cmdlets
+### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
+Gets a Synapse Analytics Firewall Rule.
+
+### [Get-AzSynapseRoleAssignment](Get-AzSynapseRoleAssignment.md)
+Gets a Synapse Analytics role assignment.
+
+### [Get-AzSynapseRoleDefinition](Get-AzSynapseRoleDefinition.md)
+Gets a Synapse Analytics role definition.
+
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
 Gets a Synapse Analytics Spark job.
 
@@ -32,6 +41,12 @@ Gets a Synapse Analytics workspace.
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
 Invokes a Synapse Analytics Spark statement.
 
+### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
+Creates a Synapse Analytics Firewall Rule.
+
+### [New-AzSynapseRoleAssignment](New-AzSynapseRoleAssignment.md)
+Creates a Synapse Analytics role assignment.
+
 ### [New-AzSynapseSparkPool](New-AzSynapseSparkPool.md)
 Creates a Synapse Analytics Spark pool.
 
@@ -40,6 +55,12 @@ Creates a Synapse Analytics SQL pool.
 
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
 Creates a Synapse Analytics workspace.
+
+### [Remove-AzSynapseFirewallRule](Remove-AzSynapseFirewallRule.md)
+Deletes a Synapse Analytics Firewall Rule.
+
+### [Remove-AzSynapseRoleAssignment](Remove-AzSynapseRoleAssignment.md)
+Deletes a Synapse Analytics role assignment.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
 Deletes a Synapse Analytics Spark pool.
@@ -76,6 +97,9 @@ Checks for the existence of a Synapse Analytics SQL pool.
 
 ### [Test-AzSynapseWorkspace](Test-AzSynapseWorkspace.md)
 Checks for the existence of a Synapse Analytics workspace.
+
+### [Update-AzSynapseFirewallRule](Update-AzSynapseFirewallRule.md)
+Updates a Synapse Analytics Firewall Rule.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
 Updates a Synapse Analytics Spark pool.

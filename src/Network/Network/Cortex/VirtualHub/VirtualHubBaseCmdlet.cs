@@ -26,6 +26,20 @@ namespace Microsoft.Azure.Commands.Network
 
     public class VirtualHubBaseCmdlet : NetworkBaseCmdlet
     {
+        private HubVnetConnectionBaseCmdlet hubVnetConnectionBaseCmdlet;
+
+        public HubVnetConnectionBaseCmdlet HubVnetConnectionCmdlet
+        {
+            get
+            {
+                if (hubVnetConnectionBaseCmdlet == null)
+                {
+                    hubVnetConnectionBaseCmdlet = new HubVnetConnectionBaseCmdlet();
+                }
+                return hubVnetConnectionBaseCmdlet;
+            }
+        }
+
         public IVirtualHubsOperations VirtualHubClient
         {
             get
@@ -49,9 +63,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 //// The following code will throw if resource is not found
                 MNM.VirtualHub virtualHub = this.VirtualHubClient.Get(resourceGroupName, name);
-
                 PSVirtualHub psVirtualHub = ToPsVirtualHub(virtualHub);
                 psVirtualHub.ResourceGroupName = resourceGroupName;
+                psVirtualHub.VirtualNetworkConnections = this.HubVnetConnectionCmdlet.ListHubVnetConnections(resourceGroupName, name);
+
                 return psVirtualHub;
             }
             catch (Exception ex)
@@ -73,6 +88,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualHub CreateOrUpdateVirtualHub(string resourceGroupName, string virtualHubName, PSVirtualHub virtualHub, Hashtable tags, Dictionary<string, List<string>> customHeaders = null)
         {
+            var psHubVnetConnections = virtualHub.VirtualNetworkConnections;
+            virtualHub.VirtualNetworkConnections = null;
             var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);
             virtualHubModel.Location = virtualHub.Location;
             virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
@@ -94,6 +111,32 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualHub hubToReturn = this.ToPsVirtualHub(virtualHubCreatedOrUpdated);
             hubToReturn.ResourceGroupName = resourceGroupName;
 
+            if (psHubVnetConnections == null)
+            {
+                return hubToReturn;
+            }
+
+            // Crud operation on the vnet connections
+            hubToReturn.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+
+            foreach (var psConnection in psHubVnetConnections)
+            {
+                var hubVnetConnnection = NetworkResourceManagerProfile.Mapper.Map<MNM.HubVirtualNetworkConnection>(psConnection);
+                // get auth headers for cross-tenant hubvnet conn
+                List<string> resourceIds = new List<string>();
+                resourceIds.Add(psConnection.RemoteVirtualNetwork.Id);
+
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+
+                var psConnectionReturn = this.HubVnetConnectionCmdlet.CreateOrUpdateHubVirtualNetworkConnection(resourceGroupName, virtualHubName, psConnection.Name, hubVnetConnnection, customHeaders);
+                hubToReturn.VirtualNetworkConnections.Add(psConnectionReturn);
+            }
+
             return hubToReturn;
         }
 
@@ -110,6 +153,8 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     PSVirtualHub virtualHubToReturn = ToPsVirtualHub(virtualHub);
                     virtualHubToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualHub.Id);
+                    virtualHubToReturn.VirtualNetworkConnections = this.HubVnetConnectionCmdlet.ListHubVnetConnections(resourceGroupName, virtualHub.Name);
+
                     hubsToReturn.Add(virtualHubToReturn);
                 }
             }

@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviderPolicy()
+        {
+            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-GetDefaultProviderPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetAttestationPolicy()
         {
             AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-ResetAttestationPolicy");

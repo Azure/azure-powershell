@@ -99,6 +99,13 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AVMNicConfig()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMNicConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AZoneToZoneRecoveryPlanReplication()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ZoneToZoneRecoveryPlanReplication");

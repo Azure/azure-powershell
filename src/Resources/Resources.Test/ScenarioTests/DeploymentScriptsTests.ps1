@@ -268,7 +268,7 @@ function Test-GetDeploymentScriptLog-PowerShell
 
 		#Test - GetLogByInputObject
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
-		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript
+		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript
 
 		# Assert
 		Assert-NotNull $getLogByInputObject
@@ -277,7 +277,7 @@ function Test-GetDeploymentScriptLog-PowerShell
 
 		#Test - GetLogByInputObject - WithTailParameter
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
-		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $tailInteger
+		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript -Tail $tailInteger
 		$tail = [math]::min( ($getLogByInputObject.Log -split '\n').count, $tailInteger)
 
 		# Assert
@@ -359,7 +359,7 @@ function Test-GetDeploymentScriptLog-Cli
 
 		#Test - GetLogByInputObject
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
-		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript
+		$getLogByInputObject = Get-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript
 
 		# Assert
 		Assert-NotNull $getLogByInputObject
@@ -369,7 +369,7 @@ function Test-GetDeploymentScriptLog-Cli
 
 		#Test - GetLogByInputObject - WithTailParameter
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
-		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -Tail $tailInteger
+		$getLogByInputObjectWithTail = Get-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript -Tail $tailInteger
 		$tail = [math]::min( ($getLogByResourceId.Log -split '\r').count, $tailInteger)
 
 		# Assert
@@ -463,8 +463,8 @@ function Test-TrySaveNonExistingFilePathForLogFile
 		$path = (Get-Item ".\").FullName
         $fullPath = Join-Path $path $badPath
         $exceptionMessage = "Cannot find path '$fullPath'"
-        Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath } $exceptionMessage
-		Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath -Tail $tailInteger} $exceptionMessage	
+        Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript -OutputPath $badPath } $exceptionMessage
+		Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptObject $deploymentScript -OutputPath $badPath -Tail $tailInteger} $exceptionMessage	
 	}
 	finally
     {

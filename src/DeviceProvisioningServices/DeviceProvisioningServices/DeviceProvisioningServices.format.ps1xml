@@ -679,5 +679,96 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSDeviceRegistrationState
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSDeviceRegistrationState</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>RegistrationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DeviceId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AssignedHub</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Created</Label>
+                <ScriptBlock>$_.CreatedDateTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Last Updated</Label>
+                <ScriptBlock>$_.LastUpdatedDateTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ErrorCode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ErrorMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ETag</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSDeviceRegistrationStates
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSDeviceRegistrationStates</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Created</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Last Updated</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RegistrationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeviceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AssignedHub</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.CreatedDateTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LastUpdatedDateTimeUtc.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

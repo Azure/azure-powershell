@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
+
+## Version 2.9.0
+* Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`
+* Fixed a bug in Data Classification cmdlets.`
+* Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
+
+## Version 2.8.0
+* Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet
+* Fixed sync issue in Data Classification cmdlets.
+* Supported searching user by mail on `Set-AzSqlServerActiveDirectoryAdministrator` [#12192]
+
+## Version 2.7.0
+* Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Added SyncMemberAzureDatabaseResourceId to `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
+* Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
+* Remove IsAzureADOnlyAuthentication parameter from Set-AzSqlServerActiveDirectoryAdministrator as it is not usable. 
 
 ## Version 2.6.1
 * Enhance performance of:

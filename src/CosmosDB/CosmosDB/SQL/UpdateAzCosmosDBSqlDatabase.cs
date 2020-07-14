@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlDatabaseThroughputHelpMessage)]
         public int? Throughput { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AutoscaleMaxThroughputHelpMessage)]
+        public int? AutoscaleMaxThroughput { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
@@ -83,12 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            CreateUpdateOptions options = new CreateUpdateOptions();
-
-            if (Throughput != null)
-            {
-                options.Throughput = Throughput.ToString();
-            }
+            CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             SqlDatabaseCreateUpdateParameters sqlDatabaseCreateUpdateParameters = new SqlDatabaseCreateUpdateParameters
             {

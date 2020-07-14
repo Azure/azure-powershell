@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Updated the SDK version to 1.1.0
+* Added support for Export settings and Managed Identity
+
 ## Version 1.0.2
 * Access policies are no longer defaulted to the current principal
 

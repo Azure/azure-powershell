@@ -1,6 +1,2 @@
 "Module","Minimal Version"
-"Az.Aks","1.1.1"
-"Az.Compute","4.1.0"
-"Az.Functions","1.0.0"
-"Az.Resources","2.0.1"
-"Az.StackEdge","0.1.0"
+"Az.Functions","1.0.1"

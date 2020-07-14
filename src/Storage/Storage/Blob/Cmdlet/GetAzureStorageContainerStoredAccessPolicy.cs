@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         internal async Task<SharedAccessBlobPolicies> GetPoliciesAsync(IStorageBlobManagement localChannel, string containerName, string policyName)
         {
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            BlobContainerPermissions blobContainerPermissions = await localChannel.GetContainerPermissionsAsync(container, null, null, null, CmdletCancellationToken).ConfigureAwait(false);
+            BlobContainerPermissions blobContainerPermissions = await localChannel.GetContainerPermissionsAsync(container, null, null, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             return blobContainerPermissions.SharedAccessPolicies;
         }
 

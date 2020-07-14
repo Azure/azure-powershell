@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string RemoveRegistration {
+            get {
+                return ResourceManager.GetString("RemoveRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update an Azure IoT Hub Device Provisioning Service certificate.
         /// </summary>
         internal static string SetCertificate {

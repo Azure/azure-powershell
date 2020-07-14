@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
+* Added 'Unregister-AzResourceProvider' cmdlet.
+
+## Version 2.2.0
+* Added `UsageLocation`, `GivenName`, `Surname`, `AccountEnabled`, `MailNickname`, `Mail` on `PSADUser` [#10526] [#10497]
+* Fixed issue that `-Mail` doesn't work on `Get-AzADUser` [#11981]
+* Added `-ExcludeChangeType` parameter to `Get-AzDeploymentWhatIfResult` and `Get-AzResourceGroupDeploymentWhatIfResult`
+* Added `-WhatIfExcludeChangeType` parameter to `New-AzDeployment` and `New-AzResourceGroupDeployment`
+* Updated `Test-Az*Deployment` cmdlets to show better error messages
+* Fixed help message for `-Name` parameter of deployment create and What-If cmdlets
+
+## Version 2.1.0
+* Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
+* Formatted Output property and show it on the Get-AzDeploymentScript cmdlet output
+* Renamed -DeploymentScriptInputObject parameter to -DeploymentScriptObject
+* Fixed missing file/target name in cmdlet messages.
+* Updated assembly version of resource manager and tags cmdlets
+
 ## Version 2.0.1
 * Added message warning about view delay when creating a new Role Definition
 * Changed policy cmdlets to output strongly-typed objects
@@ -40,7 +59,7 @@
     - `New-AzManagementGroupDeployment`
     - `New-AzResourceGroupDeployment`
     - `New-AzTenantDeployment`
-* Added Tail parameter to Get-AzDeploymentScriptLog and Save-AzDeploymentScriptLog cmdlets
+
 
 ## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]

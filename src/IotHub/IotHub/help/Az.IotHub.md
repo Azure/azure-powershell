@@ -185,6 +185,9 @@ Delete a route in IoT Hub
 ### [Remove-AzIotHubRoutingEndpoint](Remove-AzIotHubRoutingEndpoint.md)
 Delete an endpoint for your IoT Hub
 
+### [Send-AzIotHubDevice2CloudMessage](Send-AzIotHubDevice2CloudMessage.md)
+Send device-to-cloud message.
+
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
 

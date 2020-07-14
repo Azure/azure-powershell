@@ -157,5 +157,25 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string RestorePoint = "Snapshot time to restore.";
 
         public const string SqlAdministratorLoginPassword = "The new SQL administrator password for the workspace.";
+
+        public const string FirewallRuleName = "The firerwall rule name for the workspace.";
+
+        public const string StartIpAddress = "The start IP address of the firewall rule. Must be IPv4 format.";
+
+        public const string EndIpAddress = "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress.";
+
+        public const string AzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access.";
+
+        public const string RoleAssignmentId = "The ID of the role assignment.";
+
+        public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
+
+        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+
+        public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
+
+        public const string SignInName = "The email address or the user principal name of the user.";
+
+        public const string ServicePrincipalName = "The ServicePrincipalName of the service principal.";
     }
 }

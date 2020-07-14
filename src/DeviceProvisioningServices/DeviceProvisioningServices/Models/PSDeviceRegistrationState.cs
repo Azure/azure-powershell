@@ -76,4 +76,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
         [JsonProperty(PropertyName = "etag", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ETag { get; internal set; }
     }
+
+    public class PSDeviceRegistrationStates : PSDeviceRegistrationState
+    { }
 }

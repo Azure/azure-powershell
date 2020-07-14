@@ -26,7 +26,7 @@ Get-AzDeploymentScriptLog [-DeploymentScriptResourceId] <String> [[-Tail] <Int32
 
 ### GetDeploymentScriptLogByInputObject
 ```
-Get-AzDeploymentScriptLog [-DeploymentScriptInputObject] <PsDeploymentScript> [[-Tail] <Int32>]
+Get-AzDeploymentScriptLog [-DeploymentScriptObject] <PsDeploymentScript> [[-Tail] <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -75,13 +75,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentScriptInputObject
+### -DeploymentScriptObject
 The deployment script PowerShell object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript
 Parameter Sets: GetDeploymentScriptLogByInputObject
-Aliases:
+Aliases: DeploymentScriptInputObject
 
 Required: True
 Position: 0

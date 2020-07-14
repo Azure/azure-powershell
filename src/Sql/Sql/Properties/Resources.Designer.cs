@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with application display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADApplication -SearchString &quot;{1}&quot;..
+        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with any service principal display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADServicePrincipal -SearchString &quot;{1}&quot;..
         /// </summary>
         internal static string ADApplicationDisplayNameMismatch {
             get {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot;.
+        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or use use Get-AzADServicePrincipal -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADApplicationMoreThanOneFound {
             get {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application or object id of the group to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
         /// </summary>
         internal static string ADDuplicateGroupAndApplicationFound {
             get {
@@ -480,6 +480,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string FailoverAzureSqlElasticPoolWarning {
             get {
                 return ResourceManager.GetString("FailoverAzureSqlElasticPoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceWarning", resourceCulture);
             }
         }
         
@@ -1211,6 +1229,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The server name &apos;{0}&apos; cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists..
+        /// </summary>
+        internal static string ServerNameInvalid {
+            get {
+                return ResourceManager.GetString("ServerNameInvalid", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
@@ -1452,6 +1479,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SyncGroupNameExists {
             get {
                 return ResourceManager.GetString("SyncGroupNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string SyncMemberIdRequired {
+            get {
+                return ResourceManager.GetString("SyncMemberIdRequired", resourceCulture);
             }
         }
         

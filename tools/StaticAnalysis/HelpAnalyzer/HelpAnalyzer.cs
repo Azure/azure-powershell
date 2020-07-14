@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Issues;
 using Tools.Common.Loaders;
@@ -43,7 +44,7 @@ namespace StaticAnalysis.HelpAnalyzer
         public AnalysisLogger Logger { get; set; }
         public string Name { get; private set; }
 
-// TODO: Remove IfDef code
+        // TODO: Remove IfDef code
 #if !NETSTANDARD
         private AppDomain _appDomain;
 #endif
@@ -95,6 +96,7 @@ namespace StaticAnalysis.HelpAnalyzer
             var helpLogger = Logger.CreateLogger<HelpIssue>("HelpIssues.csv");
             foreach (var baseDirectory in scopes.Where(s => Directory.Exists(Path.GetFullPath(s))))
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
                     if (modulesToAnalyze != null &&
@@ -158,7 +160,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     h.Assembly = cmdletFileName;
                 }, "Cmdlet");
 
-// TODO: Remove IfDef
+                // TODO: Remove IfDef
 #if NETSTANDARD
                 var proxy = new CmdletLoader();
 #else
@@ -169,7 +171,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
                 ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
                 helpLogger.Decorator.Remove("Cmdlet");
-// TODO: Remove IfDef code
+                // TODO: Remove IfDef code
 #if !NETSTANDARD
                 AppDomain.Unload(_appDomain);
 #endif
@@ -229,13 +231,13 @@ namespace StaticAnalysis.HelpAnalyzer
             powershell.AddScript(script);
             var cmdletResult = powershell.Invoke();
             var nestedModules = new List<string>();
-            foreach(var module in cmdletResult)
+            foreach (var module in cmdletResult)
             {
-                if(module != null && module.ToString().StartsWith("."))
+                if (module != null && module.ToString().StartsWith("."))
                 {
                     nestedModules.Add(module.ToString().Substring(2));
-                } 
-                else if(module != null)
+                }
+                else if (module != null)
                 {
                     nestedModules.Add(module.ToString());
                 }
@@ -270,7 +272,7 @@ namespace StaticAnalysis.HelpAnalyzer
                         h.Assembly = assemblyFileName;
                     }, "Cmdlet");
                     processedHelpFiles.Add(assemblyFileName);
-// TODO: Remove IfDef
+                    // TODO: Remove IfDef
 #if NETSTANDARD
                     var proxy = new CmdletLoader();
 #else
@@ -280,7 +282,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     var cmdlets = module.Cmdlets;
                     allCmdlets.AddRange(cmdlets);
                     helpLogger.Decorator.Remove("Cmdlet");
-// TODO: Remove IfDef code
+                    // TODO: Remove IfDef code
 #if !NETSTANDARD
                     AppDomain.Unload(_appDomain);
 #endif
@@ -290,7 +292,7 @@ namespace StaticAnalysis.HelpAnalyzer
             script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata; $ModuleMetadata.FunctionsToExport;";
             cmdletResult = PowerShell.Create().AddScript(script).Invoke();
             var functionCmdlets = cmdletResult.Select(c => c.ToString()).ToList();
-            foreach(var cmdlet in functionCmdlets)
+            foreach (var cmdlet in functionCmdlets)
             {
                 var metadata = new CmdletMetadata();
                 metadata.VerbName = cmdlet.Split("-")[0];
@@ -302,7 +304,7 @@ namespace StaticAnalysis.HelpAnalyzer
             ValidateHelpMarkdown(helpFolder, helpFiles, helpLogger);
 
             Directory.SetCurrentDirectory(savedDirectory);
-            
+
         }
 
         private void ValidateHelpRecords(IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
@@ -321,7 +323,7 @@ namespace StaticAnalysis.HelpAnalyzer
                         ProblemId = MissingHelp,
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.Name)
                     };
-                    if(cmdlet.ClassName != null)
+                    if (cmdlet.ClassName != null)
                     {
                         issue.Description = $"Help missing for cmdlet {cmdlet.Name} implemented by class {cmdlet.ClassName}";
                     }
@@ -335,16 +337,16 @@ namespace StaticAnalysis.HelpAnalyzer
 
             foreach (var helpRecord in helpRecords)
             {
-                if(!cmdletDict.ContainsKey(helpRecord))
+                if (!cmdletDict.ContainsKey(helpRecord))
                 {
                     Console.Error.WriteLine($"Help record {helpRecord} has no cmdlet.");
-                } 
+                }
             }
         }
 
         private void ValidateHelpMarkdown(string helpFolder, IList<string> helpRecords, ReportLogger<HelpIssue> helpLogger)
         {
-            foreach(var helpMarkdown in helpRecords)
+            foreach (var helpMarkdown in helpRecords)
             {
                 var file = Path.Combine(helpFolder, helpMarkdown + ".md");
                 var content = File.ReadAllText(file);

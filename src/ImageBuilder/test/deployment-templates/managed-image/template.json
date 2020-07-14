@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "images_test_linux_image_name": {
+            "defaultValue": "test-linux-image",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/images",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('images_test_linux_image_name')]",
+            "location": "eastus",
+            "tags": {
+                "baseosimg": "ubuntu1804",
+                "source": "azVmImageBuilder"
+            },
+            "properties": {
+                "storageProfile": {
+                    "osDisk": {
+                        "osType": "Linux",
+                        "osState": "Generalized",
+                        "diskSizeGB": 30,
+                        "blobUri": "https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/c1199f18-3121-4541-964c-80cee24a45c8.vhd",
+                        "caching": "None",
+                        "storageAccountType": "Standard_LRS"
+                    },
+                    "dataDisks": []
+                },
+                "hyperVGeneration": "V1"
+            }
+        }
+    ]
+}

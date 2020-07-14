@@ -106,9 +106,9 @@ The default table output reveals some issues:
 
 # File format.ps1xml.
 
-Powershell allows to configure cmdlets output view with the [format.ps1xml](https://msdn.microsoft.com/en-us/library/gg580992) files.
+Powershell allows to configure cmdlets output view with the [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) files.
 
-To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml?view=powershell-6) file:
+To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a format.ps1xml file:
 
 
 1. Mark all the cmdlet output type public properties that should go to the table output with the *Ps1XmlAttribute* attribute.

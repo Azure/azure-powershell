@@ -79,7 +79,7 @@ function Test-NewAzAks
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $kubeVersion = "1.15.7"
+    $kubeVersion = "1.15.10"
     $nodeVmSize = "Standard_A2"
     $maxPodCount = 25
     $nodeName = "defnode"
@@ -95,7 +95,7 @@ function Test-NewAzAks
     $loadBalancerSku = "Standard"
     $linuxAdminUser = "linuxuser"
     $dnsNamePrefix = "mypre"
-    $updatedKubeVersion = "1.15.10"
+    $updatedKubeVersion = "1.15.11"
 
     try
     {

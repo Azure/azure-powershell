@@ -121,6 +121,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     blob = GetCloudBlobObject(CloudBlobContainer, BlobName);
                     break;
                 case BlobPipelineParameterSet:
+                    if (CloudBlob is InvalidCloudBlob)
+                    {
+                        throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                    }
                     blob = GetCloudBlobObject(CloudBlob);
                     break;
             }

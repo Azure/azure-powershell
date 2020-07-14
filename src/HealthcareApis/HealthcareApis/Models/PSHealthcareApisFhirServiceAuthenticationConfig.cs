@@ -18,8 +18,13 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
 {
     public class PSHealthcareApisFhirServiceAuthenticationConfig
     {
-        internal static readonly string defaultAudience = "https://azurehealthcareapis.com";
+        private static readonly string defaultAudience = "https://{0}.azurehealthcareapis.com";
         internal static readonly string defaultAuthorityPrefix = "https://login.microsoftonline.com/";
+
+        internal static string getDefaultAudience(string name)
+        {
+            return System.String.Format(defaultAudience, name);
+        }
         public PSHealthcareApisFhirServiceAuthenticationConfig(ServiceAuthenticationConfigurationInfo serviceAuthenticationConfigurationInfo)
         {
             this.Authority = serviceAuthenticationConfigurationInfo.Authority;

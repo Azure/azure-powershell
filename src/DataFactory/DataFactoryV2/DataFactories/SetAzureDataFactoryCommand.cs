@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -226,6 +227,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpGlobalParameter)]
+        #endregion
+        public IDictionary<string, GlobalParameterSpecification> GlobalParameterDefinition { get; set; }
 
         #region Attributes
         [Parameter(
@@ -461,7 +467,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Tags = Tag,
                 Force = Force.IsPresent,
                 RepoConfiguration = repoConfiguration,
-                ConfirmAction = ConfirmAction
+                ConfirmAction = ConfirmAction,
+                GlobalParameters = GlobalParameterDefinition
             };
 
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
@@ -498,6 +505,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
+                
+                this.GlobalParameterDefinition = InputObject.GlobalParameters;
             }
 
             if (!string.IsNullOrWhiteSpace(ResourceId))

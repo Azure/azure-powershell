@@ -44,6 +44,9 @@ Get a device enrollment group.
 ### [Get-AzIoTDeviceProvisioningServiceLinkedHub](Get-AzIoTDeviceProvisioningServiceLinkedHub.md)
 List all or show details of linked IoT hubs in an Azure IoT Hub device provisioning service.
 
+### [Get-AzIoTDeviceProvisioningServiceRegistration](Get-AzIoTDeviceProvisioningServiceRegistration.md)
+Gets the device registration state.
+
 ### [New-AzIoTDeviceProvisioningService](New-AzIoTDeviceProvisioningService.md)
 Create an Azure IoT Hub device provisioning service.
 
@@ -67,6 +70,9 @@ Delete a device enrollment group.
 
 ### [Remove-AzIoTDeviceProvisioningServiceLinkedHub](Remove-AzIoTDeviceProvisioningServiceLinkedHub.md)
 Delete a linked IoT hub in an Azure IoT Hub device provisioning service.
+
+### [Remove-AzIoTDeviceProvisioningServiceRegistration](Remove-AzIoTDeviceProvisioningServiceRegistration.md)
+Deletes the device registration.
 
 ### [Set-AzIoTDeviceProvisioningServiceCertificate](Set-AzIoTDeviceProvisioningServiceCertificate.md)
 Verify an Azure IoT Hub Device Provisioning Service certificate.

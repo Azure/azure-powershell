@@ -110,6 +110,55 @@ function Test-CreateNewAppServicePlanHyperV
 
 <#
 .SYNOPSIS
+Tests creating a new Web Hosting Plan with Linux
+#>
+function Test-CreateNewAppServicePlanLinux
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = Get-Location
+    $capacity = 1
+	$skuName = "B1"
+    $tier = "Basic"
+
+	try
+	{
+		#Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -Linux  -AsJob
+		$job | Wait-Job
+		$createResult = $job | Receive-Job
+
+		# Assert
+		Assert-AreEqual $whpName $createResult.Name
+		Assert-AreEqual $tier $createResult.Sku.Tier
+		Assert-AreEqual $skuName $createResult.Sku.Name
+		Assert-AreEqual $capacity $createResult.Sku.Capacity
+
+		# Assert
+
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		Assert-AreEqual $whpName $getResult.Name
+		Assert-AreEqual $tier $getResult.Sku.Tier
+		Assert-AreEqual $skuName $getResult.Sku.Name
+		Assert-AreEqual $capacity $getResult.Sku.Capacity
+        Assert-AreEqual $true $getResult.Reserved
+        Assert-AreEqual "Linux" $getResult.Kind
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
 function Test-SetAppServicePlan

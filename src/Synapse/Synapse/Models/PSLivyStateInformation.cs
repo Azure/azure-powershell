@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -9,15 +9,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             DateTimeOffset? notStartedAt,
             DateTimeOffset? startingAt,
             DateTimeOffset? deadAt,
-            DateTimeOffset? killedAt,
+            DateTimeOffset? terminatedAt,
             DateTimeOffset? recoveringAt,
             string currentState,
-            LivyRequestBase jobCreationRequest)
+            SparkRequest jobCreationRequest)
         {
             this.NotStartedAt = notStartedAt;
             this.StartingAt = startingAt;
             this.DeadAt = deadAt;
-            this.KilledAt = killedAt;
+            this.TerminatedAt = terminatedAt;
             this.RecoveringAt = recoveringAt;
             this.CurrentState = currentState;
             this.JobCreationRequest = jobCreationRequest != null ? new PSLivyRequestBase(jobCreationRequest) : null;
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public System.DateTimeOffset? KilledAt { get; set; }
+        public System.DateTimeOffset? TerminatedAt { get; set; }
 
         /// <summary>
         /// </summary>

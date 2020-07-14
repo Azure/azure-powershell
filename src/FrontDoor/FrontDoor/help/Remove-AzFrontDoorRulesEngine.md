@@ -12,6 +12,12 @@ Remove Rules Engine from Front Door
 
 ## SYNTAX
 
+### ByFieldsParameterSet (Default)
+```
+Remove-AzFrontDoorRulesEngine -ResourceGroupName <String> -FrontDoorName <String> -Name <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
 Remove-AzFrontDoorRulesEngine -InputObject <PSRulesEngine> [-PassThru]
@@ -22,12 +28,6 @@ Remove-AzFrontDoorRulesEngine -InputObject <PSRulesEngine> [-PassThru]
 ```
 Remove-AzFrontDoorRulesEngine -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByFieldsParameterSet
-```
-Remove-AzFrontDoorRulesEngine -ResourceGroupName <String> -FrontDoorName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
