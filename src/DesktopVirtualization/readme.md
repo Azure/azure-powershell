@@ -55,7 +55,7 @@ subject-prefix: 'Wvd'
 input-file:
 - $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2019-12-10-preview/desktopvirtualization.json
 
-module-version: 0.1.0
+module-version: 2.0.0
 title: DesktopVirtualizationClient
 directive:
   - where:

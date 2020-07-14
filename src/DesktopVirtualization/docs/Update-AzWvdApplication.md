@@ -17,16 +17,16 @@ Update an application.
 Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CommandLineArgument <String>] [-CommandLineSetting <CommandLineSetting>]
  [-Description <String>] [-FilePath <String>] [-FriendlyName <String>] [-IconIndex <Int32>]
- [-IconPath <String>] [-ShowInPortal] [-Tag <IApplicationPatchTags>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IconPath <String>] [-ShowInPortal] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-CommandLineArgument <String>]
  [-CommandLineSetting <CommandLineSetting>] [-Description <String>] [-FilePath <String>]
- [-FriendlyName <String>] [-IconIndex <Int32>] [-IconPath <String>] [-ShowInPortal]
- [-Tag <IApplicationPatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FriendlyName <String>] [-IconIndex <Int32>] [-IconPath <String>] [-ShowInPortal] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -286,7 +286,7 @@ Dynamic: False
 tags to be updated
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationPatchTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
