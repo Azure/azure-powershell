@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.2
 * Fixed bug for `Get-AzDiagnosticSetting` when metrics or logs are null [#12272]
 
 ## Version 2.0.1

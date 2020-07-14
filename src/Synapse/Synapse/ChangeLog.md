@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+
 * Changed some property names and types of output for the following cmdlets
     - For `Get-AzSynapseSparkJob`, `Submit-AzSynapseSparkJob`, ` Get-AzSynapseSparkSession` and `Start-AzSynapseSparkSession` cmdlet
         - Change JobType's type from `string` to `SparkJobType?`

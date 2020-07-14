@@ -37,7 +37,7 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 ## DESCRIPTION
 The **Import-AzKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 You can create the certificate to import by using one of the following methods:
-- Use the New-AzKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
+- Use `Add-AzKeyVaultCertificate` to create a certificate signing request and submit it to a certificate authority. See https://docs.microsoft.com/en-us/azure/key-vault/certificates/create-certificate-signing-request
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
 ## EXAMPLES
@@ -253,3 +253,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
+
+[Creating and merging CSR in Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/certificates/create-certificate-signing-request)

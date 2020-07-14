@@ -305,3 +305,66 @@ function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
     Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabled"
     $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceId $disabledCustomDomain.Id
 }
+
+<#
+.SYNOPSIS
+Full Front Door CRUD to validate default values.
+#>
+function Test-FrontDoorCrudPrivateLink
+{
+    ## Create Azure Front Door
+    $Name = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $hostName = "$Name.azurefd.net"
+
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" -PrivateLinkAlias "pls-east-3.39a4adbb-b81a-4aff-8ca1-39211e3e6a66.eastus.azure.privatelinkservice" -PrivateLinkApprovalMessage "please approve connection"
+    $backend2 = New-AzFrontDoorBackendObject -Address "contoso2.azurewebsites.net" -PrivateLinkResourceId  "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/FrontDoorResourceGroup6715/providers/Microsoft.Network/privateLinkServices/fd-pls9614" -PrivateLinkLocation "eastus" -PrivateLinkApprovalMessage "please approve connection request"
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1,$backend2 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject
+    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+
+    $retrievedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName
+    Assert-NotNull $retrievedFrontDoor
+    Assert-AreEqual $Name $retrievedFrontDoor.Name
+    Assert-AreEqual $routingrule1.Name $retrievedFrontDoor.RoutingRules[0].Name
+    Assert-AreEqual $loadBalancingSetting1.Name $retrievedFrontDoor.LoadBalancingSettings[0].Name
+
+    $retrievedFrontDoorBackendPool = $retrievedFrontDoor.BackendPools[0]
+
+    Assert-AreEqual $backendpool1.Name $retrievedFrontDoorBackendPool.Name
+
+    Assert-AreEqual $backend1.PrivateLinkAlias $retrievedFrontDoorBackendPool.Backends[0].PrivateLinkAlias
+    Assert-AreEqual $backend1.PrivateLinkApprovalMessage $retrievedFrontDoorBackendPool.Backends[0].PrivateLinkApprovalMessage
+
+    Assert-AreEqual $backend2.PrivateLinkResourceId $retrievedFrontDoorBackendPool.Backends[1].PrivateLinkResourceId
+    Assert-AreEqual $backend2.PrivateLinkLocation $retrievedFrontDoorBackendPool.Backends[1].PrivateLinkLocation
+    Assert-AreEqual $backend2.PrivateLinkApprovalMessage $retrievedFrontDoorBackendPool.Backends[1].PrivateLinkApprovalMessage
+
+    Assert-AreEqual $frontendEndpoint1.Name $retrievedFrontDoor.FrontendEndpoints[0].Name
+    Assert-AreEqual $retrievedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSForwardingConfiguration"
+    Assert-Tags $tags $retrievedFrontDoor.Tags
+
+    # Verify Default HealthProbeSettings
+    Assert-AreEqual $retrievedFrontDoor.HealthProbeSettings[0].Name $healthProbeSetting1.Name
+    Assert-AreEqual $retrievedFrontDoor.HealthProbeSettings[0].HealthProbeMethod "Head"
+    Assert-AreEqual $retrievedFrontDoor.HealthProbeSettings[0].EnabledState "Enabled"
+    Assert-AreEqual $retrievedFrontDoor.HealthProbeSettings[0].IntervalInSeconds 30
+
+    # Verify Default backendPoolsSetting
+    Assert-AreEqual $retrievedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds 30
+    Assert-AreEqual $retrievedFrontDoor.BackendPoolsSetting[0].EnforceCertificateNameCheck "Enabled"
+    Assert-AreEqual $retrievedFrontDoor.EnforceCertificateNameCheck "Enabled"
+
+    ## Delete Azure Front Door
+    $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru
+    Assert-True { $removed }
+    Assert-ThrowsContains { Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName } "does not exist"
+
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force
+}
