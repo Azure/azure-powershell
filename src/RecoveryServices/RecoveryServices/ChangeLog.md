@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.0
+* Removed project reference to Authentication
 * Azure Backup tuned cmdlets help text to be more accurate.
 * Azure Backup added support for fetching MAB agent jobs using `Get-AzRecoveryServicesBackupJob` cmdlet.
+
 
 ## Version 2.10.0
 * Azure Backup added support for fetching MAB items.

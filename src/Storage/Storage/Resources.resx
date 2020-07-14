@@ -737,4 +737,8 @@ Failed: {2}.</value>
   <data name="ContextCannotBeNull" xml:space="preserve">
     <value>Context cannot be null.  Please log in using Connect-AzAccount.</value>
   </data>
+  <data name="CannotDeleteSnapshotForBlobVersion" xml:space="preserve">
+    <value>The specified blob '{0}' is a blob Version with VersionId {1}. Can't use "DeleteSnapshot" option for it.</value>
+    <comment>0 for blob name, 1 for VersionId</comment>
+  </data>
 </root>
