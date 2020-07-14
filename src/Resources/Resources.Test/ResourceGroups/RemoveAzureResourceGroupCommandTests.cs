@@ -97,7 +97,29 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Console.WriteLine("The id should be resourceGroup id");
             }
 
-            resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Never());
+            resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RemovesResourceGroupFromInvalidId()
+        {
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            resourcesClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName));
+
+            cmdlet.Id = resourceGroupName;
+            cmdlet.Force = true;
+
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+            }
+            catch (System.ArgumentException)
+            {
+                Console.WriteLine("The id should be resourceGroup id");
+            }
+
+            resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Never);
         }
     }
 }

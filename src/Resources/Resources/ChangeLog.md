@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Increase the format tolerence when input a resource group id.
 
 ## Version 2.3.0
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.

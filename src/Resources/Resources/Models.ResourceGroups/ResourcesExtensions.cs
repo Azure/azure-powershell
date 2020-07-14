@@ -16,17 +16,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 // TODO: Remove IfDef code
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Resources.Models.Gallery;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {

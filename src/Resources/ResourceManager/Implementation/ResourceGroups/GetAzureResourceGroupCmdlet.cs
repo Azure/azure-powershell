@@ -15,17 +15,11 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Common.ArgumentCompleters;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using System;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Management.Automation;
-    using System.Reflection;
-    using WindowsAzure.Commands.Common;
-    using WindowsAzure.Commands.Utilities.Common;
+
     /// <summary>
     /// Filters resource groups.
     /// </summary>
