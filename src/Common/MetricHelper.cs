@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation.Host;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -117,17 +118,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
             _profile = profile;
         }
 
-        private TelemetryConfiguration telemetryConfiguration;
-
         public MetricHelper(INetworkHelper network)
         {
             _networkHelper = network;
-            telemetryConfiguration = new TelemetryConfiguration();
-            telemetryConfiguration.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
 #if DEBUG
             if (TestMockSupport.RunningMocked)
             {
-                telemetryConfiguration.DisableTelemetry = true;
+                TelemetryConfiguration.Active.DisableTelemetry = true;
             }
 #endif
         }
@@ -159,12 +156,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 _threadSafeTelemetryClients = new List<TelemetryClient>(_telemetryClients);
             }
         }
-
-        public void AddDefaultTelemetryClient()
-        {
-            AddTelemetryClient(new TelemetryClient(telemetryConfiguration));
-        }
-
 
         public void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
         {
