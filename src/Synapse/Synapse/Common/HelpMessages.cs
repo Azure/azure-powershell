@@ -289,5 +289,21 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string LinkedServiceName = "The linked service name.";
 
         public const string LinkedServiceObject = "The linked service object.";
+
+        public const string NotebookName = "The notebook name.";
+
+        public const string NotebookObject = "The notebook object.";
+
+        public const string Nbformat = "Notebook format (major number). Incremented between backwards incompatible changes to the notebook format.";
+
+        public const string NbformatMinor = "Notebook format (minor number). Incremented for backward compatible changes to the notebook format.";
+
+        public const string NotebookDescription = "The description of the notebook.";
+
+        public const string Language = "The programming language of the notebook.";
+
+        public const string TriggerName = "The trigger name.";
+
+        public const string TriggerObject = "The trigger object.";
     }
 }

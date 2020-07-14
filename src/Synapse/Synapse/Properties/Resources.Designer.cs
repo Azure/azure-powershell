@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subscribe the event trigger &apos;{0}&apos; to external service events..
+        /// </summary>
+        internal static string AddingSynapseTriggerSubscribe {
+            get {
+                return ResourceManager.GetString("AddingSynapseTriggerSubscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Synapse workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ConfirmToRemoveSynapseWorkspace {
@@ -613,6 +622,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseNotebook {
+            get {
+                return ResourceManager.GetString("RemovingSynapseNotebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting pipeline &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapsePipeline {
@@ -668,6 +686,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseTrigger {
+            get {
+                return ResourceManager.GetString("RemovingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsubscribe the event trigger &apos;{0}&apos; from external service events..
+        /// </summary>
+        internal static string RemovingSynapseTriggerSubscription {
+            get {
+                return ResourceManager.GetString("RemovingSynapseTriggerSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting workspace &apos;{0}&apos; in resource group &apos;{1}&apos;.
         /// </summary>
         internal static string RemovingSynapseWorkspace {
@@ -713,7 +749,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting linked service &apos;{1}&apos; in workspace &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {
             get {
@@ -722,11 +758,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting pipeline &apos;{1}&apos; in workspace &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Setting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseNotebook {
+            get {
+                return ResourceManager.GetString("SettingSynapseNotebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting pipeline &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseTrigger {
+            get {
+                return ResourceManager.GetString("SettingSynapseTrigger", resourceCulture);
             }
         }
         
@@ -754,6 +808,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SqlPoolDoesNotExist {
             get {
                 return ResourceManager.GetString("SqlPoolDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StartingSynapseTrigger {
+            get {
+                return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
             }
         }
         
@@ -808,6 +871,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SubmittingSynapseSparkJob {
             get {
                 return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
+                }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StoppingSynapseTrigger {
+            get {
+                return ResourceManager.GetString("StoppingSynapseTrigger", resourceCulture);
             }
         }
         

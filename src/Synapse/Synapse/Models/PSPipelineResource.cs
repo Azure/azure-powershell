@@ -23,28 +23,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.WorkspaceName = workspaceName;
             this.Description = pipelineResource?.Description;
-            if (pipelineResource?.Activities != null)
-            {
-                this.Activities = pipelineResource?.Activities.Select(element => new PSActivity(element)).ToList();
-            }
+            this.Activities = pipelineResource?.Activities?.Select(element => new PSActivity(element)).ToList();
             this.Values = pipelineResource?.Values;
-            if (pipelineResource?.Variables != null)
-            {
-                this.Variables = pipelineResource?.Variables
-                    .Select(element => new KeyValuePair<string, PSVariableSpecification>(element.Key, new PSVariableSpecification(element.Value)))
-                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            }
+            this.Variables = pipelineResource?.Variables?
+                .Select(element => new KeyValuePair<string, PSVariableSpecification>(element.Key, new PSVariableSpecification(element.Value)))
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             this.Concurrency = pipelineResource?.Concurrency;
             this.Annotations = pipelineResource?.Annotations;
             this.RunDimensions = pipelineResource?.RunDimensions;
             this.Folder = new PSPipelineFolder(pipelineResource?.Folder);
             this.Keys = pipelineResource?.Keys;
-            if (pipelineResource?.Parameters != null)
-            {
-                this.Parameters = pipelineResource?.Parameters
-                    .Select(element => new KeyValuePair<string, PSParameterSpecification>(element.Key, new PSParameterSpecification(element.Value)))
-                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            }
+            this.Parameters = pipelineResource?.Parameters?
+                .Select(element => new KeyValuePair<string, PSParameterSpecification>(element.Key, new PSParameterSpecification(element.Value)))
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
 
         public PSPipelineResource() { }
@@ -88,7 +79,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 Description = this.Description,
                 Concurrency = this.Concurrency,
                 Annotations = this.Annotations,
-                RunDimensions = this.RunDimensions
+                RunDimensions = this.RunDimensions,
+                Folder = this.Folder?.ToSdkObject()
             };
 
             IList<PSActivity> pSActivities = this.Activities;
@@ -97,7 +89,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<Activity> activities = new List<Activity>();
                 foreach (PSActivity pSActivity in pSActivities)
                 {
-                    activities.Add(pSActivity.ToSdkObject());
+                    activities.Add(pSActivity?.ToSdkObject());
                 }
                 pipeline.Activities = activities;
             }
@@ -108,14 +100,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IDictionary<string, VariableSpecification> variables = new Dictionary<string, VariableSpecification>();
                 foreach (var pSVariable in pSVariables)
                 {
-                    variables.Add(pSVariable.Key, pSVariable.Value.ToSdkObject());
+                    variables.Add(pSVariable.Key, pSVariable.Value?.ToSdkObject());
                 }
                 pipeline.Variables = variables;
-            }
-
-            if (this.Folder != null)
-            {
-                pipeline.Folder = this.Folder.ToSdkObject();
             }
 
             IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
@@ -124,7 +111,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
                 foreach (var pSParameter in pSParameters)
                 {
-                    parameters.Add(pSParameter.Key, pSParameter.Value.ToSdkObject());
+                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
                 }
                 pipeline.Parameters = parameters;
             }

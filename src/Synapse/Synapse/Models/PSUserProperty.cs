@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSUserProperty(UserProperty userProperty)
         {
-            this.Name = userProperty.Name;
-            this.Value = userProperty.Value;
+            this.Name = userProperty?.Name;
+            this.Value = userProperty?.Value;
         }
 
         public string Name { get; set; }

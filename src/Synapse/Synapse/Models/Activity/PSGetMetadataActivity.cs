@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
                 foreach (PSActivityDependency pSDependOn in pSDependsOn)
                 {
-                    dependsOn.Add(pSDependOn.ToSdkObject());
+                    dependsOn.Add(pSDependOn?.ToSdkObject());
                 }
                 activity.DependsOn = dependsOn;
             }
@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<UserProperty> userProperties = new List<UserProperty>();
                 foreach (PSUserProperty pSUserProperty in pSUserProperties)
                 {
-                    userProperties.Add(pSUserProperty.ToSdkObject());
+                    userProperties.Add(pSUserProperty?.ToSdkObject());
                 }
                 activity.UserProperties = userProperties;
             }
             return activity;
-		}
+        }
     }
 }
 

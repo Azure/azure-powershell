@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new IfConditionActivity(this.Name, this.Expression);
-            activity.IfTrueActivities = this.IfTrueActivities.Select(element => element.ToSdkObject()).ToList();
-            activity.IfFalseActivities = this.IfFalseActivities.Select(element => element.ToSdkObject()).ToList();
+            activity.IfTrueActivities = this.IfTrueActivities?.Select(element => element?.ToSdkObject()).ToList();
+            activity.IfFalseActivities = this.IfFalseActivities?.Select(element => element?.ToSdkObject()).ToList();
             activity.Description = this.Description;
             IList<PSActivityDependency> pSDependsOn = this.DependsOn;
             if (pSDependsOn != null)
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
                 foreach (PSActivityDependency pSDependOn in pSDependsOn)
                 {
-                    dependsOn.Add(pSDependOn.ToSdkObject());
+                    dependsOn.Add(pSDependOn?.ToSdkObject());
                 }
                 activity.DependsOn = dependsOn;
             }
@@ -122,12 +122,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<UserProperty> userProperties = new List<UserProperty>();
                 foreach (PSUserProperty pSUserProperty in pSUserProperties)
                 {
-                    userProperties.Add(pSUserProperty.ToSdkObject());
+                    userProperties.Add(pSUserProperty?.ToSdkObject());
                 }
                 activity.UserProperties = userProperties;
             }
             return activity;
-		}
+        }
     }
 }
 

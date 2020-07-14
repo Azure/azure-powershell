@@ -9,21 +9,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSActivityRun(ActivityRun activityRun)
         {
-            this.Keys = activityRun.Keys;
-            this.Error = activityRun.Error;
-            this.Output = activityRun.Output;
-            this.Input = activityRun.Input;
-            this.DurationInMs = activityRun.DurationInMs;
-            this.ActivityRunEnd = activityRun.ActivityRunEnd;
-            this.ActivityRunStart = activityRun.ActivityRunStart;
-            this.Values = activityRun.Values;
-            this.Status = activityRun.Status;
-            this.ActivityRunId = activityRun.ActivityRunId;
-            this.ActivityType = activityRun.ActivityType;
-            this.ActivityName = activityRun.ActivityName;
-            this.PipelineRunId = activityRun.PipelineRunId;
-            this.PipelineName = activityRun.PipelineName;
-            this.LinkedServiceName = activityRun.LinkedServiceName;
+            this.Keys = activityRun?.Keys;
+            this.Error = activityRun?.Error;
+            this.Output = activityRun?.Output;
+            this.Input = activityRun?.Input;
+            this.DurationInMs = activityRun?.DurationInMs;
+            this.ActivityRunEnd = activityRun?.ActivityRunEnd;
+            this.ActivityRunStart = activityRun?.ActivityRunStart;
+            this.Values = activityRun?.Values;
+            this.Status = activityRun?.Status;
+            this.ActivityRunId = activityRun?.ActivityRunId;
+            this.ActivityType = activityRun?.ActivityType;
+            this.ActivityName = activityRun?.ActivityName;
+            this.PipelineRunId = activityRun?.PipelineRunId;
+            this.PipelineName = activityRun?.PipelineName;
+            this.LinkedServiceName = activityRun?.LinkedServiceName;
         }
 
         public IEnumerable<string> Keys { get; }

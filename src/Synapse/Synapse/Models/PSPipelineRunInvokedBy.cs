@@ -9,9 +9,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSPipelineRunInvokedBy(PipelineRunInvokedBy pipelineRunInvokedBy)
         {
-            this.Name = pipelineRunInvokedBy.Name;
-            this.Id = pipelineRunInvokedBy.Id;
-            this.InvokedByType = pipelineRunInvokedBy.InvokedByType;
+            this.Name = pipelineRunInvokedBy?.Name;
+            this.Id = pipelineRunInvokedBy?.Id;
+            this.InvokedByType = pipelineRunInvokedBy?.InvokedByType;
         }
 
         public string Name { get; }

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var activity = new SwitchActivity(this.Name, this.On);
             activity.Cases = this.Cases;
-            activity.DefaultActivities = this.DefaultActivities.Select(element => element.ToSdkObject()).ToList();
+            activity.DefaultActivities = this.DefaultActivities?.Select(elememt => elememt?.ToSdkObject()).ToList();
             activity.Description = this.Description;
             IList<PSActivityDependency> pSDependsOn = this.DependsOn;
             if (pSDependsOn != null)
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
                 foreach (PSActivityDependency pSDependOn in pSDependsOn)
                 {
-                    dependsOn.Add(pSDependOn.ToSdkObject());
+                    dependsOn.Add(pSDependOn?.ToSdkObject());
                 }
                 activity.DependsOn = dependsOn;
             }
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IList<UserProperty> userProperties = new List<UserProperty>();
                 foreach (PSUserProperty pSUserProperty in pSUserProperties)
                 {
-                    userProperties.Add(pSUserProperty.ToSdkObject());
+                    userProperties.Add(pSUserProperty?.ToSdkObject());
                 }
                 activity.UserProperties = userProperties;
             }
             return activity;
-		}
+        }
     }
 }
 

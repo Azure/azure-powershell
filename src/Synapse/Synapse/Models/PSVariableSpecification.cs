@@ -9,8 +9,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSVariableSpecification(VariableSpecification variableSpecification)
         {
-            this.Type = variableSpecification.Type;
-            this.DefaultValue = variableSpecification.DefaultValue;
+            if (variableSpecification != null)
+            {
+                this.Type = variableSpecification.Type;
+                this.DefaultValue = variableSpecification.DefaultValue;
+            }
         }
 
         public VariableType Type { get; set; }

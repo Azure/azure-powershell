@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -20,6 +21,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly PipelineClient _pipelineClient;
         private readonly PipelineRunClient _pipelineRunClient;
         private readonly LinkedServiceClient _linkedServiceClient;
+        private readonly NotebookClient _notebookClient;
+        private readonly TriggerClient _triggerClient;
+        private readonly TriggerRunClient _triggerRunClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -43,12 +47,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Settings.Converters.Add(new TransformationJsonConverter());
             Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSActivity>("type"));
             Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSLinkedService>("type"));
+            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSTrigger>("type"));
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
             _pipelineClient = new PipelineClient(uri, new AzureSessionCredential(context));
             _pipelineRunClient = new PipelineRunClient(uri, new AzureSessionCredential(context));
             _linkedServiceClient = new LinkedServiceClient(uri, new AzureSessionCredential(context));
+            _notebookClient = new NotebookClient(uri, new AzureSessionCredential(context));
+            _triggerClient = new TriggerClient(uri, new AzureSessionCredential(context));
+            _triggerRunClient = new TriggerRunClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -128,6 +136,86 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public void DeleteLinkedService(string linkedServiceName)
         {
             _linkedServiceClient.DeleteLinkedService(linkedServiceName);
+        }
+
+        #endregion
+
+        #region Notebook
+
+        public NotebookResource CreateOrUpdateNotebook(string notebookName, NotebookResource notebook)
+        {
+            return _notebookClient.CreateOrUpdateNotebook(notebookName, notebook);
+        }
+
+        public void DeleteNotebook(string notebookName)
+        {
+            _notebookClient.DeleteNotebook(notebookName);
+        }
+
+        public NotebookResource GetNotebook(string notebookName)
+        {
+            return _notebookClient.GetNotebook(notebookName);
+        }
+
+        public Pageable<NotebookResource> GetNotebooksByWorkspace()
+        {
+            return _notebookClient.GetNotebooksByWorkspace();
+        }
+
+        #endregion
+
+        #region Trigger
+
+        public TriggerResource CreateOrUpdateTrigger(string triggerName, string rawJsonContent)
+        {
+            PSTriggerResource pSTrigger = JsonConvert.DeserializeObject<PSTriggerResource>(rawJsonContent, Settings);
+            TriggerResource trigger = pSTrigger.ToSdkObject();
+            return _triggerClient.CreateOrUpdateTrigger(triggerName, trigger);
+        }
+
+        public TriggerResource GetTrigger(string triggerName)
+        {
+            return _triggerClient.GetTrigger(triggerName);
+        }
+
+        public Pageable<TriggerResource> GetTriggersByWorkspace()
+        {
+            return _triggerClient.GetTriggersByWorkspace();
+        }
+
+        public void DeleteTrigger(string triggerName)
+        {
+            _triggerClient.DeleteTrigger(triggerName);
+        }
+
+        public TriggerSubscriptionOperationStatus GetEventSubscriptionStatus(string triggerName)
+        {
+            return _triggerClient.GetEventSubscriptionStatus(triggerName);
+        }
+
+        public TriggerSubscribeTriggerToEventsOperation StartSubscribeTriggerToEvents(string triggerName)
+        {
+            return _triggerClient.StartSubscribeTriggerToEvents(triggerName);
+        }
+
+        public void StartUnsubscribeTriggerFromEvents(string triggerName)
+        {
+            _triggerClient.StartUnsubscribeTriggerFromEvents(triggerName);
+        }
+
+        public void StartStartTrigger(string triggerName)
+        {
+            _triggerClient.StartStartTrigger(triggerName);
+        }
+
+        public void StartStopTrigger(string triggerName)
+        {
+            _triggerClient.StartStopTrigger(triggerName);
+        }
+
+        public IReadOnlyList<TriggerRun> QueryTriggerRunsByWorkspace(RunFilterParameters filterParameters)
+        {
+            return _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value.Value;
         }
 
         #endregion

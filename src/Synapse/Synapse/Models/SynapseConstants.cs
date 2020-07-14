@@ -96,6 +96,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string LinkedService = nameof(LinkedService);
 
+        public const string Notebook = nameof(Notebook);
+
+        public const string Trigger = nameof(Trigger);
+
+        public const string SubscriptionStatus = nameof(SubscriptionStatus);
+
+        public const string Subscription = nameof(Subscription);
+
+        public const string TriggerRun = nameof(TriggerRun);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

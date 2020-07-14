@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkedServiceResource ToSdkObject()
         {
-            LinkedService linkedService = this.Properties.ToSdkObject();
+            LinkedService linkedService = this.Properties?.ToSdkObject();
             LinkedServiceResource linkedServiceResource = new LinkedServiceResource(linkedService);
             return linkedServiceResource;
         }

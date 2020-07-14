@@ -11,20 +11,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSLinkedService(LinkedService linkedService)
         {
-            if (linkedService != null)
-            {
-                this.ConnectVia = new PSIntegrationRuntimeReference(linkedService.ConnectVia);
-                this.Description = linkedService.Description;
-                if (linkedService.Parameters != null)
-                {
-                    this.Parameters = linkedService.Parameters
-                            .Select(element => new KeyValuePair<string, PSParameterSpecification>(element.Key, new PSParameterSpecification(element.Value)))
-                            .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-                }
-                this.Annotations = linkedService.Annotations;
-                this.Keys = linkedService.Keys;
-                this.Values = linkedService.Values;
-            }
+            this.ConnectVia = new PSIntegrationRuntimeReference(linkedService?.ConnectVia);
+            this.Description = linkedService?.Description;
+            this.Parameters = linkedService?.Parameters?
+                    .Select(element => new KeyValuePair<string, PSParameterSpecification>(element.Key, new PSParameterSpecification(element.Value)))
+                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            this.Annotations = linkedService?.Annotations;
+            this.Keys = linkedService?.Keys;
+            this.Values = linkedService?.Values;
         }
 
         public PSLinkedService() { }
@@ -47,7 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             LinkedService linkedService = new LinkedService
             {
-                ConnectVia = this.ConnectVia.ToSdkObject(),
+                ConnectVia = this.ConnectVia?.ToSdkObject(),
                 Description = this.Description,
                 Annotations = this.Annotations
             };
@@ -58,7 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
                 foreach (var pSParameter in pSParameters)
                 {
-                    parameters.Add(pSParameter.Key, pSParameter.Value.ToSdkObject());
+                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
                 }
                 linkedService.Parameters = parameters;
             }

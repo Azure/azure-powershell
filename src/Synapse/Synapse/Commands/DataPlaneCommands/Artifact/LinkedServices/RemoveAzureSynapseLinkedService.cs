@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.LinkedServices
+namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedService,
         DefaultParameterSetName = RemoveByName)]

@@ -10,20 +10,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSPipelineRun(PipelineRun pipelineRun, string workspaceName)
         {
             this.WorkspaceName = workspaceName;
-            this.Keys = pipelineRun.Keys;
-            this.Message = pipelineRun.Message;
-            this.Status = pipelineRun.Status;
-            this.DurationInMs = pipelineRun.DurationInMs;
-            this.RunEnd = pipelineRun.RunEnd;
-            this.RunStart = pipelineRun.RunStart;
-            this.LastUpdated = pipelineRun.LastUpdated;
-            this.InvokedBy = new PSPipelineRunInvokedBy(pipelineRun.InvokedBy);
-            this.Parameters = pipelineRun.Parameters;
-            this.PipelineName = pipelineRun.PipelineName;
-            this.IsLatest = pipelineRun.IsLatest;
-            this.RunGroupId = pipelineRun.RunGroupId;
-            this.RunId = pipelineRun.RunId;
-            this.Values = pipelineRun.Values;
+            this.Keys = pipelineRun?.Keys;
+            this.Message = pipelineRun?.Message;
+            this.Status = pipelineRun?.Status;
+            this.DurationInMs = pipelineRun?.DurationInMs;
+            this.RunEnd = pipelineRun?.RunEnd;
+            this.RunStart = pipelineRun?.RunStart;
+            this.LastUpdated = pipelineRun?.LastUpdated;
+            this.InvokedBy = new PSPipelineRunInvokedBy(pipelineRun?.InvokedBy);
+            this.Parameters = pipelineRun?.Parameters;
+            this.PipelineName = pipelineRun?.PipelineName;
+            this.IsLatest = pipelineRun?.IsLatest;
+            this.RunGroupId = pipelineRun?.RunGroupId;
+            this.RunId = pipelineRun?.RunId;
+            this.Values = pipelineRun?.Values;
         }
 
         public string WorkspaceName { get; set; }

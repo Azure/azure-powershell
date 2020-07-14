@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSCreateRunResponse(CreateRunResponse response)
         {
-            this.RunId = response.RunId;
+            this.RunId = response?.RunId;
         }
 
         public string RunId { get; set; }

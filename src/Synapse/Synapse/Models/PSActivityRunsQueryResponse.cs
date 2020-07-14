@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSActivityRunsQueryResponse(ActivityRunsQueryResponse response)
         {
-            this.Value = response.Value.Select(element => new PSActivityRun(element)).ToList();
-            this.ContinuationToken = response.ContinuationToken;
+            this.Value = response?.Value?.Select(element => new PSActivityRun(element)).ToList();
+            this.ContinuationToken = response?.ContinuationToken;
         }
 
         public IReadOnlyList<PSActivityRun> Value { get; set; }

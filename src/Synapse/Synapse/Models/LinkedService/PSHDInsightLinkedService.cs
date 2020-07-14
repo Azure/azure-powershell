@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.EncryptedCredential = this.EncryptedCredential;
             linkedService.IsEspEnabled = this.IsEspEnabled;
             linkedService.FileSystem = this.FileSystem;
-            linkedService.ConnectVia = this.ConnectVia.ToSdkObject();
+            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
             linkedService.Description = this.Description;
             linkedService.Annotations = this.Annotations;
             IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
                 foreach (var pSParameter in pSParameters)
                 {
-                    parameters.Add(pSParameter.Key, pSParameter.Value.ToSdkObject());
+                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
                 }
                 linkedService.Parameters = parameters;
             }

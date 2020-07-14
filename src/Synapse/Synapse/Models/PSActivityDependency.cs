@@ -9,10 +9,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSActivityDependency(ActivityDependency dependency)
         {
-            this.Activity = dependency.Activity;
-            this.DependencyConditions = dependency.DependencyConditions;
-            this.Keys = dependency.Keys;
-            this.Values = dependency.Values;
+            this.Activity = dependency?.Activity;
+            this.DependencyConditions = dependency?.DependencyConditions;
+            this.Keys = dependency?.Keys;
+            this.Values = dependency?.Values;
         }
 
         public string Activity { get; set; }
