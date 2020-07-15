@@ -28,9 +28,9 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttribute(typeof(T), true) as T;
         }
 
-        public static T GetAttribute<T>(this ParameterInfo decoratedMember) where T : Attribute
+        public static T GetAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedMember.MemberInfo.GetCustomAttribute(typeof(T), true) as T;
+            return decoratedParameter.MemberInfo.GetCustomAttribute(typeof(T), true) as T;
         }
 
         public static IEnumerable<T> GetAttributes<T>(this Type decoratedType) where T : Attribute
@@ -38,9 +38,9 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttributes(typeof(T), false).Select(a => a as T);
         }
 
-        public static IEnumerable<T> GetAttributes<T>(this ParameterInfo decoratedMember) where T : Attribute
+        public static IEnumerable<T> GetAttributes<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedMember.MemberInfo.GetCustomAttributes(typeof(T), false).Select(a => a as T);
+            return decoratedParameter.MemberInfo.GetCustomAttributes(typeof(T), false).Select(a => a as T);
         }
 
         public static bool HasAttribute<T>(this Type decoratedType) where T : Attribute
@@ -49,9 +49,9 @@ namespace Tools.Common.Extensions
 
         }
 
-        public static bool HasAttribute<T>(this ParameterInfo decoratedMember) where T : Attribute
+        public static bool HasAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedMember.MemberInfo.CustomAttributes.Any(d => d.AttributeType == typeof(T));
+            return decoratedParameter.MemberInfo.CustomAttributes.Any(d => d.AttributeType == typeof(T));
 
         }
 
