@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
 using Tools.Common.Utilities;
+using Microsoft.Extensions.Logging;
 
 namespace VersionController.Models
 {
@@ -15,6 +16,8 @@ namespace VersionController.Models
     {
         private VersionFileHelper _fileHelper;
         private VersionMetadataHelper _metadataHelper;
+        private ILoggerFactory _loggerFactory;
+        private ILogger _logger;
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
@@ -25,6 +28,8 @@ namespace VersionController.Models
         {
             _fileHelper = fileHelper;
             _metadataHelper = new VersionMetadataHelper(_fileHelper);
+            _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
+            _logger = _loggerFactory.CreateLogger<VersionBumper>();
         }
 
         /// <summary>
@@ -70,9 +75,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the old version of the module.
-        /// Compare the version from PSGallery and TestGallery to the version obtain from manifest.
-        /// Choose the maximum one as the old version.
+        /// Get the local version of the module.
         /// </summary>
         /// <returns>The old version and is or not preview before the bump.</returns>
         public Tuple<string, bool> GetOldVersion()
@@ -100,54 +103,6 @@ namespace VersionController.Models
             version = localVersion;
             isPreview = localPreview;
 
-            // using (PowerShell powetshell = PowerShell.Create())
-            // {
-            //     powetshell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository PSGallery -AllVersions");
-            //     var cmdletResult = powetshell.Invoke();
-            //     if (cmdletResult.Count != 0)
-            //     {
-            //         var psVersionImformation = cmdletResult[0].ToString();
-            //         Regex reg = new Regex("Version=(.*?)(-|;)");
-            //         Match match = reg.Match(psVersionImformation);
-            //         psVersion = match.Groups[1].Value;
-            //         psPreview = Regex.IsMatch(psVersionImformation, "preview");
-            //     }
-            // }
-            // if (psVersion == null)
-            // {
-            //     psVersion = "0.1.0";
-            // }
-            // if (new AzurePSVersion(psVersion) > new AzurePSVersion(version))
-            // {
-            //     version = psVersion;
-            //     isPreview = psPreview;
-            // }
-
-            // using (PowerShell powetshell = PowerShell.Create())
-            // {
-            //     powetshell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
-            //     powetshell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -Repository TestGallery -AllVersions");
-            //     var cmdletResult = powetshell.Invoke();
-            //     if (cmdletResult.Count != 0)
-            //     {
-            //         var testVersionImformation = cmdletResult[0].ToString();
-            //         Regex reg = new Regex("Version=(.*?)(-|;)");
-            //         Match match = reg.Match(testVersionImformation);
-            //         testVersion = match.Groups[1].Value;
-            //         testPreview = Regex.IsMatch(testVersionImformation, "preview");
-            //     }
-            // }
-            // if (testVersion == null)
-            // {
-            //     testVersion = "0.1.0";
-            // }
-            // if (new AzurePSVersion(testVersion) > new AzurePSVersion(version))
-            // {
-            //     version = testVersion;
-            //     isPreview = testPreview;
-            // }
-
             return Tuple.Create(version, isPreview);
         }
 
@@ -171,6 +126,15 @@ namespace VersionController.Models
                 {
                     versionBump = Version.MINOR;
                 }
+                // for https://github.com/Azure/azure-powershell/pull/12356
+                // Because of the wrong compare script in the link above, we need to avoid the minor bump when the version of Az.Accounts is 1.9.x
+                // So we add a special judge for it when the version is 1.9.x and the expect bump type is minor, 
+                // we will change the type to patch so that it can work until 1.9.9.Once the version is greater or equal than 2.0.0
+                // this special judge will not works anymore.
+                if (splitVersion[0] == 1 && splitVersion[1] == 9 && versionBump == Version.MINOR)
+                {
+                    versionBump = Version.PATCH;
+                }
             }
 
             // PATCH update for preview modules (0.x.x or x.x.x-preview)
@@ -179,23 +143,102 @@ namespace VersionController.Models
                 versionBump = Version.PATCH;
             }
 
-            if (versionBump == Version.MAJOR)
+            var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
+
+            List<AzurePSVersion> galleryVersion = GetGalleryVersion();
+
+            AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
+            foreach(var version in galleryVersion)
             {
-                splitVersion[0]++;
-                splitVersion[1] = 0;
-                splitVersion[2] = 0;
+                if (version.Major == bumpedVersion.Major && !version.IsPreview && version > maxGalleryGAVersion)
+                {
+                    maxGalleryGAVersion = version;
+                }
             }
-            else if (versionBump == Version.MINOR)
+
+            if (galleryVersion.Count == 0)
             {
-                splitVersion[1]++;
-                splitVersion[2] = 0;
+                bumpedVersion = new AzurePSVersion(0, 1, 0);
+            }
+            else if (maxGalleryGAVersion >= bumpedVersion)
+            {
+                _logger.LogError("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+                throw new Exception("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+            }
+            else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
+            {
+                while(HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
+                {
+                    bumpedVersion = GetBumpedVersionByType(bumpedVersion, Version.MINOR);
+                }
+                _logger.LogWarning("There existed greater preview version in the gallery.");
+            }
+
+            return bumpedVersion.ToString();
+        }
+
+        /// <summary>
+        /// Get bumped version by type.
+        /// </summary>
+        /// <param name="version">The version before bump.</param>
+        /// <param name="type">The bump type.</param>
+        /// <returns>The version after bump.</returns>
+        private AzurePSVersion GetBumpedVersionByType(AzurePSVersion version, Version type)
+        {
+            AzurePSVersion bumpedVersion;
+            if (type == Version.MAJOR)
+            {
+                bumpedVersion = new AzurePSVersion(version.Major + 1, 0, 0, version.Label);
+            }
+            else if (type == Version.MINOR)
+            {
+                bumpedVersion = new AzurePSVersion(version.Major, version.Minor + 1, 0, version.Label);
             }
             else
             {
-                splitVersion[2]++;
+                bumpedVersion = new AzurePSVersion(version.Major, version.Minor, version.Patch + 1, version.Label);
             }
+            return bumpedVersion;
+        }
 
-            return string.Join(".", splitVersion);
+        /// <summary>
+        /// Get version from PSGallery and TestGallery and merge into one list.
+        /// </summary>
+        /// <returns>A list of version</returns>
+        private List<AzurePSVersion> GetGalleryVersion()
+        {
+            var moduleName = _fileHelper.ModuleName;
+            HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -AllVersions");
+                var cmdletResult = powershell.Invoke();
+                foreach (var versionImformation in cmdletResult)
+                {
+                    Regex reg = new Regex("Version=(.*?);");
+                    Match match = reg.Match(versionImformation.ToString());
+                    galleryVersion.Add(new AzurePSVersion(match.Groups[1].Value));
+                }
+            }
+            return galleryVersion.ToList();
+        }
+
+        /// <summary>
+        /// Under the same Major version, check if there exist preview version in gallery that has greater version.
+        /// </summary>
+        /// <returns>True if exist a version, false otherwise.</returns>
+        private bool HasGreaterPreviewVersion(AzurePSVersion version, List<AzurePSVersion> galleryVersion)
+        {
+            foreach (var gaVersion in galleryVersion)
+            {
+                if (gaVersion.Major == version.Major && gaVersion >= version)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

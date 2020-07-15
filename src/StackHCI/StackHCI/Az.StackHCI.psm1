@@ -61,13 +61,13 @@ $PortalHCIResourceUrl = '/#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/pr
 $ClusterMetadataPermission = "AzureStackHCI.Census.Sync"
 $ClusterUsagePermission = "AzureStackHCI.Billing.Sync"
 
-$ServiceEndpointAzureCloud = "https://scus-azurestackhci-usage.azurewebsites.net"
+$ServiceEndpointAzureCloud = "https://eus-azurestackhci-usage.azurewebsites.net"
 $AuthorityAzureCloud = "https://login.microsoftonline.com"
 $BillingServiceApiScopeAzureCloud = "https://azurestackhci-usage.trafficmanager.net/.default"
 $GraphServiceApiScopeAzureCloud = "https://graph.microsoft.com/.default"
 $GraphEndpointResourceIdAzureCloud = "https://graph.windows.net/"
 
-$ServiceEndpointAzurePPE = "https://azurestackhci-usage-df.azurewebsites.net"
+$ServiceEndpointAzurePPE = "https://wus-azurestackhci-usage-df.azurewebsites.net"
 $AuthorityAzurePPE = "https://login.windows-ppe.net"
 $BillingServiceApiScopeAzurePPE = "https://azurestackhci-usage-df.azurewebsites.net/.default"
 $GraphServiceApiScopeAzurePPE = "https://graph.ppe.windows.net/.default"
