@@ -4,11 +4,11 @@
   "parameters": {
     "StorageAccountName1": {
       "type": "string",
-      "defaultValue": "tianosatest78"
+      "defaultValue": "gopremrasatest78"
     },
     "StorageAccountName2": {
       "type": "string",
-      "defaultValue": "tianosatest79"
+      "defaultValue": "gopremrasatest79"
     },
     "NestedDeploymentResourceGroup": {
       "type": "string"

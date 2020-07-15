@@ -42,66 +42,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public void ProcessError(DeploymentOperation operation)
         {
-            ErrorResponse error = DeserializeDeploymentOperationError(operation.Properties?.StatusMessage?.ToString());
+            ErrorResponse error = operation.Properties?.StatusMessage?.Error;
 
             if (error != null)
             {    
                 ErrorMessages.Add(error);
             }
-        }
-        #endregion
-
-        #region Static Methods 
-        /// <summary>
-        /// A special method to deserialize the statusMessage. This method will be retired with new
-        /// Resources API version.
-        /// </summary>
-        /// <param name="statusMessage"></param>
-        /// <returns></returns>
-        public static ErrorResponse DeserializeDeploymentOperationError(string statusMessage)
-        {
-            if (statusMessage == null)
-            {
-                return null;
-            }
-
-            dynamic dynamicStatusMessage = DeserializeDeploymentOperationStatusMessage(statusMessage);
-            ErrorResponse error = null;
-
-            try
-            {
-                if (dynamicStatusMessage?.error != null )
-                {
-                    error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage.error.ToString());
-                }
-                else if (dynamicStatusMessage != null)
-                {
-                    error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage.ToString());
-                }
-            }
-            catch 
-            {
-                 error = new ErrorResponse(null, statusMessage);
-            }
-
-            return error;
-        }
-
-        private static dynamic DeserializeDeploymentOperationStatusMessage(string statusMessage)
-        {
-            dynamic dynamicStatusMessage = null;
-
-            try
-            {
-                dynamicStatusMessage = JsonConvert.DeserializeObject(statusMessage);
-            }
-            catch
-            {
-                // Sometimes statusMessage is not a valid JSON(it can be a string when it's the outer generic error message)
-                // In that case, we'll ignore the error.
-            }
-
-            return dynamicStatusMessage;
         }
         #endregion
     }
