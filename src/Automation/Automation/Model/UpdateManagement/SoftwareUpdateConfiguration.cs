@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
                 Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), suc.Frequency, true),
                 NextRun = suc.NextRun
             };
-
-            if (!true && suc.StartTime != null) 
+            
+            if (suc.StartTime != null) 
             {
                 ScheduleConfiguration.StartTime = suc.StartTime;
             }
-
+            
             UpdateConfiguration = new UpdateConfiguration()
             {
                 Duration = suc.UpdateConfiguration.Duration,
