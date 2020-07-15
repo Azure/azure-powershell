@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = result.Properties.StatusMessage,
+                    StatusMessage = result.Properties.StatusMessage?.Error?.ToFormattedString(),
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
