@@ -351,7 +351,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                TimeZone = schedule.TimeZone,
             };
 
-            if (schedule.StartTime.HasValue) {
+            if (schedule.StartTime.HasValue)
+            {
                 scheduleCreateOrUpdateParameters.StartTime = schedule.StartTime.Value.DateTime;
             }
 
