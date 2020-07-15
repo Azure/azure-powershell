@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the start time.
         /// </summary>
-        public DateTimeOffset? StartTime { get; set; }
+        public DateTimeOffset StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the expiry time.
