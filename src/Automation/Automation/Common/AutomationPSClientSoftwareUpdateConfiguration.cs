@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     ScheduleInfo = new Sdk.ScheduleProperties()
                     {
-                        StartTime = configuration.ScheduleConfiguration.StartTime.ToUniversalTime(),
                         ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime.ToUniversalTime(),
                         Frequency = configuration.ScheduleConfiguration.Frequency.ToString(),
                         Interval = configuration.ScheduleConfiguration.Interval,
@@ -128,6 +127,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         PostTask = configuration.Tasks.PostTask == null ? null : new Sdk.TaskProperties { Source = configuration.Tasks.PostTask.source, Parameters = configuration.Tasks.PostTask.parameters }
                     }
                 };
+
+                if (configuration.ScheduleConfiguration.StartTime.HasValue)
+                {
+                    sucParameters.ScheduleInfo.StartTime = configuration.ScheduleConfiguration.StartTime.Value.ToUniversalTime();
+                }
 
                 var suc = this.automationManagementClient.SoftwareUpdateConfigurations.Create(resourceGroupName, automationAccountName, configuration.Name, sucParameters);
                 return new SoftwareUpdateConfiguration(resourceGroupName, automationAccountName, suc);

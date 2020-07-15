@@ -343,7 +343,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var scheduleCreateOrUpdateParameters = new AutomationManagement.Models.ScheduleCreateOrUpdateParameters
             {
                Name = schedule.Name,
-               StartTime = schedule.StartTime.DateTime,
                ExpiryTime = schedule.ExpiryTime,
                Description = schedule.Description,
                Interval = schedule.Interval,
@@ -351,6 +350,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                AdvancedSchedule = schedule.GetAdvancedSchedule(),
                TimeZone = schedule.TimeZone,
             };
+
+            if (schedule.StartTime.HasValue)
+            {
+                scheduleCreateOrUpdateParameters.StartTime = schedule.StartTime.Value.DateTime;
+            }
 
             var scheduleCreateResponse = this.automationManagementClient.Schedule.CreateOrUpdate(
                 resourceGroupName,
