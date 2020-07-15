@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-
+Create Windows virtual desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzWvdRegistrationInfo -ExpirationTime <String> -HostPoolName <String> -Resou
 ```
 
 ## DESCRIPTION
-
+Create Windows virtual desktop registration info.
 
 ## EXAMPLES
 

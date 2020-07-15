@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-
+Register a Windows virtual desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Register-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-
+Register a Windows virtual desktop application group.
 
 ## EXAMPLES
 

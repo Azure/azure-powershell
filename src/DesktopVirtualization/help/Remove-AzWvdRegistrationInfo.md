@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-
+Remove the Windows virtual desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-
+Remove the Windows virtual desktop registration info.
 
 ## EXAMPLES
 

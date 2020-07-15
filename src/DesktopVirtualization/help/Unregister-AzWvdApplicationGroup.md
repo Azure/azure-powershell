@@ -8,7 +8,7 @@ schema: 2.0.0
 # Unregister-AzWvdApplicationGroup
 
 ## SYNOPSIS
-
+Unregister the Windows virtual desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Unregister-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-
+Unregister the Windows virtual desktop application group.
 
 ## EXAMPLES
 
