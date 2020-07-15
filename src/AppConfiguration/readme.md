@@ -78,6 +78,18 @@ directive:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+  - where:
+      parameter-name: KeyVaultPropertyIdentityClientId
+    set:
+      parameter-name: KeyVaultIdentityClientId
+  - where:
+      parameter-name: KeyVaultPropertyKeyIdentifier
+    set:
+      parameter-name: EncryptionKeyIdentifier
 
   - where:
       subject: ConfigurationStoreKeyValue

@@ -74,7 +74,7 @@ function New-AzAppConfigurationStore {
         [System.Collections.Hashtable]
         # The list of user-assigned identities associated with the resource.
         # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        ${IdentityUserAssignedIdentity},
+        ${UserAssignedIdentity},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
