@@ -29,8 +29,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Cmdlets\AdaptiveApplicationControls\" />
-  </ItemGroup>
-
 </Project>
