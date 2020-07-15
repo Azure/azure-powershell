@@ -50,7 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="ApplicationPatchTags" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ApplicationPatchTags(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json)
+        /// <param name="exclusions"></param>
+        internal ApplicationPatchTags(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
             {
                 return;
             }
+            Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IAssociativeArray<string>)this).AdditionalProperties, null ,exclusions );
             AfterFromJson(json);
         }
 
@@ -92,6 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
             {
                 return container;
             }
+            Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IAssociativeArray<string>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Remove the Windows virtual desktop registration info.
+
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Remove the Windows virtual desktop registration info.
+
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ This command deletes a Windows Virtual Desktop Registration Token in a Host Pool
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,7 +84,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -128,6 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

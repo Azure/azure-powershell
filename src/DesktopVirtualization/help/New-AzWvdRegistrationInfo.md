@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Create Windows virtual desktop registration info.
+
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzWvdRegistrationInfo -ExpirationTime <String> -HostPoolName <String> -Resou
 ```
 
 ## DESCRIPTION
-Create Windows virtual desktop registration info.
+
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ This command creates a Windows Virtual Desktop Registration Token in a Host Pool
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -103,7 +103,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False

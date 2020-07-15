@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
     {
 
         /// <summary>Backing field for <see cref="ApplicationGroupType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType? _applicationGroupType;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType _applicationGroupType;
 
         /// <summary>Resource Type of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType? ApplicationGroupType { get => this._applicationGroupType; set => this._applicationGroupType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType ApplicationGroupType { get => this._applicationGroupType; set => this._applicationGroupType = value; }
 
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
     {
         /// <summary>Resource Type of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Resource Type of ApplicationGroup.",
         SerializedName = @"applicationGroupType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType? ApplicationGroupType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType ApplicationGroupType { get; set; }
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         string FriendlyName { get; set; }
         /// <summary>HostPool arm path of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"HostPool arm path of ApplicationGroup.",
         SerializedName = @"hostPoolArmPath",
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
 
     {
         /// <summary>Resource Type of ApplicationGroup.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType? ApplicationGroupType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType ApplicationGroupType { get; set; }
         /// <summary>Description of ApplicationGroup.</summary>
         string Description { get; set; }
         /// <summary>Friendly name of ApplicationGroup.</summary>

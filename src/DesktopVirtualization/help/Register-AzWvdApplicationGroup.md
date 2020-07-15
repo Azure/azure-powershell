@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Register a Windows virtual desktop application group.
+
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Register-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Register a Windows virtual desktop application group.
+
 
 ## EXAMPLES
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,7 +91,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False

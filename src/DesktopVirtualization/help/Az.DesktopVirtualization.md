@@ -1,106 +1,11 @@
----
-Module Name: Az.DesktopVirtualization
-Module Guid: 4cbade8e-48e0-42f8-a847-7872d0006d54
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization
-Help Version: 1.0.0.0
-Locale: en-US
----
+# Docs
+This directory contains the documentation of the cmdlets for the `Az.DesktopVirtualization` module. To run documentation generation, use the `generate-help.ps1` script at the root module folder. Files in this folder will *always be overriden on regeneration*. To update documentation examples, please use the `..\examples` folder.
 
-# Az.DesktopVirtualization Module
-## Description
-Microsoft Azure PowerShell: DesktopVirtualization cmdlets
+## Info
+- Modifiable: no
+- Generated: all
+- Committed: yes
+- Packaged: yes
 
-## Az.DesktopVirtualization Cmdlets
-### [Disconnect-AzWvdUserSession](Disconnect-AzWvdUserSession.md)
-Disconnect a userSession.
-
-### [Get-AzWvdApplication](Get-AzWvdApplication.md)
-Get an application.
-
-### [Get-AzWvdApplicationGroup](Get-AzWvdApplicationGroup.md)
-Get an application group.
-
-### [Get-AzWvdDesktop](Get-AzWvdDesktop.md)
-Get a desktop.
-
-### [Get-AzWvdHostPool](Get-AzWvdHostPool.md)
-Get a host pool.
-
-### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
-Get the Windows virtual desktop registration info.
-
-### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
-Get a session host.
-
-### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
-List start menu items in the given application group.
-
-### [Get-AzWvdUserSession](Get-AzWvdUserSession.md)
-Get a userSession.
-
-### [Get-AzWvdWorkspace](Get-AzWvdWorkspace.md)
-Get a workspace.
-
-### [New-AzWvdApplication](New-AzWvdApplication.md)
-Create or update an application.
-
-### [New-AzWvdApplicationGroup](New-AzWvdApplicationGroup.md)
-Create or update an applicationGroup.
-
-### [New-AzWvdHostPool](New-AzWvdHostPool.md)
-Create or update a host pool.
-
-### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
-Create Windows virtual desktop registration info.
-
-### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
-Create or update a workspace.
-
-### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
-Register a Windows virtual desktop application group.
-
-### [Remove-AzWvdApplication](Remove-AzWvdApplication.md)
-Remove an application.
-
-### [Remove-AzWvdApplicationGroup](Remove-AzWvdApplicationGroup.md)
-Remove an applicationGroup.
-
-### [Remove-AzWvdHostPool](Remove-AzWvdHostPool.md)
-Remove a host pool.
-
-### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
-Remove the Windows virtual desktop registration info.
-
-### [Remove-AzWvdSessionHost](Remove-AzWvdSessionHost.md)
-Remove a SessionHost.
-
-### [Remove-AzWvdUserSession](Remove-AzWvdUserSession.md)
-Remove a userSession.
-
-### [Remove-AzWvdWorkspace](Remove-AzWvdWorkspace.md)
-Remove a workspace.
-
-### [Send-AzWvdUserSessionMessage](Send-AzWvdUserSessionMessage.md)
-Send a message to a user.
-
-### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
-Unregister the Windows virtual desktop application group.
-
-### [Update-AzWvdApplication](Update-AzWvdApplication.md)
-Update an application.
-
-### [Update-AzWvdApplicationGroup](Update-AzWvdApplicationGroup.md)
-Update an applicationGroup.
-
-### [Update-AzWvdDesktop](Update-AzWvdDesktop.md)
-Update a desktop.
-
-### [Update-AzWvdHostPool](Update-AzWvdHostPool.md)
-Update a host pool.
-
-### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
-Update a session host.
-
-### [Update-AzWvdWorkspace](Update-AzWvdWorkspace.md)
-Update a workspace.
-
+## Details
+The process of documentation generation loads `Az.DesktopVirtualization` and analyzes the exported cmdlets from the module. It recognizes the [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) that are generated into the scripts in the `..\exports` folder. Additionally, when writing custom cmdlets in the `..\custom` folder, you can use the help comments syntax, which decorate the exported scripts at build-time. The documentation examples are taken from the `..\examples` folder.
