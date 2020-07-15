@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.3
 * Fixed bug `Get-AzAks` doesn't get all clusters [#12296]
 
 ## Version 1.1.2

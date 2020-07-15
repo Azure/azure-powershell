@@ -1,0 +1,118 @@
+{
+  "Update-AzMonitorLogAnalyticsSolution+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-k5foa9%29?api-version=2015-11-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-k5foa9%29?api-version=2015-11-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key02\": \"2\",\n    \"key01\": \"1\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "54" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "ee1d3dba-0922-426c-89c8-2aa913904b0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1183" ],
+        "x-ms-correlation-request-id": [ "b33d8968-06ba-4dae-b8e7-d05e68644a12" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065736Z:b33d8968-06ba-4dae-b8e7-d05e68644a12" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1210" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n    \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9/views/Containers(monitoringworkspace-k5foa9)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)\",\r\n  \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"key02\": \"2\",\r\n    \"key01\": \"1\"\r\n  }\r\n}"
+    }
+  },
+  "Update-AzMonitorLogAnalyticsSolution+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-k5foa9%29?api-version=2015-11-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers%28monitoringworkspace-k5foa9%29?api-version=2015-11-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "650628cc-3fcc-40bc-80cf-f78437c07bc0" ],
+        "CommandName": [ "Get-AzMonitorLogAnalyticsSolution" ],
+        "FullCommandName": [ "Get-AzMonitorLogAnalyticsSolution_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "d24ef9a7-c811-4209-b8f9-1f867b2889ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "70dc5f3e-469b-416b-8e94-0121ba263c76" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065736Z:70dc5f3e-469b-416b-8e94-0121ba263c76" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1210" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n    \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:34 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9/views/Containers(monitoringworkspace-k5foa9)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)\",\r\n  \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"key02\": \"2\",\r\n    \"key01\": \"1\"\r\n  }\r\n}"
+    }
+  },
+  "Update-AzMonitorLogAnalyticsSolution+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)?api-version=2015-11-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)?api-version=2015-11-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key01\": \"1\",\n    \"key03\": \"3\",\n    \"key02\": \"2\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "72" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "d004f320-ed3d-42fc-bef3-1ef9f7a6eb08" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
+        "x-ms-correlation-request-id": [ "c5f2acb3-7c9a-4b10-8cd5-ac3f5716f073" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200630T065738Z:c5f2acb3-7c9a-4b10-8cd5-ac3f5716f073" ],
+        "Date": [ "Tue, 30 Jun 2020 06:57:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1229" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"plan\": {\r\n    \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"promotionCode\": \"\",\r\n    \"product\": \"OMSGallery/Containers\"\r\n  },\r\n  \"properties\": {\r\n    \"workspaceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"Tue, 30 Jun 2020 06:57:03 GMT\",\r\n    \"lastModifiedTime\": \"Tue, 30 Jun 2020 06:57:34 GMT\",\r\n    \"containedResources\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationalInsights/workspaces/monitoringworkspace-k5foa9/views/Containers(monitoringworkspace-k5foa9)\"\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/monitoringsolutions-rg-ol9km3/providers/Microsoft.OperationsManagement/solutions/Containers(monitoringworkspace-k5foa9)\",\r\n  \"name\": \"Containers(monitoringworkspace-k5foa9)\",\r\n  \"type\": \"Microsoft.OperationsManagement/solutions\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"key01\": \"1\",\r\n    \"key03\": \"3\",\r\n    \"key02\": \"2\"\r\n  }\r\n}"
+    }
+  }
+}
