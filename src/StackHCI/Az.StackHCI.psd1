@@ -12,13 +12,13 @@
 RootModule = 'Az.StackHCI.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0.1'
+ModuleVersion = '0.1.2'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = '04280841-a6a0-4929-83bc-9d2e99771bb4'
+GUID = '7a80d748-b6f0-42d1-a08d-215c5a006769'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -27,22 +27,22 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '(c) 2020 Microsoft Corporation. All rights reserved.'
+Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'PowerShell module for managing Azure Stack HCI'
+Description = 'Microsoft Azure PowerShell: StackHCI cmdlets'
 
-# Minimum version of the Windows PowerShell engine required by this module
-# PowerShellVersion = ''
+# Minimum version of the PowerShell engine required by this module
+PowerShellVersion = '5.1'
 
-# Name of the Windows PowerShell host required by this module
+# Name of the PowerShell host required by this module
 # PowerShellHostName = ''
 
-# Minimum version of the Windows PowerShell host required by this module
+# Minimum version of the PowerShell host required by this module
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -51,7 +51,7 @@ Description = 'PowerShell module for managing Azure Stack HCI'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -72,10 +72,10 @@ Description = 'PowerShell module for managing Azure Stack HCI'
 FunctionsToExport = 'Register-AzStackHCI', 'Unregister-AzStackHCI'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = '*'
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Added hash table for region.'
 
     } # End of PSData hashtable
 

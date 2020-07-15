@@ -181,5 +181,6 @@
     { "regex": "MonitoringSolutions", "alias": "Monitoring Solutions" },
     { "regex": "StackEdge", "alias": "Stack Edge" },
     { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
-    { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" }
+    { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" },
+    { "regex": "StackHCI", "alias": "Stack HCI" }
 ]
