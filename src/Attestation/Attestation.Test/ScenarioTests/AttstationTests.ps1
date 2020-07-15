@@ -138,6 +138,45 @@ function Test-GetAttestation
 	}
 }
 
+function Test-GetDefaultProviders
+{
+	$got = Get-AzAttestation -DefaultProvider
+
+	Assert-NotNull $got
+
+	Assert-True { $got.Count -gt 0 }
+
+	foreach ($defaultProvider in $got) 
+	{
+		Assert-NotNull $defaultProvider
+		Assert-NotNull $defaultProvider.Status
+		Assert-NotNull $defaultProvider.Location
+
+		Assert-StartsWith "shared" $defaultProvider.Name
+
+		$attestUriStart = "https://" + $defaultProvider.Name
+		Assert-StartsWith $attestUriStart $defaultProvider.attestUri
+		Assert-True { $defaultProvider.attestUri.EndsWith(".attest.azure.net") }
+
+		$resourceId = "/providers/Microsoft.Attestation/attestationProviders/" + $defaultProvider.Name
+		Assert-AreEqual $resourceId $defaultProvider.Id
+    }
+}
+
+function Test-GetDefaultProviderByLocation
+{
+	$location = "East US"
+
+	$got = Get-AzAttestation -DefaultProvider -Location $location
+
+	Assert-NotNull $got
+	Assert-AreEqual "sharedeus" $got.Name
+	Assert-AreEqual $location $got.Location
+	Assert-AreEqual "https://sharedeus.eus.test.attest.azure.net" $got.AttestUri
+	Assert-AreEqual "/providers/Microsoft.Attestation/attestationProviders/sharedeus" $got.Id
+	Assert-NotNull $got.Status
+}
+
 <#
 .SYNOPSIS
 Test Remove-AzAttestation

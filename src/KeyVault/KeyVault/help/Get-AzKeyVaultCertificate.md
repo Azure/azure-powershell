@@ -117,7 +117,7 @@ $type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
 $pfxFileByte = $x509Cert.Export($type, $password)
 
 # Write to a file
-[System.IO.File]::WriteAllBytes("KeyValt.pfx", $pfxFileByte)
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.

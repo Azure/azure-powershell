@@ -19,9 +19,12 @@
 --->
 
 ## Upcoming Release
-* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig
-* Added non-breaking changes : PeerAddressType functionality for Private Peering in Remove-AzExpressRouteCircutPeeringConfig
-* Code change to ignore case for AddressPrefixType and PeerAddressType parameter
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
+* Added non-breaking changes: PeerAddressType functionality for Private Peering in `Remove-AzExpressRouteCircutPeeringConfig`.
+* Code change to ignore case for AddressPrefixType and PeerAddressType parameter.
+* Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
+
+## Version 3.2.0
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`

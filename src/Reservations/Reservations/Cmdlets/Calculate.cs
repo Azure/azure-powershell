@@ -12,7 +12,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
     public class Calculate : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
-        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse", "VMwareCloudSimple", "RedHatOsa")]
+        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse",
+            "VMwareCloudSimple", "RedHatOsa", "Databricks", "AppService", "ManagedDisk", "BlockBlob", "RedisCache",
+            "AzureDataExplorer", "MySql", "MariaDb", "PostgreSql", "DedicatedHost", "SapHana")]
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
