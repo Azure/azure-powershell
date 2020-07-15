@@ -98,6 +98,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string Notebook = nameof(Notebook);
 
+        public const string EndpointApiVersion = "2019-11-01-priview";
+
         public const string Trigger = nameof(Trigger);
 
         public const string SubscriptionStatus = nameof(SubscriptionStatus);
@@ -105,6 +107,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string Subscription = nameof(Subscription);
 
         public const string TriggerRun = nameof(TriggerRun);
+
+        public const string IntegrationRuntime = nameof(IntegrationRuntime);
+
+        public const string IntegrationRuntimeName = nameof(IntegrationRuntimeName);
+
+        public const string IntegrationRuntimeTypeManaged = "Managed";
+
+        public const string IntegrationRuntimeSelfhosted = "SelfHosted";
+
+        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
+
+        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
+
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
@@ -154,5 +170,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string AllowAllEndIpAddress = "255.255.255.255";
 
         public const string StorageBlobDataContributorRoleName = "Azure Blob Data Contributor";
+
+        public static bool IsNextPageLink(this string nextLink)
+        {
+            return !string.IsNullOrEmpty(nextLink);
+        }
     }
 }

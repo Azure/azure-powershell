@@ -1,5 +1,4 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         ["authResource"] = "https://dev.azuresynapse.net"
                     };
                     options["cores"] = this.IsParameterBound(c => c.ExecutorSize) ? SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores : 4;
-                    options["endpoint"] = endpoint + "/livyApi/versions/2019-11-01-priview/sparkPools" + this.SparkPool;
+                    options["endpoint"] = endpoint + "/livyApi/versions/" + SynapseConstants.EndpointApiVersion + "/sparkPools" + this.SparkPool;
                     options["extraHeader"] = new ComputeOptions();
                     options["id"] = sparkPoolInfo.Id;
                     options["memory"] = this.IsParameterBound(c => c.ExecutorSize) ? SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory : 28;
