@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -158,13 +159,14 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
-        [Parameter(ParameterSetName = UserWithCredentialParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.")]
         [PSDefaultValue(Value = DefaultMaxContextPopulation)]
+        [ValidateRange(-1,int.MaxValue)]
         public int MaxContextPopulation { get; set; } = DefaultMaxContextPopulation;
 
         [Parameter(ParameterSetName = UserParameterSet,

@@ -467,7 +467,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxContextPopulation
-Subscription number to populate contexts after login
+Subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.
 
 ```yaml
 Type: System.Int32
