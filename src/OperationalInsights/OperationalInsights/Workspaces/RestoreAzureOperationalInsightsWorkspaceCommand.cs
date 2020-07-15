@@ -41,30 +41,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The service tier of the workspace.")]
-        [PSArgumentCompleter("free", "standard", "premium", "pernode", "standalone", "pergb2018")]
-        public string Sku { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource tags for the workspace.")]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
-        [ValidateNotNullOrEmpty]
-        public int? RetentionInDays { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
-        public string PublicNetworkAccessForIngestion;
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
-        public string PublicNetworkAccessForQuery;
-
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -80,12 +56,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Location = Location,
-                Sku = Sku,
-                Tags = Tag,
-                RetentionInDays = RetentionInDays,
-                Force = Force.IsPresent,
-                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
-                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 ConfirmAction = ConfirmAction
             };
 
