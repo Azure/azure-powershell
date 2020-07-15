@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network {
 
             if (this.AddressPrefix != null)
             {
-                if (string.Equals(this.AddressPrefixType, "IPv6", StringComparison.OrdinalIgnoreCase))
+                if (Utils.IsIpv6(this.AddressPrefixType))
                 {
                     if (circuitconnection.IPv6CircuitConnectionConfig != null)
                     {
