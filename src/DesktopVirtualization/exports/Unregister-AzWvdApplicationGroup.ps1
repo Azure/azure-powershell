@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Unregister the Windows virtual desktop application group.
 .Description
-
+Unregister the Windows virtual desktop application group.
 .Example
 PS C:\> Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `

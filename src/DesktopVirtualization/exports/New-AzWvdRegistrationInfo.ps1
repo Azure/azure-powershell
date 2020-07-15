@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Create Windows virtual desktop registration info.
 .Description
-
+Create Windows virtual desktop registration info.
 .Example
 PS C:\> New-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 

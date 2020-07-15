@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Register a Windows virtual desktop application group.
 .Description
-
+Register a Windows virtual desktop application group.
 .Example
 PS C:\> Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `

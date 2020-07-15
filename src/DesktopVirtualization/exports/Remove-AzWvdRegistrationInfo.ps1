@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Remove the Windows virtual desktop registration info.
 .Description
-
+Remove the Windows virtual desktop registration info.
 .Example
 PS C:\> Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 

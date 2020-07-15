@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Get the Windows virtual desktop registration info.
 .Description
-
+Get the Windows virtual desktop registration info.
 .Example
 PS C:\> Get-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
