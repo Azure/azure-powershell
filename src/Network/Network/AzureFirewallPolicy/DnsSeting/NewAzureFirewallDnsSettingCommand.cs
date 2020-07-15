@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true."
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is false."
         )]
         public SwitchParameter ProxyNotRequiredForNetworkRule { get; set; }
 
