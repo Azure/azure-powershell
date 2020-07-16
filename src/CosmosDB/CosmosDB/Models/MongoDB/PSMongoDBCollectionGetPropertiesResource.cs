@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 Indexes = psMongoIndex;
             }
 
+            AnalyticalStorageTtl = mongoDBCollectionGetPropertiesResource.AnalyticalStorageTtl;
             _rid = mongoDBCollectionGetPropertiesResource._rid;
             _ts = mongoDBCollectionGetPropertiesResource._ts;
             _etag = mongoDBCollectionGetPropertiesResource._etag;
@@ -61,6 +62,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of index keys
         public IList<PSMongoIndex> Indexes { get; set; }
+        //
+        // Summary:
+        //     Gets or sets analytical TTL.
+        public int? AnalyticalStorageTtl { get; set; }
         //
         // Summary:
         //     Gets a system generated property. A unique identifier.

@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        public List<string> CustomDnsServers { get; set; }
+
         [JsonIgnore]
         public string VpnClientConnectionHealthText
         {
@@ -49,6 +51,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string P2SConnectionConfigurationsText
         {
             get { return JsonConvert.SerializeObject(P2SConnectionConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CustomDnsServersText
+        {
+            get { return JsonConvert.SerializeObject(CustomDnsServers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

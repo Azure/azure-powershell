@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Net;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -78,7 +79,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 10, Mandatory = false,
             HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
+        [Alias("FunctionParameters")]
         public string FunctionParameter { get; set; }
 
         protected override void ProcessRecord()
@@ -93,8 +95,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 FunctionParameters = this.FunctionParameter
             };
 
+            bool patch = this.IsParameterBound(c => c.FunctionParameter);
+
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, true, ConfirmAction, ETag), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, patch, true, ConfirmAction, ETag), true);
         }
 
     }

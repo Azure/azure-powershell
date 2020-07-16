@@ -272,6 +272,46 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string EncryptionKeyTypeForQueue { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
+        public SwitchParameter  RequireInfrastructureEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowBlobPublicAccess
+        {
+            get
+            {
+                return allowBlobPublicAccess.Value;
+            }
+            set
+            {
+                allowBlobPublicAccess = value;
+            }
+        }
+        private bool? allowBlobPublicAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
+        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
+            StorageModels.MinimumTlsVersion.TLS11,
+            StorageModels.MinimumTlsVersion.TLS12,
+            IgnoreCase = true)]
+        public string MinimumTlsVersion
+        {
+            get
+            {
+                return minimumTlsVersion;
+            }
+            set
+            {
+                minimumTlsVersion = value;
+            }
+        }
+        private string minimumTlsVersion = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -368,19 +408,39 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }
-            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
+            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null || this.RequireInfrastructureEncryption.IsPresent)
             {
                 createParameters.Encryption = new Encryption();
                 createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
-                createParameters.Encryption.Services = new EncryptionServices();
-                if (this.EncryptionKeyTypeForQueue != null)
+                if (this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
                 {
-                    createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                    createParameters.Encryption.Services = new EncryptionServices();
+                    if (this.EncryptionKeyTypeForQueue != null)
+                    {
+                        createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                    }
+                    if (this.EncryptionKeyTypeForTable != null)
+                    {
+                        createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                    }
                 }
-                if (this.EncryptionKeyTypeForTable != null)
+                if (this.RequireInfrastructureEncryption.IsPresent)
                 {
-                    createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                    createParameters.Encryption.RequireInfrastructureEncryption = true;
+                    if (createParameters.Encryption.Services is null)
+                    {
+                        createParameters.Encryption.Services = new EncryptionServices();
+                        createParameters.Encryption.Services.Blob = new EncryptionService();
+                    }
                 }
+            }
+            if (this.minimumTlsVersion != null)
+            {
+                createParameters.MinimumTlsVersion = this.minimumTlsVersion;
+            }
+            if (this.allowBlobPublicAccess != null)
+            {
+                createParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

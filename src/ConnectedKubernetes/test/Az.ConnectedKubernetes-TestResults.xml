@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="3" skipped="0" invalid="0" date="2020-07-07" time="19:47:53">
+  <environment clr-version="Unknown" user="yunwang" os-version="10.0.18363" user-domain="FAREAST" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" cwd="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes" nunit-version="2.5.8.0" machine-name="DESKTOP-5DFLPGL" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="3.3855" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Get-AzConnectedKubernetes.Tests.ps1" executed="True" result="Success" success="True" time="1.5497" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Get-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzConnectedKubernetes" executed="True" result="Success" success="True" time="0.9376" asserts="0" description="Get-AzConnectedKubernetes">
+            <results>
+              <test-case description="List1" name="Get-AzConnectedKubernetes.List1" time="0.2447" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzConnectedKubernetes.List" time="0.0403" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzConnectedKubernetes.Get" time="0.0736" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzConnectedKubernetes.GetViaIdentity" time="0.0687" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\New-AzConnectedKubernetes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.5869" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\New-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzConnectedKubernetes" executed="True" result="Ignored" success="True" time="0.1079" asserts="0" description="New-AzConnectedKubernetes">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzConnectedKubernetes.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Remove-AzConnectedKubernetes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.5834" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Remove-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzConnectedKubernetes" executed="True" result="Ignored" success="True" time="0.1128" asserts="0" description="Remove-AzConnectedKubernetes">
+            <results>
+              <test-case description="Delete" name="Remove-AzConnectedKubernetes.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzConnectedKubernetes.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Update-AzConnectedKubernetes.Tests.ps1" executed="True" result="Success" success="True" time="0.6655" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\ConnectedKubernetes\test\Update-AzConnectedKubernetes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzConnectedKubernetes" executed="True" result="Success" success="True" time="0.2086" asserts="0" description="Update-AzConnectedKubernetes">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzConnectedKubernetes.UpdateExpanded" time="0.0733" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzConnectedKubernetes.UpdateViaIdentityExpanded" time="0.0262" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

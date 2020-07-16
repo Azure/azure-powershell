@@ -1,26 +1,27 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLivyRequestBase
     {
         // TODO: create a command to create instances of this class then pass it to Submit*Job command?
-        public PSLivyRequestBase(LivyRequestBase jobCreationRequest)
+        public PSLivyRequestBase(SparkRequest jobCreationRequest)
         {
             this.Name = jobCreationRequest?.Name;
             this.File = jobCreationRequest?.File;
             this.ClassName = jobCreationRequest?.ClassName;
-            this.Args = jobCreationRequest?.Args;
+            this.Arguments = jobCreationRequest?.Arguments;
             this.Jars = jobCreationRequest?.Jars;
             this.Files = jobCreationRequest?.Files;
             this.Archives = jobCreationRequest?.Archives;
-            this.Conf = jobCreationRequest?.Conf;
+            this.Configuration = jobCreationRequest?.Configuration;
             this.DriverMemory = jobCreationRequest?.DriverMemory;
             this.DriverCores = jobCreationRequest?.DriverCores;
             this.ExecutorMemory = jobCreationRequest?.ExecutorMemory;
-            this.ExecutorCores = jobCreationRequest?.NumExecutors;
-            this.NumExecutors = jobCreationRequest?.NumExecutors;
+            this.ExecutorCores = jobCreationRequest?.ExecutorCores;
+            this.ExecutorCount = jobCreationRequest?.ExecutorCount;
         }
 
         /// <summary>
@@ -37,23 +38,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public IList<string> Args { get; set; }
+        public IReadOnlyList<string> Arguments { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<string> Jars { get; set; }
+        public IReadOnlyList<string> Jars { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<string> Files { get; set; }
+        public IReadOnlyList<string> Files { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<string> Archives { get; set; }
+        public IReadOnlyList<string> Archives { get; set; }
 
         /// <summary>
         /// </summary>
-        public IDictionary<string, string> Conf { get; set; }
+        public IReadOnlyDictionary<string, string> Configuration { get; set; }
 
         /// <summary>
         /// </summary>
@@ -73,6 +74,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public int? NumExecutors { get; set; }
+        public int? ExecutorCount { get; set; }
     }
 }

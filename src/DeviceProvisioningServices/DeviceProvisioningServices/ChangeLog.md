@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.4
+* Fixed debug: Enrollment does not retain/assign linked IotHubs while choosing Custom allocation policy. [#12154]
+
 ## Version 0.7.3
 * Manage Device Enrollments. New cmdlets are:
     - `Add-AzIoTDeviceProvisioningServiceEnrollment`

@@ -278,13 +278,6 @@ function New-AzFunctionApp {
 
             $runtimeWorker = $Runtime.ToLower()
             $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_WORKER_RUNTIME' -Value "$runtimeWorker"))
-
-            # Set Java version
-            if ($Runtime -eq "Java")
-            {
-                $JavaVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-                $siteCofig.JavaVersion = "$JavaVersion"
-            }
         }
 
         $servicePlan = $null
@@ -364,6 +357,18 @@ function New-AzFunctionApp {
             # Set default Node version
             $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
             $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
+
+            # Set version for Java or PowerShell function apps
+            if ($Runtime -eq "Java")
+            {
+                $JavaVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+                $siteCofig.JavaVersion = "$JavaVersion"
+            }
+            elseif ($Runtime -eq "PowerShell")
+            {
+                $PowerShellWorkerVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+                $siteCofig.PowerShellVersion = "$PowerShellWorkerVersion"
+            }
         }
 
         # Validate storage account and get connection string

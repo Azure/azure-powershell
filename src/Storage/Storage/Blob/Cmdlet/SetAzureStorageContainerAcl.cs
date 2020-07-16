@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
             BlobContainerPermissions permissions;
             try
             {
-                permissions = localChannel.GetContainerPermissions(container);
+                permissions = localChannel.GetContainerPermissions(container, null, requestOptions, OperationContext);
             }
             catch (StorageException e) when (e.IsNotFoundException())
             {

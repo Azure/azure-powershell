@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The routing configuration for this ExpressRoute Gateway connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -147,6 +152,16 @@ namespace Microsoft.Azure.Commands.Network
                 ExpressRouteCircuitPeering = peeringResourceId,
                 EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
             };
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                expressRouteConnection.RoutingConfiguration = RoutingConfiguration;
+            }
 
             // Set the auth key, if specified
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
