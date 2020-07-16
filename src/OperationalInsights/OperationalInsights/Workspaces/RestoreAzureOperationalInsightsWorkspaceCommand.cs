@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         {
             if (!OperationalInsightsClient.DeletedWorkspace(ResourceGroupName, Name))
             {
-                throw new ArgumentException("workspace: " + Name + " under resource group: " + ResourceGroupName + " was not deleted");
+                throw new ArgumentException("workspace: " + Name + " under resource group: " + ResourceGroupName + " is not available to restore");
             }
 
             CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()
