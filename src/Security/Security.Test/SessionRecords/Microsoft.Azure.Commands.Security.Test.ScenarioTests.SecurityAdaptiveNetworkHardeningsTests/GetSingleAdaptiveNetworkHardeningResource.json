@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/MSI-GLStandard_A1/providers/Microsoft.Compute/virtualMachines/MSI-22122/providers/Microsoft.Security/adaptiveNetworkhardeningss/default?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2VlYWIzNDEtZjQ2Ni00OTljLWE4YmUtODU0MjdlMTU0YmFmL3Jlc291cmNlR3JvdXBzL01TSS1HTFN0YW5kYXJkX0ExL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvTVNJLTIyMTIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvYWRhcHRpdmVOZXR3b3JrSGFyZGVuaW5ncy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0f0134e2-5d04-4b9a-9534-3c5c97136ecf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ad3a9369-7dca-4c12-8853-42d97fae9731"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "749"
+        ],
+        "x-ms-correlation-request-id": [
+          "38c1c2d5-c5fa-4cc6-91b6-407188f549ce"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20200701T112209Z:38c1c2d5-c5fa-4cc6-91b6-407188f549ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 01 Jul 2020 11:22:08 GMT"
+        ],
+        "Content-Length": [
+          "1069"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"rules\": [\r\n      {\r\n        \"name\": \"SystemGenerated\",\r\n        \"direction\": \"Inbound\",\r\n        \"destinationPort\": 3389,\r\n        \"protocols\": [\r\n          \"TCP\"\r\n        ],\r\n        \"ipAddresses\": []\r\n      }\r\n    ],\r\n    \"effectiveNetworkSecurityGroups\": [\r\n      {\r\n        \"networkInterface\": \"/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/MSI-GLStandard_A1/providers/Microsoft.Network/networkInterfaces/MSI-1154330049\",\r\n        \"networkSecurityGroups\": [\r\n          \"/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/MSI-GLStandard_A1/providers/Microsoft.Network/networkSecurityGroups/MSI-GLStandard_A1NSG\"\r\n        ]\r\n      }\r\n    ],\r\n    \"rulesCalculationTime\": \"2020-06-30T19:10:56.4047067Z\"\r\n  },\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/adaptiveNetworkhardeningss\",\r\n  \"id\": \"/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/MSI-GLStandard_A1/providers/Microsoft.Compute/virtualMachines/MSI-22122/providers/Microsoft.Security/adaptiveNetworkhardeningss/default\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3eeab341-f466-499c-a8be-85427e154baf"
+  }
+}
