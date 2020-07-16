@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-
+Remove the Windows virtual desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-
+Remove the Windows virtual desktop registration info.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ This command deletes a Windows Virtual Desktop Registration Token in a Host Pool
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -44,7 +44,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -HostPoolName
@@ -60,7 +59,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -76,7 +74,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -87,12 +84,11 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -108,7 +104,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -125,7 +120,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -135,11 +129,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
-
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
