@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     public class PSTemplateSpecVersion
     {
         /// <summary>
+        /// Gets the Id of the version
+        /// </summary>
+        public string Id { get; private set; }
+
+        /// <summary>
         /// Gets or sets the name of the version. For example: 'v1'
         /// </summary>
         public string Name { get; set; }
@@ -78,6 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             var psTemplateSpecVersion = new PSTemplateSpecVersion
             {
                 CreationTime = templateSpecVersion.SystemData.CreatedAt,
+                Id = templateSpecVersion.Id,
                 LastModifiedTime = templateSpecVersion.SystemData.LastModifiedAt,
                 Name = templateSpecVersion.Name,
                 Description = templateSpecVersion.Description,
