@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added `-ForceDelete` option for `Remove-AzOperationalInsightsworkspace`
 * Added new cmdlet `Get-AzOperationalInsightsDeletedWorkspace`
 * Added new cmdlet `Restore-AzOperationalInsightsWorkspace`
