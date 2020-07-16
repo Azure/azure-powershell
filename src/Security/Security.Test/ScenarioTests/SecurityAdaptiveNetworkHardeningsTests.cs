@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityAdaptiveNetworkHardeningTests
+    public class SecurityAdaptiveNetworkHardeningsTests
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public SecurityAdaptiveNetworkHardeningTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityAdaptiveNetworkHardeningsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);

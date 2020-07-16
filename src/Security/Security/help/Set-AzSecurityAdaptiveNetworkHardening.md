@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The rules to enforce.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening.PSSecurityAdaptiveNetworkHardeningRule
+Type: Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings.PSSecurityAdaptiveNetworkHardeningsRule
 Parameter Sets: Rules
 Aliases:
 
@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening.PSSecurityAdaptiveNetworkHardeningRule
+### Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings.PSSecurityAdaptiveNetworkHardeningsRule
 
 ## OUTPUTS
 

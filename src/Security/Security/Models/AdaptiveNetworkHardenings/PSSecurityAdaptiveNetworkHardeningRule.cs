@@ -12,26 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
 {
-    public class PSSecurityAdaptiveNetworkHardeningProperties
+    public class PSSecurityAdaptiveNetworkHardeningsRule
     {
         /// <summary>
-        /// Gets the UTC time on which the rules were calculated.
+        /// Gets the name of the rule.
         /// </summary>
-        public DateTime? RulesCalculationTime { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the security rules which are recommended to be effective on the VM.
+        /// Gets the rule's direction.
         /// </summary>
-        public IList<PSSecurityAdaptiveNetworkHardeningRule> Rules { get; set; }
+        public string Direction { get; set; }
 
         /// <summary>
-        /// Gets the Network Security Groups effective on the network interfaces of the protected resource.
+        /// Gets the rule's destination port.
         /// </summary>
-        public IList<PSSecurityAdaptiveNetworkHardeningEffectiveNetworkSecurityGroups> EffectiveNetworkSecurityGroups { get; set; }
+        public int? DestinationPort { get; set; }
+
+        /// <summary>
+        /// Gets the rule's transport protocols.
+        /// </summary>
+        public IList<string> Protocols { get; set; }
+
+        /// <summary>
+        /// Gets the remote IP addresses that should be able to communicate with the Azure resource on the rule's destination port and protocol.
+        /// </summary>
+        public IList<string> IpAddresses { get; set; }
     }
 }

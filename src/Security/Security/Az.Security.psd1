@@ -114,10 +114,10 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Set-AzSecurityAssessmentMetadata', 
                'Remove-AzSecurityAssessmentMetadata', 
                'Get-AzSecuritySubAssessment',
-			   'Get-AzSecurityTopology',
-			   'Get-AzSecurityAdaptiveNetworkHardeningResource',
-			   'Get-AzSecurityAdaptiveNetworkHardening',
-			   'Set-AzSecurityAdaptiveNetworkHardening'
+		'Get-AzSecurityTopology',
+               'Get-AzSecurityAdaptiveNetworkHardening',
+		'Get-AzSecurityAdaptiveNetworkHardeningResource',
+               'Set-AzSecurityAdaptiveNetworkHardening'
 
 
 # Variables to export from this module

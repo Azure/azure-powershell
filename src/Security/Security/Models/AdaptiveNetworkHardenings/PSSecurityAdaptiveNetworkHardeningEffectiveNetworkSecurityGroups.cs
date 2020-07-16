@@ -14,9 +14,9 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
 {
-    public class PSSecurityAdaptiveNetworkHardeningEffectiveNetworkSecurityGroups
+    public class PSSecurityAdaptiveNetworkHardeningsEffectiveNetworkSecurityGroups
     {
         /// <summary>
         /// Gets the Azure resource ID of the network interface.

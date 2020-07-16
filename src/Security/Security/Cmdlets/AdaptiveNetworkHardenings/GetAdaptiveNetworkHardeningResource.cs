@@ -15,11 +15,11 @@
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
+using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardeningResource", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardening))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardeningResource", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class GetAdaptiveNetworkHardeningResource : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AdaptiveNetworkHardeningResourceName)]
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
         public override void ExecuteCmdlet()
         {
             SecurityCenterClient.SubscriptionId = SubscriptionId;
-            var adaptiveNetworkHardening = SecurityCenterClient.AdaptiveNetworkHardening
+            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
                 .GetWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName)
                 .GetAwaiter()
                 .GetResult()
                 .Body;
 
-            WriteObject(adaptiveNetworkHardening.ConvertToPSType(), enumerateCollection: true);
+            WriteObject(adaptiveNetworkHardenings.ConvertToPSType(), enumerateCollection: true);
         }
     }
 }

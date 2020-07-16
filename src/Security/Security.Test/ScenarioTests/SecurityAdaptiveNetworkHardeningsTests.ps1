@@ -19,7 +19,7 @@ Gets a list of Adaptive Network Hardenings resources in scope of an extended res
 function Get-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
 {
     $anh = Get-AzSecurityAdaptiveNetworkHardening -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
-	Validate-SecurityAdaptiveNetworkHardeningList $anh
+	Validate-SecurityAdaptiveNetworkHardeningsList $anh
 }
 
 <#
@@ -29,7 +29,7 @@ Gets a single Adaptive Network Hardening resource
 function Get-AzSecurityAdaptiveNetworkHardeningResource-ResourceGroupLevelResource
 {
 	$anh = Get-AzSecurityAdaptiveNetworkHardeningResource -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
-	Validate-SecurityAdaptiveNetworkHardening $anh
+	Validate-SecurityAdaptiveNetworkHardenings $anh
 }
 
 <#
@@ -47,7 +47,7 @@ function Set-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
 .SYNOPSIS
 Validates a list of Adaptive Network Hardenings
 #>
-function Validate-SecurityAdaptiveNetworkHardeningList
+function Validate-SecurityAdaptiveNetworkHardeningsList
 {
 	param($SecurityTopologies)
 
@@ -55,7 +55,7 @@ function Validate-SecurityAdaptiveNetworkHardeningList
 
 	Foreach($SecurityTopologies in $securityTopologies)
 	{
-		Validate-SecurityAdaptiveNetworkHardening $SecurityTopologies
+		Validate-SecurityAdaptiveNetworkHardenings $SecurityTopologies
 	}
 }
 
@@ -63,7 +63,7 @@ function Validate-SecurityAdaptiveNetworkHardeningList
 .SYNOPSIS
 Validates a single Adaptive Network Hardenings
 #>
-function Validate-SecurityAdaptiveNetworkHardening
+function Validate-SecurityAdaptiveNetworkHardenings
 {
 	param($SecurityTopologies)
 

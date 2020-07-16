@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
 {
-    public class PSSecurityAdaptiveNetworkHardening
+    public class PSSecurityAdaptiveNetworkHardenings
     {
         public string Id { get; set; }
 
@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenin
 
         public string Type { get; set; }
 
-        public PSSecurityAdaptiveNetworkHardeningProperties Properties { get; set; }
+        public PSSecurityAdaptiveNetworkHardeningsProperties Properties { get; set; }
     }
 }

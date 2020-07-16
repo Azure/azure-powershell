@@ -15,11 +15,11 @@
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
+using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardening))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class GetAdaptiveNetworkHardening : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
         {
             SecurityCenterClient.SubscriptionId = SubscriptionId;
 
-            var AdaptiveNetworkHardening = SecurityCenterClient.AdaptiveNetworkHardening
+            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
                 .ListByExtendedResourceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName)
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            WriteObject(AdaptiveNetworkHardening.ConvertToPSType(), enumerateCollection: true);
+            WriteObject(adaptiveNetworkHardenings.ConvertToPSType(), enumerateCollection: true);
         }
     }
 }

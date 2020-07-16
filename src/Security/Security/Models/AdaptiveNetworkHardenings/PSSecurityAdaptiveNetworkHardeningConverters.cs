@@ -16,18 +16,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
 {
-    public static class PSSecurityAdaptiveNetworkHardeningConverters
+    public static class PSSecurityAdaptiveNetworkHardeningsConverters
     {
-        public static PSSecurityAdaptiveNetworkHardening ConvertToPSType(this AdaptiveNetworkHardening value)
+        public static PSSecurityAdaptiveNetworkHardenings ConvertToPSType(this AdaptiveNetworkHardening value)
         {
-            return new PSSecurityAdaptiveNetworkHardening()
+            return new PSSecurityAdaptiveNetworkHardenings()
             {
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
-                Properties = new PSSecurityAdaptiveNetworkHardeningProperties()
+                Properties = new PSSecurityAdaptiveNetworkHardeningsProperties()
                 {
                     RulesCalculationTime = value.RulesCalculationTime,
                     EffectiveNetworkSecurityGroups = value.EffectiveNetworkSecurityGroups.ConvertToPSType(),
@@ -37,29 +37,29 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenin
         }
 
 
-        public static List<PSSecurityAdaptiveNetworkHardening> ConvertToPSType(this IEnumerable<AdaptiveNetworkHardening> value)
+        public static List<PSSecurityAdaptiveNetworkHardenings> ConvertToPSType(this IEnumerable<AdaptiveNetworkHardening> value)
         {
             return value.Select(anh => anh.ConvertToPSType()).ToList();
         }
 
-        public static PSSecurityAdaptiveNetworkHardeningEffectiveNetworkSecurityGroups ConvertToPSType(
+        public static PSSecurityAdaptiveNetworkHardeningsEffectiveNetworkSecurityGroups ConvertToPSType(
             this EffectiveNetworkSecurityGroups value)
         {
-            return new PSSecurityAdaptiveNetworkHardeningEffectiveNetworkSecurityGroups()
+            return new PSSecurityAdaptiveNetworkHardeningsEffectiveNetworkSecurityGroups()
             {
                 NetworkInterface = value.NetworkInterface,
                 NetworkSecurityGroups = value.NetworkSecurityGroups
             };
         }
 
-        public static List<PSSecurityAdaptiveNetworkHardeningEffectiveNetworkSecurityGroups> ConvertToPSType(this IEnumerable<EffectiveNetworkSecurityGroups> value)
+        public static List<PSSecurityAdaptiveNetworkHardeningsEffectiveNetworkSecurityGroups> ConvertToPSType(this IEnumerable<EffectiveNetworkSecurityGroups> value)
         {
             return value.Select(effectiveNsg => effectiveNsg.ConvertToPSType()).ToList();
         }
 
-        public static PSSecurityAdaptiveNetworkHardeningRule ConvertToPSType(this Rule value)
+        public static PSSecurityAdaptiveNetworkHardeningsRule ConvertToPSType(this Rule value)
         {
-            return new PSSecurityAdaptiveNetworkHardeningRule()
+            return new PSSecurityAdaptiveNetworkHardeningsRule()
             {
                 DestinationPort = value.DestinationPort,
                 Direction = value.Direction,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenin
             };
         }
 
-        public static List<PSSecurityAdaptiveNetworkHardeningRule> ConvertToPSType(this IEnumerable<Rule> value)
+        public static List<PSSecurityAdaptiveNetworkHardeningsRule> ConvertToPSType(this IEnumerable<Rule> value)
         {
             return value.Select(rule => rule.ConvertToPSType()).ToList();
         }

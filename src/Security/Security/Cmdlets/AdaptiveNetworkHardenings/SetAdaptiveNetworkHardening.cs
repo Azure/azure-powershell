@@ -17,12 +17,12 @@ using System.Linq;
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
+using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardening))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class SetAdaptiveNetworkHardening : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AdaptiveNetworkHardeningResourceName)]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.RulesToEnforce)]
         [ValidateNotNullOrEmpty]
-        public PSSecurityAdaptiveNetworkHardeningRule[] Rules { get; set; }
+        public PSSecurityAdaptiveNetworkHardeningsRule[] Rules { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.EffectiveNetworkSecurityGroups)]
         [ValidateNotNullOrEmpty]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
             SecurityCenterClient.SubscriptionId = SubscriptionId;
             var rules = Rules.Select(rule => new Rule(rule.Name, rule.Direction, rule.DestinationPort, rule.Protocols, rule.IpAddresses)).ToList();
 
-            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardening
+            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
                 .BeginEnforceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName, rules, NetworkSecurityGroups)
                 .GetAwaiter()
                 .GetResult();
