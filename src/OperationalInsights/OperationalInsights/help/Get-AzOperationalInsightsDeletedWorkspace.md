@@ -1,37 +1,40 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
-Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku
+external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
+Module Name: Az.OperationalInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsdeletedworkspace
 schema: 2.0.0
 ---
 
-# Get-AzComputeResourceSku
+# Get-AzOperationalInsightsDeletedWorkspace
 
 ## SYNOPSIS
-List all compute resource Skus
+List deleted workspaces.
 
 ## SYNTAX
 
 ```
-Get-AzComputeResourceSku [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsDeletedWorkspace [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List all compute resource Skus
+List deleted workspaces.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzComputeResourceSku "westus";
+```powershell
+PS C:\> $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+PS C:\> $workspace | Remove-AzOperationalInsightsWorkspace
+PS C:\> Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgname
 ```
 
-List all compute resource skus in West US region
+List deleted workspaces.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -45,8 +48,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies a location of the available skus to list.
+### -ResourceGroupName
+The resource group name.
 
 ```yaml
 Type: System.String
@@ -54,7 +57,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -69,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSResourceSku
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 
 ## NOTES
 
