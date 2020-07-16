@@ -15,7 +15,7 @@ Creates a configuration store with the specified parameters.
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
  [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 
 ### -IdentityType
 The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
 The type 'None' will remove any identities.
 
 ```yaml
@@ -202,7 +202,7 @@ The list of user-assigned identities associated with the resource.
 The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

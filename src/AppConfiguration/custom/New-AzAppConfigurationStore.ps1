@@ -60,18 +60,17 @@ function New-AzAppConfigurationStore {
         ${SkuName},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.CompleterInfo(Script = "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
         # The type of managed identity used.
-        # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+        # The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
         # The type 'None' will remove any identities.
         ${IdentityType},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IResourceIdentityUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
+        [System.String[]]
         # The list of user-assigned identities associated with the resource.
         # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         ${UserAssignedIdentity},
@@ -144,9 +143,21 @@ function New-AzAppConfigurationStore {
     )
 
     process {
-        $PSBoundParameters.Add('KeyVaultPropertyIdentityClientId', $null)
-        $PSBoundParameters.Add('KeyVaultPropertyKeyIdentifier', $null)
-        $PSBoundParameters.Add('PublicNetworkAccess', $null)
+        # If user pass UserAssignedIdentity, transform it to a hashtable
+        if ($PSBoundParameters.Remove('UserAssignedIdentity')) {
+            $identityInHashtable = @{}
+            foreach ($identity in $UserAssignedIdentity) {
+                $identityInHashtable[$identity] = @{}
+            }
+            $PSBoundParameters.Add('UserAssignedIdentity', $identityInHashtable)
+        }
+
+        # IdentityType is an enum. But one of the options contains an "," causing PowerShell fail to parse it
+        # So I changed the interface to use a non-comma version, but transform it back when passing to internal cmdlets
+        if ($IdentityType -eq "SystemAssignedAndUserAssigned") {
+            $PSBoundParameters['IdentityType'] = 'SystemAssigned, UserAssigned'
+        }
+
         Az.AppConfiguration.internal\New-AzAppConfigurationStore @PSBoundParameters
     }
 }

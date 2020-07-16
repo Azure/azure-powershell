@@ -107,4 +107,13 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
+
+  # rename enum
+  - where:
+      parameter-name: IdentityType
+    set:
+      completer:
+        name: Managed Identity Type Completer
+        description: Gets the list of type of managed identities available for creating/updating app configuration store.
+        script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
 ```
