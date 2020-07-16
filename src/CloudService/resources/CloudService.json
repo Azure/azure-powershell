@@ -1,0 +1,1943 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CloudServiceManagementClient",
+    "description": "The Cloud Service Management Client.",
+    "version": "2020-06-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}": {
+      "delete": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Deletes a role instance from a cloud service.",
+        "operationId": "CloudServiceRoleInstances_Delete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "get": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Gets a role instance from a cloud service.",
+        "operationId": "CloudServiceRoleInstances_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "description": "The expand expression to apply to the operation.",
+            "type": "string",
+            "enum": [
+              "instanceView"
+            ],
+            "x-ms-enum": {
+              "name": "InstanceViewTypes",
+              "modelAsString": false
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleInstance"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/instanceView": {
+      "get": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Gets the status of a role instance from a cloud service.",
+        "operationId": "CloudServiceRoleInstances_GetInstanceView",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleInstanceInstanceView"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances": {
+      "get": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Gets a list of all role instances in a cloud service.",
+        "operationId": "CloudServiceRoleInstances_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "description": "The expand expression to apply to the operation.",
+            "type": "string",
+            "enum": [
+              "instanceView"
+            ],
+            "x-ms-enum": {
+              "name": "InstanceViewTypes",
+              "modelAsString": false
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleInstanceListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart": {
+      "post": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Restarts a role instance in a cloud service.",
+        "operationId": "CloudServiceRoleInstances_Restart",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage": {
+      "post": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Reimages a specific role instance in a cloud service.",
+        "operationId": "CloudServiceRoleInstances_Reimage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild": {
+      "post": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Allows you to rebuild all the disks in a cloud service.",
+        "operationId": "CloudServiceRoleInstances_Rebuild",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}": {
+      "put": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Create or update a cloud service.",
+        "operationId": "CloudServices_CreateOrUpdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "The cloud service object",
+            "schema": {
+              "$ref": "#/definitions/CloudService"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudService"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/CloudService"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Update a cloud service.",
+        "operationId": "CloudServices_Update",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "The cloud service object",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudService"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Deletes a cloud service.",
+        "operationId": "CloudServices_Delete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Display information about a cloud service.",
+        "operationId": "CloudServices_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudService"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/instanceView": {
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Gets the status of a cloud service.",
+        "operationId": "CloudServices_GetInstanceView",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceInstanceView"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/cloudServices": {
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Gets a list of all cloud services in the subscription, regardless of the associated resource group. Use nextLink property in the response to get the next page of Cloud Services. Do this till nextLink is null to fetch all the Cloud Services.",
+        "operationId": "CloudServices_ListAll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices": {
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Gets a list of all cloud services under a resource group.",
+        "operationId": "CloudServices_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/start": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Starts the cloud service.",
+        "operationId": "CloudServices_Start",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/poweroff": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Power off the cloud service. Note that resources are still attached and you are getting charged for the resources.",
+        "operationId": "CloudServices_PowerOff",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/restart": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Restarts one or more role instances in a cloud service.",
+        "operationId": "CloudServices_Restart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "List of role instance names",
+            "schema": {
+              "$ref": "#/definitions/RoleInstances"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/reimage": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Reimages one or more role instances in a cloud service.",
+        "operationId": "CloudServices_Reimage",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "List of role instance names",
+            "schema": {
+              "$ref": "#/definitions/RoleInstances"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/rebuild": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Rebuilds all the disks in the role instances in a cloud service.",
+        "operationId": "CloudServices_Rebuild",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "List of role instance names",
+            "schema": {
+              "$ref": "#/definitions/RoleInstances"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/delete": {
+      "post": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Deletes role instances in a cloud service.",
+        "operationId": "CloudServices_DeleteInstances",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "List of role instance names",
+            "schema": {
+              "$ref": "#/definitions/RoleInstances"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}": {
+      "put": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Updates the role instances in the specified update domain.",
+        "operationId": "CloudServices_UpdateDomain",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "updateDomain",
+            "description": "Specifies the update domain",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "description": "The update domain object",
+            "schema": {
+              "$ref": "#/definitions/UpdateDomain"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Gets the update domain of a cloud service.",
+        "operationId": "CloudServices_GetUpdateDomain",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "updateDomain",
+            "description": "Specifies the update domain",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpdateDomain"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains": {
+      "get": {
+        "tags": [
+          "CloudServices"
+        ],
+        "description": "Gets a list of all update domains in a cloud service.",
+        "operationId": "CloudServices_ListUpdateDomains",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "description": "Name of the Resource Group",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "description": "Name of the cloud service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpdateDomainListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiErrorBase": {
+      "description": "Api error base.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The error code.",
+          "type": "string"
+        },
+        "message": {
+          "description": "The error message.",
+          "type": "string"
+        },
+        "target": {
+          "description": "The target of the particular error.",
+          "type": "string"
+        }
+      }
+    },
+    "InnerError": {
+      "description": "Inner error details.",
+      "type": "object",
+      "properties": {
+        "exceptiontype": {
+          "description": "The exception type.",
+          "type": "string"
+        },
+        "errordetail": {
+          "description": "The internal error message or exception dump.",
+          "type": "string"
+        }
+      }
+    },
+    "ApiError": {
+      "description": "Api error.",
+      "type": "object",
+      "properties": {
+        "details": {
+          "description": "The Api error details",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiErrorBase"
+          }
+        },
+        "innererror": {
+          "$ref": "#/definitions/InnerError",
+          "description": "The Api inner error"
+        },
+        "code": {
+          "description": "The error code.",
+          "type": "string"
+        },
+        "message": {
+          "description": "The error message.",
+          "type": "string"
+        },
+        "target": {
+          "description": "The target of the particular error.",
+          "type": "string"
+        }
+      }
+    },
+    "CloudError": {
+      "description": "An error response from the Compute service.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ApiError"
+        }
+      },
+      "x-ms-external": true
+    },
+    "InstanceSku": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string"
+        }
+      }
+    },
+    "SubResource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Resource Id",
+          "type": "string"
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "RoleInstanceNetworkProfile": {
+      "type": "object",
+      "properties": {
+        "networkInterfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubResource"
+          }
+        }
+      }
+    },
+    "InstanceViewStatus": {
+      "description": "Instance view status.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The status code.",
+          "type": "string",
+          "readOnly": true
+        },
+        "displayStatus": {
+          "description": "The short localizable label for the status.",
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "description": "The detailed status message, including for alerts and error messages.",
+          "type": "string",
+          "readOnly": true
+        },
+        "time": {
+          "format": "date-time",
+          "description": "The time of the status.",
+          "type": "string",
+          "readOnly": true
+        },
+        "level": {
+          "description": "The level code.",
+          "enum": [
+            "Info",
+            "Warning",
+            "Error"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "StatusLevelTypes",
+            "modelAsString": false
+          }
+        }
+      }
+    },
+    "RoleInstanceInstanceView": {
+      "type": "object",
+      "properties": {
+        "platformUpdateDomain": {
+          "type": "string",
+          "readOnly": true
+        },
+        "platformFaultDomain": {
+          "type": "string",
+          "readOnly": true
+        },
+        "statuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InstanceViewStatus"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "RoleInstanceProperties": {
+      "type": "object",
+      "properties": {
+        "networkProfile": {
+          "$ref": "#/definitions/RoleInstanceNetworkProfile"
+        },
+        "instanceView": {
+          "$ref": "#/definitions/RoleInstanceInstanceView"
+        }
+      }
+    },
+    "RoleInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "sku": {
+          "$ref": "#/definitions/InstanceSku"
+        },
+        "properties": {
+          "$ref": "#/definitions/RoleInstanceProperties"
+        }
+      }
+    },
+    "RoleInstanceListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleInstance"
+          }
+        },
+        "nextLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "CloudServiceUpgradeMode": {
+      "enum": [
+        "Auto",
+        "Manual",
+        "Simultaneous"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CloudServiceUpgradeMode",
+        "modelAsString": true
+      }
+    },
+    "CloudServiceRoleSku": {
+      "description": "Describes the role sku in the cloud service.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The sku name.",
+          "type": "string"
+        },
+        "tier": {
+          "type": "string"
+        },
+        "capacity": {
+          "format": "int64",
+          "description": "Specifies the number of role instances in the cloud service.",
+          "type": "integer"
+        }
+      }
+    },
+    "CloudServiceRoleProperties": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sku": {
+          "$ref": "#/definitions/CloudServiceRoleSku"
+        }
+      }
+    },
+    "CloudServiceRoleProfile": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudServiceRoleProperties"
+          }
+        }
+      }
+    },
+    "CloudServiceVaultCertificate": {
+      "description": "Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.",
+      "type": "object",
+      "properties": {
+        "certificateUrl": {
+          "description": "This is the URL of a certificate that has been uploaded to Key Vault as a secret.",
+          "type": "string"
+        }
+      }
+    },
+    "CloudServiceVaultSecretGroup": {
+      "description": "Describes a set of certificates which are all in the same Key Vault.",
+      "type": "object",
+      "properties": {
+        "sourceVault": {
+          "$ref": "#/definitions/SubResource",
+          "description": "The relative URL of the Key Vault containing all of the certificates in VaultCertificates."
+        },
+        "vaultCertificates": {
+          "description": "The list of key vault references in SourceVault which contain certificates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudServiceVaultCertificate"
+          }
+        }
+      }
+    },
+    "CloudServiceOsProfile": {
+      "type": "object",
+      "properties": {
+        "secrets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudServiceVaultSecretGroup"
+          }
+        }
+      }
+    },
+    "LoadBalancerFrontendIPConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "publicIPAddress": {
+          "$ref": "#/definitions/SubResource"
+        }
+      }
+    },
+    "LoadBalancerFrontendIPConfiguration": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/LoadBalancerFrontendIPConfigurationProperties"
+        }
+      }
+    },
+    "LoadBalancerConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "frontendIPConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoadBalancerFrontendIPConfiguration"
+          }
+        }
+      }
+    },
+    "LoadBalancerConfiguration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/LoadBalancerConfigurationProperties"
+        }
+      }
+    },
+    "CloudServiceNetworkProfile": {
+      "description": "Network Profile for the cloud service.",
+      "type": "object",
+      "properties": {
+        "loadBalancerConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoadBalancerConfiguration"
+          }
+        },
+        "swappableCloudService": {
+          "$ref": "#/definitions/SubResource"
+        }
+      }
+    },
+    "CloudServiceExtensionProperties": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Public settings for the extension",
+          "type": "object"
+        },
+        "protectedSettings": {
+          "description": "Protected settings for the extension which are encrypted before sent to the VM",
+          "type": "object"
+        },
+        "provisioningState": {
+          "description": "The provisioning state, which only appears in the response.",
+          "type": "string",
+          "readOnly": true
+        },
+        "enableAutomaticUpgrade": {
+          "description": "Indicates this extension can be auto upgraded by automatic platform upgrades",
+          "type": "boolean"
+        },
+        "rolesAppliedTo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "typeHandlerVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "Extension": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/CloudServiceExtensionProperties"
+        }
+      }
+    },
+    "CloudServiceExtensionProfile": {
+      "type": "object",
+      "properties": {
+        "extensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          }
+        }
+      }
+    },
+    "CloudServiceProperties": {
+      "description": "Cloud service properties",
+      "type": "object",
+      "properties": {
+        "packageUrl": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "string"
+        },
+        "configurationUrl": {
+          "type": "string"
+        },
+        "startCloudService": {
+          "type": "boolean"
+        },
+        "upgradeMode": {
+          "$ref": "#/definitions/CloudServiceUpgradeMode"
+        },
+        "roleProfile": {
+          "$ref": "#/definitions/CloudServiceRoleProfile"
+        },
+        "osProfile": {
+          "$ref": "#/definitions/CloudServiceOsProfile"
+        },
+        "networkProfile": {
+          "$ref": "#/definitions/CloudServiceNetworkProfile"
+        },
+        "extensionProfile": {
+          "$ref": "#/definitions/CloudServiceExtensionProfile"
+        },
+        "uniqueId": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "CloudService": {
+      "description": "Cloud service model",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "type": "string"
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "$ref": "#/definitions/CloudServiceProperties"
+        }
+      },
+      "x-ms-azure-resource": true,
+      "required": [
+        "location"
+      ]
+    },
+    "CloudServiceUpdate": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "description": "Resource tags",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "StatusCodeCount": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "From InstanceViewStatus.code",
+          "type": "string",
+          "readOnly": true
+        },
+        "count": {
+          "format": "int32",
+          "description": "Number of instances having this status code",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "InstanceViewStatusesSummary": {
+      "type": "object",
+      "properties": {
+        "statusesSummary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StatusCodeCount"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "RoleInstanceExtensionSummary": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "statusesSummary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StatusCodeCount"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "CloudServiceInstanceView": {
+      "description": "InstanceView of VMScaleSet as a whole",
+      "type": "object",
+      "properties": {
+        "roleInstance": {
+          "$ref": "#/definitions/InstanceViewStatusesSummary"
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleInstanceExtensionSummary"
+          },
+          "readOnly": true
+        },
+        "statuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InstanceViewStatus"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "CloudServiceListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudService"
+          }
+        },
+        "nextLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "RoleInstances": {
+      "type": "object",
+      "properties": {
+        "roleInstances": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdateDomain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "UpdateDomainListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpdateDomain"
+          }
+        },
+        "nextLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      },
+      "description": "Azure Active Directory OAuth2 Flow"
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "Client Api Version."
+    }
+  }
+}
