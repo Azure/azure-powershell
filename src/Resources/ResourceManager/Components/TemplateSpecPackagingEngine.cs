@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     propsObj["templateLink"]?.Type == JTokenType.Object)
                 .Select(obj => { return obj["properties"]["templateLink"]; })
                 .Where(templateLinkObj =>
-                    templateLinkObj["relativePath"].Type == JTokenType.String && // Must have relative path
+                    templateLinkObj["relativePath"]?.Type == JTokenType.String && // Must have relative path
                     templateLinkObj.SelectToken("uri") == null) // Exclude URI relative paths 
                 .Cast<JObject>()
                 .ToArray();
