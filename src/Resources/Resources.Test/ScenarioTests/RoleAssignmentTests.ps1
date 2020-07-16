@@ -728,7 +728,7 @@ function Test-RaCreatedBySP
 Create role assignment with v1 conditions
 #>
 function Test-RaWithV1Conditions{
-    #Assert-True {$false} "this is not implemented yet"
+
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
@@ -738,27 +738,17 @@ function Test-RaWithV1Conditions{
     $ConditionVersion = "1.0"
     
     #When
-    $data = New-AzRoleAssignmentWithId `
+    $data = {New-AzRoleAssignmentWithId `
     -ObjectId $PrincipalId `
     -Scope $Scope `
     -RoleDefinitionId $RoleDefinitionId `
     -Description $Description `
     -Condition $Condition `
     -ConditionVersion $ConditionVersion `
-    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d1
-
-    #Then
-    Assert-NotNull $data "The role assignment was not created succesfully"
-    Assert-AreEqual $RoleDefinitionId $data.RoleDefinitionId "Assertion failed because expected RoleDefinitionId '$RoleDefinitionId' does not match actual '$data.RoleDefinitionId'"
-    Assert-AreEqual $PrincipalId $data.ObjectId "Assertion failed because expected PrincipalId '$PrincipalId' does not match actual '$data.ObjectId'"
-    Assert-AreEqual $Scope $data.Scope "Assertion failed because expected Scope '$Scope' does not match actual '$data.Scope'"
-    Assert-AreEqual $Description $data.Description "Assertion failed because expected Description '$Description' does not match actual '$data.Description'"
-    Assert-AreEqual $Condition $data.Condition "Assertion failed because expected Condition '$Condition' does not match actual '$data.Condition'"
-    Assert-AreEqual $ConditionVersion $data.ConditionVersion "Assertion failed because expected ConditionVersion '$ConditionVersion' does not match actual '$data.ConditionVersion'"
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d1}
     
-    #Cleanup
-    $data = Remove-AzRoleAssignment -InputObject $data
-    Assert-Null $data "Role assignment was not deleted properly"
+    #Then
+    Assert-Throws $data "Argument -ConditionVersion must be greater or equal than 2.0"
 }
 
 <#
@@ -766,7 +756,6 @@ function Test-RaWithV1Conditions{
 Create role assignment with v2 conditions
 #>
 function Test-RaWithV2Conditions{
-    #Assert-True {$false} "this is not implemented yet"
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
@@ -797,4 +786,72 @@ function Test-RaWithV2Conditions{
     #Cleanup
     $data = Remove-AzRoleAssignment -InputObject $data
     Assert-Null $data "Role assignment was not deleted properly"
+}
+
+<#
+.SYNOPSIS
+Create role assignment with v2 conditions
+#>
+function Test-RaWithV2ConditionsOnly{
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
+    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    #$RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
+    #$PrincipalId = "e95fa608-3d49-4438-9f60-35d85d84ca16"
+    #$Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $Description = "This test should not fail"
+    $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
+    $ConditionVersion = "2.0"
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -Description $Description `
+    -Condition $Condition `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
+
+    #Then
+    Assert-NotNull $data "The role assignment was not created succesfully"
+    Assert-AreEqual $RoleDefinitionId $data.RoleDefinitionId "Assertion failed because expected RoleDefinitionId '$RoleDefinitionId' does not match actual '$data.RoleDefinitionId'"
+    Assert-AreEqual $PrincipalId $data.ObjectId "Assertion failed because expected PrincipalId '$PrincipalId' does not match actual '$data.ObjectId'"
+    Assert-AreEqual $Scope $data.Scope "Assertion failed because expected Scope '$Scope' does not match actual '$data.Scope'"
+    Assert-AreEqual $Description $data.Description "Assertion failed because expected Description '$Description' does not match actual '$data.Description'"
+    Assert-AreEqual $Condition $data.Condition "Assertion failed because expected Condition '$Condition' does not match actual '$data.Condition'"
+    Assert-AreEqual $ConditionVersion $data.ConditionVersion "Assertion failed because expected ConditionVersion '$ConditionVersion' does not match actual '$data.ConditionVersion'"
+
+    #Cleanup
+    $data = Remove-AzRoleAssignment -InputObject $data
+    Assert-Null $data "Role assignment was not deleted properly"
+}
+
+<#
+.SYNOPSIS
+Create role assignment with v2 conditions
+#>
+function Test-RaWithV2ConditionVersionOnly{
+    # IMPORTANT this cmdlet gets interrupted before any network call in this scenario, no session record is needed
+    #Given
+    #$RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    #$PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
+    #$Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
+    $PrincipalId = "e95fa608-3d49-4438-9f60-35d85d84ca16"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $Description = "This test should not fail"
+    $ConditionVersion = "2.0"
+
+    #When
+    $data = {New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -Description $Description `
+    -ConditionVersion $ConditionVersion `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2}
+
+    #Then
+    Assert-Throws $data "If -ConditionVersion is set -Condition can not be empty."
 }

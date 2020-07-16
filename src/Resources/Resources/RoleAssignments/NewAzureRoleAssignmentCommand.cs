@@ -226,18 +226,20 @@ namespace Microsoft.Azure.Commands.Resources
                 if (!string.IsNullOrEmpty(Condition))
                 {
                     ConditionVersion = "2.0";
-                    WriteDebug("-Condition was set but -ConditionVersion was not, defaulting to lowest publicly available version '2.0'");
+                    WriteDebug("-Condition was set but -ConditionVersion was not, defaulting to lowest publicly available version: '2.0'");
                 }
                 else
                 {
-                    throw new ArgumentException("If -ConditionVersion is set -Condition can not be empty.");
+                    WriteExceptionError(new ArgumentException("If -ConditionVersion is set -Condition can not be empty."));
+                    return;
                 }
 
             }
             double _conditionVersion = double.Parse(ConditionVersion);
             if (_conditionVersion < 2.0)
             {
-                throw new ArgumentOutOfRangeException("Argument -ConditionVersion must be greater or equal than 2.0");
+                WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
+                return;
             }
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
