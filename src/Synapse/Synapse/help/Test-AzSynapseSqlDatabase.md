@@ -1,40 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/test-azsynapsesqlpool
+online version:
 schema: 2.0.0
 ---
 
-# Test-AzSynapseSqlPool
+# Test-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Checks for the existence of a Synapse Analytics SQL pool.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### TestByNameParameterSet (Default)
 ```
-Test-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
+Test-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestByParentObjectParameterSet
 ```
-Test-AzSynapseSqlPool -Name <String> [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace>
+Test-AzSynapseSqlDatabase -Name <String> -WorkspaceObject <PSSynapseWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzSynapseSqlPool** cmdlet checks for the existence of a Synapse Analytics SQL pool.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> {{ Add example code here }}
 ```
 
-This command checks the existence of the specified SQL pool.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -42,7 +42,7 @@ This command checks the existence of the specified SQL pool.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -54,10 +54,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Synapse SQL pool.
+Name of Synapse SQL Database.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,23 +72,8 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: TestByNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Version of Synapse SQL pool. For example, 2 or 3.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +87,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: TestByNameParameterSet
 Aliases:
 
@@ -117,7 +102,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Type: PSSynapseWorkspace
 Parameter Sets: TestByParentObjectParameterSet
 Aliases:
 
@@ -137,7 +122,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

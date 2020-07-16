@@ -8,9 +8,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool, DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlDatabase, DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureSynapseSqlPool : SynapseManagementCmdletBase
+    public class RemoveAzureSynapseSqlDatabase : SynapseManagementCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByParentObjectParameterSet = "DeleteByParentObjectParameterSet";
@@ -27,18 +27,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, HelpMessage = HelpMessages.SqlDatabaseName)]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, HelpMessage = HelpMessages.SqlDatabaseName)]
         [ResourceNameCompleter(
-            ResourceTypes.SqlPool,
+            ResourceTypes.SqlDatabase,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
-        [ValidateNotNullOrEmpty]
-        public int Version { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
@@ -46,12 +42,12 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.SqlPoolObject)]
+            Mandatory = true, HelpMessage = HelpMessages.SqlDatabaseObject)]
         [ValidateNotNull]
-        public PSSynapseSqlPool InputObject { get; set; }
+        public PSSynapseSqlDatabase InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteByResourceIdParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.SqlPoolResourceId)]
+            Mandatory = true, HelpMessage = HelpMessages.SqlDatabaseResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -92,16 +88,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSynapseSqlDatabase, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                if (this.Version == 3)
-                {
-                    this.SynapseAnalyticsClient.DeleteSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                }
-                else
-                {
-                    this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                }
+                this.SynapseAnalyticsClient.DeleteSqlDatabase(this.ResourceGroupName, this.WorkspaceName, this.Name);
 
                 if (this.PassThru.IsPresent)
                 {
