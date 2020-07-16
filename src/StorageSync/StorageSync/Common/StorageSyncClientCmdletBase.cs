@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets or sets the storage sync client wrapper.
         /// </summary>
         /// <value>The storage sync client wrapper.</value>
-        IStorageSyncClientWrapper StorageSyncClientWrapper { get; set;}
+        IStorageSyncClientWrapper StorageSyncClientWrapper { get; set; }
     }
 
     /// <summary>
@@ -258,5 +259,60 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             WriteObject(resources.Select(new ServerEndpointConverter().Convert), true);
         }
+
+        /// <summary>
+        /// This function will transform string to initial download policy, or else throw exception.
+        /// </summary>
+        /// <param name="initialDownloadPolicy">Initial download policy parameter</param>
+        /// <param name="defaultValue">Default Value</param>
+        /// <returns>SDK model value</returns>
+        protected string GetInitialDownloadPolicy(string initialDownloadPolicy, string defaultValue = null)
+        {
+            if (StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles.Equals(initialDownloadPolicy, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles;
+            }
+            else if (StorageSyncModels.InitialDownloadPolicy.NamespaceOnly.Equals(initialDownloadPolicy, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return StorageSyncModels.InitialDownloadPolicy.NamespaceOnly;
+            }
+            else if (StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles.Equals(initialDownloadPolicy, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles;
+            }
+
+            if (defaultValue == null)
+            {
+                throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
+            }
+
+            return GetInitialDownloadPolicy(defaultValue, defaultValue: null);
+        }
+
+        /// <summary>
+        /// This function will transform string to local cache mode, or else throw exception.
+        /// </summary>
+        /// <param name="localCacheMode">Local cache mode parameter</param>
+        /// <param name="defaultValue">Default Value</param>
+        /// <returns>SDK model value</returns>
+        protected string GetLocalCacheMode(string localCacheMode, string defaultValue = null)
+        {
+            if (StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles.Equals(localCacheMode, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles;
+            }
+            else if (StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles.Equals(localCacheMode, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles;
+            }
+
+            if (defaultValue == null)
+            {
+                throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
+            }
+
+            return GetLocalCacheMode(defaultValue, defaultValue: null);
+        }
+
     }
 }

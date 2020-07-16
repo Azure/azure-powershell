@@ -169,11 +169,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.LocalCacheModeParameter)]
-        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
-        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("DownloadNewAndModifiedFiles",
-            "UpdateLocallyCachedFiles",
+        [ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+            StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
 
@@ -260,13 +257,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
+                string localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
+                    localCacheMode = GetLocalCacheMode(LocalCacheMode, StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles);
                     updateParameters.LocalCacheMode = localCacheMode;
                 }
 

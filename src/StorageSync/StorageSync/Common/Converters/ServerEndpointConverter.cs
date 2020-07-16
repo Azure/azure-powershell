@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.OfflineDataTransferStorageAccountResourceId,
                 source.OfflineDataTransferStorageAccountTenantId,
                 source.OfflineDataTransferShareName,
-                initialDownloadPolicy:source.InitialDownloadPolicy != null ? (StorageSyncModels.InitialDownloadPolicy)System.Enum.Parse(typeof(StorageSyncModels.InitialDownloadPolicy),source.InitialDownloadPolicy,ignoreCase:true): default(StorageSyncModels.InitialDownloadPolicy?),
-                localCacheMode: source.LocalCacheMode != null ? (StorageSyncModels.LocalCacheMode)System.Enum.Parse(typeof(StorageSyncModels.LocalCacheMode), source.LocalCacheMode, ignoreCase: true) : default(StorageSyncModels.LocalCacheMode?));
+                initialDownloadPolicy: source.InitialDownloadPolicy,
+                localCacheMode: source.LocalCacheMode);
         }
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 OfflineDataTransferShareName = source.OfflineDataTransferShareName,
                 OfflineDataTransferStorageAccountResourceId = source.OfflineDataTransferStorageAccountResourceId,
                 OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId,
-                InitialDownloadPolicy= source.InitialDownloadPolicy.HasValue ? source.InitialDownloadPolicy.Value.ToString() : null,
-                LocalCacheMode=source.LocalCacheMode.HasValue ? source.LocalCacheMode.Value.ToString() : null
+                InitialDownloadPolicy= source.InitialDownloadPolicy,
+                LocalCacheMode=source.LocalCacheMode
             };
         }
     }

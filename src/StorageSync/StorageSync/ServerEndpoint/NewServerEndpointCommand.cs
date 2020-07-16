@@ -200,14 +200,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.InitialDownloadPolicyParameter)]
-        // #TODO : Update swagger to make them string constants
-        //[ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("AvoidTieredFiles",
-            "NamespaceOnly",
-            "NamespaceThenModifiedFiles",
+        [ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
             IgnoreCase = true)]
         public string InitialDownloadPolicy { get; set; }
 
@@ -219,11 +214,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.LocalCacheModeParameter)]
-        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
-        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("DownloadNewAndModifiedFiles",
-            "UpdateLocallyCachedFiles",
+        [ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+            StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
 
@@ -277,23 +269,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
-                StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;
+                string initialDownloadPolicy;
                 if (this.IsParameterBound(c => c.InitialDownloadPolicy))
                 {
-                    if (!Enum.TryParse(InitialDownloadPolicy, true, out initialDownloadPolicy))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
-                    }
+                    initialDownloadPolicy = GetInitialDownloadPolicy(InitialDownloadPolicy);
+
                     createParameters.InitialDownloadPolicy = initialDownloadPolicy;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
+                string localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
+                    localCacheMode = GetLocalCacheMode(LocalCacheMode, StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles);
                     createParameters.LocalCacheMode = localCacheMode;
                 }
 
@@ -315,5 +302,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
             });
         }
+
     }
 }
