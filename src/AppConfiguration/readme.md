@@ -116,4 +116,9 @@ directive:
         name: Managed Identity Type Completer
         description: Gets the list of type of managed identities available for creating/updating app configuration store.
         script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
+
+  # Remove `[-SkipToken <String>]` because we hide pageable implementation.
+  - from: swagger-document
+    where: $.paths.*.*
+    transform: $.parameters = $.parameters.filter(p => p.name !== '$skipToken')
 ```

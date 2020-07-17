@@ -14,8 +14,7 @@ Gets the properties of the specified configuration store.
 
 ### List (Default)
 ```
-Get-AzAppConfigurationStore [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAppConfigurationStore [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,7 +31,7 @@ Get-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DefaultPr
 
 ### List1
 ```
-Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -116,22 +115,6 @@ Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-A skip token is used to continue retrieving items after an operation returns a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
-
-```yaml
-Type: System.String
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
