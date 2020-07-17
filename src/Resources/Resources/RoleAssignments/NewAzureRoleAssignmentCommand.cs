@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Resources
                 }
 
             }
-            double _conditionVersion = double.Parse(ConditionVersion);
+            double _conditionVersion = double.Parse((ConditionVersion ?? "2.0"));
             if (_conditionVersion < 2.0)
             {
                 WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
