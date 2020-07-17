@@ -254,6 +254,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The max price of the billing of a low priority virtual machine.")]
         public double MaxPrice { get; set; }
 
+        [Parameter()]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -388,7 +393,8 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
                 else
@@ -412,7 +418,8 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
             }
@@ -525,7 +532,7 @@ namespace Microsoft.Azure.Commands.Compute
         public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
+            
             if (this.VM.DiagnosticsProfile == null)
             {
                 var storageUri = GetOrCreateStorageAccountForBootDiagnostics();

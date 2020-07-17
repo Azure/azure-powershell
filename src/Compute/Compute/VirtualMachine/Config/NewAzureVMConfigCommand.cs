@@ -118,6 +118,11 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -189,6 +194,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.MaxPrice))
             {
                 vm.BillingProfile = new BillingProfile(this.MaxPrice);
+            }
+            
+            if (this.EncryptionAtHost.IsPresent)
+            {
+                vm.SecurityProfile = new SecurityProfile(this.EncryptionAtHost);
             }
 
             WriteObject(vm);

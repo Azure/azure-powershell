@@ -92,7 +92,10 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The max price of the billing of a low priority virtual machine")]
         public double MaxPrice { get; set; }
-
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
         [Parameter(
             Mandatory = false)]
         [AllowEmptyString]
@@ -209,6 +212,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.BillingProfile = new BillingProfile();
                         }
                         parameters.BillingProfile.MaxPrice = this.MaxPrice;
+                    }
+
+                    if (EncryptionAtHost.IsPresent)
+                    {
+                        if (parameters.SecurityProfile == null)
+                        {
+                            parameters.SecurityProfile = new SecurityProfile();
+                        }
+                        parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
                     }
 
                     if (NoWait.IsPresent)
