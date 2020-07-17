@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class Utils
+    public class AddressTypeUtils
     {
         public static bool IsIpv4(string addressType)
         {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             return false;
         }
 
-        public static bool IsAll(string addressType)
+        public static bool IsBothIpv4AndIpv6(string addressType)
         {
             if (string.Equals(addressType, "All", StringComparison.OrdinalIgnoreCase))
             {
