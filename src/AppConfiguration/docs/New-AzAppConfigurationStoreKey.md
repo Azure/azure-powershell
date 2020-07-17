@@ -14,13 +14,13 @@ Regenerates an access key for the specified configuration store.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Id <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -Id <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> [-Id <String>]
+New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> -Id <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -56,6 +56,10 @@ input-file:
 module-version: 0.2.0
 title: AppConfiguration
 
+# If there are post APIs for some kinds of actions in the RP, you may need to
+# uncomment following line to support viaIdentity for these post APIs
+identity-correction-for-post: true
+
 directive:
   # Remove the unexpanded parameter set
   - where:
@@ -125,4 +129,8 @@ directive:
   - from: swagger-document
     where: $.paths.*.*
     transform: $.parameters = $.parameters.filter(p => p.name !== '$skipToken')
+
+  - from: swagger-document
+    where: $.definitions.RegenerateKeyParameters
+    transform: $.required = ['id']
 ```
