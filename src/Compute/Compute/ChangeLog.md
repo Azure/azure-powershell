@@ -19,7 +19,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version
+* Added '-Location' as optional positional parameter to Get-AzComputeResourceSku cmdlet
 
 ## Version 4.2.0
 * Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
