@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMaxContextPopulationWithSpecifiedValue()
         {
             TestRunner.RunTestScript("Test-MaxContextPopulationWithSpecifiedValue");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMaxContextPopulationWithDefaultValue()
         {
             TestRunner.RunTestScript("Test-MaxContextPopulationWithDefaultValue");
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMaxContextPopulationGetAll()
         {
             TestRunner.RunTestScript("Test-MaxContextPopulationGetAll");
