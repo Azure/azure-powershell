@@ -70,17 +70,17 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connection != null)
             {
-                if (Utils.IsIpv4(this.AddressPrefixType) || string.IsNullOrWhiteSpace(this.AddressPrefixType))
+                if (AddressTypeUtils.IsIpv4(this.AddressPrefixType) || string.IsNullOrWhiteSpace(this.AddressPrefixType))
                 {
                     connection.AddressPrefix = null;
                 }
 
-                else if (Utils.IsIpv6(this.AddressPrefixType))
+                else if (AddressTypeUtils.IsIpv6(this.AddressPrefixType))
                 {
                     connection.IPv6CircuitConnectionConfig = null;
                 }
 
-                else if (Utils.IsAll(this.AddressPrefixType))
+                else if (AddressTypeUtils.IsIpv4OrIpv6(this.AddressPrefixType))
                 {
                     peering.Connections.Remove(connection);
                 }
