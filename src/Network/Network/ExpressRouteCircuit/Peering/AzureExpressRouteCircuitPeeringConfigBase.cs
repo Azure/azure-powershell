@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
 
@@ -129,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (this.MicrosoftConfigAdvertisedPublicPrefixes != null && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
             {
-                if (Utils.IsIpv6(this.PeerAddressType))
+                if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
