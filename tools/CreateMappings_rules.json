@@ -47,7 +47,7 @@
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
     { "regex": "Synapse", "alias": "Synapse Analytics" },
-	
+
     { "regex": "Relay", "alias": "Relay" },
 
     { "regex": "ServiceBus", "alias": "Service Bus" },
@@ -58,9 +58,11 @@
 
     { "regex": "KeyVault", "alias": "Key Vault" },
 
-    { "regex": "Iot", "alias": "IoT" },
+    { "regex": "IotCentral", "alias": "IotCentral" },
 
-	  { "regex": "DeviceProvisioningServices", "alias": "DPS" },
+    { "regex": "IotHub", "alias": "IotHub" },
+
+	{ "regex": "DeviceProvisioningServices", "alias": "DPS" },
 
     { "regex": "Batch", "alias": "Batch" },
 
