@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.2
+## Version 0.2.0
 * Added hash table for region.
 
 ## Version 0.1.1
