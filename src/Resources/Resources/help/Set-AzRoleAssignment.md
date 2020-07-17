@@ -1,0 +1,185 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+Module Name: Az.Resources
+online version:
+schema: 2.0.0
+---
+
+# Set-AzRoleAssignment
+
+## SYNOPSIS
+{{ Fill in the Synopsis }}
+
+## SYNTAX
+
+### RoleAssignmentIdParameterSet (Default)
+```
+Set-AzRoleAssignment -RoleAssignmentId <String> [-Description <String>] [-Condition <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ScopeWithObjectIdParameterSet
+```
+Set-AzRoleAssignment -Scope <String> -ObjectId <String> [-Description <String>] [-Condition <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### InputFileParameterSet
+```
+Set-AzRoleAssignment -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### RoleAssignmentParameterSet
+```
+Set-AzRoleAssignment -RoleAssignment <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+{{ Fill in the Description }}
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
+
+## PARAMETERS
+
+### -Condition
+Condition of the role assignment to be set
+
+```yaml
+Type: String
+Parameter Sets: RoleAssignmentIdParameterSet, ScopeWithObjectIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Description of the role assignment to be set
+
+```yaml
+Type: String
+Parameter Sets: RoleAssignmentIdParameterSet, ScopeWithObjectIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputFile
+File name containing a single role definition.
+
+```yaml
+Type: String
+Parameter Sets: InputFileParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ObjectId
+ObjectId of the role assignment to be set
+
+```yaml
+Type: String
+Parameter Sets: ScopeWithObjectIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoleAssignment
+Role Assignment object.
+
+```yaml
+Type: PSRoleAssignment
+Parameter Sets: RoleAssignmentParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RoleAssignmentId
+Id of the role assignment to be set
+
+```yaml
+Type: String
+Parameter Sets: RoleAssignmentIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Scope of the role assignment to be set
+
+```yaml
+Type: String
+Parameter Sets: ScopeWithObjectIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+
+## NOTES
+
+## RELATED LINKS
