@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
-            if (Utils.IsIpv6(this.PeerAddressType))
+            if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
             {
                 this.SetIpv6PeeringParameters(peering);
             }
