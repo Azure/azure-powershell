@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System.Management.Automation;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementResourceLocation")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementResourceLocationObject")]
     [OutputType(typeof(PsApiManagementResourceLocation))]
-    public class NewAzureApiManagementResourceLocation : AzureApiManagementCmdletBase
+    public class NewAzureApiManagementResourceLocationObject : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,

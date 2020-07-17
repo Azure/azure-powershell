@@ -24,7 +24,7 @@
 * Added new `Get-AzApiManagementGatewayKey` cmdlet.
 * Added new `New-AzApiManagementGateway` cmdlet.
 * Added new `New-AzApiManagementGatewayHostnameConfiguration` cmdlet.
-* Added new `New-AzApiManagementResourceLocation` cmdlet.
+* Added new `New-AzApiManagementResourceLocationObject` cmdlet.
 * Added new `Remove-AzApiManagementApiFromGateway` cmdlet.
 * Added new `Remove-AzApiManagementGateway` cmdlet.
 * Added new `Remove-AzApiManagementGatewayHostnameConfiguration` cmdlet.

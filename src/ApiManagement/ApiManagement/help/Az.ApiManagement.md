@@ -230,7 +230,7 @@ Creates an API Management product.
 ### [New-AzApiManagementRegion](New-AzApiManagementRegion.md)
 Creates an instance of PsApiManagementRegion.
 
-### [New-AzApiManagementResourceLocation](New-AzApiManagementResourceLocation.md)
+### [New-AzApiManagementResourceLocationObject](New-AzApiManagementResourceLocationObject.md)
 Create a new resource location contract (used in Gateways).
 
 ### [New-AzApiManagementSamplingSetting](New-AzApiManagementSamplingSetting.md)

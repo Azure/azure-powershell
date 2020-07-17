@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementresourcelocation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementresourcelocationobject
 schema: 2.0.0
 ---
 
-# New-AzApiManagementResourceLocation
+# New-AzApiManagementResourceLocationObject
 
 ## SYNOPSIS
 Create a new resource location contract (used in Gateways).
@@ -13,18 +13,18 @@ Create a new resource location contract (used in Gateways).
 ## SYNTAX
 
 ```
-New-AzApiManagementResourceLocation -Name <String> [-City <String>] [-District <String>]
+New-AzApiManagementResourceLocationObject -Name <String> [-City <String>] [-District <String>]
  [-CountryOrRegion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApiManagementResourceLocation** cmdlet create a new resource location contract (used in Gateways).
+The **New-AzApiManagementResourceLocationObject** cmdlet create a new resource location contract (used in Gateways).
 
 ## EXAMPLES
 
 ### Example 1: Create a resource location contract
 ```powershell
-PS C:\>$location = New-AzApiManagementResourceLocation -Name "n1" -City "c1" -District "d1" -CountryOrRegion "r1"
+PS C:\>$location = New-AzApiManagementResourceLocationObject -Name "n1" -City "c1" -District "d1" -CountryOrRegion "r1"
 ```
 
 This command creates a resource location.

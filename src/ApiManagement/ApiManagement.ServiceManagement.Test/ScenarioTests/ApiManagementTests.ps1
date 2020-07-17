@@ -3655,7 +3655,7 @@ function Gateway-CrudTest {
         $hostname = 'contoso.com'
 
         #create
-        $location = New-AzApiManagementResourceLocation -Name $locationName -City $locationCity -District $locationDistrict -CountryOrRegion $locationRegion
+        $location = New-AzApiManagementResourceLocationObject -Name $locationName -City $locationCity -District $locationDistrict -CountryOrRegion $locationRegion
         $gateway = New-AzApiManagementGateway -Context $context -GatewayId $gatewayId -Description $description -LocationData $location 
 
         Assert-NotNull $gateway
@@ -3697,7 +3697,7 @@ function Gateway-CrudTest {
 
         #update location
         $newLocationCity = getAssetName
-        $location = New-AzApiManagementResourceLocation -Name $locationName -City $newLocationCity
+        $location = New-AzApiManagementResourceLocationObject -Name $locationName -City $newLocationCity
         $gateway = Update-AzApiManagementGateway -Context $context -GatewayId $gatewayId -LocationData @location -PassThru
         Assert-NotNull $gateway
         Assert-AreEqual $newDescription $gateway.Description
