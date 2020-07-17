@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -35,6 +36,8 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string WindowsDisableVMAgentWinRmHttpsParamSet = "WindowsDisableVMAgentWinRmHttps";
         protected const string LinuxParamSet = "Linux";
 
+        // BREAKING CHANGE
+        // all the parameters are positional including switch parameters. there are over 10 positional parameters. Needs to be fixed.
         [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
@@ -225,6 +228,25 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public Uri WinRMCertificateUrl { get; set; }
 
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
+        [ValidateNotNullOrEmpty]
+        public string PatchMode { get; set; }
+
         // Linux Parameter Sets
         [Parameter(
             ParameterSetName = LinuxParamSet,
@@ -318,6 +340,16 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         Listeners = listenerList,
                     };
+
+                //seting patchmode
+                if (this.IsParameterBound(c => c.PatchMode))
+                {
+                    if (this.VM.OSProfile.WindowsConfiguration.PatchSettings == null)
+                    {
+                        this.VM.OSProfile.WindowsConfiguration.PatchSettings = new PatchSettings();
+                    }
+                    this.VM.OSProfile.WindowsConfiguration.PatchSettings.PatchMode = this.PatchMode;
+                }
             }
 
             WriteObject(this.VM);
