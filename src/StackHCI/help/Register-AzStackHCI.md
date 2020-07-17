@@ -1,13 +1,14 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.stackhci/register-azstackhci
 schema: 2.0.0
 ---
 
 # Register-AzStackHCI
 
 ## SYNOPSIS
+Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
 
 ## SYNTAX
 
