@@ -13,7 +13,7 @@ Creates a configuration store with the specified parameters.
 ## SYNTAX
 
 ```
-New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -Sku <String>
  [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -152,7 +152,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The SKU name of the configuration store.
 
 ```yaml

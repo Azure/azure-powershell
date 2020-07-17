@@ -99,7 +99,7 @@ function Update-AzAppConfigurationStore {
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
         [System.String]
         # The SKU name of the configuration store.
-        ${SkuName},
+        ${Sku},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]

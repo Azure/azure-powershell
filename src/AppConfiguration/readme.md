@@ -90,6 +90,10 @@ directive:
       parameter-name: KeyVaultPropertyKeyIdentifier
     set:
       parameter-name: EncryptionKeyIdentifier
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
 
   - where:
       subject: ConfigurationStoreKeyValue
