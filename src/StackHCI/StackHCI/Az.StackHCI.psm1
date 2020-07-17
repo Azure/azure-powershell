@@ -11,6 +11,7 @@ $NoClusterError = "Computer {0} is not part of an Azure Stack HCI cluster. Use t
 $CloudResourceDoesNotExist = "The Azure resource with ID {0} doesn't exist. Unregister the cluster using Unregister-AzStackHCI and then try again."
 $RegisteredWithDifferentResourceId = "Azure Stack HCI is already registered with Azure resource ID {0}. To register or change registration, first unregister the cluster using Unregister-AzStackHCI, then try again."
 $RegistrationInfoNotFound = "Additional parameters are required to unregister. Run 'Get-Help Unregister-AzStackHCI -Full' for more information."
+$RegionNotSupported = "Azure Stack HCI is not yet available in region {0}. Please choose one of these regions: {1}."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -61,7 +62,14 @@ $PortalHCIResourceUrl = '/#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/pr
 $ClusterMetadataPermission = "AzureStackHCI.Census.Sync"
 $ClusterUsagePermission = "AzureStackHCI.Billing.Sync"
 
-$ServiceEndpointAzureCloud = "https://eus-azurestackhci-usage.azurewebsites.net"
+$ServiceEndpointAzureCloud = [string]::Empty
+
+[hashtable] $ServiceEndpointsAzureCloud = @{
+        'eastus' = 'https://eus-azurestackhci-usage.azurewebsites.net';
+        'westeurope' = 'https://weu-azurestackhci-usage.azurewebsites.net';
+        'eastus2euap' = 'https://eus2euap-azurestackhci-usage.azurewebsites.net';
+        }
+
 $AuthorityAzureCloud = "https://login.microsoftonline.com"
 $BillingServiceApiScopeAzureCloud = "https://azurestackhci-usage.trafficmanager.net/.default"
 $GraphServiceApiScopeAzureCloud = "https://graph.microsoft.com/.default"
@@ -503,6 +511,37 @@ param(
     return $TenantId
 }
 
+function Normalize-RegionName{
+param(
+    [string] $Region
+    )
+    $regionName = $Region -replace '\s',''
+    $regionName = $regionName.ToLower()
+    return $regionName
+}
+
+function Validate-RegionName{
+param(
+    [string] $Region,
+    [ref] $SupportedRegions
+    )
+    $resources = Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI
+    $locations = $resources.Where{($_.ResourceTypes.ResourceTypeName -eq 'clusters' -and $_.RegistrationState -eq 'Registered')}.Locations
+
+    $locations | foreach {
+	    $regionName = Normalize-RegionName -Region $_
+        if ($regionName -eq $Region)
+        {
+            # Supported region
+
+            return $True
+        }
+    }
+
+    $SupportedRegions.value = $locations -join ','
+    return $False
+}
+
 enum OperationStatus
 {
     Unused;
@@ -742,6 +781,45 @@ param(
 
             $regRP = Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI
 
+            $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
+
+            if($resGroup -eq $Null)
+            {
+                if([string]::IsNullOrEmpty($Region))
+                {
+                    $Region = "EastUS"
+                }
+            }
+            else
+            {
+                if([string]::IsNullOrEmpty($Region))
+                {
+                    $Region = $resGroup.Location
+                }
+            }
+
+            # Normalize region name
+
+            $regionName = Normalize-RegionName -Region $Region
+
+            # Validate that the input region is supported by the Stack HCI RP
+
+            $supportedRegions = [string]::Empty
+            $regionSupported = Validate-RegionName -Region $regionName -SupportedRegions ([ref]$supportedRegions)
+
+            if ($regionSupported -eq $False)
+            {
+                $RegionNotSupportedMessage = $RegionNotSupported -f $regionName, $supportedRegions
+                Write-Error -Message $RegionNotSupportedMessage
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                Write-Output $registrationOutput
+                return
+            }
+
+            # Lookup cloud endpoint URL from region name
+
+            $ServiceEndpointAzureCloud = $ServiceEndpointsAzureCloud[$regionName]
+
             if($resource -eq $Null)
             {
                 # Create new application
@@ -757,26 +835,13 @@ param(
 
                 # Create new resource by calling RP
 
-                $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
-
                 if($resGroup -eq $Null)
                 {
-                    if([string]::IsNullOrEmpty($Region))
-                    {
-                        $Region = "EastUS"
-                    }
-
                      $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ResourceGroupName
                      Write-Progress -activity $RegisterProgressActivityName -status $CreatingResourceGroupMessageProgress -percentcomplete 55
                      $resGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Region
                 }
-                else
-                {
-                    if([string]::IsNullOrEmpty($Region))
-                    {
-                        $Region = $resGroup.Location
-                    }
-                }
+
 
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60

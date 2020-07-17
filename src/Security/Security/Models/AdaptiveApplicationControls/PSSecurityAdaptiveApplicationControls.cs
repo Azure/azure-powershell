@@ -12,30 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationControls
 {
-    public class ResourceSkuTests : ComputeTestRunner
+    public class PSSecurityAdaptiveApplicationControls
     {
-        public ResourceSkuTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
-        {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSku()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSku");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSkuByLocation()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSkuByLocation");
-        }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public PSSecurityAdaptiveApplicationControlsProperties Properties { get; set; }
     }
 }

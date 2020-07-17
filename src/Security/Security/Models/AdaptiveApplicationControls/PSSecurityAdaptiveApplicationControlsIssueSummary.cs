@@ -12,30 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationControls
 {
-    public class ResourceSkuTests : ComputeTestRunner
+    public class PSSecurityAdaptiveApplicationControlsIssueSummary
     {
-        public ResourceSkuTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
-        {
-        }
+        /// <summary>
+        /// An alert that VMs/servers within a group can have.
+        /// </summary>
+        public string Issue { get; set; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSku()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSku");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSkuByLocation()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSkuByLocation");
-        }
+        /// <summary>
+        /// The number of machines in the VM/server group that have this alert.
+        /// </summary>
+        public double? NumberOfVms { get; set; }
     }
 }

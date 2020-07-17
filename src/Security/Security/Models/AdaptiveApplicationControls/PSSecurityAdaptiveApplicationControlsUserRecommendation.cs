@@ -12,30 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationControls
 {
-    public class ResourceSkuTests : ComputeTestRunner
+    public class PSSecurityAdaptiveApplicationControlsUserRecommendation
     {
-        public ResourceSkuTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
-        {
-        }
+        /// <summary>
+        /// Represents a user that is recommended to be allowed for a certain rule.
+        /// </summary>
+        public string Username { get; set; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSku()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSku");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceSkuByLocation()
-        {
-            TestRunner.RunTestScript("Test-GetResourceSkuByLocation");
-        }
+        /// <summary>
+        /// The recommendation action of the VM/server or rule.
+        /// </summary>
+        public string RecommendationAction { get; set; }
     }
 }
