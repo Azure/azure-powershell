@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added non-breaking changes: PeerAddressType functionality for Private Peering in `Remove-AzExpressRouteCircutPeeringConfig`.
-* Code change to ignore case for AddressPrefixType and PeerAddressType parameter.
+* Code changed to ignore case for AddressPrefixType and PeerAddressType parameter.
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 
 ## Version 3.2.0
