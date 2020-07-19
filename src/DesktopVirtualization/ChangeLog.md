@@ -23,7 +23,7 @@
 * Require Location property for creating top level arm objects.
 * Made `ApplicationGroupType` required for `New-AzWvdApplicationGroup`.
 * Made `HostPoolArmPath` required for `New-AzWvdApplicationGroup`.
-*  Added `PreferredAppGroupType` for `New-AzWvdHostPool`.
+* Added `PreferredAppGroupType` for `New-AzWvdHostPool`.
 
 ## Version 1.0.0
 * General availability of `Az.DesktopVirtualization` module.

@@ -121,7 +121,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Require Location property for creating top level arm objects.
+        * Made `ApplicationGroupType` required for `New-AzWvdApplicationGroup`.
+        * Made `HostPoolArmPath` required for `New-AzWvdApplicationGroup`.
+        * Added `PreferredAppGroupType` for `New-AzWvdHostPool`.'
 
         # Prerelease string of this module
         # Prerelease = ''
