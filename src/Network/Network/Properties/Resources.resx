@@ -693,4 +693,10 @@
     <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
     <comment>Error message for setting the customIpPrefix</comment>
   </data>
+  <data name="ApplicationGatewaySslProfileName" xml:space="preserve">
+    <value>sslProfiles</value>
+  </data>
+  <data name="ApplicationGatewayTrustedClientCertificateName" xml:space="preserve">
+    <value>trustedClientCertificates</value>
+  </data>
 </root>
