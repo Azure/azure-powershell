@@ -131,7 +131,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to sslProfiles.
+        /// </summary>
+        internal static string ApplicationGatewaySslProfileName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewaySslProfileName", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
@@ -239,7 +250,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to trustedClientCertificates.
+        /// </summary>
+        internal static string ApplicationGatewayTrustedClientCertificateName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewayTrustedClientCertificateName", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
