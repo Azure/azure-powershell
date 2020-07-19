@@ -116,6 +116,9 @@ function New-AzRoleAssignmentWithId
         [string] [Parameter()] $RoleDefinitionName,
         [Guid]   [Parameter()] $RoleDefinitionId,
         [switch] [Parameter()] $AllowDelegation,
+        [string] [Parameter()] $Description,
+        [string] [Parameter()] $Condition,
+        [string] [Parameter()] $ConditionVersion,
         [Guid]   [Parameter()] $RoleAssignmentId
     )
 
@@ -182,6 +185,21 @@ function New-AzRoleAssignmentWithId
     if ($RoleAssignmentId -ne $null -and $RoleAssignmentId -ne [System.Guid]::Empty)
     {
         $cmdlet.RoleAssignmentId = $RoleAssignmentId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Description)))
+    {
+        $cmdlet.Description = $Description
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Condition)))
+    {
+        $cmdlet.Condition = $Condition
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ConditionVersion)))
+    {
+        $cmdlet.ConditionVersion = $ConditionVersion
     }
 
     $cmdlet.ExecuteCmdlet()

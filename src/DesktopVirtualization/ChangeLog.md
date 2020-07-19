@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Require Location property for creating top level arm objects
+* New-AzWvdApplicationGroup Require ApplicationGroupType
+* New-AzWvdApplicationGroup Require HostPoolArmPath
+* New-AzWvdHostPool Add PreferredAppGroupType
+
 ## Version 1.0.0
 * General availability of `Az.DesktopVirtualization` module
 
