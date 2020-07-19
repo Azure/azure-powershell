@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Collation { get; set; }
 
-        [Parameter(ParameterSetName = CreateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeBytes)]
-        [Parameter(ParameterSetName = CreateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeBytes)]
+        [Parameter(ParameterSetName = CreateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
+        [Parameter(ParameterSetName = CreateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
         [ValidateNotNullOrEmpty]
-        public long MaxSizeBytes { get; set; }
+        public long MaxSizeInBytes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 case CreateByNameParameterSet:
                 case CreateByParentObjectParameterSet:
-                    createParams.MaxSizeBytes = this.MaxSizeBytes;
+                    createParams.MaxSizeBytes = this.MaxSizeInBytes;
                     createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
                     break;
 

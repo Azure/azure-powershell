@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string Collation = "Collation defines the rules that sort and compare data, and cannot be changed after SQL pool creation. The default collation is " + SynapseConstants.DefaultCollation + ".";
         
-        public const string MaxSizeBytes = "Specifies the maximum size of the database in bytes.";
+        public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 

@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeBytes)]
-        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeBytes)]
+        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
+        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
         [ValidateNotNullOrEmpty]
-        public long MaxSizeBytes { get; set; }
+        public long MaxSizeInBytes { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Synapse
             SqlDatabaseUpdate SqlDatabaseUpdate = new SqlDatabaseUpdate
             {
                 Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingSqlDatabase.Tags,
-                MaxSizeBytes = this.IsParameterBound(c => c.MaxSizeBytes) ? this.MaxSizeBytes : existingSqlDatabase.MaxSizeBytes,
+                MaxSizeBytes = this.IsParameterBound(c => c.MaxSizeInBytes) ? this.MaxSizeInBytes : existingSqlDatabase.MaxSizeBytes,
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlDatabase, this.Name, this.ResourceGroupName, this.WorkspaceName)))

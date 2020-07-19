@@ -32,6 +32,9 @@ Gets a Synapse Analytics Spark session.
 ### [Get-AzSynapseSparkStatement](Get-AzSynapseSparkStatement.md)
 Gets a Synapse Analytics Spark statement.
 
+### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
 
@@ -50,6 +53,9 @@ Creates a Synapse Analytics role assignment.
 ### [New-AzSynapseSparkPool](New-AzSynapseSparkPool.md)
 Creates a Synapse Analytics Spark pool.
 
+### [New-AzSynapseSqlDatabase](New-AzSynapseSqlDatabase.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
 Creates a Synapse Analytics SQL pool.
 
@@ -64,6 +70,9 @@ Deletes a Synapse Analytics role assignment.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
 Deletes a Synapse Analytics Spark pool.
+
+### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
+{{ Fill in the Synopsis }}
 
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
 Deletes a Synapse Analytics SQL pool.
@@ -92,6 +101,9 @@ Submits a Synapse Analytics Spark job.
 ### [Test-AzSynapseSparkPool](Test-AzSynapseSparkPool.md)
 Checks for the existence of a Synapse Analytics Spark pool.
 
+### [Test-AzSynapseSqlDatabase](Test-AzSynapseSqlDatabase.md)
+{{ Fill in the Synopsis }}
+
 ### [Test-AzSynapseSqlPool](Test-AzSynapseSqlPool.md)
 Checks for the existence of a Synapse Analytics SQL pool.
 
@@ -103,6 +115,9 @@ Updates a Synapse Analytics Firewall Rule.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
 Updates a Synapse Analytics Spark pool.
+
+### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
+{{ Fill in the Synopsis }}
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.

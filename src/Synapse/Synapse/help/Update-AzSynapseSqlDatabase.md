@@ -15,13 +15,13 @@ schema: 2.0.0
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-MaxSizeBytes <Int64>] [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-MaxSizeInBytes <Int64>] [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByParentObjectParameterSet
 ```
-Update-AzSynapseSqlDatabase -Name <String> [-MaxSizeBytes <Int64>] -WorkspaceObject <PSSynapseWorkspace>
+Update-AzSynapseSqlDatabase -Name <String> [-MaxSizeInBytes <Int64>] -WorkspaceObject <PSSynapseWorkspace>
  [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 SQL Database input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseSqlDatabase
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
@@ -97,11 +97,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaxSizeBytes
+### -MaxSizeInBytes
 Specifies the maximum size of the database in bytes.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Name of Synapse SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
 Aliases:
 
@@ -132,7 +132,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Resource identifier of Synapse SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 A string,string dictionary of tags associated with the resource.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -238,7 +238,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
