@@ -112,7 +112,14 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseTrigger','Remove-AzSynapseTrigger',
                'Get-AzSynapseTriggerSubscriptionStatus','Add-AzSynapseTriggerSubscription',
                'Remove-AzSynapseTriggerSubscription','Start-AzSynapseTrigger',
-               'Stop-AzSynapseTrigger','Get-AzSynapseTriggerRun'
+               'Stop-AzSynapseTrigger','Get-AzSynapseTriggerRun',
+               'Get-AzSynapseIntegrationRuntime','Get-AzSynapseIntegrationRuntimeKey',
+               'Get-AzSynapseIntegrationRuntimeMetric','Get-AzSynapseIntegrationRuntimeNode',
+               'Invoke-AzSynapseIntegrationRuntimeUpgrade','New-AzSynapseIntegrationRuntimeKey',
+               'Remove-AzSynapseIntegrationRuntime','Remove-AzSynapseIntegrationRuntimeNode',
+               'Set-AzSynapseIntegrationRuntime','Start-AzSynapseIntegrationRuntime',
+               'Stop-AzSynapseIntegrationRuntime','Sync-AzSynapseIntegrationRuntimeCredential',
+               'Update-AzSynapseIntegrationRuntime','Update-AzSynapseIntegrationRuntimeNode'
 
 
 # Variables to export from this module

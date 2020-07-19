@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Management.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark;
+using Microsoft.Azure.Management.Synapse.Models;
 using System;
 using System.Collections.Generic;
 
@@ -98,7 +99,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string Notebook = nameof(Notebook);
 
-        public const string EndpointApiVersion = "2019-11-01-priview";
+        // TODO: In future, we should expose the default version string of Spark SDK and use that value here.
+        public const string SparkServiceEndpointApiVersion = "2019-11-01-priview";
 
         public const string Trigger = nameof(Trigger);
 
@@ -121,6 +123,26 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
 
         public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
+        public const string Key = nameof(Key);
+
+        public const string Metric = nameof(Metric);
+
+        public const string Node = nameof(Node);
+
+        public const string Upgrade = nameof(Upgrade);
+
+        public const string SubnetName = nameof(SubnetName);
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
+
+        public const string Credential = nameof(Credential);
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
@@ -170,10 +192,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string AllowAllEndIpAddress = "255.255.255.255";
 
         public const string StorageBlobDataContributorRoleName = "Azure Blob Data Contributor";
-
-        public static bool IsNextPageLink(this string nextLink)
-        {
-            return !string.IsNullOrEmpty(nextLink);
-        }
     }
 }

@@ -21,14 +21,26 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
+        private const string SetByNameAndSparkPool = "SetByNameAndSparkPool";
+        private const string SetByObjectAndSparkPool = "SetByObjectAndSparkPool";
+        private const string SetByNameAndFile = "SetByNameAndFile";
+        private const string SetByObjectAndFile = "SetByObjectAndFile";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndFile,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObject,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObjectAndSparkPool,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObjectAndFile,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -39,33 +51,49 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Nbformat)]
         [ValidateNotNullOrEmpty]
-        public int Nbformat { get; set; }
+        public int NotebookFormat { get; set; } = 4;
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NbformatMinor)]
         [ValidateNotNullOrEmpty]
-        public int NbformatMinor { get; set; }
+        public int NotebookFormatMinor { get; set; } = 2;
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookDescription)]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SparkPoolName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+            Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+            Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
         [ValidateNotNullOrEmpty]
-        public string SparkPool { get; set; }
+        public string SparkPoolName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+            Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+            Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
         [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
-        public string ExecutorSize { get; set; }
+        public string ExecutorSize { get; set; } = Management.Synapse.Models.NodeSize.Small;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NodeCount)]
-        [ValidateRange(1, 200)]
-        public int NodeCount { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+            Mandatory = false, HelpMessage = HelpMessages.ExecutorCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+            Mandatory = false, HelpMessage = HelpMessages.ExecutorCount)]
+        public int Executors { get; set; } = 1;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Language)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookLanguage)]
         [ValidateSet(LanguageType.Python, LanguageType.Scala, LanguageType.CSharp, LanguageType.SparkSql, IgnoreCase = true)]
         [PSArgumentCompleter(LanguageType.Python, LanguageType.Scala, LanguageType.CSharp, LanguageType.SparkSql)]
-        public string Language { get; set; }
+        public string Language { get; set; } = LanguageType.Python;
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndFile,
+            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndFile,
+            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [ValidateNotNullOrEmpty]
+        [Alias("File")]
+        public string DefinitionFile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -77,21 +105,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (!this.IsParameterBound(c => c.Nbformat))
-            {
-                this.Nbformat = 4;
-            }
-
-            if (!this.IsParameterBound(c => c.NbformatMinor))
-            {
-                this.NbformatMinor = 2;
-            }
-
-            if (!this.IsParameterBound(c => c.Language))
-            {
-                this.Language = LanguageType.Python;
-            }
-
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseNotebook, this.Name, this.WorkspaceName)))
             {
                 NotebookMetadata metadata = new NotebookMetadata
@@ -100,35 +113,36 @@ namespace Microsoft.Azure.Commands.Synapse
                 };
 
                 var options = new ComputeOptions();
-                if (this.IsParameterBound(c => c.SparkPool))
+                if (this.IsParameterBound(c => c.SparkPoolName))
                 {
                     string suffix = DefaultContext.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
                     string endpoint = "https://" + this.WorkspaceName + "." + suffix;
-                    var sparkPoolInfo = new SynapseAnalyticsManagementClient(DefaultContext).GetSparkPool(null, this.WorkspaceName, this.SparkPool);
+                    var sparkPoolInfo = new SynapseAnalyticsManagementClient(DefaultContext).GetSparkPool(null, this.WorkspaceName, this.SparkPoolName);
 
                     options["auth"] = new ComputeOptions
                     {
                         ["type"] = "AAD",
-                        ["authResource"] = "https://dev.azuresynapse.net"
+                        ["authResource"] = DefaultContext.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId)
                     };
-                    options["cores"] = this.IsParameterBound(c => c.ExecutorSize) ? SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores : 4;
-                    options["endpoint"] = endpoint + "/livyApi/versions/" + SynapseConstants.EndpointApiVersion + "/sparkPools" + this.SparkPool;
+                    options["cores"] = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores;
+                    options["memory"] = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory;
+                    options["nodeCount"] = this.Executors;
+                    options["endpoint"] = endpoint + "/livyApi/versions/" + SynapseConstants.SparkServiceEndpointApiVersion + "/sparkPools/" + this.SparkPoolName;
                     options["extraHeader"] = new ComputeOptions();
                     options["id"] = sparkPoolInfo.Id;
-                    options["memory"] = this.IsParameterBound(c => c.ExecutorSize) ? SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory : 28;
-                    options["name"] = this.SparkPool;
-                    options["nodeCount"] = this.IsParameterBound(c => c.NodeCount) ? this.NodeCount : 1;
+                    options["name"] = this.SparkPoolName;
                     options["sparkVersion"] = sparkPoolInfo.SparkVersion;
                     options["type"] = "Spark";
                     metadata["a365ComputeOptions"] = options;
                 }
-                
+                // metadata["sessionKeepAliveTimeout"] = 10;
+
                 IEnumerable<NotebookCell> cells = new List<NotebookCell>();
-                Notebook notebook = new Notebook(metadata, this.Nbformat, this.NbformatMinor, cells)
+                Notebook notebook = new Notebook(metadata, this.NotebookFormat, this.NotebookFormatMinor, cells)
                 {
                     Description = this.Description,
-                    BigDataPool = this.IsParameterBound(c => c.SparkPool) ? new BigDataPoolReference(this.SparkPool) : null,
-                    SessionProperties = this.IsParameterBound(c => c.SparkPool) ? new NotebookSessionProperties(options["memory"]+"g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]) : null
+                    BigDataPool = this.IsParameterBound(c => c.SparkPoolName) ? new BigDataPoolReference(this.SparkPoolName) : null,
+                    SessionProperties = this.IsParameterBound(c => c.SparkPoolName) ? new NotebookSessionProperties(options["memory"]+"g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]) : null
                 };
                 NotebookResource notebookResource = new NotebookResource(notebook);
 

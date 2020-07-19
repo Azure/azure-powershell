@@ -8,7 +8,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.Notebooks
+namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
         DefaultParameterSetName = GetByName)]

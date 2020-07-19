@@ -537,6 +537,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string InvokingSparkStatement {
             get {
                 return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
+                }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        /// </summary>
+        internal static string LongRunningStatusError {
+            get {
+                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
             }
         }
         
@@ -611,7 +620,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RemovingIntegrationRuntimeNode", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Deleting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
@@ -812,6 +821,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StartingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string StartingSynapseTrigger {
@@ -826,6 +844,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StartingSynapseSparkSession {
             get {
                 return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StoppingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StoppingIntegrationRuntime", resourceCulture);
             }
         }
         
