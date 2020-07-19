@@ -37,6 +37,21 @@
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
 * Add `AllowActiveFTP` parameter to `AzureFirewall`
+* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
+    - `Get-AzApplicationGatewayClientAuthConfiguration`
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Remove-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
+    - `Add-AzApplicationGatewayTrustedClientCertificate` 
+    - `Get-AzApplicationGatewayTrustedClientCertificate` 
+    - `New-AzApplicationGatewayTrustedClientCertificate` 
+    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
+    - `Set-AzApplicationGatewayTrustedClientCertificate`
+    - `Add-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfile`
+    - `New-AzApplicationGatewaySslProfile`
+    - `Remove-AzApplicationGatewaySslProfile`
+    - `Set-AzApplicationGatewaySslProfile`
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
