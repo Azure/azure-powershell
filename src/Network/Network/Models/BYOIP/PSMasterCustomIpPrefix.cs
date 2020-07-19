@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SignedValidationMessage { get; set; }
         
-        public string Geography { get; set; }
-
         public List<PSResourceId> CustomIpPrefixes { get; set; }
 
         public string ValidationState { get; set; }
