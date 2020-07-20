@@ -79,7 +79,7 @@ namespace Tools.Common.Models
         /// </summary>
         /// <param name="other">The ParameterSetMetadata object being compared to this object.</param>
         /// <returns>True if the two objects are mandatory equal, false otherwise.</returns>
-        public bool MandatoryEquals(object obj)
+        public bool AllMandatoryParemeterEquals(object obj)
         {
             var other = obj as ParameterSetMetadata;
             if (other == null)
@@ -136,7 +136,7 @@ namespace Tools.Common.Models
         /// </summary>
         /// <param name="other">The ParameterSetMetadata object being compared to this object.</param>
         /// <returns>True if the two objects are lenient mandatory equal, false otherwise.</returns>
-        public bool LenientMandatoryEquals(object obj)
+        public bool AllMandatoryParemeterLenientEquals(object obj)
         {
             var other = obj as ParameterSetMetadata;
             if (other == null)

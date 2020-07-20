@@ -335,7 +335,10 @@ namespace StaticAnalysis.SignatureVerifier
         }
 
         /// <summary>
-        /// Check whether there exist mandatory equal in the cmdlet
+        /// Check whether there exist mandatory equal in the cmdlet.
+        /// Mandatory equal means two parameter set has exactly the same mandatory parameters.
+        /// If all these two parameter set are not defualt, it may cause confusion.
+        /// An example: https://github.com/Azure/azure-powershell/issues/10954
         /// </summary>
         public void ValidateParameterSetWithMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
         {
@@ -349,15 +352,16 @@ namespace StaticAnalysis.SignatureVerifier
                         cmdlet.DefaultParameterSetName != parameterSet1.Name &&
                         cmdlet.DefaultParameterSetName != parameterSet2.Name)
                     {
-                        if (parameterSet1.MandatoryEquals(parameterSet2) && !IsCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
+                        if (parameterSet1.AllMandatoryParemeterEquals(parameterSet2) && 
+                            !IsParameterSetIntersectionCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
                         {
                             var isExistInSet = false;
-                            foreach (var set in mandatoryEqualSetList)
+                            foreach (var mandatoryEqualSet in mandatoryEqualSetList)
                             {
-                                if (set.Contains(parameterSet1.Name) || set.Contains(parameterSet2.Name))
+                                if (mandatoryEqualSet.Contains(parameterSet1.Name) || mandatoryEqualSet.Contains(parameterSet2.Name))
                                 {
-                                    set.Add(parameterSet1.Name);
-                                    set.Add(parameterSet2.Name);
+                                    mandatoryEqualSet.Add(parameterSet1.Name);
+                                    mandatoryEqualSet.Add(parameterSet2.Name);
                                     isExistInSet = true;
                                     break;
                                 }
@@ -376,16 +380,16 @@ namespace StaticAnalysis.SignatureVerifier
 
             if (mandatoryEqualSetList.Count > 0)
             {
-                foreach (var set in mandatoryEqualSetList)
+                foreach (var mandatoryEqualSet in mandatoryEqualSetList)
                 {
-                    string setName = "";
-                    foreach (var name in set)
+                    string mandatoryEqualSetNames = "";
+                    foreach (var mandatoryEqualSetName in mandatoryEqualSet)
                     {
-                        if (setName != "")
+                        if (mandatoryEqualSetName != "")
                         {
-                            setName += ", ";
+                            mandatoryEqualSetNames += ", ";
                         }
-                        setName += "'" + name + "'";
+                        mandatoryEqualSetNames += "'" + mandatoryEqualSetName + "'";
                     }
                     issueLogger.LogSignatureIssue(
                                 cmdlet: cmdlet,
@@ -395,7 +399,7 @@ namespace StaticAnalysis.SignatureVerifier
                                 string.Format(
                                     "Parameter set {0} of cmdlet '{1}' have the same mandatory parameters, " +
                                     "and both of them are not default parameter set which may cause confusion.",
-                                    setName, cmdlet.Name),
+                                    mandatoryEqualSetNames, cmdlet.Name),
                                 remediation: "Merge this two parameter sets into one parameter set.");
                 }
             }
@@ -403,11 +407,13 @@ namespace StaticAnalysis.SignatureVerifier
 
         /// <summary>
         /// Check whether there exist lenient mandatory equal in the cmdlet
+        /// Lenient mandatory equal means for two parameter set, one parameter set's mandatory parameters can
+        /// be found in another parameter set whether as mandatory or optional.
+        /// If all these two parameter set are not defualt, it may cause confusion.
         /// </summary>
         public void ValidateParameterSetWithLenientMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
         {
             var defaultParameterSet = cmdlet.DefaultParameterSet;
-            List<HashSet<string>> lenientMandatoryEqualSetList = new List<HashSet<string>>();
             foreach (var parameterSet1 in cmdlet.ParameterSets)
             {
                 foreach (var parameterSet2 in cmdlet.ParameterSets)
@@ -417,7 +423,8 @@ namespace StaticAnalysis.SignatureVerifier
                         cmdlet.DefaultParameterSetName != parameterSet2.Name &&
                         parameterSet1.Name.CompareTo(parameterSet2.Name) > 0)
                     {
-                        if (parameterSet1.LenientMandatoryEquals(parameterSet2) && !IsCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
+                        if (parameterSet1.AllMandatoryParemeterLenientEquals(parameterSet2) && 
+                            !IsParameterSetIntersectionCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
                         {
                             issueLogger.LogSignatureIssue(
                                 cmdlet: cmdlet,
@@ -442,7 +449,7 @@ namespace StaticAnalysis.SignatureVerifier
         /// Find all parameters these two sets both contains and if anyone can't be found in default set return false.
         /// </summary>
         /// <returns>True if can be covered, false otherwise.</returns>
-        public bool IsCoveredByDefault(ParameterSetMetadata parameterSet1, ParameterSetMetadata parameterSet2, ParameterSetMetadata defaultParameterSet)
+        public bool IsParameterSetIntersectionCoveredByDefault(ParameterSetMetadata parameterSet1, ParameterSetMetadata parameterSet2, ParameterSetMetadata defaultParameterSet)
         {
             foreach (var parameter1 in parameterSet1.Parameters)
             {
@@ -450,16 +457,16 @@ namespace StaticAnalysis.SignatureVerifier
                 {
                     if (parameter1.ParameterMetadata.Name == parameter2.ParameterMetadata.Name)
                     {
-                        var containParameter = false;
+                        var IsIntersectionCovered = false;
                         foreach (var defaultParameter in defaultParameterSet.Parameters)
                         {
                             if (defaultParameter.ParameterMetadata.Name == parameter1.ParameterMetadata.Name)
                             {
-                                containParameter = true;
+                                IsIntersectionCovered = true;
                                 break;
                             }
                         }
-                        if (!containParameter)
+                        if (!IsIntersectionCovered)
                         {
                             return false;
                         }
