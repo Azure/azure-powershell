@@ -19,12 +19,12 @@ Creates a configuration store with the specified parameters.
 .Description
 Creates a configuration store with the specified parameters.
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
 #>
 function New-AzAppConfigurationStore {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IConfigurationStore])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -77,7 +77,7 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20191101Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},

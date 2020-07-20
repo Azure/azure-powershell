@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # locking the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/29446bf77d48b7128b0c6d587b78355c2b4dde73/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/preview/2019-11-01-preview/appconfiguration.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/5d7c9b734d462cc3b111757957c7d2cc027dff80/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2020-06-01/appconfiguration.json
 
 module-version: 0.2.0
 title: AppConfiguration
