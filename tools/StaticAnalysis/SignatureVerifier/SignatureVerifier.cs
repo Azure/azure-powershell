@@ -320,8 +320,8 @@ namespace StaticAnalysis.SignatureVerifier
                             //        remediation: "Set a non empty parameter set as the default parameter set.");
                             //}
 
-                            ParameterSetWithMandatoryEqual(cmdlet, issueLogger);
-                            ParameterSetWithLenientMandatoryEqual(cmdlet, issueLogger);
+                            ValidateParameterSetWithMandatoryEqual(cmdlet, issueLogger);
+                            ValidateParameterSetWithLenientMandatoryEqual(cmdlet, issueLogger);
                         }
 // TODO: Remove IfDef code
 #if !NETSTANDARD
@@ -337,7 +337,7 @@ namespace StaticAnalysis.SignatureVerifier
         /// <summary>
         /// Check whether there exist mandatory equal in the cmdlet
         /// </summary>
-        public void ParameterSetWithMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
+        public void ValidateParameterSetWithMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
         {
             var defaultParameterSet = cmdlet.DefaultParameterSet;
             List<HashSet<string>> mandatoryEqualSetList = new List<HashSet<string>>();
@@ -404,7 +404,7 @@ namespace StaticAnalysis.SignatureVerifier
         /// <summary>
         /// Check whether there exist lenient mandatory equal in the cmdlet
         /// </summary>
-        public void ParameterSetWithLenientMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
+        public void ValidateParameterSetWithLenientMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
         {
             var defaultParameterSet = cmdlet.DefaultParameterSet;
             List<HashSet<string>> lenientMandatoryEqualSetList = new List<HashSet<string>>();
