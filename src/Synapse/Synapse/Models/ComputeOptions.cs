@@ -8,9 +8,6 @@ namespace Azure.Analytics.Synapse.Artifacts.Models
         public ComputeOptions()
         {
             AdditionalProperties = new Dictionary<string, object>();
-            this["cores"] = 4;
-            this["memory"] = 28;
-            this["nodeCount"] = 1;
         }
 
         internal IDictionary<string, object> AdditionalProperties { get; }

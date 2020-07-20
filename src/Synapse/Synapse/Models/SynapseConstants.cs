@@ -1,5 +1,4 @@
-﻿using Azure.Analytics.Synapse.Spark;
-using Microsoft.Azure.Management.Synapse.Models;
+﻿using Microsoft.Azure.Management.Synapse.Models;
 using System;
 using System.Collections.Generic;
 

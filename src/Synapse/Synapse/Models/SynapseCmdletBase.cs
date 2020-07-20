@@ -4,10 +4,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Rest;
-using System;
-using System.Management.Automation;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -44,40 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             return client;
-        }
-
-        protected string ConvertToUnsecureString(System.Security.SecureString securePassword)
-        {
-            var unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
-        }
-
-        protected void UpdateProgress(Task task, ProgressRecord progress)
-        {
-            while (!task.IsCompleted && !task.IsCanceled && !task.IsFaulted)
-            {
-                if (progress.PercentComplete < 100)
-                {
-                    progress.PercentComplete++;
-                }
-                WriteProgress(progress);
-
-                task.Wait(TimeSpan.FromSeconds(15));
-            }
-
-            if (progress.PercentComplete < 100)
-            {
-                progress.PercentComplete = 100;
-                WriteProgress(progress);
-            }
         }
     }
 }
