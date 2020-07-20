@@ -12,10 +12,23 @@ Removes a hostname configuration from the existing Gateway.
 
 ## SYNTAX
 
+### ContextParameterSetName (Default)
 ```
 Remove-AzApiManagementGatewayHostnameConfiguration -Context <PsApiManagementContext> -GatewayId <String>
  -GatewayHostnameConfigurationId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObjectParameterSet
+```
+Remove-AzApiManagementGatewayHostnameConfiguration -InputObject <PsApiManagementGatewayHostnameConfiguration>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Remove-AzApiManagementGatewayHostnameConfiguration -ResourceId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +52,7 @@ This parameter is required.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSetName
 Aliases:
 
 Required: True
@@ -70,7 +83,7 @@ This parameter is required.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSetName
 Aliases:
 
 Required: True
@@ -86,13 +99,28 @@ This parameter is required.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSetName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of PsApiManagementGatewayHostnameConfiguration. This parameter is required.
+
+```yaml
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGatewayHostnameConfiguration
+Parameter Sets: ByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -107,6 +135,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Arm ResourceId of the GatewayHostnameConfiguration. This parameter is required.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
