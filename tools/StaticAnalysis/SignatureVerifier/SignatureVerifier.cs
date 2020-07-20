@@ -385,7 +385,7 @@ namespace StaticAnalysis.SignatureVerifier
                     string mandatoryEqualSetNames = "";
                     foreach (var mandatoryEqualSetName in mandatoryEqualSet)
                     {
-                        if (mandatoryEqualSetName != "")
+                        if (mandatoryEqualSetNames != "")
                         {
                             mandatoryEqualSetNames += ", ";
                         }
