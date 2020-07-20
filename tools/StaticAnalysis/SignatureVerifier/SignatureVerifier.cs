@@ -400,7 +400,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     "Parameter set {0} of cmdlet '{1}' have the same mandatory parameters, " +
                                     "and both of them are not default parameter set which may cause confusion.",
                                     mandatoryEqualSetNames, cmdlet.Name),
-                                remediation: "Merge this two parameter sets into one parameter set.");
+                                remediation: "Merge these parameter sets into one parameter set.");
                 }
             }
         }
@@ -437,7 +437,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     "{1} can find the corresponding mandatory parameter in {0}, " +
                                     "and both of them are not default parameter set which may cause confusion.",
                                     parameterSet1.Name, parameterSet2.Name, cmdlet.Name),
-                                remediation: "Merge this two parameter sets into one parameter set.");
+                                remediation: "Merge these parameter sets into one parameter set.");
                         }
                     }
                 }
