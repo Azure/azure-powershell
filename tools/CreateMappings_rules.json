@@ -131,7 +131,7 @@
 
     { "regex": "Subscription", "alias": "Subscription" },
 
-    { "regex": "Policy", "group": "Resources", "alias": "Policies" },
+    { "regex": "Policy", "group": "Resources", "alias": "Policy" },
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" },
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
