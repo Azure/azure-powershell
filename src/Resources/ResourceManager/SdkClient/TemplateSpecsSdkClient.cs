@@ -53,6 +53,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             this.azureContext = context;
         }
 
+        public TemplateSpecVersion GetTemplateSpecVersion(string templateSpecName,
+            string resourceGroupName,
+            string templateSpecVersion = null)
+        {
+            return TemplateSpecsClient.TemplateSpecVersions.Get(
+                resourceGroupName,
+                templateSpecName,
+                templateSpecVersion);
+        }
+
         public PSTemplateSpec GetTemplateSpec(string templateSpecName,
             string resourceGroupName,
             string templateSpecVersion = null)
