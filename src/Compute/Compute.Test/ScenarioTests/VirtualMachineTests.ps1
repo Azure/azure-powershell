@@ -4000,3 +4000,4 @@ function Test-SetAzVMOperatingSystemError
         Clean-ResourceGroup $rgname
     }
 }
+
