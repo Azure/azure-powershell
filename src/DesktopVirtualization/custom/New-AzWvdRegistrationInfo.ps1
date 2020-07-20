@@ -109,7 +109,8 @@ function New-AzWvdRegistrationInfo {
             -SsoContext $hostpool.SsoContext `
             -CustomRdpProperty $hostpool.CustomRdpProperty `
             -Ring $hostpool.Ring `
-            -ValidationEnvironment:$hostpool.ValidationEnvironment
+            -ValidationEnvironment:$hostpool.ValidationEnvironment `
+            -PreferredAppGroupType $hostpool.PreferredAppGroupType
         New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfo' `
             -Property @{ `
                 ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `
