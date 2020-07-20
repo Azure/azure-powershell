@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         peering.Ipv6PeeringConfig = null;
                     }
-                    else if (AddressTypeUtils.IsIpv4OrIpv6(this.PeerAddressType))
+                    else if (AddressTypeUtils.IsAll(this.PeerAddressType))
                     {
                         this.ExpressRouteCircuit.Peerings.Remove(peering);
                     }
