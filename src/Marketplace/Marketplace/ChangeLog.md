@@ -19,5 +19,5 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.0
-* the first preview release
+## Version 0.2.0
+* Preview release , support private offers in private store under subscription level
