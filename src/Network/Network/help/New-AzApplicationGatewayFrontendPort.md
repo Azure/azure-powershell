@@ -23,8 +23,8 @@ The **New-AzApplicationGatewayFrontendPort** cmdlet creates a front-end port for
 
 ## EXAMPLES
 
-### Example1: Create a front-end port
-```
+### Example 1: Example1: Create a front-end port
+```powershell
 PS C:\>$FrontEndPort = New-AzApplicationGatewayFrontendPort -Name "FrontEndPort01" -Port 80
 ```
 
