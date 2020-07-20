@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using SdkProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
@@ -36,6 +37,7 @@ using SdkDeepCreatedOrigin = Microsoft.Azure.Management.Cdn.Models.DeepCreatedOr
 using SdkEndpoint = Microsoft.Azure.Management.Cdn.Models.Endpoint;
 using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
+using SdkOriginGroup = Microsoft.Azure.Management.Cdn.Models.OriginGroup;
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
@@ -715,7 +717,24 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 ResourceState = (PSOriginResourceState)Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
                 HostName = origin.HostName,
                 HttpPort = origin.HttpPort,
-                HttpsPort = origin.HttpsPort
+                HttpsPort = origin.HttpsPort,
+                OriginHostHeader = origin.OriginHostHeader,
+                Priority = origin.Priority,
+                PrivateLinkAlias = origin.PrivateLinkAlias,
+                PrivateLinkApprovalMessage = origin.PrivateLinkApprovalMessage,
+                PrivateLinkLocation = origin.PrivateLinkLocation,
+                PrivateLinkResourceId = origin.PrivateLinkResourceId
+            };
+        }
+
+        public static PSOriginGroup ToPsOriginGroup(this SdkOriginGroup originGroup)
+        {
+            Debug.Assert(originGroup.ProvisioningState != null, "originGroup.ProvisioningState != null");
+            Debug.Assert(originGroup.ResourceState != null, "originGroup.ResourceState != null");
+
+            return new PSOriginGroup
+            {
+                // populate origin group properties
             };
         }
 

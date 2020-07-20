@@ -14,12 +14,16 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.Cdn.Helpers;
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
+using Microsoft.Azure.Commands.Cdn.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(Object))] //PSOriginGroup
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOriginGroup))]
     public class GetAzCdnOriginGroup : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
@@ -42,5 +46,22 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
         [Parameter(Mandatory = true, HelpMessage = "Resource Id for the the origin group", ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+                ProfileName = parsedResourceId.GetProfileName();
+                EndpointName = parsedResourceId.GetEndpointName();
+                OriginGroupName = parsedResourceId.ResourceName;
+            }
+
+            var originGroup = CdnManagementClient.OriginGroups.Get(ResourceGroupName, ProfileName, EndpointName, OriginGroupName);
+            WriteVerbose(Resources.Success);
+            WriteObject(originGroup.ToPsOriginGroup());
+
+        }
     }
 }

@@ -14,9 +14,10 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections.Generic;
-using System;
+using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
@@ -43,5 +44,36 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
         [Parameter(Mandatory = true, HelpMessage = "The resource id of the Azure CDN origin group.", ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+                ProfileName = parsedResourceId.GetProfileName();
+                EndpointName = parsedResourceId.GetEndpointName();
+                OriginGroupName = parsedResourceId.ResourceName;
+            }
+
+            ConfirmAction(MyInvocation.InvocationName, OriginGroupName, DeleteOriginGroup);
+
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
+        }
+
+        public void DeleteOriginGroup()
+        {
+            CdnManagementClient.OriginGroups.Delete(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                OriginGroupName);
+        }
     }
 }

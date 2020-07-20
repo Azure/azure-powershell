@@ -59,6 +59,10 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         [ValidateNotNullOrEmpty]
         public int? Priority { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link alias.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkAlias { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkApprovalMessage { get; set; }
@@ -86,6 +90,24 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnOrigin.ResourceGroupName;
+                ProfileName = CdnOrigin.ProfileName;
+                EndpointName = CdnOrigin.EndpointName;
+                OriginName = CdnOrigin.Name;
+                HostName = CdnOrigin.HostName;
+                HttpPort = CdnOrigin.HttpPort;
+                HttpsPort = CdnOrigin.HttpsPort;
+                OriginHostHeader = CdnOrigin.OriginHostHeader;
+                Priority = CdnOrigin.Priority;
+                PrivateLinkAlias = CdnOrigin.PrivateLinkAlias;
+                PrivateLinkApprovalMessage = CdnOrigin.PrivateLinkApprovalMessage;
+                PrivateLinkLocation = CdnOrigin.PrivateLinkLocation;
+                PrivateLinkResourceId = CdnOrigin.PrivateLinkResourceId;
+                Weight = CdnOrigin.Weight;
+
+            }
             ConfirmAction(MyInvocation.InvocationName,
                string.Format("{0} ({1})", CdnOrigin.Name, CdnOrigin.HostName),
                SetOrigin);
@@ -94,14 +116,21 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         private void SetOrigin()
         {
             var origin = CdnManagementClient.Origins.Update(
-                CdnOrigin.ResourceGroupName,
-                CdnOrigin.ProfileName,
-                CdnOrigin.EndpointName,
-                CdnOrigin.Name,
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                OriginName,
                 new OriginUpdateParameters(
-                    hostName: CdnOrigin.HostName,
-                    httpPort: CdnOrigin.HttpPort,
-                    httpsPort: CdnOrigin.HttpsPort));
+                    hostName: HostName,
+                    httpPort: HttpPort,
+                    httpsPort: HttpsPort,
+                    originHostHeader: OriginHostHeader,
+                    priority: Priority,
+                    privateLinkAlias: PrivateLinkAlias,
+                    privateLinkApprovalMessage: PrivateLinkApprovalMessage,
+                    privateLinkLocation: PrivateLinkLocation,
+                    privateLinkResourceId: PrivateLinkResourceId,
+                    weight: Weight));
 
             WriteVerbose(Resources.Success);
             WriteObject(origin.ToPsOrigin());

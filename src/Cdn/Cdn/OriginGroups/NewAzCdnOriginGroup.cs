@@ -17,10 +17,12 @@ using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
+using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(Object))] //PSOriginGroup
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOriginGroup))]
     public class NewAzCdnOriginGroup : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
@@ -62,6 +64,36 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN origin group object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
-        public Object CdnOriginGroup { get; set; } //PSOriginGroup
+        public PSOriginGroup CdnOriginGroup { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnOriginGroup.ResourceGroupName;
+                ProfileName = CdnOriginGroup.ProfileName;
+                EndpointName = CdnOriginGroup.EndpointName;
+                OriginGroupName = CdnOriginGroup.Name;
+
+                // todo : implement remaining properties on the origin group
+            }
+
+            ConfirmAction(MyInvocation.InvocationName, OriginGroupName, CreateOriginGroup);
+
+        }
+
+        public void CreateOriginGroup()
+        {
+            Management.Cdn.Models.OriginGroup originGroupProperties = new Management.Cdn.Models.OriginGroup();
+
+            // populate properties here
+
+            CdnManagementClient.OriginGroups.Create(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                OriginGroupName,
+                originGroupProperties);
+        }
     }
 }

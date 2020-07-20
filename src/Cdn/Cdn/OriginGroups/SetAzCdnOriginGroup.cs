@@ -14,11 +14,13 @@ using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System;
-
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
+using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(Object))] //PSOriginGroup
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOriginGroup", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOriginGroup))]
     public class SetAzCdnOriginGroup : AzureCdnCmdletBase
     {
 
@@ -61,6 +63,34 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN origin group object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
-        public Object CdnOriginGroup { get; set; } //PSOriginGroup
+        public PSOriginGroup CdnOriginGroup { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnOriginGroup.ResourceGroupName;
+                ProfileName = CdnOriginGroup.ProfileName;
+                EndpointName = CdnOriginGroup.EndpointName;
+                OriginGroupName = CdnOriginGroup.Name;
+            }
+
+            ConfirmAction(MyInvocation.InvocationName, OriginGroupName, SetOriginGroup);
+        }
+
+        public void SetOriginGroup()
+        {
+            Management.Cdn.Models.OriginGroupUpdateParameters originGroupProperties = new OriginGroupUpdateParameters
+            {
+                // todo : populate the origin group properties
+            };
+
+            CdnManagementClient.OriginGroups.Update(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                OriginGroupName,
+                originGroupProperties);
+        }
     }
 }

@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
@@ -59,6 +58,10 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         [ValidateNotNullOrEmpty]
         public int? Priority { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link alias.", ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkAlias { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkApprovalMessage { get; set; }
@@ -86,7 +89,51 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnOrigin.ResourceGroupName;
+                ProfileName = CdnOrigin.ProfileName;
+                EndpointName = CdnOrigin.EndpointName;
+                OriginName = CdnOrigin.Name;
+                HostName = CdnOrigin.HostName;
+                HttpPort = CdnOrigin.HttpPort;
+                HttpsPort = CdnOrigin.HttpsPort;
+                OriginHostHeader = CdnOrigin.OriginHostHeader;
+                Priority = CdnOrigin.Priority;
+                PrivateLinkAlias = CdnOrigin.PrivateLinkAlias;
+                PrivateLinkApprovalMessage = CdnOrigin.PrivateLinkApprovalMessage;
+                PrivateLinkLocation = CdnOrigin.PrivateLinkLocation;
+                PrivateLinkResourceId = CdnOrigin.PrivateLinkResourceId;
+                Weight = CdnOrigin.Weight;
+
+            }
+
+            ConfirmAction(MyInvocation.InvocationName, OriginName, CreateOrigin);
+        }
+
+        private void CreateOrigin()
+        {
+            Management.Cdn.Models.Origin originProperties = new Management.Cdn.Models.Origin();
+
+            originProperties.HostName = HostName;
+            originProperties.HttpPort = HttpPort;
+            originProperties.HttpsPort = HttpsPort;
+            originProperties.OriginHostHeader = OriginHostHeader;
+            originProperties.Priority = Priority;
+            originProperties.PrivateLinkAlias = PrivateLinkAlias;
+            originProperties.PrivateLinkApprovalMessage = PrivateLinkApprovalMessage;
+            originProperties.PrivateLinkLocation = PrivateLinkLocation;
+            originProperties.Weight = Weight;
+
+            var origin = CdnManagementClient.Origins.Create(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                OriginName,
+                originProperties);
+
+            WriteVerbose(Resources.Success);
+            WriteObject(origin.ToPsOrigin());
         }
     }
 }
