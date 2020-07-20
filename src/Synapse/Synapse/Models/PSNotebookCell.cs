@@ -32,5 +32,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public ICollection<string> Keys { get; }
 
         public ICollection<object> Values { get; }
+
+        public NotebookCell ToSdkObject()
+        {
+            if(this.Metadata == null)
+            {
+                this.Metadata = new System.Collections.Generic.Dictionary<string, object>();
+            }
+            return new NotebookCell(this.CellType, this.Metadata, this.Source)
+            {
+                Attachments = this.Attachments,
+                Outputs = this.Outputs?.Select(element => element?.ToSdkObject()).ToList()
+            };
+        }
     }
 }

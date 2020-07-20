@@ -28,5 +28,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object Data { get; set; }
 
         public object Metadata { get; set; }
+
+        public NotebookCellOutputItem ToSdkObject()
+        {
+            return new NotebookCellOutputItem(this.OutputType.GetValueOrDefault())
+            {
+                Name = this.Name,
+                ExecutionCount = this.ExecutionCount,
+                Text = this.Text,
+                Data = this.Data,
+                Metadata = this.Metadata
+            };
+        }
     }
 }

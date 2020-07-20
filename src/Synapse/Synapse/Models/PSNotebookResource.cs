@@ -20,5 +20,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string WorkspaceName { get; set; }
 
         public PSNotebook Properties { get; set; }
+
+        public NotebookResource ToSdkObject()
+        {
+            return new NotebookResource(this.Properties?.ToSdkObject());
+        }
     }
 }

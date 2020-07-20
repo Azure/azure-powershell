@@ -25,5 +25,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public int? ExecutorCores { get; set; }
 
         public int? NumExecutors { get; set; }
+
+        public NotebookSessionProperties ToSdkObject()
+        {
+            try
+            {
+                return new NotebookSessionProperties(this.DriverMemory, this.DriverCores.GetValueOrDefault(),
+               this.ExecutorMemory, this.ExecutorCores.GetValueOrDefault(), this.NumExecutors.GetValueOrDefault());
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+           
+        }
     }
 }

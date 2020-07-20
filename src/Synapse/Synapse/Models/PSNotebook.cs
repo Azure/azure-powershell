@@ -1,6 +1,8 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -29,8 +31,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSNotebookMetadata Metadata { get; set; }
 
+        [DefaultValue(4)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public int? Nbformat { get; set; }
 
+        [DefaultValue(2)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public int? NbformatMinor { get; set; }
 
         public IList<PSNotebookCell> Cells { get; set; }
@@ -38,5 +44,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public ICollection<string> Keys { get; set; }
 
         public ICollection<object> Values { get; set; }
+
+        public Notebook ToSdkObject()
+        {
+            return new Notebook(this.Metadata?.ToSdkObject(), this.Nbformat.GetValueOrDefault(), this.NbformatMinor.GetValueOrDefault(),
+                this.Cells?.Select(element => element?.ToSdkObject()))
+            {
+                Description = this.Description,
+                BigDataPool = this.BigDataPool?.ToSdkObject(),
+                SessionProperties = this.SessionProperties?.ToSdkObject()
+            };
+        }
     }
 }

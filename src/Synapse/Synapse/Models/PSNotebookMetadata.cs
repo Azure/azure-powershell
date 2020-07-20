@@ -22,5 +22,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public ICollection<string> Keys { get; }
 
         public ICollection<object> Values { get; }
+
+        public NotebookMetadata ToSdkObject()
+        {
+            return new NotebookMetadata()
+            {
+                Kernelspec = this.Kernelspec?.ToSdkObject(),
+                LanguageInfo = this.LanguageInfo?.ToSdkObject()
+            };
+        }
     }
 }

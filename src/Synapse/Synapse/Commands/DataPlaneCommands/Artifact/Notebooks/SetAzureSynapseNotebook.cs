@@ -5,6 +5,7 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,10 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string SetByObject = "SetByObject";
         private const string SetByNameAndSparkPool = "SetByNameAndSparkPool";
         private const string SetByObjectAndSparkPool = "SetByObjectAndSparkPool";
-        private const string SetByNameAndFile = "SetByNameAndFile";
-        private const string SetByObjectAndFile = "SetByObjectAndFile";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndFile,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -40,26 +37,12 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObjectAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObjectAndFile,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.NotebookName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Nbformat)]
-        [ValidateNotNullOrEmpty]
-        public int NotebookFormat { get; set; } = 4;
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NbformatMinor)]
-        [ValidateNotNullOrEmpty]
-        public int NotebookFormatMinor { get; set; } = 2;
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookDescription)]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -82,15 +65,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.ExecutorCount)]
         public int Executors { get; set; } = 1;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookLanguage)]
-        [ValidateSet(LanguageType.Python, LanguageType.Scala, LanguageType.CSharp, LanguageType.SparkSql, IgnoreCase = true)]
-        [PSArgumentCompleter(LanguageType.Python, LanguageType.Scala, LanguageType.CSharp, LanguageType.SparkSql)]
-        public string Language { get; set; } = LanguageType.Python;
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndFile,
-            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndFile,
-            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
         public string DefinitionFile { get; set; }
@@ -107,14 +82,15 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseNotebook, this.Name, this.WorkspaceName)))
             {
-                NotebookMetadata metadata = new NotebookMetadata
-                {
-                    LanguageInfo = new NotebookLanguageInfo(this.Language),
-                };
+                string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
+                PSNotebookResource psNotbookResource = JsonConvert.DeserializeObject<PSNotebookResource>(rawJsonContent);
+                NotebookResource notebookResource = psNotbookResource.ToSdkObject();
 
-                var options = new ComputeOptions();
                 if (this.IsParameterBound(c => c.SparkPoolName))
                 {
+                    NotebookMetadata metadata = notebookResource.Properties.Metadata;
+                    var options = new ComputeOptions();
+
                     string suffix = DefaultContext.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
                     string endpoint = "https://" + this.WorkspaceName + "." + suffix;
                     var sparkPoolInfo = new SynapseAnalyticsManagementClient(DefaultContext).GetSparkPool(null, this.WorkspaceName, this.SparkPoolName);
@@ -134,17 +110,10 @@ namespace Microsoft.Azure.Commands.Synapse
                     options["sparkVersion"] = sparkPoolInfo.SparkVersion;
                     options["type"] = "Spark";
                     metadata["a365ComputeOptions"] = options;
-                }
-                // metadata["sessionKeepAliveTimeout"] = 10;
 
-                IEnumerable<NotebookCell> cells = new List<NotebookCell>();
-                Notebook notebook = new Notebook(metadata, this.NotebookFormat, this.NotebookFormatMinor, cells)
-                {
-                    Description = this.Description,
-                    BigDataPool = this.IsParameterBound(c => c.SparkPoolName) ? new BigDataPoolReference(this.SparkPoolName) : null,
-                    SessionProperties = this.IsParameterBound(c => c.SparkPoolName) ? new NotebookSessionProperties(options["memory"]+"g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]) : null
-                };
-                NotebookResource notebookResource = new NotebookResource(notebook);
+                    notebookResource.Properties.BigDataPool = new BigDataPoolReference(this.SparkPoolName);
+                    notebookResource.Properties.SessionProperties = new NotebookSessionProperties(options["memory"] + "g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]);
+                }
 
                 WriteObject(new PSNotebookResource(SynapseAnalyticsClient.CreateOrUpdateNotebook(this.Name, notebookResource), this.WorkspaceName));
             }
