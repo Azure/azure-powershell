@@ -201,6 +201,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "*", ReturnedResources2).Count);
             Assert.Equal(2, cmdlet.TopLevelWildcardFilter("r*1", "*1", ReturnedResources2).Count);
             Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "t*", ReturnedResources2).Count);
+
+            Assert.Single(cmdlet.TopLevelWildcardFilter("resourcegrouptest", "testserver", ReturnedResourcesWithChild));
+            Assert.Single(cmdlet.TopLevelWildcardFilter("resourcegrouptest", "testdatabase", ReturnedResourcesWithChild));
+            Assert.Single(cmdlet.TopLevelWildcardFilter("resourcegrouptest", "testserver/testdatabase", ReturnedResourcesWithChild));
         }
 
         [Fact]
@@ -279,6 +283,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             new TestResource2("resourcegroup2","test3"),
             new TestResource2("resourcegrouptest","test1"),
             new TestResource2("resourcegrouptest","testdifferent")
+        };
+
+        public List<TestResource> ReturnedResourcesWithChild = new List<TestResource>()
+        {
+            new TestResource("/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegrouptest/providers/Microsoft.Sql/servers/testserver/databases/testdatabase"),
+            new TestResource("/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegrouptest/providers/Microsoft.Sql/servers/testserver")
         };
     }
 

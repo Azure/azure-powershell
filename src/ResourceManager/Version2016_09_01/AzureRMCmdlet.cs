@@ -412,12 +412,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 if (!string.IsNullOrEmpty(name))
                 {
-                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
-                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
-                                   .Where(p => IsMatch(p.Id, "ResourceName", pattern))
-                                   .Select(r => r.Resource);
+                    string[] parts = name.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    List<WildcardPattern> patterns = new List<WildcardPattern>();
+                    parts.ForEach(p => patterns.Add(new WildcardPattern(p, WildcardOptions.IgnoreCase)));
+                    if (parts.Length == 1)
+                    {
+                        output = output.Select(t => new { Id = new ResourceIdentifier((string)GetPropertyValue(t, idProperty)), Resource = t })
+                                     .Where(p => IsMatch(p.Id, "ResourceName", patterns.Last()))
+                                     .Select(r => r.Resource);
+                    }
+                    else if (parts.Length == 2)
+                    {
+                        output = output.Select(t => new { Id = new ResourceIdentifier((string)GetPropertyValue(t, idProperty)), Resource = t })
+                            .Where(p => IsMatch(p.Id, "ResourceName", patterns.Last()) && IsParentNameMatch(p.Id, patterns.First()))
+                            .Select(r => r.Resource);
+                    }
                 }
-
             }
             else
             {
@@ -464,6 +474,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             var value = (string)GetPropertyValue(resource, property);
             return !string.IsNullOrEmpty(value) && pattern.IsMatch(value);
+        }
+
+        private bool IsParentNameMatch<T>(T resource, WildcardPattern pattern)
+        {
+            string value = (string)GetPropertyValue(resource, "ParentResource");
+            if (!string.IsNullOrEmpty(value))
+            {
+                int parentNameStartIdx = value.LastIndexOf('/');
+                if (parentNameStartIdx > 0)
+                {
+                    value = value.Substring(parentNameStartIdx + 1);
+                }
+                return !string.IsNullOrEmpty(value) && pattern.IsMatch(value);
+            }
+            return false;
         }
 
         public bool ShouldListBySubscription(string resourceGroupName, string name)
