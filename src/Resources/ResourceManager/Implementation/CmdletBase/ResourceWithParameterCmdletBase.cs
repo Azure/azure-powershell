@@ -231,6 +231,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     templateSpecId = TemplateSpecId;
                     ResourceIdentifier resourceIdentifier = new ResourceIdentifier(templateSpecId);
+                    if(!resourceIdentifier.ResourceType.Equals("Microsoft.Resources/templateSpecs/versions", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new PSArgumentException("No version found in Resource ID");
+                    }
                     object template = TemplateSpecsSdkClient.GetTemplateSpecVersion(
                         ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
                         ResourceIdUtility.GetResourceGroupName(templateSpecId),
