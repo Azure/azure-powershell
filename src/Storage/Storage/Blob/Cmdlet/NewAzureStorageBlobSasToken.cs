@@ -134,12 +134,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         protected override bool UseTrack2SDK()
         {
-            if (this.Permission != null && this.Permission.ToLower().Contains("t"))
+            if (SasTokenHelper.IsTrack2Permission(this.Permission))
             {
                 return true;
             }
             return base.UseTrack2SDK();
         }
+
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageBlobSasCommand class.
         /// </summary>
@@ -223,6 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             else // Use Track2 SDk
             {
+                //Get blob instance
                 BlobBaseClient blobClient;
                 if (this.BlobBaseClient != null)
                 {
@@ -233,131 +235,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     blobClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
                 }
 
-                BlobSasBuilder sasBuilder;
+                // Get contaienr saved policy if any
+                BlobSignedIdentifier identifier = null;
                 if (ParameterSetName == BlobNamePipelineParmeterSetWithPolicy || ParameterSetName == BlobPipelineParameterSetWithPolicy)
                 {
                     BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(Channel.GetContainerReference(blobClient.BlobContainerName), Channel.StorageContext, ClientOptions);
-                    IEnumerable<BlobSignedIdentifier> signedIdentifiers = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value.SignedIdentifiers;
-                    BlobSignedIdentifier signedIdentifier = null;
-                    foreach (BlobSignedIdentifier identifier in signedIdentifiers)
-                    {
-                        if (identifier.Id == this.Policy)
-                        {
-                            signedIdentifier = identifier;
-                            break;
-                        }
-                    }
-                    if (signedIdentifier is null)
-                    {
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, this.Policy));
-                    }
-                    sasBuilder = new BlobSasBuilder
-                    {
-                        BlobContainerName = blobClient.BlobContainerName,
-                        BlobName = blobClient.Name,
-                        Identifier = this.Policy
-                    };
-
-                    if (this.StartTime != null)
-                    {
-                        if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue)
-                        {
-                            throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
-                        }
-                        else
-                        {
-                            sasBuilder.StartsOn = this.StartTime.Value.ToUniversalTime();
-                        }
-                    }
-
-                    if (this.ExpiryTime != null)
-                    {
-                        if (signedIdentifier.AccessPolicy.ExpiresOn != DateTimeOffset.MinValue)
-                        {
-                            throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
-                        }
-                        else
-                        {
-                            sasBuilder.ExpiresOn = this.ExpiryTime.Value.ToUniversalTime();
-                        }
-                    }
-                    else if (signedIdentifier.AccessPolicy.ExpiresOn == DateTimeOffset.MinValue)
-                    {
-                        if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
-                        {
-                            sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
-                        }
-                        else
-                        {
-                            sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
-                        }
-                    }
-
-                    if (this.Permission != null)
-                    {
-                        if (signedIdentifier.AccessPolicy.Permissions != null)
-                        {
-                            throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
-                        }
-                        else
-                        {
-                            sasBuilder.SetPermissions(this.Permission);
-                        }
-                    }
-                }
-                else
-                {
-                    sasBuilder = new BlobSasBuilder
-                    {
-                        BlobContainerName = blobClient.BlobContainerName,
-                        BlobName = blobClient.Name,
-                    };
-                    sasBuilder.SetPermissions(this.Permission);
-                    if (this.StartTime != null)
-                    {
-                        sasBuilder.StartsOn = this.StartTime.Value.ToUniversalTime();
-                    }
-                    if (this.ExpiryTime != null)
-                    {
-                        sasBuilder.ExpiresOn = this.ExpiryTime.Value.ToUniversalTime();
-                    }
-                    else
-                    {
-                        if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
-                        {
-                            sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
-                        }
-                        else
-                        {
-                            sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
-                        }
-                    }
-                }
-                if (this.IPAddressOrRange != null)
-                {
-                    sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(this.IPAddressOrRange);
-                }
-                if (this.Protocol != null)
-                {
-                    if (this.Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
-                    {
-                        sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
-                    }
-                    else //HttpsOnly
-                    {
-                        sasBuilder.Protocol = SasProtocol.Https;
-                    }
-                }
-                if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
-                {
-                    sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
-                }
-                if (Util.GetSnapshotTimeFromBlobUri(blobClient.Uri) != null)
-                {
-                    sasBuilder.Snapshot = Util.GetSnapshotTimeFromBlobUri(blobClient.Uri).Value.ToString("o");
+                    identifier = SasTokenHelper.GetBlobSignedIdentifier(container, this.Policy, CmdletCancellationToken);
                 }
 
-                string sasToken = GetBlobSharedAccessSignature(blobClient, sasBuilder, generateUserDelegationSas);
+                //Create SAS builder
+                BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);                
+
+                //Create SAS and ourput
+                string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
                 if (sasToken[0] != '?')
                 {
                     sasToken = "?" + sasToken;
@@ -381,32 +271,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     WriteObject(sasToken);
                 }
-            }
-        }
-
-        private string GetBlobSharedAccessSignature(BlobBaseClient blob, BlobSasBuilder sasBuilder, bool generateUserDelegationSas)
-        {
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
-            {
-                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(Channel.StorageContext.StorageAccountName, Channel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
-            }
-            if (generateUserDelegationSas)
-            {
-                global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
-                BlobServiceClient oauthService = new BlobServiceClient(Channel.StorageContext.StorageAccount.BlobEndpoint, Channel.StorageContext.Track2OauthToken, ClientOptions);
-
-                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
-
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
-                    cancellationToken: CmdletCancellationToken);
-
-                return sasBuilder.ToSasQueryParameters(userDelegationKey, blob.AccountName).ToString();
-            }
-            else
-            {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
             }
         }
 
