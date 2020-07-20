@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             return false;
         }
 
-        public static bool IsIpv4OrIpv6(string addressType)
+        public static bool IsAll(string addressType)
         {
             if (string.Equals(addressType, "All", StringComparison.OrdinalIgnoreCase))
             {
