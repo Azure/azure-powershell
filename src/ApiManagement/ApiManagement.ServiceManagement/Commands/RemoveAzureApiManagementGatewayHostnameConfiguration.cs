@@ -20,11 +20,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGatewayHostnameConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ContextParameterSet)]
+    [OutputType(typeof(bool), ParameterSetName = new[] { ContextParameterSet, ByInputObjectParameterSet, ByResourceIdParameterSet })]
     public class RemoveAzureApiManagementGatewayHostnameConfiguration : AzureApiManagementCmdletBase
     {
+        const string ContextParameterSet = "ContextParameterSetName";
+        const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
+        const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
+
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Mandatory = true,
@@ -33,6 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing gateway. This parameter is required.")]
@@ -40,11 +46,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String GatewayId { get; set; }
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing gateway hostname configuration. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String GatewayHostnameConfigurationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementGatewayHostnameConfiguration. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementGatewayHostnameConfiguration InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm ResourceId of the GatewayHostnameConfiguration. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String ResourceId { get; set; }
+
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -54,8 +78,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.GatewayHostnameConfigurationRemoveDescription, GatewayId, GatewayHostnameConfigurationId);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.GatewayHostnameConfigurationRemoveWarning, GatewayId, GatewayHostnameConfigurationId);
+            string resourceGroupName;
+            string serviceName;
+            string gatewayId;
+            string gatewayHostnameConfigurationId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                gatewayId = InputObject.GatewayId;
+                gatewayHostnameConfigurationId = InputObject.GatewayHostnameConfigurationId;
+            }
+            else if (ParameterSetName.Equals(ByResourceIdParameterSet))
+            {
+                var gateway = new PsApiManagementGatewayHostnameConfiguration(ResourceId);
+                resourceGroupName = gateway.ResourceGroupName;
+                serviceName = gateway.ServiceName;
+                gatewayId = gateway.GatewayId;
+                gatewayHostnameConfigurationId = gateway.GatewayHostnameConfigurationId;
+            }
+            else
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                gatewayId = GatewayId;
+                gatewayHostnameConfigurationId = GatewayHostnameConfigurationId;
+            }
+
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.GatewayHostnameConfigurationRemoveDescription, gatewayId, gatewayHostnameConfigurationId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.GatewayHostnameConfigurationRemoveWarning, gatewayId, gatewayHostnameConfigurationId);
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -66,7 +118,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.GatewayHostnameConfigurationRemove(Context, GatewayId, GatewayHostnameConfigurationId);
+            Client.GatewayHostnameConfigurationRemove(resourceGroupName, serviceName, gatewayId, gatewayHostnameConfigurationId);
 
             if (PassThru.IsPresent)
             {

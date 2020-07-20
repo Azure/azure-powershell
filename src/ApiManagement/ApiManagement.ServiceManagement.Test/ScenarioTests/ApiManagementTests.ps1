@@ -3637,11 +3637,11 @@ function Gateway-CrudTest {
 
     $gateways = Get-AzApiManagementGateway -Context $context
 
-    Assert-AreEqual 0 $gateways.Count
+   # Assert-AreEqual 0 $gateways.Count
 
-#    for ($i = 0; $i -lt $gateways.Count; $i++) {
-   #      Remove-AzApiManagementGateway -Context $context -GatewayId $gateways[$i].GatewayId -PassThru
-   # }
+    #for ($i = 0; $i -lt $gateways.Count; $i++) {
+    #     Remove-AzApiManagementGateway -Context $context -GatewayId $gateways[$i].GatewayId -PassThru
+    #}
        #Remove-AzApiManagementCertificate -Context $context -CertificateId 'ps9906'  -PassThru
     
 
@@ -3684,6 +3684,13 @@ function Gateway-CrudTest {
         Assert-AreEqual $locationName $gateway.LocationData.Name
         Assert-AreEqual $locationDistrict $gateway.LocationData.District
         Assert-AreEqual $locationRegion $gateway.LocationData.CountryOrRegion
+
+        #update pipeline
+        $newDescription = getAssetName
+        $gateway = Get-AzApiManagementGateway -Context $context -GatewayId $gatewayId | Update-AzApiManagementGateway -Description $newDescription -PassThru
+        Assert-NotNull $gateway
+        Assert-AreEqual $newDescription $gateway.Description
+        Assert-AreEqual $locationCity $gateway.LocationData.City
 
         #update
         $newDescription = getAssetName

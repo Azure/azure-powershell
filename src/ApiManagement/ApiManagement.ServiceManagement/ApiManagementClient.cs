@@ -512,6 +512,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.LocationData, opt => opt.MapFrom(src => src.LocationData));
 
                 cfg
+                    .CreateMap<PsApiManagementGateway, GatewayContract>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GatewayId))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.LocationData, opt => opt.MapFrom(src => src.LocationData));
+
+
+                cfg
                     .CreateMap<ResourceLocationDataContract, PsApiManagementResourceLocation>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                     .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
@@ -532,6 +540,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
                 cfg
                     .CreateMap<GatewayHostnameConfigurationContract, PsApiManagementGatewayHostnameConfiguration>()
+                    .ForMember(dest => dest.GatewayHostnameConfigurationId, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.GatewayId, opt => opt.MapFrom(src => new PsApiManagementGatewayHostnameConfiguration(src.Id).GatewayId))
                     .ForMember(dest => dest.Hostname, opt => opt.MapFrom(src => src.Hostname))
                     .ForMember(dest => dest.CertificateResourceId, opt => opt.MapFrom(src => src.CertificateId))
                     .ForMember(dest => dest.NegotiateClientCertificate, opt => opt.MapFrom(src => src.NegotiateClientCertificate));
@@ -4021,26 +4031,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public PsApiManagementGateway GatewayById(PsApiManagementContext context, string gatewayId)
+        public PsApiManagementGateway GatewayById(string resourceGroupName, string serviceName, string gatewayId)
         {
-            var response = Client.Gateway.Get(context.ResourceGroupName, context.ServiceName, gatewayId);
+            var response = Client.Gateway.Get(resourceGroupName, serviceName, gatewayId);
             var gateway = Mapper.Map<PsApiManagementGateway>(response);
 
             return gateway;
         }
 
-        public void GatewayRemove(PsApiManagementContext context, string gatewayId)
+        public void GatewayRemove(string resourceGroupName, string serviceName, string gatewayId)
         {
-            Client.Gateway.Delete(context.ResourceGroupName, context.ServiceName, gatewayId, "*");
+            Client.Gateway.Delete(resourceGroupName, serviceName, gatewayId, "*");
         }
 
         public void GatewaySet(
-            PsApiManagementContext context,
+            string resourceGroupName,
+            string serviceName,
             string gatewayId,
             string description,
-            PsApiManagementResourceLocation locationData)
+            PsApiManagementResourceLocation locationData,
+            PsApiManagementGateway gatewayObject)
         {
-            var gatewayUpdateParameters = new GatewayContract();
+            GatewayContract gatewayUpdateParameters;
+
+            if (gatewayObject == null)
+            {
+                gatewayUpdateParameters = new GatewayContract();
+            }
+            else
+            {
+                gatewayUpdateParameters = Mapper.Map<GatewayContract>(gatewayObject);
+            }
 
             if (!string.IsNullOrWhiteSpace(description))
             {
@@ -4053,8 +4074,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             Client.Gateway.Update(
-                context.ResourceGroupName,
-                context.ServiceName,
+                resourceGroupName,
+                serviceName,
                 gatewayId,
                 gatewayUpdateParameters,
                 "*");
@@ -4151,9 +4172,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return config;
         }
 
-        public void GatewayHostnameConfigurationRemove(PsApiManagementContext context, string gatewayId, string hostnameConfigurationId)
+        public void GatewayHostnameConfigurationRemove(string resourceGroupName, string serviceName, string gatewayId, string hostnameConfigurationId)
         {
-            Client.GatewayHostnameConfiguration.Delete(context.ResourceGroupName, context.ServiceName, gatewayId, hostnameConfigurationId);
+            Client.GatewayHostnameConfiguration.Delete(resourceGroupName, serviceName, gatewayId, hostnameConfigurationId);
         }
         #endregion
 

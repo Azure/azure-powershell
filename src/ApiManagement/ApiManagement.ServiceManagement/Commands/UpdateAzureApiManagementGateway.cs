@@ -19,11 +19,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", SupportsShouldProcess = true)]
-    [OutputType(typeof(PsApiManagementGateway))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGateway", SupportsShouldProcess = true, DefaultParameterSetName = ExpandedParameterSet)]
+    [OutputType(typeof(PsApiManagementGateway), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet, ByResourceIdParameterSet })]
     public class UpdateAzureApiManagementGateway : AzureApiManagementCmdletBase
     {
+        protected const string ExpandedParameterSet = "ExpandedParameter";
+        protected const string ByInputObjectParameterSet = "ByInputObject";
+        protected const string ByResourceIdParameterSet = "ByResourceId";
+
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Mandatory = true,
@@ -32,11 +37,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing gateway. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String GatewayId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementGateway. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementGateway InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm ResourceId of the Gateway. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String ResourceId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -60,13 +82,38 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+            string resourceGroupName;
+            string serviceName;
+            string gatewayId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                gatewayId = InputObject.GatewayId;
+            }
+            else if (ParameterSetName.Equals(ExpandedParameterSet))
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                gatewayId = GatewayId;
+            }
+            else
+            {
+                var gateway = new PsApiManagementGateway(ResourceId);
+                resourceGroupName = gateway.ResourceGroupName;
+                serviceName = gateway.ServiceName;
+                gatewayId = gateway.GatewayId;
+            }
+
+
             if (ShouldProcess(GatewayId, Resources.SetGateway))
             {
-                Client.GatewaySet(Context, GatewayId, Description, LocationData);
+                Client.GatewaySet(resourceGroupName, serviceName, gatewayId, Description, LocationData, InputObject);
 
                 if (PassThru)
                 {
-                    var @gateway = Client.GatewayById(Context, GatewayId);
+                    var @gateway = Client.GatewayById(resourceGroupName, serviceName, gatewayId);
                     WriteObject(@gateway);
                 }
             }

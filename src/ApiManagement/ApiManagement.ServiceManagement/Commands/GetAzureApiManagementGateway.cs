@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(GetById))
             {
-                var gateway = Client.GatewayById(Context, GatewayId);
+                var gateway = Client.GatewayById(Context.ResourceGroupName, Context.ServiceName, GatewayId);
                 WriteObject(gateway);
             }
             else
