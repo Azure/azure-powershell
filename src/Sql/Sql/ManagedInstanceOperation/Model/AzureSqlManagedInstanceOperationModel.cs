@@ -105,5 +105,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Model
         /// Gets whether the operation can be cancelled.
         /// </summary>
         public bool? IsCancellable { get; set; }
+
+        /// <summary>
+        /// Gets the operation parameters.
+        /// </summary>
+        public Management.Internal.Resources.Models.ManagedInstanceOperationParametersPair OperationParameters { get; set; }		
+
+        /// <summary>
+        /// Gets the operation steps.
+        /// </summary>
+        public Management.Internal.Resources.Models.ManagedInstanceOperationSteps OperationSteps { get; set; }
     }
 }
