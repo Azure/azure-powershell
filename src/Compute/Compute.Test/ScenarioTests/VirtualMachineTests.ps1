@@ -3852,7 +3852,12 @@ function Test-LowPriorityVirtualMachine
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
 
+<#
+.SYNOPSIS
+Test EncryptionAtHost Virtual Machine
+#>
 function Test-EncryptionAtHostVM
 {
 # Setup
@@ -3878,7 +3883,7 @@ function Test-EncryptionAtHostVM
 
         # Get VM
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -DisplayHint Expand;
-        Assert-True $vm.SecurityProfile.EncryptionAtHost;
+        $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
     }
     finally
     {
