@@ -1,11 +1,11 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
     /// <summary>Resource tags.</summary>
     public partial class TrackedResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ITrackedResourceTags,
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ITrackedResourceTagsInternal
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ITrackedResourceTags,
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ITrackedResourceTagsInternal
     {
 
         /// <summary>Creates an new <see cref="TrackedResourceTags" /> instance.</summary>

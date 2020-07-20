@@ -24,8 +24,8 @@ The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in
 
 ## EXAMPLES
 
-### 1: Delete a Virtual Network Gateway
-```
+### Example 1: Delete a Virtual Network Gateway
+```powershell
 Remove-AzVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
 

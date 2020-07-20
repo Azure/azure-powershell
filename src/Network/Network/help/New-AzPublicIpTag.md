@@ -22,8 +22,8 @@ The **New-AzPublicIpTag** cmdlet creates a IP Tag.
 
 ## EXAMPLES
 
-### 1: Create a new IP Tag
-```
+### Example 1: Create a new IP Tag
+```powershell
 $ipTag = New-AzPublicIpTag -IpTagType $ipTagType -Tag $tag
 ```
 

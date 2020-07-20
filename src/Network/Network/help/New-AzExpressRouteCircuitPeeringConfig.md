@@ -48,7 +48,7 @@ by using a connectivity provider instead of the public Internet.
 ## EXAMPLES
 
 ### Example 1: Create a new ExpressRoute circuit with a peering configuration
-```
+```powershell
 $parameters = @{
     Name = 'AzurePrivatePeering'
     Circuit = $circuit
