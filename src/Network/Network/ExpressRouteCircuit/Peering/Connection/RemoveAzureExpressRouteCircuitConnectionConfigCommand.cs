@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
                     connection.IPv6CircuitConnectionConfig = null;
                 }
 
-                else if (AddressTypeUtils.IsIpv4OrIpv6(this.AddressPrefixType))
+                else if (AddressTypeUtils.IsAll(this.AddressPrefixType))
                 {
                     peering.Connections.Remove(connection);
                 }
