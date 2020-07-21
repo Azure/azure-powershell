@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null);
 
             Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
-            Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());
+            Assert.Equal(tenantB, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionC, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
 
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.ClientFactory = mock;
 
             var client = GetProfileClient();
-            var azureRmProfile = client.Login(
+            Assert.Throws<PSInvalidOperationException>(() => client.Login(
                 Context.Account,
                 Context.Environment,
                 null,
@@ -559,11 +559,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 "SubscriptionNotExits",
                 null,
                 false,
-                null);
-
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
-            Assert.Equal(tenantB, azureRmProfile.DefaultContext.Tenant.Id.ToString());
-            Assert.Equal(subscriptionA, azureRmProfile.DefaultContext.Subscription.Id.ToString());
+                null));
         }
 
         [Fact]
