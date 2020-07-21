@@ -138,6 +138,8 @@ function Test-CreateNewAppServicePlanLinux
 		Assert-AreEqual $skuName $createResult.Sku.Name
 		Assert-AreEqual $capacity $createResult.Sku.Capacity
 
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
+
 		# Assert
 
 		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName

@@ -476,8 +476,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ReservedInstanceCount = config.ReservedInstanceCount
+                FtpsState = config.FtpsState
             };
         }
 
@@ -528,7 +527,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
-                ReservedInstanceCount = config.ReservedInstanceCount,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
                 FtpsState = config.FtpsState,
@@ -577,7 +575,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var serviceEndpointLocations = new List<string>() { "*" };
             if (subnetObj.ServiceEndpoints == null)
             {
-                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();                
+                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();
                 subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
                 networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
             }
@@ -597,7 +595,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
                     networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
                 }
-            }            
+            }
         }
 
         internal static string GetSubnetResourceGroupName(IAzureContext context, string Subnet, string VirtualNetworkName)
