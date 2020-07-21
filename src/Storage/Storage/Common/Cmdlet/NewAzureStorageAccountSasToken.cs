@@ -56,13 +56,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
 
-        protected override bool UseTrack2SDK()
+        protected override bool UseTrack2Sdk()
         {
             if (SasTokenHelper.IsTrack2Permission(this.Permission))
             {
                 return true;
             }
-            return base.UseTrack2SDK();
+            return base.UseTrack2Sdk();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (!UseTrack2SDK()) // Track1
+            if (!UseTrack2Sdk()) // Track1
             {
                 var sharedAccessPolicy = new SharedAccessAccountPolicy()
                 {

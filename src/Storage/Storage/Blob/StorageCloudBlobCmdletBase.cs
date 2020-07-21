@@ -920,7 +920,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             return blobClient;
         }
 
-        protected virtual bool UseTrack2SDK()
+        protected virtual bool UseTrack2Sdk()
         {
             return false;
         }

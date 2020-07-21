@@ -89,13 +89,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
-        protected override bool UseTrack2SDK()
+        protected override bool UseTrack2Sdk()
         {
             if (SasTokenHelper.IsTrack2Permission(this.Permission))
             {
                 return true;
             }
-            return base.UseTrack2SDK();
+            return base.UseTrack2Sdk();
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            if (!UseTrack2SDK()) // Track1
+            if (!UseTrack2Sdk()) // Track1
             {
                 CloudBlobContainer container = Channel.GetContainerReference(Name);
                 SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();

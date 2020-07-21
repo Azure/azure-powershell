@@ -369,7 +369,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
                 IStorageBlobManagement localChannel = Channel;
                 Func<long, Task> taskGenerator;
-                if (!UseTrack2SDK())
+                if (!UseTrack2Sdk())
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
