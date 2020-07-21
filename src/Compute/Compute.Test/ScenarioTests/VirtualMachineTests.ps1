@@ -34,7 +34,7 @@ function Test-VirtualMachine
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_D1_v2';
+        $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
