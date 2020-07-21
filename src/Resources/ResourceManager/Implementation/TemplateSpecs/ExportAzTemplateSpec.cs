@@ -111,6 +111,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 // TODO: Handle overwriting prompts...
 
+                // Ensure our output path is resolved based on the current powershell working
+                // directory instead of the current process directory:
+                OutputFolder = ResolveUserPath(OutputFolder); 
+
                 TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, $"{specificVersion.Name}.json");
 
                 string fullRootTemplateFilePath = Path.GetFullPath(
