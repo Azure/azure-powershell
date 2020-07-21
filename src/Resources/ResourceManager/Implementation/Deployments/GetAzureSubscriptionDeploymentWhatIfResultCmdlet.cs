@@ -14,17 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Management.Automation;
     using Common;
     using Common.ArgumentCompleters;
     using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
     using SdkModels.Deployments;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Management.Automation.Language;
     using WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
@@ -74,7 +70,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DeploymentName = this.Name,
                     Location = this.Location,
                     Mode = DeploymentMode.Incremental,
-                    TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                    TemplateSpecId = this.TemplateSpecId,
+                    TemplateUri = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                     TemplateObject = this.TemplateObject,
                     TemplateParametersUri = this.TemplateParameterUri,
                     TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),

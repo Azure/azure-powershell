@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
@@ -127,7 +127,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentName = this.Name,
                 Mode = this.Mode,
                 ResourceGroupName = this.ResourceGroupName,
-                TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateSpecId = this.TemplateSpecId,
+                TemplateUri = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                 TemplateObject = this.TemplateObject,
                 TemplateParametersUri = this.TemplateParameterUri,
                 TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
@@ -160,27 +161,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
             }
 
-                    var parameters = new PSDeploymentCmdletParameters()
+            var parameters = new PSDeploymentCmdletParameters()
+            {
+                ScopeType = DeploymentScopeType.ResourceGroup,
+                ResourceGroupName = ResourceGroupName,
+                DeploymentName = Name,
+                DeploymentMode = Mode,
+                TemplateSpecId = TemplateSpecId,
+                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
+                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                ParameterUri = TemplateParameterUri,
+                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                Tags = TagsHelper.ConvertToTagsDictionary(Tag),
+                OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
+                    ? new OnErrorDeployment
                     {
-                        ScopeType = DeploymentScopeType.ResourceGroup,
-                        ResourceGroupName = ResourceGroupName,
-                        DeploymentName = Name,
-                        DeploymentMode = Mode,
-                        TemplateSpecId = TemplateSpecId ?? null,
-                        TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                        TemplateObject = TemplateObject,
-                        TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                        ParameterUri = TemplateParameterUri,
-                        DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                        Tags = TagsHelper.ConvertToTagsDictionary(Tag),
-                        OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
-                            ? new OnErrorDeployment
-                            {
-                                Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
-                                DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
-                            }
-                            : null
-                    };
+                        Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                        DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
+                    }
+                    : null
+            };
 
             if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {

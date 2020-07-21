@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Location = Location,
                     DeploymentName = Name,
                     DeploymentMode = DeploymentMode.Incremental,
-                    TemplateSpecId = TemplateSpecId ?? null,
+                    TemplateSpecId = TemplateSpecId,
                     TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                     TemplateObject = TemplateObject,
                     TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-
                 var parameters = new PSDeploymentWhatIfCmdletParameters
                 {
                     DeploymentName = this.Name,
                     Location = this.Location,
                     Mode = DeploymentMode.Incremental,
-                    TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                    TemplateSpecId = this.TemplateSpecId,
+                    TemplateUri = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                     TemplateObject = this.TemplateObject,
                     TemplateParametersUri = this.TemplateParameterUri,
                     TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
