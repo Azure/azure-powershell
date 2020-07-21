@@ -27,16 +27,37 @@ namespace Microsoft.Azure.Commands.Profile.Models
     //Use queue to handle the subscription clients priority
     class SubscritpionClientCandidates : ConcurrentQueue<ISubscriptionClientWrapper>
     {
+        static ReaderWriterLockSlim instanceLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         static private SubscritpionClientCandidates _instance = null;
         static public SubscritpionClientCandidates Instance
         {
             get
             {
-                if (_instance == null)
+                try
                 {
-                    _instance = new SubscritpionClientCandidates();
+                    instanceLock.EnterWriteLock();
+                    try
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new SubscritpionClientCandidates();
+                        }
+                        return _instance;
+                    }
+                    finally
+                    {
+                        instanceLock.ExitWriteLock();
+                    }
+
                 }
-                return _instance;
+                catch (LockRecursionException lockException)
+                {
+                    throw new InvalidOperationException("Exception in locking SubscritpionClientCandidates", lockException);
+                }
+                catch (ObjectDisposedException disposeExcetion)
+                {
+                    throw new InvalidOperationException("Exception in disposing", disposeExcetion);
+                }
             }
         }
 
@@ -48,7 +69,20 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         static public void Reset()
         {
-            _instance = null;
+            try
+            {
+                instanceLock.EnterWriteLock();
+                _instance = null;
+                instanceLock.ExitWriteLock();
+            }
+            catch (LockRecursionException lockException)
+            {
+                throw new InvalidOperationException("Exception in locking SubscritpionClientCandidates", lockException);
+            }
+            catch (ObjectDisposedException disposeExcetion)
+            {
+                throw new InvalidOperationException("Exception in disposing", disposeExcetion);
+            }
         }
     }
 
@@ -66,34 +100,48 @@ namespace Microsoft.Azure.Commands.Profile.Models
         Action<Action<ISubscriptionClientWrapper>, LoggerWriter> SubscriptionClientFallBack = (Action<ISubscriptionClientWrapper> subscriptionClientAction, LoggerWriter warning) =>
         {
             ISubscriptionClientWrapper subscriptionclient = null;
-            try
+            bool popQueueSucess = true;
+            int retryCount = 3;
+            while (SubscritpionClientCandidates.Instance.Count > 0)
             {
-                if (!SubscritpionClientCandidates.Instance.TryPeek(out subscriptionclient))
+                try
                 {
-                    throw new Exception("Conncrrent issue. Please try again."); 
-                }
-                subscriptionClientAction(subscriptionclient);
-            }
-            catch (CloudException e)
-            {
-                if (e.Body == null || string.IsNullOrEmpty(e.Body.Code) || !e.Body.Code.Equals("InvalidApiVersionParameter"))
-                {
-                    throw e;
-                }
-                warning($"Failed to use the latest Api of subscription client: {e.Message}");
-                int retryCount = 3;
-                bool popQueueSucess = true;
-                do
-                {
-                    popQueueSucess = SubscritpionClientCandidates.Instance.TryDequeue(out subscriptionclient);
-                    if(!popQueueSucess)
+                    retryCount = 3;
+                    do
                     {
-                        Thread.Sleep(1);
+                        popQueueSucess = SubscritpionClientCandidates.Instance.TryPeek(out subscriptionclient);
+                        if (!popQueueSucess)
+                        {
+                            Thread.Sleep(1);
+                        }
+                    } while (!popQueueSucess && retryCount-- > 0);
+                    if (!popQueueSucess)
+                    {
+                        throw new Exception("Conncrrent issue. Please try again.");
                     }
-                } while (!popQueueSucess && retryCount-- > 0);
-                if(!popQueueSucess)
+                    subscriptionClientAction(subscriptionclient);
+                    return;
+                }
+                catch (CloudException e)
                 {
-                    throw new Exception("Conncrrent issue. Please try again.");
+                    if (e.Body == null || string.IsNullOrEmpty(e.Body.Code) || !e.Body.Code.Equals("InvalidApiVersionParameter"))
+                    {
+                        throw e;
+                    }
+                    warning($"Failed to use the latest Api of subscription client: {e.Message}");
+                    retryCount = 3;
+                    do
+                    {
+                        popQueueSucess = SubscritpionClientCandidates.Instance.TryDequeue(out subscriptionclient);
+                        if (!popQueueSucess)
+                        {
+                            Thread.Sleep(1);
+                        }
+                    } while (!popQueueSucess && retryCount-- > 0);
+                    if (!popQueueSucess)
+                    {
+                        throw new Exception("Conncrrent issue. Please try again.");
+                    }
                 }
             }
             throw new CloudException("Your Api version is not supported by Azure server.");
@@ -102,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public List<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment)
         {
             List<AzureTenant> result = null;
-            SubscriptionClientFallBack((client) => result = client.ListAccountTenants(accessToken, environment),
+            SubscriptionClientFallBack((client) => result = client?.ListAccountTenants(accessToken, environment),
                 WriteWarningMessage);
             return result;
         }
@@ -110,7 +158,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
         {
             IEnumerable<AzureSubscription> result = null;
-            SubscriptionClientFallBack((client) => result = client.ListAllSubscriptionsForTenant(accessToken, account, environment),
+            SubscriptionClientFallBack((client) => result = client?.ListAllSubscriptionsForTenant(accessToken, account, environment),
                 WriteWarningMessage);
             return result;
         }
@@ -118,7 +166,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public AzureSubscription GetSubscriptionById(string subscriptionId, IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
         {
             AzureSubscription result = null;
-            SubscriptionClientFallBack((client) => result = client.GetSubscriptionById(subscriptionId, accessToken, account, environment),
+            SubscriptionClientFallBack((client) => result = client?.GetSubscriptionById(subscriptionId, accessToken, account, environment),
                 WriteWarningMessage);
             return result;
         }
