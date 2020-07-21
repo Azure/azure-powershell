@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.Storage.dll","Microsoft.Azure.Commands.Management.Storage.SetAzDataLakeGen2ItemAclObjectCommand","Set-AzDataLakeGen2ItemAclObject","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Set-AzDataLakeGen2ItemAclObject' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Set-AzDataLakeGen2ItemAclObject'."
