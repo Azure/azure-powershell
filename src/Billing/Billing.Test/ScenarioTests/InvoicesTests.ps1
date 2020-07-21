@@ -297,5 +297,6 @@ function Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod
     Assert-NotNull $billingInvoices.Status
     Assert-NotNull $billingInvoices.BillingProfileDisplayName
     Assert-NotNull $billingInvoices.InvoiceDate
+
     Assert-Null $billingInvoices.DownloadUrl
 }
