@@ -12,15 +12,8 @@ Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzAppConfigurationStoreNameAvailability -Name <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzAppConfigurationStoreNameAvailability -InputObject <IAppConfigurationIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -64,22 +57,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name to check for availability.
 
@@ -100,7 +77,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,8 +123,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus
@@ -155,19 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  - `[ConfigStoreName <String>]`: The name of the configuration store.
-  - `[GroupName <String>]`: The name of the private link resource group.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 
 ## RELATED LINKS
 

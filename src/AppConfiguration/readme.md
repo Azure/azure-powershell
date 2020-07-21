@@ -63,7 +63,7 @@ identity-correction-for-post: true
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
 
   - where:
@@ -130,6 +130,7 @@ directive:
     where: $.paths.*.*
     transform: $.parameters = $.parameters.filter(p => p.name !== '$skipToken')
 
+  # Swagger bug. Remove when https://github.com/Azure/azure-rest-api-specs/issues/10188 is fixed.
   - from: swagger-document
     where: $.definitions.RegenerateKeyParameters
     transform: $.required = ['id']
