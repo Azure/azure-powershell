@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
                 AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 return (subscriptionClient.ListAllSubscriptions()?
-                    .Select(s => s.ToAzureSubscription(account, environment, accessToken.TenantId))) ?? new List<AzureSubscription>();
+                    .Select(s => s.ToAzureSubscription(account, environment, accessToken.TenantId))).ToList() ?? new List<AzureSubscription>();
             }
         }
 
