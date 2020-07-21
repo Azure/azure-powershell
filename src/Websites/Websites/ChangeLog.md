@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* updated Microsoft.Azure.Management.Websites NuGet to 3.0
 
 ## Version 1.11.0
 * Added support to perform operations for Slots not in the same resource group as the App Service Plan

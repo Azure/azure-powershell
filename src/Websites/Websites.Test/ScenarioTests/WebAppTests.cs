@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "Expected to fail during playback because it validates that a PsSession into a real container web app can be established")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWindowsContainerWebAppCanIssuePSSession()
         {

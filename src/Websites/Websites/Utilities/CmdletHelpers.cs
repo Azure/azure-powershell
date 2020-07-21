@@ -476,8 +476,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ReservedInstanceCount = config.ReservedInstanceCount
+                FtpsState = config.FtpsState                
             };
         }
 
@@ -527,8 +526,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion,
-                ReservedInstanceCount = config.ReservedInstanceCount,
+                WindowsFxVersion = config.WindowsFxVersion,                
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
                 FtpsState = config.FtpsState,
