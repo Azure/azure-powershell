@@ -504,14 +504,8 @@ Are you sure you want to continue?</value>
   <data name="UpdatingIntegrationRuntime" xml:space="preserve">
     <value>Updating integration runtime '{0}' in workspace '{1}'.</value>
   </data>
-  <data name="StartingIntegrationRuntime" xml:space="preserve">
-    <value>Starting integration runtime '{0}' in workspace '{1}'.</value>
-  </data>
   <data name="LongRunningStatusError" xml:space="preserve">
     <value>An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status</value>
-  </data>
-  <data name="StoppingIntegrationRuntime" xml:space="preserve">
-    <value>Stopping integration runtime '{0}' in workspace '{1}'.</value>
   </data>
   <data name="IntegrationRuntimeSyncNodeCredential" xml:space="preserve">
     <value>Are you sure you want to sync node credentials in integration runtime '{0}'.</value>

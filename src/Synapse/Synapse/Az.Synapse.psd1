@@ -117,8 +117,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseIntegrationRuntimeMetric','Get-AzSynapseIntegrationRuntimeNode',
                'Invoke-AzSynapseIntegrationRuntimeUpgrade','New-AzSynapseIntegrationRuntimeKey',
                'Remove-AzSynapseIntegrationRuntime','Remove-AzSynapseIntegrationRuntimeNode',
-               'Set-AzSynapseIntegrationRuntime','Start-AzSynapseIntegrationRuntime',
-               'Stop-AzSynapseIntegrationRuntime','Sync-AzSynapseIntegrationRuntimeCredential',
+               'Set-AzSynapseIntegrationRuntime','Sync-AzSynapseIntegrationRuntimeCredential',
                'Update-AzSynapseIntegrationRuntime','Update-AzSynapseIntegrationRuntimeNode'
 
 
