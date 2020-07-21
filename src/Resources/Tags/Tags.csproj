@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.7.0.1-templateSpecsInternal" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.8.0-preview" />
   </ItemGroup>  
 
 </Project>

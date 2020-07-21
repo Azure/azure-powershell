@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.7.0.1-templateSpecsInternal" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.8.0-preview" />
   </ItemGroup>
 
 </Project>
