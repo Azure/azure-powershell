@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         public string CommandLineArgument { get => this._commandLineArgument; set => this._commandLineArgument = value; }
 
         /// <summary>Backing field for <see cref="CommandLineSetting" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting? _commandLineSetting;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting _commandLineSetting;
 
         /// <summary>
         /// Specifies whether this published application can be launched with command line arguments provided by the client, command
         /// line arguments specified at publish time, or no command line arguments at all.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting? CommandLineSetting { get => this._commandLineSetting; set => this._commandLineSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting CommandLineSetting { get => this._commandLineSetting; set => this._commandLineSetting = value; }
 
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
@@ -110,12 +110,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// line arguments specified at publish time, or no command line arguments at all.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.",
         SerializedName = @"commandLineSetting",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting? CommandLineSetting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting CommandLineSetting { get; set; }
         /// <summary>Description of Application.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// Specifies whether this published application can be launched with command line arguments provided by the client, command
         /// line arguments specified at publish time, or no command line arguments at all.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting? CommandLineSetting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting CommandLineSetting { get; set; }
         /// <summary>Description of Application.</summary>
         string Description { get; set; }
         /// <summary>Specifies a path for the executable file for the application.</summary>

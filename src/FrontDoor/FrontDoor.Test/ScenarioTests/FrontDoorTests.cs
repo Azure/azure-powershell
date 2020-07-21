@@ -61,5 +61,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudRedirect");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorCrudPrivateLink()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudPrivateLink");
+        }
     }
 }

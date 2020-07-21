@@ -2,7 +2,6 @@
     { "regex": "ApiManagement", "alias": "API Management" },
 
     { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" },
-    { "regex": "MlOp", "group": "Machine Learning Compute", "alias": "Machine Learning Compute" },
     { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" },
 
     { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" },
@@ -48,7 +47,7 @@
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
     { "regex": "Synapse", "alias": "Synapse Analytics" },
-	
+
     { "regex": "Relay", "alias": "Relay" },
 
     { "regex": "ServiceBus", "alias": "Service Bus" },
@@ -59,9 +58,11 @@
 
     { "regex": "KeyVault", "alias": "Key Vault" },
 
-    { "regex": "Iot", "alias": "IoT" },
+    { "regex": "IotCentral", "alias": "IotCentral" },
 
-	  { "regex": "DeviceProvisioningServices", "alias": "DPS" },
+    { "regex": "IotHub", "alias": "IotHub" },
+
+	{ "regex": "DeviceProvisioningServices", "alias": "DPS" },
 
     { "regex": "Batch", "alias": "Batch" },
 
@@ -177,5 +178,11 @@
     { "regex": "Functions", "alias": "Functions" },
     { "regex": "DesktopVirtualization", "alias": "DesktopVirtualization" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
-    { "regex": "StackEdge", "alias": "Stack Edge" }
+    { "regex": "HanaOnAzure", "alias": "SAP HANA on Azure" },
+    { "regex": "CustomProviders", "alias": "Custom Resource Providers" },
+    { "regex": "MonitoringSolutions", "alias": "Monitoring Solutions" },
+    { "regex": "StackEdge", "alias": "Stack Edge" },
+    { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
+    { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" },
+    { "regex": "StackHCI", "alias": "Stack HCI" }
 ]

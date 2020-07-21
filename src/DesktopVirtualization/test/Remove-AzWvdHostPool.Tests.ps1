@@ -28,7 +28,8 @@ Describe 'Remove-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -44,6 +45,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
+            $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -63,6 +65,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
+            $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `

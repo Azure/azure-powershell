@@ -23,7 +23,7 @@ Creates a StaticRoute object.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16")-NextHopIpAddress "10.90.0.5"
+PS C:\> New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16") -NextHopIpAddress "10.90.0.5"
 
 Name   AddressPrefixes              NextHopIpAddress
 ----   ---------------              ----------------

@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlet `Invoke-AzRestMethod`
+* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865](https://github.com/Azure/azure-powershell/issues/9865)
 
+## Version 1.9.1
+* Added new cmdlet `Invoke-AzRestMethod`
 * Fixed an issue that may cause authentication errors in multi-process scenarios such as running multiple Azure PowerShell cmdlets using `Start-Job` [#9448]
 
 ## Version 1.9.0

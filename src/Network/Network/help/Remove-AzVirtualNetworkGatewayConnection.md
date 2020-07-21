@@ -24,8 +24,8 @@ The **Remove-AzVirtualNetworkGatewayConnection** cmdlet deletes the object of yo
 
 ## EXAMPLES
 
-### 1: Delete a Virtual Network Gateway Connection
-```
+### Example 1: Delete a Virtual Network Gateway Connection
+```powershell
 Remove-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
 
