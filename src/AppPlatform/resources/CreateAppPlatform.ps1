@@ -10,17 +10,17 @@ $AccountJarPath = 'C:\Users\yunwang\source\repos\azure-powershell-generation-db\
 # New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location eastus
 # New-AzSpringCloudService -ResourceGroupName $ResourceGroupName -name $ServiceName -Location eastus
 
-# New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $GatewayAppName -ActiveDeploymentName default
-New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -DeploymentName default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>'
+# New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $GatewayAppName
+New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -Name default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>' -SourceType Jar
 Update-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -ActiveDeploymentName default -Public
 Deploy-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -JarPath $GatewayJarPath
 
-New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $AuthAppName -ActiveDeploymentName default
-New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AuthAppName -DeploymentName default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>'
+New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $AuthAppName
+New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AuthAppName -Name default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>' -SourceType Jar
 Update-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AuthAppName -ActiveDeploymentName default
 Deploy-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AuthAppName -JarPath $AuthJarPath
 
-New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $AccountAppName -ActiveDeploymentName default
-New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AccountAppName -DeploymentName default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>'
+New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $AccountAppName
+New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AccountAppName -Name default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>' -SourceType Jar
 Update-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AccountAppName -ActiveDeploymentName default
 Deploy-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AccountAppName -JarPath $AccountJarPath

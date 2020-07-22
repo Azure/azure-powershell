@@ -219,8 +219,6 @@ param(
             $PSBoundParameters.Add('DeploymentSettingRuntimeVersion', $RuntimeVersion)
             $Null = $PSBoundParameters.Remove('RuntimeVersion')
         }
-        Write-Host @PSBoundParameters
-        Az.SpringCloud.internal\New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $Name #-DeploymentSettingInstanceCount $InstanceCount -DeploymentSettingMemoryInGb $MemoryInGb -SourceRelativePath $SourceRelativePath -SubscriptionId $SubscriptionId -DeploymentSettingCpu $Cpu
-        # Az.SpringCloud.internal\New-AzSpringCloudDeployment @PSBoundParameters
+        Az.SpringCloud.internal\New-AzSpringCloudDeployment @PSBoundParameters
     }
 }
