@@ -44,25 +44,25 @@ The credential to be removed is identified by its key ID if an individual creden
 
 ## EXAMPLES
 
-### Example 1 - Remove a specific credential from a service principal
+### Example 1: Remove a specific credential from a service principal
 
-```
+```powershell
 PS C:\> Remove-AzADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
 
 Removes the credential with key id '9044423a-60a3-45ac-9ab1-09534157ebb' from the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82'.
 
-### Example 2 - Remove all credentials from a service principal
+### Example 2: Remove all credentials from a service principal
 
-```
+```powershell
 PS C:\> Remove-AzADSpCredential -ServicePrincipalName http://test123
 ```
 
 Removes all credentials from the service principal with the SPN "http://test123".
 
-### Example 3 - Remove all credentials from a service principal using piping
+### Example 3: Remove all credentials from a service principal using piping
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 | Remove-AzADSpCredential
 ```
 

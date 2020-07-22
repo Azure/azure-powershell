@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Updated to use the 2020-06-01 API version.
-* New features:
+* Added new features:
     - Input mapping
     - Event Delivery Schema
     - Private Link
@@ -30,14 +32,14 @@
     - Secure webhook (AAD support)
     - IpFiltering
 * Updated cmdlets:
-    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+    - `New-AzEventGridSubscription`/`Update-AzEventGridSubscription`:
         - Add new optional parameters to support webhook batching.
         - Add new optional parameters to support secured webhook using AAD.
         - Add new enum for EndpointType parameter to support azure function and service bus topic as new destinations.
         - Add new optional parameter for delivery schema.
-    - New-AzureRmEventGridTopic/Update-AzureRmEventGridTopic and New-AzureRmEventGridDomain/Update-AzureRmEventGridDomain:
+    - `New-AzEventGridTopic`/`Update-AzEventGridTopic` and `New-AzEventGridDomain`/`Update-AzEventGridDomain`:
         - Add new optional parameters to support IpFiltering.
-    - New-AzureRmEventGridTopic/New-AzureRmEventGridDomain:
+    - `New-AzEventGridTopic`/`New-AzEventGridDomain`:
         - Add new optional parameters to support Input mapping.
 
 ## Version 1.2.3

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved the Azure Backup contaner/item discovery experience.
+
+## Version 2.11.0
 * Removed project reference to Authentication
 * Azure Backup tuned cmdlets help text to be more accurate.
 * Azure Backup added support for fetching MAB agent jobs using `Get-AzRecoveryServicesBackupJob` cmdlet.

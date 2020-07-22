@@ -55,9 +55,9 @@ The service principal is identified by supplying either the object id or service
 
 ## EXAMPLES
 
-### Example 1 - Create a new service principal credential using a generated password
+### Example 1: Create a new service principal credential using a generated password
 
-```
+```powershell
 PS C:\> New-AzADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
 
 Secret    : System.Security.SecureString
@@ -69,9 +69,9 @@ Type      : Password
 
 A new password credential is added to the existing service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
 
-### Example 2 - Create a new service principal credential using a certificate
+### Example 2: Create a new service principal credential using a certificate
 
-```
+```powershell
 PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 PS C:\> $cer.Import("C:\myapp.cer")
 PS C:\> $binCert = $cer.GetRawCertData()
@@ -81,9 +81,9 @@ PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
 
-### Example 3 - Create a new service principal credential using piping
+### Example 3: Create a new service principal credential using piping
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzADSpCredential
 
 Secret    : System.Security.SecureString

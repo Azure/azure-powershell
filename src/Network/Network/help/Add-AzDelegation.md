@@ -22,7 +22,7 @@ The **Add-AzDelegation** cmdlet adds a service delegation to an Azure subnet.
 
 ## EXAMPLES
 
-### 1: Adding a delegation
+### Example 1: Adding a delegation
 ```powershell
 PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
 PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet

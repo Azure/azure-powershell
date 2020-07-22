@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.iothub
