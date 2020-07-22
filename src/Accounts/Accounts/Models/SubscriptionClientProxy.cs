@@ -24,8 +24,8 @@ using SubscriptionClientVersion2019 = Microsoft.Azure.Commands.ResourceManager.C
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
-    //Use queue to handle the subscription clients priority.
-    internal class SubscritpionClientCandidates : ConcurrentQueue<ISubscriptionClientWrapper>
+    //Use queue to handle the subscription clients priority
+    class SubscritpionClientCandidates : ConcurrentQueue<ISubscriptionClientWrapper>
     {
         static private SubscritpionClientCandidates _instance = null;
         static public SubscritpionClientCandidates Instance
@@ -66,49 +66,34 @@ namespace Microsoft.Azure.Commands.Profile.Models
         Action<Action<ISubscriptionClientWrapper>, LoggerWriter> SubscriptionClientFallBack = (Action<ISubscriptionClientWrapper> subscriptionClientAction, LoggerWriter warning) =>
         {
             ISubscriptionClientWrapper subscriptionclient = null;
-            bool popQueueSucess = true;
-            int retryCount = 3;
-            while (SubscritpionClientCandidates.Instance.Count > 0)
+            try
             {
-                try
+                if (!SubscritpionClientCandidates.Instance.TryPeek(out subscriptionclient))
                 {
-                    retryCount = 3;
-                    do
-                    {
-                        popQueueSucess = SubscritpionClientCandidates.Instance.TryPeek(out subscriptionclient);
-                        if (!popQueueSucess)
-                        {
-                            Thread.Sleep(1);
-                        }
-                    } while (!popQueueSucess && retryCount-- > 0);
-                    if (!popQueueSucess)
-                    {
-                        throw new Exception("Conncrrent issue. Please try again.");
-                    }
-                    subscriptionClientAction(subscriptionclient);
-                    return;
+                    throw new Exception("Conncrrent issue. Please try again."); 
                 }
-                catch (CloudException e)
+                subscriptionClientAction(subscriptionclient);
+            }
+            catch (CloudException e)
+            {
+                if (e.Body == null || string.IsNullOrEmpty(e.Body.Code) || !e.Body.Code.Equals("InvalidApiVersionParameter"))
                 {
-                    //Only catch the exception caused by invalid api version parameter and try a fallback version.
-                    if (e.Body == null || string.IsNullOrEmpty(e.Body.Code) || !e.Body.Code.Equals("InvalidApiVersionParameter"))
+                    throw e;
+                }
+                warning($"Failed to use the latest Api of subscription client: {e.Message}");
+                int retryCount = 3;
+                bool popQueueSucess = true;
+                do
+                {
+                    popQueueSucess = SubscritpionClientCandidates.Instance.TryDequeue(out subscriptionclient);
+                    if(!popQueueSucess)
                     {
-                        throw e;
+                        Thread.Sleep(1);
                     }
-                    warning($"Failed to use the latest Api of subscription client: {e.Message}");
-                    retryCount = 3;
-                    do
-                    {
-                        popQueueSucess = SubscritpionClientCandidates.Instance.TryDequeue(out subscriptionclient);
-                        if (!popQueueSucess)
-                        {
-                            Thread.Sleep(1);
-                        }
-                    } while (!popQueueSucess && retryCount-- > 0);
-                    if (!popQueueSucess)
-                    {
-                        throw new Exception("Conncrrent issue. Please try again.");
-                    }
+                } while (!popQueueSucess && retryCount-- > 0);
+                if(!popQueueSucess)
+                {
+                    throw new Exception("Conncrrent issue. Please try again.");
                 }
             }
             throw new CloudException("Your Api version is not supported by Azure server.");
@@ -117,7 +102,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public List<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment)
         {
             List<AzureTenant> result = null;
-            SubscriptionClientFallBack((client) => result = client?.ListAccountTenants(accessToken, environment),
+            SubscriptionClientFallBack((client) => result = client.ListAccountTenants(accessToken, environment),
                 WriteWarningMessage);
             return result;
         }
@@ -125,7 +110,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
         {
             IEnumerable<AzureSubscription> result = null;
-            SubscriptionClientFallBack((client) => result = client?.ListAllSubscriptionsForTenant(accessToken, account, environment),
+            SubscriptionClientFallBack((client) => result = client.ListAllSubscriptionsForTenant(accessToken, account, environment),
                 WriteWarningMessage);
             return result;
         }
@@ -133,7 +118,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public AzureSubscription GetSubscriptionById(string subscriptionId, IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
         {
             AzureSubscription result = null;
-            SubscriptionClientFallBack((client) => result = client?.GetSubscriptionById(subscriptionId, accessToken, account, environment),
+            SubscriptionClientFallBack((client) => result = client.GetSubscriptionById(subscriptionId, accessToken, account, environment),
                 WriteWarningMessage);
             return result;
         }
