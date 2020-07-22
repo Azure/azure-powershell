@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetResourceSku");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceSkuByLocation()
+        {
+            TestRunner.RunTestScript("Test-GetResourceSkuByLocation");
+        }
     }
 }

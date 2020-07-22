@@ -2,7 +2,7 @@ $mapping = [ordered]@{}
 
 $psd1s = Get-ChildItem -Path $PSScriptRoot/../src -Recurse | `
     Where-Object {($_.Name -like "*AzureRM*psd1"  -or $_.Name -eq "Azure.AnalysisServices.psd1" -or $_.Name -eq "Azure.Storage.psd1") `
-    -and ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*") -and $_.FullName -notlike "*`\Package`\*" -and $_.FullName -notlike "*Test*" -and $_.FullName -notlike "*`\bin`\*" -and $_.FullName -notlike "*`\obj`\*"}
+    -and ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*" -or $_.FullName -like "*StackHCI*") -and $_.FullName -notlike "*`\Package`\*" -and $_.FullName -notlike "*Test*" -and $_.FullName -notlike "*`\bin`\*" -and $_.FullName -notlike "*`\obj`\*"}
 
 $psd1s | ForEach-Object {
     $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", "" -replace "RecoveryServices.SiteRecovery", "RecoveryServices" -replace "RecoveryServices.Backup", "RecoveryServices"

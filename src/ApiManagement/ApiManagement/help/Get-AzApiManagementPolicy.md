@@ -80,7 +80,7 @@ This command gets the operation-scope policy.
 ### Example 5: Get the Tenant scope policy in RawXml format
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS c:\> Get-AzApiManagementPolicy -Context $context -Format rawxml
+PS c:\> Get-AzApiManagementPolicy -Context $apimContext -Format rawxml
 
 <policies>
         <inbound>

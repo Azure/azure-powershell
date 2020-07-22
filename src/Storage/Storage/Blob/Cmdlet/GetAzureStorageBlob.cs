@@ -155,13 +155,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool NeedWarningForContinuationToken = false;
 
-        protected override bool UseTrack2SDK()
+        protected override bool UseTrack2Sdk()
         {
             if (this.IncludeVersion.IsPresent || this.VersionId != null)
             {
                 return true;
             }
-            return base.UseTrack2SDK();
+            return base.UseTrack2Sdk();
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 BlobBaseClient blobClient = null;
-                if (UseTrack2SDK()) // User Track2 SDK
+                if (UseTrack2Sdk()) // User Track2 SDK
                 {
                     blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
                     global::Azure.Storage.Blobs.Models.BlobProperties blobProperties;
@@ -272,7 +272,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobContinuationToken continuationToken = ContinuationToken;
             string track2ContinuationToken = this.ContinuationToken is null ? null : this.ContinuationToken.NextMarker;
 
-            if (UseTrack2SDK()) // For new feature only available on Track2 SDK, need list with Track2 SDK.
+            if (UseTrack2Sdk()) // For new feature only available on Track2 SDK, need list with Track2 SDK.
             {
                 BlobTraits blobTraits = BlobTraits.Metadata | BlobTraits.CopyStatus; // | BlobTraits.Tags;
                 BlobStates blobStates = BlobStates.Snapshots;

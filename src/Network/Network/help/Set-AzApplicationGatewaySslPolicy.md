@@ -24,8 +24,8 @@ The **Set-AzApplicationGatewaySslPolicy** cmdlet modifies the SSL policy of an a
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
 ```

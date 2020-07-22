@@ -1,3 +1,117 @@
+## 4.4.0 - July 2020
+#### Az.Accounts
+* Added new cmdlet 'Invoke-AzRestMethod'
+* Fixed an issue that may cause authentication errors in multi-process scenarios such as running multiple Azure PowerShell cmdlets using 'Start-Job' [#9448]
+
+#### Az.Aks
+* Fixed bug 'Get-AzAks' doesn't get all clusters [#12296]
+
+#### Az.AnalysisServices
+* Removed project reference to Authentication
+
+#### Az.Automation
+* Fixed the issue that string with escape chars cannot be converted into json object.
+
+#### Az.Compute
+* Added warning when using 'New-AzVmss' without 'latest' image version
+
+#### Az.DataFactory
+* Added global parameters to Data Factory.
+
+#### Az.EventGrid
+* Updated to use the 2020-06-01 API version.
+* Added new features:
+    - Input mapping
+    - Event Delivery Schema
+    - Private Link
+    - Cloud Event V10 Schema
+    - Service Bus Topic As Destination
+    - Azure Function As Destination
+    - WebHook Batching
+    - Secure webhook (AAD support)
+    - IpFiltering
+* Updated cmdlets:
+    - 'New-AzEventGridSubscription'/'Update-AzEventGridSubscription':
+        - Add new optional parameters to support webhook batching.
+        - Add new optional parameters to support secured webhook using AAD.
+        - Add new enum for EndpointType parameter to support azure function and service bus topic as new destinations.
+        - Add new optional parameter for delivery schema.
+    - 'New-AzEventGridTopic'/'Update-AzEventGridTopic' and 'New-AzEventGridDomain'/'Update-AzEventGridDomain':
+        - Add new optional parameters to support IpFiltering.
+    - 'New-AzEventGridTopic'/'New-AzEventGridDomain':
+        - Add new optional parameters to support Input mapping.
+
+#### Az.FrontDoor
+* Updated module to use API 2020-05-01
+* Added Private link support for Storage, Keyvault and Web App Service resources
+
+#### Az.HDInsight
+* Supported creating cluster with ADLSGen1/2 storage in national clouds.
+
+#### Az.Monitor
+* Fixed bug for 'Get-AzDiagnosticSetting' when metrics or logs are null [#12272]
+
+#### Az.Network
+* Fixed parameters swap in VWan HubVnet connection
+* Added new cmdlets for Azure Network Virtual Appliance Sites
+    - 'Get-AzVirtualApplianceSite'
+    - 'New-AzVirtualApplianceSite'
+    - 'Remove-AzVirtualApplianceSite'
+    - 'Update-AzVirtualApplianceSite'
+    - 'New-AzOffice365PolicyProperty'
+* Added new cmdlets for Azure Network Virtual Appliance
+    - 'Get-AzNetworkVirtualAppliance'
+    - 'New-AzNetworkVirtualAppliance'
+    - 'Remove-AzNetworkVirtualAppliance'
+    - 'Update-AzNetworkVirtualAppliance'
+    - 'Get-AzNetworkVirtualApplianceSku'
+    - 'New-AzVirtualApplianceSkuProperty'
+* Onboarded Application Gateway to Private Link Common Cmdlets
+* Onboarded StorageSync to Private Link Common Cmdlets
+* Onboarded SignalR to Private Link Common Cmdlets
+
+#### Az.RecoveryServices
+* Removed project reference to Authentication
+* Azure Backup tuned cmdlets help text to be more accurate.
+* Azure Backup added support for fetching MAB agent jobs using 'Get-AzRecoveryServicesBackupJob' cmdlet.
+
+#### Az.Resources
+* Updated 'Save-AzResourceGroupDeploymentTemplate' to use the SDK.
+* Added 'Unregister-AzResourceProvider' cmdlet.
+
+#### Az.Sql
+* Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet'
+* Fixed a bug in Data Classification cmdlets.'
+* Added support for Azure SQL Managed Instance failover: 'Invoke-AzSqlInstanceFailover'
+
+#### Az.Storage
+* Fixed the issue that UserAgent is not added for some data plane cmdlets.
+* Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
+    -  'New-AzStorageAccount'
+    -  'Set-AzStorageAccount'
+* Support enable/disable versioning on Blob Service of a Storage account
+    - 'Update-AzStorageBlobServiceProperty'
+* Support list blobs with blob versions
+    - 'Get-AzStorageBlob'
+* Support get/remove single blob snapshot or blob version
+    - 'Get-AzStorageBlob'
+    - 'Remove-AzStorageBlob'
+* Support pipeline from blob object generated from Azure.Storage.Blobs V12
+    - 'Get-AzStorageBlobContent'
+    - 'New-AzStorageBlobSASToken'
+    - 'Remove-AzStorageBlob'
+    - 'Set-AzStorageBlobContent'
+    - 'Start-AzStorageBlobCopy'
+
+#### Az.StorageSync
+* Added a new version StorageSync SDK targeting ApiVersion 2020-03-01
+* Added Update Storage Sync Service cmdlet
+    - 'Set-AzStorageSyncService'
+* Added IncomingTrafficPolicy and PrivateEndpointConnections to StorageSyncService cmdlets.
+
+#### Az.Websites
+* Added support to perform operations for Slots not in the same resource group as the App Service Plan
+
 ## 4.3.0 - June 2020
 #### Az.Accounts
 * Supported discovering environment setting by default and adding environment via 'Add-AzEnvironment'
