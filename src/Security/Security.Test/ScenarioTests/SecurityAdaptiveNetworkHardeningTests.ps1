@@ -26,9 +26,9 @@ function Get-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
 .SYNOPSIS
 Gets a single Adaptive Network Hardening resource
 #>
-function Get-AzSecurityAdaptiveNetworkHardeningResource-ResourceGroupLevelResource
+function Get-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
 {
-	$anh = Get-AzSecurityAdaptiveNetworkHardeningResource -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
+	$anh = Get-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
 	Validate-SecurityAdaptiveNetworkHardenings $anh
 }
 
@@ -36,11 +36,11 @@ function Get-AzSecurityAdaptiveNetworkHardeningResource-ResourceGroupLevelResour
 .SYNOPSIS
 Enforces the given rules on the NSG(s) listed in the request
 #>
-function Set-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
+function Add-AzSecurityAdaptiveNetworkHardening-ResourceGroupLevelResource
 {
-	$anh = Get-AzSecurityAdaptiveNetworkHardeningResource -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
+	$anh = Get-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf
 	
-	Assert-True { Set-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf -Rules $anh.Properties.Rules -NetworkSecurityGroups $anh.Properties.EffectiveNetworkSecurityGroups[0].NetworkSecurityGroups -PassThru }
+	Assert-True { Add-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName default -ResourceGroupName MSI-GLStandard_A1 -ResourceName MSI-22122 -ResourceNamespace Microsoft.Compute -ResourceType virtualMachines -SubscriptionId 3eeab341-f466-499c-a8be-85427e154baf -Rules $anh.Properties.Rules -NetworkSecurityGroups $anh.Properties.EffectiveNetworkSecurityGroups[0].NetworkSecurityGroups -PassThru }
 }
 
 <#

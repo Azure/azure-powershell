@@ -22,8 +22,8 @@ using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
-    public class SetAdaptiveNetworkHardening : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
+    public class AddAdaptiveNetworkHardening : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AdaptiveNetworkHardeningResourceName)]
         [ValidateNotNullOrEmpty]

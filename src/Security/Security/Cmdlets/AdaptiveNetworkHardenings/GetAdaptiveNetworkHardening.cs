@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class GetAdaptiveNetworkHardening : SecurityCenterCmdletBase
     {
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AdaptiveNetworkHardeningResourceName)]
+        [ValidateNotNullOrEmpty]
+        public string AdaptiveNetworkHardeningResourceName { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -38,20 +42,43 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.SubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SecurityCenterClient.SubscriptionId = SubscriptionId;
+            if (AdaptiveNetworkHardeningResourceName != null)
+            {
+                SecurityCenterClient.SubscriptionId = SubscriptionId ?? SecurityCenterClient.SubscriptionId;
 
-            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
-                .ListByExtendedResourceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName)
+                var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
+                .GetWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName)
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            WriteObject(adaptiveNetworkHardenings.ConvertToPSType(), enumerateCollection: true);
+
+                WriteObject(adaptiveNetworkHardenings.ConvertToPSType(), enumerateCollection: true);
+            }
+            else if (AdaptiveNetworkHardeningResourceName == null)
+            {
+                SecurityCenterClient.SubscriptionId = SubscriptionId ?? SecurityCenterClient.SubscriptionId;
+
+                var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
+                    .ListByExtendedResourceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName)
+                    .GetAwaiter()
+                    .GetResult()
+                    .Body;
+
+                WriteObject(adaptiveNetworkHardenings.ConvertToPSType(), enumerateCollection: true);
+            }
+            else
+            {
+                throw new PSInvalidOperationException();
+            }
         }
     }
 }
+
+
+
