@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
+* Added new cmdlet: `Get-AzSecurityAdaptiveNetworkHardening` and `Add-AzSecurityAdaptiveNetworkHardening`
+
 
 ## Version 0.7.10
 * Added new cmdlet: `Get-AzAllowedConnection`
