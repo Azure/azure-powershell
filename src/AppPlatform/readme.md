@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.AppPlatform
-This directory contains the PowerShell module for the AppPlatform service.
+# Az.SpringCloud
+This directory contains the PowerShell module for the SpringCloud service.
 
 ---
 ## Status
-[![Az.AppPlatform](https://img.shields.io/powershellgallery/v/Az.AppPlatform.svg?style=flat-square&label=Az.AppPlatform "Az.AppPlatform")](https://www.powershellgallery.com/packages/Az.AppPlatform/)
+[![Az.SpringCloud](https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud "Az.SpringCloud")](https://www.powershellgallery.com/packages/Az.SpringCloud/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.AppPlatform`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.SpringCloud`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -52,9 +52,11 @@ require:
 input-file:
   - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2019-05-01-preview/appplatform.json
 
-title: AppPlatform
+title: SpringCloud
 module-version: 0.1.0
 identity-correction-for-post: true
+# prefix: Az
+# subject-prefix: ''
 
 directive:
   - where:
@@ -80,15 +82,11 @@ directive:
       subject: ServiceTestKey$
       variant: ^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$
     remove: true
-  # - where:
-  #     subject: App
-  #     verb: New
-  #   hide: true
+  - where:
+      subject: DeploymentClusterDeployment|DeploymentLogFileUrl|ServiceTestKey|Sku|ServiceTestEndpoint|ServiceNameAvailability
+    remove: true
   - where:
       subject: Deployment
       verb: New|Update
     hide: true
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
 ```
