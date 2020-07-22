@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Text;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -245,6 +246,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Manual", "AutomaticByOS", "AutomaticByPlatform")]
         public string PatchMode { get; set; }
 
         // Linux Parameter Sets
