@@ -3179,7 +3179,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 
 		$clientCertFilePath = $basedir + "/ScenarioTests/Data/TrustedClientCertificate.cer"
 		$trustedClient01 = New-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -CertificateFile $clientCertFilePath
-		$sslPolicy = New-AzApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
 		$sslProfile01 = New-AzApplicationGatewaySslProfile -Name $sslProfile01Name -SslPolicy $sslPolicy -ClientAuthConfiguration $clientAuthConfig -TrustedClientCertificates $trustedClient01
 		
@@ -3220,6 +3220,12 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
 		Assert-NotNull $clientAuthConfig
 		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
+		Assert-AreEqual $sslPolicy.MinProtocolVersion $getpolicy.MinProtocolVersion
+
+		$getgpolicy = Get-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw
+		Assert-AreEqual $sslPolicyGlobal.MinProtocolVersion $getgpolicy.MinProtocolVersion
 		
 		$listener = Get-AzApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listenerName
 		Assert-AreEqual $listener.SslProfile.Id $sslProfile01.Id
@@ -3229,17 +3235,22 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$trustedClient02 =  Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
 		$getgw = Add-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01,$trustedClient02
 		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
+		$sslProfile01 = Set-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01 -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$sslPolicy02 = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$getgw = Set-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -SslPolicy $sslPolicy02 -TrustedClientCertificates $trustedClient01,$trustedClient02 -ClientAuthConfiguration $clientAuthConfig 
 
 		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
 
+		$sslProfile01 = Get-AzApplicationGatewaySslProfile -Name $sslProfile01Name -ApplicationGateway $getgw
 		$sslProfile02 = Get-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw 
 		$sslProfiles = Get-AzApplicationGatewaySslProfile -ApplicationGateway $getgw
 		Assert-AreEqual $sslProfiles.Count 2
         Assert-AreEqual $sslProfile02.TrustedClientCertificates.Count 2
         Assert-AreEqual $sslProfile02.TrustedClientCertificates[0].Id $trustedClient01.Id
 		Assert-AreEqual $sslProfile02.TrustedClientCertificates[1].Id $trustedClient02.Id
+
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
+		Assert-AreEqual $getpolicy.MinProtocolVersion $sslPolicyGlobal.MinProtocolVersion
 
         $trustedClient02 = Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw 
 		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
@@ -3251,6 +3262,9 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		Assert-AreEqual $False $clientAuthConfig.VerifyClientCertIssuerDN
 		
 		# Remove operations.
+		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02 -Force
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
+		Assert-Null $getpolicy
 		$sslProfile02 = Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile02
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile02
 		Assert-Null $clientAuthConfig
