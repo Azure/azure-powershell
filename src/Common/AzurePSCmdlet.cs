@@ -20,12 +20,12 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -324,7 +324,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            AzureSession.Instance.ClientFactory.AddUserAgent(ModuleName, string.Format("v{0}", ModuleVersion));
+            AzureSession.Instance.ClientFactory.AddUserAgent(ModuleName, string.Format("v{0}", AzVersion));
             AzureSession.Instance.ClientFactory.AddUserAgent(PSVERSION, string.Format("v{0}", PSVersion));
 
             AzureSession.Instance.ClientFactory.AddHandler(
@@ -560,7 +560,49 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected abstract void InitializeQosEvent();
+        protected virtual void InitializeQosEvent()
+        {
+            var commandAlias = this.GetType().Name;
+            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            {
+                commandAlias = this.MyInvocation.MyCommand.Name;
+            }
+
+            _qosEvent = new AzurePSQoSEvent()
+            {
+                CommandName = commandAlias,
+                ModuleName = this.GetType().Assembly.GetName().Name,
+                ModuleVersion = this.GetType().Assembly.GetName().Version.ToString(),
+                ClientRequestId = this._clientRequestId,
+                SessionId = _sessionId,
+                IsSuccess = true,
+                ParameterSetName = this.ParameterSetName
+            };
+
+            if (AzVersion == null)
+            {
+                AzVersion = this.LoadAzVersion();
+                UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", AzVersion)).ToString();
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                    UserAgent += string.Format(" {0}", hostEnv.Trim());
+            }
+            _qosEvent.AzVersion = AzVersion;
+            _qosEvent.UserAgent = UserAgent;
+
+            if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
+            {
+                _qosEvent.InvocationName = this.MyInvocation.InvocationName;
+            }
+
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null
+                && this.MyInvocation.BoundParameters.Keys != null)
+            {
+                _qosEvent.Parameters = string.Join(" ",
+                    this.MyInvocation.BoundParameters.Keys.Select(
+                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
+            }
+        }
 
         private void RecordDebugMessages()
         {
@@ -866,7 +908,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static string AzVersion { set; get; }
 
         //Initialized once AzVersion is loaded.
-        //Format: AzurePowershell/Az0.0.0;%AZUREPS_HOST_ENVIROMENT%
+        //Format: AzurePowershell/Az0.0.0 %AZUREPS_HOST_ENVIROMENT%
         public static string UserAgent { set; get; }
 
         protected string LoadAzVersion()

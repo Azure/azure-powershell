@@ -26,10 +26,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text;
 
@@ -279,46 +277,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            var commandAlias = this.GetType().Name;
-            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
-            {
-                commandAlias = this.MyInvocation.MyCommand.Name;
-            }
-
-            _qosEvent = new AzurePSQoSEvent()
-            {
-                CommandName = commandAlias,
-                ModuleName = this.GetType().Assembly.GetName().Name,
-                ModuleVersion = this.GetType().Assembly.GetName().Version.ToString(),
-                ClientRequestId = this._clientRequestId,
-                SessionId = _sessionId,
-                IsSuccess = true,
-                ParameterSetName = this.ParameterSetName
-            };
-
-            if (AzVersion == null)
-            {
-                AzVersion = this.LoadAzVersion();
-                UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", AzVersion)).ToString();
-                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
-                if (!String.IsNullOrWhiteSpace(hostEnv))
-                    UserAgent += string.Format(";{0}", hostEnv.Trim());
-            }
-            _qosEvent.AzVersion = AzVersion;
-            _qosEvent.UserAgent = UserAgent;
-
-            if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
-            {
-                _qosEvent.InvocationName = this.MyInvocation.InvocationName;
-            }
-
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
-                && this.MyInvocation.BoundParameters.Keys != null)
-            {
-                _qosEvent.Parameters = string.Join(" ",
-                    this.MyInvocation.BoundParameters.Keys.Select(
-                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
-            }
+            base.InitializeQosEvent();
 
             IAzureContext context;
             _qosEvent.Uid = "defaultid";

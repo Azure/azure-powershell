@@ -12,14 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Management.Automation;
-using System.Management.Automation.Host;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -110,6 +105,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         protected override void InitializeQosEvent()
         {
+            // Keep this override and ensure no compability issue.
+            base.InitializeQosEvent();
         }
     }
 }
