@@ -22,6 +22,8 @@ Creates a configuration store with the specified parameters.
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
+.LINK
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 #>
 function New-AzAppConfigurationStore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]

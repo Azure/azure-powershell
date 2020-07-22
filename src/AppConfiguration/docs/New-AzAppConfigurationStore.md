@@ -24,23 +24,51 @@ Creates a configuration store with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an app configuration store
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
 ```
 
-{{ Add description here }}
+This command creates an app configuration store.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an app configuration with the IdentityType set to "UserAssigned"
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
 ```
 
-{{ Add description here }}
+This command creates an app configuration with the IdentityType set to "UserAssigned".
+
+### Example 3: Create an app configuration with the IdentityType set to "SystemAssigned" 
+```powershell
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
+```
+
+This command creates an app configuration with the IdentityType set to "SystemAssigned".
+
+### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
+```powershell
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+```
+
+This command creates an app configuration with the IdentityType set to "SystemAssigned, UserAssigned".
 
 ## PARAMETERS
 
@@ -258,4 +286,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
+
+
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 

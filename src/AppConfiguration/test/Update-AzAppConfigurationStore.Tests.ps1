@@ -12,11 +12,31 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzAppConfigurationStore' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Update app configuration that identity type is user assigned.
+        $appConf = Update-AzAppConfigurationStore -Name $env.appconfName00 -ResourceGroupName $env.resourceGroup -Sku 'Standard'
+        $appConf.SkuName | Should -Be 'Standard'
+
+        $appConf = Update-AzAppConfigurationStore -Name $env.appconfName00 -ResourceGroupName $env.resourceGroup `
+        -Tag @{'key1'= 1;'key2' = 2} `
+        -EncryptionKeyIdentifier $env.encryptionKeyIdentifier `
+        -KeyVaultIdentityClientId $env.assignedIdentityClinetId
+        
+        $appConf.KeyVaultPropertyKeyIdentifier | Should -Be $env.encryptionKeyIdentifier
+        $appConf.Tag.Count | Should -Be 2
+
+        # Update app configuration that identity type is system assigned.
+        $appConf = Update-AzAppConfigurationStore -Name $env.appconfName01 -ResourceGroupName $env.resourceGroup `
+        -Tag @{'key1'= 1;'key2' = 2} `
+        -EncryptionKeyIdentifier $env.encryptionKeyIdentifier
+
+        $appConf.KeyVaultPropertyKeyIdentifier | Should -Be $env.encryptionKeyIdentifier
+        $appConf.Tag.Count | Should -Be 2
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $appConf = Get-AzAppConfigurationStore -Name $env.appconfName00 -ResourceGroupName $env.resourceGroup 
+        $appConf = Update-AzAppConfigurationStore -InputObject $appConf -EncryptionKeyIdentifier $null
+        $appConf.EncryptionKeyIdentifier | Should -BeFalse
     }
 }
