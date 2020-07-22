@@ -196,8 +196,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
 
             // Update EnableRbacAuthorization when specified, otherwise stay current value 
-            if (updatedRbacAuthorization.HasValue)
-                properties.EnableRbacAuthorization = updatedRbacAuthorization;
+            properties.EnableRbacAuthorization = updatedRbacAuthorization;
 
             properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :
