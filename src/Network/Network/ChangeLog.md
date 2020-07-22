@@ -52,6 +52,9 @@
     - `New-AzApplicationGatewaySslProfile`
     - `Remove-AzApplicationGatewaySslProfile`
     - `Set-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfilePolicy`
+    - `Remove-AzApplicationGatewaySslProfilePolicy`
+    - `Set-AzApplicationGatewaySslProfilePolicy`
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
