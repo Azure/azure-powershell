@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support to enable RBAC authorization [#10557]
-    - `New-AzKeyVault` supports generating a key with RBAC authorization
-    - `Update-AzKeyVault` supports enabling/disabling a key to authorize data actions by RBAC
+* Added support for RBAC authorization [#10557]
 	
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
