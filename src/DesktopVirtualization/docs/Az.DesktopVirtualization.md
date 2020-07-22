@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DesktopVirtualization
-Module Guid: f395e143-3e3e-4353-82db-83986128b08e
+Module Guid: 8c805a66-b0df-4309-9c7a-2f103389f17b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization
 Help Version: 1.0.0.0
 Locale: en-US
@@ -27,7 +27,7 @@ Get a desktop.
 Get a host pool.
 
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
-
+Get the Windows virtual desktop registration info.
 
 ### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
 Get a session host.
@@ -51,13 +51,13 @@ Create or update an applicationGroup.
 Create or update a host pool.
 
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
-
+Create Windows virtual desktop registration info.
 
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create or update a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
-
+Register a Windows virtual desktop application group.
 
 ### [Remove-AzWvdApplication](Remove-AzWvdApplication.md)
 Remove an application.
@@ -69,7 +69,7 @@ Remove an applicationGroup.
 Remove a host pool.
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
-
+Remove the Windows virtual desktop registration info.
 
 ### [Remove-AzWvdSessionHost](Remove-AzWvdSessionHost.md)
 Remove a SessionHost.
@@ -84,7 +84,7 @@ Remove a workspace.
 Send a message to a user.
 
 ### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
-
+Unregister the Windows virtual desktop application group.
 
 ### [Update-AzWvdApplication](Update-AzWvdApplication.md)
 Update an application.
