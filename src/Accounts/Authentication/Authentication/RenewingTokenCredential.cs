@@ -26,17 +26,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public class RenewingTokenCredential : ServiceClientCredentials
     {
         private IAccessToken _token;
-        private readonly Func<IAccessToken> _f;
+        private readonly Func<IAccessToken> _authenticate;
 
 
-        public RenewingTokenCredential(IAccessToken token, Func<IAccessToken> f)
+        public RenewingTokenCredential(IAccessToken token, Func<IAccessToken> authenticate = null)
         {
-            _f = f;
-            _token = token;
-        }
-
-        public RenewingTokenCredential(IAccessToken token)
-        {
+            _authenticate = authenticate;
             _token = token;
         }
 
@@ -44,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             return Task.Run(() => 
                 {
-                    _token = (_f == null) ? _token : _f();
+                    _token = (_authenticate == null) ? _token : _authenticate();
                     _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token));
                 });
         }
