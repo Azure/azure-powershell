@@ -366,7 +366,7 @@
                 <Label>Enabled For Disk Encryption?</Label>
                 <PropertyName>EnabledForDiskEncryption</PropertyName>
               </ListItem>
-			  <ListItem>
+              <ListItem>
                 <Label>Enabled For RBAC Authorization?</Label>
                 <PropertyName>EnableRbacAuthorization</PropertyName>
               </ListItem>
