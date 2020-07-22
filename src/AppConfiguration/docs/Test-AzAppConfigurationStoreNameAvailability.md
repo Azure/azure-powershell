@@ -22,7 +22,7 @@ Checks whether the configuration store name is available for use.
 
 ## EXAMPLES
 
-### Example 1: Test availability of the application configuration store name
+### Example 1: Test availability of the app configuration store name
 ```powershell
 
 ```
@@ -35,7 +35,7 @@ Message                               NameAvailable Reason
 The specified name is already in use.
 False         AlreadyExists
 
-This command tests availability of the application configuration store name.
+This command tests availability of the app configuration store name.
 
 ## PARAMETERS
 

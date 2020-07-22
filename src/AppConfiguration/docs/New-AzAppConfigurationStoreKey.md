@@ -41,7 +41,7 @@ Endpoint=https://appconfig-test01.azconfig.io;Id=09pv-l0-s0:opFCQMC6+9485xJgN5Ws
 
 This command regenerate key of an app configuration store.
 
-### Example 1: Regenerate key of an app configuration store by object
+### Example 2: Regenerate key of an app configuration store by object
 ```powershell
 PS C:\> $app= New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test
 PS C:\> $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test

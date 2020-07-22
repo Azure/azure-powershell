@@ -44,8 +44,6 @@ Gets the properties of the specified configuration store.
 ```powershell
 PS C:\> Get-AzAppConfigurationStore
 
-Name          Type
-----          ----
 Location Name               Type
 -------- ----               ----
 eastus   appconfig-test01   Microsoft.AppConfiguration/configurationStores

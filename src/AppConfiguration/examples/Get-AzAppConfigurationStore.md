@@ -2,8 +2,6 @@
 ```powershell
 PS C:\> Get-AzAppConfigurationStore
 
-Name          Type
-----          ----
 Location Name               Type
 -------- ----               ----
 eastus   appconfig-test01   Microsoft.AppConfiguration/configurationStores

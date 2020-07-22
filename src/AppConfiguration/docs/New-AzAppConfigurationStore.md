@@ -45,7 +45,8 @@ Location Name             Type
 eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
 ```
 
-This command creates an app configuration with the IdentityType set to "UserAssigned".
+This command creates an app configuration and assign a user-assigned managed identity to it.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
 
 ### Example 3: Create an app configuration with the IdentityType set to "SystemAssigned" 
 ```powershell
@@ -56,7 +57,8 @@ Location Name             Type
 eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
 ```
 
-This command creates an app configuration with the IdentityType set to "SystemAssigned".
+This command creates an app configuration and enables the system-assigned managed identity associated with the resource.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
 
 ### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
 ```powershell
@@ -68,7 +70,8 @@ Location Name             Type
 eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
 ```
 
-This command creates an app configuration with the IdentityType set to "SystemAssigned, UserAssigned".
+You can enable system-assigned managed identity and give user-assigned identities at the same time.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
 
 ## PARAMETERS
 
