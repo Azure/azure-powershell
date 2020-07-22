@@ -42,32 +42,32 @@ Filters active directory groups.
 
 ## EXAMPLES
 
-### Example 1 - List all AD groups
-```
+### Example 1: List all AD groups
+```powershell
 PS C:\> Get-AzADGroup
 ```
 
 Lists all AD groups in a tenant.
 
-### Example 2 - List all AD groups using paging
+### Example 2: List all AD groups using paging
 
-```
+```powershell
 PS C:\> Get-AzADGroup -First 100
 ```
 
 Lists the first 100 AD groups in a tenant.
 
-### Example 3 - Get AD group by object id
+### Example 3: Get AD group by object id
 
-```
+```powershell
 PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 
-### Example 4 - List groups by search string
+### Example 4: List groups by search string
 
-```
+```powershell
 PS C:\> Get-AzADGroup -SearchString Joe
 ```
 

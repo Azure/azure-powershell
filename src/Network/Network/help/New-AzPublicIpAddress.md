@@ -26,8 +26,8 @@ The **New-AzPublicIpAddress** cmdlet creates a public IP address.
 
 ## EXAMPLES
 
-### 1: Create a new public IP address
-```
+### Example 1: Create a new public IP address
+```powershell
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
 ```
 
@@ -37,8 +37,8 @@ public IP address is immediately allocated to this resource as the -AllocationMe
 as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
 start (or create) the associated resource (like a VM or load balancer).
 
-### 2: Create a public IP address with a reverse FQDN
-```
+### Example 2: Create a public IP address with a reverse FQDN
+```powershell
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -ReverseFqdn $customFqdn
 ```
 
@@ -48,8 +48,8 @@ pointing to the $customFqdn specified in the command. As a pre-requisite, the $c
 webapp.contoso.com) should have a DNS CNAME record (forward-lookup) pointing to
 $dnsPrefix.$location.cloudapp.azure.com.
 
-### 3: Create a new public IP address with IpTag
-```
+### Example 3: Create a new public IP address with IpTag
+```powershell
 $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags ipTag
 ```
@@ -62,8 +62,8 @@ start (or create) the associated resource (like a VM or load balancer). An Iptag
 specific the Tags associated with resource. Iptag can be specified using New-AzPublicIpTag
 and passed as input through -IpTags.
 
-### 4: Create a new public IP address from a Prefix
-```
+### Example 4: Create a new public IP address from a Prefix
+```powershell
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
 -PublicIpPrefix publicIpPrefix -Sku Standard
 ```

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
+* Fixed wrong database name returned on existing database error in `New-AzSqlDatabaseSecondary`
 
 ## Version 2.9.0
 * Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`

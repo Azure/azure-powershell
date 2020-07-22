@@ -24,8 +24,8 @@ The **New-AzApplicationGatewaySslPolicy** cmdlet creates an SSL policy for an ap
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
 PS C:\>$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
