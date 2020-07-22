@@ -375,14 +375,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
                 IStorageBlobManagement localChannel = Channel;
                 Func<long, Task> taskGenerator;
-                if (!UseTrack2SDK() && string.IsNullOrEmpty(this.EncryptionScope))
+                if (!UseTrack2Sdk() && string.IsNullOrEmpty(this.EncryptionScope))
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 else
                 {
-                   taskGenerator = (taskId) => UploadBlobwithSDK(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
+                   taskGenerator = (taskId) => UploadBlobwithSdk(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 RunTask(taskGenerator);
             }
@@ -420,7 +420,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Upload File to blob with storage Client library API
         /// </summary>
-        internal virtual async Task UploadBlobwithSDK(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
+        internal virtual async Task UploadBlobwithSdk(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
         {
             BlobClientOptions options = this.ClientOptions;
             if (!string.IsNullOrEmpty(this.EncryptionScope))
