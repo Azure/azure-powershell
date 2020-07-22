@@ -152,11 +152,11 @@ param(
         
         Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
         $UploadTask = $CloudFile.UploadFromFileAsync($JarPath)
-        while (-not $UploadTask.IsCompleted) {
-            Start-Sleep 30
+        try {
+            $UploadTask.GetAwaiter().GetResult()
         }
-        if (-not $UploadTask.IsCompletedSuccessfully) {
-            Write-Error $UploadTask.Exception
+        catch {
+            Write-Error $_.Exception
             return
         }
         Write-Host "[3/3] Updating deployment in app $Name (this operation can take a while to complete)" -ForegroundColor Yellow

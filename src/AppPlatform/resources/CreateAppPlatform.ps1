@@ -7,10 +7,10 @@ $AuthJarPath = 'C:\Users\yunwang\source\repos\azure-powershell-generation-db\src
 $AccountAppName = 'account-service'
 $AccountJarPath = 'C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\piggymetrics\account-service\target\account-service.jar'
 
-# New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location eastus
-# New-AzSpringCloudService -ResourceGroupName $ResourceGroupName -name $ServiceName -Location eastus
+New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location eastus
+New-AzSpringCloudService -ResourceGroupName $ResourceGroupName -name $ServiceName -Location eastus
 
-# New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $GatewayAppName
+New-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name $GatewayAppName
 New-AzSpringCloudDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -Name default -Cpu 1 -InstanceCount 1 -MemoryInGb 1 -SourceRelativePath '<default>' -SourceType Jar
 Update-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -ActiveDeploymentName default -Public
 Deploy-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $GatewayAppName -JarPath $GatewayJarPath
