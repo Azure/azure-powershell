@@ -1,0 +1,6 @@
+<Project>
+  <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <!--The whitespace within '\&quot;$(OutDir) \&quot' is necessary because $(OutDir) may end with \ -->
+    <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. \&quot;$(OutDir)../../../tools/AddModulePsm1Dependency.ps1\&quot; -ModuleFolder \&quot;$(OutDir) \&quot; -IgnorePwshVersion &quot;" />
+  </Target>
+</Project>
