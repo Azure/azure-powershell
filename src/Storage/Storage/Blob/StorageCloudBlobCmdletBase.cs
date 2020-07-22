@@ -89,10 +89,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.BlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.BlobRequestConditions();
-                //if (this.TagCondition != null)
-                //{
-                //    requestConditions.TagConditions = this.TagCondition;
-                //}
                 return requestConditions;
             }
         }
@@ -102,10 +98,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.PageBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.PageBlobRequestConditions();
-                //if (this.TagCondition != null)
-                //{
-                //    requestConditions.TagConditions = this.TagCondition;
-                //}
                 return requestConditions;
             }
         }
@@ -115,10 +107,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions();
-                //if (this.TagCondition != null)
-                //{
-                //    requestConditions.TagConditions = this.TagCondition;
-                //}
                 return requestConditions;
             }
         }
@@ -932,7 +920,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             return blobClient;
         }
 
-        protected virtual bool UseTrack2SDK()
+        protected virtual bool UseTrack2Sdk()
         {
             return false;
         }

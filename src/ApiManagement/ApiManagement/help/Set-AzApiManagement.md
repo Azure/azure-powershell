@@ -13,9 +13,8 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
-Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity]
- [-UserAssignedIdentity <String[]>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
