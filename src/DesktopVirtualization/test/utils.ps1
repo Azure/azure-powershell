@@ -13,6 +13,8 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
+    $null = $env.Add("ResourceGroup", "datr-canadaeast")
+    $null = $env.Add("Location", "canadaeast")
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
