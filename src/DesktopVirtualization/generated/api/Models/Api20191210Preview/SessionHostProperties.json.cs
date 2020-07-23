@@ -76,12 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
             {_lastHeartBeat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("lastHeartBeat"), out var __jsonLastHeartBeat) ? global::System.DateTime.TryParse((string)__jsonLastHeartBeat, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastHeartBeatValue) ? __jsonLastHeartBeatValue : LastHeartBeat : LastHeartBeat;}
             {_lastUpdateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("lastUpdateTime"), out var __jsonLastUpdateTime) ? global::System.DateTime.TryParse((string)__jsonLastUpdateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastUpdateTimeValue) ? __jsonLastUpdateTimeValue : LastUpdateTime : LastUpdateTime;}
             {_oSVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("osVersion"), out var __jsonOSVersion) ? (string)__jsonOSVersion : (string)OSVersion;}
+            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)ResourceId;}
             {_session = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("sessions"), out var __jsonSessions) ? (int?)__jsonSessions : Session;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
             {_statusTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("statusTimestamp"), out var __jsonStatusTimestamp) ? global::System.DateTime.TryParse((string)__jsonStatusTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonStatusTimestampValue) ? __jsonStatusTimestampValue : StatusTimestamp : StatusTimestamp;}
             {_sxSStackVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("sxSStackVersion"), out var __jsonSxSStackVersion) ? (string)__jsonSxSStackVersion : (string)SxSStackVersion;}
             {_updateErrorMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("updateErrorMessage"), out var __jsonUpdateErrorMessage) ? (string)__jsonUpdateErrorMessage : (string)UpdateErrorMessage;}
             {_updateState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("updateState"), out var __jsonUpdateState) ? (string)__jsonUpdateState : (string)UpdateState;}
+            {_virtualMachineId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("virtualMachineId"), out var __jsonVirtualMachineId) ? (string)__jsonVirtualMachineId : (string)VirtualMachineId;}
             AfterFromJson(json);
         }
 
@@ -113,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
                 AddIf( null != this._lastUpdateTime ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._lastUpdateTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastUpdateTime" ,container.Add );
             }
             AddIf( null != (((object)this._oSVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._oSVersion.ToString()) : null, "osVersion" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._resourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._resourceId.ToString()) : null, "resourceId" ,container.Add );
+            }
             AddIf( null != this._session ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._session) : null, "sessions" ,container.Add );
             AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeReadOnly))
@@ -122,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
             AddIf( null != (((object)this._sxSStackVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._sxSStackVersion.ToString()) : null, "sxSStackVersion" ,container.Add );
             AddIf( null != (((object)this._updateErrorMessage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._updateErrorMessage.ToString()) : null, "updateErrorMessage" ,container.Add );
             AddIf( null != (((object)this._updateState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._updateState.ToString()) : null, "updateState" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._virtualMachineId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._virtualMachineId.ToString()) : null, "virtualMachineId" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -24,15 +24,15 @@ The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in
 
 ## EXAMPLES
 
-### 1: Get a Virtual Network Gateway
-```
+### Example 1: Get a Virtual Network Gateway
+```powershell
 Get-AzVirtualNetworkGateway -Name myGateway1 -ResourceGroupName myRG
 ```
 
 Returns the object of the Virtual Network Gateway with the name "myGateway1" within the resource group "myRG"
 
-### 2: Get a Virtual Network Gateway
-```
+### Example 2: Get a Virtual Network Gateway
+```powershell
 Get-AzVirtualNetworkGateway -Name myGateway* -ResourceGroupName myRG
 ```
 

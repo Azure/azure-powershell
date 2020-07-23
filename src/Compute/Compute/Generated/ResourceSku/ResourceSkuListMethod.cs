@@ -36,13 +36,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
+        [Parameter(
+            Mandatory = false, 
+            Position = 0, 
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.Compute/locations/publishers")]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-
-                var result = ResourceSkusClient.List();
+                Microsoft.Rest.Azure.IPage<ResourceSku> result;
+                if (this.IsParameterBound(c => c.Location))
+                {
+                    string filter = String.Format("location eq '{0}'", this.Location);
+                    result = ResourceSkusClient.List(filter);
+                }
+                else
+                {
+                    result = ResourceSkusClient.List();
+                }
                 var resultList = result.ToList();
                 var nextPageLink = result.NextPageLink;
                 while (!string.IsNullOrEmpty(nextPageLink))
