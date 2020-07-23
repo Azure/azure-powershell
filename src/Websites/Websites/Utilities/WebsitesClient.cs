@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
@@ -243,7 +244,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return HttpStatusCode.OK;
         }
 
-        public Site GetWebApp(string resourceGroupName, string webSiteName, string slotName)
+        public PSSite GetWebApp(string resourceGroupName, string webSiteName, string slotName)
         {
             Site site = null;
             string qualifiedSiteName;
@@ -254,7 +255,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
 
-            return site;
+            PSSite psSite = new PSSite(site);
+            var AzureStorageAccounts = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
+                                       GetAzureStorageAccounts(resourceGroupName, webSiteName, slotName, true) :
+                                       GetAzureStorageAccounts(resourceGroupName, webSiteName, null, false);
+            psSite.AzureStoragePath = AzureStorageAccounts?.Properties.ConvertToWebAppAzureStorageArray();
+
+            return psSite;
         }
 
         public bool WebAppExists(string resourceGroupName, string webSiteName, string slotName)
@@ -469,22 +476,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return output;
         }
 
-        public IEnumerable<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, 
-            string webSiteName, 
-            string slotName, 
-            IReadOnlyList<string> metricNames,
-            DateTime? startTime, 
-            DateTime? endTime, 
-            string timeGrain, 
-            bool instanceDetails)
-        {
-            string qualifiedSiteName;
-            var usageMetrics = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
-                WrappedWebsitesClient.WebApps().ListMetricsSlot(resourceGroupName, webSiteName, slotName, instanceDetails, CmdletHelpers.BuildMetricFilter(startTime, endTime ?? DateTime.Now, timeGrain, metricNames)) :
-                WrappedWebsitesClient.WebApps().ListMetrics(resourceGroupName, webSiteName, instanceDetails, CmdletHelpers.BuildMetricFilter(startTime, endTime ?? DateTime.Now, timeGrain, metricNames));
-            return usageMetrics;
-        }
-
         public AppServicePlan CreateOrUpdateAppServicePlan(string resourceGroupName, string appServicePlanName, AppServicePlan appServicePlan, string aseName = null, string aseResourceGroupName = null)
         {
             if (!string.IsNullOrEmpty(aseName)
@@ -513,23 +504,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         public IList<AppServicePlan> ListAppServicePlans(string resourceGroupName)
         {
             return WrappedWebsitesClient.AppServicePlans().ListByResourceGroup(resourceGroupName).ToList();
-        }
-
-        public IEnumerable<ResourceMetric> GetAppServicePlanHistoricalUsageMetrics(
-            string resourceGroupName, 
-            string appServicePlanName, 
-            IReadOnlyList<string> metricNames,
-            DateTime? startTime, 
-            DateTime? endTime, 
-            string timeGrain, 
-            bool instanceDetails)
-        {
-            var response = WrappedWebsitesClient.AppServicePlans().ListMetrics(
-                resourceGroupName, 
-                appServicePlanName, 
-                instanceDetails, 
-                CmdletHelpers.BuildMetricFilter(startTime, endTime, timeGrain, metricNames));
-            return response;
         }
 
         public void UpdateWebAppConfiguration(string resourceGroupName, string location, string webSiteName, string slotName, SiteConfig siteConfig = null, IDictionary<string, string> appSettings = null, IDictionary<string, ConnStringValueTypePair> connectionStrings = null, AzureStoragePropertyDictionaryResource azureStorageSettings = null)
@@ -636,16 +610,26 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         Name = s.Key,
                         ConnectionString = s.Value.Value,
                         Type = s.Value.Type
-                    }).ToList();
-
-                var azureStorageAccounts = useSlot ?
-                    WrappedWebsitesClient.WebApps().ListAzureStorageAccountsSlot(resourceGroupName, webSiteName, slotName) :
-                    WrappedWebsitesClient.WebApps().ListAzureStorageAccounts(resourceGroupName, webSiteName);
-
-                site.SiteConfig.AzureStorageAccounts = azureStorageAccounts.Properties;
+                    }).ToList();                
             }
             catch
             {
+                //ignore if this call fails as it will for reader RBAC
+            }
+        }
+
+        public AzureStoragePropertyDictionaryResource GetAzureStorageAccounts(string resourceGroupName, string webSiteName, string slotName, bool useSlot)
+        {
+            try
+            {
+                var azureStorageAccounts = useSlot ?
+                WrappedWebsitesClient.WebApps().ListAzureStorageAccountsSlot(resourceGroupName, webSiteName, slotName) :
+                WrappedWebsitesClient.WebApps().ListAzureStorageAccounts(resourceGroupName, webSiteName);
+                return azureStorageAccounts;
+            }
+            catch
+            {
+                return null;
                 //ignore if this call fails as it will for reader RBAC
             }
         }
