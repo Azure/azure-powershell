@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseSqlV3ManagementClient.SqlPoolsV3.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseSqlV3ManagementClient.SqlPoolsV3.Get(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspaceNext);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlPoolsV3.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlPoolsV3.Delete(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseSqlV3ManagementClient.SqlDatabases.CreateOrUpdate(resourceGroupName, workspaceName, sqlDatabaseName, createOrUpdateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseSqlV3ManagementClient.SqlDatabases.Get(resourceGroupName, workspaceName, sqlDatabaseName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspaceNext);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlDatabases.Update(resourceGroupName, workspaceName, sqlDatabaseName, updateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlDatabases.Delete(resourceGroupName, workspaceName, sqlDatabaseName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
