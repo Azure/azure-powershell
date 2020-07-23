@@ -134,4 +134,9 @@ directive:
   - from: swagger-document
     where: $.definitions.RegenerateKeyParameters
     transform: $.required = ['id']
+
+  # Update cmdlet descriptions
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"].get.description
+    transform: return "Get or list app configuration stores."
 ```

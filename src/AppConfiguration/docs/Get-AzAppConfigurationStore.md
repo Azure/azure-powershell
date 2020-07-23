@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppConfigurationStore
 
 ## SYNOPSIS
-Gets the properties of the specified configuration store.
+Get or list app configuration stores.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String
 ```
 
 ## DESCRIPTION
-Gets the properties of the specified configuration store.
+Get or list app configuration stores.
 
 ## EXAMPLES
 
