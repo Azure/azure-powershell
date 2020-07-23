@@ -21,6 +21,7 @@ using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -302,7 +303,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new TokenCredentials(GetEndpointToken(context.Account, targetEndpoint));
+                    return new TokenCredentials(new RenewingAccessTokenProvider(() => GetEndpointToken(context.Account, targetEndpoint)));
             }
 
 
@@ -350,11 +351,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Account,
                                 context.Environment,
                                 tenant,
-                                context.Environment.GetTokenAudience(targetEndpoint)), () => Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
+                                context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
-                        result = new RenewingTokenCredential(Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)), () => Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
+                        result = new RenewingTokenCredential(Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
