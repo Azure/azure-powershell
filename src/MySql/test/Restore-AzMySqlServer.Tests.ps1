@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Restore-AzMySqlServer' {
-    It 'GeoRestore' {
+    It 'GeoRestore' -skip {
         $replica = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlServerReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
         $restoreServer = Restore-AzMySqlServer -Name $env.serverName -ResourceGroupName $env.resourceGroup -InputObject $replica -UseGeoRestore 
         $restoreServer.Name | Should -Be $env.serverName
