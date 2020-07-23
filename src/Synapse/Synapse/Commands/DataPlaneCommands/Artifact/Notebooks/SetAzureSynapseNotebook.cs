@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Commands.Synapse
         public string ExecutorSize { get; set; } = Management.Synapse.Models.NodeSize.Small;
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
-            Mandatory = false, HelpMessage = HelpMessages.ExecutorCount)]
+            Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
-            Mandatory = false, HelpMessage = HelpMessages.ExecutorCount)]
-        public int Executors { get; set; } = 1;
+            Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
+        public int Executors { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
