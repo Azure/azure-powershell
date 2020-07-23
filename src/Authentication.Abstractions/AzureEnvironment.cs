@@ -292,6 +292,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AdTenant = armMetadata.Authentication.Tenant
             };
 
+            // There are mismatches between metadata built in Azure PowerShell/CLI and from ARM endpoint. 
+            // Considering compatibility, below hard coded logic accommodates those mismatches
+            // SqlDatabaseDnsSuffix requires value leading with period
+            // ServiceManagementUrl as audience needs to end with slash
+            if(azureEnvironment.SqlDatabaseDnsSuffix != null && !azureEnvironment.SqlDatabaseDnsSuffix.StartsWith("."))
+            {
+                azureEnvironment.SqlDatabaseDnsSuffix = "." + azureEnvironment.SqlDatabaseDnsSuffix;
+            }
+            if (azureEnvironment.ServiceManagementUrl != null && !azureEnvironment.ServiceManagementUrl.EndsWith("/"))
+            {
+                azureEnvironment.ServiceManagementUrl += "/";
+            }
+
             return azureEnvironment;
         }
 

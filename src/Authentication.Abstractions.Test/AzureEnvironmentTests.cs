@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Authentication.Abstractions.Test
@@ -22,7 +21,6 @@ namespace Authentication.Abstractions.Test
     public class AzureEnvironmentTests
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
-        readonly IDictionary<string, AzureEnvironment> hardCodedEnvironments = AzureEnvironment.PublicEnvironments;
 
         [Fact]
         public void TestArmAndNonArmBasedCloudMetadataInit()
@@ -35,6 +33,22 @@ namespace Authentication.Abstractions.Test
             foreach (var env in armEnvironments.Values)
             {
                 Assert.Equal(AzureEnvironment.TypeDiscovered, env.Type);
+            }
+        }
+
+        [Fact]
+        public void TestArmCloudMetadata20190501Init()
+        {
+            Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\ArmResponse2019-05-01.json");
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
+
+            // Check all discovered environments are loaded.
+            Assert.Equal(4, armEnvironments.Count);
+            foreach (var env in armEnvironments.Values)
+            {
+                Assert.Equal(AzureEnvironment.TypeDiscovered, env.Type);
+                Assert.EndsWith("/", env.ServiceManagementUrl);
+                Assert.StartsWith(".", env.SqlDatabaseDnsSuffix);
             }
         }
 
