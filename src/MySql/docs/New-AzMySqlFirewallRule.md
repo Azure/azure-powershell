@@ -13,9 +13,9 @@ Creates a new firewall rule or updates an existing firewall rule.
 ## SYNTAX
 
 ```
-New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -StartIPAddress <String> [-SubscriptionId <String>] [-EndIPAddress <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,6 +146,7 @@ Accept wildcard characters: False
 ### -StartIPAddress
 The start IP address of the server firewall rule.
 Must be IPv4 format.
+If range contains one IP, use StartIPAddress only.
 
 ```yaml
 Type: System.String
