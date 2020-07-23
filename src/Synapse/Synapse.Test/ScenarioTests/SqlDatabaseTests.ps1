@@ -8,7 +8,7 @@ function Test-SynapseSqlDatabase
     (
         $resourceGroupName = (Get-ResourceGroupName),
         $workspaceName = (Get-SynapseWorkspaceName),
-        $SqlDatabaseName = (Get-SynapseSqlDatabaseName),
+        $SqlDatabaseName = (Get-SynapseSqlDatabaseName)
     )
 
     try
