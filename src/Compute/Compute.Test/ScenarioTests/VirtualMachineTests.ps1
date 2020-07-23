@@ -3946,10 +3946,10 @@ function Test-SetAzVMOperatingSystem
         Assert-AreEqual $vm3.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByOS"
 
         #updating existing VM using Set-AzVMOperatingSystem    "AutomaticByOS -> AutomaticByPlatform"
-        $vm3 = Set-AzVMOperatingSystem -VM $vm3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "automaticbyplatform";
-        Update-AzVM $rgname -vm $vm3;
-        $vm3 = Get-AzVM -Name $vmname3 -ResourceGroupName $rgname;
-        Assert-AreEqual $vm3.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByPlatform"
+        $vm2 = Set-AzVMOperatingSystem -VM $vm2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "automaticbyplatform";
+        Update-AzVM $rgname -vm $vm2;
+        $vm2 = Get-AzVM -Name $vmname2 -ResourceGroupName $rgname;
+        Assert-AreEqual $vm2.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByPlatform"
 
     }
     finally
