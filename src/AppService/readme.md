@@ -52,7 +52,7 @@ require:
   - $(repo)/specification/web/resource-manager/readme.md
 
 title: AppService
-module-version: 4.0.1
+module-version: 4.0.2
 
 directive:
   - from: swagger-document

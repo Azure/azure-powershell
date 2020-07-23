@@ -1,7 +1,7 @@
 @{
   GUID = 'bf1e620f-fefa-4441-215c-6cb11384ed1a'
   RootModule = './Az.KeyVault.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

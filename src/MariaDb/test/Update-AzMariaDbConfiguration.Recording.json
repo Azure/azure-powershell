@@ -1,0 +1,157 @@
+{
+  "Update-AzMariaDbConfiguration+[NoContext]+ServerName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "ba2c7ebb-93bf-4b86-a1bc-22b2ab2dca76" ],
+        "CommandName": [ "Get-AzMariaDbConfiguration" ],
+        "FullCommandName": [ "Get-AzMariaDbConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "32f4081f-3d7c-434a-8e1a-205b93e183e3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11805" ],
+        "x-ms-correlation-request-id": [ "19f4afb2-5f40-4f92-a198-3c92b98e646a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T025818Z:19f4afb2-5f40-4f92-a198-3c92b98e646a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Apr 2020 02:58:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"value\":\"300\",\"description\":\"How long a INSERT DELAYED thread should wait for INSERT statements before terminating\",\"defaultValue\":\"300\",\"dataType\":\"Integer\",\"allowedValues\":\"1-31536000\",\"source\":\"system-default\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout\",\"name\":\"delayed_insert_timeout\",\"type\":\"Microsoft.DBforMariaDB/servers/configurations\"}"
+    }
+  },
+  "Update-AzMariaDbConfiguration+[NoContext]+ServerName+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"value\": \"250\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "44" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/599f4672-89ac-40dd-aae8-6d07f3b5f3d8?api-version=2018-06-01-preview" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/599f4672-89ac-40dd-aae8-6d07f3b5f3d8?api-version=2018-06-01-preview" ],
+        "x-ms-request-id": [ "599f4672-89ac-40dd-aae8-6d07f3b5f3d8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "7bcb2092-a2f8-4299-a8c0-bec4af0dbced" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T025819Z:7bcb2092-a2f8-4299-a8c0-bec4af0dbced" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Apr 2020 02:58:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "80" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpdateElasticServerConfig\",\"startTime\":\"2020-04-15T02:58:19.303Z\"}"
+    }
+  },
+  "Update-AzMariaDbConfiguration+[NoContext]+ServerName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/599f4672-89ac-40dd-aae8-6d07f3b5f3d8?api-version=2018-06-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/599f4672-89ac-40dd-aae8-6d07f3b5f3d8?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "229", "230" ],
+        "x-ms-client-request-id": [ "1504a585-7785-460a-ad13-d68099420bee", "1504a585-7785-460a-ad13-d68099420bee" ],
+        "CommandName": [ "Update-AzMariaDbConfiguration", "Update-AzMariaDbConfiguration" ],
+        "FullCommandName": [ "Update-AzMariaDbConfiguration_UpdateExpanded", "Update-AzMariaDbConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "2aeb9339-a7fa-4b56-8d0b-f63273fdf8e8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11804" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "0bb3e5f0-c3b4-4714-81e4-e1672c8c6fe9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T025833Z:0bb3e5f0-c3b4-4714-81e4-e1672c8c6fe9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Apr 2020 02:58:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"599f4672-89ac-40dd-aae8-6d07f3b5f3d8\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-15T02:58:19.303Z\"}"
+    }
+  },
+  "Update-AzMariaDbConfiguration+[NoContext]+ServerName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "229", "230", "231" ],
+        "x-ms-client-request-id": [ "1504a585-7785-460a-ad13-d68099420bee", "1504a585-7785-460a-ad13-d68099420bee", "1504a585-7785-460a-ad13-d68099420bee" ],
+        "CommandName": [ "Update-AzMariaDbConfiguration", "Update-AzMariaDbConfiguration", "Update-AzMariaDbConfiguration" ],
+        "FullCommandName": [ "Update-AzMariaDbConfiguration_UpdateExpanded", "Update-AzMariaDbConfiguration_UpdateExpanded", "Update-AzMariaDbConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0cc0b171-91f3-4643-a12e-958cc5fb95ef" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11803" ],
+        "x-ms-correlation-request-id": [ "595427eb-d1be-4665-9ef5-4928880bdebb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T025834Z:595427eb-d1be-4665-9ef5-4928880bdebb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Apr 2020 02:58:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "566" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"value\":\"250\",\"description\":\"How long a INSERT DELAYED thread should wait for INSERT statements before terminating\",\"defaultValue\":\"300\",\"dataType\":\"Integer\",\"allowedValues\":\"1-31536000\",\"source\":\"user-override\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-l8ukfh/configurations/delayed_insert_timeout\",\"name\":\"delayed_insert_timeout\",\"type\":\"Microsoft.DBforMariaDB/servers/configurations\"}"
+    }
+  }
+}

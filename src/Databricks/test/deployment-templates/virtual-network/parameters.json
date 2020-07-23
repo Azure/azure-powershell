@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworks_dbrvn_name": {
+      "value": "databricks-test-vn"
+    },
+    "networkSecurityGroups_dolaulinsg_externalid": {
+      "value": "/subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-6kqums/providers/Microsoft.Network/networkSecurityGroups/databricks-test-nsg"
+    }
+  }
+}

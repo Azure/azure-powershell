@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/commerce/resource-manager/readme.md
   - $(repo)/specification/consumption/resource-manager/readme.md
 
-module-version: 4.0.1
+module-version: 4.0.2
 title: Billing
 subject-prefix: ''
 

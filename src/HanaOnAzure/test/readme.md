@@ -7,11 +7,11 @@ This directory contains the [Pester](https://www.powershellgallery.com/packages/
 - Committed: yes
 - Packaged: no
 
-## Details (*WIP*)
-We allow three testing modes: `live`, `record`, and `playback`.
+## Details
+We allow three testing modes: *live*, *record*, and *playback*. These can be selected using the `-Live`, `-Record`, and `-Playback` switches respectively on the `test-module.ps1` script. This script will run through any `.Tests.ps1` scripts in the `test` folder. If you choose the *record* mode, it will create a `.Recording.json` file of the REST calls between the client and server. Then, when you choose *playback* mode, it will use the `.Recording.json` file to mock the communication between server and client. The *live* mode runs the same as the *record* mode; however, it doesn't create the `.Recording.json` file.
 
 ## Purpose
 Custom cmdlets generally encompass additional functionality not described in the REST specification, or combines functionality generated from the REST spec. To validate this functionality continues to operate as intended, creating tests that can be ran and re-ran against custom cmdlets is part of the framework.
 
-## Usage (*WIP*)
-This feature is currently a **work-in-progress**. It is able to create test recordings of the HTTP pipeline. However, folder structure, file names, and processes are being implemented.
+## Usage
+To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.

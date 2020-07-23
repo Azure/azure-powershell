@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/monitor/data-plane/readme.md
 
 subject-prefix: ''
-module-version: 4.0.1
+module-version: 4.0.2
 title: Monitor
 
 directive:

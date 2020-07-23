@@ -1,7 +1,7 @@
 @{
   GUID = 'f6447640-ffdf-42f9-5ffe-a11eed4aa63f'
   RootModule = './Az.Billing.psm1'
-  ModuleVersion = '4.0.0'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

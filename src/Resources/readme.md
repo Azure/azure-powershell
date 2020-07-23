@@ -55,7 +55,7 @@ require:
   - $(repo)/specification/authorization/resource-manager/readme.md
 
 subject-prefix: ''
-module-version: 4.0.1
+module-version: 4.0.2
 title: Resources
 
 directive:

@@ -1,7 +1,7 @@
 @{
   GUID = '0bbe4321-2044-4a3e-a2e6-4739d2b3ba60'
   RootModule = './Az.AppService.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
