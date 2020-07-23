@@ -1375,6 +1375,15 @@
                 <Label>RemoteVirtualNetworkAddressSpace</Label>
                 <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>RemoteBgpCommunities</Label>
+                <PropertyName>RemoteBgpCommunitiesText</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    !($_.RemoteBgpCommunities -eq $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

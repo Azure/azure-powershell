@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Added new cmdlet for Azure Express Route Port
     - `New-AzExpressRoutePortLOA`
+* Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
@@ -37,6 +38,7 @@
     - `New-AzVirtualApplianceSkuProperty`
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
+* Add `AllowActiveFTP` parameter to `AzureFirewall`
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
