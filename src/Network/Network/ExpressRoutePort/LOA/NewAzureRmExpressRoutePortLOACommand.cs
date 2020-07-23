@@ -102,6 +102,10 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 PortName = resourceInfo.ResourceName;
             }
+            if(this.ResourceGroupName == null || this.PortName == null){
+                Console.WriteLine("Empty resource group or port name.");
+                return;
+            }
             GenerateExpressRoutePortsLOARequest generateExpressRoutePortsLOARequest = new GenerateExpressRoutePortsLOARequest(CustomerName);
             var response = this.NetworkClient.NetworkManagementClient.ExpressRoutePorts.GenerateLOA(this.ResourceGroupName, this.PortName, generateExpressRoutePortsLOARequest);
             var decodedDocument = Convert.FromBase64String(response.EncodedContent);
