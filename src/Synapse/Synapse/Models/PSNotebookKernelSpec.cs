@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -18,6 +19,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string Name { get; set; }
 
+        [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
         public ICollection<string> Keys { get; }

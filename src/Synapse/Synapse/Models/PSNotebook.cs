@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public int? Nbformat { get; set; }
 
         [DefaultValue(2)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat_minor")]
         public int? NbformatMinor { get; set; }
 
         public IList<PSNotebookCell> Cells { get; set; }

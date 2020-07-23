@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseNotebook, this.Name, this.WorkspaceName)))
             {
                 string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                PSNotebookResource psNotbookResource = JsonConvert.DeserializeObject<PSNotebookResource>(rawJsonContent);
-                NotebookResource notebookResource = psNotbookResource.ToSdkObject();
+                PSNotebook pSNotebook = JsonConvert.DeserializeObject<PSNotebook>(rawJsonContent);
+                NotebookResource notebookResource = new NotebookResource(pSNotebook.ToSdkObject());
 
                 if (this.IsParameterBound(c => c.SparkPoolName))
                 {

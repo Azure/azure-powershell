@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Values = notebookCell?.Values;
         }
 
+        [JsonProperty(PropertyName = "cell_type")]
         public string CellType { get; set; }
 
         public object Metadata { get; set; }

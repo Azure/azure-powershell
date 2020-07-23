@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,8 +20,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string Name { get; set; }
 
+        [JsonProperty(PropertyName = "execution_count")]
         public int? ExecutionCount { get; set; }
 
+        [JsonProperty(PropertyName = "output_type")]
         public CellOutputType? OutputType { get; set; }
 
         public object Text { get; set; }
