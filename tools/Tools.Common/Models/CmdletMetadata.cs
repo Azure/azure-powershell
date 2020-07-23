@@ -277,6 +277,7 @@ namespace Tools.Common.Models
         /// <summary>
         /// The default parameter set
         /// </summary>
+        [JsonIgnore]
         public ParameterSetMetadata DefaultParameterSet { get { return _parameterSets.Find(p => string.Equals(p.Name, this.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)); } }
 
         /// <summary>
