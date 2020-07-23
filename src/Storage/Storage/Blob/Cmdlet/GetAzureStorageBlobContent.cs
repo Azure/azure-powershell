@@ -222,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             ValidatePipelineCloudBlobContainer(container);
 
-            if (UseTrack2SDK())
+            if (UseTrack2Sdk())
             {
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, Channel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = track2container.GetBlobBaseClient(blobName);
@@ -396,7 +396,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, "Download"))
                     {
-                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2SDK())
+                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk())
                         {
                             GetBlobContent(CloudBlob, FileName, true);
                         }

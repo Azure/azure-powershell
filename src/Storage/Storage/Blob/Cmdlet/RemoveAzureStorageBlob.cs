@@ -107,13 +107,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified blob is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override bool UseTrack2SDK()
+        protected override bool UseTrack2Sdk()
         {
             if(this.VersionId != null)
             {
                 return true;
             }
-            return base.UseTrack2SDK();
+            return base.UseTrack2Sdk();
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             ValidatePipelineCloudBlobContainer(container);
 
-            if (!UseTrack2SDK())
+            if (!UseTrack2Sdk())
             {
                 AccessCondition accessCondition = null;
                 BlobRequestOptions requestOptions = null;
@@ -435,7 +435,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 switch (ParameterSetName)
                 {
                     case BlobPipelineParameterSet:                     
-                        if (!(this.CloudBlob is InvalidCloudBlob) && !UseTrack2SDK())
+                        if (!(this.CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk())
                         {
                             CloudBlob localBlob = CloudBlob;
                             taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);

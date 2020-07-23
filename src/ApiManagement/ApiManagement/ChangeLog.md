@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new `Add-AzApiManagementApiToGateway` cmdlet.
+* Added new `Get-AzApiManagementGateway` cmdlet.
+* Added new `Get-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `Get-AzApiManagementGatewayKey` cmdlet.
+* Added new `New-AzApiManagementGateway` cmdlet.
+* Added new `New-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `New-AzApiManagementResourceLocationObject` cmdlet.
+* Added new `Remove-AzApiManagementApiFromGateway` cmdlet.
+* Added new `Remove-AzApiManagementGateway` cmdlet.
+* Added new `Remove-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `Update-AzApiManagementGateway` cmdlet.
+* Added new optional [-GatewayId] parameter to the `Get-AzApiManagementApi` cmdlet.
 
 ## Version 2.0.1
 * Updated assembly version of service management cmdlets

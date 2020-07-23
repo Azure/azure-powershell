@@ -252,6 +252,22 @@
     <value>Are you sure you want to remove Group "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="GatewayRemoveDescription" xml:space="preserve">
+    <value>Removing Gateway "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Gateway "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayHostnameConfigurationRemoveDescription" xml:space="preserve">
+    <value>Removing Gateway Hostname Configuration "{0}" for Gateway "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayHostnameConfigurationRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Gateway Hostname Configuration "{0}" for Gateway "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="IdentityProviderRemoveDescription" xml:space="preserve">
     <value>Removing Identity Provider configuration for "{0}".</value>
     <comment>Process workflow</comment>
@@ -356,6 +372,10 @@
   </data>
   <data name="SetGroup" xml:space="preserve">
     <value>Set Group</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetGateway" xml:space="preserve">
+    <value>Set Gateway</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SetLogger" xml:space="preserve">

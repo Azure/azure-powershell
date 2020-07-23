@@ -46,25 +46,25 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 
 ## EXAMPLES
 
-### Example 1 - Update the display name of a user using object id
+### Example 1: Update the display name of a user using object id
 
-```
+```powershell
 PS C:\> Update-AzADUser -ObjectId 155a5c10-93a9-4941-a0df-96d83ab5ab24 -DisplayName MyNewDisplayName
 ```
 
 Updates the display name of the user with object id '155a5c10-93a9-4941-a0df-96d83ab5ab24' to be 'MyNewDisplayName'.
 
-### Example 2 - Update the display name of a user using user principal name
+### Example 2: Update the display name of a user using user principal name
 
-```
+```powershell
 PS C:\> Update-AzADUser -UserPrincipalName foo@domain.com -DisplayName MyNewDisplayName
 ```
 
 Updates the display name of the user with user principal name 'foo@domain.com' to be 'MyNewDisplayName'.
 
-### Example 3 - Update the display name of a user using piping
+### Example 3: Update the display name of a user using piping
 
-```
+```powershell
 PS C:\> Get-AzADUser -ObjectId 155a5c10-93a9-4941-a0df-96d83ab5ab24 | Update-AzADUser -DisplayName MyNewDisplayName
 ```
 

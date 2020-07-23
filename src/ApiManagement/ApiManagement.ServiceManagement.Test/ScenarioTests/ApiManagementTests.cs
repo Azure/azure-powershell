@@ -195,6 +195,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GatewayCrudTest()
+        {
+            RunPowerShellTest("Gateway-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PropertiesCrudTest()
         {
             RunPowerShellTest("Properties-CrudTest");

@@ -37,18 +37,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         public string FriendlyName { get => this._friendlyName; set => this._friendlyName = value; }
 
         /// <summary>Backing field for <see cref="HostPoolType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType? _hostPoolType;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType _hostPoolType;
 
         /// <summary>HostPool type for desktop.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType? HostPoolType { get => this._hostPoolType; set => this._hostPoolType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType HostPoolType { get => this._hostPoolType; set => this._hostPoolType = value; }
 
         /// <summary>Backing field for <see cref="LoadBalancerType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType? _loadBalancerType;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType _loadBalancerType;
 
         /// <summary>The type of the load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType? LoadBalancerType { get => this._loadBalancerType; set => this._loadBalancerType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType LoadBalancerType { get => this._loadBalancerType; set => this._loadBalancerType = value; }
 
         /// <summary>Backing field for <see cref="MaxSessionLimit" /> property.</summary>
         private int? _maxSessionLimit;
@@ -69,6 +69,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType? PersonalDesktopAssignmentType { get => this._personalDesktopAssignmentType; set => this._personalDesktopAssignmentType = value; }
+
+        /// <summary>Backing field for <see cref="PreferredAppGroupType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType _preferredAppGroupType;
+
+        /// <summary>
+        /// The type of preferred application group type, default to Desktop Application Group
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType PreferredAppGroupType { get => this._preferredAppGroupType; set => this._preferredAppGroupType = value; }
 
         /// <summary>Backing field for <see cref="RegistrationInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfo _registrationInfo;
@@ -161,20 +170,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         string FriendlyName { get; set; }
         /// <summary>HostPool type for desktop.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"HostPool type for desktop.",
         SerializedName = @"hostPoolType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType? HostPoolType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType HostPoolType { get; set; }
         /// <summary>The type of the load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"The type of the load balancer.",
         SerializedName = @"loadBalancerType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType? LoadBalancerType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType LoadBalancerType { get; set; }
         /// <summary>The max session limit of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -191,6 +200,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         SerializedName = @"personalDesktopAssignmentType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType) })]
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType? PersonalDesktopAssignmentType { get; set; }
+        /// <summary>
+        /// The type of preferred application group type, default to Desktop Application Group
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The type of preferred application group type, default to Desktop Application Group",
+        SerializedName = @"preferredAppGroupType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType PreferredAppGroupType { get; set; }
         /// <summary>Expiration time of registration token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -262,13 +281,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// <summary>Friendly name of HostPool.</summary>
         string FriendlyName { get; set; }
         /// <summary>HostPool type for desktop.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType? HostPoolType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType HostPoolType { get; set; }
         /// <summary>The type of the load balancer.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType? LoadBalancerType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType LoadBalancerType { get; set; }
         /// <summary>The max session limit of HostPool.</summary>
         int? MaxSessionLimit { get; set; }
         /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType? PersonalDesktopAssignmentType { get; set; }
+        /// <summary>
+        /// The type of preferred application group type, default to Desktop Application Group
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType PreferredAppGroupType { get; set; }
         /// <summary>The registration info of HostPool.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfo RegistrationInfo { get; set; }
         /// <summary>Expiration time of registration token.</summary>
