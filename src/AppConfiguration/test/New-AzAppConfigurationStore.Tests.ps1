@@ -12,7 +12,49 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzAppConfigurationStore' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        New-AzAppConfigurationStore -Name $env.appconfName02 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku "standard"
+        $appConf = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup -Name $env.appconfName02
+        
+        $appConf.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzAppConfigurationStore -InputObject $appConf
+    }
+    It 'CreateWithIdentityTypeUserAssigned' {
+        $appConf = New-AzAppConfigurationStore -Name $env.appconfName03 -ResourceGroupName $env.resourceGroup `
+        -Location $env.location -Sku "standard" `
+        -IdentityType "UserAssigned" -UserAssignedIdentity $env.assignedIdentityId
+
+        $appConf.IdentityType | Should -Be "UserAssigned"
+        $appConf.IdentityUserAssignedIdentity.Count | Should -BeGreaterThan 0
+        $appConf.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzAppConfigurationStore -InputObject $appConf
+    }
+    It 'CreateWithIdentityTypeSystemAssigned' {
+        $appConf = New-AzAppConfigurationStore -Name $env.appconfName04 -ResourceGroupName $env.resourceGroup `
+        -Location $env.location -Sku "standard" `
+        -IdentityType "SystemAssigned"
+
+        $appConf.IdentityType | Should -Be "SystemAssigned"
+        $appConf.IdentityPrincipalId | Should -BeTrue
+        $appConf.IdentityTenantId | Should -BeTrue
+        $appConf.IdentityUserAssignedIdentity.Count | Should -Be 0
+        $appConf.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzAppConfigurationStore -InputObject $appConf
+    }
+    It 'CreateWithIdentityTypeSystemAssigned' {
+        $appConf = New-AzAppConfigurationStore -Name $env.appconfName05 -ResourceGroupName $env.resourceGroup `
+        -Location $env.location -Sku "standard" `
+        -IdentityType "SystemAssignedAndUserAssigned" -UserAssignedIdentity $env.assignedIdentityId
+
+        $appConf.IdentityType | Should -Be "SystemAssigned, UserAssigned"
+        $appConf.IdentityPrincipalId | Should -BeTrue
+        $appConf.IdentityTenantId | Should -BeTrue
+        $appConf.IdentityUserAssignedIdentity.Count | Should -BeGreaterThan 0
+        $appConf.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzAppConfigurationStore -InputObject $appConf
     }
 }

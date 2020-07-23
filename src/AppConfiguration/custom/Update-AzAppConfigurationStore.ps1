@@ -36,6 +36,9 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
+.LINK
+[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 #>
 function Update-AzAppConfigurationStore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
