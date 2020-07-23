@@ -127,6 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
+[This feature is in a limited preview, initially accessible only to certain subscriptions.]
 Version of Synapse SQL pool. For example, 2 or 3.
 
 ```yaml

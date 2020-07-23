@@ -33,7 +33,7 @@ Gets a Synapse Analytics Spark session.
 Gets a Synapse Analytics Spark statement.
 
 ### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
-Gets a Synapse Analytics SQL database.
+[This feature is in a limited preview, initially accessible only to certain subscriptions.] Gets a Synapse Analytics SQL database.
 
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.

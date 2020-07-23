@@ -30,6 +30,7 @@ Get-AzSynapseSqlDatabase -ResourceId <String> [-DefaultProfile <IAzureContextCon
 ```
 
 ## DESCRIPTION
+[This feature is in a limited preview, initially accessible only to certain subscriptions.]
 The **Get-AzSynapseSqlDatabase** cmdlet gets information about an Azure Synapse Analytics SQL database.
 
 ## EXAMPLES
