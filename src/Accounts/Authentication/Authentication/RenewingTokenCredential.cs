@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            return Task.Run(() => _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token)));
+            return Task.Run( () => _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token)));
         }
 
     }
