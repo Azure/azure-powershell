@@ -22,7 +22,6 @@ function Test-GetSubscriptionsEndToEnd
 {
 	$allSubscriptions = Get-AzSubscription
 	$firstSubscription = $allSubscriptions[0]
-	Assert-True {$firstSubscription.ManagedByTenantIds.Count -eq 1}
 	$id = $firstSubscription.Id
 	$tenant = $firstSubscription.HomeTenantId
 	Assert-NotNull $tenant

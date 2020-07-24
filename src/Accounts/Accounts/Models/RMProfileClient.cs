@@ -250,8 +250,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             newTenant == null &&
                             TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
                         {
-                            // If no subscription found for the given token/tenant
-                            // discard tempTenant value unless current token/tenant is the last one.
+                            // If no subscription found for the given token/tenant，discard tempTenant value.
+                            // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
                             if (tempSubscription != null)
                             {
                                 newSubscription = tempSubscription;
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new List<AzureTenant>() { CreateTenant(tenant) };
             }
 
-            List<AzureTenant> tenants = ListAccountTenants(DefaultContext.Account, DefaultContext.Environment, null, ShowDialog.Never, null);
+            IList<AzureTenant> tenants = ListAccountTenants(DefaultContext.Account, DefaultContext.Environment, null, ShowDialog.Never, null);
             return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
                                          tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                          tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
@@ -400,19 +400,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (Guid.TryParse(subscriptionId, out subscriptionIdGuid))
             {
                 var subscriptionList = ListSubscriptions(tenantId).Where(s => s.GetId() == subscriptionIdGuid);
-                if(subscriptionList.Count() > 1)
-                {
-                    subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant());
-                    if(subscription == null)
-                    {
-                        subscription = subscriptionList.FirstOrDefault();
-                    }
-                }
-                else
-                {
-                    subscription = subscriptionList.FirstOrDefault();
-                }
-
+                subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant()) ??
+                    subscriptionList.FirstOrDefault();
             }
             return subscription != null;
         }
@@ -421,18 +410,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             IEnumerable<IAzureSubscription> subscriptionList = ListSubscriptions(tenantId);
             subscriptionList = subscriptionList.Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
-            if (subscriptionList.Count() > 1)
-            {
-                subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant());
-                if (subscription == null)
-                {
-                    subscription = subscriptionList.FirstOrDefault();
-                }
-            }
-            else
-            {
-                subscription = subscriptionList.FirstOrDefault();
-            }
+            subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant()) ??
+                subscriptionList.FirstOrDefault();
             return subscription != null;
         }
 
@@ -653,7 +632,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string promptBehavior,
             Action<string> promptAction)
         {
-            List<AzureTenant> result = new List<AzureTenant>();
+            IList<AzureTenant> result = new List<AzureTenant>();
             var commonTenant = account.GetCommonTenant();
             try
             {
@@ -699,7 +678,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             }
 
-            return result;
+            return result.ToList();
         }
 
         private IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(
