@@ -140,13 +140,22 @@ namespace Microsoft.Azure.Commands.Common
             var qosEvent = new AzurePSQoSEvent
             {
                 CommandName = invocationInfo?.MyCommand?.Name,
-                ModuleName = invocationInfo?.MyCommand?.ModuleName,
                 ModuleVersion = invocationInfo?.MyCommand?.Module?.Version?.ToString(),
                 SessionId = correlationId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,
                 InputFromPipeline = invocationInfo?.PipelineLength > 0
             };
+
+            // below is workaround that current invocationInfo only contains private module name. Trimming '.private' is a workaround for the time being.
+            const string privateModuleSuffix = ".private";
+            string moduleName = invocationInfo?.MyCommand?.ModuleName;
+            if (moduleName != null && moduleName.StartsWith("Az.") && moduleName.EndsWith(privateModuleSuffix))
+            {
+                moduleName = moduleName.Substring(0, moduleName.Length - privateModuleSuffix.Length);
+            }
+            qosEvent.ModuleName = moduleName;
+
 
             qosEvent.UserAgent = AzurePSCmdlet.UserAgent;
             qosEvent.AzVersion = AzurePSCmdlet.AzVersion;
