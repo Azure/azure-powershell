@@ -24,8 +24,8 @@ The **Remove-AzLocalNetworkGateway** cmdlet deletes the object representing your
 
 ## EXAMPLES
 
-### 1: Delete a Local Network Gateway
-```
+### Example 1: Delete a Local Network Gateway
+```powershell
 Remove-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865](https://github.com/Azure/azure-powershell/issues/9865)
 
 ## Version 1.9.1
 * Added new cmdlet `Invoke-AzRestMethod`
