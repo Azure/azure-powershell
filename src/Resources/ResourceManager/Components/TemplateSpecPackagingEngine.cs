@@ -124,7 +124,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                 foreach (JObject templateLinkObj in templateLinkToArtifactObjs)
                 {
-                    string relativePath = (string)templateLinkObj["relativePath"];
+                    string relativePath = ((string)templateLinkObj["relativePath"])?
+                        .TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
                     if (string.IsNullOrWhiteSpace(relativePath))
                     {
                         continue; // Throw here?
