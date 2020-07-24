@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
+using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.Internal.Subscriptions.Models.Utilities;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
             ApiVersion = "2016-06-01";
         }
 
-        public List<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment)
+        public IList<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment)
         {
             List<AzureTenant> result = new List<AzureTenant>();
 
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
                     new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
-                var tenants = subscriptionClient.Tenants.List();
+                var tenants = new GenericPageEnumerable<TenantIdDescription>(subscriptionClient.Tenants.List, subscriptionClient.Tenants.ListNext, ulong.MaxValue, 0).ToList();
                 if (tenants != null)
                 {
                     result = new List<AzureTenant>();
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
             return result;
         }
 
-        public IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
+        public IList<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment)
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),

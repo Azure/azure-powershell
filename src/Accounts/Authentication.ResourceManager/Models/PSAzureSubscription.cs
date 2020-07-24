@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Name { get; set; }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 4)]
+        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 3)]
         public string State { get; set; }
 
         /// <summary>
@@ -120,7 +120,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
-        [Ps1Xml(Label = "HomeTenantId", Target = ViewControl.Table, Position = 3)]
         public string HomeTenantId
         {
             get
@@ -133,7 +132,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
-        [Ps1Xml(Label = "ManagedByTenantIds", Target = ViewControl.Table, Position = 5)]
         public string[] ManagedByTenantIds
         {
             get

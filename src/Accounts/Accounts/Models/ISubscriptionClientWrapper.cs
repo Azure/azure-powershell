@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public partial interface ISubscriptionClientWrapper
     {
-        List<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment);
+        IList<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment);
 
-        IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment);
+        IList<AzureSubscription> ListAllSubscriptionsForTenant(IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment);
 
         AzureSubscription GetSubscriptionById(string subscriptionId, IAccessToken accessToken, IAzureAccount account, IAzureEnvironment environment);
 
