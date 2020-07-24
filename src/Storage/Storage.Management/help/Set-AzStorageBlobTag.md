@@ -1,29 +1,28 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: C274DFBD-6C93-4043-AF93-DAF7BEA1F11F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/stop-azstorageblobcopy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageblobtag
 schema: 2.0.0
 ---
 
-# Stop-AzStorageBlobCopy
+# Set-AzStorageBlobTag
 
 ## SYNOPSIS
-Stops a copy operation.
+Set blob tags of a specific blob.
 
 ## SYNTAX
 
 ### NamePipeline (Default)
 ```
-Stop-AzStorageBlobCopy [-Blob] <String> [-Container] <String> [-Force] [-CopyId <String>]
- [-TagCondition <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageBlobTag [-Blob] <String> [-Container] <String> -Tag <Hashtable> [-TagCondition <String>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Stop-AzStorageBlobCopy -CloudBlob <CloudBlob> [-Force] [-CopyId <String>] [-TagCondition <String>]
+Set-AzStorageBlobTag -BlobBaseClient <BlobBaseClient> -Tag <Hashtable> [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,42 +30,46 @@ Stop-AzStorageBlobCopy -CloudBlob <CloudBlob> [-Force] [-CopyId <String>] [-TagC
 
 ### ContainerPipeline
 ```
-Stop-AzStorageBlobCopy -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Force] [-CopyId <String>]
+Set-AzStorageBlobTag -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> -Tag <Hashtable>
  [-TagCondition <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzStorageBlobCopy** cmdlet stops a copy operation to the specified destination blob.
+The **Set-AzStorageBlobTag** sets blob tags of a specific blob.
 
 ## EXAMPLES
 
-### Example 1: Stop copy operation by name
+### Example 1: Set blob tags on a specific blob
 ```
-PS C:\>Stop-AzStorageBlobCopy -Container "ContainerName" -Blob "BlobName" -CopyId "CopyID"
+PS C:\> Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
+
+Name                           Value                                                                                                                                                                                 
+----                           -----                                                                                                                                                                                 
+tag2                           value2                                                                                                                                                                                
+tag1                           value1
 ```
 
-This command stops the copy operation by name.
+This command sets blob tags on a specific blob.
 
-### Example 2: Stop copy operation by using the pipeline
+### Example 2: Set blob tags on a specific blob with tag condition
 ```
-PS C:\>Get-AzStorageContainer container* | Stop-AzStorageBlobCopy -Blob "BlobName"
-```
+PS C:\> Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" } -TagCondition """tag1""='value1'"
 
-This command stops the copy operation by passing the container on the pipeline from **Get-AzStorageContainer**.
-
-### Example 3: Stop copy operation by using the pipeline and Get-AzStorageBlob
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" | Stop-AzStorageBlobCopy -Force
+Name                           Value                                                                                                                                                                                 
+----                           -----                                                                                                                                                                                 
+tag2                           value2                                                                                                                                                                                
+tag1                           value1
 ```
 
-This example stops the copy operation by passing the container on the pipeline from the Get-AzStorageBlob cmdlet.
+This command sets blob tags on a specific blob with tag condition.
+The cmdlet will only success when the blob contains a tag with name "tag1" and value "value1", else the cmdlet will fail with error code 412.
 
 ## PARAMETERS
 
 ### -Blob
-Specifies the name of the blob.
+Blob name
 
 ```yaml
 Type: System.String
@@ -80,10 +83,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BlobBaseClient
+BlobBaseClient Object
+
+```yaml
+Type: Azure.Storage.Blobs.Specialized.BlobBaseClient
+Parameter Sets: BlobPipeline
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -97,25 +113,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudBlob
-Specifies a **CloudBlob** object from Azure Storage Client library.
-To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
-
-```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlob
-Parameter Sets: BlobPipeline
-Aliases: ICloudBlob
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -CloudBlobContainer
-Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
-You can create the object or use the Get-AzStorageContainer cmdlet.
+CloudBlobContainer Object
 
 ```yaml
 Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
@@ -130,10 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -149,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-Specifies the name of the container.
+Container name
 
 ```yaml
 Type: System.String
@@ -164,8 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies the Azure storage context.
-You can create the context by using the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -176,21 +171,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -CopyId
-Specifies the copy ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -209,13 +189,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Stops the current copy task on the specified blob without prompting for confirmation.
+### -ServerTimeoutPerRequest
+The server time out for each request in seconds.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -224,16 +204,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerTimeoutPerRequest
-Specifies the service side time-out interval, in seconds, for a request.
-If the specified interval elapses before the service processes the request, the storage service returns an error.
+### -Tag
+Blob tags which will set to the blob.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,7 +246,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -283,7 +262,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -293,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.Blob.CloudBlob
+### Azure.Storage.Blobs.Specialized.BlobBaseClient
 
 ### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
@@ -301,16 +280,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageBlob](./Get-AzStorageBlob.md)
-
-[Get-AzStorageContainer](./Get-AzStorageContainer.md)
-
-[Start-AzStorageBlobCopy](./Start-AzStorageBlobCopy.md)
-
-[Get-AzStorageBlobCopyState](./Get-AzStorageBlobCopyState.md)
