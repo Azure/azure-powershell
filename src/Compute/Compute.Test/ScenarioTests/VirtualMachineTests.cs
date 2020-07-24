@@ -283,5 +283,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LowPriorityVirtualMachine");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionAtHostVM()
+        {
+            TestRunner.RunTestScript("Test-EncryptionAtHostVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionAtHostVMDefaultParameterSet()
+        {
+            TestRunner.RunTestScript("Test-EncryptionAtHostVMDefaultParamSet");
+        }
     }
 }
