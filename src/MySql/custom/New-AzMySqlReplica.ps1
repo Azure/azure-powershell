@@ -113,10 +113,10 @@ function New-AzMySqlReplica {
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForReplica]::new()
           $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Replica
 
-          $server = $PSBoundParameters['InputObject']
+          $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id
           $Parameter.Location = $server.Location
-          $null = $PSBoundParameters.Remove('InputObject')
+          $null = $PSBoundParameters.Remove('Master')
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']
@@ -126,6 +126,12 @@ function New-AzMySqlReplica {
           if ($PSBoundParameters.ContainsKey('Sku')) {
               $Parameter.SkuName = $PSBoundParameters['Sku']
               $null = $PSBoundParameters.Remove('Sku')
+          }
+
+          if ($PSBoundParameters.ContainsKey('Replica'))
+          {
+            $PSBoundParameters['Name'] =  $PSBoundParameters['Replica']
+            $null = $PSBoundParameters.Remove('Replica')
           }
 
           $PSBoundParameters.Add('Parameter', $Parameter)
