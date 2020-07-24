@@ -23,7 +23,9 @@
     -  `New-AzStorageContainerSASToken`
 * support create account Sas token with new permission x,t,f
     -  `New-AzStorageAccountSASToken`
-
+* Support get single file share usage
+    - `Get-AzRmStorageShare`
+        
 ## Version 2.3.0
 * Fixed the issue that UserAgent is not added for some data plane cmdlets.
 * Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess
