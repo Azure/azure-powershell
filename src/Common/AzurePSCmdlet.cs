@@ -585,7 +585,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 _qosEvent.CommandName = this.MyInvocation.MyCommand.Name;
                 _qosEvent.ModuleName = this.MyInvocation.MyCommand.ModuleName;
-                _qosEvent.ModuleVersion = this.MyInvocation.MyCommand.Version.ToString();
+                if (this.MyInvocation.MyCommand.Version != null)
+                {
+                    _qosEvent.ModuleVersion = this.MyInvocation.MyCommand.Version.ToString();
+                }
             }
             else
             {
