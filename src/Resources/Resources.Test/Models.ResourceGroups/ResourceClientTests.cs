@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     operationId: Guid.NewGuid().ToString(),
                     properties: new DeploymentOperationProperties(
                         provisioningState: "Failed",
-                        statusMessage: "{\"Code\":\"Conflict\"}",
+                        statusMessage: new StatusMessage("{\"Code\":\"Conflict\"}"),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
@@ -966,9 +966,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     operationId: Guid.NewGuid().ToString(),
                     properties: new DeploymentOperationProperties(
                         provisioningState: "Failed",
-                        statusMessage: JsonConvert.SerializeObject(
-                            value: new ResourceManagementErrorWithDetails(
-                                message: "A really bad error occurred")),
+                        statusMessage: new StatusMessage("A really bad error occurred"),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
