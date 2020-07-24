@@ -312,6 +312,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false)]
+        [Parameter(ParameterSetName = "DefaultParameter", Mandatory = false)]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1698,6 +1702,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionAtHost))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
             if (this.VirtualMachineScaleSet != null
