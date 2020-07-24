@@ -21,11 +21,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [CmdletDeprecation(ReplacementCmdletName = "Set-AzAksCluster")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class SetAzureRmAks : CreateOrUpdateKubeBase
     {
@@ -108,10 +111,10 @@ namespace Microsoft.Azure.Commands.Aks
                                 new ContainerServiceSshPublicKey(GetSshKey(SshKeyValue))
                             };
                         }
-                        if (this.IsParameterBound(c => c.ClientIdAndSecret))
+                        if (this.IsParameterBound(c => c.ServicePrincipalIdAndSecret))
                         {
                             WriteVerbose(Resources.UpdatingServicePrincipal);
-                            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
+                            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret.UserName, ServicePrincipalIdAndSecret.Password.ToString());
 
                             var spProfile = new ManagedClusterServicePrincipalProfile(
                                 acsServicePrincipal.SpId,

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azakscluster
 schema: 2.0.0
 ---
 
-# Get-AzAks
+# Get-AzAksCluster
 
 ## SYNOPSIS
 List Kubernetes managed clusters.
@@ -14,17 +14,18 @@ List Kubernetes managed clusters.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzAks [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksCluster [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Get-AzAks [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Get-AzAks [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzAksCluster [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -34,8 +35,8 @@ List Kubernetes managed clusters.
 ## EXAMPLES
 
 ### List all Kubernetes clusters
-```
-PS C:\> Get-AzAks
+```powershell
+PS C:\> Get-AzAksCluster
 ```
 
 ## PARAMETERS
