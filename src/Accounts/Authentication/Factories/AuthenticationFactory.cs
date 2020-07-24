@@ -22,6 +22,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -303,7 +304,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new TokenCredentials(new RenewingAccessTokenProvider(() => GetEndpointToken(context.Account, targetEndpoint)));
+                    return new RenewingTokenCredential(new RawAccessToken { AccessToken = GetEndpointToken(context.Account, targetEndpoint) }, () => new RawAccessToken { AccessToken = GetEndpointToken(context.Account, targetEndpoint) });
             }
 
 
