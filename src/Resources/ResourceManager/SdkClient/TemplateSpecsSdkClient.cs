@@ -53,16 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             this.azureContext = context;
         }
 
-        public TemplateSpecVersion GetTemplateSpecVersion(string templateSpecName,
-            string resourceGroupName,
-            string templateSpecVersion = null)
-        {
-            return TemplateSpecsClient.TemplateSpecVersions.Get(
-                resourceGroupName,
-                templateSpecName,
-                templateSpecVersion);
-        }
-
         public PSTemplateSpec GetTemplateSpec(string templateSpecName,
             string resourceGroupName,
             string templateSpecVersion = null)
@@ -156,6 +146,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
+        private TemplateSpecVersion GetAzureSdkTemplateSpecVersion(
+            string resourceGroupName,
+            string templateSpecName,
+            string templateSpecVersion,
+            bool throwIfNotExists = true)
+        {
+            try
+            {
+                return TemplateSpecsClient.TemplateSpecVersions.Get(
+                    resourceGroupName, 
+                    templateSpecName,
+                    templateSpecVersion
+                );
+            }
+            catch (Exception ex)
+            {
+                if (!throwIfNotExists &&
+                    ex is DefaultErrorResponseException dex &&
+                    dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // Template spec version does not exist
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
         public PSTemplateSpecSingleVersion CreateOrUpdateTemplateSpecVersion(
             string resourceGroupName,
             string templateSpecName,
@@ -174,12 +192,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 templateSpecDescription
             );
 
+            var existingTemplateSpecVersion = this.GetAzureSdkTemplateSpecVersion(
+                resourceGroupName,
+                templateSpecName,
+                templateSpecVersion,
+                throwIfNotExists: false
+            );
+
             var templateSpecVersionModel = new TemplateSpecVersion
             {
                 Location = templateSpecModel.Location,
                 Template = packagedTemplate.RootTemplate,
                 Artifacts = packagedTemplate.Artifacts?.ToList(),
-                Description = versionDescription
+                Description = versionDescription ?? existingTemplateSpecVersion?.Description
             };
 
             templateSpecVersionModel = TemplateSpecsClient.TemplateSpecVersions.CreateOrUpdate(

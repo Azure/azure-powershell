@@ -77,7 +77,7 @@ PS C:\> $templateJson = @"
     "resources": []
 }
 "@
-PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson 
+PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
 ```
 
 Modifies version "v1.0" of a Template Spec named "myTemplateSpec". The specified version 
@@ -101,7 +101,6 @@ root Template Spec and/or version do not already exist they will be created.
 
 **Note:** Location is only required when the Template Spec does not already exist
 
-
 ### Example 3:
 ```powershell
 PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec'  -Location 'West US' -Description 'My updated Template Spec'
@@ -112,14 +111,13 @@ Template Spec does not already exist it will be created.
 
 **Note:** Location is only required when the Template Spec does not already exist
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -134,7 +132,7 @@ Accept wildcard characters: False
 The description of the template spec.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet, UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 
@@ -149,27 +147,11 @@ Accept wildcard characters: False
 The display name of the template spec.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet, UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The fully qualified resource Id of the template spec.
-Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
-
-```yaml
-Type: String
-Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet
-Aliases: Id
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -181,7 +163,7 @@ The location of the template spec.
 Only required if the template spec does not already exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +178,7 @@ Accept wildcard characters: False
 The name of the template spec.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 
@@ -211,9 +193,25 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The fully qualified resource Id of the template spec.
+Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet
+Aliases: Id
 
 Required: True
 Position: Named
@@ -226,7 +224,7 @@ Accept wildcard characters: False
 The Azure Resource Manager template JSON.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateVersionByIdFromJsonParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 
@@ -241,7 +239,7 @@ Accept wildcard characters: False
 The file path to the local Azure Resource Manager template JSON file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByNameFromJsonFileParameterSet
 Aliases: InputFile
 
@@ -256,7 +254,7 @@ Accept wildcard characters: False
 The version of the template spec.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 
@@ -271,7 +269,7 @@ Accept wildcard characters: False
 The description of the version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFromJsonParameterSet, UpdateVersionByNameFromJsonFileParameterSet, UpdateVersionByNameFromJsonParameterSet
 Aliases:
 

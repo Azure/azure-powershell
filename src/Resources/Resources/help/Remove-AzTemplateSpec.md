@@ -20,8 +20,8 @@ Remove-AzTemplateSpec [-Force] [-ResourceGroupName] <String> [-Name] <String> [[
 
 ### RemoveByIdParameterSet
 ```
-Remove-AzTemplateSpec [-Force] [[-Version] <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Remove-AzTemplateSpec [-Force] [[-Version] <String>] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,22 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The fully qualified resource Id of the template spec.
-Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveByIdParameterSet
-Aliases: Id
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the template spec.
 
@@ -129,6 +113,22 @@ The name of the template spec's resource group.
 Type: System.String
 Parameter Sets: RemoveByNameParameterSet
 Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The fully qualified resource Id of the template spec.
+Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByIdParameterSet
+Aliases: Id
 
 Required: True
 Position: 0

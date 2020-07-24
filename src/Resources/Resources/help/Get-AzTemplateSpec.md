@@ -109,22 +109,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The fully qualified resource Id of the template spec.
-Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
-
-```yaml
-Type: System.String
-Parameter Sets: GetTemplateSpecByIdParameterSet
-Aliases: Id
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the template spec.
 
@@ -159,6 +143,22 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: GetTemplateSpecByNameParameterSet
 Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The fully qualified resource Id of the template spec.
+Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}
+
+```yaml
+Type: System.String
+Parameter Sets: GetTemplateSpecByIdParameterSet
+Aliases: Id
 
 Required: True
 Position: 0

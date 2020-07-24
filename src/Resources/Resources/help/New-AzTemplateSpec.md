@@ -15,14 +15,14 @@ Creates a new Template Spec.
 ### FromJsonStringParameterSet (Default)
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] -TemplateJson <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DisplayName <String>] [-Location <String>] -TemplateJson <String> [-VersionDescription <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromJsonFileParameterSet
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String>
+ [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -195,6 +195,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VersionDescription
+The description of the version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -235,10 +236,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         throw new PSArgumentException("No version found in Resource ID");
                     }
-                    object template = TemplateSpecsSdkClient.GetTemplateSpecVersion(
+
+                    object template = ((PSTemplateSpecSingleVersion)TemplateSpecsSdkClient.GetTemplateSpec(
                         ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
                         ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName).Template;
+                        resourceIdentifier.ResourceName)).Version.Template;
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {

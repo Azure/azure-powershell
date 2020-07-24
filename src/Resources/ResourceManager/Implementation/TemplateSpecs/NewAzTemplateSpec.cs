@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The Azure Resource Manager template JSON.")]
         [ValidateNotNullOrEmpty]
         public string TemplateJson { get; set; }
-        
+
         [Alias("InputFile")]
         [Parameter(
             ParameterSetName = FromJsonFileParameterSet,
@@ -113,6 +113,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateJsonFile { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The description of the version.")]
+        public string VersionDescription { get; set; }
 
         #endregion
 
@@ -159,7 +164,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Location,
                     packagedTemplate,
                     templateSpecDescription: Description,
-                    templateSpecDisplayName: DisplayName
+                    templateSpecDisplayName: DisplayName,
+                    versionDescription: VersionDescription
                 );
 
                 WriteObject(templateSpecVersion);
