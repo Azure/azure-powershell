@@ -254,9 +254,10 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The max price of the billing of a low priority virtual machine.")]
         public double MaxPrice { get; set; }
 
-        [Parameter()]
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; } = false;
 
         public override void ExecuteCmdlet()

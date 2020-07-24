@@ -97,10 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = new SecurityProfile
-                    {
-                        EncryptionAtHost = encryptionAtHostEnabled 
-                    }
+                    SecurityProfile = (encryptionAtHostEnabled == null) ? null : new SecurityProfile(encryptionAtHostEnabled)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
