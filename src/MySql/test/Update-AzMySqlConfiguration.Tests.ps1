@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMySqlConfiguration' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $config = Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -Value 15
         $config.Value | Should -Be 15
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/configurations/wait_timeout"
         $config = Update-AzMySqlConfiguration -InputObject $ID -Value 150
         $config.Value | Should -Be 150

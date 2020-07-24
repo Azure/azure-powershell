@@ -18,5 +18,11 @@ Describe 'New-AzMySqlFirewallRule' {
         $rule.StartIPAddress | Should -Be 0.0.0.0
         $rule.EndIPAddress | Should -Be 0.0.0.1
         Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+
+        #Use only one parameter when only one IP
+        $rule = New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+        $rule.Name | Should -Be $env.firewallRuleName
+        $rule.StartIPAddress | Should -Be 0.0.0.0
+        Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
     }
 }
