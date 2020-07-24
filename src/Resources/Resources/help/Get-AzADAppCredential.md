@@ -40,17 +40,17 @@ This command will retrieve all of the credential properties (but not the credent
 
 ## EXAMPLES
 
-### Example 1 - Get application credentials by object id
+### Example 1: Get application credentials by object id
 
-```
+```powershell
 PS C:\> Get-AzADAppCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
 ```
 
 Returns a list of credentials associated with the application having object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
 
-### Example 2 - Get application credentials by piping
+### Example 2: Get application credentials by piping
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | Get-AzADAppCredential
 ```
 

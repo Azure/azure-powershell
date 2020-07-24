@@ -36,25 +36,25 @@ Lists members of an AD group in the current tenant.
 
 ## EXAMPLES
 
-### Example 1 - List members by AD group object id
+### Example 1: List members by AD group object id
 
-```
+```powershell
 PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Lists members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 
-### Example 2 - List members by AD group object id using paging
+### Example 2: List members by AD group object id using paging
 
-```
+```powershell
 PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE -First 100
 ```
 
 Lists the first 100 members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 
-### Example 3 - List members by piping
+### Example 3: List members by piping
 
-```
+```powershell
 PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Get-AzADGroupMember
 ```
 

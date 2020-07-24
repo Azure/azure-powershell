@@ -19,6 +19,7 @@ Describe 'New-AzWvdHostPool' {
                             -Location $env.Location `
                             -HostPoolType 'Pooled' `
                             -LoadBalancerType 'DepthFirst' `
+                            -PreferredAppGroupType 'Desktop' `
                             -DesktopAppGroupName 'FullSenerioCreateAG' `
                             -WorkspaceName 'FullSenerioCreateWS'
 
@@ -51,7 +52,9 @@ Describe 'New-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
+
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -67,6 +70,7 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
+            $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -86,6 +90,7 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
+            $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
