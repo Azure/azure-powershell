@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* support get/set blob tags on a specific blob
+    -  `Get-AzStorageBlobTag`
+    -  `Set-AzStorageBlobTag`
+* support create destination blob with specific blob tags while upload/copy Blob
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
+* support list blobs across containers with a blob tag filter sql expression
+    -  `Get-AzStorageBlobByTag`
+* support list blobs inside a container and include Blob Tags
+    -  `Get-AzStorageBlob`
+* support run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  `Get-AzStorageBlob`
+    -  `Get-AzStorageBlobContent`
+    -  `Get-AzStorageBlobTag`
+    -  `Remove-AzStorageBlob`
+    -  `Set-AzStorageBlobContent`
+    -  `Set-AzStorageBlobTag`
+    -  `Start-AzStorageBlobCopy`
+    -  `Stop-AzStorageBlobCopy`
+
 * Generate blob sas token with new API version
     -  `New-AzStorageBlobSASToken` 
     -  `New-AzStorageContainerSASToken` 

@@ -46,6 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         public SetAzureStorageCORSRuleCommand()
         {
             EnableMultiThread = false;
