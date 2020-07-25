@@ -129,6 +129,7 @@ Access tier for specific share. StorageV2 account can choose between Transaction
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: TransactionOptimized, Premium, Hot, Cool
 
 Required: False
 Position: Named
@@ -249,6 +250,7 @@ Sets reduction of the access rights for the remote superuser. Possible values in
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: NoRootSquash, RootSquash, AllSquash
 
 Required: False
 Position: Named
