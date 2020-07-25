@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
@@ -35,6 +36,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -154,31 +156,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return this.ResourceManagementClient;
         }
 
-        private string GetDeploymentParameters(Hashtable templateParameterObject)
-        {
-            if (templateParameterObject != null)
-            {
-                return SerializeHashtable(templateParameterObject, addValueLayer: false);
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //private string GetDeploymentParameters(Hashtable templateParameterObject)
+        //{
+        //    if (templateParameterObject != null)
+        //    {
+        //        return SerializeHashtable(templateParameterObject, addValueLayer: false);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
-        public string SerializeHashtable(Hashtable templateParameterObject, bool addValueLayer)
-        {
-            if (templateParameterObject == null)
-            {
-                return null;
-            }
-            Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
-            return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.None,
-                Formatting = Formatting.Indented
-            });
-        }
+        //public string SerializeHashtable(Hashtable templateParameterObject, bool addValueLayer)
+        //{
+        //    if (templateParameterObject == null)
+        //    {
+        //        return null;
+        //    }
+        //    Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
+        //    return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
+        //    {
+        //        TypeNameHandling = TypeNameHandling.None,
+        //        Formatting = Formatting.Indented
+        //    });
+        //}
 
         public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
@@ -487,7 +489,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
+                    //string json = PSJsonSerializer.ConvertToJson(parameters.TemplateObject);
+                    //deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
+                    deployment.Properties.Template = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateObject));
                 }
             }
 
@@ -500,8 +504,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                string templateParams = GetDeploymentParameters(parameters.TemplateParameterObject);
-                deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
+                //string templateParams = GetDeploymentParameters(parameters.TemplateParameterObject);
+                //deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
+                deployment.Properties.Parameters = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateParameterObject));
             }
 
             deployment.Location = parameters.Location;
