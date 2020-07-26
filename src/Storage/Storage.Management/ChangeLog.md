@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create container/blob Sas token with new permission x,t
+    -  `New-AzStorageBlobSASToken`
+    -  `New-AzStorageContainerSASToken`
+* support create account Sas token with new permission x,t,f
+    -  `New-AzStorageAccountSASToken`
 
 ## Version 2.3.0
 * Fixed the issue that UserAgent is not added for some data plane cmdlets.

@@ -23,6 +23,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
+    using global::Azure.Storage.Sas;
+    using global::Azure.Storage.Blobs.Specialized;
+    using global::Azure.Storage.Blobs.Models;
+    using System.Threading;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage;
 
     internal class SasTokenHelper
     {
@@ -228,6 +234,435 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return absoluteUri + sasToken;
             }
+        }
+
+        /// <summary>
+        /// Get a BlobSignedIdentifier from contaienr with a specific Id
+        /// </summary>
+        public static BlobSignedIdentifier GetBlobSignedIdentifier(BlobContainerClient container, string identifierId, CancellationToken cancellationToken)
+        {
+            IEnumerable<BlobSignedIdentifier> signedIdentifiers = container.GetAccessPolicy(cancellationToken: cancellationToken).Value.SignedIdentifiers;
+            foreach (BlobSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == identifierId)
+                {
+                    return identifier;
+                }
+            }
+            throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, identifierId));
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from Blob Object
+        /// </summary>
+        public static BlobSasBuilder SetBlobSasBuilder_FromBlob(BlobBaseClient blobClient,
+            BlobSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
+                blobClient.Name,
+                signedIdentifier,
+                Permission,
+                StartTime,
+                ExpiryTime,
+                iPAddressOrRange,
+                Protocol);
+            if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
+            {
+                sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
+            }
+            if (Util.GetSnapshotTimeFromBlobUri(blobClient.Uri) != null)
+            {
+                sasBuilder.Snapshot = Util.GetSnapshotTimeFromBlobUri(blobClient.Uri).Value.UtcDateTime.ToString("o");
+            }
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from container Object
+        /// </summary>
+        public static BlobSasBuilder SetBlobSasBuilder_FromContainer(BlobContainerClient container,
+            BlobSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
+                null,
+                signedIdentifier,
+                Permission,
+                StartTime,
+                ExpiryTime,
+                iPAddressOrRange,
+                Protocol);
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from Blob Object
+        /// </summary>
+        public static BlobSasBuilder SetBlobSasBuilder(string containerName,
+            string blobName = null,
+            BlobSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            BlobSasBuilder sasBuilder;
+            if (signedIdentifier != null) // Use save access policy
+            {
+                sasBuilder = new BlobSasBuilder
+                {
+                    BlobContainerName = containerName,
+                    BlobName = blobName,
+                    Identifier = signedIdentifier.Id
+                };
+
+                if (StartTime != null)
+                {
+                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue)
+                    {
+                        throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
+                    }
+                }
+
+                if (ExpiryTime != null)
+                {
+                    if (signedIdentifier.AccessPolicy.ExpiresOn != DateTimeOffset.MinValue)
+                    {
+                        throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
+                    }
+                }
+                else if (signedIdentifier.AccessPolicy.ExpiresOn == DateTimeOffset.MinValue)
+                {
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                    {
+                        sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                    }
+                }
+
+                if (Permission != null)
+                {
+                    if (signedIdentifier.AccessPolicy.Permissions != null)
+                    {
+                        throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                    }
+                }
+            }
+            else // use user input permission, starton, expireon
+            {
+                sasBuilder = new BlobSasBuilder
+                {
+                    BlobContainerName = containerName,
+                    BlobName = blobName,
+                };
+                sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                if (StartTime != null)
+                {
+                    sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
+                }
+                if (ExpiryTime != null)
+                {
+                    sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
+                }
+                else
+                {
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                    {
+                        sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                    }
+                }
+            }
+            if (iPAddressOrRange != null)
+            {
+                sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(iPAddressOrRange);
+            }
+            if (Protocol != null)
+            {
+                if (Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                {
+                    sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
+                }
+                else //HttpsOnly
+                {
+                    sasBuilder.Protocol = SasProtocol.Https;
+                }
+            }
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Set blob permission to SAS builder
+        /// </summary>
+        public static BlobSasBuilder SetBlobPermission(BlobSasBuilder sasBuilder, string rawPermission)
+        {
+            BlobContainerSasPermissions permission = 0;
+            foreach (char c in rawPermission)
+            {
+                switch (c)
+                {
+                    case 'r':
+                        permission = permission | BlobContainerSasPermissions.Read;
+                        break;
+                    case 'a':
+                        permission = permission | BlobContainerSasPermissions.Add;
+                        break;
+                    case 'c':
+                        permission = permission | BlobContainerSasPermissions.Create;
+                        break;
+                    case 'w':
+                        permission = permission | BlobContainerSasPermissions.Write;
+                        break;
+                    case 'd':
+                        permission = permission | BlobContainerSasPermissions.Delete;
+                        break;
+                    case 'l':
+                        permission = permission | BlobContainerSasPermissions.List;
+                        break;
+                    case 't':
+                        permission = permission | BlobContainerSasPermissions.Tag;
+                        break;
+                    case 'x':
+                        permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
+                        break;
+                    default:
+                        // Can't convert to permission supported by XSCL, so use raw permission string
+                        sasBuilder.SetPermissions(rawPermission);
+                        return sasBuilder;
+                }
+            }
+            sasBuilder.SetPermissions(permission);
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Get SAS string
+        /// </summary>
+        public static string GetBlobSharedAccessSignature(AzureStorageContext context, BlobSasBuilder sasBuilder, bool generateUserDelegationSas, BlobClientOptions ClientOptions, CancellationToken cancelToken)
+        {
+            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            if (generateUserDelegationSas)
+            {
+                global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
+                BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancelToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+            }
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from Blob Object
+        /// </summary>
+        public static AccountSasBuilder SetAccountSasBuilder(SharedAccessAccountServices Service,
+            SharedAccessAccountResourceTypes type,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            AccountSasBuilder sasBuilder = new AccountSasBuilder();
+            sasBuilder.ResourceTypes = GetAccountSasResourceTypes(type);
+            sasBuilder.Services = GetAccountSasServices(Service);
+
+            sasBuilder = SetAccountPermission(sasBuilder, Permission);
+            if (StartTime != null)
+            {
+                sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
+            }
+            if (ExpiryTime != null)
+            {
+                sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
+            }
+            else
+            {
+                if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                {
+                    sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
+                }
+                else
+                {
+                    sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                }
+            }
+            if (iPAddressOrRange != null)
+            {
+                sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(iPAddressOrRange);
+            }
+            if (Protocol != null)
+            {
+                if (Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                {
+                    sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
+                }
+                else //HttpsOnly
+                {
+                    sasBuilder.Protocol = SasProtocol.Https;
+                }
+            }
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Get Track2 accunt sas SasServices
+        /// </summary>
+        public static AccountSasServices GetAccountSasServices(SharedAccessAccountServices Service)
+        {
+            AccountSasServices outputService = 0;
+            if ((Service & SharedAccessAccountServices.Blob) == SharedAccessAccountServices.Blob)
+            {
+                outputService = outputService | AccountSasServices.Blobs;
+            }
+            if ((Service & SharedAccessAccountServices.File) == SharedAccessAccountServices.File)
+            {
+                outputService = outputService | AccountSasServices.Files;
+            }
+            if ((Service & SharedAccessAccountServices.Queue) == SharedAccessAccountServices.Queue)
+            {
+                outputService = outputService | AccountSasServices.Queues;
+            }
+            if ((Service & SharedAccessAccountServices.Table) == SharedAccessAccountServices.Table)
+            {
+                outputService = outputService | AccountSasServices.Tables;
+            }
+            return outputService;
+        }
+
+        /// <summary>
+        /// Get Track2 accunt sas ResourceTypes
+        /// </summary>
+        public static AccountSasResourceTypes GetAccountSasResourceTypes(SharedAccessAccountResourceTypes type)
+        {
+            AccountSasResourceTypes outputType = 0;
+            if ((type & SharedAccessAccountResourceTypes.Service) == SharedAccessAccountResourceTypes.Service)
+            {
+                outputType = outputType | AccountSasResourceTypes.Service;
+            }
+            if ((type & SharedAccessAccountResourceTypes.Container) == SharedAccessAccountResourceTypes.Container)
+            {
+                outputType = outputType | AccountSasResourceTypes.Container;
+            }
+            if ((type & SharedAccessAccountResourceTypes.Object) == SharedAccessAccountResourceTypes.Object)
+            {
+                outputType = outputType | AccountSasResourceTypes.Object;
+            }
+            return outputType;
+        }
+
+        /// <summary>
+        /// Set account permission to SAS builder
+        /// </summary>
+        public static AccountSasBuilder SetAccountPermission(AccountSasBuilder sasBuilder, string rawPermission)
+        {
+            AccountSasPermissions permission = 0;
+            foreach (char c in rawPermission)
+            {
+                switch (c)
+                {
+                    case 'r':
+                        permission = permission | AccountSasPermissions.Read;
+                        break;
+                    case 'a':
+                        permission = permission | AccountSasPermissions.Add;
+                        break;
+                    case 'c':
+                        permission = permission | AccountSasPermissions.Create;
+                        break;
+                    case 'w':
+                        permission = permission | AccountSasPermissions.Write;
+                        break;
+                    case 'd':
+                        permission = permission | AccountSasPermissions.Delete;
+                        break;
+                    case 'l':
+                        permission = permission | AccountSasPermissions.List;
+                        break;
+                    case 'u':
+                        permission = permission | AccountSasPermissions.Update;
+                        break;
+                    case 'p':
+                        permission = permission | AccountSasPermissions.Process;
+                        break;
+                    case 't':
+                        permission = permission | AccountSasPermissions.Tag;
+                        break;
+                    case 'f':
+                        permission = permission | AccountSasPermissions.Filter;
+                        break;
+                    case 'x':
+                        permission = permission | AccountSasPermissions.DeleteVersion;
+                        break;
+                    default:
+                        // Can't convert to permission supported by XSCL, so use raw permission string
+                        sasBuilder.SetPermissions(rawPermission);
+                        return sasBuilder;
+                }
+            }
+            sasBuilder.SetPermissions(permission);
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Return true if the permission can only be handled by Track2 SDK
+        /// </summary>
+        public static bool IsTrack2Permission(string permission)
+        {
+            if (permission is null)
+            {
+                return false;
+            }
+
+            string permission_Track1 = "rwdlacup";
+            foreach (char c in permission)
+            {
+                if (!permission_Track1.Contains(c.ToString()))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

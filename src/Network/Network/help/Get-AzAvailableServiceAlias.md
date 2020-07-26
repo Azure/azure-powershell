@@ -23,7 +23,7 @@ The **Get-AzAvailableServiceAlias** cmdlet allows you to retrieve all of the ava
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAvailableServiceAliases -Location "westus"
+PS C:\> Get-AzAvailableServiceAlias -Location "westus"
 
 Name                         Id                                                                                                                                   Type                                      ResourceName
 ----                         --                                                                                                                                   ----                                      ------------

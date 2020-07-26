@@ -100,6 +100,7 @@ function Remove-AzWvdRegistrationInfo {
             -SsoContext $hostpool.SsoContext `
             -CustomRdpProperty $hostpool.CustomRdpProperty `
             -Ring $hostpool.Ring `
-            -ValidationEnvironment:$hostpool.ValidationEnvironment
+            -ValidationEnvironment:$hostpool.ValidationEnvironment `
+            -PreferredAppGroupType $hostpool.PreferredAppGroupType
     }
 }
