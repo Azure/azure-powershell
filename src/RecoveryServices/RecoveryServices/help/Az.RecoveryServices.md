@@ -30,7 +30,7 @@ Dismounts all the files of the recovery point.
 Edits a Site Recovery plan.
 
 ### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
-This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
+The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
@@ -137,6 +137,9 @@ This command constructs the recovery configuration of a backed up item such as S
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
+### [Get-AzRecoveryServicesVaultProperty](Get-AzRecoveryServicesVaultProperty.md)
+Returns the properties of a Recovery Services Vault.
+
 ### [Get-AzRecoveryServicesVaultSettingsFile](Get-AzRecoveryServicesVaultSettingsFile.md)
 Gets the Azure Site Recovery vault settings file.
 
@@ -182,6 +185,9 @@ Creates an ASR storage classification mapping in the Recovery Services vault.
 ### [New-AzRecoveryServicesAsrvCenter](New-AzRecoveryServicesAsrvCenter.md)
 Adds a vCenter server to discover protectable items from.
 
+### [New-AzRecoveryServicesAsrVMNicConfig](New-AzRecoveryServicesAsrVMNicConfig.md)
+Creates an ASR NIC config that contains the failover and test failover related configuration details.
+
 ### [New-AzRecoveryServicesBackupProtectionPolicy](New-AzRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.
 
@@ -189,7 +195,7 @@ Creates a Backup protection policy.
 Creates a new Recovery Services vault.
 
 ### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
-This command allows Azure Backup to convert the �Resource� to a �Backup Container� which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
 ### [Remove-AzRecoveryServicesAsrFabric](Remove-AzRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
@@ -211,6 +217,9 @@ Deletes the specified ASR recovery plan from Recovery Services vault.
 
 ### [Remove-AzRecoveryServicesAsrReplicationProtectedItem](Remove-AzRecoveryServicesAsrReplicationProtectedItem.md)
 Stops/Disables replication for an Azure Site Recovery replication protected item.
+
+### [Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk](Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
+Removes disks to replication protected item.
 
 ### [Remove-AzRecoveryServicesAsrServicesProvider](Remove-AzRecoveryServicesAsrServicesProvider.md)
 Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
@@ -254,6 +263,9 @@ Modifies a Backup protection policy.
 ### [Set-AzRecoveryServicesVaultContext](Set-AzRecoveryServicesVaultContext.md)
 Sets vault context.
 
+### [Set-AzRecoveryServicesVaultProperty](Set-AzRecoveryServicesVaultProperty.md)
+Updates properties of a Vault.
+
 ### [Start-AzRecoveryServicesAsrApplyRecoveryPoint](Start-AzRecoveryServicesAsrApplyRecoveryPoint.md)
 Changes a recovery point for a failed over protected item before committing the failover operation.
 
@@ -276,13 +288,16 @@ Starts the test failover cleanup operation.
 Starts a test failover operation.
 
 ### [Start-AzRecoveryServicesAsrUnplannedFailoverJob](Start-AzRecoveryServicesAsrUnplannedFailoverJob.md)
-Starts a unplanned failover operation.
+Starts an unplanned failover operation.
 
 ### [Stop-AzRecoveryServicesAsrJob](Stop-AzRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.
 
 ### [Stop-AzRecoveryServicesBackupJob](Stop-AzRecoveryServicesBackupJob.md)
 Cancels a running job.
+
+### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
+If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.

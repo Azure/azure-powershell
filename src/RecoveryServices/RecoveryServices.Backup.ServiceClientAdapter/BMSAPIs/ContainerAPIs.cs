@@ -126,6 +126,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Gets Backup Usage Summary - registered containers/items  within the vault
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<BackupManagementUsage> GetBackupUsageSummary(string vaultName, string resourceGroupName,
+            ODataQuery<BMSBackupSummariesQueryObject> queryFilter)
+        {
+            string skipToken = null;
+            Func<IEnumerable<BackupManagementUsage>> listAsync = () => BmsAdapter.Client.BackupUsageSummaries.ListWithHttpMessagesAsync(
+                    vaultName,
+                    resourceGroupName,
+                    queryFilter,
+                    skipToken,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+            
+            return listAsync();
+        }
+
+        /// <summary>
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns>Response of the job created in the service</returns>
