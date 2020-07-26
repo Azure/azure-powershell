@@ -15,7 +15,7 @@
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings;
+using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 {

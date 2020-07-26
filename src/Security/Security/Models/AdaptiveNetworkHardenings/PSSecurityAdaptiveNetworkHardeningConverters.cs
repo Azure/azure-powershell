@@ -16,11 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
 {
     public static class PSSecurityAdaptiveNetworkHardeningsConverters
     {
-        public static PSSecurityAdaptiveNetworkHardenings ConvertToPSType(this AdaptiveNetworkHardening value)
+        public static PSSecurityAdaptiveNetworkHardenings ConvertToPSType(this Management.Security.Models.AdaptiveNetworkHardening value)
         {
             return new PSSecurityAdaptiveNetworkHardenings()
             {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenin
         }
 
 
-        public static List<PSSecurityAdaptiveNetworkHardenings> ConvertToPSType(this IEnumerable<AdaptiveNetworkHardening> value)
+        public static List<PSSecurityAdaptiveNetworkHardenings> ConvertToPSType(this IEnumerable<Management.Security.Models.AdaptiveNetworkHardening> value)
         {
             return value.Select(anh => anh.ConvertToPSType()).ToList();
         }

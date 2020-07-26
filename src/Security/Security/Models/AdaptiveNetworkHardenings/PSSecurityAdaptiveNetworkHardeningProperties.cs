@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening
 {
     public class PSSecurityAdaptiveNetworkHardeningsProperties
     {
