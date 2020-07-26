@@ -75,8 +75,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAks', 'New-AzAks', 'Remove-AzAks', 'Import-AzAksCredential', 
-               'Start-AzAksDashboard', 'Stop-AzAksDashboard', 'Set-AzAks', 
+CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster', 'Import-AzAksCredential', 
+               'Start-AzAksDashboard', 'Stop-AzAksDashboard', 'Set-AzAksCluster', 
                'New-AzAksNodePool', 'Update-AzAksNodePool', 'Remove-AzAksNodePool', 
                'Get-AzAksNodePool', 'Install-AzAksKubectl', 'Get-AzAksVersion'
 
@@ -84,7 +84,7 @@ CmdletsToExport = 'Get-AzAks', 'New-AzAks', 'Remove-AzAks', 'Import-AzAksCredent
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('Get-AzAks', 'New-AzAks', 'Remove-AzAks', 'Set-AzAks')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
