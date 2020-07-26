@@ -20,8 +20,8 @@ Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId
  [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-ExportToResourceSpecific] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-ExportToResourceSpecific]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewSetDiagnosticSetting
