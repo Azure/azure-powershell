@@ -36,6 +36,8 @@ $script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 Import-Module "$PSScriptRoot\UpdateModules.psm1"
 Import-Module "$PSScriptRoot\PublishModules.psm1"
 
+Write-Host "ModuleFolder: $ModuleFolder"
+
 $ModuleFolder = $ModuleFolder.Trim()
 
 New-ModulePsm1 -ModulePath $ModuleFolder -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore -IgnorePwshVersion:$IgnorePwshVersion
