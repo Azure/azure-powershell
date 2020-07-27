@@ -1704,6 +1704,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
             }
 
+            //TODO: there was some discussion if this change should not be included? Haider talked about it. 
             if (this.IsParameterBound(c => c.EncryptionAtHost))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
