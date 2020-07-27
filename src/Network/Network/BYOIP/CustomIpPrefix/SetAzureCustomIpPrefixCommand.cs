@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Decomission { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
 
@@ -108,17 +108,19 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.CommissioningStateConflict);
             }
 
-            var psModel = new PSCustomIpPrefix()
+            PSCustomIpPrefix customIpPrefixToUpdate = this.GetCustomIpPrefix(this.ResourceGroupName, this.Name);
+
+            if (customIpPrefixToUpdate == null)
             {
-                Name = InputObject.Name,
-                ResourceGroupName = InputObject.ResourceGroupName
-            };
-            if (Commission || Decomission)
-            {
-                psModel.CommissionedState = Commission ? "Commissioning" : "Decomissioning";
+                throw new PSArgumentException(Properties.Resources.ResourceNotFound, this.Name);
             }
 
-            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
+            if (Commission || Decomission)
+            {
+                customIpPrefixToUpdate.CommissionedState = Commission ? "Commissioning" : "Decomissioning";
+            }
+
+            var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(customIpPrefixToUpdate);
 
             if (this.IsParameterBound(c => c.InputObject))
             {

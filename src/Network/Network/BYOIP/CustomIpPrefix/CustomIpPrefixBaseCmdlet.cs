@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Network
             return psModel;
         }
 
-        public PSCustomIpPrefix ToPsCustomIpPrefix(CustomIpPrefix publicIpPrefix)
+        public PSCustomIpPrefix ToPsCustomIpPrefix(CustomIpPrefix customIpPrefix)
         {
-            var psModel = NetworkResourceManagerProfile.Mapper.Map<PSCustomIpPrefix>(publicIpPrefix);
+            var psModel = NetworkResourceManagerProfile.Mapper.Map<PSCustomIpPrefix>(customIpPrefix);
 
-            psModel.Tag = TagsConversionHelper.CreateTagHashtable(publicIpPrefix.Tags);
+            psModel.Tag = TagsConversionHelper.CreateTagHashtable(customIpPrefix.Tags);
 
             return psModel;
         }

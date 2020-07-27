@@ -30,5 +30,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> Zones { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string MasterCustomIpPrefixText
+        {
+            get { return JsonConvert.SerializeObject(MasterCustomIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
