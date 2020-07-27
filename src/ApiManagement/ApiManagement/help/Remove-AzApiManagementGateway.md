@@ -1,59 +1,63 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
-Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/remove-azaks
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementgateway
 schema: 2.0.0
 ---
 
-# Remove-AzAks
+# Remove-AzApiManagementGateway
 
 ## SYNOPSIS
-Delete a managed Kubernetes cluster.
+Detaches an API from a Gateway.
 
 ## SYNTAX
 
-### GroupNameParameterSet (Default)
+### ContextParameterSetName (Default)
 ```
-Remove-AzAks [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
+Remove-AzApiManagementGateway -Context <PsApiManagementContext> -GatewayId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### ByInputObjectParameterSet
 ```
-Remove-AzAks -InputObject <PSKubernetesCluster> [-PassThru] [-AsJob] [-Force]
+Remove-AzApiManagementGateway -InputObject <PsApiManagementGateway> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### ByResourceIdParameterSet
 ```
-Remove-AzAks [-Id] <String> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzApiManagementGateway -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a managed Kubernetes cluster.
+The **Remove-AzApiManagementGateway** cmdlet detaches an API from a Gateway.
 
 ## EXAMPLES
 
-### Delete an existing managed Kubernetes cluster
+### Example 1: Remove an existing gateway
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementGateway -Context $apimContext -GatewayId "g0001" -Force
 ```
-PS C:\> Remove-AzAks -ResourceGroupName group -Name myCluster
-```
+
+This command removes an existing gateway and does not prompt the user for confirmation.
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
+### -Context
+Instance of PsApiManagementContext.
+This parameter is required.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameter Sets: ContextParameterSetName
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -72,42 +76,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Remove managed Kubernetes cluster without prompt
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Id of a managed Kubernetes cluster
+### -GatewayId
+Identifier of existing gateway.
+This parameter is required.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Parameter Sets: ContextParameterSetName
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.
+Instance of PsApiManagementGateway. This parameter is required.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-Parameter Sets: InputObjectParameterSet
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGateway
+Parameter Sets: ByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -117,23 +107,10 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of your managed Kubernetes cluster
-
-```yaml
-Type: System.String
-Parameter Sets: GroupNameParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
-Returns true if deletion is successful
+If specified will write true in case operation succeeds.
+This parameter is optional.
+Default value is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -143,22 +120,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name
+### -ResourceId
+Arm ResourceId of the Gateway. This parameter is required.
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -198,9 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 
 ### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

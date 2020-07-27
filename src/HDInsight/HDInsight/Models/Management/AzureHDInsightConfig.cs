@@ -170,6 +170,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public string EncryptionVaultUri { get; set; }
 
+        /// <summary>
+        /// Gets or sets the public network access type.
+        /// </summary>
+        public string PublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the outbound access type to the public network.
+        /// </summary>
+        public string OutboundPublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the flag which indicates whether enable encryption in transit or not.
+        /// </summary>
+        public bool? EncryptionInTransit;
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;
