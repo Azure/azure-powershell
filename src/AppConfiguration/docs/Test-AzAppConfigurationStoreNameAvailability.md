@@ -12,15 +12,8 @@ Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
-Test-AzAppConfigurationStoreNameAvailability -SubscriptionId <String> -Name <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzAppConfigurationStoreNameAvailability -InputObject <IAppConfigurationIdentity> -Name <String>
+Test-AzAppConfigurationStoreNameAvailability -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,23 +22,20 @@ Checks whether the configuration store name is available for use.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test availability of the app configuration store name
 ```powershell
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\\> Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
 
-{{ Add output here }}
-```
+Message                               NameAvailable Reason
+-------                               ------------- ------
+The specified name is already in use.
+False         AlreadyExists
 
-{{ Add description here }}
+This command tests availability of the app configuration store name.
 
 ## PARAMETERS
 
@@ -62,23 +52,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -94,7 +67,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -102,15 +74,14 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -126,7 +97,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -143,7 +113,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -151,13 +120,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus
 
-## ALIASES
+## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
