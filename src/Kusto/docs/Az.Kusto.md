@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Kusto
-Module Guid: 61681df7-6bcc-4fb4-893b-372a9e183654
+Module Guid: 3259a72f-1a62-427f-b02d-e71e5d641549
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
@@ -48,7 +48,7 @@ Gets a Kusto cluster database principalAssignment.
 Returns a data connection.
 
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
-Checks that the data connection parameters are valid.
+Checks that the data connection Parameters are valid.
 
 ### [Invoke-AzKustoDetachClusterFollowerDatabase](Invoke-AzKustoDetachClusterFollowerDatabase.md)
 Detaches all followers of a database owned by this cluster.

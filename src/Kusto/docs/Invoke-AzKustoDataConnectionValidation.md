@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzKustoDataConnectionValidation
 
 ## SYNOPSIS
-Checks that the data connection parameters are valid.
+Checks that the data connection Parameters are valid.
 
 ## SYNTAX
 
@@ -16,9 +16,10 @@ Checks that the data connection parameters are valid.
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -EventHubResourceId <String>
- -Kind <Kind> -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <Kind> -Location <String> [-SubscriptionId <String>] [-BlobStorageEventType <String>]
+ [-Compression <Compression>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
+ [-IgnoreFirstRecord <String>] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataExpandedEventGrid
@@ -26,7 +27,8 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String>
  -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind> -Location <String>
- -StorageAccountResourceId <String> -TableName <String> [-SubscriptionId <String>] [-MappingRuleName <String>]
+ -StorageAccountResourceId <String> -TableName <String> [-SubscriptionId <String>]
+ [-BlobStorageEventType <String>] [-IgnoreFirstRecord <String>] [-MappingRuleName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,38 +37,40 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -IotHubResourceId <String>
  -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BlobStorageEventType <String>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
+ [-IgnoreFirstRecord <String>] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -DataConnectionName <String> -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind>
- -Location <String> -StorageAccountResourceId <String> -TableName <String> [-MappingRuleName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -StorageAccountResourceId <String> -TableName <String> [-BlobStorageEventType <String>]
+ [-IgnoreFirstRecord <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -DataConnectionName <String> -EventHubResourceId <String> -Kind <Kind> -Location <String>
- [-Compression <Compression>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-BlobStorageEventType <String>] [-Compression <Compression>] [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-IgnoreFirstRecord <String>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedIotHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -DataConnectionName <String> -IotHubResourceId <String> -Kind <Kind> -Location <String>
- -SharedAccessPolicyName <String> [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SharedAccessPolicyName <String> [-BlobStorageEventType <String>] [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-IgnoreFirstRecord <String>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks that the data connection parameters are valid.
+Checks that the data connection Parameters are valid.
 
 ## EXAMPLES
 
@@ -141,6 +145,21 @@ The above command validates IotHub data connection named "myiothubdc" for the da
 
 ## PARAMETERS
 
+### -BlobStorageEventType
+The type of the event to process.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
@@ -154,7 +173,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Compression
@@ -170,7 +188,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ConsumerGroup
@@ -186,7 +203,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DatabaseName
@@ -202,7 +218,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DataConnectionName
@@ -218,7 +233,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DataFormat
@@ -235,7 +249,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -251,7 +264,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -EventHubResourceId
@@ -267,7 +279,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -EventSystemProperty
@@ -283,7 +294,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -IgnoreFirstRecord
+Indecates whether to ignore the first row of the data.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -InputObject
@@ -300,7 +325,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -IotHubResourceId
@@ -316,7 +340,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Kind
@@ -332,7 +355,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -348,7 +370,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -MappingRuleName
@@ -365,7 +386,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -381,7 +401,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SharedAccessPolicyName
@@ -397,7 +416,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -StorageAccountResourceId
@@ -413,7 +431,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -430,7 +447,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -TableName
@@ -447,7 +463,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -463,7 +478,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -480,7 +494,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -492,16 +505,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidationResult
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidationResult
 
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IKustoIdentity>: Identity Parameter
+
+INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
