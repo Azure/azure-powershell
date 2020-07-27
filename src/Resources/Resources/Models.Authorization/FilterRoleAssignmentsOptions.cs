@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public string RoleDefinitionId { get; set; }
 
         private string scope;
+        public string Description { get; set; }
+        public string Condition { get; set; }
+        public string ConditionVersion { get; set; }
 
         public string Scope
         {
