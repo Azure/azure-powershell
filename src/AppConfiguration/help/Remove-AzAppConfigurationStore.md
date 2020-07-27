@@ -27,6 +27,23 @@ Remove-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-Defaul
 ## DESCRIPTION
 Deletes a configuration store.
 
+## EXAMPLES
+
+### Example 1: Remove an app configuration store
+```powershell
+PS C:\> Remove-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName lucas-manual-test
+
+```
+
+This command removes an app configuration store.
+
+### Example 2: Remove an app configuration store
+```powershell
+PS C:\> Get-AzAppConfigurationStore -Name appconfig-test02 -ResourceGroupName lucas-manual-test | Remove-AzAppConfigurationStore
+
+```
+
+This command removes an app configuration store.
 
 ## PARAMETERS
 
@@ -204,7 +221,9 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   - `[ConfigStoreName <String>]`: The name of the configuration store.
+  - `[GroupName <String>]`: The name of the private link resource group.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
   - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 

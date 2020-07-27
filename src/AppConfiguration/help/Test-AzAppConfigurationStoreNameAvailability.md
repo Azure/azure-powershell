@@ -12,21 +12,30 @@ Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzAppConfigurationStoreNameAvailability -Name <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzAppConfigurationStoreNameAvailability -InputObject <IAppConfigurationIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Checks whether the configuration store name is available for use.
 
+## EXAMPLES
+
+### Example 1: Test availability of the app configuration store name
+```powershell
+
+```
+
+```powershell
+PS C:\\> Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
+
+Message                               NameAvailable Reason
+-------                               ------------- ------
+The specified name is already in use.
+False         AlreadyExists
+
+This command tests availability of the app configuration store name.
 
 ## PARAMETERS
 
@@ -42,22 +51,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -81,7 +74,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -127,26 +120,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  - `[ConfigStoreName <String>]`: The name of the configuration store.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 
 ## RELATED LINKS
 
