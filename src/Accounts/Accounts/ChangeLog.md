@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865](https://github.com/Azure/azure-powershell/issues/9865)
+* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
+* Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]
+* Supported Multitenant
 
 ## Version 1.9.1
 * Added new cmdlet `Invoke-AzRestMethod`
