@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Checks that the data connection parameters are valid.
+Checks that the data connection Parameters are valid.
 .Description
-Checks that the data connection parameters are valid.
+Checks that the data connection Parameters are valid.
 .Example
 PS C:\>  $dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='$Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
 PS C:\>  $dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
@@ -175,6 +175,20 @@ function Invoke-AzKustoDataConnectionValidation {
         [System.String]
         # Resource location.
         ${Location},
+		
+		[Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The type of the event to process.
+        ${BlobStorageEventType},
+		
+		[Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        #Indecates whether to ignore the first row of the data.
+        ${IgnoreFirstRecord},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -232,66 +246,72 @@ function Invoke-AzKustoDataConnectionValidation {
             $null = $PSBoundParameters.Remove('DataConnectionName')
 
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection]::new()
                 
-                $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
+                $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
                 if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
-                    $Parameter.Property.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
                     $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
 
                 if ($PSBoundParameters.ContainsKey('Compression')) {
-                    $Parameter.Property.Compression = $PSBoundParameters['Compression']
+                    $Parameter.Compression = $PSBoundParameters['Compression']
                     $null = $PSBoundParameters.Remove('Compression')
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection]::new()
             
-                $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
+                $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
-                $Parameter.Property.StorageAccountResourceId = $PSBoundParameters['StorageAccountResourceId']
+                $Parameter.StorageAccountResourceId = $PSBoundParameters['StorageAccountResourceId']
                 $null = $PSBoundParameters.Remove('StorageAccountResourceId')
+				
+				$Parameter.BlobStorageEventType = $PSBoundParameters['BlobStorageEventType']
+                $null = $PSBoundParameters.Remove('BlobStorageEventType')
+				
+				$Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
+                $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
             }
             else {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()
 
-                $Parameter.Property.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
+                $Parameter.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')
 
-                $Parameter.Property.SharedAccessPolicyName = $PSBoundParameters['SharedAccessPolicyName']
+                $Parameter.SharedAccessPolicyName = $PSBoundParameters['SharedAccessPolicyName']
                 $null = $PSBoundParameters.Remove('SharedAccessPolicyName')
 
                 if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
-                    $Parameter.Property.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
                     $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
             }
 
-            $Parameter.Property.Kind = $PSBoundParameters['Kind']
+            $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
-            $Parameter.Property.Location = $PSBoundParameters['Location']
+            $Parameter.Location = $PSBoundParameters['Location']
             $null = $PSBoundParameters.Remove('Location')
 
-            $Parameter.Property.ConsumerGroup = $PSBoundParameters['ConsumerGroup']            
+            $Parameter.ConsumerGroup = $PSBoundParameters['ConsumerGroup']            
             $null = $PSBoundParameters.Remove('ConsumerGroup')
 
             if ($PSBoundParameters.ContainsKey('DataFormat')) {
-                $Parameter.Property.DataFormat = $PSBoundParameters['DataFormat']
+                $Parameter.DataFormat = $PSBoundParameters['DataFormat']
                 $null = $PSBoundParameters.Remove('DataFormat')
             }
 
             if ($PSBoundParameters.ContainsKey('MappingRuleName')) {
-                $Parameter.Property.MappingRuleName = $PSBoundParameters['MappingRuleName']
+                $Parameter.MappingRuleName = $PSBoundParameters['MappingRuleName']
                 $null = $PSBoundParameters.Remove('MappingRuleName')
             }
 
             if ($PSBoundParameters.ContainsKey('TableName')) {
-                $Parameter.Property.TableName = $PSBoundParameters['TableName']
+                $Parameter.TableName = $PSBoundParameters['TableName']
                 $null = $PSBoundParameters.Remove('TableName')
             }            
 
