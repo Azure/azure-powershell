@@ -383,7 +383,22 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                             PropertyChangeType = PropertyChangeType.Modify,
                             Before = "foo",
                             After = "bar"
-                        }
+                        },
+                        new WhatIfPropertyChange
+                        {
+                            Path = "path.to.array.change",
+                            PropertyChangeType = PropertyChangeType.Array,
+                            Children = new List<WhatIfPropertyChange>
+                            {
+                                new WhatIfPropertyChange
+                                {
+                                    Path = "1",
+                                    PropertyChangeType = PropertyChangeType.Modify,
+                                    Before = "foo",
+                                    After = "bar"
+                                }
+                            }
+                        },
                     }
                 }
             };
@@ -394,6 +409,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 {Color.Purple}
   ~ p1/foo{Color.Reset}
+    {Color.Purple}~{Color.Reset} path.to.array.change{Color.Reset}:{Color.Reset} [
+      {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+      ]
     {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
 "
                 .Replace(@"""foo""", foo)
