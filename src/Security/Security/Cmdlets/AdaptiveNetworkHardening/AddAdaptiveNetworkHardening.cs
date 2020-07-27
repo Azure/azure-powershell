@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
 {
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class AddAdaptiveNetworkHardening : SecurityCenterCmdletBase
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.EffectiveNetworkSecurityGroups)]
         [ValidateNotNullOrEmpty]
-        public List<string> NetworkSecurityGroups { get; set; }
+        public List<string> NetworkSecurityGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
             var rules = Rules.Select(rule => new Rule(rule.Name, rule.Direction, rule.DestinationPort, rule.Protocols, rule.IpAddresses)).ToList();
 
             var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
-                .BeginEnforceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName, rules, NetworkSecurityGroups)
+                .BeginEnforceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName, rules, NetworkSecurityGroup)
                 .GetAwaiter()
                 .GetResult();
 

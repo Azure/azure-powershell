@@ -17,7 +17,7 @@ using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening;
 
-namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardenings
+namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdaptiveNetworkHardening", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource), OutputType(typeof(PSSecurityAdaptiveNetworkHardenings))]
     public class GetAdaptiveNetworkHardening : SecurityCenterCmdletBase
