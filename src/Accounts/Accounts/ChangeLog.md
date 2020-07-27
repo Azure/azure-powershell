@@ -21,6 +21,8 @@
 * Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
 * Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]
 * Supported Multitenant
+* Corrected module name, version info in telemetry data
+* Adjusted SqlDatabaseDnsSuffix and ServiceManagementUrl if environment metadata endpoint returns incompatible value
 
 ## Version 1.9.1
 * Added new cmdlet `Invoke-AzRestMethod`
