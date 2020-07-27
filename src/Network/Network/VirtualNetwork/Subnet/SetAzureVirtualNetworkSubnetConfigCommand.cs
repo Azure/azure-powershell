@@ -54,10 +54,18 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
+                else if (this.MyInvocation.BoundParameters.Keys.Contains("NetworkSecurityGroup"))
+                {
+                    this.NetworkSecurityGroupId = null;
+                }
 
                 if (this.RouteTable != null)
                 {
                     this.RouteTableId = this.RouteTable.Id;
+                }
+                else if (this.MyInvocation.BoundParameters.Keys.Contains("RouteTable"))
+                {
+                    this.RouteTableId = null;
                 }
             }
 
@@ -76,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
-            else
+            else if (this.MyInvocation.BoundParameters.Keys.Contains("NetworkSecurityGroup") || this.MyInvocation.BoundParameters.Keys.Contains("NetworkSecurityGroupId"))
             {
                 subnet.NetworkSecurityGroup = null;
             }
@@ -86,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
             }
-            else
+            else if (this.MyInvocation.BoundParameters.Keys.Contains("RouteTable") || this.MyInvocation.BoundParameters.Keys.Contains("RouteTableId"))
             {
                 subnet.RouteTable = null;
             }
