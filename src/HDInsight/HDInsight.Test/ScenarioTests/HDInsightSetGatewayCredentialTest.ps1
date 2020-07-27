@@ -21,8 +21,15 @@ function Test-SetGatewayCredential{
 	# Create some resources that will be used throughout test 
 	try
 	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameterForWASB
+
 		# create cluster that will be used throughout test
-		$cluster= Create-Cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
 		$username = "admin"
 		$textPassword= "YourPw!00953"

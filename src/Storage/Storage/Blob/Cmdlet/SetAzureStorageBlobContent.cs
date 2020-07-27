@@ -615,6 +615,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     }
                 }
                 AzureStorageBlob outputBlob = new AzureStorageBlob(outputBlobClient, localChannel.StorageContext, null, ClientOptions);
+                OutputStream.WriteObject(taskId, outputBlob);
             }
         }
 

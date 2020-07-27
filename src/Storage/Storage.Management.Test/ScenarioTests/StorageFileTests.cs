@@ -44,5 +44,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-ShareSoftDelete");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageFileShareGetUsage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageFileShareGetUsage");
+        } 
     }
 }

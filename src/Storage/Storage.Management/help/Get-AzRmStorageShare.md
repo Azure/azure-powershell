@@ -38,8 +38,8 @@ Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted]
 
 ### ShareResourceId
 ```
-Get-AzRmStorageShare [-ResourceId] <String> [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRmStorageShare [-ResourceId] <String> [-Name <String>] [-GetShareUsage]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +166,7 @@ Share Name
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameSingle
+Parameter Sets: AccountNameSingle, ShareResourceId
 Aliases: N, ShareName
 
 Required: False

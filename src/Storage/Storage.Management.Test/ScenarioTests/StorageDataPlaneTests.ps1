@@ -281,7 +281,7 @@ function Test-Blob
 		$scopename = "testscope"
 		$containerName2 = "testscopecontainer"
 		New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
-		$container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName2 -PreventEncryptionScopeOverride $true
+		$container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName -PreventEncryptionScopeOverride $true
 		Assert-AreEqual $scopename $container.BlobContainerProperties.DefaultEncryptionScope
 		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
 		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename

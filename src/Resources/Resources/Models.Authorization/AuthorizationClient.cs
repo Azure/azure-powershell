@@ -133,17 +133,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
                 ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
                 : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
-            parameters.Description = string.IsNullOrWhiteSpace(parameters.Description) ? null : parameters.Description;
-            parameters.Condition = string.IsNullOrWhiteSpace(parameters.Condition) ? null : parameters.Condition;
-            parameters.ConditionVersion = string.IsNullOrWhiteSpace(parameters.ConditionVersion) ? null : parameters.ConditionVersion;
             var createParameters = new RoleAssignmentCreateParameters
             {
                 PrincipalId = principalId.ToString(),
                 RoleDefinitionId = roleDefinitionId,
-                CanDelegate = parameters.CanDelegate,
-                Description = parameters.Description,
-                Condition = parameters.Condition,
-                ConditionVersion = parameters.ConditionVersion
+                CanDelegate = parameters.CanDelegate
             };
 
             RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(

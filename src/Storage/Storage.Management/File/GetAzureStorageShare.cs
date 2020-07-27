@@ -17,8 +17,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
-using System;
-using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -88,6 +87,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Will not allow to input '-ResourceId', '-Name' together in a future release, since name info is already inclouded in ResourceId.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -104,6 +104,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Share Name",
             Mandatory = false,
             ParameterSetName = AccountNameSingleParameterSet)]
+        [Parameter(HelpMessage = "Share Name",
+            Mandatory = false,
+            ParameterSetName = ShareResourceIdParameterSet)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false,
@@ -137,13 +140,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.StorageAccountName = StorageAccount.StorageAccountName;
                     break;
                 case ShareResourceIdParameterSet:
+                    if (!string.IsNullOrEmpty(this.Name))
+                    {
+                        WriteWarning("The -Name parameter will be omit, as -ResourceId already contains share name.");
+                    }
                     ResourceIdentifier shareResource = new ResourceIdentifier(ResourceId);
                     this.ResourceGroupName = shareResource.ResourceGroupName;
                     this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
                     this.Name = shareResource.ResourceName;
                     break;
                 default:
-                    // For AccountNameSingleParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
+                    // For AccountNameParameterSet, AccountNameSingleParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                     break;
             }
 

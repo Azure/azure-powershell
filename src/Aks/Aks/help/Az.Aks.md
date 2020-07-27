@@ -11,7 +11,7 @@ Locale: en-US
 Commands to interact with Azure managed Kubernetes clusters.
 
 ## Az.Aks Cmdlets
-### [Get-AzAks](Get-AzAks.md)
+### [Get-AzAksCluster](Get-AzAksCluster.md)
 List Kubernetes managed clusters.
 
 ### [Get-AzAksNodePool](Get-AzAksNodePool.md)
@@ -26,19 +26,19 @@ Import and merge Kubectl config for a managed Kubernetes Cluster.
 ### [Install-AzAksKubectl](Install-AzAksKubectl.md)
 Download and install kubectl, the Kubernetes command-line tool.
 
-### [New-AzAks](New-AzAks.md)
+### [New-AzAksCluster](New-AzAksCluster.md)
 Create a new managed Kubernetes cluster.
 
 ### [New-AzAksNodePool](New-AzAksNodePool.md)
 Create a new node pool in specified cluster.
 
-### [Remove-AzAks](Remove-AzAks.md)
+### [Remove-AzAksCluster](Remove-AzAksCluster.md)
 Delete a managed Kubernetes cluster.
 
 ### [Remove-AzAksNodePool](Remove-AzAksNodePool.md)
 Delete node pool from managed cluster.
 
-### [Set-AzAks](Set-AzAks.md)
+### [Set-AzAksCluster](Set-AzAksCluster.md)
 Update or create a managed Kubernetes cluster.
 
 ### [Start-AzAksDashboard](Start-AzAksDashboard.md)
@@ -49,4 +49,3 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ### [Update-AzAksNodePool](Update-AzAksNodePool.md)
 Update node pool in a managed cluster.
-
