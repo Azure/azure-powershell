@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.RulesToEnforce)]
         [ValidateNotNullOrEmpty]
-        public PSSecurityAdaptiveNetworkHardeningsRule[] Rules { get; set; }
+        public PSSecurityAdaptiveNetworkHardeningsRule[] Rule { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.EffectiveNetworkSecurityGroups)]
         [ValidateNotNullOrEmpty]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
         public override void ExecuteCmdlet()
         {
             SecurityCenterClient.SubscriptionId = SubscriptionId;
-            var rules = Rules.Select(rule => new Rule(rule.Name, rule.Direction, rule.DestinationPort, rule.Protocols, rule.IpAddresses)).ToList();
+            var rules = Rule.Select(rule => new Rule(rule.Name, rule.Direction, rule.DestinationPort, rule.Protocols, rule.IpAddresses)).ToList();
 
             var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
                 .BeginEnforceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName, rules, NetworkSecurityGroup)

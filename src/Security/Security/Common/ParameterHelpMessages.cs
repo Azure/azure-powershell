@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string ResourceNamespace = "Resource namespace";
         public const string ResourceType = "Resource type";
-        public const string RulesToEnforce = "Rules to enforce";
+        public const string RulesToEnforce = "Rule to enforce";
         public const string AdaptiveNetworkHardeningResourceName = "Adaptive Network Hardening resource name";
         public const string AdaptiveNetworkHardeningEnforceAction = "Adaptive Network Hardening enforce action";
         public const string EffectiveNetworkSecurityGroups = "The Azure resource IDs of the effective network security groups";
