@@ -13,17 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
 
-    public class MasterCustomIpPrefixTests : NetworkTestRunner
+    public class CustomIpPrefixTests : NetworkTestRunner
     {
-        public MasterCustomIpPrefixTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CustomIpPrefixTests(Xunit.Abstractions.ITestOutputHelper output)
              : base(output)
         {
         }
@@ -31,9 +29,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.billingandtelemetry)]
-        public void TestMasterCustomIpPrefixCRUD()
+        public void TestCustomIpPrefixCRUD()
         {
-            TestRunner.RunTestScript("Test-MasterCustomIpPrefixCRUD");
+            TestRunner.RunTestScript("Test-CustomIpPrefixCRUD");
         }
     }
 }

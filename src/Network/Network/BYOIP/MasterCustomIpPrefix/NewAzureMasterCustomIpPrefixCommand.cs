@@ -52,21 +52,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geography of edge routers this prefix range will be advertised on.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.RIR.NorthAmerica,
-            MNM.RIR.Europe,
-            MNM.RIR.Asia,
-            MNM.RIR.SouthAmerica,
-            MNM.RIR.Africa,
-            MNM.RIR.Global,
-            IgnoreCase = true)]
-        public string Geography { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The CIDR of the MasterCustomIpPrefix")]
         [ValidateNotNullOrEmpty]
         public string Cidr { get; set; }
@@ -118,7 +103,6 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                Geography = this.Geography,
                 Cidr = this.Cidr,
                 OriginalValidationMessage = this.ValidationMessage,
                 SignedValidationMessage = this.SignedValidationMessage

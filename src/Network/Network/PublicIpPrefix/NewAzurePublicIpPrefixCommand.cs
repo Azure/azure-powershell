@@ -99,6 +99,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The CustomIpPrefix that this PublicIpPrefix will be associated with")]
+        public PSCustomIpPrefix CustomIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -164,6 +170,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIpPrefix.IpTags = this.IpTag?.ToList();
             }
+
+            publicIpPrefix.CustomIpPrefix = this.CustomIpPrefix;
 
             var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 

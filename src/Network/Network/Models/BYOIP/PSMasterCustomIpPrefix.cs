@@ -30,5 +30,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> CustomIpPrefixes { get; set; }
 
         public string ValidationState { get; set; }
+
+        [JsonIgnore]
+        public string CustomIpPrefixesText
+        {
+            get { return JsonConvert.SerializeObject(CustomIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
