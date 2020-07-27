@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="72" errors="0" failures="19" not-run="0" inconclusive="0" ignored="2" skipped="0" invalid="0" date="2020-07-27" time="00:27:20">
+  <environment machine-name="ASTAUBEN-9020" user="astauben" platform="Microsoft Windows 10 Enterprise|C:\windows|\Device\Harddisk0\Partition4" user-domain="MIDDLEEAST" nunit-version="2.5.8.0" clr-version="Unknown" os-version="10.0.18363" cwd="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="11507.3928" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Add-AzKustoClusterLanguageExtension.Tests.ps1" executed="True" result="Success" success="True" time="1056.6539" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Add-AzKustoClusterLanguageExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzKustoClusterLanguageExtension" executed="True" result="Success" success="True" time="1056.0047" asserts="0" description="Add-AzKustoClusterLanguageExtension">
+            <results>
+              <test-case description="AddExpanded" name="Add-AzKustoClusterLanguageExtension.AddExpanded" time="539.6478" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="AddViaIdentityExpanded" name="Add-AzKustoClusterLanguageExtension.AddViaIdentityExpanded" time="515.1086" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Add-AzKustoDatabasePrincipal.Tests.ps1" executed="True" result="Ignored" success="True" time="0.5224" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Add-AzKustoDatabasePrincipal.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzKustoDatabasePrincipal" executed="True" result="Ignored" success="True" time="0.1094" asserts="0" description="Add-AzKustoDatabasePrincipal">
+            <results>
+              <test-case description="AddExpanded" name="Add-AzKustoDatabasePrincipal.AddExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="AddViaIdentityExpanded" name="Add-AzKustoDatabasePrincipal.AddViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoAttachedDatabaseConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="1.4472" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoAttachedDatabaseConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoAttachedDatabaseConfiguration" executed="True" result="Success" success="True" time="1.0857" asserts="0" description="Get-AzKustoAttachedDatabaseConfiguration">
+            <results>
+              <test-case description="List" name="Get-AzKustoAttachedDatabaseConfiguration.List" time="0.559" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzKustoAttachedDatabaseConfiguration.Get" time="0.4267" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="1.0661" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoCluster" executed="True" result="Success" success="True" time="0.7848" asserts="0" description="Get-AzKustoCluster">
+            <results>
+              <test-case description="Get" name="Get-AzKustoCluster.Get" time="0.3519" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzKustoCluster.List" time="0.34" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterFollowerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.7768" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterFollowerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoClusterFollowerDatabase" executed="True" result="Success" success="True" time="0.4633" asserts="0" description="Get-AzKustoClusterFollowerDatabase">
+            <results>
+              <test-case description="List" name="Get-AzKustoClusterFollowerDatabase.List" time="0.3667" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterLanguageExtension.Tests.ps1" executed="True" result="Success" success="True" time="0.8514" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterLanguageExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoClusterLanguageExtension" executed="True" result="Success" success="True" time="0.5741" asserts="0" description="Get-AzKustoClusterLanguageExtension">
+            <results>
+              <test-case description="List" name="Get-AzKustoClusterLanguageExtension.List" time="0.476" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterPrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="3.009" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterPrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoClusterPrincipalAssignment" executed="True" result="Success" success="True" time="2.738" asserts="0" description="Get-AzKustoClusterPrincipalAssignment">
+            <results>
+              <test-case description="List" name="Get-AzKustoClusterPrincipalAssignment.List" time="2.2741" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzKustoClusterPrincipalAssignment.Get" time="0.3697" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterSku.Tests.ps1" executed="True" result="Success" success="True" time="0.8478" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoClusterSku.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoClusterSku" executed="True" result="Success" success="True" time="0.5406" asserts="0" description="Get-AzKustoClusterSku">
+            <results>
+              <test-case description="List" name="Get-AzKustoClusterSku.List" time="0.1753" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzKustoClusterSku.List1" time="0.2973" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabase.Tests.ps1" executed="True" result="Success" success="True" time="1.1337" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoDatabase" executed="True" result="Success" success="True" time="0.855" asserts="0" description="Get-AzKustoDatabase">
+            <results>
+              <test-case description="List" name="Get-AzKustoDatabase.List" time="0.4186" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzKustoDatabase.Get" time="0.3448" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabasePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="0.9942" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabasePrincipal.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoDatabasePrincipal" executed="True" result="Success" success="True" time="0.7182" asserts="0" description="Get-AzKustoDatabasePrincipal">
+            <results>
+              <test-case description="List" name="Get-AzKustoDatabasePrincipal.List" time="0.6257" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabasePrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="1.1858" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDatabasePrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoDatabasePrincipalAssignment" executed="True" result="Success" success="True" time="0.8908" asserts="0" description="Get-AzKustoDatabasePrincipalAssignment">
+            <results>
+              <test-case description="List" name="Get-AzKustoDatabasePrincipalAssignment.List" time="0.3769" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzKustoDatabasePrincipalAssignment.Get" time="0.4151" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDataConnection.Tests.ps1" executed="True" result="Failure" success="False" time="1.8032" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDataConnection.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKustoDataConnection" executed="True" result="Failure" success="False" time="1.4613" asserts="0" description="Get-AzKustoDataConnection">
+            <results>
+              <test-case description="List" name="Get-AzKustoDataConnection.List" time="0.6336" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 3, but got 0.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDataConnection.Tests.ps1: line 34
+34:         $dataConnectionGet.Count | Should -Be 3</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="Get" name="Get-AzKustoDataConnection.Get" time="0.6358" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7n' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Get-AzKustoDataConnection.Tests.ps1: line 59
+59:         $dataConnectionCreated = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDataConnectionValidation.Tests.ps1" executed="True" result="Failure" success="False" time="1.6286" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDataConnectionValidation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzKustoDataConnectionValidation" executed="True" result="Failure" success="False" time="1.3152" asserts="0" description="Invoke-AzKustoDataConnectionValidation">
+            <results>
+              <test-case description="DataExpandedEventHub" name="Invoke-AzKustoDataConnectionValidation.DataExpandedEventHub" time="0.0524" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 235
+235:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DataExpandedEventGrid" name="Invoke-AzKustoDataConnectionValidation.DataExpandedEventGrid" time="0.0212" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 251
+251:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DataExpandedIotHub" name="Invoke-AzKustoDataConnectionValidation.DataExpandedIotHub" time="0.0195" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 260
+260:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DataViaIdentityExpandedEventHub" name="Invoke-AzKustoDataConnectionValidation.DataViaIdentityExpandedEventHub" time="0.3729" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 235
+235:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DataViaIdentityExpandedEventGrid" name="Invoke-AzKustoDataConnectionValidation.DataViaIdentityExpandedEventGrid" time="0.357" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 251
+251:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="DataViaIdentityExpandedIotHub" name="Invoke-AzKustoDataConnectionValidation.DataViaIdentityExpandedIotHub" time="0.3452" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The property 'Property' cannot be found on this object. Verify that the property exists and can be set.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Invoke-AzKustoDataConnectionValidation.ps1: line 260
+260:                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDetachClusterFollowerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="249.3616" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDetachClusterFollowerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzKustoDetachClusterFollowerDatabase" executed="True" result="Success" success="True" time="249.0419" asserts="0" description="Invoke-AzKustoDetachClusterFollowerDatabase">
+            <results>
+              <test-case description="DetachExpanded" name="Invoke-AzKustoDetachClusterFollowerDatabase.DetachExpanded" time="124.4754" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DetachViaIdentityExpanded" name="Invoke-AzKustoDetachClusterFollowerDatabase.DetachViaIdentityExpanded" time="124.4783" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDiagnoseClusterVirtualNetwork.Tests.ps1" executed="True" result="Success" success="True" time="607.0464" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Invoke-AzKustoDiagnoseClusterVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzKustoDiagnoseClusterVirtualNetwork" executed="True" result="Success" success="True" time="606.7498" asserts="0" description="Invoke-AzKustoDiagnoseClusterVirtualNetwork">
+            <results>
+              <test-case description="Diagnose" name="Invoke-AzKustoDiagnoseClusterVirtualNetwork.Diagnose" time="303.15" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DiagnoseViaIdentity" name="Invoke-AzKustoDiagnoseClusterVirtualNetwork.DiagnoseViaIdentity" time="303.3934" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoAttachedDatabaseConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="124.9689" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoAttachedDatabaseConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoAttachedDatabaseConfiguration" executed="True" result="Success" success="True" time="124.4685" asserts="0" description="New-AzKustoAttachedDatabaseConfiguration">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKustoAttachedDatabaseConfiguration.CreateExpanded" time="124.357" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="1459.5642" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoCluster" executed="True" result="Success" success="True" time="1459.0836" asserts="0" description="New-AzKustoCluster">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKustoCluster.CreateExpanded" time="1458.8629" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoClusterPrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="62.9479" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoClusterPrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoClusterPrincipalAssignment" executed="True" result="Success" success="True" time="62.4558" asserts="0" description="New-AzKustoClusterPrincipalAssignment">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKustoClusterPrincipalAssignment.CreateExpanded" time="62.3498" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDatabase.Tests.ps1" executed="True" result="Success" success="True" time="124.8581" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoDatabase" executed="True" result="Success" success="True" time="124.5363" asserts="0" description="New-AzKustoDatabase">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKustoDatabase.CreateExpanded" time="62.2267" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzKustoDatabase.Create" time="62.2119" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDatabasePrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="62.861" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDatabasePrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoDatabasePrincipalAssignment" executed="True" result="Success" success="True" time="62.568" asserts="0" description="New-AzKustoDatabasePrincipalAssignment">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKustoDatabasePrincipalAssignment.CreateExpanded" time="62.4652" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDataConnection.Tests.ps1" executed="True" result="Failure" success="False" time="99.3581" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\New-AzKustoDataConnection.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKustoDataConnection" executed="True" result="Failure" success="False" time="98.975" asserts="0" description="New-AzKustoDataConnection">
+            <results>
+              <test-case description="CreateExpandedEventHub" name="New-AzKustoDataConnection.CreateExpandedEventHub" time="32.9125" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7n' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\New-AzKustoDataConnection.ps1: line 296
+296:             Az.Kusto.internal\New-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CreateExpandedEventGrid" name="New-AzKustoDataConnection.CreateExpandedEventGrid" time="32.6915" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7ng' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\New-AzKustoDataConnection.ps1: line 296
+296:             Az.Kusto.internal\New-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CreateExpandedIotHub" name="New-AzKustoDataConnection.CreateExpandedIotHub" time="33.2126" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7nh' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\New-AzKustoDataConnection.ps1: line 296
+296:             Az.Kusto.internal\New-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoAttachedDatabaseConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="138.7027" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoAttachedDatabaseConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoAttachedDatabaseConfiguration" executed="True" result="Success" success="True" time="138.3733" asserts="0" description="Remove-AzKustoAttachedDatabaseConfiguration">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoAttachedDatabaseConfiguration.Delete" time="138.2951" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="1541.5305" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoCluster" executed="True" result="Success" success="True" time="1541.1426" asserts="0" description="Remove-AzKustoCluster">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoCluster.Delete" time="1540.8962" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoClusterLanguageExtension.Tests.ps1" executed="True" result="Success" success="True" time="244.372" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoClusterLanguageExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoClusterLanguageExtension" executed="True" result="Success" success="True" time="243.76" asserts="0" description="Remove-AzKustoClusterLanguageExtension">
+            <results>
+              <test-case description="RemoveExpanded" name="Remove-AzKustoClusterLanguageExtension.RemoveExpanded" time="30.8807" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RemoveViaIdentityExpanded" name="Remove-AzKustoClusterLanguageExtension.RemoveViaIdentityExpanded" time="212.7685" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoClusterPrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="64.5231" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoClusterPrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoClusterPrincipalAssignment" executed="True" result="Success" success="True" time="64.1448" asserts="0" description="Remove-AzKustoClusterPrincipalAssignment">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoClusterPrincipalAssignment.Delete" time="64.0548" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabase.Tests.ps1" executed="True" result="Success" success="True" time="62.6804" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoDatabase" executed="True" result="Success" success="True" time="62.2862" asserts="0" description="Remove-AzKustoDatabase">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoDatabase.Delete" time="62.193" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabasePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="2.051" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabasePrincipal.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoDatabasePrincipal" executed="True" result="Success" success="True" time="1.6957" asserts="0" description="Remove-AzKustoDatabasePrincipal">
+            <results>
+              <test-case description="RemoveExpanded" name="Remove-AzKustoDatabasePrincipal.RemoveExpanded" time="1.599" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabasePrincipalAssignment.Tests.ps1" executed="True" result="Success" success="True" time="64.4604" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDatabasePrincipalAssignment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoDatabasePrincipalAssignment" executed="True" result="Success" success="True" time="64.1372" asserts="0" description="Remove-AzKustoDatabasePrincipalAssignment">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoDatabasePrincipalAssignment.Delete" time="64.0487" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDataConnection.Tests.ps1" executed="True" result="Failure" success="False" time="33.3496" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDataConnection.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKustoDataConnection" executed="True" result="Failure" success="False" time="33.0428" asserts="0" description="Remove-AzKustoDataConnection">
+            <results>
+              <test-case description="Delete" name="Remove-AzKustoDataConnection.Delete" time="32.919" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "[ResourceNotFound] : The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7n' is not found." was thrown from C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\New-AzKustoDataConnection.ps1:296 char:13
+    +             Az.Kusto.internal\New-AzKustoDataConnection @PSBoundParam …
+    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Remove-AzKustoDataConnection.Tests.ps1: line 33
+33:         { New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Start-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="2322.8358" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Start-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzKustoCluster" executed="True" result="Success" success="True" time="2322.4012" asserts="0" description="Start-AzKustoCluster">
+            <results>
+              <test-case description="Start" name="Start-AzKustoCluster.Start" time="1090.9061" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StartViaIdentity" name="Start-AzKustoCluster.StartViaIdentity" time="1231.078" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Stop-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="2325.4738" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Stop-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzKustoCluster" executed="True" result="Success" success="True" time="2324.7293" asserts="0" description="Stop-AzKustoCluster">
+            <results>
+              <test-case description="Stop" name="Stop-AzKustoCluster.Stop" time="1112.0223" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StopViaIdentity" name="Stop-AzKustoCluster.StopViaIdentity" time="1212.3511" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoClusterNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="1.3341" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoClusterNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzKustoClusterNameAvailability" executed="True" result="Success" success="True" time="0.7944" asserts="0" description="Test-AzKustoClusterNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzKustoClusterNameAvailability.CheckExpanded" time="0.6982" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoClusterPrincipalAssignmentNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="1.7207" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoClusterPrincipalAssignmentNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzKustoClusterPrincipalAssignmentNameAvailability" executed="True" result="Success" success="True" time="1.3422" asserts="0" description="Test-AzKustoClusterPrincipalAssignmentNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzKustoClusterPrincipalAssignmentNameAvailability.CheckExpanded" time="0.4934" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CheckViaIdentityExpanded" name="Test-AzKustoClusterPrincipalAssignmentNameAvailability.CheckViaIdentityExpanded" time="0.7331" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDatabaseNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="1.5065" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDatabaseNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzKustoDatabaseNameAvailability" executed="True" result="Success" success="True" time="1.1729" asserts="0" description="Test-AzKustoDatabaseNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzKustoDatabaseNameAvailability.CheckExpanded" time="0.4154" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CheckViaIdentityExpanded" name="Test-AzKustoDatabaseNameAvailability.CheckViaIdentityExpanded" time="0.658" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDatabasePrincipalAssignmentNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="64.3078" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDatabasePrincipalAssignmentNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzKustoDatabasePrincipalAssignmentNameAvailability" executed="True" result="Success" success="True" time="63.975" asserts="0" description="Test-AzKustoDatabasePrincipalAssignmentNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzKustoDatabasePrincipalAssignmentNameAvailability.CheckExpanded" time="62.9609" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CheckViaIdentityExpanded" name="Test-AzKustoDatabasePrincipalAssignmentNameAvailability.CheckViaIdentityExpanded" time="0.9067" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDataConnectionNameAvailability.Tests.ps1" executed="True" result="Failure" success="False" time="2.2341" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDataConnectionNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzKustoDataConnectionNameAvailability" executed="True" result="Failure" success="False" time="1.8621" asserts="0" description="Test-AzKustoDataConnectionNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzKustoDataConnectionNameAvailability.CheckExpanded" time="0.7345" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected $false, but got $true.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Test-AzKustoDataConnectionNameAvailability.Tests.ps1: line 23
+23:         $availability.NameAvailable | Should Be $false</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CheckViaIdentityExpanded" name="Test-AzKustoDataConnectionNameAvailability.CheckViaIdentityExpanded" time="0.9785" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoCluster.Tests.ps1" executed="True" result="Success" success="True" time="639.0312" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoCluster.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzKustoCluster" executed="True" result="Success" success="True" time="638.6096" asserts="0" description="Update-AzKustoCluster">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzKustoCluster.UpdateExpanded" time="304.2146" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzKustoCluster.UpdateViaIdentityExpanded" time="334.2443" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDatabase.Tests.ps1" executed="True" result="Success" success="True" time="129.5739" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzKustoDatabase" executed="True" result="Success" success="True" time="129.0596" asserts="0" description="Update-AzKustoDatabase">
+            <results>
+              <test-case description="UpdateExpandedReadWrite" name="Update-AzKustoDatabase.UpdateExpandedReadWrite" time="31.6265" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpandedReadOnlyFollowing" name="Update-AzKustoDatabase.UpdateExpandedReadOnlyFollowing" time="31.9482" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpandedReadWrite" name="Update-AzKustoDatabase.UpdateViaIdentityExpandedReadWrite" time="32.0222" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpandedReadOnlyFollowing" name="Update-AzKustoDatabase.UpdateViaIdentityExpandedReadOnlyFollowing" time="33.3328" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDataConnection.Tests.ps1" executed="True" result="Failure" success="False" time="4.8191" asserts="0" description="C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDataConnection.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzKustoDataConnection" executed="True" result="Failure" success="False" time="4.4233" asserts="0" description="Update-AzKustoDataConnection">
+            <results>
+              <test-case description="UpdateExpandedEventHub" name="Update-AzKustoDataConnection.UpdateExpandedEventHub" time="0.8177" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7n' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Update-AzKustoDataConnection.ps1: line 309
+309:             Az.Kusto.internal\Update-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateExpandedEventGrid" name="Update-AzKustoDataConnection.UpdateExpandedEventGrid" time="0.7741" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7ng' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Update-AzKustoDataConnection.ps1: line 309
+309:             Az.Kusto.internal\Update-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateExpandedIotHub" name="Update-AzKustoDataConnection.UpdateExpandedIotHub" time="0.7085" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7nh' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\custom\Update-AzKustoDataConnection.ps1: line 309
+309:             Az.Kusto.internal\Update-AzKustoDataConnection @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateViaIdentityExpandedEventHub" name="Update-AzKustoDataConnection.UpdateViaIdentityExpandedEventHub" time="0.6114" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7n' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDataConnection.Tests.ps1: line 95
+95:         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateViaIdentityExpandedEventGrid" name="Update-AzKustoDataConnection.UpdateViaIdentityExpandedEventGrid" time="0.6555" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7ng' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDataConnection.Tests.ps1: line 118
+118:         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="UpdateViaIdentityExpandedIotHub" name="Update-AzKustoDataConnection.UpdateViaIdentityExpandedIotHub" time="0.6512" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The resource with identifier '/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup43hy7n/providers/Microsoft.Kusto/Clusters/testcluster43hy7n/Databases/testdatabase43hy7n/DataConnections/testdataconnection43hy7nh' is not found.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\astauben\Desktop\pwsh\azure-powershell\src\Kusto\test\Update-AzKustoDataConnection.Tests.ps1: line 139
+139:         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
