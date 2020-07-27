@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the AppConfiguration service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -48,30 +48,95 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/appconfiguration/resource-manager/readme.md
+  - $(this-folder)/../readme.azure.noprofile.md
+# locking the commit
+input-file:
+  - https://github.com/Azure/azure-rest-api-specs/blob/5d7c9b734d462cc3b111757957c7d2cc027dff80/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2020-06-01/appconfiguration.json
 
-module-version: 0.1.4
+module-version: 0.2.0
+title: AppConfiguration
+
+# If there are post APIs for some kinds of actions in the RP, you may need to
+# uncomment following line to support viaIdentity for these post APIs
+identity-correction-for-post: true
 
 directive:
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CheckViaIdentityExpanded$
+    remove: true
+
   - where:
       parameter-name: ConfigStoreCreationParameter|RegenerateKeyParameter|CheckNameAvailabilityParameter
     select: command
     hide: true
+
+  # Hide New & Update for customization
   - where:
-      verb: Update
+      verb: Update|New
       subject: ConfigurationStore
     hide: true
-  - where:
-      parameter-name: ConfigStoreName
-    set:
-      parameter-name: Name
+
+  # Rename parameters to follow design guideline
   - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
   - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+  - where:
+      parameter-name: KeyVaultPropertyIdentityClientId
+    set:
+      parameter-name: KeyVaultIdentityClientId
+  - where:
+      parameter-name: KeyVaultPropertyKeyIdentifier
+    set:
+      parameter-name: EncryptionKeyIdentifier
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+
+  - where:
       subject: ConfigurationStoreKeyValue
       verb: Get
     remove: true
+
+  # Sanitize doesn't work because parameter name doesn't start with subject
+  - where:
+      subject: ConfigurationStore|ConfigurationStoreKey
+      parameter-name: ConfigStoreName
+    set:
+      parameter-name: Name
+
+  # Private link features are implemented in Az.Network so we don't need them
+  - where:
+      subject: PrivateEndpointConnection|PrivateLinkResource
+    remove: true
+
+  # rename enum
+  - where:
+      parameter-name: IdentityType
+    set:
+      completer:
+        name: Managed Identity Type Completer
+        description: Gets the list of type of managed identities available for creating/updating app configuration store.
+        script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
+
+  # Remove `[-SkipToken <String>]` because we hide pageable implementation.
+  - from: swagger-document
+    where: $.paths.*.*
+    transform: $.parameters = $.parameters.filter(p => p.name !== '$skipToken')
+
+  # Swagger bug. Remove when https://github.com/Azure/azure-rest-api-specs/issues/10188 is fixed.
+  - from: swagger-document
+    where: $.definitions.RegenerateKeyParameters
+    transform: $.required = ['id']
+
+  # Update cmdlet descriptions
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"].get.description
+    transform: return "Get or list app configuration stores."
 ```
