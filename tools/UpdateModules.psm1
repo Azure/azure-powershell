@@ -13,6 +13,30 @@
 # ----------------------------------------------------------------------------------
 
 <#
+    Constants
+#>
+$script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
+
+# Scopes
+$script:NetCoreScopes = @('NetCore')
+$script:AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
+$script:StackScopes = @('All', 'Stack')
+
+# Specialty-Scopes used by cmdlets
+$script:AzureRMScopes = @('All', 'Latest')
+$script:StorageScopes = @('All', 'Latest', 'AzureStorage')
+$script:ServiceScopes = @('All', 'Latest', 'ServiceManagement')
+
+# Package locations
+$script:AzurePackages = "$PSScriptRoot\..\artifacts"
+$script:StackPackages = "$PSScriptRoot\..\src\Stack"
+$script:StackProjects = "$PSScriptRoot\..\src\StackAdmin"
+
+# Resource Management folders
+$script:AzureRMRoot = "$script:AzurePackages\$buildConfig"
+$script:StackRMRoot = "$script:StackPackages\$buildConfig"
+
+<#
 .SYNOPSIS
     Creates a new psm1 root module if one does not exist.
 
