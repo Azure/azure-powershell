@@ -32,6 +32,31 @@ From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.c
 
 If you there is a separate nomenclature for the parameter name, or if you would like to shorten the name of the parameter so it's easier to remember, you can add an alias attribute to your parameter to allow for this functionality.
 
+### Parameter Syntax
+
+In PowerShell documentation, brackets indicate optional. 
+Convention is as follows: 
+
+<command-name> 
+    -<Required Parameter Name> <Required Parameter Value>
+    [-<Optional Parameter Name> <Optional Parameter Value>]
+    [-<Optional Switch Parameters>]
+    [-<Optional Parameter Name>] <Required Parameter Value>
+
+
+Using 'New-Alias' cmdlet as an example: 
+New-Alias 
+    [-Name] <string>                                                     -required 'positional' parameter
+    [-Value] <string>                                                 
+    [-Description <string>]                                              -optional parameter
+    [-Force]                                                             -optional switch parameter (all switch parameters are optional, non-positional)
+    [-Option {None | ReadOnly | Constant | Private | AllScope}]
+    [-PassThru] 
+    [-Scope <string>] 
+    [-Confirm] 
+    [-WhatIf] 
+    [<CommonParameters>]
+
 ### Parameter Types
 
 #### Valid Parameter Types
