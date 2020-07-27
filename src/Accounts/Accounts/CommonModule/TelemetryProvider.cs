@@ -156,7 +156,6 @@ namespace Microsoft.Azure.Commands.Common
             }
             qosEvent.ModuleName = moduleName;
 
-
             qosEvent.UserAgent = AzurePSCmdlet.UserAgent;
             qosEvent.AzVersion = AzurePSCmdlet.AzVersion;
 
