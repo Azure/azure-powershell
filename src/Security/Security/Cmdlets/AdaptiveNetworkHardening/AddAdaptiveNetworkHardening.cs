@@ -65,10 +65,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdaptiveNetworkHardening
             SecurityCenterClient.SubscriptionId = SubscriptionId;
             var rules = Rule.Select(rule => new Rule(rule.Name, rule.Direction, rule.DestinationPort, rule.Protocols, rule.IpAddresses)).ToList();
 
-            var adaptiveNetworkHardenings = SecurityCenterClient.AdaptiveNetworkHardenings
+            if (ShouldProcess(target: AdaptiveNetworkHardeningResourceName, action: $"Add rules to NSG '{AdaptiveNetworkHardeningResourceName}'."))
+            {
+                var result = SecurityCenterClient.AdaptiveNetworkHardenings
                 .BeginEnforceWithHttpMessagesAsync(ResourceGroupName, ResourceNamespace, ResourceType, ResourceName, AdaptiveNetworkHardeningResourceName, rules, NetworkSecurityGroup)
                 .GetAwaiter()
-                .GetResult();
+                .GetResult(); WriteObject(true);
+            }
 
             if (PassThru.IsPresent)
             {
