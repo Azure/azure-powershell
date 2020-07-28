@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/37a9ad811219323006f37f4a3649e81188f2f1cc/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
 
 module-version: 0.1.0
 title: Databricks
@@ -105,6 +105,10 @@ directive:
       parameter-name: ValueKeyVaultUri
     set:
       parameter-name: EncryptionKeyVaultUri
+  - where:
+      parameter-name: RequireInfrastructureEncryptionValue
+    set:
+      parameter-name: RequireInfrastructureEncryption
   # Remove the set-* cmdlet
   - where:
       verb: Set
