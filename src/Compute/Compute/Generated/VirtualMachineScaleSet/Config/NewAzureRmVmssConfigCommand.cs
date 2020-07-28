@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] IdentityId { get; set; }
 
         [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false)]
-        [Parameter(ParameterSetName = "DefultParameterSet", Mandatory = false)]//TODO: set sets as string constants?
+        [Parameter(ParameterSetName = "DefaultParameterSet", Mandatory = false)]//TODO: set sets as string constants?
         public SwitchParameter EncryptionAtHost { get; set; } = false;
 
         protected override void ProcessRecord()
