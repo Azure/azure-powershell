@@ -37,11 +37,11 @@ If you there is a separate nomenclature for the parameter name, or if you would 
 In PowerShell documentation, brackets indicate optional. 
 Convention is as follows: 
 
-<command-name> 
-    -<Required Parameter Name> <Required Parameter Value>
-    [-<Optional Parameter Name> <Optional Parameter Value>]
-    [-<Optional Switch Parameters>]
-    [-<Optional Parameter Name>] <Required Parameter Value>
+command-name
+    -RequiredParameterName <RequiredParameterValue>
+    [-OptionalParameterName <OptionalParameterValue>]
+    [-OptionalSwitchParameters]
+    [-OptionalParameterName] <RequiredParameterValue>
 
 
 Using 'New-Alias' cmdlet as an example: 
