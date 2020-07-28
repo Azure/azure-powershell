@@ -381,15 +381,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant = "")
         {
-            if (!string.IsNullOrEmpty(tenant))
-            {
-                return new List<AzureTenant>() { CreateTenant(tenant) };
-            }
-
             IList<AzureTenant> tenants = ListAccountTenants(DefaultContext.Account, DefaultContext.Environment, null, ShowDialog.Never, null);
             return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
                                          tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
-                                         tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
+                                         Array.Exists(t.GetPropertyAsArray(AzureTenant.Property.Domains), e => tenant.Equals(e, StringComparison.OrdinalIgnoreCase)))
                                  .ToList();
         }
 
@@ -489,8 +484,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
+            List<AzureTenant> tenants = string.IsNullOrEmpty(tenantIdOrDomain) ? ListTenants(tenantIdOrDomain) :
+    new List<AzureTenant>() { CreateTenant(tenantIdOrDomain) };
+
             List<IAzureSubscription> subscriptions = new List<IAzureSubscription>();
-            var tenants = ListTenants(tenantIdOrDomain);
+
             foreach (var tenant in tenants)
             {
                 try
@@ -661,7 +659,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 if (Guid.TryParse(ti, out guid))
                                 {
                                     tenant.Id = ti;
-                                    tenant.Directory = AccessTokenExtensions.GetDomain(account.Id);
                                 }
                                 else
                                 {
