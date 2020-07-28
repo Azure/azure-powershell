@@ -469,15 +469,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string storageAccountName,
             string vaultName = null,
             string vaultResourceGroupName = null)
-        {
-            //Trigger Discovery
-            ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
-               q => q.BackupManagementType
-                    == ServiceClientModel.BackupManagementType.AzureStorage);
-            AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
-
+        {   
             //get registered storage accounts
-            bool isRegistered = false;
+            bool isRegistered = false;            
             string storageContainerName = null;
             List<ContainerBase> registeredStorageAccounts = GetRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
             ContainerBase registeredStorageAccount = registeredStorageAccounts.Find(
@@ -487,16 +481,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isRegistered = true;
                 storageContainerName = "StorageContainer;" + registeredStorageAccount.Name;
+                Logger.Instance.WriteDebug("Storage account was already registered");
             }
 
-            //get unregistered storage account
-            if (!isRegistered)
-            {
+            //get unregistered storage account, trigger dicovery if not found.
+            bool isBreak = false;
+            bool isRefreshed = false; // have we triggered discovery yet
+            while (!isRegistered && !isBreak )
+            {                   
                 List<ProtectableContainerResource> unregisteredStorageAccounts =
                     GetUnRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
                 ProtectableContainerResource unregisteredStorageAccount = unregisteredStorageAccounts.Find(
                     storageAccount => string.Compare(storageAccount.Name.Split(';').Last(),
                     storageAccountName, true) == 0);
+
+                // refresh containers as the given storage account is not found
+                if (unregisteredStorageAccount == null && !isRefreshed)
+                {
+                    ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                        q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+                    AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+
+                    isRefreshed = true;
+                    Logger.Instance.WriteDebug("Triggered container discovery");
+                }
+                else {
+                    isBreak = true; // we explicitly break while loop after second execution
+                }                
+
                 if (unregisteredStorageAccount != null)
                 {
                     //unregistered
@@ -515,16 +527,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         protectionContainerResource,
                         vaultName,
                         vaultResourceGroupName);
-                }
+
+                    isRegistered = true;
+                    Logger.Instance.WriteDebug("Registered a new storage account");
+                }                
             }
 
-            //inquiry
-            AzureWorkloadProviderHelper.TriggerInquiry(vaultName, vaultResourceGroupName,
-                storageContainerName, ServiceClientModel.WorkloadType.AzureFileShare);
-
-            //get protectable item
+            //get protectable item, trigger inquiry if item not found
+            bool isInquired =false;
+            isBreak = false;
             WorkloadProtectableItemResource protectableObjectResource = null;
-            protectableObjectResource = GetProtectableItem(vaultName, vaultResourceGroupName, azureFileShareName, storageAccountName);
+            while (!isBreak) 
+            {
+                protectableObjectResource = GetProtectableItem(vaultName, vaultResourceGroupName, azureFileShareName, storageAccountName);
+                
+                //inquiry
+                if (protectableObjectResource == null  && !isInquired)
+                {
+                    AzureWorkloadProviderHelper.TriggerInquiry(vaultName, vaultResourceGroupName,
+                        storageContainerName, ServiceClientModel.WorkloadType.AzureFileShare);
+                    
+                    isInquired = true;
+                    Logger.Instance.WriteDebug("Triggered protectable item inquiry");
+                }
+                else
+                {
+                    isBreak = true;
+                }
+            }
 
             if (protectableObjectResource == null)
             {

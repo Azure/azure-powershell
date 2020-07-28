@@ -168,6 +168,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         + "This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.")]
         public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -306,7 +309,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
-                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent
+                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
+                    encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent
                     );
             }
         }

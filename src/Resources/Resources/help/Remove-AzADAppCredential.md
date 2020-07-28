@@ -44,25 +44,25 @@ The credential to be removed is identified by its key ID.
 
 ## EXAMPLES
 
-### Example 1 - Remove a specific credential from an application
+### Example 1: Remove a specific credential from an application
 
-```
+```powershell
 PS C:\> Remove-AzADAppCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
 
 Removes the credential with key id '9044423a-60a3-45ac-9ab1-09534157ebb' from the application with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82'.
 
-### Example 2 - Remove all credentials from an application
+### Example 2: Remove all credentials from an application
 
-```
+```powershell
 PS C:\> Remove-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58
 ```
 
 Removes all credentials from the application with application id '4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58'.
 
-### Example 3 - Remove all credentials using piping
+### Example 3: Remove all credentials using piping
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 | Remove-AzADAppCredential
 ```
 

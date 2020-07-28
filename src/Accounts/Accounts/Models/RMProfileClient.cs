@@ -122,7 +122,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool skipValidation,
             Action<string> promptAction,
             string name = null,
-            bool shouldPopulateContextList = true)
+            bool shouldPopulateContextList = true,
+            int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -299,10 +300,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
-            if (shouldPopulateContextList)
+            if (shouldPopulateContextList && maxContextPopulation != 0)
             {
                 var defaultContext = _profile.DefaultContext;
-                var subscriptions = ListSubscriptions(tenantId).Take(25);
+                var subscriptions = maxContextPopulation > 0 ? ListSubscriptions(tenantId).Take(maxContextPopulation) : ListSubscriptions(tenantId);
+
                 foreach (var subscription in subscriptions)
                 {
                     IAzureTenant tempTenant = new AzureTenant()

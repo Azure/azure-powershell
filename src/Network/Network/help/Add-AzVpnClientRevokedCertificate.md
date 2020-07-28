@@ -27,8 +27,8 @@ You need to specify both the certificate name and the certificate thumbprint to 
 ## EXAMPLES
 
 ### Example 1: Add a new client-revocation certificate to a virtual network gateway
-```
-PS C:\>Add-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+```powershell
+PS C:\>Add-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
 ```
 
 This command adds a new client-revocation certificate to the virtual network gateway named ContosoVirtualNetwork.
