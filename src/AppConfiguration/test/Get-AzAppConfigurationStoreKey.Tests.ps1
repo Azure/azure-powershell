@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzAppConfigurationStoreKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $keys = Get-AzAppConfigurationStoreKey -ResourceGroupName $env.resourceGroup -Name $env.appconfName00
+        $keys.Count | Should -Be 4
     }
 }
