@@ -22,8 +22,8 @@
     - Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightCluster`
 	- Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightClusterConfig`
 * Supported creating cluster with private link feature:
-    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`to the cmdlet `New-AzHDInsightCluster`
-    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`to the cmdlet `New-AzHDInsightClusterConfig`
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightCluster`
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightClusterConfig`
 * Returned virtual network information when calling `New-AzHDInsightCluster` or `Get-AzHDInsightCluster`
 
 
