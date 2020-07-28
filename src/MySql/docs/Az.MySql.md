@@ -65,8 +65,8 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ### [Update-AzMySqlServer](Update-AzMySqlServer.md)
 Updates an existing server.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout, net_retry_count.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMySqlVirtualNetworkRule](Update-AzMySqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.
