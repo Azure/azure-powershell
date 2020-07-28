@@ -1352,12 +1352,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
             DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+            ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
 
             try
             {
                 WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
                     ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
                     : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+
+                switch (parameters.ScopeType)
+                {
+                    case DeploymentScopeType.Subscription:
+                        whatIfOperationResult = deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ResourceGroup:
+                        whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ManagementGroup:
+                        whatIfOperationResult = deployments.WhatIfAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.Tenant:
+                        whatIfOperationResult = deployments.WhatIfAtTenantScope(parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    default:
+                        break;
+                }
 
                 if (excludeChangeTypeNames != null && excludeChangeTypeNames.Length > 0)
                 {

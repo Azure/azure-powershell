@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var parameters = new PSDeploymentWhatIfCmdletParameters
                 {
+                    ScopeType = DeploymentScopeType.Subscription,
                     DeploymentName = this.Name,
                     Location = this.Location,
                     Mode = DeploymentMode.Incremental,

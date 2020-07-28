@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var parameters = new PSDeploymentWhatIfCmdletParameters
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 DeploymentName = this.Name,
                 Mode = this.Mode,
                 ResourceGroupName = this.ResourceGroupName,

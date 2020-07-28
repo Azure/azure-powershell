@@ -5,6 +5,7 @@
     using System.IO;
     using Commands.Common.Authentication.Abstractions;
     using Management.ResourceManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using WindowsAzure.Commands.Common;
@@ -18,6 +19,10 @@
             get => this.deploymentName ?? (this.deploymentName = this.GenerateDeployName());
             set => this.deploymentName = value;
         }
+
+        public DeploymentScopeType ScopeType { get; set; }
+
+        public string ManagementGroupId { get; set; }
 
         public string Location { get; set; }
 
@@ -52,7 +57,7 @@
             {
                 string templateContent = !string.IsNullOrEmpty(this.TemplateUri)
                     ? FileUtilities.DataStore.ReadFileAsText(this.TemplateUri)
-                    : JsonConvert.SerializeObject(this.TemplateObject);
+                    : PSJsonSerializer.Serialize(this.TemplateObject);
                 properties.Template = JObject.Parse(templateContent);
             }
 
@@ -64,7 +69,7 @@
             else
             {
                 string parametersContent = this.TemplateParametersObject != null
-                    ? JsonConvert.SerializeObject(this.TemplateParametersObject.ToDictionary(false))
+                    ? PSJsonSerializer.Serialize(this.TemplateParametersObject)
                     : null;
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
                     ? JObject.Parse(parametersContent)
