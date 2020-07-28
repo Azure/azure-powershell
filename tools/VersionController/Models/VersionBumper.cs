@@ -186,6 +186,10 @@ namespace VersionController.Models
         private AzurePSVersion GetBumpedVersionByType(AzurePSVersion version, Version type)
         {
             AzurePSVersion bumpedVersion;
+            if(version.Major < 1)
+            {
+                type = Version.MINOR;
+            }
             if (type == Version.MAJOR)
             {
                 bumpedVersion = new AzurePSVersion(version.Major + 1, 0, 0, version.Label);
