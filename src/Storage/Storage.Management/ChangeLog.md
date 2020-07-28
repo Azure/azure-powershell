@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.1
 * Supported create container/blob Sas token with new permission x,t
     -  `New-AzStorageBlobSASToken`
     -  `New-AzStorageContainerSASToken`
