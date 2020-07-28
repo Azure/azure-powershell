@@ -3880,14 +3880,21 @@ function Test-EncryptionAtHostVM
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
 
         # Get VM
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        Assert-AreEqual False $vm.SecurityProfile.encryptionAtHost
-        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost; } "can be updated only when VM is in deallocated state"
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false; } "can be updated only when VM is in deallocated state"
+        
+        #update vm with encryptionathost false
         Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
-        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost;
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual False $vm.SecurityProfile.encryptionAtHost
+        
+        #update vm with encryptionathost false
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $true;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
     }
