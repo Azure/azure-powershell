@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
             var masterCustomIpPrefix = this.MasterCustomIpPrefixClient.Get(resourceGroupName, name, expandResource);
 
             var psMasterCustomIpPrefix = ToPsMasterCustomIpPrefix(masterCustomIpPrefix);
-            //psMasterCustomIpPrefix.ResourceGroupName = resourceGroupName;
+            psMasterCustomIpPrefix.ResourceGroupName = resourceGroupName;
 
             return psMasterCustomIpPrefix;
         }

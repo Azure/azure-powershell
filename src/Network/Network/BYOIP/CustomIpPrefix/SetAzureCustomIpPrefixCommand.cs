@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The MasterCustomIpPrefix to set.", ParameterSetName = SetByInputObjectParameterSet)]
-        public PSMasterCustomIpPrefix InputObject { get; set; }
+        public PSCustomIpPrefix InputObject { get; set; }
 
         [Parameter(
                     Mandatory = true,
@@ -134,8 +134,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
             {
                 // Execute the PUT MasterCustomIpPrefix Policy call
-                var modifiedSdkModel = this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
-                WriteObject(this.ToPsCustomIpPrefix(modifiedSdkModel));
+                this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+
+                var customIpPrefix = this.GetCustomIpPrefix(this.ResourceGroupName, this.Name);
+
+                WriteObject(customIpPrefix);
             }
         }
     }
