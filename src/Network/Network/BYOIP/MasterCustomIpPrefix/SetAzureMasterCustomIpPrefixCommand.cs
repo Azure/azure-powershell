@@ -33,35 +33,49 @@ namespace Microsoft.Azure.Commands.Network
         private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
+           HelpMessage = "The resource name.",
+           ParameterSetName = SetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The MasterCustomIpPrefix to set.", ParameterSetName = SetByInputObjectParameterSet)]
+            HelpMessage = "The MasterCustomIpPrefix to set.",
+            ParameterSetName = SetByInputObjectParameterSet)]
         public PSMasterCustomIpPrefix InputObject { get; set; }
 
         [Parameter(
-                    Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id.",
+            ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The MasterCustomIpPrefix location.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
+        [LocationCompleter("Microsoft.Network/masterCustomIpPrefix")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -89,6 +103,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.ResourceGroupName = InputObject.ResourceGroupName;
                 this.Name = InputObject.Name;
+                this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
             }
 
             if (!NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name)))
@@ -100,7 +115,8 @@ namespace Microsoft.Azure.Commands.Network
             var psModel = new PSMasterCustomIpPrefix()
             {
                 Name = InputObject.Name,
-                ResourceGroupName = InputObject.ResourceGroupName
+                ResourceGroupName = InputObject.ResourceGroupName,
+                Location = this.Location,
             };
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(psModel);
 
@@ -116,9 +132,10 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
             {
                 // Execute the PUT MasterCustomIpPrefix Policy call
-                this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
-                var masterCustomIpPrefix = this.GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
-                WriteObject(masterCustomIpPrefix);
+                var modifiedSdkModel = this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                var modifiedPsModel = this.ToPsMasterCustomIpPrefix(modifiedSdkModel);
+                modifiedPsModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(modifiedPsModel.Id);
+                WriteObject(modifiedPsModel);
             }
         }
     }

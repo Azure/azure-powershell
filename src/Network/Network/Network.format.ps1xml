@@ -1554,10 +1554,6 @@
                 <Label>CustomIpPrefixes</Label>
                 <PropertyName>CustomIpPrefixesText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>Zones</Label>
-                <PropertyName>Zones</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1615,6 +1611,10 @@
               <ListItem>
                 <Label>MasterCustomIpPrefix</Label>
                 <PropertyName>MasterCustomIpPrefixText</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <Label>PublicIpPrefixes</Label>
+                <PropertyName>PublicIpPrefixesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Zones</Label>

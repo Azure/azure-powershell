@@ -113,8 +113,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Create new MasterCustomIpPrefix"))
             {
-                var createdSdkModel = this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
-                return this.ToPsCustomIpPrefix(createdSdkModel);
+                this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+
+                var customIpPrefix = this.GetCustomIpPrefix(this.ResourceGroupName, this.Name);
+
+                return customIpPrefix;
             }
 
             return null;

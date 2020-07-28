@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
             var sdkModel = this.CustomIpPrefixClient.Get(resourceGroupName, name, expandResource);
 
             var psModel = ToPsCustomIpPrefix(sdkModel);
-            //psMasterCustomIpPrefix.ResourceGroupName = resourceGroupName;
+            psModel.ResourceGroupName = resourceGroupName;
 
             return psModel;
         }
