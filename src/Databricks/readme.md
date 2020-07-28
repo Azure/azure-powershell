@@ -157,6 +157,11 @@ directive:
       property-name: PrepareEncryptionValue
     set:
       property-name: PrepareEncryption
+  - where:
+      model-name: Workspace
+      property-name: RequireInfrastructureEncryptionValue
+    set:
+      property-name: RequireInfrastructureEncryption
   # Remove vnet peering cmdlets (not in scope)
   - where:
       subject: VNetPeering
