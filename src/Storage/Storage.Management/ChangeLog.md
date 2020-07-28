@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported blob query acceleration
+    -  `Query-AzStorageBlob`
+    -  `New-AzStorageBlobQueryConfig`
 
 ## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
