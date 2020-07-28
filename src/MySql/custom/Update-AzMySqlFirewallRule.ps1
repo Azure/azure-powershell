@@ -20,7 +20,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlfirewallrule
+https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlfirewallrule
 #>
 function Update-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
