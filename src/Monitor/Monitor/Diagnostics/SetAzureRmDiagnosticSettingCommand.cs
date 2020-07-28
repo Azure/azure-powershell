@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public const string EventHubRuleIdParamName = "EventHubAuthorizationRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
         public const string EnabledParamName = "Enabled";
-        public const string EnableLogsParamName = "EnableLogs";
+        public const string EnableLogParamName = "EnableLog";
         public const string EnableMetricsParamName = "EnableMetrics";
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// Gets or sets the logs enable parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics logs should be enabled or disabled")]
-        public bool EnableLogs { get; set; }
+        public bool EnableLog { get; set; }
         
         /// <summary>
         /// Gets or sets the metrics enable parameter of the cmdlet
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private bool isEnableMetricsParameterPresent;
 
-        private bool isEnableLogsParameterPresent;
+        private bool isEnableLogParameterPresent;
 
         protected override void ProcessRecordInternal()
         {
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
                     this.isEnabledParameterPresent = usedParams.Contains(EnabledParamName);
                     this.isEnableMetricsParameterPresent = usedParams.Contains(EnableMetricsParamName);
-                    this.isEnableLogsParameterPresent = usedParams.Contains(EnableLogsParamName);
+                    this.isEnableLogParameterPresent = usedParams.Contains(EnableLogParamName);
 
                     if (!this.isStorageParamPresent &&
                         !this.isServiceBusParamPresent &&
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         !this.isEventHubRuleParamPresent &&
                         !this.isWorkspaceParamPresent &&
                         !(this.isEnabledParameterPresent ||
-                          this.isEnableLogsParameterPresent ||
+                          this.isEnableLogParameterPresent ||
                           this.isEnableMetricsParameterPresent))
                     {
                         throw new ArgumentException("No operation is specified");
@@ -222,9 +222,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 						this.EnableMetrics = this.Enabled;
 					}
 
-					if (!this.isEnableLogsParameterPresent)
+					if (!this.isEnableLogParameterPresent)
 					{
-						this.EnableLogs = this.Enabled;
+						this.EnableLog = this.Enabled;
 					}
 
                     try
@@ -458,9 +458,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private void SetSelectedCategories(DiagnosticSettingsResource properties)
         {
-            if (!(this.isEnableLogsParameterPresent || this.isEnabledParameterPresent))
+            if (!(this.isEnableLogParameterPresent || this.isEnabledParameterPresent))
             {
-                throw new ArgumentException("Parameters 'Enabled' or 'EnableLogs' are required by 'Category' parameter.");
+                throw new ArgumentException("Parameters 'Enabled' or 'EnableLog' are required by 'Category' parameter.");
             }
 
             WriteDebugWithTimestamp("Setting log categories, including Enabled property");
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                             Days = 0,
                             Enabled = false
                         },
-                        Enabled = this.EnableLogs
+                        Enabled = this.EnableLog
                     };
 
                     properties.Logs.Add(logSettings);
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 else
                 {
                     // else update it
-                    logSettings.Enabled = this.EnableLogs;
+                    logSettings.Enabled = this.EnableLog;
                 }
             }
         }
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
         {
-            if (!(this.isEnableMetricsParameterPresent || this.isEnableLogsParameterPresent || this.isEnabledParameterPresent))
+            if (!(this.isEnableMetricsParameterPresent || this.isEnableLogParameterPresent || this.isEnabledParameterPresent))
             {
                 return;
             }
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             foreach (var log in properties.Logs)
             {
-                log.Enabled = this.EnableLogs;
+                log.Enabled = this.EnableLog;
             }
 
             WriteDebugWithTimestamp("Setting Enabled property for metrics");
