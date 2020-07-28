@@ -191,6 +191,29 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.EncryptionVaultUri = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the public network access type.")]
+        [ValidateSet(PublicNetworkAccess.InboundAndOutbound, PublicNetworkAccess.OutboundOnly, IgnoreCase = true)]
+        public string PublicNetworkAccessType
+        {
+            get { return _config.PublicNetworkAccessType; }
+            set { _config.PublicNetworkAccessType = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the outbound access type to the public network.")]
+        [ValidateSet(OutboundOnlyPublicNetworkAccessType.PublicLoadBalancer, OutboundOnlyPublicNetworkAccessType.UDR, IgnoreCase = true)]
+        public string OutboundPublicNetworkAccessType
+        {
+            get { return _config.OutboundPublicNetworkAccessType; }
+            set { _config.OutboundPublicNetworkAccessType = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption in transit or not.")]
+        public bool? EncryptionInTransit
+        {
+            get { return _config.EncryptionInTransit; }
+            set { _config.EncryptionInTransit = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightClusterConfigCommand()

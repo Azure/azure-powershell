@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/set-azaks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/set-azakscluster
 schema: 2.0.0
 ---
 
-# Set-AzAks
+# Set-AzAksCluster
 
 ## SYNOPSIS
 Update or create a managed Kubernetes cluster.
@@ -13,8 +13,8 @@ Update or create a managed Kubernetes cluster.
 ## SYNTAX
 
 ### defaultParameterSet (Default)
-```
-Set-AzAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <PSCredential>]
+```powershell
+Set-AzAksCluster [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
@@ -23,8 +23,8 @@ Set-AzAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <
 ```
 
 ### InputObjectParameterSet
-```
-Set-AzAks -InputObject <PSKubernetesCluster> [-Location <String>] [-LinuxProfileAdminUserName <String>]
+```powershell
+Set-AzAksCluster -InputObject <PSKubernetesCluster> [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
  [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
@@ -32,12 +32,12 @@ Set-AzAks -InputObject <PSKubernetesCluster> [-Location <String>] [-LinuxProfile
 ```
 
 ### IdParameterSet
-```
-Set-AzAks [-Id] <String> [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+```powershell
+Set-AzAksCluster [-Id] <String> [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ Update or create a managed Kubernetes cluster.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
 ```
 
@@ -64,21 +64,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientIdAndSecret
-The client id and client secret associated with the AAD application / service principal.
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: defaultParameterSet
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -320,6 +305,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalIdAndSecret
+The client id and client secret associated with the AAD application / service principal.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: defaultParameterSet
+Aliases: ClientIdAndSecret
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -50,7 +50,7 @@ This command clean up rules of NetworkRule of a Cognitive Services account (othe
 ## PARAMETERS
 
 ### -DefaultAction
-Cognitive Services Account NetworkRule DefaultAction.
+Cognitive Services Account NetworkRule DefaultAction. Default value `Deny`.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum
