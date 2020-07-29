@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,10 +49,11 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
+# lock the commit
 input-file:
-  - C:\Users\yeliu\isra-fel\azure-rest-api-specs-pr\specification\databricks\resource-manager\Microsoft.Databricks\stable\2018-04-01\databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
@@ -104,6 +105,10 @@ directive:
       parameter-name: ValueKeyVaultUri
     set:
       parameter-name: EncryptionKeyVaultUri
+  - where:
+      parameter-name: RequireInfrastructureEncryptionValue
+    set:
+      parameter-name: RequireInfrastructureEncryption
   # Remove the set-* cmdlet
   - where:
       verb: Set
@@ -152,4 +157,13 @@ directive:
       property-name: PrepareEncryptionValue
     set:
       property-name: PrepareEncryption
+  - where:
+      model-name: Workspace
+      property-name: RequireInfrastructureEncryptionValue
+    set:
+      property-name: RequireInfrastructureEncryption
+  # Remove vnet peering cmdlets (not in scope)
+  - where:
+      subject: VNetPeering
+    remove: true
 ```
