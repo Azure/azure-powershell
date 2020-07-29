@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Zones = this.Zone;
                     }
 
+                    if (this.IsParameterBound(c => c.SupportAutomaticPlacement))
+                    {
+                        parameters.SupportAutomaticPlacement = this.SupportAutomaticPlacement;
+                    }
+
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         parameters.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
@@ -95,6 +100,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public Boolean SupportAutomaticPlacement { get; set; }
 
         [Parameter(
             Mandatory = false)]
