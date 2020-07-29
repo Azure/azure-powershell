@@ -31,7 +31,7 @@ function Test-DedicatedHost
 
         # Create a VM first
         $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "1" -Tag @{key1 = "val1"};
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "1" -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
 
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
 
