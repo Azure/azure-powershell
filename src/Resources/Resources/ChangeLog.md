@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* added properties "Condition", "ConditionVersion" and "Description" to New-AzRoleAssignment
-    - this includes all the relevant changes to the data models
+* Created new CMDlet 'Set-RoleAssignment'
 
 ## Version 2.3.0
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
