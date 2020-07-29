@@ -26,10 +26,10 @@ The Get-AzTenant cmdlet gets tenants authorized for the current user.
 PS C:\> Connect-AzAccount
 PS C:\> Get-AzTenant
 
-Id                                   Directory
---                                   ---------
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx microsoft.com
-yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy microsoft.com
+Id                                   Name        Category Domains
+--                                   ----------- -------- -------
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}
+yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy Testhost    Home     testhost.onmicrosoft.com
 ```
 
 This example shows how to get all of the authorized tenants of an Azure account.
@@ -39,9 +39,9 @@ This example shows how to get all of the authorized tenants of an Azure account.
 PS C:\> Connect-AzAccount
 PS C:\> Get-AzTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-Id                                   Directory
---                                   ---------
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx microsoft.com
+Id                                   Name        Category Domains
+--                                   ----------- -------- -------
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}
 ```
 
 This example shows how to get a specific authorized tenant of an Azure account.

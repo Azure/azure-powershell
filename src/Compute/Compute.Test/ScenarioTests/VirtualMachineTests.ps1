@@ -4021,3 +4021,165 @@ function Test-EncryptionAtHostVMDefaultParamSet
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Set-AzVMOperatingSystem
+#>
+function Test-SetAzVMOperatingSystem
+{
+# Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1_v2';
+        $vmname = 'vm' + $rgname;
+        $vmname2 = 'vm2' + $rgname;
+        $vmname3 = 'vm3' + $rgname;
+
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $p2 = New-AzVMConfig -VMName $vmname2 -VMSize $vmsize;
+        $p3 = New-AzVMConfig -VMName $vmname3 -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        #1
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        #2
+        $pubip2 = New-AzPublicIpAddress -Force -Name ('pubip2' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip2' + $rgname);
+        $pubip2 = Get-AzPublicIpAddress -Name ('pubip2' + $rgname) -ResourceGroupName $rgname;
+        $pubipId2 = $pubip2.Id;
+        $nic2 = New-AzNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip2.Id;
+        $nic2 = Get-AzNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
+        $nicId2 = $nic2.Id;
+        #3
+        $pubip3 = New-AzPublicIpAddress -Force -Name ('pubip3' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip3' + $rgname);
+        $pubip3 = Get-AzPublicIpAddress -Name ('pubip3' + $rgname) -ResourceGroupName $rgname;
+        $pubipId3 = $pubip3.Id;
+        $nic3 = New-AzNetworkInterface -Force -Name ('nic3' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip3.Id;
+        $nic3 = Get-AzNetworkInterface -Name ('nic3' + $rgname) -ResourceGroupName $rgname;
+        $nicId3 = $nic3.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        $p2 = Add-AzVMNetworkInterface -VM $p2 -Id $nicId2;
+        $p3 = Add-AzVMNetworkInterface -VM $p3 -Id $nicId3;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p2 = Set-AzVMOperatingSystem -VM $p2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate;
+        $p3 = Set-AzVMOperatingSystem -VM $p3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByPlatform";
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+        $p2 = ($imgRef | Set-AzVMSourceImage -VM $p2);
+        $p3 = ($imgRef | Set-AzVMSourceImage -VM $p3);
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p2;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p3;
+
+        # Get VM
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        $vm2 = Get-AzVM -Name $vmname2 -ResourceGroupName $rgname;
+        $vm3 = Get-AzVM -Name $vmname3 -ResourceGroupName $rgname;
+        Assert-AreEqual $vm.osProfile.WindowsConfiguration.PatchSettings.Patchmode "Manual"
+        Assert-AreEqual $vm2.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByOS"
+        Assert-AreEqual $vm3.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByPlatform"
+
+
+        #updating existing VM using Set-AzVMOperatingSystem    "AutomaticByPlatform -> AutomaticByOS"
+        $vm3 = Set-AzVMOperatingSystem -VM $vm3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByOS";
+        Update-AzVM $rgname -vm $vm3;
+        $vm3 = Get-AzVM -Name $vmname3 -ResourceGroupName $rgname;
+        Assert-AreEqual $vm3.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByOS"
+
+        #updating existing VM using Set-AzVMOperatingSystem    "AutomaticByOS -> AutomaticByPlatform"
+        $vm2 = Set-AzVMOperatingSystem -VM $vm2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "automaticbyplatform";
+        Update-AzVM $rgname -vm $vm2;
+        $vm2 = Get-AzVM -Name $vmname2 -ResourceGroupName $rgname;
+        Assert-AreEqual $vm2.osProfile.WindowsConfiguration.PatchSettings.Patchmode "AutomaticByPlatform"
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVMOperatingSystem: if PatchMode is set to AutomaticByPlatForm, both [-ProvisionVMAgent] [-EnableAutoUpdate] has to be true, other wise it is an error.
+#>
+function Test-SetAzVMOperatingSystemError
+{
+# Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1_v2';
+        $vmname = 'vm' + $rgname;
+
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -DisableVMAgent -Patchmode "AutomaticByPlatform";
+      
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+       
+        # Virtual Machine
+        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The patchMode 'AutomaticByPlatform' is invalid. For patchMode 'AutomaticByPlatform', the properties 'provisionVMAgent' and 'enableAutomaticUpdates' must be set to true.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+

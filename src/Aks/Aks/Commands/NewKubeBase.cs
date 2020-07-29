@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Aks
                 new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
                     new ContainerServiceSshConfiguration(pubKey));
 
-            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret?.UserName, ClientIdAndSecret?.Password?.ToString());
+            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ToString());
 
             var spProfile = new ManagedClusterServicePrincipalProfile(
                 acsServicePrincipal.SpId,

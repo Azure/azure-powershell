@@ -864,6 +864,7 @@ function Test-DiskEncryptionSet
         $subId = Get-SubscriptionIdFromResourceGroup $rgname;
         $mockkey1 = "https://kv1psenctest.vault.azure.net/keys/kek1psenctest/7b0ea2a977294b93aa599d15c96a4368";
         $mockkey2 = "https://kv2psenctest.vault.azure.net/keys/kek1psenctest/03684334d612487aa1bd8c9fb5349178";
+
         $mocksourcevault1 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName1;
         $mocksourcevault2 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName2;
 
@@ -890,6 +891,7 @@ function Test-DiskEncryptionSet
         Assert-ThrowsContains { `
             Update-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName -KeyUrl $mockkey2 -SourceVaultId $mocksourcevault2 -Tag $tags; } `
             "Please grant get, wrap and unwrap key permissions to disk encryption set 'encpsenctest'."
+        #    "Key rotation in disk encryption set is not supported in this version."
 
         Update-AzDiskEncryptionSet -ResourceId $encSet.Id -Tag $tags;
 

@@ -21,8 +21,9 @@ New-AzHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStor
  [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-MinSupportedTlsVersion <String>]
  [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
- [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>]
+ [-OutboundPublicNetworkAccessType <String>] [-EncryptionInTransit <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -290,6 +291,22 @@ Gets or sets the encryption algorithm.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransit
+Gets or sets the flag which indicates whether enable encryption in transit or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -414,6 +431,38 @@ You can alternatively use the **Add-AzHDInsightMetastore** cmdlet.
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutboundPublicNetworkAccessType
+Gets or sets the outbound access type to the public network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: PublicLoadBalancer, UDR
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccessType
+Gets or sets the public network access type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: InboundAndOutbound, OutboundOnly
 
 Required: False
 Position: Named

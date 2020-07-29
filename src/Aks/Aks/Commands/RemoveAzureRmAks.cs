@@ -18,10 +18,13 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzAksCluster")]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
+    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmAks : KubeCmdletBase
     {

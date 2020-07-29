@@ -297,5 +297,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EncryptionAtHostVMDefaultParamSet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzVMOperatingSystem()
+        {
+            TestRunner.RunTestScript("Test-SetAzVMOperatingSystem");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzVMOperatingSystemError()
+        {
+            TestRunner.RunTestScript("Test-SetAzVMOperatingSystemError");
+        }
     }
 }
