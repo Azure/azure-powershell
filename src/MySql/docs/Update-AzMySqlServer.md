@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## SYNTAX
 
@@ -34,6 +35,7 @@ Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword 
 ## DESCRIPTION
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## EXAMPLES
 
@@ -398,6 +400,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

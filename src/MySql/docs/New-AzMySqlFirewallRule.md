@@ -13,9 +13,9 @@ Creates a new firewall rule or updates an existing firewall rule.
 ## SYNTAX
 
 ```
-New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -StartIPAddress <String> [-SubscriptionId <String>] [-EndIPAddress <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,17 @@ rule Microsoft.DBforMySQL/servers/firewallRules
 ```
 
 This cmdlets create a MySql server Firewall Rule.
+
+### Example 2: Create a new MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized
+```powershell
+PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -StartIPAddress 0.0.0.1
+
+Name Type
+---- ----
+rule Microsoft.DBforMySQL/servers/firewallRules
+```
+
+This cmdlets create a MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized.
 
 ## PARAMETERS
 
@@ -75,7 +86,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,6 +157,7 @@ Accept wildcard characters: False
 ### -StartIPAddress
 The start IP address of the server firewall rule.
 Must be IPv4 format.
+If range contains one IP, use StartIPAddress only.
 
 ```yaml
 Type: System.String

@@ -1,16 +1,16 @@
 {
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "112" ],
-        "x-ms-client-request-id": [ "116a1ae7-1465-4ad2-8d1a-fba6ce68f23b" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3b67a350-3b4c-4fc7-b71c-0e2d53227432" ],
         "CommandName": [ "Get-AzMySqlServer" ],
         "FullCommandName": [ "Get-AzMySqlServer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,36 +21,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6bd3f610-af95-4322-ab0a-f8666a2248c4" ],
+        "x-ms-request-id": [ "6d3f6048-f90f-4199-8645-caf84a7a7bee" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
-        "x-ms-correlation-request-id": [ "b8157913-087e-4db6-964b-159b91c90394" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111318Z:b8157913-087e-4db6-964b-159b91c90394" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "8bf70234-b5a5-4f67-8c4f-f7a35352f378" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094130Z:8bf70234-b5a5-4f67-8c4f-f7a35352f378" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:13:17 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:41:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "905" ],
+        "Content-Length": [ "909" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-08T11:03:09.983+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+2": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+2": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"createMode\": \"Replica\",\n    \"sourceServerId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
-        "x-ms-unique-id": [ "113" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -62,38 +55,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01" ],
         "Retry-After": [ "30" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "c76c579e-55b4-4fe9-b19d-75093eeca064" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "d6ce3561-ffa0-4bc6-bd34-ef770b816a4a" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
-        "x-ms-correlation-request-id": [ "6cf54724-7319-4aed-86f4-7b1196cfe3a4" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111322Z:6cf54724-7319-4aed-86f4-7b1196cfe3a4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "47f636e0-8255-4d2f-8873-23ae86ba5c5a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094135Z:47f636e0-8255-4d2f-8873-23ae86ba5c5a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:13:21 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:41:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "88" ],
+        "Content-Length": [ "87" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"CreateElasticServerContinuousCopy\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
+      "Content": "{\"operation\":\"CreateElasticServerContinuousCopy\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+3": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "113", "114" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
+        "x-ms-unique-id": [ "2", "3" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -105,755 +98,35 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "5b3bf466-8772-43fe-8529-99ca3d4fb992" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11908" ],
+        "x-ms-request-id": [ "8bc6cf1d-22ac-4022-941f-02f3fe21f558" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "b68945bc-18b1-4118-a20f-0807111ade6d" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111353Z:b68945bc-18b1-4118-a20f-0807111ade6d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "912fe1ea-531a-4a73-9cf4-f994c13810f6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094206Z:912fe1ea-531a-4a73-9cf4-f994c13810f6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:13:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "f00e790d-9c02-41d4-91a7-d2607107a58f" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
-        "x-ms-correlation-request-id": [ "5dce773d-1db5-41b6-a3f9-ed853602371c" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111425Z:5dce773d-1db5-41b6-a3f9-ed853602371c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:14:24 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "7436c206-33e5-4796-805f-7eb0bb9121d7" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
-        "x-ms-correlation-request-id": [ "da9a2db1-fab3-469a-abf7-48e5454f223d" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111456Z:da9a2db1-fab3-469a-abf7-48e5454f223d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:14:56 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "c1470d96-7125-43f3-8d4c-6155fe6fbc44" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11905" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "fedaf09c-7785-4847-ac77-06feb0d42614" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111527Z:fedaf09c-7785-4847-ac77-06feb0d42614" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:15:26 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "5d2673c2-2d5a-4635-be5e-06ce8cbf0245" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11904" ],
-        "x-ms-correlation-request-id": [ "d747924d-82e1-4ab4-9199-7cd1c4fff5c0" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111558Z:d747924d-82e1-4ab4-9199-7cd1c4fff5c0" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:15:58 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "0a7771af-5052-4838-b5c8-bf868a91ba03" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11903" ],
-        "x-ms-correlation-request-id": [ "96294436-8db9-4374-9685-280d1bd77ffa" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111628Z:96294436-8db9-4374-9685-280d1bd77ffa" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:16:27 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+9": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "2320fdd6-6b69-427d-8c31-ec970f76e392" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11902" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "bbca5227-e435-44ee-9188-b6aad5db8e33" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111700Z:bbca5227-e435-44ee-9188-b6aad5db8e33" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:16:59 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+10": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "e6111022-f3a3-48cc-86e9-7a02cb727cf9" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11901" ],
-        "x-ms-correlation-request-id": [ "e9284be5-69f3-4834-ab4b-8d1e6b0b7247" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111730Z:e9284be5-69f3-4834-ab4b-8d1e6b0b7247" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:17:30 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+11": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "4e59c7b2-81d8-48b6-91dc-14c46d7fa92c" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11900" ],
-        "x-ms-correlation-request-id": [ "04c9f94f-0181-4689-90ac-75b5b0666276" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111801Z:04c9f94f-0181-4689-90ac-75b5b0666276" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:18:01 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+12": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "f2fea837-d93c-4a45-86d0-22eafe3db512" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11899" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "e786eb3e-955e-4e2c-b176-7cf9e9d3b790" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111831Z:e786eb3e-955e-4e2c-b176-7cf9e9d3b790" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:18:31 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+13": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "6f28c4b0-92e9-4c15-a886-1a4ad8364606" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11898" ],
-        "x-ms-correlation-request-id": [ "a83322af-80b9-4ff4-a09c-e80ca1ab224a" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111902Z:a83322af-80b9-4ff4-a09c-e80ca1ab224a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:19:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+14": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "c4a5d6b0-2c6c-4e42-bef9-02abb6daaa16" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11897" ],
-        "x-ms-correlation-request-id": [ "e28c6b96-841d-4d6c-9c3f-3bf259d8f24f" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T111933Z:e28c6b96-841d-4d6c-9c3f-3bf259d8f24f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:19:32 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+15": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "930b2457-7469-4690-b467-1b3995b8acbd" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11896" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "c1e4133e-c391-4669-ba67-196ec677abaf" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112003Z:c1e4133e-c391-4669-ba67-196ec677abaf" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:20:03 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+16": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "2a1f3e81-5482-41b8-9149-f80da40c5351" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11894" ],
-        "x-ms-correlation-request-id": [ "0111152c-36e9-4ea2-a4b9-6abf4abcde2f" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112034Z:0111152c-36e9-4ea2-a4b9-6abf4abcde2f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:20:33 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+17": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "59702fc3-9d07-41fb-b5ea-449fc5367ec3" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11893" ],
-        "x-ms-correlation-request-id": [ "2ffc752f-254d-49b7-b5d2-05a129feb11e" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112105Z:2ffc752f-254d-49b7-b5d2-05a129feb11e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:21:04 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+18": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "6901c559-4d2b-47fd-95b0-9313a1c2c423" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11892" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "47db9c6b-21df-43d2-9fc7-47206c2a4af1" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112135Z:47db9c6b-21df-43d2-9fc7-47206c2a4af1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:21:34 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+19": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "f5405c66-3a8d-4b27-9f0b-5fa70c66b263" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11891" ],
-        "x-ms-correlation-request-id": [ "d4f130b3-126e-47e2-b1f2-2d60da667ad3" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112206Z:d4f130b3-126e-47e2-b1f2-2d60da667ad3" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:22:05 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+20": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "d08e28c9-108a-4a8f-9e06-b2d5c6d24a87" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11890" ],
-        "x-ms-correlation-request-id": [ "2f564c28-293d-47c8-8a76-eb29055655c3" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112236Z:2f564c28-293d-47c8-8a76-eb29055655c3" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:22:35 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
-    }
-  },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01+21": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/c76c579e-55b4-4fe9-b19d-75093eeca064?api-version=2017-12-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "844af692-a40f-4bc3-b025-1f76e498b58a" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11889" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "840fcf90-d7d3-40fd-9809-8ac4bff7faf9" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112307Z:840fcf90-d7d3-40fd-9809-8ac4bff7faf9" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:23:06 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:42:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"c76c579e-55b4-4fe9-b19d-75093eeca064\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:13:22.287Z\"}"
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+22": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133" ],
-        "x-ms-client-request-id": [ "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f", "4aa2cfae-328b-4480-bb80-e295fb82387f" ],
-        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
-        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "x-ms-unique-id": [ "2", "3", "4" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -864,35 +137,795 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "74bc0907-ebbd-4bde-b0e6-7b379e9314cc" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "926e440a-d9d7-4acf-a6fc-8579ea62e383" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11888" ],
-        "x-ms-correlation-request-id": [ "d3372cc2-2609-4df2-a4bb-9f65614fb5a2" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112308Z:d3372cc2-2609-4df2-a4bb-9f65614fb5a2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "0b0e2bc4-ec80-426d-ac3f-87302648c0aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094236Z:0b0e2bc4-ec80-426d-ac3f-87302648c0aa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:23:07 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:42:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1061" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100-replica.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-08T11:25:23.023+00:00\",\"replicationRole\":\"Replica\",\"masterServerId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica\",\"name\":\"mysql-test-100-replica\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+23": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "48dd90bc-6136-4594-a660-37437833288b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "11cca631-8303-4119-9ee9-24c44fa07641" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094307Z:11cca631-8303-4119-9ee9-24c44fa07641" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:43:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "131b8f62-22de-4bbd-9efe-fe98acfc0627" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "4d39ce2c-4e62-44be-b6c1-60af802fe64d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094337Z:4d39ce2c-4e62-44be-b6c1-60af802fe64d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:43:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "c4c0a698-ff08-4971-a563-e1c822f6b778" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "57d45d28-35fb-4d64-a430-5b842e9d9195" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094407Z:57d45d28-35fb-4d64-a430-5b842e9d9195" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:44:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "e6d1147a-0626-4604-986c-8aef3b48bf79" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "7414c562-fdf7-4c31-b187-a3d248e6e451" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094438Z:7414c562-fdf7-4c31-b187-a3d248e6e451" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:44:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "740154c1-561b-4b74-8070-59b3bd639bcd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "704658cb-1893-4c16-bb2d-47c0f8882d60" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094508Z:704658cb-1893-4c16-bb2d-47c0f8882d60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:45:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "9baa07f4-f0c8-4198-b104-54495de75699" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "8aab4332-d863-4c6e-bfa3-a6c8005ba999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094539Z:8aab4332-d863-4c6e-bfa3-a6c8005ba999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:45:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "6c59b9fd-aa6d-4962-8e25-eec58512bf6c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "304db940-ae90-4fbc-a955-86d4594323e2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094609Z:304db940-ae90-4fbc-a955-86d4594323e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:46:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "8c80f8a4-04d7-44cc-a64d-a875931c740c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "0fc13ccc-a6b6-4ce4-8a2e-aaba4e9149b7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094639Z:0fc13ccc-a6b6-4ce4-8a2e-aaba4e9149b7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:46:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "36dc9fbb-0496-48cd-8267-1320bd420924" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "d19fc94b-d878-49f3-93a2-ea2bdb5b9aee" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094710Z:d19fc94b-d878-49f3-93a2-ea2bdb5b9aee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:47:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "b2e8bfed-3c5c-4503-b72f-2ae2603958f6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "785cd215-bb5a-4575-91c9-02cb0a717655" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094740Z:785cd215-bb5a-4575-91c9-02cb0a717655" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:47:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "22042138-8492-4a9e-ac4e-b174c36fd520" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "94dc9a1d-31b7-4536-8111-72376103f7e0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094811Z:94dc9a1d-31b7-4536-8111-72376103f7e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:48:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "0db368c3-1682-4094-a922-ef43229da841" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "098cb28b-0b74-4c42-ad07-8d941f165980" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094841Z:098cb28b-0b74-4c42-ad07-8d941f165980" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:48:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "bbe9d734-98f7-47a4-86f5-c8cf4a1f125b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-correlation-request-id": [ "d01b45f5-090f-4886-81d3-1b067d058ad3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094913Z:d01b45f5-090f-4886-81d3-1b067d058ad3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:49:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "03f159f6-20a9-43f3-9325-ad72bb5dc442" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-correlation-request-id": [ "c58fa2ac-6335-4ff8-a2d2-15f33db7c4e0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T094944Z:c58fa2ac-6335-4ff8-a2d2-15f33db7c4e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:49:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "54ed9fc2-a4f2-4130-818c-43939cace12c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "e0c3637f-2313-4a5f-9fa3-5f1b90721b5c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095014Z:e0c3637f-2313-4a5f-9fa3-5f1b90721b5c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:50:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "196616d9-eeeb-400e-ac84-8a8fbbb53335" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "8d2f5e2f-edba-413d-8dbb-c1dfddde3ffc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095044Z:8d2f5e2f-edba-413d-8dbb-c1dfddde3ffc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:50:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "68de72b5-178e-4cdc-816d-931bb1022981" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-correlation-request-id": [ "2f726aba-0e0f-4ae5-a848-caa23a1b99c2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095115Z:2f726aba-0e0f-4ae5-a848-caa23a1b99c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:51:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"InProgress\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/d6ce3561-ffa0-4bc6-bd34-ef770b816a4a?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "b674db9f-2faa-4cd1-b117-0b8e4de59a54" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "f84836ae-fd6e-43a5-8b8f-35bf114c10fd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095146Z:f84836ae-fd6e-43a5-8b8f-35bf114c10fd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:51:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"d6ce3561-ffa0-4bc6-bd34-ef770b816a4a\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T09:41:35.77Z\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" ],
+        "x-ms-client-request-id": [ "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646", "78ccd710-8df3-4878-89cc-449f8fa4c646" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
+        "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ae5bdf2c-5cad-4df7-9347-92f777867256" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "bbe149d0-d551-4296-83ae-8deb198b2e1e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095146Z:bbe149d0-d551-4296-83ae-8deb198b2e1e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 24 Jul 2020 09:51:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1062" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100-replica.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T09:53:36.52+00:00\",\"replicationRole\":\"Replica\",\"masterServerId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica\",\"name\":\"mysql-test-100-replica\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+    }
+  },
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01+24": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-replica?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "134" ],
-        "x-ms-client-request-id": [ "4a855882-db96-4919-91ac-1f39fa8357ac" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "ca5ea11d-b46e-4231-8552-e04b3f25edb7" ],
         "CommandName": [ "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -903,38 +936,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "3ba846cb-160f-415f-a703-fc8e08e4c616" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "a473d381-9d14-4d4d-b84a-d7e6b7313515" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14990" ],
-        "x-ms-correlation-request-id": [ "2e6729c0-bae6-4740-8036-8b0135bceb7d" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112309Z:2e6729c0-bae6-4740-8036-8b0135bceb7d" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "7232749b-f975-49d8-875a-c5f09e8a3664" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095147Z:7232749b-f975-49d8-875a-c5f09e8a3664" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:23:08 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:51:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "72" ],
+        "Content-Length": [ "71" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-04-08T11:23:09.153Z\"}"
+      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-07-24T09:51:47.36Z\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01+24": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "134", "135" ],
-        "x-ms-client-request-id": [ "4a855882-db96-4919-91ac-1f39fa8357ac", "4a855882-db96-4919-91ac-1f39fa8357ac" ],
+        "x-ms-unique-id": [ "24", "25" ],
+        "x-ms-client-request-id": [ "ca5ea11d-b46e-4231-8552-e04b3f25edb7", "ca5ea11d-b46e-4231-8552-e04b3f25edb7" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -946,35 +979,35 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "9692b0e1-283f-4337-9c56-80efa09b4fd4" ],
+        "x-ms-request-id": [ "62e9d394-4336-43ef-8c0a-ea4cd7c2373f" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11887" ],
-        "x-ms-correlation-request-id": [ "ba199b23-cb8a-486d-b54c-3bd0c380ae59" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112324Z:ba199b23-cb8a-486d-b54c-3bd0c380ae59" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "a7432e92-f967-4f8f-a129-6a322a38fab8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095202Z:a7432e92-f967-4f8f-a129-6a322a38fab8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:23:23 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:52:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "107" ],
+        "Content-Length": [ "106" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"3ba846cb-160f-415f-a703-fc8e08e4c616\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:23:09.153Z\"}"
+      "Content": "{\"name\":\"a473d381-9d14-4d4d-b84a-d7e6b7313515\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T09:51:47.36Z\"}"
     }
   },
-  "New-AzMySqlServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01+25": {
+  "New-AzMySqlReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/3ba846cb-160f-415f-a703-fc8e08e4c616?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a473d381-9d14-4d4d-b84a-d7e6b7313515?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "134", "135", "136" ],
-        "x-ms-client-request-id": [ "4a855882-db96-4919-91ac-1f39fa8357ac", "4a855882-db96-4919-91ac-1f39fa8357ac", "4a855882-db96-4919-91ac-1f39fa8357ac" ],
+        "x-ms-unique-id": [ "24", "25", "26" ],
+        "x-ms-client-request-id": [ "ca5ea11d-b46e-4231-8552-e04b3f25edb7", "ca5ea11d-b46e-4231-8552-e04b3f25edb7", "ca5ea11d-b46e-4231-8552-e04b3f25edb7" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -985,14 +1018,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5247383a-d49d-4ca2-9938-b7a7227f4eb4" ],
+        "x-ms-request-id": [ "d5657936-9743-4fd8-a9b6-a981149adb31" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11886" ],
-        "x-ms-correlation-request-id": [ "217595c7-cef4-4d60-9e1c-e6c424efa5c6" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112325Z:217595c7-cef4-4d60-9e1c-e6c424efa5c6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "x-ms-correlation-request-id": [ "5dbb42e9-ada6-4484-bb74-9a86818adfe4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200724T095203Z:5dbb42e9-ada6-4484-bb74-9a86818adfe4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Apr 2020 11:23:24 GMT" ]
+        "Date": [ "Fri, 24 Jul 2020 09:52:02 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
