@@ -21,9 +21,9 @@
 * Supported create container/blob Sas token with new permission x,t
     -  `New-AzStorageBlobSASToken`
     -  `New-AzStorageContainerSASToken`
-* support create account Sas token with new permission x,t,f
+* Supported create account Sas token with new permission x,t,f
     -  `New-AzStorageAccountSASToken`
-* Support get single file share usage
+* Supported get single file share usage
     - `Get-AzRmStorageShare`
         
 ## Version 2.3.0
