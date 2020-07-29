@@ -80,7 +80,15 @@ namespace Microsoft.Azure.Commands.Resources
                     Subscription = Subscription,
                 }
             };
-            PSRoleAssignment fetchedRole = PoliciesClient.FilterRoleAssignments(parameters, Subscription).First();
+            PSRoleAssignment fetchedRole = null;
+            try
+            {
+                fetchedRole = PoliciesClient.FilterRoleAssignments(parameters, Subscription).First();
+            }
+            catch (Exception)
+            {
+                fetchedRole = RoleAssignment;
+            }
 
             // Validate the requestk
             AuthorizationClient.ValidateScope(parameters.Scope, false);

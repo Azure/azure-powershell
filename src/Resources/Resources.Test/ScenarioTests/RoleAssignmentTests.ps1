@@ -887,7 +887,7 @@ function Test-UpdateRa{
     $dataNew.Condition = $Condition2
 
     $dataNew = Set-AzRoleAssignment `
-    -RoleAssignmen $dataNew
+    -RoleAssignment $dataNew
     
 
     # Then
