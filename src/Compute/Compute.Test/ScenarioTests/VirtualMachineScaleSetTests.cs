@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetNewEncryptionAtHost()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetNewEncryptionAtHost");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetEncryptionAtHost");
         }
     }
 }

@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public SwitchParameter EncryptionAtHost { get; set; } = false;
+        public SwitchParameter EncryptionAtHost { get; set; }
 
         const int FirstPortRangeStart = 50000;
 

@@ -2470,20 +2470,20 @@ function Test-VirtualMachineScaleSetImageVersion
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set warning if not using latest image version
+    testing encryptionAtHost cmdlet for
+    new-azvmss - create vmss using simple parameter set and hostencryption tag.
+    update-azvmss test boolean parameter 
+    new-azvmssconfig
 #>
-function Test-VirtualMachineScaleSetNewEncryptionAtHost
+function Test-VirtualMachineScaleSetEncryptionAtHost
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
  
     try
     {
-        <#
         # Common
-        [string]$loc = Get-ComputeVMLocation;
-        $loc = $loc.Replace(' ', '');
-
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
@@ -2497,65 +2497,38 @@ function Test-VirtualMachineScaleSetNewEncryptionAtHost
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 
-        # Create LoadBalancer
-        $frontendName = Get-ResourceName
-        $backendAddressPoolName = Get-ResourceName
-        $probeName = Get-ResourceName
-        $inboundNatPoolName = Get-ResourceName
-        $lbruleName = Get-ResourceName
-        $lbName = Get-ResourceName
-
-        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
-        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $inboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
-            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3368 -BackendPort 3370;
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName `
-            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
-            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
-            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
-        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
-        #>
         # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
+        $vmssName = 'vmsswithconfig';
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
 
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
-        <#
+
+        
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
-        $ipCfg = New-AzVmssIPConfig -Name 'test' `
-            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
-            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
-            -SubnetId $subnetId;
-
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
-                                 -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT10S" `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -EncryptionAtHost `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
-          #>  
-        #New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
-        #TODO: Uncomment sections of the above commented out code to test the New-AzVmssConfig command in a similar way to the below. 
+            -ImageReferencePublisher $imgRef.PublisherName ;
+       
+        #creating vmss using new-azvmss default parameter set which uses New-VmssConfig with -EncryptionAtHost parameter
+        $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        #creating vmss using New-azvmss simple parameter set
+        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -EncryptionAtHost -DomainNameLabel "domainlabel"
 
-        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Credential $cred -EncryptionAtHost
-
-        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-
-        Assert-AreEqual $vmssResult.VirtualMachineProfile.SecurityProfile.EncryptionAtHost $true;
+        Assert-AreEqual $vmssResult1.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
+        Assert-AreEqual $vmssResult2.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
         
- 
+        #using Update-azvmss to turn off encryptionAtHost
+        $updatedVM = Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult1 -EncryptionAtHost $false
+        
+        Assert-False { $updatedVM.VirtualMachineProfile.SecurityProfile.EncryptionAtHost };
     }
     finally
     {

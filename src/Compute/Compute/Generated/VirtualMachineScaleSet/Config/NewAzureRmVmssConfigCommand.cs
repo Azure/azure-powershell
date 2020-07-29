@@ -241,9 +241,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
-        [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false)]
-        [Parameter(ParameterSetName = "DefaultParameterSet", Mandatory = false)]//TODO: set sets as string constants?
-        public SwitchParameter EncryptionAtHost { get; set; } = false;
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EncryptionAtHost { get; set; } 
 
         protected override void ProcessRecord()
         {

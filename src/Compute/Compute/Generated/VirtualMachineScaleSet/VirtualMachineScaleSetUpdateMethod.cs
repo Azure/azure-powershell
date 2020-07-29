@@ -312,9 +312,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false)]
-        [Parameter(ParameterSetName = "DefaultParameter", Mandatory = false)]
-        public SwitchParameter EncryptionAtHost { get; set; } = false;
+
+        [Parameter(
+            Mandatory = false)]
+        public bool EncryptionAtHost { get; set; } 
 
         private void BuildPatchObject()
         {
@@ -478,7 +479,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
             }
-
 
             if (this.IsParameterBound(c => c.IdentityId))
             {
@@ -1094,6 +1094,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
             }
 
+            if (this.IsParameterBound(c => c.EncryptionAtHost))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+            }
+
             if (this.VirtualMachineScaleSetUpdate != null
                 && this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup != null
                 && string.IsNullOrEmpty(this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id))
@@ -1704,7 +1721,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
             }
 
-            //TODO: there was some discussion if this change should not be included? Haider talked about it. 
             if (this.IsParameterBound(c => c.EncryptionAtHost))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
