@@ -53,7 +53,7 @@ require:
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/5d7c9b734d462cc3b111757957c7d2cc027dff80/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2020-06-01/appconfiguration.json
 
-module-version: 0.2.0
+module-version: 0.1.4
 title: AppConfiguration
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
