@@ -141,5 +141,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    Remove-AzResourceGroup -Name $env.resourceGroupName -Force
+    #Remove-AzResourceGroup -Name $env.resourceGroupName -Force
 }
