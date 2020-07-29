@@ -15,11 +15,11 @@ Update a Kusto cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
+ [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
+ [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
  [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
@@ -29,11 +29,12 @@ Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnablePurge]
- [-EnableStreamingIngest] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnableDoubleEncryption]
+ [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
  [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
@@ -83,7 +84,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -99,7 +99,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -EnableDiskEncryption
@@ -115,7 +114,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -EnableDoubleEncryption
+A boolean value that indicates if double encryption is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -EnablePurge
@@ -131,7 +144,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -EnableStreamingIngest
@@ -147,7 +159,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -IdentityType
@@ -163,7 +174,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -IdentityUserAssignedIdentity
@@ -180,7 +190,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
@@ -197,7 +206,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -KeyVaultPropertyKeyName
@@ -213,7 +221,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -KeyVaultPropertyKeyVaultUri
@@ -229,7 +236,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -KeyVaultPropertyKeyVersion
@@ -245,7 +251,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -LanguageExtensionValue
@@ -262,7 +267,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -278,7 +282,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -294,7 +297,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -310,7 +312,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OptimizedAutoscaleIsEnabled
@@ -326,7 +327,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OptimizedAutoscaleMaximum
@@ -342,7 +342,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OptimizedAutoscaleMinimum
@@ -358,7 +357,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -OptimizedAutoscaleVersion
@@ -374,7 +372,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -390,7 +387,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SkuCapacity
@@ -406,7 +402,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SkuName
@@ -422,7 +417,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SkuTier
@@ -438,7 +432,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -455,7 +448,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -471,7 +463,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -TrustedExternalTenant
@@ -488,7 +479,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -VirtualNetworkConfigurationDataManagementPublicIPId
@@ -504,7 +494,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -VirtualNetworkConfigurationEnginePublicIPId
@@ -520,7 +509,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -VirtualNetworkConfigurationSubnetId
@@ -536,7 +524,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -552,7 +539,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -569,7 +555,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -583,14 +568,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster
 
-## ALIASES
-
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IKustoIdentity>: Identity Parameter
+
+INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
@@ -601,10 +588,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-#### LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
+LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
   - `[Name <LanguageExtensionName?>]`: The language extension name.
 
-#### TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
+TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   - `[Value <String>]`: GUID representing an external tenant.
 
 ## RELATED LINKS
