@@ -12,7 +12,7 @@ Create an environment in the specified subscription and resource group.
 
 ## SYNTAX
 
-### standard (Default)
+### Gen1 (Default)
 ```
 New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Capacity <Int32>
  -DataRetentionTime <TimeSpan> -Kind <Kind> -Location <String> -Sku <SkuName> [-SubscriptionId <String>]
@@ -20,7 +20,7 @@ New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### longterm
+### Gen2
 ```
 New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
  -Sku <SkuName> -StorageAccountKey <SecureString> -StorageAccountName <String>
@@ -34,30 +34,30 @@ Create an environment in the specified subscription and resource group.
 
 ## EXAMPLES
 
-### Example 1: Create a standard time series insights environment
+### Example 1: Create a Gen1 time series insights environment
 ```powershell
 PS C:\> $TimeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Standard -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Gen1 -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-Standard eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
+Gen1 eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
 ```
 
-This command creates a standard time series insights environment.
+This command creates a Gen1 time series insights environment.
 
-### Example 2: Create a longterm time series insights environment
+### Example 2: Create a Gen2 time series insights environment
 ```powershell
 PS C:\> $ks = Get-AzStorageAccountKey -ResourceGroupName "testgroup" -Name "staccount001"
 PS C:\> $k  = $ks[0].Value | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind LongTerm -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind Gen2 -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-LongTerm eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
+Gen2 eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
 ```
 
-This command creates a longterm time series insights environment.
+This command creates a Gen2 time series insights environment.
 
 ## PARAMETERS
 
@@ -78,11 +78,11 @@ Accept wildcard characters: False
 
 ### -Capacity
 The capacity of the sku.
-For standard environments, this value can be changed to support scale out of environments after they have been created.
+For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: standard
+Parameter Sets: Gen1
 Aliases:
 
 Required: True
@@ -97,7 +97,7 @@ The data retention time.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: standard
+Parameter Sets: Gen1
 Aliases:
 
 Required: True
@@ -187,8 +187,8 @@ The list of event properties which will be used to partition data in the environ
 To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]
-Parameter Sets: standard
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Parameter Sets: Gen1
 Aliases:
 
 Required: False
@@ -233,7 +233,7 @@ The value of the management key that grants the Time Series Insights service wri
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: longterm
+Parameter Sets: Gen2
 Aliases:
 
 Required: True
@@ -248,7 +248,7 @@ The name of the storage account that will hold the environment's long term data.
 
 ```yaml
 Type: System.String
-Parameter Sets: longterm
+Parameter Sets: Gen2
 Aliases:
 
 Required: True
@@ -263,7 +263,7 @@ The behavior the Time Series Insights service should take when the environment's
 
 ```yaml
 Type: System.String
-Parameter Sets: standard
+Parameter Sets: Gen1
 Aliases:
 
 Required: False
@@ -308,8 +308,8 @@ The list of event properties which will be used to define the environment's time
 To construct, see NOTES section for TIMESERIESIDPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]
-Parameter Sets: longterm
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Parameter Sets: Gen2
 Aliases:
 
 Required: True
@@ -324,7 +324,7 @@ ISO8601 timespan specifying the number of days the environment's events will be 
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: longterm
+Parameter Sets: Gen2
 Aliases:
 
 Required: False
@@ -372,7 +372,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 
 ## NOTES
 

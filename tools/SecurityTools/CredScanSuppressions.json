@@ -525,14 +525,14 @@
       "file": "src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
-	    "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\\TestAzureIotHubRoutingLifeCycle.json",
-	    "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
-	  },
-	  {
-	    "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\\TestAzureIotHubLifeCycle.json",
-	    "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
-	  },
+    {
+      "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\\TestAzureIotHubRoutingLifeCycle.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\\TestAzureIotHubLifeCycle.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
@@ -913,7 +913,7 @@
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionExtensionNonDefaultParams.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionExtensionSinglePass.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
@@ -1116,6 +1116,30 @@
     {
       "file": "src\\Functions\\test\\New-AzFunctionApp.Recording.json",
       "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\AppConfiguration\\test\\New-AzAppConfigurationStoreKey.Recording.json",
+      "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\AppConfiguration\\test\\Get-AzAppConfigurationStoreKey.Recording.json",
+      "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\AppConfiguration\\examples\\New-AzAppConfigurationStoreKey.md",
+      "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\AppConfiguration\\examples\\Get-AzAppConfigurationStoreKey.md",
+      "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\AppConfiguration\\docs\\New-AzAppConfigurationStoreKey.md",
+      "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\AppConfiguration\\docs\\Get-AzAppConfigurationStoreKey.md",
+      "_justification": "app configuration access key is safe; regenerated"
     }
   ]
 }

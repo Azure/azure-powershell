@@ -1,7 +1,7 @@
 @{
   GUID = 'b453c0c1-7867-4fa1-9fd0-0cf8f6c6959c'
   RootModule = './Az.Databricks.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
