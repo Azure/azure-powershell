@@ -1,6 +1,6 @@
 ---
 Module Name: Az.TimeSeriesInsights
-Module Guid: 8cabfc81-c3f4-46de-a1b8-c1dfe31c16bb
+Module Guid: fae83c00-2cd2-4d54-938f-fcd0225c0cd2
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights
 Help Version: 1.0.0.0
 Locale: en-US
