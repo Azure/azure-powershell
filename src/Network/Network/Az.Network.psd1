@@ -483,7 +483,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzIpAllocation',
                'New-AzSecurityPartnerProvider', 'Remove-AzSecurityPartnerProvider', 
                'Get-AzSecurityPartnerProvider', 'Set-AzSecurityPartnerProvider',
-               'New-AzMasterCustomIpPrefix','Set-AzMasterCustomIpPrefix',
+               'New-AzMasterCustomIpPrefix','Update-AzMasterCustomIpPrefixTags',
 			   'Get-AzMasterCustomIpPrefix','Remove-AzMasterCustomIpPrefix',
 			   'New-AzCustomIpPrefix','Set-AzCustomIpPrefix',
 			   'Get-AzCustomIpPrefix','Remove-AzCustomIpPrefix'

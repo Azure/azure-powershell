@@ -19,24 +19,26 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Collections;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
-    public class SetAzureMasterCustomIpPrefixCommand : MasterCustomIpPrefixBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MasterCustomIpPrefixTags", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
+    public class UpdateAzureMasterCustomIpPrefixTagsCommand : MasterCustomIpPrefixBaseCmdlet
     {
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
+        private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
+        private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
 
+        [Alias("ResourceName")]
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = SetByNameParameterSet)]
+           ParameterSetName = UpdateByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/masterCustomIpPrefix", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = SetByNameParameterSet)]
+            ParameterSetName = UpdateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -55,14 +57,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The MasterCustomIpPrefix to set.",
-            ParameterSetName = SetByInputObjectParameterSet)]
+            ParameterSetName = UpdateByInputObjectParameterSet)]
         public PSMasterCustomIpPrefix InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id.",
-            ParameterSetName = SetByResourceIdParameterSet)]
+            ParameterSetName = UpdateByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
@@ -70,20 +72,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The MasterCustomIpPrefix location.",
-            ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
-        [LocationCompleter("Microsoft.Network/masterCustomIpPrefix")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
+            ParameterSetName = UpdateByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -103,21 +95,24 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.ResourceGroupName = InputObject.ResourceGroupName;
                 this.Name = InputObject.Name;
-                this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
             }
 
-            if (!NetworkBaseCmdlet.IsResourcePresent(() => GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name)))
+            PSMasterCustomIpPrefix psModel;
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                psModel = InputObject;
             }
-
-
-            var psModel = new PSMasterCustomIpPrefix()
+            else
             {
-                Name = InputObject.Name,
-                ResourceGroupName = InputObject.ResourceGroupName,
-                Location = this.Location,
-            };
+                var existingPsModel = GetMasterCustomIpPrefix(this.ResourceGroupName, this.Name);
+
+                psModel = new PSMasterCustomIpPrefix()
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = existingPsModel.Location,
+                };
+            }
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.MasterCustomIpPrefix>(psModel);
 
             if (this.IsParameterBound(c => c.InputObject))
@@ -132,7 +127,8 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
             {
                 // Execute the PUT MasterCustomIpPrefix Policy call
-                var modifiedSdkModel = this.MasterCustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
+                TagsObject tagsObj = new TagsObject(sdkModel.Tags);
+                var modifiedSdkModel = this.MasterCustomIpPrefixClient.UpdateTags(this.ResourceGroupName, this.Name, tagsObj);
                 var modifiedPsModel = this.ToPsMasterCustomIpPrefix(modifiedSdkModel);
                 modifiedPsModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(modifiedPsModel.Id);
                 WriteObject(modifiedPsModel);
