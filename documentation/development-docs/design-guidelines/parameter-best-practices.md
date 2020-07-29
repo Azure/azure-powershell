@@ -32,31 +32,6 @@ From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.c
 
 If you there is a separate nomenclature for the parameter name, or if you would like to shorten the name of the parameter so it's easier to remember, you can add an alias attribute to your parameter to allow for this functionality.
 
-### Parameter Syntax
-
-In PowerShell documentation, brackets indicate optional. 
-Convention is as follows: 
-
-command-name
-    -RequiredParameterName <RequiredParameterValue>
-    [-OptionalParameterName <OptionalParameterValue>]
-    [-OptionalSwitchParameters]
-    [-OptionalParameterName] <RequiredParameterValue>
-
-
-Using 'New-Alias' cmdlet as an example: 
-New-Alias 
-    [-Name] <string>                                                     -required 'positional' parameter
-    [-Value] <string>                                                 
-    [-Description <string>]                                              -optional parameter
-    [-Force]                                                             -optional switch parameter (all switch parameters are optional, non-positional)
-    [-Option {None | ReadOnly | Constant | Private | AllScope}]
-    [-PassThru] 
-    [-Scope <string>] 
-    [-Confirm] 
-    [-WhatIf] 
-    [<CommonParameters>]
-
 ### Parameter Types
 
 #### Valid Parameter Types
@@ -180,3 +155,33 @@ In addition, there should be no two parameters with the same position in the sam
 Allowing the user to pipe an object from one cmdlet to another is a major scenario in PowerShell, but allowing multiple parameters in the same parameter set to accept their value from the pipeline can cause issues. From the remarks section of [_Parameter Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/parameter-attribute-declaration#remarks):
 
 > _Only one parameter in a parameter set should declare ValueFromPipeline = true. Multiple parameters can define ValueFromPipelineByPropertyName = true._
+
+
+## Appendix: Parameter Syntax
+
+In PowerShell documentation, square brackets (`[]`) indicate optional. 
+Convention is as follows: 
+
+```powershell
+command-name
+    -RequiredParameterName <RequiredParameterValue>
+    [-OptionalParameterName <OptionalParameterValue>]
+    [-OptionalSwitchParameters]
+    [-OptionalParameterName] <RequiredParameterValue>
+```
+
+Using `New-Alias` cmdlet as an example: 
+
+```powershell
+New-Alias 
+    [-Name] <string>                                                     -required 'positional' parameter
+    [-Value] <string>                                                 
+    [-Description <string>]                                              -optional parameter
+    [-Force]                                                             -optional switch parameter (all switch parameters are optional, non-positional)
+    [-Option {None | ReadOnly | Constant | Private | AllScope}]
+    [-PassThru] 
+    [-Scope <string>] 
+    [-Confirm] 
+    [-WhatIf] 
+    [<CommonParameters>]
+```
