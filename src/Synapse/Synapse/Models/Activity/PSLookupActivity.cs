@@ -28,9 +28,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Initializes a new instance of the PSLookupActivity class.
         /// </summary>
-        public PSLookupActivity(string referenceName)
+        public PSLookupActivity()
         {
-            Dataset = new DatasetReference(referenceName);
             CustomInit();
         }
 
@@ -85,26 +84,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    dependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-                activity.DependsOn = dependsOn;
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                IList<UserProperty> userProperties = new List<UserProperty>();
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    userProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-                activity.UserProperties = userProperties;
-            }
+
             return activity;
         }
     }

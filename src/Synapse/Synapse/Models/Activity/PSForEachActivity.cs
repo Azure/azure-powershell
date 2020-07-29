@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Initializes a new instance of the PSForEachActivity class.
         /// </summary>
-        public PSForEachActivity(string value)
+        public PSForEachActivity()
         {
-            Items = new Expression(value);
             CustomInit();
         }
 
@@ -101,30 +100,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new ForEachActivity(this.Name, this.Items, this.Activities?.Select(element => element?.ToSdkObject()));
+            var activity = new ForEachActivity(this.Name, this.Items, this.Activities?.Select(element => element.ToSdkObject()));
             activity.IsSequential = this.IsSequential;
             activity.BatchCount = this.BatchCount;
             activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    dependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-                activity.DependsOn = dependsOn;
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                IList<UserProperty> userProperties = new List<UserProperty>();
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    userProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-                activity.UserProperties = userProperties;
-            }
+
             return activity;
         }
     }

@@ -27,9 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Trigger ToSdkObject()
         {
             var trigger = new ScheduleTrigger(this.Recurrence?.ToSdkObject());
-            trigger.Pipelines = this.Pipelines;
             trigger.Description = this.Description;
-            trigger.Annotations = this.Annotations;
             return trigger;
         }
     }

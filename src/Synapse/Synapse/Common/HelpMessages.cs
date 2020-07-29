@@ -302,6 +302,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string NotebookLanguage = "The programming language of the notebook.";
 
+        public const string OutputFolder = "The folder where the notebook should be placed.";
+
         public const string TriggerName = "The trigger name.";
 
         public const string TriggerObject = "The trigger object.";

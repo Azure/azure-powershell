@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Values = notebookKernelSpec?.Values;
         }
 
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "display_name")]

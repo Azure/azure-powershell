@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Initializes a new instance of the PSHDInsightOnDemandLinkedService
         /// class.
         /// </summary>
-        public PSHDInsightOnDemandLinkedService(string referenceName)
+        public PSHDInsightOnDemandLinkedService()
         {
-            LinkedServiceName = new LinkedServiceReference(referenceName);
             CustomInit();
         }
 
@@ -328,7 +327,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.ClusterPassword = this.ClusterPassword;
             linkedService.ClusterSshUserName = this.ClusterSshUserName;
             linkedService.ClusterSshPassword = this.ClusterSshPassword;
-            linkedService.AdditionalLinkedServiceNames = this.AdditionalLinkedServiceNames;
             linkedService.HcatalogLinkedServiceName = this.HcatalogLinkedServiceName;
             linkedService.ClusterType = this.ClusterType;
             linkedService.SparkVersion = this.SparkVersion;
@@ -344,22 +342,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.HeadNodeSize = this.HeadNodeSize;
             linkedService.DataNodeSize = this.DataNodeSize;
             linkedService.ZookeeperNodeSize = this.ZookeeperNodeSize;
-            linkedService.ScriptActions = this.ScriptActions;
             linkedService.VirtualNetworkId = this.VirtualNetworkId;
             linkedService.SubnetName = this.SubnetName;
             linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
             linkedService.Description = this.Description;
-            linkedService.Annotations = this.Annotations;
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
-                foreach (var pSParameter in pSParameters)
-                {
-                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-                linkedService.Parameters = parameters;
-            }
             return linkedService;
         }
     }

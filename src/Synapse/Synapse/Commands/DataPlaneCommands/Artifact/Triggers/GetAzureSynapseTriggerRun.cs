@@ -52,10 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse
             var filter = new RunFilterParameters(this.RunStartedAfter, this.RunStartedBefore);
             if (this.Name != null)
             {
-                filter.Filters = new List<RunQueryFilter>
-                {
-                    new RunQueryFilter(RunQueryFilterOperand.TriggerName, RunQueryFilterOperator.EqualsValue, new List<string>() { Name })
-                };
+                filter.Filters.Add(new RunQueryFilter(RunQueryFilterOperand.TriggerName, RunQueryFilterOperator.EqualsValue, new List<string>() { Name }));
             }
             WriteObject(SynapseAnalyticsClient.QueryTriggerRunsByWorkspace(filter)
                 .Select(element => new PSTriggerRun(element)));

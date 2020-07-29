@@ -43,19 +43,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 ConnectVia = this.ConnectVia?.ToSdkObject(),
                 Description = this.Description,
-                Annotations = this.Annotations
             };
-
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
-                foreach (var pSParameter in pSParameters)
-                {
-                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-                linkedService.Parameters = parameters;
-            }
 
             return linkedService;
         }

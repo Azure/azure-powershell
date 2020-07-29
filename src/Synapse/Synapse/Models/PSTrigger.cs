@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return new Trigger()
             {
                 Description = this.Description,
-                Annotations = this.Annotations,
             };
         }
     }

@@ -60,10 +60,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            RunFilterParameters filter = new RunFilterParameters(this.RunStartedAfter, this.RunStartedBefore)
-            {
-                Filters = new List<RunQueryFilter>()
-            };
+            RunFilterParameters filter = new RunFilterParameters(this.RunStartedAfter, this.RunStartedBefore);
 
             if (this.IsParameterBound(c => c.ActivityName))
             {

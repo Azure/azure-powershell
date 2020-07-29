@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ReferenceName = bigDataPoolReference?.ReferenceName;
         }
 
-        public string Type { get; set; }
+        public BigDataPoolReferenceType? Type { get; set; }
 
         public string ReferenceName { get; set; }
 
@@ -25,10 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             else
             {
-                return new BigDataPoolReference(this.ReferenceName)
-                {
-                    Type = this.Type
-                };
+                return new BigDataPoolReference(this.Type.GetValueOrDefault(), this.ReferenceName);
             }
         }
     }

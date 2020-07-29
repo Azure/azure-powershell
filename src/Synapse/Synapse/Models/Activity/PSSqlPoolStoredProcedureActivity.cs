@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using System.Linq;
 
     /// <summary>
-    /// DatabricksNotebook activity.
+    /// Execute SQL pool stored procedure activity.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DatabricksNotebook")]
+    [Newtonsoft.Json.JsonObject("SqlPoolStoredProcedure")]
     [Rest.Serialization.JsonTransformation]
-    public partial class PSDatabricksNotebookActivity : PSExecutionActivity
+    public partial class PSSqlPoolStoredProcedureActivity : PSActivity
     {
         /// <summary>
-        /// Initializes a new instance of the PSDatabricksNotebookActivity
+        /// Initializes a new instance of the SqlPoolStoredProcedureActivity
         /// class.
         /// </summary>
-        public PSDatabricksNotebookActivity()
+        public PSSqlPoolStoredProcedureActivity()
         {
             CustomInit();
         }
@@ -40,27 +40,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the absolute path of the notebook to be run in the
-        /// Databricks Workspace. This path must begin with a slash. Type:
-        /// string (or Expression with resultType string).
+        /// Gets or sets SQL pool stored procedure reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.notebookPath")]
-        public object NotebookPath { get; set; }
+        [JsonProperty(PropertyName = "sqlPool")]
+        public SqlPoolReference SqlPool { get; set; }
 
         /// <summary>
-        /// Gets or sets base parameters to be used for each run of this job.If
-        /// the notebook takes a parameter that is not specified, the default
-        /// value from the notebook will be used.
+        /// Gets or sets stored procedure name. Type: string (or Expression
+        /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.baseParameters")]
-        public IDictionary<string, object> BaseParameters { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.storedProcedureName")]
+        public object StoredProcedureName { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of libraries to be installed on the cluster
-        /// that will execute the job.
+        /// Gets or sets value and type setting for stored procedure
+        /// parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.libraries")]
-        public IList<IDictionary<string, object>> Libraries { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.storedProcedureParameters")]
+        public IDictionary<string, StoredProcedureParameter> StoredProcedureParameters { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -71,21 +68,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override void Validate()
         {
             base.Validate();
-            if (NotebookPath == null)
+            if (SqlPool == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NotebookPath");
+                throw new ValidationException(ValidationRules.CannotBeNull, "SqlPool");
+            }
+            if (StoredProcedureName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "StoredProcedureName");
             }
         }
 
         public override Activity ToSdkObject()
         {
-            var activity = new DatabricksNotebookActivity(this.Name, this.NotebookPath);
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            var activity = new SqlPoolStoredProcedureActivity(this.Name, this.SqlPool, this.StoredProcedureName);
             activity.Description = this.Description;
-
             return activity;
         }
     }
 }
-

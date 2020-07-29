@@ -23,12 +23,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "cell_type")]
         public string CellType { get; set; }
 
+        [JsonProperty(PropertyName = "metadata")]
         public object Metadata { get; set; }
 
+        [JsonProperty(PropertyName = "source")]
         public IList<string> Source { get; set; }
 
+        [JsonProperty(PropertyName = "attachments")]
         public object Attachments { get; set; }
 
+        [JsonProperty(PropertyName = "outputs")]
         public IList<PSNotebookCellOutputItem> Outputs { get; set; }
 
         public ICollection<string> Keys { get; }
@@ -44,7 +48,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return new NotebookCell(this.CellType, this.Metadata, this.Source)
             {
                 Attachments = this.Attachments,
-                Outputs = this.Outputs?.Select(element => element?.ToSdkObject()).ToList()
             };
         }
     }

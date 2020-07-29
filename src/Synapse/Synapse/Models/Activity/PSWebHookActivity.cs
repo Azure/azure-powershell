@@ -34,14 +34,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
 
         /// <summary>
-        /// Static constructor for PSWebHookActivity class.
-        /// </summary>
-        static PSWebHookActivity()
-        {
-            Method = "POST";
-        }
-
-        /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
@@ -100,7 +92,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Rest API method for target endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.method")]
-        public static string Method { get; private set; }
+        public WebHookActivityMethod Method { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -119,34 +111,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new WebHookActivity(this.Name, this.Url);
-            activity.Method = Method;
+            var activity = new WebHookActivity(this.Name, this.Method, this.Url);
             activity.Timeout = this.Timeout;
             activity.Headers = this.Headers;
             activity.Body = this.Body;
             activity.Authentication = this.Authentication;
             activity.ReportStatusOnCallBack = this.ReportStatusOnCallBack;
             activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    dependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-                activity.DependsOn = dependsOn;
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                IList<UserProperty> userProperties = new List<UserProperty>();
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    userProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-                activity.UserProperties = userProperties;
-            }
+
             return activity;
         }
     }

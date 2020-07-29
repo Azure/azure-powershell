@@ -65,7 +65,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent,Settings);
             PipelineResource pipeline = psPipeline.ToSdkObject();
-            return _pipelineClient.CreateOrUpdatePipeline(pipelineName, pipeline).Value;
+            var operation = _pipelineClient.CreateOrUpdatePipeline(pipelineName, pipeline);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public PipelineResource GetPipeline(string pipelineName)
@@ -85,7 +90,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters).Value;
+            var operation = _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         #endregion
@@ -130,7 +140,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSLinkedServiceResource psLinkedService = JsonConvert.DeserializeObject<PSLinkedServiceResource>(rawJsonContent, Settings);
             LinkedServiceResource linkedService = psLinkedService.ToSdkObject();
-            return _linkedServiceClient.CreateOrUpdateLinkedService(linkedServiceName, linkedService);
+            var operation = _linkedServiceClient.CreateOrUpdateLinkedService(linkedServiceName, linkedService);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public void DeleteLinkedService(string linkedServiceName)
@@ -144,7 +159,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public NotebookResource CreateOrUpdateNotebook(string notebookName, NotebookResource notebook)
         {
-            return _notebookClient.CreateOrUpdateNotebook(notebookName, notebook);
+            var operation = _notebookClient.CreateOrUpdateNotebook(notebookName, notebook);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public void DeleteNotebook(string notebookName)
@@ -170,7 +190,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSTriggerResource pSTrigger = JsonConvert.DeserializeObject<PSTriggerResource>(rawJsonContent, Settings);
             TriggerResource trigger = pSTrigger.ToSdkObject();
-            return _triggerClient.CreateOrUpdateTrigger(triggerName, trigger);
+            var operation = _triggerClient.CreateOrUpdateTrigger(triggerName, trigger);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public TriggerResource GetTrigger(string triggerName)

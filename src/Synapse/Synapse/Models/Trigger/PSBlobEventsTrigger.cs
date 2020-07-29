@@ -39,9 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Trigger ToSdkObject()
         {
             var trigger = new BlobEventsTrigger(this.Events.Select(element => new BlobEventTypes(element)), this.Scope);
-            trigger.Pipelines = this.Pipelines;
             trigger.Description = this.Description;
-            trigger.Annotations = this.Annotations;
             trigger.BlobPathBeginsWith = this.BlobPathBeginsWith;
             trigger.BlobPathEndsWith = this.BlobPathEndsWith;
             this.IgnoreEmptyBlobs = this.IgnoreEmptyBlobs;

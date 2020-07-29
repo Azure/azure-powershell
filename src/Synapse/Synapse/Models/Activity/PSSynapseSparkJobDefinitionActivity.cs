@@ -11,21 +11,25 @@
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Base class for all execution activities.
+    /// Execute spark job activity.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Execution")]
-    public partial class PSExecutionActivity : PSActivity
+    [Newtonsoft.Json.JsonObject("SparkJob")]
+    [Rest.Serialization.JsonTransformation]
+    public partial class PSSynapseSparkJobDefinitionActivity : PSActivity
     {
         /// <summary>
-        /// Initializes a new instance of the PSExecutionActivity class.
+        /// Initializes a new instance of the SynapseSparkJobDefinitionActivity
+        /// class.
         /// </summary>
-        public PSExecutionActivity()
+        public PSSynapseSparkJobDefinitionActivity()
         {
             CustomInit();
         }
@@ -36,37 +40,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets linked service reference.
+        /// Gets or sets synapse spark job reference.
         /// </summary>
-        [JsonProperty(PropertyName = "linkedServiceName")]
-        public LinkedServiceReference LinkedServiceName { get; set; }
-
-        /// <summary>
-        /// Gets or sets activity policy.
-        /// </summary>
-        [JsonProperty(PropertyName = "policy")]
-        public ActivityPolicy Policy { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.sparkJob")]
+        public SynapseSparkJobReference SparkJob { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public override void Validate()
         {
             base.Validate();
+            if (SparkJob == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "SparkJob");
+            }
         }
 
         public override Activity ToSdkObject()
         {
-            var activity = new ExecutionActivity(this.Name);
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            var activity = new SynapseSparkJobDefinitionActivity(this.Name, this.SparkJob);
             activity.Description = this.Description;
-
             return activity;
         }
     }
 }
-

@@ -11,21 +11,24 @@
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Base class for all execution activities.
+    /// Execute Synapse notebook activity.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Execution")]
-    public partial class PSExecutionActivity : PSActivity
+    [Newtonsoft.Json.JsonObject("SynapseNotebook")]
+    [Rest.Serialization.JsonTransformation]
+    public partial class PSSynapseNotebookActivity : PSActivity
     {
         /// <summary>
-        /// Initializes a new instance of the PSExecutionActivity class.
+        /// Initializes a new instance of the SynapseNotebookActivity class.
         /// </summary>
-        public PSExecutionActivity()
+        public PSSynapseNotebookActivity()
         {
             CustomInit();
         }
@@ -36,37 +39,37 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets linked service reference.
+        /// Gets or sets synapse notebook reference.
         /// </summary>
-        [JsonProperty(PropertyName = "linkedServiceName")]
-        public LinkedServiceReference LinkedServiceName { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.notebook")]
+        public SynapseNotebookReference Notebook { get; set; }
 
         /// <summary>
-        /// Gets or sets activity policy.
+        /// Gets or sets notebook parameters.
         /// </summary>
-        [JsonProperty(PropertyName = "policy")]
-        public ActivityPolicy Policy { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.parameters")]
+        public IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public override void Validate()
         {
             base.Validate();
+            if (Notebook == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Notebook");
+            }
         }
 
         public override Activity ToSdkObject()
         {
-            var activity = new ExecutionActivity(this.Name);
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            var activity = new SynapseNotebookActivity(this.Name, this.Notebook);
             activity.Description = this.Description;
-
             return activity;
         }
     }
 }
-

@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Initializes a new instance of the PSDataLakeAnalyticsUSQLActivity
         /// class.
         /// </summary>
-        public PSDataLakeAnalyticsUsqlActivity(string referenceName)
+        public PSDataLakeAnalyticsUsqlActivity()
         {
-            ScriptLinkedService = new LinkedServiceReference(referenceName);
             CustomInit();
         }
 
@@ -115,32 +114,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var activity = new DataLakeAnalyticsUsqlActivity(this.Name, this.ScriptPath, this.ScriptLinkedService);
             activity.DegreeOfParallelism = this.DegreeOfParallelism;
             activity.Priority = this.Priority;
-            activity.Parameters = this.Parameters;
             activity.RuntimeVersion = this.RuntimeVersion;
             activity.CompilationMode = this.CompilationMode;
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    dependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-                activity.DependsOn = dependsOn;
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                IList<UserProperty> userProperties = new List<UserProperty>();
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    userProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-                activity.UserProperties = userProperties;
-            }
+
             return activity;
         }
     }

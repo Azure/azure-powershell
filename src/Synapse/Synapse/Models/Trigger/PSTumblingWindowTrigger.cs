@@ -49,11 +49,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var trigger = new TumblingWindowTrigger(this.Pipeline, this.Frequency, this.Interval, this.StartTime, this.MaxConcurrency);
             trigger.Description = this.Description;
-            trigger.Annotations = this.Annotations;
             trigger.EndTime = this.EndTime;
             trigger.Delay = this.Delay;
             trigger.RetryPolicy = this.RetryPolicy;
-            trigger.DependsOn = this.DependsOn;
             return trigger;
         }
     }

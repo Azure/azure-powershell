@@ -78,43 +78,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 Description = this.Description,
                 Concurrency = this.Concurrency,
-                Annotations = this.Annotations,
-                RunDimensions = this.RunDimensions,
                 Folder = this.Folder?.ToSdkObject()
             };
-
-            IList<PSActivity> pSActivities = this.Activities;
-            if (pSActivities != null)
-            {
-                IList<Activity> activities = new List<Activity>();
-                foreach (PSActivity pSActivity in pSActivities)
-                {
-                    activities.Add(pSActivity?.ToSdkObject());
-                }
-                pipeline.Activities = activities;
-            }
-
-            IDictionary<string, PSVariableSpecification> pSVariables = this.Variables;
-            if (pSVariables != null)
-            {
-                IDictionary<string, VariableSpecification> variables = new Dictionary<string, VariableSpecification>();
-                foreach (var pSVariable in pSVariables)
-                {
-                    variables.Add(pSVariable.Key, pSVariable.Value?.ToSdkObject());
-                }
-                pipeline.Variables = variables;
-            }
-
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                IDictionary<string, ParameterSpecification> parameters = new Dictionary<string, ParameterSpecification>();
-                foreach (var pSParameter in pSParameters)
-                {
-                    parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-                pipeline.Parameters = parameters;
-            }
 
             return pipeline;
         }

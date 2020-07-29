@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Values = notebookLanguageInfo?.Values;
         }
 
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         public string CodemirrorMode { get; set; }

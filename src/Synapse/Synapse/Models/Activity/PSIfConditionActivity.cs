@@ -30,9 +30,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Initializes a new instance of the PSIfConditionActivity class.
         /// </summary>
-        public PSIfConditionActivity(string value)
+        public PSIfConditionActivity()
         {
-            Expression = new Expression(value);
             CustomInit();
         }
 
@@ -103,29 +102,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new IfConditionActivity(this.Name, this.Expression);
-            activity.IfTrueActivities = this.IfTrueActivities?.Select(element => element?.ToSdkObject()).ToList();
-            activity.IfFalseActivities = this.IfFalseActivities?.Select(element => element?.ToSdkObject()).ToList();
             activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                IList<ActivityDependency> dependsOn = new List<ActivityDependency>();
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    dependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-                activity.DependsOn = dependsOn;
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                IList<UserProperty> userProperties = new List<UserProperty>();
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    userProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-                activity.UserProperties = userProperties;
-            }
+
             return activity;
         }
     }

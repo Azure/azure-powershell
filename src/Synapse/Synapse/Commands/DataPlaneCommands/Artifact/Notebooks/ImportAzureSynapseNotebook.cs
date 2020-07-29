@@ -6,63 +6,61 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Synapse
+namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.Notebooks
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
-        DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook)]
+    [Cmdlet(VerbsData.Import, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
+        DefaultParameterSetName = ImportByName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSNotebookResource))]
-    public class SetAzureSynapseNotebook : SynapseArtifactsCmdletBase
+    public class ImportAzureSynapseNotebook : SynapseArtifactsCmdletBase
     {
-        private const string SetByName = "SetByName";
-        private const string SetByObject = "SetByObject";
-        private const string SetByNameAndSparkPool = "SetByNameAndSparkPool";
-        private const string SetByObjectAndSparkPool = "SetByObjectAndSparkPool";
+        private const string ImportByName = "ImportByName";
+        private const string ImportByObject = "ImportByObject";
+        private const string ImportByNameAndSparkPool = "ImportByNameAndSparkPool";
+        private const string ImportByObjectAndSparkPool = "ImportByObjectAndSparkPool";
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObject,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = ImportByObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObjectAndSparkPool,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = ImportByObjectAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.NotebookName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByObjectAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
         [ValidateNotNullOrEmpty]
         public string SparkPoolName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByNameAndSparkPool,
             Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByObjectAndSparkPool,
             Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
         [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string ExecutorSize { get; set; } = Management.Synapse.Models.NodeSize.Small;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ImportByObjectAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
         public int Executors { get; set; }
 
@@ -112,10 +110,15 @@ namespace Microsoft.Azure.Commands.Synapse
                     options["type"] = "Spark";
                     metadata["a365ComputeOptions"] = options;
 
-                    notebookResource.Properties.BigDataPool = new BigDataPoolReference(new BigDataPoolReferenceType("BigDataPoolReference"),this.SparkPoolName);
+                    notebookResource.Properties.BigDataPool = new BigDataPoolReference(new BigDataPoolReferenceType("BigDataPoolReference"), this.SparkPoolName);
                     notebookResource.Properties.SessionProperties = new NotebookSessionProperties(options["memory"] + "g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]);
                 }
 
+                if (!this.IsParameterBound(c => c.Name))
+                {
+                    string path = this.TryResolvePath(DefinitionFile);
+                    this.Name = path.Split('\\').Last().Split('.').First();
+                }
                 WriteObject(new PSNotebookResource(SynapseAnalyticsClient.CreateOrUpdateNotebook(this.Name, notebookResource), this.WorkspaceName));
             }
         }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Parameters = integrationRuntimeReference?.Parameters;
         }
 
-        public string Type { get; set; }
+        public IntegrationRuntimeReferenceType? Type { get; set; }
 
         public string ReferenceName { get; set; }
 
@@ -22,11 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public IntegrationRuntimeReference ToSdkObject()
         {
-            IntegrationRuntimeReference integrationRuntimeReference = new IntegrationRuntimeReference(this.ReferenceName)
-            {
-                Type = this.Type,
-                Parameters = this.Parameters
-            };
+            IntegrationRuntimeReference integrationRuntimeReference = new IntegrationRuntimeReference(this.Type.GetValueOrDefault(), this.ReferenceName);
             return integrationRuntimeReference;
         }
     }
