@@ -42,9 +42,9 @@ function Test-MasterCustomIpPrefixCRUD
         Assert-AreEqual $expected.ValidationMessage $actual.ValidationMessage
         Assert-AreEqual $expected.SignedValidationMessage $actual.SignedValidationMessage
         Assert-AreEqual $expected.ValidationState "Validating"
-        Assert-AreEqual 0 $expected.CustomIpPrefixes.Count
-        Assert-NotNull $expected.ResourceGuid
-        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual $expected.CustomIpPrefixes.Count 0
+        Assert-NotNull  $expected.ResourceGuid
+        Assert-AreEqual $expected.ProvisioningState "Succeeded"
 
         # list
         $list = Get-AzMasterCustomIpPrefix -ResourceGroupName $rgname
@@ -55,8 +55,17 @@ function Test-MasterCustomIpPrefixCRUD
         Assert-AreEqual $list[0].Cidr $actual.Cidr
         Assert-AreEqual $list[0].ValidationMessage $actual.ValidationMessage
         Assert-AreEqual $list[0].SignedValidationMessage $actual.SignedValidationMessage
-        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
-      
+        Assert-AreEqual $list[0].CustomIpPrefixes.Count 0
+        Assert-NotNull  $list[0].ResourceGuid
+        Assert-AreEqual $list[0].ProvisioningState "Succeeded"
+        
+        # update tags
+        $tags = @{"test" = "tag"}
+        $job = Update-AzMasterCustomIpPrefix -ResourceGroupName $rgname -Name $rname -Tag $tags -AsJob
+        $job | Wait-Job
+        $updatedPrefix = $job | Receive-Job
+        Assert-AreEqual $updatedPrefix.Tag $tag
+
         # delete
         $job = Remove-AzMasterCustomIpPrefix -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
         $job | Wait-Job
