@@ -152,13 +152,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the logs enable parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics logs should be enabled or disabled")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostic logs should be enabled or disabled")]
         public bool EnableLog { get; set; }
         
         /// <summary>
         /// Gets or sets the metrics enable parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostic metrics should be enabled or disabled")]
         public bool EnableMetrics { get; set; }
 		
         #endregion

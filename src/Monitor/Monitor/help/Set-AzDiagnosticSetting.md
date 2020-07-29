@@ -175,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableLog
-The value indicating whether the diagnostics logs should be enabled or disabled
+The value indicating whether the diagnostic logs should be enabled or disabled
 
 ```yaml
 Type: System.Boolean
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableMetrics
-The value indicating whether the diagnostics should be enabled or disabled
+The value indicating whether the diagnostic metrics should be enabled or disabled
 
 ```yaml
 Type: System.Boolean
