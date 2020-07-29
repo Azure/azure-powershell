@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public FeatureClient FeatureClient { get; private set; }
 
-        public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
+        public Management.ResourceManager.Version2019_06_01.SubscriptionClient SubscriptionClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -220,9 +220,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return context.GetServiceClient<DeploymentScriptsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
+        private static Management.ResourceManager.Version2019_06_01.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Management.ResourceManager.Version2019_06_01.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
