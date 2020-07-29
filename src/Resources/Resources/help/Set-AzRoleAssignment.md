@@ -14,14 +14,7 @@ schema: 2.0.0
 
 ### RoleAssignmentIdParameterSet (Default)
 ```
-Set-AzRoleAssignment -RoleAssignmentId <String> [-Description <String>] [-Condition <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ScopeWithObjectIdParameterSet
-```
-Set-AzRoleAssignment -Scope <String> -ObjectId <String> [-Description <String>] [-Condition <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRoleAssignment [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
@@ -49,43 +42,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Condition
-Condition of the role assignment to be set
-
-```yaml
-Type: String
-Parameter Sets: RoleAssignmentIdParameterSet, ScopeWithObjectIdParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description of the role assignment to be set
-
-```yaml
-Type: String
-Parameter Sets: RoleAssignmentIdParameterSet, ScopeWithObjectIdParameterSet
-Aliases:
 
 Required: False
 Position: Named
@@ -98,23 +61,8 @@ Accept wildcard characters: False
 File name containing a single role definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ObjectId
-ObjectId of the role assignment to be set
-
-```yaml
-Type: String
-Parameter Sets: ScopeWithObjectIdParameterSet
 Aliases:
 
 Required: True
@@ -128,7 +76,7 @@ Accept wildcard characters: False
 Role Assignment object.
 
 ```yaml
-Type: PSRoleAssignment
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 Parameter Sets: RoleAssignmentParameterSet
 Aliases:
 
@@ -136,36 +84,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -RoleAssignmentId
-Id of the role assignment to be set
-
-```yaml
-Type: String
-Parameter Sets: RoleAssignmentIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scope
-Scope of the role assignment to be set
-
-```yaml
-Type: String
-Parameter Sets: ScopeWithObjectIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
