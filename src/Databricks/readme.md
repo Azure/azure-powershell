@@ -53,7 +53,7 @@ require:
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
