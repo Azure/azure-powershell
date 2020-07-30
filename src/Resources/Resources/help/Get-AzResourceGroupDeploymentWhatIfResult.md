@@ -117,7 +117,7 @@ The **Get-AzResourceGroupDeploymentWhatIfResult** cmdlet gets the ARM template W
 ```powershell
 PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1"
+    -ResourceGroupName "myRG1" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "FullResourcePayloads"
@@ -133,7 +133,7 @@ The command uses the *ResultFormat* parameter to set the What-If result to inclu
 ```powershell
 PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1"
+    -ResourceGroupName "myRG1" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "ResourceIdOnly"
@@ -210,9 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the deployment it's going to create.
-Only valid when a template is used.
-When a template is used, if the user doesn't specify a deployment name, use the current time, like "20131223140835".
+The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. "20131223140835".
 
 ```yaml
 Type: System.String

@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Supported customer-managed keys and configuration of managed identity.
+
 ## Version 0.1.4
 
 ## Version 0.1.3

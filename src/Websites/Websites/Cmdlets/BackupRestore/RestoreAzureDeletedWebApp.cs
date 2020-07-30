@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The location of the deleted Azure Web App.")]
         public string Location { get; set; }
 
+        [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The Resource ID of the deleted web app.")]
+        public string DeletedId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing the new Azure Web App.")]
         public string TargetResourceGroupName { get; set; }
 
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         {
             base.ExecuteCmdlet();
 
-            string deletedSiteId = GetDeletedSiteResourceId();
+            string deletedSiteId = string.IsNullOrEmpty(DeletedId) ? GetDeletedSiteResourceId() : DeletedId;
             ResolveTargetParameters();
 
             DeletedAppRestoreRequest restoreReq = new DeletedAppRestoreRequest()

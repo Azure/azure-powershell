@@ -13,9 +13,8 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
-Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity]
- [-UserAssignedIdentity <String[]>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +23,7 @@ The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ## EXAMPLES
 
-### Example 1 Get an API Management service and scale it to Premium and Add a region
+### Example 1: Get an API Management service and scale it to Premium and Add a region
 ```powershell
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.Sku = "Premium"

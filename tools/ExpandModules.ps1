@@ -35,7 +35,7 @@ $tmp = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath "tmp"
 
 try {
     foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
-        $module_name = (((Get-Item -Path $artifact).Name) -split("\.([0-9])+"))[0]
+        $module_name = (Get-Item -Path $artifact).Name
         $zip_artifact = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath $module_name".zip"
 
         Write-Output "Renaming package $artifact to zip archive $zip_artifact"

@@ -23,7 +23,8 @@ function Test-GetSubscriptionsEndToEnd
 	$allSubscriptions = Get-AzSubscription
 	$firstSubscription = $allSubscriptions[0]
 	$id = $firstSubscription.Id
-	$tenant = $firstSubscription.TenantId
+	$tenant = $firstSubscription.HomeTenantId
+	Assert-NotNull $tenant
 	$name = $firstSubscription.Name
 	$subscription = $firstSubscription | Get-AzSubscription
 	Assert-True { $subscription -ne $null }
@@ -107,7 +108,7 @@ function Test-SetAzureRmContextWithoutSubscription
     $allSubscriptions = Get-AzSubscription
     $firstSubscription = $allSubscriptions[0]
     $id = $firstSubscription.Id
-    $tenantId = $firstSubscription.TenantId
+    $tenantId = $firstSubscription.HomeTenantId
 
     Assert-True { $tenantId -ne $null }
 
@@ -116,6 +117,6 @@ function Test-SetAzureRmContextWithoutSubscription
 
     Assert-True { $context.Subscription -ne $null }
     Assert-True { $context.Tenant -ne $null }
-    Assert-AreEqual $context.Tenant.Id $firstSubscription.TenantId
+    Assert-AreEqual $context.Tenant.Id $firstSubscription.HomeTenantId
     Assert-AreEqual $context.Subscription.Id $firstSubscription.Id
 }

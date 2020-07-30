@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             if (tenant != null && !string.IsNullOrWhiteSpace(tenant.Id) && context != null)
             {
                 context.Subscription?.SetTenant(tenant.Id);
-                context.Account?.SetOrAppendProperty(AzureAccount.Property.Subscriptions, tenant.Id);
+                context.Account?.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant.Id);
                 context.Tenant = tenant;
             }
 

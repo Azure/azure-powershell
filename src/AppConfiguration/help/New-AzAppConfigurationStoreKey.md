@@ -14,19 +14,44 @@ Regenerates an access key for the specified configuration store.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Id <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -Id <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> [-Id <String>]
+New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> -Id <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Regenerates an access key for the specified configuration store.
 
+## EXAMPLES
+
+### Example 1: Regenerate key of an app configuration store
+```powershell
+PS C:\> $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
+PS C:\> New-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test -Id $keys[0].id
+
+ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
+----------------                                                                                                                     ------------        ----      -------- -----
+Endpoint=https://appconfig-test01.azconfig.io;Id=09pv-l0-s0:opFCQMC6+9485xJgN5Ws;Secret=GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY= 5/8/2020 5:47:15 AM Secondary False    GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY=
+```
+
+This command regenerate key of an app configuration store.
+
+### Example 2: Regenerate key of an app configuration store by object
+```powershell
+PS C:\> $app= New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test
+PS C:\> $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
+PS C:\> New-AzAppConfigurationStoreKey -InputObject $app -Id $keys[0].id
+ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
+----------------                                                                                                                     ------------        ----      -------- -----
+Endpoint=https://appconfig-test01.azconfig.io;Id=09pv-l0-s0:opFCQMC6+9485xJgN5Ws;Secret=GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY= 5/8/2020 5:47:15 AM Secondary False    GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY=
+```
+
+This command regenerate key of an app configuration store by object.
 
 ## PARAMETERS
 
@@ -53,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IApiKey
 
 ## NOTES
 
@@ -174,7 +199,9 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   - `[ConfigStoreName <String>]`: The name of the configuration store.
+  - `[GroupName <String>]`: The name of the private link resource group.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
   - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 

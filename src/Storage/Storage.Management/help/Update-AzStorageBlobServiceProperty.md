@@ -15,20 +15,22 @@ Modifies the service properties for the Azure Storage Blob service.
 ### AccountName (Default)
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultServiceVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultServiceVersion <String>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,12 +42,35 @@ The **Update-AzStorageBlobServiceProperty** cmdlet modifies the service properti
 ```
 C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
 
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days
------------------- ----------------- --------------------- ----------------------------- --------------------------
-myresourcegroup    mystorageaccount  2018-03-28            False                                                   
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 2018-03-28
+DeleteRetentionPolicy.Enabled : False
+DeleteRetentionPolicy.Days    : 
+RestorePolicy.Enabled         : 
+RestorePolicy.Days            : 
+ChangeFeed                    : 
+IsVersioningEnabled           :
 ```
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
+
+### Example 2: Enable Versioning on Blob service of a Storage account
+```
+C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IsVersioningEnabled $true
+
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : False
+DeleteRetentionPolicy.Days    : 
+RestorePolicy.Enabled         : 
+RestorePolicy.Days            : 
+ChangeFeed                    : 
+IsVersioningEnabled           : True
+```
+
+This command enables Versioning on Blob service of a Storage account
 
 ## PARAMETERS
 
@@ -69,6 +94,21 @@ Default Service Version to Set
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsVersioningEnabled
+Gets or sets versioning is enabled if set to true.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

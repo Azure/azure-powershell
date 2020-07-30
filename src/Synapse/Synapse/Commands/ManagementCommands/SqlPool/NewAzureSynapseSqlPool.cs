@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool, DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
-    public class NewAzureSynapseSqlPool : SynapseCmdletBase
+    public class NewAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
         // Default
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";

@@ -127,13 +127,13 @@
     <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString "{0}"</value>
   </data>
   <data name="ADApplicationMoreThanOneFound" xml:space="preserve">
-    <value>More than one Azure Active Directory application with the display name '{0}' was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString "{0}"</value>
+    <value>More than one Azure Active Directory application with the display name '{0}' was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString "{0}" or use use Get-AzADServicePrincipal -SearchString "{0}"</value>
   </data>
   <data name="ADApplicationDisplayNameMismatch" xml:space="preserve">
-    <value>Azure Active Directory application with the display name '{0}' was found. Display Name provided does not match with application display name '{1}'. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString "{0}" or Get-AzADApplication -SearchString "{1}".</value>
+    <value>Azure Active Directory application with the display name '{0}' was found. Display Name provided does not match with any service principal display name '{1}'. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString "{0}" or Get-AzADServicePrincipal -SearchString "{1}".</value>
   </data>
   <data name="ADDuplicateGroupAndApplicationFound" xml:space="preserve">
-    <value>Azure Active Directory application and group with same display name '{0}' was found. Please provide an Azure Active Directory application id of the application or object id of the group to select the correct application. To get the application id use Get-AzADApplication -SearchString "{0}" or to get object id use Get-AzADGroup -SearchString "{0}".</value>
+    <value>Azure Active Directory application and group with same display name '{0}' was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString "{0}" or to get object id use Get-AzADGroup -SearchString "{0}".</value>
   </data>
   <data name="DatabaseNameExists" xml:space="preserve">
     <value>Database with name: '{0}' already exists in server '{1}'.</value>
@@ -624,5 +624,14 @@
   </data>
   <data name="SyncMemberIdRequired" xml:space="preserve">
     <value>SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it.</value>
+  </data>
+  <data name="FailoverAzureSqlInstanceDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Managed Instance '{0}'.</value>
+  </data>
+  <data name="FailoverAzureSqlInstanceWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Managed Instance '{0}'?</value>
+  </data>
+  <data name="ServerNameInvalid" xml:space="preserve">
+    <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
 </root>

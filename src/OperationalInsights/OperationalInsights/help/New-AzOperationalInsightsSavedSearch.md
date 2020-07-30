@@ -16,7 +16,7 @@ Creates a new saved search with the specified parameters.
 ```
 New-AzOperationalInsightsSavedSearch [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-SavedSearchId] <String> [-DisplayName] <String> [-Category] <String> [-Query] <String> [[-Tag] <Hashtable>]
- [[-Version] <Int64>] [[-FunctionAlias] <String>] [[-FunctionParameters] <String>] [-Force]
+ [[-Version] <Int64>] [[-FunctionAlias] <String>] [[-FunctionParameter] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -109,13 +109,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FunctionParameters
+### -FunctionParameter
 The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FunctionParameters
 
 Required: False
 Position: 9

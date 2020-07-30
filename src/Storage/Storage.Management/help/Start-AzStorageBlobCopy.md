@@ -25,8 +25,8 @@ Start-AzStorageBlobCopy [-SrcBlob] <String> -SrcContainer <String> -DestContaine
 
 ### BlobInstance
 ```
-Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestContainer <String> [-DestBlob <String>]
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>]
+Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] -DestContainer <String>
+ [-DestBlob <String>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>]
  [-RehydratePriority <RehydratePriority>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -35,7 +35,7 @@ Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestContainer <String> [-DestBlo
 
 ### BlobInstanceToBlobInstance
 ```
-Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestCloudBlob <CloudBlob>
+Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] -DestCloudBlob <CloudBlob>
  [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>]
  [-RehydratePriority <RehydratePriority>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
@@ -179,6 +179,21 @@ Parameter Sets: UriPipeline
 Aliases: SrcUri, SourceUri
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BlobBaseClient
+BlobBaseClient Object
+
+```yaml
+Type: Azure.Storage.Blobs.Specialized.BlobBaseClient
+Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -392,7 +407,7 @@ Premium Page Blob Tier
 Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance
 Aliases:
-Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
+Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60, P70, P80
 
 Required: False
 Position: Named
@@ -408,6 +423,7 @@ Block Blob RehydratePriority. Indicates the priority with which to rehydrate an 
 Type: Microsoft.Azure.Storage.Blob.RehydratePriority
 Parameter Sets: (All)
 Aliases:
+Accepted values: Standard, High
 
 Required: False
 Position: Named
@@ -547,6 +563,7 @@ See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named

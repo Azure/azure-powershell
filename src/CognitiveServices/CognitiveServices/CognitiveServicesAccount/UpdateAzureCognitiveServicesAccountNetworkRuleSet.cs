@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Cognitive Services Account NetworkRule DefaultAction.")]
+            HelpMessage = "Cognitive Services Account NetworkRule DefaultAction. Default value `Deny`.")]
         [ValidateNotNullOrEmpty]
         public PSNetWorkRuleDefaultActionEnum DefaultAction
         {
             get
             {
-                return defaultAction == null ? PSNetWorkRuleDefaultActionEnum.Allow : defaultAction.Value;
+                return defaultAction == null ? PSNetWorkRuleDefaultActionEnum.Deny : defaultAction.Value;
             }
             set
             {
@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
+                    accountACL.DefaultAction = NetworkRuleAction.Deny;
                 }
 
                 PSNetworkRuleSet psNetworkRule = PSNetworkRuleSet.Create(accountACL);

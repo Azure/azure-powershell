@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.FirewallRule,
         DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseIpFirewallRule))]
-    public class NewAzureSynapseFirewallRule : SynapseCmdletBase
+    public class NewAzureSynapseFirewallRule : SynapseManagementCmdletBase
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";

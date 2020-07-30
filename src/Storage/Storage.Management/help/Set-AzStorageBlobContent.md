@@ -331,7 +331,7 @@ Page Blob Tier
 Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: (All)
 Aliases:
-Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
+Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60, P70, P80
 
 Required: False
 Position: Named
@@ -380,6 +380,7 @@ See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named

@@ -29,8 +29,8 @@ For more on this setting and how to enable it, see New-AzResourceGroupDeployment
 
 ## EXAMPLES
 
-### Get1
-```
+### Example 1: Get1
+```powershell
 PS C:\>Get-AzResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
 ```
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer

@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
@@ -77,6 +78,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The address space string for this virtual hub.")]
         public string AddressPrefix { get; set; }
 
+        public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
+        [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
@@ -139,23 +142,29 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// HubVirtualNetworkConnections
+            List<PSHubVirtualNetworkConnection> hubVnetConnectionList = null;
             if (this.HubVnetConnection != null)
             {
+                // Simulate behavior of old API to clear all existing connections not in new request and then add new ones
+                if (virtualHubToUpdate.VirtualNetworkConnections != null)
+                {
+                    foreach (var connection in virtualHubToUpdate.VirtualNetworkConnections)
+                    {
+                        if (!this.HubVnetConnection.Any(conn => conn.Name == connection.Name))
+                        {
+                            this.HubVnetConnectionCmdlet.HubVirtualNetworkConnectionsClient.Delete(this.ResourceGroupName, this.Name, connection.Name);
+                        }
+                    }
+                }
+
                 virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
                 virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
-
-                // get auth headers for cross-tenant hubvnet conn
-                List<string> resourceIds = new List<string>();
-                foreach (var connection in this.HubVnetConnection)
-                {
-                    resourceIds.Add(connection.RemoteVirtualNetwork.Id);
-                }
-
-                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                {
-                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                }
+            }
+            else
+            {
+                // optimization to avoid unnecessary put on hubvnet connections
+                hubVnetConnectionList = virtualHubToUpdate.VirtualNetworkConnections;
+                virtualHubToUpdate.VirtualNetworkConnections = null;
             }
 
             //// VirtualHubRouteTable
@@ -176,12 +185,18 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                        WriteObject(this.CreateOrUpdateVirtualHub(
+                        var hubToReturn = this.CreateOrUpdateVirtualHub(
                             this.ResourceGroupName,
                             this.Name,
                             virtualHubToUpdate,
                             this.Tag,
-                            auxAuthHeader));
+                            auxAuthHeader);
+                        if (hubVnetConnectionList != null)
+                        {
+                            // patch back the hubvnet connection for backward compatibility
+                            hubToReturn.VirtualNetworkConnections = hubVnetConnectionList;
+                        }
+                        WriteObject(hubToReturn);
                     });
         }
     }

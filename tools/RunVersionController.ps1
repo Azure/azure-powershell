@@ -133,11 +133,13 @@ function Get-ReleaseNotes
     )
 
     $ProjectPaths = @( "$RootPath\src" )
+    
+    .($PSScriptRoot + "\PreloadToolDll.ps1")
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
-                                                                                                          ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*") } }
+                                                                                                          (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
 
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
@@ -204,6 +206,10 @@ switch ($PSCmdlet.ParameterSetName)
                     {
                         $JsonFile = $NestedModule.Replace(".\", "") + ".json"
                         $ExpectJsonHashSet.Add($JsonFile, $true)
+                    }
+                    if($null -eq $Psd1Object.NestedModules)
+                    {
+                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
                     }
                 }
             }

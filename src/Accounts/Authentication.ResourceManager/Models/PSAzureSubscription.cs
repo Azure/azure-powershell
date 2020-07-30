@@ -120,6 +120,30 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        public string HomeTenantId
+        {
+            get
+            {
+                return this.GetHomeTenant();
+            }
+            set
+            {
+                this.SetHomeTenant(value);
+            }
+        }
+
+        public string[] ManagedByTenantIds
+        {
+            get
+            {
+                return this.GetManagedByTenants();
+            }
+            set
+            {
+                this.SetManagedByTenants(value);
+            }
+        }
+
         public string CurrentStorageAccountName
         {
             get
