@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namespaces_sdkpseventhubnsg_name": {
-      "value": "eventhubnsgrid25n9il"
+      "value": "eventhubnsgridql4uyh"
     },
     "eventhubg_name": {
-      "value": "eventgrid25n9il"
+      "value": "eventgridql4uyh"
     }
   }
 }
