@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
         DefaultParameterSetName = GetByName)]
-    [Alias("Export-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook)]
     [OutputType(typeof(PSNotebookResource))]
     public class GetAzureSynapseNotebook : SynapseArtifactsCmdletBase
     {
@@ -39,10 +38,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.OutputFolder)]
-        [ValidateNotNullOrEmpty]
-        public string OutputFolder { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -52,33 +47,13 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.Name))
             {
-                var notebook = new PSNotebookResource(SynapseAnalyticsClient.GetNotebook(this.Name), this.WorkspaceName);
-                if (this.IsParameterBound(c => c.OutputFolder))
-                {
-                    string json = JsonConvert.SerializeObject(notebook.Properties, Formatting.Indented);
-                    File.WriteAllText(this.OutputFolder + notebook.Name + ".ipynb", json);
-                }
-                else
-                {
-                    WriteObject(notebook);
-                }
+                WriteObject(new PSNotebookResource(SynapseAnalyticsClient.GetNotebook(this.Name), this.WorkspaceName));
             }
             else
             {
                 var notebooks = SynapseAnalyticsClient.GetNotebooksByWorkspace()
                     .Select(element => new PSNotebookResource(element, this.WorkspaceName));
-                if (this.IsParameterBound(c => c.OutputFolder))
-                {
-                    foreach(var notebook in notebooks)
-                    {
-                        string json = JsonConvert.SerializeObject(notebook.Properties, Formatting.Indented);
-                        File.WriteAllText(this.OutputFolder + notebook.Name + ".ipynb", json);
-                    }
-                }
-                else
-                {
-                    WriteObject(notebooks, true);
-                }
+                WriteObject(notebooks, true);
             }
         }
     }

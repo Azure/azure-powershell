@@ -47,6 +47,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var trigger = new MultiplePipelineTrigger();
             trigger.Description = this.Description;
+            foreach (var item in this.Pipelines)
+            {
+                trigger.Pipelines.Add(item);
+            }
+            foreach (var item in this.Annotations)
+            {
+                trigger.Annotations.Add(item);
+            }
             return trigger;
         }
     }

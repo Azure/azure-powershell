@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             trigger.EndTime = this.EndTime;
             trigger.Delay = this.Delay;
             trigger.RetryPolicy = this.RetryPolicy;
+            foreach (var item in this.DependsOn)
+            {
+                trigger.DependsOn.Add(item);
+            }
+            foreach (var item in this.Annotations)
+            {
+                trigger.Annotations.Add(item);
+            }
             return trigger;
         }
     }

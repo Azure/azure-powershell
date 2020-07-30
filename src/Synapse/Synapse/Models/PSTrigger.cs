@@ -30,10 +30,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public virtual Trigger ToSdkObject()
         {
-            return new Trigger()
+            var trigger = new Trigger()
             {
                 Description = this.Description,
             };
+            foreach (var item in this.Annotations)
+            {
+                trigger.Annotations.Add(item);
+            }
+            return trigger;
         }
     }
 }

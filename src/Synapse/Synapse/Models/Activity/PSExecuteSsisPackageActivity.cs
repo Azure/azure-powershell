@@ -145,11 +145,46 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.LoggingLevel = this.LoggingLevel;
             activity.EnvironmentPath = this.EnvironmentPath;
             activity.ExecutionCredential = this.ExecutionCredential;
+            foreach (var item in this.ProjectParameters)
+            {
+                activity.ProjectParameters.Add(item);
+            }
+            foreach (var item in this.PackageParameters)
+            {
+                activity.PackageParameters.Add(item);
+            }
+            foreach (var item in this.ProjectConnectionManagers)
+            {
+                activity.ProjectConnectionManagers.Add(item.Key, item.Value);
+            }
+            foreach (var item in this.PackageConnectionManagers)
+            {
+                activity.PackageConnectionManagers.Add(item.Key, item.Value);
+            }
+            foreach (var item in this.PropertyOverrides)
+            {
+                activity.PropertyOverrides.Add(item);
+            }
             activity.LogLocation = this.LogLocation;
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }

@@ -113,12 +113,43 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new HDInsightMapReduceActivity(this.Name, this.ClassName, this.JarFilePath);
+            foreach (var item in this.StorageLinkedServices)
+            {
+                activity.StorageLinkedServices.Add(item);
+            }
+            foreach (var item in this.Arguments)
+            {
+                activity.Arguments.Add(item);
+            }
             activity.GetDebugInfo = this.GetDebugInfo;
             activity.JarLinkedService = this.JarLinkedService;
+            foreach (var item in this.JarLibs)
+            {
+                activity.JarLibs.Add(item);
+            }
+            foreach (var item in this.Defines)
+            {
+                activity.Defines.Add(item);
+            }
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }

@@ -43,6 +43,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             trigger.BlobPathBeginsWith = this.BlobPathBeginsWith;
             trigger.BlobPathEndsWith = this.BlobPathEndsWith;
             this.IgnoreEmptyBlobs = this.IgnoreEmptyBlobs;
+            foreach (var item in this.Pipelines)
+            {
+                trigger.Pipelines.Add(item);
+            }
+            foreach (var item in this.Annotations)
+            {
+                trigger.Annotations.Add(item);
+            }
             return trigger;
         }
     }

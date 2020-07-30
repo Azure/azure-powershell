@@ -78,10 +78,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new DatabricksSparkJarActivity(this.Name, this.MainClassName);
+            foreach (var item in this.Parameters)
+            {
+                activity.Parameters.Add(item);
+            }
+            foreach (var item in this.Libraries)
+            {
+                activity.Libraries.Add(item);
+            }
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }

@@ -28,6 +28,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var trigger = new ScheduleTrigger(this.Recurrence?.ToSdkObject());
             trigger.Description = this.Description;
+            foreach (var item in this.Pipelines)
+            {
+                trigger.Pipelines.Add(item);
+            }
+            foreach (var item in this.Annotations)
+            {
+                trigger.Annotations.Add(item);
+            }
             return trigger;
         }
     }

@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.BigDataPool = new PSBigDataPoolReference(notebook?.BigDataPool);
             this.SessionProperties = new PSNotebookSessionProperties(notebook?.SessionProperties);
             this.Metadata = new PSNotebookMetadata(notebook?.Metadata);
-            this.Nbformat = notebook?.Nbformat;
-            this.NbformatMinor = notebook?.NbformatMinor;
+            this.NotebookFormat = notebook?.Nbformat;
+            this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
             this.Keys = notebook?.Keys;
             this.Values = notebook?.Values;
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [DefaultValue(4)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat")]
-        public int? Nbformat { get; set; }
+        public int? NotebookFormat { get; set; }
 
         [DefaultValue(2)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat_minor")]
-        public int? NbformatMinor { get; set; }
+        public int? NotebookFormatMinor { get; set; }
 
         [JsonProperty(PropertyName = "cells")]
         public IList<PSNotebookCell> Cells { get; set; }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public Notebook ToSdkObject()
         {
-            return new Notebook(this.Metadata?.ToSdkObject(), this.Nbformat.GetValueOrDefault(), this.NbformatMinor.GetValueOrDefault(),
+            return new Notebook(this.Metadata?.ToSdkObject(), this.NotebookFormat.GetValueOrDefault(), this.NotebookFormatMinor.GetValueOrDefault(),
                 this.Cells?.Select(element => element?.ToSdkObject()))
             {
                 Description = this.Description,

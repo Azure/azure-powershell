@@ -148,6 +148,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new CopyActivity(this.Name, this.Source, this.Sink);
+            foreach (var item in this.Inputs)
+            {
+                activity.Inputs.Add(item);
+            }
+            foreach (var item in this.Outputs)
+            {
+                activity.Outputs.Add(item);
+            }
             activity.Translator = this.Translator;
             activity.EnableStaging = this.EnableStaging;
             activity.StagingSettings = this.StagingSettings;
@@ -155,10 +163,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.DataIntegrationUnits = this.DataIntegrationUnits;
             activity.EnableSkipIncompatibleRow = this.EnableSkipIncompatibleRow;
             activity.RedirectIncompatibleRowSettings = this.RedirectIncompatibleRowSettings;
+            foreach (var item in this.PreserveRules)
+            {
+                activity.PreserveRules.Add(item);
+            }
+            foreach (var item in this.Preserve)
+            {
+                activity.Preserve.Add(item);
+            }
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }

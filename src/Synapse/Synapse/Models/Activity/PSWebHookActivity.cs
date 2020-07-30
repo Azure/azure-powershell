@@ -34,6 +34,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
 
         /// <summary>
+        /// Static constructor for PSWebHookActivity class.
+        /// </summary>
+        static PSWebHookActivity()
+        {
+            Method = "POST";
+        }
+
+        /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
@@ -92,7 +100,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Rest API method for target endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.method")]
-        public WebHookActivityMethod Method { get; private set; }
+        public static string Method { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -111,14 +119,29 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new WebHookActivity(this.Name, this.Method, this.Url);
+            var activity = new WebHookActivity(this.Name, new WebHookActivityMethod(PSWebHookActivity.Method), this.Url);
             activity.Timeout = this.Timeout;
             activity.Headers = this.Headers;
             activity.Body = this.Body;
             activity.Authentication = this.Authentication;
             activity.ReportStatusOnCallBack = this.ReportStatusOnCallBack;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }

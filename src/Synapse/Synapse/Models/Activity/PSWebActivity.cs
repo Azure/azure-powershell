@@ -119,11 +119,34 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.Headers = this.Headers;
             activity.Body = this.Body;
             activity.Authentication = this.Authentication;
+            foreach (var item in this.Datasets)
+            {
+                activity.Datasets.Add(item);
+            }
+            foreach (var item in this.LinkedServices)
+            {
+                activity.LinkedServices.Add(item);
+            }
             activity.ConnectVia = this.ConnectVia;
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
             activity.Description = this.Description;
-
+            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
+            if (pSDependsOn != null)
+            {
+                foreach (PSActivityDependency pSDependOn in pSDependsOn)
+                {
+                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
+                }
+            }
+            IList<PSUserProperty> pSUserProperties = this.UserProperties;
+            if (pSUserProperties != null)
+            {
+                foreach (PSUserProperty pSUserProperty in pSUserProperties)
+                {
+                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
+                }
+            }
             return activity;
         }
     }
