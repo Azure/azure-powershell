@@ -19,13 +19,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
+* Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
 
 ## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version
 * Added '-Location' as optional positional parameter to Get-AzComputeResourceSku cmdlet
-* Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
-* Added 'EncryptionAtHost' property to Get-AzVM and Get-AzVmss return object
-
 ## Version 4.2.0
 * Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
 * Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.
