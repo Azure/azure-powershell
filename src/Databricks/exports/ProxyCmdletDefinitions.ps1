@@ -50,6 +50,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
@@ -217,6 +218,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
@@ -450,13 +452,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The value which should be used for this field.
+    # The name of the Private Subnet within the Virtual Network.
     ${PrivateSubnetName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The value which should be used for this field.
+    # The name of a Public Subnet within the Virtual Network.
     ${PublicSubnetName},
 
     [Parameter()]
@@ -475,7 +477,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The value which should be used for this field.
+    # The ID of a Virtual Network where this Databricks Cluster should be created.
     ${VirtualNetworkId},
 
     [Parameter()]
@@ -484,6 +486,12 @@ param(
     # Prepare the workspace for encryption.
     # Enables the Managed Identity for managed storage account.
     ${PrepareEncryption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+    ${RequireInfrastructureEncryption},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -631,6 +639,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
