@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Deploy the built jar to service.
+Operation to update an exiting App.
 .Description
-Deploy the built jar to service.
+Operation to update an exiting App.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -27,36 +27,54 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
+https://docs.microsoft.com/en-us/powershell/module/az.springcloud/update-azspringcloudapp
 #>
-function Deploy-AzSpringCloudApp {
+function Update-AzSpringCloudApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('AppName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the App resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -64,12 +82,66 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
-    # The path of the jar need to be deploied.
-    ${JarPath},
+    # Name of the active deployment of the App
+    ${ActiveDeploymentName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Fully qualified dns Name.
+    ${Fqdn},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicate if only https is allowed.
+    ${HttpsOnly},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The GEO location of the application, always the same with its parent resource
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Mount path of the persistent disk
+    ${PersistentDiskMountPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Int32]
+    # Size of the persistent disk in GB
+    ${PersistentDiskSizeInGb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the App exposes public endpoint
+    ${Public},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Mount path of the temporary disk
+    ${TemporaryDiskMountPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Int32]
+    # Size of the temporary disk in GB
+    ${TemporaryDiskSizeInGb},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -133,35 +205,6 @@ param(
 
 
     process {
-        $DeployPSBoundParameters = @{}
-        if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-            $DeployPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
-        }
-        if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-            $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
-        }
-        $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
-
-        Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
-        $UploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        $UploadUrl = $UploadInfo.UploadUrl
-        $Uri = [System.Uri]::New($UploadUrl.Split('?')[0])
-        $SasToken = $UploadUrl.Split('?')[-1]
-        $StorageCredentials = [Microsoft.WindowsAzure.Storage.Auth.StorageCredentials]::New($SasToken)
-        $CloudFile = [Microsoft.WindowsAzure.Storage.File.CloudFile]::New($Uri, $StorageCredentials)
-        
-        Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
-        $UploadTask = $CloudFile.UploadFromFileAsync($JarPath)
-        try {
-            $null = $UploadTask.GetAwaiter().GetResult()
-        }
-        catch {
-            Write-Error $_.Exception
-            return
-        }
-        Write-Host "[3/3] Updating deployment in app $Name (this operation can take a while to complete)" -ForegroundColor Yellow
-        $App = Get-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName -SourceRelativePath $UploadInfo.RelativePath @DeployPSBoundParameters
-        Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName @DeployPSBoundParameters
+        Az.SpringCloud.internal\Update-AzSpringCloudApp @PSBoundParameters
     }
 }

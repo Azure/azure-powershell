@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Operation to update an exiting Deployment.
+Operation to delete a Service.
 .Description
-Operation to update an exiting Deployment.
+Operation to delete a Service.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,39 +48,27 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [ServiceName <String>]: The name of the Service resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/update-azSpringClouddeployment
+https://docs.microsoft.com/en-us/powershell/module/az.springcloud/remove-azspringcloud
 #>
-function Update-AzSpringCloudDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzSpringCloud {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The name of the App resource.
-    ${AppName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('DeploymentName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the Deployment resource.
+    # The name of the Service resource.
     ${Name},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the Service resource.
-    ${ServiceName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -88,76 +76,12 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Required CPU
-    ${Cpu},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentSettingsEnvironmentVariables]))]
-    [System.Collections.Hashtable]
-    # Collection of environment variables
-    ${EnvironmentVariable},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Instance count
-    ${InstanceCount},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # JVM parameter
-    ${JvmOption},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Required Memory size in GB
-    ${MemoryInGb},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion]
-    # Runtime version
-    ${RuntimeVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Selector for the artifact to be used for the deployment for multi-module projects.
-    # This should bethe relative path to the target module/project.
-    ${SourceArtifactSelector},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Relative path of the storage which stores the source
-    ${SourceRelativePath},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType]
-    # Type of the source uploaded
-    ${SourceType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Version of the source
-    ${SourceVersion},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -199,6 +123,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
     [System.Uri]
@@ -218,31 +148,8 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
     process {
-        if ($PSBoundParameters.ContainsKey('Cpu')) {
-            $PSBoundParameters.Add('DeploymentSettingCpu', $Cpu)
-            $Null = $PSBoundParameters.Remove('Cpu')
-        }
-        if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
-            $PSBoundParameters.Add('DeploymentSettingEnvironmentVariable', $EnvironmentVariable)
-            $Null = $PSBoundParameters.Remove('EnvironmentVariable')
-        }
-        if ($PSBoundParameters.ContainsKey('InstanceCount')) {
-            $PSBoundParameters.Add('DeploymentSettingInstanceCount', $InstanceCount)
-            $Null = $PSBoundParameters.Remove('InstanceCount')
-        }
-        if ($PSBoundParameters.ContainsKey('JvmOption')) {
-            $PSBoundParameters.Add('DeploymentSettingJvmOption', $JvmOption)
-            $Null = $PSBoundParameters.Remove('JvmOption')
-        }
-        if ($PSBoundParameters.ContainsKey('MemoryInGb')) {
-            $PSBoundParameters.Add('DeploymentSettingMemoryInGb', $MemoryInGb)
-            $Null = $PSBoundParameters.Remove('MemoryInGb')
-        }
-        if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
-            $PSBoundParameters.Add('DeploymentSettingRuntimeVersion', $RuntimeVersion)
-            $Null = $PSBoundParameters.Remove('RuntimeVersion')
-        }
-        Az.SpringCloud.internal\Update-AzSpringCloudDeployment @PSBoundParameters
+        Az.SpringCloud.internal\Remove-AzSpringCloudService @PSBoundParameters
     }
 }

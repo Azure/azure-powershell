@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Deploy the built jar to service.
+Create a new Service or update an exiting Service.
 .Description
-Deploy the built jar to service.
+Create a new Service or update an exiting Service.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -28,19 +28,36 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GITPROPERTYREPOSITORY <IGitPatternRepository[]>: Repositories of git.
+  Name <String>: Name of the repository
+  Uri <String>: URI of the repository
+  [HostKey <String>]: Public sshKey of git repository.
+  [HostKeyAlgorithm <String>]: SshKey algorithm of git repository.
+  [Label <String>]: Label of the repository
+  [Password <String>]: Password of git repository basic auth.
+  [Pattern <String[]>]: Collection of pattern of the repository
+  [PrivateKey <String>]: Private sshKey algorithm of git repository.
+  [SearchPath <String[]>]: Searching path of the repository
+  [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
+  [Username <String>]: Username of git repository basic auth.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
+https://docs.microsoft.com/en-us/powershell/module/az.springcloud/new-azspringcloud
 #>
-function Deploy-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource])]
+function New-AzSpringCloud {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('AppName')]
+    [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The name of the App resource.
+    # The name of the Service resource.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -50,12 +67,6 @@ param(
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the Service resource.
-    ${ServiceName},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -64,12 +75,48 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
-    # The path of the jar need to be deploied.
-    ${JarPath},
+    # URI of the repository
+    ${GitPropertyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The GEO location of the resource.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Name of the Sku
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Tier of the Sku
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Tags of the service which is a list of key value pairs that describe the resource.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Target application insight instrumentation key
+    ${TraceAppInsightInstrumentationKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether enable the tracing functionality
+    ${TraceEnabled},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -131,37 +178,7 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-
     process {
-        $DeployPSBoundParameters = @{}
-        if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-            $DeployPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
-        }
-        if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-            $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
-        }
-        $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
-
-        Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
-        $UploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        $UploadUrl = $UploadInfo.UploadUrl
-        $Uri = [System.Uri]::New($UploadUrl.Split('?')[0])
-        $SasToken = $UploadUrl.Split('?')[-1]
-        $StorageCredentials = [Microsoft.WindowsAzure.Storage.Auth.StorageCredentials]::New($SasToken)
-        $CloudFile = [Microsoft.WindowsAzure.Storage.File.CloudFile]::New($Uri, $StorageCredentials)
-        
-        Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
-        $UploadTask = $CloudFile.UploadFromFileAsync($JarPath)
-        try {
-            $null = $UploadTask.GetAwaiter().GetResult()
-        }
-        catch {
-            Write-Error $_.Exception
-            return
-        }
-        Write-Host "[3/3] Updating deployment in app $Name (this operation can take a while to complete)" -ForegroundColor Yellow
-        $App = Get-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName -SourceRelativePath $UploadInfo.RelativePath @DeployPSBoundParameters
-        Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName @DeployPSBoundParameters
+        Az.SpringCloud.internal\New-AzSpringCloudService @PSBoundParameters
     }
 }

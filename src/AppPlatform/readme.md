@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the SpringCloud service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -83,10 +83,20 @@ directive:
       variant: ^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$
     remove: true
   - where:
-      subject: DeploymentClusterDeployment|DeploymentLogFileUrl|ServiceTestKey|Sku|ServiceTestEndpoint|ServiceNameAvailability
+      subject: DeploymentClusterDeployment|DeploymentLogFileUrl|ServiceTestKey|Sku|ServiceTestEndpoint|ServiceNameAvailability|Binding|CustomDomain|Certificate
     remove: true
   - where:
       subject: Deployment
       verb: New|Update
+    hide: true
+  - where:
+      subject: Deployment
+    set:
+      subject: AppDeployment
+  - where:
+      subject: App
+    hide: true
+  - where:
+      subject: Service|AppResourceUploadUrl
     hide: true
 ```

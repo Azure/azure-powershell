@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Create a new Deployment or update an exiting Deployment.
+Operation to update an exiting Service.
 .Description
-Create a new Deployment or update an exiting Deployment.
+Operation to update an exiting Service.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -27,42 +27,61 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/new-azSpringClouddeployment
-#>
-function New-AzSpringCloudDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the App resource.
-    ${AppName},
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
 
-    [Parameter(Mandatory)]
-    [Alias('DeploymentName')]
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GITPROPERTYREPOSITORY <IGitPatternRepository[]>: Repositories of git.
+  Name <String>: Name of the repository
+  Uri <String>: URI of the repository
+  [HostKey <String>]: Public sshKey of git repository.
+  [HostKeyAlgorithm <String>]: SshKey algorithm of git repository.
+  [Label <String>]: Label of the repository
+  [Password <String>]: Password of git repository basic auth.
+  [Pattern <String[]>]: Collection of pattern of the repository
+  [PrivateKey <String>]: Private sshKey algorithm of git repository.
+  [SearchPath <String[]>]: Searching path of the repository
+  [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
+  [Username <String>]: Username of git repository basic auth.
+
+INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.springcloud/update-azspringcloud
+#>
+function Update-AzSpringCloud {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The name of the Deployment resource.
+    # The name of the Service resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the Service resource.
-    ${ServiceName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -70,69 +89,55 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Required CPU
-    ${Cpu},
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentSettingsEnvironmentVariables]))]
+    [System.String]
+    # URI of the repository
+    ${GitPropertyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The GEO location of the resource.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Name of the Sku
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Tier of the Sku
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Collection of environment variables
-    ${EnvironmentVariable},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Instance count
-    ${InstanceCount},
+    # Tags of the service which is a list of key value pairs that describe the resource.
+    ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
-    # JVM parameter
-    ${JvmOption},
+    # Target application insight instrumentation key
+    ${TraceAppInsightInstrumentationKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Required Memory size in GB
-    ${MemoryInGb},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion]
-    # Runtime version
-    ${RuntimeVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Selector for the artifact to be used for the deployment for multi-module projects.
-    # This should bethe relative path to the target module/project.
-    ${SourceArtifactSelector},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Relative path of the storage which stores the source
-    ${SourceRelativePath},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType]
-    # Type of the source uploaded
-    ${SourceType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Version of the source
-    ${SourceVersion},
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether enable the tracing functionality
+    ${TraceEnabled},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -195,30 +200,6 @@ param(
 )
 
     process {
-        if ($PSBoundParameters.ContainsKey('Cpu')) {
-            $PSBoundParameters.Add('DeploymentSettingCpu', $Cpu)
-            $Null = $PSBoundParameters.Remove('Cpu')
-        }
-        if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
-            $PSBoundParameters.Add('DeploymentSettingEnvironmentVariable', $EnvironmentVariable)
-            $Null = $PSBoundParameters.Remove('EnvironmentVariable')
-        }
-        if ($PSBoundParameters.ContainsKey('InstanceCount')) {
-            $PSBoundParameters.Add('DeploymentSettingInstanceCount', $InstanceCount)
-            $Null = $PSBoundParameters.Remove('InstanceCount')
-        }
-        if ($PSBoundParameters.ContainsKey('JvmOption')) {
-            $PSBoundParameters.Add('DeploymentSettingJvmOption', $JvmOption)
-            $Null = $PSBoundParameters.Remove('JvmOption')
-        }
-        if ($PSBoundParameters.ContainsKey('MemoryInGb')) {
-            $PSBoundParameters.Add('DeploymentSettingMemoryInGb', $MemoryInGb)
-            $Null = $PSBoundParameters.Remove('MemoryInGb')
-        }
-        if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
-            $PSBoundParameters.Add('DeploymentSettingRuntimeVersion', $RuntimeVersion)
-            $Null = $PSBoundParameters.Remove('RuntimeVersion')
-        }
-        Az.SpringCloud.internal\New-AzSpringCloudDeployment @PSBoundParameters
+        Az.SpringCloud.internal\Update-AzSpringCloudService @PSBoundParameters
     }
 }
