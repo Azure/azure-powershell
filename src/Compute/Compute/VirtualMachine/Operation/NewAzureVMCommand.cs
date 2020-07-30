@@ -533,7 +533,6 @@ namespace Microsoft.Azure.Commands.Compute
         public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
             if (this.VM.DiagnosticsProfile == null)
             {
                 var storageUri = GetOrCreateStorageAccountForBootDiagnostics();
@@ -550,8 +549,6 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
             }
-
-
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
