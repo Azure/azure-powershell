@@ -137,10 +137,15 @@ namespace VersionController.Models
                 }
             }
 
-            // PATCH update for preview modules (0.x.x or x.x.x-preview)
-            if (splitVersion[0] == 0 || _isPreview)
+            // PATCH update for preview modules (x.x.x-preview)
+            if (_isPreview)
             {
                 versionBump = Version.PATCH;
+            }
+            // MINOR update for modules with version 0.x.x. Otherwise, it is always 0.1.x which gives user perception that module is far from GA.
+            if (splitVersion[0] == 0)
+            {
+                versionBump = Version.MINOR;
             }
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
