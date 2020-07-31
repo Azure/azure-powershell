@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName),
     OutputType(typeof(PSWhatIfOperationResult))]
-    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet, IDynamicParameters
+    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,

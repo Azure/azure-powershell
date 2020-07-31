@@ -38,11 +38,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf();
                 string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
+                string cursorUp = $"{(char)27}[1A";
 
                 // Use \r to override the built-in "What if:" in output.
                 whatIfMessage = $"\r        \r{Environment.NewLine}{whatIfFormattedOutput}{Environment.NewLine}";
                 warningMessage = $"{Environment.NewLine}{Resources.ConfirmDeploymentMessage}";
-                captionMessage = $"{(char)27}[1A{Color.Reset}{whatIfMessage}"; // {(char)27}[1A for cursor up.
+                captionMessage = $"{cursorUp}{Color.Reset}{whatIfMessage}";
             }
 
             if (this.ShouldProcess(whatIfMessage, warningMessage, captionMessage))
@@ -63,11 +64,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         protected bool ShouldExecuteWhatIf()
         {
-            return ShouldProcessWithCurrentWhatIfFlagAndPreference()
-                || ShouldProcessWithCurrentConfirmFlagAndPreference();
+            return ShouldProcessGivenCurrentWhatIfFlagAndPreference()
+                || ShouldProcessGivenCurrentConfirmFlagAndPreference();
         }
 
-        private bool ShouldProcessWithCurrentWhatIfFlagAndPreference()
+        private bool ShouldProcessGivenCurrentWhatIfFlagAndPreference()
         {
             if (this.MyInvocation.BoundParameters.GetOrNull("WhatIf") is SwitchParameter whatIfFlag)
             {
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             return (bool)this.SessionState.PSVariable.GetValue("WhatIfPreference");
         }
 
-        private bool ShouldProcessWithCurrentConfirmFlagAndPreference()
+        private bool ShouldProcessGivenCurrentConfirmFlagAndPreference()
         {
             if (this.MyInvocation.BoundParameters.GetOrNull("Confirm") is SwitchParameter confirmFlag)
             {
