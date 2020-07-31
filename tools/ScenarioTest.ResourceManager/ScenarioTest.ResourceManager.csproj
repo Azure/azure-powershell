@@ -39,8 +39,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.9.0-preview" />
-  </ItemGroup>
-
 </Project>
