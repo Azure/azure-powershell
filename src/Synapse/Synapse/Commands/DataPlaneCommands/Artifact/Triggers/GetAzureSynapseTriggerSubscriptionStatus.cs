@@ -2,10 +2,7 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse
 {

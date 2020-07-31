@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Initializes a new instance of the PSAzureBatchLinkedService class.
         /// </summary>
-        public PSAzureBatchLinkedService()
+        public PSAzureBatchLinkedService(string referenceName)
         {
             CustomInit();
         }
@@ -111,20 +111,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var linkedService = new AzureBatchLinkedService(this.AccountName, this.BatchUri, this.PoolName, this.LinkedServiceName);
             linkedService.AccessKey = this.AccessKey;
             linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            foreach (var item in this.Annotations)
-            {
-                linkedService.Annotations.Add(item);
-            }
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                foreach (var pSParameter in pSParameters)
-                {
-                    linkedService.Parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-            }
+            SetProperties(linkedService);
             return linkedService;
         }
     }

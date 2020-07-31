@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -93,31 +94,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new SwitchActivity(this.Name, this.On);
-            foreach (var item in this.Cases)
-            {
-                activity.Cases.Add(item);
-            }
-            foreach (var item in this.DefaultActivities)
-            {
-                activity.DefaultActivities.Add(item.ToSdkObject());
-            }
-            activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-            }
+            this.Cases?.ForEach(item => activity.Cases.Add(item));
+            this.DefaultActivities?.ForEach(item => activity.DefaultActivities.Add(item?.ToSdkObject()));
+            SetProperties(activity);
             return activity;
         }
     }

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -81,27 +82,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new SqlPoolStoredProcedureActivity(this.Name, this.SqlPool, this.StoredProcedureName);
-            foreach (var item in this.StoredProcedureParameters)
-            {
-                activity.StoredProcedureParameters.Add(item);
-            }
-            activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-            }
+            this.StoredProcedureParameters?.ForEach(item => activity.StoredProcedureParameters.Add(item));
+            SetProperties(activity);
             return activity;
         }
     }

@@ -3,14 +3,12 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.Notebooks
+namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
         DefaultParameterSetName = ExportByName)]
@@ -19,6 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.N
     {
         private const string ExportByName = "ExportByName";
         private const string ExportByObject = "ExportByObject";
+        private const string ExportByInputObject = "ExportByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = ExportByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -31,9 +30,17 @@ namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.N
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = ExportByName,
+            HelpMessage = HelpMessages.NotebookName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = ExportByObject,
+            HelpMessage = HelpMessages.NotebookName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ValueFromPipeline = true, ParameterSetName = ExportByInputObject,
+            Mandatory = true, HelpMessage = HelpMessages.NotebookObject)]
+        [ValidateNotNull]
+        public PSNotebookResource InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.OutputFolder)]
         [ValidateNotNullOrEmpty]
@@ -49,21 +56,33 @@ namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.N
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.IsParameterBound(c => c.Name))
+            var fileExtension = ".ipynb";
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                var notebook = new PSNotebookResource(SynapseAnalyticsClient.GetNotebook(this.Name), this.WorkspaceName);
-                WriteToFile(notebook);
+                WriteToFile(this.InputObject);
+                WriteObject(new FileInfo(Path.Combine(this.OutputFolder, this.InputObject.Name + fileExtension)));
             }
             else
             {
-                var notebooks = SynapseAnalyticsClient.GetNotebooksByWorkspace()
-                    .Select(element => new PSNotebookResource(element, this.WorkspaceName));
-                foreach (var notebook in notebooks)
+                if (this.IsParameterBound(c => c.Name))
                 {
+                    var notebook = new PSNotebookResource(SynapseAnalyticsClient.GetNotebook(this.Name), this.WorkspaceName);
                     WriteToFile(notebook);
+                    WriteObject(new FileInfo(Path.Combine(this.OutputFolder, notebook.Name + fileExtension)));
+                }
+                else
+                {
+                    var infoList = new List<FileInfo>();
+                    var notebooks = SynapseAnalyticsClient.GetNotebooksByWorkspace()
+                        .Select(element => new PSNotebookResource(element, this.WorkspaceName));
+                    foreach (var notebook in notebooks)
+                    {
+                        WriteToFile(notebook);
+                        infoList.Add(new FileInfo(Path.Combine(this.OutputFolder, notebook.Name + fileExtension)));
+                    }
+                    WriteObject(infoList, true);
                 }
             }
-            WriteObject(new DirectoryInfo(this.OutputFolder).EnumerateFiles());
         }
 
         private void WriteToFile(PSNotebookResource notebook)

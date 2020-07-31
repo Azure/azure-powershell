@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent,Settings);
             PipelineResource pipeline = psPipeline.ToSdkObject();
-            var operation = _pipelineClient.CreateOrUpdatePipeline(pipelineName, pipeline);
+            var operation = _pipelineClient.StartCreateOrUpdatePipeline(pipelineName, pipeline);
             while (!operation.HasValue)
             {
                 operation.UpdateStatus();
@@ -85,12 +85,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeletePipeline(string pipelineName)
         {
-            _pipelineClient.DeletePipeline(pipelineName);
+            _pipelineClient.StartDeletePipeline(pipelineName);
         }
 
         public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            var operation = _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+            var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
             while (!operation.HasValue)
             {
                 operation.UpdateStatus();
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSLinkedServiceResource psLinkedService = JsonConvert.DeserializeObject<PSLinkedServiceResource>(rawJsonContent, Settings);
             LinkedServiceResource linkedService = psLinkedService.ToSdkObject();
-            var operation = _linkedServiceClient.CreateOrUpdateLinkedService(linkedServiceName, linkedService);
+            var operation = _linkedServiceClient.StartCreateOrUpdateLinkedService(linkedServiceName, linkedService);
             while (!operation.HasValue)
             {
                 operation.UpdateStatus();
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteLinkedService(string linkedServiceName)
         {
-            _linkedServiceClient.DeleteLinkedService(linkedServiceName);
+            _linkedServiceClient.StartDeleteLinkedService(linkedServiceName);
         }
 
         #endregion
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public NotebookResource CreateOrUpdateNotebook(string notebookName, NotebookResource notebook)
         {
-            var operation = _notebookClient.CreateOrUpdateNotebook(notebookName, notebook);
+            var operation = _notebookClient.StartCreateOrUpdateNotebook(notebookName, notebook);
             while (!operation.HasValue)
             {
                 operation.UpdateStatus();
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteNotebook(string notebookName)
         {
-            _notebookClient.DeleteNotebook(notebookName);
+            _notebookClient.StartDeleteNotebook(notebookName);
         }
 
         public NotebookResource GetNotebook(string notebookName)
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSTriggerResource pSTrigger = JsonConvert.DeserializeObject<PSTriggerResource>(rawJsonContent, Settings);
             TriggerResource trigger = pSTrigger.ToSdkObject();
-            var operation = _triggerClient.CreateOrUpdateTrigger(triggerName, trigger);
+            var operation = _triggerClient.StartCreateOrUpdateTrigger(triggerName, trigger);
             while (!operation.HasValue)
             {
                 operation.UpdateStatus();
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteTrigger(string triggerName)
         {
-            _triggerClient.DeleteTrigger(triggerName);
+            _triggerClient.StartDeleteTrigger(triggerName);
         }
 
         public TriggerSubscriptionOperationStatus GetEventSubscriptionStatus(string triggerName)

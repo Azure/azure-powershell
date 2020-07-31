@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -327,10 +328,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.ClusterPassword = this.ClusterPassword;
             linkedService.ClusterSshUserName = this.ClusterSshUserName;
             linkedService.ClusterSshPassword = this.ClusterSshPassword;
-            foreach (var item in this.AdditionalLinkedServiceNames)
-            {
-                linkedService.AdditionalLinkedServiceNames.Add(item);
-            }
+            this.AdditionalLinkedServiceNames?.ForEach(item => linkedService.AdditionalLinkedServiceNames.Add(item));
             linkedService.HcatalogLinkedServiceName = this.HcatalogLinkedServiceName;
             linkedService.ClusterType = this.ClusterType;
             linkedService.SparkVersion = this.SparkVersion;
@@ -346,26 +344,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.HeadNodeSize = this.HeadNodeSize;
             linkedService.DataNodeSize = this.DataNodeSize;
             linkedService.ZookeeperNodeSize = this.ZookeeperNodeSize;
-            foreach (var item in this.ScriptActions)
-            {
-                linkedService.ScriptActions.Add(item);
-            }
+            this.ScriptActions?.ForEach(item => linkedService.ScriptActions.Add(item));
             linkedService.VirtualNetworkId = this.VirtualNetworkId;
             linkedService.SubnetName = this.SubnetName;
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            foreach (var item in this.Annotations)
-            {
-                linkedService.Annotations.Add(item);
-            }
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                foreach (var pSParameter in pSParameters)
-                {
-                    linkedService.Parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-            }
+            SetProperties(linkedService);
             return linkedService;
         }
     }

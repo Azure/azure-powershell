@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -101,30 +102,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.ResourceLinkedService = this.ResourceLinkedService;
             activity.FolderPath = this.FolderPath;
             activity.ReferenceObjects = this.ReferenceObjects;
-            foreach (var item in this.ExtendedProperties)
-            {
-                activity.ExtendedProperties.Add(item);
-            }
+            this.ExtendedProperties?.ForEach(item => activity.ExtendedProperties.Add(item));
             activity.RetentionTimeInDays = this.RetentionTimeInDays;
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
-            activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-            }
+            SetProperties(activity);
             return activity;
         }
     }

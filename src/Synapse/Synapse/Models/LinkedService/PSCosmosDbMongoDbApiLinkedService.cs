@@ -77,20 +77,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override LinkedService ToSdkObject()
         {
             var linkedService = new CosmosDbMongoDbApiLinkedService(this.ConnectionString, this.Database);
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            foreach (var item in this.Annotations)
-            {
-                linkedService.Annotations.Add(item);
-            }
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                foreach (var pSParameter in pSParameters)
-                {
-                    linkedService.Parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-            }
+            SetProperties(linkedService);
             return linkedService;
         }
     }

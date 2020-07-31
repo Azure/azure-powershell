@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,10 +35,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 Description = this.Description,
             };
-            foreach (var item in this.Annotations)
-            {
-                trigger.Annotations.Add(item);
-            }
+            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
             return trigger;
         }
     }

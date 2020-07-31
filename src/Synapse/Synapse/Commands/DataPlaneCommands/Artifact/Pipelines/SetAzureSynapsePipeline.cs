@@ -1,14 +1,10 @@
-﻿using Azure.Analytics.Synapse.Artifacts;
-using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse
 {

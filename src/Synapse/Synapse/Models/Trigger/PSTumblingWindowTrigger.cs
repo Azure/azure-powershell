@@ -5,6 +5,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -52,14 +53,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             trigger.EndTime = this.EndTime;
             trigger.Delay = this.Delay;
             trigger.RetryPolicy = this.RetryPolicy;
-            foreach (var item in this.DependsOn)
-            {
-                trigger.DependsOn.Add(item);
-            }
-            foreach (var item in this.Annotations)
-            {
-                trigger.Annotations.Add(item);
-            }
+            this.DependsOn?.ForEach(item => trigger.DependsOn.Add(item));
+            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
             return trigger;
         }
     }

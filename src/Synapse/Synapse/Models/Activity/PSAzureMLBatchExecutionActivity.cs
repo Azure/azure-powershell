@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -83,37 +84,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Activity ToSdkObject()
         {
             var activity = new AzureMLBatchExecutionActivity(this.Name);
-            foreach (var item in this.GlobalParameters)
-            {
-                activity.GlobalParameters.Add(item);
-            }
-            foreach (var item in this.WebServiceOutputs)
-            {
-                activity.WebServiceOutputs.Add(item);
-            }
-            foreach (var item in this.WebServiceInputs)
-            {
-                activity.WebServiceInputs.Add(item);
-            }
+            this.GlobalParameters?.ForEach(item => activity.GlobalParameters.Add(item));
+            this.WebServiceOutputs?.ForEach(item => activity.WebServiceOutputs.Add(item));
+            this.WebServiceInputs?.ForEach(item => activity.WebServiceInputs.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
             activity.Policy = this.Policy;
-            activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-            }
+            SetProperties(activity);
             return activity;
         }
     }

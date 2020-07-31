@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Source = notebookCell?.Source;
             this.Attachments = notebookCell?.Attachments;
             this.Outputs = notebookCell?.Outputs?.Select(element => new PSNotebookCellOutputItem(element)).ToList();
-            this.Keys = notebookCell?.Keys;
-            this.Values = notebookCell?.Values;
+            //this.Keys = notebookCell?.Keys;
+            //this.Values = notebookCell?.Values;
         }
 
         [JsonProperty(PropertyName = "cell_type")]
@@ -45,10 +46,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 this.Metadata = new System.Collections.Generic.Dictionary<string, object>();
             }
-            return new NotebookCell(this.CellType, this.Metadata, this.Source)
+            var cell = new NotebookCell(this.CellType, this.Metadata, this.Source)
             {
                 Attachments = this.Attachments,
             };
+            this.Outputs?.ForEach(item => cell.Outputs.Add(item?.ToSdkObject()));
+            return cell;
         }
     }
 }

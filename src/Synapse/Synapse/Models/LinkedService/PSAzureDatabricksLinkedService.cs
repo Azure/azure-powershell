@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -184,36 +185,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             linkedService.NewClusterVersion = this.NewClusterVersion;
             linkedService.NewClusterNumOfWorker = this.NewClusterNumOfWorker;
             linkedService.NewClusterNodeType = this.NewClusterNodeType;
-            foreach (var item in this.NewClusterSparkConf)
-            {
-                linkedService.NewClusterSparkConf.Add(item);
-            }
-            foreach (var item in this.NewClusterSparkEnvVars)
-            {
-                linkedService.NewClusterSparkEnvVars.Add(item);
-            }
-            foreach (var item in this.NewClusterCustomTags)
-            {
-                linkedService.NewClusterCustomTags.Add(item);
-            }
+            this.NewClusterSparkConf?.ForEach(item => linkedService.NewClusterSparkConf.Add(item));
+            this.NewClusterSparkEnvVars?.ForEach(item => linkedService.NewClusterSparkEnvVars.Add(item));
+            this.NewClusterCustomTags?.ForEach(item => linkedService.NewClusterCustomTags.Add(item));
             linkedService.NewClusterDriverNodeType = this.NewClusterDriverNodeType;
             linkedService.NewClusterInitScripts = this.NewClusterInitScripts;
             linkedService.NewClusterEnableElasticDisk = this.NewClusterEnableElasticDisk;
             linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            foreach (var item in this.Annotations)
-            {
-                linkedService.Annotations.Add(item);
-            }
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                foreach (var pSParameter in pSParameters)
-                {
-                    linkedService.Parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-            }
+            SetProperties(linkedService);
             return linkedService;
         }
     }

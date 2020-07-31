@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -39,24 +40,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public virtual LinkedService ToSdkObject()
         {
-            LinkedService linkedService = new LinkedService
-            {
-                ConnectVia = this.ConnectVia?.ToSdkObject(),
-                Description = this.Description,
-            };
-            foreach (var item in this.Annotations)
-            {
-                linkedService.Annotations.Add(item);
-            }
-            IDictionary<string, PSParameterSpecification> pSParameters = this.Parameters;
-            if (pSParameters != null)
-            {
-                foreach (var pSParameter in pSParameters)
-                {
-                    linkedService.Parameters.Add(pSParameter.Key, pSParameter.Value?.ToSdkObject());
-                }
-            }
+            LinkedService linkedService = new LinkedService();
+            SetProperties(linkedService);
             return linkedService;
+        }
+
+        protected void SetProperties(LinkedService linkedService)
+        {
+            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
+            linkedService.Description = this.Description;
+            this.Annotations?.ForEach(item => linkedService.Annotations.Add(item));
+            this.Parameters?.ForEach(item => linkedService.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
         }
     }
 }

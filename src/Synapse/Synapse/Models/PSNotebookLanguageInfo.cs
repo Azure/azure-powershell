@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookLanguageInfo?.Name;
             this.CodemirrorMode = notebookLanguageInfo?.CodemirrorMode;
-            this.Keys = notebookLanguageInfo?.Keys;
-            this.Values = notebookLanguageInfo?.Values;
+            //this.Keys = notebookLanguageInfo?.Keys;
+            //this.Values = notebookLanguageInfo?.Values;
         }
 
         [JsonProperty(PropertyName = "name")]

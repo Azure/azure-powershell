@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -58,6 +59,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             return activity;
+        }
+
+        protected void SetProperties(Activity activity)
+        {
+            activity.Description = this.Description;
+            this.DependsOn?.ForEach(item => activity.DependsOn.Add(item?.ToSdkObject()));
+            this.UserProperties?.ForEach(item => activity.UserProperties.Add(item?.ToSdkObject()));
         }
     }
 }

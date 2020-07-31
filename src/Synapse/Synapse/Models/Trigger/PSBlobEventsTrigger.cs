@@ -5,6 +5,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -38,19 +39,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Trigger ToSdkObject()
         {
-            var trigger = new BlobEventsTrigger(this.Events.Select(element => new BlobEventTypes(element)), this.Scope);
+            var trigger = new BlobEventsTrigger(this.Events?.Select(element => new BlobEventTypes(element)), this.Scope);
             trigger.Description = this.Description;
             trigger.BlobPathBeginsWith = this.BlobPathBeginsWith;
             trigger.BlobPathEndsWith = this.BlobPathEndsWith;
             this.IgnoreEmptyBlobs = this.IgnoreEmptyBlobs;
-            foreach (var item in this.Pipelines)
-            {
-                trigger.Pipelines.Add(item);
-            }
-            foreach (var item in this.Annotations)
-            {
-                trigger.Annotations.Add(item);
-            }
+            this.Pipelines?.ForEach(item => trigger.Pipelines.Add(item));
+            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
             return trigger;
         }
     }

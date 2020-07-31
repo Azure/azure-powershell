@@ -1,17 +1,10 @@
-﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Text.Json;
+
 
 namespace Microsoft.Azure.Commands.Synapse
 {

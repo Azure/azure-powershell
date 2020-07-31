@@ -125,23 +125,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.Body = this.Body;
             activity.Authentication = this.Authentication;
             activity.ReportStatusOnCallBack = this.ReportStatusOnCallBack;
-            activity.Description = this.Description;
-            IList<PSActivityDependency> pSDependsOn = this.DependsOn;
-            if (pSDependsOn != null)
-            {
-                foreach (PSActivityDependency pSDependOn in pSDependsOn)
-                {
-                    activity.DependsOn.Add(pSDependOn?.ToSdkObject());
-                }
-            }
-            IList<PSUserProperty> pSUserProperties = this.UserProperties;
-            if (pSUserProperties != null)
-            {
-                foreach (PSUserProperty pSUserProperty in pSUserProperties)
-                {
-                    activity.UserProperties.Add(pSUserProperty?.ToSdkObject());
-                }
-            }
+            SetProperties(activity);
             return activity;
         }
     }
