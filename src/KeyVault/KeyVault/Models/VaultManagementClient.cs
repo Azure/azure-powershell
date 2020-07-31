@@ -458,25 +458,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Delete an existing vault. Throws if vault is not found.
+        /// Delete an existing MHSM. Throws if vault is not found.
         /// </summary>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
-        public void DeleteManagedHsm(string vaultName, string resourceGroupName)
+        public void DeleteManagedHsm(string managedHsm, string resourceGroupName)
         {
-            if (string.IsNullOrWhiteSpace(vaultName))
+            if (string.IsNullOrWhiteSpace(managedHsm))
                 throw new ArgumentNullException("vaultName");
             if (string.IsNullOrWhiteSpace(resourceGroupName))
                 throw new ArgumentNullException("resourceGroupName");
 
             try
             {
-                KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);
+                KeyVaultManagementClient.ManagedHsms.Delete(resourceGroupName, managedHsm);
             }
             catch (CloudException ce)
             {
                 if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
-                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, vaultName, resourceGroupName));
+                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, managedHsm, resourceGroupName));
                 throw;
             }
         }

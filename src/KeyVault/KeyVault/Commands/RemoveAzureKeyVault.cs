@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false,            
-            HelpMessage = "Specifies the type of this vault as MHSM.")]
+            HelpMessage = "Specifies the type of vault as MHSM.")]
         public SwitchParameter Hsm { get; set; }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         VaultName,
                         () =>
                         {
-                            if (Hsm)
+                            if (Hsm.IsPresent)
                             {
                                 //PurgeManagedHsm();
                             }
@@ -220,15 +220,17 @@ namespace Microsoft.Azure.Commands.KeyVault
                     VaultName,
                     () =>
                     {
-                        if (Hsm)
+                        if (Hsm.IsPresent)
                         {
-                            // DeleteManagedHsm();
+                            KeyVaultManagementClient.DeleteManagedHsm(
+                                managedHsm:VaultName,
+                                resourceGroupName: ResourceGroupName);
                         }
                         else
                         {
                             KeyVaultManagementClient.DeleteVault(
                                 vaultName: VaultName,
-                                resourceGroupName: this.ResourceGroupName);
+                                resourceGroupName: ResourceGroupName);
                         }
 
                         if (PassThru)
