@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
 {
     public static class PSJsonSerializer
     {
-        public readonly struct SerializeContext
+        public struct SerializeContext
         {
             public SerializeContext(int maxDepth)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             return Serialize(value, context);
         }
 
-        public static string Serialize(object value, in SerializeContext context)
+        public static string Serialize(object value, SerializeContext context)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             }
         }
 
-        private static object ProcessValue(object value, int currentDepth, in SerializeContext context)
+        private static object ProcessValue(object value, int currentDepth, SerializeContext context)
         {
             if (value == null || value == AutomationNull.Value)
             {
@@ -116,18 +116,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
 
             if (value is IDictionary dict)
             {
-                return ProcessDictionary(dict, currentDepth, in context);
+                return ProcessDictionary(dict, currentDepth, context);
             }
 
             if (value is IEnumerable enumerable)
             {
-                return ProcessEnumerable(enumerable, currentDepth, in context);
+                return ProcessEnumerable(enumerable, currentDepth, context);
             }
 
-            return ProcessObject(value, currentDepth, in context);
+            return ProcessObject(value, currentDepth, context);
         }
 
-        private static object ProcessDictionary(IDictionary dictionary, int depth, in SerializeContext context)
+        private static object ProcessDictionary(IDictionary dictionary, int depth, SerializeContext context)
         {
             var result = new Dictionary<string, object>(dictionary.Count);
 
@@ -138,25 +138,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
                     throw new InvalidOperationException("Non-string key in dictionary");
                 }
 
-                result.Add(name, ProcessValue(entry.Value, depth + 1, in context));
+                result.Add(name, ProcessValue(entry.Value, depth + 1, context));
             }
 
             return result;
         }
 
-        private static object ProcessEnumerable(IEnumerable enumerable, int depth, in SerializeContext context)
+        private static object ProcessEnumerable(IEnumerable enumerable, int depth, SerializeContext context)
         {
             var result = new List<object>();
 
             foreach (object o in enumerable)
             {
-                result.Add(ProcessValue(o, depth + 1, in context));
+                result.Add(ProcessValue(o, depth + 1, context));
             }
 
             return result;
         }
 
-        private static object ProcessObject(object @object, int depth, in SerializeContext context)
+        private static object ProcessObject(object @object, int depth, SerializeContext context)
         {
             var result = new Dictionary<string, object>();
             Type type = @object.GetType();
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
                     value = null;
                 }
 
-                result.Add(info.Name, ProcessValue(value, depth + 1, in context));
+                result.Add(info.Name, ProcessValue(value, depth + 1, context));
             }
 
             foreach (PropertyInfo info in type.GetProperties(bindingFlags).Where(HasNoJsonIgnoreAttribute))
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
                         value = null;
                     }
 
-                    result.Add(info.Name, ProcessValue(value, depth + 1, in context));
+                    result.Add(info.Name, ProcessValue(value, depth + 1, context));
                 }
             }
 
