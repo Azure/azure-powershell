@@ -1,146 +1,143 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzResourceGroupDeploymentWhatIfResult
+# Get-AzTenantDeploymentWhatIfResult
 
 ## SYNOPSIS
-Gets an ARM template What-If result for a deployment at resource group scope. 
+Gets an ARM template What-If result for a deployment at tenant scope. 
 
 ## SYNTAX
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateFile <String> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterObject
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterObject
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectAndParameterFile
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterFile
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterFile
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectAndParameterUri
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterUri
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterUri
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectWithNoParameters
-```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterObject <Hashtable>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByTemplateUriWithNoParameters
+### ByTemplateFileAndParameterObject
 ```
-Get-AzResourceGroupDeploymentWhatIfResult -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateUri <String>
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
+### ByTemplateUriAndParameterObject
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterFile
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateFileAndParameterFile
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterFile <String> -TemplateFile <String>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterFile
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterFile <String> -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterUri
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateFileAndParameterUri
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterUri <String> -TemplateFile <String>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterUri
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateParameterUri <String> -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateObjectWithNoParameters
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateUriWithNoParameters
+```
+Get-AzTenantDeploymentWhatIfResult -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateUri <String> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Get-AzResourceGroupDeploymentWhatIfResult** cmdlet gets the ARM template What-If result for a template deployment at the specified resource group scope. It returns a list of changes indicating what resources will be updated if the deployment is applied without making any changes to real resources. To specify the format for the returning result, use the *ResultFormat* parameter.
+The **Get-AzTenantDeploymentWhatIfResult** cmdlet gets the ARM template What-If result for a template deployment at the specified tenant scope. It returns a list of changes indicating what resources will be updated if the deployment is applied without making any changes to real resources. To specify the format for the returning result, use the *ResultFormat* parameter.
 
 ## EXAMPLES
 
-### Example 1: Get a What-If result at resource group scope
+### Example 1: Get a What-If result at tenant scope
 ```powershell
-PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
+PS C:\> Get-AzTenantDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1" `
+    -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "FullResourcePayloads"
 ```
 
-This command gets a What-If result at the specified resource group scope by using a custom template file and a parameter file on disk.
-The command uses the *ResourceGroupName* parameter to specify a resource group where the template will be deployed.
+This command gets a What-If result at tenant scope by using a custom template file and a parameter file on disk.
+The command uses the *Location* parameter to specify where to store the deployment data.
 The command uses the *TemplateFile* parameter to specify a template file.
 The command uses the *TemplateParameterFile* parameter to specify a template parameter file.
 The command uses the *ResultFormat* parameter to set the What-If result to include full resource payloads.
 
-### Example 2: Get a What-If result at resource group scope with ResourceIdOnly
+### Example 2: Get a What-If result at tenant scope with ResourceIdOnly
 ```powershell
-PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
+PS C:\> Get-AzTenantDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1" `
+    -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "ResourceIdOnly"
 ```
 
-This command gets a What-If result at the specified resource group scope by using a custom template file and a parameter file on disk.
-The command uses the *ResourceGroupName* parameter to specify a resource group where the template will be deployed.
+This command gets a What-If result at tenant scope by using a custom template file and a parameter file on disk.
+The command uses the *Location* parameter to specify where to store the deployment data.
 The command uses the *TemplateFile* parameter to specify a template file.
 The command uses the *TemplateParameterFile* parameter to specify a template parameter file.
 The command uses the *ResultFormat* parameter to set the What-If result to only contain resource IDs.
@@ -179,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludeChangeType
-Comma-separated resource change types to be excluded from What-If results.
+Comma-separated list of resource change types to be excluded from What-If results.
 
 ```yaml
 Type: System.String[]
@@ -193,24 +190,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Mode
-The deployment mode.
+### -Location
+The location to store deployment data.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Incremental, Complete
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. "20131223140835".
+The name of the deployment it's going to create.
+If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g.
+"20131223140835".
 
 ```yaml
 Type: System.String
@@ -236,21 +234,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -383,8 +366,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 
 ### System.Collections.Hashtable
 
