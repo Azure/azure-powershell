@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Updates an existing role assignment.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.RoleAssignmentId), OutputType(typeof(PSRoleAssignment))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.RoleAssignment), OutputType(typeof(PSRoleAssignment))]
     public class SetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
 
