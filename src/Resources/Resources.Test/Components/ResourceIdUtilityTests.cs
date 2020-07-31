@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Components
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SplitResourceId_ManagementGroupAsResource_ReturnsTenantScopeAndManagementGroupId()
         {
-            string resourceId = "/providers/Microsoft.Management/myManagementGroup";
+            const string resourceId = "/providers/Microsoft.Management/myManagementGroup";
 
             (string scope, string relativeResourceId) = ResourceIdUtility.SplitResourceId(resourceId);
 

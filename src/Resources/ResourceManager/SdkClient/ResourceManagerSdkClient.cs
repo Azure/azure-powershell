@@ -1348,6 +1348,57 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+            ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
+
+            try
+            {
+                WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
+                    ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+
+                switch (parameters.ScopeType)
+                {
+                    case DeploymentScopeType.Subscription:
+                        whatIfOperationResult = deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ResourceGroup:
+                        whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ManagementGroup:
+                        whatIfOperationResult = deployments.WhatIfAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.Tenant:
+                        whatIfOperationResult = deployments.WhatIfAtTenantScope(parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    default:
+                        break;
+                }
+
+                if (parameters.ExcludeChangeTypes != null)
+                {
+                    whatIfOperationResult.Changes = whatIfOperationResult.Changes
+                        .Where(change => parameters.ExcludeChangeTypes.All(changeType => changeType != change.ChangeType))
+                        .ToList();
+                }
+
+                return new PSWhatIfOperationResult(whatIfOperationResult);
+            }
+            catch (CloudException ce)
+            {
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;

@@ -2,17 +2,52 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using Commands.Common.Authentication.Abstractions;
     using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
-    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using WindowsAzure.Commands.Common;
 
     public class PSDeploymentWhatIfCmdletParameters
     {
         private string deploymentName;
+
+        public PSDeploymentWhatIfCmdletParameters()
+        {
+        }
+
+        public PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType scopeType,
+            string deploymentName = null,
+            DeploymentMode mode = DeploymentMode.Incremental,
+            string location = null,
+            string managementGroupId = null,
+            string resourceGroupName = null,
+            string templateUri = null,
+            string templateParametersUri = null,
+            Hashtable templateObject = null,
+            Hashtable templateParametersObject = null,
+            WhatIfResultFormat resultFormat = default,
+            string[] excludeChangeTypes = null)
+        {
+            this.DeploymentName = deploymentName ?? this.GenerateDeployName();
+            this.ScopeType = scopeType;
+            this.Mode = mode;
+            this.Location = location;
+            this.ManagementGroupId = managementGroupId;
+            this.ResourceGroupName = resourceGroupName;
+            this.TemplateUri = templateUri;
+            this.TemplateParametersUri = templateParametersUri;
+            this.TemplateObject = templateObject;
+            this.TemplateParametersObject = templateParametersObject;
+            this.ResultFormat = resultFormat;
+            this.ExcludeChangeTypes = excludeChangeTypes?
+                .Select(changeType => changeType.ToLowerInvariant())
+                .Distinct()
+                .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true));
+        }
 
         public string DeploymentName
         {
@@ -39,6 +74,8 @@
         public Hashtable TemplateParametersObject { get; set; }
 
         public WhatIfResultFormat ResultFormat { get; set; }
+
+        public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
 
         public DeploymentWhatIf ToDeploymentWhatIf()
         {

@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static string Format(PSWhatIfOperationResult result)
         {
+            if (result == null)
+            {
+                return null;
+            }
+
             var builder = new ColoredStringBuilder();
             var formatter = new WhatIfOperationResultFormatter(builder);
 
