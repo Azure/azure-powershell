@@ -426,7 +426,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSManagedHsm(response, adClient);
         }
 
-
         /// <summary>
         /// Get an existing MHSM. Returns null if vault is not found.
         /// </summary>
@@ -434,7 +433,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="resourceGroupName">resource group name</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the retrieved MHSM</returns>
-        public PSManagedHsm GetManagedHsmName(string managedHsmName, string resourceGroupName, ActiveDirectoryClient adClient = null)
+        public PSManagedHsm GetManagedHsm(string managedHsmName, string resourceGroupName, ActiveDirectoryClient adClient = null)
         {
             if (string.IsNullOrWhiteSpace(managedHsmName))
                 throw new ArgumentNullException("vaultName");
@@ -455,6 +454,80 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Update an existing MHSM. Only EnablePurgeProtection can be updated currently.
+        /// </summary>
+        /// <param name="existingManagedHsm">the existing MHSM</param>
+        /// <param name="updatedPurgeProtectionSwitch">enable purge protection</param>
+        /// <param name="adClient">the active directory client</param>
+        /// <returns>the updated MHSM</returns>
+        public PSManagedHsm UpdateManagedHsm(
+          PSManagedHsm existingManagedHsm,
+//          PSKeyVaultAccessPolicy[] updatedPolicies,
+          bool? updatedSoftDeleteSwitch,
+          bool? updatedPurgeProtectionSwitch,
+          int? softDeleteRetentionInDays,
+//          PSKeyVaultNetworkRuleSet updatedNetworkAcls,
+          ActiveDirectoryClient adClient = null)
+        {
+            if (existingManagedHsm == null)
+                throw new ArgumentNullException("existingManagedHsm");
+            if (existingManagedHsm.OriginalManagedHsm == null)
+                throw new ArgumentNullException("existingManagedHsm.OriginalManagedHsm");
+
+            //Update the vault properties in the object received from server
+            //Only access policies and EnabledForDeployment can be changed
+            var properties = existingManagedHsm.OriginalManagedHsm.Properties;
+            properties.SoftDeleteRetentionInDays = softDeleteRetentionInDays;
+
+            // soft delete flags can only be applied if they enable their respective behaviors
+            // and if different from the current corresponding properties on the vault.
+            if (!(properties.EnableSoftDelete.HasValue && properties.EnableSoftDelete.Value)
+                && updatedSoftDeleteSwitch.HasValue
+                && updatedSoftDeleteSwitch.Value)
+                properties.EnableSoftDelete = updatedSoftDeleteSwitch;
+
+            if (!(properties.EnablePurgeProtection.HasValue && properties.EnablePurgeProtection.Value)
+                && updatedPurgeProtectionSwitch.HasValue
+                && updatedPurgeProtectionSwitch.Value)
+                properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
+
+            /*  properties.AccessPolicies = (updatedPolicies == null) ?
+                  new List<AccessPolicyEntry>() :
+                  updatedPolicies.Select(a => new AccessPolicyEntry
+                  {
+                      TenantId = a.TenantId,
+                      ObjectId = a.ObjectId,
+                      ApplicationId = a.ApplicationId,
+                      Permissions = new Permissions
+                      {
+                          Keys = a.PermissionsToKeys.ToArray(),
+                          Secrets = a.PermissionsToSecrets.ToArray(),
+                          Certificates = a.PermissionsToCertificates.ToArray(),
+                          Storage = a.PermissionsToStorage.ToArray(),
+                      }
+                  }).ToList();
+
+              UpdateVaultNetworkRuleSetProperties(properties, updatedNetworkAcls);*/
+
+
+            var response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
+                resourceGroupName: existingManagedHsm.ResourceGroupName,
+                name: existingManagedHsm.VaultName,
+                parameters: new ManagedHsm
+                {
+                    Location = existingManagedHsm.Location,
+                    Sku = new ManagedHsmSku
+                    {
+                        Name = (ManagedHsmSkuName)Enum.Parse(typeof(ManagedHsmSkuName), existingManagedHsm.Sku)
+                    },
+                    Tags = TagsConversionHelper.CreateTagDictionary(existingManagedHsm.Tags, validate: true),
+                    Properties = properties
+                });
+
+            return new PSManagedHsm(response, adClient);
         }
 
         /// <summary>

@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         switch (ResourceType)
                         {
                             case ResourceTypeName.Hsm:
-                                vault = KeyVaultManagementClient.GetManagedHsmName(
+                                vault = KeyVaultManagementClient.GetManagedHsm(
                                                             VaultName,
                                                             ResourceGroupName,
                                                             ActiveDirectoryClient);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                                             ActiveDirectoryClient);
                                 if (vault == null)
                                 {
-                                    vault = KeyVaultManagementClient.GetManagedHsmName(
+                                    vault = KeyVaultManagementClient.GetManagedHsm(
                                                             VaultName,
                                                             ResourceGroupName,
                                                             ActiveDirectoryClient);

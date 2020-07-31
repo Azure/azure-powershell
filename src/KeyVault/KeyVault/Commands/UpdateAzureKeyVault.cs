@@ -23,29 +23,35 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVault", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSKeyVault))]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVault", DefaultParameterSetName = UpdateKeyVault + ByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSKeyVault))]
     public class UpdateTopLevelResourceCommand : KeyVaultManagementCmdletBase
     {
-        private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
-        private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
-        private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
+        private const string UpdateKeyVault = "UpdateKeyVault";
+        private const string UpdateManagedHsm = "UpdateManagedHsm";
+        private const string ByNameParameterSet = "ByNameParameterSet";
+        private const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
+        private const string ByResourceIdParameterSet = "UByResourceIdParameterSet";
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, HelpMessage = "Name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateKeyVault + ByNameParameterSet, HelpMessage = "Name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, HelpMessage = "Name of the key vault.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateKeyVault + ByNameParameterSet, HelpMessage = "Name of the key vault.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Name of the key vault.")]
         [ResourceNameCompleter("Microsoft.KeyVault/vaults", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
         public string VaultName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet, HelpMessage = "Key vault object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = UpdateKeyVault + ByInputObjectParameterSet, HelpMessage = "Key vault object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = UpdateManagedHsm + ByInputObjectParameterSet, HelpMessage = "Key vault object.")]
         [ValidateNotNull]
-        public PSKeyVault InputObject { get; set; }
+        public PSKeyVaultIdentityItem InputObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateByResourceIdParameterSet, HelpMessage = "Resource ID of the key vault.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateKeyVault + ByResourceIdParameterSet, HelpMessage = "Resource ID of the key vault.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateManagedHsm + ByResourceIdParameterSet, HelpMessage = "Resource ID of the key vault.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -59,6 +65,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByInputObjectParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByResourceIdParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
+        public SwitchParameter Hsm { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -75,10 +86,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 this.VaultName = resourceIdentifier.ResourceName;
             }
 
-            PSKeyVault existingResource = null;
+            PSKeyVaultIdentityItem existingResource = null;
             try
             {
-                existingResource = KeyVaultManagementClient.GetVault(this.VaultName, this.ResourceGroupName);
+                if (Hsm.IsPresent) existingResource = KeyVaultManagementClient.GetManagedHsm(VaultName, ResourceGroupName);
+                else existingResource = KeyVaultManagementClient.GetVault(this.VaultName, this.ResourceGroupName);
             }
             catch
             {
@@ -87,24 +99,46 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (existingResource == null)
             {
-                throw new Exception(string.Format("A key vault with name '{0}' in resource group '{1}' does not exist. Please use New-AzKeyVault to create a key vault with these properties.", this.VaultName, this.ResourceGroupName));
+                if(Hsm.IsPresent)
+                    throw new Exception(string.Format("A managed hsm with name '{0}' in resource group '{1}' does not exist. Please use New-AzKeyVault to create a managed hsm with these properties.", this.VaultName, this.ResourceGroupName));
+                else 
+                    throw new Exception(string.Format("A key vault with name '{0}' in resource group '{1}' does not exist. Please use New-AzKeyVault to create a key vault with these properties.", this.VaultName, this.ResourceGroupName));
+
             }
 
             if (this.ShouldProcess(this.VaultName, string.Format("Updating key vault '{0}' in resource group '{1}'.", this.VaultName, this.ResourceGroupName)))
             {
-                var result = KeyVaultManagementClient.UpdateVault(existingResource,
-                    existingResource.AccessPolicies,
-                    existingResource.EnabledForDeployment,
-                    existingResource.EnabledForTemplateDeployment,
-                    existingResource.EnabledForDiskEncryption,
-                    EnableSoftDelete.IsPresent ? (true as bool?) : null,
-                    EnablePurgeProtection.IsPresent ? (true as bool?) : null,
-                    this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
-                        ? (SoftDeleteRetentionInDays as int?)
-                        : (existingResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays),
-                    existingResource.NetworkAcls
-                );
-                WriteObject(result);
+                if (Hsm.IsPresent)
+                {
+                    var existingManagedHsmResource = (PSManagedHsm)existingResource;
+                    var result = KeyVaultManagementClient.UpdateManagedHsm(existingManagedHsmResource,
+                        existingManagedHsmResource.EnableSoftDelete,
+                        EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                            ? (SoftDeleteRetentionInDays as int?)
+                            : (existingManagedHsmResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays)
+                        );
+                    WriteObject(result);
+                }
+                else
+                {
+                    var existingKeyVaultResource = (PSKeyVault)existingResource;
+                    var result = KeyVaultManagementClient.UpdateVault(existingKeyVaultResource,
+                        existingKeyVaultResource.AccessPolicies,
+                        existingKeyVaultResource.EnabledForDeployment,
+                        existingKeyVaultResource.EnabledForTemplateDeployment,
+                        existingKeyVaultResource.EnabledForDiskEncryption,
+                        EnableSoftDelete.IsPresent ? (true as bool?) : null,
+                        EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                            ? (SoftDeleteRetentionInDays as int?)
+                            : (existingKeyVaultResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays),
+                        existingKeyVaultResource.NetworkAcls
+                    );
+                    WriteObject(result);
+                }
+
+                
             }
         }
     }
