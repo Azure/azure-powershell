@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Added support for DBFS Double Encryption Support
 
 ## Version 0.1.1
