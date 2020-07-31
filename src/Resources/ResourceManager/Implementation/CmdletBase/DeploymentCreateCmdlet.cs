@@ -15,15 +15,38 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Strategies;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
 
     public abstract class DeploymentCreateCmdlet: DeploymentWhatIfCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "The deployment debug log level.")]
+        [PSArgumentCompleter("RequestContent", "ResponseContent", "All", "None")]
+        public string DeploymentDebugLogLevel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         protected abstract ConfirmImpact ConfirmImpact { get; }
 
         protected abstract PSDeploymentCmdletParameters DeploymentParameters { get; }
