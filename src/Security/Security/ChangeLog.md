@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.8.0
 * Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
 
 ## Version 0.7.10

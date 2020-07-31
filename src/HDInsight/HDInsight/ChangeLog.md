@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.0
 * Supported creating cluster with encryption in transit feature.
     - Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightCluster`
 	- Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightClusterConfig`
