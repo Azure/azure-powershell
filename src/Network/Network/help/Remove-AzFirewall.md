@@ -23,8 +23,8 @@ The **Remove-AzFirewall** cmdlet removes an Azure Firewall.
 
 ## EXAMPLES
 
-### 1: Create and delete a Firewall
-```
+### Example 1: Create and delete a Firewall
+```powershell
 New-AzFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus 
 
 Remove-AzFirewall -Name "azFw" -ResourceGroupName "rgName"

@@ -24,8 +24,8 @@ The **Add-AzLoadBalancerProbeConfig** cmdlet adds a probe configuration to an Az
 
 ## EXAMPLES
 
-### Example 1 Add a probe configuration to a load balancer
-```
+### Example 1: Add a probe configuration to a load balancer
+```powershell
 PS C:\>Get-AzLoadBalancer -Name "myLb" -ResourceGroupName "myRg" | Add-AzLoadBalancerProbeConfig -Name "probeName" -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 | Set-AzLoadBalancer
 ```
 

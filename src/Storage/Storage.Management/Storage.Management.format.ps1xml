@@ -336,6 +336,10 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSShare</TypeName>
       </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.ResourceGroupName + ", StorageAccountName: " + $_.StorageAccountName</ScriptBlock>
+        <Label>ResourceGroupName</Label>
+      </GroupBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
@@ -344,23 +348,27 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>StorageAccountName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Etag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>QuotaGiB</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>LastModifiedTime</Label>
+            <Label>EnabledProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AccessTier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Deleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Version</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ShareUsageBytes</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -372,23 +380,27 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>StorageAccountName</PropertyName>
+                <PropertyName>QuotaGiB</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>ResourceGroupName</PropertyName>
+                <PropertyName>EnabledProtocol</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>Etag</PropertyName>
+                <PropertyName>AccessTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>QuotaGiB</PropertyName>              
-            </TableColumnItem>
+                <PropertyName>Deleted</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.LastModifiedTime.ToString("u")</ScriptBlock>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ShareUsageBytes</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -117,7 +117,7 @@ The **Get-AzResourceGroupDeploymentWhatIfResult** cmdlet gets the ARM template W
 ```powershell
 PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1"
+    -ResourceGroupName "myRG1" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "FullResourcePayloads"
@@ -133,7 +133,7 @@ The command uses the *ResultFormat* parameter to set the What-If result to inclu
 ```powershell
 PS C:\> Get-AzResourceGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
-    -ResourceGroupName "myRG1"
+    -ResourceGroupName "myRG1" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
     -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
     -ResultFormat "ResourceIdOnly"

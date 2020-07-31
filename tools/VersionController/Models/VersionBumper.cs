@@ -213,7 +213,7 @@ namespace VersionController.Models
             {
                 powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
                 powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
-                powershell.AddScript("Find-Module -Name " + moduleName + " -AllowPrerelease -AllVersions");
+                powershell.AddScript("Find-Module -Name " + moduleName + " -Repository PSGallery, TestGallery -AllowPrerelease -AllVersions");
                 var cmdletResult = powershell.Invoke();
                 foreach (var versionImformation in cmdletResult)
                 {

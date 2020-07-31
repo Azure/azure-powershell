@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Used `Deny` specifically as NetworkRules default action.
 
 ## Version 1.5.0
 * Supported displaying account capabilities.
