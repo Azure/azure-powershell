@@ -335,6 +335,9 @@ Modifies a resource group.
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
+### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
+{{ Fill in the Synopsis }}
+
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
@@ -365,6 +368,9 @@ Validates a resource group deployment.
 
 ### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
 Validates a deployment at tenant scope.
+
+### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
+Unregisters an Azure provider feature in your account.
 
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.

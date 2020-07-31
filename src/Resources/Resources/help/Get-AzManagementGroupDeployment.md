@@ -61,7 +61,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ The fully qualified resource Id of the deployment.
 example: /providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The management group id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The name of deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases: DeploymentName
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

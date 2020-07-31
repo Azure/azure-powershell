@@ -12,20 +12,15 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### RoleAssignmentIdParameterSet (Default)
+### RoleAssignmentParameterSet (Default)
 ```
-Set-AzRoleAssignment [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRoleAssignment -RoleAssignment <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 Set-AzRoleAssignment -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RoleAssignmentParameterSet
-```
-Set-AzRoleAssignment -RoleAssignment <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
