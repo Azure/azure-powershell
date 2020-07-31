@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public PSPrivateEndpointConnection GetPrivateEndpointConnection(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            PrivateEndpointConnection connnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion);
+            PrivateEndpointConnection connnection = ServiceClient.Operations.GetResource<PrivateEndpointConnection>(url, _configuration.ApiVersion);
             return ToPsPrivateEndpointConnection(connnection);
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             if(_configuration.HasConnectionsURI)
             {
                 string url = BuildPrivateEndpointConnectionsURL(resourceGroupName, serviceName);
-                IPage<PrivateEndpointConnection> list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(url, _configuration.ApiVersion);
+                IPage<PrivateEndpointConnection> list = ServiceClient.Operations.GetResourcePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(url, _configuration.ApiVersion);
                 foreach (var pec in list)
                 {
                     var psPec = ToPsPrivateEndpointConnection(pec);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 }
                 while (list.NextPageLink != null)
                 {
-                    list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(list.NextPageLink, null);
+                    list = ServiceClient.Operations.GetResourcePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(list.NextPageLink, null);
                     foreach (var pec in list)
                     {
                         var psPec = ToPsPrivateEndpointConnection(pec);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             else
             {
                 string url = BuildPrivateEndpointConnectionsOwnerURL(resourceGroupName, serviceName);
-                TrackedResource resource = ServiceClient.Operations.GetResouce<TrackedResource>(url, _configuration.ApiVersion);
+                TrackedResource resource = ServiceClient.Operations.GetResource<TrackedResource>(url, _configuration.ApiVersion);
                 if(resource?.PrivateEndpointConnections != null)
                 {
                     foreach (var pec in resource.PrivateEndpointConnections)
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public PSPrivateEndpointConnection UpdatePrivateEndpointConnectionStatus(string resourceGroupName, string serviceName, string name, string status, string description = null)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            PrivateEndpointConnection privateEndpointConnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion);
+            PrivateEndpointConnection privateEndpointConnection = ServiceClient.Operations.GetResource<PrivateEndpointConnection>(url, _configuration.ApiVersion);
 
             privateEndpointConnection.PrivateLinkServiceConnectionState.Status = status;
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
             }
 
-            ServiceClient.Operations.PutResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion, privateEndpointConnection);
+            ServiceClient.Operations.PutResource<PrivateEndpointConnection>(url, _configuration.ApiVersion, privateEndpointConnection);
 
             return GetPrivateEndpointConnection(resourceGroupName, serviceName, name);
         }
@@ -127,13 +127,13 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public void DeletePrivateEndpointConnection(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            ServiceClient.Operations.DeleteResouce(url, _configuration.ApiVersion);
+            ServiceClient.Operations.DeleteResource(url, _configuration.ApiVersion);
         }
 
         public PSPrivateLinkResource GetPrivateLinkResource(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateLinkResourceURL(resourceGroupName, serviceName, name);
-            PrivateLinkResource resource = ServiceClient.Operations.GetResouce<PrivateLinkResource>(url, _configuration.ApiVersion);
+            PrivateLinkResource resource = ServiceClient.Operations.GetResource<PrivateLinkResource>(url, _configuration.ApiVersion);
             return ToPsPrivateLinkResource(resource);
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         {
             var psPLRs = new List<PSPrivateLinkResource>();
             string url = BuildPrivateLinkResourcesURL(resourceGroupName, serviceName);
-            IPage<PrivateLinkResource> list = ServiceClient.Operations.GetResoucePage<Page<PrivateLinkResource>, PrivateLinkResource>(url, _configuration.ApiVersion);
+            IPage<PrivateLinkResource> list = ServiceClient.Operations.GetResourcePage<Page<PrivateLinkResource>, PrivateLinkResource>(url, _configuration.ApiVersion);
             foreach (var plr in list)
             {
                 var psPlr = ToPsPrivateLinkResource(plr);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             }
             while (list.NextPageLink != null)
             {
-                list = ServiceClient.Operations.GetResoucePage<Page<PrivateLinkResource>, PrivateLinkResource>(list.NextPageLink, null);
+                list = ServiceClient.Operations.GetResourcePage<Page<PrivateLinkResource>, PrivateLinkResource>(list.NextPageLink, null);
                 foreach (var plr in list)
                 {
                     var psPlr = ToPsPrivateLinkResource(plr);

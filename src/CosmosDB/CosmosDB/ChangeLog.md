@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 0.1.6
+* Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput. 
+* New-AzCosmosDBAccount cmdlet was updated with new paramters: EnableFreeTier, EnableAnalyticalStorage, ServerVersion, IpRule.
+* Update-AzCosmosDBAccount was updated with: EnableAnalyticalStorage and IpRule.
+* IpRangeFilter is deprecated, IpRule should be used, for both New-AzCosmosDBAccount and Update-AzCosmosDBAccount.
+* New-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBCollection, New-AzCosmosDBCassandraTable and Update-AzCosmosDBCassandraTable cmdlets allow specifying AnalyticalStorageTTL. 
+
 ## Version 0.1.5
 * PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
 * Detailed parameter is deprecated in the following cmdlets:

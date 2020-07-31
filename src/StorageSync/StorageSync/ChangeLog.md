@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Added a new version StorageSync SDK targeting ApiVersion 2020-03-01
+* Added Update Storage Sync Service cmdlet
+    - `Set-AzStorageSyncService`
+* Added IncomingTrafficPolicy and PrivateEndpointConnections to StorageSyncService cmdlets.
+
 ## Version 1.2.3
 * Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
 

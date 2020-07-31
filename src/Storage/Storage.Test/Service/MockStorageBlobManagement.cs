@@ -552,7 +552,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
-        public Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return Task.Factory.StartNew(() => this.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext));
         }

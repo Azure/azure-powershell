@@ -89,6 +89,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableNoPublicIPValue { get => ParametersBody.EnableNoPublicIPValue; set => ParametersBody.EnableNoPublicIPValue = value; }
 
+        /// <summary>The name of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of KeyVault key.",
+        SerializedName = @"KeyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyName { get => ParametersBody.EncryptionKeyName ?? null; set => ParametersBody.EncryptionKeyName = value; }
+
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource EncryptionKeySource { get => ParametersBody.EncryptionKeySource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource)""); set => ParametersBody.EncryptionKeySource = value; }
+
+        /// <summary>The Uri of KeyVault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Uri of KeyVault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Uri of KeyVault.",
+        SerializedName = @"keyvaulturi",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyVaultUri { get => ParametersBody.EncryptionKeyVaultUri ?? null; set => ParametersBody.EncryptionKeyVaultUri = value; }
+
+        /// <summary>The version of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of KeyVault key.",
+        SerializedName = @"keyversion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyVersion { get => ParametersBody.EncryptionKeyVersion ?? null; set => ParametersBody.EncryptionKeyVersion = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -103,28 +150,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LoadBalancerBackendPoolNameValue { get => ParametersBody.LoadBalancerBackendPoolNameValue ?? null; set => ParametersBody.LoadBalancerBackendPoolNameValue = value; }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LoadBalancerIdValue { get => ParametersBody.LoadBalancerIdValue ?? null; set => ParametersBody.LoadBalancerIdValue = value; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -198,6 +223,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter PrepareEncryption { get => ParametersBody.PrepareEncryption; set => ParametersBody.PrepareEncryption = value; }
+
+        /// <summary>The value which should be used for this field.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The value which should be used for this field.",
+        SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         public string PrivateSubnetName { get => ParametersBody.CustomPrivateSubnetNameValue ?? null; set => ParametersBody.CustomPrivateSubnetNameValue = value; }
 
@@ -236,8 +272,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RelayNamespaceNameValue { get => ParametersBody.RelayNamespaceNameValue ?? null; set => ParametersBody.RelayNamespaceNameValue = value; }
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter RequireInfrastructureEncryption { get => ParametersBody.RequireInfrastructureEncryption; set => ParametersBody.RequireInfrastructureEncryption = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -252,17 +288,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue ResourceTagValue { get => ParametersBody.ResourceTagValue ?? null /* object */; set => ParametersBody.ResourceTagValue = value; }
 
         /// <summary>The SKU name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU name.")]
@@ -285,28 +310,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuTier { get => ParametersBody.SkuTier ?? null; set => ParametersBody.SkuTier = value; }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string StorageAccountNameValue { get => ParametersBody.StorageAccountNameValue ?? null; set => ParametersBody.StorageAccountNameValue = value; }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string StorageAccountSkuNameValue { get => ParametersBody.StorageAccountSkuNameValue ?? null; set => ParametersBody.StorageAccountSkuNameValue = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -359,17 +362,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         public string VirtualNetworkId { get => ParametersBody.CustomVirtualNetworkIdValue ?? null; set => ParametersBody.CustomVirtualNetworkIdValue = value; }
-
-        /// <summary>The value which should be used for this field.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The value which should be used for this field.",
-        SerializedName = @"value",
-        PossibleTypes = new [] { typeof(string) })]
-        public string VnetAddressPrefixValue { get => ParametersBody.VnetAddressPrefixValue ?? null; set => ParametersBody.VnetAddressPrefixValue = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

@@ -41,6 +41,9 @@ Get or list clusters
 ### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
 
+### [Get-AzOperationalInsightsDeletedWorkspace](Get-AzOperationalInsightsDeletedWorkspace.md)
+List deleted workspaces.
+
 ### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
 
@@ -133,6 +136,9 @@ Removes a Storage Insight.
 
 ### [Remove-AzOperationalInsightsWorkspace](Remove-AzOperationalInsightsWorkspace.md)
 Removes a workspace.
+
+### [Restore-AzOperationalInsightsWorkspace](Restore-AzOperationalInsightsWorkspace.md)
+Restore a deleted workspace.
 
 ### [Set-AzOperationalInsightsDataSource](Set-AzOperationalInsightsDataSource.md)
 Updates a data source.

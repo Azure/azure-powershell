@@ -19,7 +19,14 @@
 -->
 
 ## Upcoming Release
-* Fixed bug for `Set-AzActionGroup`
+* Extend the parameter set in `Set-AzDiagnosticSetting` for separation of Logs and Metrics enablement [#12482]
+
+## Version 2.0.2
+* Fixed bug for `Get-AzDiagnosticSetting` when metrics or logs are null [#12272]
+
+## Version 2.0.1
+* Fixed input object parameter for `Set-AzActivityLogAlert`
+* Fixed `InputObject` parameter for `Set-AzActionGroup` [#10868]
 
 ## Version 2.0.0
 * Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories [#11589]

@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added alias "FunctionParameters" for parameter "FunctionParameter" to
+
+## Version 2.3.0
+* Added `-ForceDelete` option for `Remove-AzOperationalInsightsWorkspace`
+* Added new cmdlet `Get-AzOperationalInsightsDeletedWorkspace`
+* Added new cmdlet `Restore-AzOperationalInsightsWorkspace`
+
+## Version 2.2.0
+* Fixed bug PSWorkspace doesn't implement IOperationalInsightsWorkspace [#12135]
+* Added "pergb2018" to valid value set of parameter `Sku` in `Set-AzOperationalInsightsWorkspace` 
+* Added alias "FunctionParameters" for parameter `FunctionParameter` to
     - `New-AzOperationalInsightsSavedSearch`
     - `Set-AzOperationalInsightsSavedSearch`
 

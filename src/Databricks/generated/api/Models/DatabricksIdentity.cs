@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="PeeringName" /> property.</summary>
+        private string _peeringName;
+
+        /// <summary>The name of the workspace vNet peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        public string PeeringName { get => this._peeringName; set => this._peeringName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -57,6 +64,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The name of the workspace vNet peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the workspace vNet peering.",
+        SerializedName = @"peeringName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PeeringName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -88,6 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
     {
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The name of the workspace vNet peering.</summary>
+        string PeeringName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

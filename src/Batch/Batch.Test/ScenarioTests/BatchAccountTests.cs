@@ -48,5 +48,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithNoPublicIp");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewBatchAccountWithSystemIdentity()
+        {
+            BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithSystemIdentity");
+        }
     }
 }

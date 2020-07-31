@@ -26,6 +26,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -100,9 +101,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
-        public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
+        public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName, bool? ForceDelete)
         {
-            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
+            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ForceDelete).GetAwaiter().GetResult();
             return result.Response.StatusCode;
         }
 
@@ -208,6 +209,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 () => CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName));
 
             return workspace;
+        }
+
+        public virtual List<PSWorkspace> GetDeletedWorkspace(string resourceGroupName)
+        {
+            return String.IsNullOrEmpty(resourceGroupName) 
+                ? OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList() 
+                : OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
+        }
+
+        public virtual bool DeletedWorkspace(string resourceGroupName, string name)
+        {
+            List<PSWorkspace> workspaces = GetDeletedWorkspace(resourceGroupName);
+
+            foreach (PSWorkspace workspace in workspaces)
+            {
+                if (workspace.Name.Equals(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public virtual List<PSWorkspace> FilterPSWorkspaces(string resourceGroupName, string workspaceName)

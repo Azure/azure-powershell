@@ -13,7 +13,7 @@ List all compute resource Skus
 ## SYNTAX
 
 ```
-Get-AzComputeResourceSku [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzComputeResourceSku [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ List all compute resource Skus
 
 ### Example 1
 ```
-PS C:\> PS C:\> Get-AzComputeResourceSku | where {$_.Locations.Contains("westus")};
+PS C:\> Get-AzComputeResourceSku "westus";
 ```
 
 List all compute resource skus in West US region
@@ -45,12 +45,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Specifies a location of the available skus to list.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

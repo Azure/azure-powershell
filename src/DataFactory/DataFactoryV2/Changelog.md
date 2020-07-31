@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.0
+
+* Added global parameters to Data Factory.
+
+## Version 1.8.2
+* Updated ADF .Net SDK version to 4.9.0
+
 ## Version 1.8.1
 * Updated assembly version of data factory V2 cmdlets
 

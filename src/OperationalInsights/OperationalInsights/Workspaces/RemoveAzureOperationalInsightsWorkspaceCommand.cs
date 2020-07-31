@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Force delete workspace.")]
+        public SwitchParameter ForceDelete { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -57,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public void ExecuteDelete()
         {
-            HttpStatusCode response = OperationalInsightsClient.DeleteWorkspace(ResourceGroupName, Name);
+            HttpStatusCode response = OperationalInsightsClient.DeleteWorkspace(ResourceGroupName, Name, ForceDelete.IsPresent);
 
             if (response == HttpStatusCode.NoContent)
             {

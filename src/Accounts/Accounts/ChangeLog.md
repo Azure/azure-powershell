@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.2
+* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
+* Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]
+* Supported home tenant and managedBy tenant information of subscription
+* Corrected module name, version info in telemetry data
+* Adjusted SqlDatabaseDnsSuffix and ServiceManagementUrl if environment metadata endpoint returns incompatible value
+
+## Version 1.9.1
+* Added new cmdlet `Invoke-AzRestMethod`
+* Fixed an issue that may cause authentication errors in multi-process scenarios such as running multiple Azure PowerShell cmdlets using `Start-Job` [#9448]
+
+## Version 1.9.0
+* Supported discovering environment setting by default and adding environment via `Add-AzEnvironment`
+* Update preloaded assemblies [#12024], [#11976]
 * Updated Azure.Core assembly
 * Fixed an issue that may cause `Connect-AzAccount` to fail in multi-threaded execution [#11201]
 

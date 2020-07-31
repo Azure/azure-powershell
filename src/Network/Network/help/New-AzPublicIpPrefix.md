@@ -24,7 +24,7 @@ The **New-AzPublicIpPrefix** cmdlet creates a public IP prefix.
 
 ## EXAMPLES
 
-### 1: Create a new public Ip prefix
+### Example 1: Create a new public Ip prefix
 ```powershell
 PS C:\> $publicIpPrefix = New-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName -PrefixLength 30
 ```

@@ -61,16 +61,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// Specifies whether this published application can be launched with command line arguments provided by the client, command
         /// line arguments specified at publish time, or no command line arguments at all.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.",
         SerializedName = @"commandLineSetting",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting CommandLineSetting { get => ApplicationBody.CommandLineSetting ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting)""); set => ApplicationBody.CommandLineSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting CommandLineSetting { get => ApplicationBody.CommandLineSetting; set => ApplicationBody.CommandLineSetting = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure

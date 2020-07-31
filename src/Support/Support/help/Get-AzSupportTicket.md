@@ -71,7 +71,7 @@ Name  Title                        SupportTicketId Severity ServiceDisplayName  
 test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
 ```
 
-### Example 3: Get first 2 support tickets filtered by status
+### Example 4: Get first 2 support tickets filtered by status
 ```powershell
 PS C:\> Get-AzSupportTicket -Filter "Status eq 'Closed'" -First 2
 
@@ -81,7 +81,7 @@ test1 test title1                  150010521000317 Minimal  Virtual Machine runn
 test2 test title2                  150010521000318 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
 ```
 
-### Example 3: Get all support tickets that are in Open state and created after Dec 20th, 2019
+### Example 5: Get all support tickets that are in Open state and created after Dec 20th, 2019
 ```powershell
 PS C:\> Get-AzSupportTicket -Filter "Status eq 'Open' and CreatedDate gt 2019-12-20"
 

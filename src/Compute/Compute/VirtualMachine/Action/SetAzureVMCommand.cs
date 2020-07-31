@@ -27,9 +27,11 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
         protected const string RedeployResourceGroupNameParameterSet = "RedeployResourceGroupNameParameterSetName";
         protected const string ReapplyResourceGroupNameParameterSet = "ReapplyResourceGroupNameParameterSetName";
+        protected const string SimulateEvictionResourceGroupNameParameterSet = "SimulateEvictionResourceGroupNameParameterSetName";
         protected const string GeneralizeIdParameterSet = "GeneralizeIdParameterSetName";
         protected const string RedeployIdParameterSet = "RedeployIdParameterSetName";
         protected const string ReapplyIdParameterSet = "ReapplyIdParameterSetName";
+        protected const string SimulateEvictionIdParameterSet = "SimulateEvictionIdParameterSetName";
 
         [Parameter(
            Mandatory = true,
@@ -47,6 +49,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ParameterSetName = ReapplyResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = SimulateEvictionResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -71,6 +79,12 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ReapplyIdParameterSet,
            ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource ID.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = SimulateEvictionIdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource ID.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
@@ -91,6 +105,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 1,
            ParameterSetName = ReapplyResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = SimulateEvictionResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -128,6 +148,16 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ReapplyIdParameterSet,
             HelpMessage = "To reapply virtual machine.")]
         public SwitchParameter Reapply { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = SimulateEvictionResourceGroupNameParameterSet,
+            HelpMessage = "To simulate eviction of virtual machine.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = SimulateEvictionIdParameterSet,
+            HelpMessage = "To simulate eviction of virtual machine.")]
+        public SwitchParameter SimulateEviction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -170,6 +200,19 @@ namespace Microsoft.Azure.Commands.Compute
                 ExecuteClientAction(() =>
                 {
                     var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                    result.StartTime = this.StartTime;
+                    result.EndTime = DateTime.Now;
+                    WriteObject(result);
+                });
+            }
+            else if (this.SimulateEviction.IsPresent)
+            {
+                ExecuteClientAction(() =>
+                {
+                    var op = this.VirtualMachineClient.SimulateEvictionWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
                     var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);

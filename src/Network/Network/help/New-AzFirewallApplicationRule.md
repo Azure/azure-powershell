@@ -32,15 +32,15 @@ The **New-AzFirewallApplicationRule** cmdlet creates an application rule for Azu
 
 ## EXAMPLES
 
-### 1:  Create a rule to allow all HTTPS traffic from 10.0.0.0
-```
+### Example 1: Create a rule to allow all HTTPS traffic from 10.0.0.0
+```powershell
 New-AzFirewallApplicationRule -Name "https-rule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
 ```
 
 This example creates a rule which will allow all HTTPS traffic on port 443 from 10.0.0.0.
 
-### 2:  Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
-```
+### Example 2: Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
+```powershell
 New-AzFirewallApplicationRule -Name "windows-update-rule" -FqdnTag WindowsUpdate -SourceAddress "10.0.0.0/24"
 ```
 

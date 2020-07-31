@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobIsVersioningEnabled()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobIsVersioningEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainer()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainer");
@@ -57,6 +64,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobServiceProperties()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobServiceProperties");
-        }        
+        }    
     }
 }
