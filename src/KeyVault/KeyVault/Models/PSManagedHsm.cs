@@ -11,7 +11,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSManagedHsm:PSKeyVaultIdentityItem
+    public class PSManagedHsm : PSKeyVaultIdentityItem
     {
         public PSManagedHsm()
         {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             TenantId = managedHsm.Properties.TenantId.Value;
             TenantName = ModelExtensions.GetDisplayNameForTenant(TenantId, adClient);
             SecurityDomainId = managedHsm.Properties.SecurityDomainId.Value;
-            SecurityDomainName = ModelExtensions.GetDisplayNameForTenant(SecurityDomainId,adClient) ;
+            SecurityDomainName = ModelExtensions.GetDisplayNameForTenant(SecurityDomainId, adClient);
             InitialAdminObjectIds = managedHsm.Properties.InitialAdminObjectIds;
             HsmPoolUri = managedHsm.Properties.HsmPoolUri;
             EnablePurgeProtection = managedHsm.Properties.EnablePurgeProtection;
@@ -54,56 +54,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; private set; }
         public ManagedHsm OriginalManagedHsm { get; private set; }
 
-   /*   Comments temporarily  
-    *     
-    *   public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
-
-        public string AccessPoliciesText { get { return ModelExtensions.ConstructAccessPoliciesList(AccessPolicies); } }
-
-        public PSKeyVaultNetworkRuleSet NetworkAcls { get; private set; }
-
-        public string NetworkAclsText { get { return ModelExtensions.ConstructNetworkRuleSet(NetworkAcls); } }
-
-        //If we got this vault from the server, save the over-the-wire version, to
-        //allow easy updates
-
-        private static PSKeyVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
-        {
-            // The service will return NULL when NetworkAcls is never set before or set with default property values
-            // The default constructor will set default property values in SDK's NetworkRuleSet class
-            if (properties?.NetworkAcls == null)
-            {
-                return new PSKeyVaultNetworkRuleSet();
-            }
-
-            var networkAcls = properties.NetworkAcls;
-
-            PSKeyVaultNetworkRuleDefaultActionEnum defaultAct;
-            if (!Enum.TryParse(networkAcls.DefaultAction, true, out defaultAct))
-            {
-                defaultAct = PSKeyVaultNetworkRuleDefaultActionEnum.Allow;
-            }
-
-            PSKeyVaultNetworkRuleBypassEnum bypass;
-            if (!Enum.TryParse(networkAcls.Bypass, true, out bypass))
-            {
-                bypass = PSKeyVaultNetworkRuleBypassEnum.AzureServices;
-            }
-
-            IList<string> allowedIpAddresses = null;
-            if (networkAcls.IpRules != null && networkAcls.IpRules.Count > 0)
-            {
-                allowedIpAddresses = networkAcls.IpRules.Select(item => item.Value).ToList();
-            }
-
-            IList<string> allowedVirtualNetworkResourceIds = null;
-            if (networkAcls.VirtualNetworkRules != null && networkAcls.VirtualNetworkRules.Count > 0)
-            {
-                allowedVirtualNetworkResourceIds = networkAcls.VirtualNetworkRules.Select(item => item.Id).ToList();
-            }
-
-            return new PSKeyVaultNetworkRuleSet(defaultAct, bypass, allowedIpAddresses, allowedVirtualNetworkResourceIds);
-        }
-    */
     }
 }

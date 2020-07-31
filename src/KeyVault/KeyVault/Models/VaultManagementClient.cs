@@ -33,6 +33,12 @@ using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
+    public enum ResourceTypeName
+    {
+        Vault = 0,
+        Hsm = 1
+    }
+
     public class VaultManagementClient
     {
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
@@ -418,6 +424,37 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 });
 
             return new PSManagedHsm(response, adClient);
+        }
+
+
+        /// <summary>
+        /// Get an existing MHSM. Returns null if vault is not found.
+        /// </summary>
+        /// <param name="managedHsmName">managed hsm name</param>
+        /// <param name="resourceGroupName">resource group name</param>
+        /// <param name="adClient">the active directory client</param>
+        /// <returns>the retrieved MHSM</returns>
+        public PSManagedHsm GetManagedHsmName(string managedHsmName, string resourceGroupName, ActiveDirectoryClient adClient = null)
+        {
+            if (string.IsNullOrWhiteSpace(managedHsmName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+                throw new ArgumentNullException("resourceGroupName");
+
+            try
+            {
+                var response = KeyVaultManagementClient.ManagedHsms.Get(resourceGroupName, managedHsmName);
+
+                return new PSManagedHsm(response, adClient);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                throw;
+            }
         }
 
         /// <summary>
