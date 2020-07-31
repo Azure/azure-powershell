@@ -29,7 +29,7 @@
             string templateParametersUri = null,
             Hashtable templateObject = null,
             Hashtable templateParametersObject = null,
-            WhatIfResultFormat resultFormat = default,
+            WhatIfResultFormat resultFormat = WhatIfResultFormat.FullResourcePayloads,
             string[] excludeChangeTypes = null)
         {
             this.DeploymentName = deploymentName ?? this.GenerateDeployName();
