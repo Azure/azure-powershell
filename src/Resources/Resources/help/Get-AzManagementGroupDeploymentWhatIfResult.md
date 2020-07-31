@@ -14,96 +14,96 @@ Gets an ARM template What-If result for a deployment at management group scope.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateFile <String>
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterObject
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterObject
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectAndParameterFile
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterFile
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterFile
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectAndParameterUri
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateFileAndParameterUri
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateUriAndParameterUri
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
- -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByTemplateObjectWithNoParameters
-```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>]
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByTemplateFileAndParameterObject
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterObject
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterFile
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateFileAndParameterFile
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterFile
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterFile <String>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterUri
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateFileAndParameterUri
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterUri
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateParameterUri <String>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateObjectWithNoParameters
+```
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### ByTemplateUriWithNoParameters
 ```
-Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId <String> -Location <String>
- [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] [-Name <String>] -TemplateUri <String>
+Get-AzManagementGroupDeploymentWhatIfResult [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-ResultFormat <WhatIfResultFormat>] [-ExcludeChangeType <String[]>] -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
