@@ -172,6 +172,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)
         {
+            if (id == null)
+                return string.Empty;
             return id.ToString();
         }
     }

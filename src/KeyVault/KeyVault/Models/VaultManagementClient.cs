@@ -29,11 +29,15 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
+using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class VaultManagementClient
     {
+        public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
+        public readonly string ManagedHsmResourceType = "Microsoft.KeyVault/managedHSMs";
+
         public VaultManagementClient(IAzureContext context)
         {
             KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
@@ -51,6 +55,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             set;
         }
 
+        #region Vault-related METHODS
         /// <summary>
         /// Create a new vault
         /// </summary>
@@ -76,11 +81,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     throw new ArgumentNullException("parameters.SkuFamilyName");
                 if (parameters.TenantId == Guid.Empty)
                     throw new ArgumentException("parameters.TenantId");
-
-                properties.Sku = new Sku
+                if (!string.IsNullOrWhiteSpace(parameters.SkuName))
                 {
-                    Name = parameters.SkuName,
-                };
+                    if (Enum.TryParse(parameters.SkuName, out SkuName skuName)) 
+                    {
+                        properties.Sku = new Sku(skuName);
+                    }
+                    else
+                    {
+                        throw new InvalidEnumArgumentException("parameters.SkuName");
+                    }
+                }
                 properties.EnabledForDeployment = parameters.EnabledForDeployment;
                 properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
@@ -101,10 +112,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 properties.CreateMode = CreateMode.Recover;
             }
+
             var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.VaultName,
-
                 parameters: new VaultCreateOrUpdateParameters
                 {
                     Location = parameters.Location,
@@ -252,7 +263,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// Purge a deleted vault. Throws if vault is not found.
         /// </summary>
         /// <param name="vaultName"></param>
-        /// <param name="resourceGroupName"></param>
+        /// <param name="location"></param>
         public void PurgeVault(string vaultName, string location)
         {
             if (string.IsNullOrWhiteSpace(vaultName))
@@ -329,8 +340,135 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return deletedVaults;
         }
 
-        public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
+        #endregion
 
+        #region Managedhsm-related METHOD
+
+        /// <summary>
+        /// Create a MHSM pool
+        /// </summary>
+        /// <param name="parameters">vault creation parameters</param>
+        /// <param name="adClient">the active directory client</param>
+        /// <returns></returns>
+        public PSManagedHsm CreateNewManagedHsm(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
+        {
+            if (parameters == null)
+                throw new ArgumentNullException("parameters");
+            if (string.IsNullOrWhiteSpace(parameters.VaultName))
+                throw new ArgumentNullException("parameters.VaultName");
+            if (string.IsNullOrWhiteSpace(parameters.ResourceGroupName))
+                throw new ArgumentNullException("parameters.ResourceGroupName");
+            if (string.IsNullOrWhiteSpace(parameters.Location))
+                throw new ArgumentNullException("parameters.Location");
+            if(parameters.Administrator.Count==0)
+                throw new ArgumentNullException("parameters.Administrator");
+
+            var properties = new ManagedHsmProperties();
+            var managedHsmSku = new ManagedHsmSku();
+
+            if (parameters.CreateMode != CreateMode.Recover)
+            {
+                if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
+                    throw new ArgumentNullException("parameters.SkuFamilyName");
+                if (parameters.TenantId == Guid.Empty)
+                    throw new ArgumentException("parameters.TenantId");
+                if (!string.IsNullOrWhiteSpace(parameters.SkuName))
+                {
+                    if (Enum.TryParse(parameters.SkuName, out ManagedHsmSkuName skuName))
+                    {
+                        managedHsmSku.Name = skuName;
+                    }
+                    else
+                    {
+                        throw new InvalidEnumArgumentException("parameters.SkuName");
+                    }
+                }
+                properties.TenantId = parameters.TenantId;
+                properties.InitialAdminObjectIds = parameters.Administrator;
+                properties.HsmPoolUri = "";
+                properties.EnableSoftDelete = parameters.EnableSoftDelete;
+                properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
+                properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
+                
+                // No sdk available to update this parapmeter
+                // properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
+
+                // properties.NetworkAcls = parameters.NetworkAcls;
+                /*
+                if (networkRuleSet != null)
+                {
+                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
+                }
+                */
+            }
+            else
+            {
+                properties.CreateMode = CreateMode.Recover;
+            }
+
+            var response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
+                resourceGroupName: parameters.ResourceGroupName,
+                name: parameters.VaultName,
+                parameters: new ManagedHsm
+                {
+                    Location = parameters.Location,
+                    Sku = managedHsmSku,
+                    Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
+                    Properties = properties
+                });
+
+            return new PSManagedHsm(response, adClient);
+        }
+
+        /// <summary>
+        /// Delete an existing vault. Throws if vault is not found.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        public void DeleteManagedHsm(string vaultName, string resourceGroupName)
+        {
+            if (string.IsNullOrWhiteSpace(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+                throw new ArgumentNullException("resourceGroupName");
+
+            try
+            {
+                KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
+                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, vaultName, resourceGroupName));
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Purge a deleted MHSM. Throws if MHSM is not found.
+        /// </summary>
+        /// <param name="managedHsmName"></param>
+        /// <param name="location"></param>
+        public void PurgeManagedHsm(string managedHsmName, string location)
+        {
+            if (string.IsNullOrWhiteSpace(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrWhiteSpace(location))
+                throw new ArgumentNullException(nameof(location));
+
+            try
+            {
+                KeyVaultManagementClient.Vaults.PurgeDeleted(managedHsmName, location);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
+                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.DeletedVaultNotFound, managedHsmName, location));
+                throw;
+            }
+        }
+
+        #endregion
 
         #region HELP_METHODS
         /// <summary>

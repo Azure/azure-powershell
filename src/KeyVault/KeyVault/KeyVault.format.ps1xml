@@ -391,6 +391,64 @@
         </ListEntries>
       </ListControl>
     </View>
+	<View>
+		<Name>Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm</Name>
+		<ViewSelectedBy>
+			<TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm</TypeName>
+		</ViewSelectedBy>
+		<ListControl>
+			<ListEntries>
+				<ListEntry>
+					<ListItems>
+						<ListItem>
+							<Label>ManagedHsm Name</Label>
+							<PropertyName>VaultName</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Resource Group Name</Label>
+							<PropertyName>ResourceGroupName</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Location</Label>
+							<PropertyName>Location</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Resource ID</Label>
+							<PropertyName>ResourceId</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Hsm Pool URI</Label>
+							<PropertyName>HsmPoolUri</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Tenant ID</Label>
+							<PropertyName>TenantName</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Security Domain ID</Label>
+							<PropertyName>SecurityDomainName</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>SKU</Label>
+							<PropertyName>Sku</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Soft Delete Enabled?</Label>
+							<PropertyName>EnableSoftDelete</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Soft Delete Retention Period (days)</Label>
+							<PropertyName>SoftDeleteRetentionInDays</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Tags</Label>
+							<PropertyName>TagsTable</PropertyName>
+						</ListItem>
+					</ListItems>
+				</ListEntry>
+			</ListEntries>
+		</ListControl>
+	</View>
     <View>
       <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultAccessPolicy</Name>
       <ViewSelectedBy>
