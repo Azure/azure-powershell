@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -36,12 +35,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
@@ -114,8 +110,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Creates new ResourcesClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
-        /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourceManagerSdkClient(
             IResourceManagementClient resourceManagementClient)
         {
@@ -156,32 +150,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return this.ResourceManagementClient;
         }
 
-        //private string GetDeploymentParameters(Hashtable templateParameterObject)
-        //{
-        //    if (templateParameterObject != null)
-        //    {
-        //        return SerializeHashtable(templateParameterObject, addValueLayer: false);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //public string SerializeHashtable(Hashtable templateParameterObject, bool addValueLayer)
-        //{
-        //    if (templateParameterObject == null)
-        //    {
-        //        return null;
-        //    }
-        //    Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
-        //    return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
-        //    {
-        //        TypeNameHandling = TypeNameHandling.None,
-        //        Formatting = Formatting.Indented
-        //    });
-        //}
-
         public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
@@ -192,25 +160,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return response.ToPSResourceProvider();
-        }
-
-        private string GetTemplate(string templateFile)
-        {
-            string template = string.Empty;
-
-            if (!string.IsNullOrEmpty(templateFile))
-            {
-                if (Uri.IsWellFormedUriString(templateFile, UriKind.Absolute))
-                {
-                    template = GeneralUtilities.DownloadFile(templateFile);
-                }
-                else
-                {
-                    template = FileUtilities.DataStore.ReadFileAsText(templateFile);
-                }
-            }
-
-            return template;
         }
 
         private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable tags)
@@ -489,8 +438,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    //string json = PSJsonSerializer.ConvertToJson(parameters.TemplateObject);
-                    //deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
                     deployment.Properties.Template = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateObject));
                 }
             }
@@ -504,9 +451,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                //string templateParams = GetDeploymentParameters(parameters.TemplateParameterObject);
-                //deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
-                deployment.Properties.Parameters = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateParameterObject));
+                string parametersContent = parameters.TemplateParameterObject != null
+                    ? PSJsonSerializer.Serialize(parameters.TemplateParameterObject)
+                    : null;
+                deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
+                    ? JObject.Parse(parametersContent)
+                    : null;
             }
 
             deployment.Location = parameters.Location;
