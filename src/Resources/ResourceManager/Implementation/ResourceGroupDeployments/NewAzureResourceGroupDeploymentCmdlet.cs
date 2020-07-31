@@ -29,15 +29,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
-    public class NewAzureResourceGroupDeploymentCmdlet : DeploymentCreateCmdlet, IDynamicParameters
+    [Cmdlet("New", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    public class NewAzureResourceGroupDeploymentCmdlet : DeploymentCreateCmdlet
     {
-        [Alias("DeploymentName")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -104,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             deploymentName: this.Name,
             mode: this.Mode,
             resourceGroupName: this.ResourceGroupName,
-            templateUri: this.TemplateUri ?? this.TryResolvePath(TemplateFile),
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
@@ -113,12 +107,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected override void OnProcessRecord()
         {
-            if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
+            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
             {
-                WriteExceptionError(new ArgumentException(Properties.Resources.InvalidRollbackParameters));
+                this.WriteExceptionError(new ArgumentException(Properties.Resources.InvalidRollbackParameters));
             }
 
-            if (this.ShouldExecuteWhatIf())
+            if (!this.Force && this.ShouldExecuteWhatIf())
             {
                 base.OnProcessRecord();
             }

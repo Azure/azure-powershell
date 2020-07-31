@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     OutputType(typeof(PSWhatIfOperationResult))]
     public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
-        [Alias("DeploymentName")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -59,6 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateObject: this.TemplateObject,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
-            resultFormat: this.ResultFormat);
+            resultFormat: this.ResultFormat,
+            excludeChangeTypes: this.ExcludeChangeType);
     }
 }

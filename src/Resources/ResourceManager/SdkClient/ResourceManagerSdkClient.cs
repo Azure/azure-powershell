@@ -1356,9 +1356,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             try
             {
-                WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
-                    ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
-                    : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+                WhatIfOperationResult whatIfOperationResult = null;
 
                 switch (parameters.ScopeType)
                 {
@@ -1373,8 +1371,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         break;
                     case DeploymentScopeType.Tenant:
                         whatIfOperationResult = deployments.WhatIfAtTenantScope(parameters.DeploymentName, scopedDeploymentWhatIf);
-                        break;
-                    default:
                         break;
                 }
 

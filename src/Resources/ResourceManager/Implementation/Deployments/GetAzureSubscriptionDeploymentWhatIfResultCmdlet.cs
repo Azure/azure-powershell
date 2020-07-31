@@ -32,12 +32,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Alias("Get-AzSubscriptionDeploymentWhatIfResult")]
     public class GetAzureSubscriptionDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
-        [Alias("DeploymentName")]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-
         [Parameter(Mandatory = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
@@ -60,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateObject: this.TemplateObject,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
-            resultFormat: this.ResultFormat);
+            resultFormat: this.ResultFormat,
+            excludeChangeTypes: this.ExcludeChangeType);
     }
 }
