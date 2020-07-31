@@ -82,7 +82,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 WriteWarning(Resources.WarnOnDeploymentDebugSetting);
             }
 
-            WriteObject(ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+            if (this.DeploymentParameters.ScopeType == DeploymentScopeType.ResourceGroup)
+            {
+                WriteObject(this.ResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
+            }
+            else
+            {
+                WriteObject(this.ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+            }
         }
 
         protected bool ShouldExecuteWhatIf()
@@ -98,6 +105,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 return whatIfFlag.IsPresent;
             }
 
+            if (this.SessionState == null)
+            {
+                return false;
+            }
+
             return (bool)this.SessionState.PSVariable.GetValue("WhatIfPreference");
         }
 
@@ -106,6 +118,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             if (this.MyInvocation.BoundParameters.GetOrNull("Confirm") is SwitchParameter confirmFlag)
             {
                 return confirmFlag.IsPresent;
+            }
+
+            if (this.SessionState == null)
+            {
+                return false;
             }
 
             var confirmPreference = (ConfirmImpact)this.SessionState.PSVariable.GetValue("ConfirmPreference");

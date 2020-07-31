@@ -95,8 +95,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
             new object[] { "foobar", "\"foobar\"" },
             new object[] { Guid.Parse("4d44fe86-f04a-4ba5-9900-abdec8cb11c1"), "\"4d44fe86-f04a-4ba5-9900-abdec8cb11c1\"" },
             new object[] { new Uri("https://example.com"), "\"https://example.com\"" },
-            new object[] { new DateTime(2020, 8, 1), "\"2020-08-01T07:00:00Z\"" },
-            new object[] { new DateTimeOffset(new DateTime(2020, 8, 1), new TimeSpan(-7, 0, 0)), "\"2020-08-01T07:00:00+00:00\"" },
+            new object[] { new DateTime(2020, 8, 1, 0, 0, 0, DateTimeKind.Utc), "\"2020-08-01T00:00:00Z\"" },
+            new object[] { new DateTimeOffset(new DateTime(2020, 8, 1, 0, 0, 0, DateTimeKind.Utc)), "\"2020-08-01T00:00:00+00:00\"" },
         };
     }
 }
