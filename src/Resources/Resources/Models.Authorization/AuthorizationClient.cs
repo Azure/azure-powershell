@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
-            string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
-                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
+            string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
+                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId)
+                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id);
             parameters.Description = string.IsNullOrWhiteSpace(parameters.Description) ? null : parameters.Description;
             parameters.Condition = string.IsNullOrWhiteSpace(parameters.Condition) ? null : parameters.Condition;
             parameters.ConditionVersion = string.IsNullOrWhiteSpace(parameters.ConditionVersion) ? null : parameters.ConditionVersion;
