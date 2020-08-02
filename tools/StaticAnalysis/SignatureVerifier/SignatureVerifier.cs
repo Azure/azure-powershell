@@ -24,6 +24,7 @@ using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
 using Tools.Common.Utilities;
+using ParameterSetMetadata = Tools.Common.Models.ParameterSetMetadata;
 
 namespace StaticAnalysis.SignatureVerifier
 {
@@ -305,6 +306,22 @@ namespace StaticAnalysis.SignatureVerifier
                                         cmdlet.Name),
                                     remediation: "Define a default parameter set in the cmdlet attribute.");
                             }
+
+                            //if (cmdlet.DefaultParameterSet.Parameters.Count == 0)
+                            //{
+                            //    issueLogger.LogSignatureIssue(
+                            //        cmdlet: cmdlet,
+                            //        severity: 1,
+                            //        problemId: SignatureProblemId.EmptyDefaultParameterSet,
+                            //        description:
+                            //        string.Format(
+                            //            "Default parameter set '{0}' of cmdlet '{1}' is empty.",
+                            //            cmdlet.DefaultParameterSetName, cmdlet.Name),
+                            //        remediation: "Set a non empty parameter set as the default parameter set.");
+                            //}
+
+                            ValidateParameterSetWithMandatoryEqual(cmdlet, issueLogger);
+                            ValidateParameterSetWithLenientMandatoryEqual(cmdlet, issueLogger);
                         }
 // TODO: Remove IfDef code
 #if !NETSTANDARD
@@ -315,6 +332,148 @@ namespace StaticAnalysis.SignatureVerifier
                     Directory.SetCurrentDirectory(savedDirectory);
                 }
             }
+        }
+
+        /// <summary>
+        /// Check whether there exist mandatory equal in the cmdlet.
+        /// Mandatory equal means two parameter set has exactly the same mandatory parameters.
+        /// If all these two parameter set are not defualt, it may cause confusion.
+        /// An example: https://github.com/Azure/azure-powershell/issues/10954
+        /// </summary>
+        public void ValidateParameterSetWithMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
+        {
+            var defaultParameterSet = cmdlet.DefaultParameterSet;
+            List<HashSet<string>> mandatoryEqualSetList = new List<HashSet<string>>();
+            foreach (var parameterSet1 in cmdlet.ParameterSets)
+            {
+                foreach (var parameterSet2 in cmdlet.ParameterSets)
+                {
+                    if (!parameterSet1.Equals(parameterSet2) &&
+                        cmdlet.DefaultParameterSetName != parameterSet1.Name &&
+                        cmdlet.DefaultParameterSetName != parameterSet2.Name)
+                    {
+                        if (parameterSet1.AllMandatoryParemeterEquals(parameterSet2) && 
+                            !IsParameterSetIntersectionCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
+                        {
+                            var isExistInSet = false;
+                            foreach (var mandatoryEqualSet in mandatoryEqualSetList)
+                            {
+                                if (mandatoryEqualSet.Contains(parameterSet1.Name) || mandatoryEqualSet.Contains(parameterSet2.Name))
+                                {
+                                    mandatoryEqualSet.Add(parameterSet1.Name);
+                                    mandatoryEqualSet.Add(parameterSet2.Name);
+                                    isExistInSet = true;
+                                    break;
+                                }
+                            }
+                            if (!isExistInSet)
+                            {
+                                HashSet<string> newSet = new HashSet<string>();
+                                newSet.Add(parameterSet1.Name);
+                                newSet.Add(parameterSet2.Name);
+                                mandatoryEqualSetList.Add(newSet);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (mandatoryEqualSetList.Count > 0)
+            {
+                foreach (var mandatoryEqualSet in mandatoryEqualSetList)
+                {
+                    string mandatoryEqualSetNames = "";
+                    foreach (var mandatoryEqualSetName in mandatoryEqualSet)
+                    {
+                        if (mandatoryEqualSetNames != "")
+                        {
+                            mandatoryEqualSetNames += ", ";
+                        }
+                        mandatoryEqualSetNames += "'" + mandatoryEqualSetName + "'";
+                    }
+                    issueLogger.LogSignatureIssue(
+                                cmdlet: cmdlet,
+                                severity: 1,
+                                problemId: SignatureProblemId.ParameterSetWithStrictMandatoryEqual,
+                                description:
+                                string.Format(
+                                    "Parameter set {0} of cmdlet '{1}' have the same mandatory parameters, " +
+                                    "and both of them are not default parameter set which may cause confusion.",
+                                    mandatoryEqualSetNames, cmdlet.Name),
+                                remediation: "Merge these parameter sets into one parameter set.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check whether there exist lenient mandatory equal in the cmdlet
+        /// Lenient mandatory equal means for two parameter set, one parameter set's mandatory parameters can
+        /// be found in another parameter set whether as mandatory or optional.
+        /// If all these two parameter set are not defualt, it may cause confusion.
+        /// </summary>
+        public void ValidateParameterSetWithLenientMandatoryEqual(CmdletMetadata cmdlet, ReportLogger<SignatureIssue> issueLogger)
+        {
+            var defaultParameterSet = cmdlet.DefaultParameterSet;
+            foreach (var parameterSet1 in cmdlet.ParameterSets)
+            {
+                foreach (var parameterSet2 in cmdlet.ParameterSets)
+                {
+                    if (!parameterSet1.Equals(parameterSet2) &&
+                        cmdlet.DefaultParameterSetName != parameterSet1.Name &&
+                        cmdlet.DefaultParameterSetName != parameterSet2.Name &&
+                        parameterSet1.Name.CompareTo(parameterSet2.Name) > 0)
+                    {
+                        if (parameterSet1.AllMandatoryParemeterLenientEquals(parameterSet2) && 
+                            !IsParameterSetIntersectionCoveredByDefault(parameterSet1, parameterSet2, defaultParameterSet))
+                        {
+                            issueLogger.LogSignatureIssue(
+                                cmdlet: cmdlet,
+                                severity: 1,
+                                problemId: SignatureProblemId.ParameterSetWithLenientMandatoryEqual,
+                                description:
+                                string.Format(
+                                    "Parameter set '{0}' and '{1}' of cmdlet '{2}', for all mandatory parameters in {0} " +
+                                    "we can find mandatory and optional parameter in {1}, and all mandatory parameter in " +
+                                    "{1} can find the corresponding mandatory parameter in {0}, " +
+                                    "and both of them are not default parameter set which may cause confusion.",
+                                    parameterSet1.Name, parameterSet2.Name, cmdlet.Name),
+                                remediation: "Merge these parameter sets into one parameter set.");
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Judge whether the two conflict parameter sets can be covered by default parameter set.
+        /// Find all parameters these two sets both contains and if anyone can't be found in default set return false.
+        /// </summary>
+        /// <returns>True if can be covered, false otherwise.</returns>
+        public bool IsParameterSetIntersectionCoveredByDefault(ParameterSetMetadata parameterSet1, ParameterSetMetadata parameterSet2, ParameterSetMetadata defaultParameterSet)
+        {
+            foreach (var parameter1 in parameterSet1.Parameters)
+            {
+                foreach (var parameter2 in parameterSet2.Parameters)
+                {
+                    if (parameter1.ParameterMetadata.Name == parameter2.ParameterMetadata.Name)
+                    {
+                        var IsIntersectionCovered = false;
+                        foreach (var defaultParameter in defaultParameterSet.Parameters)
+                        {
+                            if (defaultParameter.ParameterMetadata.Name == parameter1.ParameterMetadata.Name)
+                            {
+                                IsIntersectionCovered = true;
+                                break;
+                            }
+                        }
+                        if (!IsIntersectionCovered)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         /// <summary>
