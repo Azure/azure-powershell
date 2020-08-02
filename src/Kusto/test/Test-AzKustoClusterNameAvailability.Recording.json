@@ -1,9 +1,9 @@
 {
-  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-02-15+1": {
+  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-06-14+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-02-15",
-      "Content": "{\r\n  \"name\": \"testclusterpb8oay\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-06-14",
+      "Content": "{\r\n  \"name\": \"testcluster5arkid\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -18,21 +18,21 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "a8f3053a-1394-403c-87a0-de03fda03208" ],
-        "Set-Cookie": [ "ARRAffinity=6546d31d55ee4830d02435ffb7e23d3cc2fbc05a13894098a441197898802a3b;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
+        "x-ms-request-id": [ "594e1674-ccd1-489a-8f6d-d21d6cccc1d1" ],
+        "Set-Cookie": [ "ARRAffinity=143347532b6a3621e54b1ff15e169f337a4c56c753a49654afbd694886935622;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20200507T143525Z:1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
+        "x-ms-correlation-request-id": [ "dfce8436-b211-4594-9ade-7d865c33827b" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T135416Z:dfce8436-b211-4594-9ade-7d865c33827b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 07 May 2020 14:35:25 GMT" ]
+        "Date": [ "Thu, 30 Jul 2020 13:54:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testclusterpb8oay\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterpb8oay\u0027 with type Engine is already taken. Please specify a different name\"}"
+      "Content": "{\"name\":\"testcluster5arkid\",\"nameAvailable\":false,\"message\":\"Name \u0027testcluster5arkid\u0027 with type Engine is already taken. Please specify a different name\"}"
     }
   }
 }
