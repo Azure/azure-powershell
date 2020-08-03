@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Set-AzureRmApplicationInsightsContinuousExport [-ResourceId] <String> -ExportId 
 ```
 
 ## DESCRIPTION
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## EXAMPLES
 
