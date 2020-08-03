@@ -156,6 +156,67 @@ function Test-CreateNewVault {
     }
 }
 
+<#
+.SYNOPSIS
+Tests CRUD for Managed Hsm.
+#>
+function Test-ManagedHsmCRUD {
+    $rgName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $hsmName = getAssetName
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+    $administrator = "c1be1392-39b8-4521-aafc-819a47008545"
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+    try {
+        # Test default MHSM
+        $actual = New-AzKeyVault -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Hsm
+        Assert-AreEqual $hsmName $actual.VaultName
+        Assert-AreEqual $rgName $actual.ResourceGroupName
+        Assert-AreEqual $hsmLocation $actual.Location
+        Assert-AreEqual 1  $hsm.InitialAdminObjectIds.Count
+        Assert-True  $hsm.InitialAdminObjectIds.Contains($administrator)
+        Assert-AreEqual "StandardB1" $actual.Sku
+
+        # Default Access Policy is not set by Service Principal
+        # Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        
+        # Soft delete and purge protection defaults to true
+        # Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
+        Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
+        
+        # Default retention days
+        Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
+
+        Remove-AzKeyVault -Name $hsmName
+
+        # Test CustomB32 vault
+        $actual = New-AzKeyVault -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Sku CustomB32 -Hsm
+        Assert-AreEqual "CustomB32" $actual.Sku
+        Remove-AzKeyVault -Name $hsmName
+
+        # Test enable purge protection & customize retention days
+        $actual = New-AzKeyVault -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -EnablePurgeProtection -SoftDeleteRetentionInDays 10
+        Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
+        Assert-True { $actual.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be null"
+        Assert-AreEqual 10 $actual.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
+
+        # Test positional parameters
+        $actual = New-AzKeyVault (getAssetName) $rgName $hsmLocation
+        Assert-NotNull $actual
+
+        # Test throws for existing vault
+        Assert-Throws { New-AzKeyVault -VaultName $vault1Name -ResourceGroupName $rgname -Location $vaultLocation }
+
+        # Test throws for resourcegroup nonexistent
+        Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
+    }
+
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
+}
+
 #-------------------------------------------------------------------------------------
 
 #------------------------------Soft-delete--------------------------------------

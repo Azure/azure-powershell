@@ -370,7 +370,11 @@
                 <Label>Soft Delete Enabled?</Label>
                 <PropertyName>EnableSoftDelete</PropertyName>
               </ListItem>
-              <ListItem>
+			  <ListItem>
+				<Label>Enabled Purge Protection?</Label>
+				<PropertyName>EnablePurgeProtection</PropertyName>
+			  </ListItem>				
+			  <ListItem>
                 <Label>Soft Delete Retention Period (days)</Label>
                 <PropertyName>SoftDeleteRetentionInDays</PropertyName>
               </ListItem>
@@ -429,12 +433,20 @@
 							<PropertyName>SecurityDomainName</PropertyName>
 						</ListItem>
 						<ListItem>
+							<Label>Initial Admin Object Ids</Label>
+							<PropertyName>InitialAdminObjectIds</PropertyName>
+						</ListItem>
+						<ListItem>
 							<Label>SKU</Label>
 							<PropertyName>Sku</PropertyName>
 						</ListItem>
 						<ListItem>
 							<Label>Soft Delete Enabled?</Label>
 							<PropertyName>EnableSoftDelete</PropertyName>
+						</ListItem>
+						<ListItem>
+							<Label>Enabled Purge Protection?</Label>
+							<PropertyName>EnablePurgeProtection</PropertyName>
 						</ListItem>
 						<ListItem>
 							<Label>Soft Delete Retention Period (days)</Label>
