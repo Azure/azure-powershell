@@ -25,19 +25,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             set { _synapseAnalyticsManagementClient = value; }
         }
-
-        protected string ConvertToUnsecureString(System.Security.SecureString securePassword)
-        {
-            var unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
-        }
     }
 }
