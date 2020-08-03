@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private TemplateSpecVersion GetAzureSdkTemplateSpecVersion(
+        internal TemplateSpecVersion GetAzureSdkTemplateSpecVersion(
             string resourceGroupName,
             string templateSpecName,
             string templateSpecVersion,

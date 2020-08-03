@@ -15,7 +15,7 @@ Creates a new Template Spec.
 ### FromJsonStringParameterSet (Default)
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] -TemplateJson <String> [-VersionDescription <String>]
+ [-DisplayName <String>] [-Location <String>] -TemplateJson <String> [-VersionDescription <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <Stri
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
  [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation when overwriting an existing version.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -119,6 +119,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The description of the version.")]
         public string VersionDescription { get; set; }
 
+        [Parameter(Mandatory = false, 
+            HelpMessage = "Do not ask for confirmation when overwriting an existing version.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion
 
         #region Cmdlet Overrides
@@ -157,18 +161,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSNotSupportedException();
                 }
 
-                var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
-                    ResourceGroupName,
-                    Name,
-                    Version,
-                    Location,
-                    packagedTemplate,
-                    templateSpecDescription: Description,
-                    templateSpecDisplayName: DisplayName,
-                    versionDescription: VersionDescription
-                );
+                Action createOrUpdateAction = () =>
+                {
+                    var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
+                        ResourceGroupName,
+                        Name,
+                        Version,
+                        Location,
+                        packagedTemplate,
+                        templateSpecDescription: Description,
+                        templateSpecDisplayName: DisplayName,
+                        versionDescription: VersionDescription
+                    );
 
-                WriteObject(templateSpecVersion);
+                    WriteObject(templateSpecVersion);
+                };
+
+                if (!Force.IsPresent && TemplateSpecsSdkClient.GetAzureSdkTemplateSpecVersion(
+                        ResourceGroupName,
+                        Name,
+                        Version,
+                        throwIfNotExists: false) != null)
+                {
+                    // The template spec version already exists and force is not present, so 
+                    // let's confirm with the user that he/she wishes to overwrite (update) it:
+
+                    // TODO: Localize
+                    string confirmationMessage =
+                        $"Template Spec version '{Version}' already exists and this action will overwrite existing " +
+                        "data for this version. Are you sure you'd like to overwrite existing " +
+                        $"Template Spec version data for Template Spec '{Name}' version '{Version}'?";
+
+                    ConfirmAction(
+                        Force.IsPresent,
+                        confirmationMessage,
+                        "Updating Template Spec...", // TODO: Localize
+                        Version,
+                        createOrUpdateAction
+                    );
+                }
+                else
+                {
+                    createOrUpdateAction();
+                }
+
             }
             catch (Exception ex)
             {
