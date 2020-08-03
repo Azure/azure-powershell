@@ -1,8 +1,8 @@
 {
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14+1": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14",
       "Content": "{\r\n  \"kind\": \"ReadWrite\",\r\n  \"location\": \"East US\"\r\n}",
       "Headers": {
       },
@@ -17,33 +17,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"\"" ],
-        "x-ms-request-id": [ "d09016c3-dc1a-47a3-b1bc-d59871ad4b45" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/80376ddb-9278-455a-b2c2-454e5748480f?api-version=2020-06-14" ],
-        "Set-Cookie": [ "ARRAffinity=bc8f9f0257500901a71d8bb509bda65a70da8abe3582d417b2f4eb67370855ff;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "59ef56e2-3461-4ef5-ac3c-61eddc946b22" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/27b712cd-2530-4c6e-9f2a-18af0ca27c9f?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "194" ],
-        "x-ms-correlation-request-id": [ "15160a82-7319-4e26-9e12-9cd4d0f90088" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095625Z:15160a82-7319-4e26-9e12-9cd4d0f90088" ],
+        "x-ms-correlation-request-id": [ "fa2f390c-7cff-41ad-bb69-b08bfde7029d" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002225Z:fa2f390c-7cff-41ad-bb69-b08bfde7029d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:56:25 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:22:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "363" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj\",\"name\":\"testcluster5arkid/testdatabasev8aetj\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"provisioningState\":\"Creating\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8\",\"name\":\"testclusterlbfexs/testdatabaser4qwo8\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"provisioningState\":\"Creating\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/80376ddb-9278-455a-b2c2-454e5748480f?api-version=2020-06-14+2": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/27b712cd-2530-4c6e-9f2a-18af0ca27c9f?api-version=2020-06-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/80376ddb-9278-455a-b2c2-454e5748480f?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/27b712cd-2530-4c6e-9f2a-18af0ca27c9f?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "344", "345" ],
-        "x-ms-client-request-id": [ "a7a66eeb-a019-481a-a5e8-6129389d19b6", "a7a66eeb-a019-481a-a5e8-6129389d19b6" ],
+        "x-ms-unique-id": [ "355", "356" ],
+        "x-ms-client-request-id": [ "1cea24f6-edaf-48eb-87da-ea66cbcdcc7b", "1cea24f6-edaf-48eb-87da-ea66cbcdcc7b" ],
         "CommandName": [ "Az.Kusto.internal\\New-AzKustoDatabase", "Az.Kusto.internal\\New-AzKustoDatabase" ],
         "FullCommandName": [ "New-AzKustoDatabase_Create", "New-AzKustoDatabase_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -59,32 +59,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
+        "x-ms-correlation-request-id": [ "ce70867f-e7c2-4b0c-ad05-a4284a862333" ],
+        "x-ms-request-id": [ "13b9dd09-2a91-42e4-85f3-4cd7c0cdb1ca" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "281" ],
-        "x-ms-request-id": [ "9fd9e021-4ca9-496d-b155-12841aaf07cc" ],
-        "Set-Cookie": [ "ARRAffinity=0b20ba151314f86a0737223ef48ad813dc527c505a17f75b2d96c6573ffe5df1;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "6211e8b3-f75c-4731-bfe8-e6347a93ab41" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095659Z:6211e8b3-f75c-4731-bfe8-e6347a93ab41" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002256Z:ce70867f-e7c2-4b0c-ad05-a4284a862333" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:56:59 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:22:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "495" ],
+        "Content-Length": [ "496" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/80376ddb-9278-455a-b2c2-454e5748480f\",\"name\":\"80376ddb-9278-455a-b2c2-454e5748480f\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-30T09:56:25.1751951Z\",\"endTime\":\"2020-07-30T09:56:26.940944Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DatabaseCreate\",\"RootActivityId\":\"0bf35f7a-c5a6-4fce-867a-882b355784ca\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/27b712cd-2530-4c6e-9f2a-18af0ca27c9f\",\"name\":\"27b712cd-2530-4c6e-9f2a-18af0ca27c9f\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T00:22:24.9006743Z\",\"endTime\":\"2020-08-03T00:22:26.3226758Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DatabaseCreate\",\"RootActivityId\":\"2bfc9b02-e327-493c-981d-0ca3aace71b1\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14+3": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "344", "345", "346" ],
-        "x-ms-client-request-id": [ "a7a66eeb-a019-481a-a5e8-6129389d19b6", "a7a66eeb-a019-481a-a5e8-6129389d19b6", "a7a66eeb-a019-481a-a5e8-6129389d19b6" ],
+        "x-ms-unique-id": [ "355", "356", "357" ],
+        "x-ms-client-request-id": [ "1cea24f6-edaf-48eb-87da-ea66cbcdcc7b", "1cea24f6-edaf-48eb-87da-ea66cbcdcc7b", "1cea24f6-edaf-48eb-87da-ea66cbcdcc7b" ],
         "CommandName": [ "Az.Kusto.internal\\New-AzKustoDatabase", "Az.Kusto.internal\\New-AzKustoDatabase", "Az.Kusto.internal\\New-AzKustoDatabase" ],
         "FullCommandName": [ "New-AzKustoDatabase_Create", "New-AzKustoDatabase_Create", "New-AzKustoDatabase_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -101,29 +101,29 @@
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
-        "x-ms-request-id": [ "85813faf-fb6d-4834-a077-d11a09f90fee" ],
-        "Set-Cookie": [ "ARRAffinity=91632ea45e362786b046a2bc5dc71afb96d330a18ec878b46ee71f0b6f8bc72b;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
+        "x-ms-request-id": [ "229eb743-6b4e-4fc8-b0c6-42cf3dd5321d" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "c9666d4f-7360-40a0-b091-a9c16603c55d" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095704Z:c9666d4f-7360-40a0-b091-a9c16603c55d" ],
+        "x-ms-correlation-request-id": [ "a7bacef4-70e4-4961-9a3a-2aaf0e54d86a" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002257Z:a7bacef4-70e4-4961-9a3a-2aaf0e54d86a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:57:03 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:22:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "471" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj\",\"name\":\"testcluster5arkid/testdatabasev8aetj\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"tags\":{},\"properties\":{\"isFollowed\":false,\"softDeletePeriodInDays\":0,\"hotCachePeriodInDays\":0,\"statistics\":{\"size\":0.0},\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8\",\"name\":\"testclusterlbfexs/testdatabaser4qwo8\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"tags\":{},\"properties\":{\"isFollowed\":false,\"softDeletePeriodInDays\":0,\"hotCachePeriodInDays\":0,\"statistics\":{\"size\":0.0},\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14+4": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14",
-      "Content": "{\r\n  \"properties\": {\r\n    \"clusterResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid\",\r\n    \"databaseName\": \"testdatabasev8aetj\",\r\n    \"defaultPrincipalsModificationKind\": \"Union\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clusterResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs\",\r\n    \"databaseName\": \"testdatabaser4qwo8\",\r\n    \"defaultPrincipalsModificationKind\": \"Union\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -137,33 +137,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"\"" ],
-        "x-ms-request-id": [ "eff6f9f5-de08-47d3-a064-d470dbbae3e2" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/d68020cb-3b9b-43c2-964b-34b8be7f03a3?api-version=2020-06-14" ],
-        "Set-Cookie": [ "ARRAffinity=6efc2269d71deaa1261da4c300d2678080968815c44335ea47a42a26a14b8e83;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "dcfc62e6-f572-412c-b4d8-d5a4e8fe8c30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/007948af-6a79-439c-99fb-afa2053dfddd?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "196" ],
-        "x-ms-correlation-request-id": [ "eb8ae541-a475-4420-9335-c76312892c73" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095706Z:eb8ae541-a475-4420-9335-c76312892c73" ],
+        "x-ms-correlation-request-id": [ "686400f6-2308-40a8-af5e-66e701d26a29" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002258Z:686400f6-2308-40a8-af5e-66e701d26a29" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:57:05 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:22:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "622" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj\",\"name\":\"testfclusterkgb956/testdbconfv8aetj\",\"type\":\"Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"properties\":{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid\",\"databaseName\":\"testdatabasev8aetj\",\"defaultPrincipalsModificationKind\":\"Union\",\"provisioningState\":\"Creating\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8\",\"name\":\"testfclusterbgiwc7/testdbconfr4qwo8\",\"type\":\"Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"properties\":{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs\",\"databaseName\":\"testdatabaser4qwo8\",\"defaultPrincipalsModificationKind\":\"Union\",\"provisioningState\":\"Creating\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/d68020cb-3b9b-43c2-964b-34b8be7f03a3?api-version=2020-06-14+5": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/007948af-6a79-439c-99fb-afa2053dfddd?api-version=2020-06-14+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/d68020cb-3b9b-43c2-964b-34b8be7f03a3?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/007948af-6a79-439c-99fb-afa2053dfddd?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "347", "348" ],
-        "x-ms-client-request-id": [ "66a58dd2-4252-44db-aa18-446571077227", "66a58dd2-4252-44db-aa18-446571077227" ],
+        "x-ms-unique-id": [ "358", "359" ],
+        "x-ms-client-request-id": [ "8ad33de8-dd08-44b5-a3fc-7b186f67807e", "8ad33de8-dd08-44b5-a3fc-7b186f67807e" ],
         "CommandName": [ "New-AzKustoAttachedDatabaseConfiguration", "New-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "New-AzKustoAttachedDatabaseConfiguration_CreateExpanded", "New-AzKustoAttachedDatabaseConfiguration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -180,31 +180,31 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "280" ],
-        "x-ms-request-id": [ "bb8ae187-0c40-4bae-8c87-f872a6c18965" ],
-        "Set-Cookie": [ "ARRAffinity=143347532b6a3621e54b1ff15e169f337a4c56c753a49654afbd694886935622;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "1efab69a-ae47-4884-aed9-d19f37bef079" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "bb78cb60-2c64-430f-9718-e4ba3e3267fc" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095741Z:bb78cb60-2c64-430f-9718-e4ba3e3267fc" ],
+        "x-ms-correlation-request-id": [ "8450b079-d18c-48fa-b18c-751f3dda635c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002328Z:8450b079-d18c-48fa-b18c-751f3dda635c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:57:40 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "504" ],
+        "Content-Length": [ "502" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/d68020cb-3b9b-43c2-964b-34b8be7f03a3\",\"name\":\"d68020cb-3b9b-43c2-964b-34b8be7f03a3\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-30T09:57:06.2096389Z\",\"endTime\":\"2020-07-30T09:57:15.0071871Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"FollowerDatabaseCreate\",\"RootActivityId\":\"d36141c5-d848-4007-a627-037003da09de\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/007948af-6a79-439c-99fb-afa2053dfddd\",\"name\":\"007948af-6a79-439c-99fb-afa2053dfddd\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T00:22:58.1915634Z\",\"endTime\":\"2020-08-03T00:23:00.70768Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"FollowerDatabaseCreate\",\"RootActivityId\":\"b6c3e91e-9005-451e-853d-1f6cbe5286fa\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14+6": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "347", "348", "349" ],
-        "x-ms-client-request-id": [ "66a58dd2-4252-44db-aa18-446571077227", "66a58dd2-4252-44db-aa18-446571077227", "66a58dd2-4252-44db-aa18-446571077227" ],
+        "x-ms-unique-id": [ "358", "359", "360" ],
+        "x-ms-client-request-id": [ "8ad33de8-dd08-44b5-a3fc-7b186f67807e", "8ad33de8-dd08-44b5-a3fc-7b186f67807e", "8ad33de8-dd08-44b5-a3fc-7b186f67807e" ],
         "CommandName": [ "New-AzKustoAttachedDatabaseConfiguration", "New-AzKustoAttachedDatabaseConfiguration", "New-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "New-AzKustoAttachedDatabaseConfiguration_CreateExpanded", "New-AzKustoAttachedDatabaseConfiguration_CreateExpanded", "New-AzKustoAttachedDatabaseConfiguration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -222,31 +222,31 @@
         "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "846edc7f-9a20-46a6-be65-f4e20e18a2ea" ],
-        "Set-Cookie": [ "ARRAffinity=bc8f9f0257500901a71d8bb509bda65a70da8abe3582d417b2f4eb67370855ff;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "e07eddcd-510f-4534-8618-3aacccdc28be" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "edef39a1-b2a3-4f18-aee3-1f50a00eab01" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095743Z:edef39a1-b2a3-4f18-aee3-1f50a00eab01" ],
+        "x-ms-correlation-request-id": [ "cf7d4a47-d582-44a1-a051-6ae3f43c6c2f" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002328Z:cf7d4a47-d582-44a1-a051-6ae3f43c6c2f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:57:43 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "680" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj\",\"name\":\"testfclusterkgb956/testdbconfv8aetj\",\"type\":\"Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid\",\"databaseName\":\"testdatabasev8aetj\",\"attachedDatabaseNames\":[\"testdatabasev8aetj\"],\"defaultPrincipalsModificationKind\":\"Union\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8\",\"name\":\"testfclusterbgiwc7/testdbconfr4qwo8\",\"type\":\"Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs\",\"databaseName\":\"testdatabaser4qwo8\",\"attachedDatabaseNames\":[\"testdatabaser4qwo8\"],\"defaultPrincipalsModificationKind\":\"Union\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14+7": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testfclusterkgb956/AttachedDatabaseConfigurations/testdbconfv8aetj?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7/AttachedDatabaseConfigurations/testdbconfr4qwo8?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "350" ],
-        "x-ms-client-request-id": [ "ab3df4c8-e73d-4f22-bc18-6dbba169c62a" ],
+        "x-ms-unique-id": [ "361" ],
+        "x-ms-client-request-id": [ "4eb8cde9-0b8f-4442-8672-86a244b30e84" ],
         "CommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -261,17 +261,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14" ],
-        "Set-Cookie": [ "ARRAffinity=083009ef84a8f0d3087e83226e5ffb5361530b5ca5cf9d1da558ed0acbe1b682;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14988" ],
-        "x-ms-request-id": [ "405882fe-1226-41aa-aafc-aa49dee7b341" ],
-        "x-ms-correlation-request-id": [ "405882fe-1226-41aa-aafc-aa49dee7b341" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095748Z:405882fe-1226-41aa-aafc-aa49dee7b341" ],
+        "x-ms-request-id": [ "fa7ad8e6-df11-46f9-923e-3736cac7176c" ],
+        "x-ms-correlation-request-id": [ "fa7ad8e6-df11-46f9-923e-3736cac7176c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002329Z:fa7ad8e6-df11-46f9-923e-3736cac7176c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:57:48 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:28 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -280,14 +280,14 @@
       "Content": null
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14+8": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "350", "351" ],
-        "x-ms-client-request-id": [ "ab3df4c8-e73d-4f22-bc18-6dbba169c62a", "ab3df4c8-e73d-4f22-bc18-6dbba169c62a" ],
+        "x-ms-unique-id": [ "361", "362" ],
+        "x-ms-client-request-id": [ "4eb8cde9-0b8f-4442-8672-86a244b30e84", "4eb8cde9-0b8f-4442-8672-86a244b30e84" ],
         "CommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration", "Remove-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration_Delete", "Remove-AzKustoAttachedDatabaseConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -304,31 +304,31 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "279" ],
-        "x-ms-request-id": [ "99905312-3f26-4ce6-a154-cf45e832d88c" ],
-        "Set-Cookie": [ "ARRAffinity=143347532b6a3621e54b1ff15e169f337a4c56c753a49654afbd694886935622;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "c728b8d2-29eb-418d-a87a-fff96eee605b" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "852bc43a-1cc5-4e18-b714-35c363f794ae" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095819Z:852bc43a-1cc5-4e18-b714-35c363f794ae" ],
+        "x-ms-correlation-request-id": [ "6fba33d2-9bca-4b72-b484-80aa135abd49" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002359Z:6fba33d2-9bca-4b72-b484-80aa135abd49" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:58:19 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "504" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/91ca98e4-a41e-4708-8816-7844fd9fe34a\",\"name\":\"91ca98e4-a41e-4708-8816-7844fd9fe34a\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-30T09:57:48.2128242Z\",\"endTime\":\"2020-07-30T09:57:53.3850785Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"FollowerDatabaseDetach\",\"RootActivityId\":\"31e2fd9e-347b-4949-a9ab-c0b6d77b05c5\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/09b68c23-96d4-4419-89b8-1aceec664233\",\"name\":\"09b68c23-96d4-4419-89b8-1aceec664233\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T00:23:29.3013363Z\",\"endTime\":\"2020-08-03T00:23:33.1866774Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"FollowerDatabaseDetach\",\"RootActivityId\":\"cf033952-5166-4dcf-94ba-831c7b666438\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14\u0026operationResultResponseType=Location+9": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14\u0026operationResultResponseType=Location+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/91ca98e4-a41e-4708-8816-7844fd9fe34a?api-version=2020-06-14\u0026operationResultResponseType=Location",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/09b68c23-96d4-4419-89b8-1aceec664233?api-version=2020-06-14\u0026operationResultResponseType=Location",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "350", "351", "352" ],
-        "x-ms-client-request-id": [ "ab3df4c8-e73d-4f22-bc18-6dbba169c62a", "ab3df4c8-e73d-4f22-bc18-6dbba169c62a", "ab3df4c8-e73d-4f22-bc18-6dbba169c62a" ],
+        "x-ms-unique-id": [ "361", "362", "363" ],
+        "x-ms-client-request-id": [ "4eb8cde9-0b8f-4442-8672-86a244b30e84", "4eb8cde9-0b8f-4442-8672-86a244b30e84", "4eb8cde9-0b8f-4442-8672-86a244b30e84" ],
         "CommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration", "Remove-AzKustoAttachedDatabaseConfiguration", "Remove-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "Remove-AzKustoAttachedDatabaseConfiguration_Delete", "Remove-AzKustoAttachedDatabaseConfiguration_Delete", "Remove-AzKustoAttachedDatabaseConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -343,15 +343,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "295ea72b-60ed-4a18-b8f6-d161030201e5" ],
-        "Set-Cookie": [ "ARRAffinity=bc8f9f0257500901a71d8bb509bda65a70da8abe3582d417b2f4eb67370855ff;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "0c7be181-18fd-4ca6-b68f-3e64a92aa189" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "278" ],
-        "x-ms-correlation-request-id": [ "97321ad4-7152-4357-bd7d-406ae0e70e70" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095820Z:97321ad4-7152-4357-bd7d-406ae0e70e70" ],
+        "x-ms-correlation-request-id": [ "ca4e8c7b-8f74-4912-be44-be212c608d20" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002359Z:ca4e8c7b-8f74-4912-be44-be212c608d20" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:58:19 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -360,14 +360,14 @@
       "Content": null
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14+10": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14+10": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroup5arkid/providers/Microsoft.Kusto/Clusters/testcluster5arkid/Databases/testdatabasev8aetj?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaser4qwo8?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "353" ],
-        "x-ms-client-request-id": [ "6831401e-91eb-4a3d-987d-d1c96c0ce707" ],
+        "x-ms-unique-id": [ "364" ],
+        "x-ms-client-request-id": [ "2429698d-c103-4fdc-bb87-d9e5db3e449e" ],
         "CommandName": [ "Remove-AzKustoDatabase" ],
         "FullCommandName": [ "Remove-AzKustoDatabase_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -382,17 +382,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14" ],
-        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14987" ],
-        "x-ms-request-id": [ "83ed96e6-974f-4191-a6f4-f2317464b87c" ],
-        "x-ms-correlation-request-id": [ "83ed96e6-974f-4191-a6f4-f2317464b87c" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095824Z:83ed96e6-974f-4191-a6f4-f2317464b87c" ],
+        "x-ms-request-id": [ "6a344004-90bc-450d-93e6-47a49294948f" ],
+        "x-ms-correlation-request-id": [ "6a344004-90bc-450d-93e6-47a49294948f" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002400Z:6a344004-90bc-450d-93e6-47a49294948f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:58:24 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:23:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -401,14 +401,14 @@
       "Content": null
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14+11": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "353", "354" ],
-        "x-ms-client-request-id": [ "6831401e-91eb-4a3d-987d-d1c96c0ce707", "6831401e-91eb-4a3d-987d-d1c96c0ce707" ],
+        "x-ms-unique-id": [ "364", "365" ],
+        "x-ms-client-request-id": [ "2429698d-c103-4fdc-bb87-d9e5db3e449e", "2429698d-c103-4fdc-bb87-d9e5db3e449e" ],
         "CommandName": [ "Remove-AzKustoDatabase", "Remove-AzKustoDatabase" ],
         "FullCommandName": [ "Remove-AzKustoDatabase_Delete", "Remove-AzKustoDatabase_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -424,32 +424,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-correlation-request-id": [ "55c659d8-28b0-4741-814c-92b7207c6468" ],
-        "x-ms-request-id": [ "78305b90-8ca0-4308-9f59-fc61aed85000" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "277" ],
-        "Set-Cookie": [ "ARRAffinity=8e9bb04484c7a1d3a7fa7fc4a2bf55a3f5a227797a4fab2f0bb84163eae89308;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "cf7b0050-ef7e-4a85-b648-9f8e3b7d665b" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095856Z:55c659d8-28b0-4741-814c-92b7207c6468" ],
+        "x-ms-correlation-request-id": [ "2aa336d6-c499-4f21-b3ba-3d07018c9117" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002430Z:2aa336d6-c499-4f21-b3ba-3d07018c9117" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:58:55 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:24:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "496" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/c777c7b5-1e65-4e08-8e24-7718a09b2c36\",\"name\":\"c777c7b5-1e65-4e08-8e24-7718a09b2c36\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-30T09:58:21.4027581Z\",\"endTime\":\"2020-07-30T09:58:32.9973178Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DatabaseDelete\",\"RootActivityId\":\"9f31f4c3-892c-446f-84da-f53fefc950e9\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/98a278b1-5038-449f-bf79-feaeb20268c9\",\"name\":\"98a278b1-5038-449f-bf79-feaeb20268c9\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T00:24:00.1404211Z\",\"endTime\":\"2020-08-03T00:24:01.8281131Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DatabaseDelete\",\"RootActivityId\":\"ee550703-343d-4533-a847-6d62a91950d5\",\"provisioningState\":\"Succeeded\",\"OperationState\":\"Completed\"}}"
     }
   },
-  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14\u0026operationResultResponseType=Location+12": {
+  "Remove-AzKustoAttachedDatabaseConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14\u0026operationResultResponseType=Location+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/c777c7b5-1e65-4e08-8e24-7718a09b2c36?api-version=2020-06-14\u0026operationResultResponseType=Location",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/98a278b1-5038-449f-bf79-feaeb20268c9?api-version=2020-06-14\u0026operationResultResponseType=Location",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "353", "354", "355" ],
-        "x-ms-client-request-id": [ "6831401e-91eb-4a3d-987d-d1c96c0ce707", "6831401e-91eb-4a3d-987d-d1c96c0ce707", "6831401e-91eb-4a3d-987d-d1c96c0ce707" ],
+        "x-ms-unique-id": [ "364", "365", "366" ],
+        "x-ms-client-request-id": [ "2429698d-c103-4fdc-bb87-d9e5db3e449e", "2429698d-c103-4fdc-bb87-d9e5db3e449e", "2429698d-c103-4fdc-bb87-d9e5db3e449e" ],
         "CommandName": [ "Remove-AzKustoDatabase", "Remove-AzKustoDatabase", "Remove-AzKustoDatabase" ],
         "FullCommandName": [ "Remove-AzKustoDatabase_Delete", "Remove-AzKustoDatabase_Delete", "Remove-AzKustoDatabase_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -464,15 +464,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1589aebd-0418-452c-bc7a-adcb8c432525" ],
-        "Set-Cookie": [ "ARRAffinity=143347532b6a3621e54b1ff15e169f337a4c56c753a49654afbd694886935622;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-request-id": [ "7c27f7e8-62e6-417d-b5aa-b87492b10429" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "276" ],
-        "x-ms-correlation-request-id": [ "af629d82-257a-41c6-8f5d-1b46fad1bfe0" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T095858Z:af629d82-257a-41c6-8f5d-1b46fad1bfe0" ],
+        "x-ms-correlation-request-id": [ "f5df4b64-8000-4cc3-8209-629c5ac3bef9" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T002430Z:f5df4b64-8000-4cc3-8209-629c5ac3bef9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 09:58:58 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 00:24:29 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

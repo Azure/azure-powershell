@@ -94,19 +94,19 @@ function setupEnv() {
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
     New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
 
+    # Create data connections:
+    $dataConnectionName = $env.dataConnectionName
+    $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $env.location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
     
-    #$dataConnectionName = $env.dataConnectionName+ "h"
-    #$eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
-   # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $env.location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
+    $dataConnectionName = $env.dataConnectionName + "g"
+    $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
+    $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
     
-    # $dataConnectionName = $env.dataConnectionName + "g"
-    # $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
-    # $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
-    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
-    
-    # $dataConnectionName = $env.dataConnectionName + "I"
-    # $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
-    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -DataFormat $env.dataFormat -ConsumerGroup '$Default' -TableName $env.tableName -MappingRuleName $env.tableMappingName
+    $dataConnectionName = $env.dataConnectionName + "h"
+    $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -ConsumerGroup '$Default'
 
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2

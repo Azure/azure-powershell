@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namespaces_sdkpseventhubns_name": {
-      "value": "eventhubns5arkid"
+      "value": "eventhubnslbfexs"
     },
     "eventhub_name": {
-      "value": "eventhub5arkid"
+      "value": "eventhublbfexs"
     }
   }
 }

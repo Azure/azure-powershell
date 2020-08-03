@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-06-14",
-      "Content": "{\r\n  \"name\": \"testcluster5arkid\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"testclusterlbfexs\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -17,22 +17,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "594e1674-ccd1-489a-8f6d-d21d6cccc1d1" ],
-        "Set-Cookie": [ "ARRAffinity=143347532b6a3621e54b1ff15e169f337a4c56c753a49654afbd694886935622;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "b11bd8e4-e85b-4447-a15f-02bf78fd7d7f" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "dfce8436-b211-4594-9ade-7d865c33827b" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20200730T135416Z:dfce8436-b211-4594-9ade-7d865c33827b" ],
+        "x-ms-correlation-request-id": [ "aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T015217Z:aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 30 Jul 2020 13:54:15 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 01:52:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testcluster5arkid\",\"nameAvailable\":false,\"message\":\"Name \u0027testcluster5arkid\u0027 with type Engine is already taken. Please specify a different name\"}"
+      "Content": "{\"name\":\"testclusterlbfexs\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterlbfexs\u0027 with type Engine is already taken. Please specify a different name\"}"
     }
   }
 }

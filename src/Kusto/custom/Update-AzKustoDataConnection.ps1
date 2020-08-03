@@ -107,12 +107,21 @@ function Update-AzKustoDataConnection {
         # The event/iot hub consumer group.
         ${ConsumerGroup},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType]
+        # The name of blob storage event type to process.
+        ${BlobStorageEventType},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If set to true, indicates that ingestion should ignore the first record of every file.
+        ${IgnoreFirstRecord},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
         # The data format of the message. Optionally the data format can be added to each message.
@@ -133,12 +142,7 @@ function Update-AzKustoDataConnection {
         # The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
         ${MappingRuleName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The table where the data should be ingested. Optionally the table information can be added to each message.
@@ -264,6 +268,16 @@ function Update-AzKustoDataConnection {
 
                 $Parameter.StorageAccountResourceId = $PSBoundParameters['StorageAccountResourceId']
                 $null = $PSBoundParameters.Remove('StorageAccountResourceId')
+
+                if ($PSBoundParameters.ContainsKey('BlobStorageEventType')) {
+                    $Parameter.BlobStorageEventType = $PSBoundParameters['BlobStorageEventType']
+                    $null = $PSBoundParameters.Remove('BlobStorageEventType')
+                }
+
+                if ($PSBoundParameters.ContainsKey('IgnoreFirstRecord')) {
+                    $Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
+                    $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
+                }
             }
             else {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()

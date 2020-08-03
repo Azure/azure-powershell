@@ -1,5 +1,5 @@
 @{
-  GUID = '8bac1098-6d26-40ba-aad1-a2442a0d0a4a'
+  GUID = '18c61846-f6f0-425e-ba4b-5cf903e2bdd8'
   RootModule = './Az.Kusto.psm1'
   ModuleVersion = '0.1.4'
   CompatiblePSEditions = 'Core', 'Desktop'

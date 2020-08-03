@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Kusto
-Module Guid: 8bac1098-6d26-40ba-aad1-a2442a0d0a4a
+Module Guid: 18c61846-f6f0-425e-ba4b-5cf903e2bdd8
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
