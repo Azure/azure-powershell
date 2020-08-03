@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.NotebookFormat = notebook?.Nbformat;
             this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
-            //this.Keys = notebook?.Keys;
-            //this.Values = notebook?.Values;
+            this.Keys = notebook?.Keys;
+            this.Values = notebook?.Values;
         }
 
         [JsonProperty(PropertyName = "description")]

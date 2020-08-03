@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Kernelspec = new PSNotebookKernelSpec(notebookMetadata?.Kernelspec);
             this.LanguageInfo = new PSNotebookLanguageInfo(notebookMetadata?.LanguageInfo);
-            //this.Keys = notebookMetadata?.Keys;
-            //this.Values = notebookMetadata?.Values;
+            this.Keys = notebookMetadata?.Keys;
+            this.Values = notebookMetadata?.Values;
         }
 
         [JsonProperty(PropertyName = "kernelspec")]

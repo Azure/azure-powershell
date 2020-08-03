@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookKernelSpec?.Name;
             this.DisplayName = notebookKernelSpec?.DisplayName;
-            //this.Keys = notebookKernelSpec?.Keys;
-            //this.Values = notebookKernelSpec?.Values;
+            this.Keys = notebookKernelSpec?.Keys;
+            this.Values = notebookKernelSpec?.Values;
         }
 
         [JsonProperty(PropertyName = "name")]

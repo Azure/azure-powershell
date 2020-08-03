@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Source = notebookCell?.Source;
             this.Attachments = notebookCell?.Attachments;
             this.Outputs = notebookCell?.Outputs?.Select(element => new PSNotebookCellOutputItem(element)).ToList();
-            //this.Keys = notebookCell?.Keys;
-            //this.Values = notebookCell?.Values;
+            this.Keys = notebookCell?.Keys;
+            this.Values = notebookCell?.Values;
         }
 
         [JsonProperty(PropertyName = "cell_type")]
