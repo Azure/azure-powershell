@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Used `Deny` specifically as NetworkRules default action.
 
 ## Version 1.5.0

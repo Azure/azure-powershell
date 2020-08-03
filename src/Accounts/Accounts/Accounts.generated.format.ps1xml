@@ -153,6 +153,7 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Width>40</Width>
             <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
