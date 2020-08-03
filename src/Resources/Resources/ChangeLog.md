@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
+    - This included all the relevant changes to the data models
+
 ## Version 2.3.0
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.
 * Added 'Unregister-AzResourceProvider' cmdlet.

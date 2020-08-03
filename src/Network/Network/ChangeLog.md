@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added non-breaking changes: PeerAddressType functionality for Private Peering in `Remove-AzExpressRouteCircutPeeringConfig`.
 * Code changed to ignore case for AddressPrefixType and PeerAddressType parameter.
