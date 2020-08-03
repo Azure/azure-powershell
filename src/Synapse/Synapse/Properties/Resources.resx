@@ -447,7 +447,4 @@ Are you sure you want to continue?</value>
   <data name="StoppingSynapseTrigger" xml:space="preserve">
     <value>Stopping trigger '{0}' in workspace '{1}'.</value>
   </data>
-  <data name="InvalidPublicIPCount" xml:space="preserve">
-    <value>Please provide two static public IP addresses for your Azure-SSIS Integration Runtime.</value>
-  </data>
 </root>
