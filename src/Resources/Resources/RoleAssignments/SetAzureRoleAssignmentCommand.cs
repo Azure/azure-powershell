@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
-        public PSRoleAssignment RoleAssignment { get; set; }
+        public PSRoleAssignment InputObject { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources
 
                 try
                 {
-                    RoleAssignment = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
+                    InputObject = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
                 }
                 catch (JsonException)
                 {
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Resources
 
             // Build the Update Request
             var Subscription = DefaultProfile.DefaultContext.Subscription.Id;
-            var RaIndex = RoleAssignment.RoleAssignmentId.LastIndexOf("/") + 1;
-            var scope = RoleAssignment.Scope;
-            var RoleAssignmentGUID = RaIndex != -1 ? RoleAssignment.RoleAssignmentId.Substring(RaIndex) : RoleAssignment.RoleAssignmentId;
+            var RaIndex = InputObject.RoleAssignmentId.LastIndexOf("/") + 1;
+            var scope = InputObject.Scope;
+            var RoleAssignmentGUID = RaIndex != -1 ? InputObject.RoleAssignmentId.Substring(RaIndex) : InputObject.RoleAssignmentId;
 
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Resources
             }
             catch (Exception)
             {
-                fetchedRole = RoleAssignment;
+                fetchedRole = InputObject;
             }
 
             // Validate the requestk
@@ -95,12 +95,12 @@ namespace Microsoft.Azure.Commands.Resources
             bool isValidRequest = true;
 
             // Check that only Description, Condition and ConditionVersion have been changed, if anything else is changed the whole request fails
-            isValidRequest &= RoleAssignment.RoleAssignmentId.Equals(fetchedRole.RoleAssignmentId);
-            isValidRequest &= RoleAssignment.Scope.Equals(fetchedRole.Scope, StringComparison.OrdinalIgnoreCase);
-            isValidRequest &= RoleAssignment.RoleDefinitionId.Equals(fetchedRole.RoleDefinitionId);
-            isValidRequest &= RoleAssignment.ObjectId.Equals(fetchedRole.ObjectId);
-            isValidRequest &= RoleAssignment.ObjectType.Equals(fetchedRole.ObjectType);
-            isValidRequest &= RoleAssignment.CanDelegate.Equals(fetchedRole.CanDelegate);
+            isValidRequest &= InputObject.RoleAssignmentId.Equals(fetchedRole.RoleAssignmentId);
+            isValidRequest &= InputObject.Scope.Equals(fetchedRole.Scope, StringComparison.OrdinalIgnoreCase);
+            isValidRequest &= InputObject.RoleDefinitionId.Equals(fetchedRole.RoleDefinitionId);
+            isValidRequest &= InputObject.ObjectId.Equals(fetchedRole.ObjectId);
+            isValidRequest &= InputObject.ObjectType.Equals(fetchedRole.ObjectType);
+            isValidRequest &= InputObject.CanDelegate.Equals(fetchedRole.CanDelegate);
 
             if (!isValidRequest)
             {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             // If ConditionVersion is changed, validate it's in the allowed values
-            var oldConditionVersion = double.Parse(RoleAssignment.ConditionVersion);
+            var oldConditionVersion = double.Parse(InputObject.ConditionVersion);
             var newConditionVersion = double.Parse(fetchedRole.ConditionVersion);
 
             // A condition version can change but currently we don't suport downgrading to 1.0
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 throw new ArgumentException("Condition version diferent than '2.0' is not supported for update operations");
             }
-            fetchedRole.Description = RoleAssignment.Description;
-            fetchedRole.Condition = RoleAssignment.Condition;
-            fetchedRole.ConditionVersion = RoleAssignment.ConditionVersion;
+            fetchedRole.Description = InputObject.Description;
+            fetchedRole.Condition = InputObject.Condition;
+            fetchedRole.ConditionVersion = InputObject.ConditionVersion;
 
             // Send Request
             WriteObject(PoliciesClient.UpdateRoleAssignment(fetchedRole));
