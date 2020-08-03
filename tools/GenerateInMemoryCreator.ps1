@@ -4,13 +4,20 @@ function New-InMemoryObjectScriptCreator {
         [Parameter(Mandatory, HelpMessage="Path of the generated cs file.")]
         [string]
         $CsPath,
-        [Parameter(Mandatory)]
+        [Parameter()]
         [string]
         $OutputDir,
-        [Parameter(Mandatory)]
+        [Parameter()]
         [string]
         $ModuleName
     )
+
+    if (($null -eq $OutputDir) -or ("" -eq $OutputDir)) {
+        $OutputDir = '.\custom'
+    }
+    if (($null -eq $ModuleName) -or ("" -eq $ModuleName)) {
+        $ModuleName = (Get-Item -Path ".\").Name
+    }
 
     $Content = Get-Content $CsPath -Raw
     $Tree = [Microsoft.CodeAnalysis.CSharp.SyntaxFactory]::ParseCompilationUnit($Content)
@@ -31,32 +38,36 @@ function New-InMemoryObjectScriptCreator {
         $Arguments = $Member.AttributeLists.Attributes.ArgumentList.Arguments
         $Required = $false
         $Description = ""
+        $Readonly = $False
         foreach ($Argument in $Arguments) {
             if ($Argument.NameEquals.Name.Identifier.Value -eq "Required") {
                 $Required = $Argument.Expression.Token.Value
             }
             if ($Argument.NameEquals.Name.Identifier.Value -eq "Description") {
-                $Description = $Argument.Expression.Token.Value.replace('"', '`"')
+                $Description = $Argument.Expression.Token.Value.Trim('.').replace('"', '`"')
             }
             if ($Argument.NameEquals.Name.Identifier.Value -eq "Readonly") {
-                if ($Argument.Expression.Token.Value) {
-                    continue
-                }
+                $Readonly = $Argument.Expression.Token.Value
             }
         }
-        $Identifier = $Member.Identifier.Value
-        $Type = $Member.Type.ToString()
-        if ($Required) {
-            $ParameterDefineScriptList.Add("
-        [Parameter(Mandatory, HelpMessage=`"${Description}.`")]
-        [${Type}]
-        `$${Identifier}")
-        } else {
-            $ParameterDefineScriptList.Add("
-        [Parameter(HelpMessage=`"${Description}.`")]
-        [${Type}]
-        `$${Identifier}")
+        if ($Readonly) {
+            continue
         }
+        $Identifier = $Member.Identifier.Value
+        $Type = $Member.Type.ToString().replace('?', '')
+        $ParameterDefinePropertyList = New-Object System.Collections.Generic.List[string]
+        if ($Required) {
+            $ParameterDefinePropertyList.Add("Mandatory")
+        }
+        if ($Description -ne "") {
+            $ParameterDefinePropertyList.Add("HelpMessage=`"${Description}.`"")
+        }
+        $ParameterDefineProperty = [System.String]::Join(", ", $ParameterDefinePropertyList)
+        $ParameterDefineScript = "
+        [Parameter($ParameterDefineProperty)]
+        [${Type}]
+        `$${Identifier}"
+        $ParameterDefineScriptList.Add($ParameterDefineScript)
         $ParameterAssignScriptList.Add("
         `$Object.${Identifier} = `$${Identifier}")
     }
