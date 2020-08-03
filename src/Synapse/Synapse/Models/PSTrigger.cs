@@ -31,12 +31,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public virtual Trigger ToSdkObject()
         {
-            var trigger = new Trigger()
-            {
-                Description = this.Description,
-            };
-            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
+            var trigger = new Trigger();
+            SetProperties(trigger);
             return trigger;
+        }
+
+        protected void SetProperties(Trigger trigger)
+        {
+            trigger.Description = this.Description;
+            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
         }
     }
 }

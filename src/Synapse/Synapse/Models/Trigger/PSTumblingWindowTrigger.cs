@@ -49,12 +49,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Trigger ToSdkObject()
         {
             var trigger = new TumblingWindowTrigger(this.Pipeline, this.Frequency, this.Interval, this.StartTime, this.MaxConcurrency);
-            trigger.Description = this.Description;
             trigger.EndTime = this.EndTime;
             trigger.Delay = this.Delay;
             trigger.RetryPolicy = this.RetryPolicy;
             this.DependsOn?.ForEach(item => trigger.DependsOn.Add(item));
-            this.Annotations?.ForEach(item => trigger.Annotations.Add(item));
+            SetProperties(trigger);
             return trigger;
         }
     }
