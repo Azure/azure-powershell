@@ -199,7 +199,10 @@ namespace Microsoft.Azure.Commands.Compute
             
             if (this.EncryptionAtHost.IsPresent)
             {
-                vm.SecurityProfile = new SecurityProfile(this.EncryptionAtHost);
+                if (vm.SecurityProfile == null)
+                    vm.SecurityProfile = new SecurityProfile();
+
+                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
             WriteObject(vm);

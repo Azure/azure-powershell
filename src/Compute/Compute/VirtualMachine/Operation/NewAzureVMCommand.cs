@@ -573,7 +573,8 @@ namespace Microsoft.Azure.Commands.Compute
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         Priority = this.VM.Priority,
                         EvictionPolicy = this.VM.EvictionPolicy,
-                        BillingProfile = this.VM.BillingProfile
+                        BillingProfile = this.VM.BillingProfile,
+                        SecurityProfile = this.VM.SecurityProfile
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

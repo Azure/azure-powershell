@@ -3993,24 +3993,12 @@ function Test-EncryptionAtHostVMDefaultParamSet
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
-        # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzVM for SA, even it's returned in Get-.
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
-
-        # Stop the VM before Capture
-        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
-
-        Set-AzVM -Generalize -ResourceGroupName $rgname -Name $vmname;
-
-        $dest = Get-ComputeTestResourceName;
-        $templatePath = Join-Path $TestOutputRoot "template.txt";
-        $st = Save-AzVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
-        $template = Get-Content $templatePath;
-        Assert-True { $template[1].Contains("$schema"); }
-        Verify-PSComputeLongRunningOperation $st;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
 
         # Remove
         Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
