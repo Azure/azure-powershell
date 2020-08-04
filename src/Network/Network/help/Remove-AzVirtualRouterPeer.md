@@ -20,8 +20,8 @@ Remove-AzVirtualRouterPeer -ResourceGroupName <String> -PeerName <String> -Virtu
 
 ### VirtualRouterPeerObjectParameterSet
 ```
-Remove-AzVirtualRouterPeer -InputObject <PSVirtualRouterPeer> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzVirtualRouterPeer -InputObject <PSBgpConnection> [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualRouterPeerResourceIdParameterSet
@@ -58,7 +58,7 @@ Remove-AzVirtualRouterPeer -InputObject $virtualRouterPeer
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The virtual router peer input object.
 
 ```yaml
-Type: PSVirtualRouterPeer
+Type: Microsoft.Azure.Commands.Network.Models.PSBgpConnection
 Parameter Sets: VirtualRouterPeerObjectParameterSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The name of the virtual router Peer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases: ResourceName
 
@@ -133,8 +133,8 @@ Accept wildcard characters: False
 The resource group name of the virtual router/peer.
 
 ```yaml
-Type: String
-Parameter Sets: VirtualRouterPeerNameParameterSet, VirtualRouterPeerObjectParameterSet
+Type: System.String
+Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
 Required: True
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The virtual router peer resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerResourceIdParameterSet
 Aliases:
 
@@ -163,8 +163,8 @@ Accept wildcard characters: False
 The virtual router where peer exists.
 
 ```yaml
-Type: String
-Parameter Sets: VirtualRouterPeerNameParameterSet, VirtualRouterPeerObjectParameterSet
+Type: System.String
+Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
 Required: True
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -194,7 +194,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -206,13 +206,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
+### Microsoft.Azure.Commands.Network.Models.PSBgpConnection
 
 ## OUTPUTS
 
