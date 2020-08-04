@@ -50,8 +50,8 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-subnetCRUD");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Authentication failed for auxiliary token: The '1' auxiliary tokens contains duplicates which are from the same tenant.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkBgpCommunitiesCRUD()
         {
@@ -83,7 +83,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestMultiTenantVNetPCRUD()
         {
