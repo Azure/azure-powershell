@@ -71,13 +71,13 @@ function New-AzDatabricksWorkspace {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # The value which should be used for this field.
+        # The name of the Private Subnet within the Virtual Network.
         ${PrivateSubnetName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # The value which should be used for this field.
+        # The name of a Public Subnet within the Virtual Network.
         ${PublicSubnetName},
 
         [Parameter()]
@@ -96,14 +96,20 @@ function New-AzDatabricksWorkspace {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # The value which should be used for this field.
+        # The ID of a Virtual Network where this Databricks Cluster should be created.
         ${VirtualNetworkId},
 
         [Parameter(HelpMessage = "Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # The value which should be used for this field.
+        # Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
         ${PrepareEncryption},
+
+        [Parameter(ParameterSetName = 'CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+        ${RequireInfrastructureEncryption},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]

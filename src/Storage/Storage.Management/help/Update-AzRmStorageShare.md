@@ -44,13 +44,15 @@ The **New-AzRmStorageShare** cmdlet modifies a Storage file share.
 
 ### Example 1: Modifies a Storage file share's metadata and share quota with Storage account name and share name
 ```
-PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -QuotaGiB 200 -Metadata @{tag0="value0";tag1="value1"}
+PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 200 -Metadata @{tag0="value0";tag1="value1"}
 
 PS C:\>$share
 
-Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
-----     ------------------ ----------------- ----                -------- ----------------    
-myshare  myStorageAccount   myResourceGroup                       200     
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
+myshare  200
 
 PS C:\>$share.Metadata
 
@@ -72,12 +74,14 @@ This command modifies metadata on a Storage file share with Storage account obje
 
 ### Example 3: Modifies share quota for all Storage file shares in a Storage account with pipeline
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | Update-AzRmStorageShare -QuotaGiB 5000
+PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Update-AzRmStorageShare -QuotaGiB 5000
 
-Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
-----     ------------------ ----------------- ----                -------- ----------------    
-share1   myStorageAccount   myResourceGroup                       5000
-share2   myStorageAccount   myResourceGroup                       5000
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
+share1   5000
+share2   5000
 ```
 
 This command modifies share quota as 5000 GiB for all Storage file shares in a Storage account with pipeline.

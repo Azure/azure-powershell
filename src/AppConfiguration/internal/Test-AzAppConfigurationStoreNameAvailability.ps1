@@ -19,22 +19,17 @@ Checks whether the configuration store name is available for use.
 .Description
 Checks whether the configuration store name is available for use.
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.ICheckNameAvailabilityParameters
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.ICheckNameAvailabilityParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CHECKNAMEAVAILABILITYPARAMETER <ICheckNameAvailabilityParameters>: Parameters used for checking whether a resource name is available.
@@ -42,14 +37,16 @@ CHECKNAMEAVAILABILITYPARAMETER <ICheckNameAvailabilityParameters>: Parameters us
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus])]
 [CmdletBinding(DefaultParameterSetName='Check', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check')]
@@ -68,7 +65,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.ICheckNameAvailabilityParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.ICheckNameAvailabilityParameters]
     # Parameters used for checking whether a resource name is available.
     # To construct, see NOTES section for CHECKNAMEAVAILABILITYPARAMETER properties and create a hash table.
     ${CheckNameAvailabilityParameter},

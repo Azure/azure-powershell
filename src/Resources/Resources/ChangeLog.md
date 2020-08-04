@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 * Created new CMDlet 'Set-RoleAssignment'
+* Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope
+* Added `Get-AzTenantWhatIfResult` new cmdlet for getting ARM template What-If results at tenant scope
+* Overrode `-WhatIf` and `-Confirm` for `New-AzManagementGroupDeployment` and `New-AzTenantDeployment` to use ARM template What-If results
+* Fixed the hehaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
+* Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
+
+## Version 2.4.0
+* Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
+    - This included all the relevant changes to the data models
 
 ## Version 2.3.0
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.

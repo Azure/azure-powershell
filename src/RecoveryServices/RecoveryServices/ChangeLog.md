@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
+
 ## Version 2.11.0
 * Removed project reference to Authentication
 * Azure Backup tuned cmdlets help text to be more accurate.

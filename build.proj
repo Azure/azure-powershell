@@ -100,7 +100,12 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''">
+  <Target Name="BuildTools">
+    <!-- Publish static analysis for use cross-platform -->
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+  </Target>
+
+  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''" DependsOnTargets="BuildTools">
     <Message Importance="high" Text="Filtering projects and modules..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
@@ -174,9 +179,6 @@
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
-
-    <!-- Publish static analysis for use cross-platform -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
 
     <!-- Delete powershell runtime files -->
     <PropertyGroup>

@@ -28,7 +28,8 @@ Describe 'Remove-AzWvdApplicationGroup' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
         
         $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         {
             this.whatIfChange = whatIfChange;
 
-            (string scope, string relativeResourceId) = ResourceIdUtility.ParseResourceId(whatIfChange.ResourceId);
+            (string scope, string relativeResourceId) = ResourceIdUtility.SplitResourceId(whatIfChange.ResourceId);
             this.Scope = scope;
             this.RelativeResourceId = relativeResourceId;
 

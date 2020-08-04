@@ -23,8 +23,8 @@ The **Get-AzVpnClientIpsecParameter** cmdlet returns the object of your vpn ipse
 
 ## EXAMPLES
 
-### 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
-```
+### Example 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
+```powershell
 PS C:\> $VpnClientIPsecParameters = Get-AzVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
 ```
 
