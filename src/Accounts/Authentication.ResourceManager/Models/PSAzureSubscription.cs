@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureSubscription(IAzureSubscription other)
         {
             this.CopyFrom(other);
+            this.SubscriptionPolices = new PSAzureSubscriptionPolicy(other.GetSubscriptionPolicies());
         }
 
         /// <summary>
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.Name = other.GetProperty<string>(nameof(Name));
             this.State = other.GetProperty<string>(nameof(State));
             this.PopulateExtensions(other);
+            this.SubscriptionPolices = new PSAzureSubscriptionPolicy(this.GetSubscriptionPolicies());
         }
 
         /// <inheritdoc />
@@ -151,6 +153,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return GetAccountName(CurrentStorageAccount);
             }
         }
+
+        public PSAzureSubscriptionPolicy SubscriptionPolices;
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
