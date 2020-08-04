@@ -24,6 +24,7 @@
 * Added `Get-AzBillingProfile` cmdlet
 * Added `Get-AzInvoiceSection` cmdlet
 * Added new parameters in `Get-AzBillingInvoice` cmdlet
+* Removed properties DownloadUrlExpiry, Type, BillingPeriodNames from the response of Get-AzBillingInvoice cmdlet
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
