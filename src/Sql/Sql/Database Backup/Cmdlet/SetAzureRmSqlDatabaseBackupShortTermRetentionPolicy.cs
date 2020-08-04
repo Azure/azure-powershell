@@ -35,6 +35,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int RetentionDays{ get; set; }
 
         /// <summary>
+        /// Gets or sets differential backup interval hours.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 4,
+            HelpMessage = "The differential backup interval, in hours.")]
+        public int? DiffBackupIntervalInHours { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -64,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ResourceGroupName,
                     ServerName,
                     DatabaseName,
-                    new Management.Sql.Models.BackupShortTermRetentionPolicy(retentionDays: RetentionDays))
+                    new Management.Sql.Models.BackupShortTermRetentionPolicy(retentionDays: RetentionDays, diffBackupIntervalInHours: DiffBackupIntervalInHours))
             };
         }
 

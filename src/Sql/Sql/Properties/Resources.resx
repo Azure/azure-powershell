@@ -634,4 +634,7 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
+  <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
+    <value>Parameter '{0}' and '{1}' both being null is not allowed.</value>
+  </data>
 </root>
