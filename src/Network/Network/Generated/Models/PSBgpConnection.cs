@@ -2,7 +2,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSVirtualRouterPeer : PSChildResource
+    public partial class PSBgpConnection : PSChildResource
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public uint PeerAsn { get; set; }
@@ -10,5 +10,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PeerIp { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Type { get; set; }
     }
 }

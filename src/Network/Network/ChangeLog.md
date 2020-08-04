@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Updated below cmdlets to align resource virtual router and virtual hub
+    - `New-AzVirtualRouter`: 
+        - Added -HostedSubnet parameter to support IP configuration child resource
+        - deleted -HostedGateway and -HostedGatewayId
+    - `Get-AzVirtualRouter`:
+        - Added subcription level parameter set
+    - `Remove-AzVirtualRouter`
+    - `Add-AzVirtualRouterPeer`
+    - `Get-AzVirtualRouterPeer`
+    - `Remove-AzVirtualRouterPeer`
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 
 ## Version 3.2.0

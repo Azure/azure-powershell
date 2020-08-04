@@ -1535,7 +1535,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualGatewayRequiredForVirtualRouter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create an ExpressRouteGateway..
         /// </summary>

@@ -2,12 +2,10 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSVirtualRouterPeer : PSChildResource
+    public partial class PSHubIpConfiguration : PSChildResource
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public uint PeerAsn { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string PeerIp { get; set; }
+        public string HostedSubnet { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
     }
