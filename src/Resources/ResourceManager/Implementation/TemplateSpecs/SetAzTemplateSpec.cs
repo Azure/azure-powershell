@@ -240,7 +240,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             templateSpecDisplayName: DisplayName
                         );
 
-                    WriteObject(templateSpec);
+                    // As the root template spec is a seperate resource type, it won't contain version 
+                    // details. To provide more information to the user, let's get the template spec
+                    // with all of its version details:
+
+                    var templateSpecWithVersions = 
+                        TemplateSpecsSdkClient.GetTemplateSpec(templateSpec.Name, templateSpec.ResourceGroupName);
+
+                    WriteObject(templateSpecWithVersions);
                 }
             }
             catch (Exception ex)

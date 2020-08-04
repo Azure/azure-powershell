@@ -73,6 +73,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.Tags = templateSpec.Tags;
         }
 
+        protected PSTemplateSpec(PSTemplateSpec toCopyFrom)
+        {
+            this.Id = toCopyFrom.Id;
+            this.Type = toCopyFrom.Type;
+            this.Name = toCopyFrom.Name;
+            this.Location = toCopyFrom.Location;
+            this.CreationTime = toCopyFrom.CreationTime;
+            this.LastModifiedTime = toCopyFrom.LastModifiedTime;
+            this.Description = toCopyFrom.Description;
+            this.DisplayName = toCopyFrom.DisplayName;
+            this.Tags = toCopyFrom.Tags == null 
+                ? null
+                : new Dictionary<string, string>(toCopyFrom.Tags);
+        }
+
         internal static PSTemplateSpec FromAzureSDKTemplateSpec(TemplateSpec templateSpec)
         {
             return templateSpec != null 
@@ -120,6 +135,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.Versions = versionModels
                 .Select(v=>PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(v))
                 .ToArray();
+        }
+    }
+
+    /// <summary>
+    /// Exclusively used for wrapping PSTempateSpecs for use with special formatting
+    /// defined within our format.ps1xml file.
+    /// </summary>
+    public class PSTemplateSpecListItem : PSTemplateSpec
+    {
+        private PSTemplateSpecListItem(PSTemplateSpec templateSpec) 
+            : base(templateSpec)
+        {
+        }
+
+        public static PSTemplateSpecListItem FromTemplateSpec(
+            PSTemplateSpec templateSpec)
+        {
+            if (templateSpec.GetType() != typeof(PSTemplateSpec))
+            {
+                throw new InvalidOperationException(
+                    $"{nameof(PSTemplateSpecListItem)}s cannot be created from subclasses of {nameof(PSTemplateSpec)}"
+                );
+            }
+
+            return new PSTemplateSpecListItem(templateSpec);
         }
     }
 }

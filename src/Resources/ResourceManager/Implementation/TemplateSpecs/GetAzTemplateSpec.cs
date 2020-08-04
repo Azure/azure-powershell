@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
@@ -83,9 +84,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         );
                         break;
                     case ListTemplateSpecsParameterSet:
-                        WriteObject(!string.IsNullOrEmpty(ResourceGroupName)
+                        var templateSpecs = !string.IsNullOrEmpty(ResourceGroupName)
                             ? TemplateSpecsSdkClient.ListTemplateSpecsByResourceGroup(ResourceGroupName)
-                            : TemplateSpecsSdkClient.ListTemplateSpecsBySubscription());
+                            : TemplateSpecsSdkClient.ListTemplateSpecsBySubscription();
+
+                        var templateSpecListItems = templateSpecs
+                            .Select(ts => PSTemplateSpecListItem.FromTemplateSpec(ts))
+                            .GroupBy(ts=>ts.Id).Select(g=>g.First()) // Required due to current backend bug returning duplicates
+                            .OrderBy(ts=>ts.ResourceGroupName)
+                            .ThenBy(ts=>ts.Name)
+                            .Distinct()
+                            .ToList();
+
+                        WriteObject(templateSpecListItems);
                         break;
                     default:
                         throw new PSInvalidOperationException();
