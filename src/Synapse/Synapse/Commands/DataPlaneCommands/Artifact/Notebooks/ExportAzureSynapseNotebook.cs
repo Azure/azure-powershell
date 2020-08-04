@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = ExportByObject,
             HelpMessage = HelpMessages.NotebookName)]
         [ValidateNotNullOrEmpty]
+        [Alias("NotebookName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = ExportByInputObject,

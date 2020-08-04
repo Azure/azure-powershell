@@ -42,6 +42,38 @@
     - Add `Sync-AzSynapseIntegrationRuntimeCredential` cmdlet
     - Add `Update-AzSynapseIntegrationRuntime` cmdlet
     - Add `Update-AzSynapseIntegrationRuntimeNode` cmdlet
+* Added support for operation of Synapse LinkedService
+    - Add `Get-AzSynapseLinkedService` cmdlet
+    - Add `Remove-AzSynapseLinkedService` cmdlet
+    - Add `Set-AzSynapseLinkedService` cmdlet
+    - Add `New-AzSynapseLinkedService` cmdlet
+* Added support for operation of Synapse Notebook
+    - Add `Get-AzSynapseNotebook` cmdlet
+    - Add `Export-AzSynapseNotebook` cmdlet
+    - Add `Remove-AzSynapseNotebook` cmdlet
+    - Add `Set-AzSynapseNotebook` cmdlet
+    - Add `New-AzSynapseNotebook` cmdlet
+    - Add `Import-AzSynapseNotebook` cmdlet
+* Added support for operation of Synapse Pipeline
+    - Add `Get-AzSynapsePipeline` cmdlet
+    - Add `Remove-AzSynapsePipeline` cmdlet
+    - Add `Set-AzSynapsePipeline` cmdlet
+    - Add `New-AzSynapsePipeline` cmdlet
+    - Add `Get-AzSynapseActivityRun` cmdlet
+    - Add `Get-AzSynapsePipelineRun` cmdlet
+    - Add `Invoke-AzSynapsePipeline` cmdlet
+    - Add `Stop-AzSynapsePipelineRun` cmdlet
+* Added support for operation of Synapse Trigger
+    - Add `Get-AzSynapseTrigger` cmdlet
+    - Add `Remove-AzSynapseTrigger` cmdlet
+    - Add `Set-AzSynapseTrigger` cmdlet
+    - Add `New-AzSynapseTrigger` cmdlet
+    - Add `Add-AzSynapseTriggerSubscription` cmdlet
+    - Add `Get-AzSynapseTriggerSubscriptionStatus` cmdlet
+    - Add `Remove-AzSynapseTriggerSubscription` cmdlet
+    - Add `Start-AzSynapseTrigger` cmdlet
+    - Add `Stop-AzSynapseTrigger` cmdlet
+    - Add `Get-AzSynapseTriggerRun` cmdlet
 
 ## Version 0.1.2
 

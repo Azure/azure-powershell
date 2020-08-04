@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
             Mandatory = true, HelpMessage = HelpMessages.LinkedServiceName)]
         [ValidateNotNullOrEmpty]
+        [Alias("LinkedServiceName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByInputObject,

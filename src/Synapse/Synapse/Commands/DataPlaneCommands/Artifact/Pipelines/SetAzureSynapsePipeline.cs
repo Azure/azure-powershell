@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.PipelineName)]
         [ValidateNotNullOrEmpty]
+        [Alias("PipelineName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookName)]
         [ValidateNotNullOrEmpty]
+        [Alias("NotebookName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,

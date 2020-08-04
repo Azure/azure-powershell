@@ -4,6 +4,7 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -55,6 +56,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public DateTimeOffset RunStartedBefore { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = GetByNameAndTime,
+            HelpMessage = HelpMessages.PipelineName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = GetByObjectAndTime,
+            HelpMessage = HelpMessages.PipelineName)]
+        [ValidateNotNullOrEmpty]
+        public string PipelineName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -69,6 +77,10 @@ namespace Microsoft.Azure.Commands.Synapse
             else
             {
                 RunFilterParameters filter = new RunFilterParameters(this.RunStartedAfter, this.RunStartedBefore);
+                if (this.IsParameterBound(c => c.PipelineName))
+                {
+                    filter.Filters.Add(new RunQueryFilter(RunQueryFilterOperand.PipelineName, RunQueryFilterOperator.EqualsValue, new List<string>() { this.PipelineName }));
+                }
                 WriteObject(SynapseAnalyticsClient.QueryPipelineRunsByWorkspace(filter)
                     .Select(element => new PSPipelineRun(element, this.WorkspaceName)),true);
             }

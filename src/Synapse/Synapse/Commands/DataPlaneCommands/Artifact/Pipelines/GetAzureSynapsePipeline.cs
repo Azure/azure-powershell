@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.PipelineName)]
         [ValidateNotNullOrEmpty]
+        [Alias("PipelineName")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()

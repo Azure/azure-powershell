@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = AddByObject,
             Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
         [ValidateNotNullOrEmpty]
+        [Alias("TriggerName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = AddByInputObject,

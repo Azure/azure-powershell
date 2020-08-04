@@ -12,10 +12,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.PipelineRun,
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Pipeline,
         DefaultParameterSetName = NewByName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSCreateRunResponse))]
-    public class InvokeAzureSynapsePipelineRun : SynapseArtifactsCmdletBase
+    public class InvokeAzureSynapsePipeline : SynapseArtifactsCmdletBase
     {
         private const string NewByName = "NewByName";
         private const string NewByObject = "NewByObject";

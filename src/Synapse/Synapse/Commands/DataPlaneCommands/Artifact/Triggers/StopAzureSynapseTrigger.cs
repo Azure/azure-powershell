@@ -9,7 +9,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Trigger,
-        DefaultParameterSetName = StopByName)]
+        DefaultParameterSetName = StopByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class StopAzureSynapseTrigger : SynapseArtifactsCmdletBase
     {
@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByObject,
             Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
         [ValidateNotNullOrEmpty]
+        [Alias("TriggerName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = StopByInputObject,
