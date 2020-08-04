@@ -4,10 +4,10 @@ function New-InMemoryObjectScriptCreator {
         [Parameter(Mandatory, HelpMessage="Path of the generated cs file.")]
         [string]
         $CsPath,
-        [Parameter()]
+        [Parameter(HelpMessage="Output folder of generated .ps1 file. Default value is .\custom.")]
         [string]
         $OutputDir,
-        [Parameter()]
+        [Parameter(HelpMessage="Module name of the generated cmdlet. Default value is the name of current folder.")]
         [string]
         $ModuleName
     )
