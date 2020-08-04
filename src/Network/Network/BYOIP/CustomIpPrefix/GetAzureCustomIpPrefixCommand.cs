@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSMasterCustomIpPrefix))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSCustomIpPrefix))]
     public class GetAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         private const string ListParameterSet = "ListParameterSet";

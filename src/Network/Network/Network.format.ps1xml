@@ -1493,73 +1493,7 @@
         </ListEntries>
       </ListControl>
     </View>
-	<View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSMasterCustomIpPrefix</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSMasterCustomIpPrefix</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ResourceGroupName</Label>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Location</Label>
-                <PropertyName>Location</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Etag</Label>
-                <PropertyName>Etag</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ResourceGuid</Label>
-                <PropertyName>ResourceGuid</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ProvisioningState</Label>
-                <PropertyName>ProvisioningState</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Tags</Label>
-                <PropertyName>TagsTable</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Cidr</Label>
-                <PropertyName>Cidr</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ValidationState</Label>
-                <PropertyName>ValidationState</PropertyName>
-              </ListItem>
-			  <ListItem>
-                <Label>OriginalValidationMessage</Label>
-                <PropertyName>OriginalValidationMessage</PropertyName>
-              </ListItem>
-			  <ListItem>
-                <Label>SignedValidationMessage</Label>
-                <PropertyName>SignedValidationMessage</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>CustomIpPrefixes</Label>
-                <PropertyName>CustomIpPrefixesText</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-	<View>
+	  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSCustomIpPrefix</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSCustomIpPrefix</TypeName>
@@ -1612,7 +1546,7 @@
                 <Label>MasterCustomIpPrefix</Label>
                 <PropertyName>MasterCustomIpPrefixText</PropertyName>
               </ListItem>
-			  <ListItem>
+			        <ListItem>
                 <Label>PublicIpPrefixes</Label>
                 <PropertyName>PublicIpPrefixesText</PropertyName>
               </ListItem>
