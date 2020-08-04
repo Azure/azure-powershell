@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Updated below cmdlets to align resource virtual router and virtual hub
+    - `New-AzVirtualRouter`: 
+        - Added -HostedSubnet parameter to support IP configuration child resource
+        - deleted -HostedGateway and -HostedGatewayId
+    - `Get-AzVirtualRouter`:
+        - Added subcription level parameter set
+    - `Remove-AzVirtualRouter`
+    - `Add-AzVirtualRouterPeer`
+    - `Get-AzVirtualRouterPeer`
+    - `Remove-AzVirtualRouterPeer`
 * Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
