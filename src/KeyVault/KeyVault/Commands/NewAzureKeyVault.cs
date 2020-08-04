@@ -75,10 +75,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Location { get; set; }
 
         [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
+            HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
+        public SwitchParameter DisableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
+            HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }
@@ -94,7 +103,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
+        [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
+            HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
         public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
 
         #endregion
@@ -119,10 +131,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
-        [Parameter(Mandatory = false,
-            ParameterSetName = KeyVaultParameterSet,
-            HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
-        public SwitchParameter DisableSoftDelete { get; set; }
         #endregion
 
         #region MHSM-specified Parameter Definitions
@@ -187,6 +195,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     SkuName = this.Sku,
+                    EnableSoftDelete = !this.DisableSoftDelete.IsPresent,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
                     /*
                      * If soft delete is enabled, but retention days is not specified, use the default value,
@@ -211,7 +220,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                         vaultCreationParameter.EnabledForDeployment = this.EnabledForDeployment.IsPresent;
                         vaultCreationParameter.EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent;
                         vaultCreationParameter.EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent;
-                        vaultCreationParameter.EnableSoftDelete = !DisableSoftDelete.IsPresent;
                         vaultCreationParameter.SkuFamilyName = DefaultSkuFamily;
                         this.WriteObject(KeyVaultManagementClient.CreateNewVault(vaultCreationParameter, ActiveDirectoryClient, NetworkRuleSet));
                         break;

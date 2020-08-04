@@ -55,13 +55,37 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
+        [Parameter(Mandatory = false, 
+            ParameterSetName = UpdateKeyVault + ByNameParameterSet, 
+            HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
+        [Parameter(Mandatory = false, 
+            ParameterSetName = UpdateKeyVault + ByInputObjectParameterSet, 
+            HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
+        [Parameter(Mandatory = false, 
+            ParameterSetName = UpdateKeyVault + ByResourceIdParameterSet, 
+            HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
+        [Parameter(Mandatory = false, 
+            //ParameterSetName = UpdateKeyVault + ByNameParameterSet, 
+            HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
+ /*       [Parameter(Mandatory = false, 
+            //ParameterSetName = UpdateKeyVault + ByInputObjectParameterSet, 
+            HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
+        [Parameter(Mandatory = false, 
+            //ParameterSetName = UpdateKeyVault + ByResourceIdParameterSet, 
+            HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]*/
         public SwitchParameter EnablePurgeProtection { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [Parameter(Mandatory = false, 
+            //ParameterSetName = UpdateKeyVault + ByNameParameterSet, 
+            HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+      /*  [Parameter(Mandatory = false,
+            //ParameterSetName = UpdateKeyVault + ByInputObjectParameterSet, 
+            HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [Parameter(Mandatory = false,
+            //ParameterSetName = UpdateKeyVault + ByResourceIdParameterSet, 
+            HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]*/
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }

@@ -115,13 +115,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     {
                         switch (ResourceType)
                         {
-                            case ResourceTypeName.Hsm:
-                                vault = KeyVaultManagementClient.GetManagedHsm(
-                                                            VaultName,
-                                                            ResourceGroupName,
-                                                            ActiveDirectoryClient);
-                                WriteObject(FilterByTag((PSManagedHsm)vault, Tag));
-                                break;
                             case ResourceTypeName.Vault:
                                 vault = KeyVaultManagementClient.GetVault(
                                                             VaultName,
@@ -129,8 +122,17 @@ namespace Microsoft.Azure.Commands.KeyVault
                                                             ActiveDirectoryClient);
                                 WriteObject(FilterByTag((PSKeyVault)vault, Tag));
                                 break;
+
+                            case ResourceTypeName.Hsm:
+                                vault = KeyVaultManagementClient.GetManagedHsm(
+                                                            VaultName,
+                                                            ResourceGroupName,
+                                                            ActiveDirectoryClient);
+                                WriteObject(FilterByTag((PSManagedHsm)vault, Tag));
+                                break;
+
                             default:
-                                // Search from both Vaults and ManagedHsms 
+                                // Search both Vaults and ManagedHsms 
                                 vault = KeyVaultManagementClient.GetVault(
                                                             VaultName,
                                                             ResourceGroupName,
@@ -162,11 +164,27 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 case GetDeletedVaultParameterSet:
-                    WriteObject(KeyVaultManagementClient.GetDeletedVault(VaultName, Location));
+                    switch (ResourceType)
+                    {
+                        case ResourceTypeName.Vault:
+                            WriteObject(KeyVaultManagementClient.GetDeletedVault(VaultName, Location));
+                            break;
+                        case ResourceTypeName.Hsm:
+                        default:
+                            break;
+                    }
                     break;
 
                 case ListDeletedVaultsParameterSet:
-                    WriteObject(KeyVaultManagementClient.ListDeletedVaults(), true);
+                    switch (ResourceType)
+                    {
+                        case ResourceTypeName.Vault:
+                            WriteObject(KeyVaultManagementClient.ListDeletedVaults(), true);
+                            break;
+                        case ResourceTypeName.Hsm:
+                        default:
+                            break;
+                    }
                     break;
 
                 default:
