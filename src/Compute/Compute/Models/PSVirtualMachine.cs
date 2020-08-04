@@ -78,6 +78,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the network profile.
         public NetworkProfile NetworkProfile { get; set; }
 
+        //Gets or sets the security profile 
+        public SecurityProfile SecurityProfile { get; set; }
+
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
 

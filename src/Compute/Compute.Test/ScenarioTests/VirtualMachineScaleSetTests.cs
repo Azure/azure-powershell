@@ -171,5 +171,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageVersion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetNewEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetEncryptionAtHost");
+        }
     }
 }
