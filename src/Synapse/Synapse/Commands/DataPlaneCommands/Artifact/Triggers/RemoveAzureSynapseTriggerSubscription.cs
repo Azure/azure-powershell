@@ -9,7 +9,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Trigger + SynapseConstants.Subscription,
-        DefaultParameterSetName = RemoveByName)]
+        DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureSynapseTriggerSubscription : SynapseArtifactsCmdletBase
     {

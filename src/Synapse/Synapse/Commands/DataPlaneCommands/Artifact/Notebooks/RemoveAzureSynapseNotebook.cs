@@ -9,7 +9,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
-        DefaultParameterSetName = RemoveByName)]
+        DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureSynapseNotebook : SynapseArtifactsCmdletBase
     {

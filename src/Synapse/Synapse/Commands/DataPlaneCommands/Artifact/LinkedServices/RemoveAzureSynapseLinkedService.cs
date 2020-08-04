@@ -9,7 +9,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedService,
-        DefaultParameterSetName = RemoveByName)]
+        DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSLinkedServiceResource))]
     public class RemoveAzureSynapseLinkedService : SynapseArtifactsCmdletBase
     {
