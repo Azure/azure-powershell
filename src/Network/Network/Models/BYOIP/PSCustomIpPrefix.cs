@@ -21,8 +21,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Cidr { get; set; }
 
-        public PSResourceId MasterCustomIpPrefix { get; set; }
-
         public string CommissionedState { get; set; }
 
         public List<PSResourceId> PublicIpPrefixes { get; set; }
@@ -30,12 +28,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> Zones { get; set; }
 
         public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string MasterCustomIpPrefixText
-        {
-            get { return JsonConvert.SerializeObject(MasterCustomIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
 
         [JsonIgnore]
         public string PublicIpPrefixesText

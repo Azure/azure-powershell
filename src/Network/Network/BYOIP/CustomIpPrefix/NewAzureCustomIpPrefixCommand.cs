@@ -45,12 +45,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The MasterCustomIpPrefix that this CustomIpPrefix is associated with")]
-        public PSMasterCustomIpPrefix MasterCustomIpPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The master custom IP prefix location.")]
         [LocationCompleter("Microsoft.Network/customIpPrefix")]
         [ValidateNotNullOrEmpty]
@@ -102,7 +96,6 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                MasterCustomIpPrefix = this.MasterCustomIpPrefix,
                 Cidr = this.Cidr,
                 Zones = this.Zone?.ToList()
             };

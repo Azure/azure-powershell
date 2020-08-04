@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSMasterCustomIpPrefix))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSCustomIpPrefix))]
     public class SetAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
