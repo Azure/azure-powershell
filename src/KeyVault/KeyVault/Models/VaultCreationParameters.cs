@@ -37,6 +37,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public AccessPolicyEntry AccessPolicy { get; set; }
         public NetworkRuleSet NetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
-        public List<string> Administrator { get; set; }
+        public string[] Administrator { get; set; }
     }
 }

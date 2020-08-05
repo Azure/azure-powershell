@@ -135,16 +135,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        #region MHSM-specified Parameter Definitions
+        #region Managed HSM-specified Parameter Definitions
 
         [Parameter(Mandatory = true,
             ParameterSetName = ManagedHsmParameterSet,
             HelpMessage = "Array of initial administrators object ids for this managed hsm pool.")]
-        public List<string> Administrator { get; set; }
+        public string[] Administrator { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = ManagedHsmParameterSet,
-            HelpMessage = "Specifies the type of this vault as MHSM.")]
+            HelpMessage = "Specifies the type of this vault as Managed HSM.")]
         public SwitchParameter Hsm { get; set; }
 
         #endregion

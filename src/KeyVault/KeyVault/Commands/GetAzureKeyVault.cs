@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the type of vault to be shown.")]
+            HelpMessage = "Specifies the type of Vault / HSM to be shown.If omitted, both will be listed.")]
         [Alias("Type")]
         public ResourceTypeName? ResourceType { get; set; }
 

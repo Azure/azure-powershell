@@ -169,7 +169,7 @@ function Test-ManagedHsmCRUD {
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
-        # Test create a default MHSM
+        # Test create a default Managed HSM
         $actual = New-AzKeyVault -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Hsm
         Assert-AreEqual $hsmName $actual.VaultName
         Assert-AreEqual $rgName $actual.ResourceGroupName
@@ -188,7 +188,7 @@ function Test-ManagedHsmCRUD {
         # Default retention days
         Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
-        # Test get MHSM
+        # Test get Managed HSM
         $got = Get-AzKeyVault -Name $hsmName -ResourceType Hsm           
         Assert-NotNull $got
         Assert-AreEqual $hsmName $got.VaultName
@@ -202,7 +202,7 @@ function Test-ManagedHsmCRUD {
         # Assert-True { $updatedMhsm.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be true"
         # Assert-AreEqual 10 $updatedMhsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
 
-        # Test remove MHSM
+        # Test remove Managed HSM
         Remove-AzKeyVault -VaultName $got -Hsm -Force
         $deletedMhsm = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm

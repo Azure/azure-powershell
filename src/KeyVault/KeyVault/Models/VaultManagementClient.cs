@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #region Managedhsm-related METHOD
 
         /// <summary>
-        /// Create a MHSM pool
+        /// Create a Managed HSM pool
         /// </summary>
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="adClient">the active directory client</param>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
-            if(parameters.Administrator.Count==0)
+            if(parameters.Administrator.Length == 0)
                 throw new ArgumentNullException("parameters.Administrator");
 
             var properties = new ManagedHsmProperties();
@@ -427,12 +427,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Get an existing MHSM. Returns null if vault is not found.
+        /// Get an existing Managed HSM. Returns null if vault is not found.
         /// </summary>
         /// <param name="managedHsmName">managed hsm name</param>
         /// <param name="resourceGroupName">resource group name</param>
         /// <param name="adClient">the active directory client</param>
-        /// <returns>the retrieved MHSM</returns>
+        /// <returns>the retrieved Managed HSM</returns>
         public PSManagedHsm GetManagedHsm(string managedHsmName, string resourceGroupName, ActiveDirectoryClient adClient = null)
         {
             if (string.IsNullOrWhiteSpace(managedHsmName))
@@ -457,12 +457,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Update an existing MHSM. Only EnablePurgeProtection can be updated currently.
+        /// Update an existing Managed HSM. Only EnablePurgeProtection can be updated currently.
         /// </summary>
-        /// <param name="existingManagedHsm">the existing MHSM</param>
+        /// <param name="existingManagedHsm">the existing Managed HSM</param>
         /// <param name="updatedPurgeProtectionSwitch">enable purge protection</param>
         /// <param name="adClient">the active directory client</param>
-        /// <returns>the updated MHSM</returns>
+        /// <returns>the updated Managed HSM</returns>
         public PSManagedHsm UpdateManagedHsm(
           PSManagedHsm existingManagedHsm,
 //          PSKeyVaultAccessPolicy[] updatedPolicies,
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Delete an existing MHSM. Throws if vault is not found.
+        /// Delete an existing Managed HSM. Throws if vault is not found.
         /// </summary>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Purge a deleted MHSM. Throws if MHSM is not found.
+        /// Purge a deleted Managed HSM. Throws if Managed HSM is not found.
         /// </summary>
         /// <param name="managedHsmName"></param>
         /// <param name="location"></param>

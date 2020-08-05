@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string UpdateManagedHsm = "UpdateManagedHsm";
         private const string ByNameParameterSet = "ByNameParameterSet";
         private const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
-        private const string ByResourceIdParameterSet = "UByResourceIdParameterSet";
+        private const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateKeyVault + ByNameParameterSet, HelpMessage = "Name of the resource group.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Name of the resource group.")]
@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByInputObjectParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByResourceIdParameterSet, HelpMessage = "Specifies the type of this vault as MHSM.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByNameParameterSet, HelpMessage = "Specifies the type of this vault as Managed HSM.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByInputObjectParameterSet, HelpMessage = "Specifies the type of this vault as Managed HSM.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateManagedHsm + ByResourceIdParameterSet, HelpMessage = "Specifies the type of this vault as Managed HSM.")]
         public SwitchParameter Hsm { get; set; }
 
         public override void ExecuteCmdlet()
