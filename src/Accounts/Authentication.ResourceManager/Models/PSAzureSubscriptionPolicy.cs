@@ -19,9 +19,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <param name="azureSubscriptionPolicies">Json string to convert</param>
         public PSAzureSubscriptionPolicy(SubscriptionPolicies subscriptionPolicies)
         {
-            this.locationPlacementId = subscriptionPolicies.LocationPlacementId;
-            this.QuotaId = subscriptionPolicies.QuotaId;
-            this.SpendingLimit = subscriptionPolicies.SpendingLimit.ToString();
+            if (subscriptionPolicies != null)
+            {
+                this.locationPlacementId = subscriptionPolicies.LocationPlacementId;
+                this.QuotaId = subscriptionPolicies.QuotaId;
+                this.SpendingLimit = subscriptionPolicies.SpendingLimit.ToString();
+            }
         }
 
         /// <summary>
