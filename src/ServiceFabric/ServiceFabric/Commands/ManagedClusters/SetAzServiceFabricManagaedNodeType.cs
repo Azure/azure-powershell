@@ -14,15 +14,23 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Common.OData;
+using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = ReimageParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class SetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
+        protected const string ReimageParameterSet = "Reimage";
+
         #region Params
 
         #region Common params
@@ -48,13 +56,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = true, ParameterSetName = ReimageParameterSet, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public List<string> NodeName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = ReimageParameterSet, HelpMessage = "Specify to reimage nodes on the node type.")]
+        public SwitchParameter Reimage { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ReimageParameterSet,
+            HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
+        public SwitchParameter ForceReimage { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -63,29 +74,33 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Restart node(s) {0}, from node type: {1}", string.Join(", ", this.NodeName), this.Name)))
+            try
             {
-                try
+                if (ParameterSetName == ReimageParameterSet)
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.ClusterName,
-                            this.Name,
-                            actionParams).GetAwaiter().GetResult();
-
-                    this.PollLongRunningOperation(beginRequestResponse);
-
-                    if (this.PassThru)
+                    if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Reimage node(s) {0}, from node type: {1}", string.Join(", ", this.NodeName), this.Name)))
                     {
-                        WriteObject(true);
+
+                        var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceReimage.IsPresent);
+                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginReimageWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.ClusterName,
+                                this.Name,
+                                actionParams).GetAwaiter().GetResult();
+
+                        this.PollLongRunningOperation(beginRequestResponse);
                     }
                 }
-                catch (Exception ex)
+
+                if (this.PassThru)
                 {
-                    PrintSdkExceptionDetail(ex);
-                    throw;
+                    WriteObject(true);
                 }
+            }
+            catch (Exception ex)
+            {
+                PrintSdkExceptionDetail(ex);
+                throw;
             }
         }
     }

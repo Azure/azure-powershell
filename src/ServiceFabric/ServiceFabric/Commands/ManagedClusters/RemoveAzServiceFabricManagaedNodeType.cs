@@ -20,9 +20,11 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
+        protected const string DeleteNode = "DeleteNode";
+
         #region Params
 
         #region Common params
@@ -48,13 +50,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteNode, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public List<string> NodeName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = DeleteNode,
+            HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.")]
+        public SwitchParameter ForceRemoveNode { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -63,29 +65,45 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Restart node(s) {0}, from node type: {1}", string.Join(", ", this.NodeName), this.Name)))
+            try
             {
-                try
+                if (ParameterSetName == DeleteNode)
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.ClusterName,
-                            this.Name,
-                            actionParams).GetAwaiter().GetResult();
-
-                    this.PollLongRunningOperation(beginRequestResponse);
-
-                    if (this.PassThru)
+                    if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Delete node(s) {0}, from node type: {1}", string.Join(", ", this.NodeName), this.Name)))
                     {
-                        WriteObject(true);
+
+                        var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRemoveNode.IsPresent);
+                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginDeleteNodeWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.ClusterName,
+                                this.Name,
+                                actionParams).GetAwaiter().GetResult();
+
+                        this.PollLongRunningOperation(beginRequestResponse);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    PrintSdkExceptionDetail(ex);
-                    throw;
+                    if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Delete node type: {0}", this.Name)))
+                    {
+                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginDeleteWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.ClusterName,
+                                this.Name).GetAwaiter().GetResult();
+
+                        this.PollLongRunningOperation(beginRequestResponse);
+                    }
                 }
+
+                if (this.PassThru)
+                {
+                    WriteObject(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                PrintSdkExceptionDetail(ex);
+                throw;
             }
         }
     }
