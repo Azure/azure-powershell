@@ -105,7 +105,6 @@ directive:
           - Version
           - StorageProfileStorageMb
           - SkuName
-          - SkuSize
           - SkuTier
           - SslEnforcement
   - where:
