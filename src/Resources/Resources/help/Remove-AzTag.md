@@ -14,15 +14,22 @@ Deletes predefined Azure tags or values | Deletes the entire set of tags on a re
 ## SYNTAX
 
 ### RemovePredefinedTagParameterSet
-```
+
+```powershell
 Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceIdParameterSet
-```
-Remove-AzTag [-PassThru] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+
+```powershell
+Remove-AzTag
+   -ResourceId <String>
+   [-PassThru]
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,8 +74,7 @@ If the value has been applied to any resources or resource groups, the command f
 
 ### Example 3: Deletes the entire set of tags on a subscription
 
-```
-powershell
+```powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}
 ```
 
@@ -76,8 +82,7 @@ This command deletes the entire set of tags on the subscription with {subId}. It
 
 ### Example 4: Deletes the entire set of tags on a resource
 
-```
-powershell
+```powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
 
 Id         : {Id}
@@ -126,16 +131,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object that represents the deleted tag or the resulting tag with deleted valued.
+### -Value
+Deletes the specified values from the predefined tag, but does not delete the tag.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: RemovePredefinedTagParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -156,16 +161,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Value
-Deletes the specified values from the predefined tag, but does not delete the tag.
+### -PassThru
+Returns an object that represents the deleted tag or the resulting tag with deleted valued.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: RemovePredefinedTagParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

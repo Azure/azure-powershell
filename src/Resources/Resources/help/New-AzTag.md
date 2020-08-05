@@ -14,15 +14,21 @@ Creates a predefined Azure tag or adds values to an existing tag | Creates or up
 ## SYNTAX
 
 ### CreatePredefinedTagParameterSet
-```
-New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+
+```powershell
+New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CreateByResourceIdParameterSet
-```
-New-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+
+```powershell
+New-AzTag
+   -ResourceId <String>
+   -Tag <Hashtable>
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +223,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Value
+Specifies a predefined tag value.
+Predefined tags can have multiple values, but you can enter only one value in each command.
+This parameter is optional, because tags can have names without values.
+
+```yaml
+Type: System.String
+Parameter Sets: CreatePredefinedTagParameterSet
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The resource identifier for the entity being tagged. A resource, a resource group or a subscription may be tagged.
 
@@ -241,23 +264,6 @@ Parameter Sets: CreateByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Value
-Specifies a predefined tag value.
-Predefined tags can have multiple values, but you can enter only one value in each command.
-This parameter is optional, because tags can have names without values.
-
-```yaml
-Type: System.String
-Parameter Sets: CreatePredefinedTagParameterSet
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -14,9 +14,16 @@ Selectively updates the set of tags on a resource or subscription.
 
 ## SYNTAX
 
-```
-Update-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-Operation] <TagPatchOperation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Update-AzTag
+   -ResourceId <String>
+   -Operation <TagPatchOpeation>
+   -Tag <Hashtable>
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
+
 ```
 
 ## DESCRIPTION
@@ -97,22 +104,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operation
-The update operation. Options are Merge, Replace and Delete.
-
-```yaml
-Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOperation
-Parameter Sets: (All)
-Aliases:
-Accepted values: Merge, Replace, Delete
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceId
 The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.
 
@@ -120,6 +111,7 @@ The resource identifier for the tagged entity. A resource, a resource group or a
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Merge, Replace, Delete
 
 Required: True
 Position: 0
@@ -138,6 +130,22 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Operation
+The update operation. Options are Merge, Replace and Delete.
+
+```yaml
+Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOpeation
+Parameter Sets: (All)
+Aliases:
+Accepted values: Merge, Replace, Delete
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
