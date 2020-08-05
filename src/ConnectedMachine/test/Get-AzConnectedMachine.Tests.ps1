@@ -1,3 +1,8 @@
+$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+if (-Not (Test-Path -Path $loadEnvPath)) {
+    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+}
+. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzConnectedMachine.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -7,21 +12,46 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzConnectedMachine' {
-    
-    It 'Get all connected machines in a subscription' {
-        $machines = Get-AzConnectedMachine -SubscriptionId b5e4748c-f69a-467c-8749-e2f9c8cd3db0 
-        $machines.Count | Should -Be 777
+    BeforeAll {
+        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+        $Environment = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $Environment, $env.TenantId, $null, $promptBehavior, $null)
+        $AccessToken = $Token.AccessToken
     }
-    
-    It 'Get all connected machines in a resource group' {
-        $machines = Get-AzConnectedMachine -SubscriptionId b5e4748c-f69a-467c-8749-e2f9c8cd3db0 -ResourceGroupName hybridrptest
-        $machines.Count | Should -Be 688
+
+    BeforeEach {
+        $Location = $env.location
+        $machineName = (New-Guid).Guid
+
+        $azcmagentArgs = @(
+            'connect'
+            '--resource-group'
+            $env.ResourceGroupName
+            '--tenant-id'
+            $env.TenantId
+            '--location'
+            $env.location
+            '--subscription-id'
+            $env.SubscriptionId
+            '--access-token'
+            $AccessToken
+        )
+        & $env.azcmagentPath @azcmagentArgs
+    }
+
+    AfterEach {
+        & $env.azcmagentPath disconnect --access-token $AccessToken
+    }
+
+    It 'Get all connected machines in a subscription' {
+        $machines = Get-AzConnectedMachine
+        $machines.Count | Should -Be 1
     }
 
     It 'Get a connected machine by machine name' {
-        $machine = Get-AzConnectedMachine -SubscriptionId b5e4748c-f69a-467c-8749-e2f9c8cd3db0 -ResourceGroupName hybridrptest -Name 0.1.1907.23009
+        $machine = Get-AzConnectedMachine -Name $machineName
         $machine | Should -Not -Be $null
-        $machine.Location | Should -MatchExactly "eastus2euap"
+        $machine.Location | Should -MatchExactly $env.location
     }
-    
 }
