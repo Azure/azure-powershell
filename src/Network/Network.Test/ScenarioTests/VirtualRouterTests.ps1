@@ -39,35 +39,35 @@ function Test-VirtualRouterCRUD
 
     try
     {
-        # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
      
-        # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
         
-        # Create Virtual Router
-        $actualvr = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
-        $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-        Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
-        Assert-AreEqual $expectedvr.Name $actualvr.Name
-        Assert-AreEqual $expectedvr.Location $actualvr.Location
+      # Create Virtual Router
+      $actualvr = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
+      $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+      Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
+      Assert-AreEqual $expectedvr.Name $actualvr.Name
+      Assert-AreEqual $expectedvr.Location $actualvr.Location
         
-        # List Virtual Routers
-        $list = Get-AzVirtualRouter -ResourceGroupName $rgname
-        Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $actualvr.ResourceGroupName	
-        Assert-AreEqual $list[0].Name $actualvr.Name	
-        Assert-AreEqual $list[0].Location $actualvr.Location
+      # List Virtual Routers
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actualvr.ResourceGroupName	
+      Assert-AreEqual $list[0].Name $actualvr.Name	
+      Assert-AreEqual $list[0].Location $actualvr.Location
         
-        # Delete VR
-        $deletevr = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
-        Assert-AreEqual true $deletevr
+      # Delete VR
+      $deletevr = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      Assert-AreEqual true $deletevr
         
-        $list = Get-AzVirtualRouter -ResourceGroupName $rgname
-        Assert-AreEqual 0 @($list).Count
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
     }
     finally
     {
