@@ -34,7 +34,7 @@ function Test-HubBgpConnectionCRUD
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
-	$virtualRouterName = Get-ResourceName
+    $virtualRouterName = Get-ResourceName
     $virtualWanName = Get-ResourceName
     $subnetName = Get-ResourceName
     $peerName = Get-ResourceName
@@ -49,12 +49,12 @@ function Test-HubBgpConnectionCRUD
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      
+      # Create virtual router
+      $virtualRouter = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
+      $virtualRouter = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
 
-	  # Create virtual router
-	  $virtualRouter = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
-	  $virtualRouter = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-
-	  # Create hub bgp connection
+      # Create hub bgp connection
       $actualBgpConnection = Add-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
       $expectedBgpConnection = Get-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
       Assert-AreEqual $expectedBgpConnection.Peerings.PeerName $actualBgpConnection.PeerName
@@ -65,12 +65,12 @@ function Test-HubBgpConnectionCRUD
       $deleteBgpConnection = Remove-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -Force
       Assert-AreEqual 0 @($deleteBgpConnection.Peerings).Count
 
-	  # Delete virtual router
-	  $deleteVirtualRouter = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      # Delete virtual router
+      $deleteVirtualRouter = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
       Assert-AreEqual true $deleteVirtualRouter
 
-	  $list = Get-AzVirtualRouter -ResourceGroupName $rgname
-	  Assert-AreEqual 0 @($list).Count
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
     }
     finally
     {
