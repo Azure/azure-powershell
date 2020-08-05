@@ -342,7 +342,7 @@ Modifies a resource group.
 Modifies a resource lock.
 
 ### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
-{{ Fill in the Synopsis }}
+Update a role assignment
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
