@@ -15,19 +15,20 @@ Gets key vaults.
 
 ### GetVaultByName (Default)
 ```
-Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-ResourceType <ResourceTypeName>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
+Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-ResourceType <ResourceTypeName>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [-InRemovedState] [-ResourceType <ResourceTypeName>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,6 +241,22 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceType
+Specifies the type of vault to be shown.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.KeyVault.Models.ResourceTypeName]
+Parameter Sets: (All)
+Aliases: Type
+Accepted values: Vault, Hsm
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

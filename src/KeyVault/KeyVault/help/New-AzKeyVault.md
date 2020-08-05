@@ -13,12 +13,20 @@ Creates a key vault.
 
 ## SYNTAX
 
+### KeyVaultParameterSet
 ```
-New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-EnabledForDeployment]
- [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-DisableSoftDelete] [-EnablePurgeProtection]
- [-SoftDeleteRetentionInDays <Int32>] [-Sku <SkuName>] [-Tag <Hashtable>]
- [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-DisableSoftDelete]
+ [-EnablePurgeProtection] [-SoftDeleteRetentionInDays <Int32>] [-Sku <String>] [-Tag <Hashtable>]
+ [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-EnabledForDeployment] [-EnabledForTemplateDeployment]
+ [-EnabledForDiskEncryption] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ManagedHsmParameterSet
+```
+New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-Sku <String>]
+ [-Tag <Hashtable>] -Administrator <System.Collections.Generic.List`1[System.String]> [-Hsm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +128,21 @@ Creating a key vault and specifies network rules to allow access to the specifie
 
 ## PARAMETERS
 
+### -Administrator
+Array of initial administrators object ids for this managed hsm pool.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: ManagedHsmParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -140,7 +163,7 @@ If specified, 'soft delete' functionality is disabled for this key vault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
@@ -156,7 +179,7 @@ key vault is referenced in resource creation, for example when creating a virtua
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
@@ -171,7 +194,7 @@ Enables the Azure disk encryption service to get secrets and unwrap keys from th
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
@@ -186,7 +209,7 @@ Enables Azure Resource Manager to get secrets from this key vault when this key 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
@@ -201,10 +224,25 @@ If specified, protection against immediate deletion is enabled for this vault; r
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Hsm
+Specifies the type of this vault as MHSM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ManagedHsmParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,7 +284,7 @@ Specifies the network rule set of the vault. It governs the accessibility of the
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleSet
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False
@@ -275,10 +313,9 @@ Accept wildcard characters: False
 Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (https://go.microsoft.com/fwlink/?linkid=512521).
 
 ```yaml
-Type: Microsoft.Azure.Management.KeyVault.Models.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
 
 Required: False
 Position: Named
@@ -292,7 +329,7 @@ Specifies how long deleted resources are retained, and how long until a vault or
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: KeyVaultParameterSet
 Aliases:
 
 Required: False

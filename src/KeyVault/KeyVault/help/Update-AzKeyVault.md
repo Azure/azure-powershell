@@ -12,25 +12,43 @@ Update the state of an Azure key vault.
 
 ## SYNTAX
 
-### UpdateByNameParameterSet (Default)
+### UpdateKeyVaultByNameParameterSet (Default)
 ```
 Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateByInputObjectParameterSet
+### UpdateManagedHsmByNameParameterSet
 ```
-Update-AzKeyVault -InputObject <PSKeyVault> [-EnableSoftDelete] [-EnablePurgeProtection]
+Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-SoftDeleteRetentionInDays <Int32>] [-Hsm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateKeyVaultByInputObjectParameterSet
+```
+Update-AzKeyVault -InputObject <PSKeyVaultIdentityItem> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateByResourceIdParameterSet
+### UpdateManagedHsmByInputObjectParameterSet
+```
+Update-AzKeyVault -InputObject <PSKeyVaultIdentityItem> [-SoftDeleteRetentionInDays <Int32>] [-Hsm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateKeyVaultUByResourceIdParameterSet
 ```
 Update-AzKeyVault -ResourceId <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UpdateManagedHsmUByResourceIdParameterSet
+```
+Update-AzKeyVault -ResourceId <String> [-SoftDeleteRetentionInDays <Int32>] [-Hsm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +95,7 @@ It requires soft-delete to be turned on.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateKeyVaultByNameParameterSet, UpdateKeyVaultByInputObjectParameterSet, UpdateKeyVaultUByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -93,10 +111,25 @@ Once enabled it cannot be disabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateKeyVaultByNameParameterSet, UpdateKeyVaultByInputObjectParameterSet, UpdateKeyVaultUByResourceIdParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Hsm
+Specifies the type of this vault as MHSM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateManagedHsmByNameParameterSet, UpdateManagedHsmByInputObjectParameterSet, UpdateManagedHsmUByResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,8 +140,8 @@ Accept wildcard characters: False
 Key vault object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-Parameter Sets: UpdateByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
+Parameter Sets: UpdateKeyVaultByInputObjectParameterSet, UpdateManagedHsmByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -123,7 +156,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: UpdateKeyVaultByNameParameterSet, UpdateManagedHsmByNameParameterSet
 Aliases:
 
 Required: True
@@ -138,7 +171,7 @@ Resource ID of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByResourceIdParameterSet
+Parameter Sets: UpdateKeyVaultUByResourceIdParameterSet, UpdateManagedHsmUByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -168,7 +201,7 @@ Name of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: UpdateKeyVaultByNameParameterSet, UpdateManagedHsmByNameParameterSet
 Aliases: Name
 
 Required: True
