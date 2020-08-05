@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Internal.Subscriptions.Models.Utilities
 {
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models.Utilities
             subscription.SetEnvironment(environment != null ? environment.Name : EnvironmentName.AzureCloud);
             subscription.SetHomeTenant(other.TenantId ?? retrievedByTenant);
             subscription.SetTenant(retrievedByTenant);
+            subscription.SetSubscriptionPolicies(JsonConvert.SerializeObject(other.SubscriptionPolicies));
             return subscription;
         }
     }

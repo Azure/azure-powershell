@@ -172,6 +172,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         }
 
         /// <summary>
+        /// Get the subscription polices associated with this subscription
+        /// </summary>
+        /// <param name="subscription">The subscription to check</param>
+        /// <returns>The subscription polices</returns>
+        public static string GetSubscriptionPolicies(this IAzureSubscription subscription)
+        {
+            return subscription.GetProperty(AzureSubscription.Property.SubscriptionPolices);
+        }
+
+        /// <summary>
+        /// Set the subscription polices associated with this subscription
+        /// </summary>
+        /// <param name="subscription">The subscription to set</param>
+        /// <param name="subscriptionPolicies">The subscription polices associated with the subscription</param>
+        public static void SetSubscriptionPolicies(this IAzureSubscription subscription, string subscriptionPolicies)
+        {
+            subscription.SetOrAppendProperty(AzureSubscription.Property.SubscriptionPolices, subscriptionPolicies);
+        }
+
+        /// <summary>
         /// Copy the properties from the given subscription
         /// </summary>
         /// <param name="subscription"></param>

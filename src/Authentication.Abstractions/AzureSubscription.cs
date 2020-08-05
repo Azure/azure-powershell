@@ -101,7 +101,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             Default = "Default",
             StorageAccount = "StorageAccount",
             Environment = "Environment",
-            Account = "Account";
+            Account = "Account",
+            SubscriptionPolices = "SubscriptionPolices";
         }
     }
 }

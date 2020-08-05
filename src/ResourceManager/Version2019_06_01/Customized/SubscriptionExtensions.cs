@@ -14,6 +14,7 @@
 
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Utilities
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Ut
                 subscription.SetManagedByTenants(other.ManagedByTenants.Select(t => t.TenantId).ToArray());
             }
             subscription.SetTenant(retrievedByTenant);
+            subscription.SetSubscriptionPolicies(JsonConvert.SerializeObject(other.SubscriptionPolicies));
             return subscription;
         }
     }
