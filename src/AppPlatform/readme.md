@@ -95,6 +95,7 @@ directive:
       subject: AppDeployment
   - where:
       subject: App
+      verb: New|Update
     hide: true
   - where:
       subject: Service|AppResourceUploadUrl

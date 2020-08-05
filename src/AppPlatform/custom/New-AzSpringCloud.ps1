@@ -179,6 +179,14 @@ param(
 )
 
     process {
+        if (-not $PSBoundParameters.ContainsKey('Location')) {
+            $AzResourceModule = Import-Module Az.Resources
+            if ($null -eq $AzResourceModule) {
+                Write-Error "Please input parameter 'Location' or install module Az.Resources."
+            }
+            $ResourceGroup = Get-AzResourceGroup -Name $ResourceGroupName
+            $DeployPSBoundParameters['Location'] = $ResourceGroup.Location
+        }
         Az.SpringCloud.internal\New-AzSpringCloudService @PSBoundParameters
     }
 }
