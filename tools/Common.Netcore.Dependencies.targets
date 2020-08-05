@@ -3,7 +3,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20"/>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
-
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.3.21-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.3.21-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.3.21-preview"/>
