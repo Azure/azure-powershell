@@ -18,6 +18,13 @@ function setupEnv() {
     $env.location = 'eastus'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
 
+    $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+    $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+    $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+    $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+    $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
+    $env.AccessToken = $Token.AccessToken
+
     if ($IsMacOS) {
         throw "Tests can't run on macOS because they require the azcmagent."
     }
@@ -33,7 +40,7 @@ function setupEnv() {
         }
 
         # Set executable path
-        $azcmagentPath = "azcmagent"
+        $env.azcmagentPath = "azcmagent"
     } else {
         Invoke-RestMethod -Uri https://aka.ms/AzureConnectedMachineAgent -OutFile AzureConnectedMachineAgent.msi -UseBasicParsing
 
@@ -43,7 +50,7 @@ function setupEnv() {
         }
 
         # Set executable path
-        $azcmagentPath = "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe"
+        $env.azcmagentPath = "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe"
     }
 
     $envFile = 'env.json'
@@ -54,5 +61,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.ResourceGroupName -Force
 }
 

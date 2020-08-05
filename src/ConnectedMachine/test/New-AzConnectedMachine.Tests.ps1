@@ -14,15 +14,17 @@ while(-not $mockingPath) {
 Describe 'New-AzConnectedMachine' {
     BeforeEach {
         $commonParams = @{
-            Location = $env.location
             Name = (New-Guid).Guid
+            ResourceGroupName = $env.ResourceGroupName
         }
     }
+
     AfterEach {
-        Remove-AzConnectedMachine -Name $commonParams.Name
+        & $env.azcmagentPath disconnect --access-token $env.AccessToken
     }
-    It 'Can connect a machine to an existing resource group' -Skip:([bool]$IsMacOS) {
-        $machine = New-AzConnectedMachine @commonParams
+
+    It 'Can connect a machine to an existing resource group' {
+        $machine = New-AzConnectedMachine @commonParams -Location $env.location
         $machine | Should -Not -Be $null
         $machine.Location | Should -MatchExactly $env.location
     }

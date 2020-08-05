@@ -149,9 +149,9 @@ function New-AzConnectedMachine {
     }
 
     $script = {
-        $azcmagentArgs = $using:azcmagentArgs
-        $proxyUrl = $using:Proxy
-        
+        # $azcmagentArgs = $using:azcmagentArgs
+        # $proxyUrl = $using:Proxy
+
         if ($IsMacOS) {
             throw "Registration doesn't work on macOS. Only Linux and Windows are supported."
         }
@@ -161,8 +161,8 @@ function New-AzConnectedMachine {
             Invoke-RestMethod -Uri https://aka.ms/azcmagent -OutFile ~/install_linux_azcmagent.sh -UseBasicParsing
 
             # Install the hybrid agent
-            $installArgs = if ($proxyUrl) {
-                '--proxy', $proxyUrl.ToString()
+            $installArgs = if ($Proxy) {
+                '--proxy', $P.ToString()
             } else {
                 @()
             }
@@ -180,15 +180,21 @@ function New-AzConnectedMachine {
                 Write-Host $_
             }
 
-            [System.Environment]::SetEnvironmentVariable("https_proxy", $proxyUrl.ToString(), "Machine")
+            [System.Environment]::SetEnvironmentVariable("https_proxy", $Proxy.ToString(), "Machine")
 
             # Set executable path
             $azcmagentPath = "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe"
         }
 
         # Run connect command
-        & $azcmagentPath @args | ForEach-Object {
-            Write-Host $_
+        if ($IsLinux) {
+            sudo $azcmagentPath @args | ForEach-Object {
+                Write-Host $_
+            }
+        } else {
+            & $azcmagentPath @args | ForEach-Object {
+                Write-Host $_
+            }
         }
 
         if ($LASTEXITCODE -ne 0) {
