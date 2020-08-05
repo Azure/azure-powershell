@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
         public ArgumentCompleterDelegate ArgumentCompleter { get; set; }
 
         /// <summary>The instance of the Client API</summary>
-        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfigurationManagementClient ClientAPI { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfiguration ClientAPI { get; set; }
 
         /// <summary>A delegate that gets called for each signalled event</summary>
         public EventListenerDelegate EventListener { get; set; }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
         private Module()
         {
             /// constructor
-            ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfigurationManagementClient();
+            ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfiguration();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));
             _pipelineWithProxy = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient(_handler)));

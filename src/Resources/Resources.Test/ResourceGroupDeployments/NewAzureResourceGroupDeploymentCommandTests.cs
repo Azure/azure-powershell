@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -30,6 +29,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Linq;
 using System.Collections;
 using FluentAssertions;
+using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {

@@ -1,16 +1,16 @@
 {
-  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview+1": {
+  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3?api-version=2020-05-15+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-8uxmh1?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3?api-version=2020-05-15",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "fb9a2da3-9ad7-46d2-8345-07328543a568" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "183186c1-64c5-4dfd-92b7-78850fe54f3c" ],
         "CommandName": [ "Remove-AzTimeSeriesInsightsEnvironment" ],
         "FullCommandName": [ "Remove-AzTimeSeriesInsightsEnvironment_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,14 +21,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "1628b0db-6d3c-4045-a2ec-5ede278b65f3" ],
+        "x-ms-request-id": [ "671515db-d978-4d7c-adf6-b844e9a3bbb4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "bbf53bdb-c5c5-45c0-8901-dce9ad69e30b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073805Z:bbf53bdb-c5c5-45c0-8901-dce9ad69e30b" ],
-        "Date": [ "Wed, 08 Apr 2020 07:38:05 GMT" ]
+        "x-ms-correlation-request-id": [ "51f42465-4cf4-41bb-b4b4-d8697228edfd" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042357Z:51f42465-4cf4-41bb-b4b4-d8697228edfd" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:56 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -37,18 +37,18 @@
       "Content": null
     }
   },
-  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments?api-version=2018-08-15-preview+2": {
+  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments?api-version=2020-05-15+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments?api-version=2020-05-15",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "91c784ce-f0fd-4a30-a48c-5112169d4d5d" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "943d0b68-700f-449e-81d5-f272eca030a3" ],
         "CommandName": [ "Get-AzTimeSeriesInsightsEnvironment" ],
         "FullCommandName": [ "Get-AzTimeSeriesInsightsEnvironment_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -59,35 +59,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "28ba0cc0-eec1-4824-8602-b58914ebc707" ],
+        "x-ms-request-id": [ "ab0864a7-2c8d-49f8-b075-70302e2bac38" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "fdc0052c-a4b5-4578-9e42-652fa43c21ba" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073805Z:fdc0052c-a4b5-4578-9e42-652fa43c21ba" ],
-        "Date": [ "Wed, 08 Apr 2020 07:38:05 GMT" ]
+        "x-ms-correlation-request-id": [ "839d3c62-225b-401b-a6f4-db5ad8af9879" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042357Z:839d3c62-225b-401b-a6f4-db5ad8af9879" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3485" ],
+        "Content-Length": [ "3420" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:30:17 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"d76a61f2-8a30-41a5-9587-f241eb9b48d9\",\"dataAccessFqdn\":\"d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/tsi-envv8u56x\",\"name\":\"tsi-envv8u56x\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"LongTerm\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountxvtbjq\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"Wed, 08 Apr 2020 07:30:54 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"d129a8b6-772d-48a8-acdb-9ad529e7ffa3\",\"dataAccessFqdn\":\"d129a8b6-772d-48a8-acdb-9ad529e7ffa3.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/tsi-envui70dk\",\"name\":\"tsi-envui70dk\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"LongTerm\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountmtudlr\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"Wed, 08 Apr 2020 07:37:14 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"1ae694bd-9eb2-4005-931e-867f2f8e2259\",\"dataAccessFqdn\":\"1ae694bd-9eb2-4005-931e-867f2f8e2259.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-s13wly\",\"name\":\"rstr-s13wly\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:36:02 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"a36df2a5-78d9-41c1-8a42-482c15f840ba\",\"dataAccessFqdn\":\"a36df2a5-78d9-41c1-8a42-482c15f840ba.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql\",\"name\":\"rstr-cn1yql\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S2\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:36:39 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"2043650c-7f95-492f-a570-7bd7bb1f88f3\",\"dataAccessFqdn\":\"2043650c-7f95-492f-a570-7bd7bb1f88f3.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-jra51c\",\"name\":\"rstr-jra51c\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}]}"
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:19:31.7186730Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"0186ce1b-3d2e-4062-8825-f6c9dbde7995\",\"dataAccessFqdn\":\"0186ce1b-3d2e-4062-8825-f6c9dbde7995.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/tsi-envxizc74\",\"name\":\"tsi-envxizc74\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:21:56.4647573Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"ef27a2ab-3c27-4624-b975-9918fe128768\",\"dataAccessFqdn\":\"ef27a2ab-3c27-4624-b975-9918fe128768.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs\",\"name\":\"rstr-lpjzxs\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S2\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:22:31.2023622Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"9ee8af91-9e5b-4e9c-978f-c9c85475daf6\",\"dataAccessFqdn\":\"9ee8af91-9e5b-4e9c-978f-c9c85475daf6.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-p9he3s\",\"name\":\"rstr-p9he3s\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"Gen2\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountywsmha\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"2020-07-29T04:23:06.4079000Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"23fd1574-c8cd-4cae-a419-e56ab63a1baf\",\"dataAccessFqdn\":\"23fd1574-c8cd-4cae-a419-e56ab63a1baf.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-m5jinv\",\"name\":\"rstr-m5jinv\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"Gen2\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountgolaer\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"2020-07-29T04:20:08.1958534Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"43784df6-f91c-45dc-b18b-906ba26cc52f\",\"dataAccessFqdn\":\"43784df6-f91c-45dc-b18b-906ba26cc52f.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/tsi-envf4bmgi\",\"name\":\"tsi-envf4bmgi\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}]}"
     }
   },
-  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql?api-version=2018-08-15-preview+1": {
+  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs?api-version=2020-05-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs?api-version=2020-05-15",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "20b88f4a-52fb-4747-b55b-ae1c51671307" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "010a7c08-c2ec-4d58-a06d-1c314a4780b1" ],
         "CommandName": [ "Get-AzTimeSeriesInsightsEnvironment" ],
         "FullCommandName": [ "Get-AzTimeSeriesInsightsEnvironment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -98,35 +98,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "37a86bf1-cffe-48fe-8018-8b291412d0af" ],
+        "x-ms-request-id": [ "af8640c3-fa05-48b6-b818-451d13345661" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "7617ef11-be2c-4999-8dd1-c1b3497d1d8d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073806Z:7617ef11-be2c-4999-8dd1-c1b3497d1d8d" ],
-        "Date": [ "Wed, 08 Apr 2020 07:38:05 GMT" ]
+        "x-ms-correlation-request-id": [ "719e2652-6a29-460d-9917-a44781b1b8bc" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042357Z:719e2652-6a29-460d-9917-a44781b1b8bc" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "689" ],
+        "Content-Length": [ "676" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:36:02 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"a36df2a5-78d9-41c1-8a42-482c15f840ba\",\"dataAccessFqdn\":\"a36df2a5-78d9-41c1-8a42-482c15f840ba.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql\",\"name\":\"rstr-cn1yql\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}"
+      "Content": "{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:21:56.4647573Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"ef27a2ab-3c27-4624-b975-9918fe128768\",\"dataAccessFqdn\":\"ef27a2ab-3c27-4624-b975-9918fe128768.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs\",\"name\":\"rstr-lpjzxs\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}"
     }
   },
-  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql?api-version=2018-08-15-preview+2": {
+  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs?api-version=2020-05-15+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs?api-version=2020-05-15",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "d217a355-a096-44a8-92ed-5c1c97730086" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "9682f847-d3d5-45fe-96cb-6569232c4d06" ],
         "CommandName": [ "Remove-AzTimeSeriesInsightsEnvironment" ],
         "FullCommandName": [ "Remove-AzTimeSeriesInsightsEnvironment_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -137,14 +137,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "a36d258f-6fe1-4305-9d5a-c1f81b49cf87" ],
+        "x-ms-request-id": [ "12f1baa5-e2d9-4cb5-b14c-4c29f55cbd5b" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "3f9d83c7-3174-48da-9c0b-be6af6cfd3ec" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073808Z:3f9d83c7-3174-48da-9c0b-be6af6cfd3ec" ],
-        "Date": [ "Wed, 08 Apr 2020 07:38:08 GMT" ]
+        "x-ms-correlation-request-id": [ "3ea1d9b7-3afe-4e2a-9186-7e9e8a71432c" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042400Z:3ea1d9b7-3afe-4e2a-9186-7e9e8a71432c" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -153,18 +153,18 @@
       "Content": null
     }
   },
-  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments?api-version=2018-08-15-preview+3": {
+  "Remove-AzTimeSeriesInsightsEnvironment+[NoContext]+DeleteInputObject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments?api-version=2020-05-15+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments?api-version=2020-05-15",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "ee7f1700-2cb4-4541-8967-13a9e3f6acf9" ],
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "dcca91db-6b5d-48db-895f-11ee19b4ffcd" ],
         "CommandName": [ "Get-AzTimeSeriesInsightsEnvironment" ],
         "FullCommandName": [ "Get-AzTimeSeriesInsightsEnvironment_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -175,21 +175,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0a978e1f-8fae-4dc6-b285-c9581894887a" ],
+        "x-ms-request-id": [ "6a4dec4e-9406-4f7c-b20b-e9c8d6b53bbe" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "8c5d716c-5e7b-4356-99de-137659837e0d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073808Z:8c5d716c-5e7b-4356-99de-137659837e0d" ],
-        "Date": [ "Wed, 08 Apr 2020 07:38:08 GMT" ]
+        "x-ms-correlation-request-id": [ "bf450665-c537-47bc-89dd-fa2eeeb0c9b6" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042400Z:bf450665-c537-47bc-89dd-fa2eeeb0c9b6" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2795" ],
+        "Content-Length": [ "2743" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:30:17 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"d76a61f2-8a30-41a5-9587-f241eb9b48d9\",\"dataAccessFqdn\":\"d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/tsi-envv8u56x\",\"name\":\"tsi-envv8u56x\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"LongTerm\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountxvtbjq\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"Wed, 08 Apr 2020 07:30:54 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"d129a8b6-772d-48a8-acdb-9ad529e7ffa3\",\"dataAccessFqdn\":\"d129a8b6-772d-48a8-acdb-9ad529e7ffa3.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/tsi-envui70dk\",\"name\":\"tsi-envui70dk\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"LongTerm\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountmtudlr\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"Wed, 08 Apr 2020 07:37:14 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"1ae694bd-9eb2-4005-931e-867f2f8e2259\",\"dataAccessFqdn\":\"1ae694bd-9eb2-4005-931e-867f2f8e2259.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-s13wly\",\"name\":\"rstr-s13wly\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S2\",\"capacity\":2},\"kind\":\"Standard\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"Wed, 08 Apr 2020 07:36:39 GMT\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2018-08-15-preview\",\"dataAccessId\":\"2043650c-7f95-492f-a570-7bd7bb1f88f3\",\"dataAccessFqdn\":\"2043650c-7f95-492f-a570-7bd7bb1f88f3.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-jra51c\",\"name\":\"rstr-jra51c\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}]}"
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"S1\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:19:31.7186730Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"0186ce1b-3d2e-4062-8825-f6c9dbde7995\",\"dataAccessFqdn\":\"0186ce1b-3d2e-4062-8825-f6c9dbde7995.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/tsi-envxizc74\",\"name\":\"tsi-envxizc74\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"S2\",\"capacity\":2},\"kind\":\"Gen1\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataRetentionTime\":\"P1DT1H25M\",\"creationTime\":\"2020-07-29T04:22:31.2023622Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"9ee8af91-9e5b-4e9c-978f-c9c85475daf6\",\"dataAccessFqdn\":\"9ee8af91-9e5b-4e9c-978f-c9c85475daf6.env.timeseries.azure.com\",\"storageLimitExceededBehavior\":\"PurgeOldData\",\"partitionKeyProperties\":null},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-p9he3s\",\"name\":\"rstr-p9he3s\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"Gen2\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountywsmha\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"2020-07-29T04:23:06.4079000Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"23fd1574-c8cd-4cae-a419-e56ab63a1baf\",\"dataAccessFqdn\":\"23fd1574-c8cd-4cae-a419-e56ab63a1baf.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-m5jinv\",\"name\":\"rstr-m5jinv\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"},{\"sku\":{\"name\":\"L1\",\"capacity\":1},\"kind\":\"Gen2\",\"location\":\"EastUs2\",\"tags\":null,\"properties\":{\"storageConfiguration\":{\"accountName\":\"staaccountgolaer\"},\"timeSeriesIdProperties\":[{\"name\":\"cdc\",\"type\":\"string\"}],\"creationTime\":\"2020-07-29T04:20:08.1958534Z\",\"provisioningState\":\"Succeeded\",\"requestApiVersion\":\"2020-05-15\",\"dataAccessId\":\"43784df6-f91c-45dc-b18b-906ba26cc52f\",\"dataAccessFqdn\":\"43784df6-f91c-45dc-b18b-906ba26cc52f.env.timeseries.azure.com\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/tsi-envf4bmgi\",\"name\":\"tsi-envf4bmgi\",\"type\":\"Microsoft.TimeSeriesInsights/Environments\"}]}"
     }
   }
 }

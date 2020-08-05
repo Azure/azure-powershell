@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string priority,
             string evictionPolicy,
-            double? maxPrice)
+            double? maxPrice,
+            bool? encryptionAtHostEnabled)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -95,7 +96,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
-                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                    SecurityProfile = (encryptionAtHostEnabled == null) ? null : new SecurityProfile(encryptionAtHostEnabled)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -114,7 +116,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string priority,
             string evictionPolicy,
-            double? maxPrice)
+            double? maxPrice,
+            bool? encryptionAtHostEnabled
+            )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -150,7 +154,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
-                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                    SecurityProfile = new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostEnabled
+                    }
                 });
     }
 }
