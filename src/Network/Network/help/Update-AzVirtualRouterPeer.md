@@ -28,7 +28,7 @@ Update-AzVirtualRouterPeer -ResourceGroupName <String> -PeerName <String> -PeerI
 ### VirtualRouterPeerObjectParameterSet
 ```
 Update-AzVirtualRouterPeer -ResourceGroupName <String> -VirtualRouterName <String>
- -InputObject <PSBgpConnection> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -InputObject <PSVirtualRouterPeer> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The virtual router peer input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBgpConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
 Parameter Sets: VirtualRouterPeerObjectParameterSet
 Aliases:
 
@@ -252,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.UInt32
 
-### Microsoft.Azure.Commands.Network.Models.PSBgpConnection
+### Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
 
 ## OUTPUTS
 

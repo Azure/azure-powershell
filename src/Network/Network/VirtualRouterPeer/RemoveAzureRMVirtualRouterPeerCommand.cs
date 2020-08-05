@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual router peer input object.")]
         [ValidateNotNullOrEmpty]
-        public PSBgpConnection InputObject { get; set; }
+        public PSVirtualRouterPeer InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId,

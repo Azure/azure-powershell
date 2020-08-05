@@ -1346,11 +1346,11 @@ namespace Microsoft.Azure.Commands.Network
                 // Virtual Router
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualRouter, MNM.VirtualRouter>();
-                cfg.CreateMap<CNM.PSBgpConnection, MNM.BgpConnection>();
+                cfg.CreateMap<CNM.PSVirtualRouterPeer, MNM.BgpConnection>();
                 cfg.CreateMap<CNM.PSHubIpConfiguration, MNM.HubIpConfiguration>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.BgpConnection, CNM.PSBgpConnection>();
+                cfg.CreateMap<MNM.BgpConnection, CNM.PSVirtualRouterPeer>();
                 cfg.CreateMap<MNM.HubIpConfiguration, CNM.PSHubIpConfiguration>();
 
                 // IpGroup

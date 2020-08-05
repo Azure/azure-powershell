@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual router peer input object.")]
         [ValidateNotNullOrEmpty]
-        public PSBgpConnection InputObject { get; set; }
+        public PSVirtualRouterPeer InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerResourceId,
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.PeerName));
-                    PSBgpConnection bgpConnection = new PSBgpConnection
+                    PSVirtualRouterPeer peer = new PSVirtualRouterPeer
                     {
                         Name = this.PeerName,
                         PeerAsn = this.PeerAsn,
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Network
                     string ipConfigName = "ipconfig1";
 
                     
-                    var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(bgpConnection);
+                    var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(peer);
 
                     this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.VirtualRouterName, this.PeerName, bgpConnectionModel);
                     var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.VirtualRouterName);

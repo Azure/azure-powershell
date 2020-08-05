@@ -5359,9 +5359,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSBgpConnection</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpConnection</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

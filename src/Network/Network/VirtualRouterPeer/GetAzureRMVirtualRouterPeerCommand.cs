@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeer", DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName), OutputType(typeof(PSBgpConnection))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeer", DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName), OutputType(typeof(PSVirtualRouterPeer))]
     public partial class GetAzureRmVirtualRouterPeer : NetworkBaseCmdlet
     {
         [Parameter(
@@ -80,8 +80,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var bgpConnection = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Get(ResourceGroupName, VirtualRouterName, PeerName);
-            var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSBgpConnection>(bgpConnection);
-            WriteObject(bgpConnectionModel, true);
+            var peerModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(bgpConnection);
+
+            WriteObject(peerModel, true);
         }
     }
 }

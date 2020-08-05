@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             var bgpConnectionList = ListNextLink<BgpConnection>.GetAllResourcesByPollingNextLink(bgpConnections, this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.ListNext);
             foreach (var connection in bgpConnectionList)
             {
-                virtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSBgpConnection>(connection));
+                virtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(connection));
             }
         }
 

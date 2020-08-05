@@ -10,7 +10,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PeerIp { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Type { get; set; }
     }
 } 

@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.PeerName));
-                    PSBgpConnection bgpConnection = new PSBgpConnection
+                    PSVirtualRouterPeer peer = new PSVirtualRouterPeer
                     {
                         PeerAsn = this.PeerAsn,
                         PeerIp = this.PeerIp,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                     };
                     string ipConfigName = "ipconfig1";
 
-                    var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(bgpConnection);
+                    var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(peer);
                     
                     this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.VirtualRouterName, this.PeerName, bgpConnectionModel);
                     var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.VirtualRouterName);

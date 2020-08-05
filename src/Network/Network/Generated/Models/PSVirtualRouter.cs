@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.VirtualRouterAsn = virtualHub.VirtualRouterAsn;
             this.VirtualRouterIps = virtualHub.VirtualRouterIps;
             this.ProvisioningState = virtualHub.ProvisioningState;
-            this.Peerings = new List<PSVirtualRouterPeer>();
+            this.Peerings = new List<PSBgpConnection>();
             foreach (var connection in virtualHub.BgpConnections)
             {
-                var peering = new PSVirtualRouterPeer()
+                var peering = new PSBgpConnection()
                 {
                     Name = connection.Name,
                     PeerIp = connection.PeerIp,
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public List<PSHubIpConfiguration> VirtualNetworkConnections { get; set; }
-        public List<PSVirtualRouterPeer> Peerings { get; set; }
+        public List<PSBgpConnection> Peerings { get; set; }
 
         [JsonIgnore]
         public string PeeringsText

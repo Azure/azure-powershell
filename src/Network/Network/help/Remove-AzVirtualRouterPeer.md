@@ -20,7 +20,7 @@ Remove-AzVirtualRouterPeer -ResourceGroupName <String> -PeerName <String> -Virtu
 
 ### VirtualRouterPeerObjectParameterSet
 ```
-Remove-AzVirtualRouterPeer -InputObject <PSBgpConnection> [-Force] [-AsJob]
+Remove-AzVirtualRouterPeer -InputObject <PSVirtualRouterPeer> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The virtual router peer input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBgpConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
 Parameter Sets: VirtualRouterPeerObjectParameterSet
 Aliases:
 
@@ -212,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSBgpConnection
+### Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
 
 ## OUTPUTS
 
