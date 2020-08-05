@@ -97,7 +97,13 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Get-AzServiceFabricService', 'Remove-AzServiceFabricApplication', 
                'Remove-AzServiceFabricApplicationType', 
                'Remove-AzServiceFabricApplicationTypeVersion', 
-               'Remove-AzServiceFabricService'
+               'Remove-AzServiceFabricService',
+               # ManagedClusters cmdlets
+               'New-AzServiceFabricManagedCluster',
+               'Get-AzServiceFabricManagedCluster',
+               'New-AzServiceFabricManagedNodeType',
+               'Get-AzServiceFabricManagedNodeType',
+               'Restart-AzServiceFabricManagedNodeType'
 
 # Variables to export from this module
 # VariablesToExport = @()

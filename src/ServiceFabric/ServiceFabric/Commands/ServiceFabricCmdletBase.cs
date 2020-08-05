@@ -20,12 +20,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using Action = System.Action;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
@@ -53,7 +50,7 @@ using SFResource = Microsoft.Azure.Management.ServiceFabric.Models.Resource;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    public class ServiceFabricCmdletBase : AzureRMCmdlet
+    public class ServiceFabricCmdletBase : ServiceFabricCommonCmdletBase
     {
         internal static int NewCreatedKeyVaultWaitTimeInSec = 15;
 
@@ -99,18 +96,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         #region RM Client
-        private Lazy<ServiceFabricManagementClient> sfrpClient;
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
-        private Lazy<IResourceManagementClient> resourcesClient;
         private Lazy<GraphRbacManagementClient> graphClient;
         private Lazy<IKeyVaultClient> keyVaultClient;
-
-        internal ServiceFabricManagementClient SFRPClient
-        {
-            get { return sfrpClient.Value; }
-            set { sfrpClient = new Lazy<ServiceFabricManagementClient>(() => value); }
-        }
 
         internal IComputeManagementClient ComputeClient
         {
@@ -122,12 +111,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             get { return keyVaultManageClient.Value; }
             set { keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() => value); }
-        }
-
-        internal IResourceManagementClient ResourcesClient
-        {
-            get { return resourcesClient.Value; }
-            set { resourcesClient = new Lazy<IResourceManagementClient>(() => value); }
         }
 
         internal GraphRbacManagementClient GraphClient
@@ -142,22 +125,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { keyVaultClient = new Lazy<IKeyVaultClient>(() => value); }
         }
 
-        public ServiceFabricCmdletBase()
+        public ServiceFabricCmdletBase() : base()
         {
             InitializeAzureRmClients();
         }
 
         private void InitializeAzureRmClients()
         {
-            sfrpClient = new Lazy<ServiceFabricManagementClient>(() =>
-            {
-                var armClient = AzureSession.Instance.ClientFactory.
-                CreateArmClient<ServiceFabricManagementClient>(
-                DefaultContext,
-                AzureEnvironment.Endpoint.ResourceManager);
-                return armClient;
-            });
-
             computeClient = new Lazy<IComputeManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
                 DefaultContext,
@@ -165,11 +139,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
-                DefaultContext,
-                AzureEnvironment.Endpoint.ResourceManager));
-
-            resourcesClient = new Lazy<IResourceManagementClient>(() =>
-            AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
@@ -615,46 +584,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected void PrintSdkExceptionDetail(Exception exception)
-        {
-            if (exception == null)
-            {
-                return;
-            }
-
-            while (!(exception is CloudException || exception is ErrorModelException) && exception.InnerException != null)
-            {
-                exception = exception.InnerException;
-            }
-
-            if (exception is CloudException)
-            {
-                var cloudException = (CloudException)exception;
-                if (cloudException.Body != null)
-                {
-                    var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
-                    var ex = new Exception(cloudErrorMessage);
-                    WriteError(
-                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
-                }
-            }
-            else if (exception is ErrorModelException)
-            {
-                var errorModelException = (ErrorModelException)exception;
-                if (errorModelException.Body != null)
-                {
-                    var cloudErrorMessage = GetErrorModelErrorMessage(errorModelException.Body);
-                    var ex = new Exception(cloudErrorMessage);
-                    WriteError(
-                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
-                }
-            }
-            else
-            {
-                WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.NotSpecified, null));
-            }
-        }
-
         protected T StartRequestAndWait<T>(Func<Task<AzureOperationResponse<T>>> requestAction, Func<string> getResourceCurrentStatus) where T : class
         {
             var progress = new ProgressRecord(0, string.Format("Request for {0} in progress", typeof(T).Name), "Starting...");
@@ -724,48 +653,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             
             return result?.Body;
-        }
-
-        private string GetCloudErrorMessage(CloudError error)
-        {
-            if (error == null)
-            {
-                return string.Empty;
-            }
-
-            var sb = new StringBuilder();
-            if (error.Details != null)
-            {
-                foreach (var detail in error.Details)
-                {
-                    sb.Append(GetCloudErrorMessage(detail));
-                }                                        
-            }
-
-            var message = string.Format(
-                "Code: {0}, Message: {1}{2}Details: {3}{2}",  
-                error.Code,                      
-                error.Message,         
-                Environment.NewLine,  
-                sb);
-
-            return message;
-        }
-
-        private string GetErrorModelErrorMessage(ErrorModel error)
-        {
-            if (error == null || error.Error == null)
-            {
-                return string.Empty;
-            }
-
-            var message = string.Format(
-                "Code: {0}, Message: {1}{2}",
-                error.Error.Code,
-                error.Error.Message,
-                Environment.NewLine);
-
-            return message;
         }
 
         private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
