@@ -1202,6 +1202,7 @@ namespace Microsoft.Azure.Commands.Network
                         { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist?.FQDNs?.Aggregate((result, item) => result + "," + item) },
                         { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist?.IpAddresses?.Aggregate((result, item) => result + "," + item) },
                         { "Network.SNAT.PrivateRanges", src.PrivateRange?.Aggregate((result, item) => result + "," + item) },
+                        { "Network.FTP.AllowActiveFTP", src.AllowActiveFTP },
                         { "Network.DNS.EnableProxy", src.DNSEnableProxy },
                         { "Network.DNS.RequireProxyForNetworkRules", src.DNSRequireProxyForNetworkRules },
                         { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) }
@@ -1249,6 +1250,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         dest.PrivateRange = null;
                     }
+                    dest.AllowActiveFTP = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.FTP.AllowActiveFTP", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSRequireProxyForNetworkRules = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.RequireProxyForNetworkRules", StringComparison.OrdinalIgnoreCase)).Value;
                     try
