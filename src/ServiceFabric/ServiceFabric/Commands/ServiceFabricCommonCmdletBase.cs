@@ -20,12 +20,15 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -74,6 +77,83 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
 
         #region Helper
+
+        protected T SafeGetResource<T>(Func<T> action, bool ingoreAllError=false)
+        {
+            try
+            {
+                return action();
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response != null && ce.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return default(T);
+                }
+
+                if (ingoreAllError)
+                {
+                    WriteWarning(ce.ToString());
+                    return default(T);
+                }
+
+                throw;
+            }
+            catch (ErrorModelException e)
+            {
+                if ((e.Body?.Error != null &&
+                    (e.Body.Error.Code.Equals("ResourceGroupNotFound", StringComparison.OrdinalIgnoreCase) ||
+                     e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase) ||
+                     e.Body.Error.Code.Equals("NotFound", StringComparison.OrdinalIgnoreCase))) ||
+                     e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return default(T);
+                }
+
+                if (ingoreAllError)
+                {
+                    WriteWarning(e.ToString());
+                    return default(T);
+                }
+
+                throw;
+            }
+            catch (Exception e)
+            {
+                if (ingoreAllError)
+                {
+                    WriteWarning(e.ToString());
+                    return default(T);
+                }
+
+                throw;
+            }
+        }
+
+        protected IEnumerable<T> ReturnListByPageResponse<T>(IPage<T> page, Func<string, IPage<T>> listNextFunction) where T : class
+        {
+            var listResult = new List<T>();
+            do
+            {
+                listResult.AddRange(page);
+            } while (!string.IsNullOrEmpty(page.NextPageLink) &&
+                    (page = listNextFunction(page.NextPageLink)) != null);
+
+
+            return listResult;
+        }
+
+        protected void PollLongRunningOperation(Rest.Azure.AzureOperationResponse beginRequestResponse)
+        {
+            AzureOperationResponse<object> response2 = new Rest.Azure.AzureOperationResponse<object>
+            {
+                Request = beginRequestResponse.Request,
+                Response = beginRequestResponse.Response,
+                RequestId = beginRequestResponse.RequestId
+            };
+
+            this.PollLongRunningOperation(response2);
+        }
 
         protected T PollLongRunningOperation<T>(AzureOperationResponse<T> beginRequestResponse) where T : class
         {
@@ -149,9 +229,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (requestTask.IsFaulted)
             {
                 var errorMessage = string.Format(
-                    "Long Running Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}'",
+                    "Long Running Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}' operationId '{0}'",
                     beginRequestResponse.RequestId,
-                    beginRequestResponse.Response.StatusCode);
+                    beginRequestResponse.Response.StatusCode,
+                    this.GetOperationIdFromAsyncHeader(beginRequestResponse.Response.Headers));
 
                 WriteErrorWithTimestamp(errorMessage);
                 throw requestTask.Exception;
@@ -160,106 +241,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return result?.Body;
         }
 
-        protected void PollLongRunningOperation(Rest.Azure.AzureOperationResponse beginRequestResponse)
+        private string GetOperationIdFromAsyncHeader(HttpResponseHeaders headers)
         {
-            AzureOperationResponse<object> response2 = new Rest.Azure.AzureOperationResponse<object>
+            if (headers.Location != null)
             {
-                Request = beginRequestResponse.Request,
-                Response = beginRequestResponse.Response,
-                RequestId = beginRequestResponse.RequestId
-            };
-
-            this.PollLongRunningOperation(response2);
-            /*
-            var progress = new ProgressRecord(0, "Request in progress", "Starting...");
-            WriteProgress(progress);
-            Rest.Azure.AzureOperationResponse beginRequestResponse = null;
-            Rest.Azure.AzureOperationResponse result = null;
-            var tokenSource = new CancellationTokenSource();
-            Uri asyncOperationStatusEndpoint = null;
-            HttpRequestMessage asyncOpStatusRequest = null;
-            try
-            {
-                var requestTask = Task.Factory.StartNew(() =>
-                {
-                    try
-                    {
-                        beginRequestResponse = beginRequestAction().GetAwaiter().GetResult();
-                        if (beginRequestResponse.Response.Headers.TryGetValues(Constants.AzureAsyncOperationHeader, out IEnumerable<string> headerValues))
-                        {
-                            asyncOperationStatusEndpoint = new Uri(headerValues.First());
-                            asyncOpStatusRequest = beginRequestResponse.Request;
-                        }
-
-                        WriteVerboseWithTimestamp(string.Format("Beging request ARM correlationId: '{0}' response: '{1}'",
-                                        beginRequestResponse.RequestId,
-                                        beginRequestResponse.Response.StatusCode));
-
-                        result = this.SFRPClient.GetLongRunningOperationResultAsync(beginRequestResponse, null, default).GetAwaiter().GetResult();
-                    }
-                    finally
-                    {
-                        tokenSource.Cancel();
-                    }
-                });
-
-                try
-                {
-                    while (!tokenSource.IsCancellationRequested)
-                    {
-                        tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
-
-                        if (asyncOpStatusRequest != null && asyncOperationStatusEndpoint != null)
-                        {
-                            using (HttpClient client = new HttpClient())
-                            {
-                                asyncOpStatusRequest = this.CloneAndDisposeRequest(asyncOpStatusRequest, asyncOperationStatusEndpoint, HttpMethod.Get);
-                                HttpResponseMessage responseJson = client.SendAsync(asyncOpStatusRequest).GetAwaiter().GetResult();
-                                string content = responseJson.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
-                                Operation op = this.ConvertToOperation(content);
-
-                                if (op != null)
-                                {
-                                    string progressMessage = $"Operation Status: {op.Status}";
-                                    WriteDebugWithTimestamp(progressMessage);
-                                    progress.StatusDescription = progressMessage;
-                                    progress.PercentComplete = Convert.ToInt32(op.PercentComplete);
-                                    WriteProgress(progress);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch(Exception ex)
-                {
-                    // don't throw if poll operation state fails
-                    WriteDebugWithTimestamp("Error polling operation status {0}", ex);
-                }
-
-                if (requestTask.IsFaulted)
-                {
-                    string errorMessage = "Begin request operation failed";
-                    if (beginRequestResponse != null)
-                    {
-                        errorMessage = string.Format(
-                            "Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}'",
-                            beginRequestResponse.RequestId,
-                            beginRequestResponse.Response.StatusCode);
-
-                    }
-
-                    WriteErrorWithTimestamp(errorMessage);
-                    throw requestTask.Exception;
-                }
-            }
-            catch (Exception e)
-            {
-                PrintSdkExceptionDetail(e);
-                throw;
+                return headers.Location.Segments.LastOrDefault();
             }
 
-            //return result?.Body;
-            */
+            if (headers.TryGetValues(Constants.AzureAsyncOperationHeader, out IEnumerable<string> headerValues))
+            {
+                var asyncOperationStatusEndpoint = new Uri(headerValues.First());
+                return asyncOperationStatusEndpoint.Segments.LastOrDefault();
+            }
+            
+            return "Unknown";
         }
 
         private Operation ConvertToOperation(string content)
@@ -361,9 +356,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 if (errorModelException.Body != null)
                 {
                     var cloudErrorMessage = GetErrorModelErrorMessage(errorModelException.Body);
-                    var ex = new Exception(cloudErrorMessage);
-                    WriteError(
-                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    if (!string.IsNullOrEmpty(cloudErrorMessage))
+                    {
+                        var ex = new Exception(cloudErrorMessage);
+                        WriteError(
+                            new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    }
+                }
+
+                if (errorModelException.Response?.Content != null)
+                {
+                    var exMessage = GetResponseExceptionMessage(errorModelException.Response?.Content);
+                    if (!string.IsNullOrEmpty(exMessage))
+                    {
+                        var ex = new Exception(exMessage);
+                        WriteError(
+                            new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    }
                 }
             }
             else
@@ -412,6 +421,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Environment.NewLine);
 
             return message;
+        }
+
+        private string GetResponseExceptionMessage(string responseContent)
+        {
+            try
+            {
+                var contentJObject = JObject.Parse(responseContent);
+                if (contentJObject.TryGetValue("exception", StringComparison.OrdinalIgnoreCase, out JToken value))
+                {
+                    return value != null ? (string)value : responseContent;
+                }
+
+                return responseContent;
+            }
+            catch (JsonReaderException)
+            {
+                return responseContent;
+            }
         }
 
         #endregion

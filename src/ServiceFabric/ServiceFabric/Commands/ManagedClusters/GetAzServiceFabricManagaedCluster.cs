@@ -12,6 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
@@ -21,19 +22,24 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = BySubscription, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
     public class GetServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
+        protected const string ByName = "ByName";
+        protected const string ByResouceGroup = "ByResouceGroup";
+        protected const string BySubscription = "BySubscription";
 
         #region Params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
@@ -46,8 +52,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             try
             {
-                var cluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
-                WriteObject(new PSManagedCluster(cluster), false);
+                switch(ParameterSetName)
+                {
+                    case ByName:
+                        var cluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+                        WriteObject(new PSManagedCluster(cluster), false);
+                        break;
+                    case ByResouceGroup:
+                        var clusterList = this.ReturnListByPageResponse(
+                            this.SFRPClient.ManagedClusters.ListByResourceGroup(this.ResourceGroupName),
+                            this.SFRPClient.ManagedClusters.ListByResourceGroupNext);
+
+                        WriteObject(clusterList.Select(c => new PSManagedCluster(c)), true);
+                        break;
+                    case BySubscription:
+                        var cluster2List = this.ReturnListByPageResponse(
+                            this.SFRPClient.ManagedClusters.ListBySubscription(),
+                            this.SFRPClient.ManagedClusters.ListBySubscriptionNext);
+
+                        WriteObject(cluster2List.Select(c => new PSManagedCluster(c)), true);
+                        break;
+                }
             }
             catch (Exception ex)
             {

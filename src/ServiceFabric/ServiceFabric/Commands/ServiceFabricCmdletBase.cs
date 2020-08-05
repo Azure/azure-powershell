@@ -516,59 +516,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        #region Helper     
-
-        protected T SafeGetResource<T>(Func<T> action, bool ingoreAllError)
-        {
-            try
-            {
-                return action();
-            }
-            catch (CloudException ce)
-            {
-                if (ce.Response != null && ce.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return default(T);
-                }
-
-                if (ingoreAllError)
-                {
-                    WriteWarning(ce.ToString());
-                    return default(T);
-                }
-
-                throw;
-            }
-            catch (ErrorModelException e)
-            {
-                if ((e.Body?.Error != null &&
-                    (e.Body.Error.Code.Equals("ResourceGroupNotFound", StringComparison.OrdinalIgnoreCase) ||
-                     e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase)||
-                     e.Body.Error.Code.Equals("NotFound", StringComparison.OrdinalIgnoreCase))) ||
-                     e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return default(T);
-                }
-
-                if (ingoreAllError)
-                {
-                    WriteWarning(e.ToString());
-                    return default(T);
-                }
-
-                throw;
-            }
-            catch (Exception e)
-            {
-                if (ingoreAllError)
-                {
-                    WriteWarning(e.ToString());
-                    return default(T);
-                }
-
-                throw;
-            }
-        }
+        #region Helper
 
         protected void PrintDetailIfThrow(Action action)
         {

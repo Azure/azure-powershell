@@ -12,6 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
@@ -24,21 +25,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
     public class GetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
+        protected const string ByName = "ByName";
+        protected const string ByResouceGroup = "ByResouceGroup";
+
         #region Params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         [Alias("NodeTypeName")]
@@ -50,8 +58,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             try
             {
-                var nodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
-                WriteObject(new PSManagedNodeType(nodeType), false);
+                if (ParameterSetName == ByName)
+                {
+                    var nodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+                    WriteObject(new PSManagedNodeType(nodeType), false);
+                }
+                else
+                {
+                    var nodeTypeList = this.ReturnListByPageResponse(
+                        this.SFRPClient.NodeTypes.ListByManagedClusters(this.ResourceGroupName, this.ClusterName),
+                        this.SFRPClient.NodeTypes.ListByManagedClustersNext);
+                    WriteObject(nodeTypeList.Select(nt => new PSManagedNodeType(nt)), true);
+                }
             }
             catch (Exception ex)
             {

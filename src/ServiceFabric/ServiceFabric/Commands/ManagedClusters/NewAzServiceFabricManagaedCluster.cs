@@ -66,44 +66,44 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #region Client cert params
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp,
-                   HelpMessage = "TODO: HELP")]
+                   HelpMessage = "Use to specify if the client certificate has administrator level.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
-                   HelpMessage = "TODO: HELP")]
+                   HelpMessage = "Use to specify if the client certificate has administrator level.")]
         public SwitchParameter ClientCertIsAdmin { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ClientCertByTp,
-                   HelpMessage = "TODO: HELP")]
+                   HelpMessage = "Client certificate thumbprint.")]
         public string ClientCertThumbprint { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ClientCertByCn,
-                   HelpMessage = "TODO: HELP")]
+                   HelpMessage = "Client certificate common name.")]
         public string ClientCertCommonName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
-                   HelpMessage = "TODO: HELP")]
-        public string ClientCertIssuerThumbprint { get; set; }
+                   HelpMessage = "List of Issuer thumbprints for the client certificate. Only use in combination with ClientCertCommonName.")]
+        public List<string> ClientCertIssuerThumbprint { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "TODO: HELP")]
+        [Parameter(Mandatory = true, HelpMessage = "Admin password used for the virtual machines.")]
         public string AdminPassword { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP default vmadmin")]
+        [Parameter(Mandatory = false, HelpMessage = "Admin password used for the virtual machines. Default: vmadmin.")]
         public string AdminUserName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP default 19080")]
+        [Parameter(Mandatory = false, HelpMessage = "Port used for http connections to the cluster. Default: 19080.")]
         public int? HttpGatewayConnectionPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP default 19000")]
+        [Parameter(Mandatory = false, HelpMessage = "Port used for client connections to the cluster. Default: 19000.")]
         public int? ClientConnectionPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP format??")]
+        [Parameter(Mandatory = false, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP")]
+        [Parameter(Mandatory = false, HelpMessage = "Endpoint used by reverse proxy.")]
         public int? ReverseProxyEndpointPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "TODO: HELP")]
+        [Parameter(Mandatory = false, HelpMessage = "Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.")]
         public ManagedClusterSku Sku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "If Specify The cluster will be crated with service test vmss extension.")]
@@ -117,21 +117,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    // Create resouce group if it doesen't exist
-                    this.ResourcesClient.ResourceGroups.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        new ResourceGroup()
-                        {
-                            Location = this.Location
-                        });
+                    ManagedCluster cluster = SafeGetResource(() => this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name));
+                    if (cluster != null)
+                    {
+                        WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Cluster '{0}' already exists.", this.Name)),
+                            "ResouceAlreadyExists", ErrorCategory.InvalidOperation, null));
+                    }
+                    else
+                    {
+                        // Create resouce group if it doesn't exist
+                        this.ResourcesClient.ResourceGroups.CreateOrUpdate(this.ResourceGroupName, new ResourceGroup(this.Location));
 
-                    ManagedCluster newClusterParams = this.GetNewManagedClusterParameters();
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)
-                        .GetAwaiter().GetResult();
+                        ManagedCluster newClusterParams = this.GetNewManagedClusterParameters();
+                        var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)
+                            .GetAwaiter().GetResult();
 
-                    ManagedCluster cluster = this.PollLongRunningOperation(beginRequestResponse);
+                        cluster = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedCluster(cluster), false);
+                        WriteObject(new PSManagedCluster(cluster), false);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -157,7 +161,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 clientCerts.Add(new ClientCertificate()
                 {
                     CommonName = this.ClientCertCommonName,
-                    IssuerThumbprint = this.ClientCertIssuerThumbprint,
+                    IssuerThumbprint = string.Join(",", this.ClientCertIssuerThumbprint),
                     IsAdmin = this.ClientCertIsAdmin.IsPresent
                 });
             }

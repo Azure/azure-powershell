@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
-        //TODO alsantam: validate length? 9
         [Alias("NodeTypeName")]
         public string Name { get; set; }
 
@@ -94,13 +93,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    NodeType newNodeTypeParams = this.GetNewNodeTypeParameters();
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
-                        .GetAwaiter().GetResult();
+                    NodeType nodeType = SafeGetResource(() => this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name));
+                    if (nodeType != null)
+                    {
+                        WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Node type '{0}' already exists.", this.Name)),
+                            "ResouceAlreadyExists", ErrorCategory.InvalidOperation, null));
+                    }
+                    else
+                    {
+                        NodeType newNodeTypeParams = this.GetNewNodeTypeParameters();
+                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
+                            .GetAwaiter().GetResult();
 
-                    NodeType nodeType = this.PollLongRunningOperation(beginRequestResponse);
+                        nodeType = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedNodeType(nodeType), false);
+                        WriteObject(new PSManagedNodeType(nodeType), false);
+                    }
                 }
                 catch (Exception ex)
                 {

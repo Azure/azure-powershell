@@ -12,20 +12,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
-        #region Params
 
-        #region Common params
+        #region Params
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
@@ -37,23 +37,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
-        public string ClusterName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the node type.")]
-        [ValidateNotNullOrEmpty()]
-        [Alias("NodeTypeName")]
+        [Alias("ClusterName")]
         public string Name { get; set; }
-
-        #endregion
-
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
-        [ValidateNotNullOrEmpty()]
-        public List<string> NodeName { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -62,16 +47,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Remove cluster: {0} in resouce group {1}.", this.Name, this.ResourceGroupName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.ClusterName,
-                            this.Name,
-                            actionParams).GetAwaiter().GetResult();
+                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginDeleteWithHttpMessagesAsync(
+                                                    this.ResourceGroupName,
+                                                    this.Name).GetAwaiter().GetResult();
 
                     this.PollLongRunningOperation(beginRequestResponse);
 
