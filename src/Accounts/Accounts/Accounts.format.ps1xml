@@ -202,10 +202,10 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>QuotaId</PropertyName>
               </TableColumnItem>
-			  <TableColumnItem>
-				<Alignment>Left</Alignment>
-				<PropertyName>SpendingLimit</PropertyName>
-			  </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+		<PropertyName>SpendingLimit</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>

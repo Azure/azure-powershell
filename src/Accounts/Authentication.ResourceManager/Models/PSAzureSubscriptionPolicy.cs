@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// string constructor
         /// </summary>
         /// <param name="azureSubscriptionPolicies">Json string to convert</param>
-        public PSAzureSubscriptionPolicy(string azureSubscriptionPolicies) : this(JsonConvert.DeserializeObject<SubscriptionPolicies>(azureSubscriptionPolicies)) { }
+        public PSAzureSubscriptionPolicy(string azureSubscriptionPolicies) : this(string.IsNullOrEmpty(azureSubscriptionPolicies)?null:JsonConvert.DeserializeObject<SubscriptionPolicies>(azureSubscriptionPolicies)) { }
 
         public string locationPlacementId { get; private set; }
 
