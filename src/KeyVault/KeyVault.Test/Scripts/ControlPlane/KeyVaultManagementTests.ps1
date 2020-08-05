@@ -196,9 +196,10 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual $hsmLocation $got.Location
 
         # Test update purge protection & customize retention days
-        $updatedMhsm = Update-AzKeyVault -InputObject $got -EnablePurgeProtection -SoftDeleteRetentionInDays 10 -Hsm
+        # nothing can be updated now
+        # $updatedMhsm = Update-AzKeyVault -InputObject $got -EnablePurgeProtection -SoftDeleteRetentionInDays 10 -Hsm
         # Assert-True { $updatedMhsm.EnableSoftDelete } "By default EnableSoftDelete should be true"
-        Assert-True { $updatedMhsm.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be true"
+        # Assert-True { $updatedMhsm.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be true"
         # Assert-AreEqual 10 $updatedMhsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
 
         # Test remove MHSM

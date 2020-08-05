@@ -81,6 +81,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter DisableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 

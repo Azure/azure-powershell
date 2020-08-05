@@ -66,7 +66,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
+            ParameterSetName = UpdateKeyVault + ByNameParameterSet,
+            HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = UpdateKeyVault + ByInputObjectParameterSet,
+            HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = UpdateKeyVault + ByResourceIdParameterSet,
             HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
