@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### RoleAssignmentParameterSet (Default)
 ```
-Set-AzRoleAssignment -RoleAssignment <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
+Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -67,8 +67,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoleAssignment
-Role Assignment object.
+### -InputObject
+Role Assignment.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
