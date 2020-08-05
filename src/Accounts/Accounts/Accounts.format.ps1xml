@@ -171,7 +171,7 @@
         </TableRowEntries>
       </TableControl>
     </View>
-	<View>
+    <View>
       <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscriptionPolicy</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscriptionPolicy</TypeName>
@@ -186,10 +186,10 @@
             <Alignment>Left</Alignment>
             <Label>QuotaId</Label>
           </TableColumnHeader>
-		  <TableColumnHeader>
-			<Alignment>Left</Alignment>
-			<Label>SpendingLimit</Label>
-		  </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SpendingLimit</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -204,7 +204,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-		<PropertyName>SpendingLimit</PropertyName>
+                <PropertyName>SpendingLimit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

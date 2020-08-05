@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             if (subscriptionPolicies != null)
             {
-                this.locationPlacementId = subscriptionPolicies.LocationPlacementId;
+                this.LocationPlacementId = subscriptionPolicies.LocationPlacementId;
                 this.QuotaId = subscriptionPolicies.QuotaId;
                 this.SpendingLimit = subscriptionPolicies.SpendingLimit.ToString();
             }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <param name="azureSubscriptionPolicies">Json string to convert</param>
         public PSAzureSubscriptionPolicy(string azureSubscriptionPolicies) : this(string.IsNullOrEmpty(azureSubscriptionPolicies)?null:JsonConvert.DeserializeObject<SubscriptionPolicies>(azureSubscriptionPolicies)) { }
 
-        public string locationPlacementId { get; private set; }
+        public string LocationPlacementId { get; private set; }
 
         public string QuotaId { get; private set; }
 
