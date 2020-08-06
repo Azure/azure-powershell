@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string KeyVaultParameterSet = "KeyVaultParameterSet";
         private const string ManagedHsmParameterSet = "ManagedHsmParameterSet";
 
-        #region Input Parameter Definitions
-
         #region Common Parameter Definitions
         /// <summary>
         /// Vault name
@@ -149,9 +147,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        #endregion
-
-    public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {

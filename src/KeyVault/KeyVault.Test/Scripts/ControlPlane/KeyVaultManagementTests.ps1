@@ -177,13 +177,6 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual 1  $hsm.InitialAdminObjectIds.Count
         Assert-True  $hsm.InitialAdminObjectIds.Contains($administrator)
         Assert-AreEqual "StandardB1" $actual.Sku
-
-        # Default Access Policy is not set by Service Principal
-        # Assert-AreEqual 0 @($actual.AccessPolicies).Count
-        
-        # Soft delete and purge protection defaults to true
-        # Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
-        Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
         
         # Default retention days
         Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
@@ -195,15 +188,8 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
 
-        # Test update purge protection & customize retention days
-        # nothing can be updated now
-        # $updatedMhsm = Update-AzKeyVault -InputObject $got -EnablePurgeProtection -SoftDeleteRetentionInDays 10 -Hsm
-        # Assert-True { $updatedMhsm.EnableSoftDelete } "By default EnableSoftDelete should be true"
-        # Assert-True { $updatedMhsm.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be true"
-        # Assert-AreEqual 10 $updatedMhsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
-
         # Test remove Managed HSM
-        Remove-AzKeyVault -VaultName $got -Hsm -Force
+        Remove-AzKeyVault -InputObject  $got -Hsm -Force
         $deletedMhsm = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm
 

@@ -25,8 +25,8 @@ New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <Strin
 ### ManagedHsmParameterSet
 ```
 New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-Sku <String>]
- [-Tag <Hashtable>] -Administrator <System.Collections.Generic.List`1[System.String]> [-Hsm]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] -Administrator <String[]> [-Hsm] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,13 +126,37 @@ PS C:\> New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRu
 
 Creating a key vault and specifies network rules to allow access to the specified IP address from the virtual network identified by $myNetworkResId. See `New-AzKeyVaultNetworkRuleSetObject` for more information.
 
+### Example 4: Create a StandardB1 managed hsm
+```powershell
+PS C:\> New-AzKeyVault -Name 'TestManagedHsm' -ResourceGroupName 'testGroup9' -Location 'eastus2' -Administrator "xxxxxxxxxxxxxxxxxx-xxxx-xxxxxxxxxxxx" -Hsm
+
+ManagedHsm Name                     : TestManagedHsm
+Resource Group Name                 : testGroup9
+Location                            : eastus2
+Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testGroup9/pro
+                                      viders/Microsoft.KeyVault/managedHSMs/TestManagedHsm
+Hsm Pool URI                        :
+Tenant ID                           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Security Domain ID                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Initial Admin Object Ids            : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                 : StandardB1
+Soft Delete Enabled?                : True
+Enabled Purge Protection?           :
+Soft Delete Retention Period (days) : 90
+Tags
+```
+
+This command creates a managed hsm named TestManagedHsm, in the Azure region East US 2. The command
+adds the managed hsm to the resource group named testGroup9. Because the command does not specify a
+value for the *SKU* parameter, it creates a StandardB1 key vault.
+
 ## PARAMETERS
 
 ### -Administrator
 Array of initial administrators object ids for this managed hsm pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: ManagedHsmParameterSet
 Aliases:
 

@@ -21,14 +21,13 @@ Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Resourc
 
 ### ByDeletedVault
 ```
-Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-ResourceType <ResourceTypeName>]
+Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzKeyVault [-InRemovedState] [-ResourceType <ResourceTypeName>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +181,28 @@ Tags                :
 
 This command gets all the key vaults in the subscription that start with "myvault".
 
+### Example 7: Get a specific managed hsm
+```powershell
+PS C:\> Get-AzKeyVault -Name 'TestManagedHsm' -ResourceType Hsm
+
+ManagedHsm Name                     : TestManagedHsm
+Resource Group Name                 : testGroup9
+Location                            : eastus2
+Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testGroup9/pro
+                                      viders/Microsoft.KeyVault/managedHSMs/TestManagedHsm
+Hsm Pool URI                        :
+Tenant ID                           : xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx
+Security Domain ID                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Initial Admin Object Ids            : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                 : StandardB1
+Soft Delete Enabled?                : True
+Enabled Purge Protection?           :
+Soft Delete Retention Period (days) : 90
+Tags                                :
+```
+
+This command gets the managed hsm named TestManagedHsm in your current subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -248,8 +269,8 @@ Accept wildcard characters: False
 Specifies the type of vault to be shown.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.KeyVault.Models.ResourceTypeName]
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.KeyVault.Models.ResourceTypeName
+Parameter Sets: GetVaultByName
 Aliases: Type
 Accepted values: Vault, Hsm
 

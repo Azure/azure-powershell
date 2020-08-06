@@ -134,7 +134,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Remove the previously deleted vault permanently.")]
         public SwitchParameter InRemovedState { get; set; }
 
-        [Parameter(Mandatory = false,            
+        [Parameter(Mandatory = false,
+            ParameterSetName = RemoveVaultParameterSet,
+            HelpMessage = "Specifies the type of vault as Managed HSM.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectRemoveVaultParameterSet,
+            HelpMessage = "Specifies the type of vault as Managed HSM.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdRemoveVaultParameterSet,
             HelpMessage = "Specifies the type of vault as Managed HSM.")]
         public SwitchParameter Hsm { get; set; }
 
@@ -184,16 +191,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                         VaultName,
                         () =>
                         {
-                            if (Hsm.IsPresent)
-                            {
-                                //PurgeManagedHsm();
-                            }
-                            else
-                            {
-                                KeyVaultManagementClient.PurgeVault(
-                                    vaultName: VaultName,
-                                    location: Location);
-                            }
+                            KeyVaultManagementClient.PurgeVault(
+                                vaultName: VaultName,
+                                location: Location);
 
                             if (PassThru)
                             {

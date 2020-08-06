@@ -86,9 +86,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the type of Vault / HSM to be shown.If omitted, both will be listed.")]
+            ParameterSetName = GetVaultParameterSet,
+            HelpMessage = "Specifies the type of Vault / HSM to be shown. If omitted, both will be listed.")]
         [Alias("Type")]
-        public ResourceTypeName? ResourceType { get; set; }
+        public ResourceTypeName ResourceType { get; set; }
 
         /// <summary>
         /// Tag value
@@ -103,6 +104,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
+            ResourceTypeName? resourceTypeName = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ResourceType)))
+            {
+                resourceTypeName = this.ResourceType;
+            }
+
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
@@ -113,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                     if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
-                        switch (ResourceType)
+                        switch (resourceTypeName)
                         {
                             case ResourceTypeName.Vault:
                                 vault = KeyVaultManagementClient.GetVault(
@@ -157,34 +164,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                         WriteObject(
                             TopLevelWildcardFilter(
                                 ResourceGroupName, VaultName, 
-                                ListVaults(ResourceGroupName, Tag, ResourceType)),
+                                ListVaults(ResourceGroupName, Tag, resourceTypeName)),
                             true);
                     }
                     
                     break;
 
                 case GetDeletedVaultParameterSet:
-                    switch (ResourceType)
-                    {
-                        case ResourceTypeName.Vault:
-                            WriteObject(KeyVaultManagementClient.GetDeletedVault(VaultName, Location));
-                            break;
-                        case ResourceTypeName.Hsm:
-                        default:
-                            break;
-                    }
+                    WriteObject(KeyVaultManagementClient.GetDeletedVault(VaultName, Location));
                     break;
 
                 case ListDeletedVaultsParameterSet:
-                    switch (ResourceType)
-                    {
-                        case ResourceTypeName.Vault:
-                            WriteObject(KeyVaultManagementClient.ListDeletedVaults(), true);
-                            break;
-                        case ResourceTypeName.Hsm:
-                        default:
-                            break;
-                    }
+                    WriteObject(KeyVaultManagementClient.ListDeletedVaults(), true);
                     break;
 
                 default:

@@ -21,8 +21,8 @@ Remove-AzKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Locat
 
 ### ByDeletedVault
 ```
-Remove-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Hsm] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByAvailableVault
@@ -33,8 +33,8 @@ Remove-AzKeyVault [-InputObject] <PSKeyVaultIdentityItem> [-Hsm] [-Force] [-AsJo
 
 ### InputObjectByDeletedVault
 ```
-Remove-AzKeyVault [-InputObject] <PSKeyVaultIdentityItem> [-InRemovedState] [-Hsm] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzKeyVault [-InputObject] <PSKeyVaultIdentityItem> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdByAvailableVault
@@ -45,8 +45,8 @@ Remove-AzKeyVault [-ResourceId] <String> [[-Location] <String>] [-Hsm] [-Force] 
 
 ### ResourceIdByDeletedVault
 ```
-Remove-AzKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Hsm] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,14 @@ True
 
 This command removes the key vault named Contoso03Vault from the named resource group.
 If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.
+
+### Example 3: Remove a managed hsm
+```powershell
+PS C:\>  Remove-AzKeyVault -Name "testManagedHsm" -Hsm -PassThru
+
+True
+```
+This command removes the managed hsm named testManagedHsm from your current subscription.
 
 ## PARAMETERS
 
@@ -128,7 +136,7 @@ Specifies the type of vault as MHSM.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ByAvailableVault, InputObjectByAvailableVault, ResourceIdByAvailableVault
 Aliases:
 
 Required: False
