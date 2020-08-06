@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        public Boolean SupportAutomaticPlacement { get; set; }
+        public bool SupportAutomaticPlacement { get; set; }
 
         [Parameter(
             Mandatory = false)]
