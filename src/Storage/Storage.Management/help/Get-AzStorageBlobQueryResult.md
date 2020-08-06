@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/query-azstorageblob
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/get-azstorageblobqueryresult
 schema: 2.0.0
 ---
 
-# Query-AzStorageBlob
+# Get-AzStorageBlobQueryResult
 
 ## SYNOPSIS
 Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
@@ -14,7 +14,7 @@ Applies a simple Structured Query Language (SQL) statement on a blob's contents 
 
 ### NamePipeline (Default)
 ```
-Query-AzStorageBlob [-Blob] <String> [-Container] <String> [-SnapshotTime <DateTimeOffset>]
+Get-AzStorageBlobQueryResult [-Blob] <String> [-Container] <String> [-SnapshotTime <DateTimeOffset>]
  [-VersionId <String>] -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
@@ -25,7 +25,7 @@ Query-AzStorageBlob [-Blob] <String> [-Container] <String> [-SnapshotTime <DateT
 
 ### BlobPipeline
 ```
-Query-AzStorageBlob -BlobBaseClient <BlobBaseClient> -QueryString <String> -ResultFile <String>
+Get-AzStorageBlobQueryResult -BlobBaseClient <BlobBaseClient> -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
@@ -35,7 +35,7 @@ Query-AzStorageBlob -BlobBaseClient <BlobBaseClient> -QueryString <String> -Resu
 
 ### ContainerPipeline
 ```
-Query-AzStorageBlob -BlobContainerClient <BlobContainerClient> [-Blob] <String>
+Get-AzStorageBlobQueryResult -BlobContainerClient <BlobContainerClient> [-Blob] <String>
  [-SnapshotTime <DateTimeOffset>] [-VersionId <String>] -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
@@ -45,7 +45,7 @@ Query-AzStorageBlob -BlobContainerClient <BlobContainerClient> [-Blob] <String>
 ```
 
 ## DESCRIPTION
-The **Query-AzStorageBlob** cmdlet applies a simple Structured Query Language (SQL) statement on a blob's contents and save the queried subset of the data to a local file.
+The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query Language (SQL) statement on a blob's contents and save the queried subset of the data to a local file.
 
 ## EXAMPLES
 
@@ -57,13 +57,13 @@ PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson
 
 PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Query-AzStorageBlob -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
 PS C:\> $result
 
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
-         449            0      
+         449            0
 ```
 
 This command querys a blob succsssfully with input config as csv, and output config as json, and save the output to local file "c:\resultfile.json".
@@ -78,7 +78,7 @@ PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`
 
 PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE _1 LIKE '1%%'"
 
-PS C:\> $result = $blob | Query-AzStorageBlob -QueryString $queryString -ResultFile $localFilePath -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig
+PS C:\> $result = $blob | Get-AzStorageBlobQueryResult -QueryString $queryString -ResultFile $localFilePath -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig
 
 PS C:\> $result
 

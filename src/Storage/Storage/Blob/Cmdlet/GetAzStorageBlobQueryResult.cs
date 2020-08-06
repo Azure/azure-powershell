@@ -27,8 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Threading.Tasks;
     using Track2Models = global::Azure.Storage.Blobs.Models;
 
-    [Cmdlet("Query", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(BlobQueryOutput))]
-    public class QueryStorageAzureBlobCommand : StorageCloudBlobCmdletBase
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobQueryResult", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(BlobQueryOutput))]
+    public class GetStorageAzureBlobQueryResultCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
         /// Blob Pipeline parameter set name
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Initializes a new instance of the RemoveStorageAzureBlobCommand class.
         /// </summary>
-        public QueryStorageAzureBlobCommand()
+        public GetStorageAzureBlobQueryResultCommand()
             : this(null)
         {
         }
@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// Initializes a new instance of the RemoveStorageAzureBlobCommand class.
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
-        public QueryStorageAzureBlobCommand(IStorageBlobManagement channel)
+        public GetStorageAzureBlobQueryResultCommand(IStorageBlobManagement channel)
         {
             Channel = channel;
         }

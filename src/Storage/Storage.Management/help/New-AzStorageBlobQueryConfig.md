@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageBlobQueryConfig
 
 ## SYNOPSIS
-Creates a blob query configuration object, which can be used in Query-AzStorageBlob.
+Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob] [<Co
 ```
 
 ## DESCRIPTION
-The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration object, which can be used in Query-AzStorageBlob.
+The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
 ## EXAMPLES
 
@@ -36,13 +36,13 @@ PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`
 
 PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Query-AzStorageBlob -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
 PS C:\> $result
 
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
-         449            0      
+         449            0
 ```
 
 This command first create input configuration object as csv, and output configuration object as json, then use the 2 configurations to query blob.

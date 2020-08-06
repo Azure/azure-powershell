@@ -83,6 +83,9 @@ Downloads a storage blob.
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
 
+### [Get-AzStorageBlobQueryResult](Get-AzStorageBlobQueryResult.md)
+Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
+
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
 
@@ -171,7 +174,7 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 Creates an account-level SAS token.
 
 ### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
-Creates a blob query configuration object, which can be used in Query-AzStorageBlob.
+Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
 ### [New-AzStorageBlobSASToken](New-AzStorageBlobSASToken.md)
 Generates a SAS token for an Azure storage blob.
@@ -220,9 +223,6 @@ Generates an SAS token for an Azure Storage table.
 
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 Creates a stored access policy for an Azure storage table.
-
-### [Query-AzStorageBlob](Query-AzStorageBlob.md)
-Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
 
 ### [Remove-AzDataLakeGen2Item](Remove-AzDataLakeGen2Item.md)
 Remove a file or directory.

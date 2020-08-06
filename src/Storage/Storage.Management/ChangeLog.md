@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Supported blob query acceleration
-    -  `Query-AzStorageBlob`
+    -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
 
 ## Version 2.4.0
