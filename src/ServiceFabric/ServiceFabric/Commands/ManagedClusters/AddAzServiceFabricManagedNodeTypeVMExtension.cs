@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public Object ProtectedSettings { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collection of extension names after which this extension needs to be provisioned.")]
-        public List<string> ProvisionAfterExtensions { get; set; }
+        public String[] ProvisionAfterExtensions { get; set; }
 
         #endregion
 
