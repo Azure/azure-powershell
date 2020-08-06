@@ -2962,6 +2962,7 @@ function Test-VirtualMachineGetStatus
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
+        Assert-True {$a.Contains("AssignedHost");}
 
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
