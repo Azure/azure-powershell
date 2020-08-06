@@ -12,6 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzConnectedMachine' {
+    BeforeAll {
+        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
+        $AccessToken = $Token.AccessToken
+    }
+
     BeforeEach {
         $Location = $env.location
         $machineName = (New-Guid).Guid
@@ -21,13 +30,13 @@ Describe 'Remove-AzConnectedMachine' {
             '--resource-group'
             $env.ResourceGroupName
             '--tenant-id'
-            $env.TenantId
+            $TenantId
             '--location'
             $env.location
             '--subscription-id'
             $env.SubscriptionId
             '--access-token'
-            $env.AccessToken
+            $AccessToken
             '--resource-name'
             $machineName
         )
@@ -40,9 +49,9 @@ Describe 'Remove-AzConnectedMachine' {
 
     AfterEach {
         if ($IsLinux) {
-            return sudo $env.azcmagentPath disconnect --access-token $env.AccessToken
+            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
         }
-        & $env.azcmagentPath disconnect --access-token $env.AccessToken 
+        & $env.azcmagentPath disconnect --access-token $AccessToken
     }
 
     It 'Remove a connected machine by name' {        
@@ -57,7 +66,13 @@ Describe 'Remove-AzConnectedMachine' {
     }
 
     It 'Remove a connected machine using pipelines' {
-        Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName | Remove-AzConnectedMachine
-        { Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName } | Should -Throw        
+        $before = $PSDefaultParameterValues["Disabled"]
+        $PSDefaultParameterValues["Disabled"] = $true
+        try {
+            Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName | Remove-AzConnectedMachine
+            { Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName } | Should -Throw
+        } finally {
+            $PSDefaultParameterValues["Disabled"] = $before
+        }
    }
 }

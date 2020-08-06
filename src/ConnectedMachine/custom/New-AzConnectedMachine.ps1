@@ -201,6 +201,11 @@ function New-AzConnectedMachine {
             throw "azcmagent exited with a non-zero exit code: $LASTEXITCODE"
         }
 
+        if ($IsLinux) {
+            sudo $azcmagentPath show
+        }
+
+        # Windows
         & $azcmagentPath show
     }
 
@@ -221,13 +226,8 @@ function New-AzConnectedMachine {
         Where-Object Name -EQ vmId |
         Select-Object -ExpandProperty Value
 
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ConnectedMachineIdentity]::DeserializeFromPSObject(
-        [pscustomobject]@{
-            Id = $vmId
-            Name = $Name
-            ResourceGroupName = $ResourceGroupName
-            SubscriptionId = $SubscriptionId
-        })
+    # Return the ConnectedMachine object.
+    Get-AzConnectedMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
 }
 
 function ConvertTagHashtableToString {

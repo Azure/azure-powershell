@@ -13,6 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzConnectedMachine' {
     BeforeAll {
+        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
+        $AccessToken = $Token.AccessToken
+
         $machineName = (New-Guid).Guid
 
         $azcmagentArgs = @(
@@ -20,13 +27,13 @@ Describe 'Get-AzConnectedMachine' {
             '--resource-group'
             $env.ResourceGroupName
             '--tenant-id'
-            $env.TenantId
+            $TenantId
             '--location'
             $env.location
             '--subscription-id'
             $env.SubscriptionId
             '--access-token'
-            $env.AccessToken
+            $AccessToken
             '--resource-name'
             $machineName
         )
@@ -38,11 +45,10 @@ Describe 'Get-AzConnectedMachine' {
     }
 
     AfterAll {
-        # Remove-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName
         if ($IsLinux) {
-            return sudo $env.azcmagentPath disconnect --access-token $env.AccessToken
+            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
         }
-        & $env.azcmagentPath disconnect --access-token $env.AccessToken
+        & $env.azcmagentPath disconnect --access-token $AccessToken
     }
 
     It 'Get all connected machines in a subscription' {

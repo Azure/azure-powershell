@@ -15,15 +15,8 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'connectedmachine-rg-' + (RandomString -allChars $false -len 6)
-    $env.location = 'eastus'
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
-
-    $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
-    $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
-    $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-    $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
-    $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
-    $env.AccessToken = $Token.AccessToken
+    $env.Location = 'eastus'
+    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     if ($IsMacOS) {
         throw "Tests can't run on macOS because they require the azcmagent."
@@ -61,6 +54,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $env.ResourceGroupName
 }
-

@@ -12,6 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzConnectedMachine' {
+    BeforeAll {
+        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
+        $AccessToken = $Token.AccessToken
+    }
+
     BeforeEach {
         $commonParams = @{
             Name = (New-Guid).Guid
@@ -20,7 +29,10 @@ Describe 'New-AzConnectedMachine' {
     }
 
     AfterEach {
-        & $env.azcmagentPath disconnect --access-token $env.AccessToken
+        if ($IsLinux) {
+            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
+        }
+        & $env.azcmagentPath disconnect --access-token $AccessToken
     }
 
     It 'Can connect a machine to an existing resource group' {
