@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSHubIpConfiguration> IpConfigurations { get; set; }
 
-        public List<PSVirtualRouterPeer> BgpConnections { get; set; }
+        public List<PSBgpConnection> BgpConnections { get; set; }
 
         public uint VirtualRouterAsn { get; set; }
 

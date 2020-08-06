@@ -1352,6 +1352,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSHubIpConfiguration, MNM.HubIpConfiguration>();
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.BgpConnection, CNM.PSBgpConnection>();
                 cfg.CreateMap<MNM.BgpConnection, CNM.PSVirtualRouterPeer>();
                 cfg.CreateMap<MNM.HubIpConfiguration, CNM.PSHubIpConfiguration>();
 
