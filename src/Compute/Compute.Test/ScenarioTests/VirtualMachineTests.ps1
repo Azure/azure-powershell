@@ -4205,7 +4205,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id;
-
+        
         Assert-AreEqual $hostGroup.Id $vm0.HostGroup.Id;
     }
     finally
