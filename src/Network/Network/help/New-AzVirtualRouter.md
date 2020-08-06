@@ -25,14 +25,8 @@ The **New-AzVirtualRouter** cmdlet creates an Azure VirtualRouter
 
 ### Example 1
 ```powershell
-$gatewayId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualNetworkGateways/erGateway'
-New-AzVirtualRouter -RouterName virtualRouter -ResourceGroupName virtualRouterRG -Location 'West US'  -HostedGatewayId $gatewayId
-```
-
-### Example 2
-```powershell
-$gateway = Get-AzVirtualNetworkGateway -Name erGateway -ResourceGroupName virtualRouterRG
-New-AzVirtualRouter -RouterName virtualRouter -ResourceGroupName virtualRouterRG -Location 'West US'  -HostedGateway $gateway
+$subnetId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1'
+New-AzVirtualRouter -Name virtualRouter -ResourceGroupName virtualRouterRG -Location 'West US' -HostedSubnet $subnetId
 ```
 
 ## PARAMETERS
