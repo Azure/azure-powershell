@@ -13,7 +13,6 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'connectedmachine-rg-' + (RandomString -allChars $false -len 6)
     $env.Location = 'eastus'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
