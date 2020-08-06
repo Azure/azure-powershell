@@ -266,7 +266,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-Specifies the type of vault to be shown.
+Specifies the type of Vault / HSM to be shown. If omitted, both will be listed.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.ResourceTypeName
