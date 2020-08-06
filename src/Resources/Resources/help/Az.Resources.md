@@ -342,7 +342,7 @@ Modifies a resource group.
 Modifies a resource lock.
 
 ### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
-Update a role assignment
+Update a role assignment.
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
@@ -395,4 +395,3 @@ Updates a Management Group
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.
-
