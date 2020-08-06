@@ -34,7 +34,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    vmImagePublisher: nodeType.VmImagePublisher,
                    vmImageOffer: nodeType.VmImageOffer,
                    vmImageSku: nodeType.VmImageSku,
-                   vmImageVersion: nodeType.VmImageVersion)
+                   vmImageVersion: nodeType.VmImageVersion,
+                   vmSecrets: nodeType.VmSecrets,
+                   vmExtensions: nodeType.VmExtensions)
         {
         }
     }
