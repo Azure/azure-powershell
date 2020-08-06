@@ -57,11 +57,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster code version upgrade mode. Automatic or Manual.")]
-        public ClusterUpgradeMode ClusterUpgradeMode { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
+        public ClusterUpgradeMode UpgradeMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster code version. Only use if upgrade mode is Manual.")]
-        public string ClusterCodeVersion { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
+        [ValidateNotNullOrEmpty()]
+        public string CodeVersion { get; set; }
 
         #region Client cert params
 
@@ -147,6 +148,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetNewManagedClusterParameters()
         {
+            if (this.UpgradeMode == ClusterUpgradeMode.Automatic && !string.IsNullOrEmpty(this.CodeVersion))
+            {
+                throw new PSArgumentException("CodeVersion should only be used when upgrade mode is set to Manual.", "CodeVersion");
+            }
+
             List<ClientCertificate> clientCerts = new List<ClientCertificate>();
             if (this.ParameterSetName == ClientCertByTp)
             {
@@ -189,7 +195,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var newCluster = new ManagedCluster(
                 location: this.Location,
                 dnsName: this.DnsName,
-                clusterUpgradeMode: this.ClusterUpgradeMode.ToString(),
+                clusterUpgradeMode: this.UpgradeMode.ToString(),
                 useTestExtension: this.UseTestExtension,
                 clients: clientCerts,
                 adminUserName: this.AdminUserName,
@@ -200,9 +206,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 sku: new Sku(name: this.Sku.ToString())
             );
 
-            if (this.ClusterUpgradeMode == ClusterUpgradeMode.Manual)
+            if (this.UpgradeMode == ClusterUpgradeMode.Manual)
             {
-                newCluster.ClusterCodeVersion = this.ClusterCodeVersion;
+                newCluster.ClusterCodeVersion = this.CodeVersion;
             }
 
             return newCluster;

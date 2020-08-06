@@ -12,16 +12,21 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMExtension", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
+    public class RemoveAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricCommonCmdletBase
     {
         #region Params
 
@@ -42,43 +47,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
-        [Alias("NodeTypeName")]
-        public string Name { get; set; }
+        public string NodeTypeName { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
-        [ValidateNotNullOrEmpty()]
-        public List<string> NodeName { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "extension name.")]
+        [Alias("ExtensionName")]
+        public string Name { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove Extenions {0} from node type {1}", this.Name, this.NodeTypeName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.ClusterName,
-                            this.Name,
-                            actionParams).GetAwaiter().GetResult();
+                    NodeType updatedNodeTypeParams = this.GetNodeTypeWithRemovedExtension();
+                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.NodeTypeName, updatedNodeTypeParams)
+                        .GetAwaiter().GetResult();
 
-                    this.PollLongRunningOperation(beginRequestResponse);
+                    var nodeType = this.PollLongRunningOperation(beginRequestResponse);
 
-                    if (this.PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(new PSManagedNodeType(nodeType), false);
                 }
                 catch (Exception ex)
                 {
@@ -86,6 +77,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw;
                 }
             }
+        }
+
+        private NodeType GetNodeTypeWithRemovedExtension()
+        {
+            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
+
+            if (currentNodeType.VmExtensions != null)
+            {
+
+                currentNodeType.VmExtensions = currentNodeType.VmExtensions.Where(ext => !string.Equals(ext.Name, this.Name, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return currentNodeType;
         }
     }
 }
