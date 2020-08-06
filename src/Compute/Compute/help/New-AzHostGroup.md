@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportAutomaticPlacement
-If a dedicated host group has automatic placement enabled, VMs or VMScaleSets can be placed on the dedicated host group using automatic placement. 
+Specifies if HostGroup will enable automatic placement of vm's.
 Automatic placement means these VMs are placed on dedicated hosts, chosen by Azure, under the dedicated host group.
 
 ```yaml
