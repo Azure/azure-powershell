@@ -41,7 +41,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 File name containing a single role definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Role Assignment.
 
 ```yaml
-Type: PSRoleAssignment
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 Parameter Sets: RoleAssignmentParameterSet
 Aliases:
 

@@ -253,8 +253,8 @@ namespace Microsoft.Azure.Commands.Resources
                 }
                 catch (JsonException)
                 {
-                    WriteVerbose("Deserializing the input role definition failed.");
-                    throw;
+                    WriteVerbose("Deserializing the input role assignment failed.");
+                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formated");
                 }
             }
             if (string.IsNullOrEmpty(Condition) ^ string.IsNullOrEmpty(ConditionVersion))

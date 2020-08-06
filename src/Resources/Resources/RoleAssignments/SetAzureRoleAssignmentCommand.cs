@@ -23,13 +23,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
     /// Updates an existing role assignment.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.RoleAssignment), OutputType(typeof(PSRoleAssignment))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.RoleAssignment), OutputType(typeof(PSRoleAssignment))]
     public class SetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
 
@@ -41,6 +42,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
         public PSRoleAssignment InputObject { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -61,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources
                 catch (JsonException)
                 {
                     WriteVerbose("Deserializing the input role definition failed.");
-                    throw;
+                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formated");
                 }
             }
 
@@ -122,7 +126,17 @@ namespace Microsoft.Azure.Commands.Resources
             fetchedRole.ConditionVersion = InputObject.ConditionVersion;
 
             // Send Request
-            WriteObject(PoliciesClient.UpdateRoleAssignment(fetchedRole));
+            ConfirmAction(
+               string.Format(ProjectResources.UpdatingRoleAssignment, fetchedRole.RoleAssignmentId,fetchedRole.Scope,fetchedRole.RoleDefinitionName),
+               fetchedRole.RoleAssignmentId,
+               () =>
+               {
+                   var roleAssignments = PoliciesClient.UpdateRoleAssignment(fetchedRole);
+                   if (PassThru)
+                   {
+                       WriteObject(roleAssignments, enumerateCollection: true);
+                   }
+               });
         }
 
     }
