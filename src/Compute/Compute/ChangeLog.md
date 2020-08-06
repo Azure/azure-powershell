@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added 'AssignedHost' field to Get-AzVM's instance view. The field shows the resource id of the virtual machine instance.
 * Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
 * Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
 * Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
