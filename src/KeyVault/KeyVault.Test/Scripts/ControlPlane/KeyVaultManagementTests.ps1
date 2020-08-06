@@ -187,14 +187,14 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual $hsmName $got.VaultName
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
+        
+        # Test throws for existing vault
+        Assert-Throws { New-AzKeyVault -VaultName $hsmName -ResourceGroupName $rgname -Location $vaultLocation -Administrator $administrator -Hsm}
 
         # Test remove Managed HSM
         Remove-AzKeyVault -InputObject  $got -Hsm -Force
         $deletedMhsm = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm
-
-        # Test throws for existing vault
-        Assert-Throws { New-AzKeyVault -VaultName $hsmName -ResourceGroupName $rgname -Location $vaultLocation -Administrator $administrator -Hsm}
 
         # Test throws for resourcegroup nonexistent
         Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName (getAssetName) -Location $vaultLocation -Administrator $administrator -Hsm}
