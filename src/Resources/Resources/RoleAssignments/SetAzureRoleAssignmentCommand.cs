@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Resources
             // we only verify the change if it's a downgrade
             if ((oldConditionVersion > newConditionVersion) && (newConditionVersion < 2.0))
             {
-                throw new ArgumentException("Condition version diferent than '2.0' is not supported for update operations");
+                throw new ArgumentException("Condition version different than '2.0' is not supported for update operations");
             }
             fetchedRole.Description = InputObject.Description;
             fetchedRole.Condition = InputObject.Condition;
