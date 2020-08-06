@@ -4190,7 +4190,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
 
         # Create a VM first
         $hostGroupName = $rgname + 'hostgroup'
-        $hostGroup = $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2";
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2";
         
         $hostName = $rgname + 'host'
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -PlatformFaultDomain 1;
