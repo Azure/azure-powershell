@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Resources
             var oldConditionVersion = double.Parse(InputObject.ConditionVersion);
             var newConditionVersion = double.Parse(fetchedRole.ConditionVersion);
 
-            // A condition version can change but currently we don't suport downgrading to 1.0
+            // A condition version can change but currently we don't support downgrading to 1.0
             // we only verify the change if it's a downgrade
             if ((oldConditionVersion > newConditionVersion) && (newConditionVersion < 2.0))
             {
