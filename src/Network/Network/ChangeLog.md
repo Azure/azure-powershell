@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Updated below cmdlets to align resource virtual router and virtual hub
+* [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
         - Added -HostedSubnet parameter to support IP configuration child resource
         - deleted -HostedGateway and -HostedGatewayId
