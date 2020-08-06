@@ -2866,14 +2866,13 @@ function Test-VirtualMachineGetStatus
     try
     {
         # Common
-        if ($loc -eq $null)
-        {
-            $loc = Get-ComputeVMLocation;
-        }
+        
+        $loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_E2s_v3';
         $vmname = 'vm' + $rgname;
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
