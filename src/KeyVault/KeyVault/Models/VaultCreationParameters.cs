@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
