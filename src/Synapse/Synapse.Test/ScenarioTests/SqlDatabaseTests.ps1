@@ -21,14 +21,14 @@ function Test-SynapseSqlDatabase
         # Test to make sure the SqlDatabase doesn't exist
         Assert-False {Test-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName}
 
-        $SqlDatabaseCreated = New-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -PerformanceLevel $SqlDatabasePerformanceLevel
+        $SqlDatabaseCreated = New-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName
 
         Assert-AreEqual $SqlDatabaseName $SqlDatabaseCreated.Name
         Assert-AreEqual $location $SqlDatabaseCreated.Location
         Assert-AreEqual "Microsoft.Synapse/Workspaces/SqlDatabases" $SqlDatabaseCreated.Type
         Assert-True {$SqlDatabaseCreated.Id -like "*$resourceGroupName*"}
 
-        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(1800000)
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
         [array]$SqlDatabaseGet = Get-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName
         Assert-AreEqual $SqlDatabaseName $SqlDatabaseGet[0].Name
         Assert-AreEqual $location $SqlDatabaseGet[0].Location
@@ -59,6 +59,8 @@ function Test-SynapseSqlDatabase
 
         # Delete SqlDatabase
         Assert-True {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -PassThru} "Remove SqlDatabase failed."
+
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName}

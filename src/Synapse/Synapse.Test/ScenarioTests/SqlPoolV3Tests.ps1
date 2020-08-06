@@ -9,7 +9,7 @@ function Test-SynapseSqlPoolV3
         $resourceGroupName = (Get-ResourceGroupName),
         $workspaceName = (Get-SynapseWorkspaceName),
         $sqlPoolName = (Get-SynapseSqlPoolName),
-        $sqlPoolPerformanceLevel = 'DW1000f'
+        $sqlPoolPerformanceLevel = 'DW500f'
     )
 
     try
@@ -48,10 +48,10 @@ function Test-SynapseSqlPoolV3
         }
 
         # Test to make sure the SqlPool does exist now
-        Assert-True {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolNamee -Version 3}
-
+        Assert-True {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3}
+        
         # Updating SqlPool
-        $newPerformanceLevel = 'DW2000f'
+        $newPerformanceLevel = 'DW1000f'
         Update-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PerformanceLevel $newPerformanceLevel
  
 		# Wait for 3 minutes for the update completion
@@ -87,6 +87,8 @@ function Test-SynapseSqlPoolV3
 
         # Delete SqlPool
         Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PassThru} "Remove SqlPool failed."
+
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3}
