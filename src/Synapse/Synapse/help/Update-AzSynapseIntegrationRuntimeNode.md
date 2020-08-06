@@ -58,7 +58,7 @@ The number of concurrent jobs permitted to run on the integration runtime node.
 Values between 1 and maxConcurrentJobs are allowed.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: PSIntegrationRuntime
+Type: Microsoft.Azure.Commands.Synapse.Models.PSIntegrationRuntime
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The integration runtime node name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Resource identifier of Synapse integration runtime.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -209,7 +209,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
