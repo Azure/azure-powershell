@@ -180,7 +180,9 @@ function New-AzConnectedMachine {
                 Write-Host $_
             }
 
-            [System.Environment]::SetEnvironmentVariable("https_proxy", $Proxy.ToString(), "Machine")
+            if ($Proxy) {
+                [System.Environment]::SetEnvironmentVariable("https_proxy", $Proxy.ToString(), "Machine")
+            }
 
             # Set executable path
             $azcmagentPath = "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe"
