@@ -17,11 +17,6 @@
 #>
 $script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 
-# Scopes
-$script:NetCoreScopes = @('NetCore')
-$script:AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
-$script:StackScopes = @('All', 'Stack')
-
 # Specialty-Scopes used by cmdlets
 $script:AzureRMScopes = @('All', 'Latest')
 $script:StorageScopes = @('All', 'Latest', 'AzureStorage')

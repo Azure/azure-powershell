@@ -40,6 +40,10 @@ Import-Module "$PSScriptRoot\UpdateModules.psm1"
 #################################################>
 
 
+# Constants (Scopes)
+$NetCoreScopes = @('NetCore')
+$AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
+$StackScopes = @('All', 'Stack')
 
 # Begin
 Write-Host "Updating $Scope package (and its dependencies)"
