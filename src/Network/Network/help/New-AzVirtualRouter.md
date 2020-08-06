@@ -25,8 +25,8 @@ The **New-AzVirtualRouter** cmdlet creates an Azure VirtualRouter
 
 ### Example 1
 ```powershell
-$subnetId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1'
-New-AzVirtualRouter -Name virtualRouter -ResourceGroupName virtualRouterRG -Location 'West US' -HostedSubnet $subnetId
+$subnetId = (New-AzVirtualNetworkSubnetConfig).Id
+New-AzVirtualRouter -Name $virtualRouterName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -HostedSubnet $subnetId
 ```
 
 ## PARAMETERS
