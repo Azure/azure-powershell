@@ -326,5 +326,76 @@
   </data>
   <data name="UpdatingSynapseSqlDatabase" xml:space="preserve">
     <value>Updating SQL Database '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  <data name="InvalidCastParameterKeyExceptionMessage" xml:space="preserve">
+    <value>All keys in the parameters hashtable must be of type string since they represent pipeline parameter names.</value>
+  </data>
+  <data name="UpgradingIntegrationRuntime" xml:space="preserve">
+    <value>Upgrading integration runtime '{0}'.</value>
+  </data>
+  <data name="ContinueRegenerateAuthKey" xml:space="preserve">
+    <value>Continuing execution will renegerate the authentication key '{0}' of integration runtime {1}. This operation will invalidate the existing authentication key.
+Are you sure you want to continue?</value>
+  </data>
+  <data name="RegenerateAuthKey" xml:space="preserve">
+    <value>Renegerate the authentication key '{0}' of integration runtime {1}.</value>
+  </data>
+  <data name="IntegrationRuntimeConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove integration runtime '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="IntegrationRuntimeNotFound" xml:space="preserve">
+    <value>Integration runtime '{0}' does not exist in the workspace '{1}'.</value>
+  </data>
+  <data name="RemovingIntegrationRuntime" xml:space="preserve">
+    <value>Removing the integration runtime '{0}' in the workspace '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeNodeConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove node {0} in integration runtime '{1}''?</value>
+  </data>
+  <data name="RemovingIntegrationRuntimeNode" xml:space="preserve">
+    <value>Removing the node {0} in integration runtime '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeNodeNotFound" xml:space="preserve">
+    <value>The node '{0}' does not exist in integration runtime '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeInvalidVnet" xml:space="preserve">
+    <value>Both VNetId and Subnet must be set.</value>
+  </data>
+  <data name="IntegrationRuntimeVNetNotProvided" xml:space="preserve">
+    <value>Please provide a VNet resource ID and subnet name to bring static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="IntegrationRuntimeWrongType" xml:space="preserve">
+    <value>The value for pramater 'Type' is different with existing integration runtime with name {0}.</value>
+  </data>
+  <data name="InvalidIntegrationRuntimeSharing" xml:space="preserve">
+    <value>Only self-hosted integration runtime can be shared.</value>
+  </data>
+  <data name="InvalidPublicIPCount" xml:space="preserve">
+    <value>Please provide two static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="NeedIntegrationRuntimeType" xml:space="preserve">
+    <value>Pramater 'Type' must be provided when creating new integration runtime.</value>
+  </data>
+  <data name="UpdateAuthKeyNotAllowed" xml:space="preserve">
+    <value>Updating the authentication key of linked integration runtime '{0}' is not allowed.</value>
+  </data>
+  <data name="IntegrationRuntimeExists" xml:space="preserve">
+    <value>An integration runtime with the name {0} in the workspace {1} exists. 
+Continuing execution may overwrite the existing one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="UpdatingIntegrationRuntime" xml:space="preserve">
+    <value>Updating integration runtime '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="LongRunningStatusError" xml:space="preserve">
+    <value>An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status</value>
+  </data>
+  <data name="IntegrationRuntimeSyncNodeCredential" xml:space="preserve">
+    <value>Are you sure you want to sync node credentials in integration runtime '{0}'.</value>
+  </data>
+  <data name="SyncingIntegrationRuntimeNodeCredential" xml:space="preserve">
+    <value>Syncing node credentials in integration runtime '{0}'.</value>
+  </data>
+  <data name="UpdatingIntegrationRuntimeNode" xml:space="preserve">
+    <value>Updating integration runtime node {0}.</value>
   </data>
 </root>

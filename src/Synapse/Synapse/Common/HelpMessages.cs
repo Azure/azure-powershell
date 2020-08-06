@@ -187,5 +187,75 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string SignInName = "The email address or the user principal name of the user.";
 
         public const string ServicePrincipalName = "The ServicePrincipalName of the service principal.";
+
+        public const string IntegrationRuntimeName = "The integration runtime name.";
+
+        public const string IntegrationRuntimeObject = "The integration runtime object.";
+
+        public const string IntegrationRuntimeResourceId = "Resource identifier of Synapse integration runtime.";
+    
+        public const string IntegrationRuntimeStatus = "The integration runtime detail status.";
+
+        public const string IntegrationRuntimeNodeName = "The integration runtime node name.";
+
+        public const string IntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
+
+        public const string IntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
+    
+        public const string DontAskConfirmation = "Don't ask for confirmation.";
+
+        public const string IntegrationRuntimetype = "The integration runtime type.";
+
+        public const string IntegrationRuntimeDescription = "The integration runtime description.";
+
+        public const string IntegrationRuntimeLocation = "The integration runtime description.";
+
+        public const string IntegrationRuntimeNodeSize = "The integration runtime node size.";
+
+        public const string IntegrationRuntimeNodeCount = "Target nodes count of the integration runtime.";
+
+        public const string IntegrationRuntimeCatalogServerEndpoint = "The catalog database server endpoint of the integration runtime.";
+
+        public const string IntegrationRuntimeCatalogAdminCredential = "The catalog database administrator credential of the integration runtime.";
+
+        public const string IntegrationRuntimeCatalogPricingTier = "The catalog database pricing tier of the integration runtime.";
+
+        public const string IntegrationRuntimeVNetId = "The ID of the VNet which the integration runtime will join.";
+
+        public const string IntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
+
+        public const string IntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
+
+        public const string IntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
+
+        public const string IntegrationRuntimeDataFlowCoreCount = "Core count of the data flow cluster which will execute data flow job.";
+
+        public const string IntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
+
+        public const string IntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
+
+        public const string IntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
+        public const string IntegrationRuntimeExpressCustomSetup = "The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.";
+
+        public const string IntegrationRuntimeDataProxyIntegrationRuntimeName = "The Self-Hosted Integration Runtime name which is used as a proxy.";
+
+        public const string IntegrationRuntimeDataProxyStagingLinkedServiceName = "The Azure Blob Storage Linked Service name that references the staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtime.";
+
+        public const string IntegrationRuntimeDataProxyStagingPath = "The path in staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes, a default container will be used if unspecified.";
+        
+        public const string IntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
+
+        public const string IntegrationRuntimeLicenseType = "The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.";
+
+        public const string IntegrationRuntimeAuthKey = "The authentication key of the self-hosted integration runtime.";
+
+        public const string SharedIntegrationRuntimeResourceId = "The resource id of the shared self-hosted integration runtime.";
+    
+        public const string IntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
+
+        public const string IntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
+    
+        public const string IntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
     }
 }
