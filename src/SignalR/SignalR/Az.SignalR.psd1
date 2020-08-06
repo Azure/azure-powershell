@@ -76,7 +76,8 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzSignalR', 'Get-AzSignalR', 'Get-AzSignalRKey', 
                'New-AzSignalRKey', 'Remove-AzSignalR', 'Update-AzSignalR', 
-               'Test-AzSignalRName', 'Restart-AzSignalR', 'Get-AzSignalRUsage'
+               'Test-AzSignalRName', 'Restart-AzSignalR', 'Get-AzSignalRUsage',
+               'Update-AzSignalRNetworkAcl','Set-AzSignalRUpstream'
 
 # Variables to export from this module
 # VariablesToExport = @()
