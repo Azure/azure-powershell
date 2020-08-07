@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string CommonName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
-                   HelpMessage = "List of Issuer thumbprints for the client certificate. Only use in combination with CommonName.")]
-        public List<string> IssuerThumbprint { get; set; }
+                   HelpMessage = "List of Issuer thumbprints for the client certificate use comma to separate the issuers. Only use in combination with CommonName.")]
+        public string[] IssuerThumbprint { get; set; }
 
         #endregion
 

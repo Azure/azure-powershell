@@ -428,9 +428,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             try
             {
                 var contentJObject = JObject.Parse(responseContent);
-                if (contentJObject.TryGetValue("exception", StringComparison.OrdinalIgnoreCase, out JToken value))
+                string correlationId = string.Empty;
+                if (contentJObject.TryGetValue("request", StringComparison.OrdinalIgnoreCase, out JToken requestValue))
                 {
-                    return value != null ? (string)value : responseContent;
+                    var requestString = (string)requestValue;
+                    if (!string.IsNullOrEmpty(requestString))
+                    {
+                        string correlationHeader = "x-ms-correlation-request-id: ";
+                        var index = requestString.IndexOf(correlationHeader, StringComparison.OrdinalIgnoreCase);
+                        int guidLength = 36;
+                        if (index != -1 && requestString.Length > index + correlationHeader.Length + guidLength + 1)
+                        {
+                            correlationId = requestString.Substring(index + correlationHeader.Length, guidLength);
+                        }
+                    }
+                }
+
+                if (contentJObject.TryGetValue("exception", StringComparison.OrdinalIgnoreCase, out JToken exceptionValue))
+                {
+                    return exceptionValue != null ? $"CorrelationId: {correlationId} - Exception: {(string)exceptionValue}" : responseContent;
                 }
 
                 return responseContent;
