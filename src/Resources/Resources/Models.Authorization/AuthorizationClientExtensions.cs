@@ -269,7 +269,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         SignInName = ((PSADUser)adObject).UserPrincipalName,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        CanDelegate = delegationFlag,
+                        Description = assignment.Description,
+                        Condition = assignment.Condition,
+                        ConditionVersion = assignment.ConditionVersion,
                     });
                 }
                 else if (adObject is PSADGroup)
@@ -283,7 +286,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        CanDelegate = delegationFlag,
+                        Description = assignment.Description,
+                        Condition = assignment.Condition,
+                        ConditionVersion = assignment.ConditionVersion,
                     });
                 }
                 else if (adObject is PSADServicePrincipal)
@@ -297,7 +303,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        CanDelegate = delegationFlag,
+                        Description = assignment.Description,
+                        Condition = assignment.Condition,
+                        ConditionVersion = assignment.ConditionVersion,
                     });
                 }
                 else if (adObject is PSErrorHelperObject && ((PSErrorHelperObject)adObject).ErrorType == ErrorTypeEnum.MalformedQuery)
@@ -309,7 +318,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        ObjectType = assignment.Type
+                        ObjectType = assignment.Type,
+                        Description = assignment.Description,
+                        Condition = assignment.Condition,
+                        ConditionVersion = assignment.ConditionVersion,
                     });
                 }
                 else if (!excludeAssignmentsForDeletedPrincipals)
@@ -323,7 +335,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         CanDelegate = delegationFlag,
-                        ObjectType = DeletedObject
+                        ObjectType = DeletedObject,
+                        Description = assignment.Description,
+                        Condition = assignment.Condition,
+                        ConditionVersion = assignment.ConditionVersion,
                     });
                 }
 

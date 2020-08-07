@@ -100,7 +100,12 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''">
+  <Target Name="BuildTools">
+    <!-- Publish static analysis for use cross-platform -->
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+  </Target>
+
+  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''" DependsOnTargets="BuildTools">
     <Message Importance="high" Text="Filtering projects and modules..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
@@ -175,15 +180,12 @@
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
 
-    <!-- Publish static analysis for use cross-platform -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
-
     <!-- Delete powershell runtime files -->
     <PropertyGroup>
       <RuntimeDllsIncludeList>Microsoft.Powershell.*.dll,System*.dll,Microsoft.VisualBasic.dll,Microsoft.CSharp.dll,Microsoft.CodeAnalysis.dll,Microsoft.CodeAnalysis.CSharp.dll</RuntimeDllsIncludeList>
       <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll,System.CodeDom.dll,System.Management.dll,System.Text.Json.dll,System.Threading.Tasks.Extensions.dll</RuntimeDllsExcludeList>
     </PropertyGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Where-Object {{$_}.FullName -notlike '*PreloadAssemblies*' -and {$_}.FullName -notlike '*NetCoreAssemblies*'} | Remove-Item -Force&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Where-Object {$_.FullName -notlike '*PreloadAssemblies*' -and $_.FullName -notlike '*NetCoreAssemblies*'} | Remove-Item -Force&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" Condition="'$(CodeSign)' == 'true'" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />

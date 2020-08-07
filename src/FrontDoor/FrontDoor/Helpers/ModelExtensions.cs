@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
                     QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
-                    DynamicCompression = SDKForwardingConfiguration.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
+                    DynamicCompression = SDKForwardingConfiguration.CacheConfiguration?.DynamicCompression == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
             else if (sdkRouteConfiguration is SdkRedirectConfiguration)

@@ -12,11 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzAppConfigurationStore' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        New-AzAppConfigurationStore -Name $env.appconfName02 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku "standard"
+        Remove-AzAppConfigurationStore -Name $env.appconfName02 -ResourceGroupName $env.resourceGroup
+        $appConfList = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup
+        $appConfList.Name | Should -Not -Contain $env.appconfName02
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $appConf = New-AzAppConfigurationStore -Name $env.appconfName03 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku "standard"
+        Remove-AzAppConfigurationStore -InputObject $appConf  
+        $appConfList = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup
+        $appConfList.Name | Should -Not -Contain $env.appconfName03
     }
 }

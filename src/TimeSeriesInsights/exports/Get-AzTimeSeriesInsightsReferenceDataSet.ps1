@@ -33,7 +33,7 @@ Location Name      Type
 eastus   dstest001 Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets
 .Example
 PS C:\> $ds = Get-AzTimeSeriesInsightsReferenceDataSet -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x -Name tsirdsqwufij 
-PS C:\>Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
+PS C:\> Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
 
 Location Name         Type
 -------- ----         ----
@@ -42,7 +42,7 @@ eastus2  tsirdsqwufij Microsoft.TimeSeriesInsights/Environments/ReferenceDataSet
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
 #>
 function Get-AzTimeSeriesInsightsReferenceDataSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

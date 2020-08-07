@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
-                {"Azure.Core", new Version("1.2.2.0")},
+                {"Azure.Core", new Version("1.3.0.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
