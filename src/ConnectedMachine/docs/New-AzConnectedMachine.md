@@ -14,7 +14,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 
 ```
 New-AzConnectedMachine [-ResourceGroupName] <String> [-Location] <String> [[-SubscriptionId] <String>]
- [[-Name] <String>] [[-DefaultProfile] <PSObject>] [[-PSSession] <PSSession>] [[-Tag] <Hashtable>]
+ [[-Name] <String>] [[-DefaultProfile] <PSObject>] [[-PSSession] <PSSession[]>] [[-Tag] <Hashtable>]
  [[-Proxy] <Uri>] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Location of the cluster
+The location for the created ConnectedMachine.
 
 ```yaml
 Type: System.String
@@ -74,7 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+The name that will be used for this machine.
+The hostname is used by default.
 
 ```yaml
 Type: System.String
@@ -104,10 +105,11 @@ Accept wildcard characters: False
 ```
 
 ### -PSSession
-
+When specified, the command that onboards machines to Azure will be run within each PSSession.
+NOTE: This only works on Windows for now.
 
 ```yaml
-Type: System.Management.Automation.Runspaces.PSSession
+Type: System.Management.Automation.Runspaces.PSSession[]
 Parameter Sets: (All)
 Aliases: Session
 
@@ -119,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the kubernetes cluster is registered.
+The name of the resource group you want to add the machine to.
 
 ```yaml
 Type: System.String
@@ -134,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription to which the kubernetes cluster is registered.
+The ID of the subscription you want to add the machine to.
 
 ```yaml
 Type: System.String

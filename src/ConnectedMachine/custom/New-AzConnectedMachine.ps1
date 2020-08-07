@@ -29,25 +29,26 @@ function New-AzConnectedMachine {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
         [System.String]
-        # The name of the resource group to which the kubernetes cluster is registered.
+        # The name of the resource group you want to add the machine to.
         ${ResourceGroupName},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # The ID of the subscription to which the kubernetes cluster is registered.
+        # The ID of the subscription you want to add the machine to.
         ${SubscriptionId},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
         [System.String]
-        # Location of the cluster
+        # The location for the created ConnectedMachine.
         ${Location},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
         [System.String]
+        # The name that will be used for this machine. The hostname is used by default.
         ${Name},
     
         [Parameter()]
@@ -61,7 +62,8 @@ function New-AzConnectedMachine {
         [Parameter()]
         [Alias('Session')]
         [ValidateNotNull()]
-        [System.Management.Automation.Runspaces.PSSession]
+        [System.Management.Automation.Runspaces.PSSession[]]
+        # When specified, the command that onboards machines to Azure will be run within each PSSession. NOTE: This only works on Windows for now.
         ${PSSession},
 
         [Parameter()]
@@ -215,8 +217,14 @@ function New-AzConnectedMachine {
 
     if ($PSSession) {
         $scriptWithUsings = {
+            if ($IsLinux) {
+                Write-Error "Linux PSSessions are not supported because PowerShell doesn't support sudo password prompts over PSSessions. (PowerShell issue #1527)"
+                return
+            }
+
             $Proxy = $using:Proxy
             $script = $using:script
+
             Invoke-Command -ScriptBlock ([scriptblock]::Create($script)) -ArgumentList $args
         }
         $showResult = Invoke-Command -ScriptBlock $scriptWithUsings -Session $PSSession -ArgumentList $azcmagentArgs

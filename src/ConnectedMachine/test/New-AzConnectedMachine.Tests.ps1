@@ -73,4 +73,22 @@ Describe 'New-AzConnectedMachine' {
         $machine | Should -Not -Be $null
         $machine.Location | Should -MatchExactly $env.location
     }
+
+    It 'Can connect a machine to an existing resource group using a PSSession' {
+        $pssession = if($IsLinux) {
+            New-PSSession -HostName localhost
+        } else {
+            # Windows
+            New-PSSession -ComputerName localhost
+        }
+
+        $machine = New-AzConnectedMachine @commonParams -Location $env.location -PSSession $pssession
+
+        if ($IsLinux) {
+            $machine | Should -Be $null
+        } else {
+            $machine | Should -Not -Be $null
+            $machine.Location | Should -MatchExactly $env.location
+        }
+    }
 }
