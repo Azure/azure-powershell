@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzRoleAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update an existing Role Assignment.
 
 ## SYNTAX
 
@@ -24,16 +24,65 @@ Set-AzRoleAssignment -InputFile <String> [-DefaultProfile <IAzureContextContaine
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Use the New-AzRoleAssignment command to modify an existing assignment.  
+Descriptions can be any valid string, use that to diferentiate from one another.  
+if Condition is set Condition Version has to be set as well but if you're updating a Condition that is not necesary.
+Condition Version can be upgraded from 1.0 to 2.0 but it can't not be downgraded back. Be cautious as 2.0 is not retrocompatible with 1.0.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+  $ConditionVersion = "2.0"
+  $Description = "This is a new role assignment for John"
+  $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs:Path] StringEqualsIgnoreCase 'foo_storage_container'"
+
+  $roleAssignment = Get-AzRoleAssignment -Scope "/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg" -PrincipalId "0c0f6cdc-90dd-4664-83c0-a0d986c4c604"
+  $roleAssignment.Description = $Description
+  $roleAssignment.Condition = $Condition
+  $roleAssignment.ConditionVersion = $ConditionVersion
+
+  Set-AzRoleAssignment -InputObject $roleAssignment -PassThru
+  
+  RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
+                     -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
+                     Assignments/926c2a76-be19-4281-94de-38777629b9dc
+  Scope              : /subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg
+  DisplayName        : John Doe
+  SignInName         : John.Doe@Contoso.com
+  RoleDefinitionName : Owner
+  RoleDefinitionId   : 8e3af657-a8ff-443c-a75c-2fe8c4bcb635
+  ObjectId           : 0c0f6cdc-90dd-4664-83c0-a0d986c4c604
+  ObjectType         : User
+  CanDelegate        : False
+  Description        : This is a new role assignment for John
+  ConditionVersion   : 2.0
+  Condition          : @Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs:Path] StringEqualsIgnoreCase 'foo_storage_container'
 ```
 
-{{ Add example description here }}
+Update an existing role assignment by modifying an object
+
+### Example 2
+```powershell
+  Set-AzRoleAssignment -InputFile "C:\RoleAssignments\example.json" -PassThru
+
+  RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
+                     -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
+                     Assignments/926c2a76-be19-4281-94de-38777629b9dc
+  Scope              : /subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg
+  DisplayName        : John Doe
+  SignInName         : John.Doe@Contoso.com
+  RoleDefinitionName : Owner
+  RoleDefinitionId   : 8e3af657-a8ff-443c-a75c-2fe8c4bcb635
+  ObjectId           : 0c0f6cdc-90dd-4664-83c0-a0d986c4c604
+  ObjectType         : User
+  CanDelegate        : False
+  Description        : This is a new role assignment for John
+  ConditionVersion   : 2.0
+  Condition          : @Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs:Path] StringEqualsIgnoreCase 'foo_storage_container'
+```
+
+Update an existing role assignment by using a file
 
 ## PARAMETERS
 
