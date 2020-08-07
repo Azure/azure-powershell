@@ -259,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -Hsm
-Specifies the type of this vault as MHSM.
+Specifies the type of this vault as managed hsm.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

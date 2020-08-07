@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 return new PSManagedHsm(response, adClient);
             }
-            catch (CloudException ce)
+            catch (ManagedHsmErrorException ce)
             {
                 if (ce.Response.StatusCode == HttpStatusCode.NotFound)
                 {
