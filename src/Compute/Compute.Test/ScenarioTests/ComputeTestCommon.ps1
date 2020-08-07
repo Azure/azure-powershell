@@ -791,5 +791,8 @@ function Get-AvailableSku
 
     $res = get-azcomputeresourcesku $location | where-object ResourceType -match $resourceType
     $res = $res.where({$_.restrictions.count -eq 0})
+    if ($resourceType -match "virtualmachine"){
+        $res = $res.where({$_.Name -notmatch "Standard_B"})
+    }
     return $res[0].Name
 }

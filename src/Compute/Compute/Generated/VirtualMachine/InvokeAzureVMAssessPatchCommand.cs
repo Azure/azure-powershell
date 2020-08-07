@@ -103,16 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
 
-                    //extension call instead??
-                    //var result = VirtualMachinesClient.AssessPatches(resourceGroupName, vmName);
-                    //var result = VirtualMachinesClient.AssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-                    //var result = VirtualMachinesClient.AssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName);
                     var result = VirtualMachinesClient.AssessPatches(resourceGroupName, vmName);
-
-                    //var psObject = new PSRunCommandResult();
-                    //var psObject = new PSAssessPatchResult();
-                    //var psObject = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
-                    //ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineAssessPatchesResult, PSAzureOperationResponse>(result, psObject);
                     var psObject = new PSVirtualMachineAssessPatchesResult();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineAssessPatchesResult, PSVirtualMachineAssessPatchesResult>(result, psObject);
                     WriteObject(psObject);

@@ -30,21 +30,42 @@ function Test-InvokeAzVmAssessPatch
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
+        $vmsize = Get-AvailableSku $loc "virtualMachine"
         $vmname = 'vm' + $rgname;
 
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'Low' -MaxPrice 0.1538;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
         # OS & Image
-        $user = "Foo12";
+        $user = "Foo2";
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
 
-        New-AzVm -resourcegroupname $rgname -location $loc -name $vmName -credential $cred -size $vmsize
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+
+        # Create a Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
         $patchResult = invoke-azvmassesspatch -resourcegroupname $rgname -vmname $vmname
         
-        Assert.NotNull($patchResult);
-        Assert.Equal("Succeeded", $patchResult.Status);
-        Assert.NotNull($patchResult.StartDateTime);
+        Assert-NotNull $patchResult;
+        Assert-AreEqual "Succeeded" $patchResult.Status;
+        Assert-NotNull $patchResult.StartDateTime;
 
     }
     finally

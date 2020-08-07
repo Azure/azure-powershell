@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public class PSVirtualMachineAssessPatchesResult
     {
-        public string Status { get; }
-        public string AssessmentActivityId { get; }
-        public bool? RebootPending { get; }
-        public int? CriticalAndSecurityPatchCount { get; }
-        public int? OtherPatchCount { get; }
-        public DateTime? StartDateTime { get; }
-        public IList<VirtualMachineSoftwarePatchProperties> Patches { get; }
-        public ApiError Error { get; }
+        public string Status { get; set; }
+        public string AssessmentActivityId { get; set; }
+        public bool? RebootPending { get; set; }
+        public int? CriticalAndSecurityPatchCount { get; set; }
+        public int? OtherPatchCount { get; set; }
+        public DateTime? StartDateTime { get; set; }
+        public IList<VirtualMachineSoftwarePatchProperties> Patches { get; set; }
+        public ApiError Error { get; set; }
     }
 }
