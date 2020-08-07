@@ -13,9 +13,10 @@
 # ----------------------------------------------------------------------------------
 
 function ConvertTagHashtableToString {
+    [CmdletBinding()]
     param (
+        [Parameter(Mandatory)]
         [hashtable]
-        [ValidateNotNull]
         $TagHashtable
     )
 
