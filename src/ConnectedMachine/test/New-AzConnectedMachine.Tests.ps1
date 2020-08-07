@@ -13,6 +13,24 @@ while(-not $mockingPath) {
 
 Describe 'New-AzConnectedMachine' {
     BeforeAll {
+        if ($TestMode -eq 'playback') {
+            Write-Host "New-AzConnectedMachine tests can only be run live. Skipping..."
+            $SkipAll = $true
+
+            # All `It` calls will have -Skip:$true
+            $PSDefaultParameterValues["It:Skip"] = $true
+            return
+        }
+
+        if ($IsMacOS) {
+            Write-Host "New-AzConnectedMachine tests can only be run on Windows or Linux. Skipping..."
+            $SkipAll = $true
+
+            # All `It` calls will have -Skip:$true
+            $PSDefaultParameterValues["It:Skip"] = $true
+            return
+        }
+
         $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
         $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
@@ -21,7 +39,18 @@ Describe 'New-AzConnectedMachine' {
         $AccessToken = $Token.AccessToken
     }
 
+    AfterAll {
+        # Reset PSDefaultParameterValues
+        if ($PSDefaultParameterValues["It:Skip"]) {
+            $PSDefaultParameterValues.Remove("It:Skip")
+        }
+    }
+
     BeforeEach {
+        if ($SkipAll) {
+            return
+        }
+
         $commonParams = @{
             Name = (New-Guid).Guid
             ResourceGroupName = $env.ResourceGroupName
@@ -29,6 +58,10 @@ Describe 'New-AzConnectedMachine' {
     }
 
     AfterEach {
+        if ($SkipAll) {
+            return
+        }
+
         if ($IsLinux) {
             return sudo $env.azcmagentPath disconnect --access-token $AccessToken
         }

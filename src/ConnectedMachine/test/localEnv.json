@@ -1,7 +1,7 @@
 {
-  "ResourceGroupName": "connectedmachine-rg-zr5j8f",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d",
+  "ResourceGroupName": "connectedmachine-rg-783ur6",
   "azcmagentPath": "C:\\Program Files\\AzureConnectedMachineAgent\\azcmagent.exe",
-  "Location": "eastus",
-  "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  "Location": "eastus"
 }

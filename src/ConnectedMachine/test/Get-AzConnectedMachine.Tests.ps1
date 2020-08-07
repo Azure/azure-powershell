@@ -13,14 +13,26 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzConnectedMachine' {
     BeforeAll {
+        $machineName = $env.MachineName1
+
+        if ($TestMode -ne 'playback' -and $IsMacOS) {
+            Write-Host "Live Get-AzConnectedMachine tests can only be run on Windows and Linux. Skipping..."
+            $SkipAll = $true
+            # All `It` calls will have -Skip:$true
+            $PSDefaultParameterValues["It:Skip"] = $true
+        }
+
+        if ($TestMode -eq 'playback') {
+            # Skip starting azcmagent
+            return
+        }
+
         $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
         $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
         $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
         $AccessToken = $Token.AccessToken
-
-        $machineName = (New-Guid).Guid
 
         $azcmagentArgs = @(
             'connect'
@@ -45,6 +57,17 @@ Describe 'Get-AzConnectedMachine' {
     }
 
     AfterAll {
+        # Reset PSDefaultParameterValues
+        if ($PSDefaultParameterValues["It:Skip"]) {
+            $PSDefaultParameterValues.Remove("It:Skip")
+            return
+        }
+
+        if ($TestMode -eq 'playback') {
+            # Skip stopping azcmagent
+            return
+        }
+
         if ($IsLinux) {
             return sudo $env.azcmagentPath disconnect --access-token $AccessToken
         }

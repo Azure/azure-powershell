@@ -15,6 +15,8 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'connectedmachine-rg-' + (RandomString -allChars $false -len 6)
     $env.Location = 'eastus'
+    $env.MachineName1 = (RandomString -allChars $false -len 6)
+    $env.MachineName2 = (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     if ($IsMacOS) {

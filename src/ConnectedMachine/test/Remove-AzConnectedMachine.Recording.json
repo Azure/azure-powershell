@@ -1,12 +1,12 @@
 {
-  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$DELETE+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/41f27433-817b-45de-96c0-1774764ca2b0?api-version=2019-12-12+1": {
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$DELETE+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/41f27433-817b-45de-96c0-1774764ca2b0?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "55b61f84-cd37-4abb-a09f-2c4a61cfef38" ],
+        "x-ms-client-request-id": [ "b410b3ed-527f-451e-94d3-7a17a365106f" ],
         "CommandName": [ "Remove-AzConnectedMachine" ],
         "FullCommandName": [ "Remove-AzConnectedMachine_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,13 +22,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f7653a78-3b25-4b4f-a9c2-7de542f50d1f" ],
+        "x-ms-request-id": [ "b09d420e-a02d-4b67-a2fd-6d7f2b8785ca" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "3fc4cc8c-cddb-48e7-bc73-303bedc04263" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200806T191610Z:3fc4cc8c-cddb-48e7-bc73-303bedc04263" ],
+        "x-ms-correlation-request-id": [ "2ebd835b-04c8-446b-942e-5b30732d7141" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021835Z:2ebd835b-04c8-446b-942e-5b30732d7141" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Aug 2020 19:16:09 GMT" ]
+        "Date": [ "Fri, 07 Aug 2020 02:18:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -38,14 +38,14 @@
       "Content": null
     }
   },
-  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/41f27433-817b-45de-96c0-1774764ca2b0?api-version=2019-12-12+2": {
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/41f27433-817b-45de-96c0-1774764ca2b0?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "51022098-0ece-4c26-85a7-eb9bf6e68689" ],
+        "x-ms-client-request-id": [ "d086955c-c2af-47e1-84a2-253ce4fbd98c" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,29 +61,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d2ecf64d-5788-492d-a04e-1b106f9381e2" ],
-        "x-ms-correlation-request-id": [ "d2ecf64d-5788-492d-a04e-1b106f9381e2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200806T191610Z:d2ecf64d-5788-492d-a04e-1b106f9381e2" ],
+        "x-ms-request-id": [ "351f0c70-034f-485b-b633-873be2fe42d2" ],
+        "x-ms-correlation-request-id": [ "351f0c70-034f-485b-b633-873be2fe42d2" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021835Z:351f0c70-034f-485b-b633-873be2fe42d2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Aug 2020 19:16:10 GMT" ]
+        "Date": [ "Fri, 07 Aug 2020 02:18:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "267" ]
+        "Content-Length": [ "237" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/41f27433-817b-45de-96c0-1774764ca2b0\u0027 under resource group \u0027connectedmachine-rg-7jxn68\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/wlxtrs\u0027 under resource group \u0027connectedmachine-rg-swmvgp\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
     }
   },
-  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12+1": {
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "9e512e92-6cb7-4c11-a83b-d8b58a5d37b8" ],
+        "x-ms-client-request-id": [ "b43ca669-7282-4aac-bdd5-b84ce243b8dd" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -98,31 +98,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d1ed345d-efc7-48a8-bebc-7dc9c9b6b8a2" ],
+        "x-ms-request-id": [ "a59969ee-6d59-46a1-8d89-ab499f52e777" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "dea4d6df-f401-4151-b642-43e47c9d81d4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200806T191634Z:dea4d6df-f401-4151-b642-43e47c9d81d4" ],
+        "x-ms-correlation-request-id": [ "81f901cf-d626-4851-851c-e637666d6ac8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021902Z:81f901cf-d626-4851-851c-e637666d6ac8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Aug 2020 19:16:34 GMT" ]
+        "Date": [ "Fri, 07 Aug 2020 02:19:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "946" ],
+        "Content-Length": [ "888" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2\",\"name\":\"440ebf99-06b7-43cb-a331-4a3fb27be0e2\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"f24bdbc3-39b5-4711-9a0e-3667a0951783\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"osName\":\"linux\",\"osProfile\":{},\"vmId\":\"de98cad3-debd-4200-bd12-cff89e7abbad\",\"clientPublicKey\":\"MIIBCgKCAQEAxknm6egN3eVxpTOQz4NT1Us/9buhGTw8TP12gBXTFhP8zRE3fpyanvddFHqsw01NqHBvbvXjVF+sBWxL2KvdDQIFBGR/8b1KmSUXY7VaUB7AVa1PCE0dl6M9lgw5qbxKR0FcaXgR6Chl4DnVOEXOSWPMc2O85x70HmZRCzfPhJYCcCZeQaufqKAKNnyLAYTwidYHGKEN2XBUNFRwEDoKYJbNfaxrz6XykJayde5k4N12tluzED/zmRrlDWefVegOlrTK0J0BbQ4pTmnlDUswyydgbmF05oc4vpJHK2Apno3oe6qJ6JTOf+eUfvopsnfQvxZCkSrJuhUvG3jx7H6RPQIDAQAB\"}}"
+      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs\",\"name\":\"wlxtrs\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"4dcd045e-96d1-4376-8607-52ca5aafc800\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"osName\":\"windows\",\"osProfile\":{},\"vmId\":\"e7d911c0-a1a2-4550-8633-83dce522ff72\",\"clientPublicKey\":\"MIIBCgKCAQEAk6kGkliQ6hJTLieYJon3QVEae/3T+Z4fVwg10STbYpkknIhpfkY5Ex7/LzF6Q+sjBCFo3ob6seAAr4OtIEtl6Tof+fsn43EbZ3nl1OJF8QLx98nGY5l3lLP0ege+vA6M8TiI1dfLDH3j+N3nXsm5gDDWaEtR6D9Jqrk6BTFMp5G7ayK0P5xIMs7f7YFTyXr7D0gtc94dYN8yMnCeWv4jZAHrmqeJ15ZfcK+0Mhhnfup74IRJzAlV1WYf4vMrSgLAd9SJEVxEY8g7YNeXArQjcYkT5JLmFq6yFyLWzwcXZvtaqIOb3swIhb74XWxH9Q3OwWnQevzE8Id9wvMBtNAasQIDAQAB\"}}"
     }
   },
-  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$DELETE+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12+2": {
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$DELETE+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "4ca18206-4d88-400b-9aad-be2a7dfafa40" ],
+        "x-ms-client-request-id": [ "fc6c0856-5d29-42b5-b0ae-8c900ec5b3c0" ],
         "CommandName": [ "Remove-AzConnectedMachine" ],
         "FullCommandName": [ "Remove-AzConnectedMachine_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -138,13 +138,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8de96f64-51e4-450a-8c1b-075df08db16c" ],
+        "x-ms-request-id": [ "dbe1a9cc-b8be-4f1b-b428-176f20fb2ba3" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "8267d21f-e829-4e94-a868-eb6eb6bcbdf7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200806T191640Z:8267d21f-e829-4e94-a868-eb6eb6bcbdf7" ],
+        "x-ms-correlation-request-id": [ "aa6e7ffb-b740-4f56-9d6f-dd68e5a9247e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021909Z:aa6e7ffb-b740-4f56-9d6f-dd68e5a9247e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Aug 2020 19:16:40 GMT" ]
+        "Date": [ "Fri, 07 Aug 2020 02:19:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -154,14 +154,14 @@
       "Content": null
     }
   },
-  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12+3": {
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-7jxn68/providers/Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "18ded92c-3070-439a-a16f-e0fb55cad179" ],
+        "x-ms-client-request-id": [ "ea5407b1-77c9-4e42-aa79-8e07f8691fb3" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -177,19 +177,135 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "4b8cd3fd-a4bc-47d8-b54a-fcf503a4033d" ],
-        "x-ms-correlation-request-id": [ "4b8cd3fd-a4bc-47d8-b54a-fcf503a4033d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200806T191640Z:4b8cd3fd-a4bc-47d8-b54a-fcf503a4033d" ],
+        "x-ms-request-id": [ "9f897e7f-9ecf-4a31-a67c-faf892fa5ffa" ],
+        "x-ms-correlation-request-id": [ "9f897e7f-9ecf-4a31-a67c-faf892fa5ffa" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021909Z:9f897e7f-9ecf-4a31-a67c-faf892fa5ffa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Aug 2020 19:16:40 GMT" ]
+        "Date": [ "Fri, 07 Aug 2020 02:19:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "267" ]
+        "Content-Length": [ "237" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/440ebf99-06b7-43cb-a331-4a3fb27be0e2\u0027 under resource group \u0027connectedmachine-rg-7jxn68\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/wlxtrs\u0027 under resource group \u0027connectedmachine-rg-swmvgp\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "2f766ccb-4886-4949-ba78-7de351287c7c" ],
+        "CommandName": [ "Get-AzConnectedMachine" ],
+        "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "13091f0a-ebc0-433a-a1d2-53743dcd1f52" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "80db2c5d-5ce0-4288-a674-11ea6990dbb7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021932Z:80db2c5d-5ce0-4288-a674-11ea6990dbb7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Aug 2020 02:19:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1131" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs\",\"name\":\"wlxtrs\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"30b40fc8-5688-4837-bc91-ce0d3b434662\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.10.20195.006\",\"status\":\"Connected\",\"lastStatusChange\":\"2020-08-07T02:19:28.9940536Z\",\"errorDetails\":[],\"displayName\":\"TYLEONHA-DESK1\",\"machineFqdn\":\"TYLEONHA-DESK1\",\"osName\":\"windows\",\"osVersion\":\"10.0.18363.959\",\"osProfile\":{\"computerName\":\"TYLEONHA-DESK1\"},\"vmId\":\"f18f3bd1-b63f-411a-8c12-10de279b18cd\",\"clientPublicKey\":\"MIIBCgKCAQEA4RqsmZf1W6QeWXq3snm8wb8qnLH6hfulYrKaLmVjfcPuorj7CHBgqOInWy6b5SgC3qs92BdVRC3Ldfkqw/1X3NUhhKj2rQY9p1tGQL4Jlbib4af27BCH0CIjo6HtWFlGB2v2QntgMZzyozsd/1fqD0w0POp71C5WzloPZserF09/QaDgEZyLbviE4AkoihQJKmfM7JFZzxL2/W3eSeDm7BrbTbu8yJkvbnU+10bt/hUD5k6kojM4p8tTwkz3350U8PlOZ/k4Qe/qMZ4qMIc9x6beUqOfQEK4Xx+EOdy2yvhs6ocAZL8+SHRQVWS8U4dXmkm51W5i0ncTOTimFbh1IQIDAQAB\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines+$DELETE+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "212659ca-4a34-42c9-8761-025fa324bbc2" ],
+        "CommandName": [ "Remove-AzConnectedMachine" ],
+        "FullCommandName": [ "Remove-AzConnectedMachine_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1971e2aa-8ecc-4e6f-bfd8-1445e4907260" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "b527ca33-10a3-4710-8cc7-4ed2057f2b65" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021938Z:b527ca33-10a3-4710-8cc7-4ed2057f2b65" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Aug 2020 02:19:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/wlxtrs?api-version=2019-12-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "273ddb4f-8123-40a0-9b7d-61e8281a88ed" ],
+        "CommandName": [ "Get-AzConnectedMachine" ],
+        "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "b37bd0de-8439-4ae8-8108-319b92d7c3e1" ],
+        "x-ms-correlation-request-id": [ "b37bd0de-8439-4ae8-8108-319b92d7c3e1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200807T021939Z:b37bd0de-8439-4ae8-8108-319b92d7c3e1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Aug 2020 02:19:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "237" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/wlxtrs\u0027 under resource group \u0027connectedmachine-rg-swmvgp\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
     }
   }
 }
