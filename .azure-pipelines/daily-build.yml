@@ -25,3 +25,9 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /p:Configuration=Debug /t:Build /NoLogo'
+
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
