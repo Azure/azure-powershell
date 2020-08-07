@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics SQL database.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Test-AzSynapseSqlDatabase -Name <String> -WorkspaceObject <PSSynapseWorkspace>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Test-AzSynapseSqlDatabase** cmdlet checks for the existence of a Synapse Analytics SQL database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
-{{ Add example description here }}
+This command checks the existence of the specified SQL database.
 
 ## PARAMETERS
 

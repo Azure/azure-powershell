@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics SQL database.
 
 ## SYNTAX
 

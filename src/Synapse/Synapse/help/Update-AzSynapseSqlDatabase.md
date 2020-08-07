@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics SQL database.
 
 ## SYNTAX
 
@@ -39,16 +39,16 @@ Update-AzSynapseSqlDatabase -ResourceId <String> [-Tag <Hashtable>] [-PassThru] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzSynapseSqlDatabase** cmdlet updates an Azure Synapse Analytics SQL database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics SQL database.
 
 ## PARAMETERS
 

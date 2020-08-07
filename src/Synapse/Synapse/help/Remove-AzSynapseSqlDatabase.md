@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics SQL database.
 
 ## SYNTAX
 
@@ -37,16 +37,40 @@ Remove-AzSynapseSqlDatabase -ResourceId <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSynapseSqlPool** cmdlet permanently deletes an Azure Synapse Analytics SQL database.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics SQL database.
+
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Remove-AzSynapseSqlDatabase -Name ContosoSqlDatabase
+```
+
+This command deletes an Azure Synapse Analytics SQL database through pipeline.
+
+### Example 3
+```powershell
+PS C:\> $database = Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
+PS C:\> $database | Remove-AzSynapseSqlDatabase
+```
+
+This command deletes an Azure Synapse Analytics SQL database through pipeline.
+
+### Example 4
+```powershell
+PS C:\> Remove-AzSynapseSqlDatabase -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlDatabases/ContosoSqlDatabase
+```
+
+This command deletes an Azure Synapse Analytics SQL database with the specified resource ID.
 
 ## PARAMETERS
 

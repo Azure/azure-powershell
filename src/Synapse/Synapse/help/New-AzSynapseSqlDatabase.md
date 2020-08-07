@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics SQL database.
 
 ## SYNTAX
 
@@ -27,16 +27,17 @@ New-AzSynapseSqlDatabase -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseSqlDatabase** cmdlet gets information about an Azure Synapse Analytics SQL database.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase 
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL database.
 
 ## PARAMETERS
 
