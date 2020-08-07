@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+Import-Module $PSScriptRoot/helper.psm1
+
 <#
 .Synopsis
 API to register a new machine and thereby create a tracked resource in ARM
@@ -149,9 +151,6 @@ function New-AzConnectedMachine {
     }
 
     $script = {
-        # $azcmagentArgs = $using:azcmagentArgs
-        # $proxyUrl = $using:Proxy
-
         if ($IsMacOS) {
             throw "Registration doesn't work on macOS. Only Linux and Windows are supported."
         }
@@ -203,50 +202,27 @@ function New-AzConnectedMachine {
             throw "azcmagent exited with a non-zero exit code: $LASTEXITCODE"
         }
 
-        if ($IsLinux) {
+        $showResult = if ($IsLinux) {
             sudo $azcmagentPath show
+        } else {
+            # Windows
+            & $azcmagentPath show
         }
 
-        # Windows
-        & $azcmagentPath show
+        # Combine the output into one string
+        [string]::Join("`n", $showResult)
     }
 
     if ($PSSession) {
-        $showResult = Invoke-Command -ScriptBlock $script -Session $PSSession -ArgumentList $azcmagentArgs
+        $scriptWithUsings = {
+            $Proxy = $using:Proxy
+            $script = $using:script
+            Invoke-Command -ScriptBlock ([scriptblock]::Create($script)) -ArgumentList $args
+        }
+        $showResult = Invoke-Command -ScriptBlock $scriptWithUsings -Session $PSSession -ArgumentList $azcmagentArgs
     } else {
         $showResult = & $script $azcmagentArgs
     }
 
-    # Get name of machine registered
-    $selectStrResult = $showResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)$"
-    $Name = $selectStrResult.Matches.Groups |
-        Where-Object Name -EQ resourceName |
-        Select-Object -ExpandProperty Value
-
-    $selectStrResult = $showResult | Select-String -Pattern "^VM ID\s+:(?<vmId>.*)$"
-    $vmId = $selectStrResult.Matches.Groups |
-        Where-Object Name -EQ vmId |
-        Select-Object -ExpandProperty Value
-
-    # Return the ConnectedMachine object.
-    Get-AzConnectedMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-}
-
-function ConvertTagHashtableToString {
-    param (
-        [hashtable]
-        [ValidateNotNull]
-        $TagHashtable
-    )
-
-    $keys = $TagHashtable.Keys
-    $tagStrings = foreach ($key in $keys) {
-        $tag = $key
-        if ($TagHashtable[$key] -and $TagHashtable[$key].GetType() -eq [string]) {
-            $tag += "=$($TagHashtable[$key])"
-        }
-        $tag
-    }
-
-    return [string]::Join(',', $tagStrings)
+    $showResult | HandleShowResult -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
 }

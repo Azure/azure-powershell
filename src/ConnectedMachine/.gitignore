@@ -12,3 +12,6 @@ test/*-TestResults.xml
 /*.snk
 /*.csproj
 /*.nuspec
+
+# Include helper module
+!custom/helper.psm1
