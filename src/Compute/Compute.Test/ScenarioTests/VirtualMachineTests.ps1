@@ -2867,14 +2867,28 @@ function Test-VirtualMachineGetStatus
     {
         # Common
         
-        $loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
-        
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Creating the dedicated host
+        $hostGroupName = $rgname + 'hostgroup'
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "1" -SupportAutomaticPlacement $false -Tag @{key1 = "val1"};
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+
+        Assert-AreEqual $false $hostGroup.SupportAutomaticPlacement;
+
+        $hostName = $rgname + 'host'
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type3" -PlatformFaultDomain 1 -Tag @{key1 = "val2"};
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        $dedicatedHostId = $dedicatedHost.Id;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -2956,13 +2970,13 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
-
+        Start-Transcript -Path "./VMWITHASSIGNEDHOST.txt"
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
         Assert-True {$a.Contains("AssignedHost");}
-
+        Stop-Transcript
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
         $a = $vms | Out-String;
