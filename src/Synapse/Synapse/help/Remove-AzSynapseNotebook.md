@@ -31,7 +31,7 @@ Remove-AzSynapseNotebook -InputObject <PSNotebookResource> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-he **Remove-AzSynapseNotebook** cmdlet removes a notebook from a workspace.
+The **Remove-AzSynapseNotebook** cmdlet removes a notebook from a workspace.
 
 ## EXAMPLES
 

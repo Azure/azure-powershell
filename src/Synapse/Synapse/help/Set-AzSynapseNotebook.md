@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSynapseNotebook
 
 ## SYNOPSIS
-Creates a notebook in a workspace.
+Creates or updates a notebook in a workspace.
 
 ## SYNTAX
 
@@ -39,16 +39,20 @@ Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -Sp
 ```
 
 ## DESCRIPTION
-The **Set-AzSynapseNotebook** cmdlet creates a notebook in a workspace.
+The **Set-AzSynapseNotebook** cmdlet creates or updates a notebook in a workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb"
+
+    WorkspaceName : ContosoWorkspace
+    Properties    : Microsoft.Azure.Commands.Synapse.Models.PSNotebook
+    Name          : notebook
 ```
 
-This command creates a notebook from notebook file notebook.ipynb in the workspace named ContosoWorkspace.
+This command creates or updates a notebook from notebook file notebook.ipynb in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
@@ -56,14 +60,14 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Set-AzSynapseNotebook -DefinitionFile "C:\\samples\\notebook.ipynb"
 ```
 
-This command creates a notebook from notebook file notebook.ipynb in the workspace named ContosoWorkspace through pipeline.
+This command creates or updates a notebook from notebook file notebook.ipynb in the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
 PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -SparkPoolName ContosoSparkPool -Executors 2
 ```
 
-This command creates a notebook from notebook file notebook.ipynb which attaches to ContosoSparkPool and uses 2 executors in the workspace named ContosoWorkspace.
+This command creates or updates a notebook from notebook file notebook.ipynb which attaches to ContosoSparkPool and uses 2 executors in the workspace named ContosoWorkspace.
 
 ## PARAMETERS
 
