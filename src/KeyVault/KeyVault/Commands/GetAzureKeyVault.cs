@@ -85,6 +85,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to show the previously deleted vaults in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
+        [Parameter(Mandatory = false,
+            ParameterSetName = GetVaultParameterSet,
+            HelpMessage = "Specifies the type of Vault / HSM to be shown. If omitted, both will be listed.")]
+        [Alias("Type")]
+        public ResourceTypeName ResourceType { get; set; }
+
         /// <summary>
         /// Tag value
         /// </summary>
@@ -98,23 +104,68 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
+            ResourceTypeName? resourceTypeName = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ResourceType)))
+            {
+                resourceTypeName = this.ResourceType;
+            }
+
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVault vault = null;
+                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName, true) : ResourceGroupName;
+
+                    PSKeyVaultIdentityItem vault = null;
 
                     if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
-                        vault = KeyVaultManagementClient.GetVault(
-                                                    VaultName,
-                                                    ResourceGroupName,
-                                                    ActiveDirectoryClient);
-                        WriteObject(FilterByTag(vault, Tag));
+                        switch (resourceTypeName)
+                        {
+                            case ResourceTypeName.Vault:
+                                vault = KeyVaultManagementClient.GetVault(
+                                                            VaultName,
+                                                            ResourceGroupName,
+                                                            ActiveDirectoryClient);
+                                WriteObject(FilterByTag((PSKeyVault)vault, Tag));
+                                break;
+
+                            case ResourceTypeName.Hsm:
+                                vault = KeyVaultManagementClient.GetManagedHsm(
+                                                            VaultName,
+                                                            ResourceGroupName,
+                                                            ActiveDirectoryClient);
+                                WriteObject(FilterByTag((PSManagedHsm)vault, Tag));
+                                break;
+
+                            default:
+                                // Search both Vaults and ManagedHsms 
+                                vault = KeyVaultManagementClient.GetVault(
+                                                            VaultName,
+                                                            ResourceGroupName,
+                                                            ActiveDirectoryClient);
+                                if (vault == null)
+                                {
+                                    vault = KeyVaultManagementClient.GetManagedHsm(
+                                                            VaultName,
+                                                            ResourceGroupName,
+                                                            ActiveDirectoryClient);
+                                    WriteObject(FilterByTag((PSManagedHsm)vault, Tag));
+                                }
+                                else
+                                {
+                                    WriteObject(FilterByTag((PSKeyVault)vault, Tag));
+                                }
+                                break;
+                        }
                     }
                     else
                     {
-                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
+                        WriteObject(
+                            TopLevelWildcardFilter(
+                                ResourceGroupName, VaultName, 
+                                ListVaults(ResourceGroupName, Tag, resourceTypeName)),
+                            true);
                     }
                     
                     break;

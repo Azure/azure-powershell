@@ -15,7 +15,7 @@ Deletes a key vault.
 
 ### ByAvailableVault (Default)
 ```
-Remove-AzKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
+Remove-AzKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Hsm] [-Force]
  [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,19 +27,19 @@ Remove-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [
 
 ### InputObjectByAvailableVault
 ```
-Remove-AzKeyVault [-InputObject] <PSKeyVault> [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-InputObject] <PSKeyVaultIdentityItem> [-Hsm] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByDeletedVault
 ```
-Remove-AzKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-InputObject] <PSKeyVaultIdentityItem> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdByAvailableVault
 ```
-Remove-AzKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-ResourceId] <String> [[-Location] <String>] [-Hsm] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,6 +74,14 @@ True
 
 This command removes the key vault named Contoso03Vault from the named resource group.
 If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.
+
+### Example 3: Remove a managed hsm
+```powershell
+PS C:\>  Remove-AzKeyVault -Name "testManagedHsm" -Hsm -PassThru
+
+True
+```
+This command removes the managed hsm named testManagedHsm from your current subscription.
 
 ## PARAMETERS
 
@@ -123,11 +131,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Hsm
+Specifies the type of vault as MHSM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByAvailableVault, InputObjectByAvailableVault, ResourceIdByAvailableVault
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Key Vault object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
 Aliases:
 

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -32,8 +33,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
-        #region Input Parameter Definitions
+        private const string KeyVaultParameterSet = "KeyVaultParameterSet";
+        private const string ManagedHsmParameterSet = "ManagedHsmParameterSet";
 
+        #region Common Parameter Definitions
         /// <summary>
         /// Vault name
         /// </summary>
@@ -70,29 +73,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Location { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
-        public SwitchParameter EnabledForDeployment { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
-        public SwitchParameter EnabledForTemplateDeployment { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
-        public SwitchParameter EnabledForDiskEncryption { get; set; }
-
-        [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
             HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
         public SwitchParameter DisableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
+            HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }
@@ -100,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
-        public SkuName Sku { get; set; }
+        public string Sku { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -108,8 +103,47 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
+        [Parameter(Mandatory = false,
+            // Hide out until available
+            ParameterSetName = KeyVaultParameterSet,
+            HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
         public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
+
+        #endregion
+
+        #region Keyvault-specified Parameter Definitions
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = KeyVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        public SwitchParameter EnabledForDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = KeyVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = KeyVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
+
+        #endregion
+
+        #region Managed HSM-specified Parameter Definitions
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = ManagedHsmParameterSet,
+            HelpMessage = "Array of initial administrators object ids for this managed hsm pool.")]
+        public string[] Administrator { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = ManagedHsmParameterSet,
+            HelpMessage = "Specifies the type of this vault as Managed HSM.")]
+        public SwitchParameter Hsm { get; set; }
 
         #endregion
 
@@ -117,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
-                if (VaultExistsInCurrentSubscription(Name))
+                if (VaultExistsInCurrentSubscription(Name, Hsm.IsPresent))
                 {
                     throw new ArgumentException(Resources.VaultAlreadyExists);
                 }
@@ -152,15 +186,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
+                // Set common parameters
+                var vaultCreationParameter = new VaultCreationParameters()
                 {
                     VaultName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
-                    EnabledForDeployment = this.EnabledForDeployment.IsPresent,
-                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
-                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = !DisableSoftDelete.IsPresent,
+                    SkuName = this.Sku,
+                    EnableSoftDelete = !this.DisableSoftDelete.IsPresent,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
                     /*
                      * If soft delete is enabled, but retention days is not specified, use the default value,
@@ -172,17 +205,33 @@ namespace Microsoft.Azure.Commands.KeyVault
                         : (this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
                             ? SoftDeleteRetentionInDays
                             : Constants.DefaultSoftDeleteRetentionDays),
-                    SkuFamilyName = DefaultSkuFamily,
-                    SkuName = this.Sku,
+
                     TenantId = GetTenantId(),
                     AccessPolicy = accessPolicy,
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
-                },
-                    ActiveDirectoryClient,
-                    NetworkRuleSet);
+                };
 
-                this.WriteObject(newVault);
+                switch (ParameterSetName)
+                {
+                    case KeyVaultParameterSet:
+                        vaultCreationParameter.EnabledForDeployment = this.EnabledForDeployment.IsPresent;
+                        vaultCreationParameter.EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent;
+                        vaultCreationParameter.EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent;
+                        vaultCreationParameter.SkuFamilyName = DefaultSkuFamily;
+                        this.WriteObject(KeyVaultManagementClient.CreateNewVault(vaultCreationParameter, ActiveDirectoryClient, NetworkRuleSet));
+                        break;
+
+                    case ManagedHsmParameterSet:
+                        vaultCreationParameter.Administrator = this.Administrator;
+                        vaultCreationParameter.SkuFamilyName = DefaultManagedHsmSkuFamily;
+                        this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, ActiveDirectoryClient, NetworkRuleSet));
+                        break;
+                    default:
+                        throw new ArgumentException(Resources.BadParameterSetName);
+                }
+
+          
 
                 if (accessPolicy == null)
                 {

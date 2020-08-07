@@ -71,6 +71,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedHsmCRUD()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
+                () => { return new[] { "Test-ManagedHsmCRUD" }; },
+                null,
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
+                );
+        }
+
         #endregion
 
         #region Get-AzureRmKeyVault

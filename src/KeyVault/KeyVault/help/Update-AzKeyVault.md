@@ -12,21 +12,21 @@ Update the state of an Azure key vault.
 
 ## SYNTAX
 
-### UpdateByNameParameterSet (Default)
+### UpdateKeyVaultByNameParameterSet (Default)
 ```
 Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateByInputObjectParameterSet
+### UpdateKeyVaultByInputObjectParameterSet
 ```
-Update-AzKeyVault -InputObject <PSKeyVault> [-EnableSoftDelete] [-EnablePurgeProtection]
+Update-AzKeyVault -InputObject <PSKeyVaultIdentityItem> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateByResourceIdParameterSet
+### UpdateKeyVaultByResourceIdParameterSet
 ```
 Update-AzKeyVault -ResourceId <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -107,8 +107,8 @@ Accept wildcard characters: False
 Key vault object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-Parameter Sets: UpdateByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
+Parameter Sets: UpdateKeyVaultByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -123,7 +123,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: UpdateKeyVaultByNameParameterSet
 Aliases:
 
 Required: True
@@ -138,7 +138,7 @@ Resource ID of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByResourceIdParameterSet
+Parameter Sets: UpdateKeyVaultByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -168,7 +168,7 @@ Name of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: UpdateKeyVaultByNameParameterSet
 Aliases: Name
 
 Required: True

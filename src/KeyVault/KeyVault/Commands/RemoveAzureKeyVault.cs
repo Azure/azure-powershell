@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "Key Vault object to be deleted.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
+        public PSKeyVaultIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Vault object
@@ -134,6 +134,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Remove the previously deleted vault permanently.")]
         public SwitchParameter InRemovedState { get; set; }
 
+        [Parameter(Mandatory = false,
+            ParameterSetName = RemoveVaultParameterSet,
+            HelpMessage = "Specifies the type of vault as Managed HSM.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectRemoveVaultParameterSet,
+            HelpMessage = "Specifies the type of vault as Managed HSM.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdRemoveVaultParameterSet,
+            HelpMessage = "Specifies the type of vault as Managed HSM.")]
+        public SwitchParameter Hsm { get; set; }
+
         /// <summary>
         /// If present, do not ask for confirmation
         /// </summary>
@@ -192,7 +203,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                // Get resource group name for keyvault or ManagedHsm
+                ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName,Hsm.IsPresent) : ResourceGroupName;
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                     throw new ArgumentException(string.Format(Resources.VaultNotFound, VaultName, ResourceGroupName));
                 ConfirmAction(
@@ -208,9 +220,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                     VaultName,
                     () =>
                     {
-                        KeyVaultManagementClient.DeleteVault(
-                    vaultName: VaultName,
-                    resourceGroupName: this.ResourceGroupName);
+                        if (Hsm.IsPresent)
+                        {
+                            KeyVaultManagementClient.DeleteManagedHsm(
+                                managedHsm:VaultName,
+                                resourceGroupName: ResourceGroupName);
+                        }
+                        else
+                        {
+                            KeyVaultManagementClient.DeleteVault(
+                                vaultName: VaultName,
+                                resourceGroupName: ResourceGroupName);
+                        }
 
                         if (PassThru)
                         {
