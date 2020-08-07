@@ -407,6 +407,47 @@ function Test-SimpleNewVmssPpg
 
 <#
 .SYNOPSIS
+Test Simple Paremeter Set With HostGroup (automatic placement)
+#>
+function Test-SimpleNewVmssHostGroup
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        # Common
+        $loc = "EastUS2EUAP"
+        $rg = New-AzResourceGroup -Name $rgname -Location $loc
+
+        # Creating a host group
+        $hostGroupName = $rgname + 'hostgroup'
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "1" -Tag @{key1 = "val1"};
+
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+
+        # Creating a host for the hostgroup
+        $hostName = $rgname + 'host'
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
+
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id
+
+        Assert-AreEqual $vmss.HostGroupId $hostGroup.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Simple Paremeter Set for New Vmss with eviction policy, priority, and max price.
 #>
 function Test-SimpleNewVmssBilling

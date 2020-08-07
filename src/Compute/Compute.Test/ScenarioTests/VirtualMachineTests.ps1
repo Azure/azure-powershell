@@ -2866,14 +2866,13 @@ function Test-VirtualMachineGetStatus
     try
     {
         # Common
-        if ($loc -eq $null)
-        {
-            $loc = Get-ComputeVMLocation;
-        }
+        
+        $loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_E2s_v3';
         $vmname = 'vm' + $rgname;
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2962,6 +2961,7 @@ function Test-VirtualMachineGetStatus
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
+        Assert-True {$a.Contains("AssignedHost");}
 
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
@@ -4163,6 +4163,50 @@ function Test-SetAzVMOperatingSystemError
        
         # Virtual Machine
         Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The patchMode 'AutomaticByPlatform' is invalid. For patchMode 'AutomaticByPlatform', the properties 'provisionVMAgent' and 'enableAutomaticUpdates' must be set to true.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test HostGroup property is set on a VM correctly when HostGroup.Id is passed as a parameter.
+#>
+function Test-HostGroupPropertySetOnVirtualMachine
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $hostGroupName = $rgname + 'hostgroup'
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2";
+        
+        $hostName = $rgname + 'host'
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -PlatformFaultDomain 1;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname0 = 'v' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id;
+        
+        Assert-AreEqual $hostGroup.Id $vm0.HostGroup.Id;
     }
     finally
     {
