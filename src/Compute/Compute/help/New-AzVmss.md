@@ -30,8 +30,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
- [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-Priority <String>]
- [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
+ [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>] 
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-DefaultProfile <IAzureContextContainer>]
  [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -342,6 +342,21 @@ The name of the frontend address pool to use in the Scale Set load balancer.  If
 Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostGroupId
+Specifies the dedicated host group the virtual machine scale set will reside in.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases: HostGroup
 
 Required: False
 Position: Named
