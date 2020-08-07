@@ -18,13 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.3
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet
 * Added `Get-AzInvoiceSection` cmdlet
 * Added new parameters in `Get-AzBillingInvoice` cmdlet
 * Removed properties DownloadUrlExpiry, Type, BillingPeriodNames from the response of Get-AzBillingInvoice cmdlet
+
+## Version 1.0.3
+* Updated assembly version of consumption cmdlets
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
