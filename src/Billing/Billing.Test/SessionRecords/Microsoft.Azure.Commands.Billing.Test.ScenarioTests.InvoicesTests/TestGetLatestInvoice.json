@@ -207,7 +207,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sig=xb71VrBc33ZoYszEegooWkQzl1T2piOHDOw4gUZ%2BCtM%3D&se=2020-07-06T19%3A29%3A14Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -273,7 +273,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sig=xb71VrBc33ZoYszEegooWkQzl1T2piOHDOw4gUZ%2BCtM%3D&se=2020-07-06T19%3A29%3A14Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     }
   ],

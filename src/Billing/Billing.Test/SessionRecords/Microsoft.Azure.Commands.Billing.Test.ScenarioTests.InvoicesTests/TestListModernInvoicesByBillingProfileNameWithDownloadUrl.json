@@ -207,7 +207,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534838_5404766150.pdf?sv=2019-02-02&sr=b&sig=lJxadn0AvwLFejjN6iReeS3%2B907DKq11LMaECLGt6sQ%3D&se=2020-07-06T19%3A37%3A54Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534838_5404766150.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -273,7 +273,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534838_5404766150.pdf?sv=2019-02-02&sr=b&sig=lJxadn0AvwLFejjN6iReeS3%2B907DKq11LMaECLGt6sQ%3D&se=2020-07-06T19%3A37%3A54Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534838_5404766150.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -411,7 +411,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000492132_5380563725.pdf?sv=2019-02-02&sr=b&sig=i1oYKkhoeWNn0ZJ4p1BQmfpeN7j92XT%2FafQumg46jbg%3D&se=2020-07-06T19%3A38%3A04Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000492132_5380563725.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -477,7 +477,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000492132_5380563725.pdf?sv=2019-02-02&sr=b&sig=i1oYKkhoeWNn0ZJ4p1BQmfpeN7j92XT%2FafQumg46jbg%3D&se=2020-07-06T19%3A38%3A04Z&sp=r\"\r\n}",
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000492132_5380563725.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
       "StatusCode": 200
     }
   ],
