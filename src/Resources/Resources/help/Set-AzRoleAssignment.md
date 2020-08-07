@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroleassignment
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Condition Version can be upgraded from 1.0 to 2.0 but it can't not be downgraded
   $roleAssignment.ConditionVersion = $ConditionVersion
 
   Set-AzRoleAssignment -InputObject $roleAssignment -PassThru
-  
+
   RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
                      -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
                      Assignments/926c2a76-be19-4281-94de-38777629b9dc
