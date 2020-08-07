@@ -1,0 +1,27 @@
+# Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily Midnight Build
+  branches:
+    include:
+    - master
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .Net Core sdk  2.1.302'
+  inputs:
+    version: 2.1.302
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Debug'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /p:Configuration=Debug /t:Build /NoLogo'
