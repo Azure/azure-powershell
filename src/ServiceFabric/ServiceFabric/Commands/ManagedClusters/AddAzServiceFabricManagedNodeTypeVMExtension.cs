@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     NodeType updatedNodeTypeParams = this.GetNodeTypeWithAddedExtension();
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedNodeTypeParams)
+                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.NodeTypeName, updatedNodeTypeParams)
                         .GetAwaiter().GetResult();
 
                     var nodeType = this.PollLongRunningOperation(beginRequestResponse);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private NodeType GetNodeTypeWithAddedExtension()
         {
-            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
 
             if (currentNodeType.VmExtensions == null)
             {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Type = this.Type,
                 TypeHandlerVersion = this.TypeHandlerVersion,
                 ForceUpdateTag = this.ForceUpdateTag,
-                AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion,
+                AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion.IsPresent,
                 Settings = this.Settings,
                 ProtectedSettings = this.ProtectedSettings,
                 ProvisionAfterExtensions = this.ProvisionAfterExtensions
