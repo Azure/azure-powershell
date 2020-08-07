@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Update cluster. name {0}, resouce group: {1}", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Update cluster {0} on resouce group: {1}", this.Name, this.ResourceGroupName)))
             {
                 try
                 {

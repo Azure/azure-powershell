@@ -74,10 +74,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = ClientCertByTp,
                    HelpMessage = "Client certificate thumbprint.")]
+        [ValidateNotNullOrEmpty()]
         public string ClientCertThumbprint { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ClientCertByCn,
                    HelpMessage = "Client certificate common name.")]
+        [ValidateNotNullOrEmpty()]
         public string ClientCertCommonName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
@@ -87,6 +89,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         [Parameter(Mandatory = true, HelpMessage = "Admin password used for the virtual machines.")]
+        [ValidateNotNullOrEmpty()]
         public string AdminPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Admin password used for the virtual machines. Default: vmadmin.")]
@@ -114,7 +117,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Create new managed cluster. name {0}, resouce group: {1}", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Create new managed cluster {0} in resouce group {1}", this.Name, this.ResourceGroupName)))
             {
                 try
                 {
@@ -167,7 +170,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 clientCerts.Add(new ClientCertificate()
                 {
                     CommonName = this.ClientCertCommonName,
-                    IssuerThumbprint = string.Join(",", this.ClientCertIssuerThumbprint),
+                    IssuerThumbprint = this.ClientCertIssuerThumbprint != null ? string.Join(",", this.ClientCertIssuerThumbprint) : null,
                     IsAdmin = this.ClientCertIsAdmin.IsPresent
                 });
             }

@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Create new managed cluster. name {0}, resouce group: {1}", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Create new node type {0} in cluster: {1}", this.Name, this.ClusterName)))
             {
                 try
                 {

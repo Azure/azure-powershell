@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 if (ParameterSetName == DeleteNode)
                 {
-                    if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Delete node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+                    if (ShouldProcess(target: this.Name, action: string.Format("Delete node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
                     {
 
                         var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRemoveNode.IsPresent);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Remove node type: {0} on cluster {1}, resource group {2}", this.Name, this.ClusterName, this.ResourceGroupName)))
+                    if (ShouldProcess(target: this.Name, action: string.Format("Remove node type: {0} on cluster {1}, resource group {2}", this.Name, this.ClusterName, this.ResourceGroupName)))
                     {
                         var beginRequestResponse = this.SFRPClient.NodeTypes.BeginDeleteWithHttpMessagesAsync(
                                 this.ResourceGroupName,
