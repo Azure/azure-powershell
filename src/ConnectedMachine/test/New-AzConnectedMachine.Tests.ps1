@@ -69,26 +69,28 @@ Describe 'New-AzConnectedMachine' {
     }
 
     It 'Can connect a machine to an existing resource group' {
-        $machine = New-AzConnectedMachine @commonParams -Location $env.location
+        $machine = New-AzConnectedMachine @commonParams -Location $env.location -Tag @{ Owner = "Contoso" }
+        $machine.Tag | Write-Host
+        $machine.Tag.Values | Write-Host
+        $machine.Tag.Keys | Write-Host
         $machine | Should -Not -Be $null
         $machine.Location | Should -MatchExactly $env.location
+        $machine.Tag["Owner"] | Should -Be "Contoso"
     }
 
-    It 'Can connect a machine to an existing resource group using a PSSession' {
-        $pssession = if($IsLinux) {
-            New-PSSession -HostName localhost
-        } else {
-            # Windows
-            New-PSSession -ComputerName localhost
+    It 'Can connect a machine to an existing resource group using a PSSession' -Skip:($IsLinux) {
+        # This is only supported on Windows
+        try {
+            $pssession = New-PSSession -ComputerName localhost
+        }
+        catch {
+            Enable-PSRemoting -Force
+            $pssession = New-PSSession -ComputerName localhost
         }
 
         $machine = New-AzConnectedMachine @commonParams -Location $env.location -PSSession $pssession
 
-        if ($IsLinux) {
-            $machine | Should -Be $null
-        } else {
-            $machine | Should -Not -Be $null
-            $machine.Location | Should -MatchExactly $env.location
-        }
+        $machine | Should -Not -Be $null
+        $machine.Location | Should -MatchExactly $env.location
     }
 }
