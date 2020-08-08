@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -237,15 +238,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSArgumentException("No version found in Resource ID");
                     }
 
-                    object template = ((PSTemplateSpecSingleVersion)TemplateSpecsSdkClient.GetTemplateSpec(
+                    var templateSpecVersion = ((PSTemplateSpecSingleVersion)TemplateSpecsSdkClient.GetTemplateSpec(
                         ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
                         ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName)).Version.Template;
+                        resourceIdentifier.ResourceName)).Version;
+
+                    var templateObj = JObject.Parse(templateSpecVersion.Template);
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            template,
+                            templateObj,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             MyInvocation.MyCommand.Parameters.Keys.ToArray());
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     else
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            template,
+                            templateObj,
                             TemplateParameterObject,
                             TemplateParameterUri,
                             MyInvocation.MyCommand.Parameters.Keys.ToArray());

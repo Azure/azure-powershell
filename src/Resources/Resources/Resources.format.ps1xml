@@ -473,5 +473,71 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecVersion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecVersion</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Description -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$_.Description</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Artifacts</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Artifacts -ne $null -and $_.Artifacts.Count -gt 0</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$artifactPaths=@(); foreach ($artifact in $_.Artifacts){$artifactPaths+="'$($artifact.Path)'"}; $artifactPaths</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CreationTime(UTC)</Label>
+                <PropertyName>CreationTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastModifiedTime(UTC)</Label>
+                <PropertyName>LastModifiedTime</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecTemplateArtifact</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecTemplateArtifact</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Path</Label>
+                <PropertyName>Path</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Template</Label>
+                <PropertyName>Template</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

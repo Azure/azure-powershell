@@ -214,7 +214,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             foreach (var artifact in packagedTemplate.Artifacts)
             {
                 string absoluteLocalPath = Path.GetFullPath(
-                    Path.Combine(targetDirectory, artifact.Path)
+                    Path.Combine(
+                        targetDirectory,
+                        NormalizeDirectorySeparatorsForLocalFS(artifact.Path)
+                    )
                 );
 
                 if (!absoluteLocalPath.StartsWith(
@@ -244,7 +247,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 }
 
                 string absoluteLocalPath = Path.GetFullPath(
-                    Path.Combine(targetDirectory, artifact.Path)
+                    Path.Combine(
+                        targetDirectory, 
+                        NormalizeDirectorySeparatorsForLocalFS(artifact.Path)
+                    )
                 );
 
                 FileUtilities.DataStore.CreateDirectory(Path.GetDirectoryName(absoluteLocalPath));
@@ -317,6 +323,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 .ToArray();
 
             return templateLinkObjs;
+        }
+
+        /// <summary>
+        /// Simply normalizes directory path separators in the specified path
+        /// to match those of the local filesystem(s).
+        /// </summary>
+        private static string NormalizeDirectorySeparatorsForLocalFS(string absoluteFilePath)
+        {
+            if (Path.DirectorySeparatorChar == '\\') {
+                // Windows based:
+                return absoluteFilePath.Replace(Path.AltDirectorySeparatorChar, '\\');
+            }
+
+            // Unix/Other based:
+            return absoluteFilePath.Replace('\\', Path.DirectorySeparatorChar); 
         }
 
         /// <summary>

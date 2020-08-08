@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             new List<PSTemplateSpecArtifact>();
 
         /// <summary>
-        /// Gets or sets the Azure Resource Manager template.
+        /// Gets or sets the Azure Resource Manager template (JSON).
         /// </summary>
-        public object Template { get; set; }
+        public string Template { get; set; }
 
         /// <summary>
         /// Gets the date/time the template spec version was created (PUT to Azure).
@@ -88,7 +89,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 Name = templateSpecVersion.Name,
                 Description = templateSpecVersion.Description,
                 Tags = templateSpecVersion.Tags,
-                Template = templateSpecVersion.Template
+                // Note: Cast is redundant, but present for clarity reasons:
+                Template = ((JToken)templateSpecVersion.Template).ToString()
             };
 
             if (templateSpecVersion.Artifacts?.Any() == true) {

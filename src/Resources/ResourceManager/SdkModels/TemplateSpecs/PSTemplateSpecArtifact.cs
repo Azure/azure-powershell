@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -28,13 +29,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
     public class PSTemplateSpecTemplateArtifact : PSTemplateSpecArtifact
     {
-        public object Template { get; set; }
+        public string Template { get; set; }
 
         protected PSTemplateSpecTemplateArtifact(
             TemplateSpecTemplateArtifact artifact
             ) : base(artifact)
         {
-            this.Template = artifact.Template;
+            // Note: Cast is redundant, but present for clarity reasons:
+            this.Template = ((JToken)artifact.Template).ToString();
         }
 
         internal static PSTemplateSpecTemplateArtifact FromAzureSDKTemplateSpecTemplateArtifact(
