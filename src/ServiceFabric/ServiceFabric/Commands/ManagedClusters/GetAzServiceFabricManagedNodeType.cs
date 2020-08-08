@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     public class GetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";
-        protected const string ByResouceGroup = "ByResouceGroup";
+        protected const string ByResourceGroup = "ByResourceGroup";
 
         #region Params
 
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }

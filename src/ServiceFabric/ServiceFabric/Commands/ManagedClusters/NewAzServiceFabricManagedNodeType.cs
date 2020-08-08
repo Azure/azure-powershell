@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     if (nodeType != null)
                     {
                         WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Node type '{0}' already exists.", this.Name)),
-                            "ResouceAlreadyExists", ErrorCategory.InvalidOperation, null));
+                            "ResourceAlreadyExists", ErrorCategory.InvalidOperation, null));
                     }
                     else
                     {

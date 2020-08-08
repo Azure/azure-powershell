@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = DeleteNode, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
-        public List<string> NodeName { get; set; }
+        public string[] NodeName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = DeleteNode,
             HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.")]

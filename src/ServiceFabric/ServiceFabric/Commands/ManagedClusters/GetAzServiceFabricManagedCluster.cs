@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     public class GetServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";
-        protected const string ByResouceGroup = "ByResouceGroup";
+        protected const string ByResourceGroup = "ByResourceGroup";
         protected const string BySubscription = "BySubscription";
 
         #region Params
 
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResouceGroup, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var cluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
                         WriteObject(new PSManagedCluster(cluster), false);
                         break;
-                    case ByResouceGroup:
+                    case ByResourceGroup:
                         var clusterList = this.ReturnListByPageResponse(
                             this.SFRPClient.ManagedClusters.ListByResourceGroup(this.ResourceGroupName),
                             this.SFRPClient.ManagedClusters.ListByResourceGroupNext);

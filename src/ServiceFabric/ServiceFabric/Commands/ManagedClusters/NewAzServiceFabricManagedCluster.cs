@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Create new managed cluster {0} in resouce group {1}", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Create new managed cluster {0} in resource group {1}", this.Name, this.ResourceGroupName)))
             {
                 try
                 {
@@ -125,12 +125,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     if (cluster != null)
                     {
                         WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Cluster '{0}' already exists.", this.Name)),
-                            "ResouceAlreadyExists", ErrorCategory.InvalidOperation, null));
+                            "ResourceAlreadyExists", ErrorCategory.InvalidOperation, null));
                     }
                     else
                     {
-                        // Create resouce group if it doesn't exist
-                        this.ResourcesClient.ResourceGroups.CreateOrUpdate(this.ResourceGroupName, new ResourceGroup(this.Location));
+                        // Create resource group if it doesn't exist
+                        var rg = SafeGetResource(() => this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName));
+                        if (rg == null)
+                        {
+                            WriteVerboseWithTimestamp(string.Format("Creating resource group {0} on {1}", this.ResourceGroupName, this.Location));
+                            this.ResourcesClient.ResourceGroups.CreateOrUpdate(this.ResourceGroupName, new ResourceGroup(this.Location));
+                        }
 
                         ManagedCluster newClusterParams = this.GetNewManagedClusterParameters();
                         var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)

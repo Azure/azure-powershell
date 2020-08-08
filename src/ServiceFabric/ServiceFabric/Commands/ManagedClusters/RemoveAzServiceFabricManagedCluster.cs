@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Remove cluster {0} in resouce group {1}.", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Remove cluster {0} in resource group {1}.", this.Name, this.ResourceGroupName)))
             {
                 try
                 {

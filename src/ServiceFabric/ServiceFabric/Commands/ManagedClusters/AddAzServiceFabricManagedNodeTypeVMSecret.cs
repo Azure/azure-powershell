@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "Key Vault resouce id containing the certificates.")]
+        [Parameter(Mandatory = true, HelpMessage = "Key Vault resource id containing the certificates.")]
         public string SourceVaultId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  \"data\":\"<Base64-encoded-certificate>\",<br>  \"dataType\":\"pfx\",<br>  \"password\":\"<pfx-file-password>\"<br>}/")]
