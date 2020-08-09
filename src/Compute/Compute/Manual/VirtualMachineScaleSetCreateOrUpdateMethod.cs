@@ -137,7 +137,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("HostGroup")]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
-            Mandatory = false
+            Mandatory = false,
+            HelpMessage = "Specifies the dedicated host group the virtual machine scale set will reside in."
         )]
         public string HostGroupId { get; set; }
 
