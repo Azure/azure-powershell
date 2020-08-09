@@ -216,6 +216,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetStatusWithAssignedHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithAssignedHost");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineManagedDiskConversion()
         {
             TestRunner.RunTestScript("Test-VirtualMachineManagedDiskConversion");
