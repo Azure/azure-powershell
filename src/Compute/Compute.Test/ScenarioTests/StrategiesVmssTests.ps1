@@ -416,28 +416,31 @@ function Test-SimpleNewVmssHostGroup
 
     try
     {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        $zone = "2"
+        
+        # Creating the resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Host
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+
+        $Sku = "Dsv3-Type1"
+        $hostName = $rgname + "Host"
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
+
+        # Creating a new vmss
+        $VmSku = "Standard_D2s_v3"
         $vmssname = "MyVmss"
         $username = "admin01"
-        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku 
 
-        # Common
-        $loc = "EastUS2EUAP"
-        $rg = New-AzResourceGroup -Name $rgname -Location $loc
-
-        # Creating a host group
-        $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "1" -Tag @{key1 = "val1"};
-
-        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
-
-        # Creating a host for the hostgroup
-        $hostName = $rgname + 'host'
-        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
-
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id
-
-        Assert-AreEqual $vmss.HostGroupId $hostGroup.Id
+        Assert-AreEqual $vmss.HostGroup.Id $hostGroup.Id
     }
     finally
     {
