@@ -3032,7 +3032,7 @@ function Test-VirtualMachineGetStatusWithAssignedHost
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
-        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel "crptestps2532vm-1d1de" -HostGroupId $hostGroup.Id;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status
         $a = $vm | Out-String
 
