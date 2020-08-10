@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+If specified, displays the updated role assignment
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
