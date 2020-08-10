@@ -22,8 +22,15 @@ function Test-HostRelatedCommands{
 	# Create some resources that will be used throughout test
 	try
 	{
-		# test create cluster
-		$cluster = Create-Cluster -location "South Central US"
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameterForWASB
+
+		# create cluster that will be used throughout test
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 		Assert-NotNull $cluster
 
 		#test Get-AzHDInsightHost

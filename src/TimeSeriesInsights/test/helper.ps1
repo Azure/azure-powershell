@@ -68,23 +68,23 @@ function GetOrCreateTsiEnv([bool]$forceCreate, [string]$resourceGroup, $tsiEnvPa
         $tsiEnvParamObj.Capacity = 2
     }
 
-    if($tsiEnvParamObj.Kind -eq 'LongTerm')
+    if($tsiEnvParamObj.Kind -eq 'Gen2')
     {
         if(!$tsiEnvParamObj.TimeSeriesIdProperty)
         {
             $tsiEnvParamObj.TimeSeriesIdProperty = @{name='cdc';type='string'}
         }
         $staAccountKey  = $staccountParamObj.accountKey | ConvertTo-SecureString -AsPlainText -Force
-        Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEnvironment(Kind:LongTerm) for test...'
+        Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEnvironment(Kind:Gen2) for test...'
         $tsiEnv = New-AzTimeSeriesInsightsEnvironment -ResourceGroupName $resourceGroup -Name $tsiEnvParamObj.TsiEnvName -Kind $tsiEnvParamObj.Kind -Location $tsiEnvParamObj.Location -Sku $tsiEnvParamObj.SkuName -StorageAccountName $staccountParamObj.accountName -StorageAccountKey $staAccountKey -TimeSeriesIdProperty $tsiEnvParamObj.TimeSeriesIdProperty
-        Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEnvironment(Kind:LongTerm) successfully.'
+        Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEnvironment(Kind:Gen2) successfully.'
         return $tsiEnv
     }
 
-    Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEnvironment(Kind:Standard) for test...'
+    Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEnvironment(Kind:Gen1) for test...'
     $tsiEnv = New-AzTimeSeriesInsightsEnvironment -ResourceGroupName $resourceGroup -Name $tsiEnvParamObj.TsiEnvName -Kind $tsiEnvParamObj.Kind -Location $tsiEnvParamObj.Location -Sku $tsiEnvParamObj.SkuName -DataRetentionTime $tsiEnvParamObj.TimeSpan -Capacity $tsiEnvParamObj.Capacity
     #$tsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $resourceGroup -Name $tsiEnvParamObj.TsiEnvName
-    Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEnvironment(Kind:Standard) successfully.'
+    Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEnvironment(Kind:Gen1) successfully.'
     return $tsiEnv
 }
 

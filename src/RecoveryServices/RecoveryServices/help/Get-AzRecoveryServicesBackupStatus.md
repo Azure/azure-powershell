@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
+Type of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
 
 ```yaml
 Type: System.String

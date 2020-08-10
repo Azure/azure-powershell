@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+        public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
 
     }
 }

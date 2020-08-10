@@ -398,8 +398,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             name = null;
             if (context != null)
             {
-
-                if (context.Subscription != null && context.Account != null)
+                if (null != context.Tenant && context.Subscription != null && null != context.Account)
+                {
+                    name = string.Format("{0} ({1}) - {2} - {3}", context.Subscription.Name, context.Subscription.Id, context.Tenant.Id, context.Account.Id);
+                    result = true;
+                }
+                else if (context.Subscription != null && context.Account != null)
                 {
                     name = string.Format("{0} ({1}) - {2}", context.Subscription.Name, context.Subscription.Id, context.Account.Id);
                     result = true;

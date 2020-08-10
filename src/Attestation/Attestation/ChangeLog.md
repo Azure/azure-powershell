@@ -21,6 +21,13 @@
 
 ## Upcoming Release
 
+## Version 0.1.8
+* Added default provider support to `Az.Attestation` module
+    - Added `Location` and `DefaultProvider` to `Get-AzAttestation`
+    - Added `Location` and `DefaultProvider` to policy signer management cmdlets
+    - Added `Location` and `DefaultProvider` to policy management cmdlets
+* Updated claim name from `aas-policyCertificate` to `maa-policyCertificate` for policy signer cmdlets
+
 ## Version 0.1.7
 * Added text based policy support to policy cmdlets
 

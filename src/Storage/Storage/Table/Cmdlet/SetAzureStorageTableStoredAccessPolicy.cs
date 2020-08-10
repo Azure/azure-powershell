@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             //Get existing permissions
             CloudTable table = localChannel.GetTableReference(Table);
-            TablePermissions tablePermissions = localChannel.GetTablePermissions(table);
+            TablePermissions tablePermissions = localChannel.GetTablePermissions(table, this.RequestOptions, this.TableOperationContext);
 
             //Set the policy with new value
             if (!tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             tablePermissions.SharedAccessPolicies[policyName] = policy;
 
             //Set permission back to table
-            localChannel.SetTablePermissions(table, tablePermissions);
+            localChannel.SetTablePermissions(table, tablePermissions, null, TableOperationContext);
             WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessTablePolicy>(tablePermissions.SharedAccessPolicies, policyName));
             return policyName;
         }

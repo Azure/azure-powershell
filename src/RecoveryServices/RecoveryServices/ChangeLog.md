@@ -19,8 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
+
+## Version 2.11.0
+* Removed project reference to Authentication
+* Azure Backup tuned cmdlets help text to be more accurate.
+* Azure Backup added support for fetching MAB agent jobs using `Get-AzRecoveryServicesBackupJob` cmdlet.
+
+
 ## Version 2.10.0
 * Azure Backup added support for fetching MAB items.
+* Azure Site Recovery support to update failover and test failover NIC names, existing NIC reuse.
 * Azure Site Recovery supports disk type "StandardSSD_LRS"
 
 ## Version 2.9.1

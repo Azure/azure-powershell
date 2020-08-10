@@ -26,6 +26,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
 
-        public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; } // To hide a breaking change
     }
 }

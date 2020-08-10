@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.OperationalInsights?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64a253d1-9fe9-47ef-bad1-d2372e6f1204"
+          "e12b533e-2d2b-46cb-bdb4-d8a4284d4468"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.13"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
         ]
       },
       "ResponseHeaders": {
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-request-id": [
-          "31bb3b86-d882-48fe-aa66-c4f4d99b5522"
+          "4d21fbf6-3570-4f77-8fcb-6c5259de55a4"
         ],
         "x-ms-correlation-request-id": [
-          "31bb3b86-d882-48fe-aa66-c4f4d99b5522"
+          "4d21fbf6-3570-4f77-8fcb-6c5259de55a4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083255Z:31bb3b86-d882-48fe-aa66-c4f4d99b5522"
+          "SOUTHEASTASIA:20200713T032615Z:4d21fbf6-3570-4f77-8fcb-6c5259de55a4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:32:54 GMT"
+          "Mon, 13 Jul 2020 03:26:14 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,29 +54,29 @@
           "-1"
         ],
         "Content-Length": [
-          "5961"
+          "5564"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights\",\r\n  \"namespace\": \"Microsoft.OperationalInsights\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"d2a0a418-0aac-4541-82b2-b3142c89da77\",\r\n      \"roleDefinitionId\": \"86695298-2eb9-48a7-9ec3-2fdb38b6878b\"\r\n    },\r\n    {\r\n      \"applicationId\": \"ca7f3f0b-7d91-482c-8e09-c5d840d0eac5\",\r\n      \"roleDefinitionId\": \"5d5a2e56-9835-44aa-93db-d2f19e155438\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"workspaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationStatuses\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/scopedPrivateLinkProxies\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/query\",\r\n      \"locations\": [\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/metadata\",\r\n      \"locations\": [\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/dataSources\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedStorageAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageInsightConfigs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2014-10-10\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"linkTargets\",\r\n      \"locations\": [\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2014-11-10\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"East US 2 EUAP\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Brazil South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/dataExports\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"East US 2 EUAP\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.OperationalInsights\",\r\n  \"namespace\": \"Microsoft.OperationalInsights\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"d2a0a418-0aac-4541-82b2-b3142c89da77\",\r\n      \"roleDefinitionId\": \"86695298-2eb9-48a7-9ec3-2fdb38b6878b\"\r\n    },\r\n    {\r\n      \"applicationId\": \"ca7f3f0b-7d91-482c-8e09-c5d840d0eac5\",\r\n      \"roleDefinitionId\": \"5d5a2e56-9835-44aa-93db-d2f19e155438\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"workspaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationStatuses\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/scopedPrivateLinkProxies\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/query\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/metadata\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/dataSources\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedStorageAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageInsightConfigs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2014-10-10\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"linkTargets\",\r\n      \"locations\": [\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedWorkspaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2014-11-10\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6e06ee99-cd6c-460b-90ed-e6406d9462fc"
+          "00982a7f-aec8-4f90-938b-d75e8bc8d9f6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.13"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-request-id": [
-          "44bb2d1a-7725-409b-974f-ca336a4c9d63"
+          "2253b4cb-f881-483a-ad73-ac35e91b7342"
         ],
         "x-ms-correlation-request-id": [
-          "44bb2d1a-7725-409b-974f-ca336a4c9d63"
+          "2253b4cb-f881-483a-ad73-ac35e91b7342"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083257Z:44bb2d1a-7725-409b-974f-ca336a4c9d63"
+          "SOUTHEASTASIA:20200713T032617Z:2253b4cb-f881-483a-ad73-ac35e91b7342"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:32:56 GMT"
+          "Mon, 13 Jul 2020 03:26:16 GMT"
         ],
         "Content-Length": [
           "165"
@@ -123,26 +123,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps3771\",\r\n  \"name\": \"ps3771\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps8828\",\r\n  \"name\": \"ps8828\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5Mjk/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTg/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"STANDARD\"\r\n    }\r\n  },\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aeb18349-469c-497b-8207-b05fbde8e209"
+          "248de3e0-4321-45fa-901e-92d6c3c238f8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -159,137 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8433fb9a-b28a-4dbc-a9da-dae49149b7d7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-correlation-request-id": [
-          "1e20dd70-3fcb-4a6e-ab4f-97dcafc2332a"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083307Z:1e20dd70-3fcb-4a6e-ab4f-97dcafc2332a"
-        ],
-        "Date": [
-          "Sat, 09 May 2020 08:33:07 GMT"
-        ],
-        "Content-Length": [
-          "980"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"dbb57161-b364-4392-95f1-153a22879205\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"lastSkuUpdate\": \"Sat, 09 May 2020 08:33:05 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Sat, 09 May 2020 13:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/microsoft.operationalinsights/workspaces/aztestps4929\",\r\n  \"name\": \"AzTestps4929\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5Mjk/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28008.02",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "8447a941-740b-4892-b070-cc5845f8f40c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "9b2f631c-79f0-43a1-af22-aa4349e76b60"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083338Z:9b2f631c-79f0-43a1-af22-aa4349e76b60"
-        ],
-        "Date": [
-          "Sat, 09 May 2020 08:33:37 GMT"
-        ],
-        "Content-Length": [
-          "981"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"dbb57161-b364-4392-95f1-153a22879205\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"lastSkuUpdate\": \"Sat, 09 May 2020 08:33:05 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Sat, 09 May 2020 13:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/microsoft.operationalinsights/workspaces/aztestps4929\",\r\n  \"name\": \"AzTestps4929\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks/ChangeTracking/Enable?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3MvQ2hhbmdlVHJhY2tpbmcvRW5hYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEtcHJldmlldw==",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f0026ca4-d0e4-4202-a28f-4418d645680b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28008.02",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "9c65906f-a5af-40e1-8d06-d51a6120f215"
+          "235cb735-c9c5-4b29-a295-d222a63e08b8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -309,41 +179,100 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "32ef4ea6-a41c-48c9-9373-9b5ae41f33e4"
+          "5a48a256-6feb-4396-ae2d-82b01908ac5c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083338Z:32ef4ea6-a41c-48c9-9373-9b5ae41f33e4"
+          "SOUTHEASTASIA:20200713T032627Z:5a48a256-6feb-4396-ae2d-82b01908ac5c"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:38 GMT"
-        ],
-        "Expires": [
-          "-1"
+          "Mon, 13 Jul 2020 03:26:26 GMT"
         ],
         "Content-Length": [
-          "0"
+          "1131"
+        ],
+        "Content-Type": [
+          "application/json"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"78d64ebe-ef66-4447-99b4-2dedb4f9a102\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"maxCapacityReservationLevel\": 3000,\r\n      \"lastSkuUpdate\": \"Mon, 13 Jul 2020 03:26:24 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Mon, 13 Jul 2020 22:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:24 GMT\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:24 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/microsoft.operationalinsights/workspaces/aztestps5118\",\r\n  \"name\": \"AzTestps5118\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTg/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8dd187d4-f9ea-44d8-8e70-54d1b9c3581f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9312a175-897b-4ac9-8706-0ba638c78e80"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20200713T032657Z:9312a175-897b-4ac9-8706-0ba638c78e80"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2020 03:26:57 GMT"
+        ],
+        "Content-Length": [
+          "1132"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"78d64ebe-ef66-4447-99b4-2dedb4f9a102\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"maxCapacityReservationLevel\": 3000,\r\n      \"lastSkuUpdate\": \"Mon, 13 Jul 2020 03:26:24 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Mon, 13 Jul 2020 22:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:24 GMT\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:25 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/microsoft.operationalinsights/workspaces/aztestps5118\",\r\n  \"name\": \"AzTestps5118\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks/SiteRecovery/Enable?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3MvU2l0ZVJlY292ZXJ5L0VuYWJsZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks/ChangeTracking/Enable?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3MvQ2hhbmdlVHJhY2tpbmcvRW5hYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6ff1d12e-bd55-4ee8-bb0d-f7201753a90d"
+          "b81f0e8b-e3e3-44b0-83b6-04cdcd9744c8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -360,7 +289,78 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8c79652d-af55-41ca-bd1c-839492ee4fd0"
+          "c3c94a62-51c0-477e-8345-2833f153d0f5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "fa4f7e4f-a639-483f-ac0f-3c4bb0601195"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20200713T032658Z:fa4f7e4f-a639-483f-ac0f-3c4bb0601195"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2020 03:26:57 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks/SiteRecovery/Enable?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3MvU2l0ZVJlY292ZXJ5L0VuYWJsZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fb852cae-7545-40ab-bb91-285d65bc48cf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "49479b18-f410-4dd5-8bbb-4f7e6dc61681"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -380,13 +380,13 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "4bf4bbc8-ea96-48f8-80ee-7ffe11e78ebc"
+          "5bfe2d75-27c9-41bd-8653-e6eeca493f3f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083339Z:4bf4bbc8-ea96-48f8-80ee-7ffe11e78ebc"
+          "SOUTHEASTASIA:20200713T032658Z:5bfe2d75-27c9-41bd-8653-e6eeca493f3f"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:38 GMT"
+          "Mon, 13 Jul 2020 03:26:58 GMT"
         ],
         "Expires": [
           "-1"
@@ -399,22 +399,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dc451084-a686-4f2f-93dc-03b2699470bb"
+          "0f0abe24-c5b8-45a7-a34b-9514892bd372"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -431,7 +431,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "179ec4bd-4d47-43c6-9ac8-0d912237874a"
+          "6ca4647d-b38d-4f13-918a-a07347d413eb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -448,16 +448,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "7a87c60d-65e2-4ebd-a983-8c9b4dea7a8c"
+          "52f65464-1642-445b-a9cb-def2101c342d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083339Z:7a87c60d-65e2-4ebd-a983-8c9b4dea7a8c"
+          "SOUTHEASTASIA:20200713T032659Z:52f65464-1642-445b-a9cb-def2101c342d"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:39 GMT"
+          "Mon, 13 Jul 2020 03:26:58 GMT"
         ],
         "Content-Length": [
           "8870"
@@ -469,26 +469,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "[\r\n  {\r\n    \"name\": \"CapacityPerformance\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Capacity and Performance\"\r\n  },\r\n  {\r\n    \"name\": \"AzureWebAppsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Web Apps Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"BehaviorAnalyticsInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"BehaviorAnalyticsInsights_DisplayName_TBD\"\r\n  },\r\n  {\r\n    \"name\": \"Security\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security and Audit\"\r\n  },\r\n  {\r\n    \"name\": \"Updates\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Management\"\r\n  },\r\n  {\r\n    \"name\": \"AntiMalware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Antimalware Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"LogManagement\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Log Management\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:06 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:06 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"ChangeTracking\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Change Tracking\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:38 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:38 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"SCOMAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"System Center Operations Manager Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceDesk\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"IT Service Management Connector(Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ADAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Active Directory Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"AlertManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Alert Management\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAutomation\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Automation\"\r\n  },\r\n  {\r\n    \"name\": \"WireData\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data\"\r\n  },\r\n  {\r\n    \"name\": \"SiteRecovery\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Azure Site Recovery\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:39 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:39 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"Backup\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Backup\"\r\n  },\r\n  {\r\n    \"name\": \"SurfaceHub\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Surface Hub\"\r\n  },\r\n  {\r\n    \"name\": \"NetworkMonitoring\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Network Performance Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"Containers\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Monitoring Solution\"\r\n  },\r\n  {\r\n    \"name\": \"ContainerInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Insights\"\r\n  },\r\n  {\r\n    \"name\": \"AppDependencyMonitor\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Dependency Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceMap\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Map\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNetworking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Networking Analytics (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ADReplication\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"AD Replication Status\"\r\n  },\r\n  {\r\n    \"name\": \"Office365\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Office 365 (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"CompatibilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Upgrade Readiness\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVault\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceFabric\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Fabric\"\r\n  },\r\n  {\r\n    \"name\": \"DnsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DNS Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ApplicationInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Insights (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WireData2\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data 2.0\"\r\n  },\r\n  {\r\n    \"name\": \"WaaSUpdateInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Compliance\"\r\n  },\r\n  {\r\n    \"name\": \"AgentHealthAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Agent Health \"\r\n  },\r\n  {\r\n    \"name\": \"AzureActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Activity Log Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsight\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight HBase Monitoring (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightKafka\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Kafka Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightSpark\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Spark Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightHadoop\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Hadoop Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"AzureCdnCoreAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure CDN Core Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightStorm\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Storm Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightInteractiveQuery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight InteractiveQuery Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"VMware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"VMware (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterFree\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Free – for Azure Resources only\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppsManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps Management\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppB2B\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps B2B\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSQLAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure SQL Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVaultAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNSGAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Network Security Group Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAppGatewayAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Application Gateway Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"DeviceHealthProd\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Device Health (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATP\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATPStable\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Stable Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"InfrastructureInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Infrastructure Insights\"\r\n  },\r\n  {\r\n    \"name\": \"ProcessInvestigator\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"ProcessInvestigator\"\r\n  },\r\n  {\r\n    \"name\": \"Microsoft365Analytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Microsoft 365 Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"ASRAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Insights\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterNetworkTraffic\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Network Traffic\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsFirewall\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Firewall\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsEventForwarding\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Event Forwarding\"\r\n  },\r\n  {\r\n    \"name\": \"InternalWindowsEvent\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Internal Windows Event\"\r\n  },\r\n  {\r\n    \"name\": \"CustomizedWindowsEventsFiltering\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Customized Windows Events Filtering\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternalUat\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal Uat\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternal\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10x\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10x\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10xDSRE\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10xDSRE\"\r\n  },\r\n  {\r\n    \"name\": \"DHCPActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DHCPActivity\"\r\n  },\r\n  {\r\n    \"name\": \"AzureDataFactoryAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Data Factory Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSecurityOfThings\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Security of Things solution\"\r\n  },\r\n  {\r\n    \"name\": \"SQLVulnerabilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Vulnerability Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAdvancedThreatProtection\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Advanced Threat Protection\"\r\n  },\r\n  {\r\n    \"name\": \"SQLDataClassification\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Data Classification\"\r\n  },\r\n  {\r\n    \"name\": \"VMInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Monitor - VM Insights\"\r\n  },\r\n  {\r\n    \"name\": \"WinLog\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WinLog\"\r\n  },\r\n  {\r\n    \"name\": \"NetFlow\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"NetFlow\"\r\n  }\r\n]",
+      "ResponseBody": "[\r\n  {\r\n    \"name\": \"CapacityPerformance\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Capacity and Performance\"\r\n  },\r\n  {\r\n    \"name\": \"AzureWebAppsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Web Apps Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"BehaviorAnalyticsInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"BehaviorAnalyticsInsights_DisplayName_TBD\"\r\n  },\r\n  {\r\n    \"name\": \"Security\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security and Audit\"\r\n  },\r\n  {\r\n    \"name\": \"Updates\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Management\"\r\n  },\r\n  {\r\n    \"name\": \"AntiMalware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Antimalware Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"LogManagement\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Log Management\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:25 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:25 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"ChangeTracking\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Change Tracking\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"SCOMAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"System Center Operations Manager Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceDesk\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"IT Service Management Connector(Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ADAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Active Directory Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"AlertManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Alert Management\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAutomation\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Automation\"\r\n  },\r\n  {\r\n    \"name\": \"WireData\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data\"\r\n  },\r\n  {\r\n    \"name\": \"SiteRecovery\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Azure Site Recovery\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"Backup\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Backup\"\r\n  },\r\n  {\r\n    \"name\": \"SurfaceHub\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Surface Hub\"\r\n  },\r\n  {\r\n    \"name\": \"NetworkMonitoring\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Network Performance Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"Containers\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Monitoring Solution\"\r\n  },\r\n  {\r\n    \"name\": \"ContainerInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Insights\"\r\n  },\r\n  {\r\n    \"name\": \"AppDependencyMonitor\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Dependency Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceMap\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Map\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNetworking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Networking Analytics (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ADReplication\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"AD Replication Status\"\r\n  },\r\n  {\r\n    \"name\": \"Office365\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Office 365 (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"CompatibilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Upgrade Readiness\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVault\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceFabric\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Fabric\"\r\n  },\r\n  {\r\n    \"name\": \"DnsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DNS Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ApplicationInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Insights (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WireData2\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data 2.0\"\r\n  },\r\n  {\r\n    \"name\": \"WaaSUpdateInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Compliance\"\r\n  },\r\n  {\r\n    \"name\": \"AgentHealthAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Agent Health \"\r\n  },\r\n  {\r\n    \"name\": \"AzureActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Activity Log Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsight\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight HBase Monitoring (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightKafka\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Kafka Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightSpark\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Spark Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightHadoop\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Hadoop Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"AzureCdnCoreAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure CDN Core Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightStorm\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Storm Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightInteractiveQuery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight InteractiveQuery Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"VMware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"VMware (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterFree\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Free – for Azure Resources only\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppsManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps Management\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppB2B\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps B2B\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSQLAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure SQL Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVaultAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNSGAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Network Security Group Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAppGatewayAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Application Gateway Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"DeviceHealthProd\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Device Health (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATP\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATPStable\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Stable Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"InfrastructureInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Infrastructure Insights\"\r\n  },\r\n  {\r\n    \"name\": \"ProcessInvestigator\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"ProcessInvestigator\"\r\n  },\r\n  {\r\n    \"name\": \"Microsoft365Analytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Microsoft 365 Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"ASRAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Insights\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterNetworkTraffic\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Network Traffic\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsFirewall\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Firewall\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsEventForwarding\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Event Forwarding\"\r\n  },\r\n  {\r\n    \"name\": \"InternalWindowsEvent\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Internal Windows Event\"\r\n  },\r\n  {\r\n    \"name\": \"CustomizedWindowsEventsFiltering\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Customized Windows Events Filtering\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternalUat\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal Uat\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternal\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10x\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10x\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10xDSRE\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10xDSRE\"\r\n  },\r\n  {\r\n    \"name\": \"DHCPActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DHCPActivity\"\r\n  },\r\n  {\r\n    \"name\": \"AzureDataFactoryAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Data Factory Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSecurityOfThings\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Security of Things solution\"\r\n  },\r\n  {\r\n    \"name\": \"SQLVulnerabilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Vulnerability Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAdvancedThreatProtection\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Advanced Threat Protection\"\r\n  },\r\n  {\r\n    \"name\": \"SQLDataClassification\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Data Classification\"\r\n  },\r\n  {\r\n    \"name\": \"VMInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Monitor - VM Insights\"\r\n  },\r\n  {\r\n    \"name\": \"WinLog\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WinLog\"\r\n  },\r\n  {\r\n    \"name\": \"NetFlow\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"NetFlow\"\r\n  }\r\n]",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a582d6b6-1636-4377-a1b3-395f56413c98"
+          "03c57597-7321-43da-b890-43234d229221"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -505,7 +505,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d000ea2-517f-45ae-885e-a3ea4a2f210b"
+          "3842d8fb-acfb-4d22-8d4d-9d203776022b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -522,16 +522,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "a183b227-5ee4-49f5-9b55-a10d4e4f33a9"
+          "3a10acbf-909d-49c1-a322-bcb90d9db54f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083340Z:a183b227-5ee4-49f5-9b55-a10d4e4f33a9"
+          "SOUTHEASTASIA:20200713T032700Z:3a10acbf-909d-49c1-a322-bcb90d9db54f"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:40 GMT"
+          "Mon, 13 Jul 2020 03:26:59 GMT"
         ],
         "Content-Length": [
           "8872"
@@ -543,26 +543,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "[\r\n  {\r\n    \"name\": \"CapacityPerformance\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Capacity and Performance\"\r\n  },\r\n  {\r\n    \"name\": \"AzureWebAppsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Web Apps Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"BehaviorAnalyticsInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"BehaviorAnalyticsInsights_DisplayName_TBD\"\r\n  },\r\n  {\r\n    \"name\": \"Security\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security and Audit\"\r\n  },\r\n  {\r\n    \"name\": \"Updates\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Management\"\r\n  },\r\n  {\r\n    \"name\": \"AntiMalware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Antimalware Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"LogManagement\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Log Management\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:06 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:06 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"ChangeTracking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Change Tracking\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:39 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:38 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"SCOMAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"System Center Operations Manager Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceDesk\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"IT Service Management Connector(Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ADAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Active Directory Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"AlertManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Alert Management\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAutomation\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Automation\"\r\n  },\r\n  {\r\n    \"name\": \"WireData\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data\"\r\n  },\r\n  {\r\n    \"name\": \"SiteRecovery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery\",\r\n    \"modifiedDate\": \"Sat, 09 May 2020 08:33:40 GMT\",\r\n    \"createdDate\": \"Sat, 09 May 2020 08:33:39 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"Backup\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Backup\"\r\n  },\r\n  {\r\n    \"name\": \"SurfaceHub\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Surface Hub\"\r\n  },\r\n  {\r\n    \"name\": \"NetworkMonitoring\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Network Performance Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"Containers\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Monitoring Solution\"\r\n  },\r\n  {\r\n    \"name\": \"ContainerInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Insights\"\r\n  },\r\n  {\r\n    \"name\": \"AppDependencyMonitor\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Dependency Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceMap\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Map\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNetworking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Networking Analytics (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ADReplication\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"AD Replication Status\"\r\n  },\r\n  {\r\n    \"name\": \"Office365\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Office 365 (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"CompatibilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Upgrade Readiness\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVault\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceFabric\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Fabric\"\r\n  },\r\n  {\r\n    \"name\": \"DnsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DNS Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ApplicationInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Insights (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WireData2\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data 2.0\"\r\n  },\r\n  {\r\n    \"name\": \"WaaSUpdateInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Compliance\"\r\n  },\r\n  {\r\n    \"name\": \"AgentHealthAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Agent Health \"\r\n  },\r\n  {\r\n    \"name\": \"AzureActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Activity Log Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsight\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight HBase Monitoring (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightKafka\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Kafka Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightSpark\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Spark Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightHadoop\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Hadoop Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"AzureCdnCoreAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure CDN Core Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightStorm\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Storm Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightInteractiveQuery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight InteractiveQuery Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"VMware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"VMware (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterFree\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Free – for Azure Resources only\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppsManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps Management\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppB2B\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps B2B\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSQLAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure SQL Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVaultAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNSGAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Network Security Group Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAppGatewayAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Application Gateway Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"DeviceHealthProd\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Device Health (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATP\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATPStable\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Stable Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"InfrastructureInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Infrastructure Insights\"\r\n  },\r\n  {\r\n    \"name\": \"ProcessInvestigator\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"ProcessInvestigator\"\r\n  },\r\n  {\r\n    \"name\": \"Microsoft365Analytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Microsoft 365 Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"ASRAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Insights\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterNetworkTraffic\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Network Traffic\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsFirewall\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Firewall\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsEventForwarding\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Event Forwarding\"\r\n  },\r\n  {\r\n    \"name\": \"InternalWindowsEvent\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Internal Windows Event\"\r\n  },\r\n  {\r\n    \"name\": \"CustomizedWindowsEventsFiltering\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Customized Windows Events Filtering\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternalUat\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal Uat\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternal\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10x\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10x\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10xDSRE\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10xDSRE\"\r\n  },\r\n  {\r\n    \"name\": \"DHCPActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DHCPActivity\"\r\n  },\r\n  {\r\n    \"name\": \"AzureDataFactoryAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Data Factory Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSecurityOfThings\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Security of Things solution\"\r\n  },\r\n  {\r\n    \"name\": \"SQLVulnerabilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Vulnerability Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAdvancedThreatProtection\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Advanced Threat Protection\"\r\n  },\r\n  {\r\n    \"name\": \"SQLDataClassification\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Data Classification\"\r\n  },\r\n  {\r\n    \"name\": \"VMInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Monitor - VM Insights\"\r\n  },\r\n  {\r\n    \"name\": \"WinLog\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WinLog\"\r\n  },\r\n  {\r\n    \"name\": \"NetFlow\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"NetFlow\"\r\n  }\r\n]",
+      "ResponseBody": "[\r\n  {\r\n    \"name\": \"CapacityPerformance\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Capacity and Performance\"\r\n  },\r\n  {\r\n    \"name\": \"AzureWebAppsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Web Apps Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"BehaviorAnalyticsInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"BehaviorAnalyticsInsights_DisplayName_TBD\"\r\n  },\r\n  {\r\n    \"name\": \"Security\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security and Audit\"\r\n  },\r\n  {\r\n    \"name\": \"Updates\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Management\"\r\n  },\r\n  {\r\n    \"name\": \"AntiMalware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Antimalware Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"LogManagement\",\r\n    \"enabled\": true,\r\n    \"displayname\": \"Log Management\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:25 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:25 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"ChangeTracking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Change Tracking\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:59 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"SCOMAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"System Center Operations Manager Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceDesk\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"IT Service Management Connector(Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ADAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Active Directory Health Check\"\r\n  },\r\n  {\r\n    \"name\": \"AlertManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Alert Management\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAutomation\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Automation\"\r\n  },\r\n  {\r\n    \"name\": \"WireData\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data\"\r\n  },\r\n  {\r\n    \"name\": \"SiteRecovery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery\",\r\n    \"modifiedDate\": \"Mon, 13 Jul 2020 03:26:59 GMT\",\r\n    \"createdDate\": \"Mon, 13 Jul 2020 03:26:58 GMT\"\r\n  },\r\n  {\r\n    \"name\": \"Backup\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Backup\"\r\n  },\r\n  {\r\n    \"name\": \"SurfaceHub\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Surface Hub\"\r\n  },\r\n  {\r\n    \"name\": \"NetworkMonitoring\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Network Performance Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"Containers\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Monitoring Solution\"\r\n  },\r\n  {\r\n    \"name\": \"ContainerInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Container Insights\"\r\n  },\r\n  {\r\n    \"name\": \"AppDependencyMonitor\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Dependency Monitor\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceMap\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Map\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNetworking\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Networking Analytics (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ADReplication\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"AD Replication Status\"\r\n  },\r\n  {\r\n    \"name\": \"Office365\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Office 365 (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"CompatibilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Upgrade Readiness\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVault\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault (Deprecated)\"\r\n  },\r\n  {\r\n    \"name\": \"ServiceFabric\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Service Fabric\"\r\n  },\r\n  {\r\n    \"name\": \"DnsAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DNS Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"ApplicationInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Application Insights (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WireData2\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Wire Data 2.0\"\r\n  },\r\n  {\r\n    \"name\": \"WaaSUpdateInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Update Compliance\"\r\n  },\r\n  {\r\n    \"name\": \"AgentHealthAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Agent Health \"\r\n  },\r\n  {\r\n    \"name\": \"AzureActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Activity Log Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsight\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight HBase Monitoring (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightKafka\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Kafka Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightSpark\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Spark Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightHadoop\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Hadoop Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"AzureCdnCoreAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure CDN Core Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightStorm\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight Storm Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"HDInsightInteractiveQuery\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"HDInsight InteractiveQuery Monitoring\"\r\n  },\r\n  {\r\n    \"name\": \"VMware\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"VMware (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterFree\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Free – for Azure Resources only\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppsManagement\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps Management\"\r\n  },\r\n  {\r\n    \"name\": \"LogicAppB2B\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Logic Apps B2B\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSQLAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure SQL Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"KeyVaultAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Key Vault Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureNSGAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Network Security Group Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"AzureAppGatewayAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Application Gateway Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"DeviceHealthProd\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Device Health (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATP\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsDefenderATPStable\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Stable Windows Defender ATP\"\r\n  },\r\n  {\r\n    \"name\": \"InfrastructureInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Infrastructure Insights\"\r\n  },\r\n  {\r\n    \"name\": \"ProcessInvestigator\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"ProcessInvestigator\"\r\n  },\r\n  {\r\n    \"name\": \"Microsoft365Analytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Microsoft 365 Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"ASRAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Site Recovery Analytics\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Insights\"\r\n  },\r\n  {\r\n    \"name\": \"SecurityCenterNetworkTraffic\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Security Center Network Traffic\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsFirewall\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Firewall\"\r\n  },\r\n  {\r\n    \"name\": \"WindowsEventForwarding\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Windows Event Forwarding\"\r\n  },\r\n  {\r\n    \"name\": \"InternalWindowsEvent\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Internal Windows Event\"\r\n  },\r\n  {\r\n    \"name\": \"CustomizedWindowsEventsFiltering\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Customized Windows Events Filtering\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternalUat\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal Uat\"\r\n  },\r\n  {\r\n    \"name\": \"WEFInternal\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF Internal\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10x\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10x\"\r\n  },\r\n  {\r\n    \"name\": \"WEF_10xDSRE\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WEF_10xDSRE\"\r\n  },\r\n  {\r\n    \"name\": \"DHCPActivity\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"DHCPActivity\"\r\n  },\r\n  {\r\n    \"name\": \"AzureDataFactoryAnalytics\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Data Factory Analytics (Preview)\"\r\n  },\r\n  {\r\n    \"name\": \"AzureSecurityOfThings\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Security of Things solution\"\r\n  },\r\n  {\r\n    \"name\": \"SQLVulnerabilityAssessment\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Vulnerability Assessment\"\r\n  },\r\n  {\r\n    \"name\": \"SQLAdvancedThreatProtection\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Advanced Threat Protection\"\r\n  },\r\n  {\r\n    \"name\": \"SQLDataClassification\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"SQL Data Classification\"\r\n  },\r\n  {\r\n    \"name\": \"VMInsights\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"Azure Monitor - VM Insights\"\r\n  },\r\n  {\r\n    \"name\": \"WinLog\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"WinLog\"\r\n  },\r\n  {\r\n    \"name\": \"NetFlow\",\r\n    \"enabled\": false,\r\n    \"displayname\": \"NetFlow\"\r\n  }\r\n]",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks/ChangeTracking/Disable?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3MvQ2hhbmdlVHJhY2tpbmcvRGlzYWJsZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks/ChangeTracking/Disable?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3MvQ2hhbmdlVHJhY2tpbmcvRGlzYWJsZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bb43209b-fe2f-4204-82f4-2511e4acfb67"
+          "a99f00dc-5c4c-49c8-bb39-2e3009876349"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -579,7 +579,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "40fb7dd9-6957-41ef-ab6b-3d18b1cf3cba"
+          "c21aed47-476f-445f-a377-615eaa2d96c0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -599,13 +599,13 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "71b0be72-588e-45a0-98aa-670efefd6c81"
+          "28d4872c-1f44-4511-815c-4fd8cf332299"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083340Z:71b0be72-588e-45a0-98aa-670efefd6c81"
+          "SOUTHEASTASIA:20200713T032659Z:28d4872c-1f44-4511-815c-4fd8cf332299"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:39 GMT"
+          "Mon, 13 Jul 2020 03:26:58 GMT"
         ],
         "Expires": [
           "-1"
@@ -618,22 +618,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929/intelligencePacks/SiteRecovery/Disable?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5MjkvaW50ZWxsaWdlbmNlUGFja3MvU2l0ZVJlY292ZXJ5L0Rpc2FibGU/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118/intelligencePacks/SiteRecovery/Disable?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTgvaW50ZWxsaWdlbmNlUGFja3MvU2l0ZVJlY292ZXJ5L0Rpc2FibGU/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8cd6225f-a197-4f16-b4c9-d24308541ba6"
+          "798d3596-5d65-4dfe-9f43-deea35a4a552"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -650,7 +650,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f3e538ac-8f70-46d6-89e9-1e89a04b7eeb"
+          "d52aced7-078c-4f78-95cd-9b9dd633746a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -670,13 +670,13 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "6f658c73-e8a6-4aff-b635-da3e7a28e3ee"
+          "7400c2af-ccf3-4b19-b04d-9af82e361b9c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083340Z:6f658c73-e8a6-4aff-b635-da3e7a28e3ee"
+          "SOUTHEASTASIA:20200713T032700Z:7400c2af-ccf3-4b19-b04d-9af82e361b9c"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:40 GMT"
+          "Mon, 13 Jul 2020 03:26:59 GMT"
         ],
         "Expires": [
           "-1"
@@ -689,22 +689,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/AzTestps4929?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczQ5Mjk/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/AzTestps5118?api-version=2020-03-01-preview&force=false",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczUxMTg/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3JmZvcmNlPWZhbHNl",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2922d566-b4b7-423e-bf21-46fc39783e5d"
+          "2cf4e32f-a3b1-4c66-97f9-3b191978aabe"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -715,7 +715,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "818b6610-0f88-4ed6-b357-bf7ba750cdd6"
+          "4f43ea43-9929-445c-a34a-af5e73734c37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -732,16 +732,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14995"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "8d6629f3-f523-47a6-a1b2-785044c8554e"
+          "643835d0-0b98-42cb-b053-316fe66e51fa"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083345Z:8d6629f3-f523-47a6-a1b2-785044c8554e"
+          "SOUTHEASTASIA:20200713T032708Z:643835d0-0b98-42cb-b053-316fe66e51fa"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:45 GMT"
+          "Mon, 13 Jul 2020 03:27:07 GMT"
         ],
         "Content-Length": [
           "0"
@@ -751,22 +751,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ecc32b9f-c785-4a08-99cf-89fbe15c548d"
+          "8c0fde57-5457-462b-a9f3-dfb3b5a69c92"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -777,16 +777,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11996"
         ],
         "x-ms-request-id": [
-          "4818baab-7a66-4d5d-aeff-51929dc152ba"
+          "baffdfcf-40ff-4983-9c6e-9eaf30917822"
         ],
         "x-ms-correlation-request-id": [
-          "4818baab-7a66-4d5d-aeff-51929dc152ba"
+          "baffdfcf-40ff-4983-9c6e-9eaf30917822"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083345Z:4818baab-7a66-4d5d-aeff-51929dc152ba"
+          "SOUTHEASTASIA:20200713T032708Z:baffdfcf-40ff-4983-9c6e-9eaf30917822"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -795,7 +795,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:45 GMT"
+          "Mon, 13 Jul 2020 03:27:07 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -811,22 +811,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps3771/providers/Microsoft.OperationalInsights/workspaces/wsname?api-version=2020-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzMzc3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy93c25hbWU/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps8828/providers/Microsoft.OperationalInsights/workspaces/wsname?api-version=2020-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzODgyOC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy93c25hbWU/YXBpLXZlcnNpb249MjAyMC0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "51f7d87c-7167-4c32-b740-dd2562ae1712"
+          "14b0eda9-9575-44aa-ae40-fa8a1907a076"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.20.0.0"
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.21.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -840,13 +840,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "dd20d53d-a457-4d20-b698-8fb53555c12e"
+          "70e01bf8-6c59-4e6b-90e1-3a9119ea8a50"
         ],
         "x-ms-correlation-request-id": [
-          "dd20d53d-a457-4d20-b698-8fb53555c12e"
+          "70e01bf8-6c59-4e6b-90e1-3a9119ea8a50"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20200509T083346Z:dd20d53d-a457-4d20-b698-8fb53555c12e"
+          "SOUTHEASTASIA:20200713T032709Z:70e01bf8-6c59-4e6b-90e1-3a9119ea8a50"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -855,7 +855,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 09 May 2020 08:33:45 GMT"
+          "Mon, 13 Jul 2020 03:27:08 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -864,20 +864,20 @@
           "-1"
         ],
         "Content-Length": [
-          "157"
+          "225"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.OperationalInsights/workspaces/wsname' under resource group 'ps3771' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.OperationalInsights/workspaces/wsname' under resource group 'ps8828' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     }
   ],
   "Names": {
     "Test-WorkspaceEnableDisableListIntelligencePacks": [
-      "ps4929",
-      "ps3771"
+      "ps5118",
+      "ps8828"
     ]
   },
   "Variables": {
-    "SubscriptionId": "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
   }
 }

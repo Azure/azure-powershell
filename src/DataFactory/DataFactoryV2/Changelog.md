@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added missing properties to PSPipelineRun class.
+
+## Version 1.9.0
+
+* Added global parameters to Data Factory.
 
 ## Version 1.8.2
 * Updated ADF .Net SDK version to 4.9.0

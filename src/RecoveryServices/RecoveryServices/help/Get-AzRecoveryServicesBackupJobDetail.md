@@ -44,8 +44,8 @@ PS C:\> $JobDetails = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0] -Vault
 PS C:\> $JobDetails.ErrorDetails
 ```
 
-The first command gets an array of failed jobs in the vault, and then stores them in the $Jobs array.
-The second command gets the job details for the failed jobs in $Jobs, and then stores them in the $JobDetails variable.
+The first command fetches the relevant vault. The second command gets an array of failed jobs in the vault, and then stores them in the $Jobs array.
+The third command gets the job details for the 1st failed job in $Jobs, and then stores them in the $JobDetails variable.
 The final command displays error details for the failed jobs.
 
 ## PARAMETERS

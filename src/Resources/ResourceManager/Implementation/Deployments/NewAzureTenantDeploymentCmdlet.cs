@@ -12,25 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Collections;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
     /// <summary>
     /// Creates a new deployment at tenant scope.
     /// </summary>
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "TenantDeployment", SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeployment))]
-    public class NewAzureTenantDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class NewAzureTenantDeploymentCmdlet: DeploymentCreateCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
@@ -51,30 +53,46 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        protected override void OnProcessRecord()
-        {
-            var parameters = new PSDeploymentCmdletParameters()
-            {
-                ScopeType = DeploymentScopeType.Tenant,
-                Location = this.Location,
-                DeploymentName = this.Name,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = TemplateObject,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                Tags = TagsHelper.ConvertToTagsDictionary(Tag)
-            };
+        protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
+            typeof(NewAzureTenantDeploymentCmdlet),
+            typeof(CmdletAttribute))).ConfirmImpact;
 
-            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
-            {
-                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
-            }
-            WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
-        }
+        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        {
+            ScopeType = DeploymentScopeType.Tenant,
+            Location = this.Location,
+            DeploymentName = this.Name,
+            DeploymentMode = DeploymentMode.Incremental,
+            TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            TemplateObject = this.TemplateObject,
+            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            ParameterUri = this.TemplateParameterUri,
+            DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
+            Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
+        };
+
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.Tenant,
+            deploymentName : this.Name,
+            location : this.Location,
+            mode : DeploymentMode.Incremental,
+            templateUri : TemplateUri ?? this.TryResolvePath(TemplateFile),
+            templateObject : this.TemplateObject,
+            templateParametersUri : this.TemplateParameterUri,
+            templateParametersObject : GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat : this.WhatIfResultFormat,
+            excludeChangeTypes: this.WhatIfExcludeChangeType
+        );
     }
 }

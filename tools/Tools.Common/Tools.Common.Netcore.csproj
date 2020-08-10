@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <Content Include="SerializedCmdlets\*.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="WhiteList.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AllowList.csv" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

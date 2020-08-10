@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             Id = attestation.Id;
             Location = attestation.Location;
-            ResourceGroupName = new ResourceIdentifier(attestation.Id).ResourceGroupName;
+            if (!attestation.Id.StartsWith("/providers/"))
+            {
+                ResourceGroupName = new ResourceIdentifier(attestation.Id).ResourceGroupName;
+            }
             Name = attestation.Name;
             Status = attestation.Status;
             TrustModel = attestation.TrustModel;

@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.0
+* Supported creating cluster with encryption in transit feature.
+    - Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightCluster`
+	- Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightClusterConfig`
+* Supported creating cluster with private link feature:
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightCluster`
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightClusterConfig`
+* Returned virtual network information when calling `New-AzHDInsightCluster` or `Get-AzHDInsightCluster`
+
+
+## Version 3.3.1
+* Supported creating cluster with ADLSGen1/2 storage in national clouds.
+
 ## Version 3.3.0
 * Supported listing hosts and restart specific hosts of the HDInsight cluster.
 
