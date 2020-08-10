@@ -26,3 +26,14 @@ Source                               : Microsoft.Azure.PowerShell.Cmdlets.Spring
 ```
 
 Get Spring Cloud App Deploymeng by name.
+
+### Example 2: List all the deployment under a given spring cloud app.
+```powershell
+PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
+Name    Type
+----    ----
+default Microsoft.AppPlatform/Spring/apps/deployments
+prod    Microsoft.AppPlatform/Spring/apps/deployments
+```
+
+List all the deployment under a given spring cloud app.

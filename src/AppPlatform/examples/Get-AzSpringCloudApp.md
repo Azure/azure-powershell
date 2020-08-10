@@ -27,3 +27,15 @@ TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 ```
 
 Get Spring Cloud App by name.
+
+### Example 2: List all the app under a given spring cloud service.
+```powershell
+PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+Name            Type                              Location
+----            ----                              --------
+account-service Microsoft.AppPlatform/Spring/apps eastus
+auth-service    Microsoft.AppPlatform/Spring/apps eastus
+gateway         Microsoft.AppPlatform/Spring/apps eastus
+```
+
+List all the app under a given spring cloud service.
