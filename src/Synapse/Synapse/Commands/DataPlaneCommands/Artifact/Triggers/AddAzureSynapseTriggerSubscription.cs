@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 { 
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Trigger + SynapseConstants.Subscription,
         DefaultParameterSetName = AddByName, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSTriggerSubscriptionOperationStatus))]
     public class AddAzureSynapseTriggerSubscription : SynapseArtifactsCmdletBase
     {
         private const string AddByName = "AddByName";
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, String.Format(Resources.AddingSynapseTriggerSubscribe, this.Name)))
             {
-                WriteObject(new PSTriggerSubscribeTriggerToEventsOperation(SynapseAnalyticsClient.StartSubscribeTriggerToEvents(this.Name)));
+                WriteObject(new PSTriggerSubscriptionOperationStatus(SynapseAnalyticsClient.StartSubscribeTriggerToEvents(this.Name)));
             }
         }
     }

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedService,
         DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSLinkedServiceResource))]
+    [OutputType(typeof(bool))]
     public class RemoveAzureSynapseLinkedService : SynapseArtifactsCmdletBase
     {
         private const string RemoveByName = "RemoveByName";

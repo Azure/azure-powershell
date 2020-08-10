@@ -218,9 +218,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _triggerClient.GetEventSubscriptionStatus(triggerName);
         }
 
-        public TriggerSubscribeTriggerToEventsOperation StartSubscribeTriggerToEvents(string triggerName)
+        public TriggerSubscriptionOperationStatus StartSubscribeTriggerToEvents(string triggerName)
         {
-            return _triggerClient.StartSubscribeTriggerToEvents(triggerName);
+            var operation = _triggerClient.StartSubscribeTriggerToEvents(triggerName);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public void StartUnsubscribeTriggerFromEvents(string triggerName)
