@@ -29,9 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
 
-        // Overwrite the useless parameter
-        public override string TagCondition { get; set; }
-
         public RemoveAzureStorageCORSRuleCommand()
         {
             EnableMultiThread = false;

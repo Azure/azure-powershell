@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
@@ -118,36 +117,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
-        [ValidateSet(RootSquashType.NoRootSquash,
-            RootSquashType.RootSquash,
-            RootSquashType.AllSquash,
-            IgnoreCase = true)]
-        public string RootSquash { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Access tier for specific share. StorageV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.")]
-        [ValidateSet(ShareAccessTier.TransactionOptimized,
-            ShareAccessTier.Premium,
-            ShareAccessTier.Hot,
-            ShareAccessTier.Cool,
-           IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string AccessTier
-        {
-            get
-            {
-                return accessTier;
-            }
-            set
-            {
-                accessTier = value;
-            }
-        }
-        private string accessTier = null;
         
         public override void ExecuteCmdlet()
         {
@@ -184,9 +153,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     this.Name,
                                     new FileShare(
                                         metadata: MetadataDictionary,
-                                        shareQuota: shareQuota,
-                                        rootSquash: this.RootSquash,
-                                        accessTier: accessTier));
+                                        shareQuota: shareQuota));
 
                 WriteObject(new PSShare(Share));
             }

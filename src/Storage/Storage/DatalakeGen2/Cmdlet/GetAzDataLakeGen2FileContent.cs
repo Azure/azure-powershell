@@ -81,7 +81,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         // Overwrite the useless parameter
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
-        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ItemContentCommand class.
