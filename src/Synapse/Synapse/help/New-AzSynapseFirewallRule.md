@@ -60,7 +60,7 @@ This command creates firewall rule named ContosoFirewallRule under a workspace t
 
 ### Example 3
 ```powershell
-PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIPs
+PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIP
 ```
 
 This command creates firewall rule that allow all azure ips under a workspace.
