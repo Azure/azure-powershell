@@ -21,6 +21,8 @@
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
+* Fixed [#12592]: Fix download blob fail when related sub directory not exist.
+	- `Get-AzStorageBlobContent`
 
 ## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
