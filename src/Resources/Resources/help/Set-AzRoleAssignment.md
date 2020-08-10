@@ -14,13 +14,14 @@ Update an existing Role Assignment.
 
 ### RoleAssignmentParameterSet (Default)
 ```
-Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
-Set-AzRoleAssignment -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRoleAssignment -InputFile <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ Condition Version can be upgraded from 1.0 to 2.0 but it can't not be downgraded
 
 ### Example 1
 ```powershell
-  $ConditionVersion = "2.0"
+$ConditionVersion = "2.0"
   $Description = "This is a new role assignment for John"
   $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs:Path] StringEqualsIgnoreCase 'foo_storage_container'"
 
@@ -64,7 +65,7 @@ Update an existing role assignment by modifying an object
 
 ### Example 2
 ```powershell
-  Set-AzRoleAssignment -InputFile "C:\RoleAssignments\example.json" -PassThru
+Set-AzRoleAssignment -InputFile "C:\RoleAssignments\example.json" -PassThru
 
   RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
                      -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
@@ -128,6 +129,51 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
