@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Added support for customer-managed keys.
+
 ## Version 0.1.0
 * the first preview release
 

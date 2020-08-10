@@ -539,14 +539,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             if (useSlot)
             {
-                if (siteConfig != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateConfigurationSlot(
-                        resourceGroupName, 
-                        webSiteName, 
-                        siteConfig.ConvertToSiteConfigResource(),
-                        slotName);
-                }
 
                 if (appSettings != null)
                 {
@@ -554,6 +546,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         resourceGroupName, 
                         webSiteName, 
                         new StringDictionary { Properties = appSettings }, 
+                        slotName);
+                }
+
+                if (siteConfig != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateConfigurationSlot(
+                        resourceGroupName,
+                        webSiteName,
+                        siteConfig.ConvertToSiteConfigResource(),
                         slotName);
                 }
 
@@ -577,10 +578,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
             else
             {
-                if (siteConfig != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
-                }
 
                 if (appSettings != null)
                 {
@@ -588,6 +585,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         resourceGroupName, 
                         webSiteName, 
                         new StringDictionary { Properties = appSettings });
+                }
+
+                if (siteConfig != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
                 }
 
                 if (connectionStrings != null)
@@ -608,7 +610,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        private void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
+        public void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);

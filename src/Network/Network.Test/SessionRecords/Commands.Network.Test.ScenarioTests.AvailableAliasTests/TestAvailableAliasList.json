@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableServiceAliases?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVTZXJ2aWNlQWxpYXNlcz9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableServiceAliases?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVTZXJ2aWNlQWxpYXNlcz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7f7ab2e9-2da7-4bd2-ad43-dbaf463d4b76"
+          "75a2897f-03c8-45d3-88db-a74b6ade53bb"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/423.1707.49677.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "94825b98-ca8d-40ff-bbae-8b0631aaa6e5"
+          "86b35662-0a0a-4b6a-9005-8935a89489f9"
         ],
         "x-ms-correlation-request-id": [
-          "932e6392-ca12-400b-bd64-03d8ff3e5629"
+          "3a424bfa-e3c3-48a4-9d3f-df68fdd120fd"
         ],
         "x-ms-arm-service-request-id": [
-          "b8e6097d-994d-4ba7-b033-e4eda1511b86"
+          "ad16cbd2-4d91-49df-93e3-28fa7e254353"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11996"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200427T080742Z:932e6392-ca12-400b-bd64-03d8ff3e5629"
+          "WESTUS2:20200607T174448Z:3a424bfa-e3c3-48a4-9d3f-df68fdd120fd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 27 Apr 2020 08:07:41 GMT"
+          "Sun, 07 Jun 2020 17:44:48 GMT"
         ],
         "Content-Length": [
           "4322"

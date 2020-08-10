@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualWans", "ResourceGroupName")]
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]

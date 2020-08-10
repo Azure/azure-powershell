@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private const string ApplicationServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
-        public const string DocerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
-        public const string DocerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
-        public const string DocerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
+        public const string DockerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
+        public const string DockerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
+        public const string DockerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
         public const string DockerEnableCI = "DOCKER_ENABLE_CI";
         public const string DockerImagePrefix = "DOCKER|";
 

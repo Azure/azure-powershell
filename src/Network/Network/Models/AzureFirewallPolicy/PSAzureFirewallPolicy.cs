@@ -24,12 +24,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string ThreatIntelMode { get; set; }
 
+        public PSAzureFirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
         public Microsoft.Azure.Management.Network.Models.SubResource BasePolicy { get; set; }
 
         public string ProvisioningState { get; set; }
 
-        [JsonProperty("ruleGroups")]
+        [JsonProperty("ruleCollectionGroups")]
         public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
 
+        public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
     }
 }
