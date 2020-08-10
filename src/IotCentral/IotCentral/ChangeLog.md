@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.7.5
 * Allow pricing information to be updated using Set-AzIoTCentralApp command.
 
 ## Version 0.7.4
