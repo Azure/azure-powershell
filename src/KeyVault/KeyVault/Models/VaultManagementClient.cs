@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     throw new ArgumentException("parameters.TenantId");
                 if (!string.IsNullOrWhiteSpace(parameters.SkuName))
                 {
-                    if (Enum.TryParse(parameters.SkuName, out SkuName skuName)) 
+                    if (Enum.TryParse(parameters.SkuName, true, out SkuName skuName)) 
                     {
                         properties.Sku = new Sku(skuName);
                     }
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     throw new ArgumentException("parameters.TenantId");
                 if (!string.IsNullOrWhiteSpace(parameters.SkuName))
                 {
-                    if (Enum.TryParse(parameters.SkuName, out ManagedHsmSkuName skuName))
+                    if (Enum.TryParse(parameters.SkuName, true, out ManagedHsmSkuName skuName))
                     {
                         managedHsmSku.Name = skuName;
                     }
