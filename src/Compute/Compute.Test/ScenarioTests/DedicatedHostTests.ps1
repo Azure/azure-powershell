@@ -134,10 +134,10 @@ function Test-DedicatedHostVirtualMachine
 
         # Create a VM first
         $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2" -SupportAutomaticPlacement $false -Tag @{key1 = "val1"};
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
 
-        #Assert-AreEqual $false $hostGroup.SupportAutomaticPlacement;
+        Assert-AreEqual $false $hostGroup.SupportAutomaticPlacement;
 
         $hostName = $rgname + 'host'
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -PlatformFaultDomain 1 -Tag @{key1 = "val2"};
@@ -155,10 +155,89 @@ function Test-DedicatedHostVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Size $vmsize -HostGroupId $hostGroup.Id -DomainNameLabel $domainNameLabel;
-        $vm0 = Get-AzVM -ResourceGroupName $rgname -Name $vmname0 -Status;
-        Assert-AreEqual $dedicatedHostId $vm0.assignedHost;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel;
+        $vm0 = Get-AzVM -ResourceGroupName $rgname -Name $vmname0;
+        Assert-AreEqual $dedicatedHostId $vm0.Host.Id;
 
+        $vmname1 = 'vm' + $rgname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Zone "2" -Sku "Standard" -AllocationMethod "Static" -DomainNameLabel ('pubip' + $rgname);
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nicId = $nic.Id;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId `
+             | Add-AzVMNetworkInterface -Id $nicId -Primary `
+             | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
+
+        # Get VM
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-AreEqual $dedicatedHostId $vm1.Host.Id;
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-AreEqual 2 $dedicatedHost.VirtualMachines.Count;
+        Assert-AreEqual $vm0.Id $dedicatedHost.VirtualMachines[0].Id;
+        Assert-AreEqual $vm1.Id $dedicatedHost.VirtualMachines[1].Id;
+
+        $dedicatedHostGroup = Get-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupNam;
+        Assert-AreEqual 1 $dedicatedHostGroup.Hosts.Count;
+        Assert-AreEqual $dedicatedHostId $dedicatedHostGroup.Hosts[0].Id;
+
+        # Remove Host from VM
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmName1 -Force;
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmName1;
+        Update-AzVM -ResourceGroupName $rgname -VM $vm1 -HostId $null;
+
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-Null $vm1.Host;
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-AreEqual 1 $dedicatedHost.VirtualMachines.Count;
+        Assert-AreEqual $vm0.Id $dedicatedHost.VirtualMachines[0].Id;
+        $dedicatedHostGroup = Get-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupNam;
+        Assert-AreEqual 1 $dedicatedHostGroup.Hosts.Count;
+        Assert-AreEqual $dedicatedHostId $dedicatedHostGroup.Hosts[0].Id;
+
+        # Add Host back to the VM
+        Update-AzVM -ResourceGroupName $rgname -VM $vm1 -HostId $dedicatedHostId;
+
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-AreEqual $dedicatedHostId $vm1.Host.Id;
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-AreEqual 2 $dedicatedHost.VirtualMachines.Count;
+        Assert-AreEqual $vm0.Id $dedicatedHost.VirtualMachines[0].Id;
+        Assert-AreEqual $vm1.Id $dedicatedHost.VirtualMachines[1].Id;
+        $dedicatedHostGroup = Get-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupNam;
+        Assert-AreEqual 1 $dedicatedHostGroup.Hosts.Count;
+        Assert-AreEqual $dedicatedHostId $dedicatedHostGroup.Hosts[0].Id;
+
+        # Remove the VMs
+        Remove-AzVM -ResourceGroupName $rgname -Name $vmname1 -Force;
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-AreEqual 1 $dedicatedHost.VirtualMachines.Count;
+        Assert-AreEqual $vm0.Id $dedicatedHost.VirtualMachines[0].Id;
+
+        $dedicatedHostGroup = Get-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupNam;
+        Assert-AreEqual 1 $dedicatedHostGroup.Hosts.Count;
+        Assert-AreEqual $dedicatedHostId $dedicatedHostGroup.Hosts[0].Id;
+
+        Remove-AzVM -ResourceGroupName $rgname -Name $vmname0 -Force;
+        Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName;
     }
     finally
     {
