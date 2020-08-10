@@ -438,7 +438,7 @@ function Test-SimpleNewVmssHostGroup
         $username = "admin01"
         $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku 
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel "myvmss-48e3cf"
 
         Assert-AreEqual $vmss.HostGroup.Id $hostGroup.Id
     }
