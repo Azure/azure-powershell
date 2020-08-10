@@ -23,11 +23,13 @@ function New-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server firewall rule.
+    # If not specified, the default is undefined.
+    # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -50,20 +52,32 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The start IP address of the server firewall rule.
     # Must be IPv4 format.
-    # If range contains one IP, use StartIPAddress only.
     ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
+
+    [Parameter(ParameterSetName='AllowAll', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
+    ${AllowAll},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -127,10 +141,37 @@ param(
 
 process {
     try {
-        if(!$PSBoundParameters.ContainsKey('EndIPAddress'))
+        if($PSBoundParameters.ContainsKey('AllowAll'))
         {
-            $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['StartIPAddress']
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = Get-Date -Format "AllowAll_yyyy-MM-dd_HH-mm-ss"
+            }
+            $PSBoundParameters['StartIPAddress'] = "0.0.0.0"
+            $PSBoundParameters['EndIPAddress'] = "255.255.255.255"
+
+            $null = $PSBoundParameters.Remove('AllowAll')
         }
+        elseif($PSBoundParameters.ContainsKey('ClientIPAddress'))
+        {
+            $PSBoundParameters['StartIPAddress'] = $PSBoundParameters['ClientIPAddress']
+            $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['ClientIPAddress']
+
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "ClientIPAddress_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss")
+            }
+
+            $null = $PSBoundParameters.Remove('ClientIPAddress')
+        }
+        else
+        {
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "undefined"
+            }
+        }
+
         Az.MySql.internal\New-AzMySqlFirewallRule @PSBoundParameters
     } catch {
         throw

@@ -24,9 +24,6 @@ Describe 'Get-AzKustoDataConnection' {
         $eventhubNS = $env.eventhubNSName
         $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
@@ -37,7 +34,7 @@ Describe 'Get-AzKustoDataConnection' {
                 $dataConnectionCreated = $dataConnection
             }
         }
-        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind
     }
 
     It 'Get' {
@@ -50,13 +47,10 @@ Describe 'Get-AzKustoDataConnection' {
         $eventhubNS = $env.eventhubNSName
         $eventhub = $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
         $dataConnectionCreated = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
-        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind
     }
 }

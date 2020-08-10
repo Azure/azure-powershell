@@ -21,14 +21,14 @@ rule 0.0.0.2        0.0.0.3
 
 These cmdlets update MySql Firewall Rule by identity.
 
-### Example 3: Update MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized
+### Example 3: Update MySql Firewall Rule by -ClientIPAddress.
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -StartIPAddress 0.0.0.2
+PS C:\> Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
 
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+rule 0.0.0.2        0.0.0.2
 ```
 
-These cmdlets update MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized.
+These cmdlets update MySql Firewall Rule by -ClientIPAddress.
