@@ -12,24 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
-    public class PSSignalRFeature
+    public class PSUpstreamTemplate
     {
-        public string Flag { get; }
+        public string HubPattern { get; set; }
 
-        public string Value { get; }
+        public string EventPattern { get; set; }
 
-        public IDictionary<string, string> Properties { get; }
+        public string CategoryPattern { get; set; }
 
-        public PSSignalRFeature(SignalRFeature signalrFeature)
+        public string UrlTemplate { get; set; }
+
+        public PSUpstreamTemplate(UpstreamTemplate upstream)
         {
-            Flag = signalrFeature.Flag;
-            Value = signalrFeature.Value;
-            Properties = signalrFeature.Properties;
+            HubPattern = upstream.HubPattern;
+            EventPattern = upstream.EventPattern;
+            CategoryPattern = upstream.CategoryPattern;
+            UrlTemplate = upstream.UrlTemplate;
+        }
+
+        public PSUpstreamTemplate(){ }
+
+        public UpstreamTemplate toSDKTemplate()
+        {
+            return new UpstreamTemplate( UrlTemplate,HubPattern, EventPattern,CategoryPattern);
         }
     }
 }

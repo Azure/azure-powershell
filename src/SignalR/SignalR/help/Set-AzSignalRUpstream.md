@@ -1,53 +1,95 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/restart-azsignalr
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/set-azsignalrupstream
 schema: 2.0.0
 ---
 
-# Restart-AzSignalR
+# Set-AzSignalRUpstream
 
 ## SYNOPSIS
-Restart a SignalR service.
+Set the upstream settings of a SignalR service.
 
 ## SYNTAX
 
 ### ResourceGroupParameterSet (Default)
 ```
-Restart-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSignalRUpstream [-ResourceGroupName <String>] [-Name] <String> [-AsJob]
+ [-Template <PSUpstreamTemplate[]>] [-Clear] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Restart-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSignalRUpstream -ResourceId <String> [-AsJob] [-Template <PSUpstreamTemplate[]>] [-Clear]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Restart-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
+Set-AzSignalRUpstream -InputObject <PSSignalRResource> [-AsJob] [-Template <PSUpstreamTemplate[]>] [-Clear]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart a SignalR service.
+Set the upstream settings of a SignalR service.
 
 ## EXAMPLES
 
-### Restart a specific SignalR service
+### Set two ordered upstream templates
 ```powershell
-PS C:\> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+PS C:\>  Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Template @{UrlTemplate='http://host-connections1.com'; HubPattern='chat';EventPattern='broadcast' }, @{UrlTemplate='http://host-connections2.com'}
 
-True
+Templates
+---------
+{Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplat…
 ```
 
-The default resource group can be set by \`Set-AzDefault -ResourceGroupName myResourceGroup\`.
+The following JSON represents the actual templates set. 
+
+ `
+{
+    "hubPattern": "chat",
+    "eventPattern": "broadcast",
+    "categoryPattern": "*",
+    "urlTemplate": "http://host-connections1.com"
+},
+{
+    "hubPattern": "*",
+    "eventPattern": "*",
+    "categoryPattern": "*",
+    "urlTemplate": "http://host-connections2.com"
+}
+`
+
+### Clear all the upstream settings
+```powershell
+PS C:\>  Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Clear
+
+Templates
+---------
+{}
+```
 
 ## PARAMETERS
 
 ### -AsJob
 Run the cmdlet in background job.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Clear
+Clear all the upstream settings.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -106,21 +148,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-{{ Fill PassThru Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 The default one will be used if not specified.
@@ -149,6 +176,24 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Template
+Template item(s) for upstream settings.
+Required key: UrlTemplate.
+Optional keys: HubPattern, EventPattern, CategoryPattern.
+Example using splatting syntax to pass templates parameter: @{UrlTemplate='http://host-connections1.com', HubPattern= 'chat';EventPattern='broadcast' },@{UrlTemplate='http://host-connections2.com'}
+
+```yaml
+Type: Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -190,12 +235,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings
 
 ## NOTES
 
 ## RELATED LINKS
+
+[How to use splatting to pass parameters to commands in PowerShell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7)
