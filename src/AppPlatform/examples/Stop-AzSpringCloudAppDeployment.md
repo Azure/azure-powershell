@@ -1,4 +1,4 @@
-### Example 1: Stop Spring Cloud Service by name
+### Example 1: Stop Spring Cloud Service by name.
 ```powershell
 PS C:\> Stop-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default
 CActive                               : True
@@ -25,7 +25,9 @@ Property                             : Microsoft.Azure.PowerShell.Cmdlets.Spring
 Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
 ```
 
-### Example 2: Stop Spring Cloud Service from pipe
+Stop Spring Cloud Service by name.
+
+### Example 2: Stop Spring Cloud Service from pipe.
 ```powershell
 PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Stop-AzSpringCloud
 CActive                               : True
@@ -52,3 +54,4 @@ Property                             : Microsoft.Azure.PowerShell.Cmdlets.Spring
 Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
 ```
 
+Stop Spring Cloud Service from pipe.

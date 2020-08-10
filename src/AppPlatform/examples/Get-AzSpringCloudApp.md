@@ -1,4 +1,4 @@
-### Example 1: Get Spring Cloud App by name
+### Example 1: Get Spring Cloud App by name.
 ```powershell
 PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
 ActiveDeploymentName    : default
@@ -26,3 +26,4 @@ Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
 ```
 
+Get Spring Cloud App by name.

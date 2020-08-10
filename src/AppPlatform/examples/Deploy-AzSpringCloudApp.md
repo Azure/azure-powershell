@@ -29,3 +29,5 @@ DeploymentSetting                    : Microsoft.Azure.PowerShell.Cmdlets.Spring
 Property                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties
 Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
 ```
+
+Deploy local compiled jar to service by name.

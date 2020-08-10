@@ -1,4 +1,4 @@
-### Example 1: Get Spring Cloud App Deploymeng by name
+### Example 1: Get Spring Cloud App Deploymeng by name.
 ```powershell
 PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default
 Active                               : False
@@ -25,3 +25,4 @@ Property                             : Microsoft.Azure.PowerShell.Cmdlets.Spring
 Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
 ```
 
+Get Spring Cloud App Deploymeng by name.

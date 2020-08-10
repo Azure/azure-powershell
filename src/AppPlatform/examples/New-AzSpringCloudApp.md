@@ -25,3 +25,5 @@ PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
 TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
 ```
+
+Create a spring cloud app.

@@ -46,6 +46,8 @@ Trace                                            : Microsoft.Azure.PowerShell.Cm
 TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
 ```
 
+Get Spring Cloud Service by name
+
 ### Example 2: List all the spring cloud service under the resource group.
 ```powershell
 PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg
@@ -53,3 +55,5 @@ Location Name                Type
 -------- ----                ----
 eastus   spring-cloud-rg Microsoft.AppPlatform/Spring
 ```
+
+List all the spring cloud service under the resource group.

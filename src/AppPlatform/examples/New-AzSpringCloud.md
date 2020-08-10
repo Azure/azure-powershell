@@ -46,3 +46,5 @@ Sku                                              : Microsoft.Azure.PowerShell.Cm
 Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties
 TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
 ```
+
+Create a spring cloud service.

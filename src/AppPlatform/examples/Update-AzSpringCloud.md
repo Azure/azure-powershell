@@ -1,4 +1,4 @@
-### Example 1: Update Spring Cloud Service by name
+### Example 1: Update Spring Cloud Service by name.
 ```powershell
 PS C:\> Update-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
 ConfigServerPropertiesErrorCode                  :
@@ -46,7 +46,9 @@ Trace                                            : Microsoft.Azure.PowerShell.Cm
 TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
 ```
 
-### Example 2: Update Spring Cloud Service from pipe
+Update Spring Cloud Service by name.
+
+### Example 2: Update Spring Cloud Service from pipe.
 ```powershell
 PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service | Update-AzSpringCloud
 ConfigServerPropertiesErrorCode                  :
@@ -94,3 +96,4 @@ Trace                                            : Microsoft.Azure.PowerShell.Cm
 TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
 ```
 
+Update Spring Cloud Service from pipe.
