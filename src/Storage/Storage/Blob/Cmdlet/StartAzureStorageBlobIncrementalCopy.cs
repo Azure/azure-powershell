@@ -133,9 +133,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool skipSourceChannelInit;
 
-        // Overwrite the useless parameter
-        public override string TagCondition { get; set; }
-
         /// <summary>
         /// Create blob client and storage service management channel if need to.
         /// </summary>

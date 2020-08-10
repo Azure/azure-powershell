@@ -85,23 +85,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
         Mandatory = false,
-        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableChangeFeed
-        {
-            get
-            {
-                return enableChangeFeed is null ? false : enableChangeFeed.Value;
-            }
-            set
-            {
-                enableChangeFeed = value;
-            }
-        }
-        private bool? enableChangeFeed = null;
-
-        [Parameter(
-        Mandatory = false,
         HelpMessage = "Gets or sets versioning is enabled if set to true.")]
         [ValidateNotNullOrEmpty]
         public bool IsVersioningEnabled
@@ -144,11 +127,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (DefaultServiceVersion != null)
                 {
                     serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
-                }
-                if (enableChangeFeed != null)
-                {
-                    serviceProperties.ChangeFeed = new ChangeFeed();
-                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
                 }
                 if (isVersioningEnabled != null)
                 {

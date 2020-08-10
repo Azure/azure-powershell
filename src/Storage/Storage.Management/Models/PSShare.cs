@@ -74,26 +74,28 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTierStatus = share.AccessTierStatus;
         }
 
-        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
+        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
         public string ResourceGroupName { get; set; }
 
-        [Ps1Xml(Label = "StorageAccountName", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "StorageAccountName", Target = ViewControl.List, Position = 1)]
         public string StorageAccountName { get; set; }
 
         public string Id { get; set; }
 
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 2)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.List, Position = 2)]
         public string Name { get; set; }
 
         public string Type { get; set; }
 
+        [Ps1Xml(Label = "Etag", Target = ViewControl.List, Position = 3)]
         public string Etag { get; set; }
 
-        [Ps1Xml(Label = "QuotaGiB", Target = ViewControl.Table, Position = 3)]
+        [Ps1Xml(Label = "QuotaGiB", Target = ViewControl.List, Position = 4)]
         public int? QuotaGiB { get; set; }
 
         public IDictionary<string, string> Metadata { get; set; }       
 
+        [Ps1Xml(Label = "LastModifiedTime", Target = ViewControl.List, ScriptBlock = "$_.LastModifiedTime.ToString(\"u\")", Position = 5)]
         public DateTime? LastModifiedTime { get; set; }
 
         [Ps1Xml(Label = "Version", Target = ViewControl.List, Position = 7)]
@@ -114,7 +116,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string AccessTierStatus { get; }
 
         public long? ShareUsageBytes { get; }
-
 
         public static string ParseResourceGroupFromId(string idFromServer)
         {

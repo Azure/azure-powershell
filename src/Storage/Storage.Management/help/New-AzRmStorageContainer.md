@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azrmstoragecontainer
@@ -19,24 +19,10 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
  [-Confirm] [<CommonParameters>]
 ```
 
-### AccountNameEncryptionScope
-```
-New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
  [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AccountObjectEncryptionScope
-```
-New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
- -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,44 +45,7 @@ PS C:\>New-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 
 This command creates a Storage blob container with Storage account object and container name, with public access as Blob.
 
-### Example 3: Create a storage container with EncryptionScope setting
-```
-PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
-
-PS C:\> $c
-
-   ResourceGroupName: myResourceGroup, StorageAccountName: myStorageAccount
-
-Name          PublicAccess LastModified HasLegalHold HasImmutabilityPolicy
-----          ------------ ------------ ------------ ---------------------
-testcontainer                           False        False                
-
-PS C:\> $c.DefaultEncryptionScope
-testscope
-
-PS C:\> $c.DenyEncryptionScopeOverride
-True
-```
-
-This command creates a storage container with a defalt encryptionScope, and blocks override of encryption scope from the container default.
-Then show the related container properties.
-
 ## PARAMETERS
-
-### -DefaultEncryptionScope
-Default the container to use specified encryption scope for all writes.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountNameEncryptionScope, AccountObjectEncryptionScope
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -143,21 +92,6 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -PreventEncryptionScopeOverride
-Block override of encryption scope from the container default.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: AccountNameEncryptionScope, AccountObjectEncryptionScope
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicAccess
 Container PublicAccess
 
@@ -179,7 +113,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName, AccountNameEncryptionScope
+Parameter Sets: AccountName
 Aliases:
 
 Required: True
@@ -194,7 +128,7 @@ Storage account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
-Parameter Sets: AccountObject, AccountObjectEncryptionScope
+Parameter Sets: AccountObject
 Aliases:
 
 Required: True
@@ -209,7 +143,7 @@ Storage Account Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName, AccountNameEncryptionScope
+Parameter Sets: AccountName
 Aliases: AccountName
 
 Required: True

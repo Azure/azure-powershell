@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string NameAlias = "Name";
 
         protected const string StorageShareNounStr = "StorageShare";
-        protected const string StorageFileServiceProperty = "StorageFileServiceProperty";
 
         public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 

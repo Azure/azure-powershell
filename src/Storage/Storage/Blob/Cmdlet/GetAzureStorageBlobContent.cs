@@ -171,7 +171,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             Track2Models.BlobProperties blobProperties = blob.GetProperties(cancellationToken: CmdletCancellationToken);
 
-            // When DownloadToAsync() support progresshandler, will add progress handler support. 
             if (this.Force.IsPresent
                 || !System.IO.File.Exists(filePath)
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))

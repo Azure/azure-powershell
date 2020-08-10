@@ -202,21 +202,10 @@ function Test-Blob
         $blob.ICloudBlob.SetStandardBlobTier($StandardBlobTier2, "High")
         $blob.ICloudBlob.FetchAttributes()
         Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
-        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "CacheControl" = "READ"} -Tag @{"tag3" = "value3"; "tag2" = "value2" } -Context $storageContext
-        $blobs = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob -IncludeTag
-        Assert-AreEqual $blobs.Count 2
-		Assert-AreEqual 2 $blobs[1].TagCount
-		Assert-AreEqual 2 $blobs[1].Tags.Count
-		$blob2 = get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext -TagCondition """tag2""='value2'"  -IncludeTag
-		Assert-AreEqual 2 $blob2.TagCount
-		Assert-AreEqual 2 $blob2.Tags.Count
-		$Tag = Set-AzStorageBlobTag -Container $containerName -Blob $objectName1 -Context $storageContext -Tag @{"tag3" = "value3"; "tag2" = "value2" ; "tag1" = "value1" }
-		Assert-AreEqual 3 $Tag.Count
-		$Tag = get-AzStorageBlobTag -Container $containerName -Blob $objectName1 -Context $storageContext -TagCondition """tag2""='value2'"
-		Assert-AreEqual 3 $Tag.Count
-        $blobs = get-AzStorageBlobByTag  -Context $storageContext -TagFilterSqlExpression "@container='$($containerName)' AND ""tag3""='value3' AND ""tag2""='value2'"      
-        Assert-AreEqual 2 $blobs.Count 
-        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force -TagCondition """tag2""='value2'"
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
+        Assert-AreEqual $blob.Count 2
+        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
 
 		#check XSCL Track2 Items works for container
 		$container = Get-AzStorageContainer $containerName -Context $storageContext
@@ -288,17 +277,6 @@ function Test-Blob
 		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
 		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
 		
-		# Encryption Scope Test
-		$scopename = "testscope"
-		$containerName2 = "testscopecontainer"
-		New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
-		$container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName -PreventEncryptionScopeOverride $true
-		Assert-AreEqual $scopename $container.BlobContainerProperties.DefaultEncryptionScope
-		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
-		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
-		Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
-		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
-
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
 
@@ -887,7 +865,7 @@ function New-TestResourceGroupAndStorageAccount
         $EnableHNFS = $false
     ) 
 
-    $location = Get-ProviderLocation_Canary ResourceManagement    
+    $location = Get-ProviderLocation ResourceManagement    
     $storageAccountType = 'Standard_LRS'# Standard Geo-Reduntand Storage
     New-AzResourceGroup -Name $ResourceGroupName -Location $location
     New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType -EnableHierarchicalNamespace $EnableHNFS

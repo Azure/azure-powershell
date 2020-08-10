@@ -275,11 +275,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>if ($_.BlobType -ne "Unspecified") {$_.BlobType}</ScriptBlock>
+                <PropertyName>BlobType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>if (($_.BlobType -ne "Unspecified") -or ($_.Length -ne 0 )) {$_.Length}</ScriptBlock>
+                <PropertyName>Length</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
