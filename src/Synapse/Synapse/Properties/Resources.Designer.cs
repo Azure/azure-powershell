@@ -613,6 +613,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting dataset &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseDataset {
+            get {
+                return ResourceManager.GetString("RemovingSynapseDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseLinkedService {

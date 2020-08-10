@@ -248,6 +248,32 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
+        #region Dataset
+
+        public DatasetResource CreateOrUpdateDataset(string datasetName, string rawJsonContent)
+        {
+            PSDatasetResource pSDatasetResource = JsonConvert.DeserializeObject<PSDatasetResource>(rawJsonContent, Settings);
+            DatasetResource dataset = pSDatasetResource.ToSdkObject();
+            return _datasetClient.CreateOrUpdateDataset(datasetName, dataset);
+        }
+
+        public DatasetResource GetDataset(string datasetName)
+        {
+            return _datasetClient.GetDataset(datasetName);
+        }
+
+        public Pageable<DatasetResource> GetDatasetsByWorkspace()
+        {
+            return _datasetClient.GetDatasetsByWorkspace();
+        }
+
+        public void DeleteDataset(string datasetName)
+        {
+            _datasetClient.DeleteDataset(datasetName);
+        }
+
+        #endregion
+
         #region helpers
 
         public virtual string ReadJsonFileContent(string path)

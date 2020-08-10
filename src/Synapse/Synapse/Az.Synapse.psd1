@@ -118,7 +118,9 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Set-AzSynapseTrigger', 'Get-AzSynapseTrigger', 'Remove-AzSynapseTrigger', 
                'Get-AzSynapseTriggerSubscriptionStatus', 'Add-AzSynapseTriggerSubscription', 
                'Remove-AzSynapseTriggerSubscription', 'Start-AzSynapseTrigger', 
-               'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun'
+               'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun', 
+               'Set-AzSynapseDataset', 'Get-AzSynapseDataset',
+               'Remove-AzSynapseDataset'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -126,7 +128,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                 'New-AzSynapseNotebook', 'Import-AzSynapseNotebook',
-                'New-AzSynapseTrigger'
+                'New-AzSynapseTrigger', 'New-AzSynapseDataset'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

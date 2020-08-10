@@ -307,5 +307,9 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string TriggerName = "The trigger name.";
 
         public const string TriggerObject = "The trigger object.";
+
+        public const string DatasetName = "The dataset name.";
+
+        public const string DatasetObject = "The dataset object.";
     }
 }
