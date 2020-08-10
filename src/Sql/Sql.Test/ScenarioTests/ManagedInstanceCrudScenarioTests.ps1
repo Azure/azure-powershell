@@ -24,7 +24,7 @@ $instanceLocation = "eastus"
 function Test-CreateManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest 
 	$vnetName = "vnet-newprovisioningtest3"
 	$subnetName = "ManagedInstance"
 
@@ -34,7 +34,7 @@ function Test-CreateManagedInstance
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
@@ -50,6 +50,7 @@ function Test-CreateManagedInstance
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
 			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
+
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -68,9 +69,10 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
+ 		Assert-AreEqual $managedInstance1.ProvisioningState "Succeeded"
 
 		$edition = "GeneralPurpose"
-		$computeGeneration = "Gen4"
+		$computeGeneration = "Gen5"
 		$managedInstanceName = Get-ManagedInstanceName
 		$dnsZonePartner = $managedInstance1.ResourceId
         $originalDnsZone = $managedInstance1.DnsZone
@@ -79,7 +81,8 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
- 		$job | Wait-Job
+
+		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
@@ -93,6 +96,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
+ 		Assert-AreEqual $managedInstance1.ProvisioningState "Succeeded"
  	}
  	finally
  	{
@@ -136,6 +140,7 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+ 		Assert-AreEqual $managedInstance1.ProvisioningState "Succeeded"
 
 		# Test using piping
 		$credentials = Get-ServerCredential
@@ -259,6 +264,7 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $resp1.LicenseType
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
+ 		Assert-AreEqual $managedInstance1.ProvisioningState "Succeeded"
 
 		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 1 $all.Count
@@ -342,7 +348,7 @@ function Test-CreateManagedInstanceWithIdentity
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 
 	try
 	{

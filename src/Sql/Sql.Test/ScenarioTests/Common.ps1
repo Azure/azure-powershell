@@ -918,8 +918,8 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 {
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
- 	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$vCore = 4
+ 	$skuName = "GP_Gen5"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `

@@ -63,6 +63,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+ProvisioningState        : Updating
 InstancePoolName         :
 ```
 
@@ -83,6 +84,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+ProvisioningState        : Updating
 InstancePoolName         :
 ```
 
@@ -107,6 +109,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 2
 StorageSizeInGB          : 1024
+ProvisioningState        : Updating
 InstancePoolName         : instancePool0
 ```
 

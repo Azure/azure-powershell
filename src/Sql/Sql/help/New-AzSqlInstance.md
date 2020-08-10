@@ -72,6 +72,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
 ```
@@ -95,6 +96,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
 ```
@@ -119,6 +121,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 2
 StorageSizeInGB          : 1024
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancepool0
 ```
@@ -142,6 +145,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 2
 StorageSizeInGB          : 1024
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancepool0
 ```
@@ -165,6 +169,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 2
 StorageSizeInGB          : 32
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 ```

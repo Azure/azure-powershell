@@ -215,6 +215,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
 
+            managedInstance.ProvisioningState = resp.ProvisioningState;
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
             sku.Tier = resp.Sku.Tier;

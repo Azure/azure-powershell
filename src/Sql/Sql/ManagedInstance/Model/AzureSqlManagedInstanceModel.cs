@@ -134,5 +134,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance minimal tls version
         /// </summary>
         public string MinimalTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance provisioning state.
+        /// </summary>
+        public string ProvisioningState { get; set; }
     }
 }

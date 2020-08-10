@@ -64,6 +64,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -79,6 +80,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Updating
 DnsZone                  : ad35cna0mw
 ```
 
@@ -101,6 +103,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Creating
 DnsZone                  : ad35cna0mw
 ```
 
@@ -123,6 +126,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 
 Location                 : westcentralus
@@ -139,6 +143,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 ```
 
@@ -161,6 +166,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 
@@ -178,6 +184,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 ```
@@ -202,6 +209,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 
@@ -219,6 +227,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 ```
@@ -242,6 +251,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 
@@ -259,6 +269,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
 ```
@@ -282,6 +293,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ProvisioningState        : Succeeded
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
 ```
