@@ -56,10 +56,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(hostGroupName))
                 {
-                    var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
-                    var psObject = new PSHostGroup();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
-                    WriteObject(psObject);
+                    if (this.InstanceView.IsPresent)
+                    {
+                        var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName, InstanceViewTypes.InstanceView).InstanceView;
+                        var psObject = new PSHostGroupInstanceView();
+                        ComputeAutoMapperProfile.Mapper.Map<DedicatedHostGroupInstanceView, PSHostGroupInstanceView>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else 
+                    {
+                        var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
+                        var psObject = new PSHostGroup();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
+                        WriteObject(psObject);
+                    }
+
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName))
                 {
@@ -120,6 +131,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/hostGroups", "ResourceGroupName")]
         public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory=false
+        )]
+        public SwitchParameter InstanceView { get; set; } = false;
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
