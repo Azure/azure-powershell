@@ -44,6 +44,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the RemoveAzureStorageContainerStoredAccessPolicyCommand class.
         /// </summary>

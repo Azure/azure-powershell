@@ -20,7 +20,7 @@ Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String
 
 ### AccountName
 ```
-Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String>
+Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-IncludeDeleted]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,8 +32,8 @@ Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-GetShar
 
 ### AccountObject
 ```
-Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShareResourceId
@@ -87,7 +87,21 @@ myshare  5120
 
 This command gets a Storage blob container with Storage account object and container name.
 
-### Example 4: Get a Storage file share with the share usage in bytes
+### Example 4: List all Storage file shares of a Storage account, include the deleted shares
+```
+PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted 
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version          ShareUsageBytes
+----     -------- ---------------- ----------           ------- -------          ---------------
+test     100                      TransactionOptimized                                         
+share1   100                      TransactionOptimized True    01D61FD1FC5498B6
+```
+
+This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
+
+### Example 5: Get a Storage file share with the share usage in bytes
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
 
@@ -123,6 +137,21 @@ Specify this parameter to get the Share Usage in Bytes.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AccountNameSingle, AccountObjectSingle, ShareResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDeleted
+Include deleted shares, by default list shares won't include deleted shares
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AccountName, AccountObject
 Aliases:
 
 Required: False

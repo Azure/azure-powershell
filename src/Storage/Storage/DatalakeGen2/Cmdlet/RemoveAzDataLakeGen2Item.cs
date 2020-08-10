@@ -70,6 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ConcurrentTaskCount { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the RemoveAzDataLakeGen2ItemCommand class.

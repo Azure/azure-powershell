@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
         }
 
         public PSContainer(BlobContainer container)
@@ -65,6 +67,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -105,6 +109,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "HasImmutabilityPolicy", Target = ViewControl.List, Position = 6)]
         public bool? HasImmutabilityPolicy { get; set; }
+
+        public string DefaultEncryptionScope { get; set; }
+        
+        public bool? DenyEncryptionScopeOverride { get; set; }
 
 
         public static string ParseResourceGroupFromId(string idFromServer)
@@ -216,7 +224,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSImmutabilityPolicy(StorageModels.ImmutabilityPolicy policy)
         {
-            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.Name = policy.Name;
@@ -238,7 +246,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSImmutabilityPolicyProperties(StorageModels.ImmutabilityPolicyProperties policy)
         {
-            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
