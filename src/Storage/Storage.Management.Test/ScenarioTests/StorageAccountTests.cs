@@ -179,6 +179,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountRAGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSetAzureStorageAccount_LargeFileShare()
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
@@ -193,17 +207,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccountGZRS()
+        public void TestNewSetAStorageAccount_RoutingPreference()
         {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccountRAGZRS()
-        {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
-        }
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
+        }        
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

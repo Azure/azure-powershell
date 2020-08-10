@@ -120,9 +120,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             get
             {
-                if (privateBlobProperties == null)
+                // For find blob  by Tag, won't auto get blob properties.
+                if (getLazyProperties)
                 {
-                    privateBlobProperties = BlobBaseClient.GetProperties().Value;
+                    if (privateBlobProperties == null)
+                    {
+                        privateBlobProperties = BlobBaseClient.GetProperties().Value;
+                    }
                 }
                 return privateBlobProperties;
             }
@@ -171,6 +175,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private BlobClientOptions privateClientOptions = null;
 
         /// <summary>
+        /// Get the lazy properties automaticlly, won't get it when the item is created with Find-AzStorageBlobByTag
+        /// </summary>
+        private bool getLazyProperties = true;
+
+        /// <summary>
         /// Blob AccessTier..
         /// </summary>
         public string AccessTier { get; set; }
@@ -178,7 +187,22 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Blob TagCount.
         /// </summary>
-        public long TagCount { get; set; }
+        public long TagCount
+        {
+            get
+            {
+                if (tagcount == -1)
+                {
+                    tagcount = BlobProperties.TagCount;
+                }
+                    return tagcount;
+            }
+            set
+            {
+                tagcount = value;
+            }
+        }
+        private long tagcount = -1;
 
         /// <summary>
         /// Blob Tags
@@ -260,6 +284,47 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             SetProperties(track2BlobClient, storageContext, blobProperties, options);
         }
 
+        /// <summary>
+        /// Azure storage blob constructor
+        /// </summary>
+        /// <param name="blob">ICloud blob object</param>
+        public AzureStorageBlob(BlobTagItem blob, AzureStorageContext storageContext, string continuationToken = null, BlobClientOptions options = null, bool getProperties = false)
+        {
+            // Get Track2 blob client
+            BlobUriBuilder uriBuilder = new BlobUriBuilder(storageContext.StorageAccount.BlobEndpoint)
+            {
+                BlobContainerName = blob.BlobContainerName,
+                BlobName = blob.BlobName
+            };
+            Uri blobUri = uriBuilder.ToUri();
+            if (storageContext.StorageAccount.Credentials.IsSAS)
+            {
+                blobUri= new Uri(blobUri.ToString() + storageContext.StorageAccount.Credentials.SASToken);
+            }
+            this.privateBlobBaseClient = Util.GetTrack2BlobClient(blobUri, storageContext, options);
+
+            // Set continuationToken
+            if (continuationToken != null)
+            {
+                BlobContinuationToken token = new BlobContinuationToken();
+                token.NextMarker = continuationToken;
+                this.ContinuationToken = token;
+                ICloudBlob = storageContext.StorageAccount.CreateCloudBlobClient().GetContainerReference(blob.BlobContainerName).GetBlobReference(blob.BlobName);
+            }
+
+            // Set other properties
+            if (!getProperties)
+            {
+                getLazyProperties = false;
+                Name = blob.BlobName;
+                this.Context = storageContext;
+            }
+            else
+            {
+                SetProperties(this.privateBlobBaseClient, storageContext, null, options);
+            }
+        }
+
         private void SetProperties(BlobBaseClient track2BlobClient, AzureStorageContext storageContext, global::Azure.Storage.Blobs.Models.BlobProperties blobProperties = null, BlobClientOptions options = null)
         {
             if (blobProperties == null)
@@ -282,7 +347,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Name = track2BlobClient.Name;
             this.Context = storageContext;
             privateClientOptions = options;
-            ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+            if (privateBlobProperties is null)
+            {
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, null);
+            }
+            else
+            {
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+            }
             if (!(ICloudBlob is InvalidCloudBlob))
             {
                 BlobType = ICloudBlob.BlobType;

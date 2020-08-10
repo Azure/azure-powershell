@@ -105,7 +105,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; },
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '2.9.1'; }, 
                @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.4.0'; }, 
+#               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.1.1'; },  # Storage removed to support preview
                @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.3.0'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Support'; RequiredVersion = '1.0.0'; }, 

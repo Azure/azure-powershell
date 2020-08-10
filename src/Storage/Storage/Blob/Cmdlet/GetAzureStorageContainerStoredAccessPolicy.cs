@@ -42,6 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipelineByPropertyName = true)]
         public string Policy { get; set; }
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageContainerStoredAccessPolicyCommand class.
         /// </summary>

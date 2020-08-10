@@ -616,8 +616,8 @@ function Test-NetworkRule
         foreach($iprule in $stoacliprule) {
             $job = Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule -AsJob
             $job | Wait-Job
-			# add again should not fail
-			Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule
+            # add again should not fail
+            Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule
         }
 
         $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
@@ -713,52 +713,6 @@ function Test-GetAzureStorageLocationUsage
         $usage = Get-AzStorageUsage -Location $loc
         Assert-AreNotEqual 0 $usage.Limit;
         Assert-AreNotEqual 0 $usage.CurrentValue;      
-}
-
-<#
-.SYNOPSIS
-Test Invoke-AzStorageAccountFailover
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-FailoverAzureStorageAccount
-{
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_RAGRS';
-        $kind = 'StorageV2'
-
-        $loc = Get-ProviderLocation_Canary ResourceManagement;
-        New-AzResourceGroup -Name $rgname -Location $loc;
-		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
-        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind; 
-        $seconcaryLocation = $sto.SecondaryLocation
-
-        #Invoke Failover
-        $job = Invoke-AzStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -Force -AsJob
-        $job | Wait-Job
-
-        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation;
-        Assert-AreEqual 'Standard_LRS' $sto.Sku.Name;
-        
-        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
 }
 
 <#
@@ -883,6 +837,52 @@ function Test-GetAzureStorageLocationUsage
         $usage = Get-AzStorageUsage -Location $loc
         Assert-AreNotEqual 0 $usage.Limit;
         Assert-AreNotEqual 0 $usage.CurrentValue;      
+}
+
+<#
+.SYNOPSIS
+Test Invoke-AzStorageAccountFailover
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-FailoverAzureStorageAccount
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_RAGRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+		$seconcaryLocation = $sto.SecondaryLocation
+
+		#Invoke Failover
+		$job = Invoke-AzStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -Force -AsJob
+		$job | Wait-Job
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation;
+        Assert-AreEqual 'Standard_LRS' $sto.Sku.Name;
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }
 
 <#
@@ -1147,6 +1147,102 @@ function Test-StorageAccountManagementPolicy
     }
 }
 
+	<#
+.SYNOPSIS
+Test Test-NewSetAzureStorageAccount_GZRS
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewSetAzureStorageAccount_GZRS
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GZRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype ;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+		
+        $stotype = 'Standard_RAGZRS';
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype ;
+		
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+	<#
+.SYNOPSIS
+Test Test-NewAzureStorageAccount_RAGZRS
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewSetAzureStorageAccount_RAGZRS
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_RAGZRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype ;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+		
+        $stotype = 'Standard_GZRS';
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype ;
+		
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Test Test-NewSetAzureStorageAccount_LargeFileShare
@@ -1240,61 +1336,13 @@ function Test-NewAzureStorageAccountQueueTableEncrytionKeyType
     }
 }
 
-<#
-.SYNOPSIS
-Test Test-NewSetAzureStorageAccount_GZRS
-.DESCRIPTION
-SmokeTest
-#>
-function Test-NewSetAzureStorageAccount_GZRS
-{
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GZRS';
-        $loc = Get-ProviderLocation_Canary ResourceManagement;
-        $kind = 'StorageV2'
-
-        New-AzResourceGroup -Name $rgname -Location $loc;
-        Write-Output ("Resource Group created")
-		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype ;
-
-        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind;
-		
-        $stotype = 'Standard_RAGZRS';
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype ;
-		
-        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind;
-
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 	<#
 .SYNOPSIS
-Test Test-NewAzureStorageAccount_RAGZRS
+Test Test-NewSetAzStorageAccount_RoutingPreference
 .DESCRIPTION
 SmokeTest
 #>
-function Test-NewSetAzureStorageAccount_RAGZRS
+function Test-NewSetAzStorageAccount_RoutingPreference
 {
     # Setup
     $rgname = Get-StorageManagementTestResourceName;
@@ -1303,29 +1351,57 @@ function Test-NewSetAzureStorageAccount_RAGZRS
     {
         # Test
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_RAGZRS';
+        $stotype = 'Standard_LRS';
         $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
 		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype ;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "MicrosoftRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
 		
-        $stotype = 'Standard_GZRS';
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype ;
-		
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -RoutingChoice InternetRouting;
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind;
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishMicrosoftEndpoint $false ;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $false $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishInternetEndpoint $false;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $false $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $false $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $false -RoutingChoice MicrosoftRouting;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $false $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "MicrosoftRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreEqual $null $sto.PrimaryEndpoints.InternetEndpoints
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
