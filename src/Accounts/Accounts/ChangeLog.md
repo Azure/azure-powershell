@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
+* Upgrade Azure.Core to 1.4.0
 
 ## Version 1.9.2
 * Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
