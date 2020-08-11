@@ -69,6 +69,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string ShowReplicationByRegistryObjectParameterSet = "ShowReplicationByRegistryObjectParameterSet";
         protected const string ListReplicationByNameResourceGroupParameterSet = "ListReplicationByNameResourceGroupParameterSet";
         protected const string ListReplicationByRegistryObjectParameterSet = "ListReplicationByRegistryObjectParameterSet";
+        protected const string ImportImageByResourceId = "ImportImageByResourceId";
+        protected const string ImportImageByRegistryUri = "ImportImageByRegistryUri";
+        protected const string ImportImageByRegistryUriWithCredential = "ImportImageByRegistryUriWithCredential";
+        protected const string AddNetworkRuleWithInputObject = "AddNetworkRuleWithInputObject";
+        protected const string AddNetworkRuleWithoutInputObject = "AddAddNetworkRuleWithoutInputObject";
+        protected const string ByVirtualNetworkRule = "ByVirtualNetworkRule";
+        protected const string ByIPRule = "ByIPRule";
+
 
         protected const string InvalidRegistryResourceIdErrorMessage = "This is an invalid container registry resource id";
         protected const string InvalidRegistryOrWebhookResourceIdErrorMessage = "This is an invalid container registry resource id or webhook resource id";

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
@@ -60,6 +61,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The network rule set for a container registry.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, "Create Container Registry"))
@@ -96,7 +101,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                         Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku),
                         AdminUserEnabled = EnableAdminUser,
                         Tags = tags,
-                        Location = Location
+                        Location = Location,
+                        NetworkRuleSet = NetworkRuleSet.GetNetworkRuleSet()
                     };
 
                     if (StorageAccountName != null)
