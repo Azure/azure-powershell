@@ -21,6 +21,9 @@
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
+* Update help file, and add more description and fix typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
 * Fixed [#12592]: Fix download blob fail when related sub directory not exist.
 	- `Get-AzStorageBlobContent`
 
