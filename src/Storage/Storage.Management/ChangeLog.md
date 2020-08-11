@@ -18,19 +18,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Container access policy with new permission x,t
+    -  `New-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+* Change the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
+    -  `Get-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+    -  `Get-AzStorageShareStoredAccessPolicy`
+    -  `Set-AzStorageShareStoredAccessPolicy`
+    -  `Get-AzStorageQueueStoredAccessPolicy`
+    -  `Set-AzStorageQueueStoredAccessPolicy`
+    -  `Get-AzStorageTableStoredAccessPolicy`
+    -  `Set-AzStorageTableStoredAccessPolicy`
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
 * Fixed [#12592]: Fix download blob fail when related sub directory not exist.
 	- `Get-AzStorageBlobContent`
-
+  
 ## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
     -  `New-AzStorageBlobSASToken`
     -  `New-AzStorageContainerSASToken`
-* Supported create account Sas token with new permission x,t,f
+* support create account Sas token with new permission x,t,f
     -  `New-AzStorageAccountSASToken`
-* Supported get single file share usage
+* Support get single file share usage
     - `Get-AzRmStorageShare`
 
 ## Version 2.3.1
@@ -58,7 +70,6 @@
     -  `Set-AzStorageBlobTag`
     -  `Start-AzStorageBlobCopy`
     -  `Stop-AzStorageBlobCopy`
-
         
 ## Version 2.3.0
 * Fixed the issue that UserAgent is not added for some data plane cmdlets.
