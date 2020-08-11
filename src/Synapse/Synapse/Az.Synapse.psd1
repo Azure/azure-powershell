@@ -120,7 +120,8 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Remove-AzSynapseTriggerSubscription', 'Start-AzSynapseTrigger', 
                'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun', 
                'Set-AzSynapseDataset', 'Get-AzSynapseDataset',
-               'Remove-AzSynapseDataset'
+               'Remove-AzSynapseDataset', 'Set-AzSynapseDataFlow',
+               'Get-AzSynapseDataFlow', 'Remove-AzSynapseDataFlow'
 
 # Variables to export from this module
 # VariablesToExport = @()

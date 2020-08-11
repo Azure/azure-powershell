@@ -8,11 +8,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Dataset,
-        DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Dataset)]
-    [OutputType(typeof(PSDatasetResource))]
-    public class SetAzureSynapseDataset : SynapseArtifactsCmdletBase
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.DataFlow,
+           DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.DataFlow)]
+    [OutputType(typeof(PSDataFlowResource))]
+    public class SetAzureSynapseDataFlow : SynapseArtifactsCmdletBase
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.DatasetName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.DataFlowName)]
         [ValidateNotNullOrEmpty]
-        [Alias("DatasetName")]
+        [Alias("DataFlowName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseDataset, this.Name, this.WorkspaceName)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseDataFlow, this.Name, this.WorkspaceName)))
             {
                 string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                WriteObject(new PSDatasetResource(SynapseAnalyticsClient.CreateOrUpdateDataset(this.Name, rawJsonContent), this.WorkspaceName));
+                WriteObject(new PSDataFlowResource(SynapseAnalyticsClient.CreateOrUpdateDataFlow(this.Name, rawJsonContent), this.WorkspaceName));
             }
         }
     }

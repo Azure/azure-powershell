@@ -311,5 +311,9 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string DatasetName = "The dataset name.";
 
         public const string DatasetObject = "The dataset object.";
+
+        public const string DataFlowName = "The data flow name.";
+
+        public const string DataFlowObject = "The data flow object.";
     }
 }

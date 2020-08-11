@@ -450,4 +450,10 @@ Are you sure you want to continue?</value>
   <data name="RemovingSynapseDataset" xml:space="preserve">
     <value>Deleting dataset '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="SettingSynapseDataFlow" xml:space="preserve">
+    <value>Setting data flow '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseDataFlow" xml:space="preserve">
+    <value>Deleting data flow '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

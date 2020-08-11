@@ -611,6 +611,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RemovingIntegrationRuntimeNode", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseDataFlow {
+            get {
+                return ResourceManager.GetString("RemovingSynapseDataFlow", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Deleting dataset &apos;{0}&apos; in workspace &apos;{1}&apos;..
@@ -758,6 +767,27 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Setting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseDataFlow {
+            get {
+                return ResourceManager.GetString("SettingSynapseDataFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting dataset &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseDataset {
+            get {
+                return ResourceManager.GetString("SettingSynapseDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> 8bc31e2a50... add support for dataflow
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {

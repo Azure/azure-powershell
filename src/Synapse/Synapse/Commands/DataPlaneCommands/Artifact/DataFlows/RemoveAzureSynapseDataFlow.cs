@@ -4,16 +4,14 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Dataset,
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.DataFlow,
         DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureSynapseDataset : SynapseArtifactsCmdletBase
+    public class RemoveAzureSynapseDataFlow : SynapseArtifactsCmdletBase
     {
         private const string RemoveByName = "RemoveByName";
         private const string RemoveByObject = "RemoveByObject";
@@ -31,17 +29,17 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
-            Mandatory = true, HelpMessage = HelpMessages.DatasetName)]
+            Mandatory = true, HelpMessage = HelpMessages.DataFlowName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
-            Mandatory = true, HelpMessage = HelpMessages.DatasetName)]
+            Mandatory = true, HelpMessage = HelpMessages.DataFlowName)]
         [ValidateNotNullOrEmpty]
-        [Alias("DatasetName")]
+        [Alias("DataFlowName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByInputObject,
-            Mandatory = true, HelpMessage = HelpMessages.DatasetObject)]
+            Mandatory = true, HelpMessage = HelpMessages.DataFlowObject)]
         [ValidateNotNull]
-        public PSDatasetResource InputObject { get; set; }
+        public PSDataFlowResource InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -62,9 +60,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = this.InputObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseDataset, this.Name, this.WorkspaceName)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseDataFlow, this.Name, this.WorkspaceName)))
             {
-                SynapseAnalyticsClient.DeleteDataset(this.Name);
+                SynapseAnalyticsClient.DeleteDataFlow(this.Name);
                 if (PassThru)
                 {
                     WriteObject(true);
