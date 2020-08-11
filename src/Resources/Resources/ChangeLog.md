@@ -23,6 +23,7 @@
 * Overrode `-WhatIf` and `-Confirm` for `New-AzManagementGroupDeployment` and `New-AzTenantDeployment` to use ARM template What-If results
 * Fixed the hehaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
 * Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
+* Added breaking change attribute to `GetAzureResourceGroupDeploymentOperationCmdlet` for the upcoming output type change
 
 ## Version 2.4.0
 * Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
