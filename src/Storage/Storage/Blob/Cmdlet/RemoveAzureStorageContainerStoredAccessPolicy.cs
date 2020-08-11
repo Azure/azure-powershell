@@ -15,9 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -70,20 +74,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             bool success = false;
             string result = string.Empty;
 
-            //Get existing permissions
-            CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container, null, null, OperationContext);
+            //Get container instance, Get existing permissions
+            CloudBlobContainer container_Track1 = Channel.GetContainerReference(containerName);
+            BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
+            BlobContainerAccessPolicy accessPolicy = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
+            IEnumerable<BlobSignedIdentifier> signedIdentifiers = accessPolicy.SignedIdentifiers;
 
-            //remove the specified policy
-            if (!blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
+            //remove policy
+            BlobSignedIdentifier signedIdentifier = null;
+            foreach (BlobSignedIdentifier identifier in signedIdentifiers)
             {
-                throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                if (identifier.Id == policyName)
+                {
+                    signedIdentifier = identifier;
+                }
+            }
+
+            if (signedIdentifier == null)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
             if (ShouldProcess(policyName, "Remove policy"))
             {
-                blobContainerPermissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetContainerPermissions(container, blobContainerPermissions, null, null, OperationContext);
+                List<BlobSignedIdentifier> policyList = new List<BlobSignedIdentifier>(signedIdentifiers);
+                policyList.Remove(signedIdentifier);           
+                
+                //Set permissions back to container
+                container.SetAccessPolicy(accessPolicy.BlobPublicAccess, policyList, BlobRequestConditions, CmdletCancellationToken);
                 success = true;
             }
 
