@@ -21,6 +21,9 @@
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
+* Update help file, and add more description and fix typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
 
 ## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
