@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Show additional legal terms for certain APIs.
 
 ## Version 1.5.1
 * Used `Deny` specifically as NetworkRules default action.
