@@ -3856,6 +3856,162 @@ function Test-LowPriorityVirtualMachine
 
 <#
 .SYNOPSIS
+Test EncryptionAtHost Virtual Machine
+#>
+function Test-EncryptionAtHostVM
+{
+# Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
+
+        # Get VM
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false; } "can be updated only when VM is in deallocated state"
+        
+        #update vm with encryptionathost false
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual False $vm.SecurityProfile.encryptionAtHost
+        
+        #update vm with encryptionathost false
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $true;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
+Test EncryptionAtHost Virtual Machine Default Param Set
+#>
+function Test-EncryptionAtHostVMDefaultParamSet
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EncryptionAtHost;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
+
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
+
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
+
+        # $p.StorageProfile.OSDisk = $null;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+
+        # Image Reference
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+
+        $p.StorageProfile.DataDisks = $null;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost
+
+        # Remove
+        Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Set-AzVMOperatingSystem
 #>
 function Test-SetAzVMOperatingSystem

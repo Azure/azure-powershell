@@ -2467,3 +2467,72 @@ function Test-VirtualMachineScaleSetImageVersion
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+    testing encryptionAtHost cmdlet for
+    new-azvmss - create vmss using simple parameter set and hostencryption tag.
+    update-azvmss test boolean parameter 
+    new-azvmssconfig
+#>
+function Test-VirtualMachineScaleSetEncryptionAtHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+ 
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmsswithconfig';
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+        
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -EncryptionAtHost `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+       
+        #creating vmss using new-azvmss default parameter set which uses New-VmssConfig with -EncryptionAtHost parameter
+        $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        #creating vmss using New-azvmss simple parameter set
+        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -EncryptionAtHost -DomainNameLabel "domainlabel"
+
+        Assert-AreEqual $vmssResult1.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
+        Assert-AreEqual $vmssResult2.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
+        
+        #using Update-azvmss to turn off encryptionAtHost
+        $updatedVM = Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult1 -EncryptionAtHost $false
+        
+        Assert-False { $updatedVM.VirtualMachineProfile.SecurityProfile.EncryptionAtHost };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
