@@ -88,7 +88,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
-               'Get-AzRoleAssignment', 'New-AzRoleAssignment', 
+               'Get-AzRoleAssignment', 'New-AzRoleAssignment', 'Set-AzRoleAssignment', 
                'Get-AzRoleDefinition', 'New-AzRoleDefinition', 
                'Set-AzRoleDefinition', 'Remove-AzRoleDefinition', 
                'Get-AzADAppCredential', 'Get-AzADApplication', 'Add-AzADGroupMember', 

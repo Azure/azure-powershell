@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
-    public class PSSignalRFeature
+    public class PSServerlessUpstreamSettings
     {
-        public string Flag { get; }
+        public IList<PSUpstreamTemplate> Templates { get; set; }
 
-        public string Value { get; }
-
-        public IDictionary<string, string> Properties { get; }
-
-        public PSSignalRFeature(SignalRFeature signalrFeature)
+        public PSServerlessUpstreamSettings(ServerlessUpstreamSettings settings)
         {
-            Flag = signalrFeature.Flag;
-            Value = signalrFeature.Value;
-            Properties = signalrFeature.Properties;
+            if (settings.Templates == null)
+                Templates = null;
+            else Templates = settings.Templates.Select((template) =>new PSUpstreamTemplate(template)).ToList();
         }
     }
 }
