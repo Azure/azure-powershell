@@ -17,8 +17,13 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+
 ## Upcoming Release
+* New cmdlet 'Invoke-AzVmAssessPatch'
+* Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
+* Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
+* Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
+
 * New cmdlet 'Invoke-AzVmPatchAssessment'
 
 ## Version 4.2.1
