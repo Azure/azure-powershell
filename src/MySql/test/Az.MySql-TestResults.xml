@@ -1,195 +1,196 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="38" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-07-24" time="09:53:13">
-  <environment nunit-version="2.5.8.0" machine-name="c8a7557c8274" os-version="4.19.76-linuxkit" platform="Linux" user-domain="" clr-version="Unknown" cwd="/src/MySql" user="root" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="39" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-08-12" time="11:29:53">
+  <environment nunit-version="2.5.8.0" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="DESKTOP-COPFV04" clr-version="Unknown" user-domain="FAREAST" os-version="10.0.18363" cwd="D:\workspace\generation\src\MySql" user="leijin" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="7.9314" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="7.9383" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="1.051" asserts="0" description="/src/MySql/test/Get-AzMySqlConfiguration.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.8965" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlConfiguration.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlConfiguration" executed="True" result="Success" success="True" time="0.7848" asserts="0" description="Get-AzMySqlConfiguration">
+          <test-suite type="TestFixture" name="Get-AzMySqlConfiguration" executed="True" result="Success" success="True" time="0.6568" asserts="0" description="Get-AzMySqlConfiguration">
             <results>
-              <test-case description="List" name="Get-AzMySqlConfiguration.List" time="0.3692" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzMySqlConfiguration.Get" time="0.0745" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzMySqlConfiguration.GetViaIdentity" time="0.0885" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlConfiguration.List" time="0.2189" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlConfiguration.Get" time="0.0619" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlConfiguration.GetViaIdentity" time="0.0549" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlConnectionString.Tests.ps1" executed="True" result="Success" success="True" time="0.4057" asserts="0" description="/src/MySql/test/Get-AzMySqlConnectionString.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlConnectionString.Tests.ps1" executed="True" result="Success" success="True" time="0.3999" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlConnectionString.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlConnectionString" executed="True" result="Success" success="True" time="0.249" asserts="0" description="Get-AzMySqlConnectionString">
+          <test-suite type="TestFixture" name="Get-AzMySqlConnectionString" executed="True" result="Success" success="True" time="0.2173" asserts="0" description="Get-AzMySqlConnectionString">
             <results>
-              <test-case description="Get" name="Get-AzMySqlConnectionString.Get" time="0.0654" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzMySqlConnectionString.GetViaIdentity" time="0.1445" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlConnectionString.Get" time="0.0524" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlConnectionString.GetViaIdentity" time="0.0842" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.4902" asserts="0" description="/src/MySql/test/Get-AzMySqlFirewallRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.4515" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlFirewallRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.3557" asserts="0" description="Get-AzMySqlFirewallRule">
+          <test-suite type="TestFixture" name="Get-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.3005" asserts="0" description="Get-AzMySqlFirewallRule">
             <results>
-              <test-case description="List" name="Get-AzMySqlFirewallRule.List" time="0.1517" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzMySqlFirewallRule.Get" time="0.0807" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzMySqlFirewallRule.GetViaIdentity" time="0.0785" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlFirewallRule.List" time="0.102" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlFirewallRule.Get" time="0.0532" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlFirewallRule.GetViaIdentity" time="0.0604" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.5356" asserts="0" description="/src/MySql/test/Get-AzMySqlReplica.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.4664" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlReplica.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlReplica" executed="True" result="Success" success="True" time="0.3734" asserts="0" description="Get-AzMySqlReplica">
+          <test-suite type="TestFixture" name="Get-AzMySqlReplica" executed="True" result="Success" success="True" time="0.3001" asserts="0" description="Get-AzMySqlReplica">
             <results>
-              <test-case description="List" name="Get-AzMySqlReplica.List" time="0.3409" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlReplica.List" time="0.222" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.2744" asserts="0" description="/src/MySql/test/Get-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3513" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlServer" executed="True" result="Success" success="True" time="0.1427" asserts="0" description="Get-AzMySqlServer">
+          <test-suite type="TestFixture" name="Get-AzMySqlServer" executed="True" result="Success" success="True" time="0.2" asserts="0" description="Get-AzMySqlServer">
             <results>
-              <test-case description="List1" name="Get-AzMySqlServer.List1" time="0.0311" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzMySqlServer.Get" time="0.0156" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzMySqlServer.List" time="0.0315" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzMySqlServer.GetViaIdentity" time="0.0159" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzMySqlServer.List1" time="0.0336" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlServer.Get" time="0.0176" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlServer.List" time="0.0259" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlServer.GetViaIdentity" time="0.0243" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Get-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.4971" asserts="0" description="/src/MySql/test/Get-AzMySqlVirtualNetworkRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Get-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.446" asserts="0" description="D:\workspace\generation\src\MySql\test\Get-AzMySqlVirtualNetworkRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.3628" asserts="0" description="Get-AzMySqlVirtualNetworkRule">
+          <test-suite type="TestFixture" name="Get-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.3038" asserts="0" description="Get-AzMySqlVirtualNetworkRule">
             <results>
-              <test-case description="List" name="Get-AzMySqlVirtualNetworkRule.List" time="0.1572" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzMySqlVirtualNetworkRule.Get" time="0.0917" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzMySqlVirtualNetworkRule.GetViaIdentity" time="0.0718" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlVirtualNetworkRule.List" time="0.1105" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlVirtualNetworkRule.Get" time="0.0581" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlVirtualNetworkRule.GetViaIdentity" time="0.0627" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/New-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2457" asserts="0" description="/src/MySql/test/New-AzMySqlFirewallRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\New-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3242" asserts="0" description="D:\workspace\generation\src\MySql\test\New-AzMySqlFirewallRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.112" asserts="0" description="New-AzMySqlFirewallRule">
+          <test-suite type="TestFixture" name="New-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.1777" asserts="0" description="New-AzMySqlFirewallRule">
             <results>
-              <test-case description="CreateExpanded" name="New-AzMySqlFirewallRule.CreateExpanded" time="0.0849" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateExpanded" name="New-AzMySqlFirewallRule.CreateExpanded" time="0.0702" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="AllowAll" name="New-AzMySqlFirewallRule.AllowAll" time="0.0395" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/New-AzMySqlReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.4618" asserts="0" description="/src/MySql/test/New-AzMySqlReplica.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\New-AzMySqlReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.4123" asserts="0" description="D:\workspace\generation\src\MySql\test\New-AzMySqlReplica.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzMySqlReplica" executed="True" result="Success" success="True" time="0.3185" asserts="0" description="New-AzMySqlReplica">
+          <test-suite type="TestFixture" name="New-AzMySqlReplica" executed="True" result="Success" success="True" time="0.2671" asserts="0" description="New-AzMySqlReplica">
             <results>
-              <test-case description="CreateExpanded" name="New-AzMySqlReplica.CreateExpanded" time="0.291" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateExpanded" name="New-AzMySqlReplica.CreateExpanded" time="0.2006" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/New-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3067" asserts="0" description="/src/MySql/test/New-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\New-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.315" asserts="0" description="D:\workspace\generation\src\MySql\test\New-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzMySqlServer" executed="True" result="Success" success="True" time="0.1455" asserts="0" description="New-AzMySqlServer">
+          <test-suite type="TestFixture" name="New-AzMySqlServer" executed="True" result="Success" success="True" time="0.1668" asserts="0" description="New-AzMySqlServer">
             <results>
-              <test-case description="CreateExpanded" name="New-AzMySqlServer.CreateExpanded" time="0.1235" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateExpanded" name="New-AzMySqlServer.CreateExpanded" time="0.0887" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/New-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2197" asserts="0" description="/src/MySql/test/New-AzMySqlVirtualNetworkRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\New-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2619" asserts="0" description="D:\workspace\generation\src\MySql\test\New-AzMySqlVirtualNetworkRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.0712" asserts="0" description="New-AzMySqlVirtualNetworkRule">
+          <test-suite type="TestFixture" name="New-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.1167" asserts="0" description="New-AzMySqlVirtualNetworkRule">
             <results>
-              <test-case description="CreateExpanded" name="New-AzMySqlVirtualNetworkRule.CreateExpanded" time="0.049" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateExpanded" name="New-AzMySqlVirtualNetworkRule.CreateExpanded" time="0.0505" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Remove-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2528" asserts="0" description="/src/MySql/test/Remove-AzMySqlFirewallRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Remove-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3388" asserts="0" description="D:\workspace\generation\src\MySql\test\Remove-AzMySqlFirewallRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.1152" asserts="0" description="Remove-AzMySqlFirewallRule">
+          <test-suite type="TestFixture" name="Remove-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.2094" asserts="0" description="Remove-AzMySqlFirewallRule">
             <results>
-              <test-case description="Delete" name="Remove-AzMySqlFirewallRule.Delete" time="0.0357" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlFirewallRule.DeleteViaIdentity" time="0.0467" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzMySqlFirewallRule.Delete" time="0.0498" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlFirewallRule.DeleteViaIdentity" time="0.0703" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Remove-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.2274" asserts="0" description="/src/MySql/test/Remove-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Remove-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3381" asserts="0" description="D:\workspace\generation\src\MySql\test\Remove-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzMySqlServer" executed="True" result="Success" success="True" time="0.1032" asserts="0" description="Remove-AzMySqlServer">
+          <test-suite type="TestFixture" name="Remove-AzMySqlServer" executed="True" result="Success" success="True" time="0.1954" asserts="0" description="Remove-AzMySqlServer">
             <results>
-              <test-case description="Delete" name="Remove-AzMySqlServer.Delete" time="0.0387" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlServer.DeleteViaIdentity" time="0.0363" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzMySqlServer.Delete" time="0.0553" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlServer.DeleteViaIdentity" time="0.0492" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Remove-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.23" asserts="0" description="/src/MySql/test/Remove-AzMySqlVirtualNetworkRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Remove-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3342" asserts="0" description="D:\workspace\generation\src\MySql\test\Remove-AzMySqlVirtualNetworkRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.1012" asserts="0" description="Remove-AzMySqlVirtualNetworkRule">
+          <test-suite type="TestFixture" name="Remove-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.1747" asserts="0" description="Remove-AzMySqlVirtualNetworkRule">
             <results>
-              <test-case description="Delete" name="Remove-AzMySqlVirtualNetworkRule.Delete" time="0.0335" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlVirtualNetworkRule.DeleteViaIdentity" time="0.0421" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzMySqlVirtualNetworkRule.Delete" time="0.054" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlVirtualNetworkRule.DeleteViaIdentity" time="0.05" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Restart-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.2364" asserts="0" description="/src/MySql/test/Restart-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Restart-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3179" asserts="0" description="D:\workspace\generation\src\MySql\test\Restart-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Restart-AzMySqlServer" executed="True" result="Success" success="True" time="0.1102" asserts="0" description="Restart-AzMySqlServer">
+          <test-suite type="TestFixture" name="Restart-AzMySqlServer" executed="True" result="Success" success="True" time="0.19" asserts="0" description="Restart-AzMySqlServer">
             <results>
-              <test-case description="Restart" name="Restart-AzMySqlServer.Restart" time="0.0449" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="RestartViaIdentity" name="Restart-AzMySqlServer.RestartViaIdentity" time="0.0411" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Restart" name="Restart-AzMySqlServer.Restart" time="0.0581" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartViaIdentity" name="Restart-AzMySqlServer.RestartViaIdentity" time="0.045" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Restore-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="1.1652" asserts="0" description="/src/MySql/test/Restore-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Restore-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.9623" asserts="0" description="D:\workspace\generation\src\MySql\test\Restore-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Restore-AzMySqlServer" executed="True" result="Success" success="True" time="1.04" asserts="0" description="Restore-AzMySqlServer">
+          <test-suite type="TestFixture" name="Restore-AzMySqlServer" executed="True" result="Success" success="True" time="0.8263" asserts="0" description="Restore-AzMySqlServer">
             <results>
-              <test-case description="GeoRestore" name="Restore-AzMySqlServer.GeoRestore" time="0.4477" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="PointInTimeRestore" name="Restore-AzMySqlServer.PointInTimeRestore" time="0.5653" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GeoRestore" name="Restore-AzMySqlServer.GeoRestore" time="0.338" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="PointInTimeRestore" name="Restore-AzMySqlServer.PointInTimeRestore" time="0.4005" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Update-AzMySqlConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.2299" asserts="0" description="/src/MySql/test/Update-AzMySqlConfiguration.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Update-AzMySqlConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.3237" asserts="0" description="D:\workspace\generation\src\MySql\test\Update-AzMySqlConfiguration.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzMySqlConfiguration" executed="True" result="Success" success="True" time="0.1013" asserts="0" description="Update-AzMySqlConfiguration">
+          <test-suite type="TestFixture" name="Update-AzMySqlConfiguration" executed="True" result="Success" success="True" time="0.1665" asserts="0" description="Update-AzMySqlConfiguration">
             <results>
-              <test-case description="UpdateExpanded" name="Update-AzMySqlConfiguration.UpdateExpanded" time="0.0431" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlConfiguration.UpdateViaIdentityExpanded" time="0.0314" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="Update-AzMySqlConfiguration.UpdateExpanded" time="0.0409" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlConfiguration.UpdateViaIdentityExpanded" time="0.0352" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Update-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.4521" asserts="0" description="/src/MySql/test/Update-AzMySqlFirewallRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Update-AzMySqlFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3305" asserts="0" description="D:\workspace\generation\src\MySql\test\Update-AzMySqlFirewallRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.3114" asserts="0" description="Update-AzMySqlFirewallRule">
+          <test-suite type="TestFixture" name="Update-AzMySqlFirewallRule" executed="True" result="Success" success="True" time="0.1857" asserts="0" description="Update-AzMySqlFirewallRule">
             <results>
-              <test-case description="UpdateExpanded" name="Update-AzMySqlFirewallRule.UpdateExpanded" time="0.1293" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFirewallRule.UpdateViaIdentityExpanded" time="0.1355" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="Update-AzMySqlFirewallRule.UpdateExpanded" time="0.0581" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFirewallRule.UpdateViaIdentityExpanded" time="0.0699" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Update-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3246" asserts="0" description="/src/MySql/test/Update-AzMySqlServer.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Update-AzMySqlServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3275" asserts="0" description="D:\workspace\generation\src\MySql\test\Update-AzMySqlServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzMySqlServer" executed="True" result="Success" success="True" time="0.1515" asserts="0" description="Update-AzMySqlServer">
+          <test-suite type="TestFixture" name="Update-AzMySqlServer" executed="True" result="Success" success="True" time="0.1783" asserts="0" description="Update-AzMySqlServer">
             <results>
-              <test-case description="UpdateExpanded" name="Update-AzMySqlServer.UpdateExpanded" time="0.078" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlServer.UpdateViaIdentityExpanded" time="0.0408" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="Update-AzMySqlServer.UpdateExpanded" time="0.0633" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlServer.UpdateViaIdentityExpanded" time="0.0413" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/MySql/test/Update-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3249" asserts="0" description="/src/MySql/test/Update-AzMySqlVirtualNetworkRule.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\workspace\generation\src\MySql\test\Update-AzMySqlVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3403" asserts="0" description="D:\workspace\generation\src\MySql\test\Update-AzMySqlVirtualNetworkRule.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.1866" asserts="0" description="Update-AzMySqlVirtualNetworkRule">
+          <test-suite type="TestFixture" name="Update-AzMySqlVirtualNetworkRule" executed="True" result="Success" success="True" time="0.2017" asserts="0" description="Update-AzMySqlVirtualNetworkRule">
             <results>
-              <test-case description="UpdateExpanded" name="Update-AzMySqlVirtualNetworkRule.UpdateExpanded" time="0.0772" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlVirtualNetworkRule.UpdateViaIdentityExpanded" time="0.0822" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="Update-AzMySqlVirtualNetworkRule.UpdateExpanded" time="0.0625" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlVirtualNetworkRule.UpdateViaIdentityExpanded" time="0.0644" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
