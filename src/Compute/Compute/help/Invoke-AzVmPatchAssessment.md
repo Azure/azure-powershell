@@ -4,7 +4,7 @@ Module Name: Az.Compute
 schema: 2.0.0
 ---
 
-# Invoke-AzVMAssessPatch
+# Invoke-AzVMPatchAssessment
 
 ## SYNOPSIS
 Assess patch state of a virtual machine.
@@ -13,19 +13,19 @@ Assess patch state of a virtual machine.
 
 ### DefaultParameterSet (Default)
 ```
-Invoke-AzVMAssessPatch [-ResourceGroupName] <String> [-VMName] <String> [-AsJob]
+Invoke-AzVMPatchAssessment [-ResourceGroupName] <String> [-VMName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Invoke-AzVMAssessPatch [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Invoke-AzVMPatchAssessment [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Invoke-AzVMAssessPatch [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Invoke-AzVMPatchAssessment [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Assesses the patch status of a VM and reports all detected patches that are avai
 
 ### Example 1
 ```
-PS C:\> Invoke-AzVmAssessPatch -ResourceGroupName "myRG" -VMName "myVM"
+PS C:\> Invoke-AzVmPatchAssessment -ResourceGroupName "myRG" -VMName "myVM"
 ```
 
 ## PARAMETERS
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSAssessPatchesResult
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachinePatchAssessmentResult
 
 ## NOTES
 
