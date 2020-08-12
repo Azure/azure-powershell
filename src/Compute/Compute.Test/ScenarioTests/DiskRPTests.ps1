@@ -921,3 +921,27 @@ function Test-DiskEncryptionSet
         $encSet | Remove-AzDiskEncryptionSet -Force;
     }
 }
+
+<#
+.SYNOPSIS
+Testing diskAssess object
+#>
+function Test-DiskAccessObject
+{
+    $rgname = Get-ComputeTestResourceName;
+    $diskname = 'diskaccess' + $rgname;
+    
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname -location $loc
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

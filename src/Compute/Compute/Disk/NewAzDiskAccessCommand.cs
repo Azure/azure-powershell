@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -48,14 +49,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string diskName = this.Name;
-                    DiskAccess disk = new Disk();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    DiskAccess diskAccess = new DiskAccess();
+                    diskAccess.Location = this.Location;
 
-                    var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
-                    var psObject = new PSDisk();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDisk>(result, psObject);
+                    var result = DiskAccessesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, diskAccess);
+                    var psObject = new PSDiskAccess();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccess>(result, psObject);
                     WriteObject(psObject);
                 }
             });

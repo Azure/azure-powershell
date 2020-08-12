@@ -180,6 +180,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Type, o => o.MapFrom(r => r.Type1));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
                     .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
+                cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
+                cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
             });
             _mapper = config.CreateMapper();
         }
