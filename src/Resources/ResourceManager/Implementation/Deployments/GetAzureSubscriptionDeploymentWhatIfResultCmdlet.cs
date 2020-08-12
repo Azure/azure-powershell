@@ -14,17 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System.Management.Automation;
     using Common;
     using Common.ArgumentCompleters;
     using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
-    using SdkModels.Deployments;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Management.Automation.Language;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
@@ -34,13 +30,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
          DefaultParameterSetName = ParameterlessTemplateFileParameterSetName),
      OutputType(typeof(PSWhatIfOperationResult))]
     [Alias("Get-AzSubscriptionDeploymentWhatIfResult")]
-    public class GetAzureSubscriptionDeploymentWhatIfResultCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class GetAzureSubscriptionDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
 
         [Parameter(Mandatory = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
@@ -55,44 +50,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] ExcludeChangeType { get; set; }
 
-
-        protected override void OnProcessRecord()
-        {
-            const string statusMessage = "Getting the latest status of all resources...";
-            var clearMessage = new string(' ', statusMessage.Length);
-            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
-            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
-            var tags = new[] { "PSHOST" };
-
-            try
-            {
-                // Write status message.
-                this.WriteInformation(information, tags);
-
-                var parameters = new PSDeploymentWhatIfCmdletParameters
-                {
-                    DeploymentName = this.Name,
-                    Location = this.Location,
-                    Mode = DeploymentMode.Incremental,
-                    TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                    TemplateObject = this.TemplateObject,
-                    TemplateParametersUri = this.TemplateParameterUri,
-                    TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
-                    ResultFormat = this.ResultFormat
-                };
-
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.ExcludeChangeType);
-
-                // Clear status before returning result.
-                this.WriteInformation(clearInformation, tags);
-                this.WriteObject(whatIfResult);
-            }
-            catch (Exception)
-            {
-                // Clear status on exception.
-                this.WriteInformation(clearInformation, tags);
-                throw;
-            }
-        }
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.Subscription,
+            deploymentName: this.Name,
+            location: this.Location,
+            mode: DeploymentMode.Incremental,
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            templateObject: this.TemplateObject,
+            templateParametersUri: this.TemplateParameterUri,
+            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat: this.ResultFormat,
+            excludeChangeTypes: this.ExcludeChangeType);
     }
 }

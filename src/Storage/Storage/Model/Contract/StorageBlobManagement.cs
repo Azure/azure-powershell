@@ -29,6 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage;
 
     /// <summary>
     /// Blob management
@@ -143,6 +145,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return this.BlobClient.GetContainerReference(name);
         }
+
+        /// <summary>
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        public BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null)
+        {
+            return GetBlobServiceClient(options).GetBlobContainerClient(name);
+        }
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        public BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null)
+        {
+            if (blobServiceClient == null)
+            {
+                if (this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                }
+                else if (this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, 
+                        new StorageSharedKeyCredential(this.StorageContext.StorageAccountName, this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+                }
+                else //sas, Anonymous
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                }
+            }
+            return blobServiceClient;
+        }
+        private BlobServiceClient blobServiceClient = null;
 
         /// <summary>
         /// Create the container if not exists

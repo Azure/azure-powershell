@@ -111,6 +111,7 @@ The resource identifier for the tagged entity. A resource, a resource group or a
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Merge, Replace, Delete
 
 Required: True
 Position: 0

@@ -219,8 +219,8 @@ switch ($PSCmdlet.ParameterSetName)
             $ModuleName = $JsonFile.Replace('Microsoft.Azure.PowerShell.Cmdlets.', '').Replace('.dll.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
-                Write-Host "Module ${ModuleName} is not GA yet. Remove the json file: ${JsonFile}." -ForegroundColor Red
-                rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
+                Write-Warning "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
+                # rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
             }
         }
         try

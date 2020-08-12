@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported blob query acceleration
+    -  `Get-AzStorageBlobQueryResult`
+    -  `New-AzStorageBlobQueryConfig`
+* Update help file, and add more description and fix typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
+* Fixed [#12592]: Fix download blob fail when related sub directory not exist.
+	- `Get-AzStorageBlobContent`
+
+## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
     -  `New-AzStorageBlobSASToken`
     -  `New-AzStorageContainerSASToken`

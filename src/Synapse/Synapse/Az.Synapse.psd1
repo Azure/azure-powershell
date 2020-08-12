@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll', 
@@ -92,8 +92,10 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'New-AzSynapseFirewallRule', 'Remove-AzSynapseFirewallRule', 
                'Get-AzSynapseFirewallRule', 'Update-AzSynapseFirewallRule', 
                'Get-AzSynapseRoleAssignment', 'New-AzSynapseRoleAssignment', 
-               'Remove-AzSynapseRoleAssignment', 'Get-AzSynapseRoleDefinition'
-
+               'Remove-AzSynapseRoleAssignment', 'Get-AzSynapseRoleDefinition',
+               'Get-AzSynapseSqlDatabase', 'New-AzSynapseSqlDatabase',
+               'Remove-AzSynapseSqlDatabase', 'Update-AzSynapseSqlDatabase',
+               'Test-AzSynapseSqlDatabase'
 # Variables to export from this module
 # VariablesToExport = @()
 
