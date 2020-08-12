@@ -18,61 +18,11 @@
 Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
-.Example
-PS C:\> Update-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-
-PARAMETER <IFirewallRule>: Represents a server firewall rule.
-  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
-  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlfirewallrule
 #>
 function Update-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
@@ -80,7 +30,6 @@ param(
     # The name of the server firewall rule.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -88,14 +37,12 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -103,7 +50,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
@@ -111,28 +57,19 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule]
-    # Represents a server firewall rule.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The start IP address of the server firewall rule.
     # Must be IPv4 format.
+    # If range contains one IP, use StartIPAddress only.
     ${StartIPAddress},
 
     [Parameter()]
@@ -195,42 +132,13 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Update = 'Az.MySql.private\Update-AzMySqlFirewallRule_Update';
-            UpdateExpanded = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateExpanded';
-            UpdateViaIdentity = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateViaIdentityExpanded';
-        }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
     try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
+        if(!$PSBoundParameters.ContainsKey('EndIPAddress'))
+        {
+            $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['StartIPAddress']
+        }
+        Az.MySql.internal\Update-AzMySqlFirewallRule @PSBoundParameters
     } catch {
         throw
     }

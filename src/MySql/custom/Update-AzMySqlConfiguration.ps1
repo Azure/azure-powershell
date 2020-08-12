@@ -20,42 +20,6 @@ Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, 
 .Description
 Updates a configuration of a server.
 Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
-.Example
-PS C:\> Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
-
-Name            Value
-----            -----
-net_retry_count 15
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
-PS C:\> Update-AzMySqlConfiguration -InputObject $ID -Value 150
-
-Name         Value
-----         -----
-wait_timeout 150
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlconfiguration
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
@@ -161,40 +125,9 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.MySql.custom\Update-AzMySqlConfiguration';
-            UpdateViaIdentityExpanded = 'Az.MySql.custom\Update-AzMySqlConfiguration';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
     try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
+        Az.MySql.internal\Update-AzMySqlConfiguration @PSBoundParameters
     } catch {
         throw
     }
