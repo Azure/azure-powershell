@@ -4,7 +4,7 @@ Module Name: Az.Compute
 schema: 2.0.0
 ---
 
-# Invoke-AzVMAssessPatch
+# Invoke-AzVMPatchAssessment
 
 ## SYNOPSIS
 Assess patch state of a virtual machine.
@@ -36,7 +36,7 @@ Assesses the patch status of a VM and reports all detected patches that are avai
 
 ### Example 1
 ```
-PS C:\> Invoke-AzVmAssessPatch -ResourceGroupName "myRG" -VMName "myVM"
+PS C:\> Invoke-AzVmPatchAssessmemt -ResourceGroupName "myRG" -VMName "myVM"
 ```
 
 ## PARAMETERS
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSAssessPatchesResult
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachinePatchesAssessmentResult
 
 ## NOTES
 

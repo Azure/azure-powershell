@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInvokeAzVmAssessPatch()
+        public void TestInvokeAzVmPatchAssessment()
         {
-            TestRunner.RunTestScript("Test-InvokeAzVmAssessPatch");
+            TestRunner.RunTestScript("Test-InvokeAzVmPatchAssessment");
         }
     }
 }

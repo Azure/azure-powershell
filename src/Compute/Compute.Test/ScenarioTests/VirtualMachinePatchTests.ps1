@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test Invoke-AzVmAssessPatch cmdlet
 #>
-function Test-InvokeAzVmAssessPatch
+function Test-InvokeAzVmPatchAssessment
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
@@ -61,7 +61,7 @@ function Test-InvokeAzVmAssessPatch
         # Create a Virtual Machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-        $patchResult = invoke-azvmassesspatch -resourcegroupname $rgname -vmname $vmname
+        $patchResult = invoke-azvmpatchassessment -resourcegroupname $rgname -vmname $vmname
         
         Assert-NotNull $patchResult;
         Assert-AreEqual "Succeeded" $patchResult.Status;
