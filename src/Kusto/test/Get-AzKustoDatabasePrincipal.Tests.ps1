@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoDatabasePrincipal.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -18,6 +18,6 @@ Describe 'Get-AzKustoDatabasePrincipal' {
         $databaseName = $env.databaseName
 
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
-        $databasePrincipals.Count | Should -Be 3
+        $databasePrincipals.Count | Should -Be 2
     }
 }

@@ -30,14 +30,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("Embedded", "Embedded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Embedded");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Iana".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Iana", "Iana", global::System.Management.Automation.CompletionResultType.ParameterValue, "Iana");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TimeSpan".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("TimeSpan", "TimeSpan", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSpan");
-            }
         }
     }
 }
