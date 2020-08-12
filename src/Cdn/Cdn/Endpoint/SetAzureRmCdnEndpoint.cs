@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
-using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -43,6 +42,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             var resourceGroupName = CdnEndpoint.ResourceGroupName;
             var profileName = CdnEndpoint.ProfileName;
+           
             try
             {
                 var endpoint = CdnManagementClient.Endpoints.Update(
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     CdnEndpoint.Name,
                     new EndpointUpdateParameters(
                         CdnEndpoint.Tags.ToDictionaryTags(),
-                        CdnEndpoint.OriginHostHeader,
                         CdnEndpoint.OriginPath,
                         CdnEndpoint.ContentTypesToCompress.ToList(),
+                        CdnEndpoint.OriginHostHeader,
                         CdnEndpoint.IsCompressionEnabled,
                         CdnEndpoint.IsHttpAllowed,
                         CdnEndpoint.IsHttpsAllowed,
@@ -61,7 +61,29 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                         CdnEndpoint.OptimizationType,
                         CdnEndpoint.ProbePath,
                         CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
+                        null,
+                        null,
+                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                        null
+                        ));
+
+                //var endpoint = CdnManagementClient.Endpoints.Update(
+                //    resourceGroupName,
+                //    profileName,
+                //    CdnEndpoint.Name,
+                //    new EndpointUpdateParameters(
+                //        CdnEndpoint.Tags.ToDictionaryTags(),
+                //        CdnEndpoint.OriginHostHeader,
+                //        CdnEndpoint.OriginPath,
+                //        CdnEndpoint.ContentTypesToCompress.ToList(),
+                //        CdnEndpoint.IsCompressionEnabled,
+                //        CdnEndpoint.IsHttpAllowed,
+                //        CdnEndpoint.IsHttpsAllowed,
+                //        (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                //        CdnEndpoint.OptimizationType,
+                //        CdnEndpoint.ProbePath,
+                //        CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                //        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
 
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoint.ToPsEndpoint());
