@@ -100,4 +100,24 @@ directive:
   - where:
       subject: Service|AppResourceUploadUrl
     hide: true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}"].delete.responses
+    transform: >-
+        return {
+          "200": {
+            "description": "Accepted. The response indicates the delete operation is performed in the background."
+          },
+          "202": {
+            "description": "Accepted. The response indicates the delete operation is performed in the background."
+          },
+          "204": {
+            "description": "Success. The response indicates the resource is already deleted."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
 ```
