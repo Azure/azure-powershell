@@ -45,8 +45,8 @@ for the source control VSTSNative.
 ```powershell
 PS C:\> Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
-                                                  -Name "VSTSNative"
-                                                  -Id "08d6d266-27b6-463c-beea-bc48a67ace15"
+                                                  -Name "VSTSNative" `
+                                                  -JobId "08d6d266-27b6-463c-beea-bc48a67ace15"
 
 Status SyncType Exception
 ------ -------- ---------
