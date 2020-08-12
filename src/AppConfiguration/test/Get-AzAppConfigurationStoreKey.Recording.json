@@ -1,0 +1,42 @@
+{
+  "Get-AzAppConfigurationStoreKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz/ListKeys?api-version=2020-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz/ListKeys?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "c2b03c1e-3f62-4565-bd11-df34677f25d9" ],
+        "CommandName": [ "Get-AzAppConfigurationStoreKey" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStoreKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T054008Z:4b54396c-51cf-48eb-b979-6920fcfc8be7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "02021f1a-3a5b-4ae4-9cc2-405890dc8d32" ],
+        "x-ms-correlation-request-id": [ "4b54396c-51cf-48eb-b979-6920fcfc8be7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:40:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1349" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"10iV-l0-s0:PHX7n4vdUVY/jDY0mtiD\",\"name\":\"Primary\",\"value\":\"Nk11+T4nHlo/Xxg9S/6WrJdOQLKFuTGjin564jU6z+U=\",\"connectionString\":\"Endpoint=https://appconf-8jpsaz.azconfig.io;Id=10iV-l0-s0:PHX7n4vdUVY/jDY0mtiD;Secret=Nk11+T4nHlo/Xxg9S/6WrJdOQLKFuTGjin564jU6z+U=\",\"lastModified\":\"2020-07-22T03:28:33+00:00\",\"readOnly\":false},{\"id\":\"Q/eK-l0-s0:fV5lO5mv3YCizY47M4bZ\",\"name\":\"Secondary\",\"value\":\"8tAdBAVt7imij3ZP0jYeWQyJmrp4gBZqbNXni8UqgRU=\",\"connectionString\":\"Endpoint=https://appconf-8jpsaz.azconfig.io;Id=Q/eK-l0-s0:fV5lO5mv3YCizY47M4bZ;Secret=8tAdBAVt7imij3ZP0jYeWQyJmrp4gBZqbNXni8UqgRU=\",\"lastModified\":\"2020-07-22T03:28:33+00:00\",\"readOnly\":false},{\"id\":\"k0Kb-l0-s0:nhZGhddoFFT6Qiy+4JZ8\",\"name\":\"Primary Read Only\",\"value\":\"iV/62FEv0DmhBpatE4HUQL642yZIXyTYq0qoEtsKn0k=\",\"connectionString\":\"Endpoint=https://appconf-8jpsaz.azconfig.io;Id=k0Kb-l0-s0:nhZGhddoFFT6Qiy+4JZ8;Secret=iV/62FEv0DmhBpatE4HUQL642yZIXyTYq0qoEtsKn0k=\",\"lastModified\":\"2020-07-22T03:28:33+00:00\",\"readOnly\":true},{\"id\":\"/sAd-l0-s0:ZGZXhQBM15Sv8A4wEF7s\",\"name\":\"Secondary Read Only\",\"value\":\"pKFh/fZyzvjl+6+lJ7IYBC9sJcu5V2fV3CghEboUudA=\",\"connectionString\":\"Endpoint=https://appconf-8jpsaz.azconfig.io;Id=/sAd-l0-s0:ZGZXhQBM15Sv8A4wEF7s;Secret=pKFh/fZyzvjl+6+lJ7IYBC9sJcu5V2fV3CghEboUudA=\",\"lastModified\":\"2020-07-22T03:28:33+00:00\",\"readOnly\":true}],\"nextLink\":null}"
+    }
+  }
+}

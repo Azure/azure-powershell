@@ -92,6 +92,9 @@ Downloads a storage blob.
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
 
+### [Get-AzStorageBlobQueryResult](Get-AzStorageBlobQueryResult.md)
+Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
+
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
 
@@ -190,6 +193,9 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
+
+### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
+Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
 ### [New-AzStorageBlobRangeToRestore](New-AzStorageBlobRangeToRestore.md)
 Creates a Blob Range object to restores a Storage account.

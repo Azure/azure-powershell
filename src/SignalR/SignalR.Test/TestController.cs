@@ -24,6 +24,8 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.PrivateDns;
 
 namespace Microsoft.Azure.Commands.SignalR.Test
 {
@@ -36,6 +38,10 @@ namespace Microsoft.Azure.Commands.SignalR.Test
         public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
         public SignalRManagementClient SignalRManagementClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public PrivateDnsManagementClient PrivateDnsManagementClient { get; private set; }
 
         public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
@@ -81,10 +87,12 @@ namespace Microsoft.Azure.Commands.SignalR.Test
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
+                    _helper.RMNetworkModule,
                     _helper.GetRMModulePath("AzureRM.SignalR.psd1"),
+                    _helper.GetRMModulePath("AzureRM.PrivateDns.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1",
-                    "ScenarioTests\\Common.ps1");
+                    "ScenarioTests\\Common.ps1"); ;
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
@@ -104,8 +112,10 @@ namespace Microsoft.Azure.Commands.SignalR.Test
         {
             InternalResourceManagementClient = GetResourceManagementClientInternal(context);
             SignalRManagementClient = GetSignalRManagementClient(context);
-
-            _helper.SetupManagementClients(InternalResourceManagementClient, SignalRManagementClient);
+            NetworkManagementClient = GetNetworkManagementClient(context);
+            PrivateDnsManagementClient = GetPrivateDnsManagementClient(context);
+            _helper.SetupManagementClients(InternalResourceManagementClient, SignalRManagementClient,
+                NetworkManagementClient,PrivateDnsManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClientInternal(MockContext context)
@@ -113,5 +123,11 @@ namespace Microsoft.Azure.Commands.SignalR.Test
 
         private static SignalRManagementClient GetSignalRManagementClient(MockContext context)
             => context.GetServiceClient<SignalRManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+
+        private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
+            => context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+
+        private static PrivateDnsManagementClient GetPrivateDnsManagementClient(MockContext context)
+            => context.GetServiceClient<PrivateDnsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
     }
 }
