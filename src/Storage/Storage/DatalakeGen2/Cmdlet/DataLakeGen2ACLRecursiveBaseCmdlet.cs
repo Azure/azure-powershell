@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System;
     using System.Collections.Generic;
     using global::Azure;
+    using System.Threading.Tasks;
 
     public abstract class DataLakeGen2ACLRecursiveBaseCmdlet : StorageCloudBlobCmdletBase
     {
@@ -50,10 +51,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "The POSIX access control list to set recursively for the file or directory.", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public PSPathAccessControlEntry[] Acl { get; set; }
-
-        //[Parameter(Mandatory = false,
-        //    HelpMessage = "Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.")]
-        //public SwitchParameter ContinueOnFailure { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked. Batch size should be between 1 and 2000. Default is 2000.")]
@@ -100,36 +97,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 return new AccessControlChangeOptions()
                 {
                     BatchSize = this.batchSize,
-                    //ContinueOnFailure = this.ContinueOnFailure.IsPresent,
                     MaxBatches = this.maxBatchCount
                 };
             }
-        }        
+        }
 
-        protected IProgress<Response<AccessControlChanges>> GetProgressHandler()
+        protected IProgress<Response<AccessControlChanges>> GetProgressHandler(long taskId)
         {
             if (this.progressRecord == null)
             {
-                progressRecord = GetProgressRecord("Change");
+                progressRecord = GetProgressRecord("Change", taskId);
             }
-            this.WriteProgress(progressRecord);
+            this.OutputStream.WriteProgress(progressRecord);
 
-            //return new ChangeChangeAccessControlPartialResultProgress(this.FailedEntries, (setProgress) =>
-            return new ChangeChangeAccessControlPartialResultProgress((setProgress) =>
+            return new ChangeAccessControlPartialResultProgress((setProgress) =>
             {
                 if (this.progressRecord != null)
                 {
-                    // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
-                    //progressRecord.PercentComplete = (totalTransferLength == 0) ? 100 : (int)(transferProgress.BytesTransferred * 100 / totalTransferLength);
                     totalDirectoriesSuccessfulCount += setProgress.Value.BatchCounters.ChangedDirectoriesCount;
                     totalFilesSuccessfulCount += setProgress.Value.BatchCounters.ChangedFilesCount;
                     totalFailureCount += setProgress.Value.BatchCounters.FailedChangesCount;
                     this.FailedEntries.AddRange(setProgress.Value.BatchFailures);
-                    //if (setProgress.Value.BatchCounters.FailedEntries == null || new List<AccessControlChanges>(setProgress.Value.FailedEntries).Count == 0)
 
-                    // TODO: Write like this, since the last request without ContinuationToken, XSCL will still set the ContinuationToken of the request before last. 
-                    // After this is fixed, should update this block to "if(setProgress.Value.BatchCounters.FailedChangesCount == 0) {continuationToken = setProgress.Value.ContinuationToken;}" 
-                    //if ((continuationToken == setProgress.Value.ContinuationToken) && (setProgress.Value.BatchCounters.FailedChangesCount == 0 || this.ContinueOnFailure.IsPresent))
                     if ((continuationToken == setProgress.Value.ContinuationToken) && (setProgress.Value.BatchCounters.FailedChangesCount == 0))
                     {
                         continuationToken = null;
@@ -143,53 +132,75 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     summaryString = $"Total Finished: {total}, Directories Success: {totalDirectoriesSuccessfulCount},  File Success: {totalFilesSuccessfulCount}, Failed: {totalFailureCount}";
                     progressRecord.StatusDescription = summaryString;
                     progressRecord.PercentComplete = (progressRecord.PercentComplete + 10) % 110;
-                    this.WriteProgress(progressRecord);
+                    this.OutputStream.WriteProgress(progressRecord);
                 }
             });
         }
 
+        /// <summary>
+        /// Since it's difficult to know if the progress is finished or not in the progress, so need set progressbar to complete after cmdlet finish set acl recursive
+        /// </summary>
+        protected void SetProgressComplete()
+        {
+            // Update progress bar to 100%
+            progressRecord.PercentComplete = 100;
+            this.OutputStream.WriteProgress(progressRecord);
+        }
+
 
         protected ProgressRecord progressRecord;
-        protected ProgressRecord GetProgressRecord(string aclOperator)
+        protected ProgressRecord GetProgressRecord(string aclOperator, long taskId)
         {
             summaryString = $"Total Finished: 0, Directories Success: 0,  File Success: 0, Failed: 0";
-            return new ProgressRecord(new Random(DateTime.Now.Millisecond).Next(0, 10000000),
-            string.Format($"{aclOperator} ACL Recursive"),
-            summaryString)
+            totalDirectoriesSuccessfulCount = 0;
+            totalFilesSuccessfulCount = 0;
+            totalFailureCount = 0;
+
+            return new ProgressRecord(activityId: OutputStream.GetProgressId(taskId),
+            activity: string.Format($"{aclOperator} ACL Recursive"),
+            statusDescription: summaryString)
             {
                 PercentComplete = 0
             };
         }
 
-        protected void WriteResult()
+        protected void WriteResult(long taskId)
         {
             PSACLRecursiveChangeResult result = new PSACLRecursiveChangeResult(this.totalDirectoriesSuccessfulCount,
                 this.totalFilesSuccessfulCount,
                 this.totalFailureCount,
                 this.continuationToken,
                 this.FailedEntries);
-            WriteObject(result, true);
-        }       
+            OutputStream.WriteObject(taskId, result);
+        }
+
+        /// <summary>
+        /// Set/Update/Remove ACL recusive async function
+        /// </summary>
+        protected abstract Task OperationAclResusive(long taskId);
+
+        /// <summary>
+        /// execute command
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            Func<long, Task> taskGenerator = (taskId) => OperationAclResusive(taskId);
+            RunTask(taskGenerator);
+        }
     }
 
-    public class ChangeChangeAccessControlPartialResultProgress : IProgress<Response<AccessControlChanges>>
+    public class ChangeAccessControlPartialResultProgress : IProgress<Response<AccessControlChanges>>
     {
         private Action<Response<AccessControlChanges>> progressHandler;
-        //private List<AccessControlChanges> FailedEntries = null;
 
-        //public ChangeChangeAccessControlPartialResultProgress(List<AccessControlChanges> failedEntries, Action<Response<AccessControlChanges>> progressHandler)
-        public ChangeChangeAccessControlPartialResultProgress(Action<Response<AccessControlChanges>> progressHandler)
+        public ChangeAccessControlPartialResultProgress(Action<Response<AccessControlChanges>> progressHandler)
         {
-            //this.FailedEntries = failedEntries;
             this.progressHandler = progressHandler;
         }
 
         public void Report(Response<AccessControlChanges> value)
         {
-            // Console.WriteLine(String.Format("success dir: {0}, success file: {1}, failed items: {2}", value.DirectoriesSuccessfulCount, value.FilesSuccessfulCount, value.FailureCount));
-            //this.FailedEntries.AddRange(value.Value.FailedEntries);
-            this.progressHandler(value);
-            
+            this.progressHandler(value);            
         }
     }
 }

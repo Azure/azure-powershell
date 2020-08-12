@@ -179,7 +179,6 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzStorageObjectReplicationPolicy', 
                'Remove-AzStorageObjectReplicationPolicy', 'Set-AzStorageBlobTag', 
                'Get-AzStorageBlobTag', 'Get-AzStorageBlobByTag', 
-               'Remove-AzStorageObjectReplicationPolicy',
                'Set-AzDataLakeGen2AclRecursive','Update-AzDataLakeGen2AclRecursive',
                'Remove-AzDataLakeGen2AclRecursive'
 

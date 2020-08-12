@@ -14,14 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using global::Azure.Storage.Files.DataLake;
-    using global::Azure.Storage.Files.DataLake.Models;
-    using System;
-    using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// create a new azure FileSystem
@@ -30,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class UpdateAzDataLakeGen2AclRecursiveCommand : DataLakeGen2ACLRecursiveBaseCmdlet
     {
         /// <summary>
-        /// Initializes a new instance of the SetAzDataLakeGen2ItemCommand class.
+        /// Initializes a new instance of the UpdateAzDataLakeGen2AclRecursiveCommand class.
         /// </summary>
         public UpdateAzDataLakeGen2AclRecursiveCommand()
             : this(null)
@@ -38,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Initializes a new instance of the SetAzDataLakeGen2ItemCommand class.
+        /// Initializes a new instance of the UpdateAzDataLakeGen2AclRecursiveCommand class.
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
         public UpdateAzDataLakeGen2AclRecursiveCommand(IStorageBlobManagement channel)
@@ -47,12 +44,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// execute command
+        /// Update ACL recusive async function
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override async Task OperationAclResusive(long taskId)
         {
             IStorageBlobManagement localChannel = Channel;
-            progressRecord = GetProgressRecord("Update");
+            progressRecord = GetProgressRecord("Update", taskId);
             continuationToken = this.ContinuationToken;
 
             bool foundAFolder = false;
@@ -68,29 +65,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 if (ShouldProcess(dirClient.Uri.ToString(), "Update Acl recursively on Directory: "))
                 {
-                    //do
-                    //{
-                        var result = dirClient.UpdateAccessControlRecursive(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
-                            GetProgressHandler(),
-                            this.accessControlChangeOptions,
-                            continuationToken);
-                    //} while (continuationToken != null && totalFailureCount == 0);
+                    await dirClient.UpdateAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
+                        GetProgressHandler(taskId),
+                        this.accessControlChangeOptions,
+                        continuationToken,
+                        CmdletCancellationToken).ConfigureAwait(false);
                 }
             }
             else
             {
                 if (ShouldProcess(fileClient.Uri.ToString(), "Update Acl recursively on File: "))
                 {
-                    //do
-                    //{
-                        fileClient.UpdateAccessControlRecursive(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
-                            GetProgressHandler(),
-                            this.accessControlChangeOptions,
-                            continuationToken);
-                    //} while (continuationToken != null && totalFailureCount == 0);
+                    await fileClient.UpdateAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
+                        GetProgressHandler(taskId),
+                        this.accessControlChangeOptions,
+                        continuationToken,
+                        CmdletCancellationToken).ConfigureAwait(false);
                 }
             }
-            WriteResult();
+
+            SetProgressComplete();
+            WriteResult(taskId);
         }
     }
 }

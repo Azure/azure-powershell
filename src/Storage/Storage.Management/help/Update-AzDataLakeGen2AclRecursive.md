@@ -41,7 +41,7 @@ ContinuationToken               :
 
 This command first creates an ACL object with 3 acl entries, then updates ACL recursively on a root directory of a file system.
 
-### Example 2: Update ACL recursively on a directory
+### Example 2: Update ACL recursively on a directory, and resume from failure with ContinuationToken
 ```
 PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 

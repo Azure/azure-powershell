@@ -14,14 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using global::Azure.Storage.Files.DataLake;
-    using global::Azure.Storage.Files.DataLake.Models;
-    using System;
-    using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// create a new azure FileSystem
@@ -30,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class RemoveAzDataLakeGen2AclRecursiveCommand : DataLakeGen2ACLRecursiveBaseCmdlet
     {
         /// <summary>
-        /// Initializes a new instance of the SetAzDataLakeGen2ItemCommand class.
+        /// Initializes a new instance of the RemoveAzDataLakeGen2AclRecursiveCommand class.
         /// </summary>
         public RemoveAzDataLakeGen2AclRecursiveCommand()
             : this(null)
@@ -38,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Initializes a new instance of the SetAzDataLakeGen2ItemCommand class.
+        /// Initializes a new instance of the RemoveAzDataLakeGen2AclRecursiveCommand class.
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
         public RemoveAzDataLakeGen2AclRecursiveCommand(IStorageBlobManagement channel)
@@ -47,12 +44,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// execute command
+        /// Remove ACL recusive async function
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override async Task OperationAclResusive(long taskId)
         {
             IStorageBlobManagement localChannel = Channel;
-            progressRecord = GetProgressRecord("Remove");
+            progressRecord = GetProgressRecord("Remove", taskId);
             continuationToken = this.ContinuationToken;
 
             bool foundAFolder = false;
@@ -69,30 +66,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(dirClient.Uri.ToString(), "Remove Acl recursively on Directory: "))
                 {
                     WriteWarning("To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.");
-                    //do
-                    //{
-                        dirClient.RemoveAccessControlRecursive(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
-                            GetProgressHandler(),
+                    await dirClient.RemoveAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
+                            GetProgressHandler(taskId),
                             this.accessControlChangeOptions,
-                            continuationToken);
-                    //} while (continuationToken != null && totalFailureCount == 0);
+                            continuationToken,
+                            CmdletCancellationToken).ConfigureAwait(false);
                 }
             }
             else
             {
-                WriteWarning("To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.");
                 if (ShouldProcess(fileClient.Uri.ToString(), "Remove Acl recursively on File: "))
                 {
-                    //do
-                    //{
-                        fileClient.RemoveAccessControlRecursive(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
-                            GetProgressHandler(),
-                            this.accessControlChangeOptions,
-                            continuationToken);
-                    //} while (continuationToken != null && totalFailureCount == 0);
+                    WriteWarning("To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.");
+                    await fileClient.RemoveAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
+                        GetProgressHandler(taskId),
+                        this.accessControlChangeOptions,
+                        continuationToken,
+                        CmdletCancellationToken).ConfigureAwait(false);
                 }
             }
-            WriteResult();
+
+            SetProgressComplete();
+            WriteResult(taskId);
         }
     }
 }
