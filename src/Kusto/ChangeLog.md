@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated API version to 2020-06-14; added new properties to data connection and cluster
 
 ## Version 0.1.4
 * Supported new cmdlets
