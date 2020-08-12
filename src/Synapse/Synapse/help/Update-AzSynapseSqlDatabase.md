@@ -1,75 +1,54 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqlpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
-# Remove-AzSynapseSqlPool
+# Update-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Deletes a Synapse Analytics SQL pool.
+Updates a Synapse Analytics SQL database.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet (Default)
+### UpdateByNameParameterSet (Default)
 ```
-Remove-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteByParentObjectParameterSet
-```
-Remove-AzSynapseSqlPool -Name <String> [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+ [-MaxSizeInBytes <Int64>] [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByInputObjectParameterSet
+### UpdateByParentObjectParameterSet
 ```
-Remove-AzSynapseSqlPool [-Version <Int32>] -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
+Update-AzSynapseSqlDatabase -Name <String> [-MaxSizeInBytes <Int64>] -WorkspaceObject <PSSynapseWorkspace>
+ [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateByInputObjectParameterSet
+```
+Update-AzSynapseSqlDatabase -InputObject <PSSynapseSqlDatabase> [-Tag <Hashtable>] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByResourceIdParameterSet
+### UpdateByResourceIdParameterSet
 ```
-Remove-AzSynapseSqlPool [-Version <Int32>] -ResourceId <String> [-PassThru] [-AsJob]
+Update-AzSynapseSqlDatabase -ResourceId <String> [-Tag <Hashtable>] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseSqlPool** cmdlet permanently deletes an Azure Synapse Analytics SQL pool.
+The **Update-AzSynapseSqlDatabase** cmdlet updates an Azure Synapse Analytics SQL database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
 ```
 
-This command deletes an Azure Synapse Analytics SQL pool.
-
-### Example 2
-```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseSqlPool -Name ContosoSqlPool
-```
-
-This command deletes an Azure Synapse Analytics SQL pool through pipeline.
-
-### Example 3
-```powershell
-PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $pool | Remove-AzSynapseSqlPool
-```
-
-This command deletes an Azure Synapse Analytics SQL pool through pipeline.
-
-### Example 4
-```powershell
-PS C:\> Remove-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool
-```
-
-This command deletes an Azure Synapse Analytics SQL pool with the specified resource ID.
+This command updates an Azure Synapse Analytics SQL database.
 
 ## PARAMETERS
 
@@ -104,11 +83,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-SQL pool input object, usually passed through the pipeline.
+SQL Database input object, usually passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: DeleteByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -118,12 +97,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MaxSizeInBytes
+Specifies the maximum size of the database in bytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of Synapse SQL pool.
+Name of Synapse SQL Database.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
+Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -134,7 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+This Cmdlet does not return an object by default.
+If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -153,7 +148,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
@@ -164,25 +159,25 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource identifier of Synapse SQL Pool.
+Resource identifier of Synapse SQL Database.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByResourceIdParameterSet
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Version
-Version of Synapse SQL pool. For example, 2 or 3.
+### -Tag
+A string,string dictionary of tags associated with the resource.
 
 ```yaml
-Type: System.Int32
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +193,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -213,7 +208,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: DeleteByParentObjectParameterSet
+Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -261,13 +256,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-
-### System.String
+### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
 
 ## NOTES
 

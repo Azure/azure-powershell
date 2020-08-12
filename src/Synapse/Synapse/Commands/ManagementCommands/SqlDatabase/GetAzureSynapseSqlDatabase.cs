@@ -8,10 +8,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlDatabase,
         DefaultParameterSetName = GetByNameParameterSet)]
-    [OutputType(typeof(PSSynapseSqlPool))]
-    public class GetAzureSynapseSqlPool : SynapseManagementCmdletBase
+    [OutputType(typeof(PSSynapseSqlDatabase))]
+    public class GetAzureSynapseSqlDatabase : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
@@ -29,24 +29,20 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [Parameter(Mandatory = false, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, HelpMessage = HelpMessages.SqlDatabaseName)]
+        [Parameter(Mandatory = false, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = HelpMessages.SqlDatabaseName)]
         [ResourceNameCompleter(
-            ResourceTypes.SqlPool,
+            ResourceTypes.SqlDatabase,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
-        [ValidateNotNullOrEmpty]
-        public int Version { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = GetByResourceIdParameterSet, HelpMessage = HelpMessages.SqlPoolResourceId)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = GetByResourceIdParameterSet, HelpMessage = HelpMessages.SqlDatabaseResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -67,31 +63,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.Version == 3)
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                if (!string.IsNullOrEmpty(this.Name))
-                {
-                    var result = new PSSynapseSqlPoolV3(this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name));
-                    WriteObject(result);
-                }
-                else
-                {
-                    var result = this.SynapseAnalyticsClient.ListSqlPoolsV3(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPoolV3(r));
-                    WriteObject(result, true);
-                }
+                var result = new PSSynapseSqlDatabase(this.SynapseAnalyticsClient.GetSqlDatabase(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                WriteObject(result);
             }
             else
             {
-                if (!string.IsNullOrEmpty(this.Name))
-                {
-                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
-                    WriteObject(result);
-                }
-                else
-                {
-                    var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(r));
-                    WriteObject(result, true);
-                }
+                var result = this.SynapseAnalyticsClient.ListSqlDatabases(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlDatabase(r));
+                WriteObject(result, true);
             }
         }
     }

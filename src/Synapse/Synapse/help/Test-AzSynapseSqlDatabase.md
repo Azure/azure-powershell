@@ -1,40 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/test-azsynapsesqlpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/test-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
-# Test-AzSynapseSqlPool
+# Test-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Checks for the existence of a Synapse Analytics SQL pool.
+Checks for the existence of a Synapse Analytics SQL database.
 
 ## SYNTAX
 
 ### TestByNameParameterSet (Default)
 ```
-Test-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
+Test-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestByParentObjectParameterSet
 ```
-Test-AzSynapseSqlPool -Name <String> [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace>
+Test-AzSynapseSqlDatabase -Name <String> -WorkspaceObject <PSSynapseWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzSynapseSqlPool** cmdlet checks for the existence of a Synapse Analytics SQL pool.
+The **Test-AzSynapseSqlDatabase** cmdlet checks for the existence of a Synapse Analytics SQL database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
-This command checks the existence of the specified SQL pool.
+This command checks the existence of the specified SQL database.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Synapse SQL pool.
+Name of Synapse SQL Database.
 
 ```yaml
 Type: System.String
@@ -74,21 +74,6 @@ Resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: TestByNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Version of Synapse SQL pool. For example, 2 or 3.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -137,7 +122,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

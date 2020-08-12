@@ -1,68 +1,68 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
-# Get-AzSynapseSqlPool
+# Get-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Gets a Synapse Analytics SQL pool.
+Gets a Synapse Analytics SQL database.
 
 ## SYNTAX
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>] [-Version <Int32>]
+Get-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzSynapseSqlPool [-Name <String>] [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace>
+Get-AzSynapseSqlDatabase [-Name <String>] -WorkspaceObject <PSSynapseWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzSynapseSqlPool [-Version <Int32>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSynapseSqlDatabase -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseSqlPool** cmdlet gets information about an Azure Synapse Analytics SQL pool.
+[This feature is in a limited preview, initially accessible only to certain subscriptions.]
+The **Get-AzSynapseSqlDatabase** cmdlet gets information about an Azure Synapse Analytics SQL database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace
+PS C:\> Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace
 ```
 
-This command gets all SQL pools under a workspace.
+This command gets all SQL databases under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
-This command gets the SQL pool under workspace ContosoWorkspace with name ContosoSqlPool.
+This command gets the SQL database under workspace ContosoWorkspace with name ContosoSqlDatabase.
 
 ### Example 3
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseSqlPool
+PS C:\> $ws | Get-AzSynapseSqlDatabase
 ```
 
-This command gets all the SQL pools under a workspace through pipeline.
+This command gets all the SQL databases under a workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool"
+PS C:\> Get-AzSynapseSqlDatabase -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlDatabases/ContosoSqlDatabase"
 ```
 
-This command gets the SQL pool with the specified resource ID.
+This command gets the SQL database with the specified resource ID.
 
 ## PARAMETERS
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Synapse SQL pool.
+Name of Synapse SQL Database.
 
 ```yaml
 Type: System.String
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource identifier of Synapse SQL Pool.
+Resource identifier of Synapse SQL Database.
 
 ```yaml
 Type: System.String
@@ -120,22 +120,6 @@ Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-[This feature is in a limited preview, initially accessible only to certain subscriptions.]
-Version of Synapse SQL pool. For example, 2 or 3.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
+### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
 
 ## NOTES
 

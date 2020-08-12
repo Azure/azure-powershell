@@ -7,9 +7,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool, DefaultParameterSetName = TestByNameParameterSet)]
+    [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlDatabase, DefaultParameterSetName = TestByNameParameterSet)]
     [OutputType(typeof(bool))]
-    public class TestAzureSynapseSqlPool : SynapseManagementCmdletBase
+    public class TestAzureSynapseSqlDatabase : SynapseManagementCmdletBase
     {
         private const string TestByNameParameterSet = "TestByNameParameterSet";
         private const string TestByParentObjectParameterSet = "TestByParentObjectParameterSet";
@@ -27,17 +27,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
-            HelpMessage = HelpMessages.SqlPoolName)]
+            HelpMessage = HelpMessages.SqlDatabaseName)]
         [ResourceNameCompleter(
-            ResourceTypes.SqlPool,
+            ResourceTypes.SqlDatabase,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
-        [ValidateNotNullOrEmpty]
-        public int Version { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = TestByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
@@ -52,14 +48,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.Version == 3)
-            {
-                WriteObject(SynapseAnalyticsClient.TestSqlPoolV3(ResourceGroupName, WorkspaceName, Name));
-            }
-            else
-            {
-                WriteObject(SynapseAnalyticsClient.TestSqlPool(ResourceGroupName, WorkspaceName, Name));
-            }
+            WriteObject(SynapseAnalyticsClient.TestSqlDatabase(ResourceGroupName, WorkspaceName, Name));
         }
     }
 }
