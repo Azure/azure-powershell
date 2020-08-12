@@ -442,6 +442,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
+        /// </summary>
+        internal static string InvalidCastParameterKeyExceptionMessage {
+            get {
+                return ResourceManager.GetString("InvalidCastParameterKeyExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         internal static string InvalidDefaultSubscription {

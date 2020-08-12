@@ -326,6 +326,7 @@
   </data>
   <data name="UpdatingSynapseSqlDatabase" xml:space="preserve">
     <value>Updating SQL Database '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
   <data name="InvalidCastParameterKeyExceptionMessage" xml:space="preserve">
     <value>All keys in the parameters hashtable must be of type string since they represent pipeline parameter names.</value>
   </data>
