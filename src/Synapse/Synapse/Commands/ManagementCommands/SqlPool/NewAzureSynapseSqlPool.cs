@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
 
-        // Create from bakcup
+        // Create from backup
         private const string CreateFromBackupIdByNameParameterSet = "CreateFromBackupIdByNameParameterSet";
         private const string CreateFromBackupIdByParentObjectParameterSet = "CreateFromBackupIdByParentObjectParameterSet";
         private const string CreateFromBackupNameByNameParameterSet = "CreateFromBackupNameByNameParameterSet";
@@ -112,6 +112,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = true, HelpMessage = HelpMessages.SqlPoolName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Tag)]
         [ValidateNotNull]
@@ -278,72 +282,108 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             }
 
-            var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolOrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
-            if (existingSqlPool != null)
-            {
-                throw new SynapseException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
-            }
-
             var existingWorkspace = this.SynapseAnalyticsClient.GetWorkspaceOrDefault(this.ResourceGroupName, this.WorkspaceName);
             if (existingWorkspace == null)
             {
                 throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            var createParams = new SqlPool
+            if (this.Version == 3)
             {
-                Location = existingWorkspace.Location,
-                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
-            };
 
-            switch (this.ParameterSetName)
-            {
-                case CreateByNameParameterSet:
-                case CreateByParentObjectParameterSet:
-                    createParams.CreateMode = SynapseSqlPoolCreateMode.Default;
-                    createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
-                    createParams.Sku = new Sku
-                    {
-                        Name = this.PerformanceLevel
-                    };
-                    break;
+                var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolV3OrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                if (existingSqlPool != null)
+                {
+                    throw new SynapseException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                }
 
-                case CreateFromBackupNameByNameParameterSet:
-                case CreateFromBackupNameByParentObjectParameterSet:
-                case CreateFromBackupIdByNameParameterSet:
-                case CreateFromBackupIdByParentObjectParameterSet:
-                case CreateFromBackupInputObjectByNameParameterSet:
-                    createParams.CreateMode = SynapseSqlPoolCreateMode.Recovery;
-                    createParams.RecoverableDatabaseId = this.BackupResourceId;
-                    break;
+                var createParams = new SqlPoolV3
+                {
+                    Location = existingWorkspace.Location,
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+                };
 
-                case CreateFromRestorePointNameByNameParameterSet:
-                case CreateFromRestorePointNameByParentObjectParameterSet:
-                case CreateFromRestorePointIdByNameParameterSet:
-                case CreateFromRestorePointIdByParentObjectParameterSet:
-                case CreateFromRestorePointInputObjectByNameParameterSet:
-                    if (!this.IsParameterBound(c => c.RestorePoint))
-                    {
-                        this.RestorePoint = GetNewestRestorePoint();
-                    }
+                switch (this.ParameterSetName)
+                {
+                    case CreateByNameParameterSet:
+                    case CreateByParentObjectParameterSet:
+                        createParams.Sku = new Sku
+                        {
+                            Name = this.PerformanceLevel
+                        };
+                        break;
+                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                }
 
-                    createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
-                    createParams.SourceDatabaseId = this.SourceResourceId;
-                    createParams.RestorePointInTime = this.RestorePoint;
-                    createParams.Sku = new Sku
-                    {
-                        Name = this.PerformanceLevel
-                    };
-
-                    break;
-
-                default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
+                {
+                    var result = new PSSynapseSqlPoolV3(this.SynapseAnalyticsClient.CreateSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
+                    WriteObject(result);
+                }
             }
-
-            if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
+            else
             {
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
-                WriteObject(result);
+                var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolOrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                if (existingSqlPool != null)
+                {
+                    throw new SynapseException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                }
+
+                var createParams = new SqlPool
+                {
+                    Location = existingWorkspace.Location,
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+                };
+
+                switch (this.ParameterSetName)
+                {
+                    case CreateByNameParameterSet:
+                    case CreateByParentObjectParameterSet:
+                        createParams.CreateMode = SynapseSqlPoolCreateMode.Default;
+                        createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
+                        createParams.Sku = new Sku
+                        {
+                            Name = this.PerformanceLevel
+                        };
+                        break;
+
+                    case CreateFromBackupNameByNameParameterSet:
+                    case CreateFromBackupNameByParentObjectParameterSet:
+                    case CreateFromBackupIdByNameParameterSet:
+                    case CreateFromBackupIdByParentObjectParameterSet:
+                    case CreateFromBackupInputObjectByNameParameterSet:
+                        createParams.CreateMode = SynapseSqlPoolCreateMode.Recovery;
+                        createParams.RecoverableDatabaseId = this.BackupResourceId;
+                        break;
+
+                    case CreateFromRestorePointNameByNameParameterSet:
+                    case CreateFromRestorePointNameByParentObjectParameterSet:
+                    case CreateFromRestorePointIdByNameParameterSet:
+                    case CreateFromRestorePointIdByParentObjectParameterSet:
+                    case CreateFromRestorePointInputObjectByNameParameterSet:
+                        if (!this.IsParameterBound(c => c.RestorePoint))
+                        {
+                            this.RestorePoint = GetNewestRestorePoint();
+                        }
+
+                        createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
+                        createParams.SourceDatabaseId = this.SourceResourceId;
+                        createParams.RestorePointInTime = this.RestorePoint;
+                        createParams.Sku = new Sku
+                        {
+                            Name = this.PerformanceLevel
+                        };
+
+                        break;
+
+                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                }
+
+                if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
+                {
+                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
+                    WriteObject(result);
+                }
             }
         }
 

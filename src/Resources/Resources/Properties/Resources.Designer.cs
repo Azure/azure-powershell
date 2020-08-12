@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
                 return ResourceManager.GetString("ScopeShouldHaveNoEmptyPart", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No new secret was created. This ServicePrincipal will use the password associated with application &apos;{0}&apos;..
         /// </summary>
@@ -1029,6 +1029,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnregisterProviderMessage {
             get {
                 return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating role assignment for AD object &apos;{0}&apos; on scope &apos;{1}&apos; with role definition &apos;{2}&apos;.
+        /// </summary>
+        internal static string UpdatingRoleAssignment {
+            get {
+                return ResourceManager.GetString("UpdatingRoleAssignment", resourceCulture);
             }
         }
         

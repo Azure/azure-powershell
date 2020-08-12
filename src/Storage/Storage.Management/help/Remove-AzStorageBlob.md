@@ -66,14 +66,14 @@ This command uses the asterisk (*) wildcard character and the pipeline to retrie
 
 ### Example 4: Remove a single blob version
 ```
-PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
+PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
 ```
 
 This command removes a single blobs verion with VersionId.
 
 ### Example 5: Remove a single blob snapshot
 ```
-PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"      
+PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
 ```
 
 This command removes a single blobs snapshot with SnapshotTime.

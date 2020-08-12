@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
-        public string DisplayName
+        public string Name
         {
             get
             {

@@ -116,7 +116,15 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ApplicationId = "The Application identifier of the session.";
 
+        public const string SqlDatabaseName = "Name of Synapse SQL Database.";
+
+        public const string SqlDatabaseResourceId = "Resource identifier of Synapse SQL Database.";
+
+        public const string SqlDatabaseObject = "SQL Database input object, usually passed through the pipeline.";
+
         public const string SqlPoolName = "Name of Synapse SQL pool.";
+
+        public const string SqlPoolVersion = "Version of Synapse SQL pool. For example, 2 or 3.";
 
         public const string SqlPoolNewName = "The new name to rename the SQL pool to.";
 
@@ -131,6 +139,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string PerformanceLevel = "The SQL Service tier and performance level to assign to the SQL pool. For example, DW2000c.";
 
         public const string Collation = "Collation defines the rules that sort and compare data, and cannot be changed after SQL pool creation. The default collation is " + SynapseConstants.DefaultCollation + ".";
+        
+        public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 

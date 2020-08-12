@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (this.MicrosoftConfigAdvertisedPublicPrefixes != null && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
             {
-                if (PeerAddressType == IPv6)
+                if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
