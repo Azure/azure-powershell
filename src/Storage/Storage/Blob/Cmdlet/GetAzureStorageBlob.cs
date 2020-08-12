@@ -250,7 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
                     if (this.IncludeTag.IsPresent)
                     {
-                        IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value;
+                        IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
                         if (tags != null)
                         {
                             outputBlob.Tags = tags.ToHashtable();
