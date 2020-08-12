@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* New cmdlet 'Invoke-AzVmPatchAssessment'
+* New cmdlet 'Invoke-AzVmAssessPatch'
 
 ## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version

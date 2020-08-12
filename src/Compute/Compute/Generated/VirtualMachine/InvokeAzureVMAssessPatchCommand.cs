@@ -27,10 +27,9 @@ using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMPatchAssessment", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet )]
-    [OutputType(typeof(PSVirtualMachinePatchAssessmentResult))]
-    [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmPatchAssess", "Invoke-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmAssessPatch")]
-    public partial class InvokeAzureVMPatchAssessmentCommand : ComputeAutomationBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAssessPatch", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet )]
+    [OutputType(typeof(PSVirtualMachineAssessPatchesResult))] 
+    public partial class InvokeAzureVMAssessPatchCommand : ComputeAutomationBaseCmdlet
     {
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
@@ -105,8 +104,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
 
                     var result = VirtualMachinesClient.AssessPatches(resourceGroupName, vmName);
-                    var psObject = new PSVirtualMachinePatchAssessmentResult();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineAssessPatchesResult, PSVirtualMachinePatchAssessmentResult>(result, psObject);
+                    var psObject = new PSVirtualMachineAssessPatchesResult();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineAssessPatchesResult, PSVirtualMachineAssessPatchesResult>(result, psObject);
                     WriteObject(psObject);
                 }
             });

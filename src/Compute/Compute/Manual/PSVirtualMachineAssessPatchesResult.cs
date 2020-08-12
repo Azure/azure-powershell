@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSVirtualMachinePatchAssessmentResult
+    public class PSVirtualMachineAssessPatchesResult
     {
         public string Status { get; set; }
         public string AssessmentActivityId { get; set; }
