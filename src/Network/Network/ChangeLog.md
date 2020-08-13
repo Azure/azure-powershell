@@ -61,6 +61,13 @@
 * Updated below things based on recent swagger change for Firewall Policy
     - Changes names for RuleGroup, RuleCollectionGroup and RuleType
     - Added support for Firewall Policy NAT Rule Collections to support multiple NAT Rule Collection
+* Added new cmdlets to support BYOIP functionality (currently in private preview, not available to the public)
+    - `New-AzCustomIpPrefix`
+    - `Get-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
+    - `Remove-AzCustomIpPrefix`
+* Modified the New-AzPublicIpPrefix cmdlet to support BYOIP functionality
+	- Add optional property "CustomIpPrefix" to allow future customers to associate the prefix with the CustomIpPrefix range that the customer owns.
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
