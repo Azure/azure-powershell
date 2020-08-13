@@ -1,5 +1,0 @@
-com\piggymetrics\account\controller\AccountControllerTest.class
-com\piggymetrics\account\service\AccountServiceTest.class
-com\piggymetrics\account\client\StatisticsServiceClientFallbackTest.class
-com\piggymetrics\account\repository\AccountRepositoryTest.class
-com\piggymetrics\account\AccountServiceApplicationTests.class

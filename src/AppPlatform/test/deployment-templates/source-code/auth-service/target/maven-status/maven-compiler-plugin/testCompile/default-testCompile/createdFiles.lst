@@ -1,5 +1,0 @@
-com\piggymetrics\auth\repository\UserRepositoryTest.class
-com\piggymetrics\auth\service\security\MongoUserDetailsServiceTest.class
-com\piggymetrics\auth\service\UserServiceTest.class
-com\piggymetrics\auth\controller\UserControllerTest.class
-com\piggymetrics\auth\AuthServiceApplicationTests.class

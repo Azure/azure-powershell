@@ -1,9 +1,0 @@
-com\piggymetrics\auth\AuthApplication.class
-com\piggymetrics\auth\service\UserServiceImpl.class
-com\piggymetrics\auth\service\UserService.class
-com\piggymetrics\auth\config\WebSecurityConfig.class
-com\piggymetrics\auth\service\security\MongoUserDetailsService.class
-com\piggymetrics\auth\repository\UserRepository.class
-com\piggymetrics\auth\config\OAuth2AuthorizationConfig.class
-com\piggymetrics\auth\domain\User.class
-com\piggymetrics\auth\controller\UserController.class
