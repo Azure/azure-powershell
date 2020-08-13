@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private const string ResourceIDParameterSet = "ResourceIDParameterSet";
 
         [Parameter(
-        ParameterSetName = DefaultParameterSet,
-        Position = 0,
-        Mandatory = true,
-        ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/diskAccesses", "ResourceGroupName")]
-        [Alias("DiskName")]
+        [Alias("DiskAccessName")]
         public string Name { get; set; }
 
         [Parameter(
