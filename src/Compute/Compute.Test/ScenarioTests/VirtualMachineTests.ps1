@@ -2959,6 +2959,16 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+        # Check for VmHealth Property
+        Assert-NotNull $vm.VmHealth
+        Assert-NotNull $vm.VmHealth.Status
+        Assert-NotNull $vm.VmHealth.Status.Code
+        Assert-NotNull $vm.VmHealth.Status.Level
+        Assert-NotNull $vm.VmHealth.Status.DisplayStatus
+        Assert-NotNull $vm.VmHealth.Status.Message
+        Assert-NotNull $vm.VmHealth.Status.Time
+
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
