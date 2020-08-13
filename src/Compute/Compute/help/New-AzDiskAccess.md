@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDiskAccess
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Disk Access resource
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzDiskAccess [-ResourceGroupName] <String> [-Name] <String> [-Location] <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzDisk** cmdlet creates a Disk Access resource
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" -Location "NorthCentralUS"
 ```
 
-{{ Add example description here }}
+This command will create a Disk Access with given properties. 
 
 ## PARAMETERS
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{ Fill Location Description }}
+Specifies the location.
 
 ```yaml
 Type: System.String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Specifies the name of a disk access.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Specifies the name of a resource group.
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDiskAccess
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a disk access resource.
 
 ## SYNTAX
 
@@ -31,16 +31,39 @@ Remove-AzDiskAccess [-InputObject] <PSDiskAccess> [-AsJob] [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzDisk** cmdlet removes a disk access resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 ```
 
-{{ Add example description here }}
+This command removes the disk access named "DiskAccess01" in resource group "ResourceGroup01"
+
+### Example 2
+```powershell
+PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
+PS C:\> Remove-AzDiskAccess -ResourceId $myDiskAccess.id
+```
+
+This command removes the disk access by Resource ID
+
+### Example 3
+```powershell
+PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
+PS C:\> Remove-AzDiskAccess -InputObject $myDiskAccess
+```
+
+This command removes the disk access by InputObject
+
+### Example 4
+```powershell
+PS C:\> Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" | Remove-AzDiskAccess 
+```
+
+This command removes the disk access by piping the InputObject
 
 ## PARAMETERS
 
@@ -90,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Specifies the name of a disk access.
 
 ```yaml
 Type: System.String
@@ -105,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Specifies the name of a resource group.
 
 ```yaml
 Type: System.String

@@ -24,16 +24,127 @@ Get-AzDiskAccess [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer
 ```
 
 ## DESCRIPTION
-The Get-AzDisk cmdlet gets the properties of a Managed disk.
+The **Get-AzDiskAccess** cmdlet gets the properties of Disk Accesses
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -Name 'DiskAccess0'
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:02:50 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01
+Name                       : DiskAccess01
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
 ```
 
-{{ Add example description here }}
+This command gets the properties of a Disk Access resource named 'DiskAccess01' in the resource group 'ResourceGroup01'.
+
+### Example 2
+```
+PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01'
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:02:50 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01
+Name                       : DiskAccess01
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:05:19 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess02
+Name                       : DiskAccess02
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+```
+
+This command gets the properties of all disk accesses in the resource group 'ResourceGroup01'.
+
+
+### Example 3
+```
+PS C:\> Get-AzDisk
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:02:50 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01
+Name                       : DiskAccess01
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:05:19 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess02
+Name                       : DiskAccess02
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:05:19 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess03
+Name                       : DiskAccess03
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+```
+
+This command gets the properties of all disk accesses under the subscription.
+
+### Example 4
+```
+PS C:\> Get-AzDiskAccess -Name DiskAccessMicrosoft*
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:02:50 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccessMicrosoftAzure
+Name                       : DiskAccessMicrosoftAzure
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:05:19 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccessMicrosoftTeams
+Name                       : DiskAccessMicrosoftTeams
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+```
+
+This command gets the properties of all disk accesses under the subscription name starting with 'DiskAccessMicrosoft'.
+
+### Example 5
+```powershell
+PS C:\> Get-AzDiskAccess -ResourceId '/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01'
+
+PrivateEndpointConnections : {}
+ProvisioningState          : Succeeded
+TimeCreated                : 8/13/2020 7:02:50 PM
+Location                   : northcentralus
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01
+Name                       : DiskAccess01
+Type                       : Microsoft.Compute/diskAccesses
+Tags                       : {}
+```
+
+This command gets the properties of a Disk Access with the given ResourceId.
+
 
 ## PARAMETERS
 
@@ -53,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Specifies the name of a disk access.
 
 ```yaml
 Type: System.String
@@ -64,11 +175,11 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
@@ -79,7 +190,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
