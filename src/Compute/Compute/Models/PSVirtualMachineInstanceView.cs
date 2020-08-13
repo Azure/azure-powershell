@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
+        public VirtualMachineHealthStatus VmHealth { get; set; }
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -69,7 +70,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 ComputerName = virtualMachineInstanceView.ComputerName,
                 OsName = virtualMachineInstanceView.OsName,
                 OsVersion = virtualMachineInstanceView.OsVersion,
-                HyperVGeneration = virtualMachineInstanceView.HyperVGeneration
+                HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
+                VmHealth = virtualMachineInstanceView.VmHealth
             };
 
             return result;

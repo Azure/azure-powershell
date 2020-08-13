@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
         public IList<InstanceViewStatus> Statuses { get; set; }
+        public VirtualMachineHealthStatus VmHealth { get; set; }
 
     }
 }
