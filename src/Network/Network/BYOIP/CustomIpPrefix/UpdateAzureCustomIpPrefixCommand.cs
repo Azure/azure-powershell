@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSCustomIpPrefix))]
-    public class SetAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSCustomIpPrefix))]
+    public class UpdateAzureCustomIpPrefixCommand : CustomIpPrefixBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
                 sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             }
 
-            if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Set existing MasterCustomIpPrefix"))
+            if (this.ShouldProcess($"Name: {this.Name} ResourceGroup: {this.ResourceGroupName}", "Update existing MasterCustomIpPrefix"))
             {
                 // Execute the PUT MasterCustomIpPrefix Policy call
                 this.CustomIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, sdkModel);
