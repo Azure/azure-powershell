@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Kernelspec = new PSNotebookKernelSpec(notebookMetadata?.Kernelspec);
             this.LanguageInfo = new PSNotebookLanguageInfo(notebookMetadata?.LanguageInfo);
-            this.Keys = notebookMetadata?.Keys;
-            this.Values = notebookMetadata?.Values;
+            var propertiesEnum = notebookMetadata?.GetEnumerator();
+            if (propertiesEnum != null)
+            {
+                this.AdditionalProperties = new Dictionary<string, object>();
+                while (propertiesEnum.MoveNext())
+                {
+                    this.AdditionalProperties.Add(propertiesEnum.Current);
+                }
+            }
         }
 
         [JsonProperty(PropertyName = "kernelspec")]
@@ -22,17 +30,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "language_info")]
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
-        public ICollection<string> Keys { get; }
-
-        public ICollection<object> Values { get; }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookMetadata ToSdkObject()
         {
-            return new NotebookMetadata()
+            var metadata = new NotebookMetadata()
             {
                 Kernelspec = this.Kernelspec?.ToSdkObject(),
                 LanguageInfo = this.LanguageInfo?.ToSdkObject()
             };
+            this.AdditionalProperties?.ForEach(item => metadata.Add(item.Key, item.Value));
+            return metadata;
         }
     }
 }

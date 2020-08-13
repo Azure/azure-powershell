@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
-           
         }
     }
 }

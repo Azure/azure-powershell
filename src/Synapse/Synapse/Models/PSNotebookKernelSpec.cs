@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookKernelSpec?.Name;
             this.DisplayName = notebookKernelSpec?.DisplayName;
-            this.Keys = notebookKernelSpec?.Keys;
-            this.Values = notebookKernelSpec?.Values;
+            var propertiesEnum = notebookKernelSpec?.GetEnumerator();
+            if (propertiesEnum != null)
+            {
+                this.AdditionalProperties = new Dictionary<string, object>();
+                while (propertiesEnum.MoveNext())
+                {
+                    this.AdditionalProperties.Add(propertiesEnum.Current);
+                }
+            }
         }
 
         [JsonProperty(PropertyName = "name")]
@@ -23,13 +31,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
-        public ICollection<string> Keys { get; }
-
-        public ICollection<object> Values { get; }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookKernelSpec ToSdkObject()
         {
-            return new NotebookKernelSpec(this.Name, this.DisplayName);
+            var notebookKernelSpec = new NotebookKernelSpec(this.Name, this.DisplayName);
+            this.AdditionalProperties?.ForEach(item => notebookKernelSpec.Add(item.Key, item.Value));
+            return notebookKernelSpec;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.NotebookFormat = notebook?.Nbformat;
             this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
-            this.Keys = notebook?.Keys;
-            this.Values = notebook?.Values;
+            var propertiesEnum = notebook?.GetEnumerator();
+            if (propertiesEnum != null)
+            {
+                this.AdditionalProperties = new Dictionary<string, object>();
+                while (propertiesEnum.MoveNext())
+                {
+                    this.AdditionalProperties.Add(propertiesEnum.Current);
+                }
+            }
         }
 
         [JsonProperty(PropertyName = "description")]
@@ -46,19 +54,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "cells")]
         public IList<PSNotebookCell> Cells { get; set; }
 
-        public ICollection<string> Keys { get; set; }
-
-        public ICollection<object> Values { get; set; }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public Notebook ToSdkObject()
         {
-            return new Notebook(this.Metadata?.ToSdkObject(), this.NotebookFormat.GetValueOrDefault(), this.NotebookFormatMinor.GetValueOrDefault(),
+            var notebook = new Notebook(this.Metadata?.ToSdkObject(), this.NotebookFormat.GetValueOrDefault(), this.NotebookFormatMinor.GetValueOrDefault(),
                 this.Cells?.Select(element => element?.ToSdkObject()))
             {
                 Description = this.Description,
                 BigDataPool = this.BigDataPool?.ToSdkObject(),
                 SessionProperties = this.SessionProperties?.ToSdkObject()
             };
+            this.AdditionalProperties?.ForEach(item => notebook.Add(item.Key, item.Value));
+            return notebook;
         }
     }
 }

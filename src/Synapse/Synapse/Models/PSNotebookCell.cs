@@ -17,8 +17,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Source = notebookCell?.Source;
             this.Attachments = notebookCell?.Attachments;
             this.Outputs = notebookCell?.Outputs?.Select(element => new PSNotebookCellOutputItem(element)).ToList();
-            this.Keys = notebookCell?.Keys;
-            this.Values = notebookCell?.Values;
+            var propertiesEnum = notebookCell?.GetEnumerator();
+            if (propertiesEnum != null)
+            {
+                this.AdditionalProperties = new Dictionary<string, object>();
+                while (propertiesEnum.MoveNext())
+                {
+                    this.AdditionalProperties.Add(propertiesEnum.Current);
+                }
+            }
         }
 
         [JsonProperty(PropertyName = "cell_type")]
@@ -36,9 +43,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "outputs")]
         public IList<PSNotebookCellOutputItem> Outputs { get; set; }
 
-        public ICollection<string> Keys { get; }
-
-        public ICollection<object> Values { get; }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookCell ToSdkObject()
         {
@@ -51,6 +57,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 Attachments = this.Attachments,
             };
             this.Outputs?.ForEach(item => cell.Outputs.Add(item?.ToSdkObject()));
+            this.AdditionalProperties?.ForEach(item => cell.Add(item.Key, item.Value));
             return cell;
         }
     }

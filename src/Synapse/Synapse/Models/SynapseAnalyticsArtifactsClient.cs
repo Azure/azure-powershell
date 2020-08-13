@@ -90,12 +90,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IntegrationRuntimeReference ToSdkObject()
         {
             IntegrationRuntimeReference integrationRuntimeReference = new IntegrationRuntimeReference(this.Type.GetValueOrDefault(), this.ReferenceName);
+            this.Parameters?.ForEach(item => integrationRuntimeReference.Parameters.Add(item));
             return integrationRuntimeReference;
         }
     }
