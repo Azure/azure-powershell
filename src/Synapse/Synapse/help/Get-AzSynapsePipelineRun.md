@@ -39,16 +39,16 @@ Get-AzSynapsePipelineRun -WorkspaceObject <PSSynapseWorkspace> -RunStartedAfter 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapsePipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the pipelines that happened between the values of RunStartedAfter and RunStartedBefore.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSynapsePipelineRun -WorkspaceName ContosoWorkspace -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
 ```
 
-{{ Add example description here }}
+This command gets details about the pipeline run with ID "61eb095a-fe23-4591-8a97-fade6c65ca72".
 
 ## PARAMETERS
 
