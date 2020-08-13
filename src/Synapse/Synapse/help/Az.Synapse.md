@@ -20,6 +20,12 @@ Exports notbooks.
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
+### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
+Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
+Gets information about datasets in workspace.
+
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
@@ -66,7 +72,7 @@ Gets a Synapse Analytics Spark session.
 Gets a Synapse Analytics Spark statement.
 
 ### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
+Gets a Synapse Analytics SQL database.
 
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
@@ -105,13 +111,19 @@ Creates a Synapse Analytics role assignment.
 Creates a Synapse Analytics Spark pool.
 
 ### [New-AzSynapseSqlDatabase](New-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Creates a Synapse Analytics SQL database.
+Gets a Synapse Analytics SQL database.
 
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
 Creates a Synapse Analytics SQL pool.
 
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
 Creates a Synapse Analytics workspace.
+
+### [Remove-AzSynapseDataFlow](Remove-AzSynapseDataFlow.md)
+Removes a data flow from workspace.
+
+### [Remove-AzSynapseDataset](Remove-AzSynapseDataset.md)
+Removes a dataset from workspace.
 
 ### [Remove-AzSynapseFirewallRule](Remove-AzSynapseFirewallRule.md)
 Deletes a Synapse Analytics Firewall Rule.
@@ -138,7 +150,7 @@ Deletes a Synapse Analytics role assignment.
 Deletes a Synapse Analytics Spark pool.
 
 ### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
+Deletes a Synapse Analytics SQL database.
 
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
 Deletes a Synapse Analytics SQL pool.
@@ -157,6 +169,12 @@ Resets timeout of a Synapse Analytics Spark session.
 
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
+
+### [Set-AzSynapseDataFlow](Set-AzSynapseDataFlow.md)
+Creates a data flow in workspace.
+
+### [Set-AzSynapseDataset](Set-AzSynapseDataset.md)
+Creates a dataset in workspace.
 
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
@@ -201,7 +219,7 @@ Synchronizes credentials among integration runtime nodes.
 Checks for the existence of a Synapse Analytics Spark pool.
 
 ### [Test-AzSynapseSqlDatabase](Test-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Checks for the existence of a Synapse Analytics SQL database.
+Checks for the existence of a Synapse Analytics SQL database.
 
 ### [Test-AzSynapseSqlPool](Test-AzSynapseSqlPool.md)
 Checks for the existence of a Synapse Analytics SQL pool.
@@ -222,7 +240,7 @@ Updates self-hosted integration runtime node.
 Updates a Synapse Analytics Spark pool.
 
 ### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
+Updates a Synapse Analytics SQL database.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.

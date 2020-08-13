@@ -260,7 +260,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSDatasetResource pSDatasetResource = JsonConvert.DeserializeObject<PSDatasetResource>(rawJsonContent, Settings);
             DatasetResource dataset = pSDatasetResource.ToSdkObject();
-            return _datasetClient.CreateOrUpdateDataset(datasetName, dataset);
+            var operation = _datasetClient.StartCreateOrUpdateDataset(datasetName, dataset);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public DatasetResource GetDataset(string datasetName)
@@ -275,7 +280,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteDataset(string datasetName)
         {
-            _datasetClient.DeleteDataset(datasetName);
+            _datasetClient.StartDeleteDataset(datasetName);
         }
 
         #endregion
@@ -286,7 +291,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             PSDataFlowResource pSDatasetResource = JsonConvert.DeserializeObject<PSDataFlowResource>(rawJsonContent, Settings);
             DataFlowResource dataFlow = pSDatasetResource.ToSdkObject();
-            return _dataFlowClient.CreateOrUpdateDataFlow(dataFlowName, dataFlow);
+            var operation = _dataFlowClient.StartCreateOrUpdateDataFlow(dataFlowName, dataFlow);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
         }
 
         public DataFlowResource GetDataFlow(string dataFlowName)
@@ -301,7 +311,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteDataFlow(string dataFlowName)
         {
-            _dataFlowClient.DeleteDataFlow(dataFlowName);
+            _dataFlowClient.StartDeleteDataFlow(dataFlowName);
         }
 
         #endregion
