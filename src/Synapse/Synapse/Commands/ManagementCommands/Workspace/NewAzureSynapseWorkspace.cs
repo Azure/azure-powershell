@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Synaspe
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseWorkspace))]
-    public class NewAzureSynapseWorkspace : SynapseCmdletBase
+    public class NewAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.ResourceGroupName)]
@@ -56,9 +56,6 @@ namespace Microsoft.Azure.Commands.Synaspe
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
         [ValidateSet("default")]
         public string ManagedVirtualNetwork { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.DisallowAllConnection)]
-        public SwitchParameter DisallowAllConnection { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -118,19 +115,6 @@ namespace Microsoft.Azure.Commands.Synaspe
                     this.ResourceGroupName,
                     this.Name,
                     createParams));
-
-                if (!this.DisallowAllConnection.IsPresent)
-                {
-                    SynapseAnalyticsClient.CreateOrUpdateWorkspaceFirewallRule(
-                        this.ResourceGroupName,
-                        this.Name,
-                        SynapseConstants.FilewallRuleAllowAll,
-                        new IpFirewallRuleInfo
-                        {
-                            StartIpAddress = SynapseConstants.AllowAllStartIpAddress,
-                            EndIpAddress = SynapseConstants.AllowAllEndIpAddress,
-                        });
-                }
 
                 this.WriteObject(workspace);
             } 

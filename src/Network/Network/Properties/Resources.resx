@@ -354,6 +354,9 @@
   <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Field Name {0} contains invalid character.</value>
+  </data>
   <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
     <value>The VirtualHub to update could not be found.</value>
   </data>
@@ -668,8 +671,25 @@
   <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
     <value>Circuit Connection with Name '{0}' is already added.</value>
   </data>
-  <data name="CommissioningStateConflict" xml:space="preserve">
-    <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
-    <comment>Error message for setting the customIpPrefix</comment>
+  <data name="ApplicationGatewayPrivateEndpointConnectionName" xml:space="preserve">
+    <value>privateEndpointConnections</value>
+  </data>
+  <data name="ApplicationGatewayPrivateLinkConfigurationName" xml:space="preserve">
+    <value>privateLinkConfigurations</value>
+  </data>
+  <data name="ApplicationGatewayPrivateLinkIpConfigurationName" xml:space="preserve">
+    <value>ipConfigurations</value>
+  </data>
+  <data name="RemoveVHubRouteTableWarning" xml:space="preserve">
+    <value>Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub.</value>
+  </data>
+  <data name="VHubRouteTableNotFound" xml:space="preserve">
+    <value>The HubRouteTable could not be found.</value>
+  </data>
+  <data name="StaticRoutesNotSupportedForThisRoutingConfiguration" xml:space="preserve">
+    <value>Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects.</value>
+  </data>
+  <data name="VHubRouteTableReferenceNotFound" xml:space="preserve">
+    <value>A valid HubRouteTable reference is required.</value>
   </data>
 </root>

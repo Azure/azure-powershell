@@ -249,4 +249,7 @@
   <data name="SetIotHubEdgeModules" xml:space="preserve">
     <value>Apply Configuration on Edge Devices</value>
   </data>
+  <data name="SendIotHubD2CMessage" xml:space="preserve">
+    <value>Send Device to Cloud Message</value>
+  </data>
 </root>

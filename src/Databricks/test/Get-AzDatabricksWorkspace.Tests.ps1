@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzDatabricksWorkspace' {
     It 'List1' {
         $workspaces = Get-AzDatabricksWorkspace
-        $workspaces.Count | Should -BeGreaterOrEqual 2
+        $workspaces.Count | Should -BeGreaterOrEqual 3
     }
 
     It 'Get' {
@@ -24,7 +24,7 @@ Describe 'Get-AzDatabricksWorkspace' {
 
     It 'List' {
         $workspaces = Get-AzDatabricksWorkspace -ResourceGroupName $env.resourceGroup
-        $workspaces.Count | Should -Be 2
+        $workspaces.Count | Should -Be 3
     }
 
     It 'GetViaIdentity' {

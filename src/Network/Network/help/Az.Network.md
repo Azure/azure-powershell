@@ -770,6 +770,12 @@ Creates a Firewall Application Rule.
 ### [New-AzFirewallApplicationRuleCollection](New-AzFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
 
+### [New-AzFirewallHubIpAddress](New-AzFirewallHubIpAddress.md)
+Ip addresses assoicated to the firewall on virtual hub
+
+### [New-AzFirewallHubPublicIpAddress](New-AzFirewallHubPublicIpAddress.md)
+Public Ip assoicated to the firewall on virtual hub
+
 ### [New-AzFirewallNatRule](New-AzFirewallNatRule.md)
 Creates a Firewall NAT Rule.
 
@@ -802,6 +808,9 @@ Create a new Azure Firewall Policy NAT Rule
 
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
+
+### [New-AzFirewallPublicIpAddress](New-AzFirewallPublicIpAddress.md)
+This is the placeholder for the Ip Address that can be used for multi pip on azure firewall.
 
 ### [New-AzFirewallPolicyThreatIntelWhitelist](New-AzFirewallPolicyThreatIntelWhitelist.md)
 Create a new threat intelligence whitelist for Azure Firewall Policy

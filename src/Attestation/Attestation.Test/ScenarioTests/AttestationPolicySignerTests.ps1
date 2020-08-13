@@ -48,6 +48,17 @@ function Test-GetAttestationPolicySigners
 	}
 }
 
+function Test-GetDefaultProviderPolicySigners
+{
+	$location = "East US"
+	   
+	$policySigners = Get-AzAttestationPolicySigners -DefaultProvider -Location $location
+	Assert-NotNull $policySigners
+	Assert-AreEqual $policySigners.CertificateCount 0
+	Assert-NotNull $policySigners.Jwt
+	Assert-NotNull $policySigners.Certificates
+}
+
 <#
 .SYNOPSIS
 Test Add-AzAttestationPolicySigner

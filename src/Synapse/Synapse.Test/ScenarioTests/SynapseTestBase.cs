@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         public SynapseManagementClient SynapseManagementClient { get; private set; }
 
+        public SynapseSqlV3ManagementClient SynapseSqlV3ManagementClient { get; private set; }
+
         public SynapseClient SynapseClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
@@ -106,7 +108,6 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    //"AzureRM.Storage.ps1",
                     _helper.GetRMModulePath(@"Az.Synapse.psd1"),
                     "AzureRM.Resources.ps1",
                     _helper.GetRMModulePath(@"Az.Storage.psd1"));
@@ -128,11 +129,13 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             SynapseManagementClient = GetSynapseManagementClient(context);
+            SynapseSqlV3ManagementClient = GetSynapseSqlV3ManagementClient(context);
             SynapseClient = GetSynapseClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             NewResourceManagementClient = GetResourceManagementClient(context);
             _helper.SetupManagementClients(
                 SynapseManagementClient,
+                SynapseSqlV3ManagementClient,
                 SynapseClient,
                 StorageManagementClient,
                 NewResourceManagementClient
@@ -165,6 +168,11 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected static SynapseManagementClient GetSynapseManagementClient(MockContext context)
         {
             return context.GetServiceClient<SynapseManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static SynapseSqlV3ManagementClient GetSynapseSqlV3ManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SynapseSqlV3ManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static SynapseClient GetSynapseClient(MockContext context)

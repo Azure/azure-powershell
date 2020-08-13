@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll","Microsoft.Azure.Commands.DataMigration.Cmdlets.InvokeDataMigrationCommand","Invoke-AzDataMigrationCommand","0","2020","The cmdlet 'Invoke-AzDataMigrationCommand' no longer supports the type 'System.String' for parameter 'CommandType'.","Change the type for parameter 'CommandType' back to 'System.String'."

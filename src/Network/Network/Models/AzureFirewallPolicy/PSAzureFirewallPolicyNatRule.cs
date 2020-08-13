@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("sourceAddresses")]
         public List<string> SourceAddresses { get; set; }
 
+        [JsonProperty("sourceIpGroups")]
+        public List<string> SourceIpGroups { get; set; }
+
         [JsonProperty("destinationAddresses")]
         public List<string> DestinationAddresses { get; set; }
 
@@ -48,6 +51,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SourceAddressesText
         {
             get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
         }
 
         [JsonIgnore]

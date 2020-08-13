@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress();
 
-            loadBalancerBackendAddress.VirtualNetwork = new PSVirtualNetwork { 
+            loadBalancerBackendAddress.VirtualNetwork = new PSResourceId { 
                 Id = VirtualNetworkId
             };
 

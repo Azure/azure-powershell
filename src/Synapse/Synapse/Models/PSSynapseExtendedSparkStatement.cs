@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSynapseExtendedSparkStatement : PSSynapseSparkStatement
     {
-        public PSSynapseExtendedSparkStatement(LivyStatementResponseBody livyStatement) : base(livyStatement)
+        public PSSynapseExtendedSparkStatement(SparkStatement livyStatement) : base(livyStatement)
         {
             this.ExecutionOutput = GetExecutionOutput(livyStatement?.Output);
         }
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string ExecutionOutput { get; }
 
 
-        private string GetExecutionOutput(LivyStatementOutput livyOutput)
+        private string GetExecutionOutput(SparkStatementOutput livyOutput)
         {
             if (livyOutput == null)
             {
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             else if (SparkSessionStatementLivyState.Error.Equals(Output?.Status, StringComparison.OrdinalIgnoreCase))
             {
                 var sb = new StringBuilder();
-                if (livyOutput.Evalue != null)
+                if (livyOutput.ErrorValue != null)
                 {
-                    sb.AppendLine(livyOutput.Evalue);
+                    sb.AppendLine(livyOutput.ErrorValue);
                 }
 
                 if (livyOutput.Traceback != null)

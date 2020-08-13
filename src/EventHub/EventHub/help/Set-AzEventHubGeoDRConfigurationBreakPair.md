@@ -35,8 +35,8 @@ The **Set-AzEventHubGeoDRConfigurationBreakPair** cmdlet disables the Disaster R
 
 ## EXAMPLES
 
-### Example
-```
+### Example 1
+```powershell
 PS C:\> Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRConfigName"
 ```
 

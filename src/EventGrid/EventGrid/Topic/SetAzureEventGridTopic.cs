@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -76,47 +75,108 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Hashtable which represents the Inbound IP Rules.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InboundIpRuleHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        public Hashtable InboundIpRule { get; set; }
+
+        /// <summary>
+        /// Public network access.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
 
         public override void ExecuteCmdlet()
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
+                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+            }
+            else if (!string.IsNullOrEmpty(this.Name))
+            {
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.Name;
             }
             else if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.Name = this.InputObject.TopicName;
+                resourceGroupName = this.InputObject.ResourceGroupName;
+                topicName = this.InputObject.TopicName;
             }
 
-            if (this.ShouldProcess(this.Name, $"Set topic {this.Name} in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(topicName, $"Set topic {topicName} in Resource Group {resourceGroupName}"))
             {
-                Topic existingTopic = this.Client.GetTopic(this.ResourceGroupName, this.Name);
+                Topic existingTopic = this.Client.GetTopic(resourceGroupName, topicName);
                 if (existingTopic == null)
                 {
-                    throw new Exception($"Cannot find an existing topic {this.Name} in resource group {this.ResourceGroupName}");
+                    throw new Exception($"Cannot find an existing topic {topicName} in resource group {resourceGroupName}");
                 }
 
-                Topic topic = this.Client.ReplaceTopic(this.ResourceGroupName, this.Name, existingTopic.Location, tagDictionary);
+                Topic topic = this.Client.ReplaceTopic(
+                    resourceGroupName,
+                    topicName,
+                    existingTopic.Location,
+                    tagDictionary,
+                    inboundIpRuleDictionary,
+                    this.PublicNetworkAccess);
+
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }

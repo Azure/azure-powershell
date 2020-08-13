@@ -209,7 +209,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             this.recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
                                 file.ReadToEnd(),
-                                new RecoveryPlanActionDetailsConverter());
+                                new RecoveryPlanActionDetailsConverter(),
+                                new RecoveryPlanProviderSpecificDetailsConverter());
                         }
 
                         break;

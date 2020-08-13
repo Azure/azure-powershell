@@ -20,8 +20,9 @@ Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId
  [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-ExportToResourceSpecific] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-ExportToResourceSpecific] [-EnableLog <Boolean>]
+ [-EnableMetrics <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewSetDiagnosticSetting
@@ -160,6 +161,36 @@ Accept wildcard characters: False
 ### -Enabled
 Indicates whether to enable diagnostics.
 Specify $True to enable diagnostics, or $False to disable diagnostics.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableLog
+The value indicating whether the diagnostic logs should be enabled or disabled
+
+```yaml
+Type: System.Boolean
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableMetrics
+The value indicating whether the diagnostic metrics should be enabled or disabled
 
 ```yaml
 Type: System.Boolean

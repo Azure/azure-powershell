@@ -199,6 +199,40 @@ function Test-CreateNamedSecondaryDatabase()
 
 <#
 	.SYNOPSIS
+	Tests creating a named secondary database of already existing database
+#>
+function Test-CreateNamedSecondaryDatabaseNegative()
+{
+	# Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $location
+
+	try
+	{
+		# Attempt to Create Named Readable Secondary Using Existing Database Name
+		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName "secondary" `
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName $database.DatabaseName -AllowConnections All
+		Assert-Null $readSecondary
+	}
+	catch
+	{
+		$ErrorMessage = $_.Exception.Message
+		Assert-AreEqual True $ErrorMessage.Contains("Database with name: '" + $database.DatabaseName + "' already exists in server '" + $server.ServerName + "'.")
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests getting a secondary database
 #>
 function Test-GetReplicationLink()

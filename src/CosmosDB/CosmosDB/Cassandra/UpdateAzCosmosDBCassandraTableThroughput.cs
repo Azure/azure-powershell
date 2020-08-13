@@ -23,17 +23,8 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTableThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class UpdateAzCosmosDBCassandraTableThroughput : AzureCosmosDBCmdletBase
-    {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
+    public class UpdateAzCosmosDBCassandraTableThroughput : UpdateAzCosmosDBThroughput
+    { 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.KeyspaceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string KeyspaceName { get; set; }
@@ -41,10 +32,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.CassandraTableThroughputHelpMessage)]
-        [ValidateNotNull]
-        public int Throughput { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
@@ -54,39 +41,30 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSCassandraTableGetResults InputObject { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void PopulateFromParentObject()
         {
-            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                KeyspaceName = resourceIdentifier.ResourceName;
-                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-            }
-            else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-                KeyspaceName = ResourceIdentifierExtensions.GetCassandraKeyspaceName(resourceIdentifier);
-                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-            }
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+            ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            KeyspaceName = resourceIdentifier.ResourceName;
+            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+        }
 
-            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = new ThroughputSettingsUpdateParameters
-            {
-                Resource = new ThroughputSettingsResource
-                {
-                    Throughput = Throughput
-                }
-            };
+        public override void PopulateFromInputObject()
+        {
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+            ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            Name = resourceIdentifier.ResourceName;
+            KeyspaceName = ResourceIdentifierExtensions.GetCassandraKeyspaceName(resourceIdentifier);
+            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+        }
 
+        public override void CallSDKMethod(ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters)
+        {
             if (ShouldProcess(Name, "Updating the throughput value  of a CosmosDB Cassandra Table"))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.CassandraResources.UpdateCassandraTableThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name, throughputSettingsUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
-
-            return;
         }
     }
 }

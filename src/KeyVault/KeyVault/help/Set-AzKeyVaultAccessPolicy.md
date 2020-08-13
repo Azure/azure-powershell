@@ -142,6 +142,9 @@ If you register an application in a directory other than the default directory, 
 The application must be in the default directory.
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
+> [!NOTE]
+> When using a service principal to grant access policy permissions, you must use the `-BypassObjectIdValidation` parameter.
+
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions

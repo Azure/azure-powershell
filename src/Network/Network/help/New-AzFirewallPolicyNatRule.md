@@ -14,8 +14,8 @@ Create a new Azure Firewall Policy NAT Rule
 
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocols <String[]>
- -TranslatedAddress <String>
+ [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]>
+ -Protocols <String[]> -TranslatedAddress <String>
  -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -132,7 +132,22 @@ Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroups of the rule
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

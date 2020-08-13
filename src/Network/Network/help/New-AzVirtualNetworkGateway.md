@@ -83,8 +83,8 @@ You can also choose to include other features like BGP and Active-Active.
 
 ## EXAMPLES
 
-### 1: Create a Virtual Network Gateway
-```
+### Example 1: Create a Virtual Network Gateway
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -102,8 +102,8 @@ The gateway will be called "myNGW" within the resource group "vnet-gateway" in t
 West" with the previously created IP configurations saved in the variable "ngwIPConfig," the
 gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
 
-### 2: Create a Virtual Network Gateway with External Radius Configuration
-```
+### Example 2: Create a Virtual Network Gateway with External Radius Configuration
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -120,8 +120,8 @@ The above will create a resource group, request a Public IP Address, create a Vi
 subnet and create a Virtual Network Gateway in Azure.
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also adds an external radius server with address "TestRadiusServer". It will also set custom routes specified by customers on gateway.
 
-### 3: Create a Virtual Network Gateway with P2S settings
-```
+### Example 3: Create a Virtual Network Gateway with P2S settings
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -140,8 +140,8 @@ subnet and create a Virtual Network Gateway with P2S settings e.g. VpnProtocol,V
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "VpnGw1." Vpn settings will be set on Gateway such as VpnProtocol set as Ikev2, VpnClientAddressPool as "201.169.0.0/16", VpnClientRootCertificate set as passed one: clientRootCertName and custom vpn ipsec policy passed in object:$vpnclientipsecpolicy  
 It will also set custom routes specified by customers on gateway.
 
-### 4: Create a Virtual Network Gateway with AAD authentication Configuration for VpnClient of virtual network gateway.
-```
+### Example 4: Create a Virtual Network Gateway with AAD authentication Configuration for VpnClient of virtual network gateway.
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -158,8 +158,8 @@ The above will create a resource group, request a Public IP Address, create a Vi
 subnet and create a Virtual Network Gateway in Azure.
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AadTenantUri, AadIssuerUri and AadAudienceId for VpnClient of virtual network gateway.
 
-### 5: Create a Virtual Network Gateway with VpnGatewayGeneration
-```
+### Example 5: Create a Virtual Network Gateway with VpnGatewayGeneration
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -177,8 +177,8 @@ The gateway will be called "myNGW" within the resource group "vnet-gateway" in t
 with the previously created IP configurations saved in the variable "ngwIPConfig," the
 gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
 
-### 6: Create a Virtual Network Gateway with IpConfigurationBgpPeeringAddresses
-```
+### Example 6: Create a Virtual Network Gateway with IpConfigurationBgpPeeringAddresses
+```powershell
 New-AzResourceGroup -Location "UK West" -Name "resourcegroup1"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayType
-The type of this virtual network gateway: Vpn, ExoressRoute
+The type of this virtual network gateway: Vpn, ExpressRoute
 
 ```yaml
 Type: System.String

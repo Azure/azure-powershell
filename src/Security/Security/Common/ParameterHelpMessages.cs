@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Location = "Location.";
         public const string PassThru = "Return whether the operation was successful.";
         public const string Tags = "Tags.";
-        public const string DisplayName = "Display name.";
+        public const string DisplayName = "Human readable title for this object.";
         public const string Status = "Status .";
         public const string Export = "Export data.";
         public const string DisabledDataSources = "Disabled data sources.";
@@ -80,6 +80,15 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+        #region Settings
+
+        public const string SettingName = "Setting name.";
+        public const string Setting = "Setting.";
+        public const string SettingKind = "Setting kind.";
+        public const string Enabled = "Enables the setting.";
+
+        #endregion
+
         #region JIT Network Access Policies
 
         public const string VirutalMachines = "Virtual Machines.";
@@ -92,7 +101,6 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Enable = "Enables Threat Protection Policy";
 
         #endregion
-
 
         #region RegulatoryCompliance
 
@@ -110,12 +118,45 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string TimeWindowSize = "Time window size.";
         public const string MinThreshold = "Minimum threshold.";
         public const string MaxThreshold = "Maximum threshold.";
-        public const string Description = "Description.";
         public const string IsEnabled = "Is rule enabled.";
         public const string RuleType = "Rule type.";
         public const string ValueType = "Value type.";
         public const string AllowlistValues = "Allow list values.";
         public const string DenylistValues = "Deny list values.";
+
+        #endregion
+
+        #region Security Assessments
+
+        public const string AssessedResourceId = "Full resource ID of the resource that the assessment is calculated on.";
+        public const string Description = "Detailed string that will help users to understand the meaning of this assessment and how it was calculated.";
+        public const string RemediationDescription = "Detailed string that will help users to understand the different ways to mitigate or fix the security issue.";
+        public const string Severity = "Indicates the importance of the security risk if the assessment is unhealthy.";
+        public const string StatusCode = "Progremmatic code for the result of the assessment. can be \"Healthy\", \"Unhealthy\" or \"NotApplicable\"";
+        public const string StatusCause = "Progremmatic code for the cause of the assessment's result.";
+        public const string StatusDescription = "Human readable description of the cause of the assessment's result.";
+        public const string AdditionalData = "Data that is attached to the assessment result for better investigations or status clarity.";
+        public const string AssessmentsName = "Name of the assessment resource.";
+
+        #endregion
+
+        #region Adaptive Network Hardenings
+
+        public const string ResourceNamespace = "Resource namespace";
+        public const string ResourceType = "Resource type";
+        public const string RulesToEnforce = "Rule to enforce";
+        public const string AdaptiveNetworkHardeningResourceName = "Adaptive Network Hardening resource name";
+        public const string AdaptiveNetworkHardeningEnforceAction = "Adaptive Network Hardening enforce action";
+        public const string EffectiveNetworkSecurityGroups = "The Azure resource IDs of the effective network security groups";
+
+        #endregion
+ 
+        #region Adaptive Application Controls
+
+        public const string AdaptiveApplicationControlsGroupName = "Name of an application control VM/server group";
+        public const string AscLocation = "The location where ASC stores the data of the subscription. can be retrieved from Get locations";
+        public const string IncludePathRecommendation = "Include the policy rules";
+        public const string Summary = "Return output in a summarized form";
 
         #endregion
     }

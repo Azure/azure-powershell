@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.3
+* Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
+
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
 

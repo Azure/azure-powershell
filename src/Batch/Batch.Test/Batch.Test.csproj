@@ -15,9 +15,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Batch" Version="13.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Batch" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Batch" Version="11.0.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

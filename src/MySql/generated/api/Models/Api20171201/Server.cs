@@ -188,17 +188,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The size code, to be interpreted by resource as appropriate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 6)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
         public string SkuSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Size; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Size = value; }
 
         /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 7)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 6)]
         public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier? SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Tier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 8)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 7)]
         public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum? SslEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).SslEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).SslEnforcement = value; }
 
         /// <summary>Backup retention days for the server.</summary>

@@ -1024,7 +1024,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 	$defaultSubnetAddressPrefix = "10.0.0.0/24"
 
 	try {
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
 		return $getVnet
 	} catch {
 		$virtualNetwork = New-AzVirtualNetwork `
@@ -1056,7 +1056,52 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
 		return $getVnet
 	}
+}
+
+<#
+	.SYNOPSIS
+	Delegate subnet to SQL MI service if not already delegated.
+#>
+function DelegateSubnetToSQLMIAndGetVnet ($vnetName, $subnetName, $resourceGroupName)
+{
+	$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+	$subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+	$delegations = Get-AzDelegation -Subnet $subnet | ? {$_.ServiceName -eq "Microsoft.Sql/managedInstances"}
+
+	# Condition (Get-SqlTestMode) -eq 'Record' is addedd in order to skip this path in Playback mode
+	if ($delegations -eq $null -and (Get-SqlTestMode) -eq 'Record'){
+		$subnet = Add-AzDelegation -Name "test-delegation-sqlmi" -ServiceName "Microsoft.Sql/managedInstances" -Subnet $subnet
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+	}
+
+	if ($subnet.NetworkSecurityGroup -eq $null -and (Get-SqlTestMode) -eq 'Record'){
+		$inboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-inbound -Description "Allow all inbound" `
+					-Access Allow -Protocol * -Direction Inbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$outboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-outbound -Description "Allow all outbound" `
+					-Access Allow -Protocol * -Direction Outbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$nsg = New-AzNetworkSecurityGroup `
+			-Name "$vnetName-$subnetName-nsg-allow-all" `
+			-ResourceGroupName $resourceGroupName `
+			-location $vnet.Location `
+			-SecurityRules $inboundAllowAllRule, $outboundAllowAllRule `
+            -Force
+
+        $subnet.NetworkSecurityGroup += $nsg
+
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+    }
+
+	return $vnet
 }

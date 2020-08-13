@@ -12,29 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Collections;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
     /// <summary>
     /// Creates a new deployment at a management group.
     /// </summary>
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "ManagementGroupDeployment", SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeployment))]
-    public class NewAzureManagementGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class NewAzureManagementGroupDeploymentCmdlet : DeploymentCreateCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
+    HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -55,31 +57,48 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
+
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        protected override void OnProcessRecord()
-        {
-            var parameters = new PSDeploymentCmdletParameters()
-            {
-                ScopeType = DeploymentScopeType.ManagementGroup,
-                ManagementGroupId = this.ManagementGroupId,
-                Location = this.Location,
-                DeploymentName = this.Name,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = TemplateObject,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                Tags = TagsHelper.ConvertToTagsDictionary(Tag)
-            };
+        protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
+            typeof(NewAzureManagementGroupDeploymentCmdlet),
+            typeof(CmdletAttribute))).ConfirmImpact;
 
-            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
-            {
-                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
-            }
-            WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
-        }
+        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        {
+            ScopeType = DeploymentScopeType.ManagementGroup,
+            ManagementGroupId = this.ManagementGroupId,
+            Location = this.Location,
+            DeploymentName = this.Name,
+            DeploymentMode = DeploymentMode.Incremental,
+            TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            TemplateObject = this.TemplateObject,
+            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            ParameterUri = this.TemplateParameterUri,
+            DeploymentDebugLogLevel = this.GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
+            Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
+        };
+
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.ManagementGroup,
+            managementGroupId: this.ManagementGroupId,
+            deploymentName: this.Name,
+            location: this.Location,
+            mode: DeploymentMode.Incremental,
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            templateObject: this.TemplateObject,
+            templateParametersUri: this.TemplateParameterUri,
+            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat: this.WhatIfResultFormat,
+            excludeChangeTypes: this.WhatIfExcludeChangeType);
     }
 }

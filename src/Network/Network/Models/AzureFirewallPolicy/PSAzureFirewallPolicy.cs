@@ -33,5 +33,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("ruleCollectionGroups")]
         public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
 
+        public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
     }
 }

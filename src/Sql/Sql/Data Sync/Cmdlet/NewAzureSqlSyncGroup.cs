@@ -17,7 +17,7 @@ using System.Management.Automation;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Management.Sql.Models;
-using Hyak.Common;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -96,6 +96,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SchemaFile { get; set; }
 
         /// <summary>
+        /// Gets or sets if private link should be used
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use a private link connection when connecting to the hub of this sync group.")]
+        public SwitchParameter UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
         /// The id of database used to store sync related metadata
         /// </summary>
         private string syncDatabaseId = null;
@@ -152,6 +158,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 newModel.IntervalInSeconds = this.IntervalInSeconds;
             }
+
+            newModel.UsePrivateLinkConnection = UsePrivateLinkConnection.IsPresent;
 
             if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseResourceGroupName") 
                 && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseServerName") 

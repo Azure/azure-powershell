@@ -19,12 +19,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
         public string ConfigStoreName { get => this._configStoreName; set => this._configStoreName = value; }
 
+        /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
+        private string _groupName;
+
+        /// <summary>The name of the private link resource group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
+        public string GroupName { get => this._groupName; set => this._groupName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>Private endpoint connection name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -57,6 +71,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         SerializedName = @"configStoreName",
         PossibleTypes = new [] { typeof(string) })]
         string ConfigStoreName { get; set; }
+        /// <summary>The name of the private link resource group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private link resource group.",
+        SerializedName = @"groupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
@@ -65,6 +87,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Private endpoint connection name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Private endpoint connection name",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group to which the container registry belongs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
@@ -88,8 +118,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
     {
         /// <summary>The name of the configuration store.</summary>
         string ConfigStoreName { get; set; }
+        /// <summary>The name of the private link resource group.</summary>
+        string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Private endpoint connection name</summary>
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group to which the container registry belongs.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The Microsoft Azure subscription ID.</summary>

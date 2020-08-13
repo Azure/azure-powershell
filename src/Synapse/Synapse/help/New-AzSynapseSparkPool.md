@@ -12,22 +12,36 @@ Creates a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
-### CreateByNameParameterSet (Default)
+### CreateByNameAndEnableAutoScaleParameterSet (Default)
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
- -NodeCount <Int32> -NodeSize <String> [-EnableAutoScale] [-AutoScaleMinNodeCount <Int32>]
- [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String>
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
+ [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateByParentObjectParameterSet
+### CreateByNameAndDisableAutoScaleParameterSet
+```
+New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
+ -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
+ -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByParentObjectAndEnableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
- -NodeCount <Int32> -NodeSize <String> [-EnableAutoScale] [-AutoScaleMinNodeCount <Int32>]
- [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String>
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
+ [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByParentObjectAndDisableAutoScaleParameterSet
+```
+New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
+ -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
+ -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,11 +58,26 @@ This command creates an Azure Synapse Analytics Spark pool.
 
 ### Example 2
 ```powershell
+PS C:\> New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
+```
+
+This command creates an Azure Synapse Analytics Spark pool with auto-scale enabled.
+
+### Example 3
+```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
 This command creates an Azure Synapse Analytics Spark pool through pipeline.
+
+### Example 4
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
+```
+
+This command creates an Azure Synapse Analytics Spark pool with auto-scale enabled through pipeline.
 
 ## PARAMETERS
 
@@ -88,10 +117,10 @@ This parameter must be specified when Auto-scale is enabled.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByParentObjectAndEnableAutoScaleParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,10 +133,10 @@ This parameter must be specified when Auto-scale is enabled.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByParentObjectAndEnableAutoScaleParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,21 +160,6 @@ Accept wildcard characters: False
 
 ### -EnableAutoPause
 Indicates whether Auto-pause should be enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAutoScale
-Indicates whether Auto-scale should be enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -194,7 +208,7 @@ Number of nodes to be allocated in the specified Spark pool.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateByNameAndDisableAutoScaleParameterSet, CreateByParentObjectAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True
@@ -226,7 +240,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: False
@@ -272,7 +286,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True
@@ -287,7 +301,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: CreateByParentObjectParameterSet
+Parameter Sets: CreateByParentObjectAndEnableAutoScaleParameterSet, CreateByParentObjectAndDisableAutoScaleParameterSet
 Aliases:
 
 Required: True

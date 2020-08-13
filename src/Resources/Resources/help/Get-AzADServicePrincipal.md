@@ -60,41 +60,41 @@ Filters active directory service principals.
 
 ## EXAMPLES
 
-### Example 1 - List AD service principals
+### Example 1: List AD service principals
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal
 ```
 
 Lists all AD service principals in a tenant.
 
-### Example 2 - List AD service principals using paging
+### Example 2: List AD service principals using paging
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -First 100
 ```
 
 Lists the first 100 AD service principals in a tenant.
 
-### Example 3 - List service principals by SPN
+### Example 3: List service principals by SPN
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -ServicePrincipalName 36f81fc3-b00f-48cd-8218-3879f51ff39f
 ```
 
 Lists service principals with the SPN '36f81fc3-b00f-48cd-8218-3879f51ff39f'.
 
-### Example 4 - List service principals by search string
+### Example 4: List service principals by search string
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -SearchString "Web"
 ```
 
 Lists all AD service principals whose display name start with "Web".
 
-### Example 5 - List service principals by piping
+### Example 5: List service principals by piping
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69 | Get-AzADServicePrincipal
 ```
 

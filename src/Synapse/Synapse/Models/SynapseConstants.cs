@@ -12,7 +12,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string WorkspaceName = nameof(WorkspaceName);
 
-        public const string FilewallRuleAllowAll = nameof(FilewallRuleAllowAll);
+        public const string FirewallRuleName = nameof(FirewallRuleName);
+
+        public const string FirewallRule = nameof(FirewallRule);
 
         public const string SparkPool = nameof(SparkPool);
 
@@ -30,9 +32,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlDatabase = nameof(SqlDatabase);
+
         public const string SparkPoolName = nameof(SparkPoolName);
 
         public const string Job = nameof(Job);
+
+        public const string RoleAssignment = nameof(RoleAssignment);
+
+        public const string RoleDefinition = nameof(RoleDefinition);
 
         public const string SparkDotNetJarFile = "local:///usr/hdp/current/spark2-client/jars/microsoft-spark.jar";
 

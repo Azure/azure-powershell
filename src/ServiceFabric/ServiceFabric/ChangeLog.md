@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Fixed bug in add certificate using --SecretIdentifier that was getting the wrong certificate thumbprint
 
 ## Version 2.0.2

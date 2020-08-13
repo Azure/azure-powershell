@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.iothub
@@ -184,6 +184,9 @@ Delete a route in IoT Hub
 
 ### [Remove-AzIotHubRoutingEndpoint](Remove-AzIotHubRoutingEndpoint.md)
 Delete an endpoint for your IoT Hub
+
+### [Send-AzIotHubDevice2CloudMessage](Send-AzIotHubDevice2CloudMessage.md)
+Send device-to-cloud message.
 
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.

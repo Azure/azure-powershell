@@ -14,19 +14,19 @@ Gets the log of a deployment script execution.
 
 ### GetDeploymentScriptLogByName (Default)
 ```
-Get-AzDeploymentScriptLog [-ResourceGroupName] <String> [-Name] <String>
+Get-AzDeploymentScriptLog [-ResourceGroupName] <String> [-Name] <String> [[-Tail] <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetDeploymentScriptLogByResourceId
 ```
-Get-AzDeploymentScriptLog [-DeploymentScriptResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeploymentScriptLog [-DeploymentScriptResourceId] <String> [[-Tail] <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetDeploymentScriptLogByInputObject
 ```
-Get-AzDeploymentScriptLog [-DeploymentScriptInputObject] <PsDeploymentScript>
+Get-AzDeploymentScriptLog [-DeploymentScriptObject] <PsDeploymentScript> [[-Tail] <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -40,9 +40,16 @@ The **Get-AzDeploymentScriptLog** cmdlet gets the log of a deployment script exe
 PS C:\> Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
-Gets log of a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
+Gets the log of a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
 
 ### Example 2
+```powershell
+PS C:\> Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg -Tail 3
+```
+
+Gets the last 3 lines of the log of a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
+
+### Example 3
 ```powershell
 PS C:\> $ds = Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 PS C:\> Get-AzDeploymentScriptLog -DeploymentScriptInputObject $ds
@@ -57,7 +64,7 @@ The second command gets the log of given deployment script.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,13 +75,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentScriptInputObject
+### -DeploymentScriptObject
 The deployment script PowerShell object.
 
 ```yaml
-Type: PsDeploymentScript
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript
 Parameter Sets: GetDeploymentScriptLogByInputObject
-Aliases:
+Aliases: DeploymentScriptInputObject
 
 Required: True
 Position: 0
@@ -88,7 +95,7 @@ The fully qualified resource Id of the deployment script.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptLogByResourceId
 Aliases:
 
@@ -103,7 +110,7 @@ Accept wildcard characters: False
 The name of the deployment script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptLogByName
 Aliases:
 
@@ -118,7 +125,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptLogByName
 Aliases:
 
@@ -129,9 +136,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Tail
+Limit output to last n lines
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

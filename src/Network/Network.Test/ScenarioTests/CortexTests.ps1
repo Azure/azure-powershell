@@ -101,7 +101,7 @@ function Test-CortexCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		$routes = $virtualHub.RouteTable.Routes
 		Assert-AreEqual 2 @($routes).Count
-		
+
 		# Create the VpnSite
 		$vpnSiteAddressSpaces = New-Object string[] 1
 		$vpnSiteAddressSpaces[0] = "192.168.2.0/24"
@@ -849,4 +849,123 @@ function Test-CortexExpressRouteCRUD
 
 		Clean-ResourceGroup $rgname
      }
+}
+
+function Test-CortexVirtualHubCRUD
+{
+	# Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
+		Assert-AreEqual $true $virtualWan.AllowBranchToBranchTraffic
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "10.0.0.0/16" $virtualHub.AddressPrefix
+
+		# Reset-AzHubRouter
+		Reset-AzHubRouter -ResourceGroupName $rgName -Name $virtualHubName
+
+		# Delete the resources
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-VHubRouteTableCRUD 
+{
+	# Setup
+	$rgName = Get-ResourceName
+	$location = Get-ProviderLocation ResourceManagement "West Central US"
+
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$defaultRouteTableName = "defaultRouteTable"
+	$noneRouteTableName = "noneRouteTable"
+	$customRouteTableName = "customRouteTable"
+	$firewallName = "azFwInVirtualHub"
+
+	try
+	{
+		# Create the resource group
+		New-AzResourceGroup -Name $rgName -Location $location
+
+		# Create the Virtual Wan
+		New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $location -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+
+		# Create the Virtual Hub
+		New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $location -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "10.0.0.0/16" $virtualHub.AddressPrefix
+
+		# Create a firewall in the Virtual hub
+		$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
+		$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
+		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+
+		# Create new route
+		$route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+
+		# Create new customRouteTable
+		New-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Route @($route1) -Label @("customLabel")
+		$customRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName
+		Assert-AreEqual $customRouteTableName $customRouteTable.Name
+		Assert-AreEqual 1 $customRouteTable.Routes.Count
+		Assert-AreEqual 1 $customRouteTable.Labels.Count
+
+		# Add one more route
+		$route2 = New-AzVHubRoute -Name "internet-traffic" -Destination @("0.0.0.0/0") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+		Update-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Route @($route2)
+		$updateCustomRouteTable = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName
+		Assert-AreEqual $customRouteTableName $updateCustomRouteTable.Name
+		Assert-AreEqual 1 $updateCustomRouteTable.Routes.Count
+		Assert-AreEqual 1 $customRouteTable.Labels.Count
+
+		# Delete the custom route table
+		$delete = Remove-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $customRouteTableName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		# Delete the firewall
+		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+	
+		# Delete the resources
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+	
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		Clean-ResourceGroup $rgname
+	}
 }

@@ -27,7 +27,7 @@ function Test-SetNewIP {
         $offset = getPeeringVariable "offSet" (Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } )
         $newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress/32" $false $offset $false )
         $peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newIpAddress
-        Assert-ThrowsContains { $peer | Update-AzPeering } "BadArgument"
+        Assert-ThrowsContains { $peer | Update-AzPeering } "OperationNotSupported"
     }
     finally {
         Clean-Peering $peering.Id

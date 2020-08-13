@@ -57,6 +57,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice1.Authentication.Type -eq 'Sas' }
 	Assert-False { $newDevice1.Capabilities.IotEdge }
 
+	# Send Device-to-Cloud Message
+	$result = Send-AzIotHubDevice2CloudMessage -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Message "Ping from PS" -Passthru
+	Assert-True { $result }
+
 	# Add iot device with selfsigned authentication
 	$newDevice2 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2 -AuthMethod 'x509_thumbprint' -PrimaryThumbprint $primaryThumbprint -SecondaryThumbprint $secondaryThumbprint
 	Assert-True { $newDevice2.Id -eq $device2 }
