@@ -945,3 +945,44 @@ function Test-DiskAccessObject
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskConfigDiskAccessNetworkAccess
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $diskname0 = 'disk0' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        #Testing disk access
+        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
+        $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
+
+        New-AzDisk -ResourceGroupName $rgname -DiskName "diskname" -Disk $diskconfig;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        Assert.AreEqual $disk.NetworkAccessPolicy "AllowPrivate"
+        Assert.AreEqual $disk.DiskAccessId $diskAccess.Id
+
+        Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
+
+
+    
+#        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -Disk $diskconfig;
+    
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

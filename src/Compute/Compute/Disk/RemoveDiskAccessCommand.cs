@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.Name, VerbsCommon.Remove)
+                if (ShouldProcess(this.Name, VerbsCommon.Remove))
                 {
                     string resourceGroupName;
                     string diskAccessName;
