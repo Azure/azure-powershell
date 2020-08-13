@@ -921,3 +921,89 @@ function Test-DiskEncryptionSet
         $encSet | Remove-AzDiskEncryptionSet -Force;
     }
 }
+
+ <#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskEncryptionSetEncryptionType
+{
+    # Setup
+    $loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
+    $rgname = Get-ComputeTestResourceName;
+    $encryptionName = "enc" + $rgname;
+
+    <# Copied from above test. 
+    $vaultName1 = 'kv1' + $rgname ;
+    $kekName1 = 'kek1' + $rgname;
+    $secretname1 = 'mysecret1';
+    $secretdata1 = 'mysecretvalue1';
+    $securestring1 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
+
+    $vaultName2 = 'kv2' + $rgname ;
+    $kekName2 = 'kek1' + $rgname;
+    $secretname2 = 'mysecret2';
+    $secretdata2 = 'mysecretvalue2';
+    $securestring2 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
+    #>
+    try
+    {
+        <#
+        # Copied from the above test. NOt sure how relevant. 
+        # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
+        #
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $vault1 = New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        $vault2 = New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        $mocksourcevault1 = $vault1.ResourceId;
+        $mocksourcevault2 = $vault2.ResourceId;
+        $userPrincipalName = (Get-AzContext).Account.Id;
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName1 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName2 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        $kek1 = Add-AzKeyVaultKey -VaultName $vaultName1 -Name $kekName1 -Destination "Software";
+        $kek2 = Add-AzKeyVaultKey -VaultName $vaultName2 -Name $kekName2 -Destination "Software";
+        $secret1 = Set-AzKeyVaultSecret -VaultName $vaultName1 -Name $secretname1 -SecretValue $securestring1;
+        $secret2 = Set-AzKeyVaultSecret -VaultName $vaultName2 -Name $secretname2 -SecretValue $securestring2;
+        $mockkey1 = $kek1.Id
+        $mockkey2 = $kek2.Id
+        #>
+
+
+        #$subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        #$mockkey1 = "https://kv1psenctest.vault.azure.net/keys/kek1psenctest/7b0ea2a977294b93aa599d15c96a4368";
+        #$mockkey2 = "https://kv2psenctest.vault.azure.net/keys/kek1psenctest/03684334d612487aa1bd8c9fb5349178";
+
+        #$mocksourcevault1 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName1;
+        #$mocksourcevault2 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName2;
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        #$resourceGroup = Get-AzResourceGroup -Name $rgname -Location $loc;
+
+        $encryptionType = "EncryptionAtRestWithPlatformAndCustomerKey";
+        $encryptionTypeDefault = "EncryptionAtRestWithCustomerKey";
+
+        $encSetConfig = New-AzDiskEncryptionSetConfig -Location $loc -EncryptionType $encryptionType;#-IdentityType 'SystemAssigned';#-EncryptionType $encryptionType;
+
+        #
+        New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName -DiskEncryptionSet $encSetConfig;
+        $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+        #
+        Assert-NotNull $encSet;
+        #------Assert-AreEqual $encryptionName $encSet.Name;
+        #
+
+        $encSetConfigDefault = New-AzDiskEncryptionSetConfig -Location $loc;
+
+        Assert-NotNull $encSetConfig;
+        Assert-AreEqual $encSetConfig.EncryptionType $encryptionType;
+        Assert-AreEqual $encSetConfigDefault.EncryptionType $encryptionTypeDefault;
+    }
+    finally
+    {
+        # Cleanup
+        #$encSet | Remove-AzDiskEncryptionSet -Force;
+        Clean-ResourceGroup $rgname
+    }
+}
+
