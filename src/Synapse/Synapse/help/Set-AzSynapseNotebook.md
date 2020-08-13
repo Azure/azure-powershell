@@ -21,7 +21,7 @@ Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] -DefinitionFile <
 ### SetByNameAndSparkPool
 ```
 Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] -SparkPoolName <String> [-ExecutorSize <String>]
- -Executors <Int32> -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -De
 ### SetByObjectAndSparkPool
 ```
 Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -SparkPoolName <String>
- [-ExecutorSize <String>] -Executors <Int32> -DefinitionFile <String> [-AsJob]
+ [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ This command creates or updates a notebook from notebook file notebook.ipynb in 
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -SparkPoolName ContosoSparkPool -Executors 2
+PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -SparkPoolName ContosoSparkPool -ExecutorCount 2
 ```
 
 This command creates or updates a notebook from notebook file notebook.ipynb which attaches to ContosoSparkPool and uses 2 executors in the workspace named ContosoWorkspace.
@@ -116,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Executors
+### -ExecutorCount
 Number of executors to be allocated in the specified Spark pool for the job.
 
 ```yaml

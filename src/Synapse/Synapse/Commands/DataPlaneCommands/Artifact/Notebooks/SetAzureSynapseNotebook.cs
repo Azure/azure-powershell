@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.ExecutorCount)]
-        public int Executors { get; set; }
+        public int ExecutorCount { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     };
                     options["cores"] = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores;
                     options["memory"] = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory;
-                    options["nodeCount"] = this.Executors;
+                    options["nodeCount"] = this.ExecutorCount;
                     options["endpoint"] = endpoint + "/livyApi/versions/" + SynapseConstants.SparkServiceEndpointApiVersion + "/sparkPools/" + this.SparkPoolName;
                     options["extraHeader"] = new ComputeOptions();
                     options["id"] = sparkPoolInfo.Id;

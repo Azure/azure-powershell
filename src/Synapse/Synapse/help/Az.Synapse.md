@@ -162,7 +162,7 @@ Updates an integration runtime.
 Links a data store or a cloud service to workspace.
 
 ### [Set-AzSynapseNotebook](Set-AzSynapseNotebook.md)
-Creates a notebook in a workspace.
+Creates or updates a notebook in a workspace.
 
 ### [Set-AzSynapsePipeline](Set-AzSynapsePipeline.md)
 Creates a pipeline in workspace.
