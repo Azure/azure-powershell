@@ -29,8 +29,8 @@ The **Get-AzDiskAccess** cmdlet gets the properties of Disk Accesses
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -Name 'DiskAccess0'
+```
+PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -Name 'DiskAccess01'
 
 PrivateEndpointConnections : {}
 ProvisioningState          : Succeeded
@@ -87,7 +87,7 @@ PrivateEndpointConnections : {}
 ProvisioningState          : Succeeded
 TimeCreated                : 8/13/2020 7:05:19 PM
 Location                   : northcentralus
-Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess02
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup21/providers/Microsoft.Compute/diskAccesses/DiskAccess02
 Name                       : DiskAccess02
 Type                       : Microsoft.Compute/diskAccesses
 Tags                       : {}
@@ -96,7 +96,7 @@ PrivateEndpointConnections : {}
 ProvisioningState          : Succeeded
 TimeCreated                : 8/13/2020 7:05:19 PM
 Location                   : northcentralus
-Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess03
+Id                         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup08/providers/Microsoft.Compute/diskAccesses/DiskAccess03
 Name                       : DiskAccess03
 Type                       : Microsoft.Compute/diskAccesses
 Tags                       : {}
@@ -130,7 +130,7 @@ Tags                       : {}
 This command gets the properties of all disk accesses under the subscription name starting with 'DiskAccessMicrosoft'.
 
 ### Example 5
-```powershell
+```
 PS C:\> Get-AzDiskAccess -ResourceId '/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01'
 
 PrivateEndpointConnections : {}

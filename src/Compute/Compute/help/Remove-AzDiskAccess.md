@@ -31,19 +31,19 @@ Remove-AzDiskAccess [-InputObject] <PSDiskAccess> [-AsJob] [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-The **Remove-AzDisk** cmdlet removes a disk access resource.
+The **Remove-AzDiskAccess** cmdlet removes a disk access resource.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> Remove-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 ```
 
 This command removes the disk access named "DiskAccess01" in resource group "ResourceGroup01"
 
 ### Example 2
-```powershell
+```
 PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 PS C:\> Remove-AzDiskAccess -ResourceId $myDiskAccess.id
 ```
@@ -51,7 +51,7 @@ PS C:\> Remove-AzDiskAccess -ResourceId $myDiskAccess.id
 This command removes the disk access by Resource ID
 
 ### Example 3
-```powershell
+```
 PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 PS C:\> Remove-AzDiskAccess -InputObject $myDiskAccess
 ```
@@ -59,7 +59,7 @@ PS C:\> Remove-AzDiskAccess -InputObject $myDiskAccess
 This command removes the disk access by InputObject
 
 ### Example 4
-```powershell
+```
 PS C:\> Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" | Remove-AzDiskAccess 
 ```
 

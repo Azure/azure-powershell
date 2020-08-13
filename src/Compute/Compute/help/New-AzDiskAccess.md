@@ -18,12 +18,12 @@ New-AzDiskAccess [-ResourceGroupName] <String> [-Name] <String> [-Location] <Str
 ```
 
 ## DESCRIPTION
-The **New-AzDisk** cmdlet creates a Disk Access resource
+The **New-AzDiskAccess** cmdlet creates a Disk Access resource
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> New-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" -Location "NorthCentralUS"
 ```
 
