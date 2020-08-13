@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The master custom IP prefix location.")]
+            HelpMessage = "The customIpPrefix location.")]
         [LocationCompleter("Microsoft.Network/customIpPrefix")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The CIDR of the master custom IP prefix")]
+            HelpMessage = "The customIpPrefix CIDR.")]
         [ValidateNotNullOrEmpty]
         public string Cidr { get; set; }
 
