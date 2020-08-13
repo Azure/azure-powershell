@@ -49,14 +49,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id.",
             ParameterSetName = DeleteByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true, 
-            ValueFromPipeline = true, 
+            ValueFromPipeline = true,
+            HelpMessage = "A customIpPrefix object.",
             ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
         public PSCustomIpPrefix InputObject { get; set; }

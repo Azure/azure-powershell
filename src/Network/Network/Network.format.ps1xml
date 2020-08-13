@@ -1533,10 +1533,6 @@
                 <Label>CommissionedState</Label>
                 <PropertyName>CommissionedState</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>MasterCustomIpPrefix</Label>
-                <PropertyName>MasterCustomIpPrefixText</PropertyName>
-              </ListItem>
 			        <ListItem>
                 <Label>PublicIpPrefixes</Label>
                 <PropertyName>PublicIpPrefixesText</PropertyName>
