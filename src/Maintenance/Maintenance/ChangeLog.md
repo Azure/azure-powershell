@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 1.1.0
+* Add optional schedule related fields to New-Az-MaintenanceConfiguration`
+* Add new cmdlet for Get-AzMaintenancePublicConfiguration`
+
 ## Version 1.0.0
 * Publishing release version of Maintenance cmdlets for GA
 
