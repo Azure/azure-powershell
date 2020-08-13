@@ -82,7 +82,10 @@ directive:
     remove: true
   - where:
       variant: ^Create$|^CreateViaIdentity$|$CreateViaIdentityExpanded$
-    hide: true
+    remove: true
+  - where:
+      subject: OperationsDiscovery
+    remove: true
   - where:      
       variant: DiscardExpanded
       subject: MoveCollection 
@@ -106,11 +109,7 @@ directive:
   - where:      
       variant: CommitExpanded            
     set:
-      subject: Commit
-  - where:
-      verb: Get      
-    set:
-      remove: true 
+      subject: Commit 
   - where:
       model-name: MoveResource
     set:

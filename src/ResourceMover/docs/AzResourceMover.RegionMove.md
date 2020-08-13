@@ -17,9 +17,6 @@ Microsoft Azure PowerShell: RegionMove cmdlets
 ### [Get-AzResourceMoverMoveResource](Get-AzResourceMoverMoveResource.md)
 
 
-### [Get-AzResourceMoverOperationsDiscovery](Get-AzResourceMoverOperationsDiscovery.md)
-
-
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
 
 
