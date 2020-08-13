@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
-    public class PSSignalRFeature
+    public class PSPrivateEndpointACL : PSNetworkAcl
     {
-        public string Flag { get; }
+        //
+        // Summary:
+        //     Gets or sets name of the private endpoint connection
+        public string Name { get; set; }
 
-        public string Value { get; }
-
-        public IDictionary<string, string> Properties { get; }
-
-        public PSSignalRFeature(SignalRFeature signalrFeature)
+        public PSPrivateEndpointACL(PrivateEndpointACL privateEndpointAcl) : base(privateEndpointAcl)
         {
-            Flag = signalrFeature.Flag;
-            Value = signalrFeature.Value;
-            Properties = signalrFeature.Properties;
+            Name = privateEndpointAcl.Name;
         }
     }
 }

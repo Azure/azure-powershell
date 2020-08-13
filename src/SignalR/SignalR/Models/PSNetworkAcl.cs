@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
-    public class PSSignalRFeature
+    public class PSNetworkAcl
     {
-        public string Flag { get; }
+        public IList<string> Allow { get; set; }
+        public IList<string> Deny { get; set; }
 
-        public string Value { get; }
-
-        public IDictionary<string, string> Properties { get; }
-
-        public PSSignalRFeature(SignalRFeature signalrFeature)
+        public PSNetworkAcl(NetworkACL networkACL)
         {
-            Flag = signalrFeature.Flag;
-            Value = signalrFeature.Value;
-            Properties = signalrFeature.Properties;
+            Allow = networkACL.Allow;
+            Deny = networkACL.Deny;
         }
     }
 }

@@ -2552,48 +2552,30 @@ function Test-VirtualMachineScaleSetAssignedHost
     try
     {
         # Common
+        $zone = "2"
         [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        #host group
-        $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Tag @{key1 = "val1"};
-        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+        # Hostgroup and Host
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
 
-        #host
-        $hostName = $rgname + 'host'
-        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type3" -PlatformFaultDomain 0 -Tag @{key1 = "val2"};
-        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        $Sku = "Esv3-Type1"
+        $hostName = $rgname + "Host"
+        $host_ = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
 
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        # Creating a new vmss
+        $VmSku = "Standard_E2s_v3"
+        $domainNameLabel = "domainlabel"
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
 
-        # NRP
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmsswithconfig';
-        $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
-
-        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
-
+        $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
         
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-
-        #creating vmss using New-azvmss simple parameter set
-        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -VmSize "Standard_E2s_v3"  -HostGroupId $hostGroup.Id -DomainNameLabel "domainlabel"
-        $vmssResult = Get-AzVmss -InstanceView -ResourceGroupName $rgname -VMScaleSetName "newvmss";
-        $vmssResult2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss";
-        Assert-AreEqual $dedicatedHost.Id $vmssResult2.assignedHost;
+        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.assignedHost;
     }
     finally
     {
