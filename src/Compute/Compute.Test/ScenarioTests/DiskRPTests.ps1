@@ -966,18 +966,18 @@ function Test-DiskConfigDiskAccessNetworkAccess
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
         $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
                                         -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
-
-        New-AzDisk -ResourceGroupName $rgname -DiskName "diskname" -Disk $diskconfig;
-
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
-        Assert.AreEqual $disk.NetworkAccessPolicy "AllowPrivate"
-        Assert.AreEqual $disk.DiskAccessId $diskAccess.Id
+        
+        Assert-AreEqual $diskAccess.Id $disk.DiskAccessId;
 
         Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
 
-
-    
-#        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -Disk $diskconfig;
+        $diskconfig2 = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -NetworkAccessPolicy "AllowAll";
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig2;
+        $disk2 = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        Assert-AreEqual "AllowAll" $disk2.NetworkAccessPolicy;
     
     }
     finally
