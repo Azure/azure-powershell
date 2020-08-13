@@ -497,7 +497,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Update-AzVirtualApplianceSite', 'New-AzOffice365PolicyProperty', 
                'Get-AzNetworkVirtualApplianceSku', 
                'New-AzVirtualApplianceSkuProperty',
-			   'Update-AzCustomIpPrefix', 'Get-AzCustomIpPrefix', 
+               'Update-AzCustomIpPrefix', 'Get-AzCustomIpPrefix', 
                'New-AzCustomIpPrefix', 'Remove-AzCustomIpPrefix'
 
 
