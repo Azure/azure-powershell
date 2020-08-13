@@ -865,6 +865,24 @@ function Test-DatalakeGen2
 		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
 		Assert-AreEqual $dir1.Path $directoryPath1
 
+		# Set ACL recusive
+		$result = Set-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName -Acl $acl
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
+		$result = Update-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Acl $acl -BatchSize 2 -MaxBatchCount 2 
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 1 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 1 $result.TotalDirectoriesSuccessfulCount
+		$acl2 = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope 
+		$result = Remove-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName  -Acl $acl2 
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
+
 		# Remove Items
         Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
         Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Force
