@@ -1619,6 +1619,10 @@
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>CustomIpPrefix</Label>
+                <PropertyName>CustomIpPrefixText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
