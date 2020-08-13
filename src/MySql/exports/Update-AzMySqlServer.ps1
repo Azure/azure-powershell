@@ -17,21 +17,23 @@
 .Synopsis
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Description
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
 PS C:\> Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
 .Example
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -39,6 +41,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
@@ -117,12 +120,6 @@ param(
     # The name of the sku, typically, tier + family + cores, e.g.
     # B_Gen4_1, GP_Gen5_8.
     ${Sku},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
-    # The size code, to be interpreted by resource as appropriate.
-    ${SkuSize},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier])]

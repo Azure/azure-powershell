@@ -15,40 +15,23 @@
 
 <#
 .Synopsis
-Creates or update active directory administrator on an existing server.
-The update action will overwrite the existing administrator.
+Creates a new firewall rule or updates an existing firewall rule.
 .Description
-Creates or update active directory administrator on an existing server.
-The update action will overwrite the existing administrator.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
-  Login <String>: The server administrator login account name.
-  Sid <String>: The server administrator Sid (Secure ID).
-  TenantId <String>: The server Active Directory Administrator tenant id.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlserveradministrator
+Creates a new firewall rule or updates an existing firewall rule.
 #>
-function Set-AzMySqlServerAdministrator {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzMySqlFirewallRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter()]
+    [Alias('FirewallRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [System.String]
+    # The name of the server firewall rule.
+    # If not specified, the default is undefined.
+    # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
+    ${Name},
+
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -69,30 +52,26 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource]
-    # Represents a and external administrator to be created.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
-    ${Property},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
-    # The server administrator login account name.
-    ${Login},
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
-    # The server administrator Sid (Secure ID).
-    ${Sid},
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    # If range contains one IP, use StartIPAddress only.
+    ${StartIPAddress},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='AllowAll', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
-    # The server Active Directory Administrator tenant id.
-    ${TenantId},
+    [System.Management.Automation.SwitchParameter]
+    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
+    ${AllowAll},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,40 +133,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Update = 'Az.MySql.private\Set-AzMySqlServerAdministrator_Update';
-            UpdateExpanded = 'Az.MySql.private\Set-AzMySqlServerAdministrator_UpdateExpanded';
-        }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
     try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
+        if($PSBoundParameters.ContainsKey('AllowAll'))
+        {
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = Get-Date -Format "AllowAll_yyyy-MM-dd_HH-mm-ss"
+            }
+            $PSBoundParameters['StartIPAddress'] = "0.0.0.0"
+            $PSBoundParameters['EndIPAddress'] = "255.255.255.255"
 
-end {
-    try {
-        $steppablePipeline.End()
+            $null = $PSBoundParameters.Remove('AllowAll')
+        }
+        else
+        {
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "undefined"
+            }
+            if(!$PSBoundParameters.ContainsKey('EndIPAddress'))
+            {
+                $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['StartIPAddress']
+            }
+        }
+
+        Az.MySql.internal\New-AzMySqlFirewallRule @PSBoundParameters
     } catch {
         throw
     }

@@ -19,11 +19,18 @@ Creates a new replica from an existing database.
 .Description
 Creates a new replica from an existing database.
 .Example
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlServerReplica -Name mysql-test-replica -ResourceGroupName PowershellMySqlTest
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlReplica -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
 
-Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
+.Example
+PS C:\> $mysql = Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> New-AzMySqlReplica -Master $mysql -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
+
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
@@ -31,9 +38,10 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IServer>: The source server object to create replica from.
+MASTER <IServer>: The source server object to create replica from.
   Location <String>: The location the resource resides in.
   [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -60,18 +68,18 @@ INPUTOBJECT <IServer>: The source server object to create replica from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserverreplica
+https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlreplica
 #>
-function New-AzMySqlServerReplica {
+function New-AzMySqlReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('ReplicaServerName')]
+    [Alias('ReplicaServerName', 'Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
-    ${Name},
+    ${Replica},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
@@ -87,11 +95,12 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory, ValueFromPipeline)]
+    [Alias('InputObject')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
     # The source server object to create replica from.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    # To construct, see NOTES section for MASTER properties and create a hash table.
+    ${Master},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -169,7 +178,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            CreateExpanded = 'Az.MySql.custom\New-AzMySqlServerReplica';
+            CreateExpanded = 'Az.MySql.custom\New-AzMySqlReplica';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
